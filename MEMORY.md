@@ -48,7 +48,9 @@
 - Default workspace repo: `defmarshal/defmarshal-workspace` (use this for future pushes)
 - Weather: `wttr.in` / Open-Meteo
 - Memory search: Simple text search (`./msearch`) – offline, rate‑limit free
-- Dashboard: CLI workspace dashboard (`dashboard.py`) – time, weather, holidays, git, system health, memory
+- Dashboard:
+  - CLI: `dashboard.py` – time, weather, holidays, git, system health, memory
+  - Web: `web-dashboard.py` (port 8800) – same data via browser, auto-refresh
 - Utilities:
   - `show-holidays`: print upcoming Indonesian holidays (next 60 days)
   - `today-mem`: show today's or most recent daily memory file
