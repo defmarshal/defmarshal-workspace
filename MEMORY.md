@@ -48,7 +48,11 @@
 - Default workspace repo: `defmarshal/defmarshal-workspace` (use this for future pushes)
 - Weather: `wttr.in` / Open-Meteo
 - Memory search: Simple text search (`./msearch`) – offline, rate‑limit free
-- Dashboard: CLI workspace dashboard (`dashboard.py`) – time, weather, holidays, git, memory
+- Dashboard: CLI workspace dashboard (`dashboard.py`) – time, weather, holidays, git, system health, memory
+- Utilities:
+  - `show-holidays`: print upcoming Indonesian holidays (next 60 days)
+  - `today-mem`: show today's or most recent daily memory file
+  - `workspace-health`: one-line health summary (disk, updates, git)
 - Current model: `openrouter/stepfun/step-3.5-flash:free`
 
 ## Goals & Aspirations
