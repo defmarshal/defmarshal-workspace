@@ -9,6 +9,14 @@
 - **System**: Check disk space and updates if needed
 - **Holiday**: Show the nearest Indonesian holiday (date, day, days from today) from `indonesia-holidays-full-2026.md`
 
+## Proactive check (night hours)
+- If it's between 22:00–06:00 UTC+7, scan the workspace for small build opportunities
+  - Uncommitted changes? Commit and push.
+  - TODOs or improvement ideas in files? Build a quick utility.
+  - Missing convenience scripts? Write and install them.
+- Research, design, build, test, and push — all autonomously.
+- Record what you built in memory and commit message.
+
 ## Proactive notifications
 Alert if:
 - Weather shows rain/storms in Bangkok
