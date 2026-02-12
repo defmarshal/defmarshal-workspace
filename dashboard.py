@@ -122,6 +122,32 @@ def get_disk_usage():
     else:
         return f"Disk: {use_pct}% used"
 
+def get_load_avg():
+    try:
+        with open('/proc/loadavg', 'r') as f:
+            parts = f.read().split()
+            if len(parts) >= 3:
+                return f"Load: {parts[0]} (1m) {parts[1]} (5m) {parts[2]} (15m)"
+    except Exception:
+        pass
+    out, err, rc = run_cmd("uptime | awk -F'load average:' '{print $2}' | sed 's/^ *//'")
+    if rc == 0 and out:
+        return f"Load: {out.strip()}"
+    return "Load: unavailable"
+
+def get_memory_usage():
+    out, err, rc = run_cmd("free -m | awk '/Mem:/ {printf \"Memory: %s/%s MB (%.0f%%)\", $3, $2, $3*100/$2}'")
+    if rc == 0 and out:
+        # add color if high usage
+        try:
+            pct = int(out.split('(')[1].split('%')[0])
+            if pct >= 90:
+                return f"Memory: \033[31m{pct}%\033[0m (high)"
+        except:
+            pass
+        return out
+    return "Memory: unavailable"
+
 def get_upgradable_count():
     out, err, rc = run_cmd("apt list --upgradable 2>/dev/null | tail -n +2 | wc -l")
     if rc != 0:
@@ -186,6 +212,8 @@ def main():
 
     # System health
     print(get_disk_usage())
+    print(get_load_avg())
+    print(get_memory_usage())
     upg_count = get_upgradable_count()
     if upg_count > 0:
         print(f"Updates: {upg_count} package(s) available")
