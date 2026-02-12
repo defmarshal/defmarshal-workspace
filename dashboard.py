@@ -53,14 +53,16 @@ def parse_holidays():
     for line in lines:
         if line.startswith("|") and "20" in line:
             parts = [p.strip() for p in line.split("|")]
-            if len(parts) >= 5:
-                date_str = parts[1]
+            # Table: | # | Date | Day | Holiday (Indonesian) | Holiday (English) |
+            # parts indices: 0 empty, 1=#, 2=Date, 3=Day, 4=Indonesian, 5=English, 6 empty
+            if len(parts) >= 6:
+                date_str = parts[2]
                 try:
                     hdate = datetime.strptime(date_str, "%Y-%m-%d").date()
                     days_away = (hdate - today).days
                     if 0 <= days_away < nearest_days:
                         nearest_days = days_away
-                        nearest = (parts[2], parts[3], parts[4], date_str)
+                        nearest = (parts[3], parts[4], parts[5], date_str)
                 except:
                     continue
     return nearest, nearest_days
