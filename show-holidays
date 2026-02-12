@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""
+Show upcoming Indonesian holidays (next 30 days)
+Reads from indonesia-holidays-full-2026.md
+"""
+
+import sys
+from datetime import datetime, timedelta
+from pathlib import Path
+
+WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
+HOLIDAYS_FILE = WORKSPACE / "indonesia-holidays-full-2026.md"
+
+def parse_dates():
+    if not HOLIDAYS_FILE.exists():
+        print(f"File not found: {HOLIDAYS_FILE}")
+        return []
+
+    today = datetime.now().date()
+    entries = []
+    for line in HOLIDAYS_FILE.read_text().splitlines():
+        if line.startswith("|") and "20" in line:
+            parts = [p.strip() for p in line.split("|")]
+            # Expected columns: | # | Date | Day | Holiday (Indonesian) | Holiday (English) |
+            # After stripping: ['', '1', '2026-01-01', 'Thursday', 'Tahun Baru Masehi', 'New Year\'s Day', '']
+            if len(parts) >= 6:
+                date_str = parts[2]
+                try:
+                    hdate = datetime.strptime(date_str, "%Y-%m-%d").date()
+                    days_away = (hdate - today).days
+                    if 0 <= days_away <= 60:  # include near future
+                        entries.append({
+                            "date": hdate,
+                            "days": days_away,
+                            "day": parts[3],
+                            "holiday_id": parts[4],
+                            "holiday_en": parts[5],
+                        })
+                except ValueError:
+                    continue
+    entries.sort(key=lambda e: e["date"])
+    return entries
+
+def main():
+    entries = parse_dates()
+    today = datetime.now().date()
+    if not entries:
+        print("No upcoming holidays found (within 60 days).")
+        return
+
+    # Print next 10 holidays or all if fewer
+    upcoming = entries[:10]
+    print(f"Upcoming Indonesian holidays (from {today}):")
+    print("-" * 70)
+    print(f"{'Date':<12} {'Day':<10} {'Days':<6} {'Holiday'}")
+    print("-" * 70)
+    for e in upcoming:
+        date_str = e["date"].strftime("%Y-%m-%d")
+        day = e["day"]
+        days = e["days"]
+        days_str = f"{days}" if days != 0 else "today"
+        holiday = f"{e['holiday_id']} ({e['holiday_en']})"
+        print(f"{date_str:<12} {day:<10} {days_str:<6} {holiday}")
+    print("-" * 70)
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""
+Show the most recent daily memory file (or today's if exists)
+"""
+
+from datetime import datetime
+from pathlib import Path
+
+WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
+MEMORY_DIR = WORKSPACE / "memory"
+
+def find_latest():
+    if not MEMORY_DIR.exists():
+        return None
+    files = sorted(MEMORY_DIR.glob("*.md"), reverse=True)
+    return files[0] if files else None
+
+def main():
+    today_file = MEMORY_DIR / f"{datetime.now().date()}.md"
+    file_to_show = today_file if today_file.exists() else find_latest()
+    if not file_to_show:
+        print("No memory files found.")
+        return
+    print(f"=== {file_to_show.name} ===")
+    print(file_to_show.read_text())
+
+if __name__ == "__main__":
+    main()
