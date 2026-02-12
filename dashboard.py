@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Workspace Dashboard - Your personal CLI dashboard
-Shows: weather, next holiday, git status, recent memory, and more.
+Shows: weather, next holiday, git status, recent memory, system health, and more.
 """
 
 import subprocess
@@ -87,6 +87,51 @@ def get_recent_commits(n=3):
                 commits.append(f"{parts[0][:7]} {parts[1]}")
     return commits
 
+def get_disk_usage():
+    out, err, rc = run_cmd("df -h /")
+    if rc != 0:
+        return "Disk: error"
+    lines = out.splitlines()
+    if len(lines) < 2:
+        return "Disk: no data"
+    # Find the line where mountpoint is /
+    root_line = None
+    for line in lines[1:]:
+        parts = line.split()
+        if len(parts) >= 6 and parts[5] == '/':
+            root_line = line
+            break
+    if not root_line:
+        # fallback to first data line
+        if len(lines) >= 2:
+            root_line = lines[1]
+        else:
+            return "Disk: not found"
+    parts = root_line.split()
+    if len(parts) < 5:
+        return "Disk: parse error"
+    use_percent_str = parts[4].rstrip('%')
+    try:
+        use_pct = int(use_percent_str)
+    except:
+        return f"Disk: {use_percent_str}%"
+    if use_pct >= 90:
+        return f"Disk: {use_pct}% (CRITICAL)"
+    elif use_pct >= 80:
+        return f"Disk: {use_pct}% (WARNING)"
+    else:
+        return f"Disk: {use_pct}% used"
+
+def get_upgradable_count():
+    out, err, rc = run_cmd("apt list --upgradable 2>/dev/null | tail -n +2 | wc -l")
+    if rc != 0:
+        return 0
+    try:
+        count = int(out.strip())
+        return count
+    except:
+        return 0
+
 def search_memory(query="recent", limit=3):
     out, err, rc = run_cmd(f"./msearch '{query}'")
     if rc != 0 or not out:
@@ -118,7 +163,14 @@ def main():
     holiday_info = parse_holidays()
     if holiday_info and holiday_info[0]:
         day, holiday_en, holiday_id, date = holiday_info[0]
-        print(f"Next holiday: {holiday_en} ({holiday_id}) on {date} ({day})")
+        days = holiday_info[1]
+        if days == 0:
+            day_str = " (today!)"
+        elif days > 0:
+            day_str = f" (in {days} day{'s' if days != 1 else ''})"
+        else:
+            day_str = ""
+        print(f"Next holiday: {holiday_en} ({holiday_id}) on {date} ({day}){day_str}")
     else:
         print("No upcoming holiday found")
     print()
@@ -130,6 +182,15 @@ def main():
         print("Recent commits:")
         for c in commits:
             print(f"  {c}")
+    print()
+
+    # System health
+    print(get_disk_usage())
+    upg_count = get_upgradable_count()
+    if upg_count > 0:
+        print(f"Updates: {upg_count} package(s) available")
+    else:
+        print("Updates: none")
     print()
 
     # Memory search
