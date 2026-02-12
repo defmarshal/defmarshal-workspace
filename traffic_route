@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+import os, sys, urllib.request, urllib.parse, json
+
+def read_key():
+    key_path = os.path.join(os.path.dirname(__file__), '.tomtom_key')
+    try:
+        with open(key_path, 'r') as f:
+            return f.read().strip()
+    except Exception as e:
+        sys.stderr.write(f"Error reading TomTom key: {e}\n")
+        sys.exit(1)
+
+def geocode(place, key):
+    url = f"https://api.tomtom.com/search/2/geocode/{urllib.parse.quote(place)}.json"
+    params = {'key': key}
+    full_url = url + '?' + urllib.parse.urlencode(params)
+    try:
+        with urllib.request.urlopen(full_url, timeout=10) as resp:
+            data = json.load(resp)
+        results = data.get('results', [])
+        if not results:
+            raise ValueError(f"No geocode results for: {place}")
+        pos = results[0]['position']
+        return pos['lat'], pos['lon']
+    except Exception as e:
+        sys.stderr.write(f"Geocoding error for '{place}': {e}\n")
+        sys.exit(1)
+
+def get_route(lat1, lon1, lat2, lon2, key):
+    url = f"https://api.tomtom.com/routing/1/calculateRoute/{lat1},{lon1}:{lat2},{lon2}/json"
+    params = {
+        'key': key,
+        'traffic': 'true',
+        'computeTravelTimeFor': 'all',
+        'travelMode': 'car',
+        'avoid': 'tollRoads',
+    }
+    full_url = url + '?' + urllib.parse.urlencode(params)
+    try:
+        with urllib.request.urlopen(full_url, timeout=20) as resp:
+            route = json.load(resp)
+        routes = route.get('routes', [])
+        if not routes:
+            raise ValueError("No route found")
+        return routes[0]['summary']
+    except Exception as e:
+        sys.stderr.write(f"Routing error: {e}\n")
+        sys.exit(1)
+
+def main():
+    if len(sys.argv) != 3:
+        sys.stderr.write("Usage: traffic_route <origin> <destination>\n")
+        sys.exit(1)
+    origin, destination = sys.argv[1], sys.argv[2]
+    key = read_key()
+    lat1, lon1 = geocode(origin, key)
+    lat2, lon2 = geocode(destination, key)
+    summary = get_route(lat1, lon1, lat2, lon2, key)
+    travel_time = summary['travelTimeInSeconds'] / 60
+    free_flow = summary['freeFlowTravelTimeInSeconds'] / 60
+    delay = summary.get('trafficDelayInSeconds', 0) / 60
+    distance = summary['lengthInMeters'] / 1000
+    print(f"{origin} → {destination}")
+    print(f"Distance: {distance:.1f} km")
+    print(f"Travel time (with traffic): {travel_time:.0f} min")
+    print(f"Free-flow time: {free_flow:.0f} min")
+    print(f"Delay: {delay:.0f} min")
+    if free_flow > 0:
+        congestion = (travel_time - free_flow) / free_flow * 100
+        print(f"Congestion: +{congestion:.0f}%")
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,14 @@
+{
+  "name": "simple-memory-search",
+  "description": "Fast, offline, text‑based memory search using ripgrep. No embeddings, no API limits.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "index.js",
+  "openclaw": {
+    "toolName": "memory_search",
+    "tool": "./index.js"
+  },
+  "dependencies": {
+    "minimatch": "^10.0.0"
+  }
+}

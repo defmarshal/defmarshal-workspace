@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "humanizer": {
+      "version": "1.0.0",
+      "installedAt": 1770677924482
+    },
+    "tavily": {
+      "version": "1.0.0",
+      "installedAt": 1770677930360
+    },
+    "stock-analysis": {
+      "version": "6.2.0",
+      "installedAt": 1770677936459
+    },
+    "perplexity": {
+      "version": "1.0.0",
+      "installedAt": 1770677941917
+    },
+    "exa-web-search-free": {
+      "version": "1.0.1",
+      "installedAt": 1770677964821
+    }
+  }
+}
