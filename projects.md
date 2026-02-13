@@ -16,6 +16,14 @@ Overview of active and completed projects. Used for context and status tracking.
   - Commands: `anime search|info|top|season|upcoming [--tts]`
   - Status: Stable, integrated into quick
 
+- **24/7 Autonomous Agents** (2026-02-13 — present)
+  - Content Agent (content-agent): Continuous creation of anime, tech, and lifestyle content
+  - Research Agent (research-agent): Continuous research on anime, banking, tech, AI trends
+  - Dev Agent (dev-agent): Continuous development of tools, automations, and infrastructure
+  - All run in isolated sessions with infinite loops, respect quiet hours (23:00–08:00 UTC+7)
+  - Tracked in active-tasks.md; outputs saved to workspace under content/, research/, and dev/ (if applicable)
+  - Status: Running
+
 ## Completed Projects
 
 - **Memory System Overhaul** (2026-02-12)

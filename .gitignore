@@ -16,6 +16,9 @@ tts_output/
 # Cron logs
 memory/*.log
 
+# Agent runtime state (do not commit)
+**/state.json
+
 # Installed skill directories (managed by ClawHub, not for Git)
 skills/neural-memory/
 skills/openclaw-memory/
