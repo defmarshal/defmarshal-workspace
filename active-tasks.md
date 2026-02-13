@@ -23,14 +23,17 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [agent:main:subagent:9751d90f-9268-4200-8dd6-cdaa78ec4d76] gap-research — Search web for "gapping method in banking industry" (started: 2026-02-13 15:24, status: validated)
-  - Verification: Comprehensive research report completed covering all deliverables: 1) Definition of gapping method (gap = RSA - RSL), 2) Banking applications (ALM, interest rate risk, gap reports), 3) Benefits (simplicity, transparency) and risks (limited scope, static nature), 4) Case studies (SVB 2023 failure as key example), 5) Regulatory stance (FDIC, Fed, Basel, PRA all require gap analysis but as part of broader IRRBB framework). Report saved as: gapping-method-banking-research-report.md (12KB, structured with 5 sections, executive summary, conclusion, and sources)
-
-- [agent:main:subagent:3c36d597-6aa7-423b-9834-32670994fcd9] content-agent — Continuous content creation (anime, tech, summaries) (started: 2026-02-13 15:35, status: running)
+- [agent:main:subagent:9f09cc7d-8ab7-4957-a76d-97c32c8aa743] content-agent — Continuous content creation (anime, tech, summaries) (started: 2026-02-13 17:35, status: running)
   - Verification: pending (monitor output cycles)
 
-- [agent:main:subagent:a43a9c2b-7a9c-49c2-983f-30be085c6d17] research-agent — Continuous research on anime, banking, tech, AI (started: 2026-02-13 15:36, status: running)
+- [agent:main:subagent:95145785-118c-4dfd-a821-eef8c3ed803d] research-agent — Continuous research on anime, banking, tech, AI (started: 2026-02-13 17:35, status: running)
   - Verification: pending (review report quality and coverage)
 
-- [agent:main:subagent:49b4130a-fc4c-4575-b988-427ff92e1866] dev-agent — Continuous development (tools, automations, infrastructure) (started: 2026-02-13 15:39, status: running)
-  - Verification: Initial baseline commit (fix: .gitignore + added agent SOULs, outputs, pending changes). Pushed to GitHub. Workspace clean.
+- [agent:main:subagent:609e93ce-4c21-4d60-acf1-3dbbf0b0d5cc] dev-agent — Continuous development (tools, automations, infrastructure) (started: 2026-02-13 17:35, status: running)
+  - Verification: pending (monitor commits and improvements)
+
+- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Strategic builder (every 2h, respects quiet hours) (started: 2026-02-13 15:00, status: running)
+  - Verification: Last run produced quick launcher + anime-companion; next run in ~2h
+
+- [agent:main:subagent:9751d90f-9268-4200-8dd6-cdaa78ec4d76] gap-research — Search web for "gapping method in banking industry" (started: 2026-02-13 15:24, status: validated)
+  - Verification: Comprehensive research report completed, saved as gapping-method-banking-research-report.md

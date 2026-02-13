@@ -1,6 +1,7 @@
 #!/bin/bash
-# clawaifu-selfie - Generate anime selfies using Craiyon.com (free, no key)
-# Security: credentials via environment only
+# clawaifu-selfie - Send random anime images from Nekos API
+# Free, no API key required, curated collection of 40k+ anime images
+# Ratings: safe (default) or explicit (NSFW)
 
 set -euo pipefail
 
@@ -9,61 +10,56 @@ if [ -z "${BOT_TOKEN:-}" ]; then
     exit 1
 fi
 
-TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-}"
-
-if [ -z "$TELEGRAM_CHAT_ID" ]; then
+if [ -z "${TELEGRAM_CHAT_ID:-}" ]; then
     echo "Error: TELEGRAM_CHAT_ID environment variable required"
     exit 1
 fi
 
-USER_CONTEXT="${1:-}"
-MODE="${2:-mirror}"
-CAPTION="${3:-}"
+CAPTION="${1:-Random anime from Nekos API! ✨}"
+RATING="${2:-safe}"  # safe (default) or explicit
 
-if [ -z "$USER_CONTEXT" ]; then
-    echo "Usage: $0 <user_context> [mirror|direct] [caption]"
+if [ "$RATING" != "safe" ] && [ "$RATING" != "explicit" ]; then
+    echo "Error: Rating must be 'safe' or 'explicit'"
     exit 1
 fi
 
-CHARACTER="Reze from Chainsaw Man"
-STYLE="anime style, 2D animation, cel shading, vibrant colors"
-FACE="green eyes, thin line mouth, subtle smile with closed lips, black choker"
-OUTFIT="wearing outfit appropriate for the situation, black choker always visible"
+echo "Fetching random anime image from Nekos API (rating: $RATING)..."
 
-if [ "$MODE" == "direct" ]; then
-    PROMPT="$CHARACTER, $STYLE, $FACE, $OUTFIT, close-up portrait selfie at $USER_CONTEXT, direct eye contact, cinematic lighting, high detail, sharp focus"
-else
-    PROMPT="$CHARACTER, $STYLE, $FACE, $OUTFIT, mirror selfie full-body shot, $USER_CONTEXT, casual pose, looking at camera"
-fi
+# Get the API response (array of images) with rating filter
+response=$(curl -s "https://api.nekosapi.com/v4/images/random?rating=$RATING")
 
-echo "Generating image via Craiyon..."
-RESPONSE=$(curl -s -X POST "https://www.craiyon.com/v1/models" \
-  -H "Content-Type: application/json" \
-  -d "{\"prompt\":\"$PROMPT\",\"num_images\":1,\"size\":256}")
-
-IMAGE_BASE64=$(echo "$RESPONSE" | jq -r '.images[0] // empty')
-
-if [ -z "$IMAGE_BASE64" ]; then
-    echo "Error: No image returned"
-    echo "Response: $RESPONSE"
+# Extract the first image URL using jq
+if ! command -v jq &> /dev/null; then
+    echo "Error: jq is required to parse JSON"
     exit 1
 fi
 
-IMAGE_TMP="/tmp/selfie_$$.jpg"
-echo "$IMAGE_BASE64" | base64 -d > "$IMAGE_TMP" 2>/dev/null || {
-    python3 -c "import base64, sys; sys.stdout.buffer.write(base64.b64decode('''$IMAGE_BASE64'''))" > "$IMAGE_TMP"
-}
+image_url=$(echo "$response" | jq -r '.[0].url')
 
-if [ -n "$CAPTION" ]; then
-    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendPhoto" \
-      -F "chat_id=$TELEGRAM_CHAT_ID" \
-      -F "photo=@$IMAGE_TMP;type=image/jpeg" \
-      -F "caption=$CAPTION" > /dev/null 2>&1
-else
-    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendPhoto" \
-      -F "chat_id=$TELEGRAM_CHAT_ID" \
-      -F "photo=@$IMAGE_TMP;type=image/jpeg" > /dev/null 2>&1
+if [ -z "$image_url" ] || [ "$image_url" = "null" ]; then
+    echo "Error: No image URL in response"
+    echo "Response: $response"
+    exit 1
 fi
 
-rm -f "$IMAGE_TMP"
-echo "Done! Selfie sent via Craiyon."
+echo "Image URL: $image_url"
+
+# Download the image
+tmpfile="/tmp/neko_selfie_$(date +%s).webp"
+curl -s -L "$image_url" -o "$tmpfile"
+
+if [ ! -s "$tmpfile" ]; then
+    echo "Error: Downloaded image is empty"
+    exit 1
+fi
+
+echo "Image downloaded to $tmpfile"
+
+# Send to Telegram with caption
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto" \
+  -F "chat_id=${TELEGRAM_CHAT_ID}" \
+  -F "photo=@${tmpfile};type=image/webp" \
+  -F "caption=${CAPTION}" > /dev/null
+
+echo "Done! Selfie sent."
+rm -f "$tmpfile"

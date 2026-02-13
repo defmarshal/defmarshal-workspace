@@ -1,0 +1,170 @@
+#!/usr/bin/env bash
+# anime - CLI for searching anime via Jikan API (MyAnimeList)
+# No API key required. Uses https://api.jikan.moe/v4
+
+set -euo pipefail
+
+BASE_URL="https://api.jikan.moe/v4"
+
+# Colors for output
+RED='\033[0;31m'
+ GREEN='\033[0;32m'
+ YELLOW='\033[1;33m'
+ BLUE='\033[0;34m'
+ BOLD='\033[1m'
+ NC='\033[0m' # No Color
+
+# Simple rate limiting: Jikan allows 3 req/sec. We'll add a small delay.
+rate_limit_delay=0.4  # ~2.5 req/sec max, safe
+
+# Helper: make API request with error handling
+jikan_get() {
+    local endpoint="$1"
+    sleep "$rate_limit_delay"
+    curl -s --fail "$BASE_URL/$endpoint" || {
+        echo -e "${RED}Error: Failed to fetch data from Jikan API${NC}" >&2
+        return 1
+    }
+}
+
+# Command: search <query>
+cmd_search() {
+    local query="$*"
+    if [[ -z "$query" ]]; then
+        echo "Usage: anime search \"query\"" >&2
+        return 1
+    fi
+    # URL encode query
+    local encoded_query
+    encoded_query=$(printf '%s' "$query" | jq -s -R -r @uri 2>/dev/null || python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$query")
+    local resp
+    resp=$(jikan_get "anime?q=$encoded_query&limit=10&sfw=true")
+    # Parse results
+    local data
+    data=$(echo "$resp" | jq -r '.data[]? | "\(.mal_id) \(.title) - \(.episodes // "?") eps, \(.status), ⭐ \(.score // "N/A")"' 2>/dev/null || {
+        echo "No results found or invalid response."
+        return 0
+    })
+    if [[ -z "$data" ]]; then
+        echo "No results found."
+    else
+        echo "$data"
+    fi
+}
+
+# Command: info <mal_id>
+cmd_info() {
+    local mal_id="$1"
+    if [[ -z "$mal_id" ]]; then
+        echo "Usage: anime info <mal_id>" >&2
+        return 1
+    fi
+    local resp
+    resp=$(jikan_get "anime/$mal_id/full")
+    # Check for error
+    if echo "$resp" | jq -e '.error' >/dev/null 2>&1; then
+        echo -e "${RED}Error: \((echo "$resp" | jq -r '.error // "Unknown"))${NC}" >&2
+        return 1
+    fi
+    # Extract fields
+    local title english title_japanese score rank episodes status aired_from aired_to genres studios trailer
+    title=$(echo "$resp" | jq -r '.data.title // "N/A"')
+    english=$(echo "$resp" | jq -r '.data.title_english // "N/A"')
+    title_japanese=$(echo "$resp" | jq -r '.data.title_japanese // "N/A"')
+    score=$(echo "$resp" | jq -r '.data.score // "N/A"')
+    rank=$(echo "$resp" | jq -r '.data.rank // "N/A"')
+    episodes=$(echo "$resp" | jq -r '.data.episodes // "Unknown"')
+    status=$(echo "$resp" | jq -r '.data.status // "N/A"')
+    aired_from=$(echo "$resp" | jq -r '.data.aired.from // "?"')
+    aired_to=$(echo "$resp" | jq -r '.data.aired.to // "?"')
+    # Format airing dates
+    if [[ "$aired_from" != "?" ]]; then
+        aired_from="${aired_from:0:10}"
+    fi
+    if [[ "$aired_to" != "?" ]]; then
+        aired_to="${aired_to:0:10}"
+    fi
+    genres=$(echo "$resp" | jq -r '.data.genres[]?.name // empty' | paste -sd ', ' -)
+    studios=$(echo "$resp" | jq -r '.data.studios[]?.name // empty' | paste -sd ', ' -)
+    trailer=$(echo "$resp" | jq -r '.data.trailer.url // empty')
+    local synopsis
+    synopsis=$(echo "$resp" | jq -r '.data.synopsis // "No synopsis available."')
+    # Output
+    echo -e "${BOLD}${BLUE}🎬 $title${NC}"
+    [[ "$english" != "N/A" && "$english" != "$title" ]] && echo "   English: $english"
+    [[ "$title_japanese" != "N/A" && "$title_japanese" != "$title" ]] && echo "   Japanese: $title_japanese"
+    echo "   MAL ID: $mal_id | Score: ⭐ $score | Rank: #$rank"
+    echo "   Episodes: $episodes | Status: $status"
+    [[ "$aired_from" != "?" ]] && echo -n "   Aired: $aired_from"
+    [[ "$aired_from" != "?" && "$aired_to" != "?" ]] && echo -n " to "
+    [[ "$aired_to" != "?" ]] && echo "$aired_to"
+    echo "   Genres: $genres"
+    [[ -n "$studios" ]] && echo "   Studios: $studios"
+    [[ -n "$trailer" ]] && echo -e "   🎥 Trailer: ${BOLD}$trailer${NC}"
+    echo -e "\n📖 Synopsis:\n$synopsis"
+}
+
+# Command: season [year season]
+cmd_season() {
+    local year="${1:-}"
+    local season="${2:-}"
+    local endpoint="anime"
+    if [[ -n "$year" && -n "$season" ]]; then
+        endpoint="anime?year=$year&season=$season"
+    fi
+    local resp
+    resp=$(jikan_get "$endpoint&limit=10&sfw=true")
+    echo "$resp" | jq -r '.data[]? | "\(.mal_id) \(.title) - \(.episodes // "?") eps, \(.status), ⭐ \(.score // "N/A")"' 2>/dev/null || {
+        echo "No anime found for season $year $season." >&2
+        return 1
+    }
+}
+
+# Command: top [limit]
+cmd_top() {
+    local limit="${1:-10}"
+    if ! [[ "$limit" =~ ^[0-9]+$ ]] || (( limit < 1 || limit > 100 )); then
+        limit=10
+    fi
+    local resp
+    resp=$(jikan_get "top/anime?limit=$limit&sfw=true")
+    echo "$resp" | jq -r '.data[]? | "\(.mal_id) \(.title) - \(.episodes // "?") eps, \(.status), ⭐ \(.score // "N/A")"' 2>/dev/null
+}
+
+# Command: upcoming [limit]
+cmd_upcoming() {
+    local limit="${1:-10}"
+    if ! [[ "$limit" =~ ^[0-9]+$ ]] || (( limit < 1 || limit > 100 )); then
+        limit=10
+    fi
+    local resp
+    resp=$(jikan_get "seasons/upcoming?limit=$limit&sfw=true")
+    echo "$resp" | jq -r '.data[]? | "\(.mal_id) \(.title) - \(.episodes // "?") eps, \(.status), ⭐ \(.score // "N/A")"' 2>/dev/null
+}
+
+# Main dispatch
+main() {
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: anime <command> [args]"
+        echo "Commands:"
+        echo "  search \"query\"            Search anime by title"
+        echo "  info <mal_id>              Get full details by MAL ID"
+        echo "  season [year season]       Current season or specific (e.g., 2024 fall)"
+        echo "  top [limit]                Top ranked anime (default 10)"
+        echo "  upcoming [limit]           Upcoming anime (default 10)"
+        return 1
+    fi
+
+    local cmd="$1"
+    shift || true
+    case "$cmd" in
+        search) cmd_search "$@" ;;
+        info) cmd_info "$1" ;;
+        season) cmd_season "$@" ;;
+        top) cmd_top "$@" ;;
+        upcoming) cmd_upcoming "$@" ;;
+        *) echo "Unknown command: $cmd" >&2; return 1 ;;
+    esac
+}
+
+main "$@"

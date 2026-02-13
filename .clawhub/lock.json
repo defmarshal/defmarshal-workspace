@@ -48,6 +48,10 @@
     "neural-memory": {
       "version": "1.0.0",
       "installedAt": 1770992954239
+    },
+    "anime": {
+      "version": "1.0.1",
+      "installedAt": 1770998258298
     }
   }
 }

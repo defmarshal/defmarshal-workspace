@@ -2,6 +2,14 @@
 **/node_modules/
 node_modules/
 
+# Experimental prototypes (not production code)
+**/experimental/
+experimental/
+
+# Python cache
+**/__pycache__/
+__pycache__/
+
 # Generated audio outputs
 tts_output/
 
