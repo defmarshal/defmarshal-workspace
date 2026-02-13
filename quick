@@ -20,7 +20,9 @@ Commands:
   git-status      Show brief git status
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
-  help            Show this help message
+  log <category> "<message>"  Log an event to today's memory file (category: decision, learning, event, note, etc.)
+  summarize [date]           Generate a daily summary of memory entries (default: today)
+  help                       Show this help message
 
 Examples:
   quick dash
@@ -63,6 +65,12 @@ case "$cmd" in
     ;;
   anime)
     "$WORKSPACE/anime-companion" "$@"
+    ;;
+  log)
+    "$WORKSPACE/log-event" "$@"
+    ;;
+  summarize)
+    "$WORKSPACE/summarize-day" "$@"
     ;;
   help|--help|-h)
     show_help

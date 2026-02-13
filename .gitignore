@@ -12,3 +12,6 @@ tts_output/
 
 # Optional large caches
 .cache/
+
+# Cron logs
+memory/*.log

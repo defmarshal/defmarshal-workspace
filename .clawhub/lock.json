@@ -32,6 +32,10 @@
     "edge-tts": {
       "version": "2.0.0",
       "installedAt": 1770963145400
+    },
+    "gmail": {
+      "version": "1.0.6",
+      "installedAt": 1770983454899
     }
   }
 }

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Log an event to today's memory file
+# Usage: log-event <category> "<message>"
+# Example: log-event decision "Switched to simple text search for reliability"
+
+set -euo pipefail
+
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+MEMORY_DIR="$WORKSPACE/memory"
+
+# Get today's date in Asia/Bangkok timezone
+DATE=$(TZ='Asia/Bangkok' date +%Y-%m-%d)
+MEMORY_FILE="$MEMORY_DIR/$DATE.md"
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <category> \"<message>\"" >&2
+  echo "Example: $0 decision \"Switched to simple text search\"" >&2
+  exit 1
+fi
+
+CATEGORY="$1"
+MESSAGE="$2"
+
+# Ensure memory directory exists
+mkdir -p "$MEMORY_DIR"
+
+# If memory file doesn't exist, create a basic header
+if [ ! -f "$MEMORY_FILE" ]; then
+  echo "# $DATE" > "$MEMORY_FILE"
+  echo "" >> "$MEMORY_FILE"
+fi
+
+# Append the event as a bullet point with bold category
+echo "- **$CATEGORY**: $MESSAGE" >> "$MEMORY_FILE"
+echo "Logged event to $MEMORY_FILE"

@@ -18,8 +18,8 @@
   - Set up Voyage AI embeddings for semantic memory search
   - Organize memory into structured categories
   - Write a simple fallback search script (grep-based)
-  - Automate daily memory summarization
-  - Status: In progress - Voyage API configured, gateway restarted
+  - Automate daily memory capture (log-event) and summarization (summarize-day)
+  - Status: Completed - summarization automated via `summarize-day` with daily cron; event logging via `log-event` integrated into `quick`.
 - **Workspace Dashboard** (2026-02-12 night build)
   - Built proactively upon user request
   - CLI dashboard showing Bangkok time/weather, next Indonesian holiday, git status, recent commits, and memory search
@@ -52,9 +52,11 @@
 - 2026-02-13: Discovered free image APIs (Pollinations, Craiyon, Hugging Face) are blocked/gated from this server; Replicate and fal.ai require credit top-ups.
 - 2026-02-13: Scrapped `clawaifu-selfie` integration due to no-cost constraints; decided not to spend money on image generation.
 - 2026-02-13: Converted `workspace-builder` from persistent loop agent to cron-based strategic agent (runs every 2h, respects quiet hours, undertakes ambitious builds).
+- 2026-02-13: `workspace-builder` cron job created and executed successfully. First ambitious build: **Anime Companion CLI tool** – unified anime exploration using Jikan API with optional TTS narration via edge-tts. Commands: `anime-companion search|info|top|season|upcoming [--tts]`. Integrated into `quick` as `quick anime ...`. Full docs in `ANIME_COMPANION_README.md`. All changes committed and pushed.
 - 2026-02-13: Installed `anime-lookup` and `edge-tts` skills via ClawHub.
 - 2026-02-13: Combined capabilities into "Anime Companion" for main agent: fetch anime info (anime-lookup), narrate via TTS (edge-tts), send character selfies (clawaifu-selfie).
 - 2026-02-13: fal.ai balance exhausted; free tier exists but limited credits – top up needed for continued selfies.
+- 2026-02-13: Implemented daily memory automation: `log-event` for event capture, `summarize-day` for auto-summarization (cron 22:30 Asia/Bangkok), integrated into `quick` launcher.
 
 ## Tools & Skills
 - Git: GitHub private repos with PAT + credential store (`~/.git-credentials`)
@@ -68,6 +70,10 @@
   - `show-holidays`: print upcoming Indonesian holidays (next 60 days)
   - `today-mem`: show today's or most recent daily memory file
   - `workspace-health`: one-line health summary (disk, updates, git)
+- **Memory Automation**:
+  - `log-event <category> "<message>"`: quickly log events (decision, learning, event, note, etc.) to today's memory file
+  - `summarize-day [date]`: generate categorized daily summary and append to memory file; run manually or via daily cron (22:30 Asia/Bangkok)
+  - Access via `quick`: `quick log ...` and `quick summarize [date]`
 - **`quick` launcher**: unified command for common tasks:
   - `quick dash` – run CLI dashboard
   - `quick web` – run web dashboard (port 8800)
@@ -83,9 +89,9 @@
 - Current model: `openrouter/stepfun/step-3.5-flash:free`
 
 ## Goals & Aspirations
-- Build a robust, searchable personal memory system
-- Automate memory capture and summarization
-- Explore anime-related projects using new skills
+- Build a robust, searchable personal memory system (in progress: basic search done, embeddings limited)
+- ✅ Automate memory capture and summarization (completed 2026-02-13)
+- Explore anime-related projects using new skills (ongoing)
 
 ## Resources
 - Voyage AI dashboard: https://dashboard.voyageai.com
