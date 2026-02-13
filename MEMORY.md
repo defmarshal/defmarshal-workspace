@@ -83,6 +83,9 @@
   - `quick holidays` – upcoming Indonesian holidays
   - `quick git-status` – brief git status
   - `quick anime <cmd>` – Anime Companion (search/info/top/season/upcoming)
+  - `quick log <category> "<msg>"` – log event to memory
+  - `quick summarize [date]` – daily memory summary
+  - `quick email-clean [--execute] [--max N]` – auto-archive useless emails (dry-run)
   - `quick help` – usage guide
 - **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration (edge-tts). Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
 - **clawaifu-selfie**: skill for anime selfies via fal.ai; requires `FAL_KEY`, `BOT_TOKEN`, `TELEGRAM_CHAT_ID`; persona: Reze from Chainsaw Man.

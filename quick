@@ -22,6 +22,8 @@ Commands:
                   Example: quick anime search "frieren" [--tts]
   log <category> "<message>"  Log an event to today's memory file (category: decision, learning, event, note, etc.)
   summarize [date]           Generate a daily summary of memory entries (default: today)
+  email-clean [options]      Auto-categorize/archive useless emails (dry-run by default)
+                              Options: --execute (actually archive), --max N, --query "gmail query"
   help                       Show this help message
 
 Examples:
@@ -71,6 +73,9 @@ case "$cmd" in
     ;;
   summarize)
     "$WORKSPACE/summarize-day" "$@"
+    ;;
+  email-clean)
+    python3 "$WORKSPACE/email-cleaner.py" "$@"
     ;;
   help|--help|-h)
     show_help
