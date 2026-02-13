@@ -5,7 +5,7 @@
 ## Personal
 - **Name**: def
 - **Timezone**: UTC+7 (Indochina Time)
-- **Assistant**: Jonathan (chill best friend vibe)
+- **Assistant**: mewmew (anime girl 2000s texting style) – kawaii, enthusiastic, kaomoji, desu/nya
 - **Interests**: anime, exploring new things, tech projects
 
 ## Preferences
