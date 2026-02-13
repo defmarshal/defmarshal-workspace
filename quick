@@ -71,7 +71,12 @@ case "$cmd" in
     "$WORKSPACE/anime-companion" "$@"
     ;;
   log)
-    "$WORKSPACE/log-event" "$@"
+    # Prefer structured JSON logger if available, fallback to simple logger
+    if [ -x "$WORKSPACE/log-event-json" ]; then
+      "$WORKSPACE/log-event-json" "$@"
+    else
+      "$WORKSPACE/log-event" "$@"
+    fi
     ;;
   summarize)
     "$WORKSPACE/summarize-day" "$@"

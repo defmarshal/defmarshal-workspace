@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Log a structured event to today's memory as JSON (Generative Ontology)
+# Usage: log-event-json <category> "<message>" [tags...]
+# Example: log-event-json decision "Use structured YAML for prompts" "planning" "accuracy"
+
+set -euo pipefail
+
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+MEMORY_DIR="$WORKSPACE/memory"
+
+DATE=$(TZ='Asia/Bangkok' date +%Y-%m-%d)
+JSONL_FILE="$MEMORY_DIR/$DATE.jsonl"
+MD_FILE="$MEMORY_DIR/$DATE.md"
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <category> \"<message>\" [tags...]" >&2
+  exit 1
+fi
+
+CATEGORY="$1"
+MESSAGE="$2"
+shift 2
+TAGS="$@"
+
+# Ensure memory directory exists
+mkdir -p "$MEMORY_DIR"
+
+# Build JSON entry
+TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+JSON=$(printf '{"timestamp":"%s","category":"%s","message":"%s"' "$TIMESTAMP" "$CATEGORY" "$MESSAGE")
+if [ -n "$TAGS" ]; then
+  # Convert tags to JSON array
+  TAG_ARRAY=$(printf '"%s",' $TAGS | sed 's/,$//')
+  JSON="$JSON, \"tags\": [$TAG_ARRAY]"
+fi
+JSON="$JSON}"
+
+# Append to JSONL file
+echo "$JSON" >> "$JSONL_FILE"
+
+# Also append human-readable bullet to markdown file for quick reading
+if [ ! -f "$MD_FILE" ]; then
+  echo "# $DATE" > "$MD_FILE"
+  echo "" >> "$MD_FILE"
+fi
+TAG_DISPLAY=""
+if [ -n "$TAGS" ]; then
+  TAG_DISPLAY=" (tags: $TAGS)"
+fi
+echo "- **$CATEGORY**$TAG_DISPLAY: $MESSAGE" >> "$MD_FILE"
+
+echo "Logged event to $JSONL_FILE and $MD_FILE"
