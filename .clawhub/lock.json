@@ -20,6 +20,18 @@
     "exa-web-search-free": {
       "version": "1.0.1",
       "installedAt": 1770677964821
+    },
+    "clawaifu-selfie": {
+      "version": "1.0.14",
+      "installedAt": 1770960494455
+    },
+    "anime-lookup": {
+      "version": "1.0.1",
+      "installedAt": 1770963124531
+    },
+    "edge-tts": {
+      "version": "2.0.0",
+      "installedAt": 1770963145400
     }
   }
 }

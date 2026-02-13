@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+"""
+Anime Companion - Your personal anime assistant
+Combines anime-lookup (Jikan API) with edge-tts narration.
+
+Usage:
+  anime-companion search "<query>" [--tts]
+  anime-companion info <mal_id> [--tts]
+  anime-companion top [limit] [--tts]
+  anime-companion season [year season] [--tts]
+  anime-companion upcoming [limit] [--tts]
+
+Examples:
+  anime-companion search "frieren"
+  anime-companion info 52991 --tts
+  anime-companion top 5
+  anime-companion season
+"""
+
+import sys
+import json
+import subprocess
+import time
+from pathlib import Path
+from urllib.request import urlopen
+from urllib.error import URLError
+
+WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
+EDGE_TTS_SCRIPT = WORKSPACE / "skills" / "edge-tts" / "scripts" / "tts-converter.js"
+
+def fetch_json(url):
+    try:
+        with urlopen(url, timeout=10) as resp:
+            return json.loads(resp.read().decode())
+    except URLError as e:
+        print(f"Error: Could not fetch data from API: {e}", file=sys.stderr)
+        sys.exit(1)
+    except json.JSONDecodeError:
+        print("Error: Invalid API response", file=sys.stderr)
+        sys.exit(1)
+
+def format_search_result(anime):
+    mal_id = anime.get("mal_id", 0)
+    title = anime.get("title", "Unknown")
+    eps = anime.get("episodes") or "?"
+    status = anime.get("status", "Unknown")
+    score = anime.get("score", 0)
+    return f"[{mal_id}] {title} — {eps} eps, {status}, ⭐ {score}"
+
+def cmd_search(query):
+    url = f"https://api.jikan.moe/v4/anime?q={query}&limit=10"
+    data = fetch_json(url)
+    results = data.get("data", [])
+    if not results:
+        print("No results found.")
+        return None
+    for anime in results:
+        print(format_search_result(anime))
+    # Return first result's ID for possible TTS
+    return results[0].get("mal_id")
+
+def cmd_info(mal_id):
+    url = f"https://api.jikan.moe/v4/anime/{mal_id}"
+    data = fetch_json(url)
+    anime = data.get("data")
+    if not anime:
+        print("Anime not found.")
+        return None
+
+    title = anime.get("title", "Unknown")
+    title_eng = anime.get("title_english", "")
+    mal_id = anime.get("mal_id")
+    score = anime.get("score", 0)
+    rank = anime.get("rank", 0)
+    eps = anime.get("episodes") or "?"
+    status = anime.get("status", "Unknown")
+    aired = anime.get("aired", {}).get("string", "Unknown")
+    genres = ", ".join(g.get("name", "") for g in anime.get("genres", []))
+    studios = ", ".join(s.get("name", "") for s in anime.get("studios", []))
+    synopsis = anime.get("synopsis", "No synopsis available.").strip()
+    trailer = anime.get("trailer", {}).get("url", "")
+
+    print(f"🎬 {title}")
+    if title_eng and title_eng != title:
+        print(f"   English: {title_eng}")
+    print(f"   MAL ID: {mal_id} | Score: {score} | Rank: #{rank}")
+    print(f"   Episodes: {eps} | Status: {status}")
+    print(f"   Aired: {aired}")
+    print(f"   Genres: {genres}")
+    print(f"   Studios: {studios}")
+    print()
+    print("📖 Synopsis:")
+    print(synopsis)
+    if trailer:
+        print(f"\n🎥 Trailer: {trailer}")
+
+    return synopsis
+
+def cmd_top(limit=10):
+    url = f"https://api.jikan.moe/v4/top/anime?limit={limit}"
+    data = fetch_json(url)
+    results = data.get("data", [])
+    if not results:
+        print("No results.")
+        return None
+    for idx, anime in enumerate(results, 1):
+        mal_id = anime.get("mal_id", 0)
+        title = anime.get("title", "Unknown")
+        score = anime.get("score", 0)
+        eps = anime.get("episodes") or "?"
+        print(f"{idx}. [{mal_id}] {title} — {eps} eps, ⭐ {score}")
+    return results[0].get("mal_id") if results else None
+
+def cmd_season(year=None, season=None):
+    # If year/season not provided, we could fetch current season; but Jikan requires them for /seasons/now? Actually there is /seasons/now
+    if year is None or season is None:
+        url = "https://api.jikan.moe/v4/seasons/now"
+    else:
+        url = f"https://api.jikan.moe/v4/seasons/{year}/{season}"
+    data = fetch_json(url)
+    results = data.get("data", [])
+    if not results:
+        print("No anime found for this season.")
+        return None
+    for idx, anime in enumerate(results, 1):
+        mal_id = anime.get("mal_id", 0)
+        title = anime.get("title", "Unknown")
+        eps = anime.get("episodes") or "?"
+        score = anime.get("score", 0)
+        print(f"{idx}. [{mal_id}] {title} — {eps} eps, ⭐ {score}")
+    return results[0].get("mal_id") if results else None
+
+def cmd_upcoming(limit=10):
+    url = f"https://api.jikan.moe/v4/seasons/upcoming?limit={limit}"
+    data = fetch_json(url)
+    results = data.get("data", [])
+    if not results:
+        print("No upcoming anime found.")
+        return None
+    for idx, anime in enumerate(results, 1):
+        mal_id = anime.get("mal_id", 0)
+        title = anime.get("title", "Unknown")
+        aired = anime.get("aired", {}).get("string", "TBD")
+        print(f"{idx}. [{mal_id}] {title} — Airing: {aired}")
+    return results[0].get("mal_id") if results else None
+
+def generate_tts(text, output_path=None):
+    if not EDGE_TTS_SCRIPT.exists():
+        print("Warning: edge-tts script not found at", EDGE_TTS_SCRIPT, file=sys.stderr)
+        return None
+    if output_path is None:
+        output_path = WORKSPACE / "tts_output" / f"anime_{int(time.time())}.mp3"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+    # Use MichelleNeural (good for narration)
+    cmd = [
+        "node", str(EDGE_TTS_SCRIPT),
+        text,
+        "--voice", "en-US-MichelleNeural",
+        "--rate", "+0%",
+        "--pitch", "+0%",
+        "--output", str(output_path)
+    ]
+    try:
+        subprocess.run(cmd, check=True, capture_output=True)
+        return output_path
+    except subprocess.CalledProcessError as e:
+        print(f"TTS generation failed: {e}", file=sys.stderr)
+        if e.stderr:
+            print(e.stderr.decode(), file=sys.stderr)
+        return None
+
+def main():
+    args = sys.argv[1:]
+    if not args:
+        print(__doc__)
+        sys.exit(1)
+
+    cmd = args[0]
+    tts_flag = "--tts" in args
+    args = [a for a in args if a != "--tts"]
+
+    mal_id = None
+    synopsis_text = None
+
+    try:
+        if cmd == "search":
+            if len(args) < 2:
+                print("Usage: anime-companion search <query> [--tts]", file=sys.stderr)
+                sys.exit(1)
+            query = args[1]
+            mal_id = cmd_search(query)
+            if tts_flag and mal_id:
+                # Fetch full info to get synopsis
+                print("\n--- Full info (for TTS) ---")
+                synopsis_text = cmd_info(mal_id)
+        elif cmd == "info":
+            if len(args) < 2:
+                print("Usage: anime-companion info <mal_id> [--tts]", file=sys.stderr)
+                sys.exit(1)
+            mal_id = int(args[1])
+            synopsis_text = cmd_info(mal_id)
+        elif cmd == "top":
+            limit = int(args[1]) if len(args) > 1 else 10
+            mal_id = cmd_top(limit)
+            if tts_flag and mal_id:
+                print("\n--- Full info (for TTS) ---")
+                synopsis_text = cmd_info(mal_id)
+        elif cmd == "season":
+            # season can have year and season as args
+            year = None
+            season = None
+            if len(args) >= 2:
+                year = int(args[1])
+            if len(args) >= 3:
+                season = args[2]
+            mal_id = cmd_season(year, season)
+            if tts_flag and mal_id:
+                print("\n--- Full info (for TTS) ---")
+                synopsis_text = cmd_info(mal_id)
+        elif cmd in ("upcoming", "upcome"):
+            limit = int(args[1]) if len(args) > 1 else 10
+            mal_id = cmd_upcoming(limit)
+            if tts_flag and mal_id:
+                print("\n--- Full info (for TTS) ---")
+                synopsis_text = cmd_info(mal_id)
+        else:
+            print(f"Unknown command: {cmd}", file=sys.stderr)
+            print(__doc__, file=sys.stderr)
+            sys.exit(1)
+    except ValueError:
+        print("Error: MAL ID must be a number.", file=sys.stderr)
+        sys.exit(1)
+    except IndexError:
+        print(f"Usage error for '{cmd}'", file=sys.stderr)
+        sys.exit(1)
+
+    # Generate TTS if requested and we have synopsis
+    if tts_flag and synopsis_text:
+        print("\n🎙 Generating TTS narration...")
+        out_file = generate_tts(synopsis_text)
+        if out_file:
+            print(f"✅ Audio saved to: {out_file}")
+        else:
+            print("❌ TTS generation failed.", file=sys.stderr)
+
+if __name__ == "__main__":
+    main()

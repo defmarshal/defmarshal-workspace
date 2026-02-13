@@ -1,0 +1,35 @@
+[2026-02-13 11:00 UTC] Workspace-Builder run: Building Anime Companion
+
+OBJECTIVE: Integrate installed anime-lookup and edge-tts skills into a unified CLI tool.
+
+ACTIONS:
+- Created `anime-companion` Python CLI (executable):
+  * Implements search, info, top, season, upcoming commands using Jikan API
+  * Integrates edge-tts for optional MP3 narration (--tts flag)
+  * Outputs formatted anime details; TTS saves to tts_output/
+- Updated `quick` launcher to include `anime` command
+- Installed edge-tts Node.js dependencies (`npm install` in skills/edge-tts/scripts)
+- Added `ANIME_COMPANION_README.md` documentation
+- Updated MEMORY.md Tools & Skills section
+- Created `.gitignore` to exclude node_modules and tts_output
+
+TESTING:
+- `quick anime top 3` → displayed top anime list ✓
+- `quick anime info 52991` → displayed Frieren full info ✓
+- `quick anime info 52991 --tts` → generated MP3 narration ✓
+- `quick anime season 2025 spring` → displayed season anime ✓
+- `quick anime search "naruto" --tts` → displayed search results + TTS ✓
+
+FILES ADDED/MODIFIED:
++ anime-companion
++ ANIME_COMPANION_README.md
++ .gitignore
++ memory/workspace-builder.log (this file)
+M quick
+M MEMORY.md
+(plus edge-tts node_modules installed, not tracked)
+
+NEXT STEPS:
+- Commit with prefix 'build:' and push to GitHub
+- Consider adding caching for TTS to avoid regeneration
+- Possibly integrate with Telegram for sending audio directly

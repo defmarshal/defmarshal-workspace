@@ -1,0 +1,14 @@
+# Node.js dependencies (if any skill uses npm)
+**/node_modules/
+node_modules/
+
+# Generated audio outputs
+tts_output/
+
+# Editor swap/files
+*.swp
+*~
+.DS_Store
+
+# Optional large caches
+.cache/

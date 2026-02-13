@@ -1,6 +1,6 @@
 # Long-term Memory
 
-*Last updated: 2026-02-12*
+*Last updated: 2026-02-13*
 
 ## Personal
 - **Name**: def
@@ -34,6 +34,9 @@
 - Memory index built automatically on first search after changes
 - Git setup with HTTPS and PAT: use `git remote set-url origin https://github.com/username/repo.git` to remove embedded credentials, then store PAT in `~/.git-credentials` with `git config --global credential.helper store` for non-interactive pushes
 - Proactive creation is part of my core: during night hours, autonomously research, design, build, test, and ship small projects; added to SOUL.md as a Core Truth
+- Agent system: `sessions_spawn` creates persistent background agents with labels; they run infinite loops (use `exec sleep` for delays) and can use any OpenClaw tool
+- Agent control: `sessions_list` shows all agents; sessions have keys like `agent:main:subagent:<uuid>`; kill by stopping session
+- Agent messaging: subagents can send messages to Telegram via `message` tool
 
 ## Important Dates & Events
 - 2026-02-09: Bootstrap, identity defined, initial memory created
@@ -42,6 +45,16 @@
 - 2026-02-12: Voyage rate limits (3 RPM) hindered embedding indexing/search; disabled batch and vectors, then decided to use simple text search (`./msearch`) for reliability
 - 2026-02-12: User directed: "Write in your memory, notes everything we've done whether I told you to memorize it or not." → Implemented proactive memory logging (daily notes plus structured MEMORY.md).
 - 2026-02-12: Created private GitHub repo `defmarshal/defmarshal-workspace`, configured git user info, committed all workspace files, set up credential helper, and pushed successfully.
+- 2026-02-13: Spawned `hourly-banzai` agent – sends "BANZAI" to Telegram every hour indefinitely.
+- 2026-02-13: Spawned `workspace-builder` agent – autonomous builder that scans for improvements, implements, commits, and pushes every 2h (respects quiet hours 23:00–08:00).
+- 2026-02-13: `workspace-builder` built `quick` launcher – unified command for common utilities; committed and pushed to master.
+- 2026-02-13: Installed and configured `clawaifu-selfie` skill; added selfie persona (Reze) to SOUL.md; restarted gateway.
+- 2026-02-13: Discovered free image APIs (Pollinations, Craiyon, Hugging Face) are blocked/gated from this server; Replicate and fal.ai require credit top-ups.
+- 2026-02-13: Scrapped `clawaifu-selfie` integration due to no-cost constraints; decided not to spend money on image generation.
+- 2026-02-13: Converted `workspace-builder` from persistent loop agent to cron-based strategic agent (runs every 2h, respects quiet hours, undertakes ambitious builds).
+- 2026-02-13: Installed `anime-lookup` and `edge-tts` skills via ClawHub.
+- 2026-02-13: Combined capabilities into "Anime Companion" for main agent: fetch anime info (anime-lookup), narrate via TTS (edge-tts), send character selfies (clawaifu-selfie).
+- 2026-02-13: fal.ai balance exhausted; free tier exists but limited credits – top up needed for continued selfies.
 
 ## Tools & Skills
 - Git: GitHub private repos with PAT + credential store (`~/.git-credentials`)
@@ -55,6 +68,18 @@
   - `show-holidays`: print upcoming Indonesian holidays (next 60 days)
   - `today-mem`: show today's or most recent daily memory file
   - `workspace-health`: one-line health summary (disk, updates, git)
+- **`quick` launcher**: unified command for common tasks:
+  - `quick dash` – run CLI dashboard
+  - `quick web` – run web dashboard (port 8800)
+  - `quick mem` – show latest memory
+  - `quick search <query>` – search memory files
+  - `quick health` – workspace health
+  - `quick holidays` – upcoming Indonesian holidays
+  - `quick git-status` – brief git status
+  - `quick anime <cmd>` – Anime Companion (search/info/top/season/upcoming)
+  - `quick help` – usage guide
+- **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration (edge-tts). Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
+- **clawaifu-selfie**: skill for anime selfies via fal.ai; requires `FAL_KEY`, `BOT_TOKEN`, `TELEGRAM_CHAT_ID`; persona: Reze from Chainsaw Man.
 - Current model: `openrouter/stepfun/step-3.5-flash:free`
 
 ## Goals & Aspirations

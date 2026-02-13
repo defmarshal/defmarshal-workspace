@@ -18,12 +18,15 @@ Commands:
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   git-status      Show brief git status
+  anime <cmd>     Anime companion: search, info, top, season, upcoming
+                  Example: quick anime search "frieren" [--tts]
   help            Show this help message
 
 Examples:
   quick dash
   quick search "project"
   quick health
+  quick anime info 52991 --tts
 EOF
 }
 
@@ -57,6 +60,9 @@ case "$cmd" in
     ;;
   git-status)
     git -C "$WORKSPACE" status --short
+    ;;
+  anime)
+    "$WORKSPACE/anime-companion" "$@"
     ;;
   help|--help|-h)
     show_help
