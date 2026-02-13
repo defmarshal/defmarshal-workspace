@@ -13,15 +13,14 @@ Quick workspace utility launcher
 Commands:
   dash            Run the CLI dashboard (dashboard.py)
   web             Run the web dashboard (web-dashboard.py)
-  mem             Show today's or latest memory file (today-mem)
-  search <query>  Search memory files (msearch)
+  mem             Show recent memories (claw memory list)
+  search <query>  Search memories (claw memory search)
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   git-status      Show brief git status
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
-  log <category> "<message>"  Log an event to today's memory file (category: decision, learning, event, note, etc.)
-  summarize [date]           Generate a daily summary of memory entries (default: today)
+  log <category> "<message>"  Log an event to openclaw-memory (category: decision, learning, event, note, etc.)
   email-clean [options]      Auto-clean Gmail: archive promotional emails and apply labels.
                               Options: --execute (apply changes), --max N, --query "gmail query"
                               Rules: archives CATEGORY_PROMOTIONS/UPDATES, spammy keywords/senders,
@@ -47,7 +46,7 @@ case "$cmd" in
     python3 "$WORKSPACE/web-dashboard.py"
     ;;
   mem|memory)
-    python3 "$WORKSPACE/today-mem.py" 2>/dev/null || "$WORKSPACE/today-mem"
+    claw memory list --limit=20
     ;;
   search)
     query="${1:-}"
@@ -56,7 +55,7 @@ case "$cmd" in
       echo "Usage: quick search <query>" >&2
       exit 1
     fi
-    "$WORKSPACE/msearch" "$query" 2>/dev/null || python3 -m pip install --quiet ripgrep 2>/dev/null; "$WORKSPACE/msearch" "$query"
+    claw memory search "$query" --limit=10
     ;;
   health)
     python3 "$WORKSPACE/workspace-health.py" 2>/dev/null || "$WORKSPACE/workspace-health"
@@ -71,15 +70,7 @@ case "$cmd" in
     "$WORKSPACE/anime-companion" "$@"
     ;;
   log)
-    # Prefer structured JSON logger if available, fallback to simple logger
-    if [ -x "$WORKSPACE/log-event-json" ]; then
-      "$WORKSPACE/log-event-json" "$@"
-    else
-      "$WORKSPACE/log-event" "$@"
-    fi
-    ;;
-  summarize)
-    "$WORKSPACE/summarize-day" "$@"
+    "$WORKSPACE/log-event" "$@"
     ;;
   email-clean)
     python3 "$WORKSPACE/email-cleaner.py" "$@"

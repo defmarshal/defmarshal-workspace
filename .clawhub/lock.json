@@ -36,6 +36,18 @@
     "gmail": {
       "version": "1.0.6",
       "installedAt": 1770983454899
+    },
+    "planning-with-files": {
+      "version": "1.2.0",
+      "installedAt": 1770992923263
+    },
+    "openclaw-memory": {
+      "version": "1.0.0",
+      "installedAt": 1770992938752
+    },
+    "neural-memory": {
+      "version": "1.0.0",
+      "installedAt": 1770992954239
     }
   }
 }

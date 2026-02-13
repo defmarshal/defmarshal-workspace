@@ -15,3 +15,8 @@ tts_output/
 
 # Cron logs
 memory/*.log
+
+# Installed skill directories (managed by ClawHub, not for Git)
+skills/neural-memory/
+skills/openclaw-memory/
+skills/planning-with-files/

@@ -26,6 +26,15 @@
   - Implemented in Python (`dashboard.py`) with shell wrapper (`dashboard.sh`)
   - Pushed to GitHub
 
+- **Memory System Upgrade** (2026-02-13)
+  - Installed `openclaw-memory` – persistent memory with semantic search, free tier 100 memories/7 days
+  - Installed `neural-memory` – associative memory with spreading activation (zero LLM dependency)
+  - Upgraded `workspace-builder` to use `planning-with-files` skill (structured task_plan.md, findings.md, progress.md)
+  - Switched memory logging from custom markdown to `openclaw-memory` (log-event now uses `claw memory add`)
+  - Updated `quick` commands: `mem` → `claw memory list`, `search` → `claw memory search`, removed `summarize`
+  - Added MCP server configuration for `neural-memory` in OpenClaw config (restart applied)
+  - Note: Custom `summarize-day` and daily markdown logs deprecated; openclaw-memory handles storage & retrieval
+
 ## Learnings
 - OpenClaw memory search requires an embeddings provider (OpenAI, Voyage, etc.)
 - Voyage AI offers 200M free tokens (no CC needed initially) - great for personal assistant
@@ -63,33 +72,33 @@
 - Git: GitHub private repos with PAT + credential store (`~/.git-credentials`)
 - Default workspace repo: `defmarshal/defmarshal-workspace` (use this for future pushes)
 - Weather: `wttr.in` / Open-Meteo
-- Memory search: Simple text search (`./msearch`) – offline, rate‑limit free
+- **Memory System**:
+  - `openclaw-memory`: persistent storage with semantic search, automatic extraction, free tier 100 memories/7 days
+  - `neural-memory`: associative memory with spreading activation, zero LLM dependency, for context recall
+  - Memory logging via `log-event` now stores directly to `openclaw-memory` (no local markdown)
+  - `quick mem` and `quick search` use `claw memory` CLI for list and semantic search
+  - Note: Old `./msearch` script and `summarize-day` are deprecated; daily markdown files no longer generated
 - Dashboard:
   - CLI: `dashboard.py` – time, weather, holidays, git, system health, memory
   - Web: `web-dashboard.py` (port 8800) – same data via browser, auto-refresh
 - Utilities:
   - `show-holidays`: print upcoming Indonesian holidays (next 60 days)
-  - `today-mem`: show today's or most recent daily memory file
   - `workspace-health`: one-line health summary (disk, updates, git)
-- **Memory Automation**:
-  - `log-event <category> "<message>"`: quickly log events (decision, learning, event, note, etc.) to today's memory file
-  - `summarize-day [date]`: generate categorized daily summary and append to memory file; run manually or via daily cron (22:30 Asia/Bangkok)
-  - Access via `quick`: `quick log ...` and `quick summarize [date]`
-- **Email Auto-Cleaner** (`email-cleaner.py`): Gmail integration via Maton API. Archives promotional emails and applies labels (e.g., "WELCOME" for messages containing "welcome"). Dry-run by default; `quick email-clean --execute` to apply. Rules customizable in script. Logs to `memory/email-cleaner.log`.
+- **Email Auto-Cleaner** (`email-cleaner.py`): Gmail integration via Maton API. Archives promotional emails and applies labels (e.g., "WELCOME" for messages containing "welcome"). Dry-run by default; `quick email-clean --execute` to apply. Rules customizable in script. Logs to `memory/email-cleaner.log`. Automation: scheduled daily at 09:00 Asia/Bangkok via cron (see `CRON_JOBS.md`).
 - **`quick` launcher**: unified command for common tasks:
   - `quick dash` – run CLI dashboard
   - `quick web` – run web dashboard (port 8800)
-  - `quick mem` – show latest memory
-  - `quick search <query>` – search memory files
+  - `quick mem` – show recent memories (claw memory list)
+  - `quick search <query>` – semantic memory search (claw memory search)
   - `quick health` – workspace health
   - `quick holidays` – upcoming Indonesian holidays
   - `quick git-status` – brief git status
   - `quick anime <cmd>` – Anime Companion (search/info/top/season/upcoming)
-  - `quick log <category> "<msg>"` – log event to memory
-  - `quick summarize [date]` – daily memory summary
+  - `quick log <category> "<msg>"` – log event to openclaw-memory
   - `quick email-clean [--execute] [--max N]` – auto-clean Gmail (archive + labeling)
   - `quick help` – usage guide
-- **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration (edge-tts). Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
+- **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration via edge-tts. Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
+- **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; builds incremental improvements.
 - **clawaifu-selfie**: skill for anime selfies via fal.ai; requires `FAL_KEY`, `BOT_TOKEN`, `TELEGRAM_CHAT_ID`; persona: Reze from Chainsaw Man.
 - Current model: `openrouter/stepfun/step-3.5-flash:free`
 
