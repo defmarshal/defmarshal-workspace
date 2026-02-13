@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# Quick launcher for common workspace utilities
+# Usage: quick <command> [args...]
+
+set -euo pipefail
+
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+
+show_help() {
+  cat <<EOF
+Quick workspace utility launcher
+
+Commands:
+  dash            Run the CLI dashboard (dashboard.py)
+  web             Run the web dashboard (web-dashboard.py)
+  mem             Show today's or latest memory file (today-mem)
+  search <query>  Search memory files (msearch)
+  health          Show workspace health summary (workspace-health)
+  holidays        Show upcoming Indonesian holidays (show-holidays)
+  git-status      Show brief git status
+  help            Show this help message
+
+Examples:
+  quick dash
+  quick search "project"
+  quick health
+EOF
+}
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  dash|dashboard)
+    python3 "$WORKSPACE/dashboard.py"
+    ;;
+  web)
+    python3 "$WORKSPACE/web-dashboard.py"
+    ;;
+  mem|memory)
+    python3 "$WORKSPACE/today-mem.py" 2>/dev/null || "$WORKSPACE/today-mem"
+    ;;
+  search)
+    query="${1:-}"
+    if [ -z "$query" ]; then
+      echo "Error: search requires a query string" >&2
+      echo "Usage: quick search <query>" >&2
+      exit 1
+    fi
+    "$WORKSPACE/msearch" "$query" 2>/dev/null || python3 -m pip install --quiet ripgrep 2>/dev/null; "$WORKSPACE/msearch" "$query"
+    ;;
+  health)
+    python3 "$WORKSPACE/workspace-health.py" 2>/dev/null || "$WORKSPACE/workspace-health"
+    ;;
+  holidays)
+    python3 "$WORKSPACE/show-holidays" 2>/dev/null || "$WORKSPACE/show-holidays"
+    ;;
+  git-status)
+    git -C "$WORKSPACE" status --short
+    ;;
+  help|--help|-h)
+    show_help
+    ;;
+  *)
+    echo "Error: Unknown command '$cmd'" >&2
+    echo "Run 'quick help' for available commands." >&2
+    exit 1
+    ;;
+esac
