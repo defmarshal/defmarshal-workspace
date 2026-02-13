@@ -1,70 +1,7 @@
-[2026-02-13 11:00 UTC] Workspace-Builder run: Building Anime Companion
-
-OBJECTIVE: Integrate installed anime-lookup and edge-tts skills into a unified CLI tool.
-
-ACTIONS:
-- Created `anime-companion` Python CLI (executable):
-  * Implements search, info, top, season, upcoming commands using Jikan API
-  * Integrates edge-tts for optional MP3 narration (--tts flag)
-  * Outputs formatted anime details; TTS saves to tts_output/
-- Updated `quick` launcher to include `anime` command
-- Installed edge-tts Node.js dependencies (`npm install` in skills/edge-tts/scripts)
-- Added `ANIME_COMPANION_README.md` documentation
-- Updated MEMORY.md Tools & Skills section
-- Created `.gitignore` to exclude node_modules and tts_output
-
-TESTING:
-- `quick anime top 3` → displayed top anime list ✓
-- `quick anime info 52991` → displayed Frieren full info ✓
-- `quick anime info 52991 --tts` → generated MP3 narration ✓
-- `quick anime season 2025 spring` → displayed season anime ✓
-- `quick anime search "naruto" --tts` → displayed search results + TTS ✓
-
-FILES ADDED/MODIFIED:
-+ anime-companion
-+ ANIME_COMPANION_README.md
-+ .gitignore
-+ memory/workspace-builder.log (this file)
-M quick
-M MEMORY.md
-(plus edge-tts node_modules installed, not tracked)
-
-NEXT STEPS:
-- Commit with prefix 'build:' and push to GitHub
-- Consider adding caching for TTS to avoid regeneration
-- Possibly integrate with Telegram for sending audio directly
-
-[2026-02-13 13:00 UTC] Workspace-Builder run: Daily Memory Automation
-
-OBJECTIVE: Automate daily memory capture and summarization to reduce manual overhead and ensure consistent archival.
-
-ACTIONS:
-- Created `log-event` script: quick command to log categorized events (decision, learning, event, note) to today's memory file with bold category markers.
-- Created `summarize-day` Python script: reads daily memory, extracts bullet points, categorizes via keyword heuristics, generates a markdown summary with sections (Decisions, Learnings, Tools, Projects, Events, Other). Appends summary to daily file.
-- Updated `quick` launcher to support `log` and `summarize` commands.
-- Installed daily cron job (22:30 Asia/Bangkok) to run `summarize-day` automatically; logs to memory/daily-summary-cron.log.
-- Updated `.gitignore` to exclude cron logs (`memory/*.log`).
-- Updated `MEMORY.md`:
-   * Marked Memory System Overhaul summarization task as completed.
-   * Added Memory Automation tools to Tools & Skills.
-   * Added milestone to Important Dates & Events (2026-02-13).
-- Appended first automatic summary to memory/2026-02-13.md.
-
-TESTING:
-- `quick log decision "Test logging"` → appended to today's memory ✓
-- `quick summarize 2026-02-13` → generated categorized summary with 34 entries, appended to file ✓
-- Verified cron entry added: `30 22 * * * TZ='Asia/Bangkok' /home/ubuntu/.openclaw/workspace/summarize-day >> /home/ubuntu/.openclaw/workspace/memory/daily-summary-cron.log 2>&1`
-
-FILES ADDED/MODIFIED:
-+ log-event
-+ summarize-day
-M quick
-M .gitignore
-M MEMORY.md
-M memory/2026-02-13.md
-(plus .clawhub/lock.json updated from prior skill ops; committed as part of current state)
-
-NEXT STEPS:
-- Consider refining categorization keywords for better accuracy
-- Optionally add summary to MEMORY.md via automated merge (review before commit)
-- Monitor daily cron execution; adjust time if needed
+[2026-02-13 22:00 UTC+7] Workspace Builder run: Completed polish automation.
+- Added email-cleaner cron job: daily 09:00 Asia/Bangkok.
+- Created CRON_JOBS.md documenting all scheduled tasks.
+- Updated .gitignore to ignore installed skill directories (neural-memory, openclaw-memory, planning-with-files).
+- Updated MEMORY.md to reflect email-cleaner automation.
+- Committed and pushed pending upgrades: quick launcher now uses `claw memory`, log-event now uses openclaw-memory.
+All changes committed (build: ...). No issues.

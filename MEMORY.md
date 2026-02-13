@@ -98,9 +98,28 @@
   - `quick email-clean [--execute] [--max N]` – auto-clean Gmail (archive + labeling)
   - `quick help` – usage guide
 - **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration via edge-tts. Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
-- **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; builds incremental improvements.
+- **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; validates output before committing; updates active-tasks.md.
 - **clawaifu-selfie**: skill for anime selfies via fal.ai; requires `FAL_KEY`, `BOT_TOKEN`, `TELEGRAM_CHAT_ID`; persona: Reze from Chainsaw Man.
 - Current model: `openrouter/stepfun/step-3.5-flash:free`
+
+## Memory Hierarchy (Advanced)
+
+Following best practices for solo operator agents:
+
+- **Level 1: active-tasks.md** (read EVERY session — 2KB max) → What's happening RIGHT NOW (agent session keys, goals, verification status)
+- **Level 2: daily logs** (`memory/YYYY-MM-DD.md`) → Raw context, decisions, errors (read today + yesterday)
+- **Level 3: thematic files** (`lessons.md`, `projects.md`, `skills.md`) → Long-term patterns, loaded on demand via `memory_search`
+- **Level 4: MEMORY.md** (index only — ~30 lines) → Points to everything else, never stores content directly
+
+**Principle**: `memory_search` does semantic search across ALL files. Don't load everything — search when needed, then pull specific lines with `memory_get`. This prevents context bloat while maintaining recall.
+
+## Operational Principles
+
+- **Close the Loop**: Sub-agents self-validate AND you verify too. Never trust "all green" without manual spot-checks.
+- **Parallel Isolation**: Independent tasks get separate agent instances with zero shared state. Batch operations scale through isolation, not coordination.
+- **Model Routing**: Weaker models (cheaper) for internal tasks; stronger models for anything touching the internet (avoid prompt injection).
+- **Write It Down**: If it's not in a file, it doesn't exist. Mental notes are lost on session restart.
+- **Active Tasks Registry**: Always write session keys to `active-tasks.md` when spawning agents. Track what's running to avoid orphaned processes.
 
 ## Goals & Aspirations
 - Build a robust, searchable personal memory system (in progress: basic search done, embeddings limited)
