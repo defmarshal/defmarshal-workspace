@@ -22,8 +22,10 @@ Commands:
                   Example: quick anime search "frieren" [--tts]
   log <category> "<message>"  Log an event to today's memory file (category: decision, learning, event, note, etc.)
   summarize [date]           Generate a daily summary of memory entries (default: today)
-  email-clean [options]      Auto-categorize/archive useless emails (dry-run by default)
-                              Options: --execute (actually archive), --max N, --query "gmail query"
+  email-clean [options]      Auto-clean Gmail: archive promotional emails and apply labels.
+                              Options: --execute (apply changes), --max N, --query "gmail query"
+                              Rules: archives CATEGORY_PROMOTIONS/UPDATES, spammy keywords/senders,
+                                    and labels messages containing keywords like "welcome" with configurable labels.
   help                       Show this help message
 
 Examples:

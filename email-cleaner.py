@@ -2,6 +2,7 @@
 """
 Email Auto-Cleaner for Gmail via Maton API.
 Fetches inbox messages, applies rules to detect useless emails, and archives them.
+Also can apply labels (e.g., group welcome emails).
 Dry-run by default. Use --execute to actually modify.
 """
 
@@ -31,13 +32,15 @@ RULES = {
         "earn money", "make money", "get rich", "click here", "congratulations", "winner"
     ],
     "gmail_labels": ["CATEGORY_PROMOTIONS", "CATEGORY_UPDATES"],
-    "max_age_days": 30,  # older than this get archived even if not matching other rules
+    "label_rules": [
+        {"keyword": "welcome", "label": "WELCOME"}
+    ],
+    "max_age_days": 30,
     "skip_starred": True,
-    "skip_important": True  # emails with 'important' label
+    "skip_important": True
 }
 
 def list_messages(max_results=100, query=None):
-    """Return list of message IDs from inbox."""
     params = {"maxResults": max_results}
     if query:
         params["q"] = query
@@ -48,65 +51,67 @@ def list_messages(max_results=100, query=None):
     return [m["id"] for m in data.get("messages", [])]
 
 def get_message_details(msg_id):
-    """Return message details (headers, labels, snippet)."""
-    url = f"{GATEWAY}/gmail/v1/users/me/messages/{msg_id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Date"
+    url = f"{GATEWAY}/gmail/v1/users/me/messages/{msg_id}?format=metadata&metadataHeaders=From&metadataHeaders=Subject&metadataHeaders=Date&metadataHeaders=LabelIds"
     resp = requests.get(url, headers=HEADERS)
     resp.raise_for_status()
     return resp.json()
 
 def should_archive(msg: Dict) -> bool:
-    """Apply rules to decide if message should be archived."""
     labels = msg.get("labelIds", [])
     snippet = msg.get("snippet", "").lower()
     headers = msg.get("payload", {}).get("headers", [])
 
-    # Skip starred/important
     if RULES["skip_starred"] and "STARRED" in labels:
         return False
     if RULES["skip_important"] and "IMPORTANT" in labels:
         return False
 
-    # Check Gmail category labels
+    # Category labels
     for cat in RULES["gmail_labels"]:
         if cat in labels:
             return True
 
-    # Check sender domain
+    # Sender patterns
     from_hdr = next((h["value"] for h in headers if h["name"].lower() == "from"), "")
     if from_hdr:
         for pattern in RULES["promotional_senders"]:
             if pattern in from_hdr.lower():
                 return True
 
-    # Check subject/snippet keywords (avoid false positives on important words)
+    # Spammy keywords in snippet
     for kw in RULES["spammy_keywords"]:
         if kw in snippet:
             return True
 
-    # Age-based: if older than max_age_days and not in inbox? Actually we only fetch inbox, so age check is optional.
-    # We could fetch internalDate and compare, but skip for now to keep rule simple.
-
     return False
 
-def archive_message(msg_id):
-    """Delete (archive) a message from inbox (move to trash or use modify to remove INBOX)."""
-    # Option 1: trash (moves to Trash label)
-    # url = f"{GATEWAY}/gmail/v1/users/me/messages/{msg_id}/trash"
-    # resp = requests.post(url, headers=HEADERS)
+def should_label(msg: Dict) -> str or None:
+    """Return label to apply if any, else None."""
+    headers = msg.get("payload", {}).get("headers", [])
+    subject = next((h["value"] for h in headers if h["name"].lower() == "subject"), "").lower()
+    snippet = msg.get("snippet", "").lower()
+    for rule in RULES.get("label_rules", []):
+        kw = rule["keyword"].lower()
+        label = rule["label"]
+        if kw in subject or kw in snippet:
+            return label
+    return None
 
-    # Option 2: modify to remove INBOX label (archive)
+def modify_message(msg_id, remove_inbox=False, add_label=None):
     url = f"{GATEWAY}/gmail/v1/users/me/messages/{msg_id}/modify"
-    payload = {"removeLabelIds": ["INBOX"]}
-    resp = requests.post(url, headers=HEADERS, json=payload)
-    if resp.status_code == 200:
-        return True
-    else:
-        print(f"Failed to archive {msg_id}: {resp.status_code} {resp.text}")
+    payload = {}
+    if remove_inbox:
+        payload["removeLabelIds"] = ["INBOX"]
+    if add_label:
+        payload["addLabelIds"] = [add_label]
+    if not payload:
         return False
+    resp = requests.post(url, headers=HEADERS, json=payload)
+    return resp.status_code == 200
 
 def main():
-    parser = argparse.ArgumentParser(description="Auto-clean Gmail inbox by archiving promotional emails.")
-    parser.add_argument("--execute", action="store_true", help="Actually archive messages (default is dry-run)")
+    parser = argparse.ArgumentParser(description="Auto-clean Gmail inbox by archiving promotional emails and applying labels.")
+    parser.add_argument("--execute", action="store_true", help="Actually modify messages (dry-run by default)")
     parser.add_argument("--max", type=int, default=100, help="Maximum number of messages to process")
     parser.add_argument("--query", type=str, default=None, help="Additional Gmail query filter")
     args = parser.parse_args()
@@ -124,6 +129,7 @@ def main():
 
     print(f"Found {len(ids)} messages.")
     to_archive = []
+    to_label = {}  # msg_id -> label
     skipped = []
 
     for msg_id in ids:
@@ -131,35 +137,52 @@ def main():
             msg = get_message_details(msg_id)
             if should_archive(msg):
                 to_archive.append(msg_id)
-            else:
-                skipped.append(msg_id)
+                continue
+            label = should_label(msg)
+            if label:
+                to_label[msg_id] = label
+                continue
+            skipped.append(msg_id)
         except Exception as e:
             print(f"Error processing {msg_id}: {e}")
-            skipped.append(msg_id)  # don't risk it
+            skipped.append(msg_id)
 
     print(f"\nDry-run results:")
     print(f"  Would archive: {len(to_archive)}")
-    print(f"  Would keep: {len(skipped)}")
+    print(f"  Would label: {len(to_label)}")
+    print(f"  Would keep untouched: {len(skipped)}")
 
-    if args.execute and to_archive:
-        confirm = input("Proceed with archiving? (yes/no): ").strip().lower()
+    if args.execute and (to_archive or to_label):
+        confirm = input("Proceed with modifications? (yes/no): ").strip().lower()
         if confirm != "yes":
             print("Aborted.")
             sys.exit(0)
         archived = 0
-        for msg_id in to_archive:
+        labeled = 0
+        # Process archive+label combined
+        all_msg_ids = set(to_archive) | set(to_label.keys())
+        for msg_id in all_msg_ids:
             try:
-                if archive_message(msg_id):
-                    archived += 1
+                remove_inbox = msg_id in to_archive
+                add_label = to_label.get(msg_id)
+                if modify_message(msg_id, remove_inbox=remove_inbox, add_label=add_label):
+                    if remove_inbox:
+                        archived += 1
+                    if add_label:
+                        labeled += 1
             except Exception as e:
-                print(f"Error archiving {msg_id}: {e}")
-        print(f"\nArchived {archived}/{len(to_archive)} messages.")
+                print(f"Error modifying {msg_id}: {e}")
+        print(f"\nModifications complete:")
+        if archived:
+            print(f"  Archived: {archived}")
+        if labeled:
+            print(f"  Labeled: {labeled}")
         # Log summary
-        log_entry = f"[{datetime.datetime.utcnow().isoformat()}] Archived {archived} emails (total examined: {len(ids)})"
+        log_entry = f"[{datetime.datetime.utcnow().isoformat()}] Cleaned: archived={archived}, labeled={labeled}, examined={len(ids)}"
         with open("memory/email-cleaner.log", "a") as f:
             f.write(log_entry + "\n")
     elif args.execute:
-        print("No messages to archive.")
+        print("No messages to modify.")
 
 if __name__ == "__main__":
     main()

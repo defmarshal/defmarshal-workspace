@@ -48,6 +48,7 @@
 - 2026-02-13: Spawned `hourly-banzai` agent – sends "BANZAI" to Telegram every hour indefinitely.
 - 2026-02-13: Spawned `workspace-builder` agent – autonomous builder that scans for improvements, implements, commits, and pushes every 2h (respects quiet hours 23:00–08:00).
 - 2026-02-13: `workspace-builder` built `quick` launcher – unified command for common utilities; committed and pushed to master.
+- 2026-02-13: Built `email-cleaner` – Gmail auto‑categorization/archiving tool via Maton API; integrated into `quick`; automated rules for promotions, spammy keywords; dry‑run safe; committed and pushed.
 - 2026-02-13: Installed and configured `clawaifu-selfie` skill; added selfie persona (Reze) to SOUL.md; restarted gateway.
 - 2026-02-13: Discovered free image APIs (Pollinations, Craiyon, Hugging Face) are blocked/gated from this server; Replicate and fal.ai require credit top-ups.
 - 2026-02-13: Scrapped `clawaifu-selfie` integration due to no-cost constraints; decided not to spend money on image generation.
@@ -74,6 +75,7 @@
   - `log-event <category> "<message>"`: quickly log events (decision, learning, event, note, etc.) to today's memory file
   - `summarize-day [date]`: generate categorized daily summary and append to memory file; run manually or via daily cron (22:30 Asia/Bangkok)
   - Access via `quick`: `quick log ...` and `quick summarize [date]`
+- **Email Auto-Cleaner** (`email-cleaner.py`): Gmail integration via Maton API. Archives promotional emails and applies labels (e.g., "WELCOME" for messages containing "welcome"). Dry-run by default; `quick email-clean --execute` to apply. Rules customizable in script. Logs to `memory/email-cleaner.log`.
 - **`quick` launcher**: unified command for common tasks:
   - `quick dash` – run CLI dashboard
   - `quick web` – run web dashboard (port 8800)
@@ -85,7 +87,7 @@
   - `quick anime <cmd>` – Anime Companion (search/info/top/season/upcoming)
   - `quick log <category> "<msg>"` – log event to memory
   - `quick summarize [date]` – daily memory summary
-  - `quick email-clean [--execute] [--max N]` – auto-archive useless emails (dry-run)
+  - `quick email-clean [--execute] [--max N]` – auto-clean Gmail (archive + labeling)
   - `quick help` – usage guide
 - **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration (edge-tts). Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
 - **clawaifu-selfie**: skill for anime selfies via fal.ai; requires `FAL_KEY`, `BOT_TOKEN`, `TELEGRAM_CHAT_ID`; persona: Reze from Chainsaw Man.
