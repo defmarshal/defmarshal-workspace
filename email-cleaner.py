@@ -135,14 +135,16 @@ def main():
     for msg_id in ids:
         try:
             msg = get_message_details(msg_id)
+            acted = False
             if should_archive(msg):
                 to_archive.append(msg_id)
-                continue
+                acted = True
             label = should_label(msg)
             if label:
                 to_label[msg_id] = label
-                continue
-            skipped.append(msg_id)
+                acted = True
+            if not acted:
+                skipped.append(msg_id)
         except Exception as e:
             print(f"Error processing {msg_id}: {e}")
             skipped.append(msg_id)
