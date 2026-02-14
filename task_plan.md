@@ -15,37 +15,37 @@ Phase 1: Assessment & Discovery
 - **Status:** complete
 
 ### Phase 2: Clean Memory Docs
-- [ ] Remove MEMORY.md.bak (backup file)
-- [ ] Review memory/ directory: keep only necessary logs (clean old cron logs if any)
-- [ ] Ensure daily log files are following retention policy (keep recent, archive old if needed)
-- **Status:** pending
+- [x] Remove MEMORY.md.bak (backup file)
+- [x] Review memory/ directory: keep only necessary logs (clean old cron logs if any)
+- [x] Ensure daily log files are following retention policy (keep recent, archive old if needed)
+- **Status:** complete
 
 ### Phase 3: Improve Git Hygiene
-- [ ] Update .gitignore to cover all transient files (aria2.session, specific agent logs, state files)
-- [ ] Ensure build artifacts are ignored (__pycache__, .cache)
-- [ ] Verify that important files are tracked (quick, scripts, documentation)
-- [ ] Optionally commit cleanup changes (but not the final build yet)
-- **Status:** pending
+- [x] Untrack dev-agent.log and memory/workspace-builder.log (git rm --cached)
+- [x] Verify .gitignore covers cron logs (memory/*.log) and root logs (*.log) — already present
+- [x] Add important untracked files: dev-agent-loop.sh, research/, skills/aria2/
+- [x] Ensure build artifacts ignored (already covered)
+- **Status:** complete
 
 ### Phase 4: Enhance Agents Command
-- [ ] Extend `quick agents` with more filtering options (--json, --running, --daemon)
-- [ ] Add support for agent actions (e.g., list, info, kill) if feasible
-- [ ] Update help text accordingly
-- **Status:** pending
+- [x] Modify agents case to pass through flags to `openclaw sessions`
+- [x] Preserve auto-JSON when piped (behavior unchanged)
+- [x] Update help text to indicate flags are accepted
+- **Status:** complete
 
 ### Phase 5: Testing & Verification
-- [ ] Test quick agents new functionality
-- [ ] Run quick health to ensure system health
-- [ ] Test memory search (quick search test)
-- [ ] Verify git status is clean (only intentional files)
-- **Status:** pending
+- [x] Test quick agents and quick agents --json (both produce correct output)
+- [x] Run quick health (Disk 70%, Updates 15, Git dirty → will commit)
+- [x] Test quick search "test" (returns results from memory)
+- [x] Verify git status staged changes match intentions (no unwanted logs)
+- **Status:** complete
 
 ### Phase 6: Delivery
-- [ ] Commit all changes with prefix 'build:'
-- [ ] Push to GitHub
-- [ ] Update active-tasks.md with verification results
-- [ ] Close the loop
-- **Status:** pending
+- [x] Commit all changes with prefix 'build:'
+- [x] Push to GitHub
+- [x] Update active-tasks.md with verification results
+- [x] Close the loop
+- **Status:** complete
 
 ## Key Questions
 1. Should we keep all memory daily logs indefinitely, or rotate/archive old ones? (Keep for now, but remove cron logs after 7 days)
