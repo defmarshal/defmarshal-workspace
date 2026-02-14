@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+# Show top torrents from Sukebei.Nyaa.si sorted by seeds
+# Usage: nyaa-top [--limit N] [--category cat] [--select]
+# If --select is used, you can input a number to get magnet or add to aria2
+
+import argparse
+import json
+import sys
+import requests
+from bs4 import BeautifulSoup
+
+BASE_URL = "https://sukebei.nyaa.si/"
+CATEGORY_MAP = {
+    "all": "0_0",
+    "anime": "1_1",
+    "anime_raw": "1_2",
+    "anime_non_translated": "1_3",
+    "audio": "2_1",
+    "lit": "3_1",
+    "pics": "4_1",
+    "software": "5_1",
+}
+
+def html_size_to_bytes(size_str):
+    try:
+        parts = size_str.strip().split()
+        if len(parts) < 2: return 0
+        num = float(parts[0].replace(',', ''))
+        unit = parts[1].upper()
+        mul = {'B':1,'KB':1024,'MB':1024**2,'GB':1024**3,'TB':1024**4,
+               'KIB':1024,'MIB':1024**2,'GIB':1024**3,'TIB':1024**4}.get(unit,1)
+        return int(num * mul)
+    except: return 0
+
+def fetch_top(category="anime", limit=20):
+    params = {"c": CATEGORY_MAP.get(category, "1_1"), "s": "seeders", "o": "desc", "p": 0}
+    try:
+        r = requests.get(BASE_URL, params=params, timeout=10)
+        r.raise_for_status()
+        soup = BeautifulSoup(r.text, 'html.parser')
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    table = soup.find("table", {"class": "torrent-list"})
+    if not table:
+        print("Error: torrent list not found", file=sys.stderr)
+        sys.exit(1)
+
+    rows = table.find("tbody").find_all("tr")[:limit]
+    torrents = []
+    for row in rows:
+        cols = row.find_all("td")
+        if len(cols) < 8: continue
+        title_link = row.find("a", href=lambda h: h and h.startswith("/view/") and '#' not in h)
+        title = title_link.get_text(strip=True) if title_link else ""
+        magnet_link = row.find("a", href=lambda h: h and h.startswith("magnet:"))
+        magnet = magnet_link["href"] if magnet_link else ""
+        size_str = cols[3].get_text(strip=True)
+        seeds = int(cols[5].get_text(strip=True) or 0)
+        leeches = int(cols[6].get_text(strip=True) or 0)
+        downloads = int(cols[7].get_text(strip=True) or 0)
+        torrents.append({
+            "title": title,
+            "magnet": magnet,
+            "size": html_size_to_bytes(size_str),
+            "size_str": size_str,
+            "seeds": seeds,
+            "leeches": leeches,
+            "downloads": downloads,
+        })
+    # Already sorted by seeds descending from query
+    return torrents
+
+def main():
+    parser = argparse.ArgumentParser(description="List top torrents from Sukebei.Nyaa.si sorted by seeds")
+    parser.add_argument("--limit", type=int, default=15, help="Number of results to show (default: 15)")
+    parser.add_argument("--category", default="anime", choices=list(CATEGORY_MAP.keys()), help="Category (default: anime)")
+    parser.add_argument("--select", action="store_true", help="Enable interactive selection by number")
+    parser.add_argument("--add", action="store_true", help="After selection, add magnet to aria2 automatically")
+    args = parser.parse_args()
+
+    torrents = fetch_top(category=args.category, limit=args.limit)
+    if not torrents:
+        print("No torrents found.", file=sys.stderr)
+        sys.exit(1)
+
+    # Display numbered list
+    print(f"Top {len(torrents)} torrents (sorted by seeds):\n")
+    for i, t in enumerate(torrents, 1):
+        print(f"{i:2}. {t['title'][:60]}{'...' if len(t['title'])>60 else ''}")
+        print(f"    Seeds: {t['seeds']} | Leeches: {t['leeches']} | Size: {t['size_str']} | Downloads: {t['downloads']}")
+        print()
+
+    if args.select:
+        try:
+            choice = input("Enter number to select (or 'q' to quit): ").strip()
+            if choice.lower() == 'q':
+                sys.exit(0)
+            idx = int(choice) - 1
+            if idx < 0 or idx >= len(torrents):
+                print("Invalid selection", file=sys.stderr)
+                sys.exit(1)
+            selected = torrents[idx]
+            print(f"\nSelected: {selected['title']}")
+            print(f"Magnet: {selected['magnet']}")
+            if args.add:
+                # Add to aria2
+                RPC_SECRET = "openclaw_secret_123"  # same as in quick torrent-add
+                RPC_URL = "http://localhost:6800/jsonrpc"
+                payload = {"jsonrpc":"2.0","id":"1","method":"aria2.addUri","params":[f"token:{RPC_SECRET}",[selected['magnet']]]}
+                r = requests.post(RPC_URL, json=payload, timeout=5)
+                if r.status_code == 200 and r.json().get('result'):
+                    print("✓ Added to aria2 download queue.")
+                else:
+                    print(f"⚠ Failed to add: {r.text}", file=sys.stderr)
+            else:
+                # Output magnet for piping
+                print(f"\nMagnet link ready. Use: quick torrent-add \"{selected['magnet']}\"")
+        except (ValueError, KeyboardInterrupt):
+            print("\nCancelled.")
+            sys.exit(0)
+
+if __name__ == "__main__":
+    main()
