@@ -85,20 +85,6 @@
   - `show-holidays`: print upcoming Indonesian holidays (next 60 days)
   - `workspace-health`: one-line health summary (disk, updates, git)
 - **Email Auto-Cleaner** (`email-cleaner.py`): Gmail integration via Maton API. Archives promotional emails and applies labels (e.g., "WELCOME" for messages containing "welcome"). Dry-run by default; `quick email-clean --execute` to apply. Rules customizable in script. Logs to `memory/email-cleaner.log`. Automation: scheduled daily at 09:00 Asia/Bangkok via cron (see `CRON_JOBS.md`).
-- **`quick` launcher**: unified command for common tasks:
-  - `quick dash` – run CLI dashboard
-  - `quick web` – run web dashboard (port 8800)
-  - `quick mem` – show recent memories (claw memory list)
-  - `quick search <query>` – semantic memory search (claw memory search)
-  - `quick health` – workspace health
-  - `quick holidays` – upcoming Indonesian holidays
-  - `quick git-status` – brief git status
-  - `quick anime <cmd>` – Anime Companion (search/info/top/season/upcoming)
-  - `quick log <category> "<msg>"` – log event to openclaw-memory
-  - `quick email-clean [--execute] [--max N]` – auto-clean Gmail (archive + labeling)
-  - `quick help` – usage guide
-- **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration via edge-tts. Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
-- **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; validates output before committing; updates active-tasks.md.
 - **clawaifu-selfie**: skill for anime selfies via Nekos API (free, no auth). Supports SFW/NSFW toggle and batch mode: `quick selfie-batch <count> [rating] [caption]` sends a tar.gz archive of multiple images (1-20). Persona: Reze from Chainsaw Man.
 - **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration via edge-tts. Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
 - **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; validates output before committing; updates active-tasks.md.
@@ -115,9 +101,8 @@
   - `quick selfie-batch <count> [rating] [caption]` – batch images as tar.gz (1-20)
   - `quick log <category> "<msg>"` – log event to openclaw-memory
   - `quick email-clean [--execute] [--max N]` – auto-clean Gmail
+  - `quick agents` – list running sessions/agents
   - `quick help` – usage guide
-- Current model: `openrouter/stepfun/step-3.5-flash:free`
-
 ## Memory Hierarchy (Advanced)
 
 Following best practices for solo operator agents:

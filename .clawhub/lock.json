@@ -52,6 +52,10 @@
     "anime": {
       "version": "1.0.1",
       "installedAt": 1770998258298
+    },
+    "aria2": {
+      "version": "1.0.2",
+      "installedAt": 1771041242372
     }
   }
 }

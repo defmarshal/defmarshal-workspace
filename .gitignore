@@ -31,3 +31,7 @@ memory/*.log
 skills/neural-memory/
 skills/openclaw-memory/
 skills/planning-with-files/
+
+# Root-level logs and session files (transient)
+*.log
+*.session
