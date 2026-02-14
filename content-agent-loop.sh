@@ -14,12 +14,10 @@ while true; do
 
   echo "$(date -u) - Starting content-agent cycle" >> "$LOGFILE"
   openclaw agent \
-    --session isolated \
     --agent main \
     --message "You are the content-agent. Create anime summaries, tech writeups, or daily digests. Check for pending tasks. If none, generate a short daily digest. Log outputs to /home/ubuntu/.openclaw/workspace/content/. After completing, output a brief summary." \
     --thinking low \
     --timeout 600000 \
-    --no-deliver \
     >> "$LOGFILE" 2>&1
   echo "$(date -u) - Content-agent cycle completed, sleeping 10 minutes" >> "$LOGFILE"
   sleep 600

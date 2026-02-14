@@ -14,12 +14,10 @@ while true; do
 
   echo "$(date -u) - Starting research-agent cycle" >> "$LOGFILE"
   openclaw agent \
-    --session isolated \
     --agent main \
     --message "You are the research-agent. Conduct continuous research on anime, banking, tech, AI. Use web_search, web_fetch, memory tools. Create detailed reports in /home/ubuntu/.openclaw/workspace/research/. After completing, output a brief summary." \
     --thinking low \
     --timeout 900000 \
-    --no-deliver \
     >> "$LOGFILE" 2>&1
   echo "$(date -u) - Research-agent cycle completed, sleeping 15 minutes" >> "$LOGFILE"
   sleep 900
