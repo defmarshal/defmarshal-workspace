@@ -1,6 +1,6 @@
 # Long-term Memory
 
-*Last updated: 2026-02-13*
+*Last updated: 2026-02-14*
 
 ## Personal
 - **Name**: def
@@ -87,6 +87,15 @@
 - **Email Auto-Cleaner** (`email-cleaner.py`): Gmail integration via Maton API. Archives promotional emails and applies labels (e.g., "WELCOME" for messages containing "welcome"). Dry-run by default; `quick email-clean --execute` to apply. Rules customizable in script. Logs to `memory/email-cleaner.log`. Automation: scheduled daily at 09:00 Asia/Bangkok via cron (see `CRON_JOBS.md`).
 - **clawaifu-selfie**: skill for anime selfies via Nekos API (free, no auth). Supports SFW/NSFW toggle and batch mode: `quick selfie-batch <count> [rating] [caption]` sends a tar.gz archive of multiple images (1-20). Persona: Reze from Chainsaw Man.
 - **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration via edge-tts. Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
+- **Torrent System**:
+  - `aria2`: lightweight CLI BitTorrent client with RPC interface. Daemon runs with config `aria2.conf`; downloads to `workspace/downloads/`.
+  - `quick torrent-add <magnet_or_file>` – add a magnet link or .torrent file to aria2.
+  - `nyaa-search <query>` – search Sukebei.Nyaa.si via web scraping; outputs JSON with magnet, size, seeds, etc.
+  - `nyaa-top [--limit N] [--max-size SIZE] [--pick N] [--add]` – list top torrents sorted by seeds; `--max-size` filters by size (e.g., `1G`); `--pick N` selects one for magnet; `--add` sends to aria2 automatically via RPC.
+  - `qnt` – shortcut for `quick nyaa-top -limit 20 --max-size 1G`; optionally `qnt N --add`.
+- **Background Agents** (persistent daemons):
+  - `dev-agent-loop.sh`, `content-agent-loop.sh`, `research-agent-loop.sh` – each runs on a fixed interval (20/10/15 minutes) and respects quiet hours (23:00–08:00 Asia/Bangkok).
+  - Startup script `start-background-agents.sh` auto-launches all daemons on boot (installed via `@reboot` crontab).
 - **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; validates output before committing; updates active-tasks.md.
 - **`quick` launcher**: unified command for common tasks:
   - `quick dash` – run CLI dashboard
