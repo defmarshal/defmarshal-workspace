@@ -28,6 +28,9 @@ Commands:
                   the aria2 downloader. RPC secret defaults to 'openclaw_secret_123'.
                   Example: quick torrent-add "magnet:?xt=urn:btih:..."
                   Example: quick torrent-add "/path/to/file.torrent" "my_secret"
+  nyaa-search <query> [--limit N] [--category cat]  Search Sukebei.Nyaa.si for
+                  torrents. Categories: all, anime (default), anime_raw, anime_non_translated,
+                  audio, lit, pics, software. Outputs JSON to stdout.
   log <category> "<message>"  Log an event to openclaw-memory (category: decision, learning, event, note, etc.)
   email-clean [options]      Auto-clean Gmail: archive promotional emails and apply labels.
                               Options: --execute (apply changes), --max N, --query "gmail query"
@@ -105,6 +108,12 @@ case "$cmd" in
     # Add magnet or torrent file to aria2
     # Usage: quick torrent-add <magnet_or_file> [rpc_secret]
     "$WORKSPACE/torrent-add" "$@"
+    ;;
+  nyaa-search)
+    # Search Sukebei.Nyaa.si for torrents
+    # Usage: quick nyaa-search <query> [--limit N] [--category anime|all|...]
+    # Example: quick nyaa-search "ubuntu 24.04" --limit 5
+    python3 "$WORKSPACE/nyaa-search" "$@"
     ;;
   log)
     "$WORKSPACE/log-event" "$@"

@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+# Search Sukebei.Nyaa.si for torrents by scraping the public site
+# Usage: nyaa-search <query> [--limit N] [--category anime|...]
+# Outputs JSON lines: title, magnet, size, seeds, leeches, id
+
+import argparse
+import json
+import sys
+import requests
+from bs4 import BeautifulSoup
+
+BASE_URL = "https://sukebei.nyaa.si/"
+
+CATEGORY_MAP = {
+    "all": "0_0",
+    "anime": "1_1",  # Anime > English_translated
+    "anime_raw": "1_2",  # Anime > Non-English_translated
+    "anime_non_translated": "1_3",  # Anime > Raw
+    "audio": "2_1",
+    "lit": "3_1",
+    "pics": "4_1",
+    "software": "5_1",
+}
+
+def html_size_to_bytes(size_str):
+    """Convert like '1.2 GiB' to bytes"""
+    try:
+        parts = size_str.strip().split()
+        if len(parts) < 2:
+            return 0
+        num = float(parts[0].replace(',', ''))
+        unit = parts[1].upper()
+        mul = {
+            'B': 1, 'KB': 1024, 'MB': 1024**2, 'GB': 1024**3, 'TB': 1024**4,
+            'KIB': 1024, 'MIB': 1024**2, 'GIB': 1024**3, 'TIB': 1024**4,
+        }.get(unit, 1)
+        return int(num * mul)
+    except:
+        return 0
+
+def search_nyaa(query, category="anime", limit=10):
+    params = {
+        "q": query,
+        "s": "size",
+        "o": "desc",
+        "c": CATEGORY_MAP.get(category, "1_1"),
+    }
+    try:
+        resp = requests.get(BASE_URL, params=params, timeout=10)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+    except Exception as e:
+        print(f"Error fetching: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    torrents = []
+    # Nyaa table: class="torrent-list" > tbody > tr
+    table = soup.find("table", {"class": "torrent-list"})
+    if not table:
+        print("Error: torrent list not found", file=sys.stderr)
+        sys.exit(1)
+
+    rows = table.find("tbody").find_all("tr")[:limit]
+    for row in rows:
+        cols = row.find_all("td")
+        if len(cols) < 6:
+            continue
+        try:
+            # Title is in first <td> that contains an <a href="/view/...">
+            title_link = row.find("a", href=lambda h: h and h.startswith("/view/"))
+            title = title_link.get_text(strip=True) if title_link else ""
+            # Magnet link is in an <a href="magnet:?...">
+            magnet_link = row.find("a", href=lambda h: h and h.startswith("magnet:"))
+            magnet = magnet_link["href"] if magnet_link else ""
+            # Size, seeds, leeches, downloads are in specific columns (3,5,6,7)
+            size_str = cols[3].get_text(strip=True)
+            seeds = int(cols[5].get_text(strip=True) or 0)
+            leeches = int(cols[6].get_text(strip=True) or 0)
+            downloads = int(cols[7].get_text(strip=True) or 0)
+            info = {
+                "title": title,
+                "magnet": magnet,
+                "size": html_size_to_bytes(size_str),
+                "size_str": size_str,
+                "seeds": seeds,
+                "leeches": leeches,
+                "downloads": downloads,
+                "url": BASE_URL.rstrip('/') + title_link["href"] if title_link and title_link.has_attr("href") else "",
+            }
+            torrents.append(info)
+        except Exception as e:
+            continue
+
+    # Output as JSON lines
+    for t in torrents:
+        print(json.dumps(t, ensure_ascii=False))
+    return len(torrents)
+
+def main():
+    parser = argparse.ArgumentParser(description="Search Sukebei.Nyaa.si torrents")
+    parser.add_argument("query", help="Search query")
+    parser.add_argument("--limit", type=int, default=10, help="Max results (default: 10)")
+    parser.add_argument("--category", default="anime", choices=list(CATEGORY_MAP.keys()), help="Category filter (default: anime)")
+    parser.add_argument("--json", action="store_true", help="Output raw JSON array")
+    args = parser.parse_args()
+
+    count = search_nyaa(args.query, category=args.category, limit=args.limit)
+    if args.json:
+        pass  # JSON lines already on stdout
+    else:
+        # Pretty summary to stderr
+        print(f"Found {count} torrent(s) for '{args.query}':", file=sys.stderr)
+        print("Use --json for machine output.", file=sys.stderr)
+
+if __name__ == "__main__":
+    main()
