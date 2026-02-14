@@ -34,6 +34,9 @@ Commands:
   nyaa-top [--limit N] [--category cat] [--select] [--add]  Show top torrents sorted
                   by seed count. Optional --select for interactive pick; --add to send
                   the chosen magnet to aria2 automatically.
+  nyaa-top [--limit N] [--category cat] [--select] [--add]  Show top torrents sorted
+                  by seed count. Optional --select for interactive pick; --add to send
+                  the chosen magnet to aria2 automatically.
   log <category> "<message>"  Log an event to openclaw-memory (category: decision, learning, event, note, etc.)
   email-clean [options]      Auto-clean Gmail: archive promotional emails and apply labels.
                               Options: --execute (apply changes), --max N, --query "gmail query"
@@ -117,6 +120,11 @@ case "$cmd" in
     # Usage: quick nyaa-search <query> [--limit N] [--category anime|all|...]
     # Example: quick nyaa-search "ubuntu 24.04" --limit 5
     python3 "$WORKSPACE/nyaa-search" "$@"
+    ;;
+  nyaa-top)
+    # Show top torrents sorted by seeds (Sukebei.Nyaa.si)
+    # Usage: quick nyaa-top [--limit N] [--category cat] [--select] [--add]
+    python3 "$WORKSPACE/nyaa-top" "$@"
     ;;
   log)
     "$WORKSPACE/log-event" "$@"
