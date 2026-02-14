@@ -1,7 +1,0 @@
-[2026-02-13 22:00 UTC+7] Workspace Builder run: Completed polish automation.
-- Added email-cleaner cron job: daily 09:00 Asia/Bangkok.
-- Created CRON_JOBS.md documenting all scheduled tasks.
-- Updated .gitignore to ignore installed skill directories (neural-memory, openclaw-memory, planning-with-files).
-- Updated MEMORY.md to reflect email-cleaner automation.
-- Committed and pushed pending upgrades: quick launcher now uses `claw memory`, log-event now uses openclaw-memory.
-All changes committed (build: ...). No issues.

@@ -42,7 +42,7 @@ Commands:
                               Options: --execute (apply changes), --max N, --query "gmail query"
                               Rules: archives CATEGORY_PROMOTIONS/UPDATES, spammy keywords/senders,
                                     and labels messages containing keywords like "welcome" with configurable labels.
-  agents                      List running sessions/agents (background daemons, cron jobs)
+  agents [flags]               List running sessions/agents; flags passed to `openclaw sessions` (e.g., --json, --help)
   help                       Show this help message
 
 Examples:
@@ -153,11 +153,11 @@ case "$cmd" in
     python3 "$WORKSPACE/email-cleaner.py" "$@"
     ;;
   agents)
-    # List running sessions/agents
-    if [ -t 1 ]; then
-      /home/ubuntu/.npm-global/bin/openclaw sessions
-    else
+    # List running sessions/agents; pass through flags
+    if [ $# -eq 0 ] && [ ! -t 1 ]; then
       /home/ubuntu/.npm-global/bin/openclaw sessions --json
+    else
+      /home/ubuntu/.npm-global/bin/openclaw sessions "$@"
     fi
     ;;
   help|--help|-h)
