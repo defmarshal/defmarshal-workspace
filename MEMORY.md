@@ -1,6 +1,6 @@
 # Long-term Memory
 
-*Last updated: 2026-02-14*
+*Last updated: 2026-02-15*
 
 ## Personal
 - **Name**: def
@@ -35,6 +35,14 @@
   - Added MCP server configuration for `neural-memory` in OpenClaw config (restart applied)
   - Note: Custom `summarize-day` and daily markdown logs deprecated; openclaw-memory handles storage & retrieval
 
+- **Workspace Feature Expansion** (2026-02-14)
+  - Converted background agents to robust daemons with `@reboot` auto-start.
+  - Implemented torrent download system (`aria2`, `nyaa-search`, `nyaa-top`, `qnt` shortcut).
+  - Enhanced `quick` launcher with many new commands.
+  - Fixed dash normalization for Telegram compatibility.
+  - Improved git hygiene and documentation cleanup.
+  - Added `quick agents` for session visibility.
+
 ## Learnings
 - OpenClaw memory search requires an embeddings provider (OpenAI, Voyage, etc.)
 - Voyage AI offers 200M free tokens (no CC needed initially) - great for personal assistant
@@ -46,6 +54,11 @@
 - Agent system: `sessions_spawn` creates persistent background agents with labels; they run infinite loops (use `exec sleep` for delays) and can use any OpenClaw tool
 - Agent control: `sessions_list` shows all agents; sessions have keys like `agent:main:subagent:<uuid>`; kill by stopping session
 - Agent messaging: subagents can send messages to Telegram via `message` tool
+- OpenClaw subagents not persistent across Gateway restarts; use daemons with `@reboot` cron or systemd for resilience.
+- aria2 RPC requires a clean config file (no trailing comments on `rpc-secret`) to avoid authentication failures.
+- Telegram converts double hyphens `--` to em-dash `—`; scripts must normalize both for chat command parsing.
+- Always provide non-interactive alternatives (e.g., `--pick`) for chat-based workflows where interactive prompts don't work.
+- The `qnt` shortcut (limit 20, max-size 1G) improves usability for frequent torrent searches.
 
 ## Important Dates & Events
 - 2026-02-09: Bootstrap, identity defined, initial memory created
@@ -67,6 +80,7 @@
 - 2026-02-13: Combined capabilities into "Anime Companion" for main agent: fetch anime info (anime-lookup), narrate via TTS (edge-tts), send character selfies (clawaifu-selfie).
 - 2026-02-13: fal.ai balance exhausted; free tier exists but limited credits – top up needed for continued selfies.
 - 2026-02-13: Implemented daily memory automation: `log-event` for event capture, `summarize-day` for auto-summarization (cron 22:30 Asia/Bangkok), integrated into `quick` launcher.
+- 2026-02-14: Major feature expansion: torrent system (aria2, nyaa-search, nyaa-top, qnt), daemonized background agents with @reboot, quick launcher enhancements (dash normalization, agents command), and documentation cleanup; captured key operational learnings.
 
 ## Tools & Skills
 - Git: GitHub private repos with PAT + credential store (`~/.git-credentials`)

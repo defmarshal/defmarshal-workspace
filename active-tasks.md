@@ -26,6 +26,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [daemon] dev-agent — Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
 - [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
 - [daemon] research-agent — Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
-
-- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Strategic build: health, cleanup, docs (started: 2026-02-14 ~22:00 UTC+7, status: validated)
-  - Verification: removed msearch; fixed DASHBOARD_README.md; cleaned active-tasks; health OK (Disk 62%, updates 15); memory search & quick commands tested; all changes committed & pushed.
