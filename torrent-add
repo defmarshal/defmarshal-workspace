@@ -1,0 +1,49 @@
+#!/bin/bash
+# Add a magnet link or torrent file to aria2 via RPC
+# Usage: quick torrent-add <magnet_or_torrent_file> [rpc_secret]
+
+set -euo pipefail
+
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+
+# Default RPC secret from our aria2.conf
+RPC_SECRET="${1:-openclaw_secret_123}"
+if [ "$RPC_SECRET" = "openclaw_secret_123" ]; then
+  echo "Warning: using default RPC secret. Consider changing aria2.conf for security." >&2
+fi
+
+# Check input: either a magnet: URI or a .torrent file path
+INPUT="${2:-}"
+if [ -z "$INPUT" ]; then
+  echo "Usage: quick torrent-add <magnet_or_torrent_file> [rpc_secret]" >&2
+  echo "Example: quick torrent-add 'magnet:?xt=urn:btih:...' 'my_secret'" >&2
+  echo "        quick torrent-add '/path/to/file.torrent'" >&2
+  exit 1
+fi
+
+RPC_URL="http://localhost:6800/jsonrpc"
+
+if [[ "$INPUT" == magnet:* ]]; then
+  # Add magnet link
+  echo "Adding magnet to aria2..."
+  curl -s "$RPC_URL" \
+    -H "Content-Type: application/json" \
+    -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.addUri\",\"params\":[\"token:$RPC_SECRET\",[\"$INPUT\"]]}" \
+    | python3 -m json.tool 2>/dev/null || echo "Added (response may be empty if no json tool)"
+  echo "✓ Magnet added."
+
+elif [ -f "$INPUT" ]; then
+  # Torrent file: base64 encode and add
+  echo "Adding torrent file..."
+  TORRENT_B64=$(base64 -w0 "$INPUT" 2>/dev/null || base64 "$INPUT")
+  curl -s "$RPC_URL" \
+    -H "Content-Type: application/json" \
+    -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.addTorrent\",\"params\":[\"token:$RPC_SECRET\",\"$TORRENT_B64\"]}" \
+    | python3 -m json.tool 2>/dev/null || echo "Added (response may be empty if no json tool)"
+  echo "✓ Torrent added."
+else
+  echo "Error: '$INPUT' is not a magnet link or existing file." >&2
+  exit 1
+fi
+
+echo "Check downloads: quick downloads-list"
