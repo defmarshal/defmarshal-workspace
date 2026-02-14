@@ -9,8 +9,21 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 
-# Fix Telegram's em-dash substitution: replace any em-dash with double hyphen
-sys.argv = [arg.replace('—', '--') for arg in sys.argv]
+# Fix Telegram's em-dash substitution and accept single dash for convenience
+# Convert —limit, -limit → --limit; —category → --category; etc.
+normalized = []
+for arg in sys.argv[1:]:
+    if arg in ('—limit', '-limit'):
+        normalized.append('--limit')
+    elif arg in ('—category', '-category'):
+        normalized.append('--category')
+    elif arg in ('—select', '-select'):
+        normalized.append('--select')
+    elif arg in ('—add', '-add'):
+        normalized.append('--add')
+    else:
+        normalized.append(arg)
+sys.argv = [sys.argv[0]] + normalized
 
 BASE_URL = "https://sukebei.nyaa.si/"
 CATEGORY_MAP = {
