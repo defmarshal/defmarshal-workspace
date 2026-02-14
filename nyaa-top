@@ -26,6 +26,7 @@ for arg in sys.argv[1:]:
 sys.argv = [sys.argv[0]] + normalized
 
 BASE_URL = "https://sukebei.nyaa.si/"
+
 CATEGORY_MAP = {
     "all": "0_0",
     "anime": "1_1",
@@ -160,14 +161,18 @@ def main():
         print(f"Size: {selected['size_str']} | Seeds: {selected['seeds']} | Leeches: {selected['leeches']} | Downloads: {selected['downloads']}")
         print(f"Magnet: {selected['magnet']}")
         if args.add:
+            # Add to aria2 via RPC
             RPC_SECRET = "openclaw_secret_123"
             RPC_URL = "http://localhost:6800/jsonrpc"
             payload = {"jsonrpc":"2.0","id":"1","method":"aria2.addUri","params":[f"token:{RPC_SECRET}",[selected['magnet']]]}
-            r = requests.post(RPC_URL, json=payload, timeout=5)
-            if r.status_code == 200 and r.json().get('result'):
-                print("✓ Added to aria2 download queue.")
-            else:
-                print(f"⚠ Failed to add: {r.text}", file=sys.stderr)
+            try:
+                r = requests.post(RPC_URL, json=payload, timeout=5)
+                if r.status_code == 200 and r.json().get('result'):
+                    print("✓ Added to aria2 download queue.")
+                else:
+                    print(f"⚠ Failed to add: {r.text}", file=sys.stderr)
+            except Exception as e:
+                print(f"⚠ RPC error: {e}", file=sys.stderr)
         sys.exit(0)
 
     # Display numbered list (full mode)
@@ -190,15 +195,18 @@ def main():
             print(f"\nSelected: {selected['title']}")
             print(f"Magnet: {selected['magnet']}")
             if args.add:
-                # Add to aria2
-                RPC_SECRET = "openclaw_secret_123"  # same as in quick torrent-add
+                # Add to aria2 via RPC
+                RPC_SECRET = "openclaw_secret_123"
                 RPC_URL = "http://localhost:6800/jsonrpc"
                 payload = {"jsonrpc":"2.0","id":"1","method":"aria2.addUri","params":[f"token:{RPC_SECRET}",[selected['magnet']]]}
-                r = requests.post(RPC_URL, json=payload, timeout=5)
-                if r.status_code == 200 and r.json().get('result'):
-                    print("✓ Added to aria2 download queue.")
-                else:
-                    print(f"⚠ Failed to add: {r.text}", file=sys.stderr)
+                try:
+                    r = requests.post(RPC_URL, json=payload, timeout=5)
+                    if r.status_code == 200 and r.json().get('result'):
+                        print("✓ Added to aria2 download queue.")
+                    else:
+                        print(f"⚠ Failed to add: {r.text}", file=sys.stderr)
+                except Exception as e:
+                    print(f"⚠ RPC error: {e}", file=sys.stderr)
             else:
                 # Output magnet for piping
                 print(f"\nMagnet link ready. Use: quick torrent-add \"{selected['magnet']}\"")
