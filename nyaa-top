@@ -94,6 +94,7 @@ def main():
     parser.add_argument("--category", default="anime", choices=list(CATEGORY_MAP.keys()), help="Category (default: anime)")
     parser.add_argument("--select", action="store_true", help="Enable interactive selection by number")
     parser.add_argument("--add", action="store_true", help="After selection, add magnet to aria2 automatically")
+    parser.add_argument("--pick", type=int, metavar="N", help="Non-interactive: pick Nth torrent (1-indexed) and show magnet")
     args = parser.parse_args()
 
     torrents = fetch_top(category=args.category, limit=args.limit)
@@ -101,7 +102,28 @@ def main():
         print("No torrents found.", file=sys.stderr)
         sys.exit(1)
 
-    # Display numbered list
+    # If --pick is used, directly output the chosen torrent's info
+    if args.pick:
+        idx = args.pick - 1
+        if idx < 0 or idx >= len(torrents):
+            print(f"Error: pick number must be between 1 and {len(torrents)}", file=sys.stderr)
+            sys.exit(1)
+        selected = torrents[idx]
+        print(f"Selected #{args.pick}: {selected['title']}")
+        print(f"Size: {selected['size_str']} | Seeds: {selected['seeds']} | Leeches: {selected['leeches']} | Downloads: {selected['downloads']}")
+        print(f"Magnet: {selected['magnet']}")
+        if args.add:
+            RPC_SECRET = "openclaw_secret_123"
+            RPC_URL = "http://localhost:6800/jsonrpc"
+            payload = {"jsonrpc":"2.0","id":"1","method":"aria2.addUri","params":[f"token:{RPC_SECRET}",[selected['magnet']]]}
+            r = requests.post(RPC_URL, json=payload, timeout=5)
+            if r.status_code == 200 and r.json().get('result'):
+                print("✓ Added to aria2 download queue.")
+            else:
+                print(f"⚠ Failed to add: {r.text}", file=sys.stderr)
+        sys.exit(0)
+
+    # Display numbered list (full mode)
     print(f"Top {len(torrents)} torrents (sorted by seeds):\n")
     for i, t in enumerate(torrents, 1):
         print(f"{i:2}. {t['title'][:60]}{'...' if len(t['title'])>60 else ''}")
