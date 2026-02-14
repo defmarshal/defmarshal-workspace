@@ -11,20 +11,27 @@
 
 ## Phases
 
-### 1. Analysis (Discovery)
-- [ ] Check `git status` and identify untracked files.
-- [ ] Review workspace for deprecated artifacts (`msearch`, old logs).
-- [ ] Test critical `quick` commands: `mem`, `search`, `health`, `anime`, `nyaa-top`, `downloads`.
-- [ ] Verify cron jobs and daemon agents are running.
-- [ ] Audit MEMORY.md for outdated information (needs updating?).
-- [ ] Review `active-tasks.md` for stale entries.
+### 1. Analysis (Discovery) ✅
+- [x] Check `git status` and identify untracked files.
+- [x] Review workspace for deprecated artifacts (`msearch`, old logs).
+- [x] Test critical `quick` commands: `mem`, `search`, `health`, `anime`, `nyaa-top`, `downloads`.
+- [x] Verify cron jobs and daemon agents are running.
+- [x] Audit MEMORY.md for outdated information (needs updating?).
+- [x] Review `active-tasks.md` for stale entries.
 
-### 2. Identification (Plan Changes)
-- [ ] List removals: `msearch` script (deprecated).
-- [ ] List additions: stage and commit new content files under `content/`.
-- [ ] Documentation updates: add note about `qnt` shortcut? update any stale references.
-- [ ] Cleanup: remove completed entries from `active-tasks.md` (e.g., previous builder's validated entry).
-- [ ] Ensure no leftover temp files or logs that should be rotated.
+### 2. Identification (Plan Changes) ✅
+- [x] List removals: `msearch` script (deprecated).
+- [x] List additions: stage and commit new content files under `content/`.
+- [x] Documentation updates: fix DASHBOARD_README.md reference; add note about `qnt` shortcut? update any stale references.
+- [x] Cleanup: remove completed entries from `active-tasks.md` (e.g., previous builder's validated entry).
+- [x] Ensure no leftover temp files or logs that should be rotated.
+
+### 3. Implementation (Execution) 🔄
+- [x] Remove deprecated `msearch`.
+- [x] `git add` new content files (content/2026-02-14-afternoon-update.md, content/2026-02-14-daily-digest.md).
+- [ ] Update MEMORY.md if needed (e.g., note qnt shortcut, recent changes).
+- [x] Prune `active-tasks.md`: remove entries with status `validated` that are not current.
+- [x] Run `quick health` and other test commands; capture results.
 
 ### 3. Implementation (Execution)
 - [ ] Remove deprecated `msearch`.

@@ -31,7 +31,7 @@ workspace-dash
 ## Notes
 
 - Requires `curl` for weather
-- Uses the existing `msearch` script for memory search
+- Uses `openclaw memory search` (via `quick search`) for memory retrieval
 - Colors may not display on some terminals (disable escape codes if needed)
 
 ## Future Ideas

@@ -27,8 +27,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
 - [daemon] research-agent — Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
 
-- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Strategic build: verify health, remove deprecated files, enhance config (started: 2026-02-14 ~18:00 UTC+7, status: validated)
-  - Verification: Quick commands functional; removed memory/2026-02-13-summary.json, memory/2026-02-13.jsonl; cleaned old logs; enhanced aria2.conf with DHT settings; all changes committed & pushed (build: prefix)
-
-- [validated] gap-research — Search web for "gapping method in banking industry" (started: 2026-02-13 15:24, status: validated)
-  - Verification: Comprehensive research report completed, saved as gapping-method-banking-research-report.md
+- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Strategic build: health, cleanup, docs (started: 2026-02-14 ~22:00 UTC+7, status: validated)
+  - Verification: removed msearch; fixed DASHBOARD_README.md; cleaned active-tasks; health OK (Disk 62%, updates 15); memory search & quick commands tested; all changes committed & pushed.
