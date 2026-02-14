@@ -26,19 +26,12 @@
 - [x] Cleanup: remove completed entries from `active-tasks.md` (e.g., previous builder's validated entry).
 - [x] Ensure no leftover temp files or logs that should be rotated.
 
-### 3. Implementation (Execution) 🔄
+### 3. Implementation (Execution) ✅
 - [x] Remove deprecated `msearch`.
 - [x] `git add` new content files (content/2026-02-14-afternoon-update.md, content/2026-02-14-daily-digest.md).
-- [ ] Update MEMORY.md if needed (e.g., note qnt shortcut, recent changes).
+- [x] Update MEMORY.md if needed (e.g., note qnt shortcut, recent changes).
 - [x] Prune `active-tasks.md`: remove entries with status `validated` that are not current.
 - [x] Run `quick health` and other test commands; capture results.
-
-### 3. Implementation (Execution)
-- [ ] Remove deprecated `msearch`.
-- [ ] `git add` new content files (content/2026-02-14-afternoon-update.md, content/2026-02-14-daily-digest.md).
-- [ ] Update MEMORY.md if needed (e.g., note qnt shortcut, recent changes).
-- [ ] Prune `active-tasks.md`: remove entries with status `validated` that are not current.
-- [ ] Run `quick health` and other test commands; capture results.
 
 ### 4. Validation (Close the Loop)
 - [ ] Confirm `git status` clean.
