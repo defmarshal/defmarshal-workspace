@@ -31,9 +31,12 @@ Commands:
   nyaa-search <query> [--limit N] [--category cat]  Search Sukebei.Nyaa.si for
                   torrents. Categories: all, anime (default), anime_raw, anime_non_translated,
                   audio, lit, pics, software. Outputs JSON to stdout.
-  nyaa-top [--limit N] [--category cat] [--select] [--add]  Show top torrents sorted
-                  by seed count. Optional --select for interactive pick; --add to send
-                  the chosen magnet to aria2 automatically.
+  nyaa-top [--limit N] [--category cat] [--max-size SIZE] [--pick N] [--select] [--add]  Show top torrents sorted
+                  by seed count. Options:
+                  --max-size SIZE: filter by max size (e.g., 1G, 500M)
+                  --pick N: non-interactive pick of Nth torrent (1-indexed)
+                  --select: interactive pick by number (terminal only)
+                  --add: after pick, send magnet to aria2 automatically.
   log <category> "<message>"  Log an event to openclaw-memory (category: decision, learning, event, note, etc.)
   email-clean [options]      Auto-clean Gmail: archive promotional emails and apply labels.
                               Options: --execute (apply changes), --max N, --query "gmail query"
@@ -139,7 +142,7 @@ case "$cmd" in
     ;;
   nyaa-top)
     # Show top torrents sorted by seeds (Sukebei.Nyaa.si)
-    # Usage: quick nyaa-top [--limit N] [--category cat] [--select] [--add]
+    # Usage: quick nyaa-top [--limit N] [--category cat] [--max-size SIZE] [--pick N] [--select] [--add]
     python3 "$WORKSPACE/nyaa-top" "$@"
     ;;
   log)

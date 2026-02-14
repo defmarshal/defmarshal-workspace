@@ -88,6 +88,42 @@ def fetch_top(category="anime", limit=20):
     # Already sorted by seeds descending from query
     return torrents
 
+def parse_size(size_str):
+    """Convert 1.2 GiB, 500M, etc to bytes. Supports: K, M, G, T (both decimal and binary)."""
+    size_str = size_str.strip().upper()
+    if not size_str:
+        return 0
+    # If already a number (unlikely), assume bytes
+    if size_str.isdigit():
+        return int(size_str)
+    # Extract numeric part and unit
+    num = ""
+    unit = ""
+    for char in size_str:
+        if char.isdigit() or char == '.':
+            num += char
+        else:
+            unit += char
+    unit = unit.strip()
+    try:
+        num = float(num)
+    except:
+        return 0
+    # Normalize unit
+    if unit in ('B', ''):
+        mul = 1
+    elif unit in ('K', 'KB', 'KIB'):
+        mul = 1024
+    elif unit in ('M', 'MB', 'MIB'):
+        mul = 1024**2
+    elif unit in ('G', 'GB', 'GIB'):
+        mul = 1024**3
+    elif unit in ('T', 'TB', 'TIB'):
+        mul = 1024**4
+    else:
+        mul = 1
+    return int(num * mul)
+
 def main():
     parser = argparse.ArgumentParser(description="List top torrents from Sukebei.Nyaa.si sorted by seeds")
     parser.add_argument("--limit", type=int, default=15, help="Number of results to show (default: 15)")
@@ -95,12 +131,23 @@ def main():
     parser.add_argument("--select", action="store_true", help="Enable interactive selection by number")
     parser.add_argument("--add", action="store_true", help="After selection, add magnet to aria2 automatically")
     parser.add_argument("--pick", type=int, metavar="N", help="Non-interactive: pick Nth torrent (1-indexed) and show magnet")
+    parser.add_argument("--max-size", metavar="SIZE", help="Filter: only show torrents with size <= SIZE (e.g., 1G, 500M, 2GB)")
     args = parser.parse_args()
 
     torrents = fetch_top(category=args.category, limit=args.limit)
     if not torrents:
         print("No torrents found.", file=sys.stderr)
         sys.exit(1)
+
+    # Apply size filter if provided
+    if args.max_size:
+        max_bytes = parse_size(args.max_size)
+        original_count = len(torrents)
+        torrents = [t for t in torrents if t['size'] <= max_bytes]
+        if not torrents:
+            print(f"No torrents found under {args.max_size} (≤ {max_bytes:,} bytes). Try a larger limit or different category.", file=sys.stderr)
+            sys.exit(1)
+        # If filtering reduced count, note it in the listing header later
 
     # If --pick is used, directly output the chosen torrent's info
     if args.pick:
