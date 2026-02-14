@@ -1,39 +1,39 @@
 # Findings & Decisions
 
 ## Requirements
-- Clean memory documentation: remove backup files, manage log retention
-- Improve git hygiene: refine .gitignore, ensure transient files not tracked
-- Add agents command: enhance `quick agents` with useful options (JSON output, filtering)
+- Perform strategic workspace analysis and implement improvements
+- Follow planning-with-files workflow (task_plan.md, findings.md, progress.md)
+- Validate all systems work correctly
+- Commit and push changes with 'build:' prefix
+- Update active-tasks.md with verification results
+- Respect quiet hours (23:00–08:00 UTC+7)
 
 ## Research Findings
-- Current `quick agents` runs `openclaw sessions` and shows human-readable table
-- Git status shows: modified: aria2.conf, dev-agent.log; untracked: MEMORY.md.bak, dev-agent-loop.sh, research/ files, skills/aria2/
-- .gitignore already excludes *.log, *.session, __pycache__, tts_output, etc.
-- Memory directory contains: daily .md files, .jsonl, summary .json, and cron logs (daily-summary-cron.log, email-cleaner-cron.log, workspace-builder.log)
-- active-tasks.md tracks all agents; the current workspace-builder task is the one running now.
+- Quick launcher exists at `quick` (shell script) with documented commands
+- Memory system: openclaw-memory (semantic search) + neural-memory (spreading activation)
+- Workspace dashboard: `dashboard.py` (CLI) and `web-dashboard.py` (web)
+- Various utilities: email-cleaner, anime-companion, selfie commands
+- active-tasks.md tracks running agents (dev-agent, content-agent, research-agent, workspace-builder)
 
 ## Technical Decisions
 | Decision | Rationale |
 |----------|-----------|
-| Remove MEMORY.md.bak | Backup not needed; workspace is under Git |
-| Keep all *.log ignored | Already in .gitignore; ensure they remain untracked |
-| Add `--json` flag to agents command | Provides machine-readable output; consistent with other quick commands |
-| Add `--running` filter to agents | Show only recently active sessions (optional) |
-| Do not commit cleanup changes separately | Wait until final build commit to avoid extra history |
+| Verify existing commands first | Last build was validated; ensure no regressions |
+| Inspect memory/ directory | openclaw-memory may store data in memory/ or elsewhere |
+| Test quick commands manually | Ensure all documented commands are functional |
+| Remove deprecated JSON data files | Old system artifacts (2026-02-13-summary.json, 2026-02-13.jsonl) no longer needed; free ~36KB |
+| Remove old cron logs | Clean outdated logs (workspace-builder.log, daily-summary-cron.log) while keeping recent ones for reference |
 
 ## Issues Encountered
 | Issue | Resolution |
 |-------|------------|
-| `quick` command not found in non-interactive shell | Use full path `/home/ubuntu/.openclaw/workspace/quick` in scripts and tests |
-| Agents output may be too verbose | Consider providing concise mode and JSON mode |
+|       |            |
 
 ## Resources
-- OpenClaw sessions command: `openclaw sessions [--json]`
-- .gitignore best practices: ignore logs, sessions, caches, transient state
-- quick launcher pattern: subcommands with help and option parsing
+- OpenClaw docs: /home/ubuntu/.npm-global/lib/node_modules/openclaw/docs
+- ClawHub: https://clawhub.com
+- Neural memory MCP: configured in OpenClaw config
+- Quick launcher: /home/ubuntu/.openclaw/workspace/quick
 
 ## Visual/Browser Findings
-- None
-
----
-*Update this file after every 2 view/browser/search operations*
+- N/A (no browser use yet)
