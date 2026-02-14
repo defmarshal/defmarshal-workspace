@@ -34,8 +34,11 @@
 - **Status:** complete
 
 ## Phase 5: Delivery
-- Will commit, push, update active-tasks, and clean up.
-- **Status:** pending
+- Committed changes with prefix 'build:' (commit 9497be1).
+- Pushed to GitHub successfully.
+- Active-tasks entry for this session removed (cleanup complete).
+- Verification: all tests passed; `quick mem`/`search` now human-friendly; help cleaned.
+- **Status:** complete
 
 ## Notes
 - Building on previous work (dashboard already uses formatted memory output).
