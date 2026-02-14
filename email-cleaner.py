@@ -11,6 +11,22 @@ from typing import List, Dict
 
 # Config
 MATON_API_KEY = os.getenv("MATON_API_KEY")
+# Fallback: load from OpenClaw config if not set in environment
+if not MATON_API_KEY:
+    try:
+        openclaw_config_path = os.path.expanduser("~/.openclaw/openclaw.json")
+        if os.path.exists(openclaw_config_path):
+            with open(openclaw_config_path, "r") as f:
+                cfg = json.load(f)
+            MATON_API_KEY = (
+                cfg.get("skills", {})
+                .get("entries", {})
+                .get("gmail", {})
+                .get("env", {})
+                .get("MATON_API_KEY")
+            )
+    except Exception:
+        pass  # ignore and continue without API key
 CONNECTION_ID = os.getenv("MATON_CONNECTION")  # optional
 GATEWAY = "https://gateway.maton.ai/google-mail"
 

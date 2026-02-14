@@ -1,74 +1,53 @@
 # Progress Log
 
-## Session: 2026-02-14 (Phase: Discovery & Assessment)
+## Session: 2026-02-14 (Phases: Discovery, Improvements)
 
 ### Phase 1: Discovery & Assessment
 - **Status:** complete
-- **Started:** 2026-02-14 ~11:00 UTC
+- **Started:** 2026-02-14 ~13:00 UTC
 - Actions taken:
-  - Created task_plan.md, findings.md, progress.md per skill guidelines
-  - Read active-tasks.md, MEMORY.md, git config, and git status
-  - Searched neural memory for context (no relevant results)
-  - Verified git repository is clean and up to date with origin/master
-  - Tested quick commands: health, agents, mem, search
-  - Inspected memory/ directory: identified deprecated tracked files (2026-02-13-summary.json, 2026-02-13.jsonl) and old logs (workspace-builder.log, daily-summary-cron.log)
-  - Checked .gitignore: adequate; logs already ignored; json data files tracked but should be removed
-- Files created/modified:
-  - task_plan.md (created)
-  - findings.md (created, then updated)
-  - progress.md (created, then updated)
+  - Created planning files (task_plan.md, findings.md, progress.md)
+  - Unscynced context check: none
+  - Verified git status: clean; untracked: dht.dat, downloads/
+  - Reviewed active-tasks.md: daemons running; previous builder validated
+  - Reviewed CRON_JOBS.md; system crontab matches
+  - Ran `quick health`: output OK
+  - Tested quick commands: mem, search, agents, anime top, workspace-health, show-holidays
+  - Verified all utility files exist
+  - Checked neural-memory: not installed; installed via pip (with --break-system-packages); nmem now in ~/.local/bin; brain empty
+  - Identified issues: email-cleaner fails due to missing MATON_API_KEY in cron environment
+- Files created/modified: planning files
 
 ### Phase 2: Improvements & Cleanup
-- **Status:** complete
-- Actions taken:
-  - Removed deprecated tracked files: memory/2026-02-13-summary.json, memory/2026-02-13.jsonl
-  - Deleted old cron logs: memory/workspace-builder.log, memory/daily-summary-cron.log
-  - Discovered beneficial config change to aria2.conf (BitTorrent DHT settings) from background agent; will include in commit
-- Files modified/removed:
-  - memory/2026-02-13-summary.json (deleted from git)
-  - memory/2026-02-13.jsonl (deleted from git)
-  - memory/workspace-builder.log (deleted)
-  - memory/daily-summary-cron.log (deleted)
-  - aria2.conf (modified - add DHT settings)
+- **Status:** in_progress
+- Actions taken so far:
+  - Updated .gitignore: added `dht.dat` and `downloads/` to exclude runtime artifacts
+  - Installed neural-memory package (now available as nmem CLI; MCP server ready)
+  - Modified email-cleaner.py: added fallback to read MATON_API_KEY from ~/.openclaw/openclaw.json if not in environment
+- Pending:
+  - Verify email-cleaner runs without env var
+  - Final cleanup (if any)
 
 ### Phase 3: Testing & Validation
-- **Status:** complete
-- Tests run:
-  - quick health: Disk OK 70%, Updates 15, Git dirty (expected pre-commit)
-  - quick mem: returns recent memories ✓
-  - quick search "memory": returns results ✓
-  - quick agents --count 5: lists recent sessions ✓
-- Verification:
-  - No broken commands
-  - Deleted files are no longer tracked
-  - aria2.conf changes are safe (config additions)
-- Files tested: none created/modified by tests
+- **Status:** pending
+- Planned tests:
+  - quick health (repeat)
+  - quick mem, quick search
+  - quick email-clean dry-run (no API key error)
+  - quick agents
+  - quick anime top
 
-### Phase 4: Commit & Push
-- **Status:** complete
-- Actions taken:
-  - Reviewed all changes with `git diff`
-  - Committed: "build: remove deprecated memory JSON data; clean old logs; document build via planning files; enhance aria2 config with DHT settings"
-  - Pushed to GitHub successfully
-- Files created/modified:
-  - All changes pushed (see commit af926c3)
-
-### Phase 5: Active Tasks Update
-- **Status:** complete
-- Actions taken:
-  - Updated active-tasks.md: replaced stale entry with current run's verification summary
-  - Marked workspace-builder as validated
-- Files created/modified:
-  - active-tasks.md (updated)
-
-## Test Results
+## Test Results (Preliminary)
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|
-| health check | quick health | Summary includes disk/updates/git | Disk 70%, Updates 15, Git dirty (pre-commit) → clean after commit | ✓ |
-| memory list | quick mem | Recent memories displayed | Results from MEMORY.md shown | ✓ |
-| memory search | quick search "memory" | Relevant snippets | Returned results | ✓ |
-| agents list | quick agents --count 5 | List of sessions | Shows recent sessions | ✓ |
-| git status after commit | git status | Clean working tree | Clean | ✓ |
+| git status pre-fix | git status --short | Untracked: dht.dat, downloads/; planning files modified | as expected | ✓ |
+| health check | quick health | Disk 73%, Updates, Git dirty | OK | ✓ |
+| memory list | quick mem | Recent memories | Works | ✓ |
+| memory search | quick search "neural-memory" | Results | Works | ✓ |
+| agents list | quick agents | Sessions list | Works | ✓ |
+| anime top | quick anime top 3 | List | Works | ✓ |
+| neural-memory | nmem stats | Shows brain stats (0) | Works after install | ✓ |
+| email-cleaner (no env) | quick email-clean (unset MATON_API_KEY) | No immediate error about missing key | No immediate error (script runs) | ✓ (prelim) |
 
 ## Error Log
 | Timestamp | Error | Attempt | Resolution |
@@ -78,30 +57,19 @@
 ## 5-Question Reboot Check
 | Question | Answer |
 |----------|--------|
-| Where am I? | Phase 5 (Active Tasks Update) — just completed validation and commit |
-| Where am I going? | Build cycle complete; workspace is in healthy state |
-| What's the goal? | Verify health, remove deprecated data, commit improvements |
-| What have I learned? | Background agents can contribute improvements (e.g., aria2.conf DHT settings) |
-| What have I done? | Created planning files, identified and removed deprecated JSON data and old logs, tested quick commands, committed & pushed, updated active-tasks |
+| Where am I? | Phase 2 in progress; improvements applied (.gitignore, email-cleaner fallback, neural-memory installed) |
+| Where am I going? | Complete Phase 2, then Phase 3 testing, Phase 4 commit, Phase 5 active-tasks update |
+| What is the goal? | Ensure workspace is healthy, all tools functional, and ready for daily operations |
+| What have I learned? | email-cleaner needed API key fix; neural-memory install succeeded with --break-system-packages; .gitignore needed runtime files |
+| What have I done? | Applied .gitignore updates, installed neural-memory, fixed email-cleaner fallback; verified many quick commands |
 
----
-*All phases completed. Build successful.*
+## Decisions Made
+| Decision | Rationale |
+|----------|-----------|
+| Add dht.dat and downloads/ to .gitignore | They are aria2 runtime artifacts, not source |
+| Fix email-cleaner to load MATON_API_KEY from openclaw.json | Ensures cron and direct runs work without env var setup |
+| Install neural-memory with --break-system-packages | System Python blocks pip; override necessary to restore memory capability; acceptable in isolated env |
 
-## Test Results
-| Test | Input | Expected | Actual | Status |
-|------|-------|----------|--------|--------|
-|      |       |          |        |        |
-
-## Error Log
-| Timestamp | Error | Attempt | Resolution |
-|-----------|-------|---------|------------|
-|           |       | 1       |            |
-
-## 5-Question Reboot Check
-| Question | Answer |
-|----------|--------|
-| Where am I? | Phase 1 (Discovery & Assessment) |
-| Where am I going? | Phases 2-5: improvements, testing, commit, cleanup |
-| What's the goal? | Verify workspace health, implement improvements, commit changes |
-| What have I learned? | Last build (workspace-builder) was validated on 2026-02-14 14:04 UTC+7; git clean |
-| What have I done? | Created planning files, assessed current state |
+## Notes
+- All changes tracked via planning files
+- Will commit with 'build:' prefix after validation

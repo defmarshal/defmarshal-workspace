@@ -1,7 +1,7 @@
-# Task Plan: Workspace Health Verification & Maintenance
+# Task Plan: Strategic Workspace Builder
 
 ## Goal
-Perform a comprehensive workspace health check, verify all integrated systems are functioning correctly, identify improvements, and ensure the environment is optimized for daily operations.
+Analyze the entire workspace (files, MEMORY.md, active-tasks.md, git status, goals) and implement meaningful improvements aligned with long-term objectives. Ensure all integrated systems function correctly and maintain a healthy, optimized environment.
 
 ## Current Phase
 Phase 1: Discovery & Assessment
@@ -10,24 +10,30 @@ Phase 1: Discovery & Assessment
 
 ### Phase 1: Discovery & Assessment
 - [ ] Check git status, recent commits, and repository health
-- [ ] Verify quick launcher commands function correctly
-- [ ] Test memory system (openclaw-memory and neural-memory)
-- [ ] Review memory/ directory and logs for issues
-- [ ] Check cron jobs and agent status
+- [ ] Run `quick health` and capture output
+- [ ] Verify quick launcher commands (`mem`, `search`, `agents`, `dash`, `anime`, etc.)
+- [ ] Test openclaw-memory integration (`claw memory list` and `claw memory search`)
+- [ ] Check neural-memory availability (`nmem stats`); if missing, note for reinstall
+- [ ] Review active-tasks.md to confirm agents are running
+- [ ] Review CRON_JOBS.md against actual crontab (`crontab -l`)
+- [ ] Inspect logs in memory/*.log for errors
+- [ ] Identify untracked files needing ignore (e.g., dht.dat, downloads/)
 - [ ] Document findings in findings.md
 - **Status:** in_progress
 
 ### Phase 2: Improvements & Cleanup
-- [ ] Fix any broken commands or misconfigurations
-- [ ] Clean up temporary files, logs, or deprecated scripts
-- [ ] Enhance quick launcher if needed
-- [ ] Update documentation if gaps found
+- [ ] Update .gitignore to exclude dht.dat and downloads/
+- [ ] Clean up any temporary files or outdated logs (if any)
+- [ ] If neural-memory missing, install via pip3 and initialize
+- [ ] Fix any broken commands or misconfigurations discovered
+- [ ] Update documentation if gaps found (e.g., quick help, CRON_JOBS.md)
 - **Status:** pending
 
 ### Phase 3: Testing & Validation
-- [ ] Run `quick health` and verify output
-- [ ] Test each modified command manually
-- [ ] Confirm memory search and logging work
+- [ ] Re-run `quick health` and verify output
+- [ ] Test modified commands (e.g., quick mem, quick search, quick agents)
+- [ ] Confirm neural-memory (if installed) responds
+- [ ] Verify no critical errors in logs
 - **Status:** pending
 
 ### Phase 4: Commit & Push
@@ -37,22 +43,24 @@ Phase 1: Discovery & Assessment
 - **Status:** pending
 
 ### Phase 5: Active Tasks Update
-- [ ] Mark this agent as validated in active-tasks.md
-- [ ] Add verification results
+- [ ] Update active-tasks.md: mark this session as validated
+- [ ] Add verification results and summary
 - **Status:** pending
 
 ## Key Questions
-1. Is the quick launcher working for all documented commands?
-2. Does the memory system (openclaw-memory + neural-memory) operate correctly?
-3. Are there any broken symlinks, deprecated files, or temp files needing cleanup?
-4. Are cron jobs running as expected and respecting quiet hours?
-5. Is the git repository in a clean, pushable state with proper remote?
+1. Is the workspace in a clean, healthy state (no errors, up to date)?
+2. Are all quick launcher commands functional?
+3. Does the memory system (openclaw-memory + neural-memory) operate correctly?
+4. Are cron jobs correctly documented and running?
+5. Have any temporary files accumulated that should be ignored or cleaned?
+6. Are there any improvements that can be made to configs or docs?
 
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|
-| Focus on verification first | Last build was completed; ensure no regressions |
-| Keep changes small and safe | Avoid disrupting working systems |
+| Verify first; then clean/improve | Last build was solid; ensure no regressions |
+| Keep changes minimal and safe | Avoid disrupting working systems |
+| Reinstall neural-memory if missing | Maintain full memory capabilities |
 
 ## Errors Encountered
 | Error | Attempt | Resolution |
@@ -62,4 +70,5 @@ Phase 1: Discovery & Assessment
 ## Notes
 - Update phase status as you progress: pending → in_progress → complete
 - Re-read this plan before major decisions
-- Log ALL errors
+- Log ALL errors with details
+- Respect quiet hours (23:00–08:00 UTC+7): if in window, exit without building

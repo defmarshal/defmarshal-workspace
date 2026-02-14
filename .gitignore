@@ -35,3 +35,7 @@ skills/planning-with-files/
 # Root-level logs and session files (transient)
 *.log
 *.session
+
+# Aria2 runtime files
+dht.dat
+downloads/
