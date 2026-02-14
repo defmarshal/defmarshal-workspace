@@ -74,14 +74,15 @@ case "$cmd" in
     fi
     ;;
   search)
-    query="${1:-}"
+    # Combine all arguments into a single query string
+    query="$*"
     if [ -z "$query" ]; then
       echo "Error: search requires a query string" >&2
       echo "Usage: quick search <query> [--json]" >&2
       exit 1
     fi
     shift || true
-    # Detect optional --json flag
+    # Detect optional --json flag (must be last)
     RAW_JSON=0
     for arg in "$@"; do
       if [ "$arg" = "--json" ]; then
