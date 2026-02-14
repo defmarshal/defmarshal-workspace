@@ -89,11 +89,10 @@ case "$cmd" in
         RAW_JSON=1
       fi
     done
-    CMD="/home/ubuntu/.npm-global/bin/openclaw memory search $(printf "%q" "$query") --max-results 10 --json"
     if [ $RAW_JSON -eq 1 ] || [ ! -t 1 ]; then
-      $CMD
+      /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json
     else
-      $CMD | jq -r '.results[:10] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"'
+      /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json | jq -r '.results[:10] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"'
     fi
     ;;
   health)

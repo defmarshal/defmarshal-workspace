@@ -1,74 +1,70 @@
-# Task Plan: Strategic Workspace Builder
+# Task Plan — Workspace Builder Run (2026-02-14 22:00 UTC+7)
 
-## Goal
-Analyze the entire workspace (files, MEMORY.md, active-tasks.md, git status, goals) and implement meaningful improvements aligned with long-term objectives. Ensure all integrated systems function correctly and maintain a healthy, optimized environment.
+**Goal:** Analyze workspace health, git hygiene, and documentation; implement small but meaningful improvements; validate and commit.
 
-## Current Phase
-Phase 1: Discovery & Assessment
+**Context:**
+- Cron-triggered strategic builder; respects quiet hours (23:00–08:00 UTC+7).
+- Current time: 22:00 UTC+7 (before quiet window).
+- Previous run left untracked files and deprecations to address.
+
+---
 
 ## Phases
 
-### Phase 1: Discovery & Assessment
-- [ ] Check git status, recent commits, and repository health
-- [ ] Run `quick health` and capture output
-- [ ] Verify quick launcher commands (`mem`, `search`, `agents`, `dash`, `anime`, etc.)
-- [ ] Test openclaw-memory integration (`claw memory list` and `claw memory search`)
-- [ ] Check neural-memory availability (`nmem stats`); if missing, note for reinstall
-- [ ] Review active-tasks.md to confirm agents are running
-- [ ] Review CRON_JOBS.md against actual crontab (`crontab -l`)
-- [ ] Inspect logs in memory/*.log for errors
-- [ ] Identify untracked files needing ignore (e.g., dht.dat, downloads/)
-- [ ] Document findings in findings.md
-- **Status:** in_progress
+### 1. Analysis (Discovery)
+- [ ] Check `git status` and identify untracked files.
+- [ ] Review workspace for deprecated artifacts (`msearch`, old logs).
+- [ ] Test critical `quick` commands: `mem`, `search`, `health`, `anime`, `nyaa-top`, `downloads`.
+- [ ] Verify cron jobs and daemon agents are running.
+- [ ] Audit MEMORY.md for outdated information (needs updating?).
+- [ ] Review `active-tasks.md` for stale entries.
 
-### Phase 2: Improvements & Cleanup
-- [ ] Update .gitignore to exclude dht.dat and downloads/
-- [ ] Clean up any temporary files or outdated logs (if any)
-- [ ] If neural-memory missing, install via pip3 and initialize
-- [ ] Fix any broken commands or misconfigurations discovered
-- [ ] Update documentation if gaps found (e.g., quick help, CRON_JOBS.md)
-- **Status:** pending
+### 2. Identification (Plan Changes)
+- [ ] List removals: `msearch` script (deprecated).
+- [ ] List additions: stage and commit new content files under `content/`.
+- [ ] Documentation updates: add note about `qnt` shortcut? update any stale references.
+- [ ] Cleanup: remove completed entries from `active-tasks.md` (e.g., previous builder's validated entry).
+- [ ] Ensure no leftover temp files or logs that should be rotated.
 
-### Phase 3: Testing & Validation
-- [ ] Re-run `quick health` and verify output
-- [ ] Test modified commands (e.g., quick mem, quick search, quick agents)
-- [ ] Confirm neural-memory (if installed) responds
-- [ ] Verify no critical errors in logs
-- **Status:** pending
+### 3. Implementation (Execution)
+- [ ] Remove deprecated `msearch`.
+- [ ] `git add` new content files (content/2026-02-14-afternoon-update.md, content/2026-02-14-daily-digest.md).
+- [ ] Update MEMORY.md if needed (e.g., note qnt shortcut, recent changes).
+- [ ] Prune `active-tasks.md`: remove entries with status `validated` that are not current.
+- [ ] Run `quick health` and other test commands; capture results.
 
-### Phase 4: Commit & Push
-- [ ] Review all changes with `git diff`
-- [ ] Commit with prefix 'build:'
-- [ ] Push to GitHub
-- **Status:** pending
+### 4. Validation (Close the Loop)
+- [ ] Confirm `git status` clean.
+- [ ] Re-test: `quick mem`, `quick search test` (ensure memory search works).
+- [ ] Verify no temp files remain in workspace root.
+- [ ] Check disk space and system health still acceptable.
 
-### Phase 5: Active Tasks Update
-- [ ] Update active-tasks.md: mark this session as validated
-- [ ] Add verification results and summary
-- **Status:** pending
+### 5. Commit & Push
+- [ ] Commit with prefix `build:` summarizing changes.
+- [ ] Push to origin.
+- [ ] Update `active-tasks.md`: mark this session `validated`, add verification notes.
+- [ ] Remove this builder entry after validation (as per registry rules).
 
-## Key Questions
-1. Is the workspace in a clean, healthy state (no errors, up to date)?
-2. Are all quick launcher commands functional?
-3. Does the memory system (openclaw-memory + neural-memory) operate correctly?
-4. Are cron jobs correctly documented and running?
-5. Have any temporary files accumulated that should be ignored or cleaned?
-6. Are there any improvements that can be made to configs or docs?
+---
 
-## Decisions Made
-| Decision | Rationale |
-|----------|-----------|
-| Verify first; then clean/improve | Last build was solid; ensure no regressions |
-| Keep changes minimal and safe | Avoid disrupting working systems |
-| Reinstall neural-memory if missing | Maintain full memory capabilities |
+## Decisions & Rationale
+- **Why remove `msearch`?** Deprecated in favor of `claw memory search`; keeping it confuses users and clutters workspace.
+- **Why add content files?** They are part of the repo's content/ directory and should be tracked.
+- **Why clean `active-tasks.md`?** Prevents registry bloat; completed tasks should be removed after verification.
+- **Why update MEMORY.md?** Keep long-term memory accurate; note recent tool additions (qnt shortcut, batch selfie improvements, etc.) as potential learnings.
 
-## Errors Encountered
-| Error | Attempt | Resolution |
-|-------|---------|------------|
-|       | 1       |            |
+---
 
-## Notes
-- Update phase status as you progress: pending → in_progress → complete
-- Re-read this plan before major decisions
-- Log ALL errors with details
-- Respect quiet hours (23:00–08:00 UTC+7): if in window, exit without building
+## Error Handling
+- If any test command fails, debug before commit.
+- If git push fails, inspect remote and resolve conflicts.
+- If time is running short (approaching 23:00), stop immediately and resume later.
+
+---
+
+## Success Criteria
+- `git status` clean (no untracked files except maybe intentional ignores).
+- Deprecated files removed.
+- Documentation up-to-date.
+- All validations passing.
+- Changes pushed to GitHub.
