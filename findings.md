@@ -1,12 +1,11 @@
 # Findings: Workspace Analysis (2026-02-14)
 
-## Current State
-- Dashboard (`dashboard.py`) uses `./msearch` (simple ripgrep/grep) to fetch recent memory mentions.
-- `./msearch` is deprecated per MEMORY.md (note: "Old `./msearch` script and `summarize-day` are deprecated")
-- `openclaw memory search` command exists and supports `--json` output, providing structured results with scores and snippets.
-- A system cron job for `summarize-day` exists (22:30 Asia/Bangkok) and runs a script that is no longer needed.
-- The `summarize-day` script (7886 bytes) exists and is executable.
-- `quick` script has uncommitted changes (selfie commands) and broken memory commands (uses `claw` which is not available); these are not touched to avoid conflicts with dev-agent.
+## Current State (Final)
+- Dashboard (`dashboard.py`) already uses `openclaw memory search --json` (committed ea65a7d). No further changes needed.
+- Deprecated `summarize-day` cron job already removed from crontab (commit 08f7d4d). Script existed but not scheduled.
+- `summarize-day` script has been deleted to reduce workspace clutter (this build).
+- All build-related changes (dashboard modernization, cron cleanup) are committed and pushed.
+- `quick` script remains with uncommitted changes from dev-agent; we avoided touching it.
 
 ## Opportunities
 1. **Modernize memory search in dashboard** – Switch to `openclaw memory search --json` for cleaner parsing and better relevance.
