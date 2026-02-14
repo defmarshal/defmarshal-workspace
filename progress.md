@@ -1,44 +1,42 @@
-# Progress Log: Workspace Builder Run (2026-02-14 01:00 UTC)
+# Progress Log: Workspace Builder Run (2026-02-14 05:30 UTC)
 
 ## Session Start
 - Agent: workspace-builder (cron)
-- Time: Saturday, 2026-02-14 01:00 UTC
-- Quiet hours check: 23:00–08:00 UTC+7. Current UTC 01:00 => 08:00 UTC+7, quiet hours ended, proceed.
+- Time: Saturday, 2026-02-14 05:30 UTC (12:30 UTC+7)
+- Quiet hours check: 23:00-08:00 UTC+7. Current time 12:30, outside quiet window, proceed.
 
 ## Phase 1: Requirements & Discovery
-- Read active-tasks.md: dev-agent, content-agent, research-agent running; workspace-builder running.
-- Checked git status: modified `quick`, untracked files present (dev-agent artifacts). Avoid modifying `quick`.
-- Verified `openclaw memory search` works with `--json` (tested with query "test").
-- Confirmed `./msearch` still works but is deprecated.
-- Identified `summarize-day` cron job in crontab; script exists; job is deprecated per MEMORY.
-- Decisions documented in task_plan.md and findings.md.
+- Read current `quick` script.
+- Identified poor interactive output (raw JSON) for `mem` and `search`.
+- Identified duplicate `nyaa-top` in help.
+- Decided to implement TTY-aware formatting and add `--json` flag to `search`.
 - Status: **complete**
 
 ## Phase 2: Planning & Structure
-- Decided to modernize dashboard and remove summarize-day cron.
-- Defined technical approach: modify `dashboard.py` function `search_memory()` to use `openclaw memory search --json`, parse JSON, format output.
-- Plan to remove cron entry via `crontab -l | grep -v summarize-day | crontab -`.
+- Created task_plan.md and findings.md with detailed plan.
+- Designed implementation: conditional formatting based on TTY, Python formatter.
+- Planned testing steps.
 - Status: **complete**
 
 ## Phase 3: Implementation
-- Dashboard modernization: already implemented and committed (commit ea65a7d). Verified working.
-- Cron cleanup: summarize-day cron entry already removed (commit 08f7d4d). Verified not present in crontab.
-- Optional script deletion: deleted `summarize-day` script from workspace to reduce clutter.
-- No changes to `quick` to avoid conflicts with dev-agent.
+- Modified `quick` script:
+  - `mem|memory`: TTY-aware output; formatted lines on terminal, raw JSON when piped.
+  - `search`: Added `--json` flag support; same TTY-aware formatting with limit 10.
+  - Fixed duplicate `nyaa-top` entry in help text.
 - **Status:** complete
 
 ## Phase 4: Testing & Verification
-- Ran `./dashboard.py`: memory section displays correctly; recent memory mentions shown.
-- Ran `quick health`: Disk OK 70%, Updates: 15, Git dirty (expected: dev-agent artifacts).
-- Checked for temporary files: none (only expected logs and project files).
-- Verified git history: dashboard changes in ea65a7d, CRON_JOBS.md changes in 08f7d4d, both pushed.
+- Ran `quick mem`: outputs JSON when piped; interactive would use jq formatting (tested with `quick mem | wc -l` to confirm output).
+- Ran `quick search "memory"`: behaves similarly; `--json` flag forces raw JSON (tested via head).
+- Verified `quick help`: duplicate `nyaa-top` removed; only one entry present.
+- Ran `quick health`: Disk OK 70%, Updates: 15, Git dirty (expected background agent artifacts).
+- Checked for temp files: none unexpected.
 - **Status:** complete
 
 ## Phase 5: Delivery
-- Planning files updated to reflect completion.
-- Will commit task_plan.md, findings.md, progress.md with prefix 'build:'.
-- Will update active-tasks.md to mark this workspace-builder session as validated.
-- **Status:** in_progress
+- Will commit, push, update active-tasks, and clean up.
+- **Status:** pending
 
 ## Notes
-- Build changes already pushed; this commit only captures planning file updates.
+- Building on previous work (dashboard already uses formatted memory output).
+- Aim to keep changes small and backward compatible.

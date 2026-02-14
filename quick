@@ -34,9 +34,6 @@ Commands:
   nyaa-top [--limit N] [--category cat] [--select] [--add]  Show top torrents sorted
                   by seed count. Optional --select for interactive pick; --add to send
                   the chosen magnet to aria2 automatically.
-  nyaa-top [--limit N] [--category cat] [--select] [--add]  Show top torrents sorted
-                  by seed count. Optional --select for interactive pick; --add to send
-                  the chosen magnet to aria2 automatically.
   log <category> "<message>"  Log an event to openclaw-memory (category: decision, learning, event, note, etc.)
   email-clean [options]      Auto-clean Gmail: archive promotional emails and apply labels.
                               Options: --execute (apply changes), --max N, --query "gmail query"
@@ -63,16 +60,35 @@ case "$cmd" in
     python3 "$WORKSPACE/web-dashboard.py"
     ;;
   mem|memory)
-    /home/ubuntu/.npm-global/bin/openclaw memory search "recent" --max-results 20 --json
+    # Human-friendly output when in terminal, JSON when piped
+    if [ -t 1 ]; then
+      /home/ubuntu/.npm-global/bin/openclaw memory search "recent" --max-results 20 --json | \
+        jq -r '.results[:20] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"'
+    else
+      /home/ubuntu/.npm-global/bin/openclaw memory search "recent" --max-results 20 --json
+    fi
     ;;
   search)
     query="${1:-}"
     if [ -z "$query" ]; then
       echo "Error: search requires a query string" >&2
-      echo "Usage: quick search <query>" >&2
+      echo "Usage: quick search <query> [--json]" >&2
       exit 1
     fi
-    /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json
+    shift || true
+    # Detect optional --json flag
+    RAW_JSON=0
+    for arg in "$@"; do
+      if [ "$arg" = "--json" ]; then
+        RAW_JSON=1
+      fi
+    done
+    CMD="/home/ubuntu/.npm-global/bin/openclaw memory search $(printf "%q" "$query") --max-results 10 --json"
+    if [ $RAW_JSON -eq 1 ] || [ ! -t 1 ]; then
+      $CMD
+    else
+      $CMD | jq -r '.results[:10] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"'
+    fi
     ;;
   health)
     python3 "$WORKSPACE/workspace-health.py" 2>/dev/null || "$WORKSPACE/workspace-health"
