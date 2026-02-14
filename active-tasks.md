@@ -23,17 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [daemon] dev-agent — Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215960. Logs: dev-agent.log.
-  - Verification: Monitor log and commits; daemon auto-restarts.
-
-- [agent:main:subagent:9a226a1c-d763-47d6-aa8f-9cef6fb0f355] research-agent — Continuous research on anime, banking, tech, AI (started: 2026-02-14 08:57, status: running)
-  - Note: Use startup script to respawn if missing after Gateway restart.
-  - Verification: pending (review report quality and coverage)
-
-- [agent:main:subagent:b8df7b21-6e63-4257-a432-dd44e608ee1a] content-agent — Continuous content creation (anime, tech, summaries) (started: 2026-02-14 08:57, status: running)
-  - Note: Use startup script to respawn if missing after Gateway restart.
-  - Verification: pending (monitor output cycles)
-
+- [daemon] dev-agent — Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
+- [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
+- [daemon] research-agent — Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
 - [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Strategic builder (every 2h, respects quiet hours) (started: 2026-02-13 15:00, status: running)
   - Verification: Latest run (2026-02-14) completed: dashboard modernized to use openclaw memory search, deprecated summarize-day cron removed, script deleted. All changes committed and pushed. Health checks passed.
 
