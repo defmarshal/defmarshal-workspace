@@ -1,0 +1,16 @@
+[2026-02-13 Cycle 1] Completed improvements:
+- Added anime skill (Jikan API) with full bash implementation
+- Migrated clawaifu-selfie from Grok/FAL to Nekos API (free)
+- Organized experimental files into clawaifu-selfie/experimental/
+- Updated .gitignore: experimental/, __pycache__/
+- Removed npm artifacts (package.json, node_modules) from clawaifu-selfie
+- Refreshed HEARTBEAT.md for clarity
+- Updated active-tasks.md
+- Added workspace-health tutorial article
+- Committed and pushed successfully (commit 388435e)
+Verification: anime search "frieren" returns results; grok-selfie.sh syntax OK.
+[2026-02-13 Cycle 1b] Quick fix:
+- Symlinked anime script into anime-lookup skill to restore functionality
+- Committed and pushed (commit 955a2ec)
+
+Cycle 1 complete. Sleeping 20 minutes before next scan...

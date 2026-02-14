@@ -20,6 +20,10 @@ Commands:
   git-status      Show brief git status
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
+  selfie [caption] [rating]  Send a random anime image via Nekos API.
+                  rating: safe (default) or explicit. Caption optional.
+  selfie-batch <count> [rating] [caption]  Fetch multiple anime images (1-20) and
+                  send as a single zip file. Default count=5, rating=safe.
   log <category> "<message>"  Log an event to openclaw-memory (category: decision, learning, event, note, etc.)
   email-clean [options]      Auto-clean Gmail: archive promotional emails and apply labels.
                               Options: --execute (apply changes), --max N, --query "gmail query"
@@ -46,7 +50,7 @@ case "$cmd" in
     python3 "$WORKSPACE/web-dashboard.py"
     ;;
   mem|memory)
-    claw memory list --limit=20
+    /home/ubuntu/.npm-global/bin/openclaw memory search "recent" --max-results 20 --json
     ;;
   search)
     query="${1:-}"
@@ -55,7 +59,7 @@ case "$cmd" in
       echo "Usage: quick search <query>" >&2
       exit 1
     fi
-    claw memory search "$query" --limit=10
+    /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json
     ;;
   health)
     python3 "$WORKSPACE/workspace-health.py" 2>/dev/null || "$WORKSPACE/workspace-health"
@@ -68,6 +72,30 @@ case "$cmd" in
     ;;
   anime)
     "$WORKSPACE/anime-companion" "$@"
+    ;;
+  selfie)
+    # Send a random anime image via Nekos API
+    # Usage: quick selfie [caption] [rating]
+    # Rating: safe (default) or explicit
+    caption="${1:-}"
+    rating="${2:-safe}"
+    if [ "$rating" != "safe" ] && [ "$rating" != "explicit" ]; then
+      echo "Error: rating must be 'safe' or 'explicit'" >&2
+      exit 1
+    fi
+    # Use credentials from environment or openclaw.json (already set by gateway)
+    "$WORKSPACE/skills/clawaifu-selfie/grok-selfie.sh" "$caption" "$rating"
+    ;;
+  selfie-batch)
+    # Send multiple anime images as a zip via Nekos API
+    # Usage: quick selfie-batch <count> [rating] [caption]
+    # count: 1-20 (default: 5)
+    # rating: safe (default) or explicit
+    count="${1:-5}"
+    rating="${2:-safe}"
+    shift 2 || true
+    caption="${*:-}"
+    "$WORKSPACE/skills/clawaifu-selfie/grok-selfie-batch.sh" "$count" "$rating" "$caption"
     ;;
   log)
     "$WORKSPACE/log-event" "$@"

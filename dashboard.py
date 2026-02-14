@@ -161,22 +161,23 @@ def get_upgradable_count():
         return 0
 
 def search_memory(query="recent", limit=3):
-    out, err, rc = run_cmd(f"./msearch '{query}'")
-    if rc != 0 or not out:
-        return []
-    results = []
-    count = 0
-    for line in out.splitlines():
-        if count >= limit:
-            break
-        if ':' in line:
-            parts = line.split(':', 2)
-            if len(parts) >= 3:
-                file = Path(parts[0]).name
-                content = parts[2][:100] + ("..." if len(parts[2]) > 100 else "")
-                results.append(f"{file}: {content}")
-                count += 1
-    return results
+    try:
+        import shlex
+        # Use openclaw memory search with JSON output
+        cmd = f"openclaw memory search --json --max-results {limit} {shlex.quote(query)}"
+        out, err, rc = run_cmd(cmd)
+        if rc != 0 or not out:
+            return []
+        data = json.loads(out)
+        results = []
+        for item in data.get("results", [])[:limit]:
+            file = Path(item["path"]).name
+            snippet = item["snippet"].strip().split('\n')[0]  # first line
+            snippet = snippet[:100] + ("..." if len(snippet) > 100 else "")
+            results.append(f"{file}: {snippet}")
+        return results
+    except Exception as e:
+        return [f"Memory search error: {e}"]
 
 def color(text, color_code):
     return f"\033[{color_code}m{text}\033[0m"

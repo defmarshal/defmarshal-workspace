@@ -99,7 +99,23 @@
   - `quick help` – usage guide
 - **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration via edge-tts. Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
 - **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; validates output before committing; updates active-tasks.md.
-- **clawaifu-selfie**: skill for anime selfies via fal.ai; requires `FAL_KEY`, `BOT_TOKEN`, `TELEGRAM_CHAT_ID`; persona: Reze from Chainsaw Man.
+- **clawaifu-selfie**: skill for anime selfies via Nekos API (free, no auth). Supports SFW/NSFW toggle and batch mode: `quick selfie-batch <count> [rating] [caption]` sends a tar.gz archive of multiple images (1-20). Persona: Reze from Chainsaw Man.
+- **Anime Companion** (`anime-companion`): integrated CLI for exploring anime via Jikan API with optional TTS narration via edge-tts. Commands: `search`, `info`, `top`, `season`, `upcoming`. Use `--tts` to generate MP3 of synopsis.
+- **Workspace Builder**: cron-based agent (every 2h) using `planning-with-files` skill; respects quiet hours; validates output before committing; updates active-tasks.md.
+- **`quick` launcher**: unified command for common tasks:
+  - `quick dash` – run CLI dashboard
+  - `quick web` – run web dashboard (port 8800)
+  - `quick mem` – show recent memories (claw memory list)
+  - `quick search <query>` – semantic memory search (claw memory search)
+  - `quick health` – workspace health
+  - `quick holidays` – upcoming Indonesian holidays
+  - `quick git-status` – brief git status
+  - `quick anime <cmd>` – Anime Companion (search/info/top/season/upcoming)
+  - `quick selfie [caption] [rating]` – single anime image (safe/explicit)
+  - `quick selfie-batch <count> [rating] [caption]` – batch images as tar.gz (1-20)
+  - `quick log <category> "<msg>"` – log event to openclaw-memory
+  - `quick email-clean [--execute] [--max N]` – auto-clean Gmail
+  - `quick help` – usage guide
 - Current model: `openrouter/stepfun/step-3.5-flash:free`
 
 ## Memory Hierarchy (Advanced)
