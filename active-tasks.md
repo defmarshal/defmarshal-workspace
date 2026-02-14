@@ -23,13 +23,13 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [agent:main:subagent:9f09cc7d-8ab7-4957-a76d-97c32c8aa743] content-agent — Continuous content creation (anime, tech, summaries) (started: 2026-02-13 17:35, status: running)
+- [agent:main:subagent:b8df7b21-6e63-4257-a432-dd44e608ee1a] content-agent — Continuous content creation (anime, tech, summaries) (started: 2026-02-14 08:57, status: running)
   - Verification: pending (monitor output cycles)
 
-- [agent:main:subagent:95145785-118c-4dfd-a821-eef8c3ed803d] research-agent — Continuous research on anime, banking, tech, AI (started: 2026-02-13 17:35, status: running)
+- [agent:main:subagent:9a226a1c-d763-47d6-aa8f-9cef6fb0f355] research-agent — Continuous research on anime, banking, tech, AI (started: 2026-02-14 08:57, status: running)
   - Verification: pending (review report quality and coverage)
 
-- [agent:main:subagent:609e93ce-4c21-4d60-acf1-3dbbf0b0d5cc] dev-agent — Continuous development (tools, automations, infrastructure) (started: 2026-02-13 17:35, status: running)
+- [agent:main:subagent:02242a01-9e32-4884-81ec-dcd414a30231] dev-agent — Continuous development (tools, automations, infrastructure) (started: 2026-02-14 08:57, status: running)
   - Verification: pending (monitor commits and improvements)
 
 - [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Strategic builder (every 2h, respects quiet hours) (started: 2026-02-13 15:00, status: running)

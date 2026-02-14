@@ -15,14 +15,6 @@ All jobs run under the `ubuntu` user. Timezone is UTC unless otherwise specified
 - **Log**: `memory/email-cleaner-cron.log`
 - **Description**: Runs the email-cleaner script in dry-run mode by default. Use `--execute` to apply changes (requires manual trigger).
 
-### Daily Memory Summarization
-- **Schedule**: Daily at 22:30 Asia/Bangkok (22:30 local)
-- **Command**:
-  ```bash
-  30 22 * * * TZ='Asia/Bangkok' /home/ubuntu/.openclaw/workspace/summarize-day >> /home/ubuntu/.openclaw/workspace/memory/daily-summary-cron.log 2>&1
-  ```
-- **Log**: `memory/daily-summary-cron.log`
-- **Description**: Generates a categorized daily summary from the day's memory entries and appends to `memory/YYYY-MM-DD.md`.
 
 ### Traffic Report (Weekly)
 - **Schedule**: Weekly on Sunday at 22:00 UTC (Monday 05:00 Jakarta, Monday 22:00 UTC+7? Actually 22:00 UTC is Monday 05:00 Jakarta). This runs Sunday evenings UTC.
