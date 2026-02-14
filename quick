@@ -43,6 +43,7 @@ Commands:
                               Rules: archives CATEGORY_PROMOTIONS/UPDATES, spammy keywords/senders,
                                     and labels messages containing keywords like "welcome" with configurable labels.
   agents [flags]               List running sessions/agents; flags passed to `openclaw sessions` (e.g., --json, --help)
+  downloads [--json] [--watch SECS]  Show aria2 download progress (active downloads). Use --watch to auto-refresh.
   help                       Show this help message
 
 Examples:
@@ -159,6 +160,10 @@ case "$cmd" in
     else
       /home/ubuntu/.npm-global/bin/openclaw sessions "$@"
     fi
+    ;;
+  downloads)
+    # Show aria2 download progress (uses RPC)
+    python3 "$WORKSPACE/downloads-status" "$@"
     ;;
   help|--help|-h)
     show_help

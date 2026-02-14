@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+# Show aria2 download progress
+# Usage: quick downloads [--json] [--watch SECS]
+
+import argparse
+import json
+import sys
+import requests
+from datetime import timedelta
+
+RPC_URL = "http://localhost:6800/jsonrpc"
+RPC_TOKEN = "token:openclaw_secret_123"
+
+def format_speed(bytes_per_sec):
+    if bytes_per_sec < 1024:
+        return f"{bytes_per_sec} B/s"
+    elif bytes_per_sec < 1024**2:
+        return f"{bytes_per_sec/1024:.1f} KB/s"
+    elif bytes_per_sec < 1024**3:
+        return f"{bytes_per_sec/(1024**2):.1f} MB/s"
+    else:
+        return f"{bytes_per_sec/(1024**3):.2f} GB/s"
+
+def format_bytes(num_bytes):
+    if num_bytes < 1024:
+        return f"{num_bytes} B"
+    elif num_bytes < 1024**2:
+        return f"{num_bytes/1024:.1f} KB"
+    elif num_bytes < 1024**3:
+        return f"{num_bytes/(1024**2):.1f} MB"
+    else:
+        return f"{num_bytes/(1024**3):.2f} GB"
+
+def format_eta(seconds):
+    if seconds is None or seconds < 0:
+        return "?"
+    return str(timedelta(seconds=int(seconds)))
+
+def fetch_status():
+    payload = {"jsonrpc":"2.0","id":"1","method":"aria2.tellActive","params":[RPC_TOKEN]}
+    try:
+        r = requests.post(RPC_URL, json=payload, timeout=5)
+        r.raise_for_status()
+        return r.json().get('result', [])
+    except Exception as e:
+        print(f"Error: Cannot contact aria2 RPC: {e}", file=sys.stderr)
+        sys.exit(1)
+
+def render_table(downloads):
+    if not downloads:
+        print("No active downloads.")
+        return
+
+    # Header
+    print(f"{'#':<3} {'Status':<10} {'Progress':<10} {'Speed':<12} {'ETA':<10} {'File'}")
+    print("-" * 80)
+
+    for idx, d in enumerate(downloads, 1):
+        status = d.get('status', 'unknown')
+        total = int(d.get('totalLength', 0))
+        completed = int(d.get('completedLength', 0))
+        speed = int(d.get('downloadSpeed', 0))
+        dir_path = d.get('dir', '')
+        files = d.get('files', [])
+
+        # Get filename from first file
+        filename = "?"
+        if files:
+            path = files[0].get('path', '')
+            # Strip directory prefix if it matches dir
+            if path.startswith(dir_path + '/'):
+                filename = path[len(dir_path)+1:]
+            elif path:
+                filename = path.split('/')[-1]
+            else:
+                filename = "?"
+        # Truncate filename
+        if len(filename) > 40:
+            filename = filename[:37] + "..."
+
+        # Progress percentage
+        if total > 0:
+            pct = (completed / total) * 100
+            prog_str = f"{pct:5.1f}%"
+        else:
+            prog_str = "N/A"
+
+        # ETA: estimate from speed if available
+        if speed > 0 and total > completed:
+            eta_sec = (total - completed) / speed
+            eta_str = format_eta(eta_sec)
+        else:
+            eta_str = "?"
+
+        print(f"{idx:<3} {status:<10} {prog_str:<10} {format_speed(speed):<12} {eta_str:<10} {filename}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Show aria2 download progress")
+    parser.add_argument("--json", action="store_true", help="Output raw JSON")
+    parser.add_argument("--watch", type=int, metavar="SECS", help="Refresh every N seconds")
+    args = parser.parse_args()
+
+    def show():
+        data = fetch_status()
+        if args.json:
+            print(json.dumps(data, indent=2))
+        else:
+            # Clear screen for watch mode
+            if args.watch:
+                print("\033[H\033[J", end="")
+            render_table(data)
+
+    if args.watch:
+        try:
+            import time
+            while True:
+                show()
+                time.sleep(args.watch)
+        except KeyboardInterrupt:
+            sys.exit(0)
+    else:
+        show()
+
+if __name__ == "__main__":
+    main()
