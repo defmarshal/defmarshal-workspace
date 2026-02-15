@@ -1,60 +1,64 @@
-# Task Plan: Enhance memory system monitoring in health/dashboard
+# Strategic Workspace Builder — Task Plan
 
-## Goal
-Integrate openclaw-memory health metrics into workspace-health and CLI dashboard for comprehensive system monitoring.
+**Goal**: Analyze the entire workspace and implement meaningful improvements aligned with long-term objectives.
 
-## Current Phase
-Phase 5 (complete)
+**Started**: 2026-02-15 11:00 UTC (UTC+7: 18:00)
+**Session Key**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
+**Model**: openrouter/stepfun/step-3.5-flash:free
+
+---
 
 ## Phases
 
-### Phase 1: Assessment & Planning
-- [x] Review current memory system setup and monitoring tools
-- [x] Identify gaps: workspace-health lacks memory metrics; CLI dashboard lacks stats
-- **Status:** complete
+### Phase 1: Context Analysis
+- [ ] Read and assess current workspace state (git status, untracked files, agent health)
+- [ ] Review MEMORY.md, active-tasks.md, CRON_JOBS.md for alignment
+- [ ] Check memory system health and dirty state
+- [ ] Review recent content-agent outputs (content/INDEX.md)
+- [ ] Evaluate quick launcher completeness and dashboard features
+- [ ] Identify any broken/outdated components
 
-### Phase 2: Enhance workspace-health with memory metrics
-- [x] Modify workspace-health script to include memory status (files, chunks, dirty, provider)
-- [x] Test: quick health should now include memory info (or run workspace-health directly)
-- **Status:** complete
+**Deliverable**: Summary of current state and potential improvement areas
 
-### Phase 3: Enhance CLI dashboard with memory stats
-- [x] Update dashboard.py to display memory system stats (matching web dashboard)
-- [x] Keep recent memory search as is, add a stats line above it
-- **Status:** complete
+### Phase 2: Improvement Identification
+- [ ] List concrete improvements (prioritize by impact & alignment)
+- [ ] Decide on changes to implement in this session (keep small but meaningful)
+- [ ] Estimate effort and risks
 
-### Phase 4: Validation & Testing
-- [x] Run `quick health` and verify memory metrics appear
-- [x] Run `quick dash` and verify memory stats are shown
-- [x] Run `quick memory-status` as fallback check
-- [x] Ensure no errors
-- **Status:** complete
+**Deliverable**: Prioritized improvement plan with rationale
 
-### Phase 5: Documentation & Delivery
-- [x] Update quick launcher help if needed
-- [x] Update MEMORY.md with new monitoring capabilities
-- [x] Commit changes with 'build:' prefix and push
-- [x] Update active-tasks.md
-- **Status:** complete
+### Phase 3: Implementation
+- [ ] Make code/script/config changes incrementally
+- [ ] Update documentation as needed (MEMORY.md, CRON_JOBS.md, quick help, etc.)
+- [ ] Test each change locally
+- [ ] Update `findings.md` with lessons and `progress.md` with steps taken
 
-## Key Questions
-1. How to fetch memory status reliably in shell/Python? Use `openclaw memory status --json`.
-2. Should we include FTS/vector/batch status? Yes, but keep summary concise (files/chunks/dirty/provider).
-3. Format: one-line summary for workspace-health; multi-line for dashboard.
+**Deliverable**: Modified files, updated docs, test results
 
-## Decisions Made
-| Decision | Rationale |
-|----------|-----------|
-| Add memory stats to workspace-health | Consolidated health view; already used for alerts |
-| Add memory stats to CLI dashboard | Parity with web dashboard; better UX |
-| Use openclaw memory status JSON output | Reliable, structured data |
-| Keep output concise | Health needs one-line; dashboard can show a stats line |
+### Phase 4: Validation & Close the Loop
+- [ ] Run `quick health` and verify all systems healthy
+- [ ] Test affected commands (e.g., `quick mem`, `quick search test`, `quick dash`, etc.)
+- [ ] Verify git status: no unintended unstaged changes; only intended commits
+- [ ] Ensure no temp files left behind
+- [ ] Commit changes with prefix `build:` and push to GitHub
+- [ ] Update active-tasks.md with verification results and mark validated
 
-## Errors Encountered
-| Error | Attempt | Resolution |
-|-------|---------|------------|
+**Deliverable**: Validated, committed improvements; updated active-tasks.md
 
-## Notes
-- Update phase status as you progress: pending → in_progress → complete
-- Re-read this plan before major decisions
-- Log ALL errors
+### Phase 5: Summary
+- [ ] Prepare final plain-text summary of what was done
+- [ ] Note any follow-ups or open issues
+
+---
+
+## Constraints
+
+- Respect quiet hours (23:00–08:00 UTC+7). Current time: 18:00 UTC+7 → OK
+- Keep changes small but meaningful
+- Close the loop with validation
+- Prefix commit messages: `build: <description>`
+
+---
+
+## Start Time
+2026-02-15 11:00 UTC

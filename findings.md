@@ -1,41 +1,48 @@
-# Findings & Decisions
+# Workspace Builder — Findings
 
-## Requirements
-- Enhance monitoring of openclaw-memory system
-- Integrate memory health metrics into existing health check (workspace-health)
-- Integrate memory system stats into CLI dashboard (dashboard.py)
-- Keep changes small and focused
+This file stores research, discoveries, and decisions made during the strategic build session.
 
-## Research Findings
-- `openclaw memory status --json` returns structured status: provider, model, files, chunks, dirty, cache, fts, vector, batch, dbPath, workspaceDir
-- `openclaw memory search` used for recent memories
-- workspace-health is a Python script outputting a one-line summary
-- CLI dashboard already shows system metrics (disk, load, memory RAM, git, updates, holidays, recent memory)
-- Web dashboard already shows memory stats line: "Files: X, Chunks: Y, Dirty: Z · Provider"
-- Memory stats script (`memory-stats`) exists and formats the JSON nicely; can reuse its logic
-
-## Technical Decisions
-| Decision | Rationale |
-|----------|-----------|
-| Modify workspace-health to append memory metrics | Centralized health; used in cron alerts |
-| Show in workspace-health: "Memory: <files> files, <chunks> chunks (<dirty>), provider: <provider>" | Concise, informative |
-| Modify dashboard.py to add a stats line before recent memories | Parity with web dashboard, quick glance |
-| Use same style in dashboard: "X files, Y chunks (dirty/clean) · provider" | Consistency |
-| Handle errors gracefully: show "unavailable" or "error" if memory command fails | Robustness |
-
-## Issues Encountered
-| Issue | Resolution |
-|-------|------------|
-
-## Resources
-- openclaw memory CLI: `/home/ubuntu/.npm-global/bin/openclaw`
-- Workspace health: `/home/ubuntu/.openclaw/workspace/workspace-health`
-- CLI dashboard: `/home/ubuntu/.openclaw/workspace/dashboard.py`
-- Web dashboard reference: `/home/ubuntu/.openclaw/workspace/web-dashboard.py` (get_memory_stats function)
-
-## Visual/Browser Findings
-N/A
+**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
+**Started**: 2026-02-15 11:00 UTC
 
 ---
-*Update after every 2 view/browser/search operations*
-*This prevents visual information from being lost*
+
+## Analysis Results
+
+**Current State:**
+- Git status: 3 modified (planning files) + 2 untracked content files
+- Memory system: 5 files, 39 chunks, dirty: true, FTS+ enabled, vector disabled (Voyage rate limits)
+- All agents running: dev-agent, content-agent, research-agent (all daemons)
+- All utility scripts present and functional
+- Content archive: `content/INDEX.md` needs update to include two new status files from content-agent (Feb 15 afternoon)
+
+**Identified Issues/Opportunities:**
+1. Untracked content files should be added to preserve historical record and clean git status.
+2. Content archive index (content/INDEX.md) is outdated; missing the two new files.
+3. Memory system shows dirty state; can be reindexed to ensure index freshness.
+4. Quick launcher could benefit from a command to display the latest content digest for quick access.
+5. Planning files themselves should be committed as documentation of this build session.
+6. After changes, need to validate via `quick health` and test commands.
+7. Must update active-tasks.md to mark this workspace-builder session as validated.
+
+
+---
+
+## Improvement Decisions
+
+| Improvement | Decision | Rationale |
+|-------------|----------|-----------|
+| Add untracked content files to git | ✅ Yes | Preserve complete history; clean git status; content archive should be fully versioned |
+| Update content/INDEX.md | ✅ Yes | Keep index current with all content files |
+| Reindex memory system | ✅ Yes | Clear dirty flag; ensure search index is fresh |
+| Add `quick content-latest` command | ✅ Yes | One‑liner to view the most recent digest; aligns with "exploring new things" and convenience |
+| Commit planning files | ✅ Yes | Document the build process; AGENTS.md says "if it's not in a file, it doesn't exist" |
+| Update active-tasks.md validation | ✅ Yes | Required for close the loop |
+
+---
+
+## Error Log
+
+| Error | Attempt | Resolution |
+|-------|---------|------------|
+| *(none yet)* | | |

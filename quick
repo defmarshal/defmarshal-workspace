@@ -47,6 +47,7 @@ Commands:
                                     and labels messages containing keywords like "welcome" with configurable labels.
   agents [flags]               List running sessions/agents; flags passed to `openclaw sessions` (e.g., --json, --help)
   downloads [--json] [--watch SECS]  Show aria2 download progress (active downloads). Use --watch to auto-refresh.
+  content-latest              Show the latest content digest/note from content/ directory.
   help                       Show this help message
 
 Examples:
@@ -181,7 +182,16 @@ case "$cmd" in
     # Show aria2 download progress (uses RPC)
     python3 "$WORKSPACE/downloads-status" "$@"
     ;;
-  help|--help|-h)
+  content-latest)
+    # Show the latest content digest/note
+    latest=$(ls -t content/*.md 2>/dev/null | head -1)
+    if [ -z "$latest" ]; then
+      echo "No content files found in content/" >&2
+      exit 1
+    fi
+    cat "$latest"
+    ;;
+  help)
     show_help
     ;;
   *)
