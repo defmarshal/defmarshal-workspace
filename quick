@@ -21,6 +21,7 @@ Commands:
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   git-status      Show brief git status
+  git-today       Show git commits from today (since midnight)
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
   selfie [caption] [rating]  Send a random anime image via Nekos API.
@@ -123,6 +124,9 @@ case "$cmd" in
     ;;
   git-status)
     git -C "$WORKSPACE" status --short
+    ;;
+  git-today)
+    git -C "$WORKSPACE" log --since="midnight" --oneline || echo "No commits today"
     ;;
   anime)
     "$WORKSPACE/anime-companion" "$@"
