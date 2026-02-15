@@ -38,30 +38,38 @@
   - dashboard.py (modified)
 
 ### Phase 4: Validation & Testing
-- **Status:** pending
-- **Started:** TBD
+- **Status:** complete
+- **Started:** 2026-02-15 ~09:45 UTC
+- **Completed:** 2026-02-15 ~09:50 UTC
 - Actions taken:
-  - Will test quick health and quick dash outputs
-  - Verify no errors
-- Files to modify:
+  - Ran `./workspace-health` → shows memory metrics correctly: "Memory: 5f/39c (dirty) voyage FTS+"
+  - Ran `./dashboard.py` → shows memory stats line: "Memory: 5 files, 39 chunks (dirty) · voyage (FTS)"
+  - Ran `quick memory-status` → confirms memory system healthy
+  - All tests passed, no errors
+- Files created/modified:
   - (none expected)
 
 ### Phase 5: Documentation & Delivery
-- **Status:** pending
-- **Started:** TBD
+- **Status:** complete
+- **Started:** 2026-02-15 ~09:50 UTC
+- **Completed:** 2026-02-15 ~10:00 UTC
 - Actions taken:
-  - Update quick help if needed
-  - Update MEMORY.md with new monitoring capabilities
-  - Commit and push
-  - Update active-tasks.md
-- Files to modify:
-  - MEMORY.md
-  - active-tasks.md
+  - Updated MEMORY.md with new monitoring capabilities (memory metrics in health and dashboard)
+  - Updated active-tasks.md: set workspace-builder entry to validated with verification notes
+  - Committed all changes: git commit -m "build: enhance memory monitoring; add memory metrics to workspace-health and CLI dashboard"
+  - Pushed to GitHub: git push origin master
+- Files created/modified:
+  - MEMORY.md (modified)
+  - active-tasks.md (modified)
+  - (committed: task_plan.md, findings.md, progress.md, workspace-health, dashboard.py)
 
 ## Test Results
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|
-|      |       |          |        |        |
+| workspace-health | ./workspace-health | One-line summary incl. memory metrics | "Disk OK 63% \| Updates: 15 \| Git dirty (5 changed) \| Memory: 5f/39c (dirty) voyage FTS+" | ✓ |
+| CLI dashboard | ./dashboard.py | Shows memory stats line above recent memories | Output contains "Memory: 5 files, 39 chunks (dirty) · voyage (FTS)" | ✓ |
+| memory-status | quick memory-status | Detailed memory index info | Shows files=5, chunks=39, dirty=yes, provider=voyage, FTS ready | ✓ |
+| quick health | quick health | Same memory metrics as workspace-health | "Disk OK 63% \| Updates: 15 \| Git dirty (5 changed) \| Memory: 5f/39c (dirty) voyage FTS+" | ✓ |
 
 ## Error Log
 | Timestamp | Error | Attempt | Resolution |
@@ -71,11 +79,11 @@
 ## 5-Question Reboot Check
 | Question | Answer |
 |----------|--------|
-| Where am I? | Phase 2 (enhance workspace-health) |
-| Where am I going? | Phase 3 (dashboard), Phase 4 (validate), Phase 5 (deliver) |
+| Where am I? | All phases complete; validation passed |
+| Where am I going? | Task finished; deliver summary |
 | What's the goal? | Integrate memory health into health check and CLI dashboard |
-| What have I learned? | openclaw memory status JSON format; existing web dashboard integration |
-| What have I done? | Phase 1 complete; planning files created; about to modify workspace-health |
+| What have I learned? | openclaw memory status JSON; parsing and presenting metrics |
+| What have I done? | Modified workspace-health and dashboard.py; updated docs; committed and pushed |
 
 ---
 *Update after completing each phase or encountering errors*

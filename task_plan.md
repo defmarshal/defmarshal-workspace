@@ -4,7 +4,7 @@
 Integrate openclaw-memory health metrics into workspace-health and CLI dashboard for comprehensive system monitoring.
 
 ## Current Phase
-Phase 1
+Phase 5 (complete)
 
 ## Phases
 
@@ -14,28 +14,28 @@ Phase 1
 - **Status:** complete
 
 ### Phase 2: Enhance workspace-health with memory metrics
-- [ ] Modify workspace-health script to include memory status (files, chunks, dirty, provider)
-- [ ] Test: quick health should now include memory info (or run workspace-health directly)
-- **Status:** pending
+- [x] Modify workspace-health script to include memory status (files, chunks, dirty, provider)
+- [x] Test: quick health should now include memory info (or run workspace-health directly)
+- **Status:** complete
 
 ### Phase 3: Enhance CLI dashboard with memory stats
-- [ ] Update dashboard.py to display memory system stats (matching web dashboard)
-- [ ] Keep recent memory search as is, add a stats line above it
-- **Status:** pending
+- [x] Update dashboard.py to display memory system stats (matching web dashboard)
+- [x] Keep recent memory search as is, add a stats line above it
+- **Status:** complete
 
 ### Phase 4: Validation & Testing
-- [ ] Run `quick health` and verify memory metrics appear
-- [ ] Run `quick dash` and verify memory stats are shown
-- [ ] Run `quick memory-status` as fallback check
-- [ ] Ensure no errors
-- **Status:** pending
+- [x] Run `quick health` and verify memory metrics appear
+- [x] Run `quick dash` and verify memory stats are shown
+- [x] Run `quick memory-status` as fallback check
+- [x] Ensure no errors
+- **Status:** complete
 
 ### Phase 5: Documentation & Delivery
-- [ ] Update quick launcher help if needed
-- [ ] Update MEMORY.md with new monitoring capabilities
-- [ ] Commit changes with 'build:' prefix and push
-- [ ] Update active-tasks.md
-- **Status:** pending
+- [x] Update quick launcher help if needed
+- [x] Update MEMORY.md with new monitoring capabilities
+- [x] Commit changes with 'build:' prefix and push
+- [x] Update active-tasks.md
+- **Status:** complete
 
 ## Key Questions
 1. How to fetch memory status reliably in shell/Python? Use `openclaw memory status --json`.
