@@ -130,6 +130,30 @@ def get_updates():
     except:
         return {"available": 0}
 
+def get_memory_stats():
+    """Fetch memory system statistics using openclaw memory status."""
+    try:
+        import shlex
+        cmd = "openclaw memory status --json"
+        out, err, rc = run_cmd(cmd)
+        if rc != 0 or not out:
+            return {"error": "status command failed"}
+        data = json.loads(out)
+        if not isinstance(data, list) or len(data) == 0:
+            return {"error": "unexpected JSON structure"}
+        entry = data[0]
+        status = entry.get("status", {})
+        return {
+            "files": status.get("files", 0),
+            "chunks": status.get("chunks", 0),
+            "dirty": status.get("dirty", False),
+            "provider": status.get("provider", "unknown"),
+            "cache_entries": status.get("cache", {}).get("entries", 0),
+            "fts_enabled": status.get("fts", {}).get("enabled", False),
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
 def get_recent_memories(limit=3):
     """Fetch recent memory snippets using openclaw memory search."""
     try:
@@ -161,6 +185,7 @@ def collect_status():
         "load": get_load_avg(),
         "memory": get_memory_usage(),
         "updates": get_updates(),
+        "memory_stats": get_memory_stats(),
         "recent_memories": get_recent_memories(3),
     }
 
@@ -238,6 +263,7 @@ HTML = '''<!DOCTYPE html>
       </div>
       <div class="card">
         <h2>Recent Memories</h2>
+        <div id="mem-stats" style="font-size:0.9em; color:#94a3b8; margin-bottom:8px;"></div>
         <div id="mem-list"></div>
       </div>
       <div class="card">
@@ -294,6 +320,20 @@ HTML = '''<!DOCTYPE html>
         }
 
         // Memory
+        // Memory stats line
+        const mstats = data.memory_stats || {};
+        const memStatsDiv = document.getElementById('mem-stats');
+        if (mstats.error) {
+          memStatsDiv.textContent = 'stats unavailable';
+        } else {
+          const files = mstats.files || 0;
+          const chunks = mstats.chunks || 0;
+          const dirty = mstats.dirty ? 'dirty' : 'clean';
+          const provider = mstats.provider || 'n/a';
+          memStatsDiv.textContent = `${files} files, ${chunks} chunks (${dirty}) · ${provider}`;
+        }
+
+        // Recent memories list
         const memData = data.recent_memories || [];
         const memDiv = document.getElementById('mem-list');
         if (memData.length && !memData[0].error) {

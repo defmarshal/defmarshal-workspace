@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""
+Memory system statistics viewer.
+Shows indexing status, file counts, chunk counts, cache, FTS, etc.
+Usage: memory-stats [--json]
+"""
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
+
+def run_cmd(cmd):
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=10)
+        if result.returncode != 0:
+            return None, result.stderr.strip()
+        return result.stdout.strip(), None
+    except Exception as e:
+        return None, str(e)
+
+def get_memory_status():
+    out, err = run_cmd("openclaw memory status --json")
+    if out is None:
+        return None, err or "failed to run openclaw memory status"
+    try:
+        data = json.loads(out)
+        return data, None
+    except json.JSONDecodeError as e:
+        return None, f"JSON parse error: {e}"
+
+def format_human(entry):
+    """Format status dict as human-readable text."""
+    lines = []
+    s = entry.get("status", {})
+    lines.append("Memory System Status")
+    lines.append("-------------------")
+    lines.append(f"Agent ID:     {entry.get('agentId', 'unknown')}")
+    lines.append(f"Provider:     {s.get('provider', 'unknown')} ({s.get('model', 'n/a')})")
+    lines.append(f"Files:        {s.get('files', 0)} indexed")
+    lines.append(f"Chunks:       {s.get('chunks', 0)}")
+    lines.append(f"Dirty:        {'yes (needs reindex)' if s.get('dirty') else 'no'}")
+    lines.append(f"Cache:        {s.get('cache', {}).get('entries', 0)} entries (enabled: {s.get('cache', {}).get('enabled', False)})")
+    fts = s.get("fts", {})
+    lines.append(f"FTS:          {'available' if fts.get('available') else 'unavailable'} (enabled: {fts.get('enabled', False)})")
+    vec = s.get("vector", {})
+    lines.append(f"Vector:       {'enabled' if vec.get('enabled') else 'disabled'}" + (f" (dims: {vec.get('dims')})" if vec.get('enabled') else ""))
+    batch = s.get("batch", {})
+    lines.append(f"Batch:        {'enabled' if batch.get('enabled') else 'disabled'} (failures: {batch.get('failures', 0)})")
+    lines.append(f"DB Path:      {s.get('dbPath', 'n/a')}")
+    lines.append(f"Workspace:    {s.get('workspaceDir', 'n/a')}")
+    return "\n".join(lines)
+
+def main():
+    raw_json = False
+    for arg in sys.argv[1:]:
+        if arg in ("-j", "--json", "--raw-json"):
+            raw_json = True
+            break
+
+    status, err = get_memory_status()
+    if err:
+        print(f"Error: {err}", file=sys.stderr)
+        sys.exit(1)
+
+    if raw_json:
+        print(json.dumps(status, indent=2))
+    else:
+        # status is a list; take first entry
+        if isinstance(status, list) and len(status) > 0:
+            entry = status[0]
+        else:
+            entry = status if isinstance(status, dict) else {}
+        print(format_human(entry))
+
+if __name__ == "__main__":
+    main()

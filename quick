@@ -17,6 +17,7 @@ Commands:
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
   memory-index  Reindex memory files (openclaw memory index)
+  memory-stats  Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   git-status      Show brief git status
@@ -105,6 +106,10 @@ case "$cmd" in
     # Reindex memory files
     echo "Reindexing memory..."
     /home/ubuntu/.npm-global/bin/openclaw memory index
+    ;;
+  memory-stats)
+    # Show memory system statistics (wrapper around memory-stats script)
+    "$WORKSPACE/memory-stats" "$@"
     ;;
   health)
     python3 "$WORKSPACE/workspace-health.py" 2>/dev/null || "$WORKSPACE/workspace-health"

@@ -1,63 +1,63 @@
-# Task Plan: Add memory management commands to quick launcher
+# WorkspaceBuilder Plan: Memory System Enhancements
 
-## Goal
-Add `quick memory-status` and `quick memory-index` commands to simplify memory maintenance and monitoring, aligning with the long-term objective of a robust, searchable personal memory system.
-
-## Current Phase
-Phase 1: Requirements & Discovery
+** Started**: 2026-02-15 07:00 UTC (UTC+7: 14:00)
+**Timezone**: Asia/Bangkok (UTC+7)
+**Current commit**: (clean working tree)
+**Goal**: Enhance memory system usability with better visibility and management tools while keeping changes small and meaningful.
 
 ## Phases
 
-### Phase 1: Requirements & Discovery
-- [x] Understand current memory CLI capabilities (openclaw memory status, index, search)
-- [x] Determine useful additions to quick launcher
-- [x] Decide on command names and behavior
-- **Status:** in_progress
+### Phase 1: Analyze Current State & Define Scope
+- [x] Read active-tasks.md, MEMORY.md, quick launcher, web-dashboard.py
+- [x] Check memory status (openclaw memory status)
+- [x] List memory files and recent daily logs
+- [x] Review git status and recent commits
+- **Status**: complete
 
-### Phase 2: Planning & Structure
-- [ ] Document modifications to quick script
-- [ ] Plan help text updates
-- [ ] Plan testing steps
-- **Status:** pending
+### Phase 2: Design Enhancements
+- [ ] Identify gaps in memory visibility/management
+- [ ] Select 2-3 small but meaningful improvements
+- [ ] Document design in findings.md
+- **Status**: pending
 
-### Phase 3: Implementation
-- [ ] Edit quick: add cases for memory-status and memory-index
-- [ ] Update help output
-- **Status:** pending
+### Phase 3: Implement Enhancements
+- [ ] Enhance web dashboard memory card with stats (indexed count, last indexed)
+- [ ] Add `quick memory-stats` command showing memory usage, file count, chunk count, last indexed time
+- [ ] Optionally add `quick memory-prune` dry-run to show old memories that could be removed (respect 100/7 limit)
+- **Status**: pending
 
-### Phase 4: Testing & Verification
-- [ ] Run `quick memory-status` and confirm output
-- [ ] Run `quick memory-index` and confirm reindex
-- [ ] Verify existing quick commands still work (mem, search, health)
-- **Status:** pending
+### Phase 4: Test & Validate
+- [ ] Run `quick memory-stats` and verify output
+- [ ] Start web-dashboard.py and verify memory card shows stats
+- [ ] Run `quick health` to ensure system health
+- [ ] Check `git status` - all changes should be clean
+- [ ] Verify no temporary files left behind
+- **Status**: pending
 
-### Phase 5: Delivery
-- [ ] Review changes (`git diff`)
-- [ ] Commit with message "build: add memory-status and memory-index quick commands"
-- [ ] Push to origin
+### Phase 5: Commit & Push
+- [ ] Commit changes with prefix `build: memory system enhancements`
+- [ ] Push to GitHub (defmarshal/defmarshal-workspace)
 - [ ] Update active-tasks.md with verification results
-- [ ] Optionally update MEMORY.md with new tools
-- **Status:** pending
+- **Status**: pending
 
-## Key Questions
-1. Should memory-index require confirmation? No, simple and safe.
-2. Should memory-status output be raw or formatted? Default to raw status for now, can format later.
-3. Should we add health check integration? Not in this build; keep scope small.
+## Decisions
 
-## Decisions Made
-| Decision | Rationale |
-|----------|-----------|
-| Add `memory-status` as pass-through to `openclaw memory status` | Provides quick access to index health without memorizing CLI |
-| Add `memory-index` as pass-through to `openclaw memory index` | Allows user to manually reindex if needed |
-| Keep output raw/unaltered | Simpler implementation, avoids parsing complexity |
-| Do not modify existing commands | Avoid breaking changes |
-| Do not integrate into `workspace-health` | Keep scope minimal; separate command is fine |
+- Keep scope small (max 3 new features)
+- Leverage existing `openclaw memory status` output for stats
+- Make all changes backward-compatible (no breaking changes to existing commands)
+- Follow pattern: display stats in terminal + (where relevant) enhance web dashboard
 
-## Errors Encountered
-| Error | Attempt | Resolution |
-|-------|---------|------------|
-|       | 1       |            |
+## Constraints
 
-## Notes
-- Update phase status as you progress: pending → in_progress → complete
-- Re-read this plan before major decisions
+- Respect quiet hours (23:00-08:00 UTC+7) - currently safe (14:00)
+- Memory system uses Voyage AI free tier (3 RPM) - avoid heavy reindexing
+- All changes must be validated before commit
+- Update active-tasks.md with verification notes
+
+## Success Criteria
+
+- `quick memory-stats` shows useful information (files, chunks, last indexed, dirty status)
+- Web dashboard memory card displays stats (not just recent snippets)
+- `git status` clean, no leftover temp files
+- Changes committed and pushed
+- active-tasks.md updated with validation results
