@@ -1,87 +1,63 @@
-# Task Plan: Consolidate Research Outputs & Ensure System Health
+# Task Plan: Add memory management commands to quick launcher
 
 ## Goal
-Preserve valuable research outputs from autonomous agents, diagnose and address any system health issues (especially memory vector search), and ensure the workspace is fully operational and documented for continued autonomous work.
+Add `quick memory-status` and `quick memory-index` commands to simplify memory maintenance and monitoring, aligning with the long-term objective of a robust, searchable personal memory system.
 
 ## Current Phase
-Phase 1: Analysis & Discovery
+Phase 1: Requirements & Discovery
 
 ## Phases
 
-### Phase 1: Analysis & Discovery
-- [x] Read active-tasks.md to understand running agents
-- [x] Check git status and uncommitted files
-- [x] Review research and content outputs (4 untracked files)
-- [x] Verify memory system status (vector off, search functional?)
-- [x] Check dashboard functionality (CLI and web)
-- [ ] Document findings in findings.md
+### Phase 1: Requirements & Discovery
+- [x] Understand current memory CLI capabilities (openclaw memory status, index, search)
+- [x] Determine useful additions to quick launcher
+- [x] Decide on command names and behavior
 - **Status:** in_progress
 
-### Phase 2: Commit Research Artifacts
-- [ ] Add content/ and research/ files to git
-- [ ] Verify commit integrity
-- [ ] Update MEMORY.md with recent achievements
+### Phase 2: Planning & Structure
+- [ ] Document modifications to quick script
+- [ ] Plan help text updates
+- [ ] Plan testing steps
 - **Status:** pending
 
-### Phase 3: Memory System Health Check
-- [ ] Test memory search functionality
-- [ ] Investigate "vector off" status (Voyage embedding limits)
-- [ ] Decide: fix embeddings config or accept current state
-- [ ] Document decision and any changes
+### Phase 3: Implementation
+- [ ] Edit quick: add cases for memory-status and memory-index
+- [ ] Update help output
 - **Status:** pending
 
-### Phase 4: Dashboard & Quick Launcher Enhancements
-- [ ] Compare CLI vs web dashboards; add missing features
-- [ ] Consider adding "quick research" command to access research outputs
-- [ ] Update any stale references in quick help
+### Phase 4: Testing & Verification
+- [ ] Run `quick memory-status` and confirm output
+- [ ] Run `quick memory-index` and confirm reindex
+- [ ] Verify existing quick commands still work (mem, search, health)
 - **Status:** pending
 
-### Phase 5: Documentation Update
-- [ ] Update MEMORY.md with this build's outcomes
-- [ ] Ensure active-tasks.md is accurate (remove old entries if needed)
-- [ ] Review CRON_JOBS.md for correctness
-- **Status:** pending
-
-### Phase 6: Validation & Testing
-- [ ] Run `quick health` - verify system health
-- [ ] Test `quick mem` and `quick search <test>`
-- [ ] Test `quick dash` and `quick web` (if running)
-- [ ] Check no temp files left behind
-- **Status:** pending
-
-### Phase 7: Commit & Push
-- [ ] Review all changes with `git status`
-- [ ] Commit with prefix 'build:' including summary
-- [ ] Push to GitHub
-- **Status:** pending
-
-### Phase 8: Active Tasks Update
-- [ ] Add this workspace-builder session to active-tasks.md with status=validated
-- [ ] Include verification results in the entry
+### Phase 5: Delivery
+- [ ] Review changes (`git diff`)
+- [ ] Commit with message "build: add memory-status and memory-index quick commands"
+- [ ] Push to origin
+- [ ] Update active-tasks.md with verification results
+- [ ] Optionally update MEMORY.md with new tools
 - **Status:** pending
 
 ## Key Questions
-1. Are the 4 untracked research/content files valuable and should they be committed? (Yes - they represent significant work)
-2. Why is memory vector search "off"? Is it a config issue or rate-limit? Can it be fixed without cost?
-3. Does the web dashboard fully reflect the CLI dashboard features? (Check recent_memories display)
-4. Should we add a quick command to access research outputs easily? (Yes, for discoverability)
+1. Should memory-index require confirmation? No, simple and safe.
+2. Should memory-status output be raw or formatted? Default to raw status for now, can format later.
+3. Should we add health check integration? Not in this build; keep scope small.
 
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|
-| Use planning-with-files | Required for structured, multi-phase builds |
-| Keep changes small but meaningful | Respects build constraints; focus on quality |
-| Commit research artifacts | Preserve valuable outputs from autonomous agents |
-| Validate before commit | Close the loop - ensure no broken state |
+| Add `memory-status` as pass-through to `openclaw memory status` | Provides quick access to index health without memorizing CLI |
+| Add `memory-index` as pass-through to `openclaw memory index` | Allows user to manually reindex if needed |
+| Keep output raw/unaltered | Simpler implementation, avoids parsing complexity |
+| Do not modify existing commands | Avoid breaking changes |
+| Do not integrate into `workspace-health` | Keep scope minimal; separate command is fine |
 
 ## Errors Encountered
 | Error | Attempt | Resolution |
 |-------|---------|------------|
-| nmem_context not found | 1 | Rely on memory_search and manual review instead |
+|       | 1       |            |
 
 ## Notes
-- Respect quiet hours (23:00-08:00 UTC+7) - current time is 10:00 UTC+7, safe to work
-- Previous workspace-builder validated successfully (added memory to web dashboard)
-- 3 agent daemons running: dev-agent, content-agent, research-agent
-- Disk usage 63% is acceptable; 16 updates pending (not urgent)
-- All changes must be pushed to defmarshal/defmarshal-workspace
+- Update phase status as you progress: pending → in_progress → complete
+- Re-read this plan before major decisions

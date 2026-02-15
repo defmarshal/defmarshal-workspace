@@ -15,6 +15,8 @@ Commands:
   web             Run the web dashboard (web-dashboard.py)
   mem             Show recent memories (claw memory list)
   search <query>  Search memories (claw memory search)
+  memory-status  Show memory index status (openclaw memory status)
+  memory-index  Reindex memory files (openclaw memory index)
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   git-status      Show brief git status
@@ -94,6 +96,15 @@ case "$cmd" in
     else
       /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json | jq -r '.results[:10] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"'
     fi
+    ;;
+  memory-status)
+    # Show memory search index status
+    /home/ubuntu/.npm-global/bin/openclaw memory status
+    ;;
+  memory-index)
+    # Reindex memory files
+    echo "Reindexing memory..."
+    /home/ubuntu/.npm-global/bin/openclaw memory index
     ;;
   health)
     python3 "$WORKSPACE/workspace-health.py" 2>/dev/null || "$WORKSPACE/workspace-health"

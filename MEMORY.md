@@ -92,6 +92,8 @@
   - Memory logging via `log-event` now stores directly to `openclaw-memory` (no local markdown)
   - `quick mem` and `quick search` use `claw memory` CLI for list and semantic search
   - Note: Old `./msearch` script and `summarize-day` are deprecated; daily markdown files no longer generated
+  - `quick memory-status`: Show memory index status (via `openclaw memory status`)
+  - `quick memory-index`: Manually reindex memory files (via `openclaw memory index`)
 - Dashboard:
   - CLI: `dashboard.py` – time, weather, holidays, git, system health, memory
   - Web: `web-dashboard.py` (port 8800) – same data via browser, auto-refresh
