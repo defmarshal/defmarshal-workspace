@@ -16,6 +16,15 @@ All jobs run under the `ubuntu` user. Timezone is UTC unless otherwise specified
 - **Description**: Runs the email-cleaner script in dry-run mode by default. Use `--execute` to apply changes (requires manual trigger).
 
 
+### Auto Torrent Download
+- **Schedule**: Daily at 02:00 Asia/Bangkok
+- **Command**:
+  ```bash
+  0 2 * * * TZ='Asia/Bangkok' cd /home/ubuntu/.openclaw/workspace && /home/ubuntu/.openclaw/workspace/quick nyaa-top --limit 10 --max-size 2G --add >> /home/ubuntu/.openclaw/workspace/memory/auto-torrent.log 2>&1
+  ```
+- **Log**: `memory/auto-torrent.log`
+- **Description**: Fetches top 10 anime torrents from Sukebei.Nyaa.si under 2GB and adds them to aria2 automatically.
+
 ### Traffic Report (Weekly)
 - **Schedule**: Weekly on Sunday at 22:00 UTC (Monday 05:00 Jakarta, Monday 22:00 UTC+7? Actually 22:00 UTC is Monday 05:00 Jakarta). This runs Sunday evenings UTC.
 - **Command**:
