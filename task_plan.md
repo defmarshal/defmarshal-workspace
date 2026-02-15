@@ -1,68 +1,65 @@
-# Task Plan — Workspace Builder Run (2026-02-15 06:00 UTC+7)
+# Task Plan: Add Memory Display to Web Dashboard
 
-**Goal:** Perform a strategic health check, capture critical learnings from recent operations, and maintain active-tasks registry hygiene.
+## Goal
+Add a memory section to the web dashboard (web-dashboard.py) that shows recent memories, making the memory system more accessible via the browser interface.
 
-**Context:**
-- Cron-triggered builder runs every 2h; respects quiet hours (23:00–08:00 UTC+7).
-- Current time: 06:00 UTC+7 (outside quiet window).
-- Previous builder run (22:00 UTC+7) completed successfully and was committed.
-- Workspace is clean and healthy; pending items are documentation updates rather than functional fixes.
-
----
+## Current Phase
+Phase 1: Requirements & Discovery
 
 ## Phases
 
-### 1. Analysis (Discovery)
-- [ ] Verify system health via `quick health`.
-- [ ] Test key commands: `quick mem`, `quick search test`, `quick agents`.
-- [ ] Review daily log `memory/2026-02-14.md` for noteworthy learnings and decisions.
-- [ ] Audit `MEMORY.md` for outdated or missing information.
-- [ ] Inspect `active-tasks.md` for stale validated entries (e.g., previous builder entry).
+### Phase 1: Requirements & Discovery
+- [x] Understand current web dashboard structure
+- [x] Identify that memory is missing from web dashboard (present in CLI dashboard)
+- [x] Determine to add memory search results to /status endpoint and HTML UI
+- [x] Check neural-memory context (empty - no past build memories)
+- **Status:** complete
 
-### 2. Identification (Plan Changes)
-- [ ] List specific changes:
-  - Update `MEMORY.md`: Append learnings from Feb 14 operations (daemon persistence, aria2 RPC config, Telegram dash normalization, non-interactive alternatives).
-  - Clean `active-tasks.md`: Remove entries with status `validated` that are not current (specifically the previous workspace-builder entry).
-- [ ] Determine if any other documentation updates are needed (quick help, DASHBOARD_README.md already fixed; qnt shortcut documented in MEMORY.md).
-- [ ] Confirm no other cleanup needed (no temp files, logs fine).
+### Phase 2: Planning & Structure
+- [x] Design the memory data structure to return from /status
+- [x] Plan HTML card addition and JavaScript integration
+- [x] Decide on number of recent memories to show (e.g., 3)
+- **Status:** complete
 
-### 3. Implementation (Execution)
-- [ ] Edit `MEMORY.md` to add new learnings subsection.
-- [ ] Edit `active-tasks.md` to remove stale validated entries.
-- [ ] Ensure changes are staged for commit.
+### Phase 3: Implementation
+- [x] Modify web-dashboard.py: add function to fetch recent memories via `openclaw memory search`
+- [x] Integrate into collect_status() with key "memory"
+- [x] Update HTML: add a new card for recent memories
+- [x] Update JavaScript refresh() to populate memory card
+- [x] Test locally with `quick web`
+- **Status:** complete
 
-### 4. Validation (Close the Loop)
-- [ ] Re-run `quick health` and capture output.
-- [ ] Re-run `quick mem` and `quick search "daemon"` to verify memory search works.
-- [ ] Run `quick agents` to confirm agents are still running.
-- [ ] Run `git status` to confirm clean working tree (only intended changes).
-- [ ] Verify no leftover temp files or unintended modifications.
+### Phase 4: Testing & Verification
+- [ ] Verify web dashboard loads and displays memory card
+- [ ] Verify memory entries appear with snippet and file
+- [ ] Run `quick health` to ensure system health
+- [ ] Check for any console errors in browser
+- **Status:** in_progress
 
-### 5. Commit & Push
-- [ ] Stage all changes (`git add -u` and any new files).
-- [ ] Commit with prefix `build:` summarizing changes (e.g., "build: capture Feb 14 learnings; clean active-tasks").
-- [ ] Push to origin.
-- [ ] (Optional) Update `active-tasks.md` to reflect this builder run's completion? Per rules, we will remove any transient entry we added; no additional action needed.
+### Phase 5: Delivery
+- [ ] Review all changes (web-dashboard.py)
+- [ ] Commit with prefix 'build:'
+- [ ] Push to GitHub
+- [ ] Update active-tasks.md: mark session validated, add verification notes
+- **Status:** pending
 
----
+## Key Questions
+1. How many recent memories should be displayed? (Decision: 3, similar to commits)
+2. Should we show just the snippet and source file? (Yes, keep simple)
+3. Should we include a search box? (No, out of scope for this small improvement; future enhancement)
 
-## Decisions & Rationale
-- **Why capture learnings now?** The Feb 14 daily log contains valuable insights about daemon persistence, aria2 RPC quirks, Telegram dash compatibility, and chat UX. These belong in long-term memory to inform future troubleshooting and avoid repeating mistakes.
-- **Why clean active-tasks?** Keeping validated entries clutters the registry and violates the "remove after verification" rule. A clean registry improves clarity for ongoing agent management.
-- **Minimal scope:** Since the workspace is already well-maintained, this run focuses on documentation hygiene rather than code changes.
+## Decisions Made
+| Decision | Rationale |
+|----------|-----------|
+| Use `openclaw memory search "recent"` | Consistent with CLI dashboard behavior |
+| Show 3 items | Keeps UI uncluttered, matches recent commits count |
+| Display file name and first line of snippet | Simple, informative, fits card layout |
 
----
+## Errors Encountered
+| Error | Attempt | Resolution |
+|-------|---------|------------|
+| neural-memory context empty | 1 | Proceed using MEMORY.md and existing knowledge; note in findings |
 
-## Error Handling
-- If any validation command fails, debug and fix before commit.
-- If git push fails, inspect remote state and resolve conflicts.
-- If time approaches 23:00 UTC+7 (quiet window), pause immediately and resume later.
-
----
-
-## Success Criteria
-- `git status` clean with only intended documentation updates.
-- `MEMORY.md` updated with new learnings from Feb 14.
-- `active-tasks.md` has no stale validated entries (only running daemons).
-- All validation checks pass.
-- Changes pushed to GitHub.
+## Notes
+- Update phase status as you progress: pending → in_progress → complete
+- Re-read this plan before major decisions

@@ -130,6 +130,25 @@ def get_updates():
     except:
         return {"available": 0}
 
+def get_recent_memories(limit=3):
+    """Fetch recent memory snippets using openclaw memory search."""
+    try:
+        import shlex
+        cmd = f"openclaw memory search --json --max-results {limit} {shlex.quote('recent')}"
+        out, err, rc = run_cmd(cmd)
+        if rc != 0 or not out:
+            return []
+        data = json.loads(out)
+        results = []
+        for item in data.get("results", [])[:limit]:
+            file = Path(item["path"]).name
+            snippet = item["snippet"].strip().split('\n')[0]
+            snippet = snippet[:100] + ("..." if len(snippet) > 100 else "")
+            results.append({"file": file, "snippet": snippet})
+        return results
+    except Exception as e:
+        return [{"error": str(e)}]
+
 def collect_status():
     return {
         "timestamp": datetime.utcnow().isoformat() + "Z",
@@ -142,6 +161,7 @@ def collect_status():
         "load": get_load_avg(),
         "memory": get_memory_usage(),
         "updates": get_updates(),
+        "recent_memories": get_recent_memories(3),
     }
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -217,6 +237,10 @@ HTML = '''<!DOCTYPE html>
         <div id="git-commits" style="margin-top:8px;"></div>
       </div>
       <div class="card">
+        <h2>Recent Memories</h2>
+        <div id="mem-list"></div>
+      </div>
+      <div class="card">
         <h2>Disk</h2>
         <div class="row"><span class="label">Used:</span><span class="value" id="disk-pct">...</span></div>
       </div>
@@ -267,6 +291,17 @@ HTML = '''<!DOCTYPE html>
           commitsDiv.innerHTML = data.recent_commits.map(c => `<div class="row"><span class="value">${c.hash}</span> ${c.message}</div>`).join('');
         } else {
           commitsDiv.textContent = 'none';
+        }
+
+        // Memory
+        const memData = data.recent_memories || [];
+        const memDiv = document.getElementById('mem-list');
+        if (memData.length && !memData[0].error) {
+          memDiv.innerHTML = memData.map(m => `<div class="row"><span class="label">${m.file}:</span><span class="value">${m.snippet}</span></div>`).join('');
+        } else if (memData[0].error) {
+          memDiv.textContent = 'error: ' + memData[0].error;
+        } else {
+          memDiv.textContent = 'none';
         }
 
         const disk = data.disk;
