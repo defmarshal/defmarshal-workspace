@@ -43,6 +43,13 @@
   - Improved git hygiene and documentation cleanup.
   - Added `quick agents` for session visibility.
 
+- **Passwordless Sudo Deployment** (2026-02-15)
+  - Created `setup-sudo.sh` — safe utility to add NOPASSWD entry via `visudo`
+  - Created `sudo-test.sh` — verification script
+  - Added `quick sudo-check` command for one‑liner status check
+  - Status: Completed — can now use `elevated: true` in exec commands without password prompts
+  - This capability enables system administration tasks (apt, firewall, services) directly from OpenClaw agents
+
 ## Learnings
 - OpenClaw memory search requires an embeddings provider (OpenAI, Voyage, etc.)
 - Voyage AI offers 200M free tokens (no CC needed initially) - great for personal assistant
@@ -81,6 +88,7 @@
 - 2026-02-13: fal.ai balance exhausted; free tier exists but limited credits – top up needed for continued selfies.
 - 2026-02-13: Implemented daily memory automation: `log-event` for event capture, `summarize-day` for auto-summarization (cron 22:30 Asia/Bangkok), integrated into `quick` launcher.
 - 2026-02-14: Major feature expansion: torrent system (aria2, nyaa-search, nyaa-top, qnt), daemonized background agents with @reboot, quick launcher enhancements (dash normalization, agents command), and documentation cleanup; captured key operational learnings.
+- 2026-02-15: Passwordless sudo successfully configured — OpenClaw can now run elevated commands (`elevated: true`) for system administration tasks. Created `setup-sudo.sh`, `sudo-test.sh`, and added `quick sudo-check` / `quick agent-logs` utilities.
 
 ## Tools & Skills
 - Git: GitHub private repos with PAT + credential store (`~/.git-credentials`)
