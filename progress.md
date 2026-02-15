@@ -1,52 +1,85 @@
 # Workspace Builder — Progress Log
 
 **Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
-**Started**: 2026-02-15 11:00 UTC
+**Started**: 2026-02-15 20:00 UTC+7
 
 ---
 
 ## Step-by-Step Log
 
-### 2026-02-15 11:00–11:30 UTC — Phase 1: Context Analysis
-- Read active-tasks.md, MEMORY.md, git status, content organization
-- Checked memory system status via `openclaw memory status --json`
-- Verified all daemons running; all utility scripts present
-- Identified two untracked content files from content-agent
-- Identified memory dirty state and opportunity for reindex
-- Decided to add content files, update INDEX.md, reindex memory, add `quick content-latest`, and commit all
+### Phase 1: Context Analysis (~20:00–20:10 UTC+7)
+- Read active-tasks.md, MEMORY.md, git status
+- Verified agents running (dev, content, research daemons)
+- Checked memory status: 6 files, 40 chunks, dirty: yes, FTS+ enabled, vector disabled
+- Checked content directory: 34 files vs INDEX.md listing 21 → index outdated
+- Verified `quick content-latest` command exists (from previous builder)
+- Identified improvements: commit pending files, memory reindex, update INDEX, add content-index-update
 
-### 2026-02-15 11:30 UTC — Phase 2: Improvement Identification
+### Phase 2: Improvement Identification (~20:10 UTC+7)
 - Decisions documented in `findings.md`
 
-### 2026-02-15 11:30–11:45 UTC — Phase 4: Validation & Commit
-- Ran `./quick health`: OK (Git clean, memory dirty but functional)
-- Tested `./quick content-latest`: outputs latest file correctly
-- Verified `./quick memory-status`: healthy
-- Committed all changes: `git commit -m "build: add content-latest command and update content archive"` (8 files, 206 ins, 175 del)
-- Pushed to GitHub: `git push origin master`
-- Updated active-tasks.md: validated and added verification notes
+### Phase 3: Implementation (~20:10–20:25 UTC+7)
 
-### 2026-02-15 11:45 UTC — Phase 5: Summary
-- Completed strategic build with minimal, meaningful improvements
-- All tests passed; workspace clean; changes deployed
+#### 3.1 Prepare planning files
+- Archived previous planning files into `build-archive/` (task_plan-2026-02-15-1100.md, findings-2026-02-15-1100.md, progress-2026-02-15-1100.md)
+- Created fresh task_plan.md, findings.md, progress.md for this session
 
-**Summary for delivery:**
-(see final output)
+#### 3.2 Ensure torrent setup script is executable
+- `chmod +x setup-torrent-cron.sh`
+- Verified cron job already installed (crontab -l shows entry)
+
+#### 3.3 Reindex memory
+- Ran: `/home/ubuntu/.npm-global/bin/openclaw memory index`
+- Note: dirty flag remains (no new memories added), but index refreshed
+
+#### 3.4 Regenerate content/INDEX.md
+- Created `update-content-index.sh` script
+- Script scans content/*.md, excludes INDEX.md, lists with size and first heading description
+- Ran script to generate updated INDEX.md (now lists 33 content files)
+- Fixed date expansion in footer
+
+#### 3.5 Add `quick content-index-update` command
+- Edited `quick` launcher: added case branch for content-index-update
+- Updated help text accordingly
+
+#### 3.6 Fix `quick content-latest` to exclude INDEX.md
+- Modified command to `ls -t content/*.md | grep -v 'INDEX.md' | head -1`
+
+#### 3.7 Verify functionality
+- Tested `./quick content-index-update`: runs successfully
+- Tested `./quick content-latest`: shows latest digest (2026-02-15-eod-summary.md)
+- Ran `./quick health`: Disk OK, Updates:15, Git dirty (9 changed), Memory: 6f/40c (dirty)
+
+### Phase 4: Validation & Commit (pending)
+- To be done: verify all changes, ensure no unwanted files, commit with prefix `build:`, push, update active-tasks.md
+
+### Phase 5: Summary (pending)
 
 ---
 
 ## Test Results
 
-*(Will be filled during validation)*
+- Memory reindex: OK
+- content-index-update: OK (traces "✅ Content index updated")
+- content-latest: OK (output shows eod-summary)
+- quick help includes new command
+- All script files executable
 
 ---
 
 ## Files Modified
 
-*(List of changed files, to be used for commit message)*
+- CRON_JOBS.md: added Auto Torrent Download section
+- content/INDEX.md: regenerated with all current files
+- quick: added content-index-update command and help entry; fixed content-latest filtering
+- planning files (task_plan.md, findings.md, progress.md): refreshed for this session
+- New files: setup-torrent-cron.sh (executable), update-content-index.sh (executable)
+- Archive: build-archive/ (previous planning documents)
 
 ---
 
 ## Notes
 
-*(anything else)*
+- Memory dirty flag still present; acceptable (index ready, but no new memories added since last index)
+- Torrent cron already installed; script is idempotent and documented
+- All changes align with long-term goals: improve documentation, automate index maintenance, maintain system health

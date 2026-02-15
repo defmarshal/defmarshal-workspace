@@ -49,6 +49,7 @@ Commands:
   agents [flags]               List running sessions/agents; flags passed to `openclaw sessions` (e.g., --json, --help)
   downloads [--json] [--watch SECS]  Show aria2 download progress (active downloads). Use --watch to auto-refresh.
   content-latest              Show the latest content digest/note from content/ directory.
+  content-index-update        Regenerate content/INDEX.md to reflect current content files.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
@@ -192,13 +193,17 @@ case "$cmd" in
     python3 "$WORKSPACE/downloads-status" "$@"
     ;;
   content-latest)
-    # Show the latest content digest/note
-    latest=$(ls -t content/*.md 2>/dev/null | head -1)
+    # Show the latest content digest/note (excluding INDEX.md)
+    latest=$(ls -t content/*.md 2>/dev/null | grep -v 'INDEX.md' | head -1)
     if [ -z "$latest" ]; then
       echo "No content files found in content/" >&2
       exit 1
     fi
     cat "$latest"
+    ;;
+  content-index-update)
+    # Regenerate content/INDEX.md to reflect current content files
+    "$WORKSPACE/update-content-index.sh"
     ;;
   research-watchlist)
     # Show the latest research watchlist file
