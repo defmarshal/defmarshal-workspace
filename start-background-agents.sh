@@ -31,6 +31,7 @@ start_if_missing() {
 start_if_missing "dev-agent" "dev-agent-loop.sh"
 start_if_missing "content-agent" "content-agent-loop.sh"
 start_if_missing "research-agent" "research-agent-loop.sh"
+start_if_missing "torrent-bot" "agents/torrent-bot/loop.sh"
 
 # Start aria2 daemon if not running
 if pgrep -f "aria2c.*--conf-path=/home/ubuntu/.openclaw/workspace/aria2.conf" > /dev/null; then

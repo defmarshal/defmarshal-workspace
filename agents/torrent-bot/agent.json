@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.openclaw.ai/agent.schema.json",
+  "name": "torrent-bot",
+  "description": "Slash-command torrent management agent using aria2 and nyaa tools",
+  "version": "0.1.0",
+  "author": "defmarshal",
+  "license": "MIT",
+  "tools": [
+    "shell.exec"
+  ],
+  "allowlists": {
+    "slashCommands": [
+      "torrent"
+    ]
+  },
+  "session": {
+    "dmPolicy": "pairing",
+    "dmScope": "per-channel-peer"
+  },
+  "throttle": {
+    "enabled": true,
+    "maxPerMinute": 30
+  },
+  "model": "openrouter/stepfun/step-3.5-flash:free"
+}
