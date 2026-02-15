@@ -49,6 +49,8 @@ Commands:
   downloads [--json] [--watch SECS]  Show aria2 download progress (active downloads). Use --watch to auto-refresh.
   content-latest              Show the latest content digest/note from content/ directory.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
+  sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
+  agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
   help                       Show this help message
 
 Examples:
@@ -200,6 +202,48 @@ case "$cmd" in
       exit 1
     fi
     cat "$latest"
+    ;;
+  sudo-check)
+    # Check if passwordless sudo is configured
+    if sudo -n true 2>/dev/null; then
+      echo "✓ Passwordless sudo is working! You can use elevated: true in exec commands."
+      echo "Privileges:"
+      sudo -l | head -5
+    else
+      echo "✗ Passwordless sudo NOT configured."
+      echo "Run './setup-sudo.sh' (with sudo) to set it up."
+      exit 1
+    fi
+    ;;
+  agent-logs)
+    # Show recent logs for background agents
+    agent_name="${1:-all}"
+    case "$agent_name" in
+      dev|dev-agent)
+        tail -n 20 "$WORKSPACE/dev-agent.log" || echo "No dev-agent.log found"
+        ;;
+      content|content-agent)
+        tail -n 20 "$WORKSPACE/content-agent.log" || echo "No content-agent.log found"
+        ;;
+      research|research-agent)
+        tail -n 20 "$WORKSPACE/research-agent.log" || echo "No research-agent.log found"
+        ;;
+      builder|workspace-builder)
+        tail -n 20 "$WORKSPACE/workspace-builder.log" 2>/dev/null || echo "No workspace-builder.log found"
+        ;;
+      all)
+        echo "== DEV-AGENT (last 10 lines) =="
+        tail -n 10 "$WORKSPACE/dev-agent.log" 2>/dev/null || echo "No dev-agent.log"
+        echo -e "\n== CONTENT-AGENT (last 10 lines) =="
+        tail -n 10 "$WORKSPACE/content-agent.log" 2>/dev/null || echo "No content-agent.log"
+        echo -e "\n== RESEARCH-AGENT (last 10 lines) =="
+        tail -n 10 "$WORKSPACE/research-agent.log" 2>/dev/null || echo "No research-agent.log"
+        ;;
+      *)
+        echo "Usage: quick agent-logs [dev|content|research|builder|all]" >&2
+        exit 1
+        ;;
+    esac
     ;;
   help)
     show_help
