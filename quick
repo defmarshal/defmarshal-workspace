@@ -52,6 +52,8 @@ Commands:
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
+  cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
+  setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
   help                       Show this help message
 
 Examples:
@@ -248,6 +250,33 @@ case "$cmd" in
         exit 1
         ;;
     esac
+    ;;
+  cron-status)
+    # Show status of important cron jobs
+    echo "== System Cron (user crontab) =="
+    crontab -l 2>/dev/null | grep -E 'email-clean|nyaa-top|traffic' || echo "No matching cron entries found"
+    echo ""
+    echo "== OpenClaw Cron (via openclaw cron) =="
+    /home/ubuntu/.npm-global/bin/openclaw cron list --json 2>/dev/null | python3 -m json.tool 2>/dev/null || echo "Unable to list OpenClaw cron jobs"
+    ;;
+  setup-all)
+    # Run non-interactive setup scripts
+    echo "== Running setup scripts (non-interactive) =="
+    # List of scripts that can be run without manual intervention or sudo
+    scripts=(
+      "setup-torrent-cron.sh"
+    )
+    for script in "${scripts[@]}"; do
+      if [ -f "$WORKSPACE/$script" ]; then
+        echo "→ Running $script..."
+        bash "$WORKSPACE/$script" || echo "  ⚠ $script failed with exit $?"
+      else
+        echo "  ⊘ $script not found"
+      fi
+    done
+    echo "== Setup complete =="
+    echo "Note: For sudo setup, run: sudo ./setup-sudo.sh"
+    echo "Remember to commit any changes and push to GitHub."
     ;;
   help)
     show_help
