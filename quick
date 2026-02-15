@@ -48,6 +48,7 @@ Commands:
   agents [flags]               List running sessions/agents; flags passed to `openclaw sessions` (e.g., --json, --help)
   downloads [--json] [--watch SECS]  Show aria2 download progress (active downloads). Use --watch to auto-refresh.
   content-latest              Show the latest content digest/note from content/ directory.
+  research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   help                       Show this help message
 
 Examples:
@@ -187,6 +188,15 @@ case "$cmd" in
     latest=$(ls -t content/*.md 2>/dev/null | head -1)
     if [ -z "$latest" ]; then
       echo "No content files found in content/" >&2
+      exit 1
+    fi
+    cat "$latest"
+    ;;
+  research-watchlist)
+    # Show the latest research watchlist file
+    latest=$(ls -t research/watchlist-*.md 2>/dev/null | head -1)
+    if [ -z "$latest" ]; then
+      echo "No research watchlist files found in research/" >&2
       exit 1
     fi
     cat "$latest"
