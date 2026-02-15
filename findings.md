@@ -1,73 +1,41 @@
-# Findings: Memory System Enhancement Design
+# Findings & Decisions
 
-**Date**: 2026-02-15
-**Phase**: Phase 2 - Design
-**Status**: complete
+## Requirements
+- Enhance monitoring of openclaw-memory system
+- Integrate memory health metrics into existing health check (workspace-health)
+- Integrate memory system stats into CLI dashboard (dashboard.py)
+- Keep changes small and focused
 
-## Current State Analysis
+## Research Findings
+- `openclaw memory status --json` returns structured status: provider, model, files, chunks, dirty, cache, fts, vector, batch, dbPath, workspaceDir
+- `openclaw memory search` used for recent memories
+- workspace-health is a Python script outputting a one-line summary
+- CLI dashboard already shows system metrics (disk, load, memory RAM, git, updates, holidays, recent memory)
+- Web dashboard already shows memory stats line: "Files: X, Chunks: Y, Dirty: Z · Provider"
+- Memory stats script (`memory-stats`) exists and formats the JSON nicely; can reuse its logic
 
-The openclaw-memory system is operational:
-- 5 memory files indexed (all in `memory/` directory)
-- 39 chunks created from those files
-- Dirty flag: true (recent changes not yet indexed)
-- Cache: 138 entries (enabled)
-- Full-text search (FTS): available and enabled
-- Vector search: disabled (due to Voyage rate limits)
-- Database: `~/.openclaw/memory/main.sqlite`
+## Technical Decisions
+| Decision | Rationale |
+|----------|-----------|
+| Modify workspace-health to append memory metrics | Centralized health; used in cron alerts |
+| Show in workspace-health: "Memory: <files> files, <chunks> chunks (<dirty>), provider: <provider>" | Concise, informative |
+| Modify dashboard.py to add a stats line before recent memories | Parity with web dashboard, quick glance |
+| Use same style in dashboard: "X files, Y chunks (dirty/clean) · provider" | Consistency |
+| Handle errors gracefully: show "unavailable" or "error" if memory command fails | Robustness |
 
-## Identified Gaps
+## Issues Encountered
+| Issue | Resolution |
+|-------|------------|
 
-1. **Visibility**: `quick mem` and `quick search` work, but there's no dedicated command to show memory system health and stats.
-2. **Dashboard**: Web dashboard shows recent memory snippets but doesn't show indexing status, file count, or whether memory is up-to-date (dirty flag).
-3. **Management**: No easy way to see if memory needs reindexing or check cache size.
+## Resources
+- openclaw memory CLI: `/home/ubuntu/.npm-global/bin/openclaw`
+- Workspace health: `/home/ubuntu/.openclaw/workspace/workspace-health`
+- CLI dashboard: `/home/ubuntu/.openclaw/workspace/dashboard.py`
+- Web dashboard reference: `/home/ubuntu/.openclaw/workspace/web-dashboard.py` (get_memory_stats function)
 
-## Proposed Enhancements (Small & Meaningful)
+## Visual/Browser Findings
+N/A
 
-### 1. Add `quick memory-stats` command
-- Reads JSON from `openclaw memory status`
-- Displays: files indexed, chunks, dirty status, cache entries, FTS status
-- Human-readable format with color codes (if terminal)
-- Also supports `--json` flag for scripting
-
-### 2. Enhance Web Dashboard Memory Card
-- Current: shows 3 recent memory snippets
-- Add: stats line below title: "Indexed: 5 files, 39 chunks (dirty: yes/no)"
-- Keep layout clean and consistent with other cards
-
-### 3. Document new commands in README/quick help
-- Update `quick help` output to include `memory-stats`
-- Add brief description in MEMORY.md under Tools & Skills
-
-## Implementation Plan
-
-- Create `memory-stats` executable script (Python or bash) in workspace root
-- Modify `quick` launcher to add `memory-stats` case
-- Update `web-dashboard.py` to fetch memory status and include in HTML
-- Update HTML template to show stats in memory card
-- Test locally with `quick memory-stats` and web dashboard
-- Validate with `quick health`, `git status`
-- Commit and push
-
-## Rationale
-
-These improvements provide better visibility into the memory system without changing its core behavior. Users can quickly check if memory is indexed or if reindexing is needed. The web dashboard becomes more informative. All changes are additive and backward-compatible.
-
-## Risks & Mitigations
-
-- Risk: `openclaw memory status` output format may change. Mitigation: Use stable JSON output (--json) which is less likely to break.
-- Risk: Voyage rate limits could be hit if we trigger indexing. Mitigation: We only read status, not modify index.
-- Risk: Web dashboard error handling if memory status fails. Mitigation: Graceful fallback to "unavailable" message.
-
-## Alternatives Considered
-
-- Adding a memory pruning command: Too complex for now; requires careful curation. Defer to future.
-- Automatic reindexing on dirty: Could cause rate limit issues; better to let user decide via `quick memory-index`.
-- Full memory admin panel: Too heavy; keep it simple.
-
-## Next Steps
-
-- Move to Phase 3: Implementation
-- Create `memory-stats` script
-- Update `quick` launcher
-- Update web-dashboard.py and HTML
-- Test and validate
+---
+*Update after every 2 view/browser/search operations*
+*This prevents visual information from being lost*

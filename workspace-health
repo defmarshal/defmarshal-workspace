@@ -4,6 +4,7 @@ Workspace health check - one-line summary for alerts/cron
 """
 
 import subprocess
+import json
 from pathlib import Path
 
 WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
@@ -14,6 +15,32 @@ def run_cmd(cmd):
         return result.stdout.strip(), result.stderr.strip(), result.returncode
     except Exception as e:
         return "", str(e), 1
+
+def get_memory_system_status():
+    """Get a concise memory system health string."""
+    try:
+        cmd = "openclaw memory status --json"
+        out, err, rc = run_cmd(cmd)
+        if rc != 0 or not out:
+            return "Memory: unavailable"
+        data = json.loads(out)
+        if not isinstance(data, list) or len(data) == 0:
+            return "Memory: unexpected status format"
+        entry = data[0]
+        s = entry.get("status", {})
+        files = s.get("files", 0)
+        chunks = s.get("chunks", 0)
+        dirty = "dirty" if s.get("dirty") else "clean"
+        provider = s.get("provider", "unknown")
+        fts = "FTS+" if s.get("fts", {}).get("enabled") else ""
+        vec = "vec+" if s.get("vector", {}).get("enabled") else ""
+        features = " ".join([p for p in [fts, vec] if p])
+        if features:
+            return f"Memory: {files}f/{chunks}c ({dirty}) {provider} {features}"
+        else:
+            return f"Memory: {files}f/{chunks}c ({dirty}) {provider}"
+    except Exception as e:
+        return f"Memory: error"
 
 def main():
     # Disk usage
@@ -37,8 +64,11 @@ def main():
     git_changed = len([l for l in out.splitlines() if l.strip()])
     git_status = f"Git {'dirty' if git_changed else 'clean'} ({git_changed} changed)"
 
+    # Memory system
+    mem_status = get_memory_system_status()
+
     # Combine
-    summary = " | ".join([disk_status, updates_status, git_status])
+    summary = " | ".join([disk_status, updates_status, git_status, mem_status])
     print(summary)
 
 if __name__ == "__main__":

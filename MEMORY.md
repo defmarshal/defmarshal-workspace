@@ -94,6 +94,9 @@
   - Note: Old `./msearch` script and `summarize-day` are deprecated; daily markdown files no longer generated
   - `quick memory-status`: Show memory index status (via `openclaw memory status`)
   - `quick memory-index`: Manually reindex memory files (via `openclaw memory index`)
+  - `quick memory-stats`: Show detailed memory system statistics (files, chunks, cache, FTS, etc.) via `memory-stats` script
+  - `quick health`: Now includes memory system health (files, chunks, dirty, provider, features) alongside disk, updates, git
+  - CLI dashboard (`quick dash`): Displays memory system stats line above recent memory mentions
 - Dashboard:
   - CLI: `dashboard.py` – time, weather, holidays, git, system health, memory
   - Web: `web-dashboard.py` (port 8800) – same data via browser, auto-refresh

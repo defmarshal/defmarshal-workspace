@@ -27,5 +27,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
 - [daemon] research-agent — Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
 
-- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Memory system enhancements: added memory-stats command, enhanced web dashboard (started: ~2026-02-15 07:00 UTC, status: validated)
-  - Verification: quick memory-stats runs (files=5, chunks=39, dirty=yes); web dashboard memory card shows stats; quick health OK; commit b1bcc98 pushed to GitHub.
+- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Integrated memory metrics into workspace-health and CLI dashboard (started: ~2026-02-15 09:15 UTC, status: validated)
+  - Verification: `quick health` shows memory stats; `quick dash` displays memory stats line; `quick memory-status` OK; all scripts tested error-free; changes committed and pushed.

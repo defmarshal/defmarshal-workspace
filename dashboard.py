@@ -160,6 +160,35 @@ def get_upgradable_count():
     except:
         return 0
 
+def get_memory_system_stats():
+    """Get a concise memory system stats line."""
+    try:
+        import shlex
+        cmd = f"openclaw memory status --json"
+        out, err, rc = run_cmd(cmd)
+        if rc != 0 or not out:
+            return "Memory stats: unavailable"
+        data = json.loads(out)
+        if not isinstance(data, list) or len(data) == 0:
+            return "Memory stats: unexpected format"
+        entry = data[0]
+        s = entry.get("status", {})
+        files = s.get("files", 0)
+        chunks = s.get("chunks", 0)
+        dirty = "dirty" if s.get("dirty") else "clean"
+        provider = s.get("provider", "n/a")
+        fts = s.get("fts", {}).get("enabled", False)
+        vec = s.get("vector", {}).get("enabled", False)
+        extras = []
+        if fts:
+            extras.append("FTS")
+        if vec:
+            extras.append("vec")
+        extra_str = " (" + ", ".join(extras) + ")" if extras else ""
+        return f"Memory: {files} files, {chunks} chunks ({dirty}) · {provider}{extra_str}"
+    except Exception as e:
+        return f"Memory stats: error"
+
 def search_memory(query="recent", limit=3):
     try:
         import shlex
@@ -222,6 +251,10 @@ def main():
         print(f"Updates: {upg_count} package(s) available")
     else:
         print("Updates: none")
+    print()
+
+    # Memory system stats
+    print(get_memory_system_stats())
     print()
 
     # Memory search

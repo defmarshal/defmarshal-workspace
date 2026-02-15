@@ -1,63 +1,60 @@
-# WorkspaceBuilder Plan: Memory System Enhancements
+# Task Plan: Enhance memory system monitoring in health/dashboard
 
-** Started**: 2026-02-15 07:00 UTC (UTC+7: 14:00)
-**Timezone**: Asia/Bangkok (UTC+7)
-**Current commit**: (clean working tree)
-**Goal**: Enhance memory system usability with better visibility and management tools while keeping changes small and meaningful.
+## Goal
+Integrate openclaw-memory health metrics into workspace-health and CLI dashboard for comprehensive system monitoring.
+
+## Current Phase
+Phase 1
 
 ## Phases
 
-### Phase 1: Analyze Current State & Define Scope
-- [x] Read active-tasks.md, MEMORY.md, quick launcher, web-dashboard.py
-- [x] Check memory status (openclaw memory status)
-- [x] List memory files and recent daily logs
-- [x] Review git status and recent commits
-- **Status**: complete
+### Phase 1: Assessment & Planning
+- [x] Review current memory system setup and monitoring tools
+- [x] Identify gaps: workspace-health lacks memory metrics; CLI dashboard lacks stats
+- **Status:** complete
 
-### Phase 2: Design Enhancements
-- [ ] Identify gaps in memory visibility/management
-- [ ] Select 2-3 small but meaningful improvements
-- [ ] Document design in findings.md
-- **Status**: pending
+### Phase 2: Enhance workspace-health with memory metrics
+- [ ] Modify workspace-health script to include memory status (files, chunks, dirty, provider)
+- [ ] Test: quick health should now include memory info (or run workspace-health directly)
+- **Status:** pending
 
-### Phase 3: Implement Enhancements
-- [ ] Enhance web dashboard memory card with stats (indexed count, last indexed)
-- [ ] Add `quick memory-stats` command showing memory usage, file count, chunk count, last indexed time
-- [ ] Optionally add `quick memory-prune` dry-run to show old memories that could be removed (respect 100/7 limit)
-- **Status**: pending
+### Phase 3: Enhance CLI dashboard with memory stats
+- [ ] Update dashboard.py to display memory system stats (matching web dashboard)
+- [ ] Keep recent memory search as is, add a stats line above it
+- **Status:** pending
 
-### Phase 4: Test & Validate
-- [ ] Run `quick memory-stats` and verify output
-- [ ] Start web-dashboard.py and verify memory card shows stats
-- [ ] Run `quick health` to ensure system health
-- [ ] Check `git status` - all changes should be clean
-- [ ] Verify no temporary files left behind
-- **Status**: pending
+### Phase 4: Validation & Testing
+- [ ] Run `quick health` and verify memory metrics appear
+- [ ] Run `quick dash` and verify memory stats are shown
+- [ ] Run `quick memory-status` as fallback check
+- [ ] Ensure no errors
+- **Status:** pending
 
-### Phase 5: Commit & Push
-- [ ] Commit changes with prefix `build: memory system enhancements`
-- [ ] Push to GitHub (defmarshal/defmarshal-workspace)
-- [ ] Update active-tasks.md with verification results
-- **Status**: pending
+### Phase 5: Documentation & Delivery
+- [ ] Update quick launcher help if needed
+- [ ] Update MEMORY.md with new monitoring capabilities
+- [ ] Commit changes with 'build:' prefix and push
+- [ ] Update active-tasks.md
+- **Status:** pending
 
-## Decisions
+## Key Questions
+1. How to fetch memory status reliably in shell/Python? Use `openclaw memory status --json`.
+2. Should we include FTS/vector/batch status? Yes, but keep summary concise (files/chunks/dirty/provider).
+3. Format: one-line summary for workspace-health; multi-line for dashboard.
 
-- Keep scope small (max 3 new features)
-- Leverage existing `openclaw memory status` output for stats
-- Make all changes backward-compatible (no breaking changes to existing commands)
-- Follow pattern: display stats in terminal + (where relevant) enhance web dashboard
+## Decisions Made
+| Decision | Rationale |
+|----------|-----------|
+| Add memory stats to workspace-health | Consolidated health view; already used for alerts |
+| Add memory stats to CLI dashboard | Parity with web dashboard; better UX |
+| Use openclaw memory status JSON output | Reliable, structured data |
+| Keep output concise | Health needs one-line; dashboard can show a stats line |
 
-## Constraints
+## Errors Encountered
+| Error | Attempt | Resolution |
+|-------|---------|------------|
 
-- Respect quiet hours (23:00-08:00 UTC+7) - currently safe (14:00)
-- Memory system uses Voyage AI free tier (3 RPM) - avoid heavy reindexing
-- All changes must be validated before commit
-- Update active-tasks.md with verification notes
-
-## Success Criteria
-
-- `quick memory-stats` shows useful information (files, chunks, last indexed, dirty status)
-- Web dashboard memory card displays stats (not just recent snippets)
-- `git status` clean, no leftover temp files
-- Changes committed and pushed
-- active-tasks.md updated with validation results
+## Notes
+- Update phase status as you progress: pending → in_progress → complete
+- Re-read this plan before major decisions
+- Log ALL errors
