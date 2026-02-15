@@ -1,66 +1,92 @@
-# Strategic Workspace Builder — Task Plan
+# Task Plan: Workspace Audit & Targeted Improvements
 
-**Goal**: Analyze the entire workspace and implement meaningful improvements aligned with long-term objectives.
+## Goal
+Perform a comprehensive workspace health audit and implement targeted improvements to maintain system reliability, complete pending maintenance tasks, and enhance documentation based on recent feature additions.
 
-**Started**: 2026-02-15 20:00 UTC+7 (13:00 UTC)
-**Session Key**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
-**Model**: openrouter/stepfun/step-3.5-flash:free
-
-**Previous Session**: Archived planning files from 2026-02-15 11:00 UTC into `build-archive/`.
-
----
+## Current Phase
+Phase 1: Requirements & Discovery
 
 ## Phases
 
-### Phase 1: Context Analysis
-- [ ] Read and assess current workspace state (git status, untracked files, agent health)
-- [ ] Review MEMORY.md, active-tasks.md, CRON_JOBS.md for alignment
-- [ ] Check memory system health (dirty flag, index status)
-- [ ] Inspect content directory and archive index freshness
-- [ ] Verify quick launcher functionality
-- [ ] Identify missing/outdated components
+### Phase 1: Requirements & Discovery
+- [x] Check active tasks and running agents
+- [x] Retrieve neural-memory context (none found - new system)
+- [x] Review MEMORY.md for recent changes and pending items
+- [x] Run initial system health checks (disk, updates, memory status)
+- [x] Verify git status and recent commits
+- [x] Inspect cron jobs for duplicates/errors
+- [x] Check memory system health (index dirty, torrent-bot empty)
+- [ ] Document findings in findings.md
+- **Status:** in_progress
 
-**Deliverable**: Summary of current state and potential improvement areas
-
-### Phase 2: Improvement Identification
-- [ ] List concrete improvements (prioritize by impact & alignment)
-- [ ] Decide on changes to implement in this session (keep small but meaningful)
-- [ ] Estimate effort and risks
-
-**Deliverable**: Prioritized improvement plan with rationale
+### Phase 2: Planning & Structure
+- [x] Define specific improvement tasks based on findings
+- [x] Prioritize by impact and urgency
+- [x] Create detailed implementation steps
+- [x] Document decisions with rationale
+- **Status:** complete
 
 ### Phase 3: Implementation
-- [ ] Make code/script/config changes incrementally
-- [ ] Update documentation as needed (MEMORY.md, CRON_JOBS.md, quick help, etc.)
-- [ ] Test each change locally
-- [ ] Update `findings.md` with lessons and `progress.md` with steps taken
+- [ ] Fix memory system issues (reindex, clean dirty state)
+- [ ] Address system updates (apt upgrade)
+- [ ] Review and fix duplicate cron entries if needed
+- [ ] Update documentation (MEMORY.md, quick help, CRON_JOBS.md)
+- [ ] Add missing utilities if gaps identified
+- [ ] Validate agent health and logs
+- **Status:** in_progress
 
-**Deliverable**: Modified files, updated docs, test results
-
-### Phase 4: Validation & Close the Loop
-- [ ] Run `quick health` and verify all systems healthy
-- [ ] Test affected commands (e.g., `quick mem`, `quick search test`, `quick dash`, etc.)
-- [ ] Verify git status: no unintended unstaged changes; only intended commits
+### Phase 4: Testing & Verification
+- [ ] Run `quick health` to verify system health
+- [ ] Test modified commands (memory-status, mem, search)
+- [ ] Verify memory indexing completes successfully
+- [ ] Check all files properly committed
 - [ ] Ensure no temp files left behind
-- [ ] Commit changes with prefix `build:` and push to GitHub
-- [ ] Update active-tasks.md with verification results and mark validated
+- **Status:** pending
 
-**Deliverable**: Validated, committed improvements; updated active-tasks.md
+### Phase 5: Delivery
+- [ ] Review all output files
+- [ ] Ensure deliverables complete
+- [ ] Commit changes with prefix 'build:'
+- [ ] Push to GitHub
+- [ ] Update active-tasks.md with validation results
+- **Status:** pending
 
-### Phase 5: Summary
-- [ ] Prepare final plain-text summary of what was done
-- [ ] Note any follow-ups or open issues
+## Key Questions
+1. What is causing the memory system "dirty: yes" state and how should it be resolved?
+   - Answer: Dirty flag indicates uncommitted changes. After index completes, should clear. Verify with `openclaw memory status` after index finishes. If persists, may need manual intervention or is normal after logging events.
+2. Why does torrent-bot show 0 indexed files, and should it be indexed separately?
+   - Answer: Each OpenClaw agent has its own memory store. Torrent-bot store is empty, which is expected if it hasn't logged anything yet. Should verify if it's needed - likely fine.
+3. Are the duplicate cron entries for nyaa-top intentional or an error?
+   - Answer: Duplicate identical lines in crontab is an error - likely accidental double-add. Should remove one to avoid duplicate downloads.
+4. What documentation updates are needed to reflect the latest features (sudo, memory changes)?
+   - Answer: MEMORY.md needs update to include sudo deployment and current memory system health status. CRON_JOBS.md already accurate but should note duplicate issue.
+5. Should system updates (16 packages) be applied now or scheduled?
+   - Answer: Apply now during builder window to maintain security and stability. Use elevated: true for apt operations.
+6. Are there any broken symlinks, orphaned files, or temporary files to clean?
+   - Answer: Check workspace for temp files, caches, etc. Should be minimal.
+7. Does the quick launcher need additional commands or improvements based on recent usage?
+   - Answer: Verify `memory-stats` exists (mentioned in MEMORY.md); if missing, add it.
 
----
+## Decisions Made
+| Decision | Rationale |
+|----------|-----------|
+| Fix duplicate cron by removing one line | Avoid double downloads and wasted resources |
+| Apply system upgrades via apt-get upgrade | Security/stability; 16 packages is significant |
+| Use absolute path /home/ubuntu/.openclaw/workspace/quick for all testing | PATH inconsistency in exec context |
+| Investigate memory dirty flag after index completes | Determine if it's a problem or normal state |
+| Do NOT reindex torrent-bot memory yet | It's separate agent store; only reindex if needed later |
+| Update MEMORY.md with current builder findings | Keep long-term memory current |
+| Add verification checklist to active-tasks.md | Follow close-the-loop protocol |
+| Commit changes with prefix 'build:' | Consistent with conventional commits |
 
-## Constraints
+## Errors Encountered
+| Error | Attempt | Resolution |
+|-------|---------|------------|
+| quick: command not found | 1 | Use absolute path in exec calls |
+| sessions_list no output | 1 | Trust active-tasks.md and pgrep for agent status |
 
-- Respect quiet hours (23:00–08:00 UTC+7). Current time: 20:00 UTC+7 → OK
-- Keep changes small but meaningful
-- Close the loop with validation
-- Prefix commit messages: `build: <description>`
-
----
-
-## Start Time
-2026-02-15 20:00 UTC+7
+## Notes
+- Update phase status as you progress: pending → in_progress → complete
+- Re-read this plan before major decisions (attention manipulation)
+- Log ALL errors - they help avoid repetition
+- Respect quiet hours (23:00–08:00 UTC+7) - currently ~22:00 UTC+7, so proceed but be efficient

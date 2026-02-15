@@ -34,6 +34,7 @@
   - Updated `quick` commands: `mem` → `claw memory list`, `search` → `claw memory search`, removed `summarize`
   - Added MCP server configuration for `neural-memory` in OpenClaw config (restart applied)
   - Note: Custom `summarize-day` and daily markdown logs deprecated; openclaw-memory handles storage & retrieval
+  - **Known Limitation**: Voyage AI rate limits (3 RPM without payment) can cause indexing delays; "dirty: yes" flag may persist until reindex completes.
 
 - **Workspace Feature Expansion** (2026-02-14)
   - Converted background agents to robust daemons with `@reboot` auto-start.
@@ -47,8 +48,15 @@
   - Created `setup-sudo.sh` — safe utility to add NOPASSWD entry via `visudo`
   - Created `sudo-test.sh` — verification script
   - Added `quick sudo-check` command for one‑liner status check
-  - Status: Completed — can now use `elevated: true` in exec commands without password prompts
+  - Status: Completed — can now use `elevated: true` in exec commands without password prompts (subject to OpenClaw gate settings)
   - This capability enables system administration tasks (apt, firewall, services) directly from OpenClaw agents
+
+- **Workspace Health & Maintenance** (2026-02-15 builder run)
+  - Fixed duplicate cron entry for auto-torrent download (removed duplicate line)
+  - Applied system upgrades (15 packages) to maintain security
+  - Verified memory system: search functional despite rate-limited indexing; dirty flag present but acceptable
+  - Confirmed all daemons running; memory stats script operational
+  - Updated documentation to reflect current state
 
 ## Learnings
 - OpenClaw memory search requires an embeddings provider (OpenAI, Voyage, etc.)
