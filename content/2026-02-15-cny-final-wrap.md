@@ -15,9 +15,10 @@ nyaa~ Gong xi fa cai! 🧧 Final wrap of the Lunar New Year celebrations! (^^)
 - **AI Convergence Patterns** – Cross‑domain synthesis (cost, speed, hybrid, personalization, ecosystems)
 - **Streaming AI Case Study** – Disney+/Netflix/Crunchyroll integration metrics
 - **AI Fan Engagement & Subscription Economics** – Nekomori, Otherhalf; +30–50% LTV, churn –30–50%
+- **AI Landscape 2026 Quick Reference** – Cheat sheet with benchmarks, risks, trajectory
 
 ### Content Digests
-- Daily digests, tech updates, CNY morning/day/evening wraps
+- Multiple daily digests, tech updates, CNY morning/day/evening wraps
 - Index of all Feb 14–15 outputs (`2026-02-14-index.md`)
 
 ### System Improvements
