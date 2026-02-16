@@ -5,6 +5,7 @@ Workspace health check - one-line summary for alerts/cron
 
 import subprocess
 import json
+import socket
 from pathlib import Path
 
 WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
@@ -39,8 +40,8 @@ def get_memory_system_status():
             return f"Memory: {files}f/{chunks}c ({dirty}) {provider} {features}"
         else:
             return f"Memory: {files}f/{chunks}c ({dirty}) {provider}"
-    except Exception as e:
-        return f"Memory: error"
+    except Exception:
+        return "Memory: error"
 
 def get_reindex_age():
     """Return age in days since last memory reindex, or None if never."""
@@ -54,6 +55,26 @@ def get_reindex_age():
         return age_days
     except Exception:
         return None
+
+def get_gateway_status():
+    """Check gateway service and RPC status."""
+    # Check systemd service
+    out, _, rc = run_cmd("systemctl --user is-active openclaw-gateway.service")
+    service_status = "active" if rc == 0 and out.strip() == "active" else "inactive"
+
+    # Check if port is listening
+    out, _, rc = run_cmd("ss -tuln | grep ':18789' | wc -l")
+    port_listening = int(out.strip()) > 0 if out.strip().isdigit() else 0
+
+    # Determine overall status
+    if service_status == "active" and port_listening:
+        return "Gateway: healthy"
+    elif port_listening:
+        return "Gateway: running (service orphaned)"
+    elif service_status == "active":
+        return "Gateway: service active but port not listening"
+    else:
+        return "Gateway: down"
 
 def main():
     # Disk usage
@@ -92,8 +113,11 @@ def main():
     else:
         reindex_status = "Reindex: never"
 
-    # Combine (include reindex status)
-    summary = " | ".join([disk_status, updates_status, git_status, mem_status, reindex_status])
+    # Gateway status (new)
+    gw_status = get_gateway_status()
+
+    # Combine (now includes gateway)
+    summary = " | ".join([disk_status, updates_status, git_status, mem_status, reindex_status, gw_status])
     print(summary)
 
 if __name__ == "__main__":
