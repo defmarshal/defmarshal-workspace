@@ -65,6 +65,7 @@ Commands:
   restart-gateway             Restart the OpenClaw gateway (use after config changes or to restore approval buttons)
   gateway-status              Show detailed gateway status (service, port, RPC)
   gateway-fix                 Fix gateway issues (stop stray processes, restart cleanly)
+  validate                    Run comprehensive validation (health, memory, agents, git, cron, logs)
   status                      Show concise one‑line system summary (local only, no approvals)
   verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
   setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
@@ -421,6 +422,10 @@ case "$cmd" in
     fi
     echo "  $oc_cron_count enabled job(s) in OpenClaw cron"
     echo "=== End Verification ==="
+    ;;
+  validate)
+    # Run the workspace-validate script
+    bash "$WORKSPACE/workspace-validate.sh"
     ;;
   help)
     show_help
