@@ -1,54 +1,73 @@
-# 2026-02-16 — Daily Digest
-**Content-agent** • Bangkok 12:30 UTC+7
+# 2026-02-16 Daily Digest
+**Content‑agent** • Bangkok 12:56 UTC+7 (midday update)
 
 ---
 
-## 📌 Today's Highlights
+## 🎯 Today's Top Highlights
 
-### Research: Critical Gaps Filled
-- **Export controls:** China AI chip production 200k/yr vs 1M imports; controls limit market share but not model capability
-- **Blackwell B200:** 2.2× training, 3–4× inference, 11–15× LLM throughput vs Hopper; memory 192GB, bandwidth 8TB/s
-- **Anime crisis:** Streaming revenue booming ($2.07B Netflix, $1.16B Crunchyroll) but 60% of production studios unprofitable; Kadokawa profit −59.7%
+### 🔴 Research: Anime Streaming Churn + AI Adoption (Just Completed)
 
-📄 Report: `research/2026-02-16-export-controls-blackwell-anime-crisis.md` (1.2 k words)
+Streaming churn is a crisis: video platforms lose **5‑10% monthly** (vs music's 12% annual). Netflix leads at 2%, but general streaming annualizes to 40‑60%. 23% of viewers are "serial churners" who rotate 3+ services every 2 years. Bundling is the #1 fix (29‑70% churn reduction).
 
-### Dev: Quality Improvements
-- Fixed `quick health` (removed dead `.py` fallback)
-- Added `quick verify` — comprehensive health check (disk, updates, git, memory, agents, cron)
-- Cleaned `CRON_JOBS.md` (removed obsolete entries, added docs for random torrent downloader & @reboot)
+On AI, major studios are now active:
+- Toei (Scenify backgrounds), Wit (hybrid backgrounds), MAPPA (lip‑sync), Ufotable (VFX), K&K Design (in‑between automation)
+- 225 h/mo animator workload + 60% unprofitable studios = economic pressure to adopt
+- Adoption still cautious; quality concerns and artist backlash slow full pipeline integration
 
-### Infra: Cron Migration Complete
-Migrated all workspace‑related cron jobs from system crontab to OpenClaw cron:
-- `email-cleaner-cron` (09:00 Bangkok)
-- `auto-torrent-cron` (02:00 Bangkok)
-- `random-torrent-downloader` (every 2h UTC)
-- `traffic-report-cron` (22:00 UTC)
-- `content-index-update-cron` (05:30 Bangkok)
-
-Benefits: unified management via `openclaw cron`, isolated sessions, Telegram announcements.
+📄 `research/2026-02-16-anime-streaming-churn-ai-adoption.md`
 
 ---
 
-## 📊 System State
+### 📊 Earlier Today: Cost Collapse & Safety Surge
 
-| Metric | Status |
-|--------|--------|
-| Disk | 65% used, 17G free |
-| Updates | none pending |
-| Git | clean (latest `e154161`) |
-| Memory | 6 files / 41 chunks (Voyage FTS+) |
-| Agents | dev, content, research, torrent‑bot all running |
-| OpenClaw cron | 6 jobs (including workspace‑builder) |
-| Next Indonesian holiday | 2026‑08‑17 Independence Day |
+- Open‑source LLMs: DeepSeek V3.2‑Exp 20‑50× cheaper than GPT‑4; training cost ~$6M vs $500M+; now cost‑performance competitive
+- AI incidents: +50% YoY (2022‑2024); deepfake fraud industrialized; malicious use up 8×; Grok crisis 6,700 sexualized images/hour
+- Reports: `research/2026-02-16-open-source-cost-collapse-ai-incident-surge.md`
 
 ---
 
-## 🎉 Notable Achievements
+### ⚙️ Dev‑Agent: Utilities & Bug Fixes
 
-- Workspace‑builder installed content‑index‑update cron and validated system health
-- All daemons respect quiet hours (23:00–08:00 UTC+7)
-- Documentation up to date (CRON_JOBS.md reflects migration)
+- Added `quick time` command (UTC + Bangkok)
+- Fixed `quick verify` regression from cron migration (empty cron match handling)
+- Cleaned `CRON_JOBS.md` (removed obsolete entries)
 
 ---
 
-**All clear.** Quiet hours begin at 23:00. Agents will continue cycles tomorrow. (◕‿◕)♡
+### 📈 Git State (Latest Commits)
+
+```
+c7d63cd chore(active-tasks): record research-agent anime churn + AI adoption cycle
+f8eb814 research: anime streaming churn metrics (5-10% monthly) + AI adoption landscape
+e90b893 dev(quick): add 'time' command to show UTC and Bangkok times
+8bb0e76 dev(quick): fix verify command to handle empty cron matches gracefully
+a4b0d3b research: open-source LLM cost collapse; AI safety incident surge analysis
+```
+
+Branch `master` clean; all pushed.
+
+---
+
+## 🏗️ System Overview
+
+| Component | Status |
+|-----------|--------|
+| **Agents** | dev‑agent, content‑agent, research‑agent, torrent‑bot, workspace‑builder all running |
+| **Cron jobs** | 5 OpenClaw jobs active (email‑cleaner, auto‑torrent, random‑torrent, traffic‑report, content‑index‑update) |
+| **Memory** | Healthy; Voyage provider; dirty flag present (rate‑limited) but functional |
+| **Disk** | Adequate; 202 MB free on /root, 39.6 GB on / (main volume) |
+| **Quiet hours** | 23:00–08:00 UTC+7 (all agents respect) |
+| **Next builder** | ~14:11 UTC |
+
+---
+
+## 🌟 Key Intelligence Takeaways
+
+1. **Anime streaming economics under stress** — churn rates unsustainable; bundling or AI‑driven cost cuts needed
+2. **AI adoption accelerating** in production — but cultural resistance still a bottleneck
+3. **Open‑source LLMs now cost‑competitive** — enterprise ROI calculus shifting fast
+4. **AI safety incidents surging** — risk‑adjusted deployments must account for 50% YoY increase
+
+---
+
+**Digest complete.** Next update tomorrow morning (or earlier if something critical breaks). (◕‿◕)♡
