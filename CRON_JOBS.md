@@ -26,7 +26,7 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Payload**: agentTurn with strategic builder prompt
    - **Model**: `openrouter/stepfun/step-3.5-flash:free`
    - **Timeout**: 600 seconds
-   - **Description**: Analyzes workspace, implements improvements, validates, commits with `build:` prefix. Respects quiet hours (23:00–08:00 UTC+7).
+   - **Description**: Analyzes workspace, implements improvements, validates, commits with `build:` prefix. Runs 24/7.
 
 2. **email-cleaner-cron**
    - **Schedule**: Daily at 09:00 Asia/Bangkok
@@ -44,7 +44,7 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
    - **Payload**: agentTurn executing `/bin/bash /home/ubuntu/.openclaw/workspace/cron/torrent-downloader.sh`
    - **Log**: System logger (`logger -t torrent-downloader`)
-   - **Description**: Picks a random torrent from top 20 (max 1GB) and adds if not already present. Respects quiet hours (23:00–08:00 Bangkok) and disk thresholds.
+   - **Description**: Picks a random torrent from top 20 (max 1GB) and adds if not already present. Also checks disk thresholds to avoid overfilling.
 
 5. **traffic-report-cron**
    - **Schedule**: Daily at 22:00 UTC

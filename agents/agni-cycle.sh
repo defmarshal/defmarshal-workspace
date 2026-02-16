@@ -9,12 +9,7 @@ LOG="agents/agni/agni.log"
 mkdir -p agents/agni
 echo "[$(date --iso-8601=seconds)] Agni cycle starting" >> "$LOG"
 
-# Respect quiet hours (23:00-08:00 Asia/Bangkok)
-hour=$(date +%H)
-if (( hour >= 23 || hour < 8 )); then
-  echo "[$(date --iso-8601=seconds)] Quiet hours — exiting" >> "$LOG"
-  exit 0
-fi
+# Quiet hours removed — running 24/7 per user request
 
 # Avoid overlap: if another Agni is running, exit
 if pgrep -f "agni-cycle.sh" > /dev/null; then
