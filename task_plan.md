@@ -39,24 +39,15 @@ Phase 1: Requirements & Discovery
 - **Status:** complete
 
 ### Phase 3: Implementation
-- [ ] Update MEMORY.md with:
-  - Content Index Update cron (05:30 Bangkok)
-  - memory-stats and memory-index quick commands
-  - Note about Voyage dirty flag as known limitation and planned weekly reindex
-  - Mention log rotation plan
-- [ ] Create log rotation script:
-  - Use `logrotate` or custom bash: compress aria2.log if >100MB, keep 4 rotations
-  - Command: `./quick log-rotate` to run manually
-- [ ] Add OpenClaw cron for memory reindex:
-  - Weekly (e.g., Sunday 04:00 Bangkok): `claw memory index` or `./quick memory-index`
-  - Log to `memory/memory-reindex.log`
-  - Add to CRON_JOBS.md with entry "memory-reindex-cron"
-- [ ] Add simple monitoring check in health script? Actually `quick health` already includes memory file/dirty status; maybe enhance to warn if dirty > 1 day? Could be separate phase.
-- [ ] Test each change:
-  - Run `./quick memory-index` manually (may hit rate limits; handle failures gracefully)
-  - Run log-rotate script on a test file to verify rotation
-  - Verify cron entry added correctly
-- **Status:** pending
+- [x] Previous builder cycle (05:11 UTC) already delivered:
+  - log-rotate script created and integrated into quick launcher
+  - memory-reindex-cron and log-rotate-cron added to OpenClaw cron (Sunday 04:00/05:00 Bangkok)
+  - CRON_JOBS.md updated with those entries
+  - MEMORY.md updated with content-index cron and memory commands (via earlier updates)
+- [ ] New improvement: add memory reindex age to workspace-health and quick status for better monitoring
+  - This shows when memory was last reindexed (from memory-reindex.log mtime) to detect missed cron runs
+- [ ] Test the new health output
+- **Status:** in_progress (partial legacy completion)
 
 ### Phase 4: Testing & Verification
 - [ ] Run `./quick health` and ensure no regressions

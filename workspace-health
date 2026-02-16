@@ -42,6 +42,19 @@ def get_memory_system_status():
     except Exception as e:
         return f"Memory: error"
 
+def get_reindex_age():
+    """Return age in days since last memory reindex, or None if never."""
+    import time
+    log_path = WORKSPACE / "memory" / "memory-reindex.log"
+    if not log_path.exists():
+        return None
+    try:
+        mtime = log_path.stat().st_mtime
+        age_days = (time.time() - mtime) / 86400
+        return age_days
+    except Exception:
+        return None
+
 def main():
     # Disk usage
     out, _, rc = run_cmd("df -h / | awk 'NR==2 {print $5}'")
@@ -67,8 +80,20 @@ def main():
     # Memory system
     mem_status = get_memory_system_status()
 
-    # Combine
-    summary = " | ".join([disk_status, updates_status, git_status, mem_status])
+    # Memory reindex age
+    reindex_age = get_reindex_age()
+    if reindex_age is not None:
+        if reindex_age < 1:
+            reindex_status = "Reindex: today"
+        elif reindex_age < 7:
+            reindex_status = f"Reindex: {reindex_age:.1f}d ago"
+        else:
+            reindex_status = f"Reindex: {reindex_age:.0f}d ago (stale)"
+    else:
+        reindex_status = "Reindex: never"
+
+    # Combine (include reindex status)
+    summary = " | ".join([disk_status, updates_status, git_status, mem_status, reindex_status])
     print(summary)
 
 if __name__ == "__main__":
