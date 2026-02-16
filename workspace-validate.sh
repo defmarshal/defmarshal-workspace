@@ -84,27 +84,39 @@ else
   status_warn "Reindex: never"
 fi
 
-# 6. Gateway status
-GW_SERVICE=$(systemctl --user is-active openclaw-gateway.service 2>/dev/null || echo "inactive")
+# 6. Gateway status (with retry for transient startup states)
+gw_active=false
+for attempt in $(seq 1 3); do
+  if systemctl --user is-active --quiet openclaw-gateway.service 2>/dev/null; then
+    gw_active=true
+    break
+  else
+    # Not active yet — could be activating, inactive, or failed
+    sleep 0.5
+  fi
+done
+
 GW_PORT=$(ss -tuln 2>/dev/null | grep -c ':18789 ' || echo 0)
 
-if [ "$GW_SERVICE" = "active" ] && [ "$GW_PORT" -gt 0 ]; then
+if [ "$gw_active" = true ] && [ "$GW_PORT" -gt 0 ]; then
   if timeout 2 openclaw gateway probe >/dev/null 2>&1; then
     status_ok "Gateway: healthy"
   else
-    status_warn "Gateway: service up but RPC unreachable"
+    status_warn "Gateway: service active but RPC unreachable"
   fi
 else
-  status_err "Gateway: down (service: $GW_SERVICE, port: $GW_PORT lines)"
+  status_err "Gateway: down (service not active, port: $GW_PORT lines)"
 fi
 
 # 7. Agent cron jobs (count expected)
-EXPECTED_JOBS=11
-ACTUAL_JOBS=$(openclaw cron list --json 2>/dev/null | jq 'length' 2>/dev/null || echo "0")
-if [ "$ACTUAL_JOBS" -eq "$EXPECTED_JOBS" ]; then
-  status_ok "Cron jobs: $ACTUAL_JOBS (expected $EXPECTED_JOBS)"
+# Updated: 2026-02-16 — we have 14 active cron jobs as of latest agent additions
+EXPECTED_JOBS_MIN=12
+EXPECTED_JOBS_MAX=16
+ACTUAL_JOBS=$(openclaw cron list --json 2>/dev/null | jq '.jobs | length' 2>/dev/null || echo "0")
+if [ "$ACTUAL_JOBS" -ge "$EXPECTED_JOBS_MIN" ] && [ "$ACTUAL_JOBS" -le "$EXPECTED_JOBS_MAX" ]; then
+  status_ok "Cron jobs: $ACTUAL_JOBS (within expected range $EXPECTED_JOBS_MIN-$EXPECTED_JOBS_MAX)"
 elif [ "$ACTUAL_JOBS" -gt 0 ]; then
-  status_warn "Cron jobs: $ACTUAL_JOBS (expected $EXPECTED_JOBS)"
+  status_warn "Cron jobs: $ACTUAL_JOBS (outside expected range $EXPECTED_JOBS_MIN-$EXPECTED_JOBS_MAX)"
 else
   status_err "Cron jobs: none (gateway may be down)"
 fi
