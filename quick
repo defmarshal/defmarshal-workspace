@@ -20,6 +20,7 @@ Commands:
   memory-stats  Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
   memory-reindex Force reindex of memory files (openclaw memory index)
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
+  quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00–08:00) and whether system is in quiet mode
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   time            Show current time in UTC and Bangkok (Asia/Bangkok)
@@ -141,6 +142,17 @@ case "$cmd" in
         echo "  ✗ $name  NOT RUNNING"
       fi
     done
+    ;;
+  quiet-hours)
+    # Show current quiet hours status and next transitions
+    echo "Quiet Hours (Asia/Bangkok): 23:00–08:00"
+    echo "Current time (Bangkok): $(TZ='Asia/Bangkok' date '+%H:%M')"
+    H=$(TZ='Asia/Bangkok' date +%H)
+    if (( 23 <= H || H < 8 )); then
+      echo "Status: QUIET (night window active)"
+    else
+      echo "Status: ACTIVE (daytime)"
+    fi
     ;;
   health)
     "$WORKSPACE/workspace-health"
@@ -329,6 +341,9 @@ case "$cmd" in
     echo ""
     echo "Cron (user crontab):"
     cron_count=$(crontab -l 2>/dev/null | (grep -E 'email-clean|nyaa-top|torrent' || true) | wc -l); echo "  $cron_count entry(ies) relevant"
+    echo ""
+    echo "OpenClaw Cron:"
+    oc_cron_count=$(openclaw cron list --json 2>/dev/null | python3 -c "import sys, json; data=json.load(sys.stdin); print(len([j for j in data.get('jobs',[]) if j.get('enabled')]))" || echo "?"); echo "  $oc_cron_count enabled job(s) in OpenClaw cron"
     echo "=== End Verification ==="
     ;;
   help)
