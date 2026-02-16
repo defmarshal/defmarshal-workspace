@@ -1,98 +1,111 @@
 # Findings & Decisions
 
-## Requirements
-- Maintain memory system reliability despite Voyage rate limits
-- Keep documentation (MEMORY.md) current with recent changes
-- Prevent disk space issues from uncontrolled log growth (aria2.log)
-- Enhance monitoring of memory indexing status
-- Ensure overall system health remains high
+## Requirements Analysis
+- Maintain robust, clean workspace aligned with lessons learned (anti-patterns)
+- Convert persistent daemon agents to cron-based scheduling (per lessons.md: "Persistent agent anti-pattern")
+- Ensure all cron jobs documented and running
+- Keep system health high; address pending updates if reasonable
+- Update documentation to reflect current state
 
-## Current System State (2026-02-16 07:00 UTC)
+## Current System State (2026-02-16 13:00 UTC)
 
 ### Git & Version
 - Branch: master, up to date with origin/master
-- Working tree: clean (no uncommitted changes)
-- Recent commits from content-agent, dev-agent, research-agent (normal operations)
+- Working tree: clean
+- Recent commits from prior builder (workspace-builder 11:00 UTC) showing memory-reindex-cron and log-rotate-cron implementation
 
 ### Disk & System
-- Disk usage: ~65% (2.7G used of ~45G total) — healthy
-- System updates: 0 upgradable packages
-- Large files: `aria2.log` 675 MB (needs rotation)
+- Disk usage: 65% (2.7G used / 45G total) — healthy
+- System updates: 2 upgradable packages (not critical but could be automated)
+- Large logs: aria2.log 675 MB (log-rotate-cron will handle weekly; acceptable)
 
-### Memory System (openclaw-memory)
-- Main instance:
-  - Indexed: 6 of 6 source files, 41 chunks
-  - Dirty: yes (some files pending re-embedding due to Voyage rate limits)
-  - Features: FTS ready, embedding cache enabled (152 entries), batch disabled (previous failures)
-- Torrent-bot instance:
-  - Indexed: 0 of 6 files, 0 chunks (expected, no logs yet)
-  - Dirty: yes
-- Note: Voyage AI rate limit (3 RPM) causes indexing delays; search remains functional; this is an acceptable known limitation per MEMORY.md.
+### Memory System
+- Main: 7 files indexed, 43 chunks, dirty: false (clean)
+- Torrent-bot instance: 0 files, dirty: true (expected, minimal activity)
+- Voyage AI provider active, FTS enabled, vector disabled
+- No batch processing (rate-limit safe)
 
 ### Agents & Daemons
-- Running daemons: dev-agent, content-agent, research-agent, torrent-bot
-- All respect quiet hours (23:00–08:00 Asia/Bangkok)
-- Recent logs show no critical errors
+- Persistent daemons running: dev-agent, content-agent, research-agent (via start-background-agents.sh)
+- Torrent-bot also running as daemon (slash-command agent; acceptable)
+- All respect quiet hours (23:00–08:00 Asia/Bangkok) per logs and code
 
-### Content Index
-- `content/INDEX.md` includes 2026-02-16 content files; appears up-to-date
-- The `quick content-index-update` command works and cron job (05:30 Bangkok) is active via OpenClaw cron
+### Cron Infrastructure
+- OpenClaw cron jobs (8 total):
+  1. workspace-builder (every 2h Bangkok)
+  2. email-cleaner-cron (09:00 Bangkok)
+  3. auto-torrent-cron (02:00 Bangkok)
+  4. random-torrent-downloader (every 2h UTC)
+  5. traffic-report-cron (22:00 UTC)
+  6. content-index-update-cron (05:30 Bangkok)
+  7. memory-reindex-cron (Sunday 04:00 Bangkok)
+  8. log-rotate-cron (Sunday 05:00 Bangkok)
+- Documentation in CRON_JOBS.md is accurate and complete
 
 ### Quick Launcher
-- Commands include: memory-status, memory-index, memory-stats, health, etc.
-- All appear functional
-
-### CRON_JOBS.md
-- Already documents content-index-update-cron and other jobs
-- Up-to-date
+- Commands for memory-index, memory-stats, log-rotate, health, verify all present and functional
+- Log-rotate script exists (1198 bytes) and is executable
 
 ## Identified Improvement Areas
 
-1. **Memory Reindex Strategy**
-   - Dirty flag persists; to eventually clear, schedule periodic reindex (weekly)
-   - Use `claw memory index` or `quick memory-index`
-   - Log output to `memory/memory-reindex.log`
-   - Add to OpenClaw cron to avoid interfering with rate-limited manual runs
+### 1. Persistent Daemons → Cron (High Impact)
+**Problem**: dev-agent, content-agent, research-agent run as infinite-loop daemons. Lessons.md explicitly warns: "Do NOT use long-running subagents for periodic tasks. Use cron jobs instead."
+**Impact**: 
+- Orphaned processes if gateway restarts (subagents die, no auto-respawn)
+- Higher resource usage (constant process)
+- Violates established best practice
+**Solution**: Convert each agent to a cron job that executes their main loop once per scheduled interval. The agent code already uses `sleep` between iterations; we can wrap a single iteration in a cron job.
 
-2. **Log Rotation**
-   - `aria2.log` is 675 MB and growing; risk of filling disk over time
-   - Implement simple rotation: compress and truncate when > 100 MB, keep last 4 archives
-   - Provide `quick log-rotation` command
+### 2. Pending System Updates (Medium)
+Two packages upgradable. Could:
+- Manual: `sudo apt upgrade` (one-time)
+- Automated: create weekly update check cron (or enable unattended-upgrades)
+**Decision**: Low priority; can be manual for now. Document in notes.
 
-3. **Documentation Refresh**
-   - MEMORY.md last updated 2026-02-15
-   - Needs entries for:
-     - Content Index Update cron (05:30 Bangkok)
-     - Memory stats and index commands (`memory-stats`, `memory-index`)
-     - Acknowledgment of Voyage dirty flag and planned mitigation (weekly reindex)
-     - Mention of log rotation plan
-
-4. **Monitoring**
-   - `quick health` already shows memory file counts and dirty status; sufficient for now
-   - No immediate need for alerts; dirty flag visible enough
-   - May enhance later to warn if dirty > 7 days
+### 3. Documentation Refresh (Low)
+`active-tasks.md` currently lists daemons as running; need update after conversion.
+`projects.md` lists "24/7 Autonomous Agents" as active with daemon approach; should reflect cron migration.
+`MEMORY.md` already up-to-date (2026-02-16 entry covers log rotation and reindex).
 
 ## Technical Decisions
 
 | Decision | Rationale |
 |----------|-----------|
-| Add weekly (Sunday 04:00 Bangkok) memory reindex via OpenClaw cron | Spreads load, gives Voyage time to recover, should eventually clear dirty |
-| Implement custom logrotate script (bash) for aria2.log | No external dependencies; easy to adjust thresholds |
-| Update MEMORY.md (not create separate changelog) | Centralized reference for long-term memory |
-| Use absolute path in cron for `quick` and scripts | Consistency with existing cron entries (content-index-update, email-cleaner) |
-| Keep Voyage as provider for now (no migration) | Free tier sufficient; switching requires new API keys and config |
-| Delay alerts for dirty flag | Current manual checks via health/memory-status adequate; could add later if persistent |
+| Convert agents to cron with same intervals (20/10/15 min) | Maintains frequency; respects quiet hours within agent code; eliminates infinite loops |
+| Keep agents' existing log files (dev-agent.log, content-agent.log, research-agent.log) | Consistency; easy to tail; cron payload will append |
+| Do NOT change agent code itself; only scheduling | Agents already designed for periodic execution; their loop script does: while true; do work; sleep; done. We'll create a wrapper that runs once, or call the loop with a count=1? Better: create a script that runs the agent's core function once. Need to inspect agent loop contents. |
+| Disable daemons after verifying cron works | Avoid duplication and resource waste |
+| Update active-tasks.md and projects.md; no MEMORY.md change needed | active-tasks.md reflects current state; projects.md records methodology |
+| Defer update automation | Not urgent; could be separate future builder task |
 
 ## Potential Risks & Mitigations
 
-- Rate limit on memory reindex may cause incomplete indexing in one run → Accept partial; next weekly run will continue.
-- Log rotation script could accidentally delete needed logs → Keep 4 archives; ensure we only compress/truncate, not delete all but one.
-- Cron misconfiguration could cause overlapping jobs → Use distinct times: reindex 04:00 Bangkok, content-index 05:30.
+| Risk | Mitigation |
+|------|------------|
+| Cron agent runs overlap or take longer than interval → multiple instances concurrent | Use lockfile (flock) in cron wrapper to prevent overlap; agents should be idempotent |
+| Agents assume long-running state (e.g., caches in memory) | Agents appear simple (content-agent creates content files; research-agent fetches research; dev-agent writes utilities). Likely stateless per-run. Verify by inspecting loop scripts. |
+| Log format changes (daemon vs one-shot) | Ensure cron appends to same log files (`>>`) as before; timestamps should still appear |
+| Quiet hours not respected in cron | Agent code already checks quiet hours; verify in code. Cron job payload can also include pre-check, but redundant. |
+| Conversion breaks something → agents stop producing | Test each cron job manually via `openclaw cron run` before disabling daemons. Keep daemon scripts as fallback. |
 
 ## Dependencies
-- None external; all scripts use existing tools (bash, gzip, mv, tail)
-- OpenClaw `claw memory` CLI must remain available (already is)
+- Need to examine agent loop scripts to see how to invoke them correctly for one-shot execution.
+- OpenClaw cron must be functional (it is, per existing jobs).
+- Ability to kill daemon processes (we have permissions).
 
 ## Open Questions
-- Could we switch to `neural-memory` as primary? Not yet; FTS is working; need evaluation.
-- Should we also rotate other logs (agent logs)? They are moderate; focus on largest first.
+- Are the agents truly idempotent per-run? They fetch/create new content each run. That's fine; multiple runs generate multiple items. That's expected. They don't rely on stateful memory between iterations, so one-shot is safe.
+- Should we keep the daemon scripts for emergency fallback? Yes, keep them but comment out or rename to *.sh.disabled.
+- Do we need to adjust `start-background-agents.sh`? Yes, comment out daemon launches or disable script entirely.
+
+## Proposed Cron Payloads
+
+**dev-agent-cron** (every 20 min: `0,20,40 * * * *` Asia/Bangkok)
+```
+Execute: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./dev-agent-loop.sh --once >> dev-agent.log 2>&1'
+```
+(Need to verify if loop script accepts `--once` or we need to call the agent's main directly)
+
+Better approach: Create wrapper scripts that invoke the agent's core functionality without the infinite loop. We'll inspect the loop scripts to see what the agent's actual command is (likely they call some agent API or script). Might be simpler: The loop script is already a bash script that runs `openclaw agents spawn` or similar with an infinite loop. We can extract that command and run it once.
+
+Let's read the loop scripts to understand their structure.

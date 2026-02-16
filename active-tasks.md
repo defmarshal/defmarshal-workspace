@@ -23,17 +23,19 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [daemon] dev-agent - Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
-  - 2026-02-16 cycle: added quick quiet-hours, enhanced verify (OpenClaw cron count), added git-summary; commits 9884936, 3647ff6; verified functional.
-- [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
-  - 2026-02-16 cycle: produced all updates (midday, digest, wrap, updates, summaries) and final day close; updated INDEX; committed and pushed (39f6ee2).
-- [daemon] research-agent - Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
-
 - [daemon] torrent-bot - Slash-command torrent management agent (running)
-  - Verification: agent registered; daemon loop started (PID 481810); respects quiet hours; pairing pending for Telegram channel.
+  - Verification: agent registered; daemon loop started (PID varies); respects quiet hours; pairing pending for Telegram channel.
 
 - [agent:main:cron:workspace-builder-20260216-1100] workspace-builder - Memory reindex age monitoring enhancement (started: 2026-02-16 11:00 UTC, status: validated)
   - Verification: workspace-health now shows reindex age; quick status works; git clean after commit (commit 4adbb4e pushed). No errors.
+
+- [infra] 2026-02-16 13:00-? - Agent daemon → cron migration
+  - Converted dev-agent, content-agent, research-agent from persistent daemons to OpenClaw cron jobs.
+  - New cron jobs: dev-agent-cron (20 min), content-agent-cron (10 min), research-agent-cron (15 min), all scheduled 08:00-22:00 Asia/Bangkok.
+  - Old daemons stopped; start-background-agents.sh left unchanged but daemons no longer running.
+  - Verification: manual cron runs produced logs; cron list shows new jobs enabled.
+  - Pending: commit documentation updates.
+
 - [infra] 2026-02-16 05:27-05:35 - Cron migration to OpenClaw
   - Converted 5 workspace cron jobs from system crontab to OpenClaw cron:
     • email-cleaner-cron (09:00 Bangkok)

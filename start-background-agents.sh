@@ -28,9 +28,11 @@ start_if_missing() {
 }
 
 # Start daemons
-start_if_missing "dev-agent" "dev-agent-loop.sh"
-start_if_missing "content-agent" "content-agent-loop.sh"
-start_if_missing "research-agent" "research-agent-loop.sh"
+# NOTE (2026-02-16): dev-agent, content-agent, research-agent have been migrated to OpenClaw cron jobs.
+# The daemon loops are no longer needed. Keeping aria2 and torrent-bot as daemons.
+# start_if_missing "dev-agent" "dev-agent-loop.sh"
+# start_if_missing "content-agent" "content-agent-loop.sh"
+# start_if_missing "research-agent" "research-agent-loop.sh"
 start_if_missing "torrent-bot" "agents/torrent-bot/loop.sh"
 
 # Start aria2 daemon if not running

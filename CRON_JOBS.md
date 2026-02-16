@@ -66,6 +66,21 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Payload**: agentTurn executing `./quick log-rotate` and appending to `memory/log-rotate.log`
    - **Description**: Rotates aria2.log when it exceeds 100 MB, keeping up to 4 compressed archives. Prevents uncontrolled log growth.
 
+9. **dev-agent-cron**
+   - **Schedule**: Every 20 minutes between 08:00-22:00 Asia/Bangkok (`0,20,40 8-22 * * *`)
+   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/dev-cycle.sh >> dev-agent.log 2>&1'`
+   - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Migrated from persistent daemon to cron on 2026-02-16.
+
+10. **content-agent-cron**
+    - **Schedule**: Every 10 minutes between 08:00-22:00 Asia/Bangkok (`0,10,20,30,40,50 8-22 * * *`)
+    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/content-cycle.sh >> content-agent.log 2>&1'`
+    - **Description**: Performs one content-agent cycle (create anime summaries, tech writeups, digests). Migrated from persistent daemon to cron on 2026-02-16.
+
+11. **research-agent-cron**
+    - **Schedule**: Every 15 minutes between 08:00-22:00 Asia/Bangkok (`0,15,30,45 8-22 * * *`)
+    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/research-cycle.sh >> research-agent.log 2>&1'`
+    - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Migrated from persistent daemon to cron on 2026-02-16.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
