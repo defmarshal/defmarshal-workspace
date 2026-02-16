@@ -27,11 +27,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
 - [daemon] research-agent — Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
 
-- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Added content-latest command, updated content/INDEX.md, added new content files, reindexed memory (started: ~2026-02-15 11:00 UTC, status: validated)
-  - Verification: `quick health` OK; `quick content-latest` works; `quick memory-status` shows healthy; all changed files verified; commit pushed successfully.
+- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder — Content index automation: installed cron job, verified system health (started: 2026-02-16 05:11 UTC, status: validated)
+  - Verification: cron entry added at 05:30 Bangkok; `quick content-index-update` works; INDEX.md refreshed (41 files); memory search OK; all agents running (dev/content/research/torrent-bot); no errors; git clean.
 
-- [agent:main:cron:3951e3ae-afae-4f61-8a3a-95269acae843] workspace-builder — Current maintenance run (started: 2026-02-15 16:00 UTC, status: validated)
-  - Verification: system upgrades applied (15 packages), duplicate cron fixed, memory search OK, daemons healthy, git clean; task_plan.md updated; changes committed and pushed.
 - [daemon] torrent-bot — Slash-command torrent management agent (running)
   - Verification: agent registered; daemon loop started (PID 481810); respects quiet hours; pairing pending for Telegram channel.
 - [research-cycle] 2026-02-16 05:15–12:20 — High-priority research batch
