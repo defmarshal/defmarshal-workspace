@@ -68,6 +68,9 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# If VERBOSE not set, default to false
+VERBOSE=${VERBOSE:-false}
+
 if [[ ! -d "$DOWNLOADS_DIR" ]]; then
     warn "Downloads directory not found: $DOWNLOADS_DIR"
     exit 1
@@ -79,10 +82,17 @@ if [[ "$DRY_RUN" == "true" ]]; then
     log "Add --execute to perform deletion."
 fi
 
+# Verbose: list all files to be scanned
+if [[ "$VERBOSE" == "true" ]]; then
+    echo "Files in downloads directory (eligible types only):"
+    find "$DOWNLOADS_DIR" -mindepth 1 -type f \( -name "*.mkv" -o -name "*.mp4" -o -name "*.avi" -o -name "*.torrent" -o -name "*.nfo" -o -name "*.txt" -o -name "*.jpg" -o -name "*.png" \) -exec ls -lh {} \; 2>/dev/null || true
+    echo ""
+fi
+
 # Find files older than retention period
 # We'll find files and directories (but only delete empty dirs after files removed)
- found_count=0
- to_delete_size=0
+found_count=0
+to_delete_size=0
 
 while IFS= read -r -d '' filepath; do
     if [[ -f "$filepath" ]]; then

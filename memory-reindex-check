@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# Check if memory reindex is needed based on dirty flag and age
+# Exit codes: 0 = clean/recent, 1 = dirty or stale, 2 = error
+
+set -euo pipefail
+
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+cd "$WORKSPACE"
+
+# Get memory status via openclaw
+MEM_JSON=$(openclaw memory status --json 2>/dev/null || echo '[]')
+
+if ! echo "$MEM_JSON" | python3 -c "import sys, json; json.load(sys.stdin)" >/dev/null 2>&1; then
+  echo "ERROR: Unable to parse memory status"
+  exit 2
+fi
+
+# Extract status
+FILES=$(echo "$MEM_JSON" | python3 -c "import sys, json; data=json.load(sys.stdin); entry=data[0] if isinstance(data, list) and data else data; print(entry.get('status',{}).get('files',0))" 2>/dev/null || echo "0")
+CHUNKS=$(echo "$MEM_JSON" | python3 -c "import sys, json; data=json.load(sys.stdin); entry=data[0] if isinstance(data, list) and data else data; print(entry.get('status',{}).get('chunks',0))" 2>/dev/null || echo "0")
+DIRTY=$(echo "$MEM_JSON" | python3 -c "import sys, json; data=json.load(sys.stdin); entry=data[0] if isinstance(data, list) and data else data; print(str(entry.get('status',{}).get('dirty',False)).lower())" 2>/dev/null || echo "false")
+PROVIDER=$(echo "$MEM_JSON" | python3 -c "import sys, json; data=json.load(sys.stdin); entry=data[0] if isinstance(data, list) and data else data; print(entry.get('status',{}).get('provider','unknown'))" 2>/dev/null || echo "unknown")
+
+# Check reindex log age
+REINDEX_AGE_DAYS=""
+if [[ -f "$WORKSPACE/memory/memory-reindex.log" ]]; then
+  REINDEX_AGE_DAYS=$(( ( $(date +%s) - $(stat -c %Y "$WORKSPACE/memory/memory-reindex.log") ) / 86400 ))
+fi
+
+# Determine if action needed
+NEEDS_REINDEX=0
+REASON=""
+
+if [[ "$DIRTY" == "true" ]]; then
+  NEEDS_REINDEX=1
+  REASON="Memory index is dirty (changes pending)"
+elif [[ -n "$REINDEX_AGE_DAYS" && $REINDEX_AGE_DAYS -ge 7 ]]; then
+  NEEDS_REINDEX=1
+  REASON="Last reindex was $REINDEX_AGE_DAYS days ago (stale)"
+fi
+
+# Output
+echo "Memory System Check"
+echo "-------------------"
+echo "Provider: $PROVIDER"
+echo "Files: $FILES | Chunks: $CHUNKS"
+echo "Dirty: $DIRTY"
+if [[ -n "$REINDEX_AGE_DAYS" ]]; then
+  echo "Last reindex: $REINDEX_AGE_DAYS day(s) ago"
+else
+  echo "Last reindex: never"
+fi
+echo ""
+
+if [[ $NEEDS_REINDEX -eq 1 ]]; then
+  echo "Status: REINDEX RECOMMENDED"
+  echo "Reason: $REASON"
+  echo ""
+  echo "Run: quick memory-reindex"
+  exit 1
+else
+  echo "Status: OK (no reindex needed)"
+  exit 0
+fi
