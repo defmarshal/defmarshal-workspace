@@ -301,7 +301,7 @@ case "$cmd" in
     changes=$(git -C "$WORKSPACE" status --short | wc -l); echo "  $changes changed file(s)" $([ "$changes" -eq 0 ] && echo "(clean)" || echo "(dirty)")
     echo ""
     echo "Cron (user crontab):"
-    cron_count=$(crontab -l 2>/dev/null | grep -E 'email-clean|nyaa-top|torrent' | wc -l); echo "  $cron_count entry(ies) relevant"
+    cron_count=$(crontab -l 2>/dev/null | (grep -E 'email-clean|nyaa-top|torrent' || true) | wc -l); echo "  $cron_count entry(ies) relevant"
     echo "=== End Verification ==="
     ;;
   help)
