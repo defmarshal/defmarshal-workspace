@@ -29,12 +29,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [agent:main:cron:workspace-builder-20260216-1100] workspace-builder - Memory reindex age monitoring enhancement (started: 2026-02-16 11:00 UTC, status: validated)
   - Verification: workspace-health now shows reindex age; quick status works; git clean after commit (commit 4adbb4e pushed). No errors.
 
-- [infra] 2026-02-16 13:00-? - Agent daemon → cron migration
+- [infra] 2026-02-16 13:00-13:30 - Agent daemon → cron migration (validated)
   - Converted dev-agent, content-agent, research-agent from persistent daemons to OpenClaw cron jobs.
   - New cron jobs: dev-agent-cron (20 min), content-agent-cron (10 min), research-agent-cron (15 min), all scheduled 08:00-22:00 Asia/Bangkok.
-  - Old daemons stopped; start-background-agents.sh left unchanged but daemons no longer running.
-  - Verification: manual cron runs produced logs; cron list shows new jobs enabled.
-  - Pending: commit documentation updates.
+  - Old daemons stopped; start-background-agents.sh updated to no longer launch them.
+  - Verification: manual cron runs produced logs; `openclaw cron list` shows jobs enabled; agents producing output as expected.
 
 - [infra] 2026-02-16 05:27-05:35 - Cron migration to OpenClaw
   - Converted 5 workspace cron jobs from system crontab to OpenClaw cron:
