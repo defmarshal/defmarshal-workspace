@@ -34,6 +34,13 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: system upgrades applied (15 packages), duplicate cron fixed, memory search OK, daemons healthy, git clean; task_plan.md updated; changes committed and pushed.
 - [daemon] torrent-bot — Slash-command torrent management agent (running)
   - Verification: agent registered; daemon loop started (PID 481810); respects quiet hours; pairing pending for Telegram channel.
+- [research-cycle] 2026-02-16 05:15–12:20 — High-priority research batch
+  - Completed three critical gaps: (1) AI export controls (China chip production 200k/yr, market fragmentation), (2) Blackwell vs Hopper performance (2.2–4× gains, memory/bandwidth 2.4×), (3) Anime streaming vs production crisis (60% studios unprofitable, Kadokawa profit −59.7%)
+  - Report: research/2026-02-16-export-controls-blackwell-anime-crisis.md (1.2 k words)
+  - Updated research/INDEX.md with new entry
+  - Logged to memory with log-event
+  - All files staged; pending commit & push
+
 - [dev-cycle] 2026-02-16 05:15 — Quality improvements and maintenance
   - Fixed quick health command (removed dead .py fallback)
   - Added `quick verify` for comprehensive workspace checks
