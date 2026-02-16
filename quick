@@ -410,7 +410,7 @@ case "$cmd" in
     /home/ubuntu/.npm-global/bin/openclaw memory status --json 2>/dev/null | python3 -c "import sys, json; data=json.load(sys.stdin); e=data[0] if isinstance(data, list) and data else data; s=e.get('status',{}); print(f\"  main: {s.get('files',0)}f/{s.get('chunks',0)}c (dirty={s.get('dirty')}) {s.get('provider','?')}\")" || echo "  ⚠ memory status failed"
     echo ""
     echo "Agents (running daemons):"
-    pids=$(pgrep -f "agent-loop.sh" | wc -l); echo "  $pids daemon(s) running (dev, content, research)"
+    pids=$(pgrep -f "agent-loop.sh" 2>/dev/null | wc -l) || true; echo "  $pids daemon(s) running (dev, content, research)"
     echo ""
     echo "Gateway:"
     gateway_running=$(systemctl --user is-active openclaw-gateway.service 2>/dev/null || echo "inactive")
