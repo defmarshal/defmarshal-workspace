@@ -23,10 +23,10 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [daemon] dev-agent — Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
+- [daemon] dev-agent - Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
   - 2026-02-16 cycle: added quick quiet-hours, enhanced verify (OpenClaw cron count), added git-summary; commits 9884936, 3647ff6; verified functional.
-- [daemon] content-agent - Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
-  - 2026-02-16 cycle: produced midday status, daily digest, evening final wrap, midday update, final daily digest, late-afternoon update, evening summary; updated INDEX; committed and pushed (976e4fb).
+- [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
+  - 2026-02-16 cycle: produced all updates (midday, digest, wrap, updates, summaries) and final day close; updated INDEX; committed and pushed (39f6ee2).
 - [daemon] research-agent - Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
 
 - [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Content index automation: installed cron job, verified system health (started: 2026-02-16 05:11 UTC, status: validated)
