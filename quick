@@ -20,6 +20,7 @@ Commands:
   memory-stats  Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
+  time            Show current time in UTC and Bangkok (Asia/Bangkok)
   git-status      Show brief git status
   git-today       Show git commits from today (since midnight)
   anime <cmd>     Anime companion: search, info, top, season, upcoming
@@ -125,6 +126,11 @@ case "$cmd" in
     ;;
   holidays)
     python3 "$WORKSPACE/show-holidays" 2>/dev/null || "$WORKSPACE/show-holidays"
+    ;;
+  time)
+    # Show current time in UTC and Asia/Bangkok
+    echo "UTC:       $(TZ='UTC' date '+%Y-%m-%d %H:%M:%S %Z')"
+    echo "Bangkok:  $(TZ='Asia/Bangkok' date '+%Y-%m-%d %H:%M:%S %Z')"
     ;;
   git-status)
     git -C "$WORKSPACE" status --short
