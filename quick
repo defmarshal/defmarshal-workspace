@@ -18,7 +18,7 @@ Commands:
   memory-status  Show memory index status (openclaw memory status)
   memory-index  Reindex memory files (openclaw memory index)
   memory-stats  Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
-  memory-reindex-check) Check if memory reindex is needed based on dirty flag and age. Exit 0 if ok, 1 if reindex recommended
+  memory-reindex-check  Check if memory reindex is needed based on dirty flag and age. Exit 0 if ok, 1 if reindex recommended
   memory-reindex Force reindex of memory files (openclaw memory index)
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00–08:00) and whether system is in quiet mode
