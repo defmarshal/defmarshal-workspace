@@ -2,7 +2,7 @@
 # Kṛṣṇa — Game Builder Agent
 # Executes game development plans from Vishwakarma
 
-set -euo pipefail
+set -uo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
 plan_file="${1:-}"
