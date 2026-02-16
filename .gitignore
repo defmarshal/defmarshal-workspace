@@ -41,3 +41,4 @@ aria2.log.*
 dht.dat
 downloads/
 agents/vishwakarma/.lock
+agents/**/.lock
