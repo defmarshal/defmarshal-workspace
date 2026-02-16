@@ -26,6 +26,7 @@ Commands:
   time            Show current time in UTC and Bangkok (Asia/Bangkok)
   git-status      Show brief git status
   git-today       Show git commits from today (since midnight)
+  git-summary     Show recent commit summary by prefix (dev:, research:, content:, infra:, chore:)
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
   selfie [caption] [rating]  Send a random anime image via Nekos API.
@@ -170,6 +171,10 @@ case "$cmd" in
     ;;
   git-today)
     git -C "$WORKSPACE" log --since="midnight" --oneline || echo "No commits today"
+    ;;
+  git-summary)
+    # Show recent commit summary by prefix (dev:, research:, content:, infra:, chore:)
+    git -C "$WORKSPACE" log --oneline | head -20 | sed -E 's/^([a-f0-9]+) ([^:]+):?/\2/' | sort | uniq -c | sort -nr || echo "No commits"
     ;;
   anime)
     "$WORKSPACE/anime-companion" "$@"
