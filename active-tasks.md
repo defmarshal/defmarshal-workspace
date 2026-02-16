@@ -29,11 +29,11 @@ This file tracks all currently running agents, their session keys, goals, and st
   - 2026-02-16 cycle: produced all updates (midday, digest, wrap, updates, summaries) and final day close; updated INDEX; committed and pushed (39f6ee2).
 - [daemon] research-agent - Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
 
-- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Content index automation: installed cron job, verified system health (started: 2026-02-16 05:11 UTC, status: validated)
-  - Verification: cron entry added at 05:30 Bangkok; `quick content-index-update` works; INDEX.md refreshed (41 files); memory search OK; all agents running (dev/content/research/torrent-bot); no errors; git clean.
-
 - [daemon] torrent-bot - Slash-command torrent management agent (running)
   - Verification: agent registered; daemon loop started (PID 481810); respects quiet hours; pairing pending for Telegram channel.
+
+- [agent:main:cron:workspace-builder-20260216-1100] workspace-builder - Memory reindex age monitoring enhancement (started: 2026-02-16 11:00 UTC, status: validated)
+  - Verification: workspace-health now shows reindex age; quick status works; git clean after commit (commit 4adbb4e pushed). No errors.
 - [infra] 2026-02-16 05:27-05:35 - Cron migration to OpenClaw
   - Converted 5 workspace cron jobs from system crontab to OpenClaw cron:
     • email-cleaner-cron (09:00 Bangkok)
