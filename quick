@@ -332,6 +332,10 @@ case "$cmd" in
     echo "Note: For sudo setup, run: sudo ./setup-sudo.sh"
     echo "Remember to commit any changes and push to GitHub."
     ;;
+  restart-gateway)
+    echo "Restarting OpenClaw gateway..."
+    openclaw gateway restart
+    ;;
   verify)
     # Comprehensive workspace verification
     echo "=== Workspace Verification ==="
