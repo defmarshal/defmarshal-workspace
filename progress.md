@@ -28,34 +28,62 @@ Work started around 05:11 UTC (12:11 Bangkok). This is a workspace-builder cron-
   - progress.md (new, this file)
 
 ### Phase 2: Planning & Structure
-- **Status:** in_progress
+- **Status:** complete
 - **Started:** 2026-02-16 05:30 UTC
 - Planned improvement: Add cron job to automate content-index-update.
 - Additional verification: run health checks, confirm memory search works, update CRON_JOBS.md.
 - Decisions documented in task_plan.md and findings.md.
 
 ### Phase 3: Implementation
-- **Status:** pending
-- **Planned Steps:**
-  1. Test full cron command to ensure it runs cleanly
-  2. Add cron entry: `30 5 * * * TZ='Asia/Bangkok' cd /home/ubuntu/.openclaw/workspace && /home/ubuntu/.openclaw/workspace/quick content-index-update >> /home/ubuntu/.openclaw/workspace/memory/content-index-cron.log 2>&1`
-  3. Verify cron entry added (crontab -l)
-  4. Update CRON_JOBS.md with new entry description
-  5. Run `quick health` to capture baseline
-  6. Run `quick search "test"` to confirm memory search works
-  7. Optionally, review email-cleaner warning (defer)
+- **Status:** complete
+- **Started:** 2026-02-16 05:35 UTC
+- Actions taken:
+  - Added cron job for content-index-update at 05:30 Bangkok
+    - Command: `30 5 * * * TZ='Asia/Bangkok' cd "/home/ubuntu/.openclaw/workspace" && "/home/ubuntu/.openclaw/workspace/quick" content-index-update >> "/home/ubuntu/.openclaw/workspace/memory/content-index-cron.log" 2>&1`
+  - Verified crontab entry present (unique, no duplicate)
+  - Updated CRON_JOBS.md with new "Content Index Update" section
+  - Ran simulated cron command to verify execution (produced log entry)
+  - Checked content/INDEX.md now includes 2026-02-16-pre-dawn-wrap.md
+  - Reviewed email-cleaner MATON_API_KEY warning – deemed non-critical, defer
+- Files created/modified:
+  - crontab (modified)
+  - CRON_JOBS.md (updated)
+  - memory/content-index-cron.log (created)
 
 ### Phase 4: Testing & Verification
-- **Status:** pending
-- Will test after implementation:
-  - Simulate cron command manually
-  - Verify INDEX.md updated with latest file
-  - Check logs for errors
-  - Re-run `quick health` to ensure no regressions
-  - Confirm git status clean with changes
+- **Status:** complete
+- **Started:** 2026-02-16 05:40 UTC
+- Validation steps:
+  - Simulated cron command: ran successfully, log written
+  - Verified INDEX.md updated with latest content file
+  - Ran `./quick health`: shows Git dirty (expected), memory OK, disk 65%
+  - Ran `./quick memory-stats`: confirms 6/6 files, 41 chunks, dirty: yes
+  - Ran `./quick search "test"`: returns results (JSON valid)
+  - Checked agent daemons: 3 dev/content/research + torrent-bot (4 total)
+  - Ensured no temp files in workspace root
+  - Confirmed git status shows 9 changed files (mostly planning docs + CRON_JOBS.md)
+  - Verified cron entry uniqueness: `crontab -l | grep content-index` yields single line
+- Test results summary:
+  - ✓ content-index-update works both directly and via simulated cron
+  - ✓ INDEX.md reflects latest content
+  - ✓ Memory search functional despite dirty flag
+  - ✓ All daemons running
+  - ✓ Git changes as expected (documentation + planning files)
+  - ✓ No errors in simulated cron run
+  - ✓ Health check passes (disk OK, updates none, git dirty noted)
+- Test Results table:
+  | Test | Input | Expected | Actual | Status |
+  |------|-------|----------|--------|--------|
+  | content-index-update | ./quick content-index-update | 41 files indexed | 41 files | ✓ |
+  | cron simulation | full cron line | runs without error | success | ✓ |
+  | INDEX freshness | grep 2026-02-16 in INDEX.md | entry present | present | ✓ |
+  | memory search | quick search "test" | JSON results | OK | ✓ |
+  | memory-status | quick memory-status | 6/6 files, dirty ok | matches | ✓ |
+  | health | quick health | disk <80%, updates 0 | 65%, 0 | ✓ |
+  | agents | pgrep -f loop.sh | 4 processes | 4 | ✓ |
 
 ### Phase 5: Delivery
-- **Status:** pending
+- **Status:** in_progress
 - Commit with prefix `build:` and push
 - Update active-tasks.md with validation results
 - Ensure all planning files reflect completion
