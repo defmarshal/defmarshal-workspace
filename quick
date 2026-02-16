@@ -383,7 +383,13 @@ case "$cmd" in
     cron_count=$(crontab -l 2>/dev/null | (grep -E 'email-clean|nyaa-top|torrent' || true) | wc -l); echo "  $cron_count entry(ies) relevant"
     echo ""
     echo "OpenClaw Cron:"
-    oc_cron_count=$(openclaw cron list --json 2>/dev/null | python3 -c "import sys, json; data=json.load(sys.stdin); print(len([j for j in data.get('jobs',[]) if j.get('enabled')]))" || echo "?"); echo "  $oc_cron_count enabled job(s) in OpenClaw cron"
+    oc_cron_json=$(openclaw cron list --json 2>/dev/null) || oc_cron_json=""
+    if echo "$oc_cron_json" | python3 -c "import sys, json; json.load(sys.stdin)" >/dev/null 2>&1; then
+      oc_cron_count=$(echo "$oc_cron_json" | python3 -c "import sys, json; data=json.load(sys.stdin); print(len([j for j in data.get('jobs',[]) if j.get('enabled')]))" 2>/dev/null || echo "?")
+    else
+      oc_cron_count="?"
+    fi
+    echo "  $oc_cron_count enabled job(s) in OpenClaw cron"
     echo "=== End Verification ==="
     ;;
   help)
