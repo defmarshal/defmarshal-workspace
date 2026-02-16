@@ -47,6 +47,12 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: system crontab no longer contains those entries.
   - Committed `e154161` and pushed.
 
+- [research-cycle] 2026-02-16 12:15–12:45 — Anime streaming churn & AI adoption metrics
+  - Completed high‑priority gap: streaming churn (Netflix 2%, general 5‑10% monthly, serial churners 23%) + AI adoption landscape (Toei, Wit, MAPPA, Ufotable, K&K Design, etc.)
+  - Report: research/2026-02-16-anime-streaming-churn-ai-adoption.md (~1 k words)
+  - Updated research/INDEX.md
+  - Committed f8eb814 and pushed.
+
 - [research-cycle] 2026-02-16 05:35–06:00 — Cost & safety deep dive
   - Completed two priority gaps:
     • Open-source LLM cost collapse: DeepSeek 20–50× cheaper than GPT-4; training costs ~$6M vs $500M+; MoE + quantization + caching efficiencies; open-source now cost-performance competitive or superior
