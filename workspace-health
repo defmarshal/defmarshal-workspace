@@ -116,8 +116,23 @@ def main():
     # Gateway status (new)
     gw_status = get_gateway_status()
 
-    # Combine (now includes gateway)
-    summary = " | ".join([disk_status, updates_status, git_status, mem_status, reindex_status, gw_status])
+    # Downloads directory size and file count
+    downloads_path = WORKSPACE / "downloads"
+    if downloads_path.exists():
+        # Count files and total size
+        try:
+            import subprocess
+            du_out = subprocess.run(["du", "-sh", str(downloads_path)], capture_output=True, text=True).stdout.strip()
+            count_out = subprocess.run(["find", str(downloads_path), "-type", "f"], capture_output=True, text=True).stdout
+            file_count = len(count_out.splitlines()) if count_out else 0
+            downloads_status = f"Downloads: {file_count} files, {du_out.split()[0] if du_out else '0'}"
+        except Exception:
+            downloads_status = "Downloads: error"
+    else:
+        downloads_status = "Downloads: missing"
+
+    # Combine (now includes gateway and downloads)
+    summary = " | ".join([disk_status, updates_status, git_status, mem_status, reindex_status, gw_status, downloads_status])
     print(summary)
 
 if __name__ == "__main__":
