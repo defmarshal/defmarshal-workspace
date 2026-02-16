@@ -56,6 +56,16 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Payload**: agentTurn running `./quick content-index-update` and appending to `memory/content-index-cron.log`
    - **Description**: Regenerates `content/INDEX.md` to reflect new content files.
 
+7. **memory-reindex-cron**
+   - **Schedule**: Weekly on Sunday at 04:00 Asia/Bangkok (`0 4 * * 0`)
+   - **Payload**: agentTurn executing `./quick memory-index` and appending to `memory/memory-reindex.log`
+   - **Description**: Reindex memory files to clear the Voyage AI "dirty" flag and maintain search performance. Addresses rate-limit delays by periodic reindexing.
+
+8. **log-rotate-cron**
+   - **Schedule**: Weekly on Sunday at 05:00 Asia/Bangkok (`0 5 * * 0`)
+   - **Payload**: agentTurn executing `./quick log-rotate` and appending to `memory/log-rotate.log`
+   - **Description**: Rotates aria2.log when it exceeds 100 MB, keeping up to 4 compressed archives. Prevents uncontrolled log growth.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
