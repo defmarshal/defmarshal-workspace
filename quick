@@ -68,6 +68,8 @@ Commands:
                              Options: --keep N, --execute, --verbose
                               Example: quick cleanup-backups --keep 3 --execute
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
+  cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
+                                  Options: --execute (actually delete), --force (run during quiet hours)
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
   restart-gateway             Restart the OpenClaw gateway (use after config changes or to restore approval buttons)
   gateway-status              Show detailed gateway status (service, port, RPC)
@@ -338,6 +340,9 @@ case "$cmd" in
         exit 1
         ;;
     esac
+    ;;
+  cleanup-agent-artifacts)
+    "$WORKSPACE/cleanup-agent-artifacts.sh" "$@"
     ;;
   cron-status)
     # Show status of important cron jobs
