@@ -1,60 +1,92 @@
 # Workspace Builder Findings
-**Date**: 2026-02-16 (21:00 UTC run)
-**Focus**: Disk space analysis, backup strategy, and hygiene improvements
+**Date**: 2026-02-16 (23:00 UTC run)
+**Focus**: System reliability, maintenance automation, log rotation, updates workflow
 
-## Current Disk Status
-- Filesystem: /dev/sda1 45G total, 36G used (82%), 8.2G free (⚠️ warning threshold)
-- Workspace root: ~4.3G (downloads 2.1G, logs, scripts, skills, etc.)
-- Home directory /home/ubuntu: 8.8G total (includes backups)
+## Current System State
 
-## Space Consumer Analysis
+### Disk & Storage
+- Total: 45G, Used: 34.5G (77%), Free: 10.5G (healthy)
+- Downloads: 10 files, 2.1G (all <30 days)
+- Backups: 1 remaining backup tarball (2.2G) in /home/ubuntu
+- Agent logs: dev-agent.log (211K), content-agent.log (200K), research-agent.log (181K) — growing over time
 
-### Large Items in Workspace
-- `downloads/` - 2.1G (torrent downloads, all from 2026-02-14, <30 days old)
-- `aria2.log.2.gz` - 69M (rotated)
-- `aria2.log.1.gz` - 13M (rotated)
-- `.git/` - 77M (healthy)
-- Agent logs: ~200K each, fine
+### Pending Updates
+- 7 packages upgradable via apt (security/bugfix)
+- No automated update mechanism; manual `apt upgrade` required
 
-**Observation**: Downloads are recent, so cleanup script won't delete yet; retention policy (30d) appropriate.
+### Service Persistence
+- openclaw-gateway runs as user service (systemd --user)
+- Without systemd linger, gateway and any subagents stop on user logout/reboot
+- This has been mitigated by using cron jobs instead of persistent daemons for periodic tasks
+- However, the gateway itself still stops on logout/reboot unless linger enabled
+- During outages, cron jobs may queue or skip; overall reliability could improve with linger
 
-### Backup Tarballs (Primary Target)
-- `/home/ubuntu/openclaw-backup-2026-02-16-1403.tar.gz` - 2.2G
-- `/home/ubuntu/openclaw-backup-2026-02-16-1406.tar.gz` - 2.2G
-- Created within 3 minutes of each other; likely redundant.
-- Impact: 4.4G can be recovered by rotation/retention.
+### Cron Jobs
+- OpenClaw cron: 12 jobs (all documented in CRON_JOBS.md)
+- System crontab: only @reboot agent startup hook (no other workspace crons)
+- All expected jobs running; no duplicates
 
-**Note**: Backup naming suggests manual or scripted process (`openclaw-backup-YYYY-MM-DD-HHMM.tar.gz`). No existing rotation scheme found.
-
-## Existing Infrastructure
-- `scripts/cleanup-downloads.sh` already implemented (dry-run, 30-day retention). Tested: no files older than 30 days.
-- `cleanup-downloads-cron` exists (OpenClaw cron, weekly Sunday 06:00 Asia/Bangkok) – documented in cron list but not in CRON_JOBS.md yet.
-- `quick health` already includes downloads metrics and disk thresholds (warning >=80%, critical >=90%).
+### Memory System
+- openclaw-memory: 7 files / 44 chunks (clean)
+- Provider: Voyage AI with FTS (full-text search) enabled
+- Index status: clean (dirty=no)
+- Reindex scheduled weekly (Sunday 04:00 Asia/Bangkok)
 
 ## Identified Improvements
 
 ### High Priority
-1. **Backup rotation/retention**: Implement cleanup script to prune old backups, keeping most recent N (default 1) to free space immediately.
-2. **Document cleanup-downloads cron**: Update CRON_JOBS.md to reflect weekly cleanup-downloads job.
-3. **Add `quick cleanup-backups`**: New launcher command for manual backup maintenance.
+1. **Enable systemd linger** — one-time sudo action to keep user services alive across logout/reboot. Improves gateway uptime and reduces missed cron runs due to offline state.
+2. **Schedule backup cleanup** — add cron job for weekly backup rotation to prevent accumulation of large tarballs. Script exists (`cleanup-backups.sh`), just needs scheduling.
+3. **Rotate agent logs** — extend `log-rotate` to include dev-agent.log, content-agent.log, research-agent.log. Prevent unbounded growth. Already have log-rotate cron (weekly Sunday 05:00 Bangkok).
+4. **Updates management** — provide safe commands to check and apply system updates. Currently no dedicated quick commands; users must run apt manually.
 
 ### Medium Priority
-4. Consider scheduling weekly backup cleanup via cron to prevent recurrence.
-5. Enable systemd linger for agent persistence across logout (requires user sudo action).
+5. **Archive or clean previous builder artifacts** — previous builder left planning files (task_plan.md, findings.md, progress.md) which are now outdated; this new run will overwrite them. Could consider archiving to a builds/ directory after each run for audit trail.
+6. **Add memory reindex alert** if dirty flag persists beyond expectation (rate-limit issues). Already have reindex-check command.
+
+### Low Priority
+7. **Monitor cron job failures** — currently logs per job but no central alerting.
+8. **Optimize Voyage rate-limit handling** — maybe auto-retry with backoff in openclaw-memory? Out of scope.
 
 ## Recommendations
-- Create `scripts/cleanup-backups.sh` with safe defaults (--keep 1, dry-run)
-- Integrate into `quick` launcher
-- Document in CRON_JOBS.md (even if not scheduled yet)
-- After implementation, run cleanup to recover ~2.2G (delete oldest of the two backups)
-- Monitor disk trend; adjust retention if needed
+
+### systemd linger
+- Run: `sudo loginctl enable-linger ubuntu`
+- Verify: `loginctl show-user ubuntu -p Linger`
+- Impact: Gateway service persists across logout/reboot; cron jobs continue to run even if user session not active.
+
+### Backup cleanup cron
+- Add OpenClaw cron job: weekly Sunday 07:00 Asia/Bangkok
+- Payload: agentTurn executing `./quick cleanup-backups --execute --keep 1`
+- Rationale: Aligns with other maintenance tasks; runs after downloads cleanup (06:00) and before log-rotate (05:00?) Actually check order: Sunday schedule currently: memory-reindex 04:00, log-rotate 05:00, cleanup-downloads 06:00. So backup cleanup at 07:00 is fine.
+- Ensure job doesn't conflict with quiet hours (none now).
+
+### Agent log rotation
+- Modify `scripts/log-rotate` (or create separate script) to:
+  - Find agent logs in workspace root: dev-agent.log, content-agent.log, research-agent.log
+  - If size > 1MB, compress to .gz and truncate original (copytruncate)
+  - Keep up to 4 compressed archives per log
+- Schedule: already covered by weekly log-rotate cron; just extend the existing script.
+
+### Updates commands
+- `scripts/updates-check.sh`: outputs list of upgradable packages (human-readable count and names)
+- `scripts/updates-apply.sh`: runs `sudo apt update && sudo apt upgrade -y` with dry-run option default
+- Add to quick launcher as subcommands.
+- Document that these affect the system globally; use with care.
+- Could also schedule automatic updates, but better to keep manual for now.
 
 ## Risks & Mitigations
-- Risk: Deleting all backups → Mitigation: script enforces --keep minimum, default 1; dry-run requires confirmation
-- Risk: Accidentally deleting non-backup files → Mitigation: strict filename pattern `openclaw-backup-*.tar.gz` in /home/ubuntu only
-- Risk: Cron misconfiguration → Mitigation: document carefully; use absolute paths
+
+- Linger: minimal risk; just allows user services to start at boot. Already a systemd feature.
+- Backup cleanup cron: ensure script uses absolute paths; add logging to memory/backup-cleanup.log.
+- Log rotation: copytruncate is safe for processes writing to logs (they continue writing to same file descriptor but file resets to zero; some log loss possible but minimal on weekly rotation. Alternatively send HUP signal to processes? But agents may not handle it. Simpler: copytruncate.
+- Updates apply: could break something; always dry-run first, then apply only when ready. Keep manual.
+
+## Open Questions
+
+- Should we also rotate other logs (aria2.log already rotated, gateway logs)? Already done.
+- Should we consolidate all maintenance into a single weekly "maintenance window" cron? Possibly but not necessary.
 
 ## Follow-up
-- Verify `CRON_JOBS.md` completeness after updates
-- Educate user on backup rotation and manual cleanup command
-- Suggest manual `sudo loginctl enable-linger ubuntu` for agent reliability
+
+After implementation, update MEMORY.md with this build's summary. Consider adding a `builds/` directory to archive planning files from each run (with timestamps) to keep workspace root clean while preserving history.

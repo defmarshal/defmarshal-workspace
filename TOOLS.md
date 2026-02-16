@@ -37,4 +37,10 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
+### System Maintenance
+
+- `quick updates-check`: List pending APT updates.
+- `quick updates-apply [--dry-run|--execute]`: Apply updates (dry-run default; `--execute` to upgrade).
+- Backup cleanup: `quick cleanup-backups [--keep N] [--execute]` (scheduled weekly Sun 07:00 Bangkok).
+
 Add whatever helps you do your job. This is your cheat sheet.

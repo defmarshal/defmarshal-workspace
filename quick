@@ -63,6 +63,8 @@ Commands:
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
+  updates-check                Check for pending system updates (APT)
+  updates-apply [--dry-run|--execute] Apply system updates (dry-run by default; use --execute to actually upgrade)
   cleanup-downloads [options] Clean up old downloads (default: dry-run, retains 30 days)
                              Options: --days N, --execute, --verbose
                               Example: quick cleanup-downloads --days 60 --execute
@@ -251,6 +253,14 @@ case "$cmd" in
     ;;
   log-rotate)
     "$WORKSPACE/log-rotate"
+    ;;
+
+  updates-check)
+    "$WORKSPACE/scripts/updates-check.sh" "$@"
+    ;;
+
+  updates-apply)
+    "$WORKSPACE/scripts/updates-apply.sh" "$@"
     ;;
   cleanup-downloads)
     # Clean up old downloads with retention policy

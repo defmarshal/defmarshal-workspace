@@ -86,6 +86,11 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Payload**: agentTurn executing `quick cleanup-downloads --execute --days 30` and appending to `memory/cleanup-downloads.log`
     - **Description**: Automated cleanup of old torrent downloads (retention: 30 days). Runs dry-run by default through the wrapper; cron uses `--execute` to apply.
 
+13. **backup-cleanup-cron**
+    - **Schedule**: Weekly on Sunday at 07:00 Asia/Bangkok (`0 7 * * 0`)
+    - **Payload**: agentTurn executing `./quick cleanup-backups --execute --keep 1` and appending to `memory/backup-cleanup.log`
+    - **Description**: Automated cleanup of old backup tarballs (retention: keep 1). Runs with `--execute` via cron.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
@@ -95,4 +100,4 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 - `quick cleanup-downloads [--days N] [--execute] [--verbose]` – Clean old downloads in `workspace/downloads/`.
 - `quick cleanup-backups [--keep N] [--execute] [--verbose]` – Clean old backup tarballs in `/home/ubuntu/`. Keeps most recent N (default 1). Use with care.
 
-Future: Consider scheduling `cleanup-backups` via cron to avoid manual intervention.
+Backup cleanup is scheduled weekly via **backup-cleanup-cron** (Sunday 07:00 Asia/Bangkok). Manual runs still available.
