@@ -47,6 +47,15 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: system crontab no longer contains those entries.
   - Committed `e154161` and pushed.
 
+- [research-cycle] 2026-02-16 05:35–06:00 — Cost & safety deep dive
+  - Completed two priority gaps:
+    • Open-source LLM cost collapse: DeepSeek 20–50× cheaper than GPT-4; training costs ~$6M vs $500M+; MoE + quantization + caching efficiencies; open-source now cost-performance competitive or superior
+    • AI safety incident surge: incidents +50% YoY (2022–2024); 2025 already exceeds 2024 total; deepfake fraud industrialized; malicious use up 8×; Grok crisis 6,700 images/hour; 108 new incidents logged Nov 2025–Jan 2026
+  - Report: research/2026-02-16-open-source-cost-collapse-ai-incident-surge.md (1.4 k words)
+  - Updated research/INDEX.md with new entry
+  - Logged to memory with log-event
+  - Files staged; pending commit & push
+
 - [research-cycle] 2026-02-16 05:15–12:20 — High-priority research batch
   - Completed three critical gaps: (1) AI export controls (China chip production 200k/yr, market fragmentation), (2) Blackwell vs Hopper performance (2.2–4× gains, memory/bandwidth 2.4×), (3) Anime streaming vs production crisis (60% studios unprofitable, Kadokawa profit −59.7%)
   - Report: research/2026-02-16-export-controls-blackwell-anime-crisis.md (1.2 k words)
