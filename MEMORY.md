@@ -62,7 +62,7 @@
   - Schedule weekly memory reindex via OpenClaw cron to manage Voyage rate-limit dirty flag
   - Implement log rotation for aria2.log to prevent uncontrolled growth
   - Update MEMORY.md with recent changes
-  - Status: In Progress
+  - Status: Completed
 
 ## Learnings
 - OpenClaw memory search requires an embeddings provider (OpenAI, Voyage, etc.)
