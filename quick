@@ -345,6 +345,9 @@ case "$cmd" in
     echo "Agents (running daemons):"
     pids=$(pgrep -f "agent-loop.sh" | wc -l); echo "  $pids daemon(s) running (dev, content, research)"
     echo ""
+    echo "Gateway:"
+    gateway_running=$(systemctl --user is-active openclaw-gateway.service 2>/dev/null || echo "inactive"); echo "  $gateway_running"
+    echo ""
     echo "Git:"
     changes=$(git -C "$WORKSPACE" status --short | wc -l); echo "  $changes changed file(s)" $([ "$changes" -eq 0 ] && echo "(clean)" || echo "(dirty)")
     echo ""
