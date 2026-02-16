@@ -13,6 +13,7 @@ Quick workspace utility launcher
 Commands:
   dash            Run the CLI dashboard (dashboard.py)
   web             Run the web dashboard (web-dashboard.py)
+  gateway-info    Show gateway status and remote access setup instructions
   mem             Show recent memories (claw memory list)
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
@@ -343,6 +344,9 @@ case "$cmd" in
     ;;
   cleanup-agent-artifacts)
     "$WORKSPACE/cleanup-agent-artifacts.sh" "$@"
+    ;;
+  gateway-info)
+    "$WORKSPACE/gateway-info.sh"
     ;;
   cron-status)
     # Show status of important cron jobs
