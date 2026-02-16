@@ -33,8 +33,8 @@ log "Phase: $phase"
 log "Task: $task_desc"
 log "Game dir: $game_dir"
 
-# Extract Implementation Steps section
-steps=$(sed -n '/^## Implementation Steps/,/^## Notes/p' "$plan_file" | tail -n +2 | head -n -1)
+# Extract Steps for Kṛṣṇa section
+steps=$(sed -n '/^## Steps for Kṛṣṇa/,/^## Notes/p' "$plan_file" | tail -n +2 | head -n -1)
 
 if [ -z "$steps" ]; then
   log "ERROR: No implementation steps found"
