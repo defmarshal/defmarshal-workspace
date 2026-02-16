@@ -58,9 +58,23 @@ def get_reindex_age():
 
 def get_gateway_status():
     """Check gateway service and RPC status."""
-    # Check systemd service
-    out, _, rc = run_cmd("systemctl --user is-active openclaw-gateway.service")
-    service_status = "active" if rc == 0 and out.strip() == "active" else "inactive"
+    # Check systemd service with retry for activating state
+    max_tries = 3
+    service_status = "inactive"
+    for attempt in range(max_tries):
+        out, _, rc = run_cmd("systemctl --user is-active openclaw-gateway.service")
+        out = out.strip()
+        if rc == 0 and out == "active":
+            service_status = "active"
+            break
+        elif out == "activating":
+            # Transient startup state — retry after brief wait
+            import time
+            time.sleep(0.5)
+            continue
+        else:
+            service_status = "inactive"
+            break
 
     # Check if port is listening
     out, _, rc = run_cmd("ss -tuln | grep ':18789' | wc -l")
