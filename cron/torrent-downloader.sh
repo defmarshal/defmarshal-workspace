@@ -21,29 +21,39 @@ if (( FREE_PCT >= 90 )); then
   exit 0
 fi
 
-# Random number between 1 and 20
-NUM=$((RANDOM % 20 + 1))
+# Retry up to 3 times if magnet extraction fails
+for ATTEMPT in 1 2 3; do
+  # Random number between 1 and 20
+  NUM=$((RANDOM % 20 + 1))
 
-# Use quick wrapper (ensures proper environment)
-# Add --json output for logging (we'll parse magnet for duplicate check)
-JSON_OUTPUT=$(./quick nyaa-top --limit 20 --max-size 1G --pick "$NUM" --json 2>/dev/null || true)
+  # Use quick wrapper (ensures proper environment); output is human‑readable text
+  RAW_OUTPUT=$(./quick nyaa-top --limit 20 --max-size 1G --pick "$NUM" 2>/dev/null) || {
+    echo "$(date) - Attempt $ATTEMPT: command failed (likely invalid pick), retrying..."
+    sleep 0.5
+    continue
+  }
 
-# Extract magnet link
-MAGNET=$(echo "$JSON_OUTPUT" | jq -r '.magnet' 2>/dev/null || echo "")
+  # Extract magnet link from the "Magnet: " line
+  MAGNET=$(echo "$RAW_OUTPUT" | grep -E '^Magnet: ' | head -1 | sed 's/^Magnet: //' | tr -d '\r\n' || echo "")
 
-if [ -z "$MAGNET" ] || [ "$MAGNET" = "null" ]; then
-  echo "$(date) - Failed to get magnet for pick $NUM"
-  exit 1
-fi
+  if [ -z "$MAGNET" ]; then
+    echo "$(date) - Attempt $ATTEMPT: no magnet found for pick $NUM, retrying..."
+    sleep 0.5
+    continue
+  fi
 
-# Check if magnet already in aria2 (waiting or active)
-if /home/ubuntu/.npm-global/bin/openclaw tools elevated exec -- aria2c --rpc-listen-port 6800 --rpc-secret=openclaw_secret_123 --method aria2.tellStatus 2>/dev/null | grep -F "$MAGNET" >/dev/null 2>&1; then
-  echo "$(date) - Torrent already in aria2, skipping: $(echo "$MAGNET" | cut -c1-60)..."
+  # Check if magnet already in aria2 (waiting or active)
+  if /home/ubuntu/.npm-global/bin/openclaw tools elevated exec -- aria2c --rpc-listen-port 6800 --rpc-secret=openclaw_secret_123 --method aria2.tellStatus 2>/dev/null | grep -F "$MAGNET" >/dev/null 2>&1; then
+    echo "$(date) - Torrent already in aria2, skipping: $(echo "$MAGNET" | cut -c1-60)..."
+    exit 0
+  fi
+
+  # Add to aria2 via quick wrapper (which calls torrent-add)
+  echo "$(date) - Adding torrent #$NUM: $(echo "$MAGNET" | cut -c1-60)..."
+  ./quick torrent-add "$MAGNET" 2>&1 | logger -t torrent-downloader || true
   exit 0
-fi
+done
 
-# Add to aria2 via quick wrapper (which calls torrent-add)
-echo "$(date) - Adding torrent #$NUM: $(echo "$MAGNET" | cut -c1-60)..."
-./quick torrent-add "$MAGNET" 2>&1 | logger -t torrent-downloader || true
-
-exit 0
+# If we reach here, all attempts failed
+echo "$(date) - Failed to retrieve a valid magnet after 3 attempts"
+exit 1

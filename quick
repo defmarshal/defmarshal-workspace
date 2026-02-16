@@ -37,6 +37,7 @@ Commands:
                   the aria2 downloader. RPC secret defaults to 'openclaw_secret_123'.
                   Example: quick torrent-add "magnet:?xt=urn:btih:..."
                   Example: quick torrent-add "/path/to/file.torrent" "my_secret"
+  torrent-status [--json] [--watch SECS]  Show aria2 download progress (alias for downloads). Use --watch to auto-refresh.
   nyaa-search <query> [--limit N] [--category cat]  Search Sukebei.Nyaa.si for
                   torrents. Categories: all, anime (default), anime_raw, anime_non_translated,
                   audio, lit, pics, software. Outputs JSON to stdout.
@@ -210,6 +211,10 @@ case "$cmd" in
     # Usage: quick torrent-add <magnet_or_file> [rpc_secret]
     "$WORKSPACE/torrent-add" "$@"
     ;;
+  torrent-status)
+    # Show current torrent download status (alias for downloads)
+    python3 "$WORKSPACE/downloads-status" "$@"
+    ;;
   nyaa-search)
     # Search Sukebei.Nyaa.si for torrents
     # Usage: quick nyaa-search <query> [--limit N] [--category anime|all|...]
@@ -240,6 +245,10 @@ case "$cmd" in
     ;;
   downloads)
     # Show aria2 download progress (uses RPC)
+    python3 "$WORKSPACE/downloads-status" "$@"
+    ;;
+  torrent-status)
+    # Alias for downloads (local, no approval needed)
     python3 "$WORKSPACE/downloads-status" "$@"
     ;;
   content-latest)
