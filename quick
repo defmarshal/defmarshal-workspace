@@ -57,6 +57,7 @@ Commands:
   content-index-update        Regenerate content/INDEX.md to reflect current content files.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
+  log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
   verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
@@ -221,6 +222,9 @@ case "$cmd" in
     ;;
   log)
     "$WORKSPACE/log-event" "$@"
+    ;;
+  log-rotate)
+    "$WORKSPACE/log-rotate"
     ;;
   email-clean)
     python3 "$WORKSPACE/email-cleaner.py" "$@"
