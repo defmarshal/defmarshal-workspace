@@ -25,8 +25,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [daemon] dev-agent - Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
   - 2026-02-16 cycle: added quick quiet-hours; enhanced verify to include OpenClaw cron status; committed 9884936; verified functional.
-- [daemon] content-agent - Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
-  - 2026-02-16 cycle: produced midday status, daily digest, evening final wrap, midday update, final daily digest; updated INDEX; committed and pushed (fd6ce87).
+- [daemon] content-agent — Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
+  - 2026-02-16 cycle: produced midday status, daily digest, evening final wrap, midday update, final daily digest, late-afternoon update; updated INDEX; committed and pushed (0c20f3f).
 - [daemon] research-agent - Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
 
 - [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Content index automation: installed cron job, verified system health (started: 2026-02-16 05:11 UTC, status: validated)
@@ -48,18 +48,18 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: system crontab no longer contains those entries.
   - Committed `e154161` and pushed.
 
-- [research-cycle] 2026-02-16 06:27–06:45 — CBDC deployment status dashboard
-  - Completed high‑priority gap: which CBDCs are scaling, transaction volumes, active users, interoperability
-  - Key findings: e‑CNY $986B (¥7T), 2.25B wallets; India e‑rupee +334% to $122M; Nigeria 10M users; 49 pilots; 3 launched; cross‑border mBridge/Helvetia scaling
-  - Report: research/2026-02-16-cbdc-deployment-status-dashboard.md (~1.3 k words)
+- [research-cycle] 2026-02-16 06:27-06:45 - CBDC deployment status dashboard
+  - Completed high-priority gap: which CBDCs are scaling, transaction volumes, active users, interoperability
+  - Key findings: e-CNY $986B (¥7T), 2.25B wallets; India e-rupee +334% to $122M; Nigeria 10M users; 49 pilots; 3 launched; cross-border mBridge/Helvetia scaling
+  - Report: research/2026-02-16-cbdc-deployment-status-dashboard.md (~1.3 k words)
   - Updated research/INDEX.md
   - Committed 3a8c36e and pushed.
 
-- [research-cycle] 2026-02-16 06:10–06:30 — Brownfield failure patterns (SWE-Bench Pro analysis)
-  - Completed high‑priority gap: taxonomy of AI coding agent failures on real‑world tasks
-  - Failure modes: wrong solution (most common), syntax errors, context management collapse, multi‑file edit failures, tool errors
-  - Key stat: frontier models <25% Pass@1 on SWE‑Bench Pro vs >70% on simpler benchmarks
-  - Report: research/2026-02-16-brownfield-failure-patterns.md (~1.5 k words)
+- [research-cycle] 2026-02-16 06:10-06:30 - Brownfield failure patterns (SWE-Bench Pro analysis)
+  - Completed high-priority gap: taxonomy of AI coding agent failures on real-world tasks
+  - Failure modes: wrong solution (most common), syntax errors, context management collapse, multi-file edit failures, tool errors
+  - Key stat: frontier models <25% Pass@1 on SWE-Bench Pro vs >70% on simpler benchmarks
+  - Report: research/2026-02-16-brownfield-failure-patterns.md (~1.5 k words)
   - Updated research/INDEX.md
   - Committed 8743b7a and pushed.
 
