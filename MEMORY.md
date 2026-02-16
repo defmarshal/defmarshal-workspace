@@ -1,6 +1,6 @@
 # Long-term Memory
 
-*Last updated: 2026-02-15*
+*Last updated: 2026-02-16*
 
 ## Personal
 - **Name**: def
@@ -57,6 +57,12 @@
   - Verified memory system: search functional despite rate-limited indexing; dirty flag present but acceptable
   - Confirmed all daemons running; memory stats script operational
   - Updated documentation to reflect current state
+
+- **Log Rotation & Memory Maintenance** (2026-02-16)
+  - Schedule weekly memory reindex via OpenClaw cron to manage Voyage rate-limit dirty flag
+  - Implement log rotation for aria2.log to prevent uncontrolled growth
+  - Update MEMORY.md with recent changes
+  - Status: In Progress
 
 ## Learnings
 - OpenClaw memory search requires an embeddings provider (OpenAI, Voyage, etc.)

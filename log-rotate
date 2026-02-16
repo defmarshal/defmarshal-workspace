@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Log rotation for aria2.log
+# Rotates when size exceeds 100 MB, keeps up to 4 compressed archives.
+
+set -euo pipefail
+
+LOGFILE="aria2.log"
+MAX_SIZE=$((100 * 1024 * 1024))  # 100 MB in bytes
+
+if [[ ! -f "$LOGFILE" ]]; then
+  echo "ERROR: $LOGFILE not found in $(pwd)"
+  exit 1
+fi
+
+# Get size in bytes
+SIZE=$(stat -c%s "$LOGFILE" 2>/dev/null || echo 0)
+
+if (( SIZE <= MAX_SIZE )); then
+  echo "aria2.log size ($SIZE bytes) below threshold (${MAX_SIZE} bytes). No rotation needed."
+  exit 0
+fi
+
+echo "Rotating aria2.log (size: $SIZE bytes)..."
+
+# Remove oldest archive if exists
+if [[ -f "${LOGFILE}.4.gz" ]]; then
+  rm -f "${LOGFILE}.4.gz"
+fi
+
+# Shift existing archives: .3 -> .4, .2 -> .3, .1 -> .2
+if [[ -f "${LOGFILE}.3.gz" ]]; then
+  mv "${LOGFILE}.3.gz" "${LOGFILE}.4.gz"
+fi
+if [[ -f "${LOGFILE}.2.gz" ]]; then
+  mv "${LOGFILE}.2.gz" "${LOGFILE}.3.gz"
+fi
+if [[ -f "${LOGFILE}.1.gz" ]]; then
+  mv "${LOGFILE}.1.gz" "${LOGFILE}.2.gz"
+fi
+
+# Compress current log to .1.gz without truncating original yet
+gzip -c "$LOGFILE" > "${LOGFILE}.1.gz"
+
+# Truncate original log
+: > "$LOGFILE"
+
+echo "Rotation complete. Archives:"
+ls -1h "${LOGFILE}".*.gz 2>/dev/null || echo "No archives"

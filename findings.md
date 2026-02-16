@@ -1,61 +1,98 @@
 # Findings & Decisions
 
 ## Requirements
-- Automate content archive indexing to keep content/INDEX.md current
-- Verify system health after recent builder run (upgrades, cron dedup, etc.)
-- Ensure documentation accurately reflects current cron setup
-- Validate memory system functionality despite Voyage rate limits
-- Close the loop: test, commit, push, update active-tasks
+- Maintain memory system reliability despite Voyage rate limits
+- Keep documentation (MEMORY.md) current with recent changes
+- Prevent disk space issues from uncontrolled log growth (aria2.log)
+- Enhance monitoring of memory indexing status
+- Ensure overall system health remains high
 
-## Research Findings
+## Current System State (2026-02-16 07:00 UTC)
 
-### Current System State (2026-02-16 05:11 UTC)
-- **Git**: Clean, up to date with origin/master; latest commit c3799ec (pre-dawn wrap)
-- **Disk**: 2.7G used / ~45G total (64% usage) – healthy
-- **System Updates**: 0 upgradable packages (previously 16, resolved in last builder)
-- **Cron Jobs**: No duplicates. Existing entries:
-  - email-clean daily 09:00 Bangkok
-  - auto-torrent daily 02:00 Bangkok
-  - traffic reports (weekly/daily) for nanobot workspace
-  - @reboot start-background-agents.sh
-  - workspace-builder via OpenClaw cron every 2h
-- **Memory System** (openclaw-memory):
-  - Main: indexed 6/6 files, 41 chunks, dirty: yes (Voyage rate limit known issue)
-  - Torrent-bot: indexed 0/6, 0 chunks, dirty: yes (expected, no logs yet)
-  - Features: FTS ready, embedding cache enabled, batch disabled (previous failures)
-- **Agents**:
-  - dev-agent, content-agent, research-agent daemons running (respect quiet hours)
-  - torrent-bot daemon running
-  - workspace-builder cron active (this session)
-- **Quick Launcher**: All commands present, including `content-index-update` which works manually
-- **Content Index**: content/INDEX.md lists 40 items, missing latest `2026-02-16-pre-dawn-wrap.md` because index hasn't been auto-updated since Feb 15.
-- **Email Cleaner**: Log shows MATON_API_KEY warning but falls back to config and produces dry-run results (72 archives, 1 label). Non-critical.
+### Git & Version
+- Branch: master, up to date with origin/master
+- Working tree: clean (no uncommitted changes)
+- Recent commits from content-agent, dev-agent, research-agent (normal operations)
 
-### Observations
-- The `update-content-index.sh` script exists and works, but is not scheduled in cron. This is a gap causing stale index.
-- The `quick content-index-update` command is a wrapper around the script and is functional.
-- The `cron-status` quick command helps monitor cron jobs.
-- Active-tasks.md is up to date with current daemons and recent builder runs.
-- MEMORY.md accurately documents current state, including Voyage rate limit limitation.
-- All three background agents produce logs in `memory/*.log` but not all present; none show errors in recent samples.
+### Disk & System
+- Disk usage: ~65% (2.7G used of ~45G total) — healthy
+- System updates: 0 upgradable packages
+- Large files: `aria2.log` 675 MB (needs rotation)
 
-### Technical Decisions
+### Memory System (openclaw-memory)
+- Main instance:
+  - Indexed: 6 of 6 source files, 41 chunks
+  - Dirty: yes (some files pending re-embedding due to Voyage rate limits)
+  - Features: FTS ready, embedding cache enabled (152 entries), batch disabled (previous failures)
+- Torrent-bot instance:
+  - Indexed: 0 of 6 files, 0 chunks (expected, no logs yet)
+  - Dirty: yes
+- Note: Voyage AI rate limit (3 RPM) causes indexing delays; search remains functional; this is an acceptable known limitation per MEMORY.md.
+
+### Agents & Daemons
+- Running daemons: dev-agent, content-agent, research-agent, torrent-bot
+- All respect quiet hours (23:00–08:00 Asia/Bangkok)
+- Recent logs show no critical errors
+
+### Content Index
+- `content/INDEX.md` includes 2026-02-16 content files; appears up-to-date
+- The `quick content-index-update` command works and cron job (05:30 Bangkok) is active via OpenClaw cron
+
+### Quick Launcher
+- Commands include: memory-status, memory-index, memory-stats, health, etc.
+- All appear functional
+
+### CRON_JOBS.md
+- Already documents content-index-update-cron and other jobs
+- Up-to-date
+
+## Identified Improvement Areas
+
+1. **Memory Reindex Strategy**
+   - Dirty flag persists; to eventually clear, schedule periodic reindex (weekly)
+   - Use `claw memory index` or `quick memory-index`
+   - Log output to `memory/memory-reindex.log`
+   - Add to OpenClaw cron to avoid interfering with rate-limited manual runs
+
+2. **Log Rotation**
+   - `aria2.log` is 675 MB and growing; risk of filling disk over time
+   - Implement simple rotation: compress and truncate when > 100 MB, keep last 4 archives
+   - Provide `quick log-rotation` command
+
+3. **Documentation Refresh**
+   - MEMORY.md last updated 2026-02-15
+   - Needs entries for:
+     - Content Index Update cron (05:30 Bangkok)
+     - Memory stats and index commands (`memory-stats`, `memory-index`)
+     - Acknowledgment of Voyage dirty flag and planned mitigation (weekly reindex)
+     - Mention of log rotation plan
+
+4. **Monitoring**
+   - `quick health` already shows memory file counts and dirty status; sufficient for now
+   - No immediate need for alerts; dirty flag visible enough
+   - May enhance later to warn if dirty > 7 days
+
+## Technical Decisions
+
 | Decision | Rationale |
 |----------|-----------|
-| Add daily cron for content-index-update at 05:30 Bangkok | Ensures fresh index each morning after pre-dawn content generated; low overhead |
-| Use absolute path in cron (`/home/ubuntu/.openclaw/workspace/quick`) | Guarantees PATH independence; matches email-cleaner pattern |
-| Log cron output to `memory/content-index-cron.log` | Consistent with other cron logs (email-cleaner-cron.log, auto-torrent.log) |
-| Document new cron in CRON_JOBS.md | Keeps single source of truth for scheduled tasks |
-| Do not modify memory indexing now | Rate limits persist; search functional; dirty flag acceptable per MEMORY.md notes |
-| Leave MATON_API_KEY warning as-is | Not breaking functionality; can address later if needed |
-| Archive previous planning files before creating new ones | Maintains history without cluttering root; already done |
+| Add weekly (Sunday 04:00 Bangkok) memory reindex via OpenClaw cron | Spreads load, gives Voyage time to recover, should eventually clear dirty |
+| Implement custom logrotate script (bash) for aria2.log | No external dependencies; easy to adjust thresholds |
+| Update MEMORY.md (not create separate changelog) | Centralized reference for long-term memory |
+| Use absolute path in cron for `quick` and scripts | Consistency with existing cron entries (content-index-update, email-cleaner) |
+| Keep Voyage as provider for now (no migration) | Free tier sufficient; switching requires new API keys and config |
+| Delay alerts for dirty flag | Current manual checks via health/memory-status adequate; could add later if persistent |
 
-## Issues Encountered
-- None yet (early in implementation).
+## Potential Risks & Mitigations
 
-## Potential Enhancements (Deferred)
-- Auto-reindex memory after dirty flag persists >24h (requires monitoring)
-- Integrate content-index-update into content-agent directly (tight coupling vs. cron)
-- Add `quick memory-check` command that warns if dirty flag set and last index older than threshold
-- Switch from Voyage to alternative embedding provider to enable batch indexing
-- Set MATON_API_KEY via OpenClaw credential manager to suppress warning
+- Rate limit on memory reindex may cause incomplete indexing in one run → Accept partial; next weekly run will continue.
+- Log rotation script could accidentally delete needed logs → Keep 4 archives; ensure we only compress/truncate, not delete all but one.
+- Cron misconfiguration could cause overlapping jobs → Use distinct times: reindex 04:00 Bangkok, content-index 05:30.
+
+## Dependencies
+- None external; all scripts use existing tools (bash, gzip, mv, tail)
+- OpenClaw `claw memory` CLI must remain available (already is)
+
+## Open Questions
+- Could we switch to `neural-memory` as primary? Not yet; FTS is working; need evaluation.
+- Should we also rotate other logs (agent logs)? They are moderate; focus on largest first.
