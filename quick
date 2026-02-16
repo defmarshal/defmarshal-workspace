@@ -18,6 +18,8 @@ Commands:
   memory-status  Show memory index status (openclaw memory status)
   memory-index  Reindex memory files (openclaw memory index)
   memory-stats  Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
+  memory-reindex Force reindex of memory files (openclaw memory index)
+  daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   time            Show current time in UTC and Bangkok (Asia/Bangkok)
@@ -117,9 +119,28 @@ case "$cmd" in
     echo "Reindexing memory..."
     /home/ubuntu/.npm-global/bin/openclaw memory index
     ;;
+  memory-reindex)
+    # Alias for memory-index (consistency)
+    echo "Reindexing memory..."
+    /home/ubuntu/.npm-global/bin/openclaw memory index
+    ;;
   memory-stats)
     # Show memory system statistics (wrapper around memory-stats script)
     "$WORKSPACE/memory-stats" "$@"
+    ;;
+  daemons)
+    # Show status of persistent background agents
+    echo "Persistent Daemons:"
+    echo "-------------------"
+    for name in dev-agent content-agent research-agent torrent-bot; do
+      pid=$(pgrep -f "$name" || true)
+      if [ -n "$pid" ]; then
+        uptime=$(ps -o etime= -p "$pid" 2>/dev/null | tr -d ' ')
+        echo "  ✓ $name  PID:$pid  uptime:$uptime"
+      else
+        echo "  ✗ $name  NOT RUNNING"
+      fi
+    done
     ;;
   health)
     "$WORKSPACE/workspace-health"
