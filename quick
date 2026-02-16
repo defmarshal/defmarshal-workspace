@@ -14,6 +14,7 @@ Commands:
   dash            Run the CLI dashboard (dashboard.py)
   web             Run the web dashboard (web-dashboard.py)
   gateway-info    Show gateway status and remote access setup instructions
+  hygiene         Run workspace hygiene check (CRLF, exec bits, large files, caches)
   mem             Show recent memories (claw memory list)
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
@@ -347,6 +348,9 @@ case "$cmd" in
     ;;
   gateway-info)
     "$WORKSPACE/gateway-info.sh"
+    ;;
+  hygiene)
+    "$WORKSPACE/workspace-hygiene-check.sh"
     ;;
   cron-status)
     # Show status of important cron jobs
