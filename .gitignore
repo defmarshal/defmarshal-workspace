@@ -40,3 +40,4 @@ aria2.log.*
 # Aria2 runtime files
 dht.dat
 downloads/
+agents/vishwakarma/.lock
