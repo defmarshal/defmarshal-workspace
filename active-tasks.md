@@ -23,7 +23,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [daemon] dev-agent - Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
+- [daemon] dev-agent — Running as persistent daemon (`dev-agent-loop.sh`, every 20 min, respects quiet hours). PID: 215961. Logs: dev-agent.log.
+  - 2026-02-16 cycle: added quick quiet-hours; enhanced verify to include OpenClaw cron status; committed 9884936; verified functional.
 - [daemon] content-agent - Running as persistent daemon (`content-agent-loop.sh`, every 10 min, respects quiet hours). PID: 225692. Logs: content-agent.log.
   - 2026-02-16 cycle: produced midday status, daily digest, evening final wrap, midday update, final daily digest; updated INDEX; committed and pushed (fd6ce87).
 - [daemon] research-agent - Running as persistent daemon (`research-agent-loop.sh`, every 15 min, respects quiet hours). PID: 225712. Logs: research-agent.log.
@@ -47,17 +48,17 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: system crontab no longer contains those entries.
   - Committed `e154161` and pushed.
 
-- [research-cycle] 2026-02-16 06:10–06:30 — Brownfield failure patterns (SWE-Bench Pro analysis)
-  - Completed high‑priority gap: taxonomy of AI coding agent failures on real‑world tasks
-  - Failure modes: wrong solution (most common), syntax errors, context management collapse, multi‑file edit failures, tool errors
-  - Key stat: frontier models <25% Pass@1 on SWE‑Bench Pro vs >70% on simpler benchmarks
-  - Report: research/2026-02-16-brownfield-failure-patterns.md (~1.5 k words)
+- [research-cycle] 2026-02-16 06:10-06:30 - Brownfield failure patterns (SWE-Bench Pro analysis)
+  - Completed high-priority gap: taxonomy of AI coding agent failures on real-world tasks
+  - Failure modes: wrong solution (most common), syntax errors, context management collapse, multi-file edit failures, tool errors
+  - Key stat: frontier models <25% Pass@1 on SWE-Bench Pro vs >70% on simpler benchmarks
+  - Report: research/2026-02-16-brownfield-failure-patterns.md (~1.5 k words)
   - Updated research/INDEX.md
   - Committed 8743b7a and pushed.
 
-- [research-cycle] 2026-02-16 12:15–12:45 — Anime streaming churn & AI adoption metrics
-  - Completed high‑priority gap: streaming churn (Netflix 2%, general 5-10% monthly, serial churners 23%) + AI adoption landscape (Toei, Wit, MAPPA, Ufotable, K&K Design, etc.)
-  - Report: research/2026-02-16-anime-streaming-churn-ai-adoption.md (~1 k words)
+- [research-cycle] 2026-02-16 12:15-12:45 - Anime streaming churn & AI adoption metrics
+  - Completed high-priority gap: streaming churn (Netflix 2%, general 5-10% monthly, serial churners 23%) + AI adoption landscape (Toei, Wit, MAPPA, Ufotable, K&K Design, etc.)
+  - Report: research/2026-02-16-anime-streaming-churn-ai-adoption.md (~1 k words)
   - Updated research/INDEX.md
   - Committed f8eb814 and pushed.
 
