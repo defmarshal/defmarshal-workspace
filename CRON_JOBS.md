@@ -81,6 +81,18 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/research-cycle.sh >> research-agent.log 2>&1'`
     - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Migrated from persistent daemon to cron on 2026-02-16.
 
+12. **cleanup-downloads-cron**
+    - **Schedule**: Weekly on Sunday at 06:00 Asia/Bangkok (`0 6 * * 0`)
+    - **Payload**: agentTurn executing `quick cleanup-downloads --execute --days 30` and appending to `memory/cleanup-downloads.log`
+    - **Description**: Automated cleanup of old torrent downloads (retention: 30 days). Runs dry-run by default through the wrapper; cron uses `--execute` to apply.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
+
+## Maintenance Commands
+
+- `quick cleanup-downloads [--days N] [--execute] [--verbose]` – Clean old downloads in `workspace/downloads/`.
+- `quick cleanup-backups [--keep N] [--execute] [--verbose]` – Clean old backup tarballs in `/home/ubuntu/`. Keeps most recent N (default 1). Use with care.
+
+Future: Consider scheduling `cleanup-backups` via cron to avoid manual intervention.

@@ -64,6 +64,9 @@ Commands:
   cleanup-downloads [options] Clean up old downloads (default: dry-run, retains 30 days)
                              Options: --days N, --execute, --verbose
                               Example: quick cleanup-downloads --days 60 --execute
+  cleanup-backups [options]   Clean up old openclaw-backup tarballs in /home/ubuntu (default: dry-run, keep 1)
+                             Options: --keep N, --execute, --verbose
+                              Example: quick cleanup-backups --keep 3 --execute
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
   restart-gateway             Restart the OpenClaw gateway (use after config changes or to restore approval buttons)
@@ -248,6 +251,10 @@ case "$cmd" in
   cleanup-downloads)
     # Clean up old downloads with retention policy
     "$WORKSPACE/scripts/cleanup-downloads.sh" "$@"
+    ;;
+  cleanup-backups)
+    # Clean up old backup tarballs in /home/ubuntu
+    "$WORKSPACE/scripts/cleanup-backups.sh" "$@"
     ;;
   email-clean)
     python3 "$WORKSPACE/email-cleaner.py" "$@"

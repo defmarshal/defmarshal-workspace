@@ -1,96 +1,60 @@
 # Workspace Builder Findings
-**Date**: 2026-02-16
-**Focus**: Disk space analysis and system hygiene
+**Date**: 2026-02-16 (21:00 UTC run)
+**Focus**: Disk space analysis, backup strategy, and hygiene improvements
 
-## Disk Space Analysis
+## Current Disk Status
+- Filesystem: /dev/sda1 45G total, 36G used (82%), 8.2G free (⚠️ warning threshold)
+- Workspace root: ~4.3G (downloads 2.1G, logs, scripts, skills, etc.)
+- Home directory /home/ubuntu: 8.8G total (includes backups)
 
-**Filesystem**: /dev/sda1 45G total, 36G used (82%), 8.1G free
+## Space Consumer Analysis
 
-### Top Space Consumers (workspace root)
-- `downloads/` - 2.1G (torrent downloads)
-- `aria2.log` - 121M (untouched since rotation)
-- `aria2.log.1.gz` - 69M (rotated archive)
-- `skills/` - 3.0M (ClawHub skills)
-- `tts_output/` - 784K (TTS audio files)
+### Large Items in Workspace
+- `downloads/` - 2.1G (torrent downloads, all from 2026-02-14, <30 days old)
+- `aria2.log.2.gz` - 69M (rotated)
+- `aria2.log.1.gz` - 13M (rotated)
+- `.git/` - 77M (healthy)
+- Agent logs: ~200K each, fine
 
-**Status**: Moderate risk. Below 85% but trending upward. Immediate attention recommended.
+**Observation**: Downloads are recent, so cleanup script won't delete yet; retention policy (30d) appropriate.
 
-### Downloads Directory Contents (2.1G)
-- `(同人アニメ)[260212][maplestar] SONO BISQUE DOLL FULL ANIMATION (PART 3)` - 434M (added 2026-02-14)
-- `2026-01 Anime Collection` - 970M (added 2026-02-14)
-- `[AmateurSubs] Sister Breeder 01-02 [DVDRip 576p HEVC AC3]` - 690M (added 2026-02-14)
+### Backup Tarballs (Primary Target)
+- `/home/ubuntu/openclaw-backup-2026-02-16-1403.tar.gz` - 2.2G
+- `/home/ubuntu/openclaw-backup-2026-02-16-1406.tar.gz` - 2.2G
+- Created within 3 minutes of each other; likely redundant.
+- Impact: 4.4G can be recovered by rotation/retention.
 
-**Observation**: All downloads are from 2026-02-14 (3 days ago). Likely completed torrents but not cleaned up. `aria2` downloads directory not pruned automatically.
+**Note**: Backup naming suggests manual or scripted process (`openclaw-backup-YYYY-MM-DD-HHMM.tar.gz`). No existing rotation scheme found.
 
-### Log Rotation Assessment
-- `aria2.log` 121M created on Feb 16 19:00 (today) - currently active
-- `aria2.log.1.gz` 69M from previous rotation
-- Rotation configured (weekly Sunday 05:00 Asia/Bangkok)
-- Rotation not triggered recently (log still growing)
-
-### Agent Logs (all < 200K)
-- `dev-agent.log` 200K
-- `content-agent.log` 188K
-- `research-agent.log` 172K
-- No issues - logs modest size, rotate if needed
-
-## Other System Checks
-
-### Git Status
-- Working tree clean
-- No untracked files needing attention
-- All commits pushed
-
-### OpenClaw Health (from `quick health`)
-- Disk: 82% ⚠️
-- Updates: 6 pending (non-critical)
-- Memory: 7 files / 43 chunks, clean index (Voyage FTS+)
-- Reindex: today
-- Gateway: healthy
-
-### Active Agents
-- dev-agent-cron (running)
-- content-agent-cron (running)
-- research-agent-cron (running)
-- torrent-bot (daemon)
-- workspace-builder (this session)
-- workspace-builder cron job configured
-
-### Systemd Linger (Lesson from lessons.md)
-- Not yet verified. Should check: `loginctl show-user $USER --property Lingering`
-- If not enabled, agents stop on logout. Important for reliability.
+## Existing Infrastructure
+- `scripts/cleanup-downloads.sh` already implemented (dry-run, 30-day retention). Tested: no files older than 30 days.
+- `cleanup-downloads-cron` exists (OpenClaw cron, weekly Sunday 06:00 Asia/Bangkok) – documented in cron list but not in CRON_JOBS.md yet.
+- `quick health` already includes downloads metrics and disk thresholds (warning >=80%, critical >=90%).
 
 ## Identified Improvements
 
 ### High Priority
-1. **Downloads cleanup**: Implement retention policy (e.g., delete files older than 30 days)
-2. **Log rotation tuning**: Possibly rotate more frequently if log grows fast
-3. **Disk health monitoring**: Add warning thresholds to `quick health` (e.g., >80% warning, >90% critical)
+1. **Backup rotation/retention**: Implement cleanup script to prune old backups, keeping most recent N (default 1) to free space immediately.
+2. **Document cleanup-downloads cron**: Update CRON_JOBS.md to reflect weekly cleanup-downloads job.
+3. **Add `quick cleanup-backups`**: New launcher command for manual backup maintenance.
 
 ### Medium Priority
-4. Archive old logs beyond rotation (e.g., move rotated logs to `archive/` directory)
-5. Clean Python cache (`__pycache__/`) if bloated (currently 72K - fine)
-6. Verify TTS output directory size; implement cleanup if needed (currently 784K - fine)
-
-### Low Priority
-7. Document cleanup procedures in CRON_JOBS.md
-8. Add disk usage to daily heartbeat checks
+4. Consider scheduling weekly backup cleanup via cron to prevent recurrence.
+5. Enable systemd linger for agent persistence across logout (requires user sudo action).
 
 ## Recommendations
-
-1. Create `scripts/cleanup-downloads.sh` with:
-   - Dry-run mode by default
-   - `--days N` threshold (default 30)
-   - Safety exclusions (recent downloads, active torrents)
-2. Add disk usage threshold alerts to `workspace-health` script
-3. Schedule weekly cleanup cron (separate from rotation) to manage downloads
-4. Update `quick health` to include "Downloads: X files, Y size" for visibility
-5. Consider moving old logs to compressed archive after N rotations
+- Create `scripts/cleanup-backups.sh` with safe defaults (--keep 1, dry-run)
+- Integrate into `quick` launcher
+- Document in CRON_JOBS.md (even if not scheduled yet)
+- After implementation, run cleanup to recover ~2.2G (delete oldest of the two backups)
+- Monitor disk trend; adjust retention if needed
 
 ## Risks & Mitigations
-- Risk: Deleting active/incomplete downloads
-  - Mitigation: Check aria2 RPC for active downloads; respect session data
-- Risk: Over-aggressive cleanup removes recent content
-  - Mitigation: Hard-coded minimum age (30 days) and dry-run confirmation
-- Risk: Log rotation too aggressive loses history
-  - Mitigation: Keep last 4 rotated archives; move older to archive/ if needed
+- Risk: Deleting all backups → Mitigation: script enforces --keep minimum, default 1; dry-run requires confirmation
+- Risk: Accidentally deleting non-backup files → Mitigation: strict filename pattern `openclaw-backup-*.tar.gz` in /home/ubuntu only
+- Risk: Cron misconfiguration → Mitigation: document carefully; use absolute paths
+
+## Follow-up
+- Verify `CRON_JOBS.md` completeness after updates
+- Educate user on backup rotation and manual cleanup command
+- Suggest manual `sudo loginctl enable-linger ubuntu` for agent reliability
