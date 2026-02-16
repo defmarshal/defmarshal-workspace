@@ -54,6 +54,7 @@ Commands:
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
+  verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
   setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
   help                       Show this help message
 
@@ -120,7 +121,7 @@ case "$cmd" in
     "$WORKSPACE/memory-stats" "$@"
     ;;
   health)
-    python3 "$WORKSPACE/workspace-health.py" 2>/dev/null || "$WORKSPACE/workspace-health"
+    "$WORKSPACE/workspace-health"
     ;;
   holidays)
     python3 "$WORKSPACE/show-holidays" 2>/dev/null || "$WORKSPACE/show-holidays"
@@ -282,6 +283,26 @@ case "$cmd" in
     echo "== Setup complete =="
     echo "Note: For sudo setup, run: sudo ./setup-sudo.sh"
     echo "Remember to commit any changes and push to GitHub."
+    ;;
+  verify)
+    # Comprehensive workspace verification
+    echo "=== Workspace Verification ==="
+    echo ""
+    echo "Health:"
+    "$WORKSPACE/workspace-health" || echo "  ⚠ health check failed"
+    echo ""
+    echo "Memory:"
+    /home/ubuntu/.npm-global/bin/openclaw memory status --json 2>/dev/null | python3 -c "import sys, json; data=json.load(sys.stdin); e=data[0] if isinstance(data, list) and data else data; s=e.get('status',{}); print(f\"  main: {s.get('files',0)}f/{s.get('chunks',0)}c (dirty={s.get('dirty')}) {s.get('provider','?')}\")" || echo "  ⚠ memory status failed"
+    echo ""
+    echo "Agents (running daemons):"
+    pids=$(pgrep -f "agent-loop.sh" | wc -l); echo "  $pids daemon(s) running (dev, content, research)"
+    echo ""
+    echo "Git:"
+    changes=$(git -C "$WORKSPACE" status --short | wc -l); echo "  $changes changed file(s)" $([ "$changes" -eq 0 ] && echo "(clean)" || echo "(dirty)")
+    echo ""
+    echo "Cron (user crontab):"
+    cron_count=$(crontab -l 2>/dev/null | grep -E 'email-clean|nyaa-top|torrent' | wc -l); echo "  $cron_count entry(ies) relevant"
+    echo "=== End Verification ==="
     ;;
   help)
     show_help

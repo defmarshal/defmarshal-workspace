@@ -1,7 +1,11 @@
-# Task Plan: Workspace Audit & Targeted Improvements
+# Task Plan: Content Index Automation & System Health Verification
 
 ## Goal
-Perform a comprehensive workspace health audit and implement targeted improvements to maintain system reliability, complete pending maintenance tasks, and enhance documentation based on recent feature additions.
+Implement operational improvements to maintain workspace reliability, focusing on:
+- Automating content archive index updates (content/INDEX.md)
+- Verifying system health after recent changes
+- Ensuring documentation reflects current cron setup
+- Validating all agents and memory system status
 
 ## Current Phase
 Phase 1: Requirements & Discovery
@@ -9,15 +13,15 @@ Phase 1: Requirements & Discovery
 ## Phases
 
 ### Phase 1: Requirements & Discovery
+- [x] Archive previous planning files (build-archive/)
 - [x] Check active tasks and running agents
-- [x] Retrieve neural-memory context (none found - new system)
-- [x] Review MEMORY.md for recent changes and pending items
-- [x] Run initial system health checks (disk, updates, memory status)
-- [x] Verify git status and recent commits
-- [x] Inspect cron jobs for duplicates/errors
-- [x] Check memory system health (index dirty, torrent-bot empty)
-- [ ] Document findings in findings.md
-- **Status:** in_progress
+- [x] Review MEMORY.md and recent daily logs (2026-02-15, 2026-02-16)
+- [x] Verify git status and recent commits (clean, up-to-date)
+- [x] Inspect crontab for duplicates/errors
+- [x] Check memory system health (indexed 6/6, dirty flag known limitation)
+- [x] Test `quick content-index-update` command (works, tracks 41 files)
+- [x] Document findings in findings.md
+- **Status:** complete
 
 ### Phase 2: Planning & Structure
 - [x] Define specific improvement tasks based on findings
@@ -27,66 +31,55 @@ Phase 1: Requirements & Discovery
 - **Status:** complete
 
 ### Phase 3: Implementation
-- [x] Fix memory system issues (reindex, clean dirty state)
-- [x] Address system updates (apt upgrade)
-- [x] Review and fix duplicate cron entries if needed
-- [x] Update documentation (MEMORY.md, quick help, CRON_JOBS.md)
-- [x] Add missing utilities if gaps identified
-- [x] Validate agent health and logs
-- **Status:** complete
+- [ ] Add cron job to run `quick content-index-update` daily (e.g., 05:30 Bangkok)
+- [ ] Update CRON_JOBS.md to document new cron entry
+- [ ] Run `quick content-index-update` manually to verify current index includes latest content
+- [ ] Check email-cleaner API key warning (MATON_API_KEY) - assess if fix needed
+- [ ] Verify memory system: run `quick memory-stats`, ensure search works
+- [ ] Run `quick health` to confirm no issues
+- [ ] Validate agent daemons are running (ps, pgrep)
+- **Status:** pending
 
 ### Phase 4: Testing & Verification
-- [x] Run `quick health` to verify system health
-- [x] Test modified commands (memory-status, mem, search)
-- [x] Verify memory indexing completes successfully
-- [x] Check all files properly committed
-- [x] Ensure no temp files left behind
-- **Status:** complete
+- [ ] Test cron command by simulating it (run the exact command that will be in cron)
+- [ ] Verify content-index-update completes without errors
+- [ ] Check that content/INDEX.md reflects latest files (e.g., 2026-02-16-pre-dawn-wrap.md)
+- [ ] Run `quick health` again after changes
+- [ ] Confirm memory search still functional: `quick search "test"`
+- [ ] Ensure all changed files are properly staged
+- [ ] Check for any temp files to clean
+- **Status:** pending
 
 ### Phase 5: Delivery
-- [x] Review all output files
-- [x] Ensure deliverables complete
-- [x] Commit changes with prefix 'build:'
-- [x] Push to GitHub
-- [x] Update active-tasks.md with validation results
-- **Status:** complete
+- [ ] Review all output files (task_plan, findings, progress updated)
+- [ ] Ensure deliverables complete
+- [ ] Commit changes with prefix `build:`
+- [ ] Push to GitHub (`git push origin master`)
+- [ ] Update active-tasks.md: mark this session as validated with verification notes
+- [ ] Archive planning files with timestamp (already done at start)
+- **Status:** pending
 
 ## Key Questions
-1. What is causing the memory system "dirty: yes" state and how should it be resolved?
-   - Answer: Dirty flag indicates uncommitted changes. After index completes, should clear. Verify with `openclaw memory status` after index finishes. If persists, may need manual intervention or is normal after logging events.
-2. Why does torrent-bot show 0 indexed files, and should it be indexed separately?
-   - Answer: Each OpenClaw agent has its own memory store. Torrent-bot store is empty, which is expected if it hasn't logged anything yet. Should verify if it's needed - likely fine.
-3. Are the duplicate cron entries for nyaa-top intentional or an error?
-   - Answer: Duplicate identical lines in crontab is an error - likely accidental double-add. Should remove one to avoid duplicate downloads.
-4. What documentation updates are needed to reflect the latest features (sudo, memory changes)?
-   - Answer: MEMORY.md needs update to include sudo deployment and current memory system health status. CRON_JOBS.md already accurate but should note duplicate issue.
-5. Should system updates (16 packages) be applied now or scheduled?
-   - Answer: Apply now during builder window to maintain security and stability. Use elevated: true for apt operations.
-6. Are there any broken symlinks, orphaned files, or temporary files to clean?
-   - Answer: Check workspace for temp files, caches, etc. Should be minimal.
-7. Does the quick launcher need additional commands or improvements based on recent usage?
-   - Answer: Verify `memory-stats` exists (mentioned in MEMORY.md); if missing, add it.
+1. Should content-index-update run daily or hourly? Daily at early morning is sufficient; content generated throughout day, index refreshed next morning.
+2. Does email-cleaner need MATON_API_KEY set, or is fallback acceptable? The script falls back to config warning but still works. Not critical, but could be cleaned up.
+3. Is there any risk of duplicate cron entries when adding new job? Must use `crontab -l | grep -v '^$' | sort -u | crontab -` or manual check. But we'll add distinct command; duplicates unlikely. We'll verify with `crontab -l` after adding.
+4. Should we address memory dirty flag? It's a known Voyage rate limit issue; acceptable for now. Document in findings.
+5. Are all background agents healthy? Yes, 3 daemons + torrent-bot running. Confirm with `pgrep`.
+6. Could content-index-update be integrated into content-agent directly? Possibly, but cron is simpler and decoupled. Keep as is.
 
-## Decisions Made
+## Decisions Made (to fill during process)
 | Decision | Rationale |
 |----------|-----------|
-| Fix duplicate cron by removing one line | Avoid double downloads and wasted resources |
-| Apply system upgrades via apt-get upgrade | Security/stability; 16 packages is significant |
-| Use absolute path /home/ubuntu/.openclaw/workspace/quick for all testing | PATH inconsistency in exec context |
-| Investigate memory dirty flag after index completes | Determine if it's a problem or normal state |
-| Do NOT reindex torrent-bot memory yet | It's separate agent store; only reindex if needed later |
-| Update MEMORY.md with current builder findings | Keep long-term memory current |
-| Add verification checklist to active-tasks.md | Follow close-the-loop protocol |
-| Commit changes with prefix 'build:' | Consistent with conventional commits |
+| Add cron at 05:30 Bangkok | After pre-dawn wrap generated (~05:05), index fresh for new day |
+| Keep MATON_API_KEY warning for now | Non-blocking, can address in future if needed |
+| Use `quick content-index-update` in cron | Leverages existing script, easy to test |
+| Do not reindex memory now | Rate limits; dirty flag acceptable, search works |
 
 ## Errors Encountered
-| Error | Attempt | Resolution |
-|-------|---------|------------|
-| quick: command not found | 1 | Use absolute path in exec calls |
-| sessions_list no output | 1 | Trust active-tasks.md and pgrep for agent status |
+(Will log during execution)
 
 ## Notes
-- Update phase status as you progress: pending → in_progress → complete
-- Re-read this plan before major decisions (attention manipulation)
-- Log ALL errors - they help avoid repetition
-- Respect quiet hours (23:00–08:00 UTC+7) - currently ~22:00 UTC+7, so proceed but be efficient
+- Respect quiet hours (23:00–08:00 UTC+7). Currently outside quiet window.
+- Use absolute path `/home/ubuntu/.openclaw/workspace/quick` in cron to avoid PATH issues.
+- All changes should be small but meaningful.
+- After each phase, update this file to reflect progress.

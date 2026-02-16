@@ -15,8 +15,7 @@ All jobs run under the `ubuntu` user. Timezone is UTC unless otherwise specified
 - **Log**: `memory/email-cleaner-cron.log`
 - **Description**: Runs the email-cleaner script in dry-run mode by default. Use `--execute` to apply changes (requires manual trigger).
 
-
-### Auto Torrent Download
+### Auto Torrent Download (Top Selections)
 - **Schedule**: Daily at 02:00 Asia/Bangkok
 - **Command**:
   ```bash
@@ -25,30 +24,32 @@ All jobs run under the `ubuntu` user. Timezone is UTC unless otherwise specified
 - **Log**: `memory/auto-torrent.log`
 - **Description**: Fetches top 10 anime torrents from Sukebei.Nyaa.si under 2GB and adds them to aria2 automatically.
 
-### Traffic Report (Weekly)
-- **Schedule**: Weekly on Sunday at 22:00 UTC (Monday 05:00 Jakarta, Monday 22:00 UTC+7? Actually 22:00 UTC is Monday 05:00 Jakarta). This runs Sunday evenings UTC.
+### Content Index Update (Archive Maintainer)
+- **Schedule**: Daily at 05:30 Asia/Bangkok
 - **Command**:
   ```bash
-  0 22 * * 0 /usr/bin/python3 /home/ubuntu/.nanobot/workspace/weekly_traffic_report.py >> /home/ubuntu/.nanobot/workspace/weekly_cron.log 2>&1
+  30 5 * * * TZ='Asia/Bangkok' cd "/home/ubuntu/.openclaw/workspace" && "/home/ubuntu/.openclaw/workspace/quick" content-index-update >> "/home/ubuntu/.openclaw/workspace/memory/content-index-cron.log" 2>&1
   ```
-- **Log**: `/home/ubuntu/.nanobot/workspace/weekly_cron.log`
-- **Description**: Generates weekly traffic analysis report.
+- **Log**: `memory/content-index-cron.log`
+- **Description**: Regenerates `content/INDEX.md` to reflect newly created content files. Ensures the content archive stays browsable and up-to-date.
 
-### Traffic Analysis (Daily)
-- **Schedule**: Daily at 05:00 UTC (12:00 Asia/Jakarta? Actually 05:00 UTC is 12:00 Jakarta)
+### Random Torrent Downloader
+- **Schedule**: Every 2 hours (`0 */2 * * *`)
 - **Command**:
   ```bash
-  0 5 * * * cd /home/ubuntu/.nanobot/workspace && /usr/bin/python3 /home/ubuntu/.nanobot/workspace/traffic_analysis_script.py >> /home/ubuntu/.nanobot/workspace/traffic_cron.log 2>&1
+  0 */2 * * * /bin/bash /home/ubuntu/.openclaw/workspace/cron/torrent-downloader.sh
   ```
-- **Log**: `/home/ubuntu/.nanobot/workspace/traffic_cron.log`
+- **Log**: System log (`logger -t torrent-downloader`) and script output
+- **Description**: Picks a random torrent from the top 20 (max 1GB) and adds it to aria2 if not already present. Respects quiet hours (23:00–08:00 Asia/Bangkok) and disk space thresholds.
 
-### Traffic Report (bash)
-- **Schedule**: Daily at 22:00 UTC (05:00 Asia/Jakarta next day)
+### Startup Agents (Daemons)
+- **Schedule**: `@reboot` with 60-second delay
 - **Command**:
   ```bash
-  0 22 * * * bash /home/ubuntu/.openclaw/workspace/traffic_report.sh
+  @reboot bash -c "sleep 60 && /home/ubuntu/.openclaw/workspace/start-background-agents.sh"
   ```
-- **Description**: Shell script for traffic reporting; likely sends to Telegram.
+- **Log**: Agent-specific logs (`dev-agent.log`, `content-agent.log`, `research-agent.log`)
+- **Description**: Ensures all background agents and daemons (aria2, agent loops, torrent-bot) are started after system reboot.
 
 ## OpenClaw Cron (via `openclaw cron`)
 

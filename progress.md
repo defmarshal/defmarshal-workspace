@@ -1,122 +1,85 @@
 # Progress Log
 
-## Session: 2026-02-15 (UTC)
-Work started around 15:00 UTC (22:00 UTC+7)
+## Session: 2026-02-16 (UTC)
+Work started around 05:11 UTC (12:11 Bangkok). This is a workspace-builder cron-triggered run.
 
 ### Phase 1: Requirements & Discovery
 - **Status:** complete
-- **Started:** 2026-02-15 15:00 UTC
+- **Started:** 2026-02-16 05:11 UTC
 - Actions taken:
   - Read active-tasks.md to check running agents
-  - Queried neural-memory (no prior context found - system newly installed)
-  - Read MEMORY.md for long-term context
-  - Checked git status (clean, up to date)
-  - Ran memory status via `openclaw memory status`
-  - Ran `sessions_list` (no JSON output - agents running but list command may need flags)
-  - Checked crontab - found duplicate nyaa-top entries
-  - Checked disk usage (64%) and upgradable packages (16)
-  - Verified quick launcher path and permissions
-  - Started forced memory reindex with `openclaw memory index --force` (PID 485853)
-  - Created task_plan.md, findings.md, progress.md
+  - Reviewed MEMORY.md and daily logs (2026-02-15, 2026-02-16 not created yet)
+  - Checked git log and status (clean, up to date)
+  - Inspected crontab (no duplicates)
+  - Ran `openclaw memory status` (dirty: yes, but functional)
+  - Tested `quick content-index-update` manually (works, tracks 41 files)
+  - Reviewed content/INDEX.md (stale, missing 2026-02-16 file)
+  - Verified agent daemons with pgrep (3 + torrent-bot)
+  - Checked disk usage (64%) and upgradable packages (0)
+  - Read previous planning files from Feb 15 run (to avoid rework)
+  - Archived previous task_plan.md, findings.md, progress.md to build-archive/ with timestamps
+  - Created new task_plan.md, findings.md, progress.md for this run
 - Files created/modified:
-  - task_plan.md (created)
-  - findings.md (created)
-  - progress.md (created, this file)
+  - build-archive/task_plan-2026-02-16-0511.md (archived)
+  - build-archive/findings-2026-02-16-0511.md (archived)
+  - build-archive/progress-2026-02-16-0511.md (archived)
+  - task_plan.md (new)
+  - findings.md (new)
+  - progress.md (new, this file)
 
 ### Phase 2: Planning & Structure
-- **Status:** complete
-- **Started:** 2026-02-15 15:10 UTC
-- Actions taken:
-  - Defined specific improvement tasks based on findings
-  - Prioritized tasks by impact and urgency
-  - Created detailed implementation steps in task_plan.md
-  - Documented decisions with rationale
-- Files created/modified:
-  - task_plan.md (updated with decisions and answers to key questions)
+- **Status:** in_progress
+- **Started:** 2026-02-16 05:30 UTC
+- Planned improvement: Add cron job to automate content-index-update.
+- Additional verification: run health checks, confirm memory search works, update CRON_JOBS.md.
+- Decisions documented in task_plan.md and findings.md.
 
 ### Phase 3: Implementation
-- **Status:** complete
-- **Started:** 2026-02-15 15:30 UTC
-- Actions taken:
-  - Ran memory index (--force) - completed but rate-limited; dirty flag known limitation
-  - Identified duplicate cron entry for nyaa-top (2 identical lines in crontab)
-  - Removed duplicate cron line using `crontab -l | uniq > /tmp/cron && crontab /tmp/cron`
-  - Verified duplicate removed (`crontab -l` now shows single entry)
-  - Checked system upgrades: `apt-get -s upgrade` showed 15 packages (down from 16)
-  - Executed `sudo apt-get upgrade -y` with DEBIAN_FRONTEND=noninteractive (silent)
-  - Verified upgrades: `apt list --upgradable` now shows 0
-  - Updated MEMORY.md with new project entry for this maintenance run
-  - Documented memory rate limit issue in MEMORY.md notes
-  - Investigated email-cleaner MATON_API_KEY warning - fallback to config works, not critical
-  - Killed duplicate torrent-bot daemon (PID 481811) to prevent double-spawning
-- Files created/modified:
-  - crontab (modified)
-  - MEMORY.md (updated)
-  - (system packages upgraded)
+- **Status:** pending
+- **Planned Steps:**
+  1. Test full cron command to ensure it runs cleanly
+  2. Add cron entry: `30 5 * * * TZ='Asia/Bangkok' cd /home/ubuntu/.openclaw/workspace && /home/ubuntu/.openclaw/workspace/quick content-index-update >> /home/ubuntu/.openclaw/workspace/memory/content-index-cron.log 2>&1`
+  3. Verify cron entry added (crontab -l)
+  4. Update CRON_JOBS.md with new entry description
+  5. Run `quick health` to capture baseline
+  6. Run `quick search "test"` to confirm memory search works
+  7. Optionally, review email-cleaner warning (defer)
 
 ### Phase 4: Testing & Verification
-- **Status:** in_progress
-- **Started:** 2026-02-15 16:00 UTC
-- Actions taken:
-  - Verified all daemons running: dev-agent, content-agent, research-agent, single torrent-bot
-  - Ran memory search to confirm functionality: returns results
-  - Confirmed memory system stats: 6/6 files, 40 chunks, dirty still set (acceptable)
-  - Checked git status: clean
-  - Verified no unexpected files in workspace root
-  - Inspected quick launcher: memory-stats present and works
-- Files created/modified:
-  - (none)
-- Test results summary:
-  - ✓ quick exists and executable
-  - ✓ memory search functional
-  - ✓ disk 64% healthy
-  - ✓ git clean
-  - ✓ duplicate cron fixed
-  - ✓ system updates applied (0 upgradable)
-  - ✓ agents healthy (4 daemons, 1 torrent-bot)
-  - ✓ sudo works
+- **Status:** pending
+- Will test after implementation:
+  - Simulate cron command manually
+  - Verify INDEX.md updated with latest file
+  - Check logs for errors
+  - Re-run `quick health` to ensure no regressions
+  - Confirm git status clean with changes
 
-## Test Results
+### Phase 5: Delivery
+- **Status:** pending
+- Commit with prefix `build:` and push
+- Update active-tasks.md with validation results
+- Ensure all planning files reflect completion
+
+## Test Results (to be filled)
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|
-| quick exists | /home/ubuntu/.openclaw/workspace/quick | file exists, executable | exists, 11732 bytes | ✓ |
-| memory index | openclaw memory index --force | completes | completed with rate limits | ✓ |
-| memory search | openclaw memory search "test" | returns results | returned 1 result | ✓ |
-| disk space | df -h | <80% usage | 64% | ✓ |
-| git status | git status | clean | clean | ✓ |
-| duplicate cron | crontab -l | single nyaa-top entry | single entry | ✓ |
-| system updates | apt list --upgradable | 0 | 0 | ✓ |
-| sudo check | sudo -n true | success | success | ✓ |
-| agents running | pgrep -f "agent-loop.sh" | 3 daemons | dev, content, research all present | ✓ |
-| torrent-bot deduped | pgrep -f "torrent-bot/loop.sh" | 1 process | 1 process (PID 480613) | ✓ |
+| content-index-update | ./quick content-index-update | 41 files indexed | 41 files | ✓ (already tested) |
+| cron command | (full cron line) | runs without error | TBD | ⏳ |
 
-## Error Log
-| Timestamp | Error | Attempt | Resolution |
-|-----------|-------|---------|------------|
-| 2026-02-15 15:?? | quick: command not found | 1 | Use absolute path in exec calls |
-| 2026-02-15 15:?? | sessions_list no output | 1 | Trust active-tasks.md and pgrep for agent status |
-| 2026-02-15 15:45 | memory index rate limit (429) | 1 | Accept limitation; search still works; documented |
-| 2026-02-15 16:00 | duplicate torrent-bot daemon | 1 | Killed PID 481811; left one instance |
+## Error Log (to be filled)
+(Record any errors during implementation)
 
 ## 5-Question Reboot Check
 | Question | Answer |
 |----------|--------|
-| Where am I? | Phase 4 (Testing & Verification) - validating all changes |
-| Where am I going? | Phase 5: finalize, commit, push, update active-tasks |
-| What's the goal? | Perform comprehensive workspace audit and implement targeted improvements |
-| What have I learned? | Duplicate cron fixed, upgrades applied, duplicate daemon killed, memory index OK despite rate limits |
-| What have I done? | Implemented all Phase 3 tasks, validated system health, ready to commit |
+| Where am I? | Phase 2 (Planning & Structure) – finished discovery, planning implementation |
+| Where am I going? | Phase 3 (Implementation): add cron job, update docs, verify health |
+| What's the goal? | Automate content index updates and verify overall system health |
+| What have I learned? | Content index stale; cron automation needed; memory dirty flag acceptable |
+| What have I done? | Reviewed state, archived old plans, created new plans, decided on actions |
 
-## Notes for Commit
-- Commit prefix: `build:`
-- Changes to commit:
-  - task_plan.md (updated)
-  - findings.md (created)
-  - progress.md (created)
-  - MEMORY.md (updated with new project entry)
-  - (crontab change is user-level, not in repo; but we should document it in commit message)
-- Important: crontab change is NOT in git; we modified system crontab directly. Must note in commit message.
-
----
-
-*Update after completing each phase or encountering errors*
+## Notes
+- Respect quiet hours (23:00–08:00 UTC+7) – currently outside.
+- Use absolute paths in all cron entries.
+- After implementation, will commit all documentation changes and new cron entry note.
+- Will not modify system crontab directly without verifying uniqueness (use grep/crontab carefully).
