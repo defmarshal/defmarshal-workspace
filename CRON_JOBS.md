@@ -4,66 +4,58 @@ This file documents all scheduled tasks for the workspace, including system cron
 
 ## System Cron (user crontab)
 
-All jobs run under the `ubuntu` user. Timezone is UTC unless otherwise specified.
+As of 2026‑02‑16, **all recurring workspace tasks have been migrated to OpenClaw cron**. The system crontab now only retains the agent startup hook (and a few unrelated nanobot jobs which are outside this workspace's scope).
 
-### Email Cleaner (Gmail Auto-Archiver)
-- **Schedule**: Daily at 09:00 Asia/Bangkok
-- **Command**:
-  ```bash
-  0 9 * * * TZ='Asia/Bangkok' cd /home/ubuntu/.openclaw/workspace && /home/ubuntu/.openclaw/workspace/quick email-clean >> /home/ubuntu/.openclaw/workspace/memory/email-cleaner-cron.log 2>&1
-  ```
-- **Log**: `memory/email-cleaner-cron.log`
-- **Description**: Runs the email-cleaner script in dry-run mode by default. Use `--execute` to apply changes (requires manual trigger).
-
-### Auto Torrent Download (Top Selections)
-- **Schedule**: Daily at 02:00 Asia/Bangkok
-- **Command**:
-  ```bash
-  0 2 * * * TZ='Asia/Bangkok' cd /home/ubuntu/.openclaw/workspace && /home/ubuntu/.openclaw/workspace/quick nyaa-top --limit 10 --max-size 2G --add >> /home/ubuntu/.openclaw/workspace/memory/auto-torrent.log 2>&1
-  ```
-- **Log**: `memory/auto-torrent.log`
-- **Description**: Fetches top 10 anime torrents from Sukebei.Nyaa.si under 2GB and adds them to aria2 automatically.
-
-### Content Index Update (Archive Maintainer)
-- **Schedule**: Daily at 05:30 Asia/Bangkok
-- **Command**:
-  ```bash
-  30 5 * * * TZ='Asia/Bangkok' cd "/home/ubuntu/.openclaw/workspace" && "/home/ubuntu/.openclaw/workspace/quick" content-index-update >> "/home/ubuntu/.openclaw/workspace/memory/content-index-cron.log" 2>&1
-  ```
-- **Log**: `memory/content-index-cron.log`
-- **Description**: Regenerates `content/INDEX.md` to reflect newly created content files. Ensures the content archive stays browsable and up-to-date.
-
-### Random Torrent Downloader
-- **Schedule**: Every 2 hours (`0 */2 * * *`)
-- **Command**:
-  ```bash
-  0 */2 * * * /bin/bash /home/ubuntu/.openclaw/workspace/cron/torrent-downloader.sh
-  ```
-- **Log**: System log (`logger -t torrent-downloader`) and script output
-- **Description**: Picks a random torrent from the top 20 (max 1GB) and adds it to aria2 if not already present. Respects quiet hours (23:00–08:00 Asia/Bangkok) and disk space thresholds.
-
-### Startup Agents (Daemons)
-- **Schedule**: `@reboot` with 60-second delay
+### Agent Startup (Daemon Bootstrap)
+- **Schedule**: `@reboot` with 60‑second delay
 - **Command**:
   ```bash
   @reboot bash -c "sleep 60 && /home/ubuntu/.openclaw/workspace/start-background-agents.sh"
   ```
-- **Log**: Agent-specific logs (`dev-agent.log`, `content-agent.log`, `research-agent.log`)
-- **Description**: Ensures all background agents and daemons (aria2, agent loops, torrent-bot) are started after system reboot.
+- **Log**: `dev-agent.log`, `content-agent.log`, `research-agent.log`, `torrent-bot.log`
+- **Description**: Ensures all background agents and daemons (dev, content, research, torrent-bot, aria2) are running after system boot.
 
 ## OpenClaw Cron (via `openclaw cron`)
 
-Managed through the OpenClaw Gateway. These run in isolated sessions.
+Managed through the OpenClaw Gateway. These run in isolated sessions and announce results to Telegram (id: 952170974). All times in their respective timezones.
 
-### Workspace Builder
-- **Name**: workspace-builder
-- **Schedule**: Every 2 hours (`0 */2 * * *`) in Asia/Bangkok timezone.
-- **Payload**: Isolated agent turn with a strategic builder prompt.
-- **Model**: `openrouter/stepfun/step-3.5-flash:free`
-- **Timeout**: 600 seconds
-- **Delivery**: Announces results to Telegram (channel: telegram, to: 952170974)
-- **Description**: Autonomous agent that analyzes the workspace, identifies meaningful improvements, implements them, commits & pushes changes, and logs summaries to `memory/workspace-builder.log`. Respects quiet hours (23:00–08:00 UTC+7). This is the only OpenClaw cron job currently.
+### Current OpenClaw Cron Jobs
+
+1. **workspace-builder**
+   - **Schedule**: Every 2 hours (`0 */2 * * *`) in Asia/Bangkok
+   - **Payload**: agentTurn with strategic builder prompt
+   - **Model**: `openrouter/stepfun/step-3.5-flash:free`
+   - **Timeout**: 600 seconds
+   - **Description**: Analyzes workspace, implements improvements, validates, commits with `build:` prefix. Respects quiet hours (23:00–08:00 UTC+7).
+
+2. **email-cleaner-cron**
+   - **Schedule**: Daily at 09:00 Asia/Bangkok
+   - **Payload**: agentTurn instructing execution of `./quick email-clean` (dry‑run by default)
+   - **Log**: `memory/email-cleaner-cron.log`
+   - **Description**: Archives promotional emails and applies labels. Uses dry‑run unless `--execute` passed (manual override).
+
+3. **auto-torrent-cron**
+   - **Schedule**: Daily at 02:00 Asia/Bangkok
+   - **Payload**: agentTurn running `./quick nyaa-top --limit 10 --max-size 2G --add`
+   - **Log**: `memory/auto-torrent.log`
+   - **Description**: Fetches top 10 anime torrents from Sukebei.Nyaa.si under 2GB and adds them to aria2 automatically.
+
+4. **random-torrent-downloader**
+   - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
+   - **Payload**: agentTurn executing `/bin/bash /home/ubuntu/.openclaw/workspace/cron/torrent-downloader.sh`
+   - **Log**: System logger (`logger -t torrent-downloader`)
+   - **Description**: Picks a random torrent from top 20 (max 1GB) and adds if not already present. Respects quiet hours (23:00–08:00 Bangkok) and disk thresholds.
+
+5. **traffic-report-cron**
+   - **Schedule**: Daily at 22:00 UTC
+   - **Payload**: agentTurn executing `bash /home/ubuntu/.openclaw/workspace/traffic_report.sh`
+   - **Description**: Generates daily traffic report (likely sends to Telegram). No dedicated log file; output captured in agent session.
+
+6. **content-index-update-cron**
+   - **Schedule**: Daily at 05:30 Asia/Bangkok
+   - **Payload**: agentTurn running `./quick content-index-update` and appending to `memory/content-index-cron.log`
+   - **Description**: Regenerates `content/INDEX.md` to reflect new content files.
 
 ---
 
-**Note**: To modify any cron job, edit the corresponding crontab (`crontab -e` for system cron) or use `openclaw cron` commands for OpenClaw cron.
+**Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

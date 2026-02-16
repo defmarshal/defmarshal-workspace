@@ -32,6 +32,19 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [daemon] torrent-bot — Slash-command torrent management agent (running)
   - Verification: agent registered; daemon loop started (PID 481810); respects quiet hours; pairing pending for Telegram channel.
+- [infra] 2026-02-16 05:27–05:35 — Cron migration to OpenClaw
+  - Converted 5 workspace cron jobs from system crontab to OpenClaw cron:
+    • email-cleaner-cron (09:00 Bangkok)
+    • auto-torrent-cron (02:00 Bangkok)
+    • random-torrent-downloader (every 2h UTC)
+    • traffic-report-cron (22:00 UTC)
+    • content-index-update-cron (05:30 Bangkok)
+  - All jobs run in isolated sessions with Telegram announcements.
+  - System crontab cleaned; only @reboot startup remains (plus unrelated nanobot jobs).
+  - Updated CRON_JOBS.md with migration overview and job details.
+  - Verified OpenClaw cron list shows all new jobs enabled.
+  - Verification: system crontab no longer contains those entries.
+
 - [research-cycle] 2026-02-16 05:15–12:20 — High-priority research batch
   - Completed three critical gaps: (1) AI export controls (China chip production 200k/yr, market fragmentation), (2) Blackwell vs Hopper performance (2.2–4× gains, memory/bandwidth 2.4×), (3) Anime streaming vs production crisis (60% studios unprofitable, Kadokawa profit −59.7%)
   - Report: research/2026-02-16-export-controls-blackwell-anime-crisis.md (1.2 k words)
