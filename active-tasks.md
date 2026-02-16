@@ -54,7 +54,7 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Report: research/2026-02-16-open-source-cost-collapse-ai-incident-surge.md (1.4 k words)
   - Updated research/INDEX.md with new entry
   - Logged to memory with log-event
-  - Files staged; pending commit & push
+  - Committed `a4b0d3b` and pushed.
 
 - [research-cycle] 2026-02-16 05:15–12:20 — High-priority research batch
   - Completed three critical gaps: (1) AI export controls (China chip production 200k/yr, market fragmentation), (2) Blackwell vs Hopper performance (2.2–4× gains, memory/bandwidth 2.4×), (3) Anime streaming vs production crisis (60% studios unprofitable, Kadokawa profit −59.7%)
