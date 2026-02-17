@@ -27,10 +27,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent cycles only)
 
-- [isolated] dev-agent - Add supervisor-status command (15:01 UTC)
+- [cron] content-agent - tech remote access note (15:06 UTC)
+- [isolated] dev-agent - supervisor-status (15:01 UTC)
 - [cron] research-agent - brief 17 (14:31 UTC)
 - [cron] content-agent - all done (14:30 UTC)
-- [isolated] dev-agent - uptime command (14:20 UTC)
-- [cron] research-agent - brief 16 (14:15 UTC)
 
 # End of file — keep under 2KB
