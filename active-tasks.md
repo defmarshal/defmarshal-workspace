@@ -23,93 +23,23 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [daemon] torrent-bot - Slash-command torrent management agent (running)
-  - Verification: agent registered; daemon loop started (PID varies); respects quiet hours; pairing pending for Telegram channel.
+- [daemon] torrent-bot (running)
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - One cycle (started: 2026-02-17 03:50 UTC, status: validated)
-  - Verification: cycle completed exit 0; produced 2026-02-17-late-night-watch.md (656 bytes); INDEX.md updated (18 files for Feb 17); git commit pushed f49cbc6; all systems healthy.
-
-- [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-17 07:00 UTC, status: validated)
-  - Verification: removed duplicate cleanup-agent-artifacts; added agent-manager/agni/vishwakarma to CRON_JOBS.md; fixed build.sh exec; memory OK; health OK; git commit pushed.
-
-- [isolated] dev-agent - Continuous development cycle (started: 2026-02-17 07:10 UTC, status: validated)
-  - Verification: added agent-manager cron (every 30 min); enhanced quick launcher (agent-manager, agent-spawn improvements); commit 83d094b pushed; systems green.
-
-- [isolated] content-agent - Early morning update 2 (started: 2026-02-17 07:11 UTC, status: validated)
-  - Verification: produced 2026-02-17-early-morning-2.md (511 B); INDEX updated; commit fdf1ca0 pushed; systems green.
-
-- [isolated] research-agent - Day sealed status (started: 2026-02-17 07:12 UTC, status: validated)
-  - Verification: produced 2026-02-17-sealed.md (499 B); INDEX updated; commit ffb2998 pushed; archive complete (18 files); systems green.
-
-- [isolated] research-agent - Status update (started: 2026-02-17 07:15 UTC, status: validated)
-  - Verification: produced 2026-02-17-status.md (606 B); INDEX updated; commit af51743 pushed; monitoring continues; systems green.
-
-- [isolated] content-agent - Mid‑morning status 2 (started: 2026-02-17 07:21 UTC, status: validated)
-  - Verification: produced 2026-02-17-mid-morning-2.md (599 B); INDEX updated; commit 921a0c1 pushed; archive at 35 files; systems green.
-
-- [isolated] content-agent - Pre‑afternoon status 2 (started: 2026-02-17 07:30 UTC, status: validated)
-  - Verification: produced 2026-02-17-pre-afternoon-2.md (459 B); INDEX updated; commit 4e92b78 pushed; archive at 36 files; systems green.
-
-- [isolated] research-agent - Monitoring update 2 (started: 2026-02-17 07:31 UTC, status: validated)
-  - Verification: produced 2026-02-17-monitoring-2.md (485 B); INDEX updated; commit 3687c38 pushed; monitoring continues; systems green.
-
-- [isolated] dev-agent - Supervisor daemon added (started: 2026-02-17 07:33 UTC, status: validated)
-  - Verification: created agents/supervisor.sh (1817 B); added quick commands (supervisor, supervisor-logs); created supervisor-cron (*/5 min, announce); CRON_JOBS.md updated; commit 952de62 pushed; systems green.
-
-- [isolated] content-agent - Afternoon status 2 (started: 2026-02-17 07:41 UTC, status: validated)
-  - Verification: produced 2026-02-17-afternoon-2.md (531 B); INDEX updated; commit 8cccea1 pushed; archive at 37 files; systems green.
-
-- [isolated] research-agent - Alert note (started: 2026-02-17 07:45 UTC, status: validated)
-  - Verification: produced 2026-02-17-alert-note.md (632 B); INDEX updated; commit edf2777 pushed; supervisor error noted; systems green otherwise.
-
-- [isolated] content-agent - Pre‑evening status 2 (started: 2026-02-17 07:50 UTC, status: validated)
-  - Verification: produced 2026-02-17-pre-evening-2.md (490 B); INDEX updated; commit 8203570 pushed; archive at 38 files; systems green.
-
-- [isolated] dev-agent - Supervisor APT robustness fix (started: 2026-02-17 08:00 UTC, status: validated)
-  - Verification: updated agents/supervisor.sh (robust APT count, ignore errors); commit 1a0586b pushed; systems green.
-
-- [isolated] content-agent - Pre‑digest status 2 (started: 2026-02-17 08:02 UTC, status: validated)
-  - Verification: produced 2026-02-17-pre-digest-2.md (447 B); INDEX updated; commit 4e41d99 pushed; archive at 39 files; systems green.
-
-- [isolated] research-agent - Pre‑digest note (started: 2026-02-17 08:04 UTC, status: validated)
-  - Verification: produced 2026-02-17-pre-digest-note.md (542 B); INDEX updated; commit 746e105 pushed; archive at 22 files; supervisor fixed; systems green.
-
-- [cron:3291b8d1-cf95-4fed-8292-8dc724c38ae3] meta-agent - Autonomous planner (started: 2026-02-17 08:06 UTC, status: validated)
-  - Verification: created agents/meta-agent.sh (4671 B); added meta-agent-cron (hourly); quick commands (meta, meta-report, meta-logs); CRON_JOBS.md updated; checkpoint initialized; systems green.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - One cycle (started: 2026-02-17 08:21 UTC, status: validated)
-  - Verification: produced 2026-02-17-mid-morning-3.md (519 B); INDEX updated; commit 08df6f6 pushed; archive at 40 files; systems green.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Afternoon status 3 (started: 2026-02-17 08:30 UTC, status: validated)
-  - Verification: produced 2026-02-17-afternoon-3.md (492 B); INDEX updated; commit dafe774 pushed; archive at 41 files; systems green.
-
-- [isolated] research-agent - Pre‑evening note (started: 2026-02-17 08:32 UTC, status: validated)
-  - Verification: produced 2026-02-17-pre-evening-note.md (621 B); INDEX updated; commit 69db42e pushed; archive at 23 files; systems green.
-
-- [isolated] dev-agent - Quick enhancements for autonomous visibility (started: 2026-02-17 08:40 UTC, status: validated)
-  - Verification: added quick commands `checkpoints` and `phase` to view autonomous system status; commit ee9f615 pushed; systems green.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late morning status 3 (started: 2026-02-17 08:43 UTC, status: validated)
-  - Verification: produced 2026-02-17-late-morning-3.md (557 B); INDEX updated; commit e6e4f58 pushed; archive at 42 files; systems green.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑evening status 3 (started: 2026-02-17 08:50 UTC, status: validated)
-  - Verification: produced 2026-02-17-pre-evening-3.md (553 B); INDEX updated; commit 4b5f7c9 pushed; archive at 43 files; systems green.
-
 - [isolated] dev-agent - Session lock diagnostic utility (started: 2026-02-17 09:01 UTC, status: validated)
-  - Verification: added `quick session-locks [--clear]`; commit d4de847 pushed; systems green.
+  - Verification: quick session-locks added; commit d4de847; systems green.
 
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Mid‑day status 3 (started: 2026-02-17 09:02 UTC, status: validated)
-  - Verification: produced 2026-02-17-mid-day-3.md (606 B); INDEX updated; commit 8c47cd1 pushed; archive at 44 files; systems green.
+  - Verification: 2026-02-17-mid-day-3.md; commit 8c47cd1; archive 44 files.
 
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑second‑half status 3 (started: 2026-02-17 09:04 UTC, status: validated)
-  - Verification: produced 2026-02-17-pre-second-half-3.md (624 B); INDEX updated; commit ee8cd40 pushed; archive at 45 files; systems green.
+  - Verification: 2026-02-17-pre-second-half-3.md; commit ee8cd40; archive 45 files.
 
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late morning status 4 (started: 2026-02-17 09:10 UTC, status: validated)
-  - Verification: produced 2026-02-17-late-morning-4.md (542 B); INDEX updated; commit 5459abc pushed; archive at 46 files; systems green.
+  - Verification: 2026-02-17-late-morning-4.md; commit 5459abc; archive 46 files.
 
 - [isolated] research-agent - Research brief 3 (started: 2026-02-17 09:15 UTC, status: validated)
-  - Verification: produced 2026-02-17-brief-3.md (1.3 KB); INDEX updated; commit 0110bb3 pushed; archive at 24 files; systems green.
+  - Verification: 2026-02-17-brief-3.md; commit 0110bb3; archive 24 files.
 
 # End of file — keep under 2KB
