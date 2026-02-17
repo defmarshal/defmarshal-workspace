@@ -27,10 +27,10 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑lunch status 3 (started: 2026-02-17 09:23 UTC, status: validated)
-  - Verification: 2026-02-17-pre-lunch-3.md; commit df35aee; archive 47 files.
-
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late morning status 5 (started: 2026-02-17 09:30 UTC, status: validated)
   - Verification: 2026-02-17-late-morning-5.md; commit 8aa569b; archive 48 files.
+
+- [isolated] research-agent - Research brief 4 (started: 2026-02-17 09:32 UTC, status: validated)
+  - Verification: 2026-02-17-brief-4.md; commit d1ee489; archive 25 files.
 
 # End of file — keep under 2KB
