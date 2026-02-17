@@ -1,48 +1,57 @@
-# Workspace Builder Progress Log
-**Start Time**: 2026-02-16 23:00 UTC
-**Plan**: task_plan.md
+# Workspace Build Progress
+**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
+**Start**: 2026-02-17 01:00 UTC
+**Status**: In Progress
 
-## Phase 1: Quick Assessment
+## Phase 1: Context & Diagnostics
+- ✅ Read AGENTS.md, USER.md, recent daily logs
+- ✅ Check active-tasks.md, git status, recent commits
+- ✅ Memory search (no neural-memory tool available, used direct read)
+- ✅ Run system health check: `quick health` → Disk 77% | Updates: 31 | Git clean | Memory: clean Voyage FTS+ | Reindex: today | Gateway: running (service orphaned) | Downloads: 10 files, 2.1G
+- ✅ Inspect gateway logs: identified stale process (pid 97082) causing port conflict
+- ✅ OpenClaw cron list: all jobs documented; workspace-builder showing lastStatus=error
+- ✅ Checked MEMORY.md size: 15706 bytes (exceeds 6197 limit)
 
-### Completed
-- Reviewed previous builder's outputs: disk hygiene improvements committed
-- Current disk: 34.5G/45G (77%) — healthy
-- Pending apt updates: 7
-- Identified key gaps: systemd linger not enabled, backup cleanup not scheduled, agent logs not rotated, no updates management commands
-- Verified cron jobs active (12 OpenClaw jobs, system crontab has @reboot hook)
-- Memory system status: clean, Voyage FTS+, reindex scheduled weekly
-- Ran initial health check: all green
+**Phase 1 Summary**: Critical gateway failure and memory oversize identified.
 
-### Details
-- Backup tarballs: 1 x 2.2G (newer kept)
-- Agent logs sizes: dev 211K, content 200K, research 181K
-- Memory: 7f/44c (clean) provider=voyage FTS+
-- Gateway: systemd user service active? Will check with `systemctl --user is-active openclaw-gateway.service`
+## Phase 2: Identify Critical Issues
+- ✅ Gateway service failing (stale process)
+- ✅ MEMORY.md oversized (truncation)
+- ✅ __pycache__ directories present (hygiene)
+- ✅ System updates pending (31 packages)
+- ✅ systemd linger status: not checked (needs sudo)
 
-### Next: Phase 2 implementation
+**Phase 2 Summary**: Issues prioritized; fix plan defined.
 
-## Phase 2: Reliability Improvements (In Progress)
+## Phase 3: Implement Improvements
+**Status**: Starting...
 
-### 2.1 Enable systemd linger
-- [ ] Check current linger status
-- [ ] Enable with sudo
-- [ ] Verify
+### Task 1: Fix Gateway
+- Action: Run `./gateway-fix.sh`
+- Expected: Service clean, port listening, RPC reachable
+- Blockers: Script requires systemctl/pkill; should work as user
 
-### 2.2 Schedule backup cleanup
-- [ ] Create OpenClaw cron job (weekly Sunday 07:00 Asia/Bangkok)
-- [ ] Use payload: `./quick cleanup-backups --execute --keep 1`
-- [ ] Document in CRON_JOBS.md
+### Task 2: Trim MEMORY.md
+- Action: Rename current to MEMORY_HISTORY.md; create new concise index
+- Target size: <6000 bytes (~30 lines)
+- Content: Identity, high-level projects, links to history, resources
 
-### 2.3 Implement agent log rotation
-- [ ] Extend `scripts/log-rotate` to handle agent logs (dev-agent.log, content-agent.log, research-agent.log)
-- [ ] Rotation: >1MB, compress, keep 4, copytruncate
-- [ ] Test manually
+### Task 3: Systemd Linger (Document Only)
+- Action: Add recommendation to MEMORY.md; cannot run sudo here
 
-### 2.4 Add updates management
-- [ ] Create `scripts/updates-check.sh` (list upgradable)
-- [ ] Create `scripts/updates-apply.sh` (apply with dry-run default)
-- [ ] Add to quick launcher (`quick updates-check`, `quick updates-apply [--dry-run|--execute]`)
-- [ ] Document in TOOLS.md
+### Task 4: Archive Builder Artifacts
+- Action: Create builds/ directory; archive any old planning files
 
-## Errors Encountered
-(None yet)
+### Task 5: Update active-tasks.md
+- Will mark this builder as validated after verification
+
+## Phase 4: Validation
+Pending completion of tasks
+
+## Phase 5: Commit & Wrap
+Pending
+
+---
+
+## Notes & Errors
+- None yet

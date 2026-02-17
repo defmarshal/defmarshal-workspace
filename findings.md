@@ -1,92 +1,104 @@
 # Workspace Builder Findings
-**Date**: 2026-02-16 (23:00 UTC run)
-**Focus**: System reliability, maintenance automation, log rotation, updates workflow
+**Date**: 2026-02-17 (01:00 UTC run)
+**Focus**: System health, critical service recovery, memory management, maintenance hygiene
 
 ## Current System State
 
 ### Disk & Storage
 - Total: 45G, Used: 34.5G (77%), Free: 10.5G (healthy)
 - Downloads: 10 files, 2.1G (all <30 days)
-- Backups: 1 remaining backup tarball (2.2G) in /home/ubuntu
-- Agent logs: dev-agent.log (211K), content-agent.log (200K), research-agent.log (181K) — growing over time
+- Backups: 1 remaining backup tarball (2.2G) in /home/ubuntu (cleanup scheduled weekly)
+- Agent logs: dev-agent.log (211K), content-agent.log (200K), research-agent.log (181K) — rotated weekly by log-rotate script
 
 ### Pending Updates
-- 7 packages upgradable via apt (security/bugfix)
-- No automated update mechanism; manual `apt upgrade` required
+- 31 packages upgradable via apt (mix of security/bugfix)
+- Updates-check and updates-apply scripts exist and are documented; applying is manual action
 
-### Service Persistence
-- openclaw-gateway runs as user service (systemd --user)
-- Without systemd linger, gateway and any subagents stop on user logout/reboot
-- This has been mitigated by using cron jobs instead of persistent daemons for periodic tasks
-- However, the gateway itself still stops on logout/reboot unless linger enabled
-- During outages, cron jobs may queue or skip; overall reliability could improve with linger
-
-### Cron Jobs
-- OpenClaw cron: 12 jobs (all documented in CRON_JOBS.md)
-- System crontab: only @reboot agent startup hook (no other workspace crons)
-- All expected jobs running; no duplicates
+### Service Health
+- **OpenClaw Gateway**: **CRITICAL** — systemd service repeatedly failing due to stale process holding port 18789.
+  - Symptom: "Gateway failed to start: gateway already running (pid 97082); lock timeout after 5000ms"
+  - Root cause: previous gateway instance not cleaned up; service enters restart loop (restart counter >100)
+  - RPC probe: unreachable; cron jobs depending on gateway may fail or queue
+- **Cron Jobs**: 13 OpenClaw cron jobs configured and documented in CRON_JOBS.md; last run status shows errors for workspace-builder due to gateway issues
 
 ### Memory System
 - openclaw-memory: 7 files / 44 chunks (clean)
 - Provider: Voyage AI with FTS (full-text search) enabled
 - Index status: clean (dirty=no)
 - Reindex scheduled weekly (Sunday 04:00 Asia/Bangkok)
+- **Issue**: MEMORY.md oversized (15706 bytes, exceeds 6197 char injection limit). Causes truncation warnings during session bootstrap, potentially losing context.
+
+### Code Hygiene
+- No CRLF line endings in tracked files
+- All shell scripts properly executable
+- No large untracked files (>100 MB)
+- **Issue**: Multiple __pycache__ directories present (not tracked, but clutter workspace). Could be cleaned periodically.
 
 ## Identified Improvements
 
+### Critical (Fix Immediately)
+1. **Gateway recovery** — Stop stale process, restart service cleanly. Must succeed for system functionality.
+2. **MEMORY.md size reduction** — Split current oversized MEMORY.md into an index (MEMORY.md) and a historical narrative (MEMORY_HISTORY.md) to stay under injection limit and follow design principles.
+
 ### High Priority
-1. **Enable systemd linger** — one-time sudo action to keep user services alive across logout/reboot. Improves gateway uptime and reduces missed cron runs due to offline state.
-2. **Schedule backup cleanup** — add cron job for weekly backup rotation to prevent accumulation of large tarballs. Script exists (`cleanup-backups.sh`), just needs scheduling.
-3. **Rotate agent logs** — extend `log-rotate` to include dev-agent.log, content-agent.log, research-agent.log. Prevent unbounded growth. Already have log-rotate cron (weekly Sunday 05:00 Bangkok).
-4. **Updates management** — provide safe commands to check and apply system updates. Currently no dedicated quick commands; users must run apt manually.
+3. **systemd linger** — Enable with `sudo loginctl enable-linger ubuntu` to keep gateway and user services alive across logout/reboot. Currently not enabled; on reboot, gateway may fail to start until manual intervention.
+4. **Archive builder artifacts** — Create a `builds/` directory to archive planning files (task_plan.md, findings.md, progress.md) from each builder run after completion. Keeps workspace root clean while preserving audit trail.
 
 ### Medium Priority
-5. **Archive or clean previous builder artifacts** — previous builder left planning files (task_plan.md, findings.md, progress.md) which are now outdated; this new run will overwrite them. Could consider archiving to a builds/ directory after each run for audit trail.
-6. **Add memory reindex alert** if dirty flag persists beyond expectation (rate-limit issues). Already have reindex-check command.
+5. **Pycache cleanup** — Add a script to clean __pycache__ directories, and optionally include in weekly hygiene (cron). Not urgent but improves tidiness.
+6. **Updates mindfulness** — 31 packages pending. Could be applied manually with `quick updates-apply --dry-run` then `--execute` after review. Not automated due to risk; just monitor.
 
 ### Low Priority
-7. **Monitor cron job failures** — currently logs per job but no central alerting.
-8. **Optimize Voyage rate-limit handling** — maybe auto-retry with backoff in openclaw-memory? Out of scope.
+7. **Cron failure alerting** — Currently logs per job but no central alert when cron jobs fail repeatedly. Could add a simple notification (out of scope for now).
 
-## Recommendations
+## Recommendations & Action Plan
 
-### systemd linger
-- Run: `sudo loginctl enable-linger ubuntu`
-- Verify: `loginctl show-user ubuntu -p Linger`
-- Impact: Gateway service persists across logout/reboot; cron jobs continue to run even if user session not active.
+### Gateway Fix
+- Run `gateway-fix.sh` which stops service, kills stray processes, and restarts fresh.
+- Verify: `openclaw gateway probe` returns ok; `quick health` shows "Gateway: healthy".
+- If still failing, check logs: `journalctl --user -u openclaw-gateway.service -n 50`.
 
-### Backup cleanup cron
-- Add OpenClaw cron job: weekly Sunday 07:00 Asia/Bangkok
-- Payload: agentTurn executing `./quick cleanup-backups --execute --keep 1`
-- Rationale: Aligns with other maintenance tasks; runs after downloads cleanup (06:00) and before log-rotate (05:00?) Actually check order: Sunday schedule currently: memory-reindex 04:00, log-rotate 05:00, cleanup-downloads 06:00. So backup cleanup at 07:00 is fine.
-- Ensure job doesn't conflict with quiet hours (none now).
+### Memory Reorganization
+- Rename current MEMORY.md to MEMORY_HISTORY.md (preserves full narrative).
+- Create new concise MEMORY.md (~30 lines) containing only index/pointers:
+  - Identity basics (name, timezone, assistant vibe)
+  - High-level project list (link to projects.md)
+  - Link to MEMORY_HISTORY.md for detailed timeline
+  - Important resources and quick links
+- Ensure size < 6KB to avoid truncation.
+- Update AGENTS.md or any bootstrap that references MEMORY.md if needed (no changes likely; shorter is fine).
 
-### Agent log rotation
-- Modify `scripts/log-rotate` (or create separate script) to:
-  - Find agent logs in workspace root: dev-agent.log, content-agent.log, research-agent.log
-  - If size > 1MB, compress to .gz and truncate original (copytruncate)
-  - Keep up to 4 compressed archives per log
-- Schedule: already covered by weekly log-rotate cron; just extend the existing script.
+### Systemd Linger
+- Manual action required (needs sudo):
+  ```bash
+  sudo loginctl enable-linger ubuntu
+  loginctl show-user ubuntu -p Linger
+  ```
+- Document in MEMORY.md as a recommended one-time setup.
+- Also ensure `start-background-agents.sh` handles gateway recovery if needed.
 
-### Updates commands
-- `scripts/updates-check.sh`: outputs list of upgradable packages (human-readable count and names)
-- `scripts/updates-apply.sh`: runs `sudo apt update && sudo apt upgrade -y` with dry-run option default
-- Add to quick launcher as subcommands.
-- Document that these affect the system globally; use with care.
-- Could also schedule automatic updates, but better to keep manual for now.
+### Archive Build Artifacts
+- Create directory `builds/` (if not exist).
+- After each builder completion, move old task_plan.md, findings.md, progress.md into `builds/` with timestamped names (e.g., `build-2026-02-16-1900/`).
+- For this run: after completion, clean up previous artifacts if any.
+
+### Pycache Cleanup (Optional)
+- Could add a script: `find . -type d -name __pycache__ -exec rm -rf {} +` (safe as they are caches)
+- Add to quick launcher as `quick cleanup-pycache` or extend `hygiene` to also remove them (currently only reports).
 
 ## Risks & Mitigations
 
-- Linger: minimal risk; just allows user services to start at boot. Already a systemd feature.
-- Backup cleanup cron: ensure script uses absolute paths; add logging to memory/backup-cleanup.log.
-- Log rotation: copytruncate is safe for processes writing to logs (they continue writing to same file descriptor but file resets to zero; some log loss possible but minimal on weekly rotation. Alternatively send HUP signal to processes? But agents may not handle it. Simpler: copytruncate.
-- Updates apply: could break something; always dry-run first, then apply only when ready. Keep manual.
+- **Gateway fix fails**: Might need deeper port conflict resolution. But pkill -9 should clear stale process.
+- **Memory truncation**: If new MEMORY.md still too small to hold index, consider further trimming; essential info is already in other files.
+- **Linger not enabled**: system reboot could stop gateway; documentation helps.
+- **Updates application**: Applying 31 updates could cause breakage; always dry-run first. Not automated.
 
-## Open Questions
+## Verification Checklist
 
-- Should we also rotate other logs (aria2.log already rotated, gateway logs)? Already done.
-- Should we consolidate all maintenance into a single weekly "maintenance window" cron? Possibly but not necessary.
-
-## Follow-up
-
-After implementation, update MEMORY.md with this build's summary. Consider adding a `builds/` directory to archive planning files from each run (with timestamps) to keep workspace root clean while preserving history.
+- [ ] `quick health` passes (no CRITICAL, memory size reasonable, gateway healthy)
+- [ ] `openclaw gateway probe` reachable
+- [ ] `quick mem` and `quick search test` work (memory search functional)
+- [ ] Git status clean; previous builder artifacts archived or committed
+- [ ] No leftover temp files
+- [ ] `quick verify` passes
+- [ ] Changes committed with `build:` prefix and pushed
