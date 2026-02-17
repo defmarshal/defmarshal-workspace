@@ -27,19 +27,24 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late evening 2 (started: 2026-02-17 13:06 UTC, status: validated)
-  - Verification: 2026-02-17-late-evening-2.md; commit f61e245; archive 64 files.
+- [cron] content-agent — Late evening 2 (started: 13:06 UTC, validated)
+  - 2026-02-17-late-evening-2.md; commit f61e245; archive 64 files.
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Brief 13 (started: 2026-02-17 13:08 UTC, status: validated)
-  - Verification: 2026-02-17-brief-13.md; commit facef31; archive 35 files.
+- [cron] research-agent — Brief 13 (started: 13:08 UTC, validated)
+  - 2026-02-17-brief-13.md; commit facef31; archive 35 files.
 
-- [isolated] dev-agent - Add cron-failures utility (started: 2026-02-17 12:40 UTC, status: validated)
-  - Verification: quick cron-failures implemented; commit 0981da8; shows supervisor-cron (2 errors) and workspace-builder (1 error).
+- [isolated] dev-agent — Add cron-failures utility (12:40 UTC, validated)
+  - commit 0981da8; quick cron-failures shows erroring jobs.
 
-- [isolated] dev-agent - Fix supervisor memory check logic (inverted condition) (started: 2026-02-17 12:55 UTC, status: validated)
-  - Verification: Fixed agents/supervisor.sh line 35; memory reindex false positives eliminated; commit 9d3f6aa.
+- [isolated] dev-agent — Fix supervisor memory check (12:55 UTC, validated)
+  - commit 9d3f6aa; fixed inverted condition.
 
-- [isolated] dev-agent - Add git-recent command (started: 2026-02-17 13:01 UTC, status: validated)
-  - Verification: quick git-recent implemented; commit fe77d7a; shows recent commits.
+- [isolated] dev-agent — Add git-recent (13:01 UTC, validated)
+  - commit fe77d7a; quick git-recent shows commit list.
+
+- [isolated] dev-agent — Add gateway-info (13:19 UTC, validated)
+  - commit 34379fe; quick gateway-info shows status and troubleshooting.
+
+# End of file — keep under 2KB
 
 # End of file — keep under 2KB
