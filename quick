@@ -89,6 +89,7 @@ Commands:
   checkpoints                Show autonomous system checkpoints (autonomous-checkpoints.json)
   phase                      Show current autonomous phase status (from checkpoints)
   meta-commit                Auto‑commit meta‑agent planning files (findings.md, progress.md, task_plan.md) if changed
+  cleanup-untracked [--execute]  List or delete untracked files (default: list; --execute to delete)
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
@@ -480,6 +481,16 @@ case "$cmd" in
     else
       echo "Stale session locks (older than 10 minutes):"
       find "$LOCK_DIR" -name "*.lock" -type f -mmin +10 -printf "%T+ %p\n" 2>/dev/null | sort || echo "No stale locks found."
+    fi
+    ;;
+  cleanup-untracked)
+    # List or delete untracked files (dry-run by default)
+    if [ "$1" = "--execute" ]; then
+      git -C "$WORKSPACE" status --porcelain | awk '/^\?\? /{print $2}' | xargs -r rm -v
+      echo "Untracked files removed."
+    else
+      echo "Untracked files (dry-run):"
+      git -C "$WORKSPACE" status --porcelain | awk '/^\?\? /{print "  "$2}' || echo "  None"
     fi
     ;;
   agent-logs)
