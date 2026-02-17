@@ -27,14 +27,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Final pre‑evening 1 (started: 2026-02-17 12:07 UTC, status: validated)
-  - Verification: 2026-02-17-final-pre-evening-1.md; commit c07b49f; archive 61 files.
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 11 (started: 2026-02-17 12:09 UTC, status: validated)
+  - Verification: 2026-02-17-brief-11.md; commit 9eebc73; archive 33 files.
 
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 10 (started: 2026-02-17 11:33 UTC, status: validated)
   - Verification: 2026-02-17-brief-10.md; commit 883b35c; archive 32 files.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 9 (started: 2026-02-17 11:13 UTC, status: validated)
-  - Verification: 2026-02-17-brief-9.md; commit f89e091; archive 31 files.
 
 - [isolated] dev-agent - Add archive-sizes command (started: 2026-02-17 11:40 UTC, status: validated)
   - Verification: quick archive-sizes works; commit 3bdcb10; sizes: content 720K, research 840K, memory 100K.
