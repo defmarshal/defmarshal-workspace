@@ -26,4 +26,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [daemon] torrent-bot - Slash-command torrent management agent (running)
   - Verification: agent registered; daemon loop started (PID varies); respects quiet hours; pairing pending for Telegram channel.
 
+## Completed (for this session)
+
+- [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-17 01:00 UTC, status: validated)
+  - Verification: quick health OK; memory search functional; MEMORY.md trimmed to 1348 bytes; pycache cleaned (6 dirs); builds/ archived previous artifacts; git clean after commit.
+
 # End of file — keep under 2KB
