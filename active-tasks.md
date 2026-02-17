@@ -27,6 +27,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent)
 
+- [isolated] dev-agent - fix gateway-token --force argument bug (16:06 UTC)
 - [isolated] dev-agent - Add tailscale-status utility (16:04 UTC)
 
 # End of file — keep under 2KB
