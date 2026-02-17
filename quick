@@ -37,7 +37,6 @@ Commands:
   selfie-batch <count> [rating] [caption]  Fetch multiple anime images (1-20) and
                   send as a single zip file. Default count=5, rating=safe.
   torrent-add <magnet_or_file> [rpc_secret]  Add a magnet link or .torrent file to
-  social-monitor) echo "Social monitor script created. Run manually: ./social-monitor-agent.sh" ;;
                   the aria2 downloader. RPC secret defaults to 'openclaw_secret_123'.
                   Example: quick torrent-add "magnet:?xt=urn:btih:..."
                   Example: quick torrent-add "/path/to/file.torrent" "my_secret"
@@ -61,6 +60,7 @@ Commands:
   content-latest              Show the latest content digest/note from content/ directory.
   content-index-update        Regenerate content/INDEX.md to reflect current content files.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
+  social-monitor                  Run the social monitor agent (Twitter trending digest)
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
   updates-check                Check for pending system updates (APT)
@@ -310,6 +310,10 @@ case "$cmd" in
       exit 1
     fi
     cat "$latest"
+    ;;
+  social-monitor)
+    # Run the social monitor agent (Twitter trending digest)
+    bash "$WORKSPACE/social-monitor-agent.sh"
     ;;
   sudo-check)
     # Check if passwordless sudo is configured
