@@ -103,6 +103,11 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Payload**: agentTurn executing `./quick cleanup-agent-artifacts --execute --force` and appending to `memory/cleanup-agent-artifacts-cron.log`
     - **Description**: Automated cleanup of stale agent artifacts (lock files, empty plan files). Runs with `--execute` and `--force` to ensure it operates during quiet hours if needed. Respects quiet hours by default when run manually.
 
+15. **daily-digest-cron**
+    - **Schedule**: Twice daily at 12:00 and 20:00 Asia/Bangkok (`0 12,20 * * *`)
+    - **Payload**: agentTurn that runs a daily digest agent (message prompts it to gather content/research highlights, dev commits, health, and write `reports/YYYY-MM-DD-daily-digest.md` then announce to Telegram)
+    - **Description**: Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Individual agent announcements are suppressed; this is the sole daily summary.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

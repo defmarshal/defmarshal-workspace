@@ -63,6 +63,7 @@ Commands:
   content-index-update        Regenerate content/INDEX.md to reflect current content files.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   social-monitor                  Run the social monitor agent (Twitter trending digest)
+  daily-digest [YYYY-MM-DD]       Generate daily digest report (default: today UTC). Saves to reports/ and prints.
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
   updates-check                Check for pending system updates (APT)
@@ -329,6 +330,10 @@ case "$cmd" in
   social-monitor)
     # Run the social monitor agent (Twitter trending digest)
     bash "$WORKSPACE/social-monitor-agent.sh"
+    ;;
+  daily-digest)
+    # Generate daily digest report (default: today UTC)
+    bash "$WORKSPACE/agents/daily-digest.sh" "${1:-}"
     ;;
   sudo-check)
     # Check if passwordless sudo is configured
