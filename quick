@@ -939,7 +939,7 @@ except Exception:
     load=$(uptime | awk -F"load average: " '{print $2}')
     mem=$(free -h | awk '/^Mem:/ {print $7 "/" $2}')
     gw=$(systemctl --user is-active openclaw-gateway.service 2>/dev/null || echo "inactive")
-    agents=$(pgrep -f "agent-loop.sh" | wc -l)
+    agents=$(pgrep -f "dev-agent|content-agent|research-agent|torrent-bot" | wc -l)
     echo "Disk: ${disk} used | Load: ${load} | Mem: ${mem} | Gateway: ${gw} | Agents: ${agents}"
     ;;
   verify)
