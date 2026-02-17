@@ -68,36 +68,50 @@ Added section "Memory System (Voyage AI)" documenting:
 
 ## Phase 3: Validation & Testing
 
-**Status**: In Progress
+**Status**: Completed
 
-### Checks Passed
+### All Tests Passed
 
-✓ Meta-agent manual run: no spurious reindex
-✓ `quick memory-status` healthy (main store clean, torrent-bot store dirty but not reindexed)
-✓ `quick voyage-status` detects rate limits correctly
-✓ `quick search` returns semantic results (Voyage still operational)
-✓ `quick mem` list works
-
-### Pending
-
-- Run `quick health` final check
-- Verify git changes are correct (meta-agent.sh, TOOLS.md, progress.md, findings.md, task_plan.md)
-- Ensure no temp files left
-- Commit with 'build:' prefix
-- Push to GitHub
-- Update active-tasks.md with verification results and mark validated
+✓ Meta-agent manual run: no spurious reindex (exit 0 -> actions: none)
+✓ `quick memory-status` shows healthy main store (14/14 files, 42 chunks, dirty: no)
+✓ `quick voyage-status` detects rate limits correctly (exit 1 with alert)
+✓ `quick search` returns semantic results
+✓ `quick mem` works
+✓ `quick health` OK (disk 79%, gateway healthy, git clean)
+✓ No temp files
+✓ All changes committed and pushed (5cbd769, 9e4ac09)
 
 ## Phase 4: Final Commit & Documentation
 
-- All changes to be committed: meta-agent fix, TOOLS.md update, planning files
-- Push to origin/master
-- Update MEMORY.md if changes are significant (moderate impact: bug fix, documentation)
+**Status**: Completed
 
-## Success Criteria
+### Commits
 
-- Meta-agent stops spamming failed reindex attempts
-- `quick memory-status` clearly shows Voyage health
-- TOOLS.md documents rate limits and recovery steps
-- All changes tested and validated
-- Git push successful
-- active-tasks.md updated
+- `5cbd769` build: fix meta-agent memory reindex logic; document Voyage AI rate limits
+  (meta-agent.sh fix, TOOLS.md update, planning files, lessons.md)
+- `9e4ac09` build: update active-tasks with verification results for meta-agent fix
+
+### Documentation Updates
+
+- TOOLS.md: Added "Memory System (Voyage AI)" section with status, commands, and recovery
+- active-tasks.md: Current builder run marked validated with verification summary
+- lessons.md: Added lesson on exit code vs output in command logic
+- progress.md: This file (full log of changes)
+
+### Verification Summary
+
+- Meta-agent now uses exit codes correctly; stops spamming reindex
+- Voyage rate-lock (6 hours) respected after 429 errors
+- System observability improved via `voyage-status` and documented steps
+- All changes small, focused, and tested
+
+## Close the Loop
+
+✅ System health verified
+✅ Modified commands tested
+✅ Git clean, all changes pushed
+✅ No temp files
+✅ active-tasks.md updated
+✅ Planning files (task_plan.md, findings.md, progress.md) documented
+
+**Build completed successfully.**
