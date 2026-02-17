@@ -144,13 +144,9 @@ else
   status_warn "Agent logs stale (only ${RECENT_LOGS} updated in 24h)"
 fi
 
-# 10. Quiet hours check
-TZ='Asia/Bangkok' CURRENT_HOUR=$(date +%H)
-if (( 23 <= 10#$CURRENT_HOUR || 10#$CURRENT_HOUR < 8 )); then
-  status_warn "Quiet hours active (Bangkok $CURRENT_HOUR:00)"
-else
-  status_ok "Active hours (Bangkok $CURRENT_HOUR:00)"
-fi
+# 10. Quiet hours check (removed)
+# Quiet hours were removed system-wide on 2026-02-17; all agents run 24/7.
+status_ok "Quiet hours removed; agents run 24/7"
 
 echo ""
 echo "Validation complete. Review warnings above."
