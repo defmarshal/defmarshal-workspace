@@ -27,22 +27,10 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑digest status 3 (started: 2026-02-17 09:50 UTC, status: validated)
-  - Verification: 2026-02-17-pre-digest-3.md; commit 7e82951; archive 50 files.
-
-- [isolated] dev-agent - Add cleanup-untracked utility (started: 2026-02-17 10:00 UTC, status: validated)
-  - Verification: quick cleanup-untracked; commit fd933a2; systems green.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late afternoon status 3 (started: 2026-02-17 10:01 UTC, status: validated)
-  - Verification: 2026-02-17-late-afternoon-3.md; commit bb11a32; archive 51 files.
-
-- [isolated] research-agent - Research brief 5 (started: 2026-02-17 10:05 UTC, status: validated)
-  - Verification: 2026-02-17-brief-5.md; commit 43eff25; archive 26 files.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 6 (started: 2026-02-17 10:15 UTC, status: validated)
-  - Verification: 2026-02-17-brief-6.md; commit f640111; archive 27 files.
-
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑digest status 4 (started: 2026-02-17 10:21 UTC, status: validated)
   - Verification: 2026-02-17-pre-digest-4.md; commit ac9b3c7; archive 52 files.
+
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 7 (started: 2026-02-17 10:31 UTC, status: validated)
+  - Verification: 2026-02-17-brief-7.md; commit d58a150; archive 28 files.
 
 # End of file — keep under 2KB
