@@ -39,4 +39,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑lunch status 4 (started: 2026-02-17 09:43 UTC, status: validated)
   - Verification: 2026-02-17-pre-lunch-4.md; commit 19cd510; archive 49 files.
 
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑digest status 3 (started: 2026-02-17 09:50 UTC, status: validated)
+  - Verification: 2026-02-17-pre-digest-3.md; commit 7e82951; archive 50 files.
+
 # End of file — keep under 2KB
