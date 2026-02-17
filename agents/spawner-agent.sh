@@ -1,24 +1,63 @@
 #!/usr/bin/env bash
 # Spawner Agent — Spawns another OpenClaw agent with a given task.
-# Usage: agents/spawner-agent.sh <agent-id> <task>
-# Example: agents/spawner-agent.sh main "You are the content-agent. Create a daily digest."
+# Supports one-shot or daemon (loop) mode for permanent 24/7 agents.
+# Usage:
+#   agents/spawner-agent.sh <agent-id> <task>           # one-shot
+#   agents/spawner-agent.sh <agent-id> <task> --daemon  # run as persistent daemon (respects quiet hours)
+#
+# Example: agents/spawner-agent.sh content-agent "Create daily digest" --daemon
 
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
 if [ $# -lt 2 ]; then
-  echo "Usage: $0 <agent-id> <task>"
-  echo "Example: $0 main \"You are the content-agent. Create a daily digest.\""
+  echo "Usage: $0 <agent-id> <task> [--daemon]"
+  echo "Example (one-shot): $0 main \"Create a digest\""
+  echo "Example (daemon):   $0 content-agent \"Daily cycle\" --daemon"
   exit 1
 fi
 
 AGENT_ID="$1"
 shift
-TASK="$*"
 
-echo "Spawning agent '$AGENT_ID' with task: $TASK"
-openclaw agent \
-  --agent "$AGENT_ID" \
-  --message "$TASK" \
-  --thinking low \
-  --timeout 600000
+DAEMON=false
+# Filter out --daemon flag from arguments and set DAEMON
+FILTERED_ARGS=()
+for arg in "$@"; do
+  if [[ "$arg" == "--daemon" ]]; then
+    DAEMON=true
+  else
+    FILTERED_ARGS+=("$arg")
+  fi
+done
+
+if [ ${#FILTERED_ARGS[@]} -eq 0 ]; then
+  echo "Error: missing task"
+  exit 1
+fi
+
+TASK="${FILTERED_ARGS[*]}"
+
+if [ "$DAEMON" = false ]; then
+  echo "Spawning agent '$AGENT_ID' with task: $TASK"
+  openclaw agent --agent "$AGENT_ID" --message "$TASK" --thinking low --timeout 600000
+else
+  echo "Starting daemon for agent '$AGENT_ID' with task: $TASK"
+  echo "Press Ctrl+C to stop."
+  while true; do
+    HOUR=$(TZ=Asia/Bangkok date +%H)
+    if (( HOUR >= 23 || HOUR < 8 )); then
+      echo "$(TZ=Asia/Bangkok date '+%Y-%m-%d %H:%M') Quiet hours, sleeping..."
+      sleep 3600
+      continue
+    fi
+    if ! openclaw sessions list --json 2>/dev/null | grep -q "\"label\":\"$AGENT_ID\""; then
+      echo "$(TZ=Asia/Bangkok date '+%Y-%m-%d %H:%M') Spawning $AGENT_ID..."
+      openclaw agent --agent "$AGENT_ID" --message "$TASK" --thinking low --timeout 600000 || true
+      sleep 5
+    else
+      echo "$(TZ=Asia/Bangkok date '+%Y-%m-%d %H:%M') $AGENT_ID already running, sleeping..."
+      sleep 30
+    fi
+  done
+fi

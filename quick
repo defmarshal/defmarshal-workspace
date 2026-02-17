@@ -373,16 +373,9 @@ case "$cmd" in
     esac
     ;;
   agent-spawn)
-    # Spawn another agent using openclaw agent
-    if [ $# -lt 2 ]; then
-      echo "Usage: $0 <agent-id> <task>" >&2
-      echo "Example: $0 main \"You are the content-agent. Create a daily digest.\"" >&2
-      exit 1
-    fi
-    AGENT_ID="$1"
-    shift
-    TASK="$*"
-    openclaw agent --agent "$AGENT_ID" --message "$TASK" --thinking low --timeout 600000
+    # Spawn an agent (one-shot or daemon)
+    # Usage: quick agent-spawn <agent-id> <task> [--daemon]
+    bash "$WORKSPACE/agents/spawner-agent.sh" "$@"
     ;;
   cleanup-agent-artifacts)
     "$WORKSPACE/cleanup-agent-artifacts.sh" "$@"
