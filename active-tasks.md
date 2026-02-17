@@ -25,8 +25,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [daemon] torrent-bot (running)
 
-## Completed (Feb 17)
+## Completed (recent)
 
-- All cycles concluded.
+- [isolated] dev-agent - Add tailscale-status utility (16:04 UTC)
 
 # End of file — keep under 2KB
