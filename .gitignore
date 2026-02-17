@@ -42,3 +42,8 @@ dht.dat
 downloads/
 agents/vishwakarma/.lock
 agents/**/.lock
+
+# Vishwakarma planning artifacts (generated per cycle)
+agents/vishwakarma/plans/
+agents/krishna/logs/
+agents/krishna/reports/

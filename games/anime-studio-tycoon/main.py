@@ -45,27 +45,37 @@ def weekly_update():
         reputation += ev[3]
         fans += ev[4]
         if ev[0] == "Staff burnout":
-            print("Do you pay overtime (¥5000) to keep staff? (y/n)")
-            choice = input("> ").strip().lower()
-            if choice == 'y':
-                if money >= 5000:
-                    money -= 5000
-                    print("Paid overtime. Staff stay.")
-                else:
-                    print("Can't afford overtime. Staff leave.")
-                    staff -= 2
+            # Non-interactive safe: auto-choose based on affordability
+            if money >= 5000:
+                money -= 5000
+                print("Paid overtime (auto). Staff stay.")
             else:
+                print("Can't afford overtime. Staff leave.")
                 staff -= 2
-                print("Staff quit due to burnout.")
     # Propose choices
     print("\nChoices:")
     print("1) Hire (+1 staff, -¥5000)")
     print("2) Fire (+¥2000, -1 staff)")
     print("3) Train (staff +1, -¥3000)")
-    print("4) Rush (faster production but risk quality) - not implemented")
+    print("4) Rush (faster production but risk quality)")
     print("5) Quality focus (reputation +5, costs ¥2000)")
     print("6) Next week")
-    choice = input("> ").strip()
+    # Non-interactive: auto-choose based on simple heuristics
+    try:
+        choice = input("> ").strip()
+    except (EOFError, KeyboardInterrupt):
+        # Auto-mode: choose based on game state
+        if money < 5000 and staff > 3:
+            choice = "2"  # Fire if low on money and too many staff
+        elif money >= 5000 and staff < 5:
+            choice = "1"  # Hire if can afford and staff low
+        elif money >= 3000 and staff < 5:
+            choice = "3"  # Train if can afford
+        elif reputation < 60 and money >= 2000:
+            choice = "5"  # Quality focus if rep low
+        else:
+            choice = "6"  # Advance week
+        print(f"Auto-choosing: {choice}")
     if choice == "1":
         if money >= 5000:
             money -= 5000; staff += 1; print("Hired a new animator.")
