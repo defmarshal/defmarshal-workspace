@@ -109,4 +109,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late morning status 4 (started: 2026-02-17 09:10 UTC, status: validated)
   - Verification: produced 2026-02-17-late-morning-4.md (542 B); INDEX updated; commit 5459abc pushed; archive at 46 files; systems green.
 
+- [isolated] research-agent - Research brief 3 (started: 2026-02-17 09:15 UTC, status: validated)
+  - Verification: produced 2026-02-17-brief-3.md (1.3 KB); INDEX updated; commit 0110bb3 pushed; archive at 24 files; systems green.
+
 # End of file — keep under 2KB
