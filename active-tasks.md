@@ -28,16 +28,10 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-17 05:00 UTC, status: validated)
-  - Verification: quick health OK (Disk 78%); memory status clean; temp memory index files cleaned (8 files, ~8.4MB freed); cleanup-agent-artifacts-cron added (Sun 09:30 Asia/Bangkok); CRON_JOBS.md updated; cleanup-agent-artifacts.sh bug fixed (increment operator); stale lock file removed; git commit pushed.
-
-- [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-17 01:00 UTC, status: validated)
-  - Verification: quick health OK; memory search functional; MEMORY.md trimmed to 1348 bytes; pycache cleaned (6 dirs); builds/ archived previous artifacts; git clean after commit.
-
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - One cycle (started: 2026-02-17 03:50 UTC, status: validated)
   - Verification: cycle completed exit 0; produced 2026-02-17-late-night-watch.md (656 bytes); INDEX.md updated (18 files for Feb 17); git commit pushed f49cbc6; all systems healthy.
 
 - [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-17 07:00 UTC, status: validated)
-  - Verification: removed duplicate cleanup-agent-artifacts cron; updated CRON_JOBS.md (added agent-manager-cron, agni-cron, vishwakarma-cron); fixed exec bit on games/anime-studio-tycoon/build.sh; memory health OK (main clean, torrent-bot DB backed up); quick health passes; git status clean after commit.
+  - Verification: removed duplicate cleanup-agent-artifacts; added agent-manager/agni/vishwakarma to CRON_JOBS.md; fixed build.sh exec; memory OK; health OK; git commit pushed.
 
 # End of file — keep under 2KB
