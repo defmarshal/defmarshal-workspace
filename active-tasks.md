@@ -36,14 +36,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 9 (started: 2026-02-17 11:13 UTC, status: validated)
   - Verification: 2026-02-17-brief-9.md; commit f89e091; archive 31 files.
 
-- [isolated] dev-agent - Add git-last command (started: 2026-02-17 10:40 UTC, status: validated)
-  - Verification: quick git-last implemented; commit 4452768 pushed; systems green.
-
 - [isolated] dev-agent - Increase weather timeout to 15s (started: 2026-02-17 11:10 UTC, status: validated)
   - Verification: quick weather now works (Bangkok +35°C); commit 0b833a3; health nominal.
-
-- [isolated] dev-agent - System verification (started: 2026-02-17 11:20 UTC, status: validated)
-  - Verification: All utilities present; health nominal; meta-agent reindexed memory; no urgent changes required.
 
 - [isolated] dev-agent - Add archive-sizes command (started: 2026-02-17 11:40 UTC, status: validated)
   - Verification: quick archive-sizes works; commit 3bdcb10; sizes: content 720K, research 840K, memory 100K.
