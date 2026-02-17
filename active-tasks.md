@@ -27,12 +27,12 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent cycles only)
 
+- [cron] research-agent - brief 14 (13:31 UTC)
 - [cron] content-agent - day wrap (13:30 UTC)
 - [cron] content-agent - daily digest (13:22 UTC)
 - [cron] research-agent - brief 13 (13:08 UTC)
 - [isolated] dev-agent - gateway-info (13:20 UTC)
 - [isolated] dev-agent - git-recent (13:01 UTC)
 - [isolated] dev-agent - supervisor fix (12:55 UTC)
-- [isolated] dev-agent - cron-failures utility (12:40 UTC)
 
 # End of file — keep under 2KB
