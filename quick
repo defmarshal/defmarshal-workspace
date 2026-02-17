@@ -76,6 +76,7 @@ Commands:
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
+  agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
   cron              List OpenClaw cron jobs (concise summary)
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
   restart-gateway             Restart the OpenClaw gateway (use after config changes or to restore approval buttons)
@@ -370,6 +371,18 @@ case "$cmd" in
         exit 1
         ;;
     esac
+    ;;
+  agent-spawn)
+    # Spawn another agent using openclaw sessions_spawn
+    if [ $# -lt 2 ]; then
+      echo "Usage: $0 <agent-id> <task>" >&2
+      echo "Example: $0 content-agent \"Quick check\"" >&2
+      exit 1
+    fi
+    AGENT_ID="$1"
+    shift
+    TASK="$*"
+    openclaw sessions_spawn --agent-id "$AGENT_ID" --task "$TASK" --timeout-seconds 600
     ;;
   cleanup-agent-artifacts)
     "$WORKSPACE/cleanup-agent-artifacts.sh" "$@"
