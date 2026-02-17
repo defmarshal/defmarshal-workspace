@@ -69,6 +69,7 @@ Commands:
   social-monitor                  Run the social monitor agent (Twitter trending digest)
   daily-digest [YYYY-MM-DD]       Generate daily digest report (default: today UTC). Saves to reports/ and prints.
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
+  today                     Show files modified today across the workspace (since midnight UTC)
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
   updates-check                Check for pending system updates (APT)
   updates-apply [--dry-run|--execute] Apply system updates (dry-run by default; use --execute to actually upgrade)
@@ -617,6 +618,10 @@ case "$cmd" in
   validate)
     # Run the workspace-validate script
     bash "$WORKSPACE/workspace-validate.sh"
+    ;;
+  today)
+    # Show files modified today (since midnight UTC)
+    find "$WORKSPACE" -type f ! -path '*/\.git/*' -mtime -1 -printf '%T+ %p\n' 2>/dev/null | sort || echo "No files modified today"
     ;;
   help)
     show_help
