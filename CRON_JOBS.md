@@ -108,6 +108,24 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Payload**: agentTurn that runs a daily digest agent (message prompts it to gather content/research highlights, dev commits, health, and write `reports/YYYY-MM-DD-daily-digest.md` then announce to Telegram)
     - **Description**: Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Individual agent announcements are suppressed; this is the sole daily summary.
 
+16. **agent-manager-cron**
+    - **Schedule**: Every 30 minutes (`*/30 * * * *`) in Asia/Bangkok
+    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/agent-manager.sh --once'`
+    - **Log**: `memory/agent-manager.log`
+    - **Description**: Monitors and manages other background agents (prevents duplicate runs, cleans stale locks, maintains agent health).
+
+17. **agni-cron**
+    - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
+    - **Payload**: agentTurn that runs the Agni brainstorming cycle (spawns Rudra to execute plans). Command: `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/agni-cycle.sh >> agents/agni/agni.log 2>&1'`
+    - **Log**: `agents/agni/agni.log`
+    - **Description**: Brainstorming agent that generates creative ideas and plans, then spawns Rudra agent to implement them.
+
+18. **vishwakarma-cron**
+    - **Schedule**: Every 4 hours (`0 */4 * * *`) in Asia/Bangkok
+    - **Payload**: agentTurn that runs the Vishwakarma game development planning cycle (spawns Krishna to build games). Command: `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/vishwakarma-cycle.sh >> agents/vishwakarma/vishwakarma.log 2>&1'`
+    - **Log**: `agents/vishwakarma/vishwakarma.log`
+    - **Description**: Game development planning agent that designs game projects and spawns Krishna agent to build them.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

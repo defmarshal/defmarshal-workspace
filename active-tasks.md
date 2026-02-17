@@ -37,4 +37,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - One cycle (started: 2026-02-17 03:50 UTC, status: validated)
   - Verification: cycle completed exit 0; produced 2026-02-17-late-night-watch.md (656 bytes); INDEX.md updated (18 files for Feb 17); git commit pushed f49cbc6; all systems healthy.
 
+- [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-17 07:00 UTC, status: validated)
+  - Verification: removed duplicate cleanup-agent-artifacts cron; updated CRON_JOBS.md (added agent-manager-cron, agni-cron, vishwakarma-cron); fixed exec bit on games/anime-studio-tycoon/build.sh; memory health OK (main clean, torrent-bot DB backed up); quick health passes; git status clean after commit.
+
 # End of file — keep under 2KB
