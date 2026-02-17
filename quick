@@ -75,6 +75,7 @@ Commands:
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
+  cron              List OpenClaw cron jobs (concise summary)
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
   restart-gateway             Restart the OpenClaw gateway (use after config changes or to restore approval buttons)
   gateway-status              Show detailed gateway status (service, port, RPC)
@@ -369,6 +370,9 @@ case "$cmd" in
     ;;
   hygiene)
     "$WORKSPACE/workspace-hygiene-check.sh"
+    ;;
+  cron)
+    openclaw cron list --json | jq -r '.jobs[] | "\(.schedule.kind) \(.schedule.expr // "\(.schedule.everyMs)ms") \(.payload.kind) \(.sessionTarget)"' 2>/dev/null || openclaw cron list
     ;;
   cron-status)
     # Show status of important cron jobs
