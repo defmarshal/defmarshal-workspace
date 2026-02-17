@@ -37,7 +37,7 @@ if ! openclaw gateway status &>/dev/null; then
 fi
 
 # 3. Memory reindex needed
-if ./quick memory-reindex-check &>/dev/null; then
+if ! ./quick memory-reindex-check &>/dev/null; then
   alert "Memory reindex recommended (auto-reindex disabled; run manually via quick memory-reindex)"
 fi
 
