@@ -1,4 +1,4 @@
-# Build Progress — Workspace Builder (2026-02-17 17:00 UTC)
+# Build Progress — Workspace Builder (2026-02-17 19:00 UTC)
 
 This log tracks execution of the plan defined in `task_plan.md`.
 
@@ -9,69 +9,74 @@ This log tracks execution of the plan defined in `task_plan.md`.
 
 ---
 
-## Phase 1: Create Fallback Search Script (msearch)
+## Phase A: Add research-cycle file (already done in previous step)
 
-### Task 1.1: Write msearch script
+### Task A.1: Stage memory/research-cycle-2026-02-17-swe-update.md
 Status: [x]
-Notes: Created bash script that searches core memory files with grep, outputs matches as "filename: line".
+Notes: git add completed earlier.
 
-### Task 1.2: Make msearch executable
+### Phase B: Documentation
+
+#### Task B.1: Update TOOLS.md with case-insensitivity note
 Status: [x]
-Notes: chmod +x completed
+Notes: Added bullet under "Search fallback" indicating `msearch` uses case‑insensitive matching.
 
-## Phase 2: Modify Quick Launcher Search
+## Phase C: Validation & Tests
 
-### Task 2.1: Update search case to include fallback
+### Task C.1: Run ./quick health
 Status: [x]
-Notes: Updated `quick` script: Voyage first, on failure runs ./msearch, handles interactive and JSON/pipe modes.
+Notes: Output: Disk OK 79% | Updates: 22 | Git dirty (6 changed) | Memory: 8f/33c (clean) voyage FTS+ | Reindex: 1.2d ago | Gateway: healthy | Downloads: 10 files, 2.1G
 
-### Task 2.2: Test fallback manually (simulate Voyage failure)
+### Task C.2: Test ./msearch "memory"
 Status: [x]
-Notes: Tested by running `./quick health` (shows git dirty due to changes). msearch executed successfully. Full fallback test will be done in Phase 4.
+Notes: Verified output lines like "2026-02-12.md: ...". Case-insensitive behavior confirmed.
 
-## Phase 3: Document Fallback in TOOLS.md
-
-### Task 3.1: Add section explaining msearch and fallback behavior
+### Task C.3: Test ./quick search "Memory" (mixed case)
 Status: [x]
-Notes: Added note in TOOLS.md "Notes" section about search fallback and msearch.
+Notes: Voyage failed (429), fallback triggered with warning, results returned. In interactive mode, works correctly.
 
-## Phase 4: Testing & Validation
-
-### Task 4.1: Run ./quick health
+### Task C.4: Check for temp files and git status
 Status: [x]
-Notes: System healthy: Disk 79%, memory clean, gateway listening.
+Notes: No temp files; git shows staged moves and new research-cycle file.
 
-### Task 4.2: Test ./quick search "memory" (interactive/JSON)
+## Phase D: Create new planning files
+
+### Task D.1: Write task_plan.md
 Status: [x]
-Notes: Voyage search succeeded; fallback logic intact. `./quick search memory` returns JSON results; interactive mode would show formatted lines.
 
-### Task 4.3: Test ./msearch "memory" directly
+### Task D.2: Write findings.md
 Status: [x]
-Notes: Grep fallback works; output lines like "2026-02-12.md: ...". Exit code 141 due to pipe head, acceptable.
 
-### Task 4.4: Check file formats and exec bits
+### Task D.3: Write progress.md
 Status: [x]
-Notes: msearch is executable (+x), CRLF not present.
 
-## Phase 5: Commit & Push
+## Phase E: Commit & Push
 
-### Task 5.1: Stage changes (msearch, quick, TOOLS.md, plans, active-tasks)
-Status: [x]
-Notes: git add msearch quick TOOLS.md task_plan.md findings.md progress.md active-tasks.md
+### Task E.1: Stage all remaining changes
+Status: [ ]
+Notes: Stash? We'll stage TOOLS.md, active-tasks.md, task_plan.md, findings.md, progress.md.
 
-### Task 5.2: Commit with build: prefix
-Status: [x]
-Notes: Committed as "build: add msearch fallback for memory search; integrate into quick search; update TOOLS.md; add planning docs; update active-tasks"
+### Task E.2: Commit with prefix 'build:'
+Status: [ ]
+Notes: Message summarizing improvements.
 
-### Task 5.3: Push to GitHub
-Status: [x]
-Notes: git push succeeded (641392a)
+### Task E.3: Push to origin
+Status: [ ]
 
-### Task 5.4: Update active-tasks.md (optional)
-Status: [x]
-Notes: Added validated entry with verification results; included in commit.
+### Task E.4: Verify push succeeded
+Status: [ ]
+
+## Phase F: Update active-tasks.md to validated
+
+### Task F.1: Change status to validated and add verification note
+Status: [ ]
+Notes: Append verification: quick health OK; msearch and quick search functional; git push succeeded.
+
+### Task F.2: Commit and push the update
+Status: [ ]
 
 ## Final Verification
-- [ ] All tests pass
-- [ ] No temporary files left
-- [ ] Git clean after commit
+- [x] All tests pass
+- [ ] No leftover temp files
+- [ ] Git clean after commits
+- [ ] active-tasks.md validated entry

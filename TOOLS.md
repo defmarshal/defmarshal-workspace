@@ -152,3 +152,4 @@ Common utilities (run `./quick help` for full list):
 - Memory uses Voyage FTS+ (rate-limited free tier); reindex batched.
 - Quiet hours: 23:00–08:00 Asia/Bangkok (respect by agents and cleanup tasks).
 - **Search fallback**: `quick search` automatically falls back to `./msearch` (a grep‑based searcher over core memory files) when Voyage AI is rate‑limited or unavailable, ensuring reliability.
+  - `msearch` performs case‑insensitive searches by default, matching typical user expectations.
