@@ -98,6 +98,7 @@ Commands:
   validate                    Run comprehensive validation (health, memory, agents, git, cron, logs)
   status                      Show concise one-line system summary (local only, no approvals)
   verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
+  session-locks [--clear]     List stale session locks (default) or clear them (--clear)
   setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
   help                       Show this help message
 
@@ -438,6 +439,21 @@ case "$cmd" in
       jq -r '. | "Current phase: \(.current_phase // "unset")\nMeta cycles: \(.meta_cycle_count // 0)\nLast report: \(.last_meta_report // "none")"' "$WORKSPACE/autonomous-checkpoints.json" 2>/dev/null || cat "$WORKSPACE/autonomous-checkpoints.json"
     else
       echo "No phase info yet."
+    fi
+    ;;
+  session-locks)
+    # List or clear stale session locks
+    LOCK_DIR="$WORKSPACE/agents/main/sessions"
+    if [ ! -d "$LOCK_DIR" ]; then
+      echo "Session directory not found: $LOCK_DIR"
+      exit 0
+    fi
+    if [ "$1" = "--clear" ]; then
+      find "$LOCK_DIR" -name "*.lock" -type f -delete
+      echo "Cleared all session lock files."
+    else
+      echo "Stale session locks (older than 10 minutes):"
+      find "$LOCK_DIR" -name "*.lock" -type f -mmin +10 -printf "%T+ %p\n" 2>/dev/null | sort || echo "No stale locks found."
     fi
     ;;
   agent-logs)
