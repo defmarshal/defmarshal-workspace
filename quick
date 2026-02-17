@@ -25,6 +25,7 @@ Commands:
   memory-reindex Force reindex of memory files (openclaw memory index)
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
+  archive-sizes  Show human-readable sizes of content, research, and memory directories
   quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00-08:00) and whether system is in quiet mode
   health          Show workspace health summary (workspace-health)
   summary         Show one-line system summary (status, disk, updates, git)
@@ -190,6 +191,14 @@ case "$cmd" in
         echo "  ✗ $name  NOT RUNNING"
       fi
     done
+    ;;
+  archive-sizes)
+    # Show human-readable sizes of content, research, and memory directories
+    echo "Archive sizes:"
+    echo "-------------"
+    du -sh /home/ubuntu/.openclaw/workspace/content 2>/dev/null || echo "content: missing"
+    du -sh /home/ubuntu/.openclaw/workspace/research 2>/dev/null || echo "research: missing"
+    du -sh /home/ubuntu/.openclaw/workspace/memory 2>/dev/null || echo "memory: missing"
     ;;
   agent-status)
     # Show OpenClaw cron jobs overview (next run, last status, schedule)
