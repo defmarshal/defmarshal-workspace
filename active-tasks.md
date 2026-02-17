@@ -27,23 +27,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late morning status 5 (started: 2026-02-17 09:30 UTC, status: validated)
-  - Verification: 2026-02-17-late-morning-5.md; commit 8aa569b; archive 48 files.
-
-- [isolated] research-agent - Research brief 4 (started: 2026-02-17 09:32 UTC, status: validated)
-  - Verification: 2026-02-17-brief-4.md; commit d1ee489; archive 25 files.
-
-- [isolated] dev-agent - Add meta-commit utility (started: 2026-02-17 09:40 UTC, status: validated)
-  - Verification: quick meta-commit implemented; commit 5b88fb7 pushed; systems green.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑lunch status 4 (started: 2026-02-17 09:43 UTC, status: validated)
-  - Verification: 2026-02-17-pre-lunch-4.md; commit 19cd510; archive 49 files.
-
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑digest status 3 (started: 2026-02-17 09:50 UTC, status: validated)
   - Verification: 2026-02-17-pre-digest-3.md; commit 7e82951; archive 50 files.
 
 - [isolated] dev-agent - Add cleanup-untracked utility (started: 2026-02-17 10:00 UTC, status: validated)
-  - Verification: quick cleanup-untracked implemented; commit fd933a2 pushed; systems green.
+  - Verification: quick cleanup-untracked; commit fd933a2; systems green.
 
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late afternoon status 3 (started: 2026-02-17 10:01 UTC, status: validated)
   - Verification: 2026-02-17-late-afternoon-3.md; commit bb11a32; archive 51 files.
