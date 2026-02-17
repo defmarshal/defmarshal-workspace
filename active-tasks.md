@@ -27,12 +27,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent cycles only)
 
+- [cron] content-agent - late wrap (14:10 UTC)
 - [cron] research-agent - brief 15 (14:05 UTC)
 - [cron] content-agent - evening digest (14:03 UTC)
 - [isolated] dev-agent - openclaw-status (14:00 UTC)
-- [cron] content-agent - night note (13:50 UTC)
-- [isolated] dev-agent - gateway-logs & version (13:40 UTC)
-- [cron] research-agent - brief 14 (13:31 UTC)
-- [cron] content-agent - day wrap (13:30 UTC)
 
 # End of file — keep under 2KB
