@@ -79,6 +79,7 @@ Commands:
                              Options: --keep N, --execute, --verbose
                               Example: quick cleanup-backups --keep 3 --execute
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
+  agent-manager              Run agent-manager maintenance checks (used by cron)
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
@@ -386,6 +387,10 @@ case "$cmd" in
       echo "Run './setup-sudo.sh' (with sudo) to set it up."
       exit 1
     fi
+    ;;
+  agent-manager)
+    # Run agent-manager maintenance once (used by cron)
+    "$WORKSPACE/agents/agent-manager.sh" --once
     ;;
   agent-logs)
     # Show recent logs for background agents
