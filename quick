@@ -94,6 +94,7 @@ Commands:
   uptime                     Show system and OpenClaw gateway uptime
   apt-check                  Show APT update count and short status
   gateway-token              Show gateway device token info and rotate if needed (use --force to auto-rotate)
+  tailscale-status           Show Tailscale IP and connectivity status
   meta                       Run meta-agent once (autonomous planner)
   meta-report                Show latest meta-agent report
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
@@ -591,6 +592,35 @@ case "$cmd" in
     else
       echo "Failed to run openclaw gateway status"
       exit 1
+    fi
+    ;;
+  tailscale-status)
+    # Show Tailscale IP and connectivity status
+    echo "=== Tailscale Status ==="
+    if ! command -v tailscale &>/dev/null; then
+      echo "Tailscale not installed"
+      exit 1
+    fi
+    # Show local Tailscale IP
+    MY_IP=$(tailscale ip 2>/dev/null || echo "?")
+    echo "My Tailscale IP: $MY_IP"
+    # Show status (connected/off)
+    if tailscale status &>/dev/null; then
+      echo "Tailscale: connected"
+      # List a few peers to show connectivity
+      echo "Peers (sample):"
+      tailscale status --json 2>/dev/null | python3 -c "
+import json, sys
+try:
+    data = json.load(sys.stdin)
+    peers = list(data.get('Peer', {}).keys())[:5]
+    for p in peers:
+        print(f'  {p}')
+except Exception:
+    pass" 2>/dev/null || tailscale status | head -n 5 | sed 's/^/  /' || true
+    echo ""
+    else
+      echo "Tailscale: not connected"
     fi
     ;;
   meta)
