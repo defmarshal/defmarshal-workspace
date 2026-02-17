@@ -81,7 +81,7 @@ Common utilities (run `./quick help` for full list):
 - `cleanup-downloads [options]` — Clean old downloads (default dry-run, retain 30 days)
 - `cleanup-backups [options]` — Clean old backup tarballs (default keep 1)
 - `cleanup-agent-artifacts [options]` — Clean stale agent artifacts (respects quiet hours)
-- `agent-spawn <agent-id> <task>` — Spawn an agent (dev, content, research, or custom) via sessions_spawn
+- `agent-spawn <agent-id> <task>` — Spawn an agent (e.g., main) with a task via openclaw agent
 - `agent-logs [name]` — Show recent agent logs (dev, content, research, builder; default all)
 - `cron` — List OpenClaw cron jobs (concise)
 - `cron-status` — Show status of important cron jobs (system crontab + OpenClaw)
