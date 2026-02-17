@@ -27,17 +27,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late morning 7 (started: 2026-02-17 12:23 UTC, status: validated)
-  - Verification: 2026-02-17-late-morning-7.md; commit 55c0e76; archive 61 files.
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Daily digest (started: 2026-02-17 12:30 UTC, status: validated)
+  - Verification: 2026-02-17-daily-digest.md; commit 8f42250; archive 62 files.
 
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 11 (started: 2026-02-17 12:09 UTC, status: validated)
   - Verification: 2026-02-17-brief-11.md; commit 9eebc73; archive 33 files.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 10 (started: 2026-02-17 11:33 UTC, status: validated)
-  - Verification: 2026-02-17-brief-10.md; commit 883b35c; archive 32 files.
-
-- [isolated] dev-agent - Add archive-sizes command (started: 2026-02-17 11:40 UTC, status: validated)
-  - Verification: quick archive-sizes works; commit 3bdcb10; sizes: content 720K, research 840K, memory 100K.
 
 - [isolated] dev-agent - Increase workspace-builder timeout to 1800s after continued timeouts (started: 2026-02-17 12:20 UTC, status: validated)
   - Verification: Payload timeout set to 1800s; next run should complete without error.
