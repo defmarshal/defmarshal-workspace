@@ -34,6 +34,7 @@ Commands:
   git-status      Show brief git status
   git-today       Show git commits from today (since midnight)
   git-summary     Show recent commit summary by prefix (dev:, research:, content:, infra:, chore:)
+  git-last        Show last commit details (files changed, stats, message)
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
   selfie [caption] [rating]  Send a random anime image via Nekos API.
@@ -251,6 +252,10 @@ case "$cmd" in
   git-summary)
     # Show recent commit summary by prefix (dev:, research:, content:, infra:, chore:)
     git -C "$WORKSPACE" log --oneline | head -20 | sed -E 's/^([a-f0-9]+) ([^:]+):?/\2/' | sort | uniq -c | sort -nr || echo "No commits"
+    ;;
+  git-last)
+    # Show last commit details: files changed, stats, and message
+    git -C "$WORKSPACE" log -1 --stat --name-only || echo "No commits"
     ;;
   anime)
     "$WORKSPACE/anime-companion" "$@"
