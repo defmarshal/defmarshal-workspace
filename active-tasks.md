@@ -56,6 +56,6 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: produced 2026-02-17-monitoring-2.md (485 B); INDEX updated; commit 3687c38 pushed; monitoring continues; systems green.
 
 - [isolated] dev-agent - Supervisor daemon added (started: 2026-02-17 07:33 UTC, status: validated)
-  - Verification: created agents/supervisor.sh (1817 B); added quick commands (supervisor, supervisor-logs); created supervisor-cron (*/5 min, announce); CRON_JOBS.md updated; commit pending.
+  - Verification: created agents/supervisor.sh (1817 B); added quick commands (supervisor, supervisor-logs); created supervisor-cron (*/5 min, announce); CRON_JOBS.md updated; commit 952de62 pushed; systems green.
 
 # End of file — keep under 2KB
