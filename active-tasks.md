@@ -45,4 +45,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] dev-agent - System verification (started: 2026-02-17 11:20 UTC, status: validated)
   - Verification: All utilities present; health nominal; meta-agent reindexed memory; no urgent changes required.
 
+- [isolated] dev-agent - Add archive-sizes command (started: 2026-02-17 11:40 UTC, status: validated)
+  - Verification: quick archive-sizes works; commit 3bdcb10; sizes: content 720K, research 840K, memory 100K.
+
 # End of file — keep under 2KB
