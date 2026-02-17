@@ -28,6 +28,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Completed (Feb 17)
 
 - All cycles concluded; archive sealed at 76 content + 39 research files.
-- Pending: gateway device token rotation (run `quick gateway-token --force`).
+- Gateway token rotation completed; UI accessible via Tailscale.
 
 # End of file — keep under 2KB
