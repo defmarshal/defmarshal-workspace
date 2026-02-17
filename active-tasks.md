@@ -73,4 +73,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] content-agent - Pre‑digest status 2 (started: 2026-02-17 08:02 UTC, status: validated)
   - Verification: produced 2026-02-17-pre-digest-2.md (447 B); INDEX updated; commit 4e41d99 pushed; archive at 39 files; systems green.
 
+- [isolated] research-agent - Pre‑digest note (started: 2026-02-17 08:04 UTC, status: validated)
+  - Verification: produced 2026-02-17-pre-digest-note.md (542 B); INDEX updated; commit 746e105 pushed; archive at 22 files; supervisor fixed; systems green.
+
 # End of file — keep under 2KB
