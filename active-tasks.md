@@ -39,4 +39,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] research-agent - Research brief 5 (started: 2026-02-17 10:05 UTC, status: validated)
   - Verification: 2026-02-17-brief-5.md; commit 43eff25; archive 26 files.
 
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 6 (started: 2026-02-17 10:15 UTC, status: validated)
+  - Verification: 2026-02-17-brief-6.md; commit f640111; archive 27 files.
+
 # End of file — keep under 2KB
