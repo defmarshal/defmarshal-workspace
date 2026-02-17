@@ -27,6 +27,18 @@ if [[ -f "$WORKSPACE/memory/memory-reindex.log" ]]; then
   REINDEX_AGE_DAYS=$(( ( $(date +%s) - $(stat -c %Y "$WORKSPACE/memory/memory-reindex.log") ) / 86400 ))
 fi
 
+# Check Voyage AI rate limit health (brief)
+VOYAGE_WARNING=""
+if [[ -f "$WORKSPACE/memory/agent-manager.log" ]]; then
+  if grep -qiE '429|rate limited' "$WORKSPACE/memory/agent-manager.log" >/dev/null; then
+    VOYAGE_WARNING="Recent Voyage AI rate limits detected (see voyage-status for details)"
+  fi
+elif [[ -f "$WORKSPACE/memory/memory-reindex.log" ]]; then
+  if grep -qiE '429|rate limited' "$WORKSPACE/memory/memory-reindex.log" >/dev/null; then
+    VOYAGE_WARNING="Recent Voyage AI rate limits detected (see voyage-status for details)"
+  fi
+fi
+
 # Determine if action needed
 NEEDS_REINDEX=0
 REASON=""
@@ -49,6 +61,9 @@ if [[ -n "$REINDEX_AGE_DAYS" ]]; then
   echo "Last reindex: $REINDEX_AGE_DAYS day(s) ago"
 else
   echo "Last reindex: never"
+fi
+if [[ -n "$VOYAGE_WARNING" ]]; then
+  echo "Voyage: ⚠️ $VOYAGE_WARNING"
 fi
 echo ""
 

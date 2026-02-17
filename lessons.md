@@ -16,7 +16,7 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Sub-agent validation** → Close the loop: sub-agent self-validates AND you verify manually (curl, test commands). Never trust "all green" blindly.
 - **Parallel isolation** → Independent tasks should run in separate agent instances with zero shared state. Avoids coordination overhead and race conditions.
 - **Model selection** → Use cheaper models for internal tasks; reserve stronger models for web-facing work (avoid prompt injection from hostile content).
-- **Quiet hours respect** → 23:00–08:00 UTC+7. Cron jobs should exit early if in quiet window.
+- **Quiet hours respect** → Previously 23:00–08:00 UTC+7, but **quiet hours removed system-wide** on 2026‑02‑17; all agents now run 24/7. Still check HEARTBEAT.md for current policy.
 - **Persistent agent anti-pattern** → Do NOT use long-running subagents for periodic tasks. Use **cron jobs** instead. Gateway restarts kill subagents; cron auto-spawns fresh per run. Workspace-builder already converted to cron (Feb 13) — do the same for content-agent, research-agent, dev-agent.
 - **Gateway restart behavior** → meta.lastTouchedAt changes cause full restart (Issue #11744). Config edits may kill subagents. Minimize config churn.
 - **Systemd linger required** → Enable with `sudo loginctl enable-linger $USER` so user services survive logout/reboot. Without it, openclaw-gateway.service stops, killing all agents.

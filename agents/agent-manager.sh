@@ -34,13 +34,6 @@ trap cleanup EXIT TERM INT
 run_checks() {
   log "Running maintenance checks"
 
-  # Quiet hours check (Asia/Bangkok 23:00–08:00)
-  HOUR=$(TZ=Asia/Bangkok date +%H)
-  if (( HOUR >= 23 || HOUR < 8 )); then
-    log "Quiet hours; skipping checks"
-    return 0
-  fi
-
   # 1. Git dirty
   if ! git diff --quiet && ! git diff --cached --quiet; then
     if [ "$(git status --porcelain | wc -l)" -lt 10 ]; then
