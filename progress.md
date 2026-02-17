@@ -53,30 +53,31 @@ Status: [x]
 ## Phase E: Commit & Push
 
 ### Task E.1: Stage all remaining changes
-Status: [ ]
-Notes: Stash? We'll stage TOOLS.md, active-tasks.md, task_plan.md, findings.md, progress.md.
+Status: [x]
+Notes: Staged TOOLS.md, active-tasks.md, task_plan.md, findings.md, progress.md.
 
 ### Task E.2: Commit with prefix 'build:'
-Status: [ ]
-Notes: Message summarizing improvements.
+Status: [x]
+Notes: Commit 04e4e12.
 
 ### Task E.3: Push to origin
-Status: [ ]
+Status: [x]
 
 ### Task E.4: Verify push succeeded
-Status: [ ]
+Status: [x]
 
 ## Phase F: Update active-tasks.md to validated
 
 ### Task F.1: Change status to validated and add verification note
-Status: [ ]
-Notes: Append verification: quick health OK; msearch and quick search functional; git push succeeded.
+Status: [x]
+Notes: Entry updated; verification note added.
 
 ### Task F.2: Commit and push the update
-Status: [ ]
+Status: [x]
+Notes: Commit c85dec1 pushed.
 
 ## Final Verification
 - [x] All tests pass
-- [ ] No leftover temp files
-- [ ] Git clean after commits
-- [ ] active-tasks.md validated entry
+- [x] No leftover temp files
+- [x] Git clean after commits
+- [x] active-tasks.md validated entry
