@@ -88,4 +88,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] research-agent - Pre‑evening note (started: 2026-02-17 08:32 UTC, status: validated)
   - Verification: produced 2026-02-17-pre-evening-note.md (621 B); INDEX updated; commit 69db42e pushed; archive at 23 files; systems green.
 
+- [isolated] dev-agent - Quick enhancements for autonomous visibility (started: 2026-02-17 08:40 UTC, status: validated)
+  - Verification: added quick commands `checkpoints` and `phase` to view autonomous system status; commit ee9f615 pushed; systems green.
+
 # End of file — keep under 2KB
