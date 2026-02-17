@@ -30,16 +30,13 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] dev-agent - Session lock diagnostic utility (started: 2026-02-17 09:01 UTC, status: validated)
   - Verification: quick session-locks added; commit d4de847; systems green.
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Mid‑day status 3 (started: 2026-02-17 09:02 UTC, status: validated)
-  - Verification: 2026-02-17-mid-day-3.md; commit 8c47cd1; archive 44 files.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑second‑half status 3 (started: 2026-02-17 09:04 UTC, status: validated)
-  - Verification: 2026-02-17-pre-second-half-3.md; commit ee8cd40; archive 45 files.
-
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late morning status 4 (started: 2026-02-17 09:10 UTC, status: validated)
   - Verification: 2026-02-17-late-morning-4.md; commit 5459abc; archive 46 files.
 
 - [isolated] research-agent - Research brief 3 (started: 2026-02-17 09:15 UTC, status: validated)
   - Verification: 2026-02-17-brief-3.md; commit 0110bb3; archive 24 files.
+
+- [isolated] dev-agent - Add 'today' command (started: 2026-02-17 09:20 UTC, status: validated)
+  - Verification: quick today implemented; commit 02b3821; systems green.
 
 # End of file — keep under 2KB
