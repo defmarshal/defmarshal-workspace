@@ -58,6 +58,7 @@ Common utilities (run `./quick help` for full list):
 - `health` — Concise system health summary
 - `holidays` — Upcoming Indonesian holidays
 - `time` — Current UTC and Bangkok time
+- `weather [loc]` — Get current weather (default: Bangkok) via wttr.in
 - `git-status` — Brief git status
 - `git-today` — Commits from today
 - `git-summary` — Commit summary by prefix (dev:, content:, research:, etc.)
