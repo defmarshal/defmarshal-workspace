@@ -46,7 +46,7 @@ Common utilities (run `./quick help` for full list):
 - `anime <cmd>` — Anime companion (search, info, top, season, upcoming)
 - `selfie [caption] [rating]` — Random anime image (safe/explicit)
 - `selfie-batch <count> [rating] [caption]` — Multiple images as zip
-- `mem` / `memory` — Show recent memories
+- `mem` — Show recent memories
 - `search <query>` — Search memories
 - `memory-status` — Memory index status
 - `memory-index` — Reindex memory files
@@ -85,6 +85,7 @@ Common utilities (run `./quick help` for full list):
 - `agent-logs [name]` — Show recent agent logs (dev, content, research, builder; default all)
 - `cron` — List OpenClaw cron jobs (concise)
 - `cron-status` — Show status of important cron jobs (system crontab + OpenClaw)
+- `cron-failures` — Show cron jobs with recent errors (consecutiveErrors > 0 or lastStatus != "ok")
 - `restart-gateway` — Restart OpenClaw gateway
 - `gateway-status` — Detailed gateway status (service, port, RPC)
 - `gateway-info` — Gateway status + remote access setup instructions

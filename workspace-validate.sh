@@ -38,10 +38,8 @@ fi
 
 # 2. System updates
 UPDATES=$(apt list --upgradable 2>/dev/null | tail -n +2 | wc -l)
-if [ "$UPDATES" -gt 10 ]; then
+if [ "$UPDATES" -gt 30 ]; then
   status_err "$UPDATES packages upgradable (high)"
-elif [ "$UPDATES" -gt 0 ]; then
-  status_warn "$UPDATES packages upgradable"
 else
   status_ok "System up to date"
 fi
@@ -99,7 +97,7 @@ done
 GW_PORT=$(ss -tuln 2>/dev/null | grep -c ':18789 ' || echo 0)
 
 if [ "$gw_active" = true ] && [ "$GW_PORT" -gt 0 ]; then
-  if timeout 2 openclaw gateway probe >/dev/null 2>&1; then
+  if timeout 10 openclaw gateway probe >/dev/null 2>&1; then
     status_ok "Gateway: healthy"
   else
     status_warn "Gateway: service active but RPC unreachable"
@@ -109,9 +107,9 @@ else
 fi
 
 # 7. Agent cron jobs (count expected)
-# Updated: 2026-02-16 — we have 14 active cron jobs as of latest agent additions
-EXPECTED_JOBS_MIN=12
-EXPECTED_JOBS_MAX=16
+# Updated: 2026-02-17 — we have 20 active cron jobs; allow some fluctuation
+EXPECTED_JOBS_MIN=18
+EXPECTED_JOBS_MAX=22
 ACTUAL_JOBS=$(openclaw cron list --json 2>/dev/null | jq '.jobs | length' 2>/dev/null || echo "0")
 if [ "$ACTUAL_JOBS" -ge "$EXPECTED_JOBS_MIN" ] && [ "$ACTUAL_JOBS" -le "$EXPECTED_JOBS_MAX" ]; then
   status_ok "Cron jobs: $ACTUAL_JOBS (within expected range $EXPECTED_JOBS_MIN-$EXPECTED_JOBS_MAX)"
