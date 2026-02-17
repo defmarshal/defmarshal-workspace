@@ -91,6 +91,7 @@ Commands:
   openclaw-version           Show installed OpenClaw version (global npm)
   openclaw-status            Show OpenClaw system status (sessions, channels, recipients)
   uptime                     Show system and OpenClaw gateway uptime
+  apt-check                  Show APT update count and short status
   meta                       Run meta-agent once (autonomous planner)
   meta-report                Show latest meta-agent report
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
@@ -504,6 +505,19 @@ case "$cmd" in
       else
         echo "Gateway process not found"
       fi
+    fi
+    ;;
+  apt-check)
+    # Show APT update count and status
+    if command -v apt-get &>/dev/null; then
+      COUNT=$(apt-get -s upgrade 2>/dev/null | grep '^Inst ' | wc -l) || COUNT=0
+      if [ "$COUNT" -eq 0 ]; then
+        echo "APT updates: none pending"
+      else
+        echo "APT updates pending: $COUNT"
+      fi
+    else
+      echo "apt-get not available"
     fi
     ;;
   meta)
