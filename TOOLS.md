@@ -80,6 +80,7 @@ Common utilities (run `./quick help` for full list):
 - `updates-apply [--dry-run|--execute]` — Apply system updates
 - `cleanup-downloads [options]` — Clean old downloads (default dry-run, retain 30 days)
 - `cleanup-backups [options]` — Clean old backup tarballs (default keep 1)
+- `cleanup-build-archive [options]` — Prune old build directories in `builds/` (default dry-run, keep 10)
 - `cleanup-agent-artifacts [options]` — Clean stale agent artifacts (respects quiet hours)
 - `agent-spawn <agent-id> <task> [--daemon]` — Spawn an agent; add --daemon for persistent 24/7 loop (respects quiet hours)
 - `agent-logs [name]` — Show recent agent logs (dev, content, research, builder; default all)
@@ -129,6 +130,7 @@ Common utilities (run `./quick help` for full list):
 - `quick hygiene`: Workspace hygiene check.
 - `quick cleanup-downloads [--days N] [--execute] [--verbose]`: Clean old downloads.
 - `quick cleanup-backups [--keep N] [--execute] [--verbose]`: Clean old backups.
+- `quick cleanup-build-archive [--keep N] [--execute]`: Prune old builds in `builds/` (dry-run default, keep 10).
 - `quick memory-reindex-check`: Check if memory reindex needed.
 - `quick memory-reindex`: Force memory reindex.
 - `quick cron`: List OpenClaw cron jobs.
@@ -150,6 +152,7 @@ Common utilities (run `./quick help` for full list):
 - All agent logs (dev-agent.log, content-agent.log, research-agent.log) are rotated automatically via `log-rotate`.
 - Systemd manages OpenClaw gateway; watchdog runs every 5 min via system crontab checking port 18789.
 - Memory uses Voyage FTS+ (rate-limited free tier); reindex batched.
-- Quiet hours: 23:00–08:00 Asia/Bangkok (respect by agents and cleanup tasks).
+- Quiet hours: removed system‑wide on 2026‑02‑17; all agents run 24/7.
+- Voyage rate‑lock: meta‑agent skips memory reindex for 1 hour after a 429 error, reducing log spam and API load.
 - **Search fallback**: `quick search` automatically falls back to `./msearch` (a grep‑based searcher over core memory files) when Voyage AI is rate‑limited or unavailable, ensuring reliability.
   - `msearch` performs case‑insensitive searches by default, matching typical user expectations.

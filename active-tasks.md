@@ -24,8 +24,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Current Active Tasks
 
 - [daemon] torrent-bot (running)
-- [build] workspace-builder - strategic improvements (started: 2026-02-17 19:00 UTC, status: validated)
-  - Verification: quick health OK; msearch and quick search functional; git push succeeded (04e4e12); system clean.
+- [build] workspace-builder - strategic improvements (started: 2026-02-17 21:00 UTC, status: running)
 
 ## Completed (Feb 17)
 
@@ -33,5 +32,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 - Gateway token rotation completed; UI accessible via Tailscale.
 - Supervisor-cron schedule changed to every 2 hours (`0 */2 * * *`).
 - Content follow‑up added confirming no pending tasks.
+- Workspace‑builder (19:00 UTC) validated; archived to memory/2026-02-17.md.
 
 # End of file — keep under 2KB

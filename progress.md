@@ -1,4 +1,4 @@
-# Build Progress — Workspace Builder (2026-02-17 19:00 UTC)
+# Build Progress — Workspace Builder (2026-02-17 21:00 UTC)
 
 This log tracks execution of the plan defined in `task_plan.md`.
 
@@ -9,75 +9,112 @@ This log tracks execution of the plan defined in `task_plan.md`.
 
 ---
 
-## Phase A: Add research-cycle file (already done in previous step)
+## Phase A: Active Tasks Housekeeping
 
-### Task A.1: Stage memory/research-cycle-2026-02-17-swe-update.md
+### Task A.1: Append stale builder entry to memory/2026-02-17.md
 Status: [x]
-Notes: git add completed earlier.
+Notes: Added "Workspace Builder Run (2026-02-17 19:00 UTC)" section with verification summary.
 
-### Phase B: Documentation
-
-#### Task B.1: Update TOOLS.md with case-insensitivity note
+### Task A.2: Remove stale `[build]` entry from active-tasks.md
 Status: [x]
-Notes: Added bullet under "Search fallback" indicating `msearch` uses case‑insensitive matching.
+Notes: Removed validated entry; kept other entries.
 
-## Phase C: Validation & Tests
-
-### Task C.1: Run ./quick health
+### Task A.3: Add fresh `[build]` entry for this builder (status running)
 Status: [x]
-Notes: Output: Disk OK 79% | Updates: 22 | Git dirty (6 changed) | Memory: 8f/33c (clean) voyage FTS+ | Reindex: 1.2d ago | Gateway: healthy | Downloads: 10 files, 2.1G
+Notes: Entry added with started: 2026-02-17 21:00 UTC, status: running.
 
-### Task C.2: Test ./msearch "memory"
+## Phase B: Meta-Agent Rate-Lock Enhancement
+
+### Task B.1: Define lock file path and helper functions
 Status: [x]
-Notes: Verified output lines like "2026-02-12.md: ...". Case-insensitive behavior confirmed.
+Notes: Added LOCK_FILE="memory/.voyage-rate-lock" and logic in meta-agent.sh.
 
-### Task C.3: Test ./quick search "Memory" (mixed case)
+### Task B.2: Implement pre-check and post-check around reindex
 Status: [x]
-Notes: Voyage failed (429), fallback triggered with warning, results returned. In interactive mode, works correctly.
+Notes: Pre-check lock age; post-check set lock on rate limit, clear on success.
 
-### Task C.4: Check for temp files and git status
+### Task B.3: Syntax validation (bash -n)
 Status: [x]
-Notes: No temp files; git shows staged moves and new research-cycle file.
+Notes: Script passes bash -n.
 
-## Phase D: Create new planning files
+## Phase C: Build Archive Cleanup Utility
 
-### Task D.1: Write task_plan.md
+### Task C.1: Write scripts/cleanup-build-archive.sh
 Status: [x]
+Notes: Dry‑run by default; supports --execute; keep=10; safe sorting.
 
-### Task D.2: Write findings.md
+### Task C.2: Add cleanup-build-archive case to quick launcher
 Status: [x]
+Notes: Added case in quick and updated help text.
 
-### Task D.3: Write progress.md
+### Task C.3: Make script executable (chmod +x)
 Status: [x]
+Notes:
 
-## Phase E: Commit & Push
+### Task C.4: Test dry‑run output and exit codes
+Status: [ ]
+Notes: Verify expected behavior; no actual deletion during test.
 
-### Task E.1: Stage all remaining changes
+## Phase D: Documentation Updates
+
+### Task D.1: Update TOOLS.md with rate‑lock and cleanup notes
 Status: [x]
-Notes: Staged TOOLS.md, active-tasks.md, task_plan.md, findings.md, progress.md.
+Notes: Added cleanup-build-archive entries; updated quiet hours note; added Voyage rate‑lock description.
 
-### Task E.2: Commit with prefix 'build:'
+### Task D.2: Verify TOOLS.md formatting and link to scripts
 Status: [x]
-Notes: Commit 04e4e12.
+Notes: Formatting checked; links point to scripts/ and quick command.
 
-### Task E.3: Push to origin
+## Phase E: Validation & Testing
+
+### Task E.1: Run ./quick health
 Status: [x]
+Notes: Output: Disk OK 79% | Updates: 22 | Git dirty (8 changed) | Memory: 8f/33c (clean) voyage FTS+ | Reindex: 1.3d ago | Gateway: healthy | Downloads: 10 files, 2.1G
 
-### Task E.4: Verify push succeeded
+### Task E.2: Run ./quick memory-reindex-check
 Status: [x]
+Notes: Status OK; Voyage rate limit warning present but no reindex needed.
 
-## Phase F: Update active-tasks.md to validated
-
-### Task F.1: Change status to validated and add verification note
+### Task E.3: Run ./quick voyage-status
 Status: [x]
-Notes: Entry updated; verification note added.
+Notes: Confirmed recent rate limit logs; exit code 1 as expected.
 
-### Task F.2: Commit and push the update
+### Task E.4: Test cleanup-build-archive dry‑run
 Status: [x]
-Notes: Commit c85dec1 pushed.
+Notes: Output: "Build archive: 3 builds, keeping 10 → nothing to do". Exit 0.
+
+### Task E.5: Check for temp files and ensure clean workspace
+Status: [x]
+Notes: No stray temp files; lock file absent.
+
+### Task E.6: Optional: verify sessions list for failed agents
+Status: [x]
+Notes: No active sessions; agents run via cron.
+
+## Phase F: Commit, Push, and Finalize
+
+### Task F.1: Stage all changes
+Status: [ ]
+Notes: Add: active-tasks.md, memory/2026-02-17.md, agents/meta-agent.sh, scripts/cleanup-build-archive.sh, quick, TOOLS.md, task_plan.md, findings.md, progress.md.
+
+### Task F.2: Commit with prefix 'build:'
+Status: [ ]
+Notes: Message summarizing improvements.
+
+### Task F.3: Push to origin and verify
+Status: [ ]
+Notes:
+
+### Task F.4: Update active‑tasks.md to validated + verification
+Status: [ ]
+Notes: Edit the builder entry to status validated and add a verification note.
+
+### Task F.5: Commit and push active‑tasks update
+Status: [ ]
+Notes: Use separate commit or amend? Will use separate commit for clarity.
 
 ## Final Verification
-- [x] All tests pass
-- [x] No leftover temp files
-- [x] Git clean after commits
-- [x] active-tasks.md validated entry
+- [ ] All tests pass
+- [ ] No leftover temp files (except intentional lock if created during test)
+- [ ] Git clean after commits
+- [ ] active‑tasks.md validated entry with verification summary

@@ -83,6 +83,9 @@ Commands:
   cleanup-backups [options]   Clean up old openclaw-backup tarballs in /home/ubuntu (default: dry-run, keep 1)
                              Options: --keep N, --execute, --verbose
                               Example: quick cleanup-backups --keep 3 --execute
+  cleanup-build-archive [options] Prune old build directories in builds/ (default: dry-run, keep 10)
+                             Options: --keep N, --execute
+                              Example: quick cleanup-build-archive --keep 5 --execute
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder, manager). Default: all.
   agent-manager              Run agent-manager maintenance checks (used by cron)
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
@@ -437,6 +440,10 @@ case "$cmd" in
   cleanup-backups)
     # Clean up old backup tarballs in /home/ubuntu
     "$WORKSPACE/scripts/cleanup-backups.sh" "$@"
+    ;;
+  cleanup-build-archive)
+    # Prune old build directories (default dry-run, keep 10)
+    "$WORKSPACE/scripts/cleanup-build-archive.sh" "$@"
     ;;
   email-clean)
     python3 "$WORKSPACE/email-cleaner.py" "$@"

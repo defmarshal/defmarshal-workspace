@@ -61,11 +61,30 @@ case "${1:-}" in
     fi
 
     # Execute actions (spawn agents for remediation)
+    LOCK_FILE="memory/.voyage-rate-lock"
     for act in "${ACTIONS[@]}"; do
       case "$act" in
         "memory reindex")
-          log "Triggering memory reindex"
-          ./quick memory-index >> "$LOGFILE" 2>&1 || true
+          # Rate‑lock: skip if lock exists and is younger than 1 hour
+          if [ -f "$LOCK_FILE" ] && [ $(($(date +%s) - $(stat -c %Y "$LOCK_FILE" 2>/dev/null || echo 0))) -lt 3600 ]; then
+            log "Skipping memory reindex due to active Voyage rate‑lock (lock: $(stat -c %y "$LOCK_FILE" 2>/dev/null || echo unknown))"
+          else
+            log "Triggering memory reindex"
+            # Capture output to detect rate limits and clear stale lock on success
+            if OUTPUT=$(./quick memory-index 2>&1); then
+              echo "$OUTPUT" | tee -a "$LOGFILE"
+              # Clear stale lock if present
+              rm -f "$LOCK_FILE" 2>/dev/null || true
+            else
+              # Even if non‑zero exit, still log output
+              echo "$OUTPUT" | tee -a "$LOGFILE"
+              # Check for rate limit indicators in output
+              if echo "$OUTPUT" | grep -qiE '429|rate limited'; then
+                log "Rate limit detected during reindex; setting lock for 1 hour"
+                touch "$LOCK_FILE"
+              fi
+            fi
+          fi
           ;;
         "disk cleanup")
           log "Triggering downloads cleanup (dry‑run first)"
