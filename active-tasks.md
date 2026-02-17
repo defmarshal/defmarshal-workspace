@@ -85,4 +85,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Afternoon status 3 (started: 2026-02-17 08:30 UTC, status: validated)
   - Verification: produced 2026-02-17-afternoon-3.md (492 B); INDEX updated; commit dafe774 pushed; archive at 41 files; systems green.
 
+- [isolated] research-agent - Pre‑evening note (started: 2026-02-17 08:32 UTC, status: validated)
+  - Verification: produced 2026-02-17-pre-evening-note.md (621 B); INDEX updated; commit 69db42e pushed; archive at 23 files; systems green.
+
 # End of file — keep under 2KB
