@@ -196,9 +196,14 @@ case "$cmd" in
     ;;
   weather)
     # Get current weather for a location (default: Bangkok)
-    # Uses wttr.in (no API key required)
+    # Uses wttr.in (no API key required); 5s timeout to avoid hangs
     loc="${1:-Bangkok}"
-    curl -s "wttr.in/${loc}?format=3" || echo "Weather fetch failed" >&2
+    if timeout 5 curl -s "wttr.in/${loc}?format=3"; then
+      true
+    else
+      echo "Weather fetch failed or timed out" >&2
+      exit 1
+    fi
     ;;
   git-status)
     git -C "$WORKSPACE" status --short
