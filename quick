@@ -382,7 +382,7 @@ case "$cmd" in
     AGENT_ID="$1"
     shift
     TASK="$*"
-    openclaw sessions_spawn --agent-id "$AGENT_ID" --task "$TASK" --timeout-seconds 600
+    openclaw agents spawn --agent-id "$AGENT_ID" --task "$TASK" --timeout-seconds 600
     ;;
   cleanup-agent-artifacts)
     "$WORKSPACE/cleanup-agent-artifacts.sh" "$@"

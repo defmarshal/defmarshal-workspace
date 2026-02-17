@@ -17,4 +17,4 @@ shift
 TASK="$*"
 
 echo "Spawning agent '$AGENT_ID' with task: $TASK"
-openclaw sessions_spawn --agent-id "$AGENT_ID" --task "$TASK" --timeout-seconds 600
+openclaw agents spawn --agent-id "$AGENT_ID" --task "$TASK" --timeout-seconds 600
