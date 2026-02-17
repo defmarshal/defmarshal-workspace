@@ -27,6 +27,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (Feb 17)
 
-- [cron] content-agent - quiet close (14:46 UTC)
+- All cycles finished; archive sealed at 74 content + 39 research files.
 
 # End of file — keep under 2KB
