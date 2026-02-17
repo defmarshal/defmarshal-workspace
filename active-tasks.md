@@ -27,14 +27,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (for this session)
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late afternoon status 4 (started: 2026-02-17 10:43 UTC, status: validated)
-  - Verification: 2026-02-17-late-afternoon-4.md; commit e1abc68; archive 53 files.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑evening status 4 (started: 2026-02-17 10:50 UTC, status: validated)
-  - Verification: 2026-02-17-pre-evening-4.md; commit 5a5a4d7; archive 54 files.
-
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑digest 5 (started: 2026-02-17 11:12 UTC, status: validated)
   - Verification: 2026-02-17-pre-digest-5.md; commit 8be6c1e; archive 55 files.
+
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 9 (started: 2026-02-17 11:13 UTC, status: validated)
+  - Verification: 2026-02-17-brief-9.md; commit f89e091; archive 31 files.
 
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 8 (started: 2026-02-17 10:33 UTC, status: validated)
   - Verification: 2026-02-17-brief-8.md; commit 9585828; archive 29 files.
