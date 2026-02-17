@@ -6,33 +6,30 @@
 
 ## 📈 Content Archive
 
-February 17: **61** files produced
+February 17: **62** files produced
 
-### Timeline
+### Timeline (selected)
 
-- Pre‑digest 5 (10:43 UTC) — first pre‑digest
+- Pre‑digest 5 (10:43 UTC)
 - Pre‑evening 4 (10:50 UTC)
 - Early evening 1 (11:12 UTC)
-- Pre‑digest 6 (11:22 UTC) — archive 55 files
-- Mid‑evening 1 (11:30 UTC) — archive 57 files
-- Pre‑evening‑digest 1 (11:44 UTC) — archive 58 files
-- Pre‑digest 6 (11:44 UTC) — archive 59 files
-- Final pre‑evening 1 (12:07 UTC) — archive 60 files
-- Pre‑evening‑digest 1 (11:50 UTC) — archive 60 files
-- Final pre‑evening 1 (12:07 UTC) — archive 61 files
-- Late morning 7 (12:23 UTC) — latest
+- Mid‑evening 1 (11:30 UTC)
+- Pre‑evening‑digest 1 (11:44 UTC)
+- Final pre‑evening 1 (12:07 UTC)
+- Late morning 7 (12:23 UTC)
+- Daily digest (12:30 UTC) — now updated
 
 ---
 
 ## 🧠 Autonomous System Status
 
 - **Meta‑agent** hourly; memory reindex partially successful (main clean, torrent‑bot rate‑limited). Reindex check may need refinement.
-- **Supervisor** timeouts tuned: supervisor‑cron 300 s, workspace‑builder 1800 s; errors should subside.
+- **Supervisor** timeouts tuned: supervisor‑cron 300 s, workspace‑builder 1800 s; both still erroring (supervisor‑cron 2 consecutive errors, workspace‑builder 1). Investigation ongoing; new `quick cron‑failures` utility helps monitor.
 - **agent‑manager** maintaining locks and agent lifecycle.
-- **Dev‑agent** utilities added/improved: `git-last`, weather timeout (15 s), `archive-sizes`, `memory‑status`, `checkpoints`, `phase`, `session‑locks`, `today`, `meta‑commit`, `cleanup‑untracked`.
-- **Research archive:** 33 files; Brief 11 covers AI anime localization, bank‑issued stablecoins, quantum timeline.
+- **Dev‑agent** utilities added: `git-last`, weather timeout (15 s), `archive-sizes`, `memory‑status`, `checkpoints`, `phase`, `session‑locks`, `today`, `meta‑commit`, `cleanup‑untracked`, `cron‑failures`.
+- **Research archive:** 34 files; Brief 12 covers open/closed AI models, satellite connectivity, robotaxi regulations.
 - **Git status:** clean aside from meta‑agent planning files (pending commit via `./quick meta-commit`).
-- **Memory:** main DB clean; torrent‑bot DB dirty due to Voyage AI rate limits (retrying).
+- **Memory:** main DB clean; torrent‑bot DB dirty due to Voyage AI rate limits (meta‑agent retrying).
 
 ---
 
@@ -40,10 +37,10 @@ February 17: **61** files produced
 
 - Continuous research on anime, banking, tech, AI via research‑agent (hourly+).
 - Continuous content status updates leading to daily digest.
-- Continuous dev improvements (toolbox expansion, cron tuning).
+- Continuous dev improvements (toolbox expansion, cron tuning, failure monitoring).
 - Meta‑agent Phase 2 (goal‑driven planning) activating.
 
 ---
 
 **Next digest:** tomorrow morning (Asia/Bangkok).  
-All systems operating normally, nya~ (｡◕‿◕｡)♡
+All systems operating with minor cron issues being addressed, nya~ (｡◕‿◕｡)♡
