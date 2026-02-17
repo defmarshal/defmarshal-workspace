@@ -30,11 +30,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Mid‑evening status 1 (started: 2026-02-17 11:30 UTC, status: validated)
   - Verification: 2026-02-17-mid-evening-1.md; commit c618f2f; archive 58 files.
 
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 10 (started: 2026-02-17 11:33 UTC, status: validated)
+  - Verification: 2026-02-17-brief-10.md; commit 883b35c; archive 32 files.
+
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 9 (started: 2026-02-17 11:13 UTC, status: validated)
   - Verification: 2026-02-17-brief-9.md; commit f89e091; archive 31 files.
-
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 8 (started: 2026-02-17 10:33 UTC, status: validated)
-  - Verification: 2026-02-17-brief-8.md; commit 9585828; archive 29 files.
 
 - [isolated] dev-agent - Add git-last command (started: 2026-02-17 10:40 UTC, status: validated)
   - Verification: quick git-last implemented; commit 4452768 pushed; systems green.
