@@ -87,6 +87,8 @@ Commands:
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
   supervisor-logs            Show supervisor log (memory/supervisor.log)
   gateway-info               Show detailed OpenClaw gateway status and troubleshooting info
+  gateway-logs               Show recent OpenClaw gateway logs (tail -n 20 /tmp/openclaw/openclaw-*.log)
+  openclaw-version           Show installed OpenClaw version (global npm)
   meta                       Run meta-agent once (autonomous planner)
   meta-report                Show latest meta-agent report
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
@@ -455,6 +457,24 @@ case "$cmd" in
       echo "Dashboard: http://127.0.0.1:18789/"
       echo "Service file: ~/.config/systemd/user/openclaw-gateway.service"
       echo "Logs: /tmp/openclaw/openclaw-*.log"
+    else
+      echo "openclaw CLI not found"
+    fi
+    ;;
+  gateway-logs)
+    # Show recent OpenClaw gateway logs
+    LOGFILE=$(ls -t /tmp/openclaw/openclaw-*.log 2>/dev/null | head -n1)
+    if [ -n "$LOGFILE" ]; then
+      echo "=== Last 20 lines of $LOGFILE ==="
+      tail -n 20 "$LOGFILE"
+    else
+      echo "No OpenClaw gateway logs found in /tmp/openclaw/"
+    fi
+    ;;
+  openclaw-version)
+    # Show installed OpenClaw version
+    if command -v openclaw &>/dev/null; then
+      npm list -g openclaw | head -5
     else
       echo "openclaw CLI not found"
     fi
