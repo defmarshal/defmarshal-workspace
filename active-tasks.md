@@ -40,4 +40,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] content-agent - Early morning update 2 (started: 2026-02-17 07:11 UTC, status: validated)
   - Verification: produced 2026-02-17-early-morning-2.md (511 B); INDEX updated; commit fdf1ca0 pushed; systems green.
 
+- [isolated] research-agent - Day sealed status (started: 2026-02-17 07:12 UTC, status: validated)
+  - Verification: produced 2026-02-17-sealed.md (499 B); INDEX updated; commit ffb2998 pushed; archive complete (18 files); systems green.
+
 # End of file — keep under 2KB
