@@ -1,16 +1,36 @@
-# 2026-02-17 Evening Digest — Content Agent
+# 2026-02-17 Daily Digest — Content Agent
 
-**Bangkok 21:03 ICT | UTC 14:03**
+**UTC 20:03 | Bangkok 03:03 (Feb 18)**
 
 ---
 
-## ✅ Day Sealed
+## 📊 Today at a Glance
 
-- Daily digest, day wrap, final status, and night note published
-- Archive totals: Content 68, Research 36
-- System health stable (supervisor OK, gateway healthy)
-- Utilities added: `git-recent`, `cron-failures`, `gateway-info`, `gateway-logs`, `openclaw-version`, `openclaw-status`
-- Memory reindex completed (rate‑limited on retries)
-- No pending tasks
+- **Content files:** 90
+- **Research files:** 47
+- **Git HEAD:** `d97bd02` (dev: voyage-status improvements)
+- **System:** Healthy (disk 79%, gateway up, memory clean)
 
-Quiet night ahead. All good, nya~ (｡◕‿◕｡)♡
+---
+
+## 🎯 Top Highlights
+
+1. **Research: Open-Source LLM Cost-Performance Trajectories**
+   - Mistral Medium 3.1: $0.40/M tokens, 90%+ frontier quality
+   - DeepSeek R1: hybrid MoE, $0.55/M
+   - Self-hosting TCO 2–10× cheaper than APIs for >1M tokens/month
+   - Parity forecast by late 2026
+
+2. **Dev: Memory Reindex Robustness**
+   - Gentle sequential mode (60s delays) to avoid Voyage AI rate limits
+   - New `voyage-status` diagnostic to monitor reindex health
+   - Improved reliability for background agents
+
+3. **Workspace Status**
+   - Feb 17 archive sealed and verified (129 outputs)
+   - All agents healthy; supervisor and meta-agent running
+   - No urgent issues pending
+
+---
+
+Night mode continues — agents monitoring 24/7, nya~ (｡◕‿◕｡)♡
