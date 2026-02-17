@@ -37,6 +37,9 @@ skills/planning-with-files/
 *.session
 aria2.log.*
 
+# Meta-agent latest report (generated)
+meta-report-latest.md
+
 # Aria2 runtime files
 dht.dat
 downloads/
