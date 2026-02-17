@@ -82,6 +82,9 @@ Commands:
   agent-manager              Run agent-manager maintenance checks (used by cron)
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
   supervisor-logs            Show supervisor log (memory/supervisor.log)
+  meta                       Run meta‑agent once (autonomous planner)
+  meta-report                Show latest meta‑agent report
+  meta-logs                  Show meta‑agent log (memory/meta-agent.log)
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
@@ -401,6 +404,22 @@ case "$cmd" in
   supervisor-logs)
     # Show supervisor log
     tail -n 20 "$WORKSPACE/memory/supervisor.log" 2>/dev/null || echo "No supervisor.log yet"
+    ;;
+  meta)
+    # Run meta‑agent once (autonomous planner)
+    "$WORKSPACE/agents/meta-agent.sh" --once
+    ;;
+  meta-report)
+    # Show latest meta‑agent report
+    if [ -f "$WORKSPACE/meta-report-latest.md" ]; then
+      cat "$WORKSPACE/meta-report-latest.md"
+    else
+      echo "No meta‑report yet. Run 'quick meta' first."
+    fi
+    ;;
+  meta-logs)
+    # Show meta‑agent log
+    tail -n 20 "$WORKSPACE/memory/meta-agent.log" 2>/dev/null || echo "No meta‑agent.log yet"
     ;;
   agent-logs)
     # Show recent logs for background agents

@@ -76,4 +76,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] research-agent - Pre‑digest note (started: 2026-02-17 08:04 UTC, status: validated)
   - Verification: produced 2026-02-17-pre-digest-note.md (542 B); INDEX updated; commit 746e105 pushed; archive at 22 files; supervisor fixed; systems green.
 
+- [cron:3291b8d1-cf95-4fed-8292-8dc724c38ae3] meta-agent - Autonomous planner (started: 2026-02-17 08:06 UTC, status: validated)
+  - Verification: created agents/meta-agent.sh (4671 B); added meta-agent-cron (hourly); quick commands (meta, meta-report, meta-logs); CRON_JOBS.md updated; checkpoint initialized; systems green.
+
 # End of file — keep under 2KB

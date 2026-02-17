@@ -1,0 +1,17 @@
+{
+  "current_phase": 1,
+  "phase_1": {
+    "status": "in_progress",
+    "steps_completed": [],
+    "last_error": null
+  },
+  "phase_2": {
+    "status": "pending",
+    "last_plan_file": null,
+    "execution_outcomes": []
+  },
+  "meta_cycle_count": 0,
+  "last_meta_report": null,
+  "created_at": "2026-02-17T08:05:00Z",
+  "updated_at": "2026-02-17T08:05:00Z"
+}

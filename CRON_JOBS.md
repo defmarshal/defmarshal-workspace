@@ -133,6 +133,13 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Delivery**: `announce` (only when alerts)
     - **Description**: Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Part of the ultimate autonomous system.
 
+20. **meta-agent-cron**
+    - **Schedule**: Every hour (`0 * * * *`) in Asia/Bangkok
+    - **Payload**: agentTurn executing `./agents/meta-agent.sh --once`
+    - **Log**: `memory/meta-agent.log`
+    - **Delivery**: `announce` (summary of actions taken)
+    - **Description**: Autonomous planner that observes system health, decides on maintenance/improvement actions, spawns sub‑agents to execute them, validates outcomes, and commits changes with `meta:` prefix. Core of the self‑extending system.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
