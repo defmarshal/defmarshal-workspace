@@ -27,6 +27,7 @@ Commands:
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
   quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00–08:00) and whether system is in quiet mode
   health          Show workspace health summary (workspace-health)
+  summary         Show one-line system summary (status, disk, updates, git)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   time            Show current time in UTC and Bangkok (Asia/Bangkok)
   weather [loc]   Get current weather (default: Bangkok) via wttr.in
@@ -64,6 +65,7 @@ Commands:
   content-index-update        Regenerate content/INDEX.md to reflect current content files.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   reports                     List daily digest reports in reports/ (most recent first)
+  digest                     Show the latest daily digest report from reports/ (cat the most recent)
   social-monitor                  Run the social monitor agent (Twitter trending digest)
   daily-digest [YYYY-MM-DD]       Generate daily digest report (default: today UTC). Saves to reports/ and prints.
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
@@ -188,6 +190,12 @@ case "$cmd" in
       fi
       printf "%-25s %-15s %-8s %-16s %-10s %6ss\n" "$name" "$expr" "${tz:0:3}" "$nextdt" "$status" "$duration"
     done || echo "Error: jq not available or openclaw CLI issue"
+    ;;
+  summary)
+    # One-line system summary
+    health=$(./quick health)
+    git=$(git status --short | wc -l | tr -d ' ')
+    echo "Status: ${health} | Git: ${git} changed | $(TZ=Asia/Bangkok date '+%H:%M ICT')"
     ;;
   quiet-hours)
     # Show current quiet hours status and next transitions
@@ -349,6 +357,15 @@ case "$cmd" in
       exit 1
     fi
     ls -t "$WORKSPACE/reports"/*.md 2>/dev/null | xargs -r basename -a | sed 's/\.md$//'
+    ;;
+  digest)
+    # Show the latest daily digest report from reports/
+    latest=$(ls -t "$WORKSPACE/reports"/*-daily-digest.md 2>/dev/null | head -1)
+    if [ -z "$latest" ]; then
+      echo "No daily digest reports found in reports/" >&2
+      exit 1
+    fi
+    cat "$latest"
     ;;
   social-monitor)
     # Run the social monitor agent (Twitter trending digest)
