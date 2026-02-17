@@ -43,6 +43,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - `quick updates-apply [--dry-run|--execute]`: Apply updates (dry-run default; `--execute` to upgrade).
 - `quick cleanup-agent-artifacts [--execute] [--force]`: Clean stale agent lock files and empty plan files. Respects quiet hours; use `--force` to run during quiet hours.
 - `quick gateway-info`: Show gateway status and remote access setup instructions.
+- `quick gateway-watchdog`: Show gateway watchdog log (last 20 lines).
 - `quick hygiene`: Run workspace hygiene check (CRLF line endings, executable bits, large untracked files, caches).
 - `quick cleanup-downloads [--days N] [--execute] [--verbose]`: Clean old downloads in `workspace/downloads/` (default retention 30 days). Scheduled weekly Sun 06:00 Bangkok.
 - `quick cleanup-backups [--keep N] [--execute] [--verbose]`: Clean old backup tarballs in `/home/ubuntu/`. Keeps most recent N (default 1). Scheduled weekly Sun 07:00 Bangkok.

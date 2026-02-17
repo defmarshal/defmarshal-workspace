@@ -14,6 +14,7 @@ Commands:
   dash            Run the CLI dashboard (dashboard.py)
   web             Run the web dashboard (web-dashboard.py)
   gateway-info    Show gateway status and remote access setup instructions
+  gateway-watchdog		Show gateway watchdog log (last 20 lines)
   hygiene         Run workspace hygiene check (CRLF, exec bits, large files, caches)
   mem             Show recent memories (claw memory list)
   search <query>  Search memories (claw memory search)
@@ -362,6 +363,9 @@ case "$cmd" in
     ;;
   gateway-info)
     "$WORKSPACE/gateway-info.sh"
+    ;;
+  gateway-watchdog)
+    tail -n 20 "$WORKSPACE/gateway-watchdog.log" 2>/dev/null || echo "No watchdog log yet."
     ;;
   hygiene)
     "$WORKSPACE/workspace-hygiene-check.sh"

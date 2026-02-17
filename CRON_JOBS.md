@@ -7,6 +7,13 @@ This file documents all scheduled tasks for the workspace, including system cron
 As of 2026‑02‑16, **all recurring workspace tasks have been migrated to OpenClaw cron**. The system crontab now only retains the agent startup hook (and a few unrelated nanobot jobs which are outside this workspace's scope).
 
 ### Agent Startup (Daemon Bootstrap)
+### Gateway Watchdog (system crontab)
+- **Schedule**: Every 5 minutes (`*/5 * * * *`)
+- **Command**: `/home/ubuntu/.openclaw/workspace/scripts/gateway-watchdog.sh`
+- **Log**: `gateway-watchdog.log` (rotated by log‑rotate)
+- **Description**: Checks if OpenClaw gateway is active; restarts it if down. Runs outside OpenClaw for reliability.
+
+---
 - **Schedule**: `@reboot` with 60‑second delay
 - **Command**:
   ```bash
