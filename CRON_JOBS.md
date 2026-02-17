@@ -126,6 +126,13 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Log**: `agents/vishwakarma/vishwakarma.log`
     - **Description**: Game development planning agent that designs game projects and spawns Krishna agent to build them.
 
+19. **supervisor-cron**
+    - **Schedule**: Every 5 minutes (`*/5 * * * *`) in Asia/Bangkok
+    - **Payload**: agentTurn executing `./agents/supervisor.sh`
+    - **Log**: `memory/supervisor.log`
+    - **Delivery**: `announce` (only when alerts)
+    - **Description**: Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Part of the ultimate autonomous system.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

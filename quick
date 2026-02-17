@@ -80,6 +80,8 @@ Commands:
                               Example: quick cleanup-backups --keep 3 --execute
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder, manager). Default: all.
   agent-manager              Run agent-manager maintenance checks (used by cron)
+  supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
+  supervisor-logs            Show supervisor log (memory/supervisor.log)
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
@@ -391,6 +393,14 @@ case "$cmd" in
   agent-manager)
     # Run agent-manager maintenance once (used by cron)
     "$WORKSPACE/agents/agent-manager.sh" --once
+    ;;
+  supervisor)
+    # Run supervisor health check (used by cron)
+    "$WORKSPACE/agents/supervisor.sh"
+    ;;
+  supervisor-logs)
+    # Show supervisor log
+    tail -n 20 "$WORKSPACE/memory/supervisor.log" 2>/dev/null || echo "No supervisor.log yet"
     ;;
   agent-logs)
     # Show recent logs for background agents
