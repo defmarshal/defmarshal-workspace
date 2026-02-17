@@ -39,4 +39,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] dev-agent - Tune cron timeouts (supervisor-cron 60→300, workspace-builder 600→900) (started: 2026-02-17 12:01 UTC, status: validated)
   - Verification: Updated cron job payload timeouts via gateway; error rates should drop.
 
+- [isolated] dev-agent - Increase workspace-builder timeout to 1800s after continued timeouts (started: 2026-02-17 12:20 UTC, status: validated)
+  - Verification: Payload timeout set to 1800s; next run should complete without error.
+
 # End of file — keep under 2KB
