@@ -78,7 +78,7 @@ Commands:
   cleanup-backups [options]   Clean up old openclaw-backup tarballs in /home/ubuntu (default: dry-run, keep 1)
                              Options: --keep N, --execute, --verbose
                               Example: quick cleanup-backups --keep 3 --execute
-  agent-logs [name]           Show recent logs for an agent (dev, content, research, builder). Default: all.
+  agent-logs [name]           Show recent logs for an agent (dev, content, research, builder, manager). Default: all.
   agent-manager              Run agent-manager maintenance checks (used by cron)
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
@@ -408,6 +408,9 @@ case "$cmd" in
       builder|workspace-builder)
         tail -n 20 "$WORKSPACE/workspace-builder.log" 2>/dev/null || echo "No workspace-builder.log found"
         ;;
+      manager|agent-manager)
+        tail -n 20 "$WORKSPACE/memory/agent-manager.log" 2>/dev/null || echo "No agent-manager.log found"
+        ;;
       all)
         echo "== DEV-AGENT (last 10 lines) =="
         tail -n 10 "$WORKSPACE/dev-agent.log" 2>/dev/null || echo "No dev-agent.log"
@@ -415,9 +418,11 @@ case "$cmd" in
         tail -n 10 "$WORKSPACE/content-agent.log" 2>/dev/null || echo "No content-agent.log"
         echo -e "\n== RESEARCH-AGENT (last 10 lines) =="
         tail -n 10 "$WORKSPACE/research-agent.log" 2>/dev/null || echo "No research-agent.log"
+        echo -e "\n== AGENT-MANAGER (last 10 lines) =="
+        tail -n 10 "$WORKSPACE/memory/agent-manager.log" 2>/dev/null || echo "No agent-manager.log"
         ;;
       *)
-        echo "Usage: quick agent-logs [dev|content|research|builder|all]" >&2
+        echo "Usage: quick agent-logs [dev|content|research|builder|manager|all]" >&2
         exit 1
         ;;
     esac
