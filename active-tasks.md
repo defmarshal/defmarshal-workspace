@@ -27,6 +27,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (Feb 17)
 
-- All cycles finished.
+- All cycles concluded.
 
 # End of file — keep under 2KB
