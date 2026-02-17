@@ -25,9 +25,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [daemon] torrent-bot (running)
 
-## Completed (Feb 17)
+## Completed (recent)
 
-- All cycles concluded; archive sealed at 76 content + 39 research files.
-- Gateway token rotation completed; UI accessible via Tailscale.
+- [isolated] dev-agent - Add supervisor-schedule utility (16:40 UTC)
 
 # End of file — keep under 2KB
