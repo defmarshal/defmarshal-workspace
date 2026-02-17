@@ -114,12 +114,7 @@ case "${1:-}" in
   --daemon)
     log "Meta‑Agent daemon starting (PID $$)"
     while true; do
-      # Respect quiet hours (23:00–08:00 Asia/Bangkok)
-      HOUR=$(TZ=Asia/Bangkok date +%H)
-      if (( HOUR >= 23 || HOUR < 8 )); then
-        sleep 3600
-        continue
-      fi
+      # Note: Quiet hours removed 2026-02-17; agents run 24/7
       # Run one cycle
       bash "$0" --once
       # Wait an hour

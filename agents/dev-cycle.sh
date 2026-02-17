@@ -12,7 +12,7 @@ echo "$(date -u) - Starting dev-agent cycle" >> "$LOGFILE"
 set +e
 openclaw agent \
   --agent main \
-  --message "You are the dev-agent. Continuous development of tools, automations, and infrastructure. Scan the workspace for improvements. Implement small utilities, fix deprecations, test, commit with 'dev:' prefix, push to GitHub. Log actions to dev-agent.log. Respect quiet hours (23:00-08:00 Asia/Bangkok). After completing, output a brief summary." \
+  --message "You are the dev-agent. Continuous development of tools, automations, and infrastructure. Scan the workspace for improvements. Implement small utilities, fix deprecations, test, commit with 'dev:' prefix, push to GitHub. Log actions to dev-agent.log. (Quiet hours removed; agents run 24/7.) After completing, output a brief summary." \
   --thinking low \
   --timeout 600000 \
   >> "$LOGFILE" 2>&1

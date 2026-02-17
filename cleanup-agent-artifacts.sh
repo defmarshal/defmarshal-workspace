@@ -21,13 +21,12 @@ Clean up stale agent artifacts:
 
 Options:
   --execute    Actually delete files (default: dry-run only)
-  --force      Run even during quiet hours (23:00–08:00 Asia/Bangkok)
+  --force      (Deprecated) Kept for compatibility; no longer needed
   -h, --help   Show this help message
 
 Examples:
   $0                       # Dry-run: show what would be deleted
-  $0 --execute             # Delete stale artifacts (respects quiet hours)
-  $0 --execute --force     # Delete even during quiet hours
+  $0 --execute             # Delete stale artifacts (runs 24/7)
 EOF
   exit 1
 }
@@ -40,6 +39,7 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     --force)
+      # Kept for backward compatibility; no longer needed but harmless
       FORCE=true
       shift
       ;;
@@ -53,15 +53,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# Check quiet hours (Asia/Bangkok)
-if [ "$FORCE" = false ]; then
-  CURRENT_HOUR=$(TZ='Asia/Bangkok' date +%H)
-  if (( 23 <= 10#$CURRENT_HOUR || 10#$CURRENT_HOUR < 8 )); then
-    echo "Quiet hours active (Bangkok $CURRENT_HOUR:00)."
-    echo "Use --force to run anyway."
-    exit 0
-  fi
-fi
+# Note: Quiet hours were removed system-wide on 2026-02-17; all agents run 24/7.
+# The --force flag is retained for compatibility but has no effect.
 
 echo "== Agent Artifact Cleanup =="
 echo "Workspace: $WORKSPACE"

@@ -104,7 +104,7 @@ Commands:
   meta-commit                Auto‑commit meta‑agent planning files (findings.md, progress.md, task_plan.md) if changed
   agni-status                Show Agni agent status (running? lock? last log)
   cleanup-untracked [--execute]  List or delete untracked files (default: list; --execute to delete)
-  cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
+  cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Runs 24/7.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
   cron              List OpenClaw cron jobs (concise summary)
@@ -321,15 +321,12 @@ case "$cmd" in
     echo "Status: ${health} | Git: ${git} changed | $(TZ=Asia/Bangkok date '+%H:%M ICT')"
     ;;
   quiet-hours)
-    # Show current quiet hours status and next transitions
-    echo "Quiet Hours (Asia/Bangkok): 23:00-08:00"
+    # Show current quiet hours status — NOTE: quiet hours removed system-wide on 2026-02-17
+    echo "Quiet Hours (Asia/Bangkok): 23:00-08:00 (REMOVED)"
     echo "Current time (Bangkok): $(TZ='Asia/Bangkok' date '+%H:%M')"
-    H=$(TZ='Asia/Bangkok' date +%H)
-    if (( 23 <= H || H < 8 )); then
-      echo "Status: QUIET (night window active)"
-    else
-      echo "Status: ACTIVE (daytime)"
-    fi
+    echo "Status: ALL AGENTS RUN 24/7 (quiet hours no longer enforced)"
+    echo ""
+    echo "HEARTBEAT.md remains the source of truth for scheduling."
     ;;
   health)
     "$WORKSPACE/workspace-health"

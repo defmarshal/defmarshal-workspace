@@ -3,7 +3,7 @@
 # Supports one-shot or daemon (loop) mode for permanent 24/7 agents.
 # Usage:
 #   agents/spawner-agent.sh <agent-id> <task>           # one-shot
-#   agents/spawner-agent.sh <agent-id> <task> --daemon  # run as persistent daemon (respects quiet hours)
+#   agents/spawner-agent.sh <agent-id> <task> --daemon  # run as persistent daemon (24/7)
 #
 # Example: agents/spawner-agent.sh content-agent "Create daily digest" --daemon
 
@@ -45,12 +45,7 @@ else
   echo "Starting daemon for agent '$AGENT_ID' with task: $TASK"
   echo "Press Ctrl+C to stop."
   while true; do
-    HOUR=$(TZ=Asia/Bangkok date +%H)
-    if (( HOUR >= 23 || HOUR < 8 )); then
-      echo "$(TZ=Asia/Bangkok date '+%Y-%m-%d %H:%M') Quiet hours, sleeping..."
-      sleep 3600
-      continue
-    fi
+    # Quiet hours check removed 2026-02-17; run 24/7
     if ! openclaw sessions list --json 2>/dev/null | grep -q "\"label\":\"$AGENT_ID\""; then
       echo "$(TZ=Asia/Bangkok date '+%Y-%m-%d %H:%M') Spawning $AGENT_ID..."
       openclaw agent --agent "$AGENT_ID" --message "$TASK" --thinking low --timeout 600000 || true
