@@ -86,6 +86,7 @@ Commands:
   agent-manager              Run agent-manager maintenance checks (used by cron)
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
   supervisor-logs            Show supervisor log (memory/supervisor.log)
+  supervisor-status          Run supervisor health check and show concise summary
   gateway-info               Show detailed OpenClaw gateway status and troubleshooting info
   gateway-logs               Show recent OpenClaw gateway logs (tail -n 20 /tmp/openclaw/openclaw-*.log)
   openclaw-version           Show installed OpenClaw version (global npm)
@@ -450,6 +451,28 @@ case "$cmd" in
   supervisor-logs)
     # Show supervisor log
     tail -n 20 "$WORKSPACE/memory/supervisor.log" 2>/dev/null || echo "No supervisor.log yet"
+    ;;
+  supervisor-status)
+    # Run supervisor health check and show concise summary
+    echo "=== Supervisor Health Check ==="
+    if [ -x "$WORKSPACE/agents/supervisor.sh" ]; then
+      # Run supervisor; it prints SUPERISOR ALERT on issues, otherwise silent
+      if OUTPUT=$("$WORKSPACE/agents/supervisor.sh" 2>&1); then
+        # Check if any alerts were added (ALERTS array printed)
+        if echo "$OUTPUT" | grep -q "SUPERVISOR ALERT:"; then
+          echo "Status: ALERT"
+          echo "$OUTPUT" | sed -n '/SUPERVISOR ALERT:/,/^$/p'
+        else
+          echo "Status: OK"
+          echo "All checks passed."
+        fi
+      else
+        echo "Status: ERROR"
+        echo "Supervisor script failed to run."
+      fi
+    else
+      echo "Supervisor script not found or not executable: $WORKSPACE/agents/supervisor.sh"
+    fi
     ;;
   gateway-info)
     # Show detailed OpenClaw gateway status and troubleshooting info
