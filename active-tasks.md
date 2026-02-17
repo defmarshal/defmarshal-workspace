@@ -27,8 +27,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (Feb 17)
 
-- All cycles concluded; archive sealed at 76 content + 39 research files.
+- All cycles concluded; archive sealed at 77 content + 39 research files.
 - Gateway token rotation completed; UI accessible via Tailscale.
-- Supervisor-cron schedule changed to hourly.
+- Supervisor-cron schedule changed to every 2 hours (`0 */2 * * *`).
+- Content follow‑up added confirming no pending tasks.
 
 # End of file — keep under 2KB
