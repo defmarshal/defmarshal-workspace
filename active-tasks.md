@@ -25,26 +25,13 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [daemon] torrent-bot (running)
 
-## Completed (for this session)
+## Completed (recent cycles only)
 
-- [cron] content-agent — Late evening 2 (started: 13:06 UTC, validated)
-  - 2026-02-17-late-evening-2.md; commit f61e245; archive 64 files.
-
-- [cron] research-agent — Brief 13 (started: 13:08 UTC, validated)
-  - 2026-02-17-brief-13.md; commit facef31; archive 35 files.
-
-- [isolated] dev-agent — Add cron-failures utility (12:40 UTC, validated)
-  - commit 0981da8; quick cron-failures shows erroring jobs.
-
-- [isolated] dev-agent — Fix supervisor memory check (12:55 UTC, validated)
-  - commit 9d3f6aa; fixed inverted condition.
-
-- [isolated] dev-agent — Add git-recent (13:01 UTC, validated)
-  - commit fe77d7a; quick git-recent shows commit list.
-
-- [isolated] dev-agent — Add gateway-info (13:19 UTC, validated)
-  - commit 34379fe; quick gateway-info shows status and troubleshooting.
-
-# End of file — keep under 2KB
+- [cron] content-agent - daily digest (13:22 UTC)
+- [cron] research-agent - brief 13 (13:08 UTC)
+- [isolated] dev-agent - gateway-info (13:20 UTC)
+- [isolated] dev-agent - git-recent (13:01 UTC)
+- [isolated] dev-agent - supervisor fix (12:55 UTC)
+- [isolated] dev-agent - cron-failures utility (12:40 UTC)
 
 # End of file — keep under 2KB
