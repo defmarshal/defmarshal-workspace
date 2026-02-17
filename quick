@@ -28,6 +28,7 @@ Commands:
   health          Show workspace health summary (workspace-health)
   holidays        Show upcoming Indonesian holidays (show-holidays)
   time            Show current time in UTC and Bangkok (Asia/Bangkok)
+  weather [loc]   Get current weather (default: Bangkok) via wttr.in
   git-status      Show brief git status
   git-today       Show git commits from today (since midnight)
   git-summary     Show recent commit summary by prefix (dev:, research:, content:, infra:, chore:)
@@ -192,6 +193,12 @@ case "$cmd" in
     # Show current time in UTC and Asia/Bangkok
     echo "UTC:       $(TZ='UTC' date '+%Y-%m-%d %H:%M:%S %Z')"
     echo "Bangkok:  $(TZ='Asia/Bangkok' date '+%Y-%m-%d %H:%M:%S %Z')"
+    ;;
+  weather)
+    # Get current weather for a location (default: Bangkok)
+    # Uses wttr.in (no API key required)
+    loc="${1:-Bangkok}"
+    curl -s "wttr.in/${loc}?format=3" || echo "Weather fetch failed" >&2
     ;;
   git-status)
     git -C "$WORKSPACE" status --short
