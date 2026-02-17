@@ -90,6 +90,7 @@ Commands:
   gateway-logs               Show recent OpenClaw gateway logs (tail -n 20 /tmp/openclaw/openclaw-*.log)
   openclaw-version           Show installed OpenClaw version (global npm)
   openclaw-status            Show OpenClaw system status (sessions, channels, recipients)
+  uptime                     Show system and OpenClaw gateway uptime
   meta                       Run meta-agent once (autonomous planner)
   meta-report                Show latest meta-agent report
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
@@ -486,6 +487,23 @@ case "$cmd" in
       openclaw status
     else
       echo "openclaw CLI not found"
+    fi
+    ;;
+  uptime)
+    # Show system and OpenClaw gateway uptime
+    echo "=== System Uptime ==="
+    uptime -p 2>/dev/null || uptime
+    if command -v systemctl &>/dev/null; then
+      echo -n "Gateway service: "
+      systemctl --user show openclaw-gateway.service --property=ActiveState,ActiveEnterTimestamp --value 2>/dev/null | tr '\n' ' ' || echo "unavailable"
+      echo
+    else
+      PID=$(pgrep -f "openclaw.*gateway" | head -n1)
+      if [ -n "$PID" ]; then
+        echo "Gateway PID: $PID (start time: $(ps -p $PID -o lstart=))"
+      else
+        echo "Gateway process not found"
+      fi
     fi
     ;;
   meta)
