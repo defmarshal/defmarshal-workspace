@@ -93,6 +93,7 @@ Commands:
   openclaw-status            Show OpenClaw system status (sessions, channels, recipients)
   uptime                     Show system and OpenClaw gateway uptime
   apt-check                  Show APT update count and short status
+  gateway-token              Show gateway device token info and rotate if needed
   meta                       Run meta-agent once (autonomous planner)
   meta-report                Show latest meta-agent report
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
@@ -541,6 +542,34 @@ case "$cmd" in
       fi
     else
       echo "apt-get not available"
+    fi
+    ;;
+  gateway-token)
+    # Show gateway device token info and rotate if needed
+    echo "=== OpenClaw Gateway Token ==="
+    if ! command -v openclaw &>/dev/null; then
+      echo "openclaw CLI not found"
+      exit 1
+    fi
+    # Check current token status via gateway status
+    if openclaw gateway status &>/dev/null; then
+      echo "RPC probe: OK (device token valid)"
+    else
+      echo "RPC probe: FAILED (device token mismatch or other issue)"
+      echo ""
+      read -p "Rotate gateway device token now? (y/N) " -r REPLY
+      if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+        echo "Rotating device token..."
+        if openclaw gateway rotate-device-token; then
+          echo "Token rotated successfully. Gateway should restart."
+          echo "Run 'openclaw gateway status' to verify."
+        else
+          echo "Rotation failed; check logs."
+          exit 1
+        fi
+      else
+        echo "Skipping rotation. Fix with: openclaw gateway rotate-device-token"
+      fi
     fi
     ;;
   meta)
