@@ -25,7 +25,7 @@ Commands:
   memory-reindex Force reindex of memory files (openclaw memory index)
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
-  quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00–08:00) and whether system is in quiet mode
+  quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00-08:00) and whether system is in quiet mode
   health          Show workspace health summary (workspace-health)
   summary         Show one-line system summary (status, disk, updates, git)
   holidays        Show upcoming Indonesian holidays (show-holidays)
@@ -82,9 +82,11 @@ Commands:
   agent-manager              Run agent-manager maintenance checks (used by cron)
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
   supervisor-logs            Show supervisor log (memory/supervisor.log)
-  meta                       Run meta‑agent once (autonomous planner)
-  meta-report                Show latest meta‑agent report
-  meta-logs                  Show meta‑agent log (memory/meta-agent.log)
+  meta                       Run meta-agent once (autonomous planner)
+  meta-report                Show latest meta-agent report
+  meta-logs                  Show meta-agent log (memory/meta-agent.log)
+  checkpoints                Show autonomous system checkpoints (autonomous-checkpoints.json)
+  phase                      Show current autonomous phase status (from checkpoints)
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
@@ -94,7 +96,7 @@ Commands:
   gateway-status              Show detailed gateway status (service, port, RPC)
   gateway-fix                 Fix gateway issues (stop stray processes, restart cleanly)
   validate                    Run comprehensive validation (health, memory, agents, git, cron, logs)
-  status                      Show concise one‑line system summary (local only, no approvals)
+  status                      Show concise one-line system summary (local only, no approvals)
   verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
   setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
   help                       Show this help message
@@ -192,7 +194,7 @@ case "$cmd" in
       if [ "$nextMs" -gt 0 ]; then
         nextdt=$(date -u -d "@$((nextMs/1000))" '+%Y-%m-%d %H:%M' 2>/dev/null || echo "?")
       else
-        nextdt="—"
+        nextdt="-"
       fi
       printf "%-25s %-15s %-8s %-16s %-10s %6ss\n" "$name" "$expr" "${tz:0:3}" "$nextdt" "$status" "$duration"
     done || echo "Error: jq not available or openclaw CLI issue"
@@ -205,7 +207,7 @@ case "$cmd" in
     ;;
   quiet-hours)
     # Show current quiet hours status and next transitions
-    echo "Quiet Hours (Asia/Bangkok): 23:00–08:00"
+    echo "Quiet Hours (Asia/Bangkok): 23:00-08:00"
     echo "Current time (Bangkok): $(TZ='Asia/Bangkok' date '+%H:%M')"
     H=$(TZ='Asia/Bangkok' date +%H)
     if (( 23 <= H || H < 8 )); then
@@ -406,20 +408,37 @@ case "$cmd" in
     tail -n 20 "$WORKSPACE/memory/supervisor.log" 2>/dev/null || echo "No supervisor.log yet"
     ;;
   meta)
-    # Run meta‑agent once (autonomous planner)
+    # Run meta-agent once (autonomous planner)
     "$WORKSPACE/agents/meta-agent.sh" --once
     ;;
   meta-report)
-    # Show latest meta‑agent report
+    # Show latest meta-agent report
     if [ -f "$WORKSPACE/meta-report-latest.md" ]; then
       cat "$WORKSPACE/meta-report-latest.md"
     else
-      echo "No meta‑report yet. Run 'quick meta' first."
+      echo "No meta-report yet. Run 'quick meta' first."
     fi
     ;;
   meta-logs)
-    # Show meta‑agent log
-    tail -n 20 "$WORKSPACE/memory/meta-agent.log" 2>/dev/null || echo "No meta‑agent.log yet"
+    # Show meta-agent log
+    tail -n 20 "$WORKSPACE/memory/meta-agent.log" 2>/dev/null || echo "No meta-agent.log yet"
+    ;;
+  checkpoints)
+    # Show autonomous system checkpoints
+    if [ -f "$WORKSPACE/autonomous-checkpoints.json" ]; then
+      cat "$WORKSPACE/autonomous-checkpoints.json"
+    else
+      echo "No checkpoints file yet."
+    fi
+    ;;
+  phase)
+    # Show current phase status
+    if [ -f "$WORKSPACE/autonomous-checkpoints.json" ]; then
+      echo "Autonomous System Phase Status:"
+      jq -r '. | "Current phase: \(.current_phase // "unset")\nMeta cycles: \(.meta_cycle_count // 0)\nLast report: \(.last_meta_report // "none")"' "$WORKSPACE/autonomous-checkpoints.json" 2>/dev/null || cat "$WORKSPACE/autonomous-checkpoints.json"
+    else
+      echo "No phase info yet."
+    fi
     ;;
   agent-logs)
     # Show recent logs for background agents
@@ -535,7 +554,7 @@ case "$cmd" in
     bash "$WORKSPACE/gateway-fix.sh"
     ;;
   status)
-    # Concise one‑line system summary (local only)
+    # Concise one-line system summary (local only)
     disk=$(df -h / | awk 'NR==2 {print $5}')
     load=$(uptime | awk -F"load average: " '{print $2}')
     mem=$(free -h | awk '/^Mem:/ {print $7 "/" $2}')
