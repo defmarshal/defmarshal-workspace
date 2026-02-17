@@ -105,6 +105,7 @@ Commands:
   verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
   session-locks [--clear]     List stale session locks (default) or clear them (--clear)
   setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
+  cron-failures  Show cron jobs with recent errors (consecutiveErrors > 0 or lastStatus != "ok")
   help                       Show this help message
 
 Examples:
@@ -212,6 +213,19 @@ case "$cmd" in
       fi
       printf "%-25s %-15s %-8s %-16s %-10s %6ss\n" "$name" "$expr" "${tz:0:3}" "$nextdt" "$status" "$duration"
     done || echo "Error: jq not available or openclaw CLI issue"
+    ;;
+  cron-failures)
+    # Show cron jobs with errors (consecutiveErrors > 0 or lastStatus != "ok")
+    echo "Failed/Error Cron Jobs:"
+    echo "----------------------"
+    openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.state.consecutiveErrors > 0 or .state.lastStatus != "ok") | "\(.name)|\(.state.lastStatus)|\(.state.consecutiveErrors)|\(.state.nextRunAtMs // 0)"' | while IFS='|' read -r name status errors nextMs; do
+      if [ "$nextMs" -gt 0 ]; then
+        nextdt=$(date -u -d "@$((nextMs/1000))" '+%Y-%m-%d %H:%M' 2>/dev/null || echo "?")
+      else
+        nextdt="-"
+      fi
+      printf "%-25s %-10s %-6s %-16s\n" "$name" "$status" "$errors" "$nextdt"
+    done
     ;;
   summary)
     # One-line system summary
