@@ -50,3 +50,19 @@ agents/**/.lock
 agents/vishwakarma/plans/
 agents/krishna/logs/
 agents/krishna/reports/
+
+# Additional agent runtime artifacts
+agents/agni/
+agents/rudra/
+agents/vishwakarma/logs/
+
+# Recursive editor swap/backup files
+**/*.swp
+**/*~
+**/*.bak
+
+# Recursive log files
+**/*.log
+**/*.log.*
+
+# End of additions

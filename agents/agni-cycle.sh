@@ -11,11 +11,15 @@ echo "[$(date --iso-8601=seconds)] Agni cycle starting" >> "$LOG"
 
 # Quiet hours removed — running 24/7 per user request
 
-# Avoid overlap: if another Agni is running, exit
-if pgrep -f "agni-cycle.sh" > /dev/null; then
+# Avoid overlap: use flock lockfile
+LOCKFILE="agents/agni/agni.lock"
+mkdir -p "$(dirname "$LOCKFILE")"
+exec 200>"$LOCKFILE"
+if ! flock -n 200; then
   echo "[$(date --iso-8601=seconds)] Another Agni running — exiting" >> "$LOG"
   exit 0
 fi
+# Lock released automatically on script exit
 
 # Do not spawn if a Rudra is already executing (avoid concurrent modifications)
 if pgrep -f "rudra-executor.sh" > /dev/null; then
@@ -90,7 +94,7 @@ spawn_cmd="bash agents/rudra-executor.sh $plan_file"
 message="You are Rudra the Executor. Your job: run the following command using the exec tool: $spawn_cmd. After the command completes, write a brief completion report to agents/rudra/reports/report-${timestamp}.md and then exit. Do not ask for confirmation."
 
 # Spawn the agent
-output=$(./openclaw sessions spawn --agent main --label rudra-${timestamp} --task "$message" 2>&1)
+output=$(openclaw sessions spawn --agent main --label rudra-${timestamp} --task "$message" 2>&1)
 echo "$output" >> "$LOG"
 
 # Extract session key if possible (for logging)
