@@ -39,6 +39,12 @@ fi
 # 3. Memory reindex needed
 if ./quick memory-reindex-check &>/dev/null; then
   alert "Memory reindex recommended"
+  # Auto-trigger reindex to maintain health
+  if ./quick memory-reindex &>/dev/null; then
+    echo "$(TZ='UTC' date '+%Y-%m-%d %H:%M:%S') - Memory reindex auto-triggered" >> "$LOGFILE"
+  else
+    alert "Memory reindex recommended (auto-trigger failed)"
+  fi
 fi
 
 # 4. Disk usage (threshold 90%)

@@ -33,4 +33,10 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] research-agent - Research brief 4 (started: 2026-02-17 09:32 UTC, status: validated)
   - Verification: 2026-02-17-brief-4.md; commit d1ee489; archive 25 files.
 
+- [isolated] dev-agent - Supervisor auto-reindex (started: 2026-02-17 09:36 UTC, status: validated)
+  - Verification: agents/supervisor.sh enhanced; auto-trigger memory reindex on alert; commit pending approval.
+
+- [isolated] dev-agent - Add meta-commit utility (started: 2026-02-17 09:40 UTC, status: validated)
+  - Verification: quick meta-commit implemented; commit 5b88fb7 pushed; systems green.
+
 # End of file — keep under 2KB
