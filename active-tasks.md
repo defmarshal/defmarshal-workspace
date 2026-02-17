@@ -25,8 +25,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [daemon] torrent-bot (running)
 
-## Completed (recent)
+## Completed (Feb 17)
 
-- [isolated] dev-agent - Enhance gateway-token (15:40 UTC)
+- All cycles finished.
 
 # End of file — keep under 2KB
