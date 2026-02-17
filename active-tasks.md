@@ -30,6 +30,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Daily digest (started: 2026-02-17 12:30 UTC, status: validated)
   - Verification: 2026-02-17-daily-digest.md; commit 8f42250; archive 62 files.
 
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 12 (started: 2026-02-17 12:33 UTC, status: validated)
+  - Verification: 2026-02-17-brief-12.md; commit 585fbd2; archive 34 files.
+
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 11 (started: 2026-02-17 12:09 UTC, status: validated)
   - Verification: 2026-02-17-brief-11.md; commit 9eebc73; archive 33 files.
 
