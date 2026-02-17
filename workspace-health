@@ -81,12 +81,9 @@ def get_gateway_status():
     port_listening = int(out.strip()) > 0 if out.strip().isdigit() else 0
 
     # Determine overall status
-    if service_status == "active" and port_listening:
+    if port_listening:
+        # Gateway is functional if port is listening, regardless of systemd state
         return "Gateway: healthy"
-    elif port_listening:
-        return "Gateway: running (service orphaned)"
-    elif service_status == "active":
-        return "Gateway: service active but port not listening"
     else:
         return "Gateway: down"
 
