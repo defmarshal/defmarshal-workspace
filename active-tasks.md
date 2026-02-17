@@ -24,8 +24,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Current Active Tasks
 
 - [daemon] torrent-bot (running)
-- [build] workspace-builder - strategic improvements (started: 2026-02-17 21:00 UTC, status: validated)
-  - Verification: meta-agent Voyage rate-lock implemented; cleanup-build-archive added; TOOLS.md updated; quick health OK; git push succeeded (96be2e4).
+- [build] workspace-builder - strategic improvements (started: 2026-02-17 23:00 UTC, status: validated)
+  - Verification: fixed meta-agent memory check exit code bug; Voyage rate-lock now respected; TOOLS.md documented Voyage limits; health OK; git push succeeded (7b01aaf).
 
 ## Completed (Feb 17)
 
