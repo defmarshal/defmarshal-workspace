@@ -27,10 +27,10 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent cycles only)
 
+- [isolated] dev-agent - Add uptime command (14:20 UTC)
 - [cron] research-agent - brief 16 (14:15 UTC)
 - [cron] content-agent - late wrap (14:10 UTC)
 - [cron] research-agent - brief 15 (14:05 UTC)
 - [cron] content-agent - evening digest (14:03 UTC)
-- [isolated] dev-agent - openclaw-status (14:00 UTC)
 
 # End of file — keep under 2KB
