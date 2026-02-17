@@ -42,4 +42,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 6 (started: 2026-02-17 10:15 UTC, status: validated)
   - Verification: 2026-02-17-brief-6.md; commit f640111; archive 27 files.
 
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Pre‑digest status 4 (started: 2026-02-17 10:21 UTC, status: validated)
+  - Verification: 2026-02-17-pre-digest-4.md; commit ac9b3c7; archive 52 files.
+
 # End of file — keep under 2KB
