@@ -104,9 +104,10 @@ def main():
     updates = int(out.strip()) if out.strip().isdigit() else 0
     updates_status = f"Updates: {updates}" if updates > 0 else "Updates: none"
 
-    # Git status
+    # Git status (track only modified tracked files, ignore untracked)
     out, _, rc = run_cmd("git status --short")
-    git_changed = len([l for l in out.splitlines() if l.strip()])
+    # Filter out untracked files (??) to avoid false dirty alerts from logs/artifacts
+    git_changed = len([l for l in out.splitlines() if l.strip() and not l.startswith('??')])
     git_status = f"Git {'dirty' if git_changed else 'clean'} ({git_changed} changed)"
 
     # Memory system
