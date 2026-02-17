@@ -49,8 +49,12 @@ fi
 
 # 5. APT updates threshold (optional: alert if >50)
 if command -v apt-get &>/dev/null; then
-  # dry-run to count upgradable packages
-  COUNT=$(apt-get -s upgrade | grep -c '^Inst ')
+  # Count upgradable packages safely; ignore errors
+  if COUNT=$(apt-get -s upgrade 2>/dev/null | grep -c '^Inst '); then
+    :
+  else
+    COUNT=0
+  fi
   if [ "$COUNT" -gt 50 ]; then
     alert "APT updates pending: $COUNT"
   fi
