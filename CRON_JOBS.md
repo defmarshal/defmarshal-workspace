@@ -98,6 +98,11 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Payload**: agentTurn executing `./quick cleanup-backups --execute --keep 1` and appending to `memory/backup-cleanup.log`
     - **Description**: Automated cleanup of old backup tarballs (retention: keep 1). Runs with `--execute` via cron.
 
+14. **cleanup-agent-artifacts-cron**
+    - **Schedule**: Weekly on Sunday at 09:30 Asia/Bangkok (`30 9 * * 0`)
+    - **Payload**: agentTurn executing `./quick cleanup-agent-artifacts --execute --force` and appending to `memory/cleanup-agent-artifacts-cron.log`
+    - **Description**: Automated cleanup of stale agent artifacts (lock files, empty plan files). Runs with `--execute` and `--force` to ensure it operates during quiet hours if needed. Respects quiet hours by default when run manually.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
@@ -106,5 +111,9 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 
 - `quick cleanup-downloads [--days N] [--execute] [--verbose]` – Clean old downloads in `workspace/downloads/`.
 - `quick cleanup-backups [--keep N] [--execute] [--verbose]` – Clean old backup tarballs in `/home/ubuntu/`. Keeps most recent N (default 1). Use with care.
+- `quick cleanup-agent-artifacts [--execute] [--force]` – Clean stale agent artifacts (lock files, empty plans). Respects quiet hours unless `--force`.
 
-Backup cleanup is scheduled weekly via **backup-cleanup-cron** (Sunday 07:00 Asia/Bangkok). Manual runs still available.
+Weekly automation:
+- cleanup-downloads-cron (Sunday 06:00)
+- backup-cleanup-cron (Sunday 07:00)
+- cleanup-agent-artifacts-cron (Sunday 09:30)

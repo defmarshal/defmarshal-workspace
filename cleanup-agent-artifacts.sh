@@ -74,7 +74,7 @@ found_locks=0
 while IFS= read -r lockfile; do
   age_sec=$(( $(date +%s) - $(stat -c %Y "$lockfile") ))
   if [ $age_sec -gt 3600 ]; then
-    ((found_locks++))
+    found_locks=$((found_locks+1))
     age_h=$(( age_sec / 3600 ))
     if [ "$DRY_RUN" = true ]; then
       echo "  Would delete: $lockfile (stale, age: ${age_h}h)"
@@ -96,7 +96,7 @@ found_plans=0
 while IFS= read -r planfile; do
   size=$(stat -c %s "$planfile")
   if [ $size -lt 10 ]; then
-    ((found_plans++))
+    found_plans=$((found_plans+1))
     if [ "$DRY_RUN" = true ]; then
       echo "  Would delete: $planfile (size: ${size}B)"
     else
