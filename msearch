@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Grep-based fallback for memory search when Voyage AI is rate-limited.
+# Usage: msearch "<query>"
+# Searches core memory files and prints matching lines in format: "filename: line"
+
+set -euo pipefail
+
+# Combine all arguments into a single query string
+query="$*"
+if [ -z "$query" ]; then
+  echo "Error: search requires a query string" >&2
+  echo "Usage: msearch <query>" >&2
+  exit 1
+fi
+
+# Files to search: memory directory daily logs and key markdown files
+files=(
+  memory/*.md
+  MEMORY.md
+  lessons.md
+  projects.md
+  active-tasks.md
+  CRON_JOBS.md
+  TOOLS.md
+)
+
+# Filter out non-existent patterns (bash expands to pattern if no match, can cause error)
+existing_files=()
+for f in "${files[@]}"; do
+  # If pattern doesn't match, it stays as literal; check existence
+  if [ -e "$f" ]; then
+    existing_files+=("$f")
+  fi
+done
+
+if [ ${#existing_files[@]} -eq 0 ]; then
+  echo "No searchable files found." >&2
+  exit 1
+fi
+
+# Perform grep search: case-insensitive, show line numbers, suppress errors
+# Output format: filename:line_number:content
+grep -i -n -- "$query" "${existing_files[@]}" 2>/dev/null | head -n 20 | while IFS=: read -r file line_num content; do
+  # Print basename of file and the content line
+  echo "$(basename "$file"): $content"
+done

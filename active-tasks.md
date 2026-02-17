@@ -24,6 +24,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Current Active Tasks
 
 - [daemon] torrent-bot (running)
+- [build] workspace-builder - memory search fallback implementation (started: 2026-02-17 17:00 UTC, status: validated)
+  - Verification: quick health OK (disk 79%, memory clean, gateway healthy); quick search works with Voyage; msearch fallback tested; changes committed and pushed.
 
 ## Completed (Feb 17)
 

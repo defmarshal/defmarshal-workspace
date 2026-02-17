@@ -162,10 +162,28 @@ case "$cmd" in
         RAW_JSON=1
       fi
     done
+
+    # Fallback: grep-based search when Voyage is unavailable/rate-limited
+    fallback_search() {
+      ./msearch "$query" | head -n 10
+    }
+
     if [ $RAW_JSON -eq 1 ] || [ ! -t 1 ]; then
-      /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json
+      # JSON/pipe mode: try Voyage JSON, fallback to plain text if fails
+      if ! /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json 2>/dev/null; then
+        echo "Warning: Voyage search failed, using fallback grep." >&2
+        fallback_search
+      else
+        /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json
+      fi
     else
-      /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json | jq -r '.results[:10] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"'
+      # Interactive human-friendly mode
+      if ! /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json 2>/dev/null | jq -r '.results[:10] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"' 2>/dev/null; then
+        echo "Warning: Voyage search failed, using fallback grep." >&2
+        fallback_search
+      else
+        /home/ubuntu/.npm-global/bin/openclaw memory search "$query" --max-results 10 --json | jq -r '.results[:10] | .[] | "\(.path | split("/")[-1]): \(.snippet | split("\n")[0] | if length>100 then .[0:100] + "..." else . end)"'
+      fi
     fi
     ;;
   memory-status)
