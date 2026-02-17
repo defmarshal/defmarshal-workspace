@@ -17,7 +17,7 @@ if command -v openclaw &>/dev/null; then
   if CRON_JSON=$(openclaw cron list --json 2>/dev/null); then
     # jq available? (should be)
     if command -v jq &>/dev/null; then
-      PROBLEMS=$(echo "$CRON_JSON" | jq -r '.jobs[] | select(.lastStatus != "ok" or (.consecutiveErrors // 0) > 2) | "- \(.name): \(.lastStatus // "no status"), errors \(.consecutiveErrors // 0)"')
+      PROBLEMS=$(echo "$CRON_JSON" | jq -r '.jobs[] | select((.state.lastStatus // "ok") != "ok" or (.state.consecutiveErrors // 0) > 2) | "- \(.name): \(.state.lastStatus // "no status"), errors \(.state.consecutiveErrors // 0)"')
       if [ -n "$PROBLEMS" ]; then
         alert "Cron job issues:\n$PROBLEMS"
       fi
