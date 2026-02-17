@@ -64,4 +64,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] research-agent - Alert note (started: 2026-02-17 07:45 UTC, status: validated)
   - Verification: produced 2026-02-17-alert-note.md (632 B); INDEX updated; commit edf2777 pushed; supervisor error noted; systems green otherwise.
 
+- [isolated] content-agent - Pre‑evening status 2 (started: 2026-02-17 07:50 UTC, status: validated)
+  - Verification: produced 2026-02-17-pre-evening-2.md (490 B); INDEX updated; commit 8203570 pushed; archive at 38 files; systems green.
+
 # End of file — keep under 2KB
