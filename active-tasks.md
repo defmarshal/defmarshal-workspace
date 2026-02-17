@@ -27,7 +27,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (Feb 17)
 
-- [cron] content-agent - final daily digest (15:30 UTC)
-- [cron] content-agent - system status note (15:23 UTC)
+- All cycles finished.
 
 # End of file — keep under 2KB
