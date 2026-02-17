@@ -1,120 +1,103 @@
-# Build Progress — Workspace Builder (2026-02-17 21:00 UTC)
+# Workspace Builder Progress
 
-This log tracks execution of the plan defined in `task_plan.md`.
+**Start**: 2026-02-17 23:00 UTC
+**Last Update**: 2026-02-17 23:30 UTC
 
-## Legend
-- [ ] Pending
-- [x] Completed
-- [i] In Progress
+## Phase 1: Immediate Fixes - Meta-Agent Rate Limit Handling
 
----
+**Status**: Completed
 
-## Phase A: Active Tasks Housekeeping
+### Root Cause Identified
 
-### Task A.1: Append stale builder entry to memory/2026-02-17.md
-Status: [x]
-Notes: Added "Workspace Builder Run (2026-02-17 19:00 UTC)" section with verification summary.
+Bug in `agents/meta-agent.sh`: Captured stdout of `memory-reindex-check` and compared to "0", but script always outputs multi-line status text, never equal to "0". This caused it to always think reindex was needed, triggering hourly attempts and hitting Voyage rate limits.
 
-### Task A.2: Remove stale `[build]` entry from active-tasks.md
-Status: [x]
-Notes: Removed validated entry; kept other entries.
+### Fix Applied
 
-### Task A.3: Add fresh `[build]` entry for this builder (status running)
-Status: [x]
-Notes: Entry added with started: 2026-02-17 21:00 UTC, status: running.
+- Changed logic to use exit code instead of output string
+- Added safe command execution with `set +e` / `set -e` to capture exit without aborting on failure
+- Set LOCK_FILE to absolute path at top of script
+- Removed redundant local redefinition of LOCK_FILE
 
-## Phase B: Meta-Agent Rate-Lock Enhancement
+Key code change:
 
-### Task B.1: Define lock file path and helper functions
-Status: [x]
-Notes: Added LOCK_FILE="memory/.voyage-rate-lock" and logic in meta-agent.sh.
+```bash
+# Before (buggy):
+MEMORY_NEEDS=$(./quick memory-reindex-check 2>&1 || echo "0")
+if [ "$MEMORY_NEEDS" != "0" ]; then
+  ACTIONS+=("memory reindex")
+fi
 
-### Task B.2: Implement pre-check and post-check around reindex
-Status: [x]
-Notes: Pre-check lock age; post-check set lock on rate limit, clear on success.
+# After (fixed):
+set +e
+MEMORY_NEEDS=$(./quick memory-reindex-check 2>&1)
+MEMORY_NEEDS_EXIT=$?
+set -e
+if [ "$MEMORY_NEEDS_EXIT" -ne 0 ]; then
+  ACTIONS+=("memory reindex")
+  log "Memory reindex needed (exit code: $MEMORY_NEEDS_EXIT)"
+fi
+```
 
-### Task B.3: Syntax validation (bash -n)
-Status: [x]
-Notes: Script passes bash -n.
+### Expected Behavior
 
-## Phase C: Build Archive Cleanup Utility
+- Meta-agent will only attempt reindex when check returns exit 1 (dirty/stale) or 2 (error)
+- After a 429 rate limit error, the existing 6-hour rate-lock will prevent retries
+- Reduces unnecessary load on Voyage API and stops log spam
 
-### Task C.1: Write scripts/cleanup-build-archive.sh
-Status: [x]
-Notes: Dry‑run by default; supports --execute; keep=10; safe sorting.
+**Test**: Manually ran meta-agent --once: actions: none (correct).
 
-### Task C.2: Add cleanup-build-archive case to quick launcher
-Status: [x]
-Notes: Added case in quick and updated help text.
+## Phase 2: Improve Memory System Observability & Documentation
 
-### Task C.3: Make script executable (chmod +x)
-Status: [x]
-Notes:
+**Status**: Completed
 
-### Task C.4: Test dry‑run output and exit codes
-Status: [ ]
-Notes: Verify expected behavior; no actual deletion during test.
+### TOOLS.md Updated
 
-## Phase D: Documentation Updates
+Added section "Memory System (Voyage AI)" documenting:
+- Current rate limit status (3 RPM free tier)
+- Check status commands (`quick memory-status`, `quick voyage-status`)
+- How to add payment method to lift limits
+- Rate-lock behavior (6-hour skip after 429)
+- Fallback to grep automatic
 
-### Task D.1: Update TOOLS.md with rate‑lock and cleanup notes
-Status: [x]
-Notes: Added cleanup-build-archive entries; updated quiet hours note; added Voyage rate‑lock description.
+### Verification
 
-### Task D.2: Verify TOOLS.md formatting and link to scripts
-Status: [x]
-Notes: Formatting checked; links point to scripts/ and quick command.
+- `quick memory-status` shows Voyage warning and detailed store info
+- `quick voyage-status` returns exit 1 with clear alert and recommendations
+- `quick memory-reindex-check` returns exit 0 when clean, 1 when needed
+- Documentation now clear for future reference
 
-## Phase E: Validation & Testing
+## Phase 3: Validation & Testing
 
-### Task E.1: Run ./quick health
-Status: [x]
-Notes: Output: Disk OK 79% | Updates: 22 | Git dirty (8 changed) | Memory: 8f/33c (clean) voyage FTS+ | Reindex: 1.3d ago | Gateway: healthy | Downloads: 10 files, 2.1G
+**Status**: In Progress
 
-### Task E.2: Run ./quick memory-reindex-check
-Status: [x]
-Notes: Status OK; Voyage rate limit warning present but no reindex needed.
+### Checks Passed
 
-### Task E.3: Run ./quick voyage-status
-Status: [x]
-Notes: Confirmed recent rate limit logs; exit code 1 as expected.
+✓ Meta-agent manual run: no spurious reindex
+✓ `quick memory-status` healthy (main store clean, torrent-bot store dirty but not reindexed)
+✓ `quick voyage-status` detects rate limits correctly
+✓ `quick search` returns semantic results (Voyage still operational)
+✓ `quick mem` list works
 
-### Task E.4: Test cleanup-build-archive dry‑run
-Status: [x]
-Notes: Output: "Build archive: 3 builds, keeping 10 → nothing to do". Exit 0.
+### Pending
 
-### Task E.5: Check for temp files and ensure clean workspace
-Status: [x]
-Notes: No stray temp files; lock file absent.
+- Run `quick health` final check
+- Verify git changes are correct (meta-agent.sh, TOOLS.md, progress.md, findings.md, task_plan.md)
+- Ensure no temp files left
+- Commit with 'build:' prefix
+- Push to GitHub
+- Update active-tasks.md with verification results and mark validated
 
-### Task E.6: Optional: verify sessions list for failed agents
-Status: [x]
-Notes: No active sessions; agents run via cron.
+## Phase 4: Final Commit & Documentation
 
-## Phase F: Commit, Push, and Finalize
+- All changes to be committed: meta-agent fix, TOOLS.md update, planning files
+- Push to origin/master
+- Update MEMORY.md if changes are significant (moderate impact: bug fix, documentation)
 
-### Task F.1: Stage all changes
-Status: [x]
-Notes: Staged: active-tasks.md, memory/2026-02-17.md, agents/meta-agent.sh, scripts/cleanup-build-archive.sh, quick, TOOLS.md, task_plan.md, findings.md, progress.md.
+## Success Criteria
 
-### Task F.2: Commit with prefix 'build:'
-Status: [x]
-Notes: Commit 96be2e4.
-
-### Task F.3: Push to origin and verify
-Status: [x]
-Notes: Push succeeded.
-
-### Task F.4: Update active‑tasks.md to validated + verification
-Status: [x]
-Notes: Entry updated with verification note.
-
-### Task F.5: Commit and push active‑tasks update
-Status: [x]
-Notes: Commit b29693e pushed.
-
-## Final Verification
-- [x] All tests pass
-- [x] No leftover temp files (except intentional lock if created during test)
-- [x] Git clean after commits
-- [x] active‑tasks.md validated entry with verification summary
+- Meta-agent stops spamming failed reindex attempts
+- `quick memory-status` clearly shows Voyage health
+- TOOLS.md documents rate limits and recovery steps
+- All changes tested and validated
+- Git push successful
+- active-tasks.md updated

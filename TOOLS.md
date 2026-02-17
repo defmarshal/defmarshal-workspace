@@ -37,6 +37,19 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
+### Memory System (Voyage AI)
+
+- **Provider**: Voyage AI (voyage-4-large)
+- **Current Status**: ⚠️ Rate limited on free tier (3 RPM, 10K TPM)
+- **Impact**: Semantic search degraded; system falls back to grep automatically when rate-limited
+- **Check status**: `quick memory-status` or `quick voyage-status`
+- **To lift limits**: Add payment method in Voyage AI dashboard: <https://dashboard.voyageai.com>
+- **Rate-lock**: Meta-agent skips memory reindex for 6 hours after detecting 429 errors
+- **Fallback behavior**: grep-based search (`msearch`) is used automatically; no manual intervention needed
+- **Reindex schedule**: Weekly on Sunday at 04:00 Asia/Bangkok (may be skipped due to rate limits)
+
+---
+
 ### Quick Launcher Commands (`./quick <cmd>`)
 
 Common utilities (run `./quick help` for full list):

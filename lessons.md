@@ -40,6 +40,7 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **TTS narration** → Edge TTS is free, no API key needed. Good for audio summaries.
 - **Email cleaner** → Always dry-run first (`--max 1`). Review rules before `--execute`.
 - **Memory search** → Use semantic search (`claw memory search`) over vector-based if rate limited. Simple grep as fallback.
+- **Exit code vs output** → When writing conditional logic based on a script's result, use the command's exit code (`$?`) rather than parsing its stdout. Output is for human consumption; exit codes are for machine decisions. Prevents bugs like meta-agent always triggering due to multi-line status text.
 
 ## Performance
 

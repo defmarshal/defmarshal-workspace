@@ -25,6 +25,10 @@ update_checkpoint() {
   fi
 }
 
+# Absolute workspace path for lock file consistency
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+LOCK_FILE="$WORKSPACE/memory/.voyage-rate-lock"
+
 case "${1:-}" in
   --once)
     log "Meta‑Agent starting (one‑shot)"
@@ -32,7 +36,11 @@ case "${1:-}" in
     # Collect system snapshot
     HEALTH=$(./quick health 2>&1 || echo "health check failed")
     AGENT_STATUS=$(./quick agent-status 2>&1 || echo "agent‑status failed")
-    MEMORY_NEEDS=$(./quick memory-reindex-check 2>&1 || echo "0")
+    # Run memory reindex check; capture output for logging and exit code for decision
+    set +e
+    MEMORY_NEEDS=$(./quick memory-reindex-check 2>&1)
+    MEMORY_NEEDS_EXIT=$?
+    set -e
     DISK_USAGE=$(df -h . | awk 'NR==2 {print $5}' | tr -d '%')
     APT_COUNT=$(apt-get -s upgrade 2>/dev/null | grep -c '^Inst ' || echo "0")
     TODAY=$(date -u +%Y-%m-%d)
@@ -43,9 +51,10 @@ case "${1:-}" in
 
     # Decision engine
     ACTIONS=()
-    if [ "$MEMORY_NEEDS" != "0" ]; then
+    # Only trigger memory reindex if check returns non-zero (1=needed, 2=error)
+    if [ "$MEMORY_NEEDS_EXIT" -ne 0 ]; then
       ACTIONS+=("memory reindex")
-      log "Memory reindex needed"
+      log "Memory reindex needed (exit code: $MEMORY_NEEDS_EXIT)"
     fi
     if [ "$DISK_USAGE" -ge 80 ]; then
       ACTIONS+=("disk cleanup")
@@ -61,7 +70,7 @@ case "${1:-}" in
     fi
 
     # Execute actions (spawn agents for remediation)
-    LOCK_FILE="memory/.voyage-rate-lock"
+    # Use workspace-defined LOCK_FILE with absolute path (already set above)
     for act in "${ACTIONS[@]}"; do
       case "$act" in
         "memory reindex")
