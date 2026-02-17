@@ -229,37 +229,40 @@ case "$cmd" in
     "$WORKSPACE/memory-stats" "$@"
     ;;
   voyage-status)
-    # Check recent Voyage AI rate limit health based on memory reindex log
-    LOG="$WORKSPACE/memory/memory-reindex.log"
-    if [ ! -f "$LOG" ]; then
-      echo "No Voyage rate limit history available (memory reindex log not found)."
+    # Check recent Voyage AI rate limit health based on memory reindex activity logs
+    LOG1="$WORKSPACE/memory/agent-manager.log"
+    LOG2="$WORKSPACE/memory/memory-reindex.log"
+    # Prefer agent-manager.log if it exists and recent
+    if [ -f "$LOG1" ]; then
+      LOG="$LOG1"
+    elif [ -f "$LOG2" ]; then
+      LOG="$LOG2"
+    else
+      echo "No Voyage rate limit history available (no logs found)."
       exit 0
     fi
-    # Find the most recent "rate limited" line
-    last_failure=$(grep -i "rate limited" "$LOG" | tail -1 || true)
-    if [ -z "$last_failure" ]; then
-      echo "✅ No recent Voyage rate limit failures detected."
-      exit 0
-    fi
-    # Extract timestamp (first 19 characters: YYYY-MM-DD HH:MM:SS)
-    ts=$(echo "$last_failure" | cut -c1-19)
-    # Check if within last 24 hours
+    # Determine if log was modified in the last 24 hours
     now=$(date +%s)
-    then_ts=$(date -d "$ts" +%s 2>/dev/null || echo 0)
-    if [ $then_ts -gt $((now - 86400)) ]; then
+    log_mtime=$(stat -c %Y "$LOG" 2>/dev/null || echo 0)
+    if [ $((now - log_mtime)) -gt 86400 ]; then
+      echo "✅ No recent memory reindex activity (log older than 24h)."
+      exit 0
+    fi
+    # Check if log contains indications of rate limiting (429 or "rate limited")
+    if grep -qiE '429|rate limited' "$LOG" >/dev/null; then
       echo "⚠️ Voyage Rate Limit Alert"
-      echo "Last failure: $ts"
+      echo "Recent memory reindex attempts encountered rate limiting."
       echo ""
-      echo "Detail:"
-      echo "$last_failure" | sed 's/^/  /'
+      echo "Relevant log lines (last 5):"
+      grep -iE '429|rate limited' "$LOG" | tail -5 | sed 's/^/  /'
       echo ""
       echo "Recommendations:"
-      echo "  - Run quick memory-reindex (gentle mode) which spaces requests"
-      echo "  - Consider adding a payment method to Voyage AI to increase rate limits"
-      echo "  - Reduce frequency of automatic memory reindex checks"
+      echo "  - quick memory-reindex now uses gentle sequential mode (spaced by 60s)"
+      echo "  - Add a payment method to Voyage AI to increase rate limits"
+      echo "  - Reduce reindex frequency or skip non-critical agents (e.g., torrent-bot)"
       exit 1
     else
-      echo "✅ No Voyage rate limit failures in the last 24 hours."
+      echo "✅ No Voyage rate limit indicators in recent log."
       exit 0
     fi
     ;;
