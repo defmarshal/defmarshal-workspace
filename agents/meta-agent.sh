@@ -65,8 +65,8 @@ case "${1:-}" in
     for act in "${ACTIONS[@]}"; do
       case "$act" in
         "memory reindex")
-          # Rate‑lock: skip if lock exists and is younger than 1 hour
-          if [ -f "$LOCK_FILE" ] && [ $(($(date +%s) - $(stat -c %Y "$LOCK_FILE" 2>/dev/null || echo 0))) -lt 3600 ]; then
+          # Rate‑lock: skip if lock exists and is younger than 6 hours (free tier 3 RPM makes reindex impractical)
+          if [ -f "$LOCK_FILE" ] && [ $(($(date +%s) - $(stat -c %Y "$LOCK_FILE" 2>/dev/null || echo 0))) -lt 21600 ]; then
             log "Skipping memory reindex due to active Voyage rate‑lock (lock: $(stat -c %y "$LOCK_FILE" 2>/dev/null || echo unknown))"
           else
             log "Triggering memory reindex"
@@ -80,7 +80,7 @@ case "${1:-}" in
               echo "$OUTPUT" | tee -a "$LOGFILE"
               # Check for rate limit indicators in output
               if echo "$OUTPUT" | grep -qiE '429|rate limited'; then
-                log "Rate limit detected during reindex; setting lock for 1 hour"
+                log "Rate limit detected during reindex; setting lock for 6 hours"
                 touch "$LOCK_FILE"
               fi
             fi

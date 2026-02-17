@@ -216,9 +216,9 @@ case "$cmd" in
       else
         echo "    ✗ $agent reindex failed (perhaps rate limited; will retry later)"
       fi
-      # Wait between agents to respect Voyage AI rate limits (3 RPM free tier)
-      echo "    Waiting 60s before next agent..."
-      sleep 60
+      # Wait between agents to respect Voyage AI rate limits (3 RPM free tier); increased for free tier
+      echo "    Waiting 120s before next agent..."
+      sleep 120
     done
     echo "Memory reindex sequence completed."
     ;;
