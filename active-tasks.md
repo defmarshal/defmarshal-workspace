@@ -27,6 +27,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent cycles only)
 
+- [cron] content-agent - day wrap (13:30 UTC)
 - [cron] content-agent - daily digest (13:22 UTC)
 - [cron] research-agent - brief 13 (13:08 UTC)
 - [isolated] dev-agent - gateway-info (13:20 UTC)
