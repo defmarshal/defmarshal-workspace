@@ -86,6 +86,7 @@ Commands:
   agent-manager              Run agent-manager maintenance checks (used by cron)
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
   supervisor-logs            Show supervisor log (memory/supervisor.log)
+  gateway-info               Show detailed OpenClaw gateway status and troubleshooting info
   meta                       Run meta-agent once (autonomous planner)
   meta-report                Show latest meta-agent report
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
@@ -444,6 +445,19 @@ case "$cmd" in
   supervisor-logs)
     # Show supervisor log
     tail -n 20 "$WORKSPACE/memory/supervisor.log" 2>/dev/null || echo "No supervisor.log yet"
+    ;;
+  gateway-info)
+    # Show detailed OpenClaw gateway status and troubleshooting info
+    echo "=== OpenClaw Gateway Status ==="
+    if command -v openclaw &>/dev/null; then
+      openclaw gateway status
+      echo ""
+      echo "Dashboard: http://127.0.0.1:18789/"
+      echo "Service file: ~/.config/systemd/user/openclaw-gateway.service"
+      echo "Logs: /tmp/openclaw/openclaw-*.log"
+    else
+      echo "openclaw CLI not found"
+    fi
     ;;
   meta)
     # Run meta-agent once (autonomous planner)
