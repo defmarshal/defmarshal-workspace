@@ -42,4 +42,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] dev-agent - Fix supervisor memory check logic (inverted condition) (started: 2026-02-17 12:55 UTC, status: validated)
   - Verification: Fixed agents/supervisor.sh line 35; memory reindex false positives eliminated; commit 9d3f6aa.
 
+- [isolated] dev-agent - Add git-recent command (started: 2026-02-17 13:01 UTC, status: validated)
+  - Verification: quick git-recent implemented; commit fe77d7a; shows recent commits.
+
 # End of file — keep under 2KB
