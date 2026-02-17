@@ -70,4 +70,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [isolated] dev-agent - Supervisor APT robustness fix (started: 2026-02-17 08:00 UTC, status: validated)
   - Verification: updated agents/supervisor.sh (robust APT count, ignore errors); commit 1a0586b pushed; systems green.
 
+- [isolated] content-agent - Pre‑digest status 2 (started: 2026-02-17 08:02 UTC, status: validated)
+  - Verification: produced 2026-02-17-pre-digest-2.md (447 B); INDEX updated; commit 4e41d99 pushed; archive at 39 files; systems green.
+
 # End of file — keep under 2KB
