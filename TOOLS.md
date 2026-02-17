@@ -94,6 +94,25 @@ Common utilities (run `./quick help` for full list):
 - `validate` — Run comprehensive validation (health, memory, agents, git, cron, logs)
 - `verify` — Run comprehensive workspace verification
 - `setup-all` — Run all setup scripts (sudo, torrent cron) non-interactively
+- `agent-manager` — Run agent-manager maintenance checks (used by cron)
+- `agent-status` — Show OpenClaw cron jobs overview (next run, last status, schedule)
+- `checkpoints` — Show autonomous system checkpoints (autonomous-checkpoints.json)
+- `cleanup-untracked [--execute]` — List or delete untracked files (default: list; --execute to delete)
+- `daily-digest [YYYY-MM-DD]` — Generate daily digest report (default: today UTC). Saves to reports/ and prints.
+- `digest` — Show the latest daily digest report from reports/ (cat the most recent)
+- `git-last` — Show last commit details (files changed, stats, and message)
+- `meta` — Run meta-agent once (autonomous planner)
+- `meta-commit` — Auto-commit meta-agent planning files (findings.md, progress.md, task_plan.md) if changed
+- `meta-logs` — Show meta-agent log (memory/meta-agent.log)
+- `meta-report` — Show latest meta-agent report
+- `phase` — Show current autonomous phase status (from checkpoints)
+- `reports` — List daily digest reports in reports/ (most recent first)
+- `session-locks [--clear]` — List stale session locks (default) or clear them (--clear)
+- `status` — Concise one-line system summary (disk, load, memory, gateway, agents)
+- `summary` — One-line system summary (status, disk, updates, git)
+- `supervisor` — Run supervisor health check (cron monitoring, gateway, disk, memory)
+- `supervisor-logs` — Show supervisor log (memory/supervisor.log)
+- `today` — Show files modified today across the workspace (since midnight UTC)
 - `help` — Show this help message
 
 ---
