@@ -101,6 +101,7 @@ Commands:
   checkpoints                Show autonomous system checkpoints (autonomous-checkpoints.json)
   phase                      Show current autonomous phase status (from checkpoints)
   meta-commit                Auto‑commit meta‑agent planning files (findings.md, progress.md, task_plan.md) if changed
+  agni-status                Show Agni agent status (running? lock? last log)
   cleanup-untracked [--execute]  List or delete untracked files (default: list; --execute to delete)
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
@@ -799,6 +800,26 @@ except Exception:
       fi
     else
       echo "Cron jobs file not found: $CRON_JSON"
+    fi
+    ;;
+  agni-status)
+    # Show Agni agent status (running? lock? last log)
+    LOG="agents/agni/agni.log"
+    if [ -f "$LOG" ]; then
+      echo "=== Agni Status ==="
+      echo "Last log entries:"
+      tail -n 5 "$LOG" || echo "  (empty)"
+      echo ""
+      echo "Running processes:"
+      if pgrep -f "agni-cycle.sh" >/dev/null; then
+        echo "  agni-cycle.sh: RUNNING (PID $(pgrep -f "agni-cycle.sh"))"
+      else
+        echo "  agni-cycle.sh: NOT running"
+      fi
+      echo ""
+      echo "To clear stale lock: kill any agni-cycle.sh process or wait for cycle to finish."
+    else
+      echo "Agni log not found: $LOG"
     fi
     ;;
   setup-all)
