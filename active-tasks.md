@@ -30,8 +30,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] content-agent - Late evening 2 (started: 2026-02-17 13:06 UTC, status: validated)
   - Verification: 2026-02-17-late-evening-2.md; commit f61e245; archive 64 files.
 
-- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Research brief 12 (started: 2026-02-17 12:33 UTC, status: validated)
-  - Verification: 2026-02-17-brief-12.md; commit 585fbd2; archive 34 files.
+- [cron:e345525c-f289-4eab-bf25-6d6fa065e4b0] research-agent - Brief 13 (started: 2026-02-17 13:08 UTC, status: validated)
+  - Verification: 2026-02-17-brief-13.md; commit facef31; archive 35 files.
 
 - [isolated] dev-agent - Add cron-failures utility (started: 2026-02-17 12:40 UTC, status: validated)
   - Verification: quick cron-failures implemented; commit 0981da8; shows supervisor-cron (2 errors) and workspace-builder (1 error).
