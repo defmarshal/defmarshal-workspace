@@ -564,7 +564,7 @@ case "$cmd" in
       else
         echo "RPC probe: FAILED (device token mismatch or other issue)"
         if [ "$FORCE" -eq 1 ]; then
-          echo "Rotating device token (--force)..."
+          echo "Rotating device token..."
           if openclaw gateway rotate-device-token; then
             echo "Token rotated successfully. Gateway should restart."
             echo "Run 'openclaw gateway status' to verify."
