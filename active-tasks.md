@@ -25,8 +25,12 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [daemon] torrent-bot (running)
 
-## Completed (Feb 17)
+## Completed (recent cycles only)
 
-- All cycles finished; archive sealed at 74 content + 39 research files.
+- [isolated] dev-agent - Add supervisor-status command (15:01 UTC)
+- [cron] research-agent - brief 17 (14:31 UTC)
+- [cron] content-agent - all done (14:30 UTC)
+- [isolated] dev-agent - uptime command (14:20 UTC)
+- [cron] research-agent - brief 16 (14:15 UTC)
 
 # End of file — keep under 2KB
