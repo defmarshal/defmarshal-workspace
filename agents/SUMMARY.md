@@ -11,7 +11,7 @@
 
 - Agni cron: `0 */2 8-22 * * *` Asia/Bangkok
 - First next run: within minutes after installation
-- Respects quiet hours (Agni won't run 23:00–08:00)
+- Note: Quiet hours removed system-wide 2026-02-17; agents run 24/7 per policy
 
 ## Logs & Reports
 

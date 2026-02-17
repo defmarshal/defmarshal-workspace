@@ -76,7 +76,6 @@ $task_desc
 6. Exit.
 
 ## Notes
-- Always respect quiet hours (already enforced by spawner)
 - If uncertain about a step, skip it and note in report.
 - Do not perform disruptive actions (e.g., mass deletions, system upgrades).
 PLAN

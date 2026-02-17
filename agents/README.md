@@ -38,7 +38,6 @@ openclaw cron add --name agni-cron --expr "0 */2 8-22 * * *" --tz "Asia/Bangkok"
 ## Behavior
 
 ### Agni
-- Respects quiet hours (23:00–08:00 BKK) — does nothing
 - Avoids overlap — single instance only
 - Skips spawning if Rudra is already running (prevents concurrent modifications)
 - Generates plans of three types:

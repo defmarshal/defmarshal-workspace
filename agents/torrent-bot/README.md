@@ -6,7 +6,7 @@ A Telegram slash-command bot for managing aria2 downloads via Nyaa search.
 
 - `agent.json` — Agent definition (tools, allowlists)
 - `main.py` — Slash command handler
-- `loop.sh` — Daemon loop (respects quiet hours)
+- `loop.sh` — Daemon loop (24/7 operation; quiet hours removed 2026-02-17)
 - `run.sh` — One-shot spawn
 
 ## Commands
@@ -40,5 +40,5 @@ A Telegram slash-command bot for managing aria2 downloads via Nyaa search.
 
 - Uses `shell.exec` tool with restricted commands via the agent's allowlist.
 - Watchlist stored in `memory/torrent-watchlist.json` (auto-created).
-- Quiet hours: 23:00–08:00 Asia/Bangkok (daemon will not spawn new sessions).
+- All agents run 24/7 (quiet hours removed system-wide 2026-02-17).
 - Logs: agent session logs appear in `~/.openclaw/agents/torrent-bot/*/sessions/*.jsonl`
