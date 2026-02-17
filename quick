@@ -234,9 +234,9 @@ case "$cmd" in
     ;;
   weather)
     # Get current weather for a location (default: Bangkok)
-    # Uses wttr.in (no API key required); 5s timeout to avoid hangs
+    # Uses wttr.in (no API key required); 15s timeout to avoid hangs
     loc="${1:-Bangkok}"
-    if timeout 5 curl -s "wttr.in/${loc}?format=3"; then
+    if timeout 15 curl -s "wttr.in/${loc}?format=3"; then
       true
     else
       echo "Weather fetch failed or timed out" >&2
