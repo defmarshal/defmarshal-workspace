@@ -88,6 +88,7 @@ Commands:
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
   checkpoints                Show autonomous system checkpoints (autonomous-checkpoints.json)
   phase                      Show current autonomous phase status (from checkpoints)
+  meta-commit                Auto‑commit meta‑agent planning files (findings.md, progress.md, task_plan.md) if changed
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Respects quiet hours.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
@@ -441,6 +442,30 @@ case "$cmd" in
     else
       echo "No phase info yet."
     fi
+    ;;
+  meta-commit)
+    # Auto-commit meta-agent planning files if changed
+    PLANS=("findings.md" "progress.md" "task_plan.md")
+    CHANGED=()
+    for f in "${PLANS[@]}"; do
+      if [ -f "$WORKSPACE/$f" ] && git -C "$WORKSPACE" status --porcelain | grep -q "^?? $f$"; then
+        CHANGED+=("$f")
+      fi
+    done
+    if [ ${#CHANGED[@]} -eq 0 ]; then
+      echo "No untracked meta planning files to commit."
+      exit 0
+    fi
+    git -C "$WORKSPACE" add "${CHANGED[@]}"
+    git -C "$WORKSPACE" commit -m "meta: update planning artifacts (auto-commit)" || {
+      echo "Commit failed; maybe nothing to commit?"
+      exit 1
+    }
+    git -C "$WORKSPACE" push origin master || {
+      echo "Push failed; commit made locally."
+      exit 1
+    }
+    echo "Committed and pushed: ${CHANGED[*]}"
     ;;
   session-locks)
     # List or clear stale session locks
