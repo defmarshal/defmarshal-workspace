@@ -89,6 +89,7 @@ Commands:
   gateway-info               Show detailed OpenClaw gateway status and troubleshooting info
   gateway-logs               Show recent OpenClaw gateway logs (tail -n 20 /tmp/openclaw/openclaw-*.log)
   openclaw-version           Show installed OpenClaw version (global npm)
+  openclaw-status            Show OpenClaw system status (sessions, channels, recipients)
   meta                       Run meta-agent once (autonomous planner)
   meta-report                Show latest meta-agent report
   meta-logs                  Show meta-agent log (memory/meta-agent.log)
@@ -475,6 +476,14 @@ case "$cmd" in
     # Show installed OpenClaw version
     if command -v openclaw &>/dev/null; then
       npm list -g openclaw | head -5
+    else
+      echo "openclaw CLI not found"
+    fi
+    ;;
+  openclaw-status)
+    # Show OpenClaw system status (sessions, channels, recipients)
+    if command -v openclaw &>/dev/null; then
+      openclaw status
     else
       echo "openclaw CLI not found"
     fi
