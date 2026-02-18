@@ -1,4 +1,4 @@
 #!/bin/bash
 # Quick check: show memory stores with dirty flag
 # Usage: quick memory-dirty
-openclaw memory status --json | python3 -c "import sys, json; data=json.load(sys.stdin); print('Memory Stores:'); [(print(f\"  {s.get('name','?')}: dirty={s.get('status',{}).get('dirty',False)} files={s.get('status',{}).get('files',0)} chunks={s.get('status',{}).get('chunks',0)}\") if isinstance(s, dict) else None) for s in (data if isinstance(data, list) else [data])]"
+openclaw memory status --json | python3 -c "import sys, json; data=json.load(sys.stdin); print('Memory Stores:'); [(print(f\"  {s.get('agentId','?')}: dirty={s.get('status',{}).get('dirty',False)} files={s.get('status',{}).get('files',0)} chunks={s.get('status',{}).get('chunks',0)}\") if isinstance(s, dict) else None) for s in (data if isinstance(data, list) else [data])]"
