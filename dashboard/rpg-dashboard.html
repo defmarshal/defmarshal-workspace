@@ -95,6 +95,8 @@
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
+      background-size: cover;
+      background-position: center;
     }
 
     .card-title {
@@ -179,6 +181,7 @@
     .status-ok { color: var(--green); border-color: var(--green); }
     .status-err { color: var(--red); border-color: var(--red); }
     .status-warn { color: var(--orange); border-color: var(--orange); }
+    .status-pending { color: var(--text-muted); border-color: var(--text-muted); font-style: italic; }
 
     .footer {
       text-align: center;
@@ -205,6 +208,35 @@
   <div class="footer">Auto‑refresh 10s • Data from jobs.json</div>
 
   <script>
+    // Preload battle sound (Base64 OGG, short chime)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playHoverSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
+      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.2);
+    }
+
+    // Pixel-art sprite data (tiny 16x16 colored squares with a "face" via emoji overlay)
+    const SPRITES = {
+      '🧙': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkA8L3RleHQ+PC9zdmc+',
+      '🧜': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzRhYTczOCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkI8L3RleHQ+PC9zdmc+',
+      '🛡️': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzRhOGYxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkM8L3RleHQ+PC9zdmc+',
+      '🧛': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzUwMDAwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkg8L3RleHQ+PC9zdmc+',
+      '🎤': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Q5OTZhMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPk58L3RleHQ+PC9zdmc+',
+      '📚': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2QzNDM0MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPk48L3RleHQ+PC9zdmc+',
+      '⚔️': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzQ0MzgxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPlw8L3RleHQ+PC9zdmc+'
+    };
+
+    // Apply sprite background to .sprite elements later
     // Agent → Job Class mapping (Final Fantasy style)
     const JOB_CLASSES = {
       'main': { name: 'White Mage', icon: '🧙', color: '#e6c960' },
@@ -266,7 +298,8 @@
 
       const agentId = job.agentId || 'main';
       const jobClass = getJobClass(agentId);
-      const sprite = jobClass.icon;
+      const spriteEmoji = jobClass.icon;
+      const spriteUrl = SPRITES[spriteEmoji] || '';
 
       // Status badge
       let statusText = 'OK';
@@ -274,6 +307,9 @@
       if (!enabled) {
         statusText = 'DISABLED';
         statusClass = 'status-warn';
+      } else if (lastStatus === 'never') {
+        statusText = 'PENDING';
+        statusClass = 'status-pending';
       } else if (consecutiveErrors > 0 || lastStatus !== 'ok') {
         statusText = 'FAILURE';
         statusClass = 'status-err';
@@ -305,7 +341,7 @@
       return `
         <div class="card">
           <div class="card-header">
-            <div class="sprite">${sprite}</div>
+            <div class="sprite" style="${spriteUrl ? `background-image: url('${spriteUrl}');` : ''}" onmouseenter="playHoverSound()">${spriteUrl ? '' : spriteEmoji}</div>
             <div>
               <div class="card-title">${job.name}</div>
               <div class="card-subtitle">${jobClass.name}</div>
