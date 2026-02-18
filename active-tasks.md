@@ -37,3 +37,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [main] dev-agent - Fixed meta-agent newline/duplicate-output bug (started: 2026-02-18 12:00 UTC, status: validated)
   - Verification: meta-agent.sh patched with if-guards; bash -n passes; full run completed; commit 13eba9d pushed.
 - [build] workspace-builder - Final commit sweep; validate system; archive session (started: 2026-02-18 13:10 UTC, status: validated; session: agent:main:cron:23dad379; verification: health OK, search OK, changes committed, active-tasks updated, push succeeded)
+- [build] workspace-builder - Fix cron mis-schedules; restore agent frequencies; validate (started: 2026-02-18 14:00 UTC, status: validated; session: agent:main:cron:23dad379)
+  - Verification: 8 cron jobs corrected (workspace-builder, random-torrent-downloader, dev-agent-cron, content-agent-cron, research-agent-cron, agni-cron, agent-manager-cron, supervisor-cron); schedules now match CRON_JOBS.md; health OK; git push succeeded; active-tasks.md updated.
