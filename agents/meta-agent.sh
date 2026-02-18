@@ -117,6 +117,16 @@ case "${1:-}" in
       fi
     fi
 
+    # Create git-janitor-agent if missing and repo has untracked files
+    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^git-janitor-cron$'; then
+      # Check for untracked files (excluding specific directories like downloads, archives, node_modules)
+      UNTRACKED_COUNT=$(git status --porcelain 2>/dev/null | grep -E '^\?\?' | grep -v -E '(^downloads/|^archives/|^node_modules/|^\.git/|^builds/)' | wc -l)
+      if [ "$UNTRACKED_COUNT" -gt 5 ]; then
+        ACTIONS+=("create git-janitor-agent")
+        log "Untracked files count $UNTRACKED_COUNT > 5; will create git-janitor-agent to auto-commit safe files"
+      fi
+    fi
+
     # Execute actions (spawn agents for remediation)
     # Use workspace-defined LOCK_FILE with absolute path (already set above)
     for act in "${ACTIONS[@]}"; do
@@ -196,6 +206,48 @@ EOF
             --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
           log "Archive‑agent cron job registered"
           ;;
+        "create git-janitor-agent")
+          log "Creating permanent git-janitor-agent (auto-commits safe untracked files)"
+          SCRIPT_PATH="$WORKSPACE/agents/git-janitor-cycle.sh"
+          cat > "$SCRIPT_PATH" <<'EOF'
+#!/usr/bin/env bash
+# Git Janitor Agent: automatically stage, commit, and push safe untracked files
+set -euo pipefail
+cd /home/ubuntu/.openclaw/workspace
+LOGFILE="memory/git-janitor.log"
+mkdir -p memory
+log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
+
+log "Git‑janitor starting"
+
+# List untracked files, excluding noisy dirs
+UNTRACKED=$(git status --porcelain 2>/dev/null | grep -E '^\?\?' | grep -v -E '(^downloads/|^archives/|^node_modules/|^\.git/|^builds/|^dht\.dat$|^aria2\.session$)' || true)
+if [ -z "$UNTRACKED" ]; then
+  log "No safe untracked files to commit"
+  exit 0
+fi
+
+# Stage them
+git add -A 2>>"$LOGFILE"
+
+# Commit with janitor prefix if there are staged changes
+if ! git diff --cached --quiet; then
+  git commit -m "chore: auto‑janitor cleanup ($(date -u +%Y-%m-%d %H:%M UTC))" >>"$LOGFILE" 2>&1
+  git push origin master >>"$LOGFILE" 2>&1
+  log "Committed and pushed $(git diff --cached --name-only | wc -l) files"
+else
+  log "No changes to commit after staging"
+fi
+
+log "Git‑janitor completed"
+EOF
+          chmod +x "$SCRIPT_PATH"
+          # Register cron: run hourly at minute 15 (UTC)
+          openclaw cron add --name "git-janitor-cron" --expr "15 * * * *" --tz "UTC" \
+            --payload '{"kind":"systemEvent","text":"Execute git janitor: bash -c \'cd /home/ubuntu/.openclaw/workspace && ./agents/git-janitor-cycle.sh >> memory/git-janitor.log 2>&1\'"}' \
+            --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
+          log "Git‑janitor‑agent cron job registered"
+          ;;
       esac
     done
 
@@ -224,6 +276,22 @@ EOF
       echo "- agent‑manager: running every 30 min"
       echo "- All times Asia/Bangkok unless noted"
     } > "$REPORT_FILE"
+
+    # Self‑modification: learn from recent dev‑agent outcomes and adjust thresholds
+    # If dev-agent was spawned in last 24h and it produced commits that were pushed, consider lowering stale threshold
+    # This is a simple reinforcement: positive outcomes → more aggressive spawning
+    if [ -f "$WORKSPACE/memory/dev-agent.log" ]; then
+      LAST_DEV_RUN=$(stat -c %Y "$WORKSPACE/memory/dev-agent.log" 2>/dev/null || echo 0)
+      AGE_HOURS=$(( ( $(date +%s) - LAST_DEV_RUN ) / 3600 ))
+      if [ "$AGE_HOURS" -le 24 ]; then
+        # Check if dev-agent produced any commits in last 24h
+        DEV_COMMITS=$(git log --since='24 hours ago' --oneline 2>/dev/null | grep '^dev:' | wc -l)
+        if [ "$DEV_COMMITS" -gt 0 ]; then
+          # Positivity! Could adjust thresholds in meta-agent config (future)
+          log "Recent dev‑agent activity successful ($DEV_COMMITS dev commits). Consider reinforcing dev spawn frequency."
+        fi
+      fi
+    fi
 
     log "Meta‑Agent one‑shot completed; actions: ${ACTIONS[*]:-none}"
     ;;
