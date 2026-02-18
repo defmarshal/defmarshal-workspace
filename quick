@@ -907,6 +907,24 @@ except Exception:
     echo "Note: For sudo setup, run: sudo ./setup-sudo.sh"
     echo "Remember to commit any changes and push to GitHub."
     ;;
+
+  dashboard)
+    # Manage RPG Dashboard (Final Fantasy ATB Monitor)
+    subcmd="${2:-status}"
+    case "$subcmd" in
+      start|stop|status|open)
+        bash "$WORKSPACE/dashboard/dashboard" "$subcmd" "${3:-}"
+        ;;
+      *)
+        echo "Usage: quick dashboard {start|stop|status|open [url]}"
+        echo "  start  - launch dashboard server (detaches)"
+        echo "  stop   - stop dashboard server"
+        echo "  status - check if running"
+        echo "  open   - open browser to dashboard (default http://localhost:3000)"
+        exit 1
+    esac
+    ;;
+
   restart-gateway)
     echo "Restarting OpenClaw gateway..."
     openclaw gateway restart

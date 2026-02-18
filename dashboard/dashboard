@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# RPG Dashboard manager (start, stop, status, open)
+
+set -euo pipefail
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+cd "$WORKSPACE"
+
+PID_FILE="$WORKSPACE/dashboard.pid"
+
+cmd="${1:-status}"
+
+case "$cmd" in
+  start)
+    if pgrep -f "dashboard/server.js" > /dev/null; then
+      echo "RPG Dashboard already running (PID $(pgrep -f "dashboard/server.js"))"
+      exit 0
+    fi
+    echo "Starting RPG Dashboard..."
+    nohup node "$WORKSPACE/dashboard/server.js" > /dev/null 2>&1 &
+    echo $! > "$PID_FILE"
+    sleep 1
+    if pgrep -f "dashboard/server.js" > /dev/null; then
+      echo "✓ Dashboard started (PID $(cat "$PID_FILE"))"
+      echo "  URL: http://localhost:3000"
+    else
+      echo "✗ Failed to start dashboard"
+      exit 1
+    fi
+    ;;
+  stop)
+    if pgrep -f "dashboard/server.js" > /dev/null; then
+      echo "Stopping RPG Dashboard..."
+      pkill -f "dashboard/server.js"
+      rm -f "$PID_FILE"
+      echo "✓ Stopped"
+    else
+      echo "Dashboard not running"
+    fi
+    ;;
+  status)
+    if pgrep -f "dashboard/server.js" > /dev/null; then
+      echo "RPG Dashboard is running (PID $(pgrep -f "dashboard/server.js"))"
+      echo "  URL: http://localhost:3000"
+    else
+      echo "RPG Dashboard is NOT running"
+      exit 1
+    fi
+    ;;
+  open)
+    URL="${2:-http://localhost:3000}"
+    if command -v xdg-open > /dev/null; then
+      xdg-open "$URL"
+    elif command -v open > /dev/null; then
+      open "$URL"
+    else
+      echo "Cannot open browser automatically. Please open: $URL"
+    fi
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|status|open [url]}"
+    exit 1
+esac
