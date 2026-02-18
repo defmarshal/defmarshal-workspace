@@ -35,3 +35,4 @@
 
 ## Recent Learnings (2026-02-18)
 - **agent-manager git auto-commit bug fixed**: The original condition `if ! git diff --quiet && ! git diff --cached --quiet` missed untracked files, causing auto-commit to skip when only untracked files existed (e.g., reports/). Fixed by replacing with `changes=$(git status --porcelain | wc -l); if [ "$changes" -gt 0 ]; then ...`. Now correctly detects any uncommitted changes including untracked files. Validated: manual run successfully auto-committed the daily digest report.
+- **quick launcher syntax error fixed + meta-agent refactor**: The `feedback)` case was misplaced after `esac` causing a parse error. Fixed by moving it inside the case block. Validated `./quick help` works. Also accepted major `agents/meta-agent.sh` refactor (simplified, deduped safety/feedback code, added create_* functions). Enforced active-tasks.md 2KB limit: pruned stale validated entry and added completed record.
