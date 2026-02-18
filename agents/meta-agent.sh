@@ -10,6 +10,81 @@ REPORT_FILE="meta-report-latest.md"
 CHECKPOINT_FILE="autonomous-checkpoints.json"
 mkdir -p memory
 
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
 log() {
   echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
 }
@@ -336,7 +411,22 @@ case "${1:-}" in
 
 # Execute actions (spawn agents for remediation)
     # Use workspace-defined LOCK_FILE with absolute path (already set above)
-    for act in "${ACTIONS[@]}"; do
+    
+    # Safety check: block spawns if system under stress
+    if ! safe_to_spawn; then
+      log "Agent spawns blocked due to safety constraints; will retry next cycle"
+      # Clear spawn-related actions but keep non-spawn actions (e.g., disk cleanup, adjust schedules)
+      FILTERED_ACTIONS=()
+      for a in "${ACTIONS[@]}"; do
+        case "$a" in
+          spawn*|create*) ;;
+          *) FILTERED_ACTIONS+=("$a") ;;
+        esac
+      done
+      ACTIONS=("${FILTERED_ACTIONS[@]}")
+    fi
+
+for act in "${ACTIONS[@]}"; do
       case "$act" in
         "memory reindex")
           # Disabled to avoid Voyage AI usage
@@ -372,7 +462,82 @@ case "${1:-}" in
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/archive-agent.log"
-mkdir -p memory archives
+mkdir -p memory
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+ archives
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
 log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
 
 log "Archive‑agent starting"
@@ -423,6 +588,81 @@ set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/git-janitor.log"
 mkdir -p memory
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
 log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
 
 log "Git‑janitor starting"
@@ -552,7 +792,82 @@ EOF
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/archiver-manager.log"
-mkdir -p memory archives
+mkdir -p memory
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+ archives
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
 log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
 
 log "Archiver‑manager starting"
@@ -577,7 +892,82 @@ for ((i=0; i<TOTAL; i+=BATCH_SIZE)); do
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/$WORKER_ID.log"
-mkdir -p memory archives
+mkdir -p memory
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+ archives
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
 log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
 
 log "Worker starting"
@@ -623,6 +1013,81 @@ set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/notifier-agent.log"
 mkdir -p memory
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
+
+# Safety & Containment defaults
+SAFETY_CPU_CAP=80      # percent CPU usage threshold
+SAFETY_MEM_CAP=85      # percent memory usage threshold
+SAFETY_DISK_CAP=90     # percent disk usage threshold
+SAFETY_BLACKLIST=("rm -rf" "dd if=" ":|:" "poweroff" "shutdown" "mkfs" "dd of=" ">" "2>/dev/null")  # dangerous patterns
+SAFETY_MAX_CONCURRENT_AGENTS=10
+
+
+# Validate script for dangerous patterns before execution
+validate_script_safe() {
+  local script_path="$1"
+  if [ ! -f "$script_path" ]; then
+    log "Validation failed: script not found"
+    return 1
+  fi
+  for pattern in "${SAFETY_BLACKLIST[@]}"; do
+    if grep -qE "$pattern" "$script_path"; then
+      log "Validation failed: script contains dangerous pattern: $pattern"
+      return 1
+    fi
+  done
+  return 0
+}
+
 log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
 
 log "Notifier starting"
