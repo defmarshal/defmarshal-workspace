@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw RPG Dashboard</title>
+  <style>
+    :root {
+      --bg: #1a1a2e;
+      --card: #16213e;
+      --accent: #e94560;
+      --text: #eee;
+      --muted: #888;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --danger: #f44336;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .sprite {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border: 2px solid var(--accent);
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .stat {
+      background: rgba(255,255,255,0.05);
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+    }
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      display: block;
+    }
+    .stat-value {
+      font-weight: bold;
+    }
+    .hp-bar, .mp-bar, .xp-bar {
+      height: 8px;
+      background: #333;
+      border-radius: 4px;
+      margin-top: 0.3rem;
+      overflow: hidden;
+    }
+    .hp-fill { background: var(--success); height: 100%; }
+    .mp-fill { background: #2196f3; height: 100%; }
+    .xp-fill { background: #ff9800; height: 100%; }
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+    .status-ok { background: var(--success); color: #fff; }
+    .status-err { background: var(--danger); color: #fff; }
+    .status-warn { background: var(--warning); color: #000; }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .refresh-info {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+    .loading { animation: pulse 1.5s infinite; }
+  </style>
+</head>
+<body>
+  <h1>OpenClaw RPG Dashboard</h1>
+  <div class="subtitle">Agents as NPCs • Cron jobs as quests</div>
+  <div class="refresh-info" id="refreshInfo">Loading...</div>
+  <div class="grid" id="cards"></div>
+  <div class="footer">Polling every 10s • Data from ~/.openclaw/cron/jobs.json</div>
+
+  <script>
+    const ICONS = {
+      'main': '🧙',
+      'torrent-bot': '🧜',
+      'cron-supervisor': '🛡️',
+      'default': '⚔️'
+    };
+
+    function getIcon(agentId) {
+      return ICONS[agentId] || ICONS.default;
+    }
+
+    function timeAgo(ms) {
+      if (!ms) return 'never';
+      const sec = Math.floor((Date.now() - ms) / 1000);
+      if (sec < 60) return `${sec}s ago`;
+      const min = Math.floor(sec / 60);
+      if (min < 60) return `${min}m ago`;
+      const hr = Math.floor(min / 60);
+      return `${hr}h ago`;
+    }
+
+    function fmtDate(ms) {
+      if (!ms) return 'never';
+      const d = new Date(ms);
+      return d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' ' + d.toLocaleDateString();
+    }
+
+    function hpPercent(lastRunMs, intervalMs) {
+      if (!lastRunMs) return 0;
+      const age = Date.now() - lastRunMs;
+      const pct = Math.max(0, 100 - (age / intervalMs) * 100);
+      return Math.min(100, Math.round(pct));
+    }
+
+    function createCard(job) {
+      const state = job.state || {};
+      const lastStatus = state.lastStatus || 'never';
+      const consecutiveErrors = state.consecutiveErrors || 0;
+      const nextRunMs = state.nextRunAtMs || 0;
+      const lastRunMs = state.lastRunAtMs || 0;
+      const enabled = job.enabled !== false;
+
+      // Determine status badge
+      let statusClass = 'status-ok';
+      let statusText = 'OK';
+      if (!enabled) {
+        statusClass = 'status-warn';
+        statusText = 'DISABLED';
+      } else if (consecutiveErrors > 0 || lastStatus !== 'ok') {
+        statusClass = 'status-err';
+        statusText = 'FAILURE';
+      }
+
+      // Agent icon (use agentId or name-derived)
+      const agentId = job.agentId || 'main';
+      const sprite = getIcon(agentId);
+
+      // Build HP bar based on time since last run vs schedule
+      let hpBar = '<div class="hp-bar"><div class="hp-fill" style="width: 100%"></div></div>';
+      try {
+        const schedule = job.schedule || {};
+        let intervalMs = 15 * 60 * 1000; // default 15m
+        if (schedule.kind === 'cron' && schedule.expr) {
+          // Very rough estimation for common intervals
+          if (schedule.expr.includes('*/2')) intervalMs = 2 * 60 * 60 * 1000;
+          else if (schedule.expr.includes('*/30')) intervalMs = 30 * 60 * 1000;
+          else if (schedule.expr.includes('0 *')) intervalMs = 60 * 60 * 1000;
+          else if (schedule.expr.includes('0 */')) {
+            const parts = schedule.expr.split(' ');
+            const val = parseInt(parts[2], 10);
+            if (!isNaN(val)) intervalMs = val * 60 * 60 * 1000;
+          }
+        } else if (schedule.kind === 'every' && schedule.everyMs) {
+          intervalMs = schedule.everyMs;
+        }
+        const hp = hpPercent(lastRunMs, intervalMs);
+        hpBar = `<div class="hp-bar"><div class="hp-fill" style="width: ${hp}%"></div></div>`;
+      } catch (e) {
+        // keep default
+      }
+
+      return `
+        <div class="card">
+          <div class="card-header">
+            <div class="sprite">${sprite}</div>
+            <div>
+              <div class="card-title">${job.name}</div>
+              <div class="card-subtitle">agent: ${agentId}</div>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-label">Status</span>
+              <span class="stat-value"><span class="status-badge ${statusClass}">${statusText}</span></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Errors</span>
+              <span class="stat-value">${consecutiveErrors}</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Last run</span>
+              <span class="stat-value">${timeAgo(lastRunMs)}</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Next</span>
+              <span class="stat-value">${fmtDate(nextRunMs)}</span>
+            </div>
+          </div>
+          ${hpBar}
+        </div>
+      `;
+    }
+
+    async function fetchData() {
+      try {
+        const resp = await fetch('/cron.json');
+        if (!resp.ok) throw new Error('fetch failed');
+        const data = await resp.json();
+        return data.jobs || [];
+      } catch (e) {
+        console.error('Failed to load /cron.json', e);
+        return [];
+      }
+    }
+
+    function render(jobs) {
+      const container = document.getElementById('cards');
+      container.innerHTML = jobs.map(createCard).join('');
+      const now = new Date().toLocaleTimeString();
+      document.getElementById('refreshInfo').textContent = `Last updated: ${now} • ${jobs.length} quests active`;
+    }
+
+    async function update() {
+      const jobs = await fetchData();
+      render(jobs);
+    }
+
+    // Poll every 10 seconds
+    setInterval(update, 10000);
+    update(); // initial
+  </script>
+</body>
+</html>
