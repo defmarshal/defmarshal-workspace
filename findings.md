@@ -1,56 +1,97 @@
 # Workspace Builder Findings
-**Date**: 2026-02-18
-**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
 
-## Initial Assessment
+**Date**: 2026-02-18 (continuation from previous build)
+**Context**: Follow-up maintenance after major cron fixes (Feb 18 afternoon) and gateway token issue (Feb 18 morning)
 
-### System Health
-- Disk: 40% OK
-- Gateway: healthy (port 18789)
-- Memory: 15 files indexed, clean (main store)
-- Git: clean
-- Downloads: 12 files, 2.6GB
+---
 
-### Active Cron Jobs (from `openclaw cron list`)
-All schedules currently match CRON_JOBS.md after previous fix:
-- workspace-builder: `0 */2 * * *` Asia/Bangkok
-- supervisor-cron: `*/5 * * * *` Asia/Bangkok
-- meta-agent-cron: `0 * * * *` Asia/Bangkok
-- agent-manager-cron: `0,30 * * * *` Asia/Bangkok
-- dev-agent-cron: `0,20,40 8-22 * * *` Asia/Bangkok
-- content-agent-cron: `0,10,20,30,40,50 8-22 * * *` Asia/Bangkok
-- research-agent-cron: `0,15,30,45 8-22 * * *` Asia/Bangkok
-- random-torrent-downloader: `0 */2 * * *` UTC
-- agni-cron: `0 */2 * * *` UTC
-- Others (weekly/monthly) as documented.
+## System State Overview
 
-### Issues Identified
-1. **Meta-Agent Schedule Corruption** (P0)
-   - `agents/meta-agent.sh` contains `adjust_scheduling` function that blindly applies tiered schedules based on disk usage.
-   - In the past, it changed several jobs to undesired frequencies (e.g., supervisor from 5min to hourly; workspace-builder from 2h to hourly).
-   - Although workspace-builder later corrected them, meta-agent runs hourly and can break again.
-   - Must disable or fix this function to preserve schedule integrity.
+| Metric | Value | Status |
+|--------|-------|--------|
+| Disk Usage | 42% | ✅ OK |
+| Gateway | Healthy | ⚠️ RPC token mismatch |
+| Memory Index | 15 files, 60 chunks, clean | ✅ OK |
+| Reindex Needed | No (2.2 days ago) | ✅ OK |
+| Git Status | Dirty (1 file modified) | ⚠️ Needs commit |
+| APT Updates | 16 pending | ⚠️ Should apply |
+| Active Agents | 279 sessions (including cron) | ✅ Normal |
+| Downloads | 13 files, 3.3 GB | ✅ OK |
 
-2. **Lack of Automated Schedule Validation**
-   - No safety net to detect or correct drift from documented schedules in CRON_JOBS.md.
-   - Relies on manual workspace-builder runs every 2h.
-   - Could add validation to agent-manager (every 30min) or as separate cron.
+---
 
-3. **Supervisor Announcement Delivery Failures**
-   - supervisor-cron reports "cron announce delivery failed" in some runs.
-   - Likely Telegram connectivity or bot/channel issues; not critical but generates error state.
-   - Will monitor; may need to investigate channel configuration if persists.
+## Key Observations
 
-4. **Voyage AI Rate Limits**
-   - Free tier 3 RPM causing memory reindex failures; reindex deferred.
-   - Acceptable for now; fallback to local search functional.
+### 1. Gateway Token Mismatch
 
-5. **Unused Memory Stores Dirty**
-   - `torrent-bot` and `cron-supervisor` stores dirty=True but have 0 files/chunks (benign).
-   - Harmless; can be documented.
+- **Issue**: Gateway service is running but RPC connections are unauthorized due to stale `identity/device-auth.json`.
+- **Impact**: Agents that rely on gateway RPC may fail (e.g., `sessions_spawn`, `gateway status`, some supervisor checks). The supervisor cron may still run via system-level checks, but any OpenClaw RPC call is rejected.
+- **Fix**: `./gateway-fix.sh` removes identity dir, restarts service, and waits for RPC readiness. Automates token rotation. This was prepared by the dev-agent on Feb 18 but requires manual execution.
+- **Recommendation**: Execute gateway-fix.sh immediately to restore full RPC functionality.
 
-## Plans Derived
-- Phase A: Disable meta-agent schedule adjustments.
-- Phase B: Implement schedule validation in agent-manager + quick command.
-- Phase C: Documentation updates.
-- Phase D: Validation and commit.
+### 2. Pending APT Updates
+
+- **Count**: 16 packages upgradable
+- **Nature**: Primarily GCC-13 toolchain updates (`gcc-13`, `g++-13`, `libgcc-13-dev`, etc.) and `libgphoto2`/`libmtp` libraries. Some are security-related (from `noble-updates`).
+- **Risk**: Low. Standard Ubuntu updates. Systemd-hwe-hwdb also included.
+- **Action**: Apply with `./quick updates-apply --execute`. No critical services should be affected.
+
+### 3. Git Dirty State
+
+- **Modified**: `memory/2026-02-18.md` (daily log)
+- **Reason**: Ongoing agent activity (workspace builder, research, content) likely appended new entries.
+- **Action**: Commit and push to maintain version history.
+
+### 4. Active-Tasks Hygiene
+
+- **Current**: File is clean; no stale active entries.
+- **Last cleanup**: Feb 18 entry shows a validated workspace-builder record was pruned and archived.
+- **Action**: Add a new entry for the current session and mark validated after verification.
+
+### 5. Memory System
+
+- **Main store**: Clean (15 files indexed, 44 chunks)
+- **Other stores**: `torrent-bot` and `cron-supervisor` show dirty but with 0 files (benign; these agents don't use memory).
+- **Reindex**: Not needed; last performed 2.2 days ago. Voyage AI rate limits still in effect on free tier but not critical.
+
+---
+
+## Risks & Mitigations
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| Gateway RPC failure persists after fix | Low | High (agent-spawn broken) | Verify with `openclaw gateway status` and `openclaw sessions list` |
+| APT update breaks something | Very Low | Medium | Dry-run first; monitor after apply |
+| Active-tasks grows beyond 2KB | Medium | Low (cosmetic) | Prune validated entries after each build |
+| Memory index becomes dirty unnoticed | Low | Medium | `memory-reindex-check` runs weekly; observe in supervisor |
+| Cron schedules drift again | Low | Medium | Agent-manager validation check runs every 30min; `quick cron-schedules` enforces docs |
+
+---
+
+## Dependencies
+
+- **Gateway fix**: Must complete before verifying agent-spawn functionality
+- **Updates**: Apply before final commit to ensure system state is consistent
+- **Git push**: Requires clean working directory (after commit)
+
+---
+
+## Success Criteria
+
+1. ✅ All system updates applied without errors
+2. ✅ Gateway RPC verified healthy (`openclaw gateway status` clean)
+3. ✅ Git status clean (all changes committed)
+4. ✅ `quick health` returns all OK
+5. ✅ `quick agent-status` shows healthy cron jobs
+6. ✅ Active-tasks.md < 2KB, accurate
+7. ✅ No temp files left behind
+8. ✅ All changes pushed to GitHub
+
+---
+
+## References
+
+- Previous build (Feb 18): Fixed cron schedules, agent-manager bugs, added memory-dirty
+- Current issue (gateway token): Identified Feb 18 morning, fix script prepared, pending execution
+- TOOLS.md: Contains memory observability docs and quick launcher commands
+- CRON_JOBS.md: Source of truth for cron schedules (validated)

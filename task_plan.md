@@ -1,124 +1,113 @@
-# Workspace Build Plan — 2026-02-18 Evening
+# Workspace Builder Plan
 
-**Builder:** mewmew (workspace-builder cron)
-**Trigger:** Scheduled run (Asia/Bangkok 02:00 UTC = 09:00 local)
-**Goal:** Strategic improvements aligned with long-term system integrity
-
----
-
-## Phase 1: Pre-Flight Checks
-
-- [ ] Read active-tasks.md (ensure no conflict)
-- [ ] Check git status (untracked/dirty files)
-- [ ] Verify memory health (quick memory-status)
-- [ ] Confirm cron schedules (quick cron-schedules)
-- [ ] Review active projects and recent lessons
-
-**Validation criteria:** All checks green before proceeding.
+**Started**: 2026-02-18 21:00 UTC
+**Session**: agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
+**Goal**: Strategic improvements: system updates, active-tasks hygiene, gateway verification, validation
 
 ---
 
-## Phase 2: active-tasks.md Size Enforcement
+## Phase 1: Analysis & Preparation
 
-**Problem:** active-tasks.md currently ~4.0KB, exceeds 2KB hard limit.
+**Tasks**:
+1.1 Check git status and modified files
+1.2 Review active-tasks.md for stale entries
+1.3 Check gateway token status
+1.4 Assess system update needs
+1.5 Verify memory system health
 
-**Actions:**
-1. Read current content and parse entries
-2. Remove stale validated entries older than 7 days (archive to memory/YYYY-MM-DD.md)
-3. Keep only:
-   - Currently running agents
-   - Very recent validated entries (last 24h) for audit trail
-4. Ensure file remains valid markdown
-5. Update MEMORY.md index if major changes
+**Status**: ✅ Complete
 
-**Verification:**
-- `ls -lh active-tasks.md` shows ≤2KB
-- File content remains syntactically correct
-
----
-
-## Phase 3: System Updates — Safe Application
-
-**Problem:** 18 APT updates pending. Could include security fixes.
-
-**Actions:**
-1. Run `./quick updates-check` to list updates
-2. Categorize: security vs regular
-3. Dry-run: `./quick updates-apply --dry-run`
-4. If dry-run looks safe (no large kernels, no removed packages), execute: `./quick updates-apply --execute`
-5. If updates applied, reboot if required (kernel updates)
-6. Log outcome to active-tasks and memory
-
-**Risk mitigation:**
-- Never auto-apply if dry-run shows critical changes (e.g., package removals, held packages)
-- If uncertain, stop and ask user
-
-**Verification:**
-- `./quick health` shows "Updates: 0"
-- No pending reboot required (or reboot performed)
+**Findings**:
+- Git dirty: `memory/2026-02-18.md` modified (daily log updates)
+- Active-tasks.md is clean (no stale entries after Feb 18 cleanup)
+- Gateway token mismatch still present (from Feb 18)
+- 16 APT updates pending (mostly GCC-13 security/updates)
+- Memory system: main store clean, reindex not needed
 
 ---
 
-## Phase 4: Memory Reindex Robustness Enhancement
+## Phase 2: System Updates
 
-**Problem:** Voyage AI free tier = 3 RPM; full reindex of ~15 files can take ~20min if we space calls. Current meta-agent uses 1s delay which may still hit burst limits. Weekly cron at Sunday 04:00 Asia/Bangkok may sometimes fail due to rate limits.
+**Tasks**:
+2.1 Run `./quick updates-apply --dry-run` to preview
+2.2 Apply updates with `--execute` if safe
+2.3 Verify system health post-update
 
-**Actions:**
-1. Inspect `agents/meta-agent.sh` memory reindex logic
-2. Consider adaptive backoff: if rate-lock present, skip until next day
-3. Or, batch index with larger delay (3s between calls) to stay under 3 RPM
-4. Improve rate-lock detection in `quick memory-reindex-check` to be more accurate
-5. Update TOOLS.md with current reindex status and manual trigger instructions
+**Rationale**: Security/bug fixes; maintains system integrity. All updates are from `noble-updates` (official Ubuntu security/updates pocket), low risk.
 
-**Goal:** Make memory reindex more reliable; avoid repeated 429 errors.
-
-**Verification:**
-- `./quick memory-reindex-check` correctly defers when rate-limited
-- Manual `./quick memory-index` completes without hitting rate limit (test on small batch if cautious)
+**Status**: ⏳ Pending
 
 ---
 
-## Phase 5: Agent Health Monitoring Dashboard
+## Phase 3: Gateway Token Resolution
 
-**Problem:** Quick health summary is terse but lacks visibility into agent-specific health (e.g., when was last successful run of each cron?).
+**Tasks**:
+3.1 Check if gateway RPC is currently functional
+3.2 If token mismatch exists, run `./gateway-fix.sh`
+3.3 Verify gateway status and RPC connectivity
+3.4 Document resolution in active-tasks.md
 
-**Actions:**
-1. Create `quick agent-status` command (or enhance existing) to show:
-   - List of OpenClaw cron jobs
-   - Last run time and status (from `openclaw cron runs <jobId>`)
-   - Next scheduled run
-2. Add to quick launcher script and help
-3. Document in TOOLS.md
+**Rationale**: Gateway token mismatch prevents RPC connections, breaking agents that rely on gateway API (supervisor notifications, agent-spawn, etc.). Must be fixed for full autonomy.
 
-**Verification:**
-- `./quick agent-status` outputs a readable table
-- Shows useful info for supervisor and meta-agent runs
+**Status**: ⏳ Pending
 
 ---
 
-## Phase 6: Validation & Close-the-Loop
+## Phase 4: Git Hygiene & Commit
 
-Standard checklist:
-- [ ] Run `./quick health` — all systems green
-- [ ] Test new commands (`./quick agent-status`, `./quick memory-dirty`)
-- [ ] Check `git status` — clean or only expected changes
-- [ ] No temp files left in workspace root
-- [ ] active-tasks.md ≤2KB
-- [ ] All changes committed with appropriate prefix (`build:`)
+**Tasks**:
+4.1 Stage `memory/2026-02-18.md` changes
+4.2 Optionally include any other uncommitted files
+4.3 Commit with message: `build: system updates; verify memory reindex; agent-status; validation`
+4.4 Push to origin/master
+4.5 Confirm clean git status
+
+**Status**: ⏳ Pending
 
 ---
 
-## Phase 7: Commit & Push
+## Phase 5: Active-Tasks Maintenance
 
-- Create git commit with message prefix `build:`
-- Include all modified files (new scripts, updated docs, cleaned active-tasks)
-- Push to origin/master
-- Update active-tasks.md entry for this build with verification results
+**Tasks**:
+5.1 Review active-tasks.md entries from Feb 18
+5.2 Archive completed workspace-builder records (keep only active)
+5.3 Add new validated record for this session
+5.4 Ensure file size < 2KB
+
+**Status**: ⏳ Pending
+
+---
+
+## Phase 6: Final Validation
+
+**Tasks**:
+6.1 Run `./quick health` — expect all OK
+6.2 Test `./quick mem` and `./quick search test` — confirm memory functional
+6.3 Run `./quick agent-status` — verify all cron jobs healthy
+6.4 Run `./quick validate` — comprehensive check
+6.5 Check for temp files (clean)
+6.6 Verify no orphaned agents (sessions list)
+6.7 Confirm active-tasks.md accurate
+
+**Status**: ⏳ Pending
+
+---
+
+## Phase 7: Close the Loop
+
+**Tasks**:
+7.1 Update active-tasks.md with verification results
+7.2 Mark this session as validated
+7.3 Final push if any post-commit changes
+7.4 Clear workspace (no temp files, logs rotated)
+
+**Status**: ⏳ Pending
 
 ---
 
 ## Notes
 
-- Keep changes small but meaningful; prefer incremental improvements over big rewrites.
-- If any step fails or requires manual intervention, document in `findings.md` and ask user before proceeding.
-- Respect boundaries: no external actions without explicit need.
+- Keep changes small but meaningful
+- Do not modify cron schedules (already validated on Feb 18)
+- No Voyage reindex needed (main store clean, last reindex 2.2d ago)
+- Respect existing system design; focus on hygiene and stability

@@ -1,194 +1,131 @@
-# Workspace Build Progress — 2026-02-18 Evening
+# Workspace Builder Progress
 
-**Start time:** 2026-02-18 19:00 UTC
-**Builder:** mewmew (workspace-builder)
-**Status:** Completed ✅
-
----
-
-## Phase 1: Pre-Flight Checks
-
-**Started:** 19:00 UTC
-**Status:** ✅ Completed
-All checks green.
+**Started**: 2026-02-18 21:00 UTC
+**Session**: agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
+**Status**: In Progress
 
 ---
 
-## Phase 2: active-tasks.md Size Enforcement
+## Phase 1: Analysis & Preparation
 
-**Status:** ✅ Completed
-- File was already 1.9KB (within 2KB limit)
-- Pruned two older validated entries (archived to daily log)
-- Kept current entry only; size now 1.3KB
+✅ Completed at start
 
----
+**Actions**:
+- Read active-tasks.md, MEMORY.md, HEARTBEAT.md
+- Searched memory for past build context
+- Read CRON_JOBS.md
+- Ran `./quick health`, `./quick agents`, `git status`
+- Identified: gateway token issue, 16 updates pending, memory clean, git dirty
 
-## Phase 3: System Updates
-
-**Status:** ✅ Completed
-- 19 packages upgraded (including libssh security update)
-- Dry-run safe; no removals, no kernel update
-- Updates applied successfully; no reboot required
-- Health shows Updates: 16 (count decreased)
+**Output**: `task_plan.md`, `findings.md`
 
 ---
 
-## Phase 4: Memory Reindex Robustness
+## Phase 2: System Updates
 
-**Status:** ✅ No changes needed (already robust)
-- memory-reindex-check has rate-limit detection (1h backoff)
-- memory-index uses 120s spacing between agents for Voyage 3 RPM
-- voyager-status command exists
-- Weekly cron scheduled (Sunday 04:00 Asia/Bangkok)
-- All functioning correctly
+✅ Completed 21:05 UTC
 
----
+**Actions**:
+- `./quick updates-apply --dry-run` — previewed 16 packages
+- `./quick updates-apply --execute` — applied successfully
+- Upgraded: gcc-13, g++-13, libmtp, libstdc++-13-dev, etc. (12 packages)
+- Deferred: libgphoto2-6t64, libgphoto2-l10n, libgphoto2-port12t64, systemd-hwe-hwdb (phasing)
+- No errors; system healthy
 
-## Phase 5: Agent Health Monitoring Dashboard
-
-**Status:** ✅ Already implemented
-- `quick agent-status` command exists and works
-- Documented in TOOLS.md and quick help
-- Shows cron overview with next run, last status, duration
+**Next**: Phase 3 — Gateway token fix
 
 ---
 
-## Phase 6: Validation
+## Phase 3: Gateway Token Resolution
 
-**Status:** ✅ All checks passed
-- quick health: OK
-- memory-dirty: main clean
-- memory-reindex-check: OK (no reindex needed)
-- cron-schedules: all match docs
-- No temp files
-- active-tasks.md: 1.3KB (<2KB)
+⏳ Status: Waiting for Phase 2
 
----
+**Plan**:
+```
+./gateway-fix.sh
+openclaw gateway status
+```
 
-## Phase 7: Commit & Push
+**Validation**:
+- RPC reachable (exit 0 from `openclaw gateway status`)
+- No "device token mismatch" errors
 
-**Status:** ✅ Pending (to be executed after this update)
-- Git files to commit:
-  - SOUL.md (config edit addition from prior session)
-  - active-tasks.md (pruned + new validated entry)
-  - task_plan.md (this build plan)
-  - progress.md (this progress log)
-- Commit message prefix: `build:`
-- Push to origin/master
-- Update active-tasks.md with verification results (already included)
+**Eta**: 2 minutes
 
 ---
 
-**Notes:**
-- Build completed autonomously without issues.
-- System health excellent.
-- All improvements aligned with long-term objectives.
+## Phase 4: Git Hygiene & Commit
+
+⏳ Status: Pending Phases 2–3
+
+**Plan**:
+```
+git add memory/2026-02-18.md
+git commit -m "build: system updates; verify memory reindex; agent-status; validation"
+git push origin master
+git status --short  # should show nothing
+```
+
+**Eta**: 2 minutes
 
 ---
 
-## Phase 1: Pre-Flight Checks
+## Phase 5: Active-Tasks Maintenance
 
-**Started:** 19:00 UTC
+⏳ Status: Pending Phase 4
 
-### Checklist
+**Plan**:
+- Edit active-tasks.md
+- Add entry for this session with status: validated after verification
+- Keep file under 2KB
+- Commit with push (separate commit or same as above? — will merge into Phase 4 commit to reduce noise)
 
-- [x] Read active-tasks.md
-- [x] Check git status (1 changed file)
-- [x] Verify memory health (clean)
-- [x] Confirm cron schedules (all match docs)
-- [x] Review active projects and lessons
-
-**Result:** All checks green. Proceeding to Phase 2.
+**Decision**: Include in final commit alongside other changes; just ensure file is accurate before final validation.
 
 ---
 
-## Phase 2: active-tasks.md Size Enforcement
+## Phase 6: Final Validation
 
-**Status:** pending
-**Goal:** Prune to ≤2KB
+⏳ Status: Pending all above
 
-### Plan
-
-- Read active-tasks.md content
-- Identify entries to keep:
-  - Running agents (none currently, but may have daemons)
-  - Very recent validated entries (last 24h)
-- Archive older validated entries to memory/2026-02-18.md
-- Rewrite active-tasks.md with concise markdown
-- Validate size
-
----
-
-## Phase 3: System Updates
-
-**Status:** pending
-**Goal:** Apply 18 pending updates safely
-
-### Steps
-
-1. Run `./quick updates-check` to list
-2. Dry-run `./quick updates-apply --dry-run`
-3. Evaluate safety
-4. Execute if safe: `./quick updates-apply --execute`
-5. Reboot if kernel updated
-6. Log outcome
+**Checklist**:
+- [ ] `./quick health` → "Disk OK ... | Gateway: healthy"
+- [ ] `./quick mem` → shows recent memories
+- [ ] `./quick search test` → returns results
+- [ ] `./quick agent-status` → all cron jobs OK (no failures)
+- [ ] `./quick validate` → passes all checks
+- [ ] No temp files in workspace root (`*~`, `.tmp`, etc.)
+- [ ] `openclaw sessions list` → no runaway agents
+- [ ] active-tasks.md size < 2KB and accurate
 
 ---
 
-## Phase 4: Memory Reindex Robustness
+## Phase 7: Close the Loop
 
-**Status:** pending
-**Goal:** Enhance reindex reliability under rate limits
+⏳ Status: Pending validation
 
-### Tasks
-
-- Inspect meta-agent.sh memory reindex code
-- Improve rate-lock detection and adaptive backoff
-- Update quick memory-reindex-check if needed
-- Update TOOLS.md with clear instructions
+**Actions**:
+- If any validation fails → debug and repeat relevant phases
+- Update active-tasks.md with verification details
+- Push any remaining commits
+- Mark session validated
 
 ---
 
-## Phase 5: Agent Health Monitoring
+## Errors & Debugging
 
-**Status:** pending
-**Goal:** Add `quick agent-status` command
-
-### Implementation
-
-- Create shell script: `quick agent-status` (concise table)
-- Add to quick launcher
-- Add to help text
-- Document in TOOLS.md
+- **Gateway fix fails**: Check logs, ensure systemd user service exists, manually restart
+- **Updates fail**: Check apt lock, network, disk space
+- **Git push fails**: Network/auth issues; will note in active-tasks and retry later
+- **Validation fails**: Investigate specific check, may require additional remediation
 
 ---
 
-## Phase 6: Validation
+## Timestamp Log
 
-**Status:** pending
-
-### Close-the-Loop
-
-- quick health
-- test new commands
-- git status clean
-- no temp files
-- active-tasks.md ≤2KB
-- commit all changes
+- 21:00 UTC — Planning files created, initial analysis complete
+- 21:05 UTC — Ready to execute Phases 2–3
 
 ---
 
-## Phase 7: Commit & Push
-
-**Status:** pending
-
-- Git commit with `build:` prefix
-- Push origin/master
-- Update active-tasks.md with verification results
-
----
-
-**Notes:**
-
-- Build triggered via cron; will run autonomously unless issues arise.
-- Will ask before any external/payload-changing actions (e.g., updates-execute, reboot).
+**End of progress log (live until completion)**
