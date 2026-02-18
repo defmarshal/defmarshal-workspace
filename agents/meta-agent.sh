@@ -70,6 +70,16 @@ case "${1:-}" in
       log "No research for today; will spawn"
     fi
 
+    # Create permanent archive-agent if missing and old content exists + disk >60%
+    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archive-agent-cron$'; then
+      if find content -type f -name '*.md' -mtime +90 2>/dev/null | read -r; then
+        if [ "$DISK_USAGE" -gt 60 ]; then
+          ACTIONS+=("create archive-agent")
+          log "No archive-agent cron found, old content exists, disk usage ${DISK_USAGE}% >60% — will create permanent archive agent"
+        fi
+      fi
+    fi
+
     # Dev Agent: Proactive development when system is stable and dev activity stale
     # Conditions:
     # - No dev commit in the last 12 hours
@@ -135,6 +145,56 @@ case "${1:-}" in
         "spawn dev-agent:innovate")
           log "Spawning dev‑agent with creative innovation mandate"
           openclaw agent --agent main --message "You are the dev-agent on an innovation sprint! Your mission: conceive and build something entirely new that does not exist in this workspace yet. Think outside the box — could be a new utility, integration, automation, skill, dashboard, notification system, or tool that would significantly improve the system's capabilities. Research current gaps, design a novel solution, implement it, test it, and commit with prefix 'dev:innovation'. Be creative and bold! Log your progress to dev-agent.log. After completing, output a brief summary of what you built." --thinking medium --timeout 720000 >> "$LOGFILE" 2>&1 || true
+          ;;
+        "create archive-agent")
+          log "Creating permanent archive-agent (compresses old content/research)"
+          SCRIPT_PATH="$WORKSPACE/agents/archive-cycle.sh"
+          cat > "$SCRIPT_PATH" <<'EOF'
+#!/usr/bin/env bash
+# Archive-Agent: compress and archive old content/research to save disk space
+set -euo pipefail
+cd /home/ubuntu/.openclaw/workspace
+LOGFILE="memory/archive-agent.log"
+mkdir -p memory archives
+log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
+
+log "Archive‑agent starting"
+
+# Archive content older than 90 days
+ARCHIVE_MONTH=$(date -u +%Y-%m)
+ARCHIVE_DIR="archives/${ARCHIVE_MONTH}"
+mkdir -p "$ARCHIVE_DIR"
+
+# Find and compress old content files
+shopt -s nullglob
+for f in content/*.md; do
+  if [ "$(stat -c %Y "$f")" -lt $(( $(date +%s) - 90*86400 )) ]; then
+    base=$(basename "$f" .md)
+    tar -czf "$ARCHIVE_DIR/${base}.tar.gz" -C content "$base.md" && rm -f "$f"
+    log "Archived content: $base.md → $ARCHIVE_DIR/${base}.tar.gz"
+  fi
+done
+
+# Find and compress old research files
+for f in research/*.md; do
+  if [ "$(stat -c %Y "$f")" -lt $(( $(date +%s) - 90*86400 )) ]; then
+    base=$(basename "$f" .md)
+    tar -czf "$ARCHIVE_DIR/${base}.tar.gz" -C research "$base.md" && rm -f "$f"
+    log "Archived research: $base.md → $ARCHIVE_DIR/${base}.tar.gz"
+  fi
+done
+
+# Optional: remove empty directories
+find content research -type d -empty -delete 2>/dev/null || true
+
+log "Archive‑agent completed"
+EOF
+          chmod +x "$SCRIPT_PATH"
+          # Register cron: run at 02:00 on the 1st of every month (UTC)
+          openclaw cron add --name "archive-agent-cron" --expr "0 2 1 * *" --tz "UTC" \
+            --payload '{"kind":"systemEvent","text":"Execute archive cycle: bash -c \'cd /home/ubuntu/.openclaw/workspace && ./agents/archive-cycle.sh >> memory/archive-agent.log 2>&1\'"}' \
+            --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
+          log "Archive‑agent cron job registered"
           ;;
       esac
     done
