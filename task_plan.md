@@ -1,60 +1,124 @@
-# Workspace Builder Task Plan
-**Date**: 2026-02-18 17:00 UTC
-**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
-**Goal**: Implement improvements aligned with long-term objectives: system stability, correctness, and maintainability.
+# Workspace Build Plan — 2026-02-18 Evening
 
-## Context
-- System health: OK (disk 40%, gateway healthy, memory clean)
-- Cron schedules: Correct after previous fix, but meta-agent can corrupt them again
-- Meta-agent: Contains flawed resource-based scheduling that threatens schedule integrity
-- Validation: Need safety net to enforce documented schedules
-
-## Phases & Tasks
-
-### Phase A: Fix Meta-Agent Schedule Corruption
-**Priority**: Critical
-**Why**: Meta-agent's `adjust_scheduling` function incorrectly changes cron schedules, breaking timing semantics and causing resource spikes.
-- A1: Review `agents/meta-agent.sh` to locate `adjust_scheduling` call (line ~402)
-- A2: Disable the call by commenting it out or guarding with a feature flag
-- A3: Test meta-agent with `--once` to ensure it runs without errors and does not alter schedules
-- A4: If successful, commit as `build: disable meta-agent schedule adjustments to preserve integrity`
-
-### Phase B: Add Cron Schedule Validation (Safety Net)
-**Priority**: High
-**Why**: Prevent drift from CRON_JOBS.md due to manual changes or other agents.
-- B1: Create `scripts/validate-cron-schedules.sh` with intended schedule mappings (from CRON_JOBS.md)
-- B2: Script logic:
-  - For each known job, fetch current schedule via `openclaw cron list`
-  - Compare with intended expression
-  - If mismatch, run `openclaw cron update --jobId <id> --cron "<intended>"`
-  - Log actions
-- B3: Integrate validation into `agents/agent-manager.sh` as a periodic check (call script)
-- B4: Add quick command `cron-schedules` that runs the validation and shows status
-- B5: Test manually: introduce a deliberate mismatch, run `quick cron-schedules`, verify correction
-
-### Phase C: Documentation Updates
-**Priority**: Medium
-- C1: Update `TOOLS.md`:
-  - Add `cron-schedules` quick command description
-  - Note that meta-agent schedule adjustments are disabled (pending rework)
-  - Clarify memory-dirty benign stores
-- C2: Update `AGENTS.md` if necessary about meta-agent behavior
-- C3: Add entry to `lessons.md` describing the meta-agent schedule bug and fix
-
-### Phase D: Final Validation & Commit
-**Priority**: Critical
-- D1: Run `./quick health` – ensure system OK
-- D2: Run `./quick cron-schedules` – check for no mismatches
-- D3: Run `./quick memory-dirty` – verify memory state
-- D4: Run `./quick mem` and `./quick search test` to confirm memory search works
-- D5: Verify `git status` clean, no temp files
-- D6: Commit all changes with prefix `build:`
-- D7: Update `active-tasks.md`: mark this run as validated, add verification results
-- D8: Push to origin/master
+**Builder:** mewmew (workspace-builder cron)
+**Trigger:** Scheduled run (Asia/Bangkok 02:00 UTC = 09:00 local)
+**Goal:** Strategic improvements aligned with long-term system integrity
 
 ---
 
-## Risk Mitigation
-- If meta-agent fix causes other issues, we can revert to previous commit and redesign.
-- Schedule validation uses conservative mappings; will not alter jobs not in the list.
-- All changes will be committed and pushed; failures will be logged in `progress.md`.
+## Phase 1: Pre-Flight Checks
+
+- [ ] Read active-tasks.md (ensure no conflict)
+- [ ] Check git status (untracked/dirty files)
+- [ ] Verify memory health (quick memory-status)
+- [ ] Confirm cron schedules (quick cron-schedules)
+- [ ] Review active projects and recent lessons
+
+**Validation criteria:** All checks green before proceeding.
+
+---
+
+## Phase 2: active-tasks.md Size Enforcement
+
+**Problem:** active-tasks.md currently ~4.0KB, exceeds 2KB hard limit.
+
+**Actions:**
+1. Read current content and parse entries
+2. Remove stale validated entries older than 7 days (archive to memory/YYYY-MM-DD.md)
+3. Keep only:
+   - Currently running agents
+   - Very recent validated entries (last 24h) for audit trail
+4. Ensure file remains valid markdown
+5. Update MEMORY.md index if major changes
+
+**Verification:**
+- `ls -lh active-tasks.md` shows ≤2KB
+- File content remains syntactically correct
+
+---
+
+## Phase 3: System Updates — Safe Application
+
+**Problem:** 18 APT updates pending. Could include security fixes.
+
+**Actions:**
+1. Run `./quick updates-check` to list updates
+2. Categorize: security vs regular
+3. Dry-run: `./quick updates-apply --dry-run`
+4. If dry-run looks safe (no large kernels, no removed packages), execute: `./quick updates-apply --execute`
+5. If updates applied, reboot if required (kernel updates)
+6. Log outcome to active-tasks and memory
+
+**Risk mitigation:**
+- Never auto-apply if dry-run shows critical changes (e.g., package removals, held packages)
+- If uncertain, stop and ask user
+
+**Verification:**
+- `./quick health` shows "Updates: 0"
+- No pending reboot required (or reboot performed)
+
+---
+
+## Phase 4: Memory Reindex Robustness Enhancement
+
+**Problem:** Voyage AI free tier = 3 RPM; full reindex of ~15 files can take ~20min if we space calls. Current meta-agent uses 1s delay which may still hit burst limits. Weekly cron at Sunday 04:00 Asia/Bangkok may sometimes fail due to rate limits.
+
+**Actions:**
+1. Inspect `agents/meta-agent.sh` memory reindex logic
+2. Consider adaptive backoff: if rate-lock present, skip until next day
+3. Or, batch index with larger delay (3s between calls) to stay under 3 RPM
+4. Improve rate-lock detection in `quick memory-reindex-check` to be more accurate
+5. Update TOOLS.md with current reindex status and manual trigger instructions
+
+**Goal:** Make memory reindex more reliable; avoid repeated 429 errors.
+
+**Verification:**
+- `./quick memory-reindex-check` correctly defers when rate-limited
+- Manual `./quick memory-index` completes without hitting rate limit (test on small batch if cautious)
+
+---
+
+## Phase 5: Agent Health Monitoring Dashboard
+
+**Problem:** Quick health summary is terse but lacks visibility into agent-specific health (e.g., when was last successful run of each cron?).
+
+**Actions:**
+1. Create `quick agent-status` command (or enhance existing) to show:
+   - List of OpenClaw cron jobs
+   - Last run time and status (from `openclaw cron runs <jobId>`)
+   - Next scheduled run
+2. Add to quick launcher script and help
+3. Document in TOOLS.md
+
+**Verification:**
+- `./quick agent-status` outputs a readable table
+- Shows useful info for supervisor and meta-agent runs
+
+---
+
+## Phase 6: Validation & Close-the-Loop
+
+Standard checklist:
+- [ ] Run `./quick health` — all systems green
+- [ ] Test new commands (`./quick agent-status`, `./quick memory-dirty`)
+- [ ] Check `git status` — clean or only expected changes
+- [ ] No temp files left in workspace root
+- [ ] active-tasks.md ≤2KB
+- [ ] All changes committed with appropriate prefix (`build:`)
+
+---
+
+## Phase 7: Commit & Push
+
+- Create git commit with message prefix `build:`
+- Include all modified files (new scripts, updated docs, cleaned active-tasks)
+- Push to origin/master
+- Update active-tasks.md entry for this build with verification results
+
+---
+
+## Notes
+
+- Keep changes small but meaningful; prefer incremental improvements over big rewrites.
+- If any step fails or requires manual intervention, document in `findings.md` and ask user before proceeding.
+- Respect boundaries: no external actions without explicit need.
