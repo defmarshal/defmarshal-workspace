@@ -98,6 +98,7 @@ Commands:
   openclaw-status            Show OpenClaw system status (sessions, channels, recipients)
   uptime                     Show system and OpenClaw gateway uptime
   apt-check                  Show APT update count and short status
+  feedback <agent> <score>   Give feedback on an agent (1-5). Meta-agent will adjust spawn weights accordingly. Example: quick feedback dev 5
   gateway-token              Show gateway device token info and rotate if needed (use --force to auto-rotate)
   tailscale-status           Show Tailscale IP and connectivity status
   meta                       Run meta-agent once (autonomous planner)
@@ -1036,3 +1037,22 @@ except Exception:
     exit 1
     ;;
 esac
+  feedback)
+    # Provide feedback on an agent to influence meta-agent decisions
+    if [ $# -lt 2 ]; then
+      echo "Usage: quick feedback <agent> <score 1-5>"
+      exit 1
+    fi
+    AGENT="$1"
+    SCORE="$2"
+    if ! [[ "$SCORE" =~ ^[1-5]$ ]]; then
+      echo "Score must be 1-5"
+      exit 1
+    fi
+    FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+    mkdir -p "$WORKSPACE/memory"
+    # Append feedback with timestamp
+    TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+    echo "{\"agent\":\"$AGENT\",\"score\":$SCORE,\"timestamp\":\"$TIMESTAMP\"}" >> "$FEEDBACK_FILE"
+    echo "Feedback recorded: $AGENT rated $SCORE/5"
+    ;;

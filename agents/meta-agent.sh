@@ -19,6 +19,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -44,6 +96,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -70,6 +174,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -503,6 +659,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -528,6 +736,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -553,6 +813,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -658,6 +970,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -683,6 +1047,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -708,6 +1124,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -893,6 +1361,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -918,6 +1438,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -943,6 +1515,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -1023,6 +1647,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -1048,6 +1724,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -1073,6 +1801,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -1173,6 +1953,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -1198,6 +2030,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
@@ -1223,6 +2107,58 @@ SAFETY_MAX_CONCURRENT_AGENTS=10
 
 
 # Validate script for dangerous patterns before execution
+
+# Load user feedback and compute agent weight adjustments
+compute_feedback_weights() {
+  local FEEDBACK_FILE="$WORKSPACE/memory/user-feedback.json"
+  if [ ! -f "$FEEDBACK_FILE" ]; then
+    echo "{}"
+    return
+  fi
+  # Aggregate scores per agent
+  declare -A SUM=()
+  declare -A COUNT=()
+  while IFS= read -r line; do
+    # Parse JSON line (simple extraction)
+    AGENT=$(echo "$line" | grep -o '"agent":"[^"]*"' | cut -d'"' -f4)
+    SCORE=$(echo "$line" | grep -o '"score":[0-9]*' | cut -d':' -f2)
+    if [ -n "$AGENT" ] && [ -n "$SCORE" ]; then
+      SUM["$AGENT"]=$(( ${SUM["$AGENT"]:-0} + SCORE ))
+      COUNT["$AGENT"]=$(( ${COUNT["$AGENT"]:-0} + 1 ))
+    fi
+  done < "$FEEDBACK_FILE"
+  
+  # Compute average and produce adjustment suggestions
+  declare -A ADJUSTMENTS=()
+  for agent in "${!SUM[@]}"; do
+    avg=$(echo "scale=2; ${SUM[$agent]} / ${COUNT[$agent]}" | bc)
+    # Score 1-5. Convert to weight multiplier:
+    # 5 → 2.0 (double spawn weight)
+    # 4 → 1.5
+    # 3 → 1.0 (neutral)
+    # 2 → 0.5 (halve)
+    # 1 → 0.25 (quarter)
+    MULT="1.0"
+    if [ "$(echo "$avg >= 4.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="2.0"
+    elif [ "$(echo "$avg >= 4.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="1.5"
+    elif [ "$(echo "$avg <= 2.0" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.5"
+    elif [ "$(echo "$avg <= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+      MULT="0.25"
+    fi
+    ADJUSTMENTS["$agent"]="$MULT"
+  done
+  
+  # Output as JSON-like string for sourcing
+  echo "declare -A FEEDBACK_ADJUST=("
+  for agent in "${!ADJUSTMENTS[@]}"; do
+    echo "  ["$agent"]=${ADJUSTMENTS["$agent"]}"
+  done
+  echo ")"
+}
+
 validate_script_safe() {
   local script_path="$1"
   if [ ! -f "$script_path" ]; then
