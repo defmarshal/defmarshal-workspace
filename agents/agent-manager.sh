@@ -34,15 +34,16 @@ trap cleanup EXIT TERM INT
 run_checks() {
   log "Running maintenance checks"
 
-  # 1. Git dirty
-  if ! git diff --quiet && ! git diff --cached --quiet; then
-    if [ "$(git status --porcelain | wc -l)" -lt 10 ]; then
-      log "Git dirty but seems minor; attempting commit"
+  # 1. Git dirty (including untracked)
+  changes=$(git status --porcelain | wc -l)
+  if [ "$changes" -gt 0 ]; then
+    if [ "$changes" -lt 10 ]; then
+      log "Git dirty ($changes files) but seems minor; attempting commit"
       git add -A
       git commit -m "build: auto-commit from agent-manager ($(date -u +%Y-%m-%d))" || true
       git push origin master || true
     else
-      log "Git dirty with many changes; skipping auto-commit"
+      log "Git dirty with many changes ($changes files); skipping auto-commit"
     fi
   fi
 
