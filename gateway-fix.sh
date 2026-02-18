@@ -1,84 +1,60 @@
 #!/bin/bash
 # Gateway fix — restore clean gateway operation
-# This script stops the gateway service, kills stray processes, rotates device token if needed,
-# and restarts fresh.
+# This script force kills any gateway processes, removes identity tokens, restarts service, and waits for RPC readiness.
 # Usage: ./gateway-fix.sh
 
 set -euo pipefail
 
-WORKSPACE="/home/ubuntu/.openclaw/workspace"
-DEVICE_AUTH="${HOME}/.openclaw/identity/device-auth.json"
-
 echo "== Gateway Fix Start =="
 
-# 0. Rotate device token to fix mismatches (backup then delete)
-if [ -f "$DEVICE_AUTH" ]; then
-  echo "→ Backing up and removing device token (to force regeneration)..."
-  mv "$DEVICE_AUTH" "$DEVICE_AUTH.bak.$(date +%s)" || true
+# 0. Force kill all gateway processes
+echo "→ Killing all gateway processes (SIGKILL)..."
+pkill -9 -f openclaw-gateway || true
+sleep 1
+
+# 1. Remove identity directory (both CLI and gateway tokens)
+IDENTITY_DIR="${HOME}/.openclaw/identity"
+if [ -d "$IDENTITY_DIR" ]; then
+  echo "→ Removing identity directory: $IDENTITY_DIR"
+  rm -rf "$IDENTITY_DIR"
 else
-  echo "→ No device auth file found; skipping rotation"
+  echo "→ No identity directory found"
 fi
 
-# 1. Stop systemd service if it's active
+# 2. Stop systemd service if active (ignore errors)
 if systemctl --user is-active --quiet openclaw-gateway.service; then
   echo "→ Stopping systemd service..."
   systemctl --user stop openclaw-gateway.service || true
   sleep 1
-else
-  echo "→ Systemd service not active; skipping stop"
 fi
 
-# 2. Kill any stray gateway processes
-echo "→ Killing stray gateway processes..."
-pkill -f openclaw-gateway || true
-sleep 1
-
-# 3. Verify no processes remain (give up after a few tries)
-for i in 1 2 3; do
-  if pgrep -f openclaw-gateway >/dev/null 2>&1; then
-    echo "  ⚠ Some processes still alive, waiting..."
-    sleep 1
-  else
-    break
-  fi
-done
-
-if pgrep -f openclaw-gateway >/dev/null 2>&1; then
-  echo "  ⚠ Processes still present; using SIGKILL"
-  pkill -9 -f openclaw-gateway || true
-  sleep 1
-fi
-
-# 4. Start service fresh
-echo "→ Starting gateway service..."
+# 3. Start the gateway service
+echo "→ Starting openclaw-gateway service..."
 systemctl --user start openclaw-gateway.service
 
-# 5. Wait for service to become active (up to 10s)
-echo "→ Waiting for service to become active..."
-for i in {1..10}; do
-  if systemctl --user is-active --quiet openclaw-gateway.service; then
-    echo "✓ Service active after ${i}s"
+# 4. Wait for port 18789 to be listening
+echo "→ Waiting for gateway to listen on port 18789..."
+for i in {1..30}; do
+  if ss -ltn | grep -q ':18789 '; then
+    echo "  ✓ Gateway listening on port 18789"
     break
+  else
+    sleep 1
   fi
-  sleep 1
 done
 
-if ! systemctl --user is-active --quiet openclaw-gateway.service; then
-  echo "✗ Service did not become active. Check logs:"
-  echo "  journalctl --user -u openclaw-gateway.service -n 50"
-  exit 1
-fi
+# 5. Wait for RPC readiness (openclaw gateway status succeeds)
+echo "→ Waiting for RPC to become ready (this may take a few seconds)..."
+for i in {1..30}; do
+  if openclaw gateway status >/dev/null 2>&1; then
+    echo "  ✓ Gateway RPC is ready"
+    break
+  else
+    sleep 1
+  fi
+done
 
-# 6. Verify port is listening
-echo "→ Checking port 18789..."
-if ss -tuln | grep -q ':18789 '; then
-  echo "✓ Port 18789 is listening"
-else
-  echo "✗ Port 18789 not listening. Service may have started but crashed."
-  exit 1
-fi
-
-echo "✓ Gateway fix complete. Use 'openclaw gateway probe' to verify RPC."
-echo "  Note: The first elevated command after this will regenerate device token automatically."
-
+# 6. Final status
 echo "== Gateway Fix Complete =="
+echo "Verification:"
+openclaw gateway status || echo "  ⚠ Final status check failed"
