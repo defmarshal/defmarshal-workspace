@@ -1,23 +1,31 @@
 # Daily Digest — 2026-02-18 (UTC)
 
-**Status:** System healthy, agents 24/7, disk 80%, 18 updates pending.
+## System Overview
 
-## Highlights
+- **Gateway:** healthy on port 18789
+- **Disk:** 81% used (monitor growth)
+- **APT updates:** 18 pending (schedule maintenance window)
+- **Memory:** main store clean (15 files/44 chunks); unused agent stores flagged but benign
+- **Downloads:** 12 active files (2.6 GB total)
 
-- **Research:** Continuous pulse report published covering anime streaming wars (Prime Video declares dominance), banking AI agents (Monei + Scrub.io secure autonomous wallets), neuromorphic chips (Intel Loihi 2 breakthrough), and open-source AI (Qwen 3.5 rising).
-- **Dev:** Created `cron-supervisor` agent to offload cron monitoring from main agent. Updated configs, added daemon loop, pushed to GitHub.
-- **Torrent bot:** Auto-torrent-cron (02:00 Asia/Bangkok) executed successfully; new wrapper script `scripts/auto-torrent-add.sh` now handles random selection with quiet hours disabled.
-- **Content:** Multiple digests/notes generated; `content/INDEX.md` updated.
+## Activity Highlights
 
-## Numbers
+- **Research:** AI in Agriculture & Food Security analysis completed (market $4.7B by 2028, yield boost up to 20%, herbicide reduction up to 90%).
+- **Dev:** Added `quick clean-cache` utility; cleaned stale `__pycache__` directories; pushed commit `cd8206e`.
+- **Torrent:** auto-torrent-cron executed at ~02:31 UTC; new random top torrent added.
+- **Dashboard:** RPG ATB-style dashboard running on port 3000, autostart enabled, 10 s auto-refresh.
 
-- Research files: +1 (cross-domain trends)
-- Content files: +5 (digests, notes)
-- Commits: 3 (dev:, research:, content:)
-- Active downloads: 2 (100% complete)
+## Agent Status
 
-## Trivia
+- All cron agents running 24/7 (quiet hours removed)
+- Latest runs: research-agent (success), dev-agent (success), content-agent (active)
 
-> "Autonomy is the new UI." — observed across anime production, banking payments, neuromorphic computing, and AI agents.
+## Quick Links
 
-**Next:** Apply APT updates during maintenance window; monitor cron-supervisor health reports.
+- Dashboard: http://localhost:3000
+- Health: `./quick health`
+- Clean cache: `./quick clean-cache`
+
+---
+
+*End of daily digest*
