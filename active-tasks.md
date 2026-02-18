@@ -23,7 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [daemon] torrent-bot (running)
+- [main] dev-agent - Continuous improvements; meta-agent crash fix (started: 2026-02-18 12:00 UTC, status: running)
+  - Verification: meta-agent.sh patched; bash -n passes; basic test runs
+
 
 ## Completed (Feb 17)
 

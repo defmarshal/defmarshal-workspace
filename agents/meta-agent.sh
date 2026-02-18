@@ -262,7 +262,12 @@ case "${1:-}" in
     
     # System snapshot
     DISK_USAGE=$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')
-    APT_COUNT=$(apt-get -s upgrade 2>/dev/null | grep -c '^Inst ' || echo "0")
+    if APT_COUNT=$(apt-get -s upgrade 2>/dev/null | grep -c '^Inst ' 2>/dev/null); then
+      :
+    else
+      APT_COUNT=0
+    fi
+    APT_COUNT=${APT_COUNT//$'\n'/}
     TODAY=$(date -u +%Y-%m-%d)
     CONTENT_TODAY=$(ls content/${TODAY}*.md 2>/dev/null | wc -l)
     RESEARCH_TODAY=$(ls research/${TODAY}*.md 2>/dev/null | wc -l)
@@ -277,11 +282,26 @@ case "${1:-}" in
     WEATHER_MENTION_COUNT=0
     for logfile in memory/*-agent.log memory/meta-agent.log; do
       if [ -f "$logfile" ] && [ "$(stat -c %Y "$logfile" 2>/dev/null || echo 0)" -ge $(( $(date +%s) - 86400 )) ]; then
-        count=$(grep -ci "web_search" "$logfile" 2>/dev/null || echo 0)
+        if count=$(grep -ci "web_search" "$logfile" 2>/dev/null); then
+          :
+        else
+          count=0
+        fi
+        count=${count//$'\n'/}
         WEB_SEARCH_COUNT=$((WEB_SEARCH_COUNT + count))
-        count=$(grep -ci "gmail" "$logfile" 2>/dev/null || echo 0)
+        if count=$(grep -ci "gmail" "$logfile" 2>/dev/null); then
+          :
+        else
+          count=0
+        fi
+        count=${count//$'\n'/}
         EMAIL_MENTION_COUNT=$((EMAIL_MENTION_COUNT + count))
-        count=$(grep -ci "weather" "$logfile" 2>/dev/null || echo 0)
+        if count=$(grep -ci "weather" "$logfile" 2>/dev/null); then
+          :
+        else
+          count=0
+        fi
+        count=${count//$'\n'/}
         WEATHER_MENTION_COUNT=$((WEATHER_MENTION_COUNT + count))
       fi
     done
