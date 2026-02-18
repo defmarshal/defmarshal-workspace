@@ -1,98 +1,76 @@
-# Workspace Builder - Findings & Log
+# Workspace Builder Findings
 
-**Started**: 2026-02-18 14:00 UTC  
-**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
+**Session Started:** 2026-02-18 16:00 UTC  
+**Status:** IN PROGRESS
 
 ---
 
-## Initial Findings
+## Initial Diagnostics
 
-### System Health Status
-- Disk usage: 41% (healthy)
-- Git status: clean (0 changed files)
-- Memory index: main store clean (15 files, 54 chunks)
-- Gateway: healthy
-- Downloads: 12 files, 2.6GB
-- active-tasks.md: 39 lines, 4.0K (within 2KB limit)
+### System Overview
+- **Disk usage:** 40% (healthy)
+- **Gateway:** Healthy (port 18789, RPC ok)
+- **Memory search:** Voyage AI disabled; local FTS/grep fallback active
+- **Memory status:** 15 files indexed, clean, main store not dirty
+- **Git status:** 1 modified file (memory/2026-02-18.md) – needs commit
 
-### Critical Issue: Cron Schedule Misconfiguration
+### Active Tasks
+- None running. Registry clean.
 
-Discovered that **9 cron jobs** are incorrectly scheduled to run every hour (`0 * * * *`) instead of their intended frequencies as documented in CRON_JOBS.md.
+### Key Issue Identified: Cron Misconfiguration
 
-#### List of Mis-scheduled Jobs
+**Observation:** The OpenClaw cron jobs are running with incorrect schedules. Many jobs have `0 * * * *` (hourly) instead of their intended frequencies documented in `CRON_JOBS.md`.
 
-| Job Name                  | Current Schedule | Intended Schedule (from docs) | Correct Expression |
-|---------------------------|------------------|-------------------------------|-------------------|
-| workspace-builder         | hourly           | every 2 hours                 | `0 */2 * * *`     |
-| random-torrent-downloader | hourly           | every 2 hours                 | `0 */2 * * *`     |
-| dev-agent-cron            | hourly           | every 20min (08-22 Bangkok)  | `0,20,40 8-22 * * *` |
-| content-agent-cron        | hourly           | every 10min (08-22 Bangkok)  | `0,10,20,30,40,50 8-22 * * *` |
-| research-agent-cron       | hourly           | every 15min (08-22 Bangkok)  | `0,15,30,45 8-22 * * *` |
-| agni-cron                 | hourly           | every 2 hours (UTC)           | `0 */2 * * *`     |
-| agent-manager-cron        | hourly           | every 30 minutes              | `0,30 * * * *`    |
-| supervisor-cron           | hourly           | every 5 minutes               | `*/5 * * * *`     |
-| meta-agent-cron           | hourly           | every hour (already correct)  | No change         |
+**Misconfigured Jobs (from cron-status):**
 
-**Jobs already correct**:
-- vishwakarma-cron: `0 */4 * * *` (every 4h) ✓
-- auto-torrent-cron: `0 2 * * *` (daily 02:00) ✓
-- content-index-update-cron: `30 5 * * *` (daily 05:30) ✓
-- daily-digest-cron: `0 12,20 * * *` (twice daily) ✓
-- memory-reindex-cron: `0 4 * * 0` (weekly Sunday 04:00) ✓
-- log-rotate-cron: `0 5 * * 0` (weekly Sunday 05:00) ✓
-- cleanup-downloads-cron: `0 6 * * 0` (weekly Sunday 06:00) ✓
-- backup-cleanup-cron: `0 7 * * 0` (weekly Sunday 07:00) ✓
-- cleanup-agent-artifacts-cron: `30 9 * * 0` (weekly Sunday 09:30) ✓
+| Job Name                  | Job ID                               | Current Schedule | Intended Schedule              | Timezone     |
+|---------------------------|--------------------------------------|------------------|--------------------------------|--------------|
+| workspace-builder         | 23dad379-21ad-4f7a-8c68-528f98203a33 | `0 * * * *`      | `0 */2 * * *`                 | (default)    |
+| random-torrent-downloader | aadf040b-60d2-48ee-9825-0db68bb6c13b | `0 * * * *`      | `0 */2 * * *`                 | UTC          |
+| dev-agent-cron            | 48a38fe2-9691-4bea-bed1-0f3313534fcd | `0 * * * *`      | `0,20,40 8-22 * * *`          | Asia/Bangkok|
+| content-agent-cron        | e345525c-f289-4eab-bf25-6d6fa065e4b0 | `0 * * * *`      | `0,10,20,30,40,50 8-22 * * *`| Asia/Bangkok|
+| research-agent-cron       | f69140f6-7341-4217-bad3-f4a9615b0b94 | `0 * * * *`      | `0,15,30,45 8-22 * * *`       | Asia/Bangkok|
+| agni-cron                 | 23788edb-575a-4593-a60e-7f94b9c95db6 | `0 * * * *`      | `0 */2 * * *`                 | UTC          |
+| agent-manager-cron        | 524a0d6f-d520-4868-9647-0f89f7990f62 | `0 * * * *`      | `0,30 * * *`                  | Asia/Bangkok|
+| supervisor-cron           | e2735844-269b-40aa-bd84-adb05fe5cb95 | `0 * * * *`      | `*/5 * * * *`                 | Asia/Bangkok|
 
-### Impact Analysis
+**Impact:**
+- Over-spawning: Agents run 3–12x more frequently than designed.
+- Resource contention and unnecessary load.
+- Loss of timing semantics (e.g., supervisor should check every 5 minutes, not hourly).
+- Daytime window constraints (08:00–22:00 Bangkok) are being ignored.
 
-**Why this matters**:
-- **Resource waste**: Agents spawning 3-12x more frequently than intended
-- **Timing drift**: Supervisor checks only hourly instead of every 5min → delayed alerts
-- **Agent collisions**: Multiple agents may compete for resources at the top of every hour
-- **Design intent violated**: The system was designed with specific intervals; hourly blanket override breaks that
-- **Daytime windows ignored**: Content/Research/Dev agents should respect 08-22 Bangkok time, but are running 24/7 hourly
+**Root Cause Hypothesis:** The previous fix (workspace-builder build at 14:00 UTC) successfully updated schedules, but they have since regressed. Possible causes:
+1. Manual or automated edits overwrote the corrected schedules.
+2. Meta-agent or agent-manager may have introduced scheduling changes during resource adjustments (e.g., meta-agent's "resource-based scheduling adjustments" on Feb 18 15:00 UTC converted many jobs to hourly to reduce load; however, that overcorrected and needs refinement).
+3. The gateway config may be overwritten by a stale local file or cron job reset.
 
-**Benefits of fixing**:
-- Restore intended agent frequency and load distribution
-- Ensure timely health monitoring (supervisor every 5min)
-- Respect daytime operation windows for content/research/dev agents
-- Align documentation with reality (CRON_JOBS.md)
+**Decision:** Re-apply the correct schedules from CRON_JOBS.md now, and ensure consistency.
 
-### Previous Related Fixes (from memory)
-- 2026-02-18: agent-manager git auto-commit bug fixed (now detects untracked files)
-- 2026-02-18: meta-agent newline aggregation bug fixed
-- 2026-02-18: gateway token mismatch fix (auto-rotate in gateway-fix.sh)
-- 2026-02-18: agent-manager memory reindex logic inverted fix
-- 2026-02-17: meta-agent memory reindex rate-lock added
+---
+
+## Additional Observations
+
+- **memory-dirty:** Command exists and reports main store clean; unused stores (torrent-bot, cron-supervisor) show dirty=True but are benign.
+- **health:** All green.
+- **active-tasks.md:** 41 lines, 4.0KB – comfortably under 2KB limit.
+- **MEMORY.md:** Last updated 2026-02-18 with recent learnings (agent-manager auto-commit bug, quick launcher syntax fix).
+- **Meta-agent:** Running hourly; last status OK. No consecutive errors.
+- **Gateway token rotation:** `gateway-fix.sh` script exists and includes token rotation logic. User was advised to run it after token mismatch incident earlier today. Current gateway status shows healthy, so issue appears resolved.
 
 ---
 
 ## Action Plan
 
-1. Retrieve job IDs for the 9 mis-scheduled jobs
-2. Update each job's `schedule.expr` to the correct cron expression
-3. Verify via `openclaw cron list --json`
-4. Check that no immediate failures occur in logs
-5. Sync CRON_JOBS.md if needed
-6. Run health validation
-7. Commit and push changes
+Proceed with **Phase 1–7** in task_plan.md:
+1. Diagnose cron misconfiguration (already done)
+2. Correct schedules via `openclaw cron update`
+3. Perform secondary health checks
+4. Housekeep docs
+5. Close the loop with validation
+6. Commit & push (if any file changes)
+7. Update active-tasks.md
 
 ---
 
-## Risks & Mitigations
-
-- **Risk**: Changing intervals might cause immediate double-spawn if a job was about to run
-  - **Mitigation**: Check next run times before update; apply changes just after a run completes if possible
-- **Risk**: Timezone issues with Asia/Bangkok schedules
-  - **Mitigation**: Confirm that OpenClaw cron uses proper timezone; previous docs indicate Asia/Bangkok is used for those jobs
-- **Risk**: Agent-manager might auto-commit changes before we finish
-  - **Mitigation**: We'll commit intentionally after validation; if auto-commit triggers, it's fine (changes are good)
-
----
-
-## Notes
-
-- Quiet hours were removed system-wide on 2026-02-17; agents run 24/7 as needed
-- The mis-schedules likely originated from a bulk migration or configuration reset
-- This fix restores the system to its intended autonomous operation pattern
+**End of initial findings (will be appended after each phase)**

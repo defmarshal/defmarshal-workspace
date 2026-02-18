@@ -25,18 +25,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 *(none)*
 
-## Completed (Feb 17)
-
-- Multiple builds completed and archived to memory/2026-02-17.md.
+<!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
 ## Completed (Feb 18)
 
-- [build] workspace-builder - Fix quick launcher syntax; validate meta-agent refactor; enforce policies (started: 2026-02-18 07:00 UTC, status: validated)
-  - Verification: quick health OK; meta-agent.sh syntax OK; memory search functional; active-tasks.md pruned to 970 bytes; git push succeeded.
-- [main] dev-agent - Fixed meta-agent newline/duplicate-output bug (started: 2026-02-18 12:00 UTC, status: validated)
-  - Verification: meta-agent.sh patched with if-guards; bash -n passes; full run completed; commit 13eba9d pushed.
-- [build] workspace-builder - Final commit sweep; validate system; archive session (started: 2026-02-18 13:10 UTC, status: validated; session: agent:main:cron:23dad379; verification: health OK, search OK, changes committed, active-tasks updated, push succeeded)
-- [build] workspace-builder - Fix cron mis-schedules; restore agent frequencies; validate (started: 2026-02-18 14:00 UTC, status: validated; session: agent:main:cron:23dad379)
-  - Verification: 8 cron jobs corrected (workspace-builder, random-torrent-downloader, dev-agent-cron, content-agent-cron, research-agent-cron, agni-cron, agent-manager-cron, supervisor-cron); schedules now match CRON_JOBS.md; health OK; git push succeeded; active-tasks.md updated.
-- [main] dev-agent - Gateway token rotation guidance; active-tasks maintenance (started: 2026-02-18 14:55 UTC, status: validated)
-  - Verification: Provided gateway-fix.sh instructions; script verified present; user will execute. Systems otherwise stable: disk 40%, Brave search OK, meta-agent fixed, research/content current.
+- [build] workspace-builder - Fix cron misconfig; validate system; maintain active-tasks (started: 2026-02-18 16:00 UTC, status: validated; session: agent:main:cron:23dad379)
+  - Verification: 8 cron jobs corrected; schedules match CRON_JOBS.md; health OK (disk 40%, gateway healthy); memory main clean (15f/56c dirty=False); quick mem/search functional; no temp files; active-tasks.md 890B; git push succeeded.
