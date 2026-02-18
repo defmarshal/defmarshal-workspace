@@ -163,6 +163,21 @@
     .bar-fill {
       height: 100%;
       transition: width 0.5s ease-out;
+      box-shadow: 0 0 8px currentColor;
+    }
+    .atb-fill {
+      animation: atb-glow 2s infinite alternate;
+    }
+    @keyframes atb-glow {
+      0% { box-shadow: 0 0 8px var(--blue); }
+      100% { box-shadow: 0 0 12px var(--blue-light); }
+    }
+
+    .sprite {
+      transition: transform 0.15s ease-out;
+    }
+    .card:hover .sprite {
+      transform: scale(1.1) rotate(-5deg);
     }
     .morale-fill { background: var(--green); box-shadow: 0 0 6px var(--green); }
     .atb-fill { background: var(--blue); box-shadow: 0 0 6px var(--blue); }
@@ -182,6 +197,29 @@
     .status-err { color: var(--red); border-color: var(--red); }
     .status-warn { color: var(--orange); border-color: var(--orange); }
     .status-pending { color: var(--text-muted); border-color: var(--text-muted); font-style: italic; }
+
+    /* Tooltip */
+    .card {
+      position: relative;
+    }
+    .card:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(10,21,32,0.95);
+      border: 1px solid var(--gold);
+      color: var(--text);
+      font-size: 0.5rem;
+      padding: 0.6rem;
+      border-radius: 4px;
+      z-index: 10;
+      white-space: pre-wrap;
+      text-align: left;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
 
     .footer {
       text-align: center;
@@ -204,6 +242,9 @@
   <h1>OpenClaw ATB Monitor</h1>
   <div class="subtitle">Agents as Parties • Cron jobs as Quests</div>
   <div class="refresh-info" id="refreshInfo">Initializing…</div>
+  <div style="text-align:center;margin-bottom:1rem;">
+    <span id="partyHealth" style="font-size:0.6rem;color:var(--text-muted);"></span>
+  </div>
   <div class="grid" id="cards"></div>
   <div class="footer">Auto‑refresh 10s • Data from jobs.json</div>
 
@@ -338,8 +379,13 @@
       // Morale bar colors based on status
       const moraleColor = (consecutiveErrors > 0 || lastStatus !== 'ok') ? 'morale-fill' : 'morale-fill'; // keep green
 
+      // Build tooltip with schedule info
+      const scheduleStr = (schedule.kind === 'cron' && schedule.expr) ? `Cron: ${schedule.expr}` : (schedule.kind === 'every' ? `Every ${schedule.everyMs/1000}s` : 'Manual');
+      const timezone = schedule.tz || 'UTC';
+      const tooltip = `${job.name}\nAgent: ${agentId}\nSchedule: ${scheduleStr}\nTimezone: ${timezone}\nLast run: ${fmtTime(lastRunMs)}\nNext run: ${fmtTime(nextRunMs)}\nStatus: ${statusText}\nErrors: ${consecutiveErrors}`;
+
       return `
-        <div class="card">
+        <div class="card" data-tooltip="${tooltip.replace(/"/g, "'")}">
           <div class="card-header">
             <div class="sprite" style="${spriteUrl ? `background-image: url('${spriteUrl}');` : ''}" onmouseenter="playHoverSound()">${spriteUrl ? '' : spriteEmoji}</div>
             <div>
@@ -388,11 +434,54 @@
       }
     }
 
+    function playVictoryFanfare() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      // Simple victory arpeggio
+      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      notes.forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.15);
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime + i * 0.15);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + i * 0.15 + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + i * 0.15 + 0.3);
+      });
+    }
+
     function render(jobs) {
       const container = document.getElementById('cards');
       container.innerHTML = jobs.map(createCard).join('');
       const now = new Date().toLocaleTimeString();
       document.getElementById('refreshInfo').textContent = `Last update: ${now} • ${jobs.length} active quests`;
+
+      // Party health: count jobs with status OK (exclude PENDING and DISABLED)
+      const total = jobs.length;
+      const healthy = jobs.filter(j => {
+        const state = j.state || {};
+        const lastStatus = state.lastStatus || 'never';
+        const consecutiveErrors = state.consecutiveErrors || 0;
+        const enabled = j.enabled !== false;
+        return enabled && lastStatus === 'ok' && consecutiveErrors === 0;
+      }).length;
+      const healthPercent = Math.round((healthy / total) * 100);
+      const healthEl = document.getElementById('partyHealth');
+      healthEl.textContent = `Party Health: ${healthy}/${total} (${healthPercent}%)`;
+      if (healthPercent === 100) {
+        healthEl.style.color = 'var(--green)';
+        // Play victory fanfare once per full health (could add debounce)
+        // For now, just indicate perfection with icon
+        healthEl.textContent += ' ★';
+      } else if (healthPercent >= 80) {
+        healthEl.style.color = 'var(--blue-light)';
+      } else if (healthPercent >= 50) {
+        healthEl.style.color = 'var(--orange)';
+      } else {
+        healthEl.style.color = 'var(--red)';
+      }
     }
 
     async function update() {
