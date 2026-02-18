@@ -59,9 +59,10 @@ fi
 # Emit alerts only (cron will announce)
 if [ ${#ALERTS[@]} -gt 0 ]; then
   printf "SUPERVISOR ALERT:\n%s\n" "${ALERTS[*]}"
+  STATUS="ALERT"
+else
+  STATUS="OK"
 fi
 
 # Always log run status
-STATUS="OK"
-if [ ${#ALERTS[@]} -gt 0 ]; then STATUS="ALERT"; fi
 printf "%s - %s\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" "$STATUS" >> "$LOGFILE"
