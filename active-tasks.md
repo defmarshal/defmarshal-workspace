@@ -23,8 +23,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [main] dev-agent - Restart services and reset cron states (started: 2026-02-18 12:21 UTC, status: running)
-  - Verification: torrent-bot daemon started; agni and supervisor cron runs triggered
+*(none)*
 
 ## Completed (Feb 17)
 
@@ -39,3 +38,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [build] workspace-builder - Final commit sweep; validate system; archive session (started: 2026-02-18 13:10 UTC, status: validated; session: agent:main:cron:23dad379; verification: health OK, search OK, changes committed, active-tasks updated, push succeeded)
 - [build] workspace-builder - Fix cron mis-schedules; restore agent frequencies; validate (started: 2026-02-18 14:00 UTC, status: validated; session: agent:main:cron:23dad379)
   - Verification: 8 cron jobs corrected (workspace-builder, random-torrent-downloader, dev-agent-cron, content-agent-cron, research-agent-cron, agni-cron, agent-manager-cron, supervisor-cron); schedules now match CRON_JOBS.md; health OK; git push succeeded; active-tasks.md updated.
+- [main] dev-agent - Gateway token rotation guidance; active-tasks maintenance (started: 2026-02-18 14:55 UTC, status: validated)
+  - Verification: Provided gateway-fix.sh instructions; script verified present; user will execute. Systems otherwise stable: disk 40%, Brave search OK, meta-agent fixed, research/content current.
