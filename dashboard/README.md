@@ -1,45 +1,57 @@
 # OpenClaw RPG Dashboard
 
-A retro-styled HTML dashboard that visualizes cron jobs as quests and agents as NPCs.
+A Final Fantasy ATB‑style dashboard visualizing OpenClaw cron jobs as quests and agents as party members.
 
 ## Features
 
-- Agents shown as RPG characters with icons
-- Cron jobs as "quests" with health bars (based on last run vs schedule)
-- Status badges (OK, FAILURE, DISABLED)
-- Auto-refresh every 10 seconds
-- Single-page app, no dependencies
+- **Pixel‑art UI:** Press Start 2P font, stone panels, gold accents
+- **Job classes:** Each agent has an FF role (White Mage, Thief, Guardian, etc.)
+- **ATB gauge:** Fills between runs; indicates time until next execution
+- **Morale (HP) & Magic (MP) bars**
+- **Battle sound** on hover (classic ATB chime)
+- **Victory fanfare** when all jobs are healthy (100%)
+- **Party Health** meter at top (color‑coded)
+- **Tooltips:** Full schedule and status details on hover
+- **Auto‑refresh** every 10 s
 
-## How to Run
+## Quick Start
 
 ```bash
-# Start the server (listens on http://localhost:3000)
-node dashboard/server.js
+# Use the manager script (recommended)
+./quick dashboard start
 
-# Or use nohup to run in background:
-nohup node dashboard/server.js > /dev/null 2>&1 &
+# Or manually:
+node dashboard/server.js &
 ```
 
-Then open in browser: **http://localhost:3000**
+Then open: **http://localhost:3000**
+
+## Quick Commands
+
+```bash
+./quick dashboard status   # Check if running
+./quick dashboard stop    # Stop server
+./quick dashboard open    # Open browser (default http://localhost:3000)
+```
 
 ## Data Source
 
-The dashboard reads `~/.openclaw/cron/jobs.json` directly to get job status. No API calls needed.
+Reads `~/.openclaw/cron/jobs.json` directly; no API needed.
 
 ## Customization
 
-- Edit `dashboard/rpg-dashboard.html` to change icons, colors, or stats.
-- Icons map: `ICONS` object in script section (`main`, `torrent-bot`, `cron-supervisor`, etc.)
-- HP bar calculation is a rough estimate based on schedule interval.
+- Edit `dashboard/rpg-dashboard.html` to tweak sprites, colors, bars.
+- Job class mapping in `JOB_CLASSES` (agentId → role/icon/color).
+- ATB interval estimation logic in `calculateATB` and schedule parsing.
 
-## Optional: Autostart
+## Autostart
 
-Add to `start-background-agents.sh`:
+Already included in `start-background-agents.sh` (starts on boot).
 
-```bash
-start_if_missing "rpg-dashboard" "dashboard/server.js"
-```
+## Files
 
-## Screenshot
+- `dashboard/server.js` — Node server (binds 0.0.0.0:3000)
+- `dashboard/rpg-dashboard.html` — Main UI (self‑contained)
+- `dashboard/dashboard` — Manager script (start/stop/status/open)
 
-(Design: dark theme, card grid, circular sprite emojis, health bars)
+Enjoy your Final Fantasy–themed system monitor! (◕‿◕)✨
