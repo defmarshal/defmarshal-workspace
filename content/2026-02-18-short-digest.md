@@ -1,48 +1,35 @@
-# 2026-02-18 Short Digest — Content Agent
+# Daily Digest — 2026-02-18 (UTC)
 
-**UTC 02:20 | Bangkok 09:20 (Feb 18)**
+## System Overview
 
----
+- **Gateway:** healthy, listening on 18789 (loopback)
+- **Disk:** 81% used (monitor growth)
+- **APT updates:** 18 pending (consider scheduling maintenance)
+- **Memory:** main store clean (15 files/44 chunks); unused agent stores flagged but benign
+- **RPG Dashboard:** launched on port 3000 (binds 0.0.0.0 for remote access)
 
-## 📊 Day Snapshot
+## New Features
 
-- **System health:** All green — gateway stable, agents 24/7, memory clean
-- **Disk:** 79% used (healthy)
-- **Git activity:** 2 commits today (dev + content)
-- **Content produced:** 1 major research report (8.7 KB)
+- **Cron Supervisor Agent:** now runs every 5 minutes via cron (no daemon loop). Monitors all 21 cron jobs and posts health report.
+- **RPG Dashboard:** Node server visualizes cron jobs as quests and agents as NPCs. Auto-refresh 10s. Autostart enabled.
 
----
+## Agent Activity
 
-## 🔬 Research Highlight: Cross-Domain Trends
+- Research-agent produced cross-domain trends report (anime, banking, tech, AI).
+- Dev-agent converted cron-supervisor to cron-triggered; bound dashboard to 0.0.0.0; committed & pushed.
+- Content-agent generated this digest; updates content/INDEX.md.
 
-The research-agent just dropped a comprehensive analysis covering anime, banking, tech, and AI. Key takeaway: **autonomous AI is the universal trend**.
+## Notable Logs
 
-**Anime:** AI in production pipelines is now a necessity, not a novelty. Prime Video aims to be the global anime destination. VR integration testing begins.
+- auto-torrent-cron executed at 02:31 UTC successfully (added random top torrent).
+- Cron-supervisor-cron health: 21/21 jobs healthy (minor display quirk with ✗ on two jobs but errors=0).
 
-**Banking:** Chatbots → agentic AI. Banks roll out autonomous money movement, fraud detection, open banking ecosystems. Small specialized LLMs win enterprise deployments.
+## Quick Links
 
-**Tech:** Action-taking AI agents go mainstream. Neuromorphic chips, edge AI, quantum infrastructure mature. Microscopic robots enter commercial trials.
-
-**AI:** Open source (Qwen) overtakes Llama in downloads. Reasoning models (o1, DeepSeek-R1) trade speed for accuracy. Enterprise adoption crosses 15–20% with real ROI.
-
----
-
-## ⚙️ Dev Cycle Summary
-
-- Fixed permissions on skill scripts
-- Added `scripts/auto-torrent-add.sh` (random torrent adder)
-- Patched `auto-torrent-cron` to use new script
-- Committed & pushed (prefix `dev:`)
-- Reloaded gateway for cron updates
+- Dashboard: http://localhost:3000
+- Control UI: `openclaw dashboard`
+- Health: `./quick health`
 
 ---
 
-## 📈 Output Count (Feb 17 Recap)
-
-- Content: 101 files
-- Research: 58 files
-- Total: 159 outputs
-
----
-
-**Status:** No pending tasks. All agents operational. Day proceeding as planned, nya~ (｡♡‿♡｡)♡
+*End of digest*
