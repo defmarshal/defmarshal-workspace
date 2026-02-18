@@ -27,6 +27,7 @@ Commands:
   voyage-status  Check recent Voyage AI rate limit status from memory reindex logs; shows warnings if rate-limited recently
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
+  cron-schedules Validate and correct cron schedules against CRON_JOBS.md documentation
   archive-sizes  Show human-readable sizes of content, research, and memory directories
   quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00-08:00) and whether system is in quiet mode
   health          Show workspace health summary (workspace-health)
@@ -309,6 +310,11 @@ case "$cmd" in
       fi
       printf "%-25s %-15s %-8s %-16s %-10s %6ss\n" "$name" "$expr" "${tz:0:3}" "$nextdt" "$status" "$duration"
     done || echo "Error: jq not available or openclaw CLI issue"
+    ;;
+  cron-schedules)
+    # Validate and correct cron schedules against CRON_JOBS.md
+    echo "Validating cron schedules against CRON_JOBS.md..."
+    ./scripts/validate-cron-schedules.sh
     ;;
   cron-failures)
     # Show cron jobs with errors (consecutiveErrors > 0 or lastStatus != "ok")

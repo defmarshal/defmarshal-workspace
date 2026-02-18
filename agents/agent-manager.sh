@@ -78,6 +78,10 @@ run_checks() {
     openclaw agent --agent main --message "You are the research-agent. Conduct continuous research on anime, banking, tech, AI. Use web_search, web_fetch, memory tools. Create detailed reports in research/." --thinking low --timeout 600000 >> "$LOGFILE" 2>&1 || true
   fi
 
+  # 6. Cron schedule validation (enforce CRON_JOBS.md)
+  log "Validating cron schedules against CRON_JOBS.md"
+  ./scripts/validate-cron-schedules.sh >> "$LOGFILE" 2>&1 || true
+
   log "Checks completed"
 }
 

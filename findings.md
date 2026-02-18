@@ -1,77 +1,56 @@
 # Workspace Builder Findings
+**Date**: 2026-02-18
+**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
 
-**Session Started:** 2026-02-18 16:00 UTC  
-**Status:** IN PROGRESS
+## Initial Assessment
 
----
+### System Health
+- Disk: 40% OK
+- Gateway: healthy (port 18789)
+- Memory: 15 files indexed, clean (main store)
+- Git: clean
+- Downloads: 12 files, 2.6GB
 
-## Initial Diagnostics
+### Active Cron Jobs (from `openclaw cron list`)
+All schedules currently match CRON_JOBS.md after previous fix:
+- workspace-builder: `0 */2 * * *` Asia/Bangkok
+- supervisor-cron: `*/5 * * * *` Asia/Bangkok
+- meta-agent-cron: `0 * * * *` Asia/Bangkok
+- agent-manager-cron: `0,30 * * * *` Asia/Bangkok
+- dev-agent-cron: `0,20,40 8-22 * * *` Asia/Bangkok
+- content-agent-cron: `0,10,20,30,40,50 8-22 * * *` Asia/Bangkok
+- research-agent-cron: `0,15,30,45 8-22 * * *` Asia/Bangkok
+- random-torrent-downloader: `0 */2 * * *` UTC
+- agni-cron: `0 */2 * * *` UTC
+- Others (weekly/monthly) as documented.
 
-### System Overview
-- **Disk usage:** 40% (healthy)
-- **Gateway:** Healthy (port 18789, RPC ok)
-- **Memory search:** Voyage AI disabled; local FTS/grep fallback active
-- **Memory status:** 15 files indexed, clean, main store not dirty
-- **Git status:** 1 modified file (memory/2026-02-18.md) – needs commit
+### Issues Identified
+1. **Meta-Agent Schedule Corruption** (P0)
+   - `agents/meta-agent.sh` contains `adjust_scheduling` function that blindly applies tiered schedules based on disk usage.
+   - In the past, it changed several jobs to undesired frequencies (e.g., supervisor from 5min to hourly; workspace-builder from 2h to hourly).
+   - Although workspace-builder later corrected them, meta-agent runs hourly and can break again.
+   - Must disable or fix this function to preserve schedule integrity.
 
-### Active Tasks
-- None running. Registry clean.
+2. **Lack of Automated Schedule Validation**
+   - No safety net to detect or correct drift from documented schedules in CRON_JOBS.md.
+   - Relies on manual workspace-builder runs every 2h.
+   - Could add validation to agent-manager (every 30min) or as separate cron.
 
-### Key Issue Identified: Cron Misconfiguration
+3. **Supervisor Announcement Delivery Failures**
+   - supervisor-cron reports "cron announce delivery failed" in some runs.
+   - Likely Telegram connectivity or bot/channel issues; not critical but generates error state.
+   - Will monitor; may need to investigate channel configuration if persists.
 
-**Observation:** The OpenClaw cron jobs are running with incorrect schedules. Many jobs have `0 * * * *` (hourly) instead of their intended frequencies documented in `CRON_JOBS.md`.
+4. **Voyage AI Rate Limits**
+   - Free tier 3 RPM causing memory reindex failures; reindex deferred.
+   - Acceptable for now; fallback to local search functional.
 
-**Misconfigured Jobs (from cron-status):**
+5. **Unused Memory Stores Dirty**
+   - `torrent-bot` and `cron-supervisor` stores dirty=True but have 0 files/chunks (benign).
+   - Harmless; can be documented.
 
-| Job Name                  | Job ID                               | Current Schedule | Intended Schedule              | Timezone     |
-|---------------------------|--------------------------------------|------------------|--------------------------------|--------------|
-| workspace-builder         | 23dad379-21ad-4f7a-8c68-528f98203a33 | `0 * * * *`      | `0 */2 * * *`                 | (default)    |
-| random-torrent-downloader | aadf040b-60d2-48ee-9825-0db68bb6c13b | `0 * * * *`      | `0 */2 * * *`                 | UTC          |
-| dev-agent-cron            | 48a38fe2-9691-4bea-bed1-0f3313534fcd | `0 * * * *`      | `0,20,40 8-22 * * *`          | Asia/Bangkok|
-| content-agent-cron        | e345525c-f289-4eab-bf25-6d6fa065e4b0 | `0 * * * *`      | `0,10,20,30,40,50 8-22 * * *`| Asia/Bangkok|
-| research-agent-cron       | f69140f6-7341-4217-bad3-f4a9615b0b94 | `0 * * * *`      | `0,15,30,45 8-22 * * *`       | Asia/Bangkok|
-| agni-cron                 | 23788edb-575a-4593-a60e-7f94b9c95db6 | `0 * * * *`      | `0 */2 * * *`                 | UTC          |
-| agent-manager-cron        | 524a0d6f-d520-4868-9647-0f89f7990f62 | `0 * * * *`      | `0,30 * * *`                  | Asia/Bangkok|
-| supervisor-cron           | e2735844-269b-40aa-bd84-adb05fe5cb95 | `0 * * * *`      | `*/5 * * * *`                 | Asia/Bangkok|
-
-**Impact:**
-- Over-spawning: Agents run 3–12x more frequently than designed.
-- Resource contention and unnecessary load.
-- Loss of timing semantics (e.g., supervisor should check every 5 minutes, not hourly).
-- Daytime window constraints (08:00–22:00 Bangkok) are being ignored.
-
-**Root Cause Hypothesis:** The previous fix (workspace-builder build at 14:00 UTC) successfully updated schedules, but they have since regressed. Possible causes:
-1. Manual or automated edits overwrote the corrected schedules.
-2. Meta-agent or agent-manager may have introduced scheduling changes during resource adjustments (e.g., meta-agent's "resource-based scheduling adjustments" on Feb 18 15:00 UTC converted many jobs to hourly to reduce load; however, that overcorrected and needs refinement).
-3. The gateway config may be overwritten by a stale local file or cron job reset.
-
-**Decision:** Re-apply the correct schedules from CRON_JOBS.md now, and ensure consistency.
-
----
-
-## Additional Observations
-
-- **memory-dirty:** Command exists and reports main store clean; unused stores (torrent-bot, cron-supervisor) show dirty=True but are benign.
-- **health:** All green.
-- **active-tasks.md:** 41 lines, 4.0KB – comfortably under 2KB limit.
-- **MEMORY.md:** Last updated 2026-02-18 with recent learnings (agent-manager auto-commit bug, quick launcher syntax fix).
-- **Meta-agent:** Running hourly; last status OK. No consecutive errors.
-- **Gateway token rotation:** `gateway-fix.sh` script exists and includes token rotation logic. User was advised to run it after token mismatch incident earlier today. Current gateway status shows healthy, so issue appears resolved.
-
----
-
-## Phase 3–7: Completion Summary
-
-**All phases completed successfully.** Final validation confirmed:
-
-- Cron schedules for all 8 problematic jobs now match CRON_JOBS.md.
-- System health: green across board (disk, gateway, memory).
-- active-tasks.md size maintained under 2KB through pruning.
-- All changes committed and pushed (commit 268ea22).
-
-**Long-term impact:** Restored autonomous system integrity. Agent frequencies now respect designed windows and intervals, reducing resource contention and ensuring timely supervisor checks. Memory observability remains accurate; fallback search functional during Voyage rate limits.
-
-**Outstanding items:** None. Voyage AI rate limits continue to impact full reindex, but defer mechanism effective; monitor via `quick voyage-status`.
-
----
-**End of findings**
+## Plans Derived
+- Phase A: Disable meta-agent schedule adjustments.
+- Phase B: Implement schedule validation in agent-manager + quick command.
+- Phase C: Documentation updates.
+- Phase D: Validation and commit.

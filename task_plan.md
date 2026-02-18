@@ -1,128 +1,60 @@
-# Workspace Builder Plan
+# Workspace Builder Task Plan
+**Date**: 2026-02-18 17:00 UTC
+**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
+**Goal**: Implement improvements aligned with long-term objectives: system stability, correctness, and maintainability.
 
-**Started:** 2026-02-18 16:00 UTC  
-**Session ID:** agent:main:cron:23dad379  
-**Goal:** Analyze workspace state, fix critical misconfigurations, validate system health, commit improvements.
+## Context
+- System health: OK (disk 40%, gateway healthy, memory clean)
+- Cron schedules: Correct after previous fix, but meta-agent can corrupt them again
+- Meta-agent: Contains flawed resource-based scheduling that threatens schedule integrity
+- Validation: Need safety net to enforce documented schedules
 
----
+## Phases & Tasks
 
-## Phase 1: Diagnose Cron Misconfiguration
+### Phase A: Fix Meta-Agent Schedule Corruption
+**Priority**: Critical
+**Why**: Meta-agent's `adjust_scheduling` function incorrectly changes cron schedules, breaking timing semantics and causing resource spikes.
+- A1: Review `agents/meta-agent.sh` to locate `adjust_scheduling` call (line ~402)
+- A2: Disable the call by commenting it out or guarding with a feature flag
+- A3: Test meta-agent with `--once` to ensure it runs without errors and does not alter schedules
+- A4: If successful, commit as `build: disable meta-agent schedule adjustments to preserve integrity`
 
-**Objective:** Verify which cron jobs deviated from CRON_JOBS.md documentation and identify the root cause.
+### Phase B: Add Cron Schedule Validation (Safety Net)
+**Priority**: High
+**Why**: Prevent drift from CRON_JOBS.md due to manual changes or other agents.
+- B1: Create `scripts/validate-cron-schedules.sh` with intended schedule mappings (from CRON_JOBS.md)
+- B2: Script logic:
+  - For each known job, fetch current schedule via `openclaw cron list`
+  - Compare with intended expression
+  - If mismatch, run `openclaw cron update --jobId <id> --cron "<intended>"`
+  - Log actions
+- B3: Integrate validation into `agents/agent-manager.sh` as a periodic check (call script)
+- B4: Add quick command `cron-schedules` that runs the validation and shows status
+- B5: Test manually: introduce a deliberate mismatch, run `quick cron-schedules`, verify correction
 
-**Actions:**
-1. Run `./quick cron-status` and capture current OpenClaw cron schedules.
-2. Compare each job against `CRON_JOBS.md` to create a diff table.
-3. Determine if schedules were manually edited, or if the previous fix (workspace-builder build at 14:00 UTC) failed to persist.
+### Phase C: Documentation Updates
+**Priority**: Medium
+- C1: Update `TOOLS.md`:
+  - Add `cron-schedules` quick command description
+  - Note that meta-agent schedule adjustments are disabled (pending rework)
+  - Clarify memory-dirty benign stores
+- C2: Update `AGENTS.md` if necessary about meta-agent behavior
+- C3: Add entry to `lessons.md` describing the meta-agent schedule bug and fix
 
-**Expected Output:** Table of mismatched schedules with job IDs, current vs intended expressions.
-
-**Success Criteria:** Complete list of misconfigured jobs; clear understanding of cause.
-
----
-
-## Phase 2: Correct Cron Schedules
-
-**Objective:** Update all OpenClaw cron jobs to match their documented schedules using `openclaw cron update`.
-
-**Actions:**
-1. For each misconfigured job, call `openclaw cron update --job-id <id> --patch '{"schedule":{"expr":"<correct-cron>"}}'`.
-2. Use timezone `Asia/Bangkok` for jobs that require it (all except those explicitly UTC).
-3. Log each update with verification that `openclaw cron list --json` reflects the change.
-
-**Jobs to fix (expected based on latest status):**
-- `workspace-builder`: `0 */2 * * *`
-- `random-torrent-downloader`: `0 */2 * * *`
-- `dev-agent-cron`: `0,20,40 8-22 * * *`
-- `content-agent-cron`: `0,10,20,30,40,50 8-22 * * *`
-- `research-agent-cron`: `0,15,30,45 8-22 * * *`
-- `agni-cron`: `0 */2 * * *`
-- `agent-manager-cron`: `0,30 * * *`
-- `supervisor-cron`: `*/5 * * * *`
-
-**Success Criteria:** All schedules match CRON_JOBS.md; `cron-status` shows correct expressions.
-
----
-
-## Phase 3: Secondary Health Checks
-
-**Objective:** Ensure other subsystems are operating correctly.
-
-**Checks:**
-1. Run `./quick memory-dirty` → expect main store `dirty=False`.
-2. Run `./quick health` → expect all OK.
-3. Check `agents/meta-agent.sh` last run status via `cron list` (should be `ok` and no consecutive errors).
-4. Verify `gateway-fix.sh` has been applied by user; if gateway still showing issues, add note in findings.
-
-**Success Criteria:** No alerts; all checks pass.
-
----
-
-## Phase 4: Documentation & Housekeeping
-
-**Objective:** Keep documentation aligned with reality.
-
-**Actions:**
-1. Ensure any changes to schedules are reflected in `CRON_JOBS.md` (it already states correct schedules; just verify consistency).
-2. If the memory-dirty command had issues, fix them; otherwise leave as-is.
-3. No new files to create; planning files already exist or will be created by this session.
-
-**Success Criteria:** Docs up to date; no stale TODOs.
-
----
-
-## Phase 5: CLOSE THE LOOP Validation
-
-**Objective:** Verify that fixes are effective and system is stable.
-
-**Actions:**
-1. Run `./quick health` → must pass.
-2. Run `./quick cron-status` and verify schedules match CRON_JOBS.md.
-3. Run `./quick memory-status` → main store clean.
-4. Run `./quick mem` and `./quick search "test"` to confirm memory functions.
-5. Check `git status` – should be clean (no uncommitted changes).
-6. Verify no temporary files left in workspace root (e.g., *.tmp, *.log from this session).
-7. Check `active-tasks.md` – should have <=2KB size and reflect this builder's entry with verification.
-
-**Success Criteria:** All validation steps pass; system stable.
-
----
-
-## Phase 6: Commit & Push
-
-**Objective:** Persist changes to GitHub.
-
-**Actions:**
-1. `git add` any modified files (likely none; this builder only changes cron state which is stored in OpenClaw config, not tracked by git; but if we edit CRON_JOBS.md or other docs, include them).
-2. `git commit -m "build: fix cron misconfigurations; validate system health; ensure scheduling integrity"`.
-3. `git push origin master`.
-4. Verify push succeeded.
-
-**Success Criteria:** Commit created with correct prefix; push successful.
-
----
-
-## Phase 7: Update Active Tasks
-
-**Objective:** Mark this session as validated with verification details.
-
-**Actions:**
-1. Read `active-tasks.md`.
-2. Add an entry for this session with `status: validated` and concise verification results.
-3. Prune any old validated entries to stay under 2KB.
-
-**Success Criteria:** active-tasks.md current and within size limit.
+### Phase D: Final Validation & Commit
+**Priority**: Critical
+- D1: Run `./quick health` – ensure system OK
+- D2: Run `./quick cron-schedules` – check for no mismatches
+- D3: Run `./quick memory-dirty` – verify memory state
+- D4: Run `./quick mem` and `./quick search test` to confirm memory search works
+- D5: Verify `git status` clean, no temp files
+- D6: Commit all changes with prefix `build:`
+- D7: Update `active-tasks.md`: mark this run as validated, add verification results
+- D8: Push to origin/master
 
 ---
 
 ## Risk Mitigation
-
-- If a cron update fails, capture error and retry with correct job ID.
-- If memory-dirty is broken, inspect script at `memory-dirty` and fix logic.
-- If health check fails, investigate before committing any docs changes.
-
----
-
-## Long-term Objectives Alignment
-
-This run addresses **System Reliability & Autonomy** by restoring essential timing semantics, reducing resource contention from over-frequent agent spawns, and ensuring health observability remains accurate.
+- If meta-agent fix causes other issues, we can revert to previous commit and redesign.
+- Schedule validation uses conservative mappings; will not alter jobs not in the list.
+- All changes will be committed and pushed; failures will be logged in `progress.md`.

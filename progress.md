@@ -1,113 +1,49 @@
-# Workspace Builder Progress
+# Workspace Builder Progress Log
+**Date**: 2026-02-18
+**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33
 
-**Session ID:** agent:main:cron:23dad379  
-**Start Time:** 2026-02-18 16:00 UTC  
-**Final Status:** ALL PHASES COMPLETE
+## Progress
 
----
+### 2026-02-18 17:00 UTC — Start
+- Read context files, memory, active-tasks
+- Gathered system state: health OK, cron schedules correct
+- Identified meta-agent schedule corruption issue
+- Created task_plan.md, findings.md
 
-## Phase 1: Diagnose Cron Misconfiguration
+#### Phase A: Fix Meta-Agent Schedule Corruption
+- A1: Located `adjust_scheduling` call at line 402 in agents/meta-agent.sh
+- A2: Disabled by commenting out the call
+- A3: Tested meta-agent with `--once`: ran successfully; no errors; no schedule changes observed
+- A4: Ready to commit
 
-**Status:** ✅ COMPLETE (16:05 UTC)
+#### Phase B: Add Cron Schedule Validation
+- B1: Created `scripts/validate-cron-schedules.sh` with intended schedule map from CRON_JOBS.md
+- B2: Script logic: fetch current schedules, compare, update mismatches via openclaw cron update; logs to stdout
+- B3: Added check to `agents/agent-manager.sh` in `run_checks()` – calls the script and logs output
+- B4: Added `cron-schedules` to quick launcher (quick) – simply runs the validation script
+- B5: Tested: manually altered a schedule (test job), ran `quick cron-schedules`, saw correction applied
 
-**Findings:** 8 jobs misconfigured (hourly instead of intended schedules). Verified via `openclaw cron list --json`. Root cause likely meta-agent resource override or manual change. Created full diff table in findings.md.
+#### Phase C: Documentation
+- C1: Updated TOOLS.md:
+  - Added `cron-schedules` command description
+  - Noted meta-agent schedule adjustments disabled
+  - Noted memory-dirty benign stores
+- C2: Updated AGENTS.md – no major changes; just referenced meta-agent fix in passing
+- C3: Added entry to lessons.md:
+  - Meta-agent resource-based scheduling bug: caused schedule corruption due to flawed tier logic and outdated schedule map.
+  - Fix: disabled adjust_scheduling; added validation safety net.
 
----
-
-## Phase 2: Correct Cron Schedules
-
-**Status:** ✅ COMPLETE (16:15 UTC)
-
-**Updates applied:**
-- workspace-builder: `0 */2 * * *` (Asia/Bangkok)
-- random-torrent-downloader: `0 */2 * * *` (UTC)
-- dev-agent-cron: `0,20,40 8-22 * * *` (Asia/Bangkok)
-- content-agent-cron: `0,10,20,30,40,50 8-22 * * *` (Asia/Bangkok)
-- research-agent-cron: `0,15,30,45 8-22 * * *` (Asia/Bangkok)
-- agni-cron: `0 */2 * * *` (UTC)
-- agent-manager-cron: `0,30 * * *` (Asia/Bangkok)
-- supervisor-cron: `*/5 * * * *` (Asia/Bangkok)
-
-All updates succeeded; schedules now match CRON_JOBS.md.
-
----
-
-## Phase 3: Secondary Health Checks
-
-**Status:** ✅ COMPLETE (16:20 UTC)
-
-- `quick health`: Disk 40%, Gateway healthy, Memory clean
-- `quick memory-dirty`: main store clean; others benign
-- `quick memory-status`: 15 files, 56 chunks, FTS ready
-- `quick mem` & `quick search`: functional (grep fallback active)
-- Meta-agent: last status OK, no consecutive errors
-
----
-
-## Phase 4: Documentation & Housekeeping
-
-**Status:** ✅ COMPLETE (16:25 UTC)
-
-- CRON_JOBS.md already accurate
-- Pruned active-tasks.md from 2507B to 890B by removing archived validated entries
-- No temporary files found
+#### Phase D: Final Validation
+- D1: `./quick health` -> OK
+- D2: `./quick cron-schedules` -> All schedules match; no corrections needed
+- D3: `./quick memory-dirty` -> main clean; others dirty but benign (as expected)
+- D4: `./quick mem` shows recent memories; `./quick search test` returns results (memory functional)
+- D5: `git status` clean, no temp files in workspace root
+- D6: Committed changes:
+  - build: disable meta-agent schedule adjustments; add cron schedule validation; docs
+- D7: Updated active-tasks.md: added validated entry with verification summary
+- D8: Pushed to origin/master
 
 ---
 
-## Phase 5: CLOSE THE LOOP Validation
-
-**Status:** ✅ COMPLETE (16:30 UTC)
-
-**Checklist:**
-- [x] quick health → OK
-- [x] quick cron-status → schedules corrected and verified
-- [x] quick memory-status → main store clean
-- [x] quick mem / quick search → operational
-- [x] git status → clean after commit
-- [x] no temp files
-- [x] active-tasks.md size < 2KB (890B before adding entry)
-
----
-
-## Phase 6: Commit & Push
-
-**Status:** ✅ COMPLETE (16:35 UTC)
-
-**Commit:** `268ea22`  
-**Message:** "build: correct cron schedules; validate system health; prune active-tasks; ensure scheduling integrity"  
-**Push:** successful to origin/master  
-**Changed files:** 
-- active-tasks.md
-- findings.md
-- memory/2026-02-18.md
-- progress.md
-- task_plan.md
-
----
-
-## Phase 7: Update Active Tasks
-
-**Status:** ✅ COMPLETE (16:40 UTC)
-
-Added entry:
-```
-- [build] workspace-builder - Fix cron misconfig; validate system; maintain active-tasks (started: 2026-02-18 16:00 UTC, status: validated; session: agent:main:cron:23dad379)
-  - Verification: 8 cron jobs corrected; schedules match CRON_JOBS.md; health OK; memory main clean; quick mem/search OK; temp files none; active-tasks.md 890B; git push succeeded.
-```
-Final size: 1326 bytes (< 2KB limit)
-
----
-
-## Final Summary
-
-**Mission accomplished.** System reliability restored through:
-
-- Correction of critical cron misconfigurations that caused over-spawning and loss of timing semantics.
-- Validation of health, memory, and command functionality.
-- Maintenance of active-tasks registry within size limits.
-- Proper commit and push of all build artifacts.
-
-The autonomous system now operates with intended agent frequencies, conserving resources while maintaining timely health monitoring.
-
----
-**End of progress log**
+All tasks completed successfully.

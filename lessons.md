@@ -22,6 +22,7 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Systemd linger required** → Enable with `sudo loginctl enable-linger $USER` so user services survive logout/reboot. Without it, openclaw-gateway.service stops, killing all agents.
 - **Session metadata survives, process does not** → sessions.json keeps conversation history, but the actual agent process dies on gateway exit. No auto-respawn. You must manually respawn or use cron.
 - **Supervision options** — For truly persistent agents: (1) cron-based periodic fresh spawns (recommended), (2) separate systemd units with Restart=always, or (3) watchdog cron that checks `sessions list` and respawns missing agents.
+- **Meta-Agent schedule corruption** → The resource-based scheduling adjustment (meta-agent) was flawed and caused unintended frequency changes (e.g., supervisor from 5min to hourly). **Disabled** on 2026‑02‑18. Cron schedules now strictly follow CRON_JOBS.md. A safety net (agent-manager validation) enforces integrity automatically.
 
 ## Git & Deployment
 

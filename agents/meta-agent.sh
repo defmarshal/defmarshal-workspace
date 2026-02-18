@@ -399,7 +399,7 @@ case "${1:-}" in
       esac
     done
     
-    adjust_scheduling
+    # adjust_scheduling  # Disabled to preserve cron schedule integrity (2026-02-18 build)
     perform_memory_learning
     
     log "Meta-Agent one-shot completed; actions: ${ACTIONS[*]:-none}"

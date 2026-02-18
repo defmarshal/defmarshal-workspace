@@ -55,6 +55,14 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
+### Cron Scheduling & Validation
+
+- **Meta-Agent Schedule Adjustments**: **Disabled** as of 2026-02-18 due to flawed resource-based scheduling logic. The cron schedules now strictly follow CRON_JOBS.md. Any drift will be automatically corrected by agent-manager's validation check.
+- **Validation Command**: `quick cron-schedules` – runs `scripts/validate-cron-schedules.sh` to compare all cron job schedules with the documented ones in CRON_JOBS.md and corrects mismatches automatically.
+- The agent-manager (every 30 min) invokes the validation script proactively to maintain schedule integrity.
+
+---
+
 ### Quick Launcher Commands (`./quick <cmd>`)
 
 Common utilities (run `./quick help` for full list):
@@ -98,6 +106,7 @@ Common utilities (run `./quick help` for full list):
 - `social-monitor` — Run social monitor agent (Twitter trending digest)
 - `sudo-check` — Check passwordless sudo
 - `log-rotate` — Rotate aria2.log if >100MB
+- `cron-schedules` — Validate and correct cron schedules against CRON_JOBS.md documentation
 - `updates-check` — Check pending APT updates
 - `updates-apply [--dry-run|--execute]` — Apply system updates
 - `cleanup-downloads [options]` — Clean old downloads (default dry-run, retain 30 days)
