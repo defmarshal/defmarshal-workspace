@@ -85,6 +85,36 @@ validate_script_safe() {
   return 0
 }
 
+
+safe_to_spawn() {
+  CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 2>/dev/null || echo "0")
+  MEM_INFO=$(free -m 2>/dev/null || echo "0 0 0")
+  MEM_USED=$(echo "$MEM_INFO" | awk '{print $3}')
+  MEM_TOTAL=$(echo "$MEM_INFO" | awk '{print $2}')
+  MEM_PCT=0
+  if [ "$MEM_TOTAL" -gt 0 ]; then
+    MEM_PCT=$(( MEM_USED * 100 / MEM_TOTAL ))
+  fi
+  if [ "$(echo "$CPU_USAGE > $SAFETY_CPU_CAP" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+    log "Safety: CPU ${CPU_USAGE}% > cap ${SAFETY_CPU_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$MEM_PCT" -gt "$SAFETY_MEM_CAP" ]; then
+    log "Safety: Memory ${MEM_PCT}% > cap ${SAFETY_MEM_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$DISK_USAGE" -gt "$SAFETY_DISK_CAP" ]; then
+    log "Safety: Disk ${DISK_USAGE}% > cap ${SAFETY_DISK_CAP}% — block spawn"
+    return 1
+  fi
+  RUNNING_AGENTS=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .sessionKey' | wc -l)
+  if [ "$RUNNING_AGENTS" -ge "$SAFETY_MAX_CONCURRENT_AGENTS" ]; then
+    log "Safety: Too many concurrent agents ($RUNNING_AGENTS >= $SAFETY_MAX_CONCURRENT_AGENTS)"
+    return 1
+  fi
+  return 0
+}
+
 log() {
   echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
 }
@@ -538,6 +568,36 @@ validate_script_safe() {
   return 0
 }
 
+
+safe_to_spawn() {
+  CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 2>/dev/null || echo "0")
+  MEM_INFO=$(free -m 2>/dev/null || echo "0 0 0")
+  MEM_USED=$(echo "$MEM_INFO" | awk '{print $3}')
+  MEM_TOTAL=$(echo "$MEM_INFO" | awk '{print $2}')
+  MEM_PCT=0
+  if [ "$MEM_TOTAL" -gt 0 ]; then
+    MEM_PCT=$(( MEM_USED * 100 / MEM_TOTAL ))
+  fi
+  if [ "$(echo "$CPU_USAGE > $SAFETY_CPU_CAP" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+    log "Safety: CPU ${CPU_USAGE}% > cap ${SAFETY_CPU_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$MEM_PCT" -gt "$SAFETY_MEM_CAP" ]; then
+    log "Safety: Memory ${MEM_PCT}% > cap ${SAFETY_MEM_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$DISK_USAGE" -gt "$SAFETY_DISK_CAP" ]; then
+    log "Safety: Disk ${DISK_USAGE}% > cap ${SAFETY_DISK_CAP}% — block spawn"
+    return 1
+  fi
+  RUNNING_AGENTS=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .sessionKey' | wc -l)
+  if [ "$RUNNING_AGENTS" -ge "$SAFETY_MAX_CONCURRENT_AGENTS" ]; then
+    log "Safety: Too many concurrent agents ($RUNNING_AGENTS >= $SAFETY_MAX_CONCURRENT_AGENTS)"
+    return 1
+  fi
+  return 0
+}
+
 log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
 
 log "Archive‑agent starting"
@@ -660,6 +720,36 @@ validate_script_safe() {
       return 1
     fi
   done
+  return 0
+}
+
+
+safe_to_spawn() {
+  CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 2>/dev/null || echo "0")
+  MEM_INFO=$(free -m 2>/dev/null || echo "0 0 0")
+  MEM_USED=$(echo "$MEM_INFO" | awk '{print $3}')
+  MEM_TOTAL=$(echo "$MEM_INFO" | awk '{print $2}')
+  MEM_PCT=0
+  if [ "$MEM_TOTAL" -gt 0 ]; then
+    MEM_PCT=$(( MEM_USED * 100 / MEM_TOTAL ))
+  fi
+  if [ "$(echo "$CPU_USAGE > $SAFETY_CPU_CAP" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+    log "Safety: CPU ${CPU_USAGE}% > cap ${SAFETY_CPU_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$MEM_PCT" -gt "$SAFETY_MEM_CAP" ]; then
+    log "Safety: Memory ${MEM_PCT}% > cap ${SAFETY_MEM_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$DISK_USAGE" -gt "$SAFETY_DISK_CAP" ]; then
+    log "Safety: Disk ${DISK_USAGE}% > cap ${SAFETY_DISK_CAP}% — block spawn"
+    return 1
+  fi
+  RUNNING_AGENTS=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .sessionKey' | wc -l)
+  if [ "$RUNNING_AGENTS" -ge "$SAFETY_MAX_CONCURRENT_AGENTS" ]; then
+    log "Safety: Too many concurrent agents ($RUNNING_AGENTS >= $SAFETY_MAX_CONCURRENT_AGENTS)"
+    return 1
+  fi
   return 0
 }
 
@@ -868,6 +958,36 @@ validate_script_safe() {
   return 0
 }
 
+
+safe_to_spawn() {
+  CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 2>/dev/null || echo "0")
+  MEM_INFO=$(free -m 2>/dev/null || echo "0 0 0")
+  MEM_USED=$(echo "$MEM_INFO" | awk '{print $3}')
+  MEM_TOTAL=$(echo "$MEM_INFO" | awk '{print $2}')
+  MEM_PCT=0
+  if [ "$MEM_TOTAL" -gt 0 ]; then
+    MEM_PCT=$(( MEM_USED * 100 / MEM_TOTAL ))
+  fi
+  if [ "$(echo "$CPU_USAGE > $SAFETY_CPU_CAP" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+    log "Safety: CPU ${CPU_USAGE}% > cap ${SAFETY_CPU_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$MEM_PCT" -gt "$SAFETY_MEM_CAP" ]; then
+    log "Safety: Memory ${MEM_PCT}% > cap ${SAFETY_MEM_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$DISK_USAGE" -gt "$SAFETY_DISK_CAP" ]; then
+    log "Safety: Disk ${DISK_USAGE}% > cap ${SAFETY_DISK_CAP}% — block spawn"
+    return 1
+  fi
+  RUNNING_AGENTS=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .sessionKey' | wc -l)
+  if [ "$RUNNING_AGENTS" -ge "$SAFETY_MAX_CONCURRENT_AGENTS" ]; then
+    log "Safety: Too many concurrent agents ($RUNNING_AGENTS >= $SAFETY_MAX_CONCURRENT_AGENTS)"
+    return 1
+  fi
+  return 0
+}
+
 log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
 
 log "Archiver‑manager starting"
@@ -965,6 +1085,36 @@ validate_script_safe() {
       return 1
     fi
   done
+  return 0
+}
+
+
+safe_to_spawn() {
+  CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 2>/dev/null || echo "0")
+  MEM_INFO=$(free -m 2>/dev/null || echo "0 0 0")
+  MEM_USED=$(echo "$MEM_INFO" | awk '{print $3}')
+  MEM_TOTAL=$(echo "$MEM_INFO" | awk '{print $2}')
+  MEM_PCT=0
+  if [ "$MEM_TOTAL" -gt 0 ]; then
+    MEM_PCT=$(( MEM_USED * 100 / MEM_TOTAL ))
+  fi
+  if [ "$(echo "$CPU_USAGE > $SAFETY_CPU_CAP" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+    log "Safety: CPU ${CPU_USAGE}% > cap ${SAFETY_CPU_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$MEM_PCT" -gt "$SAFETY_MEM_CAP" ]; then
+    log "Safety: Memory ${MEM_PCT}% > cap ${SAFETY_MEM_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$DISK_USAGE" -gt "$SAFETY_DISK_CAP" ]; then
+    log "Safety: Disk ${DISK_USAGE}% > cap ${SAFETY_DISK_CAP}% — block spawn"
+    return 1
+  fi
+  RUNNING_AGENTS=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .sessionKey' | wc -l)
+  if [ "$RUNNING_AGENTS" -ge "$SAFETY_MAX_CONCURRENT_AGENTS" ]; then
+    log "Safety: Too many concurrent agents ($RUNNING_AGENTS >= $SAFETY_MAX_CONCURRENT_AGENTS)"
+    return 1
+  fi
   return 0
 }
 
@@ -1085,6 +1235,36 @@ validate_script_safe() {
       return 1
     fi
   done
+  return 0
+}
+
+
+safe_to_spawn() {
+  CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 2>/dev/null || echo "0")
+  MEM_INFO=$(free -m 2>/dev/null || echo "0 0 0")
+  MEM_USED=$(echo "$MEM_INFO" | awk '{print $3}')
+  MEM_TOTAL=$(echo "$MEM_INFO" | awk '{print $2}')
+  MEM_PCT=0
+  if [ "$MEM_TOTAL" -gt 0 ]; then
+    MEM_PCT=$(( MEM_USED * 100 / MEM_TOTAL ))
+  fi
+  if [ "$(echo "$CPU_USAGE > $SAFETY_CPU_CAP" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+    log "Safety: CPU ${CPU_USAGE}% > cap ${SAFETY_CPU_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$MEM_PCT" -gt "$SAFETY_MEM_CAP" ]; then
+    log "Safety: Memory ${MEM_PCT}% > cap ${SAFETY_MEM_CAP}% — block spawn"
+    return 1
+  fi
+  if [ "$DISK_USAGE" -gt "$SAFETY_DISK_CAP" ]; then
+    log "Safety: Disk ${DISK_USAGE}% > cap ${SAFETY_DISK_CAP}% — block spawn"
+    return 1
+  fi
+  RUNNING_AGENTS=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .sessionKey' | wc -l)
+  if [ "$RUNNING_AGENTS" -ge "$SAFETY_MAX_CONCURRENT_AGENTS" ]; then
+    log "Safety: Too many concurrent agents ($RUNNING_AGENTS >= $SAFETY_MAX_CONCURRENT_AGENTS)"
+    return 1
+  fi
   return 0
 }
 
