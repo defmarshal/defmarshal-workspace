@@ -1,154 +1,82 @@
 # Workspace Builder Progress
 
-**Start**: 2026-02-18 01:00 UTC
-**Last Update**: 2026-02-18 01:15 UTC
+**Start**: 2026-02-18 05:00 UTC
+**Last Update**: 2026-02-18 05:15 UTC
 
-## Phase 1: Fix agent-manager.sh Memory Reindex Logic
+## Phase 1: Evaluate active-tasks.md Structure
 
-**Status**: ✅ Completed (2026-02-18 01:03 UTC)
+**Status**: ✅ Completed
 
-### Bug Fixed
+### Analysis
 
-Changed condition in `agents/agent-manager.sh` (lines 43-46) from:
-```bash
-if ./quick memory-reindex-check >/dev/null 2>&1; then
+- File size: 4.0KB, 41 lines (over 2KB limit)
+- Entries:
+  - Running: [daemon] torrent-bot (keep)
+  - Validated: [build] workspace-builder (01:00 UTC) — to archive
+  - Validated: [build] workspace-builder (03:00 UTC) — to archive
+  - Completed (Feb 17) — condensed summary sufficient
+
+## Phase 2: Archive to Daily Memory Log
+
+**Status**: ✅ Completed (05:12 UTC)
+
+### Action
+
+Appended new section "Workspace Builder Activity" to `memory/2026-02-18.md` with comprehensive details:
+- Phase 1: agent-manager logic fix (commit 34eed51)
+- Phase 2: memory-dirty observability
+- Phase 3: TOOLS.md documentation
+- Phase 4: Validation (agent-manager --once, health checks)
+- Phase 5: Periodic health check (03:00)
+
+The archival preserves continuity and moves detailed build records out of active-tasks.md.
+
+### File Updated
+
+- `memory/2026-02-18.md` (size increased to 6154 bytes)
+
+## Phase 3: Prune active-tasks.md
+
+**Status**: ✅ Completed (05:15 UTC)
+
+### Changes
+
+- Removed the two validated build entries (01:00 and 03:00)
+- Condensed "Completed (Feb 17)" to a single summary line
+- Added new entry for this build (status: running)
+- Result: active-tasks.md now 1110 bytes (1.1KB) — well under 2KB limit
+
+### File Updated
+
+- `active-tasks.md` (reduced from 4.0KB to 1.1KB)
+
+## Phase 4: Add New Build Entry
+
+**Status**: ✅ Completed
+
+Entry:
 ```
-to:
-```bash
-if ! ./quick memory-reindex-check >/dev/null 2>&1; then
-```
-
-Added explanatory comment about exit codes (0=OK, 1=needed, 2=error).
-
-### Verification
-
-Ran `./agents/agent-manager.sh --once`:
-- Output: "Running maintenance checks", "Downloads size... cleaning", "Checks completed"
-- **No memory reindex triggered** (correct, since main store is clean)
-- Exit code 0
-- Logged to memory/agent-manager.log and test artifact
-
-Before fix, this would have triggered reindex every time.
-
-### Impact
-
-- Stops unnecessary Voyage API calls (prevents 429 rate limits)
-- Prevents log spam from failed reindex attempts
-- Ensures reindex will actually run when needed (dirty/stale)
-- Aligns agent-manager behavior with meta-agent (already fixed Feb 17)
-
-## Phase 2: Assess Torrent-bot Store
-
-**Status**: Completed (2026-02-18 01:05 UTC)
-
-### Observation
-
-`quick memory-status` shows:
-- main: 15/15 files, 43 chunks, dirty: no (clean)
-- torrent-bot: 0/15 files, 0 chunks, dirty: yes
-
-### Root Cause
-
-The torrent-bot store was being repeatedly reindexed due to agent-manager bug. Now that bug is fixed, further spurious attempts should stop. The store may remain dirty until a successful reindex, but since Voyage is rate-limited, we should not force it.
-
-### Decision
-
-- Leave torrent-bot store as-is for now (dirty but not actively harming)
-- Avoid any reindex attempts until Voyage payment added or rate limits lifted
-- The torrent-bot agent likely doesn't rely heavily on semantic search; fallback grep works
-
-### Notes
-
-If torrent-bot semantic search is needed in future, we can:
-- Add payment method to Voyage AI
-- Or implement selective reindex (main only)
-- Or create a separate memory provider with higher limits
-
-## Phase 3: Memory Observability Improvement
-
-**Status**: Completed (2026-02-18 01:10 UTC)
-
-### Enhancements
-
-Created new quick command wrapper: `quick memory-dirty`
-
-Script: `memory-dirty`
-```
-#!/bin/bash
-# Quick check: show memory stores with dirty flag
-openclaw memory status --json | python3 -c "import sys, json; data=json.load(sys.stdin); print('Memory Stores:'); [(print(f\"  {s.get('name','?')}: dirty={s.get('status',{}).get('dirty',False)} files={s.get('status',{}).get('files',0)} chunks={s.get('status',{}).get('chunks',0)}\") if isinstance(s, dict) else None) for s in (data if isinstance(data, list) else [data])]"
+- [build] workspace-builder - Archive/prune active-tasks; enforce 2KB limit; validate system (started: 2026-02-18 05:00 UTC, status: running)
 ```
 
-Makes it easy to see which stores need reindex at a glance.
+## Phase 5: Validation & Testing
 
-### Usage
+**Status**: In Progress (next)
 
-```
-$ quick memory-dirty
-Memory Stores:
-  main: dirty=False files=15 chunks=43
-  torrent-bot: dirty=True files=0 chunks=0
-```
+### Tests Planned
 
-Now operators can quickly identify problematic stores.
+- Quick health check
+- Active-tasks file size verification
+- Memory log integrity check
+- Prepare commit
 
-## Phase 4: Testing & Validation
+## Phase 6: Commit, Push, and Archive
 
-**Status**: Completed (2026-02-18 01:15 UTC)
+**Status**: Not started
 
-### Tests Performed
+Will commit:
+- `active-tasks.md` (pruned)
+- `memory/2026-02-18.md` (archival addition)
+- Build planning files: `task_plan.md`, `findings.md`, `progress.md` (optional: include)
 
-✅ agent-manager --once: no spurious reindex triggered (clean system)
-✅ memory-reindex-check: exits 0 for main store
-✅ memory-dirty: shows dirty status per store clearly
-✅ quick health: all systems OK (disk 79%, gateway healthy, git clean)
-✅ No temp files created
-✅ All changes functional
-
-### Validation Summary
-
-- agent-manager logic now correct
-- Torrent-bot store remains dirty but not actively causing issues
-- New `memory-dirty` command provides clear observability
-- System stable, no unauthorized reindex attempts
-
-## Phase 5: Documentation & Commit
-
-**Status**: ✅ Completed (2026-02-18 01:15 UTC)
-
-### Documentation Updates
-
-- **TOOLS.md**: Updated Memory System section with:
-  - Current Voyage AI rate limit status (3 RPM free tier)
-  - Memory store details (main clean, torrent-bot dirty)
-  - Reindex policy (disabled auto, manual only)
-  - Observability commands: memory-status, memory-dirty, voyage-status
-  - Instructions to re-enable (add payment, uncomment actions)
-- Added `memory-dirty` command to quick launcher help and TOOLS.md list
-- **active-tasks.md**: Added validated build entry for this session; moved previous build to Completed
-- **progress.md** and **findings.md**: Fully documented analysis and fixes
-
-### Files Modified
-
-- `agents/agent-manager.sh` — Fixed memory reindex check condition (inverted logic bug)
-- `memory-dirty` — New script for quick dirty store check
-- `quick` — Added memory-dirty command case and help entry
-- `TOOLS.md` — Comprehensive memory system documentation update
-- `active-tasks.md` — Current status update and validation record
-- `task_plan.md`, `findings.md`, `progress.md` — Planning files for this build
-
-### Commit & Push
-
-All changes ready to commit with prefix 'build:'.
-
-### Validation Summary (Close the Loop)
-
-✅ System health: `quick health` OK (disk 79%, gateway healthy, updates pending but normal)
-✅ Modified command test: `./quick memory-dirty` works, shows dirty status
-✅ Modified command test: `./quick memory-reindex-check` returns 0 (clean)
-✅ Agent-manager test: `./agents/agent-manager.sh --once` no spurious reindex triggered
-✅ No temp files left behind
-✅ All changes tracked in git
-✅ Active-tasks.md updated with verification results
-
-**Build complete. Ready to commit and push.**
+Update active-tasks entry to validated with verification notes.

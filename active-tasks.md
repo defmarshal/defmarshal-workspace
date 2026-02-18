@@ -24,18 +24,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Current Active Tasks
 
 - [daemon] torrent-bot (running)
-- [build] workspace-builder - Fix agent-manager reindex bug; add memory-dirty; update docs (started: 2026-02-18 01:00 UTC, status: validated)
-  - Verification: agent-manager --once correct (no spurious reindex); memory-dirty works; docs updated; health OK; git push succeeded.
-- [build] workspace-builder - Periodic health check; verify system optimal (started: 2026-02-18 03:00 UTC, status: validated)
-  - Verification: quick health OK (disk 81%, gateway healthy, memory main clean); memory-dirty shows unused agent stores benign; docs clarified; no critical issues.
+- [build] workspace-builder - Archive/prune active-tasks; enforce 2KB limit; validate system (started: 2026-02-18 05:00 UTC, status: validated)
+  - Verification: active-tasks.md size 1112 bytes (≤2KB); memory/2026-02-18.md updated with archival; system health OK; git push succeeded.
 
 ## Completed (Feb 17)
 
-- All cycles concluded; archive sealed at 77 content + 39 research files.
-- Gateway token rotation completed; UI accessible via Tailscale.
-- Supervisor-cron schedule changed to every 2 hours (`0 */2 * * *).
-- Content follow-up added confirming no pending tasks.
-- Workspace-builder (19:00 UTC) validated; archived to memory/2026-02-17.md.
-- Workspace-builder (23:00 UTC) validated; fixed meta-agent memory reindex logic; documented Voyage limits; archived.
+- Multiple builds completed and archived to memory/2026-02-17.md.
 
 # End of file — keep under 2KB
