@@ -51,11 +51,12 @@ case "${1:-}" in
 
     # Decision engine
     ACTIONS=()
-    # Only trigger memory reindex if check returns non-zero (1=needed, 2=error)
-    if [ "$MEMORY_NEEDS_EXIT" -ne 0 ]; then
-      ACTIONS+=("memory reindex")
-      log "Memory reindex needed (exit code: $MEMORY_NEEDS_EXIT)"
-    fi
+    # Memory reindex disabled to avoid Voyage AI rate limits (user request)
+    # Uncomment below to re-enable when a provider is configured
+    # if [ "$MEMORY_NEEDS_EXIT" -ne 0 ]; then
+    #   ACTIONS+=("memory reindex")
+    #   log "Memory reindex needed (exit code: $MEMORY_NEEDS_EXIT)"
+    # fi
     if [ "$DISK_USAGE" -ge 80 ]; then
       ACTIONS+=("disk cleanup")
       log "Disk usage >= 80%"
@@ -74,26 +75,9 @@ case "${1:-}" in
     for act in "${ACTIONS[@]}"; do
       case "$act" in
         "memory reindex")
-          # Rate‑lock: skip if lock exists and is younger than 6 hours (free tier 3 RPM makes reindex impractical)
-          if [ -f "$LOCK_FILE" ] && [ $(($(date +%s) - $(stat -c %Y "$LOCK_FILE" 2>/dev/null || echo 0))) -lt 21600 ]; then
-            log "Skipping memory reindex due to active Voyage rate‑lock (lock: $(stat -c %y "$LOCK_FILE" 2>/dev/null || echo unknown))"
-          else
-            log "Triggering memory reindex"
-            # Capture output to detect rate limits and clear stale lock on success
-            if OUTPUT=$(./quick memory-index 2>&1); then
-              echo "$OUTPUT" | tee -a "$LOGFILE"
-              # Clear stale lock if present
-              rm -f "$LOCK_FILE" 2>/dev/null || true
-            else
-              # Even if non‑zero exit, still log output
-              echo "$OUTPUT" | tee -a "$LOGFILE"
-              # Check for rate limit indicators in output
-              if echo "$OUTPUT" | grep -qiE '429|rate limited'; then
-                log "Rate limit detected during reindex; setting lock for 6 hours"
-                touch "$LOCK_FILE"
-              fi
-            fi
-          fi
+          # Disabled to avoid Voyage AI usage
+          # To re-enable: remove this block and uncomment action decision above
+          log "Memory reindex disabled (Voyage AI not in use); skipping"
           ;;
         "disk cleanup")
           log "Triggering downloads cleanup (dry‑run first)"

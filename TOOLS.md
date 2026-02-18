@@ -37,16 +37,13 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
-### Memory System (Voyage AI)
+### Memory System (Voyage AI) — DISABLED
 
-- **Provider**: Voyage AI (voyage-4-large)
-- **Current Status**: ⚠️ Rate limited on free tier (3 RPM, 10K TPM)
-- **Impact**: Semantic search degraded; system falls back to grep automatically when rate-limited
-- **Check status**: `quick memory-status` or `quick voyage-status`
-- **To lift limits**: Add payment method in Voyage AI dashboard: <https://dashboard.voyageai.com>
-- **Rate-lock**: Meta-agent skips memory reindex for 6 hours after detecting 429 errors
-- **Fallback behavior**: grep-based search (`msearch`) is used automatically; no manual intervention needed
-- **Reindex schedule**: Weekly on Sunday at 04:00 Asia/Bangkok (may be skipped due to rate limits)
+- **Provider**: Voyage AI (voyage-4-large) — **not in use** per user request
+- **Status**: Semantic search fallback to grep only (no API calls to Voyage)
+- **Meta-agent**: Memory reindex disabled; Voyage‑specific rate‑lock logic bypassed
+- **Fallback**: All memory search uses grep (`msearch`) or local SQLite FTS without embeddings
+- **To re‑enable**: Remove comments in `agents/meta-agent.sh` and restore voyage-status checks
 
 ---
 
