@@ -266,6 +266,23 @@ case "${1:-}" in
       fi
     fi
 
+
+    # External Integration Auto‑Discovery: detect need for notifications
+    # If there are recurring alerts in logs but no notifier cron, create a Telegram notifier agent
+    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^notifier-cron$'; then
+      # Count alert patterns in recent logs (last 48h)
+      ALERT_COUNT=0
+      for logfile in memory/*.log; do
+        if [ -f "$logfile" ] && [ "$(stat -c %Y "$logfile")" -ge $(( $(date +%s) - 172800 )) ]; then
+          ALERT_COUNT=$((ALERT_COUNT + $(grep -ciE "alert|warning|error|failed" "$logfile" 2>/dev/null || echo 0)))
+        fi
+      done
+      if [ "$ALERT_COUNT" -ge 5 ]; then
+        ACTIONS+=("create notifier-agent")
+        log "Alert volume $ALERT_COUNT in last 48h — creating Telegram notifier-agent"
+      fi
+    fi
+
 # Execute actions (spawn agents for remediation)
     # Use workspace-defined LOCK_FILE with absolute path (already set above)
     for act in "${ACTIONS[@]}"; do
@@ -544,6 +561,59 @@ EOF
           # Register cron: run manager weekly on Sunday 02:00 UTC
           openclaw cron add --name "archiver-manager-cron" --expr "0 2 * * 0" --tz "UTC"             --payload '{"kind":"systemEvent","text":"Execute archiver manager: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/archiver-manager.sh >> memory/archiver-manager.log 2>&1'"}'             --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
           log "Archiver‑manager cron job registered (will spawn workers)"
+          ;;
+        "create notifier-agent")
+          log "Creating Telegram notifier-agent (sends alerts for critical events)"
+          NOTIFIER_SCRIPT="$WORKSPACE/agents/notifier-agent.sh"
+          cat > "$NOTIFIER_SCRIPT" <<'EOF'
+#!/usr/bin/env bash
+# Notifier Agent: send Telegram messages for critical system events
+set -euo pipefail
+cd /home/ubuntu/.openclaw/workspace
+LOGFILE="memory/notifier-agent.log"
+mkdir -p memory
+log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
+
+log "Notifier starting"
+
+# Function: send alert to Telegram via openclaw message tool
+send_alert() {
+  local msg="🚨 *OpenClaw Alert*\n$1"
+  # Use openclaw message to send to configured Telegram channel (if available)
+  if command -v openclaw &>/dev/null; then
+    openclaw message send --channel telegram --to 952170974 --text "$msg" 2>/dev/null || true
+  fi
+}
+
+# Check recent supervisor failures
+if openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "\(.name): \(.state.consecutiveErrors) errors"' | grep -q .; then
+  FAILURES=$(openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "- \(.name): \(.state.consecutiveErrors) errors"' | paste -sd '\n' -)
+  send_alert "Cron job failures:\n$FAILURES"
+fi
+
+# Disk usage >85%
+USAGE=$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')
+if [ "$USAGE" -ge 85 ]; then
+  send_alert "Disk usage critical: ${USAGE}%"
+fi
+
+# Gateway down?
+if ! openclaw gateway status &>/dev/null; then
+  send_alert "OpenClaw gateway is down!"
+fi
+
+# Memory reindex needed (if not disabled)
+if ! ./quick memory-reindex-check &>/dev/null; then
+  MEM_INFO=$(./quick memory-reindex-check 2>&1 | head -5)
+  send_alert "Memory reindex recommended:\n$MEM_INFO"
+fi
+
+log "Notifier completed"
+EOF
+          chmod +x "$NOTIFIER_SCRIPT"
+          # Register cron: run every 2 hours
+          openclaw cron add --name "notifier-cron" --expr "0 */2 * * *" --tz "UTC"             --payload '{"kind":"systemEvent","text":"Execute notifier: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/notifier-agent.sh >> memory/notifier-agent.log 2>&1'"}'             --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
+          log "Notifier‑agent cron job registered"
           ;;
       esac
 
