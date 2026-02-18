@@ -324,6 +324,16 @@ case "${1:-}" in
       echo "$SCHED_TIER" > "$LAST_TIER_FILE"
     fi
 
+
+    # Learning & Feedback: periodically evaluate agent performance and adjust weights
+    # Runs approximately once per day (throttled)
+    LEARN_TRIGGER_FILE="$WORKSPACE/memory/.last-agent-learning"
+    if [ ! -f "$LEARN_TRIGGER_FILE" ] || [ "$(find "$LEARN_TRIGGER_FILE" -mmin +1440 2>/dev/null || echo 0)" -gt 0 ]; then
+      ACTIONS+=("learn agent performance")
+      log "Triggering agent performance learning cycle"
+      touch "$LEARN_TRIGGER_FILE"
+    fi
+
 # Execute actions (spawn agents for remediation)
     # Use workspace-defined LOCK_FILE with absolute path (already set above)
     for act in "${ACTIONS[@]}"; do
@@ -667,7 +677,101 @@ EOF
             "low") SCHED_EXPR="0 * * * *" ;;   # hourly
             "normal") SCHED_EXPR="0 */2 * * *" ;;  # every 2h for some, keep default for others
             "high") SCHED_EXPR="0 */4 * * *" ;;   # every 4h for non‑critical
-          esac
+            "learn agent performance")
+          log "Starting agent performance learning cycle"
+          PERFORMANCE_FILE="$WORKSPACE/memory/agent-performance.json"
+          # Initialize or load performance data
+          if [ -f "$PERFORMANCE_FILE" ]; then
+            eval "$(cat "$PERFORMANCE_FILE")" 2>/dev/null || true
+          else
+            declare -A AGENT_SCORE=()
+          fi
+
+          # Collect metrics for each agent type from recent logs (last 7 days)
+          declare -A COMMITS=()
+          declare -A RUN_COUNT=()
+          declare -A ERROR_COUNT=()
+
+          for logfile in memory/*-agent.log memory/meta-agent.log; do
+            if [ -f "$logfile" ] && [ "$(stat -c %Y "$logfile")" -ge $(( $(date +%s) - 604800 )) ]; then
+              # Extract agent type from filename
+              AGENT_TYPE=$(basename "$logfile" .log | sed -E 's/-agent$//' | sed -E 's/^meta$/meta-agent/')
+              # Count runs (approx by lines containing "Starting" or "cycle")
+              RUN_COUNT["$AGENT_TYPE"]=$(( ${RUN_COUNT["$AGENT_TYPE"]:-0} + $(grep -ci "starting" "$logfile" 2>/dev/null || echo 0) ))
+              # Count errors (lines with "error" or "failed")
+              ERROR_COUNT["$AGENT_TYPE"]=$(( ${ERROR_COUNT["$AGENT_TYPE"]:-0} + $(grep -ci "error\|failed" "$logfile" 2>/dev/null || echo 0) ))
+            fi
+          done
+
+          # Count commits per agent (by prefix in git log)
+          while IFS=: read -r PREFIX; do
+            AGENT_TYPE="${PREFIX%%:*}"
+            COUNT=$(git log --since='7 days ago' --oneline 2>/dev/null | grep -c "^$PREFIX" || echo 0)
+            COMMITS["$AGENT_TYPE"]=$COUNT
+          done <<EOF
+dev:dev
+content:content
+research:research
+build:build
+meta:meta
+game:game
+EOF
+
+          # Compute scores: success rate and commit productivity
+          for agent in "${!RUN_COUNT[@]}"; do
+            runs=${RUN_COUNT["$agent"]}
+            errors=${ERROR_COUNT["$agent"]:-0}
+            commits=${COMMITS["$agent"]:-0}
+            if [ "$runs" -gt 0 ]; then
+              success_rate=$(( (runs - errors) * 100 / runs ))
+            else
+              success_rate=0
+            fi
+            # Weighted score: 60% success rate, 40% commits per run
+            if [ "$runs" -gt 0 ]; then
+              commits_per_run=$(echo "scale=2; $commits / $runs" | bc)
+              score=$(echo "scale=2; 0.6*$success_rate + 0.4*${commits_per_run:-0}*100" | bc)
+            else
+              score=0
+            fi
+            AGENT_SCORE["$agent"]=$score
+          done
+
+          # Find best and worst performers
+          best_score=-1
+          worst_score=9999
+          best_agent=""
+          worst_agent=""
+          for agent in "${!AGENT_SCORE[@]}"; do
+            score=${AGENT_SCORE["$agent"]}
+            if [ "$(echo "$score > $best_score" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+              best_score=$score
+              best_agent=$agent
+            fi
+            if [ "$(echo "$score < $worst_score" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+              worst_score=$score
+              worst_agent=$agent
+            fi
+          done
+
+          log "Agent performance scores: $(for a in "${!AGENT_SCORE[@]}"; do echo "$a:${AGENT_SCORE[$a]}"; done | paste -sd ' ' -)"
+          if [ -n "$best_agent" ] && [ "$(echo "$best_score >= 70" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+            log "Best performer: $best_agent (score $best_score) — consider increasing spawn weight"
+          fi
+          if [ -n "$worst_agent" ] && [ "$(echo "$worst_score <= 30" | bc 2>/dev/null || echo 0)" -eq 1 ]; then
+            log "Worst performer: $worst_agent (score $worst_score) — consider reducing spawn frequency"
+          fi
+
+          # Save performance data for next cycle
+          echo "declare -A AGENT_SCORE=(" > "$PERFORMANCE_FILE"
+          for agent in "${!AGENT_SCORE[@]}"; do
+            echo "  ["$agent"]=${AGENT_SCORE["$agent"]}" >> "$PERFORMANCE_FILE"
+          done
+          echo ")" >> "$PERFORMANCE_FILE"
+
+          log "Agent performance learning completed"
+          ;;
+      esac
 
           # List of agents to stretch (non‑critical) — we'll update them if they exist
           # Map job name → schedule expr (default)
