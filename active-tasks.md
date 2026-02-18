@@ -26,6 +26,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [daemon] torrent-bot (running)
 - [build] workspace-builder - Fix agent-manager reindex bug; add memory-dirty; update docs (started: 2026-02-18 01:00 UTC, status: validated)
   - Verification: agent-manager --once correct (no spurious reindex); memory-dirty works; docs updated; health OK; git push succeeded.
+- [build] workspace-builder - Periodic health check; verify system optimal (started: 2026-02-18 03:00 UTC, status: validated)
+  - Verification: quick health OK (disk 81%, gateway healthy, memory main clean); memory-dirty shows unused agent stores benign; docs clarified; no critical issues.
 
 ## Completed (Feb 17)
 

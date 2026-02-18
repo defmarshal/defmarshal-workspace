@@ -51,6 +51,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
   - `quick memory-dirty` — quickly shows which stores are dirty (need reindex)
   - `quick voyage-status` — checks recent logs for rate limit warnings
 - **To re‑enable**: Add payment method in Voyage AI dashboard, then uncomment reindex actions in `agents/meta-agent.sh` and `agents/agent-manager.sh`.
+- **Note**: The `torrent-bot` and `cron-supervisor` memory stores exist because `memorySearch` is enabled by default for all agents in the OpenClaw configuration. However, these agents do not actively use memory (no memory files stored). Their stores may show as "dirty" with 0 files/indexed chunks. This is benign and can be ignored. The agent-manager's memory check (`memory-reindex-check`) only monitors the main store, so these unused stores do not trigger reindex attempts.
 
 ---
 
