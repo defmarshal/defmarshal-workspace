@@ -29,6 +29,6 @@
 - GitHub repo: `defmarshal/defmarshal-workspace`
 
 ## Notes
-- Memory search uses Voyage AI embeddings (FTS enabled). Status: `openclaw memory status`
+- Memory search: Voyage AI disabled; using local SQLite FTS/grep fallback. Status: `quick memory-status`
 - Gateway runs on port 18789; health: `quick health` (if quick command available)
 - systemd linger recommended: `sudo loginctl enable-linger ubuntu` for service persistence
