@@ -253,7 +253,20 @@ case "${1:-}" in
       fi
     fi
 
-    # Execute actions (spawn agents for remediation)
+    
+    # Multi-Agent System Creation: detect need for coordinated multi-agent effort
+    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archiver-manager-cron$'; then
+      OLD_CONTENT=$(find content -type f -name '*.md' -mtime +90 2>/dev/null | wc -l)
+      OLD_RESEARCH=$(find research -type f -name '*.md' -mtime +90 2>/dev/null | wc -l)
+      if [ "$OLD_CONTENT" -gt 10 ] || [ "$OLD_RESEARCH" -gt 10 ]; then
+        if [ "$DISK_USAGE" -gt 50 ]; then
+          ACTIONS+=("create multi-agent system:archiver")
+          log "Archive load high (content:$OLD_CONTENT research:$OLD_RESEARCH old files, disk ${DISK_USAGE}%) — will create archiver multi-agent system"
+        fi
+      fi
+    fi
+
+# Execute actions (spawn agents for remediation)
     # Use workspace-defined LOCK_FILE with absolute path (already set above)
     for act in "${ACTIONS[@]}"; do
       case "$act" in
@@ -462,6 +475,76 @@ EOF
             fi
           fi
           ;;
+        "create multi-agent system:archiver")
+          log "Creating archiver multi-agent system (manager + workers)"
+          MANAGER_SCRIPT="$WORKSPACE/agents/archiver-manager.sh"
+          cat > "$MANAGER_SCRIPT" <<'EOF'
+#!/usr/bin/env bash
+# Archiver Manager: scans for old files, spawns archiver-workers to compress them
+set -euo pipefail
+cd /home/ubuntu/.openclaw/workspace
+LOGFILE="memory/archiver-manager.log"
+mkdir -p memory archives
+log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
+
+log "Archiver‑manager starting"
+
+# Find batches of old files (>90 days) in content and research
+mapfile -t FILES < <(find content research -type f -name '*.md' -mtime +90 2>/dev/null)
+TOTAL=${#FILES[@]}
+if [ "$TOTAL" -eq 0 ]; then
+  log "No old files to archive"
+  exit 0
+fi
+
+BATCH_SIZE=20
+for ((i=0; i<TOTAL; i+=BATCH_SIZE)); do
+  BATCH=( "${FILES[@]:i:BATCH_SIZE}" )
+  # Spawn a worker agent for this batch
+  WORKER_ID="archiver-worker-$i"
+  WORKER_SCRIPT="$WORKSPACE/agents/$WORKER_ID.sh"
+  cat > "$WORKER_SCRIPT" <<'WORKEREOF'
+#!/usr/bin/env bash
+# Archiver Worker: compress assigned files
+set -euo pipefail
+cd /home/ubuntu/.openclaw/workspace
+LOGFILE="memory/$WORKER_ID.log"
+mkdir -p memory archives
+log() { echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"; }
+
+log "Worker starting"
+FILES_LIST=${FILES_LIST:-}
+if [ -z "$FILES_LIST" ]; then
+  echo "No files assigned"
+  exit 1
+fi
+
+ARCHIVE_MONTH=$(date -u +%Y-%m)
+ARCHIVE_DIR="archives/${ARCHIVE_MONTH}"
+mkdir -p "$ARCHIVE_DIR"
+
+for f in $FILES_LIST; do
+  if [ -f "$f" ]; then
+    base=$(basename "$f" .md)
+    tar -czf "$ARCHIVE_DIR/${base}.tar.gz" -C "$(dirname "$f")" "$(basename "$f")" && rm -f "$f"
+    log "Archived: $f → $ARCHIVE_DIR/${base}.tar.gz"
+  fi
+done
+
+log "Worker completed"
+WORKEREOF
+  chmod +x "$WORKER_SCRIPT"
+  # Launch worker via openclaw agent (isolated session)
+  openclaw agent --agent main --message "You are an archiver worker. Execute: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/$WORKER_ID.sh'" --thinking low --timeout 600000 >> "$LOGFILE" 2>&1 || true
+done
+
+log "Archiver‑manager completed (spawned $(( (TOTAL+BATCH_SIZE-1)/BATCH_SIZE )) workers)"
+EOF
+          chmod +x "$MANAGER_SCRIPT"
+          # Register cron: run manager weekly on Sunday 02:00 UTC
+          openclaw cron add --name "archiver-manager-cron" --expr "0 2 * * 0" --tz "UTC"             --payload '{"kind":"systemEvent","text":"Execute archiver manager: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/archiver-manager.sh >> memory/archiver-manager.log 2>&1'"}'             --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
+          log "Archiver‑manager cron job registered (will spawn workers)"
+          ;;
       esac
 
     # Generate human‑readable report
@@ -533,3 +616,15 @@ EOF
     exit 1
     ;;
 esac
+
+    # Multi-Agent System Creation: detect need for coordinated multi-agent effort
+    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archiver-manager-cron$'; then
+      OLD_CONTENT=$(find content -type f -name '*.md' -mtime +90 2>/dev/null | wc -l)
+      OLD_RESEARCH=$(find research -type f -name '*.md' -mtime +90 2>/dev/null | wc -l)
+      if [ "$OLD_CONTENT" -gt 10 ] || [ "$OLD_RESEARCH" -gt 10 ]; then
+        if [ "$DISK_USAGE" -gt 50 ]; then
+          ACTIONS+=("create multi-agent system:archiver")
+          log "Archive load high (content:$OLD_CONTENT research:$OLD_RESEARCH old files, disk ${DISK_USAGE}%) — will create archiver multi-agent system"
+        fi
+      fi
+    fi
