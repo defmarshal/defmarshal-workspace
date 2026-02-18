@@ -843,6 +843,24 @@ except Exception:
   hygiene)
     "$WORKSPACE/workspace-hygiene-check.sh"
     ;;
+  clean-cache)
+    # Clean Python bytecode cache (__pycache__ directories and .pyc files)
+    echo "== Cleaning Python cache =="
+    pycache_dirs=$(find "$WORKSPACE" -type d -name "__pycache__" 2>/dev/null | wc -l)
+    pyc_files=$(find "$WORKSPACE" -type f -name "*.pyc" 2>/dev/null | wc -l)
+    total=$((pycache_dirs + pyc_files))
+    if [ "$total" -eq 0 ]; then
+      echo "✅ No cache files found. Clean!"
+      exit 0
+    fi
+    echo "Found:"
+    echo "  - $pycache_dirs __pycache__ directories"
+    echo "  - $pyc_files .pyc files"
+    echo "Cleaning..."
+    find "$WORKSPACE" -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
+    find "$WORKSPACE" -type f -name "*.pyc" -delete 2>/dev/null || true
+    echo "✅ Cleaned $total cache item(s)"
+    ;;
   cron)
     openclaw cron list --json | jq -r '.jobs[] | "\(.schedule.kind) \(.schedule.expr // "\(.schedule.everyMs)ms") \(.payload.kind) \(.sessionTarget)"' 2>/dev/null || openclaw cron list
     ;;
