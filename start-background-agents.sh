@@ -29,12 +29,12 @@ start_if_missing() {
 
 # Start daemons
 # NOTE (2026-02-16): dev-agent, content-agent, research-agent have been migrated to OpenClaw cron jobs.
-# The daemon loops are no longer needed. Keeping aria2, torrent-bot, and cron-supervisor as daemons.
+# The daemon loops are no longer needed. Keeping aria2 and torrent-bot (legacy) as daemons.
 # start_if_missing "dev-agent" "dev-agent-loop.sh"
 # start_if_missing "content-agent" "content-agent-loop.sh"
 # start_if_missing "research-agent" "research-agent-loop.sh"
 start_if_missing "torrent-bot" "agents/torrent-bot/loop.sh"
-start_if_missing "cron-supervisor" "agents/cron-supervisor/loop.sh"
+# cron-supervisor is now a cron-triggered agent (not a daemon loop).
 
 # Start aria2 daemon if not running
 if pgrep -f "aria2c.*--conf-path=/home/ubuntu/.openclaw/workspace/aria2.conf" > /dev/null; then

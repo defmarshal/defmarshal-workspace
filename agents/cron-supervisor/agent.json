@@ -1,15 +1,14 @@
 {
   "name": "cron-supervisor",
-  "description": "Monitors and manages OpenClaw cron jobs, reports failures, and provides health overview.",
+  "description": "Monitors cron job health and reports summary. Run via cron.",
   "version": "1.0.0",
   "allowlists": {
-    "shell.exec": [
-      "openclaw cron list",
-      "openclaw cron status",
-      "openclaw cron run",
-      "logger",
+    "exec": [
+      "openclaw",
+      "jq",
       "date",
-      "jq"
+      "mkdir",
+      "bash"
     ]
   }
 }

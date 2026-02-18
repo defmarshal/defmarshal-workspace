@@ -1,46 +1,34 @@
 #!/usr/bin/env python3
 """
-Cron Supervisor Agent — monitors OpenClaw cron jobs, detects failures, and reports health.
-Runs as a persistent daemon (24/7) with configurable interval.
+Cron Supervisor Agent — reads ~/.openclaw/cron/jobs.json directly to avoid CLI deadlock.
+Generates a concise health report every run.
 """
 
 import json
-import subprocess
 import sys
-import time
 from datetime import datetime, timezone
+from pathlib import Path
 
-WORKSPACE = "/home/ubuntu/.openclaw/workspace"
-CLI = "/home/ubuntu/.npm-global/bin/openclaw"
+JOBS_JSON = Path.home() / ".openclaw" / "cron" / "jobs.json"
+WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
+LOG_PATH = WORKSPACE / "memory" / "cron-supervisor.log"
 
-def run_openclaw_cmd(args):
-    """Run openclaw CLI command and return parsed JSON or None."""
+def read_jobs():
     try:
-        result = subprocess.run([CLI] + args, capture_output=True, text=True, timeout=10)
-        if result.returncode != 0:
-            return None
-        return json.loads(result.stdout)
-    except Exception:
-        return None
+        with open(JOBS_JSON, "r") as f:
+            data = json.load(f)
+        return data.get("jobs", [])
+    except Exception as e:
+        print(f"ERROR: Cannot read cron jobs: {e}", file=sys.stderr)
+        return []
 
-def get_cron_jobs():
-    """Fetch list of all cron jobs."""
-    return run_openclaw_cmd(["cron", "list", "--json"]) or []
-
-def get_cron_status():
-    """Get status overview (if available)."""
-    return run_openclaw_cmd(["cron", "status"])
-
-def check_job_health(job):
-    """Check if a cron job is healthy based on state."""
+def check_health(job):
     state = job.get("state", {})
     last_status = state.get("lastStatus", "never")
     consecutive_errors = state.get("consecutiveErrors", 0)
     next_run_ms = state.get("nextRunAtMs", 0)
-    # Consider healthy if last status is ok and no consecutive errors
     healthy = (last_status == "ok") and (consecutive_errors == 0)
     return {
-        "id": job.get("id"),
         "name": job.get("name"),
         "healthy": healthy,
         "lastStatus": last_status,
@@ -49,8 +37,7 @@ def check_job_health(job):
         "enabled": job.get("enabled", True)
     }
 
-def format_timestamp(ms):
-    """Convert millis to UTC datetime string."""
+def fmt_ms(ms):
     if not ms:
         return "never"
     try:
@@ -59,58 +46,41 @@ def format_timestamp(ms):
     except Exception:
         return "invalid"
 
-def build_report(job_healths):
-    """Build a human-readable report of cron health."""
+def build_report(healths):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
-    lines = [f"=== Cron Supervisor Report ({now}) ===", ""]
-    # Summary
-    total = len(job_healths)
-    healthy_count = sum(1 for j in job_healths if j["healthy"])
-    lines.append(f"Summary: {healthy_count}/{total} jobs healthy")
-    lines.append("")
-    # List each job
-    for j in job_healths:
-        status_icon = "✓" if j["healthy"] else "✗"
-        name = j["name"]
-        last_status = j["lastStatus"]
-        errors = j["consecutiveErrors"]
-        next_run = format_timestamp(j["nextRunAtMs"])
-        enabled = "enabled" if j["enabled"] else "disabled"
-        lines.append(f"{status_icon} {name}")
-        lines.append(f"    Last: {last_status} | Errors: {errors} | Next: {next_run} | {enabled}")
-    lines.append("")
+    total = len(healths)
+    healthy = sum(1 for h in healths if h["healthy"])
+    lines = [f"=== Cron Health Report ({now}) ===", f"Summary: {healthy}/{total} jobs healthy", ""]
+    # Failures first
+    failures = [h for h in healths if not h["healthy"]]
+    if failures:
+        lines.append("!!! FAILURES !!!")
+        for f in failures:
+            lines.append(f"✗ {f['name']}: status={f['lastStatus']}, errors={f['consecutiveErrors']}, next={fmt_ms(f['nextRunAtMs'])}")
+        lines.append("")
+    # Compact list
+    for h in healths:
+        icon = "✓" if h["healthy"] else "✗"
+        lines.append(f"{icon} {h['name']} (errors={h['consecutiveErrors']}, next={fmt_ms(h['nextRunAtMs'])})")
     lines.append("=== End Report ===")
     return "\n".join(lines)
 
-def log_to_syslog(message):
-    """Log message to syslog via logger."""
+def log_report(report):
     try:
-        subprocess.run(["logger", "-t", "cron-supervisor", message], check=False)
+        LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with open(LOG_PATH, "a") as f:
+            f.write(report + "\n")
     except Exception:
         pass
 
 def main():
-    """Main loop: fetch jobs, check health, log, sleep."""
-    # Configurable interval (seconds) between runs
-    INTERVAL = 300  # 5 minutes
-    while True:
-        try:
-            jobs = get_cron_jobs()
-            if not isinstance(jobs, list):
-                # Invalid response; log error and retry later
-                log_to_syslog("Invalid response from openclaw cron list")
-                time.sleep(INTERVAL)
-                continue
-            job_healths = [check_job_health(job) for job in jobs]
-            report = build_report(job_healths)
-            # Print to stdout (captured by agent framework) and log to syslog
-            print(report)
-            log_to_syslog("Cron health report generated")
-        except Exception as e:
-            err_msg = f"Error in cron-supervisor: {e}"
-            print(err_msg)
-            log_to_syslog(err_msg)
-        time.sleep(INTERVAL)
+    jobs = read_jobs()
+    if not jobs:
+        print("WARNING: No cron jobs found or cannot read jobs.json")
+    healths = [check_health(job) for job in jobs]
+    report = build_report(healths)
+    print(report)
+    log_report(report)
 
 if __name__ == "__main__":
     main()
