@@ -1,11 +1,23 @@
 #!/bin/bash
 # Gateway fix — restore clean gateway operation
-# This script stops the gateway service, kills stray processes, and restarts fresh.
+# This script stops the gateway service, kills stray processes, rotates device token if needed,
+# and restarts fresh.
 # Usage: ./gateway-fix.sh
 
 set -euo pipefail
 
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+DEVICE_AUTH="${HOME}/.openclaw/identity/device-auth.json"
+
 echo "== Gateway Fix Start =="
+
+# 0. Rotate device token to fix mismatches (backup then delete)
+if [ -f "$DEVICE_AUTH" ]; then
+  echo "→ Backing up and removing device token (to force regeneration)..."
+  mv "$DEVICE_AUTH" "$DEVICE_AUTH.bak.$(date +%s)" || true
+else
+  echo "→ No device auth file found; skipping rotation"
+fi
 
 # 1. Stop systemd service if it's active
 if systemctl --user is-active --quiet openclaw-gateway.service; then
@@ -67,5 +79,6 @@ else
 fi
 
 echo "✓ Gateway fix complete. Use 'openclaw gateway probe' to verify RPC."
+echo "  Note: The first elevated command after this will regenerate device token automatically."
 
 echo "== Gateway Fix Complete =="

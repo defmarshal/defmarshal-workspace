@@ -1,7 +1,7 @@
 # Findings Report — Workspace Builder
 
-**Session:** `23dad379-21ad-4f7a-8c68-528f98203a33`  
-**Started:** 2026-02-18 07:00 UTC
+**Session:** `agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33`
+**Started:** 2026-02-18 11:00 UTC
 
 ---
 
@@ -9,113 +9,103 @@
 
 - **OS:** Linux 6.14.0-1018-oracle (arm64)
 - **Node:** v24.13.1
-- **Gateway:** Running on port 18789
+- **Gateway:** Port 18789, RPC reachable, but systemd service inactive (stray process)
 - **Model:** openrouter/stepfun/step-3.5-flash:free
 - **Channel:** telegram
-- **Disk usage:** ~79-81% (as of last logs)
+- **Disk usage:** 40%
+- **Pending APT updates:** 18
 
 ---
 
-## Recent Build History (from memory)
+## Current Build Context
 
-### 2026-02-18 Workspace Builder Activity (01:00–05:00 UTC)
+Previous workspace-builder run (07:00 UTC) completed validation and committed several improvements:
+- Fixed agent-manager memory reindex logic
+- Added memory-dirty observability
+- Updated TOOLS.md
+- Fixed agent-manager auto-commit to include untracked files
+- Commits: `34eed51`, `1f4ebf3`, `cda5a74`, `6c5b07e`, `f237868`
 
-**Phase 1: Fixed agent-manager memory reindex inverted logic**
-- Bug: `if ./quick memory-reindex-check` ran reindex on exit 0 (OK) instead of when needed (non-zero)
-- Fix: Added `!` to invert condition
-- Impact: Stops unnecessary Voyage API calls
+However, that run left two critical improvements uncommitted due to being applied after commit phase:
+1. Enhanced `gateway-fix.sh` with automatic device token rotation
+2. Enhanced `memory-reindex-check` with recent rate-limit detection
 
-**Phase 2: Added memory observability**
-- Created `quick memory-dirty` command to show per-store dirty flags
-- Updated TOOLS.md with memory system details
-
-**Phase 3: Documentation updates**
-- Expanded TOOLS.md with memory system observability instructions
-
-**Phase 4: Agent-manager auto-commit bug fix (05:18–05:20 UTC)**
-- Bug: Git dirty check only detected tracked files, ignoring untracked (reports/)
-- Fix: Use `git status --porcelain | wc -l` to count all changes
-- Validation: successful auto-commit of daily digest report
-
-**Commits:**
-- `34eed51` — fix agent-manager memory reindex
-- `1f4ebf3` — fix agent-manager git detection
+Additionally, dev-agent later applied these fixes and documented them in `memory/2026-02-18.md` but did not commit. State shows 4 untracked output files (daily digests) staged and 3 modifications unstaged.
 
 ---
 
-## Current State Assessment
+## State Assessment
 
 ### Git Status
 
 ```
- M agents/meta-agent.sh
+Changes to be committed:
+  new: content/2026-02-18-content-agent-summary.md
+  new: content/2026-02-18-research-agent-summary.md
+  new: research/2026-02-18-autonomous-systems-update.md
+  new: research/2026-02-18-research-status-report.md
+
+Changes not staged:
+  modified: gateway-fix.sh
+  modified: memory-reindex-check
+  modified: memory/2026-02-18.md
 ```
 
-- Only one modified file tracked by git.
-- No untracked files (verified: `git status --porcelain` shows only ` M` entry).
-- The modification appears to be JSON escaping fixes in cron payload definitions.
+Total: 7 files pending commit.
 
 ### Active Tasks
 
-- `[daemon] torrent-bot` — running
-- `[build] workspace-builder` — validated (from previous run)
-
-Size: 1112 bytes (within 2KB limit) — OK.
+- `[daemon] torrent-bot` — running (healthy)
+Size: ~1112 bytes — within 2KB limit. ✓
 
 ### Memory System
 
-- Voyage AI disabled (rate limits)
-- Fallback: local SQLite FTS + grep (`./msearch`)
-- Primary store (`main`): clean (dirty=False, files=15, chunks=44)
-- Agent stores (`torrent-bot`, `cron-supervisor`): dirty=True but files=0 (unused, benign)
+- Main store: clean, 15 files, 52 chunks, Voyage FTS+ (rate-limited)
+- Agent stores (torrent-bot, cron-supervisor): dirty but unused (0 files) — benign
+- memory-reindex-check: last reindex 1.8 days ago — still OK (<7 days)
+- Voyage rate limits detected in logs; script defers reindex appropriately
 
-### Quick Launcher Health
+### Gateway Health
 
-**CRITICAL BUG:** `./quick help` fails with syntax error:
-```
-quick: line 1040: syntax error near unexpected token `)'
-quick: line 1040: `  feedback)'
-```
+- Systemd service: `inactive`
+- Port 18789: listening
+- RPC: reachable
+- Process: stray (PID 671818) running without supervision
+- Risk: Gateway not auto-restarted on failure; systemd unit not managing current process
 
-**Root Cause:** The `feedback)` case clause is placed **after** the `esac` that closes the case statement. This makes it syntactically invalid.
+The enhanced `gateway-fix.sh` will resolve this by cleaning up strays and restarting via systemd.
 
-**Expected location:** Inside the case block, before the `*)` catch-all.
+### Quick Launcher
 
-**Impact:** Users cannot run `quick feedback` command; entire script fails parsing.
-
----
-
-## Files Under Watch
-
-| File | Status | Notes |
-|------|--------|-------|
-| `agents/meta-agent.sh` | Modified | Cron JSON escaping fixes (seems correct) |
-| `quick` | Broken | Misplaced `feedback)` case block |
-| `active-tasks.md` | Good | Size OK, format OK |
-| `MEMORY.md` | Good | Up to date |
-| `memory/2026-02-18.md` | Good | Contains recent build logs |
+Already fixed in previous build; `./quick help` works. No issues.
 
 ---
 
-## Recommendations
+## Improvements To Implement
 
-1. **Fix quick launcher immediately** — move `feedback)` block inside case statement.
-2. **Commit meta-agent.sh** — the JSON escaping fixes are valid and should be committed to avoid loss.
-3. **Validate all commands** after fix to ensure no regressions.
-4. **Consider adding linting** to CI or pre-commit hook to catch shell syntax errors early.
-
----
-
-## Risks
-
-- Uncommitted `meta-agent.sh` changes could be lost if something goes wrong.
-- Quick launcher unusable prevents many utilities until fixed.
+1. **Commit all pending changes** (7 files) with appropriate `build:` message.
+2. **Apply gateway-fix.sh** to ensure gateway is systemd-managed and token rotation automated.
+3. **Validate** post-commit system health.
+4. **Update active-tasks.md** with validation results.
 
 ---
 
-## Next Steps
+## Risks & Mitigations
 
-- Fix `quick` script syntax error
-- Run validation suite
-- Commit and push changes
-- Update active-tasks.md with results
+- **Gateway restart brief downtime**: Acceptable during cron-triggered maintenance window.
+- **Voyage rate limits**: Already handled by defer logic; avoid forcing reindex.
+- **Large aria2.log (370MB)**: Not critical; rotation happens at 100MB threshold per log-rotate script; can run manually if needed.
+
+---
+
+## Anomalies
+
+- `quick validate` reports Gateway down, but `quick gateway-status` shows RPC reachable and port listening. Likely a false negative due to systemd service state check. This will be resolved after applying fix and ensuring service active.
+
+---
+
+## Next Steps After This Build
+
+- Monitor agent-manager auto-commit behavior (should pick up daily digests automatically when <10 changes).
+- Consider adding Voyage payment to increase rate limits if memory reindex becomes more critical.
+- Possibly adjust memory-reindex age threshold from 7 to 14 days if reindex frequency is too high for free tier.

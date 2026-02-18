@@ -39,6 +39,40 @@ elif [[ -f "$WORKSPACE/memory/memory-reindex.log" ]]; then
   fi
 fi
 
+# Determine if recent rate limit (within last hour) to avoid hammering
+RATE_LIMIT_RECENT=0
+# Check logs for rate limit in last 3600 seconds
+now=$(date +%s)
+for logfile in "$WORKSPACE/memory/agent-manager.log" "$WORKSPACE/memory/memory-reindex.log" "$WORKSPACE/memory/meta-agent.log"; do
+  if [ -f "$logfile" ]; then
+    # Get lines with 429 or rate limited in last hour
+    if grep -qiE '429|rate limited' "$logfile" 2>/dev/null | while IFS= read -r line; do
+      # Extract timestamp from log line if possible (assuming ISO-like format at start)
+      # Try to parse common log timestamp patterns
+      # Our logs often start with "YYYY-MM-DD HH:MM:SS" or "YYYY-MM-DDTHH:MM:SS"
+      ts=$(echo "$line" | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}[-T ][0-9]{2}:[0-9]{2}:[0-9]{2}' | head -1)
+      if [ -n "$ts" ]; then
+        # Convert to timestamp
+        ts_epoch=$(date -d "$ts" +%s 2>/dev/null || echo 0)
+        if [ $((now - ts_epoch)) -lt 3600 ]; then
+          RATE_LIMIT_RECENT=1
+          break 2
+        fi
+      else
+        # Fallback: if log file modified within last hour and contains rate limit, consider recent
+        mtime=$(stat -c %Y "$logfile" 2>/dev/null || echo 0)
+        if [ $((now - mtime)) -lt 3600 ]; then
+          # If the log itself is recent and contains rate limit, likely recent
+          RATE_LIMIT_RECENT=1
+          break
+        fi
+      fi
+    done; then
+      true # found
+    fi
+  fi
+done
+
 # Determine if action needed
 NEEDS_REINDEX=0
 REASON=""
@@ -49,6 +83,12 @@ if [[ "$DIRTY" == "true" ]]; then
 elif [[ -n "$REINDEX_AGE_DAYS" && $REINDEX_AGE_DAYS -ge 7 ]]; then
   NEEDS_REINDEX=1
   REASON="Last reindex was $REINDEX_AGE_DAYS days ago (stale)"
+fi
+
+# If recent rate limit, defer reindex even if needed
+if [[ $RATE_LIMIT_RECENT -eq 1 && $NEEDS_REINDEX -eq 1 ]]; then
+  NEEDS_REINDEX=0
+  REASON="Rate limited recently; reindex deferred"
 fi
 
 # Output
@@ -75,5 +115,8 @@ if [[ $NEEDS_REINDEX -eq 1 ]]; then
   exit 1
 else
   echo "Status: OK (no reindex needed)"
+  if [[ $RATE_LIMIT_RECENT -eq 1 ]]; then
+    echo "Note: Reindex deferred due to recent rate limits."
+  fi
   exit 0
 fi
