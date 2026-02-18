@@ -51,6 +51,59 @@ case "${1:-}" in
 
     # Decision engine
     ACTIONS=()
+
+    # Dynamic Skill Installation: detect missing capabilities and install from ClawHub
+    # Patterns:
+    # - Frequent web searches → tavily or perplexity (tavily preferred for AI-optimized)
+    # - Email mentions → gmail
+    # - Weather mentions → weather
+    # - Calendar mentions → google-calendar (if available)
+    # - Torrent/aria2 activity → ensure aria2 skill present
+    #
+    # Check recent logs for keyword patterns
+    WEB_SEARCH_COUNT=0
+    EMAIL_MENTION_COUNT=0
+    WEATHER_MENTION_COUNT=0
+    CALENDAR_MENTION_COUNT=0
+
+    # Scan recent agent logs (last 24h) for patterns
+    for logfile in memory/*-agent.log memory/meta-agent.log; do
+      if [ -f "$logfile" ] && [ "$(stat -c %Y "$logfile")" -ge $(( $(date +%s) - 86400 )) ]; then
+        WEB_SEARCH_COUNT=$((WEB_SEARCH_COUNT + $(grep -c "web_search" "$logfile" 2>/dev/null || echo 0)))
+        EMAIL_MENTION_COUNT=$((EMAIL_MENTION_COUNT + $(grep -c "gmail" "$logfile" 2>/dev/null || echo 0)))
+        WEATHER_MENTION_COUNT=$((WEATHER_MENTION_COUNT + $(grep -c "weather" "$logfile" 2>/dev/null || echo 0)))
+        CALENDAR_MENTION_COUNT=$((CALENDAR_MENTION_COUNT + $(grep -c "calendar" "$logfile" 2>/dev/null || echo 0)))
+      fi
+    done
+
+    # Determine which skill to install (priority order)
+    RECOMMENDED_SKILL=""
+    if [ "$WEB_SEARCH_COUNT" -ge 10 ]; then
+      # Prefer tavily for AI-optimized search
+      if ! [ -d "$WORKSPACE/skills/tavily" ] && ! grep -q '"tavily"' "$WORKSPACE/.openclaw/openclaw.json" 2>/dev/null; then
+        RECOMMENDED_SKILL="tavily"
+      elif ! [ -d "$WORKSPACE/skills/perplexity" ] && ! grep -q '"perplexity"' "$WORKSPACE/.openclaw/openclaw.json" 2>/dev/null; then
+        RECOMMENDED_SKILL="perplexity"
+      fi
+    elif [ "$EMAIL_MENTION_COUNT" -ge 5 ] && ! [ -d "$WORKSPACE/skills/gmail" ] && ! grep -q '"gmail"' "$WORKSPACE/.openclaw/openclaw.json" 2>/dev/null; then
+      RECOMMENDED_SKILL="gmail"
+    elif [ "$WEATHER_MENTION_COUNT" -ge 3 ] && ! [ -d "$WORKSPACE/skills/weather" ] && ! grep -q '"weather"' "$WORKSPACE/.openclaw/openclaw.json" 2>/dev/null; then
+      RECOMMENDED_SKILL="weather"
+    elif [ "$CALENDAR_MENTION_COUNT" -ge 2 ] && ! [ -d "$WORKSPACE/skills/google-calendar" ] && ! grep -q '"google-calendar"' "$WORKSPACE/.openclaw/openclaw.json" 2>/dev/null; then
+      RECOMMENDED_SKILL="google-calendar"
+    fi
+
+    if [ -n "$RECOMMENDED_SKILL" ]; then
+      # Throttle: only suggest if no skill install in last 7 days
+      LAST_SKILL_INSTALL=$(find "$WORKSPACE/memory" -name ".last-skill-install" -mtime -7 2>/dev/null | head -1)
+      if [ -z "$LAST_SKILL_INSTALL" ]; then
+        ACTIONS+=("install skill:$RECOMMENDED_SKILL")
+        log "Detected need for skill: $RECOMMENDED_SKILL (web:$WEB_SEARCH_COUNT email:$EMAIL_MENTION_COUNT weather:$WEATHER_MENTION_COUNT calendar:$CALENDAR_MENTION_COUNT)"
+        touch "$WORKSPACE/memory/.last-skill-install"
+      else
+        log "Skill installation throttled (last install <7 days ago)"
+      fi
+    fi
     # Memory reindex disabled to avoid Voyage AI rate limits (user request)
     # Uncomment below to re-enable when a provider is configured
     # if [ "$MEMORY_NEEDS_EXIT" -ne 0 ]; then
@@ -375,6 +428,33 @@ EOF
           else
             log "No adjustment needed (current: ${CURRENT_THRESHOLD}h)"
             rm -f "$BACKUP"
+          fi
+          ;;
+        "install skill:*")
+          # Dynamic skill installation from ClawHub
+          SKILL_ID="${act#install skill:}"
+          log "Installing skill from ClawHub: $SKILL_ID"
+          # Check if already installed
+          if [ -d "$WORKSPACE/skills/$SKILL_ID" ] || grep -q "\"$SKILL_ID\"" "$WORKSPACE/.openclaw/openclaw.json" 2>/dev/null; then
+            log "Skill $SKILL_ID already installed; skipping"
+          else
+            if command -v clawhub &>/dev/null; then
+              if clawhub install "$SKILL_ID" >> "$LOGFILE" 2>&1; then
+                log "Skill $SKILL_ID installed via clawhub"
+                # Validate installation
+                if [ -d "$WORKSPACE/skills/$SKILL_ID" ]; then
+                  log "Skill directory exists; installation verified"
+                  # Restart gateway to load new skill (non-fatal if fails)
+                  openclaw gateway restart --reason "load new skill $SKILL_ID" >> "$LOGFILE" 2>&1 || true
+                else
+                  log "Warning: skill directory not found after install; may need manual check"
+                fi
+              else
+                log "Skill $SKILL_ID installation failed; will retry later"
+              fi
+            else
+              log "clawhub CLI not available; cannot install skills"
+            fi
           fi
           ;;
       esac
