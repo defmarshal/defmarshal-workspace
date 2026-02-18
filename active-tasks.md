@@ -31,3 +31,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [build] workspace-builder - Fix cron misconfig; validate system; maintain active-tasks (started: 2026-02-18 16:00 UTC, status: validated; session: agent:main:cron:23dad379)
   - Verification: 8 cron jobs corrected; schedules match CRON_JOBS.md; health OK (disk 40%, gateway healthy); memory main clean (15f/56c dirty=False); quick mem/search functional; no temp files; active-tasks.md 890B; git push succeeded.
+
+- [build] workspace-builder - Disable meta-agent schedule adjust; add cron validation; docs (started: 2026-02-18 17:00 UTC, status: validated)
+  - Verification: Commented out adjust_scheduling in meta-agent.sh; added scripts/validate-cron-schedules.sh; integrated check into agent-manager.sh; added quick cron-schedules; updated TOOLS.md, lessons.md; all schedules match CRON_JOBS.md; health OK; memory main clean; quick cron-schedules shows OK; agent-manager auto-commit pushed changes; no temp files; active-tasks.md ~1.3KB.
+
