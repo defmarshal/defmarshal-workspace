@@ -1,90 +1,78 @@
-# Workspace Builder Task Plan
+# Task Plan — Workspace Builder
 
-**Started**: 2026-02-18 05:00 UTC
-**Goal**: Prune active-tasks.md to enforce ≤2KB size limit by archiving completed build entries to daily memory log; verify system health; commit changes.
-**Context**: Active-tasks.md currently ~4KB (41 lines) due to accumulated validated build entries from today (01:00 and 03:00). AGENTS.md policy states max 2KB. Need to maintain lean file for fast loading and token efficiency.
+**Started:** 2026-02-18 07:00 UTC  
+**Goal:** Analyze workspace, implement meaningful improvements, enforce policies  
+**Session:** `23dad379-21ad-4f7a-8c68-528f98203a33`
 
-## Current State Analysis
+---
 
-- active-tasks.md size: 4.0K, 41 lines
-- Contains:
-  - Running daemon: torrent-bot
-  - Validated builds: 2 entries (today's builds)
-  - Completed (Feb 17) historical section (hand-rolled archive)
-- System health: OK (disk 81%, gateway healthy, memory main clean)
-- Memory stores: main clean; torrent-bot & cron-supervisor dirty (benign, documented)
-- Recent commits: HEAD at 6ea3ede (content digest)
-- No uncommitted changes
+## Phase 1: Assessment & Context Gathering
 
-## Identified Issues & Opportunities
+- [x] Read active-tasks.md — understand current running agents and tasks
+- [x] Read MEMORY.md — long-term context and recent learnings
+- [x] Read daily logs (2026-02-18) — recent events and changes
+- [x] Search memory for past builds and decisions
+- [x] Check git status — identify uncommitted changes
+- [x] Run `quick health` (pending)
+- [ ] Run `quick validate` (pending)
 
-1. **active-tasks.md exceeds 2KB limit** — violates policy, increases token usage, slower reads.
-2. **Completed build entries are retained** — should be archived to daily memory log and removed from active-tasks to keep only truly active tasks.
-3. **Historical "Completed (Feb 17)" section** — could be moved to separate archive, but can keep short; focus on pruning current validated entries.
-4. **Opportunity**: Enforce archival process as part of build validation routine.
+**Findings:** 
+- Workspace is healthy with recent fixes applied
+- One uncommitted change: `agents/meta-agent.sh` (JSON escaping fixes)
+- Quick launcher has syntax error: `feedback)` case misplaced after `esac`
 
-## Task Phases
+---
 
-### Phase 1: Evaluate active-tasks.md Structure
-- Parse current entries and classify by status (running vs validated vs old archive)
-- Identify which entries to archive (validated builds from today)
-- Ensure running daemon remains
+## Phase 2: Fix Critical Issues
 
-**Status**: Not started
+### Issue A: Quick launcher syntax error
 
-### Phase 2: Archive to Daily Memory Log
-- Read memory/2026-02-18.md
-- Append archival entries for the two validated builds with proper timestamps and verification summaries
-- Preserve system context and commit references
-- Append to daily log, maintaining format
+**Problem:** `quick` script fails due to `feedback)` case placed after `esac`.
 
-**Status**: Not started
+**Fix:** Move the entire `feedback)` case block inside the main case statement, before the `*)` catch-all.
 
-### Phase 3: Prune active-tasks.md
-- Remove the two archived build entries from active-tasks.md
-- Optionally shorten "Completed (Feb 17)" to a single line or remove (if moved elsewhere)
-- Ensure file remains well-formed and under 2KB
-- Keep running daemon entry and any other active agents
+**Verification:** `./quick help` should run without syntax error.
 
-**Status**: Not started
+### Issue B: Verify meta-agent.sh changes are correct
 
-### Phase 4: Add New Build Entry (self)
-- Add entry for this build with key: [build] (or similar), goal, start time, status: running initially
-- Will update to validated after verification
+The meta-agent.sh modifications look like proper JSON escaping fixes for cron payloads. Need to validate that the cron jobs are correctly formatted.
 
-**Status**: Not started
+**Verification:** Check that cron jobs using `openclaw cron add` are properly formatted with escaped JSON.
 
-### Phase 5: Validation & Testing
-- Run `quick health` — should be OK
-- Check active-tasks.md size — should be ≤2KB
-- Verify that memory log updated correctly
-- Ensure no other side effects
-- Prepare commit message
+---
 
-**Status**: Not started
+## Phase 3: Policy Enforcement & Cleanup
 
-### Phase 6: Commit, Push, and Archive
-- Commit changes with prefix 'build:' including:
-  - active-tasks.md (pruned)
-  - memory/2026-02-18.md (archival additions)
-- Push to GitHub
-- Update active-tasks.md entry to status: validated with verification notes
-- Final validation
+- Review `active-tasks.md` size (current: 1112 bytes — OK)
+- Ensure no stale entries exist
+- Check for any temporary files that need cleanup
+- Verify memory stores status
 
-**Status**: Not started
+---
+
+## Phase 4: Validation & Close the Loop
+
+- Run `./quick health` — system health check
+- Run `./quick validate` — comprehensive validation
+- Test `./quick mem` and `./quick search test` to ensure memory system functional
+- Check that all changes are committed (including meta-agent.sh)
+- Ensure no temp files left behind
+- Update active-tasks.md with validation results
+
+---
+
+## Phase 5: Commit & Push
+
+- Commit changes with prefix `build:`
+- Push to origin/master
+- Verify remote status
+
+---
 
 ## Success Criteria
 
-- active-tasks.md size ≤ 2KB (ideally <1.5KB)
-- Completed build entries removed and safely archived in memory/2026-02-18.md
-- Running daemon entry preserved
-- System health remains OK
-- Changes committed and pushed
-- active-tasks.md updated with this build's validation
-
-## References
-
-- Policy: AGENTS.md "Active Tasks Registry" section (max 2KB)
-- Example archival: Completed (Feb 17) section in active-tasks.md
-- Daily log structure: memory/2026-02-18.md
-- Build workflow: planning-with-files skill
+- Quick launcher is functional (`./quick help` works)
+- All validations pass
+- Workspace is clean (no untracked artifacts except intentional outputs)
+- active-tasks.md reflects current state
+- All meaningful changes committed

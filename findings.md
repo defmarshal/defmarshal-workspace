@@ -1,54 +1,121 @@
-# Workspace Builder Findings
+# Findings Report — Workspace Builder
 
-**Start time**: 2026-02-18 05:00 UTC
+**Session:** `23dad379-21ad-4f7a-8c68-528f98203a33`  
+**Started:** 2026-02-18 07:00 UTC
 
-## Initial Assessment
+---
 
-System health is good overall. Recent build (01:00 UTC) successfully fixed agent-manager memory reindex inverted logic and added memory-dirty observability. That build was validated and committed (34eed51). A follow-up health check at 03:00 UTC confirmed system optimal.
+## System Overview
 
-However, **active-tasks.md** has grown to 4KB, violating the 2KB policy limit. This file must be kept lean for fast loading and token efficiency.
+- **OS:** Linux 6.14.0-1018-oracle (arm64)
+- **Node:** v24.13.1
+- **Gateway:** Running on port 18789
+- **Model:** openrouter/stepfun/step-3.5-flash:free
+- **Channel:** telegram
+- **Disk usage:** ~79-81% (as of last logs)
 
-## Current State
+---
 
-- **Git**: Clean, up-to-date with origin/master (HEAD: 6ea3ede)
-- **active-tasks.md**: 4.0KB, 41 lines
-  - Contains: running daemon (torrent-bot), two validated builds (01:00, 03:00), and a "Completed (Feb 17)" archive list
-- **Memory**:
-  - main store: clean (15/15 files, 44 chunks)
-  - torrent-bot: dirty (0/15 files, 0 chunks) — benign, unused
-  - cron-supervisor: dirty (0/15 files, 0 chunks) — benign, unused
-- **Health**: Disk 81%, gateway healthy, downloads 12 files 2.6G, updates 18 pending (non-critical)
+## Recent Build History (from memory)
 
-## Identified Issues
+### 2026-02-18 Workspace Builder Activity (01:00–05:00 UTC)
 
-### 1. active-tasks.md Exceeds Size Limit (4KB > 2KB)
+**Phase 1: Fixed agent-manager memory reindex inverted logic**
+- Bug: `if ./quick memory-reindex-check` ran reindex on exit 0 (OK) instead of when needed (non-zero)
+- Fix: Added `!` to invert condition
+- Impact: Stops unnecessary Voyage API calls
 
-The accumulation of validated build entries and a lengthy completed archive have bloated the file.
+**Phase 2: Added memory observability**
+- Created `quick memory-dirty` command to show per-store dirty flags
+- Updated TOOLS.md with memory system details
 
-**Impact**:
-- Wastes tokens on every read (each session reads this at start)
-- Slower file loads
-- Violates explicit policy in AGENTS.md
+**Phase 3: Documentation updates**
+- Expanded TOOLS.md with memory system observability instructions
 
-**Root cause**: Build entries are marked validated but not removed or compacted. The "Completed (Feb 17)" section is a manual list that could be condensed.
+**Phase 4: Agent-manager auto-commit bug fix (05:18–05:20 UTC)**
+- Bug: Git dirty check only detected tracked files, ignoring untracked (reports/)
+- Fix: Use `git status --porcelain | wc -l` to count all changes
+- Validation: successful auto-commit of daily digest report
 
-## Proposed Solution
+**Commits:**
+- `34eed51` — fix agent-manager memory reindex
+- `1f4ebf3` — fix agent-manager git detection
 
-- Archive the two validated build entries (01:00 and 03:00) to daily memory log (memory/2026-02-18.md) where they belong alongside other activity logs.
-- Remove those entries from active-tasks.md.
-- Condense the "Completed (Feb 17)" section to a single summary line (or remove; details already in memory/2026-02-17.md).
-- Add a new entry for this current build (running).
-- After archival and pruning, verify file size ≤ 2KB.
+---
 
-## System Strengths
+## Current State Assessment
 
-- Memory system stable; fallback grep search works
-- agent-manager fix preventing unnecessary reindex attempts
-- Good observability via memory-status and memory-dirty
-- Health monitoring robust
+### Git Status
 
-## Decision Log
+```
+ M agents/meta-agent.sh
+```
 
-- Will not modify memory stores (torrent-bot/cron-supervisor dirty flags are benign)
-- Will keep active-tasks.md as a live registry only; historical records belong in daily memory logs
-- Will push changes immediately after validation (no accumulation)
+- Only one modified file tracked by git.
+- No untracked files (verified: `git status --porcelain` shows only ` M` entry).
+- The modification appears to be JSON escaping fixes in cron payload definitions.
+
+### Active Tasks
+
+- `[daemon] torrent-bot` — running
+- `[build] workspace-builder` — validated (from previous run)
+
+Size: 1112 bytes (within 2KB limit) — OK.
+
+### Memory System
+
+- Voyage AI disabled (rate limits)
+- Fallback: local SQLite FTS + grep (`./msearch`)
+- Primary store (`main`): clean (dirty=False, files=15, chunks=44)
+- Agent stores (`torrent-bot`, `cron-supervisor`): dirty=True but files=0 (unused, benign)
+
+### Quick Launcher Health
+
+**CRITICAL BUG:** `./quick help` fails with syntax error:
+```
+quick: line 1040: syntax error near unexpected token `)'
+quick: line 1040: `  feedback)'
+```
+
+**Root Cause:** The `feedback)` case clause is placed **after** the `esac` that closes the case statement. This makes it syntactically invalid.
+
+**Expected location:** Inside the case block, before the `*)` catch-all.
+
+**Impact:** Users cannot run `quick feedback` command; entire script fails parsing.
+
+---
+
+## Files Under Watch
+
+| File | Status | Notes |
+|------|--------|-------|
+| `agents/meta-agent.sh` | Modified | Cron JSON escaping fixes (seems correct) |
+| `quick` | Broken | Misplaced `feedback)` case block |
+| `active-tasks.md` | Good | Size OK, format OK |
+| `MEMORY.md` | Good | Up to date |
+| `memory/2026-02-18.md` | Good | Contains recent build logs |
+
+---
+
+## Recommendations
+
+1. **Fix quick launcher immediately** — move `feedback)` block inside case statement.
+2. **Commit meta-agent.sh** — the JSON escaping fixes are valid and should be committed to avoid loss.
+3. **Validate all commands** after fix to ensure no regressions.
+4. **Consider adding linting** to CI or pre-commit hook to catch shell syntax errors early.
+
+---
+
+## Risks
+
+- Uncommitted `meta-agent.sh` changes could be lost if something goes wrong.
+- Quick launcher unusable prevents many utilities until fixed.
+
+---
+
+## Next Steps
+
+- Fix `quick` script syntax error
+- Run validation suite
+- Commit and push changes
+- Update active-tasks.md with results

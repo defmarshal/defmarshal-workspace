@@ -1031,12 +1031,6 @@ except Exception:
   help)
     show_help
     ;;
-  *)
-    echo "Error: Unknown command '$cmd'" >&2
-    echo "Run 'quick help' for available commands." >&2
-    exit 1
-    ;;
-esac
   feedback)
     # Provide feedback on an agent to influence meta-agent decisions
     if [ $# -lt 2 ]; then
@@ -1056,3 +1050,9 @@ esac
     echo "{\"agent\":\"$AGENT\",\"score\":$SCORE,\"timestamp\":\"$TIMESTAMP\"}" >> "$FEEDBACK_FILE"
     echo "Feedback recorded: $AGENT rated $SCORE/5"
     ;;
+  *)
+    echo "Error: Unknown command '$cmd'" >&2
+    echo "Run 'quick help' for available commands." >&2
+    exit 1
+    ;;
+esac

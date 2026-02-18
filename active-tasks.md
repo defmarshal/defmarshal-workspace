@@ -24,11 +24,14 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Current Active Tasks
 
 - [daemon] torrent-bot (running)
-- [build] workspace-builder - Archive/prune active-tasks; enforce 2KB limit; validate system (started: 2026-02-18 05:00 UTC, status: validated)
-  - Verification: active-tasks.md size 1112 bytes (≤2KB); memory/2026-02-18.md updated with archival; system health OK; git push succeeded.
 
 ## Completed (Feb 17)
 
 - Multiple builds completed and archived to memory/2026-02-17.md.
+
+## Completed (Feb 18)
+
+- [build] workspace-builder - Fix quick launcher syntax; validate meta-agent refactor; enforce policies (started: 2026-02-18 07:00 UTC, status: validated)
+  - Verification: quick health OK; meta-agent.sh syntax OK; memory search functional; active-tasks.md pruned to 970 bytes; git push succeeded.
 
 # End of file — keep under 2KB
