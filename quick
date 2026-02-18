@@ -19,11 +19,12 @@ Commands:
   mem             Show recent memories (claw memory list)
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
+  memory-dirty   Show which memory stores need reindex (dirty check)
   memory-index  Reindex memory files (openclaw memory index)
   memory-stats  Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
-  voyage-status  Check recent Voyage AI rate limit status from memory reindex logs; shows warnings if rate-limited recently
   memory-reindex-check  Check if memory reindex is needed based on dirty flag and age. Exit 0 if ok, 1 if reindex recommended
   memory-reindex Force reindex of memory files (openclaw memory index)
+  voyage-status  Check recent Voyage AI rate limit status from memory reindex logs; shows warnings if rate-limited recently
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
   archive-sizes  Show human-readable sizes of content, research, and memory directories
@@ -230,6 +231,10 @@ case "$cmd" in
   memory-stats)
     # Show memory system statistics (wrapper around memory-stats script)
     "$WORKSPACE/memory-stats" "$@"
+    ;;
+  memory-dirty)
+    # Quick check for dirty memory stores
+    "$WORKSPACE/memory-dirty"
     ;;
   voyage-status)
     # Check recent Voyage AI rate limit health based on memory reindex activity logs

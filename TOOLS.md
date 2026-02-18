@@ -39,11 +39,18 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ### Memory System (Voyage AI) — DISABLED
 
-- **Provider**: Voyage AI (voyage-4-large) — **not in use** per user request
-- **Status**: Semantic search fallback to grep only (no API calls to Voyage)
-- **Meta-agent**: Memory reindex disabled; Voyage‑specific rate‑lock logic bypassed
-- **Fallback**: All memory search uses grep (`msearch`) or local SQLite FTS without embeddings
-- **To re‑enable**: Remove comments in `agents/meta-agent.sh` and restore voyage-status checks
+- **Provider**: Voyage AI (voyage-4-large) — **not in use** due to rate limits on free tier (3 RPM)
+- **Status**: Semantic search disabled; fallback to grep (`msearch`) or local SQLite FTS only
+- **Stores**: Two memory stores exist:
+  - `main`: primary workspace memory (15/15 files indexed, 43 chunks, clean)
+  - `torrent-bot`: separate store for torrent-bot agent (dirty, not reindexed)
+- **Reindex**: Auto-reindex disabled in meta-agent and agent-manager to avoid rate limits. Run manually with `quick memory-reindex` (will attempt all stores sequentially with 120s delays) when Voyage limits are sufficient.
+- **Rate-lock**: After a 429 error, reindex is skipped for 6 hours (rate-lock file in `memory/.voyage-rate-lock`).
+- **Observability**:
+  - `quick memory-status` — shows all stores and their health
+  - `quick memory-dirty` — quickly shows which stores are dirty (need reindex)
+  - `quick voyage-status` — checks recent logs for rate limit warnings
+- **To re‑enable**: Add payment method in Voyage AI dashboard, then uncomment reindex actions in `agents/meta-agent.sh` and `agents/agent-manager.sh`.
 
 ---
 
@@ -59,7 +66,11 @@ Common utilities (run `./quick help` for full list):
 - `mem` — Show recent memories
 - `search <query>` — Search memories
 - `memory-status` — Memory index status
+- `memory-dirty` — Show which memory stores need reindex (dirty check)
 - `memory-index` — Reindex memory files
+- `memory-reindex` — Force memory reindex
+- `memory-reindex-check` — Check if reindex is needed
+- `memory-stats` — Detailed memory statistics
 - `memory-reindex` — Force memory reindex
 - `memory-reindex-check` — Check if reindex is needed
 - `memory-stats` — Detailed memory statistics

@@ -1,70 +1,92 @@
 # Workspace Builder Task Plan
 
-**Started**: 2026-02-17 23:00 UTC
-**Goal**: Strategic improvements aligned with long-term objectives
-**Context**: Previous build (21:00 UTC) validated; Voyage AI rate limits active
+**Started**: 2026-02-18 01:00 UTC
+**Goal**: Fix critical bug in agent-manager memory reindex logic; address torrent-bot memory store issues; improve system robustness
+**Context**: Previous build (Feb 17) fixed meta-agent memory reindex logic; Voyage AI rate limits still active; system healthy but agent-manager has opposite bug causing unnecessary reindex attempts
 
 ## Current State Analysis
 
 - Git status: clean, up-to-date
 - System health: OK (disk 79%, 22 updates, gateway healthy)
-- Memory search: FAILING due to Voyage rate limits (429 - 3 RPM free tier)
-- Active agents: torrent-bot (daemon), previous builder validated
-- Meta-agent: repeatedly attempting memory reindex, hitting rate limits
+- Memory: main store clean (15/15 files, 43 chunks), torrent-bot store dirty (0/15 files) and failing reindex due to Voyage 429
+- Meta-agent: memory reindex correctly disabled; uses exit codes properly
+- Agent-manager: has inverted memory-reindex-check logic (triggers reindex on exit 0, skips on exit 1)
+- Voyage AI: rate limited on free tier (3 RPM); main store clean but torrent-bot reindex attempts fail
 
 ## Identified Issues & Opportunities
 
-1. **Critical**: Memory search reliability degraded - Voyage 429 errors disable semantic search
-2. **Meta-agent**: Auto-reindex wasting cycles on known failures
-3. **Documentation**: Rate limit status not clearly communicated in TOOLS.md
-4. **Observability**: No clear alert when memory search falls back to grep
-5. **Maintenance**: Need to verify msearch fallback is robust
+1. **CRITICAL BUG**: agent-manager.sh memory reindex check logic inverted
+   - Currently: `if ./quick memory-reindex-check >/dev/null 2>&1; then` triggers reindex on success (exit 0)
+   - Should be: trigger reindex when check returns exit 1 (reindex needed) or 2 (error)
+   - Impact: agent-manager attempts reindex every 30 minutes even when not needed, causing Voyage rate limit hits and wasted cycles
+   - Also: when reindex actually needed (dirty/stale), it skips
+
+2. **Torrent-bot memory store dirty**
+   - The torrent-bot agent has a separate memory store that shows dirty: yes
+   - Reindex attempts for torrent-bot fail due to Voyage rate limits
+   - Should either skip reindex for torrent-bot (like main) or ensure proper backoff
+
+3. **Observability**: No clear per-store memory status
+   - `quick memory-status` shows both stores but doesn't indicate which are dirty
+   - Could add a quick command to check all stores individually
+
+4. **Rate limit handling**: Need to ensure all reindex attempts respect Voyage limits and rate-lock
 
 ## Task Phases
 
-### Phase 1: Immediate Fixes - Meta-Agent Rate Limit Handling
-- Add check for Voyage payment status before attempting reindex
-- Implement smarter backoff (exponential + check recent failures)
-- Add explicit "disable-auto-reindex" flag when rate-limited
-- Update meta-agent code to respect payment status
+### Phase 1: Fix agent-manager.sh Memory Reindex Logic
+- Change logic to check for non-zero exit code (needed) instead of zero (ok)
+- Add proper condition: `if [ $? -ne 0 ]; then` or `if ! ./quick memory-reindex-check; then`
+- Test with dry-run to verify correct behavior
+- Update comments to reflect correct exit code semantics
 
-**Status:** ✅ Complete (2026-02-18 00:33 UTC). Voyage AI disabled; rate-lock 6h; docs updated; validation OK.
+**Status:** Not started
 
-### Phase 2: Improve Memory System Observability
-- Enhance `quick memory-status` to show Voyage health (rate limit status)
-- Add warnings when search falls back to grep
-- Document current state in TOOLS.md (rate limits, fallback behavior)
+### Phase 2: Handle Torrent-bot Store Reindex
+- Option A: Disable reindex for torrent-bot store (similar to meta-agent) since Voyage is rate-limited
+- Option B: Ensure memory-reindex-check and memory-index skip non-critical stores
+- Investigate why torrent-bot store is dirty; determine if it actually needs reindex
+- Add a way to selectively reindex only main store
 
-### Phase 3: Validate System Integrity
-- Test `quick search` with fallback path
-- Test `quick mem` functionality
-- Verify all cron jobs are scheduled correctly
-- Check for temp files and clean workspace
+**Status:** Not started
 
-### Phase 4: Documentation Update
-- Update TOOLS.md with Voyage status and recommended actions
-- Add note about payment method needed for full functionality
-- Update MEMORY.md with current memory system state
+### Phase 3: Improve Memory Observability
+- Enhance `quick memory-status` to clearly show dirty status per store
+- Add `quick memory-dirty` to quickly list which stores need reindex
+- Document store types and their purposes (main vs torrent-bot)
 
-### Phase 5: Commit & Verify
-- Run `quick health`
-- Review all changes
-- Commit with prefix 'build:'
-- Update active-tasks.md with validation results
+**Status:** Not started
+
+### Phase 4: Testing & Validation
+- Run agent-manager --once manually to verify correct reindex decision
+- Check logs for proper behavior
+- Test memory-status commands
+- Ensure no unintended side effects
+
+**Status:** Not started
+
+### Phase 5: Documentation & Commit
+- Update TOOLS.md with memory store details and management commands
+- Update MEMORY.md if needed with current state
+- Commit changes with prefix 'build:'
+- Update active-tasks.md with verification results
 - Push to GitHub
+
+**Status:** Not started
 
 ## Success Criteria
 
-- Memory search falls back gracefully to grep without errors
-- Meta-agent stops spamming failed reindex attempts
-- `quick memory-status` shows accurate health info
-- TOOLS.md updated with clear rate limit information
-- All changes tested and validated
-- Git push successful
+- agent-manager.sh memory reindex logic fixed (triggers only when needed)
+- Torrent-bot store either clean or reindex properly disabled/backoff
+- `quick memory-status` clearly shows dirty flag per store
+- System runs without unnecessary reindex attempts
+- All changes tested, committed, and pushed
+- active-tasks.md updated with validation notes
 
 ## References
 
-- Previous build: 96be2e4
-- Voyage rate limit: 3 RPM free tier, 10K TPM
-- Memory data: memory/2026-02-17.md
-- Active tasks: active-tasks.md (must update at end)
+- Previous build: 5cbd769, 9e4ac09
+- Bug: agent-manager.sh line 43 (inverted condition)
+- Voyage rate limit: 3 RPM free tier; payment required for higher limits
+- Memory stores: main (active), torrent-bot (daemon store)
+- Logs: memory/agent-manager.log, memory/memory-reindex.log

@@ -47,7 +47,9 @@ run_checks() {
   fi
 
   # 2. Memory index health
-  if ./quick memory-reindex-check >/dev/null 2>&1; then
+  # memory-reindex-check exits 0 when OK (no reindex needed), 1 when recommended, 2 on error
+  # Trigger reindex only when exit code is non-zero (needed or error)
+  if ! ./quick memory-reindex-check >/dev/null 2>&1; then
     log "Memory reindex needed; triggering"
     ./quick memory-index >> "$LOGFILE" 2>&1 || true
   fi
