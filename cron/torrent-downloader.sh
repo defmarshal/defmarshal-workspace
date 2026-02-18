@@ -1,18 +1,11 @@
 #!/bin/bash
 # Random torrent downloader: pick a random torrent from top 20 (max 1GB) and add to aria2 if not already present
-# Respects quiet hours (23:00–08:00 UTC+7)
+# Runs 24/7 — quiet hours disabled for torrent operations
 
 set -euo pipefail
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 cd "$WORKSPACE"
-
-# Quiet hours check (UTC+7 23:00-08:00)
-TZ='Asia/Bangkok' H=$(date +%H)
-if (( 23 <= H || H < 8 )); then
-  echo "$(date) - Quiet hours, skipping torrent download"
-  exit 0
-fi
 
 # Check free space on root partition (must be >10% free, i.e., <90% used)
 FREE_PCT=$(df -h / | awk 'NR==2 {print $5}' | tr -d '%')
