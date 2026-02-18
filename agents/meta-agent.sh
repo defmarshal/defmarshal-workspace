@@ -120,6 +120,79 @@ case "${1:-}" in
     # Create git-janitor-agent if missing and repo has untracked files
     if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^git-janitor-cron$'; then
       # Check for untracked files (excluding specific directories like downloads, archives, node_modules)
+      UNTRACKED_COUNT=$(git status --porcelain 2>/dev/null | grep -E '^\?\?' | grep -v -E '(^downloads/|^archives/|^node_modules/|^\.git/|^builds/|^dht\.dat$|^aria2\.session$)' | wc -l)
+      if [ "$UNTRACKED_COUNT" -gt 5 ]; then
+        ACTIONS+=("create git-janitor-agent")
+        log "Untracked files count $UNTRACKED_COUNT > 5; will create git-janitor-agent to auto-commit safe files"
+      fi
+    fi
+
+    # Self-Improvement: Adjust dev-agent stale threshold based on recent outcomes
+    # If dev-agent has been consistently successful, we can lower the threshold (spawn more often)
+    # If dev-agent produces no commits, raise the threshold (spawn less often)
+    DEV_STALE_HOURS=12  # default
+    SELF_IMPROVE_TRIGGERED=0
+    if [ -f "$WORKSPACE/memory/dev-agent.log" ]; then
+      DEV_COMMITS_24H=$(git log --since='24 hours ago' --oneline 2>/dev/null | grep '^dev:' | wc -l)
+      DEV_RUNS_24H=$(grep -c "Starting dev-agent cycle" "$WORKSPACE/memory/dev-agent.log" 2>/dev/null || echo 0)
+      if [ "$DEV_RUNS_24H" -ge 5 ]; then
+        SUCCESS_RATE=$(( DEV_COMMITS_24H * 100 / DEV_RUNS_24H ))
+        if [ "$SUCCESS_RATE" -ge 70 ] || [ "$SUCCESS_RATE" -le 30 ]; then
+          SELF_IMPROVE_TRIGGERED=1
+          ACTIONS+=("self-improve")
+          log "Dev-agent success rate ${SUCCESS_RATE}% (${DEV_COMMITS_24H}/${DEV_RUNS_24H}) — triggering self-improve to adjust thresholds"
+        fi
+        # Runtime adaptation (non-persistent)
+        if [ "$SUCCESS_RATE" -ge 70 ] && [ "$DEV_STALE_HOURS" -gt 4 ]; then
+          DEV_STALE_HOURS=4
+        elif [ "$SUCCESS_RATE" -le 30 ] && [ "$DEV_STALE_HOURS" -lt 24 ]; then
+          DEV_STALE_HOURS=24
+        fi
+      fi
+    fi
+
+    # Use DEV_STALE_HOURS (adaptive or default) for dev-agent condition below
+    if [ "$LAST_DEV_COMMIT" -eq 0 ] && [ "$CONTENT_TODAY" -gt 0 ] && [ "$RESEARCH_TODAY" -gt 0 ] && [ "$DISK_USAGE" -lt 75 ]; then
+      # Compare against dynamic threshold: if hours since last dev commit exceeds threshold, spawn
+      LAST_DEV_TS=$(git log --since='24 hours ago' --oneline 2>/dev/null | grep '^dev:' | head -1 | awk '{print $1}')
+      if [ -z "$LAST_DEV_TS" ]; then
+        # No recent dev commits at all
+        ACTIONS+=("spawn dev-agent")
+        log "No dev activity detected; spawning dev-agent (threshold: ${DEV_STALE_HOURS}h)"
+      else
+        LAST_DEV_TIME=$(git show -s --format=%ct "$LAST_DEV_TS" 2>/dev/null)
+        NOW=$(date +%s)
+        HOURS_SINCE=$(( (NOW - LAST_DEV_TIME) / 3600 ))
+        if [ "$HOURS_SINCE" -ge "$DEV_STALE_HOURS" ]; then
+          ACTIONS+=("spawn dev-agent")
+          log "Dev activity stale (${HOURS_SINCE}h ≥ ${DEV_STALE_HOURS}h); spawning dev-agent"
+        fi
+      fi
+    fi
+    INNOVATION_TRIGGER_FILE="$WORKSPACE/memory/.last-innovation"
+    if [ "$DISK_USAGE" -lt 70 ] && [ "$APT_COUNT" -lt 10 ] && grep -q "Memory:.*clean" <<<"$HEALTH" 2>/dev/null; then
+      WEEKDAY=$(TZ='Asia/Bangkok' date +%u)  # 1=Mon, 6=Sat, 7=Sun
+      if [ "$WEEKDAY" -ge 6 ]; then
+        NEED_INNOVATION=0
+        if [ ! -f "$INNOVATION_TRIGGER_FILE" ]; then
+          NEED_INNOVATION=1
+        else
+          AGE_HOURS=$(( ( $(date +%s) - $(stat -c %Y "$INNOVATION_TRIGGER_FILE") ) / 3600 ))
+          if [ "$AGE_HOURS" -ge 48 ]; then
+            NEED_INNOVATION=1
+          fi
+        fi
+        if [ "$NEED_INNOVATION" -eq 1 ]; then
+          ACTIONS+=("spawn dev-agent:innovate")
+          log "Weekend detected, system healthy, and no recent innovation — spawning dev-agent with creative mandate"
+          touch "$INNOVATION_TRIGGER_FILE"
+        fi
+      fi
+    fi
+
+    # Create git-janitor-agent if missing and repo has untracked files
+    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^git-janitor-cron$'; then
+      # Check for untracked files (excluding specific directories like downloads, archives, node_modules)
       UNTRACKED_COUNT=$(git status --porcelain 2>/dev/null | grep -E '^\?\?' | grep -v -E '(^downloads/|^archives/|^node_modules/|^\.git/|^builds/)' | wc -l)
       if [ "$UNTRACKED_COUNT" -gt 5 ]; then
         ACTIONS+=("create git-janitor-agent")
@@ -248,8 +321,63 @@ EOF
             --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
           log "Git‑janitor‑agent cron job registered"
           ;;
+
+        # Self-Improvement: Meta-agent rewrites its own decision logic after validation
+        # This is the beginning of recursive self-improvement
+        "self-improve")
+          log "Initiating self-improvement cycle"
+          BACKUP="$WORKSPACE/agents/meta-agent.sh.backup-$(date -u +%Y%m%d-%H%M%S)"
+          cp "$WORKSPACE/agents/meta-agent.sh" "$BACKUP"
+          log "Backup created: $(basename "$BACKUP")"
+
+          # Define the improvement: tweak dev stale threshold based on recent success rate
+          CURRENT_THRESHOLD=$(grep -E 'DEV_STALE_HOURS=([0-9]+)' "$WORKSPACE/agents/meta-agent.sh" | head -1 | sed -E 's/.*DEV_STALE_HOURS=([0-9]+).*/\1/')
+          if [ -z "$CURRENT_THRESHOLD" ]; then CURRENT_THRESHOLD=12; fi
+
+          NEW_THRESHOLD=$CURRENT_THRESHOLD
+          if [ -f "$WORKSPACE/memory/dev-agent.log" ]; then
+            DEV_COMMITS_24H=$(git log --since='24 hours ago' --oneline 2>/dev/null | grep '^dev:' | wc -l)
+            DEV_RUNS_24H=$(grep -c "Starting dev-agent cycle" "$WORKSPACE/memory/dev-agent.log" 2>/dev/null || echo 0)
+            if [ "$DEV_RUNS_24H" -ge 2 ]; then
+              SUCCESS_RATE=$(( DEV_COMMITS_24H * 100 / DEV_RUNS_24H ))
+              if [ "$SUCCESS_RATE" -ge 70 ] && [ "$CURRENT_THRESHOLD" -gt 4 ]; then
+                NEW_THRESHOLD=4
+              elif [ "$SUCCESS_RATE" -le 30 ] && [ "$CURRENT_THRESHOLD" -lt 24 ]; then
+                NEW_THRESHOLD=24
+              fi
+            fi
+          fi
+
+          if [ "$NEW_THRESHOLD" -ne "$CURRENT_THRESHOLD" ]; then
+            sed -i "s/DEV_STALE_HOURS=${CURRENT_THRESHOLD}/DEV_STALE_THRESHOLD=${NEW_THRESHOLD}/" "$WORKSPACE/agents/meta-agent.sh" 2>/dev/null || \
+            sed -i "s/DEV_STALE_HOURS=${CURRENT_THRESHOLD}/DEV_STALE_HOURS=${NEW_THRESHOLD}/" "$WORKSPACE/agents/meta-agent.sh"
+            log "Adaptive tweak: dev stale threshold ${CURRENT_THRESHOLD}h → ${NEW_THRESHOLD}h"
+
+            if bash -n "$WORKSPACE/agents/meta-agent.sh"; then
+              log "Syntax OK"
+              # Run test cycle
+              if "$WORKSPACE/agents/meta-agent.sh" --once >> "$LOGFILE" 2>&1; then
+                log "Test run passed"
+                git add "$WORKSPACE/agents/meta-agent.sh"
+                git commit -m "meta: self-improve — adapt dev stale threshold to ${NEW_THRESHOLD}h based on success rate" -m "Backup: $(basename "$BACKUP")" >> "$LOGFILE" 2>&1
+                git push origin master >> "$LOGFILE" 2>&1
+                log "Self-improvement committed"
+              else
+                log "Test run failed — reverting"
+                cp "$BACKUP" "$WORKSPACE/agents/meta-agent.sh"
+              fi
+              rm -f "$BACKUP"
+            else
+              log "Syntax error — reverting"
+              cp "$BACKUP" "$WORKSPACE/agents/meta-agent.sh"
+              rm -f "$BACKUP"
+            fi
+          else
+            log "No adjustment needed (current: ${CURRENT_THRESHOLD}h)"
+            rm -f "$BACKUP"
+          fi
+          ;;
       esac
-    done
 
     # Generate human‑readable report
     {
