@@ -19,11 +19,12 @@ while true; do
     openclaw agents spawn \
       --agentId torrent-bot \
       --label "${AGENT_LABEL}" \
-      --task "Torrent management slash-command bot" \
+      --task "Torrent manager daemon (unified: keepalive + auto-fetch)" \
       --thinking "low" \
       --timeoutSeconds 3600 \
       --runTimeoutSeconds 0 \
-      --cleanup keep
+      --cleanup keep \
+      --message "Torrent-manager daemon started"
   fi
 
   # Auto-fetch logic (runs only if not in quiet hours and disk has space)
