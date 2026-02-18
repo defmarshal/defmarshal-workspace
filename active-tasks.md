@@ -16,7 +16,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Format
 
-```markdown
+```
 - [sessionKey] <agent-name> - <goal> (started: <time>, status: <running/validated/failed>)
   - Verification: <curl/test/check command outputs>
 ```
@@ -25,7 +25,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [main] dev-agent - Restart services and reset cron states (started: 2026-02-18 12:21 UTC, status: running)
   - Verification: torrent-bot daemon started; agni and supervisor cron runs triggered
-
 
 ## Completed (Feb 17)
 
@@ -36,9 +35,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [build] workspace-builder - Fix quick launcher syntax; validate meta-agent refactor; enforce policies (started: 2026-02-18 07:00 UTC, status: validated)
   - Verification: quick health OK; meta-agent.sh syntax OK; memory search functional; active-tasks.md pruned to 970 bytes; git push succeeded.
 - [main] dev-agent - Fixed meta-agent newline/duplicate-output bug (started: 2026-02-18 12:00 UTC, status: validated)
-  - Verification: meta-agent.sh patched with if-guards; bash -n passes; full run completed; commit 13eba9d pushed
-- [build] workspace-builder - Final commit sweep; validate system; archive session (started: 2026-02-18 13:10 UTC, status: validated)
-  - Session: agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
-  - Verification: quick health OK; memory search functional; all pending changes committed (meta-agent.sh improvements, research synthesis, daily logs); active-tasks.md updated; git push succeeded.
-
-# End of file — keep under 2KB
+  - Verification: meta-agent.sh patched with if-guards; bash -n passes; full run completed; commit 13eba9d pushed.
+- [build] workspace-builder - Final commit sweep; validate system; archive session (started: 2026-02-18 13:10 UTC, status: validated; session: agent:main:cron:23dad379; verification: health OK, search OK, changes committed, active-tasks updated, push succeeded)
