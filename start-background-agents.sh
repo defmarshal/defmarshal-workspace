@@ -52,6 +52,20 @@ fi
 
 # workspace-builder is a cron job, no need to start
 
+# Start RPG Dashboard (Node server) if not running
+if pgrep -f "dashboard/server.js" > /dev/null; then
+  echo "  ✓ RPG dashboard already running"
+else
+  echo "  → Starting RPG dashboard..."
+  nohup node "$WORKSPACE/dashboard/server.js" > /dev/null 2>&1 &
+  sleep 1
+  if pgrep -f "dashboard/server.js" > /dev/null; then
+    echo "    ✓ RPG dashboard started (PID $(pgrep -f "dashboard/server.js"))"
+  else
+    echo "    ⚠ Failed to start RPG dashboard"
+  fi
+fi
+
 echo "== Agent startup complete =="
 echo "Active processes:"
 pgrep -af "agent-loop.sh" | grep -v grep || true

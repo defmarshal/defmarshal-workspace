@@ -4,6 +4,7 @@ const path = require('path');
 
 const JOBS_JSON = path.join(process.env.HOME, '.openclaw', 'cron', 'jobs.json');
 const PORT = 3000;
+const HOST = '0.0.0.0'; // listen on all interfaces for remote access
 
 function readCronJobs() {
   try {
@@ -33,6 +34,6 @@ const server = http.createServer((req, res) => {
   res.end('Not found');
 });
 
-server.listen(PORT, () => {
-  console.log(`RP Dashboard listening on http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`RPG Dashboard listening on http://${HOST}:${PORT}`);
 });
