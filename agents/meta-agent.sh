@@ -439,18 +439,23 @@ EOF
             log "Skill $SKILL_ID already installed; skipping"
           else
             if command -v clawhub &>/dev/null; then
-              if clawhub install "$SKILL_ID" >> "$LOGFILE" 2>&1; then
-                log "Skill $SKILL_ID installed via clawhub"
-                # Validate installation
-                if [ -d "$WORKSPACE/skills/$SKILL_ID" ]; then
-                  log "Skill directory exists; installation verified"
-                  # Restart gateway to load new skill (non-fatal if fails)
-                  openclaw gateway restart --reason "load new skill $SKILL_ID" >> "$LOGFILE" 2>&1 || true
-                else
-                  log "Warning: skill directory not found after install; may need manual check"
-                fi
+              # Check if logged in
+              if ! clawhub whoami &>/dev/null; then
+                log "ClawHub not logged in — skipping skill install (run: clawhub login)"
               else
-                log "Skill $SKILL_ID installation failed; will retry later"
+                if clawhub install "$SKILL_ID" >> "$LOGFILE" 2>&1; then
+                  log "Skill $SKILL_ID installed via clawhub"
+                  # Validate installation
+                  if [ -d "$WORKSPACE/skills/$SKILL_ID" ]; then
+                    log "Skill directory exists; installation verified"
+                    # Restart gateway to load new skill (non-fatal if fails)
+                    openclaw gateway restart --reason "load new skill $SKILL_ID" >> "$LOGFILE" 2>&1 || true
+                  else
+                    log "Warning: skill directory not found after install; may need manual check"
+                  fi
+                else
+                  log "Skill $SKILL_ID installation failed; will retry later"
+                fi
               fi
             else
               log "clawhub CLI not available; cannot install skills"
