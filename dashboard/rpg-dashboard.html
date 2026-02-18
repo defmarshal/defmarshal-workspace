@@ -340,7 +340,7 @@
       const agentId = job.agentId || 'main';
       const jobClass = getJobClass(agentId);
       const spriteEmoji = jobClass.icon;
-      const spriteUrl = SPRITES[spriteEmoji] || '';
+      const spriteUrl = '';
 
       // Status badge
       let statusText = 'OK';
@@ -455,6 +455,17 @@
     function render(jobs) {
       const container = document.getElementById('cards');
       container.innerHTML = jobs.map(createCard).join('');
+      // Apply border colors to sprites based on job class
+      const cards = container.querySelectorAll('.card');
+      cards.forEach((card, idx) => {
+        const job = jobs[idx];
+        const agentId = job.agentId || 'main';
+        const jobClass = getJobClass(agentId);
+        const sprite = card.querySelector('.sprite');
+        if (sprite) {
+          sprite.style.borderColor = jobClass.color;
+        }
+      });
       const now = new Date().toLocaleTimeString();
       document.getElementById('refreshInfo').textContent = `Last update: ${now} • ${jobs.length} active quests`;
 
