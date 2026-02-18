@@ -283,6 +283,47 @@ case "${1:-}" in
       fi
     fi
 
+
+    # Resource‑Aware Scheduling: measure system load and adjust cron frequencies
+    # Metrics: CPU loadavg (1min), disk usage, memory pressure
+    LOAD1=$(awk '{print $1}' /proc/loadavg 2>/dev/null || echo "0")
+    CPU_CORES=$(nproc 2>/dev/null || echo "1")
+    LOAD_NORMALIZED=$(echo "$LOAD1 / $CPU_CORES" | bc -l 2>/dev/null || echo "0")
+    DISK_PCT=$DISK_USAGE
+    MEM_FREE_KB=$(grep MemFree /proc/meminfo 2>/dev/null | awk '{print $2}' || echo "0")
+    MEM_TOTAL_KB=$(grep MemTotal /proc/meminfo 2>/dev/null | awk '{print $2}' || echo "0")
+    MEM_PCT=0
+    if [ "$MEM_TOTAL_KB" -gt 0 ]; then
+      MEM_PCT=$(( (MEM_TOTAL_KB - MEM_FREE_KB) * 100 / MEM_TOTAL_KB ))
+    fi
+
+    # Determine scheduling tier
+    # low:    load<0.7, disk<70, mem<70 → aggressive (1‑hour intervals where possible)
+    # normal: moderate load → default
+    # high:   load>=1.5 or disk>85 or mem>85 → stretch to 2‑hour or 4‑hour for non‑critical agents
+    SCHED_TIER="normal"
+    if [ "$(echo "$LOAD_NORMALIZED < 0.7" | bc 2>/dev/null || echo 0)" -eq 1 ] && [ "$DISK_PCT" -lt 70 ] && [ "$MEM_PCT" -lt 70 ]; then
+      SCHED_TIER="low"
+    elif [ "$(echo "$LOAD_NORMALIZED >= 1.5" | bc 2>/dev/null || echo 0)" -eq 1 ] || [ "$DISK_PCT" -gt 85 ] || [ "$MEM_PCT" -gt 85 ]; then
+      SCHED_TIER="high"
+    fi
+
+    # Record tier in report
+    log "Resource tier: $SCHED_TIER (load=${LOAD_NORMALIZED} disk=${DISK_PCT}% mem=${MEM_PCT}%)"
+
+
+    # Trigger schedule adjustment if tier changed from last run
+    LAST_TIER_FILE="$WORKSPACE/memory/.last-sched-tier"
+    LAST_TIER=""
+    if [ -f "$LAST_TIER_FILE" ]; then
+      LAST_TIER=$(cat "$LAST_TIER_FILE")
+    fi
+    if [ "$SCHED_TIER" != "$LAST_TIER" ]; then
+      ACTIONS+=("adjust schedules")
+      log "Scheduling tier changed from $LAST_TIER → $SCHED_TIER; will adjust cron frequencies"
+      echo "$SCHED_TIER" > "$LAST_TIER_FILE"
+    fi
+
 # Execute actions (spawn agents for remediation)
     # Use workspace-defined LOCK_FILE with absolute path (already set above)
     for act in "${ACTIONS[@]}"; do
@@ -614,6 +655,51 @@ EOF
           # Register cron: run every 2 hours
           openclaw cron add --name "notifier-cron" --expr "0 */2 * * *" --tz "UTC"             --payload '{"kind":"systemEvent","text":"Execute notifier: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/notifier-agent.sh >> memory/notifier-agent.log 2>&1'"}'             --sessionTarget isolated --delivery '{"mode":"none"}' >> "$LOGFILE" 2>&1 || true
           log "Notifier‑agent cron job registered"
+          ;;
+        "adjust schedules")
+          log "Adjusting cron schedules for resource tier: $SCHED_TIER"
+          # Define schedule mappings
+          # For low load: use more frequent (e.g., */1) where safe
+          # For high load: use */2 or */4 for non‑critical agents
+          # We'll update jobs that exist
+          SCHED_EXPR=""
+          case "$SCHED_TIER" in
+            "low") SCHED_EXPR="0 * * * *" ;;   # hourly
+            "normal") SCHED_EXPR="0 */2 * * *" ;;  # every 2h for some, keep default for others
+            "high") SCHED_EXPR="0 */4 * * *" ;;   # every 4h for non‑critical
+          esac
+
+          # List of agents to stretch (non‑critical) — we'll update them if they exist
+          # Map job name → schedule expr (default)
+          declare -A JOB_SCHEDULES=(
+            ["workspace-builder"]="0 */2 * * *"
+            ["supervisor-cron"]="0 */2 * * *"
+            ["agni-cron"]="0 */2 * * *"
+            ["random-torrent-downloader"]="0 */2 * * *"
+            ["dev-agent-cron"]="0 * * * *"   # keep hourly regardless
+            ["content-agent-cron"]="0 * * * *"
+            ["research-agent-cron"]="0 * * * *"
+            ["agent-manager-cron"]="0 * * * *"
+            ["meta-agent-cron"]="0 * * * *"
+          )
+
+          for job_name in "${!JOB_SCHEDULES[@]}"; do
+            # Check if job exists
+            if openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.name=="'"$job_name"'") | .id' | grep -q .; then
+              JOB_ID=$(openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.name=="'"$job_name"'") | .id')
+              CURRENT_EXPR=$(openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.name=="'"$job_name"'") | .schedule.expr')
+              # Decide new expression based on tier
+              NEW_EXPR="$SCHED_EXPR"
+              if [ "$SCHED_TIER" = "normal" ]; then
+                NEW_EXPR="${JOB_SCHEDULES[$job_name]}"
+              fi
+              # Only update if different
+              if [ "$CURRENT_EXPR" != "$NEW_EXPR" ]; then
+                openclaw cron update --jobId "$JOB_ID" --patch "{"schedule":{"expr":"$NEW_EXPR"}}" >> "$LOGFILE" 2>&1 || true
+                log "Adjusted $job_name: $CURRENT_EXPR → $NEW_EXPR"
+              fi
+            fi
+          done
           ;;
       esac
 
