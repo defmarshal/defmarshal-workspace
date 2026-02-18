@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-02-17*
+*Last updated: 2026-02-18*
 
 ## Personal
 - **Name**: def
@@ -32,3 +32,6 @@
 - Memory search: Voyage AI disabled; using local SQLite FTS/grep fallback. Status: `quick memory-status`
 - Gateway runs on port 18789; health: `quick health` (if quick command available)
 - systemd linger recommended: `sudo loginctl enable-linger ubuntu` for service persistence
+
+## Recent Learnings (2026-02-18)
+- **agent-manager git auto-commit bug fixed**: The original condition `if ! git diff --quiet && ! git diff --cached --quiet` missed untracked files, causing auto-commit to skip when only untracked files existed (e.g., reports/). Fixed by replacing with `changes=$(git status --porcelain | wc -l); if [ "$changes" -gt 0 ]; then ...`. Now correctly detects any uncommitted changes including untracked files. Validated: manual run successfully auto-committed the daily digest report.
