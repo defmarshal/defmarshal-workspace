@@ -23,6 +23,7 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Session metadata survives, process does not** → sessions.json keeps conversation history, but the actual agent process dies on gateway exit. No auto-respawn. You must manually respawn or use cron.
 - **Supervision options** — For truly persistent agents: (1) cron-based periodic fresh spawns (recommended), (2) separate systemd units with Restart=always, or (3) watchdog cron that checks `sessions list` and respawns missing agents.
 - **Meta-Agent schedule corruption** → The resource-based scheduling adjustment (meta-agent) was flawed and caused unintended frequency changes (e.g., supervisor from 5min to hourly). **Disabled** on 2026‑02‑18. Cron schedules now strictly follow CRON_JOBS.md. A safety net (agent-manager validation) enforces integrity automatically.
+- **Cron job frequency & rate limits** → Avoid extremely frequent cron intervals (e.g., every 15 minutes) for jobs that rely on rate-limited LLM APIs (OpenRouter free tier). Such jobs will fail with cooldown errors and trigger supervisor alerts. Adjust schedules to longer intervals (e.g., every 6 hours) or switch to non-LLM execution (system cron, systemEvent payload). Example: git-janitor-cron originally every 15 min → changed to every 6 hours on 2026‑02‑19 after repeated OpenRouter cooldowns.
 
 ## Git & Deployment
 
@@ -59,6 +60,7 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 
 - **Define all variables** → When using `set -u`, ensure all variables are initialized before use. The `validate-cron-schedules.sh` script used `$LOGFILE` without definition, causing crashes and preventing schedule corrections.
 - **Verify CLI command names** → Before scripting, confirm exact subcommands (e.g., `openclaw cron edit` not `update`). Wrong commands lead to failures and silent misconfigurations.
+- **Include required utilities** → Standalone agent scripts must define all helper functions they use (e.g., `log`). Do not assume functions from other scripts are available. Copy needed functions directly or source a common library to avoid runtime `command not found` errors.
 
 ## Security
 
