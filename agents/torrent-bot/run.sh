@@ -1,17 +1,14 @@
 #!/bin/bash
-# Start the torrent-bot agent in an isolated session
-# Usage: ./agents/torrent-bot/run.sh
+# Torrent-bot script - DEPRECATED (2026-02-19)
+# The 'openclaw agents spawn' command is no longer supported.
+# Torrent management is now handled by:
+#  - aria2 skill (automatic handling of magnet/torrent files)
+#  - random-torrent-downloader cron job (automated additions)
+#  - quick commands: torrent-add, nyaa-search, nyaa-top, downloads
+#
+# This script is kept for reference but will not function.
 
-AGENT_DIR="$(dirname "$0")"
-cd "$AGENT_DIR" || exit 1
-
-# Spawn an isolated agent session
-exec openclaw agents spawn \
-  --agentId torrent-bot \
-  --label torrent-bot \
-  --task "Torrent management slash-command bot. Use /torrent help for commands." \
-  --thinking "low" \
-  --timeoutSeconds 3600 \
-  --runTimeoutSeconds 0 \
-  --cleanup delete \
-  --message "Torrent-bot is starting... Use /torrent help"
+echo "ERROR: torrent-bot is deprecated and non-functional."
+echo "Use aria2 skill for manual torrent additions or wait for automated cron."
+echo "To manually add a torrent: ./quick torrent-add <magnet>"
+exit 1

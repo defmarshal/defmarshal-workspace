@@ -62,6 +62,11 @@ fi
 # Emit alerts via Telegram only
 if [ ${#ALERTS[@]} -gt 0 ]; then
   ALERT_TEXT="SUPERVISOR ALERT:\n${ALERTS[*]}"
+  # Log alert details to supervisor log
+  printf "%s - ALERT - Reasons:\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$LOGFILE"
+  for alert in "${ALERTS[@]}"; do
+    printf "  * %s\n" "$alert" >> "$LOGFILE"
+  done
   # Send Telegram alert using OpenClaw CLI (non-fatal if fails)
   /home/ubuntu/.npm-global/bin/openclaw message send --to 952170974 --channel telegram --text "$ALERT_TEXT" 2>/dev/null || true
   STATUS="ALERT"

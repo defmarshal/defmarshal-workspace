@@ -33,7 +33,7 @@ start_if_missing() {
 # start_if_missing "dev-agent" "dev-agent-loop.sh"
 # start_if_missing "content-agent" "content-agent-loop.sh"
 # start_if_missing "research-agent" "research-agent-loop.sh"
-start_if_missing "torrent-bot" "agents/torrent-bot/loop.sh"
+# start_if_missing "torrent-bot" "agents/torrent-bot/loop.sh"  # Deprecated: CLI API changed; disabled 2026-02-19
 # cron-supervisor is now a cron-triggered agent (not a daemon loop).
 
 # Start aria2 daemon if not running
