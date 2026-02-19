@@ -1,89 +1,121 @@
-# Workspace Builder Plan — 2026-02-19 01:00 UTC
+# Task Plan: Workspace Builder Session (2026-02-19)
 
-**Goal:** Resolve gateway RPC token mismatch, commit pending meta-agent/supervisor improvements, validate system health, and push changes.
-
-**Session:** Cron-triggered agent run (workspace-builder)
-
----
-
-## Phase 1: Assessment & Context
-
-- Confirm gateway RPC status (expected: unauthorized)
-- Check git status (uncommitted meta-agent.sh, supervisor.sh)
-- Review active-tasks.md (should show this builder running)
-- Verify memory status (main store clean)
-- Quick health baseline
-
-**Deliverable:** Initial findings recorded.
+**Session Key**: `agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33`
+**Started**: 2026-02-19 01:00 UTC
+**Goal**: Finalize token optimization, commit pending changes, validate system health
 
 ---
 
-## Phase 2: Gateway Recovery
+## Context Analysis
 
-**Critical:** Gateway RPC is failing with `device token mismatch`. A stray process is listening on port 18789 while systemd service is dead.
+### Current State
+- 4 files modified but uncommitted (content-cycle.sh, dev-cycle.sh, research-cycle.sh, memory/2026-02-19.md)
+- Token optimization Phase 1 partially implemented (max-tokens added to all cycle scripts)
+- System health: good (disk 43%, gateway healthy, memory clean)
+- No active cron mis-schedules (fixed previously)
+- Voyage AI rate limits still active (free tier 3 RPM)
 
-Steps:
-- Execute `./gateway-fix.sh`
-- Wait for service to start and RPC to become ready
-- Verify:
-  - `openclaw gateway status` shows healthy
-  - `./quick health` shows Gateway: healthy
-  - No stray processes; port 18789 owned by systemd service
+### In Progress Work
+Yesterday's workspace-builder started token optimization:
+- Added maxTokens to openclaw.json (agents using main)
+- Added --max-tokens to cycle scripts
+- Compressed system prompts with conciseness directives
+- Committed some changes? Need to verify
 
-**Notes:** This script kills all gateway processes, removes identity/device-auth.json, restarts service, and waits for RPC readiness.
+### Immediate Tasks
+1. Review what's already committed vs pending
+2. Ensure all token optimization changes are complete
+3. Commit pending changes with build: prefix
+4. Run comprehensive validation
+5. Update active-tasks.md with verification
 
 ---
 
-## Phase 3: Commit Pending Changes
+## Phase 1: Assessment (Current)
 
-After gateway health restored:
-- Review uncommitted changes (meta-agent.sh: cron payload fix; supervisor.sh: PATH export)
-- Stage and commit with prefix `build:` (or more specific: `fix(meta-agent): use --message instead of --system-event for cron jobs` and `fix(supervisor): ensure PATH includes npm global bin`)
+### Check Git History
+- Verify if token optimization changes were already committed
+- Identify what's pending
+- Review any errors in recent agent logs
+
+### Validate System Configuration
+- Run `./quick health`
+- Check memory status
+- Check cron schedule integrity
+- Verify active-task registry size
+
+---
+
+## Phase 2: Completion
+
+If changes are pending:
+- Stage all modified files
+- Commit with message: `build: complete token optimization phase 1; add max-tokens to agent cycles; update memory`
 - Push to origin/master
+- Verify push succeeded
+
+If no changes pending:
+- Document that workspace is up-to-date
+- Skip commit step
 
 ---
 
-## Phase 4: System Validation
+## Phase 3: Validation (Close the Loop)
 
-Re-check system health and functionality:
-- `./quick health` (all OK)
-- `./quick mem` (show recent memories)
-- `./quick search test` (verify search works)
-- `./quick cron-status` (ensure schedules still match docs)
-- `active-tasks.md` size check (<2KB)
-- `./quick memory-status` (main store clean)
-- `./quick memory-dirty` (check other stores)
+Run all checks and capture outputs:
 
-**Success criteria:** All checks green, no errors.
-
----
-
-## Phase 5: Documentation & Cleanup
-
-- Update `active-tasks.md`:
-  - Change status from `running` to `validated`
-  - Add verification notes
-- Optionally update `findings.md` with summary of this session (can also be separate)
-- Ensure all files properly committed (including any modified docs)
-- Verify no temp files left behind
+1. `./quick health` — capture full output
+2. `./quick validate` (if exists) or run individual checks:
+   - memory-status
+   - cron-schedules
+   - active-tasks.md size
+3. Check that no temporary files remain:
+   - Look for `*.tmp`, `*.temp`, `*~` in workspace root
+4. Verify git status clean
+5. Check that all modified files are properly formatted (no CRLF issues)
 
 ---
 
-## Phase 6: Close the Loop
+## Phase 4: Active Task Update
 
-- Final health verification
-- Confirm no orphaned processes
-- All changes pushed
-- Session complete
+Update `active-tasks.md`:
+- Change status from `running` to `validated`
+- Add verification notes with actual command outputs
+- Optionally archive completed details to today's memory file
+
+---
+
+## Phase 5: Housekeeping
+
+- Ensure all planning files (task_plan.md, findings.md, progress.md) are tracked
+- Consider if any lessons learned need to be added to lessons.md
+- Verify no unnecessary files are left uncommitted
+
+---
+
+## Success Criteria
+
+- ✅ All token optimization changes committed
+- ✅ Health checks pass
+- ✅ No temp files
+- ✅ Git clean or only expected untracked files (reports/, etc.)
+- ✅ active-tasks.md updated with validated status and verification output
+- ✅ System stable
 
 ---
 
 ## Risk Mitigation
 
-- Gateway fix may require multiple attempts if token rotation fails; script includes retries via loops.
-- If commit fails due to remote issues, retry once; if still failing, log and leave for next agent-manager auto-commit.
-- Keep changes minimal: only meta-agent.sh, supervisor.sh, active-tasks.md, and this planning set.
+- If commit fails: diagnose git issues, resolve conflicts, retry
+- If validation fails: debug specific failure before marking validated
+- If system alerts detected: investigate and fix before completion
 
 ---
 
-**Dependencies:** None beyond existing scripts.
+## Estimated Effort
+
+- Assessment: 5 min
+- Commit: 2 min
+- Validation: 5 min
+- Documentation: 3 min
+- Total: ~15 minutes

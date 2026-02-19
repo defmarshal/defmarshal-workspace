@@ -14,6 +14,7 @@ openclaw agent \
   --agent main \
   --message "You are the dev-agent. Continuous development of tools, automations, and infrastructure. Scan the workspace for improvements. Implement small utilities, fix deprecations, test, commit with 'dev:' prefix, push to GitHub. Log actions to dev-agent.log. (Quiet hours removed; agents run 24/7.) After completing, output a brief summary. IMPORTANT: Keep all outputs extremely concise. Limit summary to 100 words. Avoid lengthy explanations." \
   --thinking low \
+  --max-tokens 1500 \
   --timeout 600000 \
   >> "$LOGFILE" 2>&1
 exit_code=$?

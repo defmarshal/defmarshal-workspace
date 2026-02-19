@@ -1,100 +1,94 @@
-# Workspace Builder Findings — 2026-02-19 01:00 UTC
+# Findings Report: Workspace Builder Session (2026-02-19)
 
-**Context:** Follow-up maintenance after Feb 18 major fixes (cron schedules, agent-manager bugs, gateway token fix prepared). Current session triggered by cron.
-
----
-
-## System State Overview (Initial)
-
-| Metric | Value | Status |
-|--------|-------|--------|
-| Disk Usage | 42% | ✅ OK |
-| Gateway | RPC: unauthorized; port: LISTEN (stray) | ⚠️ Critical |
-| Memory Index | 16 files, 62 chunks, clean | ✅ OK |
-| Reindex Needed | No (2.4 days ago) | ✅ OK |
-| Git Status | Dirty (2 files modified) | ⚠️ Needs commit |
-| APT Updates | 4 pending | ℹ️ Minor |
-| Active Agents | No explicit entries (active-tasks empty) | ✅ OK |
-| Downloads | 13 files, 3.3 GB | ✅ OK |
+**Session**: `agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33`
+**Date**: 2026-02-19 (UTC)
 
 ---
 
-## Key Observations
+## Initial Assessment
 
-### 1. Gateway RPC Token Mismatch
+### System Health Snapshot
+- **Disk usage**: 43% (healthy)
+- **Gateway**: healthy, port 18789 active
+- **Memory**: 16 files indexed, 62 chunks, clean (Voyage FTS+ enabled)
+- **Updates**: 4 pending APT updates (non-critical)
+- **Downloads**: 13 files, 3.3GB
+- **Git status**: 4 modified files (dirty)
 
-- **Current Status**:
-  - systemd service: `inactive (dead)` (exited 34 min ago)
-  - Port 18789: LISTEN by process `openclaw-gatewa` (pid 117049) — this is a stray gateway process not managed by systemd
-  - `openclaw gateway status` fails with `unauthorized: device token mismatch`
-- **Root Cause**: Stale `identity/device-auth.json` token and an orphaned gateway process holding the port.
-- **Fix**: `./gateway-fix.sh` automates:
-  - Kill all gateway processes (SIGKILL)
-  - Remove identity directory (tokens)
-  - Restart systemd service
-  - Wait for port and RPC readiness
-- **Impact**: Without fix, any agent operation requiring gateway RPC (sessions_spawn, gateway queries, some supervisor checks) will fail. The supervisor-cron shows consecutiveErrors=1, likely due to this.
+### Modified Files Identified
+1. `agents/content-cycle.sh` — added `--max-tokens 2000`
+2. `agents/dev-cycle.sh` — added `--max-tokens 1500`
+3. `agents/research-cycle.sh` — added `--max-tokens 3000`
+4. `memory/2026-02-19.md` — daily log entry for token optimization work
 
-### 2. Pending Code Changes (Uncommitted)
+### Cron Job Status
+- All schedules validated and matching CRON_JOBS.md
+- No mis-schedules detected
+- Agent frequencies correct (respecting daytime windows, not hourly)
 
-Two modified scripts need to be committed:
-
-- **`agents/meta-agent.sh`**:
-  - Changed cron job payloads from `--system-event` to `--message`
-  - Reason: Newly created agents (git-janitor, notifier, archiver-manager) should run in isolated sessions, not as system events in main session. `--system-event` targets main; `--message` sends to isolated agent turn.
-  - This is a correctness fix for the meta-agent's agent creation logic.
-
-- **`agents/supervisor.sh`**:
-  - Added `export PATH="$HOME/.npm-global/bin:$PATH"`
-  - Reason: Cron environment may not include npm global bin; this ensures `openclaw` command is found when supervisor runs as cron job.
-  - Prevents "command not found" errors.
-
-Both changes are small, safe, and should be committed to stabilize the autonomous system.
-
-### 3. Active Tasks Registry
-
-- `active-tasks.md` currently empty (good)
-- A stale workspace-builder entry from Feb 18 was manually cleaned up this morning (2026-02-19 00:15 UTC)
-- No running agents to track at this moment.
-
-### 4. Memory & Cron Status
-
-- Memory main store: clean
-- Cron schedules: validated; all match CRON_JOBS.md
-- Supervisor-cron: lastStatus=error (consecutiveErrors=1) — likely due to gateway RPC failure; should recover after fix.
-- Meta-agent-cron: lastStatus=error (consecutiveErrors=1) — may also be RPC-related; will re-run hourly.
+### Active Task Registry
+- `active-tasks.md` size: ~41 lines, ~4.0KB (under 2KB? Need to verify exact size)
+- Current entry: workspace-builder running since 01:00 UTC
+- No stale entries present (cleaned earlier today)
 
 ---
 
-## Risks & Mitigations
+## Historical Context (from MEMORY.md)
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|------------|--------|------------|
-| Gateway fix fails to start service | Low | High (RPC stays down) | Check service logs (`journalctl --user -u openclaw-gateway.service -n 50`); script includes retry loops |
-| Commit push fails (network/auth) | Low | Medium | Retry once; if fails, agent-manager will auto-commit later |
-| Validation false positives | Low | Low | Run multiple checks (health, mem, search) |
-| Uncommitted changes grow | Medium | Low | Commit promptly |
+### Recent Learnings (2026-02-18)
+- agent-manager git auto-commit bug fixed (now includes untracked files)
+- quick launcher syntax error fixed
+- meta-agent newline bug fixed (count aggregation)
+- gateway token rotation guidance provided
+
+### Current Projects
+- Memory System Maintenance (Voyage AI rate-limited)
+- Workspace Health & Automation
+- Anime Companion
+- Torrent System
+- Ongoing improvements via workspace-builder
 
 ---
 
-## Success Criteria
+## Issues Detected
 
-1. ✅ `openclaw gateway status` returns healthy and RPC ready
-2. ✅ `./quick health` shows Gateway: healthy
-3. ✅ All uncommitted changes committed and pushed
-4. ✅ `active-tasks.md` shows builder entry marked validated
-5. ✅ `./quick memory-status` clean
-6. ✅ `./quick cron-status` shows lastStatus=ok for supervisor and meta-agent (or at least no consecutive errors)
-7. ✅ No stray gateway processes (only systemd-managed one)
-8. ✅ No temp files left behind
+### None Critical
+- Voyage AI free tier rate limits (3 RPM) restrict memory reindex automation (acceptable; weekly reindex scheduled)
+- 4 pending APT updates (non-critical; can be deferred)
+- active-tasks.md appears slightly over 2KB? Need exact measurement
+
+### Observations
+- The cycle scripts already include concise prompt directives and max-tokens as intended for Phase 1 token optimization
+- Changes appear ready to commit
+- System is stable and healthy
+
+---
+
+## Verification Plan
+
+Before marking validated:
+1. Confirm exact `active-tasks.md` file size (should be ≤ 2KB per policy)
+2. Run health checks; capture outputs
+3. Ensure no temp files in workspace
+4. Verify git clean after commit
+
+---
+
+## Decision Log
+
+- **Approach**: Complete token optimization commit now rather than waiting for another builder cycle
+- **Commit message**: Should follow `build:` prefix and describe changes clearly
+- **Validation**: Will perform full close-the-loop checklist
 
 ---
 
 ## Next Steps
 
-- Execute Phase 2: Run `./gateway-fix.sh`
-- Wait for readiness, verify RPC
-- Commit meta-agent.sh and supervisor.sh (separate commits)
-- Run full validation suite
-- Update active-tasks.md with verification notes
-- Push all changes
+1. Execute Phase 2 (Commit pending changes)
+2. Execute Phase 3 (Validation)
+3. Update active-tasks.md with verification notes
+4. Optionally add note to MEMORY.md if significant
+
+---
+
+**End of findings report**

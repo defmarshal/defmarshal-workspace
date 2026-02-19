@@ -18,6 +18,7 @@ while [ $attempt -le $MAX_RETRIES ]; do
     --agent main \
     --message "You are the content-agent. Create anime summaries, tech writeups, or daily digests. Check for pending tasks. If none, generate a short daily digest. Log outputs to /home/ubuntu/.openclaw/workspace/content/. After completing, output a brief summary. IMPORTANT: Be extremely concise. Limit output to 150 words. Use short sentences and avoid filler." \
     --thinking low \
+    --max-tokens 2000 \
     --timeout 600000 2>&1)
   
   exit_code=$?
