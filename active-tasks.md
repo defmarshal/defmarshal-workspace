@@ -23,5 +23,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
-- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Sync CRON_JOBS.md with actual cron jobs (started: 2026-02-19 21:00 UTC, status: validated)
-  - Verification: CRON_JOBS.md updated; removed 2 obsolete entries; added 3 missing entries; corrected gateway-watchdog schedule; validation passed; commit pushed.
