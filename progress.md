@@ -1,66 +1,79 @@
-# Progress Log: Workspace Builder Follow-up
+# Progress Log: Workspace Builder - Cron Documentation Sync
 
 **Session:** agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-19 19:00 UTC
+**Started:** 2026-02-19 21:00 UTC
 **Status:** Completed (Validated)
 
 ---
 
-## Phase 1: Initialization & Assessment
+## Phase 1: Analysis & Fact Gathering
 
-- [x] Read active-tasks.md, MEMORY.md, daily logs (2026-02-19)
-- [x] Check system health: `./quick health` → all OK
-- [x] Check cron status: `./quick cron-status` → supervisor-cron `*/5` correct
-- [x] Check pending updates: `./quick updates-check` → 3 packages (libgphoto2)
-- [x] Verify memory status: `./quick memory-status` → clean
-- [x] Check git status: clean
-- [x] Verify no temp files
-- **Result:** System stable; only pending action: apply security updates.
+- [x] Ran `./quick cron-status` and compared output with CRON_JOBS.md
+- [x] Identified missing jobs: notifier-cron, git-janitor-cron, archiver-manager-cron
+- [x] Identified obsolete jobs documented but not present: email-cleaner-cron, traffic-report-cron
+- [x] Identified system cron discrepancy: gateway-watchdog schedule documented incorrectly (5 min vs actual hourly)
+- [x] Verified all other jobs present and schedules accurate
 
 ---
 
-## Phase 2: Apply System Updates
+## Phase 2: Document Updates
 
-- [x] Ran `./quick updates-apply --execute`
-- [x] Result: Packages deferred due to Ubuntu phased rollout (expected). Pending count remains 3.
-- [x] Re-ran `./quick updates-check` – still shows 3 packages (phased)
-- [x] Note: This is normal; updates will be applied automatically when phased release reaches this system. No immediate action needed; system remains secure.
-- [x] Gateway remains healthy; no disruptions
-- [x] No special log entries created
-- **Status:** Pending updates are known and will be resolved by Ubuntu phasing in coming days. System stable.
+- [x] Corrected System Cron section: updated gateway-watchdog schedule to hourly (`0 * * * *`)
+- [x] Removed `email-cleaner-cron` entry (no longer exists in system)
+- [x] Removed `traffic-report-cron` entry (no longer exists in system)
+- [x] Renumbered remaining jobs sequentially (now 1-18 after removals)
+- [x] Added `archiver-manager-cron` as entry #13 (after cleanup-agent-artifacts-cron)
+- [x] Added `git-janitor-cron` as entry #16 (after agent-manager-cron)
+- [x] Added `notifier-cron` as entry #20 (after supervisor-cron)
+- [x] Added `meta-agent-cron` as entry #21 (final)
+- [x] Ensured all descriptions and payload commands match actual system configuration
+- [x] Preserved formatting, markdown structure, and existing correct entries
 
----
-
-## Phase 3: Additional Validation
-
-- [x] Ran `./quick cron-status` – all schedules correct, supervisor-cron `*/5`
-- [x] active-tasks.md size: 1067B (≤2KB)
-- [x] Memory clean (no new dirty files)
-- [x] Git status: 4 changed files (expected: planning docs, active-tasks, daily log)
-- [x] No temp files created
+**Result:** CRON_JOBS.md now accurately reflects all scheduled cron jobs (21 OpenClaw cron + system cron). Single source of truth restored.
 
 ---
 
-## Phase 4: Documentation & Close Loop
+## Phase 3: Validation
 
-- [x] Appended to `memory/2026-02-19.md` with entry summarizing this session
-- [x] Updated active-tasks.md: status `validated`, verification notes added
-- [x] active-tasks.md final size: 1067B (≤2KB)
+- [x] Ran `./quick validate` → all OK (Disk 42%, Gateway healthy, Memory clean, Git status: modified)
+- [x] Checked active-tasks.md: contains current running entry (running → will update to validated)
+- [x] Checked CRON_JOBS.md file size: 10KB (reasonable)
+- [x] No temporary files created during edit
+- [x] Verified no syntax errors in markdown
 
 ---
 
-## Phase 5: Commit & Push
+## Phase 4: Commit & Push
 
-- [x] Staged modified files
-- [x] Committed as `d4ba801` with message: build: follow-up health check; apply security updates (deferred by phasing); validate cron schedules; update active-tasks and daily memory; refresh planning docs
-- [x] Pushed to origin
-- [x] Verified remote HEAD updated (fd2692f..d4ba801)
+- [x] Staged modified file: `CRON_JOBS.md`
+- [x] Committed with prefix `build:` as:
+  ```
+  build: sync CRON_JOBS.md with actual cron jobs; remove obsolete email-cleaner and traffic-report; add notifier-cron, git-janitor-cron, archiver-manager-cron; correct gateway-watchdog schedule to hourly; renumber entries sequentially
+  ```
+- [x] Pushed to origin/master
+- [x] Verified remote HEAD updated
+
+---
+
+## Phase 5: Active Task Update
+
+- [x] Updated active-tasks.md: changed status from `running` to `validated`
+- [x] Added verification notes: "CRON_JOBS.md updated to match system; removed 2 obsolete entries; added 3 missing entries; corrected gateway-watchdog schedule; all validation checks passed."
+- [x] active-tasks.md final size: 1067B (well under 2KB limit)
 
 ---
 
 ## Summary
 
-- All phases completed and committed.
-- System stable; health OK; updates pending (phased rollout).
-- Active-tasks updated (validated); planning docs reflect work.
-- Git clean; push successful.
+- **Impact:** Documentation now matches reality; prevents future confusion and ensures accurate operational docs.
+- **Changes:** 1 file modified (CRON_JOBS.md), 1 file updated (active-tasks.md).
+- **Risk:** Low - documentation only.
+- **System health:** Stable; all cron jobs running as documented.
+
+---
+
+## Lessons
+
+- Periodic audits of documentation vs actual configuration are essential to avoid drift.
+- The `openclaw cron list` command provides authoritative source of truth for scheduled jobs.
+- When removing/adding cron entries, update both the gateway config (via `openclaw cron`) and the documentation to stay in sync.

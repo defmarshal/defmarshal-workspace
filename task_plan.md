@@ -1,86 +1,72 @@
-# Task Plan: Workspace Builder Session Follow-up
+# Task Plan: Sync CRON_JOBS.md with Actual Cron Jobs
 
 **Session ID:** agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-19 19:00 UTC
-**Goal:** Perform follow-up health check, apply pending updates, validate system, and commit any changes.
+**Started:** 2026-02-19 21:00 UTC (fresh run)
+**Goal:** Ensure CRON_JOBS.md accurately reflects all scheduled cron jobs (OpenClaw + system) to maintain a reliable single source of truth.
 
 ---
 
 ## Context
 
-Previous workspace-builder run (17:10 UTC) successfully:
-- Fixed cron validation script (LOGFILE definition, edit command)
-- Corrected supervisor-cron schedule to `*/5` (Asia/Bangkok)
-- Cleaned active-tasks registry
-- Applied pending updates (3 libgphoto2 packages)
-- Added documentation
-
-Current system state:
-- Health: All OK (Disk 42%, Gateway healthy, Memory clean, Git clean)
-- Cron jobs: All schedules match CRON_JOBS.md; supervisor-cron correct
-- Updates: 3 new pending packages (libgphoto2 related)
-- Active tasks: Registry contains previous validated entry; now updated to current running
-- Memory: clean; reindex due in ~3 days (next Sunday)
-- No temp files
+- The system is healthy; all cron schedules as currently configured are functioning correctly.
+- However, documentation (CRON_JOBS.md) is missing several cron jobs that exist in the system:
+  - notifier-cron (every 2h UTC)
+  - git-janitor-cron (every 6h UTC)
+  - archiver-manager-cron (weekly Sunday 02:00 UTC)
+- Additionally, the System Cron section incorrectly states gateway-watchdog runs every 5 minutes; actual schedule is hourly (`0 * * * *`).
+- email-cleaner-cron is not present in the current cron list; it may have been removed or renamed; no action needed if absent.
 
 ---
 
-## Phase 1: Initialization & Assessment
+## Phase 1: Analysis & Fact Gathering
 
-- [x] Read active-tasks.md (just updated)
-- [x] Check system health (`./quick health`)
-- [x] List cron jobs (`./quick cron-status`) and compare to CRON_JOBS.md
-- [x] Check pending updates (`./quick updates-check`)
-- [x] Verify filesystem hygiene (no temp files, large files, etc.)
-- [x] Verify memory status (`./quick memory-status`)
-- **Result:** System stable. Only pending action: apply 3 security updates.
+- [ ] Run `./quick cron-status` and capture full JSON or list of all OpenClaw cron jobs
+- [ ] Compare each job against CRON_JOBS.md entries
+- [ ] List missing jobs: notifier-cron, git-janitor-cron, archiver-manager-cron
+- [ ] Note any schedule/description mismatches
 
 ---
 
-## Phase 2: Apply System Updates
+## Phase 2: Document Updates
 
-- Run `./quick updates-apply --execute` to upgrade the 3 libgphoto2 packages
-- Verify no service disruptions (gateway, agents remain up)
-- Re-run `./quick health` to confirm 0 pending updates
-
-**Verification:** health shows "Updates: 0"; gateway healthy; agents running.
-
----
-
-## Phase 3: Validation & Verification
-
-- Run full health check (`./quick health`)
-- Run cron status to ensure schedules still correct
-- Check memory index clean
-- Verify git status clean after updates
-- Ensure active-tasks.md size ≤ 2KB (currently 1067B)
-- Confirm no temporary files created
+- [ ] Edit CRON_JOBS.md:
+  - Add notifier-cron entry under OpenClaw cron (schedule: every 2h UTC, payload description, log file)
+  - Add git-janitor-cron entry (schedule: every 6h UTC, description)
+  - Add archiver-manager-cron entry (schedule: weekly Sunday 02:00 UTC, description)
+  - Update System Cron section: correct gateway-watchdog schedule to hourly and add `@reboot` agent startup hook
+  - Ensure all entries follow existing format and style
+- [ ] Preserve alphabetical/logical ordering (jobs appear roughly by frequency or purpose)
 
 ---
 
-## Phase 4: Documentation & Close Loop
+## Phase 3: Validation
 
-- If any changes occurred, update `active-tasks.md` entry with verification notes
-- Append a brief note to `memory/2026-02-19.md` summarizing this run (applied updates, system stable)
-- No new lessons expected (the existing token optimization revert lesson already covers relevant caution)
-
----
-
-## Phase 5: Commit & Push
-
-- Stage all modified files (likely only apt package lists if any; but `updates-apply` may not produce file changes in workspace)
-- If no changes to commit, we may skip commit but still report completion
-- If changes (e.g., packages/ files modified by updates?), it's not typical; apt changes are system-level not workspace. The `quick updates-apply` may log to memory/updates.log. That file might be modified. Check.
-- Actually, applying updates does not modify workspace files directly, but the quick command may append logs. Let's see: `updates-apply` likely logs to memory/updates.log. So I should include that if changed.
-- After ensuring all changes are tracked, commit with prefix `build:` and a concise message
-- Push to origin
-- Update active-tasks.md: mark validated with verification notes (in a separate commit? We can include in same commit before push; better to commit once at the end with validated status and verification notes)
-- Then push
+- [ ] Run `./quick validate` to ensure workspace hygiene
+- [ ] Check CRON_JOBS.md file size (reasonable)
+- [ ] Verify no temporary files created
+- [ ] Ensure active-tasks.md entry for this workspace-builder is marked running (added at start)
 
 ---
 
-## Notes
+## Phase 4: Commit & Push
 
-- This is a lightweight follow-up; primary change is applying security updates.
-- If any step fails (e.g., updates fail), debug before proceeding.
-- Keep changes small and meaningful.
+- [ ] Stage modified CRON_JOBS.md (and any other changed files if applicable)
+- [ ] Commit with prefix `build:` and concise message (e.g., "build: sync CRON_JOBS.md with actual cron jobs; add missing entries; correct gateway-watchdog schedule")
+- [ ] Push to origin
+- [ ] Update active-tasks.md: status `validated` with verification notes
+
+---
+
+## Risks & Mitigations
+
+- Low risk: Documentation only; no functional changes to cron jobs.
+- Ensure added job details (schedules, descriptions) are accurate by cross-referencing `openclaw cron list` output.
+
+---
+
+## Success Criteria
+
+- CRON_JOBS.md includes all currently registered cron jobs (OpenClaw + system cron)
+- All schedules and descriptions match the actual system configuration
+- Documentation is clear and consistent
+- Commit pushed; active-tasks updated
