@@ -40,6 +40,7 @@ Commands:
   git-summary     Show recent commit summary by prefix (dev:, research:, content:, infra:, chore:)
   git-last        Show last commit details (files changed, stats, message)
   git-recent [N]  Show recent commits one-line (default 5)
+  git-branches    List all git branches with last commit info
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
   selfie [caption] [rating]  Send a random anime image via Nekos API.
@@ -405,6 +406,10 @@ case "$cmd" in
     # Show recent commits one-lines (default 5)
     count="${1:-5}"
     git -C "$WORKSPACE" log --oneline -"$count" || echo "No commits"
+    ;;
+  git-branches)
+    # List all git branches with last commit info
+    bash "$WORKSPACE/quick-git-branches"
     ;;
   anime)
     "$WORKSPACE/anime-companion" "$@"
