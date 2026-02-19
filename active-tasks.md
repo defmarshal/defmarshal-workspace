@@ -23,8 +23,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [build] workspace-builder - Gateway recovery, commit pending changes, validate system health (started: 2026-02-19 01:00 UTC, status: running)
-  - Verification: pending
+- [build] workspace-builder - Token optimization planning, commit docs, apply revert, validate system health (started: 2026-02-19 01:00 UTC, status: validated)
+  - Verification: Pushed revert commit 9ba22d4 to origin (undoes max-tokens flags). System health: Disk 43% OK, Gateway healthy, Memory 16f/62c clean, Git clean. active-tasks.md 1521B (<2KB). No temp files. All cron schedules valid. Workspace stable.
 
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
