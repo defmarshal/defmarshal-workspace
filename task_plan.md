@@ -1,72 +1,70 @@
-# Task Plan: Sync CRON_JOBS.md with Actual Cron Jobs
+# Workspace Builder Plan — 2026-02-19
 
-**Session ID:** agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-19 21:00 UTC (fresh run)
-**Goal:** Ensure CRON_JOBS.md accurately reflects all scheduled cron jobs (OpenClaw + system) to maintain a reliable single source of truth.
+**Mission:** Analyze current state, address outstanding issues, and implement meaningful improvements.
 
----
-
-## Context
-
-- The system is healthy; all cron schedules as currently configured are functioning correctly.
-- However, documentation (CRON_JOBS.md) is missing several cron jobs that exist in the system:
-  - notifier-cron (every 2h UTC)
-  - git-janitor-cron (every 6h UTC)
-  - archiver-manager-cron (weekly Sunday 02:00 UTC)
-- Additionally, the System Cron section incorrectly states gateway-watchdog runs every 5 minutes; actual schedule is hourly (`0 * * * *`).
-- email-cleaner-cron is not present in the current cron list; it may have been removed or renamed; no action needed if absent.
+**Session:** `agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33`
 
 ---
 
-## Phase 1: Analysis & Fact Gathering
+## Current State Assessment
 
-- [ ] Run `./quick cron-status` and capture full JSON or list of all OpenClaw cron jobs
-- [ ] Compare each job against CRON_JOBS.md entries
-- [ ] List missing jobs: notifier-cron, git-janitor-cron, archiver-manager-cron
-- [ ] Note any schedule/description mismatches
+### ✅ System Health
+- Gateway healthy
+- Memory clean (16 files, 70+ chunks)
+- Disk 42% (good)
+- All agents running
 
----
-
-## Phase 2: Document Updates
-
-- [ ] Edit CRON_JOBS.md:
-  - Add notifier-cron entry under OpenClaw cron (schedule: every 2h UTC, payload description, log file)
-  - Add git-janitor-cron entry (schedule: every 6h UTC, description)
-  - Add archiver-manager-cron entry (schedule: weekly Sunday 02:00 UTC, description)
-  - Update System Cron section: correct gateway-watchdog schedule to hourly and add `@reboot` agent startup hook
-  - Ensure all entries follow existing format and style
-- [ ] Preserve alphabetical/logical ordering (jobs appear roughly by frequency or purpose)
+### ⚠️ Issues Identified
+1. **Git dirty** – `content/INDEX.md` modified + daily digest untracked
+   - Agent-manager should auto-commit if under threshold (needs verification)
+2. **git-janitor-cron** – consecutiveErrors > 0 (OpenRouter rate limits)
+3. **notifier-agent** – fixed but needs validation (next cron 21:00 UTC)
+4. **Token optimization** – recent revert; need to document lessons
+5. **Documentation** – MEMORY.md may need updating with recent learnings
 
 ---
 
-## Phase 3: Validation
+## Improvement Plan
 
-- [ ] Run `./quick validate` to ensure workspace hygiene
-- [ ] Check CRON_JOBS.md file size (reasonable)
-- [ ] Verify no temporary files created
-- [ ] Ensure active-tasks.md entry for this workspace-builder is marked running (added at start)
+### Phase 1: Git Cleanup & Auto-Commit Verification
+- Check git-janitor log to understand rate limit errors
+- Verify agent-manager auto-commit logic is functioning
+- Manually trigger agent-manager if needed to clear dirty state
+- Ensure daily digest gets committed
 
----
+### Phase 2: Validate Notifier-Agent Fix
+- Run notifier-agent.sh manually
+- Check logs for errors
+- Confirm cron will succeed at next run
 
-## Phase 4: Commit & Push
+### Phase 3: Update MEMORY.md with Recent Learnings
+- Summarize token optimization experiment and revert
+- Document git-janitor rate limit issue
+- Add note about notifier-agent bug fix
 
-- [ ] Stage modified CRON_JOBS.md (and any other changed files if applicable)
-- [ ] Commit with prefix `build:` and concise message (e.g., "build: sync CRON_JOBS.md with actual cron jobs; add missing entries; correct gateway-watchdog schedule")
-- [ ] Push to origin
-- [ ] Update active-tasks.md: status `validated` with verification notes
+### Phase 4: Lessons Learned Documentation
+- Update `lessons.md` with token optimization failure patterns
+- Document git detection pitfalls (untracked files)
 
----
-
-## Risks & Mitigations
-
-- Low risk: Documentation only; no functional changes to cron jobs.
-- Ensure added job details (schedules, descriptions) are accurate by cross-referencing `openclaw cron list` output.
+### Phase 5: Final Validation & Commit
+- Run full health check
+- Verify no temp files
+- Commit all changes with `build:` prefix
+- Update active-tasks.md
 
 ---
 
 ## Success Criteria
 
-- CRON_JOBS.md includes all currently registered cron jobs (OpenClaw + system cron)
-- All schedules and descriptions match the actual system configuration
-- Documentation is clear and consistent
-- Commit pushed; active-tasks updated
+- Git workspace clean (or agent-manager will handle)
+- Notifier-agent log shows no errors
+- MEMORY.md updated with recent insights
+- Lessons documented
+- System health all green
+- Changes committed and pushed
+
+---
+
+## Timeline
+
+ Estimated: 30–45 minutes execution

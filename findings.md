@@ -1,73 +1,115 @@
-# Findings: Cron Documentation Audit
+# Initial Findings — Workspace Analysis
 
-**Date:** 2026-02-19 (fresh workspace-builder run)
-**Session:** agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
-
----
-
-## System Snapshot
-
-- **Health:** ✓ All OK (Disk 42%, Gateway healthy, Memory clean, Git clean)
-- **Cron Status:** 21 OpenClaw cron jobs, all running with correct schedules
-- **Validation:** `./quick validate` passes
+**Date:** 2026-02-19 23:00 UTC
+**Session:** workspace-builder (cron)
 
 ---
 
-## Documentation Gap Identified
+## System Overview
 
-### Missing OpenClaw Cron Jobs
+| Metric | Status |
+|--------|--------|
+| Disk usage | 42% (healthy) |
+| Gateway | healthy, port 18789 |
+| Memory index | 16 files, 70+ chunks, clean |
+| Voyage AI | rate-limited (free tier 3 RPM), reindex not needed |
+| Git status | dirty (1 modified, 1 untracked) |
 
-The following jobs are present in the system but absent from CRON_JOBS.md:
+---
 
-1. **notifier-cron**
-   - Schedule: Every 2 hours (`0 */2 * * *`) in UTC
-   - Description: Monitors cron failures, disk usage, gateway status; sends Telegram alerts
-   - Log: `memory/notifier-agent.log`
-   - Source: `agents/notifier-agent.sh`
+## Issues & Root Causes
 
-2. **git-janitor-cron**
-   - Schedule: Every 6 hours (`0 */6 * * *`) in UTC
-   - Description: Git janitor cycle (maintenance, auto-commit thresholds)
-   - Log: `memory/git-janitor.log`
-   - Source: `agents/git-janitor-cycle.sh`
+### 1. Dirty Git Workspace
 
-3. **archiver-manager-cron**
-   - Schedule: Weekly Sunday at 02:00 UTC (`0 2 * * 0`)
-   - Description: Archiver manager for content/research archives
-   - Log: `memory/archiver-manager.log`
-   - Source: `agents/archiver-manager.sh`
+**Observed:**
+- `content/INDEX.md` modified (tracked)
+- `content/2026-02-19-daily-digest.md` untracked (new file)
 
-### System Cron Discrepancy
+**Expected:** Agent-manager should auto-commit these changes when file count < 10.
 
-CRON_JOBS.md states: "gateway-watchdog runs every 5 min via system crontab". Actual system crontab shows:
+**Hypothesis:** Either:
+- Agent-manager hasn't run since files were created, OR
+- The threshold logic skipped due to "many changes" detection, OR
+- Agent-manager itself had issues (previous day showed SIGKILL)
+
+**Action:** Check agent-manager logs, manually run if needed.
+
+---
+
+### 2. git-janitor-cron Errors
+
+**Observed:** Supervisor monitoring reports `consecutiveErrors: 1` for git-janitor-cron.
+
+**Likely cause:** OpenRouter API rate limits (free tier 3 RPM) causing failed API calls during git operations.
+
+**Impact:** Automated git cleanup may be failing; could lead to accumulation of old files.
+
+**Action:** Inspect `memory/git-janitor-agent.log` to confirm error pattern, consider adjusting schedule or rate-limit handling.
+
+---
+
+### 3. Notifier-Agent Recent Fix
+
+**Issue (2026-02-19 19:12):** Script called undefined `log` function → crashes.
+
+**Fix Applied:** Added `log` function definition to `agents/notifier-agent.sh`.
+
+**Validation Needed:** Run script manually to ensure no errors; check next cron run (21:00 UTC).
+
+---
+
+### 4. Token Optimization Experiment
+
+**What happened:**
+- Phase 1 implemented: maxTokens limits, conciseness prompts, payload compression
+- Initial commit `0f590af` pushed
+- Immediate revert `9ba22d4` applied due to output truncation/failures
+- System self-corrected; baseline restored
+
+**Learnings:**
+- Aggressive token caps (3000, 2000, 1500) too strict for agent outputs
+- Output truncation broke information delivery
+- Need gentler caps or per-agent thresholds based on typical output size
+- Should test in isolated environment before global rollout
+
+**Documentation:** Need to capture this in MEMORY.md and lessons.md.
+
+---
+
+## Active-Tasks Registry Check
+
+`active-tasks.md` currently shows:
 ```
-0 * * * * /home/ubuntu/.openclaw/workspace/scripts/gateway-watchdog.sh
+- [sessionKey] workspace-builder - Sync CRON_JOBS.md with actual cron jobs (status: validated)
 ```
-It runs **hourly**, not every 5 minutes (the 5-minute check is performed by `supervisor-cron` via OpenClaw). The System Cron section should be corrected.
 
-### email-cleaner-cron
+That entry is old and should be removed (workspace-builder task completed). Current session is running as a fresh cron-triggered agent (different session key).
 
-Not present in the current cron list. Likely deprecated. No action needed.
-
----
-
-## Verification Plan
-
-- Add missing job entries to CRON_JOBS.md with accurate schedules and descriptions
-- Correct the gateway-watchdog description and schedule in the System Cron section
-- Ensure formatting matches existing documentation style
-- After update, re-read CRON_JOBS.md to confirm completeness and proper markdown
+**Action:** Clean up stale validated entries to keep file under 2KB.
 
 ---
 
-## Why This Matters
+## Documentation Gaps
 
-- Single source of truth: Accurate documentation prevents confusion during maintenance and onboarding
-- Audit trail: Knowing all scheduled tasks helps with troubleshooting and capacity planning
-- Compliance: Periodic synchronization ensures documentation doesn't drift from reality
+- **MEMORY.md** does not yet include token optimization lessons (recent event)
+- **lessons.md** may need new section on token management pitfalls
+- **TOOLS.md** already has memory system notes (good)
 
 ---
 
-## Conclusion
+## Execution Priorities
 
-This is a straightforward documentation update with low risk and high clarity benefits. No functional changes required.
+1. **Git cleanup** – ensure workspace clean before committing changes
+2. **Notifier validation** – verify fix works
+3. **MEMORY.md update** – add recent learnings (token opt, git-janitor issues)
+4. **lessons.md** – document token optimization failure patterns
+5. **active-tasks.md** – prune stale entries
+6. **Final commit** – include planning docs, findings, progress updates
+
+---
+
+## Notes
+
+- All changes should be small, focused, and validated before proceeding
+- Use `./quick health` and other quick commands for validation
+- Respect the "close the loop" process: validate → commit → update active-tasks

@@ -1,79 +1,123 @@
-# Progress Log: Workspace Builder - Cron Documentation Sync
+# Progress Log — Workspace Builder
 
-**Session:** agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-19 21:00 UTC
-**Status:** Completed (Validated)
-
----
-
-## Phase 1: Analysis & Fact Gathering
-
-- [x] Ran `./quick cron-status` and compared output with CRON_JOBS.md
-- [x] Identified missing jobs: notifier-cron, git-janitor-cron, archiver-manager-cron
-- [x] Identified obsolete jobs documented but not present: email-cleaner-cron, traffic-report-cron
-- [x] Identified system cron discrepancy: gateway-watchdog schedule documented incorrectly (5 min vs actual hourly)
-- [x] Verified all other jobs present and schedules accurate
+**Start Time:** 2026-02-19 23:00 UTC
+**Session:** cron-triggered workspace-builder
 
 ---
 
-## Phase 2: Document Updates
+## Phase 1: Git Cleanup & Auto-Commit Verification
 
-- [x] Corrected System Cron section: updated gateway-watchdog schedule to hourly (`0 * * * *`)
-- [x] Removed `email-cleaner-cron` entry (no longer exists in system)
-- [x] Removed `traffic-report-cron` entry (no longer exists in system)
-- [x] Renumbered remaining jobs sequentially (now 1-18 after removals)
-- [x] Added `archiver-manager-cron` as entry #13 (after cleanup-agent-artifacts-cron)
-- [x] Added `git-janitor-cron` as entry #16 (after agent-manager-cron)
-- [x] Added `notifier-cron` as entry #20 (after supervisor-cron)
-- [x] Added `meta-agent-cron` as entry #21 (final)
-- [x] Ensured all descriptions and payload commands match actual system configuration
-- [x] Preserved formatting, markdown structure, and existing correct entries
+### Step 1.1 — Check agent-manager logs
+```bash
+tail -50 memory/agent-manager.log
+```
 
-**Result:** CRON_JOBS.md now accurately reflects all scheduled cron jobs (21 OpenClaw cron + system cron). Single source of truth restored.
+**Purpose:** Determine if agent-manager ran recently and whether it attempted auto-commit.
+
+**Status:** In progress
 
 ---
 
-## Phase 3: Validation
+### Step 1.2 — Check git-janitor logs
+```bash
+tail -50 memory/git-janitor-agent.log
+```
 
-- [x] Ran `./quick validate` → all OK (Disk 42%, Gateway healthy, Memory clean, Git status: modified)
-- [x] Checked active-tasks.md: contains current running entry (running → will update to validated)
-- [x] Checked CRON_JOBS.md file size: 10KB (reasonable)
-- [x] No temporary files created during edit
-- [x] Verified no syntax errors in markdown
+**Purpose:** Identify rate limit errors and pattern.
 
----
-
-## Phase 4: Commit & Push
-
-- [x] Staged modified file: `CRON_JOBS.md`
-- [x] Committed with prefix `build:` as:
-  ```
-  build: sync CRON_JOBS.md with actual cron jobs; remove obsolete email-cleaner and traffic-report; add notifier-cron, git-janitor-cron, archiver-manager-cron; correct gateway-watchdog schedule to hourly; renumber entries sequentially
-  ```
-- [x] Pushed to origin/master
-- [x] Verified remote HEAD updated
+**Status:** In progress
 
 ---
 
-## Phase 5: Active Task Update
+### Step 1.3 — Manual agent-manager run if needed
+```bash
+./agents/agent-manager.sh --once
+```
 
-- [x] Updated active-tasks.md: changed status from `running` to `validated`
-- [x] Added verification notes: "CRON_JOBS.md updated to match system; removed 2 obsolete entries; added 3 missing entries; corrected gateway-watchdog schedule; all validation checks passed."
-- [x] active-tasks.md final size: 1067B (well under 2KB limit)
+**Purpose:** Force immediate maintenance cycle if auto-commit hasn't occurred.
 
----
-
-## Summary
-
-- **Impact:** Documentation now matches reality; prevents future confusion and ensures accurate operational docs.
-- **Changes:** 1 file modified (CRON_JOBS.md), 1 file updated (active-tasks.md).
-- **Risk:** Low - documentation only.
-- **System health:** Stable; all cron jobs running as documented.
+**Status:** Pending
 
 ---
 
-## Lessons
+## Phase 2: Validate Notifier-Agent Fix
 
-- Periodic audits of documentation vs actual configuration are essential to avoid drift.
-- The `openclaw cron list` command provides authoritative source of truth for scheduled jobs.
-- When removing/adding cron entries, update both the gateway config (via `openclaw cron`) and the documentation to stay in sync.
+### Step 2.1 — Run notifier-agent.sh manually
+```bash
+./agents/notifier-agent.sh
+```
+
+**Check:** Exit code 0? Log entries without errors?
+
+**Status:** Pending
+
+---
+
+### Step 2.2 — Inspect log
+```bash
+tail -20 memory/notifier-agent.log
+```
+
+**Status:** Pending
+
+---
+
+## Phase 3: Update MEMORY.md
+
+**Content to add:**
+- Token optimization experiment and revert (2026-02-19)
+- git-janitor rate limit monitoring
+- Notifier-agent bug fix
+- Active tasks cleanup
+
+**Status:** Pending
+
+---
+
+## Phase 4: Update lessons.md
+
+**New section candidate:** "Token Optimization Pitfalls"
+- Aggressive max-tokens causes truncation
+- Need to verify output completeness before global deployment
+- Use isolated testing environment
+
+**Status:** Pending
+
+---
+
+## Phase 5: Cleanup active-tasks.md
+
+- Remove stale workspace-builder validated entry
+- Ensure no duplicate or oversized entries
+- Size must be < 2KB
+
+**Status:** Pending
+
+---
+
+## Phase 6: Final Validation & Commit
+
+**Validation checklist:**
+- ✅ quick health
+- ✅ git status clean (or agent-manager will handle)
+- ✅ no temp files (`find . -type f -name '*.tmp' -o -name '*~'`)
+- ✅ all modified files accounted for
+
+**Commit plan:**
+- Commit planning docs (task_plan.md, findings.md, progress.md)
+- Commit MEMORY.md update
+- Commit lessons.md addition
+- Commit active-tasks.md cleanup
+- Prefix: `build:`
+
+**Push:** origin/master
+
+**Status:** Pending
+
+---
+
+## Notes
+
+- Keep each phase atomic; update this file after completion
+- If any step fails, debug before proceeding
+- Maintain kawaii but efficient workflow desu! (^^)
