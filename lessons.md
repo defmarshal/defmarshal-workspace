@@ -49,6 +49,12 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Cron batching** → Combine similar checks (email + calendar + weather) into single heartbeat to reduce API calls.
 - **Parallel execution** → If tasks are independent, spawn all at once. Went from 45min to 8min on batch deployments through parallelization.
 
+## Token Optimization
+
+- **Aggressive max-tokens limits** → Using `--max-tokens` on agents can truncate output mid‑sentence or cause incomplete summaries, breaking downstream processing. Prefer prompt‑based soft constraints ("keep it brief") over hard caps until thoroughly tested. If caps are necessary, introduce incrementally and validate output quality before global rollout.
+- **Conciseness directives in prompts** → Adding "Be extremely concise" can sometimes over‑constrain the model and lead to terse or incomplete outputs. Test with a few examples first to gauge effect. Monitor for regressions after changes.
+- **Self‑correction via revert** → The system automatically reverted token optimization changes when output broke. This is a healthy safety mechanism. When a revert occurs, investigate the root cause before attempting re‑implementation.
+
 ## Security
 
 - **External content** → Anything from web, RSS, Twitter should be processed by stronger models only. Weaker models get easily manipulated.
