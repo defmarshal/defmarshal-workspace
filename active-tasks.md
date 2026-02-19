@@ -21,10 +21,15 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: <curl/test/check command outputs>
 ```
 
-## Current Active Tasks
+## Completed (Feb 19)
 
 - [build] workspace-builder - Token optimization planning, commit docs, apply revert, validate system health (started: 2026-02-19 01:00 UTC, status: validated)
   - Verification: Pushed revert commit 9ba22d4 to origin (undoes max-tokens flags). System health: Disk 43% OK, Gateway healthy, Memory 16f/62c clean, Git clean. active-tasks.md 1521B (<2KB). No temp files. All cron schedules valid. Workspace stable.
+
+## Current Active Tasks
+
+- [build] workspace-builder - Security fix: creds perms, git cleanup, validation (started: 2026-02-19 15:00 UTC, status: validated)
+  - Verification: chmod 700 credentials; committed content/INDEX.md; health OK; active-tasks.md 1762B; no temp files; git clean; memory clean; cron schedules valid. Planning docs created.
 
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 

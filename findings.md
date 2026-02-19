@@ -1,94 +1,116 @@
-# Findings Report: Workspace Builder Session (2026-02-19)
+# Workspace Builder Findings
 
-**Session**: `agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33`
-**Date**: 2026-02-19 (UTC)
-
----
-
-## Initial Assessment
-
-### System Health Snapshot
-- **Disk usage**: 43% (healthy)
-- **Gateway**: healthy, port 18789 active
-- **Memory**: 16 files indexed, 62 chunks, clean (Voyage FTS+ enabled)
-- **Updates**: 4 pending APT updates (non-critical)
-- **Downloads**: 13 files, 3.3GB
-- **Git status**: 4 modified files (dirty)
-
-### Modified Files Identified
-1. `agents/content-cycle.sh` — added `--max-tokens 2000`
-2. `agents/dev-cycle.sh` — added `--max-tokens 1500`
-3. `agents/research-cycle.sh` — added `--max-tokens 3000`
-4. `memory/2026-02-19.md` — daily log entry for token optimization work
-
-### Cron Job Status
-- All schedules validated and matching CRON_JOBS.md
-- No mis-schedules detected
-- Agent frequencies correct (respecting daytime windows, not hourly)
-
-### Active Task Registry
-- `active-tasks.md` size: ~41 lines, ~4.0KB (under 2KB? Need to verify exact size)
-- Current entry: workspace-builder running since 01:00 UTC
-- No stale entries present (cleaned earlier today)
+**Assessment Date:** 2026-02-19 15:00 UTC  
+**Evaluator:** workspace-builder (coid: 23dad379-21ad-4f7a-8c68-528f98203a33)
 
 ---
 
-## Historical Context (from MEMORY.md)
+## System Overview
 
-### Recent Learnings (2026-02-18)
-- agent-manager git auto-commit bug fixed (now includes untracked files)
-- quick launcher syntax error fixed
-- meta-agent newline bug fixed (count aggregation)
-- gateway token rotation guidance provided
-
-### Current Projects
-- Memory System Maintenance (Voyage AI rate-limited)
-- Workspace Health & Automation
-- Anime Companion
-- Torrent System
-- Ongoing improvements via workspace-builder
+- **OpenClaw Gateway:** Healthy, running on port 18789
+- **Memory System:** 16 files, 63 chunks, clean; Voyage AI rate-limited (3 RPM), fallback active
+- **Git:** 1 dirty file (`content/INDEX.md`)
+- **Disk:** 43% used
+- **Active Tasks:** `active-tasks.md` 1521 bytes (<2KB limit)
+- **Cron Jobs:** 20 jobs documented, schedules valid
+- **Security:** 1 CRITICAL finding (credentials dir writable by others)
 
 ---
 
-## Issues Detected
+## Detailed Findings
 
-### None Critical
-- Voyage AI free tier rate limits (3 RPM) restrict memory reindex automation (acceptable; weekly reindex scheduled)
-- 4 pending APT updates (non-critical; can be deferred)
-- active-tasks.md appears slightly over 2KB? Need exact measurement
+### 1. Security: Credentials Directory Permissions (CRITICAL)
 
-### Observations
-- The cycle scripts already include concise prompt directives and max-tokens as intended for Phase 1 token optimization
-- Changes appear ready to commit
-- System is stable and healthy
+**Finding:**  
+`/home/ubuntu/.openclaw/credentials` mode is `775` (writable by group and others). This allows any local user to drop or modify credential files, leading to potential credential theft or misuse.
 
----
+**Recommendation:**  
+Set to `700` (owner-only) or at minimum `750` (owner + group, if group is trusted).
 
-## Verification Plan
+**Impact:** High — credentials could be compromised.
 
-Before marking validated:
-1. Confirm exact `active-tasks.md` file size (should be ≤ 2KB per policy)
-2. Run health checks; capture outputs
-3. Ensure no temp files in workspace
-4. Verify git clean after commit
+**Fix Command:**
+```bash
+chmod 700 /home/ubuntu/.openclaw/credentials
+```
 
----
-
-## Decision Log
-
-- **Approach**: Complete token optimization commit now rather than waiting for another builder cycle
-- **Commit message**: Should follow `build:` prefix and describe changes clearly
-- **Validation**: Will perform full close-the-loop checklist
+**Verification:**
+```bash
+ls -ld /home/ubuntu/.openclaw/credentials  # should show drwx------
+```
 
 ---
 
-## Next Steps
+### 2. Git Status: Uncommitted Changes
 
-1. Execute Phase 2 (Commit pending changes)
-2. Execute Phase 3 (Validation)
-3. Update active-tasks.md with verification notes
-4. Optionally add note to MEMORY.md if significant
+**Finding:**  
+One file modified but not committed: `content/INDEX.md`. This likely contains recent content updates.
+
+**Recommendation:**  
+Commit and push to keep repository clean and backups current.
+
+**Action:**
+```bash
+git add content/INDEX.md
+git commit -m "build: update content index with latest entries"
+git push origin master
+```
 
 ---
 
-**End of findings report**
+### 3. Active Tasks Registry
+
+**Status:** Healthy
+- Size: 1521 bytes (well under 2KB limit)
+- Format: Correct (sessionKey, agent-name, goal, started, status, verification)
+- Entries: One validated workspace-builder entry from earlier today; no orphaned running agents
+
+**Notes:**  
+The file is properly maintained. No cleanup required at this time.
+
+---
+
+### 4. Cron Job Integrity
+
+**Status:** Healthy
+- All schedules match CRON_JOBS.md documentation
+- No misconfigurations detected
+- Recent fix (2026-02-18) corrected over-frequent hourly schedules; now all run at intended intervals
+
+**Notes:**  
+The agent-manager cron runs every 30 minutes to validate schedules; this prevents future drift.
+
+---
+
+### 5. Memory System Observability
+
+**Status:** Healthy
+- `quick memory-status` shows clean main store (16/16 files indexed)
+- Two secondary stores (torrent-bot, cron-supervisor) show dirty=True but are benign (unused)
+- `memory-dirty` command exists for visibility
+- Reindex is deferred due to Voyage rate limits (correct behavior)
+
+**Notes:**  
+Documentation in TOOLS.md is up-to-date. No action needed.
+
+---
+
+### 6. Recent Learnings (Already Documented)
+
+The workspace-builder run from earlier today documented:
+- Token optimization experiment and automatic revert
+- Lesson: aggressive token caps break output; use gentle constraints
+- Comprehensive notes added to `lessons.md`
+
+No gaps identified.
+
+---
+
+## Conclusion
+
+**Priority 1:** Fix credentials directory permissions (security)
+**Priority 2:** Commit pending changes (`content/INDEX.md`)
+**Priority 3:** Validate system health
+**Priority 4:** Update active-tasks.md with validation record
+
+The workspace is in good overall health. The twoPriority items are quick wins that improve security and maintain repository hygiene.
