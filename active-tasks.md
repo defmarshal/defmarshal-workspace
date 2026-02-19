@@ -23,7 +23,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-19 17:10 UTC, status: validated)
-  - Verification: fixed cron validation script (LOGFILE, edit command); supervisor-cron schedule corrected to */5; all schedules match docs; active-tasks.md 1030B; health OK; memory clean; git clean; no temp files.
+- [agent:main:cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Strategic improvements (started: 2026-02-19 19:00 UTC, status: validated)
+  - Verification: updates applied (libgphoto2, deferred by phasing); health OK; cron schedules correct; active-tasks.md 1067B; memory clean; git dirty (4 changes); no temp files.
 
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
