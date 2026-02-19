@@ -23,7 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Current Active Tasks
 
-- [build] workspace-builder - Fix gateway token; validate system; commit; close loop (started: 2026-02-18 23:00 UTC, status: running)
+(No active tasks)
+
+<!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
