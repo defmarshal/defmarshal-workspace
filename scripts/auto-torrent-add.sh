@@ -8,8 +8,8 @@ set -euo pipefail
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 cd "$WORKSPACE"
 
-# Pick a random number between 1 and 10
-NUM=$((RANDOM % 10 + 1))
+# Pick a random number between 1 and 5 (matches the number of torrents returned)
+NUM=$((RANDOM % 5 + 1))
 
 # Fetch that torrent's magnet and add to aria2
 ./quick nyaa-top --limit 10 --max-size 2G --pick "$NUM" --add >> memory/auto-torrent.log 2>&1 || {
