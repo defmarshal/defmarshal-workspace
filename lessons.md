@@ -55,6 +55,11 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Conciseness directives in prompts** → Adding "Be extremely concise" can sometimes over‑constrain the model and lead to terse or incomplete outputs. Test with a few examples first to gauge effect. Monitor for regressions after changes.
 - **Self‑correction via revert** → The system automatically reverted token optimization changes when output broke. This is a healthy safety mechanism. When a revert occurs, investigate the root cause before attempting re‑implementation.
 
+## Script Hygiene
+
+- **Define all variables** → When using `set -u`, ensure all variables are initialized before use. The `validate-cron-schedules.sh` script used `$LOGFILE` without definition, causing crashes and preventing schedule corrections.
+- **Verify CLI command names** → Before scripting, confirm exact subcommands (e.g., `openclaw cron edit` not `update`). Wrong commands lead to failures and silent misconfigurations.
+
 ## Security
 
 - **External content** → Anything from web, RSS, Twitter should be processed by stronger models only. Weaker models get easily manipulated.

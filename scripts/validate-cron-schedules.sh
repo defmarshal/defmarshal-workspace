@@ -5,7 +5,12 @@
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
-# Intended job schedules (name -> "expr" and optional tz)
+LOGFILE="memory/cron-schedules.log"
+mkdir -p "$(dirname "$LOGFILE")" 2>/dev/null || true
+
+log() {
+  echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
+}
 # tz defaults to Asia/Bangkok if not specified, but we store both.
 declare -A INTENDED_EXPR=(
   ["workspace-builder"]="0 */2 * * *"
@@ -94,7 +99,7 @@ for job in "${!INTENDED_EXPR[@]}"; do
     log "  Intended: expr='$intended_expr' tz='$intended_tz'"
 
     # Update schedule
-    if openclaw cron update "$job_id" --cron "$intended_expr" --tz "$intended_tz" >>"$LOGFILE" 2>&1; then
+    if openclaw cron edit "$job_id" --cron "$intended_expr" --tz "$intended_tz" >>"$LOGFILE" 2>&1; then
       log "  Updated: $job -> $intended_expr @ $intended_tz"
       CORRECTED=$((CORRECTED+1))
     else
