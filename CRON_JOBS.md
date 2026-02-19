@@ -63,19 +63,19 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Description**: Rotates aria2.log when it exceeds 100 MB, keeping up to 4 compressed archives. Prevents uncontrolled log growth.
 
 7. **dev-agent-cron**
-   - **Schedule**: Every 20 minutes between 08:00-22:00 Asia/Bangkok (`0,20,40 8-22 * * *`)
+   - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/dev-cycle.sh >> dev-agent.log 2>&1'`
-   - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Migrated from persistent daemon to cron on 2026-02-16.
+   - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Reduced from every 20 min to hourly (token optimization, 2026-02-19).
 
 8. **content-agent-cron**
-   - **Schedule**: Every 10 minutes between 08:00-22:00 Asia/Bangkok (`0,10,20,30,40,50 8-22 * * *`)
+   - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/content-cycle.sh >> content-agent.log 2>&1'`
-   - **Description**: Performs one content-agent cycle (create anime summaries, tech writeups, digests). Migrated from persistent daemon to cron on 2026-02-16.
+   - **Description**: Performs one content-agent cycle (create anime summaries, tech writeups, digests). Reduced from every 10 min to hourly (token optimization, 2026-02-19).
 
 9. **research-agent-cron**
-   - **Schedule**: Every 15 minutes between 08:00-22:00 Asia/Bangkok (`0,15,30,45 8-22 * * *`)
+   - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/research-cycle.sh >> research-agent.log 2>&1'`
-   - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Migrated from persistent daemon to cron on 2026-02-16.
+   - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Reduced from every 15 min to hourly (token optimization, 2026-02-19).
 
 10. **cleanup-downloads-cron**
     - **Schedule**: Weekly on Sunday at 06:00 Asia/Bangkok (`0 6 * * 0`)
@@ -128,11 +128,11 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Description**: Game development planning agent that designs game projects and spawns Krishna agent to build them.
 
 19. **supervisor-cron**
-    - **Schedule**: Every 5 minutes (`*/5 * * * *`) in Asia/Bangkok
+    - **Schedule**: Every 30 minutes (`0,30 * * * *`) in Asia/Bangkok
     - **Payload**: agentTurn executing `./agents/supervisor.sh`
     - **Log**: `memory/supervisor.log`
     - **Delivery**: `announce` (only when alerts)
-    - **Description**: Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Part of the ultimate autonomous system.
+    - **Description**: Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Reduced from every 5 min to 30 min (token optimization, 2026-02-19).
 
 20. **notifier-cron**
     - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
