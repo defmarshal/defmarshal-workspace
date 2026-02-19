@@ -1,27 +1,42 @@
-# Workspace Builder Progress Log — 2026-02-18 23:00 UTC
+# Workspace Builder Progress Log — 2026-02-19 01:00 UTC
 
-This file tracks the execution of the current builder session step by step.
+Tracking execution of today's builder session.
 
-**Goal:** Fix gateway token mismatch, validate system, commit pending changes, ensure workspace health.
+**Goal:** Fix gateway RPC token mismatch, commit pending meta-agent/supervisor changes, validate system, and push.
 
 ---
 
-## 00:00 — Initialization
+## 01:00 — Initialization
 
-- Created task_plan.md with 6 phases.
-- Added running entry to active-tasks.md.
-- Retrieved relevant memories from daily logs (gateway-fix, agent-manager, cron validation).
-- Performed initial assessment (quick health, cron list, memory status).
+- Read active-tasks.md (was empty; added current builder entry)
+- Read MEMORY.md and recent daily logs ( Feb 18–19)
+- Ran memory_search for gateway token context (found relevant past fix)
+- Assessed system state:
+  - `quick health`: Disk 42%, Updates 4, Git dirty (2 changed), Memory clean, Gateway: healthy (but this was false positive; port listening but RPC failing)
+  - `openclaw gateway status`: RPC failed (device token mismatch)
+  - `ss -tlnp`: port 18789 LISTEN by pid 117049 (orphan process)
+  - `git status --short`: ` M agents/meta-agent.sh`, ` M agents/supervisor.sh`
+- Created task_plan.md (6 phases)
+- Created findings.md (initial assessment)
 
-**Findings:**
-- System health: disk 42%, gateway **problematic** (token mismatch, stray process)
-- Memory: main clean, cron-supervisor dirty (benign)
-- Git: 1 changed file (content/INDEX.md) uncommitted
-- Cron schedules: confirmed matching CRON_JOBS.md after earlier fix
-- Active-tasks.md: 1.8KB, good
+**Status:** Ready for Phase 2 (Gateway Recovery).
 
-**Issues to address:**
-1. Gateway RPC failing due to device token mismatch (stray process on port 18789)
-2. Uncommitted content index change (will be handled by agent-manager after gateway fix)
+---
 
-Next: Execute Phase 2 (Gateway Recovery).
+## 01:05 — Phase 2: Gateway Recovery
+
+**Action:** Execute `./gateway-fix.sh`
+
+**Details:**
+- Script kills all gateway processes (pkill -9 -f openclaw-gateway)
+- Removes identity directory (`~/.openclaw/identity`)
+- Stops systemd service if active
+- Starts systemd service (`systemctl --user start openclaw-gateway.service`)
+- Waits up to 30s for port 18789 to be LISTEN
+- Waits up to 30s for `openclaw gateway status` to succeed
+
+**Verification:** Will run after script completes.
+
+**Next:** Run the script and capture output.
+
+---

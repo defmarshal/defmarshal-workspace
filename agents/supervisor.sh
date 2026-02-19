@@ -2,6 +2,9 @@
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
+# Ensure npm global bin is in PATH for cron environment
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 LOGFILE="memory/supervisor.log"
 mkdir -p memory
 

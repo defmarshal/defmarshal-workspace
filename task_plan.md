@@ -1,61 +1,58 @@
-# Workspace Builder Plan — 2026-02-18 23:00 UTC
+# Workspace Builder Plan — 2026-02-19 01:00 UTC
 
-**Goal:** Restore system health, fix gateway token mismatch, validate system integrity, and commit pending changes.
+**Goal:** Resolve gateway RPC token mismatch, commit pending meta-agent/supervisor improvements, validate system health, and push changes.
 
 **Session:** Cron-triggered agent run (workspace-builder)
 
 ---
 
-## Phase 1: Assessment & Planning
+## Phase 1: Assessment & Context
 
-- Run `quick health` to establish baseline
-- Review cron job schedules against CRON_JOBS.md
-- Check memory status (memory-dirty, memory-status)
-- Inspect git status for uncommitted changes
-- Identify critical issues requiring immediate action
+- Confirm gateway RPC status (expected: unauthorized)
+- Check git status (uncommitted meta-agent.sh, supervisor.sh)
+- Review active-tasks.md (should show this builder running)
+- Verify memory status (main store clean)
+- Quick health baseline
 
-**Deliverable:** Initial findings recorded; plan refined based on current state.
+**Deliverable:** Initial findings recorded.
 
 ---
 
 ## Phase 2: Gateway Recovery
 
-**Critical:** The gateway is experiencing a device token mismatch, causing RPC failures and leaving a stray process. This must be fixed to restore agent communication.
+**Critical:** Gateway RPC is failing with `device token mismatch`. A stray process is listening on port 18789 while systemd service is dead.
 
 Steps:
 - Execute `./gateway-fix.sh`
-- Wait for service to start
+- Wait for service to start and RPC to become ready
 - Verify:
   - `openclaw gateway status` shows healthy
-  - Port 18789 listening
-  - No stray gateway processes (except the systemd-managed one)
-  - RPC connectivity OK
+  - `./quick health` shows Gateway: healthy
+  - No stray processes; port 18789 owned by systemd service
 
-**Notes:** This script kills all gateway processes, removes identity tokens, restarts service, and waits for readiness. Should fully resolve mismatch.
+**Notes:** This script kills all gateway processes, removes identity/device-auth.json, restarts service, and waits for RPC readiness.
 
 ---
 
-## Phase 3: Maintenance Operations
+## Phase 3: Commit Pending Changes
 
 After gateway health restored:
-- Run `./agents/agent-manager.sh --once` to:
-  - Clean up stale locks
-  - Perform memory reindex check (defer if rate-limited)
-  - Auto-commit any pending untracked files (e.g., content/INDEX.md) if under threshold
-- Check `git status` to confirm working directory clean
-- If still dirty, manually commit safe changes (e.g., INDEX.md) with appropriate message
+- Review uncommitted changes (meta-agent.sh: cron payload fix; supervisor.sh: PATH export)
+- Stage and commit with prefix `build:` (or more specific: `fix(meta-agent): use --message instead of --system-event for cron jobs` and `fix(supervisor): ensure PATH includes npm global bin`)
+- Push to origin/master
 
 ---
 
 ## Phase 4: System Validation
 
 Re-check system health and functionality:
-- `quick health` (should be OK)
-- `quick mem` (show recent memories)
-- `quick search test` (verify search works)
-- `./quick cron` (ensure schedules match docs)
+- `./quick health` (all OK)
+- `./quick mem` (show recent memories)
+- `./quick search test` (verify search works)
+- `./quick cron-status` (ensure schedules still match docs)
 - `active-tasks.md` size check (<2KB)
 - `./quick memory-status` (main store clean)
+- `./quick memory-dirty` (check other stores)
 
 **Success criteria:** All checks green, no errors.
 
@@ -64,24 +61,29 @@ Re-check system health and functionality:
 ## Phase 5: Documentation & Cleanup
 
 - Update `active-tasks.md`:
-  - Remove current running entry
-  - Ensure "Completed (Feb 18)" section remains for historical runs
-- Compose final report for `findings.md`
-- Commit **all** changes (including task_plan.md, progress.md, findings.md, active-tasks.md updates) with prefix `build:`
-- Push to `origin/master`
+  - Change status from `running` to `validated`
+  - Add verification notes
+- Optionally update `findings.md` with summary of this session (can also be separate)
+- Ensure all files properly committed (including any modified docs)
+- Verify no temp files left behind
 
 ---
 
 ## Phase 6: Close the Loop
 
 - Final health verification
-- Ensure no temporary files left behind
 - Confirm no orphaned processes
-- Summarize outcomes in `findings.md`
+- All changes pushed
+- Session complete
 
 ---
 
-**Notes:**
-- All operations should respect existing automation (e.g., agent-manager auto-commit).
-- Use minimal disruption; avoid unnecessary restarts.
-- Keep log updates concise.
+## Risk Mitigation
+
+- Gateway fix may require multiple attempts if token rotation fails; script includes retries via loops.
+- If commit fails due to remote issues, retry once; if still failing, log and leave for next agent-manager auto-commit.
+- Keep changes minimal: only meta-agent.sh, supervisor.sh, active-tasks.md, and this planning set.
+
+---
+
+**Dependencies:** None beyond existing scripts.

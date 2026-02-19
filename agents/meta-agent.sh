@@ -127,7 +127,7 @@ log "Archive cycle completed"
 EOF
   chmod +x agents/archive-cycle.sh
   openclaw cron add --name "archive-agent-cron" --cron "0 2 1 * *" --tz "UTC" \
-    --system-event "Execute archive cycle: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/archive-cycle.sh >> memory/archive-agent.log 2>&1'" \
+    --message "Execute archive cycle: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/archive-cycle.sh >> memory/archive-agent.log 2>&1'" \
     --session isolated --no-deliver >> "$LOGFILE" 2>&1 || true
   log "Archive-agent cron registered"
 }
@@ -154,7 +154,7 @@ log "Git janitor completed"
 EOF
   chmod +x agents/git-janitor-cycle.sh
   openclaw cron add --name "git-janitor-cron" --cron "15 * * * *" --tz "UTC" \
-    --system-event "Execute git janitor: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/git-janitor-cycle.sh >> memory/git-janitor.log 2>&1'" \
+    --message "Execute git janitor: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/git-janitor-cycle.sh >> memory/git-janitor.log 2>&1'" \
     --session isolated --no-deliver >> "$LOGFILE" 2>&1 || true
   log "Git-janitor cron registered"
 }
@@ -167,7 +167,7 @@ create_archiver_manager() {
   # This would spawn worker agents for distributed archiving
   # For now, just register a placeholder cron
   openclaw cron add --name "archiver-manager-cron" --cron "0 2 * * 0" --tz "UTC" \
-    --system-event "Execute archiver manager: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/archiver-manager.sh >> memory/archiver-manager.log 2>&1'" \
+    --message "Execute archiver manager: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/archiver-manager.sh >> memory/archiver-manager.log 2>&1'" \
     --session isolated --no-deliver >> "$LOGFILE" 2>&1 || true
   log "Archiver-manager cron registered"
 }
@@ -200,7 +200,7 @@ log "Notifier completed"
 EOF
   chmod +x agents/notifier-agent.sh
   openclaw cron add --name "notifier-cron" --cron "0 */2 * * *" --tz "UTC" \
-    --system-event "Execute notifier: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/notifier-agent.sh >> memory/notifier-agent.log 2>&1'" \
+    --message "Execute notifier: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/notifier-agent.sh >> memory/notifier-agent.log 2>&1'" \
     --session isolated --no-deliver >> "$LOGFILE" 2>&1 || true
   log "Notifier cron registered"
 }
