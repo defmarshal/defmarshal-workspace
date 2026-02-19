@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-02-18*
+*Last updated: 2026-02-19*
 
 ## Personal
 - **Name**: def
@@ -33,6 +33,11 @@
 - Gateway runs on port 18789; health: `quick health` (if quick command available)
 - systemd linger recommended: `sudo loginctl enable-linger ubuntu` for service persistence
 
-## Recent Learnings (2026-02-18)
+## Recent Learnings
+
+### 2026-02-19
+- **Token optimization trial and revert**: Added `--max-tokens` flags and conciseness directives to agent cycles to reduce token usage. Changes initially committed but immediately reverted due to output failures (truncated/incomplete results). System self‑corrected via automated revert. Lesson: aggressive token caps can break agent output; use only gentle constraints and validate thoroughly before global rollout. Added comprehensive notes to `lessons.md` under "Token Optimization" section.
+
+### 2026-02-18
 - **agent-manager git auto-commit bug fixed**: The original condition `if ! git diff --quiet && ! git diff --cached --quiet` missed untracked files, causing auto-commit to skip when only untracked files existed (e.g., reports/). Fixed by replacing with `changes=$(git status --porcelain | wc -l); if [ "$changes" -gt 0 ]; then ...`. Now correctly detects any uncommitted changes including untracked files. Validated: manual run successfully auto-committed the daily digest report.
 - **quick launcher syntax error fixed + meta-agent refactor**: The `feedback)` case was misplaced after `esac` causing a parse error. Fixed by moving it inside the case block. Validated `./quick help` works. Also accepted major `agents/meta-agent.sh` refactor (simplified, deduped safety/feedback code, added create_* functions). Enforced active-tasks.md 2KB limit: pruned stale validated entry and added completed record.
