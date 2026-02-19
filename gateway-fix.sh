@@ -21,7 +21,18 @@ else
   echo "→ No identity directory found"
 fi
 
-# 2. Stop systemd service if active (ignore errors)
+# 2. Check for and remove OPENCLAW_GATEWAY_TOKEN override in systemd service
+SERVICE_FILE="${HOME}/.config/systemd/user/openclaw-gateway.service"
+if [ -f "$SERVICE_FILE" ] && grep -q "OPENCLAW_GATEWAY_TOKEN" "$SERVICE_FILE"; then
+  echo "→ Removing OPENCLAW_GATEWAY_TOKEN override from systemd service (use config token instead)..."
+  sed -i '/Environment=OPENCLAW_GATEWAY_TOKEN=/d' "$SERVICE_FILE"
+  systemctl --user daemon-reload
+  echo "  ✓ Token override removed; service will use config token"
+else
+  echo "→ No OPENCLAW_GATEWAY_TOKEN override found in service file"
+fi
+
+# 3. Stop systemd service if active (ignore errors)
 if systemctl --user is-active --quiet openclaw-gateway.service; then
   echo "→ Stopping systemd service..."
   systemctl --user stop openclaw-gateway.service || true

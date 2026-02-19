@@ -114,6 +114,7 @@ Commands:
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
   cron              List OpenClaw cron jobs (concise summary)
+  cron-health       Show health overview of all cron jobs (status, errors, schedule)
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
   supervisor-schedule         Show supervisor-cron schedule (cron expression)
   restart-gateway             Restart the OpenClaw gateway (use after config changes or to restore approval buttons)
@@ -315,6 +316,27 @@ case "$cmd" in
     # Validate and correct cron schedules against CRON_JOBS.md
     echo "Validating cron schedules against CRON_JOBS.md..."
     ./scripts/validate-cron-schedules.sh
+    ;;
+  cron-health)
+    # Show compact health overview of all cron jobs
+    echo "Cron Job Health Overview"
+    echo "------------------------"
+    openclaw cron list --json 2>/dev/null | jq -r '
+      .jobs |
+      sort_by(.name) |
+      .[] |
+      "\(.name)|\(.state.lastStatus // "never")|\(.state.consecutiveErrors // 0)|\(.schedule.expr)|\(.schedule.tz)"' |
+      while IFS='|' read -r name status errors expr tz; do
+        # Determine health indicator
+        if [ "$status" = "ok" ] || [ "$status" = "never" ]; then
+          indicator="✓"
+        elif [ "$errors" -gt 0 ]; then
+          indicator="✗"
+        else
+          indicator="?"
+        fi
+        printf "%-30s %-3s %-6s %-20s %-10s\n" "$name" "$indicator" "$status" "$expr" "$tz"
+      done
     ;;
   cron-failures)
     # Show cron jobs with errors (consecutiveErrors > 0 or lastStatus != "ok")
