@@ -24,12 +24,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Recently Completed
 
 - [workspace-builder-20260220-1300] workspace-builder - Workspace hygiene: ignore meta-supervisor artifacts; clean temp; validate; commit (started: 2026-02-20 13:00 UTC, status: validated)
-  - Verification: `./quick health` passed (Disk 44%, Gateway healthy, Memory 18f/77c clean); `git status --porcelain` clean after commit; no remaining untracked files; active-tasks.md size 889 bytes (<2KB); commit 0768b57 pushed.
-
-- [128c7af4-fa32-43f2-a238-8fd1e3feac99] workspace-builder - Finalize meta-supervisor version control; commit pending changes; validate system (started: 2026-02-20 09:00 UTC, status: validated)
-  - Verification: `./quick health` passed; memory status clean (18/18 files, 77 chunks); cron status OK; active-tasks.md size <2KB; no temp files; meta-supervisor script syntax OK; git push successful.
-- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Hygiene pass: remove temp artifacts, refresh planning docs (started: 2026-02-20 07:00 UTC, status: validated)
-  - Verification: `./quick health` passed; git showed 4 planned changes; no temp files remain; active-tasks.md size <2KB.
-- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Meta-supervisor improvements, clean temp, apply updates (started: 2026-02-20 11:00 UTC, status: validated)
-  - Verification: `./quick health` passed (Disk 44%, Gateway healthy, Memory 18f/77c clean, Updates none, Git clean after final commit); `bash -n agents/meta-supervisor/meta-supervisor-cycle.sh` OK; temp files removed; active-tasks.md size <2KB; commit e78fcbb pushed.
+  - Verification: `./quick health` passed; `git status` clean; no untracked files; commit 0768b57 pushed; active-tasks.md <2KB.
 
