@@ -1,6 +1,44 @@
 import ResearchClient from "@/components/ResearchClient";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
+import { readdir, readFile } from "fs/promises";
+import { join } from "path";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic"; // avoid caching
+
+export default async function HomePage() {
+  const RESEARCH_DIR = join(process.cwd(), "public", "research");
+  let researchData: { slug: string; title: string; date: string; excerpt: string }[] = [];
+
+  try {
+    const files = await readdir(RESEARCH_DIR).catch(() => []);
+    const markdownFiles = files.filter((f) => f.endsWith(".md"));
+
+    researchData = await Promise.all(
+      markdownFiles.map(async (filename) => {
+        const slug = filename.replace(/\.md$/, "");
+        const fullPath = join(RESEARCH_DIR, filename);
+        const fileContent = await readFile(fullPath, "utf8");
+        const { data, content } = matter(fileContent);
+        const processed = await remark().use(html).process(content);
+        const htmlContent = processed.toString();
+
+        return {
+          slug,
+          title: data.title || slug,
+          date: data.date || slug.split("-").slice(0, 3).join("-"),
+          excerpt: htmlContent.slice(0, 200).replace(/<[^>]*>?/gm, "") + "...",
+        };
+      })
+    );
+
+    // Sort by date descending
+    researchData.sort((a, b) => (b.date > a.date ? 1 : -1));
+  } catch (error) {
+    console.error("Error reading research directory:", error);
+  }
+
   return (
     <main className="min-h-screen bg-background p-8">
       <div className="max-w-4xl mx-auto space-y-8">
@@ -11,7 +49,7 @@ export default function HomePage() {
           </p>
         </header>
 
-        <ResearchClient />
+        <ResearchClient initialData={researchData} />
       </div>
     </main>
   );

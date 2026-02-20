@@ -1,30 +1,19 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import ResearchList from "./ResearchList";
+import type { ResearchItem } from "./ResearchList";
 
 const ITEMS_PER_PAGE = 20;
 
-export default function ResearchClient() {
-  const [allResearch, setAllResearch] = useState<any[]>([]);
+interface ResearchClientProps {
+  initialData: ResearchItem[];
+}
+
+export default function ResearchClient({ initialData }: ResearchClientProps) {
+  const [allResearch] = useState<ResearchItem[]>(initialData);
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(1);
-
-  // Fetch all research on mount
-  useEffect(() => {
-    async function fetchResearch() {
-      try {
-        const res = await fetch("/api/research");
-        if (!res.ok) throw new Error("Failed to fetch research");
-        const data = await res.json();
-        setAllResearch(data);
-      } catch (error) {
-        console.error("Error fetching research:", error);
-        setAllResearch([]);
-      }
-    }
-    fetchResearch();
-  }, []);
 
   // Filter by search query
   const filtered = useMemo(() => {
@@ -43,9 +32,10 @@ export default function ResearchClient() {
   const paged = filtered.slice(start, start + ITEMS_PER_PAGE);
 
   // Reset to page 1 when search changes
-  useEffect(() => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
     setPage(1);
-  }, [searchQuery]);
+  };
 
   return (
     <div className="space-y-6">
@@ -55,7 +45,7 @@ export default function ResearchClient() {
           type="text"
           placeholder="Search research..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={handleSearchChange}
           className="w-full max-w-md px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
         />
       </div>
