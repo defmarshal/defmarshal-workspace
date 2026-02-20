@@ -17,6 +17,9 @@ Commands:
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
   hygiene         Run workspace hygiene check (CRLF, exec bits, large files, caches)
   mem             Show recent memories (claw memory list)
+  music)          Send a cozy music recommendation to Telegram (lofi/city pop)
+    "$WORKSPACE/scripts/music-recommend.sh"
+    ;;
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
   memory-dirty   Show which memory stores need reindex (dirty check)
