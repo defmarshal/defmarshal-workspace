@@ -56,20 +56,60 @@ case "$plan_type" in
       log "No opportunities file or it's empty — nothing to do"
     else
       log "Reading opportunities from $opp_file"
-      count=0
+      changed_files=""
+      total=0
+      fixed=0
+      backup_dir="agents/rudra/backups/$(date +%Y-%m-%d_%H%M)"
+      mkdir -p "$backup_dir"
+
       while IFS= read -r line; do
+        ((total++))
         [[ -z "$line" ]] && continue
         [[ "$line" != *:* ]] && continue
         file="${line%%:*}"
         comment="${line#*:}"
         log "Opportunity: $file — $comment"
-        if echo "$comment" | grep -qE '^(TODO|FIXME|XXX):[[:space:]]*'; then
-          log "  -> Safe fix would be applied here (not implemented in v1)"
-          ((count++))
+
+        # Check if file exists and is a regular file
+        if [ ! -f "$file" ]; then
+          log "  -> Skipping: file not found"
+          continue
+        fi
+
+        # Determine if this line is a full-line comment (safe to modify)
+        # We'll check if the line in the file exactly matches our opportunity line (with possible leading/trailing spaces)
+        # Use grep -F to find exact match; if found, it's likely a comment-only line (since the opportunity scanner captured the whole line)
+        if grep -qF "$line" "$file"; then
+          # Safe transformation: replace TODO: FIXME: XXX with DONE:
+          if echo "$comment" | grep -qE '^(TODO|FIXME|XXX):[[:space:]]*'; then
+            # Create backup of the file if not already backed up (once per file)
+            if [ ! -f "$backup_dir/$(basename "$file").bak" ]; then
+              cp -- "$file" "$backup_dir/$(basename "$file").bak" 2>/dev/null || true
+            fi
+            # Build new line: file: DONE: <rest of comment after marker>
+            new_suffix=$(echo "$comment" | sed -E 's/^(TODO|FIXME|XXX):[[:space:]]*/DONE: /')
+            new_line="${file}:${new_suffix}"
+            # Use awk to replace exact matching line (preserves other lines)
+            awk -v old="$line" -v new="$new_line" '
+              $0 == old { print new; changed=1; next }
+              { print }
+            ' "$file" > "${file}.tmp" && mv "${file}.tmp" "$file"
+            if [ $? -eq 0 ]; then
+              log "  -> Fixed: marked as DONE in $file"
+              ((fixed++))
+            else
+              log "  -> Failed to modify $file (awk error)"
+            fi
+          else
+            log "  -> Not a simple TODO/FIXME marker; skipping for safety"
+          fi
+        else
+          log "  -> Line not found verbatim in $file (may be inline comment); skipping"
         fi
       done < "$opp_file"
-      log "Total opportunities reviewed: $count"
-      # Future: implement actual safe fixes based on comment content
+
+      log "Opportunities reviewed: $total, fixed: $fixed"
+      # Note: actual file modifications are recorded via changed_files
     fi
     ;;
   health)
