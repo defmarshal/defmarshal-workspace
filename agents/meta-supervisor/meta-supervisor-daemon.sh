@@ -2,7 +2,7 @@
 # Meta-Supervisor Daemon
 # Continuous agent outcome auditor running 24/7
 
-set -euo pipefail
+set -u
 cd /home/ubuntu/.openclaw/workspace
 
 WORKSPACE=$(pwd)
@@ -18,18 +18,19 @@ log() {
   echo "[$(date --iso-8601=seconds)] $*" | tee -a "$log_file"
 }
 
-# Write PID
+# Check if already running
 if [ -f "$pid_file" ] && kill -0 "$(cat "$pid_file")" 2>/dev/null; then
   log "Meta-Supervisor daemon already running (PID $(cat "$pid_file"))"
   exit 0
 fi
+
+# Write PID
 echo $$ > "$pid_file"
 log "Meta-Supervisor daemon starting (PID $$)"
 
 # Configuration
 INTERVAL_MINUTES=${INTERVAL_MINUTES:-60}
 STALENESS_HOURS=${STALENESS_HOURS:-4}
-MIN_OUTPUT_CHANGES=${MIN_OUTPUT_CHANGES:-1}
 
 log "Interval: ${INTERVAL_MINUTES} minutes"
 log "Staleness threshold: ${STALENESS_HOURS} hours"
@@ -47,16 +48,15 @@ while true; do
   cycle_start=$(date +%s)
   log "=== Cycle starting ==="
 
-  # Run one audit cycle (reuse the Python logic)
-  if ! python3 - <<'PY' 2>&1 | tee -a "$log_file"
-import json, sys, os, time, datetime, glob
+  # Run one audit cycle
+  python3 - <<'PY' "$WORKSPACE" "$STALENESS_HOURS" 2>&1 | tee -a "$log_file"
+import json, sys, os, time, datetime, glob, subprocess
 workspace = sys.argv[1]
 staleness_hours = float(sys.argv[2])
 now = time.time()
 staleness_sec = staleness_hours * 3600
 
 # fetch cron jobs via openclaw
-import subprocess
 result = subprocess.run(['openclaw','cron','list','--json'], capture_output=True, text=True)
 if result.returncode != 0:
     print(f"ERROR: openclaw cron list failed: {result.stderr}")
@@ -92,7 +92,6 @@ PURPOSES = {
 
 def check_agent(job):
     name = job.get('name', 'unknown')
-    payload = job.get('payload', {})
     last_run = job.get('state', {}).get('lastRunAtMs', 0)
     last_status = job.get('state', {}).get('lastStatus', 'unknown')
     consecutive_errors = job.get('state', {}).get('consecutiveErrors', 0)
@@ -112,7 +111,6 @@ def check_agent(job):
         outcome = "stale"
         findings.append(f"Last run {age_sec/3600:.1f}h ago (> {staleness_hours}h)")
 
-    # Agent-specific checks
     expected_report = None
     expected_log = None
 
@@ -168,11 +166,11 @@ def check_agent(job):
             outcome = "no_output"
         else:
             digest_mtime = os.path.getmtime(digest_file)
+            last_run_sec = job.get('state', {}).get('lastRunAtMs', 0) / 1000.0
             if digest_mtime < last_run_sec:
                 findings.append("Daily digest report not updated after last run")
                 outcome = "no_output"
 
-    # Generic checks
     if expected_report and not os.path.exists(expected_report):
         findings.append(f"Missing report: {os.path.basename(expected_report)}")
     if expected_log and not os.path.exists(expected_log):
@@ -222,11 +220,12 @@ with open(report_file, 'w') as f:
 print(f"Report generated: {os.path.basename(report_file)}")
 print("Meta-Supervisor cycle completed")
 sys.exit(0)
-PY "$workspace" "$staleness_hours"
-  then
+PY
+cycle_exit=$?
+  if [ $cycle_exit -eq 0 ]; then
     log "Cycle completed successfully"
   else
-    log "Cycle failed with exit code $?; will retry next interval"
+    log "Cycle failed with exit code ${cycle_exit}; will retry next interval"
   fi
 
   # Compute sleep time to maintain fixed interval
