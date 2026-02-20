@@ -50,9 +50,9 @@ plan_file="$plan_dir/plan-${timestamp}.md"
 
 cat > "$plan_file" << PLAN
 # Agni Plan — $timestamp
-**Type**: $plan_type
-**Task**: $task_desc
-**Generated**: $(date --iso-8601=seconds)
+Type: $plan_type
+Task: $task_desc
+Generated: $(date --iso-8601=seconds)
 
 ## Objective
 $task_desc
