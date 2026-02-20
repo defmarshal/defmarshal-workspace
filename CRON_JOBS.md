@@ -154,7 +154,20 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Log**: `agents/meta-supervisor/logs/meta-supervisor-agent.log` (via agent session)
     - **Description**: Keepalive cron that starts the meta-supervisor daemon if down. Maintains continuous auditing.
 
+23. **idea-generator-cron**
+    - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
+    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/idea-generator/idea-generator-cycle.sh >> memory/idea-generator.log 2>&1'`
+    - **Log**: `memory/idea-generator.log`
+    - **Description**: Autonomous creative brainstorming agent; generates 10 innovative project/improvement ideas each run and writes to `agents/ideas/latest.json`. Idea quality is designed to be fun and practical.
+
+24. **idea-executor-cron**
+    - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
+    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/idea-executor/idea-executor-cycle.sh >> memory/idea-executor.log 2>&1'`
+    - **Log**: `memory/idea-executor.log`
+    - **Description**: Executes one pending idea per cycle using simple `exec` commands; updates `agents/ideas/latest.json` with results and status. Runs sequentially, easy to monitor.
+
 ---
+
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
 

@@ -137,6 +137,9 @@ Commands:
   cleanup-agent-artifacts [options]  Clean up stale agent artifacts (lock files, empty plans). Runs 24/7.
                                   Options: --execute (actually delete), --force (run during quiet hours)
   agent-spawn <agent-id> <task>      Spawn an agent (dev, content, research, or custom). Uses sessions_spawn.
+  ideas-status              Show idea generator/executor status (pending count, logs)
+  ideas-generate            Manually trigger idea generator cycle
+  ideas-execute             Manually trigger idea executor cycle
   cron              List OpenClaw cron jobs (concise summary)
   cron-health       Show health overview of all cron jobs (status, errors, schedule)
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
@@ -1288,6 +1291,48 @@ except Exception:
     # Spawn an agent (one-shot or daemon)
     # Usage: quick agent-spawn <agent-id> <task> [--daemon]
     bash "$WORKSPACE/agents/spawner-agent.sh" "$@"
+    ;;
+  ideas-status)
+    # Show status of idea generator/executor
+    echo "=== Idea Generator/Executor Status ==="
+    STATUS_FILE="$WORKSPACE/agents/ideas/status.json"
+    if [[ -f "$STATUS_FILE" ]]; then
+      echo "Status:"
+      if command -v python3 &>/dev/null; then
+        python3 -m json.tool "$STATUS_FILE" 2>/dev/null || cat "$STATUS_FILE"
+      else
+        cat "$STATUS_FILE"
+      fi
+    else
+      echo "No status file found."
+    fi
+    echo
+    IDEA_FILE="$WORKSPACE/agents/ideas/latest.json"
+    if [[ -f "$IDEA_FILE" ]]; then
+      total=$(jq 'length' "$IDEA_FILE" 2>/dev/null || echo "?")
+      if command -v jq &>/dev/null; then
+        pending=$(jq '[.[] | select(.executed != true)] | length' "$IDEA_FILE")
+      else
+        pending="(jq required)"
+      fi
+      echo "Ideas: total=$total, pending=$pending"
+    else
+      echo "No latest ideas file."
+    fi
+    echo
+    echo "--- Generator log (tail) ---"
+    [[ -f "$WORKSPACE/memory/idea-generator.log" ]] && tail -3 "$WORKSPACE/memory/idea-generator.log" || echo "No log"
+    echo
+    echo "--- Executor log (tail) ---"
+    [[ -f "$WORKSPACE/memory/idea-executor.log" ]] && tail -3 "$WORKSPACE/memory/idea-executor.log" || echo "No log"
+    ;;
+  ideas-generate)
+    # Manually trigger idea generator (runs one cycle)
+    "$WORKSPACE/agents/idea-generator/idea-generator-cycle.sh"
+    ;;
+  ideas-execute)
+    # Manually trigger idea executor (runs one cycle)
+    "$WORKSPACE/agents/idea-executor/idea-executor-cycle.sh"
     ;;
   cleanup-agent-artifacts)
     "$WORKSPACE/cleanup-agent-artifacts.sh" "$@"
