@@ -137,19 +137,31 @@ def check_agent(job):
         # Use git log with since and author/prefix is complex; we'll just check if there are any recent commits at all
         # For simplicity, check git status? Not reliable. We'll skip deep commit check.
         pass
-    elif name == "content-agent-cron":
-        # Check for new content files dated today
+    if name == "content-agent-cron":
+        # Check for any content file dated today that is not older than 12 hours
         today_str = datetime.datetime.now().strftime("%Y-%m-%d")
-        today_content = [c for c in glob.glob(f"{workspace}/content/{today_str}*.md") if os.path.getmtime(c) > last_run_sec]
+        today_content = [c for c in glob.glob(f"{workspace}/content/{today_str}*.md")]
         if not today_content:
-            findings.append("No new content files today")
+            findings.append("No content files today")
             outcome = "no_output"
+        else:
+            # Check if the newest content is within 12 hours (agent may have already produced work)
+            newest_mtime = max(os.path.getmtime(c) for c in today_content)
+            if newest_mtime < now - 12*3600:
+                findings.append("Latest content >12h old (agent may be idle)")
+                # not necessarily no_output; keep outcome as ok if fresh enough content exists
+            # else ok
     elif name == "research-agent-cron":
         today_str = datetime.datetime.now().strftime("%Y-%m-%d")
-        today_research = [r for r in glob.glob(f"{workspace}/research/{today_str}*.md") if os.path.getmtime(r) > last_run_sec]
+        today_research = [r for r in glob.glob(f"{workspace}/research/{today_str}*.md")]
         if not today_research:
-            findings.append("No new research reports today")
+            findings.append("No research files today")
             outcome = "no_output"
+        else:
+            newest_mtime = max(os.path.getmtime(r) for r in today_research)
+            if newest_mtime < now - 12*3600:
+                findings.append("Latest research >12h old")
+            # else ok
     elif name == "daily-digest-cron":
         today_str = datetime.datetime.now().strftime("%Y-%m-%d")
         digest_file = f"{workspace}/content/{today_str}-daily-digest.md"
@@ -188,6 +200,7 @@ for job in jobs:
 
 # Generate report
 report_date = datetime.date.today().isoformat()
+report_file = os.path.join(report_dir, f"report-{report_date}.md")
 report_lines = [
     f"# Meta-Supervisor Report — {report_date}",
     "",
