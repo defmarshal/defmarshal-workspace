@@ -30,6 +30,6 @@ fi
 
 # Deploy to production
 echo "Deploying to production..."
-vercel --prod --yes
+vercel --prod --public --yes
 
 echo "✅ Research Hub deployed!"
