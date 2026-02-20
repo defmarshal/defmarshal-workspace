@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Validate and correct cron job schedules against CRON_JOBS.md documentation
-# Uses openclaw cron list --json for reliable parsing.
+# Now parses CRON_JOBS.md dynamically to avoid duplication and drift.
 
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
@@ -10,52 +10,6 @@ mkdir -p "$(dirname "$LOGFILE")" 2>/dev/null || true
 
 log() {
   echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
-}
-# tz defaults to Asia/Bangkok if not specified, but we store both.
-declare -A INTENDED_EXPR=(
-  ["workspace-builder"]="0 */2 * * *"
-  ["vishwakarma-cron"]="0 */4 * * *"
-  ["agent-manager-cron"]="0,30 * * * *"
-  ["supervisor-cron"]="0,30 * * * *"
-  ["meta-agent-cron"]="0 * * * *"
-  ["random-torrent-downloader"]="0 */2 * * *"
-  ["agni-cron"]="0 */2 * * *"
-  ["auto-torrent-cron"]="0 2 * * *"
-  ["content-index-update-cron"]="30 5 * * *"
-  ["dev-agent-cron"]="0 8-22 * * *"
-  ["content-agent-cron"]="0 8-22 * * *"
-  ["research-agent-cron"]="0 8-22 * * *"
-  ["daily-digest-cron"]="0 12,20 * * *"
-  ["memory-reindex-cron"]="0 4 * * 0"
-  ["log-rotate-cron"]="0 5 * * 0"
-  ["cleanup-downloads-cron"]="0 6 * * 0"
-  ["backup-cleanup-cron"]="0 7 * * 0"
-  ["cleanup-agent-artifacts-cron"]="30 9 * * 0"
-)
-
-declare -A INTENDED_TZ=(
-  ["workspace-builder"]="Asia/Bangkok"
-  ["vishwakarma-cron"]="Asia/Bangkok"
-  ["agent-manager-cron"]="Asia/Bangkok"
-  ["supervisor-cron"]="Asia/Bangkok"
-  ["meta-agent-cron"]="Asia/Bangkok"
-  ["random-torrent-downloader"]="UTC"
-  ["agni-cron"]="UTC"
-  ["auto-torrent-cron"]="Asia/Bangkok"
-  ["content-index-update-cron"]="Asia/Bangkok"
-  ["dev-agent-cron"]="Asia/Bangkok"
-  ["content-agent-cron"]="Asia/Bangkok"
-  ["research-agent-cron"]="Asia/Bangkok"
-  ["daily-digest-cron"]="Asia/Bangkok"
-  ["memory-reindex-cron"]="Asia/Bangkok"
-  ["log-rotate-cron"]="Asia/Bangkok"
-  ["cleanup-downloads-cron"]="Asia/Bangkok"
-  ["backup-cleanup-cron"]="Asia/Bangkok"
-  ["cleanup-agent-artifacts-cron"]="Asia/Bangkok"
-)
-
-log() {
-  echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*"
 }
 
 # Ensure openclaw and jq are available
@@ -75,12 +29,39 @@ if [ -z "$CRON_JSON" ]; then
   exit 1
 fi
 
+# Parse CRON_JOBS.md to extract job name, schedule, and timezone
+# Format in docs: **job-name** followed by lines containing "Schedule: ... (`expr`)" and optional "Asia/Bangkok" or "UTC"
+declare -A INTENDED_EXPR
+declare -A INTENDED_TZ
+
+while IFS= read -r line; do
+  # Match bold job name: **job-name**
+  if [[ "$line" =~ \*\*([^\*]+)\*\* ]]; then
+    job="${BASH_REMATCH[1]}"
+    # Read ahead to get schedule line and possibly tz line
+    schedule_line=""
+    tz=""
+    read -r schedule_line
+    if [[ "$schedule_line" =~ \`([^\`]+)\` ]]; then
+      INTENDED_EXPR["$job"]="${BASH_REMATCH[1]}"
+    fi
+    read -r tz_line
+    if [[ "$tz_line" =~ Asia/([A-Za-z_]+) ]]; then
+      INTENDED_TZ["$job"]="Asia/${BASH_REMATCH[1]}"
+    elif [[ "$tz_line" =~ UTC ]]; then
+      INTENDED_TZ["$job"]="UTC"
+    else
+      INTENDED_TZ["$job"]="Asia/Bangkok"  # default
+    fi
+  fi
+done < <(grep -n '^\s*[0-9]*\.\s*\*\*' /home/ubuntu/.openclaw/workspace/CRON_JOBS.md | cut -d: -f2-)
+
 MISMATCHES=0
 CORRECTED=0
 
 for job in "${!INTENDED_EXPR[@]}"; do
   intended_expr="${INTENDED_EXPR[$job]}"
-  intended_tz="${INTENDED_TZ[$job]:-Asia/Bangkok}"  # default to Asia/Bangkok if not set
+  intended_tz="${INTENDED_TZ[$job]:-Asia/Bangkok}"
 
   # Extract job info from JSON
   job_id=$(echo "$CRON_JSON" | jq -r ".jobs[] | select(.name==\"$job\") | .id" 2>/dev/null || true)
