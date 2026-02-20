@@ -1,8 +1,8 @@
-# Workspace Builder Plan: Finalize Meta-Supervisor & Commit Pending
+# Workspace Builder Plan: Meta-Supervisor Improvements & Hygiene
 
-**Session Key:** 128c7af4-fa32-43f2-a238-8fd1e3feac99
-**Started:** 2026-02-20 09:00 UTC
-**Goal:** Finalize version control for meta-supervisor agent; commit pending changes (daily log, planning docs); validate system integrity; update active-tasks registry.
+**Session Key:** 23dad379-21ad-4f7a-8c68-528f98203a33
+**Started:** 2026-02-20 11:00 UTC
+**Goal:** Commit meta-supervisor enhancements; remove temp artifacts; apply pending updates; validate system; update active-tasks.
 
 ---
 
@@ -10,73 +10,79 @@
 
 **Actions:**
 - Read SOUL.md, USER.md, MEMORY.md (context already loaded)
-- Check active-tasks.md → will add our running entry
-- Run health checks: `quick health`, `quick memory-status`, `quick cron-status`
-- Inspect workspace: git status shows modified memory log and untracked meta-supervisor dir
+- Check active-tasks.md → currently empty running entries
+- Run health checks: `quick health`, `quick memory-status`, `quick agent-status`
+- Inspect workspace: git status shows modified meta-supervisor-cycle.sh, untracked temp files
 
 **Findings:**
-- System health: all OK (Disk 43%, Gateway healthy, Memory 18f/75c clean local FTS+, Git dirty)
-- Modified: `memory/2026-02-20.md` (contains Rudra fix log entry)
-- Untracked: `agents/meta-supervisor/` (README.md, meta-supervisor-cycle.sh, plus logs/ and reports/ subdirs which are gitignored)
-- No temp files (`tmp_*`) and no `__pycache__` directories (already clean)
-- Cron job `meta-supervisor-cron` already exists in OpenClaw, so the agent is scheduled but not versioned.
-- active-tasks.md currently has no running entries; we must add ours to avoid conflicts.
+- System health: OK (Disk 44%, Gateway healthy, Memory 18f/77c clean local FTS+, Git dirty)
+- Modified: `agents/meta-supervisor/meta-supervisor-cycle.sh` (improved Agni/Rudra check with 2h grace, fixed daily digest path, added debug)
+- Untracked temp files: `agents/meta-supervisor/.meta-supervisor.pid`, `agents/meta-supervisor/meta-supervisor.nohup` (should be removed)
+- Pending APT updates: 3 (optional but recommended for security)
+- No other uncommitted changes
+- active-tasks.md has no current running entry; we should add one to avoid conflicts.
 
-**Plan:** Add meta-supervisor to git; stage daily log and planning docs; validate; commit with `build:` prefix; update active-tasks.
+**Plan:**
+- Add running task entry to active-tasks.md
+- Remove temp artifacts
+- Optionally apply pending APT updates
+- Stage and commit meta-supervisor improvements
+- Write fresh planning docs (task_plan.md, findings.md, progress.md) for this run
+- Run validation checks (syntax, health, git status, temp file check)
+- Push commit with `build:` prefix
+- Update active-tasks.md to validated with verification notes
+- Final health check
 
 ---
 
-## Phase 2: Implementation
+## Phase 2: Implementation Steps
 
 ### Step 1: Register running task
-- Edit `active-tasks.md`: add entry under "Currently Running" with our session key, agent name, goal, start time, status "running". Keep within 2KB limit.
+Edit `active-tasks.md`: add entry under "Currently Running" with session key, agent name "workspace-builder", goal summary, start time, status "running".
 
-### Step 2: Stage changes for commit
-- Stage new files: `agents/meta-supervisor/README.md`, `agents/meta-supervisor/meta-supervisor-cycle.sh` (only non-ignored files)
-- Stage modified file: `memory/2026-02-20.md`
-- Stage planning documents (these will be newly written/overwritten): `task_plan.md`, `findings.md`, `progress.md`
-- Note: `agents/meta-supervisor/logs/` and `reports/` are gitignored; ignore them.
+### Step 2: Cleanup temp files
+Remove: `agents/meta-supervisor/.meta-supervisor.pid` and `agents/meta-supervisor/meta-supervisor.nohup`.
 
-### Step 3: Write planning docs (overwrite existing)
-- Create `task_plan.md` (this file)
+### Step 3: Apply system updates (optional)
+Run `./quick updates-apply --execute` to apply pending APT updates and improve system health.
+
+### Step 4: Validate meta-supervisor syntax
+Run `bash -n agents/meta-supervisor/meta-supervisor-cycle.sh` to ensure no syntax errors.
+
+### Step 5: Write planning documents
+- Overwrite `task_plan.md` (this file)
 - Create `findings.md` with current assessment
-- Create `progress.md` with initial log and phase checklist
+- Create `progress.md` with initial log entry
+
+### Step 6: Stage changes
+- Stage modified: `agents/meta-supervisor/meta-supervisor-cycle.sh`
+- Stage updated: `active-tasks.md`
+- Stage new: `task_plan.md`, `findings.md`, `progress.md`
+
+### Step 7: Commit and push
+Commit with message: `build: meta-supervisor enhancements; clean temp files; apply updates`
+Push to origin.
+
+### Step 8: Close the loop
+- Update `active-tasks.md`: move our entry to "Recently Completed", set status "validated", add verification notes (commands/outputs)
+- Run final `./quick health` to confirm post-commit state
 
 ---
 
-## Phase 3: Validation
+## Phase 3: Success Criteria
 
-**Checks:**
-- `./quick health` → must be OK
-- `git status --short` → should show only our staged changes (no other untracked files)
-- `active-tasks.md` size <2KB
-- No temp files in workspace root
-- Verify meta-supervisor script syntax: `bash -n agents/meta-supervisor/meta-supervisor-cycle.sh`
-
----
-
-## Phase 4: Commit, Push, and Finalize
-
-**Commit:**
-- Stage all listed changes (including active-tasks.md update from Step 1)
-- Commit with message: `build: add meta-supervisor to version control; commit daily log; refresh planning docs`
-- Push to origin
-
-**Update active-tasks.md:**
-- Change our entry status from "running" to "validated"
-- Add verification notes (commands/outputs)
-- Keep entry in "Recently Completed" for traceability
-
-**Final health check:**
-- Run `./quick health` again to confirm post-commit state
+- meta-supervisor improvements versioned and pushed
+- Temp artifacts removed
+- active-tasks.md accurately reflects this run (size <2KB)
+- All health checks pass (Disk, Gateway, Memory, Git clean, Updates 0)
+- No leftover uncommitted changes
+- Planning docs reflect this session
 
 ---
 
-## Success Criteria
+## Notes
 
-- meta-supervisor agent files tracked in git
-- memory/2026-02-20.md committed (Rudra fix preserved)
-- Planning docs reflect this run
-- active-tasks.md updated correctly
-- System health passes all checks
-- No leftover temp files or untracked clutter
+- The meta-supervisor-cycle.sh changes are backward-compatible and improve robustness.
+- The daily digest check now correctly points to `reports/` (previous check used `content/` erroneously).
+- Agni/Rudra check now allows 2-hour grace period, reducing false alerts.
+- Debug print added; acceptable for now.

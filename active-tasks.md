@@ -19,7 +19,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-*(none — all agents validated/cleaned)*
+- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Meta-supervisor improvements, clean temp, apply updates (started: 2026-02-20 11:00 UTC, status: running)
 
 ## Recently Completed
 
