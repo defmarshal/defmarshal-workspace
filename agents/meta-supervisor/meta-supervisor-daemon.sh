@@ -19,9 +19,15 @@ log() {
 }
 
 # Check if already running
-if [ -f "$pid_file" ] && kill -0 "$(cat "$pid_file")" 2>/dev/null; then
-  log "Meta-Supervisor daemon already running (PID $(cat "$pid_file"))"
-  exit 0
+if [ -f "$pid_file" ]; then
+  existing_pid=$(cat "$pid_file")
+  if kill -0 "$existing_pid" 2>/dev/null; then
+    log "Meta-Supervisor daemon already running (PID $existing_pid)"
+    exit 0
+  else
+    log "Stale PID file detected (PID $existing_pid not running); removing"
+    rm -f "$pid_file"
+  fi
 fi
 
 # Write PID
