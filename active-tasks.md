@@ -20,3 +20,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Currently Running
 
 *(none — all agents validated/cleaned)*
+
+## Recently Completed
+
+- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Hygiene pass: remove temp artifacts, refresh planning docs (started: 2026-02-20 07:00 UTC, status: validated)
+  - Verification: `./quick health` passed; git showed 4 planned changes; no temp files remain; active-tasks.md size <2KB.
+
