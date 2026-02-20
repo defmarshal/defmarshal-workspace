@@ -26,6 +26,7 @@ Commands:
   memory-reindex Force reindex of memory files (openclaw memory index)
   memory-stores    List all memory store files (SQLite DBs) with size and age
   memory-provider Show current memory search provider (from openclaw.json)
+  memory-summary  Consolidated memory health: provider, stores, dirty status, stats
   voyage-status    Check recent Voyage AI rate limit status from memory reindex logs; shows warnings if rate-limited recently
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
@@ -270,6 +271,42 @@ case "$cmd" in
     echo "Memory search provider: $PROVIDER"
     ;;
 
+  memory-summary)
+    # Consolidated memory health overview
+    echo "Memory Summary"
+    echo "-------------"
+    # Provider
+    CONFIG="/home/ubuntu/.openclaw/openclaw.json"
+    if [ -f "$CONFIG" ]; then
+      PROVIDER=$(python3 -c "import json; print(json.load(open('$CONFIG')).get('agents',{}).get('defaults',{}).get('memorySearch',{}).get('provider','?'))" 2>/dev/null || echo "?")
+      echo "Provider: $PROVIDER"
+    else
+      echo "Provider: config missing"
+    fi
+    # Stores (list files)
+    echo "Stores:"
+    if [ -d "$HOME/.openclaw/memory" ]; then
+      ls -1 "$HOME/.openclaw/memory"/*.sqlite 2>/dev/null | while read -r f; do
+        base=$(basename "$f")
+        size=$(stat -c%s "$f" 2>/dev/null || echo "?")
+        echo "  - $base ($(numfmt --to=iec-i --suffix=B $size 2>/dev/null || echo ${size} bytes))"
+      done
+    else
+      echo "  (no memory directory)"
+    fi
+    # Dirty check
+    echo ""
+    echo "Dirty check:"
+    "$WORKSPACE/memory-dirty" | sed 's/^/  /'
+    # Overall stats via openclaw (concise)
+    echo ""
+    echo "Stats (via openclaw memory status):"
+    if command -v openclaw &>/dev/null; then
+      openclaw memory status 2>/dev/null | sed 's/^/  /' || echo "  (no output or unavailable)"
+    else
+      echo "  openclaw CLI not available"
+    fi
+    ;;
   memory-stats)
     # Show memory system statistics (wrapper around memory-stats script)
     "$WORKSPACE/memory-stats" "$@"
