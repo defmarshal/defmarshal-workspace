@@ -853,6 +853,39 @@ case "$cmd" in
     fi
     ;;
 
+  rudra-test)
+    # Run Rudra executor on the newest plan and report status
+    PLAN_DIR="$WORKSPACE/agents/agni/plans"
+    LOG_DIR="$WORKSPACE/agents/rudra/logs"
+    REPORT_DIR="$WORKSPACE/agents/rudra/reports"
+    newest_plan=$(ls -1t "$PLAN_DIR"/plan-*.md 2>/dev/null | head -1 || true)
+    if [ -z "$newest_plan" ]; then
+      echo "No plan files found"
+      exit 1
+    fi
+    echo "Running Rudra on: $(basename "$newest_plan")"
+    bash agents/rudra-executor.sh "$newest_plan" 2>&1
+    exit_code=$?
+    echo
+    echo "Exit code: $exit_code"
+    timestamp=$(basename "$newest_plan" .md | cut -d'-' -f2-)
+    report_file="$REPORT_DIR/report-${timestamp}.md"
+    log_file="$LOG_DIR/exec-${timestamp}.log"
+    if [ -f "$report_file" ]; then
+      echo "Report exists: $(basename "$report_file")"
+    else
+      echo "Report NOT found: $(basename "$report_file")"
+    fi
+    echo "Log tail:"
+    if [ -f "$log_file" ]; then
+      tail -5 "$log_file"
+    else
+      echo "Log file not found"
+    fi
+    echo "Git status:"
+    git status --short
+    ;;
+
   uptime)
     # Show system and OpenClaw gateway uptime
     echo "=== System Uptime ==="
