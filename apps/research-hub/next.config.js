@@ -1,5 +1,5 @@
 module.exports = {
-  webpack: (config: any) => {
+  webpack: (config) => {
     config.resolve.fallback = {
       fs: false,
     };
