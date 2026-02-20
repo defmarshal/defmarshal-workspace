@@ -1,69 +1,82 @@
-# Workspace Builder Plan: Hygiene Pass & Validation
+# Workspace Builder Plan: Finalize Meta-Supervisor & Commit Pending
 
-**Session Key:** 23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-20 07:00 UTC
-**Goal:** Perform workspace hygiene cleanup, remove temp artifacts, and validate system integrity.
+**Session Key:** 128c7af4-fa32-43f2-a238-8fd1e3feac99
+**Started:** 2026-02-20 09:00 UTC
+**Goal:** Finalize version control for meta-supervisor agent; commit pending changes (daily log, planning docs); validate system integrity; update active-tasks registry.
 
 ---
 
 ## Phase 1: Assessment & Planning
 
 **Actions:**
-- Read SOUL.md, USER.md, MEMORY.md
-- Check active-tasks.md → added our entry
+- Read SOUL.md, USER.md, MEMORY.md (context already loaded)
+- Check active-tasks.md → will add our running entry
 - Run health checks: `quick health`, `quick memory-status`, `quick cron-status`
-- Inspect workspace root for untracked/temp files
+- Inspect workspace: git status shows modified memory log and untracked meta-supervisor dir
 
 **Findings:**
-- System health: all OK (disk 43%, gateway healthy, memory 18f/75c clean, git clean except one untracked)
-- Untracked: `tmp_rudra_list.txt` (19 bytes, created 06:24 UTC)
-- `__pycache__` directories present in several agent/skill paths (normal, but can be cleaned)
-- No critical issues
+- System health: all OK (Disk 43%, Gateway healthy, Memory 18f/75c clean local FTS+, Git dirty)
+- Modified: `memory/2026-02-20.md` (contains Rudra fix log entry)
+- Untracked: `agents/meta-supervisor/` (README.md, meta-supervisor-cycle.sh, plus logs/ and reports/ subdirs which are gitignored)
+- No temp files (`tmp_*`) and no `__pycache__` directories (already clean)
+- Cron job `meta-supervisor-cron` already exists in OpenClaw, so the agent is scheduled but not versioned.
+- active-tasks.md currently has no running entries; we must add ours to avoid conflicts.
 
-**Plan:** Remove temporary artifacts; refresh planning docs; validate; commit with `build:` prefix.
+**Plan:** Add meta-supervisor to git; stage daily log and planning docs; validate; commit with `build:` prefix; update active-tasks.
 
 ---
 
 ## Phase 2: Implementation
 
-### Cleanup 1: Remove root-level temp file
+### Step 1: Register running task
+- Edit `active-tasks.md`: add entry under "Currently Running" with our session key, agent name, goal, start time, status "running". Keep within 2KB limit.
 
-- Delete `tmp_rudra_list.txt`
+### Step 2: Stage changes for commit
+- Stage new files: `agents/meta-supervisor/README.md`, `agents/meta-supervisor/meta-supervisor-cycle.sh` (only non-ignored files)
+- Stage modified file: `memory/2026-02-20.md`
+- Stage planning documents (these will be newly written/overwritten): `task_plan.md`, `findings.md`, `progress.md`
+- Note: `agents/meta-supervisor/logs/` and `reports/` are gitignored; ignore them.
 
-### Cleanup 2: Remove __pycache__ directories
-
-- Use `find` to remove all `__pycache__` directories under workspace (except maybe in .git)
-- This reduces clutter and avoids accidental tracking
-
-### Documentation: Refresh planning files
-
-- Overwrite task_plan.md, findings.md, progress.md with current cycle's documents
+### Step 3: Write planning docs (overwrite existing)
+- Create `task_plan.md` (this file)
+- Create `findings.md` with current assessment
+- Create `progress.md` with initial log and phase checklist
 
 ---
 
 ## Phase 3: Validation
 
-- Run `./quick health` → expect OK
-- Run `git status --short` → expect no untracked files (only our staged changes)
-- Check `active-tasks.md` size (<2KB)
-- Verify no temp files remain in workspace root
+**Checks:**
+- `./quick health` → must be OK
+- `git status --short` → should show only our staged changes (no other untracked files)
+- `active-tasks.md` size <2KB
+- No temp files in workspace root
+- Verify meta-supervisor script syntax: `bash -n agents/meta-supervisor/meta-supervisor-cycle.sh`
 
 ---
 
-## Phase 4: Commit & Update
+## Phase 4: Commit, Push, and Finalize
 
-- Stage changes: active-tasks.md (modified), task_plan.md, findings.md, progress.md, and the deletion of tmp_rudra_list.txt (implicit)
-- Commit with message: `build: hygiene pass; remove temp files and __pycache__; refresh planning docs`
+**Commit:**
+- Stage all listed changes (including active-tasks.md update from Step 1)
+- Commit with message: `build: add meta-supervisor to version control; commit daily log; refresh planning docs`
 - Push to origin
-- Update active-tasks.md: change status to `validated`, add verification notes
-- Keep validated entry for traceability (future cleanup can prune)
+
+**Update active-tasks.md:**
+- Change our entry status from "running" to "validated"
+- Add verification notes (commands/outputs)
+- Keep entry in "Recently Completed" for traceability
+
+**Final health check:**
+- Run `./quick health` again to confirm post-commit state
 
 ---
 
 ## Success Criteria
 
-- No untracked files in workspace root (except .gitignore'd caches)
-- All `__pycache__` removed from working tree
-- System health passes
-- Changes pushed
-- Active task registry updated
+- meta-supervisor agent files tracked in git
+- memory/2026-02-20.md committed (Rudra fix preserved)
+- Planning docs reflect this run
+- active-tasks.md updated correctly
+- System health passes all checks
+- No leftover temp files or untracked clutter
