@@ -33,6 +33,7 @@ Commands:
   voyage-status    Check recent Voyage AI rate limit status from memory reindex logs; shows warnings if rate-limited recently
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
+  orphan-check   Check for orphaned agent sessions (stale running sessions)
   cron-schedules Validate and correct cron schedules against CRON_JOBS.md documentation
   cron-runs      Show recent runs for all cron jobs (last run, status, duration)
   cron-health     Show health overview of all cron jobs (status, errors, schedule)
@@ -88,6 +89,7 @@ Commands:
   reports                     List daily digest reports in reports/ (most recent first)
   research-hub-deploy         Deploy Research Hub to standalone GitHub repo and Vercel (requires gh & vercel)
   research-hub-status         Check Research Hub deployment status (local/remote/Vercel)
+  vercel-prereq               Check Research Hub deployment prerequisites (gh, vercel, gateway)
   digest                     Show the latest daily digest report from reports/ (cat the most recent)
   social-monitor                  Run the social monitor agent (Twitter trending digest)
   daily-digest [YYYY-MM-DD]       Generate daily digest report (default: today UTC). Saves to reports/ and prints.
@@ -470,6 +472,11 @@ case "$cmd" in
       printf "%-25s %-15s %-8s %-16s %-10s %6ss\n" "$name" "$expr" "${tz:0:3}" "$nextdt" "$status" "$duration"
     done || echo "Error: jq not available or openclaw CLI issue"
     ;;
+  orphan-check)
+    # Check for orphaned agent sessions (stale running sessions)
+    echo "Checking for orphaned agents..."
+    "$WORKSPACE/scripts/check-orphaned-agents.sh"
+    ;;
   cron-schedules)
     # Validate and correct cron schedules against CRON_JOBS.md
     echo "Validating cron schedules against CRON_JOBS.md..."
@@ -793,6 +800,69 @@ case "$cmd" in
     else
       echo "Vercel: not linked"
     fi
+    ;;
+  vercel-prereq)
+    # Check Research Hub deployment prerequisites (gh, vercel, gateway)
+    echo "=== Research Hub Deployment Prerequisites ==="
+    echo ""
+
+    # Check OpenClaw gateway
+    echo "1. Gateway status:"
+    if openclaw gateway status &>/dev/null; then
+      echo "   ✓ Gateway is running"
+    else
+      echo "   ✗ Gateway is not accessible"
+    fi
+
+    # Check gh binary
+    echo "2. GitHub CLI (gh):"
+    if command -v gh &>/dev/null; then
+      echo "   ✓ gh found at $(command -v gh)"
+      if gh auth status &>/dev/null; then
+        echo "   ✓ gh is authenticated"
+      else
+        echo "   ⚠ gh not authenticated. Run: gh auth login"
+      fi
+    else
+      echo "   ✗ gh not installed or not in PATH"
+    fi
+
+    # Check vercel binary
+    echo "3. Vercel CLI:"
+    if command -v vercel &>/dev/null; then
+      echo "   ✓ vercel found at $(command -v vercel)"
+      if vercel whoami &>/dev/null; then
+        echo "   ✓ vercel is authenticated"
+      else
+        echo "   ⚠ vercel not authenticated. Run: vercel login"
+      fi
+    else
+      echo "   ✗ vercel not installed or not in PATH"
+    fi
+
+    # Check OpenClaw exec allowlist (quick heuristic)
+    echo "4. OpenClaw exec allowlist:"
+    EXEC_APPROVALS="$HOME/.openclaw/exec-approvals.json"
+    if [ -f "$EXEC_APPROVALS" ]; then
+      if grep -q '/usr/bin/gh' "$EXEC_APPROVALS"; then
+        echo "   ✓ gh appears in allowlist"
+      else
+        echo "   ⚠ gh not found in allowlist"
+      fi
+      if grep -q 'vercel' "$EXEC_APPROVALS"; then
+        echo "   ✓ vercel appears in allowlist"
+      else
+        echo "   ⚠ vercel not found in allowlist"
+      fi
+    else
+      echo "   ✗ exec-approvals.json not found"
+    fi
+
+    echo ""
+    echo "If all checks are green, you can deploy with:"
+    echo "  quick research-hub-deploy"
+    echo ""
+    echo "For full instructions, see: docs/research-hub-deployment.md"
     ;;
   digest)
     # Show the latest daily digest report from reports/

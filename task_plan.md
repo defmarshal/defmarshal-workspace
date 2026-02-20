@@ -1,94 +1,87 @@
-# Task Plan: Research Hub Finalization & System Validation
+# Task Plan: Strategic Workspace Improvements (2026-02-20)
 
-**Session:** workspace-builder  
-**Started:** 2026-02-20 19:00 UTC  
-**Goal:** Complete Research Hub implementation, validate system integrity, and commit pending changes  
-
----
-
-## Current State Analysis
-
-### Pending Changes
-- Modified: `apps/research-hub/app/page.tsx`
-- Modified: `apps/research-hub/components/ResearchList.tsx`
-- Untracked: `apps/research-hub/app/api/research/route.ts`
-- Untracked: `apps/research-hub/components/ResearchClient.tsx`
-- Untracked: `apps/research-hub/components/ErrorBoundary.tsx`
-
-These changes implement the Research Hub frontend with search, pagination, and API integration.
-
-### Research Content Status
-- 17 research files from 2026-02-15 present
-- 8 research files from 2026-02-20 present (fresh content)
-- Content sync appears complete
-
-### System Health (from recent logs)
-- Memory: local FTS operational, 18f/75c
-- Gateway: healthy
-- Cron: all jobs OK (git-janitor, notifier, supervisor, agent-manager)
-- No temp files, active tasks clean
+**Session:** workspace-builder-cron  
+**Goal:** Implement meaningful improvements with focused changes  
+**Constraints:** Keep changes small but impactful; validate before commit; use `build:` prefix
 
 ---
 
-## Plan Phases
+## Phase 1: Research Hub Deployment Completion
 
-### Phase 1: Discovery & Assessment
-- [ ] Read modified files to understand changes
-- [ ] Verify research content freshness
-- [ ] Check dependencies (node_modules, package.json)
-- [ ] Run `./quick health` for baseline
+**Why:** The Research Hub is scaffolded but not deployable due to missing exec allowlist grants (git, gh, vercel). We need to make it deployment-ready by adding prerequisite checks and comprehensive documentation.
 
-### Phase 2: Validation & Testing
-- [ ] Build Research Hub (`npm run build` or equivalent)
-- [ ] Start dev server briefly to check for errors
-- [ ] Test API route manually (`curl` or fetch)
-- [ ] Verify search/pagination logic works
-- [ ] Ensure markdown parsing dependencies present
+**Tasks:**
+1. Add `quick vercel-prereq` command to check:
+   - Whether `git`, `gh`, `vercel` binaries exist in PATH
+   - Whether they are allowlisted in `~/.openclaw/exec-approvals.json`
+   - Provide clear instructions for user to enable deployment
+2. Enhance `apps/research-hub/README.md` with:
+   - Deployment prerequisites section (allowlist, tokens, repo setup)
+   - Step-by-step manual deployment guide
+   - Troubleshooting tips
+3. Update `docs/research-hub-deployment.md` (if exists) or create it with complete instructions
+4. Test the new `quick vercel-prereq` command locally
 
-### Phase 3: Documentation & Utilities
-- [ ] Add `quick research-hub` commands (dev, build, status)
-- [ ] Update `quick` script with Research Hub shortcuts
-- [ ] Update `TOOLS.md` with Research Hub notes
-- [ ] Document deployment status and next steps
+**Success criteria:** User can run `quick vercel-prereq` and receive actionable guidance; deployment steps clearly documented.
 
-### Phase 4: Git Hygiene & Commit
-- [ ] Stage all Research Hub changes
-- [ ] Commit with `build:` prefix and descriptive message
-- [ ] Push to origin
-- [ ] Verify `git status` is clean
-- [ ] Check for any temporary files to clean
+---
 
-### Phase 5: System-Wide Validation
-- [ ] Run `./quick health`
-- [ ] Run `./quick memory-status`
-- [ ] Check `active-tasks.md` remains <2KB
-- [ ] Verify cron job health with `quick cron-status`
-- [ ] Review logs for errors
+## Phase 2: Build Archive Cleanup
 
-### Phase 6: Close The Loop
-- [ ] Update `active-tasks.md` with this task's lifecycle: add, validate, archive
-- [ ] Ensure all planning files (task_plan.md, findings.md, progress.md) are committed
-- [ ] Final verification: no uncommitted changes (except intentional)
-- [ ]Report completion to user
+**Why:** The `build-archive/` directory contains 15 old planning files (task_plan, findings, progress) from Feb 15-17. These have been superseded by daily logs and MEMORY.md. Keeping them clutters the workspace and violates the principle of minimalism.
+
+**Tasks:**
+1. Review contents of `build-archive/` to ensure no critical historical data
+2. Create a compressed tarball backup: `build-archive-backup-YYYY-MM-DD.tar.gz` in workspace root
+3. Remove the `build-archive/` directory entirely
+4. Update any references to these files (if found in docs or scripts)
+5. Document the cleanup in today's daily log (`memory/2026-02-20.md`)
+
+**Success criteria:** Workspace free of old planning files; backup safely stored; no broken references.
+
+---
+
+## Phase 3: Enhanced System Validation (Orphaned Agent Detection)
+
+**Why:** While active-tasks.md is currently clean, there have been incidents of orphaned agents leaving stale entries. A proactive check can detect sessions that are marked running but have no active process.
+
+**Tasks:**
+1. Create script `scripts/check-orphaned-agents.sh` that:
+   - Lists all sessions via `openclaw sessions list --json`
+   - Identifies sessions with status "running" but no recent activity (stale)
+   - Reports findings with suggestions
+   - Exit 0 if none, 1 if issues found
+2. Add `quick orphan-check` command to invoke this script
+3. Test the command to ensure it works
+4. Optionally: integrate into `supervisor.sh` as an additional health check
+
+**Success criteria:** `quick orphan-check` runs successfully and provides useful output.
+
+---
+
+## Phase 4: Validation & Commit
+
+**Tasks:**
+1. Run `./quick health` - ensure all systems OK
+2. Test each modified/new command:
+   - `quick vercel-prereq`
+   - `quick orphan-check`
+3. Verify no temp files were created
+4. Confirm `active-tasks.md` size < 2KB
+5. If all pass: commit changes with `build:` prefix and push to origin
+6. Update `active-tasks.md` with this session's verification status
 
 ---
 
 ## Risk Mitigation
 
-- If build fails: capture error, attempt fix, or document as finding
-- If dependencies missing: check package.json, run `npm install`
-- If port conflict: use different port or verify no zombie processes
-- Keep changes minimal: only commit Research Hub files, avoid unrelated edits
+- **Backup before deletion:** `build-archive/` will be tar'd before removal
+- **Command testing:** All new commands will be tested before final commit
+- **Documentation updates:** Any new features will be reflected in `quick` help
+- **No aggressive changes:** Stick to housekeeping and non-invasive improvements
 
 ---
 
-## Success Criteria
+**Estimated impact:** Medium (cleaner workspace, better deployment readiness, improved monitoring)
 
-✅ All pending changes staged and committed with `build:` prefix  
-✅ Research Hub builds successfully with no errors  
-✅ API route works and serves JSON  
-✅ System health checks pass (`./quick health`)  
-✅ Documentation updated  
-✅ Active tasks registry updated with verification notes  
-✅ Repository pushed to origin  
-✅ No leftover temp files or untracked changes (beyond committed ones)
+**Estimated token usage:** <50k (planning + execution)

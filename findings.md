@@ -1,108 +1,141 @@
-# Findings Report: Research Hub Implementation Status
+# Findings Report: Strategic Workspace Improvements (2026-02-20)
 
-**Date:** 2026-02-20 19:15 UTC  
-**Session:** workspace-builder  
-**Scope:** Current state of Research Hub and system health  
+**Session:** workspace-builder-cron  
+**Timestamp:** 2026-02-20 21:00 UTC  
+**Assessor:** Strategic Workspace Builder
+
+---
+
+## Executive Summary
+
+The workspace is in excellent health: all systems operational, memory clean, cron validated, git clean. However, three meaningful improvements are identified:
+
+1. **Research Hub deployment is incomplete** due to missing exec allowlist (blocking git/gh/vercel)
+2. **Build archive clutter** – 15 old planning files (76KB) serving no purpose
+3. **Orphaned agent detection** – no proactive tool for stale session cleanup
+
+These improvements will enhance deployment readiness, workspace cleanliness, and self-monitoring capability.
+
+---
+
+## Detailed Findings
+
+### 1. Research Hub Deployment Blocker
+
+**Status:**
+- Next.js app scaffolded in `apps/research-hub/`
+- Deployment commands (`quick vercel`, `research-hub-deploy`) exist
+- **Blocker:** `exec-approvals.json` does not allow `git`, `gh`, or `vercel`
+
+**Evidence:**
+- README mentions deployment but lacks prerequisite troubleshooting
+- No automated check for allowlist status
+- User must manually add entries and restart gateway (referenced in daily logs)
+
+**Impact:** High – deployment path exists but is unreachable without manual config
+
+**Recommendation:** Add a prerequisite check command (`quick vercel-prereq`) that inspects `exec-approvals.json` and provides actionable instructions. Enhance deployment docs with clear steps.
+
+---
+
+### 2. Build Archive Accumulation
+
+**Status:**
+- Directory `build-archive/` contains 15 files (~80KB total)
+- Files are planning docs from Feb 15-17 (task_plan, findings, progress)
+- Pattern: Each workspace-builder run previously preserved these; newer runs now document only in daily logs and MEMORY.md
+
+**Evidence:**
+```bash
+$ ls build-archive/
+findings-2026-02-15-1100.md findings-2026-02-16-0514.md ...
+progress-2026-02-15-1100.md progress-2026-02-16-0514.md ...
+task_plan-2026-02-15-1100.md task_plan-2026-02-16-0514.md ...
+```
+
+**Impact:** Low-Medium – minor clutter, violates workspace minimalism principle
+
+**Recommendation:** Compress and archive these files as a single backup tarball, then remove the directory. Ensure no references remain.
+
+---
+
+### 3. Missing Orphaned Agent Detection
+
+**Status:**
+- `active-tasks.md` is currently clean (no running agents)
+- Past incidents (2026-02-19) showed stale entries persisting
+- `agent-manager-cron` runs cleanup every 30 minutes, but manual check is useful
+
+**Evidence:**
+- Daily log entry: "Stale Active Task Cleanup" – orphaned entry required manual removal
+- No standalone command to quickly inspect session health
+
+**Impact:** Medium – orphaned sessions can indicate instability or improper cleanup
+
+**Recommendation:** Create `scripts/check-orphaned-agents.sh` that uses `openclaw sessions list --json` to identify stale running sessions. Expose via `quick orphan-check`.
 
 ---
 
 ## System Health Baseline
 
-Command: `./quick health` (anticipated)  
-Status: All green from latest checks (within past few hours)
+| Metric | Status |
+|--------|--------|
+| Disk usage | 49% (healthy) |
+| Git status | Clean |
+| Memory index | 18f/81c (local FTS+, clean) |
+| Gateway | Healthy |
+| Downloads | 4.0G (14 files, all <30 days) |
+| Cron jobs | 22 scheduled, all documented in CRON_JOBS.md |
+| active-tasks.md | 889 bytes (<2KB) |
+| Temp files | None (normal openclaw temp dirs only) |
 
-- **Disk:** 43% used (healthy)
-- **Gateway:** Running on port 18789, responsive
-- **Memory:** Local FTS+ operational, 18 files/75 chunks (clean)
-- **Git:** Previously clean, now has pending Research Hub changes
-
-**Cron Jobs:** All operational, lastStatus=ok, errors=0
-- git-janitor-cron
-- notifier-cron  
-- supervisor-cron
-- agent-manager-cron
-
-**Active Tasks:** No running agents; registry clean (<2KB)
+All baseline metrics are green. No urgent issues.
 
 ---
 
-## Research Hub Files State
+## Scope Definition
 
-### Directories
-- `apps/research-hub/` - Next.js 15 app with App Router
-- `apps/research-hub/public/research/` - Markdown content (25 files total)
+**In Scope:**
+- Research Hub deployment docs & prerequisite check
+- Build archive cleanup
+- Orphaned agent detection tool
+- Standard validation and commit procedure
 
-### Modified Files (tracked by git)
-1. `apps/research-hub/app/page.tsx` - Home page wrapper, simple header + ResearchClient
-2. `apps/research-hub/components/ResearchList.tsx` - Article list component with date formatting
-
-### New Untracked Files
-1. `apps/research-hub/app/api/research/route.ts` - API route to fetch research metadata
-2. `apps/research-hub/components/ResearchClient.tsx` - Client component with search + pagination
-3. `apps/research-hub/components/ErrorBoundary.tsx` - Placeholder error boundary
-
-### Package Dependencies (to verify)
-Expected in `apps/research-hub/package.json`:
-- next, react, react-dom
-- gray-matter, remark, remark-html
-- date-fns
-- tailwindcss (for styling)
+**Out of Scope:**
+- Modifying exec-approvals.json (user action required)
+- Changing Research Hub code structure
+- Altering agent-manager cleanup logic (already exists)
+- Modifying user's interest alignment (content already tech-focused)
 
 ---
 
-## Research Content Inventory
+## Verification Plan
 
-### Pre-existing (2026-02-15): 17 files
-- Benchmark gap, continuous update, infrastructure economics, methodology, midmonth update, open models, privacy assessment, phase-2 kickoff, production deployment ROI, research cycle (multiple), sprint completion, etc.
+### After Implementation:
 
-### Today (2026-02-20): 8 files
-- state-of-web-app-dev-2026.md
-- ai-production-cost-compression-adoption.md
-- token-optimization-agent-systems.md
-- ai-engineering-realism-gap-and-cost-trajectories.md
-- ai-data-center-power-water-constraints.md
-- cbdc-deployment-status-dashboard.md
-- china-japan-anime-co-production-shifts.md
-- nvidia-blackwell-b200-real-world-performance.md
-
-**Content Sync:** Research Agent appears to be populating the Research Hub correctly; prebuild script should copy these automatically.
+1. `./quick health` → all OK
+2. `quick vercel-prereq` → prints clear guidance
+3. `quick orphan-check` → runs without error, exits 0
+4. `build-archive/` removed, backup tarball exists
+5. `git status` clean, no untracked files
+6. `active-tasks.md` < 2KB
+7. Commit pushed with `build:` prefix
 
 ---
 
-## Identified Gaps & Risks
+## Risk Assessment
 
-1. **Untracked files not yet committed** - Need to add and commit with proper prefix
-2. **Build not verified** - Must run `npm run build` to catch TypeScript/runtime errors
-3. **Dev server not tested** - Should verify API works and UI renders
-4. **Dependencies not confirmed** - Need to check package.json and node_modules
-5. **Quick commands missing** - No `quick research-hub` shortcuts yet
-6. **Documentation incomplete** - TOOLS.md lacks Research Hub section; AGENTS.md may need updates
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| Broken references after build-archive removal | Low | Medium | Grep for references before removal |
+| New command syntax errors | Low | Low | Test commands before final commit |
+| Research Hub docs become outdated | Medium | Medium | Keep instructions generic; reference allowlist docs |
+| Orphan check false positives | Low | Low | Use conservative heuristics (stale threshold >2h) |
 
----
-
-## Environmental Checks Required
-
-- [ ] Node.js version compatible with Next.js 15 (check `node --version`)
-- [ ] `apps/research-hub/node_modules` exists and is up to date
-- [ ] No port conflicts if starting dev server (default 3000)
-- [ ] Prebuild script functional: copies research/ markdown to app
-- [ ] Environment variables (none expected for local dev)
+Overall risk: **Low**
 
 ---
 
-## Next Steps (as per Plan)
+## Conclusion
 
-1. **Phase 1 Discovery:** Already done through file inspection
-2. **Phase 2 Validation:** Build and test
-3. **Phase 3 Documentation:** Add quick commands and notes
-4. **Phase 4 Git Hygiene:** Stage, commit, push
-5. **Phase 5 Validation:** Re-run health checks
-6. **Phase 6 Close Loop:** Update active-tasks.md and finalize
-
----
-
-## Notes
-
-The Research Hub implementation appears well-structured with proper separation of concerns (API route, client component, list component). The search and pagination features add significant usability. The research content is up-to-date and relevant to user's current tech interests.
-
-The main remaining work is integration validation, documentation, and git hygiene — a relatively smooth finish to this development cycle.
+Three focused improvements are recommended and feasible without disrupting system stability. Execution should follow standard workspace-builder workflow: implement, validate, commit, update active-tasks.

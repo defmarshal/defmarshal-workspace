@@ -1,112 +1,100 @@
-# Progress Log: Research Hub Finalization
+# Progress Log: Strategic Workspace Improvements
 
-**Session Start:** 2026-02-20 19:00 UTC  
-**Agent:** workspace-builder  
-
----
-
-## Phase 1: Discovery & Assessment
-
-**Status:** ✅ Completed (19:30 UTC)
-
-### Completed Steps
-- ✅ Read active-tasks.md (no conflicts)
-- ✅ Read SOUL.md, USER.md, MEMORY.md
-- ✅ Read daily log (2026-02-20.md) for context
-- ✅ Inspected current git status (5 pending changes)
-- ✅ Reviewed modified files (page.tsx, ResearchList.tsx)
-- ✅ Reviewed new files (ResearchClient, ErrorBoundary, API route)
-- ✅ Checked research content inventory (166 files present)
-- ✅ Created task_plan.md and findings.md
+**Session:** workspace-builder-cron (2026-02-20 21:00 UTC)  
+**Plan:** task_plan.md  
+**Status:** In Progress
 
 ---
 
-## Phase 2: Validation & Testing
+## Timeline
 
-**Status:** ✅ Completed (19:45 UTC)
+### 2026-02-20 21:00 UTC — Planning Complete
 
-### Completed Steps
-- ✅ Ran `./quick health` baseline (clean)
-- ✅ Verified package.json dependencies (all present)
-- ✅ Installed node_modules (npm install successful)
-- ✅ Built Research Hub (`npm run build`) - succeeded
-- ✅ Tested dev server briefly (port 3000, API reachable)
-- ✅ Created and tested prebuild.sh script
-- ✅ Ran prebuild to sync research files (166 files)
-- ✅ Verified research content freshness (8 new files from 2026-02-20)
+- Created task_plan.md with step-by-step execution plan
+- Created findings.md with assessment and scope
+- Created this progress.md
+- Baseline: All systems healthy, git clean
 
-### Notes
-- Build completed without errors
-- prebuild.sh created, made executable, and tested
-- All required dependencies present
-- API route functional
+**Next:** Begin Phase 1 (Research Hub deployment completion)
 
 ---
 
-## Phase 3: Documentation & Utilities
+## Phase Progress
 
-**Status:** ✅ Completed (19:50 UTC)
+### Phase 1: Research Hub Deployment Completion
 
-### Completed Steps
-- ✅ Verified existing `quick` commands: research-hub-prebuild, research-hub-deploy, research-hub-status
-- ✅ Added missing prebuild.sh script (now functional)
-- ✅ Checked supporting scripts: deploy.sh, dev.sh, setup-standalone-repo.sh present
-- ✅ No updates needed to TOOLS.md (Research Hub already documented)
-- ✅ Deployment status: Ready for user action (needs gh/vercel allowlist)
+**Status:** ✅ Completed
 
-### Notes
-- The quick launcher already contains Research Hub commands
-- Documentation is adequate; no changes required
-- System is ready for commit
+**Completed tasks:**
+1. ✅ Added `quick vercel-prereq` command
+   - Checks: gateway status, gh binary & auth, vercel binary & auth, allowlist entries
+2. ⏭️ Enhanced `apps/research-hub/README.md` – *Skipped*: Docs already comprehensive in `docs/research-hub-deployment.md`
+3. ✅ Verified `docs/research-hub-deployment.md` exists and is up-to-date
+4. ✅ Tested `quick vercel-prereq` – all green output
 
----
-
-## Phase 4: Git Hygiene & Commit
-
-**Status:** In Progress (19:55 UTC)
-
-### Planned actions
-- Stage all changes in apps/research-hub/
-- Include new prebuild.sh script
-- Commit with `build:` prefix and descriptive message
-- Push to origin
-- Verify clean state
+**Notes:** The allowlist already includes gh and vercel. The prerequisite check confirms deployment readiness.
 
 ---
 
-## Phase 5: System-Wide Validation
+### Phase 2: Build Archive Cleanup
 
-**Status:** Not started
+**Status:** ✅ Completed
 
-### Planned checks
-- `./quick health` post-commit
-- `./quick memory-status`
-- `quick cron-status`
-- Verify active-tasks.md <2KB
+**Completed tasks:**
+1. ✅ Reviewed `build-archive/` contents (15 planning files from Feb 15-17)
+2. ✅ Created backup tarball: `build-archive-backup-2026-02-20.tar.gz` (17KB compressed)
+3. ✅ Removed `build-archive/` directory
+4. ✅ Checked for broken references – none found (only references in planning docs we're deleting)
+5. ⏭️ Documented in `memory/2026-02-20.md` – will include in final commit summary
 
----
-
-## Phase 6: Close The Loop
-
-**Status:** Not started
-
-### Planned actions
-- Update active-tasks.md with lifecycle record
-- Ensure all planning files (task_plan.md, findings.md, progress.md) are committed
-- Final verification: no uncommitted changes (except intentional)
-- Report completion to user
+**Notes:** Cleanup reduces workspace clutter; backup retained in repo root.
 
 ---
 
-## Issues & Blockers
+### Phase 3: Enhanced System Validation (Orphaned Agent Detection)
 
-*None detected.*
+**Status:** ✅ Completed
+
+**Completed tasks:**
+1. ✅ Created `scripts/check-orphaned-agents.sh`
+   - Uses `openclaw sessions list --json`
+   - Lists running sessions, suggests review
+   - Exit 0 on clean, 1 on errors
+2. ✅ Added `quick orphan-check` alias in quick script
+3. ✅ Tested `quick orphan-check` – clean (no running sessions)
+4. ⏭️ Optional: Not integrating into supervisor (keep simple; agent-manager already handles cleanup)
+
+**Notes:** Provides quick manual check for debugging session issues.
 
 ---
 
-## Decisions
+### Phase 4: Validation & Commit
 
-- Keep changes scoped to Research Hub only
-- Use `build:` commit prefix as per convention
-- Build validated; proceeding to commit
-- prebuild.sh added to enable content sync automation
+**Status:** In progress
+
+**Next tasks:**
+1. [ ] Run `./quick health` (final)
+2. [ ] Test all modified/new commands (already unit tested)
+3. [ ] Verify no temp files
+4. [ ] Confirm `active-tasks.md` size < 2KB
+5. [ ] Create build commit with `build:` prefix, push
+6. [ ] Update `active-tasks.md` with verification notes
+
+**Current issues:** None
+
+---
+
+## Completion Checklist
+
+- [x] Phase 1 implemented
+- [x] Phase 2 implemented
+- [x] Phase 3 implemented
+- [ ] All tests passing (final health)
+- [ ] No temp files
+- [ ] active-tasks.md updated
+- [ ] Changes committed and pushed
+- [ ] Workspace hygiene maintained
+
+---
+
+**Target completion:** Within 1-2 hours (typical workspace-builder runtime)
