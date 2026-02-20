@@ -78,6 +78,7 @@ Commands:
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   today                     Show files modified today across the workspace (since midnight UTC)
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
+  disk-usage                  Show disk usage by top-level directories in the workspace (monitor growth)
   updates-check                Check for pending system updates (APT)
   updates-apply [--dry-run|--execute] Apply system updates (dry-run by default; use --execute to actually upgrade)
   cleanup-downloads [options] Clean up old downloads (default: dry-run, retains 30 days)
@@ -463,6 +464,21 @@ case "$cmd" in
     ;;
   log-rotate)
     "$WORKSPACE/log-rotate"
+    ;;
+
+  disk-usage)
+    echo "Disk usage by top-level directory (workspace root):"
+    du -sh --exclude='downloads' ./* 2>/dev/null | sort -hr | head -20
+    echo ""
+    echo "Total workspace size (excluding downloads):"
+    du -sh . --exclude='downloads'
+    echo ""
+    echo "Downloads directory size (if present):"
+    if [ -d downloads ]; then
+      du -sh downloads
+    else
+      echo "  (no downloads directory)"
+    fi
     ;;
 
   updates-check)
