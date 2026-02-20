@@ -65,17 +65,17 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 7. **dev-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/dev-cycle.sh >> dev-agent.log 2>&1'`
-   - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Reduced from every 20 min to hourly (token optimization, 2026-02-19).
+   - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Includes retry logic for transient OpenRouter rate limits. Reduced from every 20 min to hourly (token optimization, 2026-02-19).
 
 8. **content-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/content-cycle.sh >> content-agent.log 2>&1'`
-   - **Description**: Performs one content-agent cycle (create anime summaries, tech writeups, digests). Reduced from every 10 min to hourly (token optimization, 2026-02-19).
+   - **Description**: Performs one content-agent cycle (create anime summaries, tech writeups, digests). Includes retry logic for transient OpenRouter rate limits. Reduced from every 10 min to hourly (token optimization, 2026-02-19).
 
 9. **research-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/research-cycle.sh >> research-agent.log 2>&1'`
-   - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Reduced from every 15 min to hourly (token optimization, 2026-02-19).
+   - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Includes retry logic for transient OpenRouter rate limits. Reduced from every 15 min to hourly (token optimization, 2026-02-19).
 
 10. **cleanup-downloads-cron**
     - **Schedule**: Weekly on Sunday at 06:00 Asia/Bangkok (`0 6 * * 0`)
