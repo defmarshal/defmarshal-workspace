@@ -2,10 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "build": {
     "env": {
-      "RESEARCH_PATH": {
-        "from": "env",
-        "default": "../../research"
-      }
+      "RESEARCH_PATH": "../../research"
     }
   },
   "functions": {
