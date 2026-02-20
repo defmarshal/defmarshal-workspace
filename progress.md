@@ -46,15 +46,15 @@
 
 ### Step 6: Stage changes
 - **Action:** `git add` for meta-supervisor-cycle.sh, active-tasks.md, planning docs
-- **Status:** ⏳ Pending
+- **Status:** ✅ Done
 
 ### Step 7: Commit and push
 - **Action:** `git commit -m 'build: meta-supervisor enhancements; clean temp files; apply updates'` then `git push`
-- **Status:** ⏳ Pending
+- **Status:** ✅ Done (commit e78fcbb pushed)
 
 ### Step 8: Close the loop
 - **Action:** Update active-tasks.md to validated + verification notes
-- **Status:** ⏳ Pending
+- **Status:** ✅ Done (active-tasks.md updated, verification added)
 
 ---
 
