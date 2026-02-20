@@ -25,6 +25,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-- [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Implement torrent-bot pause/resume/remove commands (started: 2026-02-20 03:00 UTC, status: running)
-  - Verification: Pending
+- (none)
+
 
