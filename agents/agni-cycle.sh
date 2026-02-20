@@ -14,6 +14,14 @@ echo "[$(date --iso-8601=seconds)] Agni cycle starting" >> "$LOG"
 # Avoid overlap: use flock lockfile
 LOCKFILE="agents/agni/agni.lock"
 mkdir -p "$(dirname "$LOCKFILE")"
+# Auto-clean stale lock (older than 1 hour) to prevent permanent blocking
+if [ -e "$LOCKFILE" ]; then
+  lock_age=$(( $(date +%s) - $(stat -c %Y "$LOCKFILE" 2>/dev/null || echo 0) ))
+  if [ "$lock_age" -gt 3600 ]; then
+    echo "[$(date --iso-8601=seconds)] Removing stale Agni lock (age: $((lock_age/60)) min)" >> "$LOG"
+    rm -f "$LOCKFILE"
+  fi
+fi
 exec 200>"$LOCKFILE"
 if ! flock -n 200; then
   echo "[$(date --iso-8601=seconds)] Another Agni running — exiting" >> "$LOG"

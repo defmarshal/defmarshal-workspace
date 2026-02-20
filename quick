@@ -808,6 +808,51 @@ case "$cmd" in
     echo "  Memory search: $MEM_PROVIDER"
     ;;
 
+  agni-run)
+    # Manually run the Agni brainstorming cycle (clears stale lock if needed)
+    AGNI_SCRIPT="$WORKSPACE/agents/agni-cycle.sh"
+    LOCKFILE="$WORKSPACE/agents/agni/agni.lock"
+    # Auto-clean stale lock (>1h old)
+    if [ -e "$LOCKFILE" ]; then
+      AGE=$(( ( $(date +%s) - $(stat -c %Y "$LOCKFILE" 2>/dev/null || echo 0) ) ))
+      if [ "$AGE" -gt 3600 ]; then
+        echo "Removing stale Agni lock (age: $((AGE/60)) min)"
+        rm -f "$LOCKFILE"
+      fi
+    fi
+    if [ ! -x "$AGNI_SCRIPT" ]; then
+      echo "Agni script not found or not executable: $AGNI_SCRIPT"
+      exit 1
+    fi
+    echo "Starting Agni cycle..."
+    bash "$AGNI_SCRIPT"
+    ;;
+
+  rudra-status)
+    # Show latest Rudra execution report and log summary
+    REPORT_DIR="$WORKSPACE/agents/rudra/reports"
+    LOG_DIR="$WORKSPACE/agents/rudra/logs"
+    echo "=== Latest Rudra Report ==="
+    latest_report=$(ls -1t "$REPORT_DIR"/*.md 2>/dev/null | head -1 || true)
+    if [ -n "$latest_report" ]; then
+      echo "Report: $(basename "$latest_report")"
+      echo "--- Preview (last 10 lines) ---"
+      tail -10 "$latest_report" | sed -n '1,10p'
+    else
+      echo "No reports found"
+    fi
+    echo
+    echo "=== Latest Rudra Log ==="
+    latest_log=$(ls -1t "$LOG_DIR"/*.log 2>/dev/null | head -1 || true)
+    if [ -n "$latest_log" ]; then
+      echo "Log: $(basename "$latest_log")"
+      echo "--- Tail (20 lines) ---"
+      tail -20 "$latest_log"
+    else
+      echo "No logs found"
+    fi
+    ;;
+
   uptime)
     # Show system and OpenClaw gateway uptime
     echo "=== System Uptime ==="
