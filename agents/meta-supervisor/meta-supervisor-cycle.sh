@@ -216,7 +216,7 @@ report_content = "\n".join(report_lines)
 with open(report_file, 'w') as f:
     f.write(report_content)
 
-log(f"Report generated: {os.path.basename(report_file)}")
-log("Meta-Supervisor cycle completed")
+print(f"Report generated: {os.path.basename(report_file)}")
+print("Meta-Supervisor cycle completed")
 sys.exit(0)
 PY

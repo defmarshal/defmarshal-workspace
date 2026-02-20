@@ -65,4 +65,7 @@ agents/vishwakarma/logs/
 **/*.log
 **/*.log.*
 
+# Meta-supervisor generated reports
+agents/meta-supervisor/reports/
+
 # End of additions
