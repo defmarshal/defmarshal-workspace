@@ -1,76 +1,73 @@
-# Workspace Builder Plan: Meta-Supervisor Artifact Hygiene
-
-**Session Key:** workspace-builder-20260220-1300
-**Started:** 2026-02-20 13:00 UTC
-**Goal:** Clean up meta-supervisor runtime artifacts, update .gitignore, validate system, commit changes.
-
----
-
-## Phase 1: Assessment
-
-**Actions:**
-- Read active-tasks.md → added running entry
-- Run health checks: `./quick health`, `./quick memory-status`, `./quick agent-status`
-- Inspect workspace for temp/clutter files
-
-**Findings:**
-- System health: OK (Disk 44%, Gateway healthy, Memory 18f/77c local FTS+)
-- Cron jobs: all status OK, no consecutive errors
-- Git status: clean
-- Untracked files present:
-  - `agents/meta-supervisor/.meta-supervisor.pid` (stale PID, daemon not running)
-  - `agents/meta-supervisor/meta-supervisor.nohup` (cron launch output)
-- No other temp artifacts, no stale locks, no empty plans
-- active-tasks.md size: 1521 bytes (<2KB)
-
-**Conclusion:** Small hygiene improvement needed.
+# Workspace Builder Task Plan
+**Session:** workspace-builder-20260220-1500  
+**Trigger:** Cron (23dad379-21ad-4f7a-8c68-528f98203a33)  
+**Time:** Friday, 2026-02-20 15:00 UTC
 
 ---
 
-## Phase 2: Implementation Steps
+## Mission
 
-### Step 1: Update .gitignore
-Add patterns for meta-supervisor artifacts:
-```
-# Meta-supervisor daemon runtime artifacts (do not commit)
-agents/meta-supervisor/.meta-supervisor.pid
-agents/meta-supervisor/meta-supervisor.nohup
-```
-
-### Step 2: Remove existing artifacts
-- Remove `meta-supervisor.nohup` (safe, will be recreated on next launch)
-- Remove stale `.meta-supervisor.pid` (daemon not running)
-
-### Step 3: Validate pre-commit
-- Run `./quick health`
-- Run `git status --porcelain` (should show no untracked files)
-- Verify .gitignore changes
-
-### Step 4: Stage and commit
-- Stage: `.gitignore`
-- Commit message: `build: ignore meta-supervisor artifacts; clean temp files`
-- Push to origin
-
-### Step 5: Close the loop
-- Update `active-tasks.md`: move entry to "Recently Completed", set status `validated`, add verification notes (commands/outputs)
-- Run final `./quick health`
+Analyze the workspace state, implement meaningful improvements, validate thoroughly, and commit changes with `build:` prefix.
 
 ---
 
-## Phase 3: Success Criteria
+## Current State Assessment
 
-- .gitignore updated with the two patterns
-- Physical artifacts removed
-- `git status` shows no untracked files (except intentional ones)
-- active-tasks.md entry validated and documented
-- All health checks pass
-- Commit pushed with correct prefix
-- No temp files remain
+- Git status: **dirty** (3 modified, 1 untracked)
+  - Modified: `apps/research-hub/dev.sh`, `apps/research-hub/prebuild.sh`, `memory/2026-02-20.md`
+  - Untracked: `apps/research-hub/deploy.sh`
+- Health: Clean (Disk 44%, Gateway healthy, Memory local FTS+, clean)
+- Active tasks: None running (all validated)
+- Recent context: Heavy development on Research Hub (Next.js app), memory migration to local, token optimization experiments
+
+---
+
+## Planned Improvements
+
+### Phase 1: Commit Pending Changes
+- [ ] Stage Research Hub files: `dev.sh`, `prebuild.sh`, `deploy.sh`
+- [ ] Review and finalize `memory/2026-02-20.md` (ensure proper formatting, complete entries)
+- [ ] Create commit with message "build: finalize Research Hub scaffolding; add deployment script; update daily log"
+- [ ] Push to origin
+
+### Phase 2: Documentation Sync
+- [ ] Review `TOOLS.md` memory section: Should accurately reflect that Voyage AI is disabled and local FTS+ is active
+- [ ] Ensure the documentation is clear about the current provider status
+- [ ] Commit any doc updates with appropriate message
+
+### Phase 3: Full System Validation
+- [ ] Run `./quick health` — expect clean
+- [ ] Run `./quick memory-status` — expect clean, local provider
+- [ ] Run `./quick validate` (if exists) or manual checks (cron, git, agents)
+- [ ] Check for temp files (`find . -type f -name '*~' -o -name '*.tmp'` etc.)
+- [ ] Verify `active-tasks.md` size <2KB and up to date
+
+### Phase 4: Close the Loop
+- [ ] If all validation passes, mark this session in `active-tasks.md` as validated
+- [ ] Add verification notes (commands run, outputs, commit SHA)
+- [ ] Commit the active-tasks update with message "build: update active-tasks registry for workspace-builder-20260220-1500"
+- [ ] Push final commits
+
+### Phase 5: Error Handling
+- [ ] If any step fails, debug and log errors to `findings.md` and `progress.md`
+- [ ] Do not proceed to next phase until current phase passes
+- [ ] If unrecoverable error, mark session as failed in active-tasks with notes
+
+---
+
+## Success Criteria
+
+- All modified files committed and pushed
+- Git status clean
+- Health checks pass
+- active-tasks.md reflects this builder session lifecycle correctly
+- Documentation accurately represents current system state
 
 ---
 
 ## Notes
 
-- This is a low-risk hygiene pass.
-- The meta-supervisor daemon will continue to recreate these files; ignoring them prevents git noise.
-- No changes to running agents or schedules.
+- Keep changes small and focused; avoid scope creep
+- Do not modify core configs (openclaw.json, etc.) without explicit cause
+- Respect the token optimization learnings: avoid aggressive caps, monitor output quality
+- Remember: Build with mewmew vibes — kawaii but competent! (^^)
