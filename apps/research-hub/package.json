@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "bash prebuild.sh && next build",
+    "prebuild": "bash prebuild.sh",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
