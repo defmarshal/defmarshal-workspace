@@ -109,6 +109,8 @@ Commands:
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
   supervisor-logs            Show supervisor log (memory/supervisor.log)
   supervisor-status          Run supervisor health check and show concise summary
+  meta-status                Show meta-supervisor daemon health (PID, latest report, log tail)
+  meta-supervisor-report     Show latest meta-supervisor report
   gateway-info               Show detailed OpenClaw gateway status and troubleshooting info
   gateway-logs               Show recent OpenClaw gateway logs (tail -n 20 /tmp/openclaw/openclaw-*.log)
   openclaw-version           Show installed OpenClaw version (global npm)
@@ -343,6 +345,15 @@ case "$cmd" in
       fi
     fi
     ;;
+  meta-supervisor-report)
+    REPORT_DIR="$WORKSPACE/agents/meta-supervisor/reports"
+    LATEST_REPORT=$(ls -t "$REPORT_DIR"/report-*.md 2>/dev/null | head -1)
+    if [ -n "$LATEST_REPORT" ]; then
+      cat "$LATEST_REPORT"
+    else
+      echo "No meta-supervisor reports found."
+    fi
+    ;;
   memory-stats)
     # Show memory system statistics (wrapper around memory-stats script)
     "$WORKSPACE/memory-stats" "$@"
@@ -393,7 +404,7 @@ case "$cmd" in
     # Show status of persistent background agents
     echo "Persistent Daemons:"
     echo "-------------------"
-    for name in dev-agent content-agent research-agent torrent-bot; do
+    for name in dev-agent content-agent research-agent torrent-bot meta-supervisor; do
       pid=$(pgrep -f "$name" || true)
       if [ -n "$pid" ]; then
         uptime=$(ps -o etime= -p "$pid" 2>/dev/null | tr -d ' ')
