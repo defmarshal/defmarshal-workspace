@@ -143,6 +143,8 @@ Commands:
   validate                    Run comprehensive validation (health, memory, agents, git, cron, logs)
   status                      Show concise one-line system summary (local only, no approvals)
   vercel                      Vercel deployment helper (init, link, deploy, logs, status). Usage: quick vercel [command]
+  research-hub-prebuild        Copy research markdown into Research Hub's public/ directory (prebuild step)
+  research-hub-deploy          Deploy Research Hub to Vercel (run prebuild, link, and prod deploy)
   verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
   session-locks [--clear]     List stale session locks (default) or clear them (--clear)
   setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
@@ -1389,6 +1391,17 @@ except Exception:
     # Vercel deployment helper
     "$WORKSPACE/scripts/vercel-deploy.sh" "$@"
     ;;
+
+  research-hub-prebuild)
+    # Copy research files into Research Hub's public directory
+    bash "$WORKSPACE/apps/research-hub/prebuild.sh"
+    ;;
+
+  research-hub-deploy)
+    # Deploy Research Hub to Vercel (link + build + prod)
+    bash "$WORKSPACE/scripts/deploy-research-hub.sh"
+    ;;
+
   today)
     # Show files modified today (since midnight UTC)
     find "$WORKSPACE" -type f ! -path '*/\.git/*' -mtime -1 -printf '%T+ %p\n' 2>/dev/null | sort || echo "No files modified today"

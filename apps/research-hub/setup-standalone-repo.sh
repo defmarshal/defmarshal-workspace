@@ -29,8 +29,10 @@ echo "Step 1: Copying Research Hub to temporary directory..."
 rm -rf "$NEW_REPO_DIR"
 mkdir -p "$NEW_REPO_DIR"
 cp -r "$APP_DIR"/* "$NEW_REPO_DIR/"
-cp "$APP_DIR/../.."/research "$NEW_REPO_DIR/public/" 2>/dev/null || echo "Warning: research folder not copied (will need to copy manually or use symlink)"
-echo "Files copied."
+# Run prebuild to copy research data into public/research
+echo "Running prebuild to copy research files..."
+cd "$NEW_REPO_DIR" && bash prebuild.sh
+echo "Files copied and research data generated."
 
 # Step 2: Initialize new git repo
 echo "Step 2: Initializing standalone git repository..."
