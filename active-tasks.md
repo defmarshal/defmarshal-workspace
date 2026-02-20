@@ -25,4 +25,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260220-1300] workspace-builder - Workspace hygiene: ignore meta-supervisor artifacts; clean temp; validate; commit (started: 2026-02-20 13:00 UTC, status: validated)
   - Verification: `./quick health` passed; `git status` clean; no untracked files; commit 0768b57 pushed; active-tasks.md <2KB.
+- [workspace-builder-20260220-1500] workspace-builder - Strategic improvements: commit Research Hub finalization, validate system (started: 2026-02-20 15:00 UTC, status: validated)
+  - Verification: `./quick health` clean; memory local FTS+ clean; cron verified; no temp files; active-tasks.md <2KB; commits a52867f pushed.
 
