@@ -19,10 +19,12 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-- [workspace-builder-20260220-1300] workspace-builder - Workspace hygiene: ignore meta-supervisor artifacts; clean temp; validate; commit (started: 2026-02-20 13:00 UTC, status: running)
-  - Verification: Pending
+*(none — all agents validated/cleaned)*
 
 ## Recently Completed
+
+- [workspace-builder-20260220-1300] workspace-builder - Workspace hygiene: ignore meta-supervisor artifacts; clean temp; validate; commit (started: 2026-02-20 13:00 UTC, status: validated)
+  - Verification: `./quick health` passed (Disk 44%, Gateway healthy, Memory 18f/77c clean); `git status --porcelain` clean after commit; no remaining untracked files; active-tasks.md size 889 bytes (<2KB); commit 0768b57 pushed.
 
 - [128c7af4-fa32-43f2-a238-8fd1e3feac99] workspace-builder - Finalize meta-supervisor version control; commit pending changes; validate system (started: 2026-02-20 09:00 UTC, status: validated)
   - Verification: `./quick health` passed; memory status clean (18/18 files, 77 chunks); cron status OK; active-tasks.md size <2KB; no temp files; meta-supervisor script syntax OK; git push successful.
