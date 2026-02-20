@@ -340,7 +340,7 @@ case "$cmd" in
         if [ "$runMs" = "never" ]; then
           run="never"
           status="never"
-          duration="-"
+          dur="-"
         else
           run=$(date -u -d @"$((runMs / 1000))" "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "$runMs")
           status="${status:-ok}"
@@ -351,7 +351,7 @@ case "$cmd" in
             dur="$((duration / 60))m $((duration % 60))s"
           fi
         fi
-        printf "%-35s %-19s %-10s %-8s %s\n" "$name" "${run:-n/a}" "${status:-n/a}" "${dur:-n/a}" "$expr"
+        printf "%-35s %-19s %-10s %-8s %s\n" "$name" "${run:-n/a}" "${status:-n/a}" "$dur" "$expr"
       done
     ;;
   cron-health)
