@@ -772,11 +772,6 @@ case "$cmd" in
     fi
     ls -t "$WORKSPACE/reports"/*.md 2>/dev/null | xargs -r basename -a | sed 's/\.md$//'
     ;;
-  research-hub-deploy)
-    # Deploy Research Hub to standalone GitHub repo and Vercel
-    # Prereq: gh and vercel must be in exec-allowlist and authenticated
-    bash "$WORKSPACE/apps/research-hub/setup-standalone-repo.sh"
-    ;;
   research-hub-status)
     # Check Research Hub deployment status
     echo "=== Research Hub Status ==="
