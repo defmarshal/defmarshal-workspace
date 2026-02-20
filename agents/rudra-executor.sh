@@ -63,7 +63,8 @@ case "$plan_type" in
       mkdir -p "$backup_dir"
 
       while IFS= read -r line; do
-        ((total++))
+        # Increment total safely (avoid 'set -e' exit on zero)
+        total=$((total + 1))
         [[ -z "$line" ]] && continue
         [[ "$line" != *:* ]] && continue
         file="${line%%:*}"
@@ -96,7 +97,7 @@ case "$plan_type" in
             ' "$file" > "${file}.tmp" && mv "${file}.tmp" "$file"
             if [ $? -eq 0 ]; then
               log "  -> Fixed: marked as DONE in $file"
-              ((fixed++))
+              fixed=$((fixed + 1))
             else
               log "  -> Failed to modify $file (awk error)"
             fi
