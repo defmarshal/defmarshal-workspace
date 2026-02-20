@@ -90,7 +90,7 @@ STEP_COUNT=$(jq ".[$NEXT_IDX].steps | length" "$IDEA_FILE")
 for ((s=0; s<STEP_COUNT; s++)); do
   STEP_CMD=$(jq -r ".[$NEXT_IDX].steps[$s]" "$IDEA_FILE")
   log "Step $((s+1)): $STEP_CMD"
-  echo "[$(date -u +%Y-%m-%d_%H:%M:%S UTC)] START: $STEP_CMD" >> "$EXEC_LOG"
+  echo "[$(date -u +"%Y-%m-%d_%H:%M:%S UTC")] START: $STEP_CMD" >> "$EXEC_LOG"
   if eval "$STEP_CMD" >> "$EXEC_LOG" 2>&1; then
     STATUS="success"
   else
@@ -98,7 +98,7 @@ for ((s=0; s<STEP_COUNT; s++)); do
     log "Step $((s+1)) failed with exit code $?"
     # Continue to next steps? Or abort? Let's continue but record failure.
   fi
-  echo "[$(date -u +%Y-%m-%d_%H:%M:%S UTC)] END: $STEP_CMD — $STATUS" >> "$EXEC_LOG"
+  echo "[$(date -u +"%Y-%m-%d_%H:%M:%S UTC")] END: $STEP_CMD — $STATUS" >> "$EXEC_LOG"
   STEP_RESULTS+=("$STATUS")
 done
 
