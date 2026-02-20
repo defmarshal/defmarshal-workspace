@@ -111,6 +111,7 @@ Commands:
   supervisor-status          Run supervisor health check and show concise summary
   meta-status                Show meta-supervisor daemon health (PID, latest report, log tail)
   meta-supervisor-report     Show latest meta-supervisor report
+  meta-restart               Restart meta-supervisor daemon (stop if running, start fresh)
   gateway-info               Show detailed OpenClaw gateway status and troubleshooting info
   gateway-logs               Show recent OpenClaw gateway logs (tail -n 20 /tmp/openclaw/openclaw-*.log)
   openclaw-version           Show installed OpenClaw version (global npm)
@@ -343,6 +344,35 @@ case "$cmd" in
       else
         echo "No daemon logs found"
       fi
+    fi
+    ;;
+  meta-restart)
+    # Restart meta-supervisor daemon
+    PID_FILE="$WORKSPACE/agents/meta-supervisor/.meta-supervisor.pid"
+    if [ -f "$PID_FILE" ]; then
+      OLD_PID=$(cat "$PID_FILE")
+      if ps -p "$OLD_PID" >/dev/null 2>&1; then
+        echo "Stopping existing daemon (PID $OLD_PID)..."
+        kill "$OLD_PID" 2>/dev/null || true
+        # Wait for exit
+        for i in {1..10}; do
+          if ! ps -p "$OLD_PID" >/dev/null 2>&1; then
+            break
+          fi
+          sleep 1
+        done
+      else
+        echo "Stale PID file removed"
+      fi
+      rm -f "$PID_FILE"
+    fi
+    echo "Starting meta-supervisor daemon..."
+    nohup agents/meta-supervisor/meta-supervisor-daemon.sh > agents/meta-supervisor/meta-supervisor.nohup 2>&1 & echo $! > agents/meta-supervisor/.meta-supervisor.pid
+    sleep 2
+    if [ -f "$PID_FILE" ] && ps -p "$(cat "$PID_FILE")" >/dev/null 2>&1; then
+      echo "Daemon started (PID $(cat "$PID_FILE"))"
+    else
+      echo "Failed to start daemon; check logs: agents/meta-supervisor/logs/"
     fi
     ;;
   meta-supervisor-report)

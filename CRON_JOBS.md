@@ -148,6 +148,12 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Delivery**: `announce` (summary of actions taken)
     - **Description**: Autonomous planner that observes system health, decides on maintenance/improvement actions, spawns sub‑agents to execute them, validates outcomes, and commits changes with `meta:` prefix. Core of the self‑extending system.
 
+22. **meta-supervisor-agent**
+    - **Schedule**: Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
+    - **Payload**: agentTurn that ensures meta-supervisor daemon is running (spawns if not)
+    - **Log**: `agents/meta-supervisor/logs/meta-supervisor-agent.log` (via agent session)
+    - **Description**: Keepalive cron that starts the meta-supervisor daemon if down. Maintains continuous auditing.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

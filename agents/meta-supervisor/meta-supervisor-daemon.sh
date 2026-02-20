@@ -22,8 +22,22 @@ log() {
 if [ -f "$pid_file" ]; then
   existing_pid=$(cat "$pid_file")
   if kill -0 "$existing_pid" 2>/dev/null; then
-    log "Meta-Supervisor daemon already running (PID $existing_pid)"
-    exit 0
+    # Get process state to detect zombie
+    proc_state=$(ps -p "$existing_pid" -o state= 2>/dev/null || true)
+    if [[ "$proc_state" == *"Z"* ]]; then
+      log "PID $existing_pid is a zombie; treating as stale"
+      rm -f "$pid_file"
+    else
+      # Verify it's actually our daemon by inspecting command line (contains daemon script name)
+      cmd_line=$(ps -p "$existing_pid" -o args= 2>/dev/null || true)
+      if [[ "$cmd_line" == *"meta-supervisor-daemon.sh"* ]]; then
+        log "Meta-Supervisor daemon already running (PID $existing_pid)"
+        exit 0
+      else
+        log "PID $existing_pid exists but not our daemon (cmdline: ${cmd_line:-empty}); treating as stale"
+        rm -f "$pid_file"
+      fi
+    fi
   else
     log "Stale PID file detected (PID $existing_pid not running); removing"
     rm -f "$pid_file"
