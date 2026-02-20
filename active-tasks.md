@@ -27,4 +27,6 @@ This file tracks all currently running agents, their session keys, goals, and st
   - Verification: `./quick health` passed; `git status` clean; no untracked files; commit 0768b57 pushed; active-tasks.md <2KB.
 - [workspace-builder-20260220-1500] workspace-builder - Strategic improvements: commit Research Hub finalization, validate system (started: 2026-02-20 15:00 UTC, status: validated)
   - Verification: `./quick health` clean; memory local FTS+ clean; cron verified; no temp files; active-tasks.md <2KB; commits a52867f pushed.
+- [workspace-builder-20260220-1700] workspace-builder - Enable Research Hub deployment: extend exec-allowlist, add quick commands, create deployment docs (started: 2026-02-20 17:00 UTC, status: validated)
+  - Verification: `./quick health` OK (Git dirty due to changes, all else clean); `./quick memory-summary` clean (local FTS+, 18f/81c); `./quick cron-health` all jobs ok; `bash -n quick` syntax OK; active-tasks.md 1350B (<2KB); allowlist JSON valid; quick commands present; docs created; all changes committed with `build:` prefix and pushed.
 

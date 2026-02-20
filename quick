@@ -86,6 +86,8 @@ Commands:
   content-index-update        Regenerate content/INDEX.md to reflect current content files.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   reports                     List daily digest reports in reports/ (most recent first)
+  research-hub-deploy         Deploy Research Hub to standalone GitHub repo and Vercel (requires gh & vercel)
+  research-hub-status         Check Research Hub deployment status (local/remote/Vercel)
   digest                     Show the latest daily digest report from reports/ (cat the most recent)
   social-monitor                  Run the social monitor agent (Twitter trending digest)
   daily-digest [YYYY-MM-DD]       Generate daily digest report (default: today UTC). Saves to reports/ and prints.
@@ -769,6 +771,33 @@ case "$cmd" in
       exit 1
     fi
     ls -t "$WORKSPACE/reports"/*.md 2>/dev/null | xargs -r basename -a | sed 's/\.md$//'
+    ;;
+  research-hub-deploy)
+    # Deploy Research Hub to standalone GitHub repo and Vercel
+    # Prereq: gh and vercel must be in exec-allowlist and authenticated
+    bash "$WORKSPACE/apps/research-hub/setup-standalone-repo.sh"
+    ;;
+  research-hub-status)
+    # Check Research Hub deployment status
+    echo "=== Research Hub Status ==="
+    if [ -d "$WORKSPACE/apps/research-hub/.git" ]; then
+      echo "Local: standalone repo (unexpected - should be in workspace subdir)"
+    else
+      echo "Local: integrated in workspace (prebuild copies research/ to public/research)"
+    fi
+    # Check if remote standalone exists
+    if git -C "$WORKSPACE" remote -v | grep -q "research-hub"; then
+      echo "Standalone remote: configured"
+    else
+      echo "Standalone remote: not configured"
+    fi
+    # Check if vercel project linked (look for .vercel directory)
+    if [ -d "$WORKSPACE/apps/research-hub/.vercel" ]; then
+      echo "Vercel: linked"
+      vercel ls 2>/dev/null | grep research-hub || echo "Vercel project: unknown"
+    else
+      echo "Vercel: not linked"
+    fi
     ;;
   digest)
     # Show the latest daily digest report from reports/
