@@ -72,4 +72,7 @@ agents/meta-supervisor/reports/
 agents/meta-supervisor/.meta-supervisor.pid
 agents/meta-supervisor/meta-supervisor.nohup
 
+# Idea generator/executor runtime artifacts (do not commit)
+agents/ideas/*.json
+
 # End of additions

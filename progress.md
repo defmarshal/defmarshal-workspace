@@ -1,100 +1,141 @@
-# Progress Log: Strategic Workspace Improvements
+# Workspace Builder Progress
 
-**Session:** workspace-builder-cron (2026-02-20 21:00 UTC)  
-**Plan:** task_plan.md  
-**Status:** In Progress
-
----
-
-## Timeline
-
-### 2026-02-20 21:00 UTC — Planning Complete
-
-- Created task_plan.md with step-by-step execution plan
-- Created findings.md with assessment and scope
-- Created this progress.md
-- Baseline: All systems healthy, git clean
-
-**Next:** Begin Phase 1 (Research Hub deployment completion)
+**Session:** workspace-builder-20260220-2300  
+**Started:** 2026-02-20 23:00 UTC
 
 ---
 
-## Phase Progress
+## Phase 1: Assessment & Planning — ✅ COMPLETE
 
-### Phase 1: Research Hub Deployment Completion
+- Read AGENTS.md, TOOLS.md, active-tasks.md, MEMORY.md
+- Searched memory for context
+- Checked git status, cron, logs
+- Created task_plan.md, findings.md
+- Defined success criteria
 
-**Status:** ✅ Completed
-
-**Completed tasks:**
-1. ✅ Added `quick vercel-prereq` command
-   - Checks: gateway status, gh binary & auth, vercel binary & auth, allowlist entries
-2. ⏭️ Enhanced `apps/research-hub/README.md` – *Skipped*: Docs already comprehensive in `docs/research-hub-deployment.md`
-3. ✅ Verified `docs/research-hub-deployment.md` exists and is up-to-date
-4. ✅ Tested `quick vercel-prereq` – all green output
-
-**Notes:** The allowlist already includes gh and vercel. The prerequisite check confirms deployment readiness.
+**Time:** 23:00-23:10 UTC
 
 ---
 
-### Phase 2: Build Archive Cleanup
+## Phase 2: Implementation — IN PROGRESS
 
-**Status:** ✅ Completed
+### Step 2.1: Fix idea-generator-cycle.sh JSON generation
 
-**Completed tasks:**
-1. ✅ Reviewed `build-archive/` contents (15 planning files from Feb 15-17)
-2. ✅ Created backup tarball: `build-archive-backup-2026-02-20.tar.gz` (17KB compressed)
-3. ✅ Removed `build-archive/` directory
-4. ✅ Checked for broken references – none found (only references in planning docs we're deleting)
-5. ⏭️ Documented in `memory/2026-02-20.md` – will include in final commit summary
+**Plan:** Replace manual JSON building with jq-based construction to ensure valid JSON with proper escaping.
 
-**Notes:** Cleanup reduces workspace clutter; backup retained in repo root.
+**Implementation details:**
+- We'll accumulate ideas in a jq array using `jq -n --arg slug "$SLUG" ...` and `jq -s 'add'` to combine, or write each element as a stream and wrap with `[ ... ]`.
+- Approach: generate each idea as a separate JSON object to a temp file, then combine with jq -s.
+- Or simpler: build array incrementally by appending to a file after each idea, but ensure valid JSON by building with jq directly.
+
+I'll rewrite the generation loop:
+
+```bash
+# Start array
+echo "[" > "$IDEA_OUTPUT"
+
+for i in {1..10}; do
+  # ... generate variables (SLUG, TITLE, DESC, etc.)
+  # Use jq to construct JSON safely
+  jq -n \
+    --arg slug "$SLUG" \
+    --arg title "$TITLE" \
+    --arg desc "$DESCRIPTION" \
+    --arg cat "$CATEGORY" \
+    --argjson steps "$(printf '%s\n' "${STEPS[@]}" | jq -R -s -c 'split("\n")[:-1]')" \
+    --argjson priority "$((1 + RANDOM % 5))" \
+    '{slug:$slug, title:$title, description:$desc, category:$cat, steps:$steps, priority:$priority, files_to_touch:["quick"]}' \
+    >> "$IDEA_OUTPUT"
+done
+
+# But this will produce a file that is not a valid JSON array (each line is separate object).
+# Better: collect all objects and then wrap with jq -s 'map(.)'
+```
+
+Actually, simpler: generate each object to a temp file, then at end `jq -s '.' *.json > array.json` and clean up.
+
+But to keep it simple and atomic:
+
+- Create a temporary directory for partial objects.
+- Generate 10 individual JSON files (one per idea) using jq -n with args.
+- After loop, combine: `jq -s '.' "$TMP_DIR"/*.json > "$IDEA_OUTPUT"`
+- Then copy to latest.json.
+
+Or: build an array in memory using jq -n and adding elements one by one is not trivial. Another approach: Write each object without newline separators? Actually we can write one object at a time, but need to handle commas between. That's what original code did but with manual escaping. So I'll generate each object via jq and append with proper comma formatting.
+
+Better: Use jq's `--arg` and output each object, then in post-processing combine.
+
+Given this is a bash script, I'll generate objects to separate files and then combine. That's robust.
+
+Let's implement:
+
+```bash
+TMP_OBJS=$(mktemp -d)
+for i in {1..10}; do
+  # ... compute SLUG, TITLE, DESCRIPTION, CATEGORY, STEPS array
+  # Convert STEPS array to JSON array via jq
+  STEPS_JSON=$(printf '%s\n' "${STEPS[@]}" | jq -R -s -c 'split("\n")[:-1]')
+  jq -n \
+    --arg slug "$SLUG" \
+    --arg title "$TITLE" \
+    --arg desc "$DESCRIPTION" \
+    --arg cat "$CATEGORY" \
+    --argjson steps "$STEPS_JSON" \
+    --argjson priority "$((1 + RANDOM % 5))" \
+    '{slug:$slug, title:$title, description:$desc, category:$cat, steps:$steps, priority:$priority, files_to_touch:["quick"]}' \
+    > "$TMP_OBJS/idea_$i.json"
+done
+# Combine into array
+jq -s '.' "$TMP_OBJS"/*.json > "$IDEA_OUTPUT"
+rm -rf "$TMP_OBJS"
+```
+
+This ensures valid JSON and proper escaping.
+
+We'll preserve the rest of the script (inspiration gathering, logging, status updates).
 
 ---
 
-### Phase 3: Enhanced System Validation (Orphaned Agent Detection)
+### Step 2.2: Update .gitignore
 
-**Status:** ✅ Completed
-
-**Completed tasks:**
-1. ✅ Created `scripts/check-orphaned-agents.sh`
-   - Uses `openclaw sessions list --json`
-   - Lists running sessions, suggests review
-   - Exit 0 on clean, 1 on errors
-2. ✅ Added `quick orphan-check` alias in quick script
-3. ✅ Tested `quick orphan-check` – clean (no running sessions)
-4. ⏭️ Optional: Not integrating into supervisor (keep simple; agent-manager already handles cleanup)
-
-**Notes:** Provides quick manual check for debugging session issues.
+Add line: `agents/ideas/*.json`
 
 ---
 
-### Phase 4: Validation & Commit
+### Step 2.3: Test and commit
 
-**Status:** ✅ Completed
-
-**Completed tasks:**
-1. ✅ Ran `./quick health` – all OK (Disk 49%, memory clean, gateway healthy)
-2. ✅ Tested all modified/new commands: orphan-check, vercel-prereq – working
-3. ✅ Verified no temp files (only normal openclaw temp dirs)
-4. ✅ Confirmed `active-tasks.md` size < 2KB (currently 1813 bytes)
-5. ✅ Created build commit (da659d5) with `build:` prefix and pushed to origin
-6. ✅ Updated `active-tasks.md` with verification notes and `validated` status
-
-**Outcome:** All changes deployed and validated. System stable.
+- Run generator manually -> produce output
+- Validate: `jq empty agents/ideas/latest.json` (should be silent)
+- Run executor manually -> should succeed
+- Check that one idea is marked executed
+- Ensure logs show success
+- Commit with message: `build: fix idea generator JSON; add gitignore for generated ideas`
 
 ---
 
-## Completion Checklist
+## Phase 3: Validation — PENDING
 
-- [x] Phase 1 implemented
-- [x] Phase 2 implemented
-- [x] Phase 3 implemented
-- [ ] All tests passing (final health)
-- [ ] No temp files
-- [ ] active-tasks.md updated
-- [ ] Changes committed and pushed
-- [ ] Workspace hygiene maintained
+- Run `./quick health`
+- Check `active-tasks.md` size
+- Push commits
+- Update memory
 
 ---
 
-**Target completion:** Within 1-2 hours (typical workspace-builder runtime)
+## Decisions
+
+- Using jq for JSON generation (safe, already installed).
+- Ignoring generated JSON files to keep git clean.
+- Not versioning idea artifacts; they are ephemeral runtime state.
+
+---
+
+## Blockers
+
+None currently.
+
+---
+
+## End Time (target)
+
+2026-02-20 23:30 UTC

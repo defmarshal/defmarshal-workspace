@@ -51,9 +51,6 @@ log "Inspiration gathered, generating 10 innovative ideas..."
 
 # 3) Generate ideas list via LLM-style reasoning (simulated)
 IDEA_OUTPUT="$IDEAS_DIR/ideas_$(date -u +%Y-%m-%d_%H%M).json"
-: > "$IDEA_OUTPUT"
-
-# We'll produce a JSON array of ideas: { "slug": "...", "title": "...", "description": "...", "steps": [...], "category": "..." }
 
 # For reproducibility, we'll use a deterministic creative algorithm that samples from inspiration and combines patterns.
 # This avoids external API dependence and keeps things fun.
@@ -94,8 +91,11 @@ SEED=$(date -u +%s)
 SEED=$((SEED + ${#TEMPLATES[@]} + TOTAL_LINES))
 RANDOM=$SEED
 
-# Generate 10 ideas
-echo "[" > "$IDEA_OUTPUT"
+# Files to touch for quick launcher updates
+FILES_TOUCH=(quick)
+
+# Create empty file; we'll generate individual JSON objects and then combine into an array
+: > "$IDEA_OUTPUT"
 
 for i in {1..10}; do
   # Select random template
@@ -134,12 +134,11 @@ for i in {1..10}; do
 
   # Build idea steps (executable commands)
   STEPS=(
-    "echo \"[$SLUG] Starting: $TITLE\""
-    "grep -r \"$ACTION\" \"$WORKSPACE\" > /dev/null"
-    "git checkout -b \"idea/$SLUG\" 2>/dev/null || git checkout \"idea/$SLUG\""
+    "grep -r $ACTION $WORKSPACE > /dev/null"
+    "git checkout -b idea/$SLUG 2>/dev/null || git checkout idea/$SLUG"
     "touch ${FILES_TOUCH[@]} 2>/dev/null || true"
     "git add -A"
-    "git commit -m \"feat(idea): $TITLE\" || true"
+    "git commit -m 'feat(idea): $TITLE' || true"
   )
 
   # Add category-specific command
@@ -151,33 +150,29 @@ for i in {1..10}; do
     "fun") STEPS+=("echo 'Add emojis and playful messages'");;
   esac
 
-  # Construct JSON line
-  # Use jq-like formatting manually to avoid dependency
-  JSON_ELEMENT="{"
-  JSON_ELEMENT+="\"slug\":\"$SLUG\","
-  JSON_ELEMENT+="\"title\":\"$TITLE\","
-  JSON_ELEMENT+="\"description\":\"$DESC\","
-  JSON_ELEMENT+="\"category\":\"$CATEGORY\","
-  JSON_ELEMENT+="\"steps\":["
-  for s in "${STEPS[@]}"; do
-    JSON_ELEMENT+="\"$s\","
-  done
-  JSON_ELEMENT="${JSON_ELEMENT%,}" # remove trailing comma
-  JSON_ELEMENT+="],"
-  JSON_ELEMENT+="\"priority\":$((1 + RANDOM % 5)),"
-  JSON_ELEMENT+="\"files_to_touch\":[\"quick\"]"
-  JSON_ELEMENT+="}"
-
-  # Append to array
-  if [[ $i -gt 1 ]]; then
-    echo "," >> "$IDEA_OUTPUT"
-  fi
-  echo "$JSON_ELEMENT" >> "$IDEA_OUTPUT"
+  # Generate JSON safely using jq to ensure proper escaping
+  # Convert STEPS array to JSON array string
+  STEPS_JSON=$(printf '%s\n' "${STEPS[@]}" | jq -R -s -c 'split("\n")[:-1]')
+  # Build individual JSON object
+  jq -n \
+    --arg slug "$SLUG" \
+    --arg title "$TITLE" \
+    --arg desc "$DESC" \
+    --arg cat "$CATEGORY" \
+    --argjson steps "$STEPS_JSON" \
+    --argjson priority "$((1 + RANDOM % 5))" \
+    '{slug:$slug, title:$title, description:$desc, category:$cat, steps:$steps, priority:$priority, files_to_touch:["quick"]}' \
+    >> "$IDEA_OUTPUT"
 
   log "Idea $i: $TITLE"
 done
 
-echo "]" >> "$IDEA_OUTPUT"
+# The IDEA_OUTPUT file currently contains one JSON object per line (not a valid array yet)
+# Convert to a JSON array by wrapping with [] and replacing newlines with commas
+# Use jq to safely combine
+TMP_ARRAY=$(mktemp)
+jq -s '.' "$IDEA_OUTPUT" > "$TMP_ARRAY"
+mv "$TMP_ARRAY" "$IDEA_OUTPUT"
 
 # Also copy to latest.json for executor
 cp "$IDEA_OUTPUT" "$IDEAS_DIR/latest.json"
