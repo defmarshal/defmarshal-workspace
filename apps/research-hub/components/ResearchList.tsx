@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 import { format } from "date-fns";
-import { readFile } from "fs/promises";
+import { readdir, readFile } from "fs/promises";
 import { join } from "path";
 
 type ResearchFile = {
@@ -17,7 +17,7 @@ const RESEARCH_DIR = join(process.cwd(), "public", "research");
 
 async function getResearch(): Promise<ResearchFile[]> {
   try {
-    const files = await readFile(RESEARCH_DIR).catch(() => []);
+    const files = await readdir(RESEARCH_DIR).catch(() => []);
     const markdownFiles = files.filter((f: string) => f.endsWith(".md"));
 
     const research = await Promise.all(
