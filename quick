@@ -142,6 +142,7 @@ Commands:
   gateway-fix                 Fix gateway issues (stop stray processes, restart cleanly)
   validate                    Run comprehensive validation (health, memory, agents, git, cron, logs)
   status                      Show concise one-line system summary (local only, no approvals)
+  vercel                      Vercel deployment helper (init, link, deploy, logs, status). Usage: quick vercel [command]
   verify                      Run comprehensive workspace verification (health, memory, agents, git, cron)
   session-locks [--clear]     List stale session locks (default) or clear them (--clear)
   setup-all                   Run all setup scripts (sudo, torrent cron) in order. Use with care.
@@ -1383,6 +1384,10 @@ except Exception:
   validate)
     # Run the workspace-validate script
     bash "$WORKSPACE/workspace-validate.sh"
+    ;;
+  vercel)
+    # Vercel deployment helper
+    "$WORKSPACE/scripts/vercel-deploy.sh" "$@"
     ;;
   today)
     # Show files modified today (since midnight UTC)
