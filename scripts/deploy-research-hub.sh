@@ -26,12 +26,10 @@ else
   echo "Project already linked."
 fi
 
-# Run prebuild to ensure research data is up-to-date
-echo "Running prebuild to copy research files..."
-bash prebuild.sh
+# Note: Research files are already in public/research (committed). No prebuild needed.
 
 # Deploy to production
 echo "Deploying to production..."
-vercel --prod
+vercel --prod --yes
 
 echo "✅ Research Hub deployed!"
