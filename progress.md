@@ -70,17 +70,17 @@
 
 ### Phase 4: Validation & Commit
 
-**Status:** In progress
+**Status:** ✅ Completed
 
-**Next tasks:**
-1. [ ] Run `./quick health` (final)
-2. [ ] Test all modified/new commands (already unit tested)
-3. [ ] Verify no temp files
-4. [ ] Confirm `active-tasks.md` size < 2KB
-5. [ ] Create build commit with `build:` prefix, push
-6. [ ] Update `active-tasks.md` with verification notes
+**Completed tasks:**
+1. ✅ Ran `./quick health` – all OK (Disk 49%, memory clean, gateway healthy)
+2. ✅ Tested all modified/new commands: orphan-check, vercel-prereq – working
+3. ✅ Verified no temp files (only normal openclaw temp dirs)
+4. ✅ Confirmed `active-tasks.md` size < 2KB (currently 1813 bytes)
+5. ✅ Created build commit (da659d5) with `build:` prefix and pushed to origin
+6. ✅ Updated `active-tasks.md` with verification notes and `validated` status
 
-**Current issues:** None
+**Outcome:** All changes deployed and validated. System stable.
 
 ---
 
