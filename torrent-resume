@@ -1,0 +1,34 @@
+#!/bin/bash
+# Resume a paused download in aria2 via RPC
+# Usage: quick torrent-resume <gid> [rpc_secret]
+
+set -euo pipefail
+
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+
+# Default RPC secret from our aria2.conf
+RPC_SECRET="${2:-openclaw_secret_123}"
+
+# Check input
+GID="${1:-}"
+if [ -z "$GID" ]; then
+  echo "Usage: quick torrent-resume <gid> [rpc_secret]" >&2
+  echo "Example: quick torrent-resume 2089b25e43546773" >&2
+  exit 1
+fi
+
+RPC_URL="http://localhost:6800/jsonrpc"
+
+# Call aria2.unpause
+response=$(curl -s "$RPC_URL" \
+  -H "Content-Type: application/json" \
+  -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.unpause\",\"params\":[\"token:$RPC_SECRET\",\"$GID\"]}")
+
+# Check result
+if echo "$response" | python3 -c "import sys, json; data=json.load(sys.stdin); sys.exit(0 if data.get('result') else 1)" 2>/dev/null; then
+  echo "▶️ Resumed download: $GID"
+else
+  err=$(echo "$response" | python3 -c "import sys, json; data=json.load(sys.stdin); print(data.get('error', {}).get('message', 'Unknown error'))" 2>/dev/null || echo "Failed to resume")
+  echo "❌ Error: $err" >&2
+  exit 1
+fi

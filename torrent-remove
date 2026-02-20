@@ -1,0 +1,34 @@
+#!/bin/bash
+# Remove a download from aria2 via RPC
+# Usage: quick torrent-remove <gid> [rpc_secret]
+
+set -euo pipefail
+
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+
+# Default RPC secret from our aria2.conf
+RPC_SECRET="${2:-openclaw_secret_123}"
+
+# Check input
+GID="${1:-}"
+if [ -z "$GID" ]; then
+  echo "Usage: quick torrent-remove <gid> [rpc_secret]" >&2
+  echo "Example: quick torrent-remove 2089b25e43546773" >&2
+  exit 1
+fi
+
+RPC_URL="http://localhost:6800/jsonrpc"
+
+# Call aria2.remove
+response=$(curl -s "$RPC_URL" \
+  -H "Content-Type: application/json" \
+  -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.remove\",\"params\":[\"token:$RPC_SECRET\",\"$GID\"]}")
+
+# Check result
+if echo "$response" | python3 -c "import sys, json; data=json.load(sys.stdin); sys.exit(0 if data.get('result') else 1)" 2>/dev/null; then
+  echo "🗑️ Removed download: $GID"
+else
+  err=$(echo "$response" | python3 -c "import sys, json; data=json.load(sys.stdin); print(data.get('error', {}).get('message', 'Unknown error'))" 2>/dev/null || echo "Failed to remove")
+  echo "❌ Error: $err" >&2
+  exit 1
+fi

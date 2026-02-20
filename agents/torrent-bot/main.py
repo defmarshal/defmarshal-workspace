@@ -62,18 +62,35 @@ def cmd_status(args):
 def cmd_pause(args):
     if not args:
         return "Usage: /torrent pause <gid>"
-    # Not implemented yet — aria2 pause via RPC
-    return "⏸️ Pause not yet implemented (aria2 pause via RPC pending)"
+    gid = args[0]
+    # Call quick torrent-pause
+    out, err, rc = run_quick(["torrent-pause", gid])
+    if rc == 0:
+        return out
+    else:
+        return f"❌ Pause failed: {err}"
 
 def cmd_resume(args):
     if not args:
         return "Usage: /torrent resume <gid>"
-    return "▶️ Resume not yet implemented."
+    gid = args[0]
+    # Call quick torrent-resume
+    out, err, rc = run_quick(["torrent-resume", gid])
+    if rc == 0:
+        return out
+    else:
+        return f"❌ Resume failed: {err}"
 
 def cmd_remove(args):
     if not args:
         return "Usage: /torrent remove <gid>"
-    return "🗑️ Remove not yet implemented."
+    gid = args[0]
+    # Call quick torrent-remove
+    out, err, rc = run_quick(["torrent-remove", gid])
+    if rc == 0:
+        return out
+    else:
+        return f"❌ Remove failed: {err}"
 
 def load_watchlist():
     if WATCHLIST_FILE.exists():
@@ -114,9 +131,9 @@ def cmd_help(args):
 /torrent search <query>         Search Nyaa
 /torrent top [opts]             List top torrents (--limit N, --max-size SIZE, --pick N, --add)
 /torrent status                 Show active downloads
-/torrent pause <gid>            Pause download (TODO)
-/torrent resume <gid>           Resume download (TODO)
-/torrent remove <gid>           Remove from queue (TODO)
+/torrent pause <gid>            Pause download
+/torrent resume <gid>           Resume download
+/torrent remove <gid>           Remove from queue
 /torrent watch <query>          Add query to watchlist (auto-daily)
 /torrent watchlist              Show watchlist
 /torrent help                   Show this help

@@ -1,83 +1,86 @@
-# Workspace Builder Task Plan
+# Workspace Builder Task Plan — Fresh Cycle
 **Session:** cron:23dad379-21ad-4f7a-8c68-528f98203a33  
-**Timestamp:** 2026-02-20 01:00 AM UTC  
-**Goal:** Analyze workspace state and implement meaningful improvements  
+**Timestamp:** 2026-02-20 03:00 AM UTC  
+**Goal:** Address outstanding opportunities and enhance system reliability
 
 ---
 
-## Phase 1: Assessment & Planning (Current)
+## Phase 1: Assessment & Planning
 
 ### Discoveries
-- Git status: 1 local commit not pushed (6cabacf: auto maintenance update)
-- Notifier-agent: bug fixed (log function defined) but needs verification commit
-- Git-janitor: runs every 6h, auto-commits but does NOT push (CRON_JOBS.md says it should push)
-- Active-tasks.md: clean (<2KB) ✓
-- Memory system: clean (16/16 files indexed)
-- System health: all OK
-- Recent token optimization experiment: documented and safely reverted
+- Git status: clean, up-to-date with origin
+- Recent Agni cycle found TODOs but Rudra only modified scanner (didn't implement features)
+- Outstanding TODO items:
+  - `torrent-bot/main.py`: pause, resume, remove commands (marked TODO)
+  - `skills/neural-memory/SKILL.md`: on-chain verification (lower priority)
+- System health: all OK (Disk 42%, Gateway healthy, Memory clean)
+- No active agents running
 
-### Identified Improvements
-1. **Push pending commit** - origin is ahead by 1; remote should be updated
-2. **Enhance git-janitor** - add push with rate-limit handling; verify all required flags
-3. **Document notifier fix** - ensure fix is committed if not already
-4. **Validate all changes** - run health checks, verify cron status, test commands
+### Identified Improvements (Prioritized)
+1. **Implement torrent-bot pause/resume/remove** — Complete the torrent management commands
+2. **Review and optimize Agni opportunity handling** — Ensure Rudra actually addresses found items
+3. **Update documentation** — Reflect new commands in README/help
+4. **Validation** — Test new commands, run health checks, ensure no regressions
+5. **Commit with `build:` prefix** — Follow convention
 
 ---
 
 ## Phase 2: Execution Steps
 
-### Step 1: Push pending commit
-- Command: `git push origin master`
-- Verify: `git status` shows "up-to-date"
+### Step 1: Analyze torrent-bot current state
+- Read `torrent-bot/main.py` to understand existing command structure
+- Identify how to implement pause/resume/remove using aria2 RPC
+- Check existing command implementations (list, add, status) as templates
 
-### Step 2: Enhance git-janitor-cycle.sh
-- Add `git push` after successful commit
-- Use `git push origin master` with error handling (continue on failure)
-- Log push result
-- Validate script syntax with `bash -n`
+### Step 2: Implement missing torrent commands
+- Add `torrent_pause(gid)`: call `aria2.tellStatus` then `aria2.pause`
+- Add `torrent_resume(gid)`: call `aria2.unpause`
+- Add `torrent_remove(gid)`: call `aria2.remove` (with file removal option)
+- Add proper error handling and user feedback
+- Update help text/command listing
 
-### Step 3: Validate notifier-agent fix
-- Check if the fix (log function) is already in repo
-- If not, commit it (but appears already fixed in agents/notifier-agent.sh)
-- Test run: `./agents/notifier-agent.sh` should exit cleanly
+### Step 3: Update documentation (if applicable)
+- Update ANIME_COMPANION_README.md or any docs that describe torrent commands
+- Add examples for new commands
 
-### Step 4: Comprehensive validation
+### Step 4: Test implementation
+- Dry-run: verify script syntax (`bash -n` doesn't work for Python, use `python -m py_compile`)
+- Functional test: if aria2 is running, test each command with a safe gid (or simulate)
+- Check that error messages are clear
+
+### Step 5: Comprehensive validation
 - Run `./quick health`
-- Check `openclaw cron list` for job health
-- Verify memory status: `./quick memory-status`
-- Check active-tasks.md size
-- Ensure no temp files in workspace root
+- Check `./quick torrent-status` (ensure it still works)
+- Verify memory status
+- Ensure no temp files, workspace clean
+- active-tasks.md size < 2KB
 
-### Step 5: Final commit and push
-- Commit any changes with prefix `build:`
+### Step 6: Commit and push
+- Stage changes: `git add -A`
+- Commit message: `build: implement torrent-bot pause/resume/remove commands; enhance completeness`
 - Push to origin
-- Update active-tasks.md with validation notes (then remove entry after completion)
+- Update active-tasks.md: mark this builder session as validated, then remove entry
 
 ---
 
 ## Phase 3: Close the Loop
-
 - Re-run health check after push
-- Document outcomes in `progress.md`
-- Mark task as validated in active-tasks.md
-- Ensure workspace builder session self-clears from registry
+- Optionally test Agni opportunity handling separately (out of scope for this build)
+- Document final status in `progress.md`
+- Ensure workspace builder self-clears from registry
 
 ---
 
 ## Risks & Mitigations
-
-- **Push fails** (auth issues): Verify ~/.git-credentials exists and has valid token
-- **Push causes rate limit**: Only one commit pending; low risk
-- **git-janitor push fails**: Should not break commit cycle; errors logged but not fatal
-- **Cron schedule changes**: None planned; leave as-is
+- **Breaking existing torrent commands** — Implement conservatively, test thoroughly
+- **Aria2 RPC auth issues** — Use existing RPC secret handling pattern; don't hardcode credentials
+- **Incomplete feature** — Ensure all three commands implement proper feedback to user
 
 ---
 
 ## Success Criteria
-
-✅ Remote origin up-to-date  
-✅ git-janitor pushes automatically after auto-commit  
-✅ Notifier-agent runs without errors  
+✅ Pause, resume, remove commands added and documented  
+✅ Existing torrent functionality unaffected  
 ✅ All health checks pass  
-✅ No temp files left behind  
-✅ active-tasks.md size < 2KB after cleanup  
+✅ Changes committed with `build:` prefix and pushed  
+✅ active-tasks.md remains under 2KB after cleanup  

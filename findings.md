@@ -1,4 +1,4 @@
-# Workspace Builder Findings
+# Workspace Builder Findings — Fresh Cycle
 **Date:** 2026-02-20  
 **Session:** cron:23dad379-21ad-4f7a-8c68-528f98203a33  
 
@@ -8,57 +8,81 @@
 
 ### Git & Deployment
 - Local branch: master
-- Ahead of origin by: 1 commit (6cabacf)
-- Commit content: added 39 lines to `memory/2026-02-19.md` (maintenance log from today 00:06 UTC)
-- Remote: `https://github.com/defmarshal/defmarshal-workspace.git`
-- Credential helper: `store` (file exists: `/home/ubuntu/.git-credentials`)
-- Conclusion: Safe to push; no auth issues expected
+- Status: clean, up-to-date with origin
+- Recent commits show active development (dev, content, research, meta all running)
+- No pending uncommitted changes
 
-### Active Cron Jobs (Health)
-- All jobs show `status=ok` and `consecutiveErrors=0`
-- git-janitor-cron: every 6h (UTC) — last run logs exist, no recent errors
-- notifier-cron: every 2h (UTC) — script fixed, runs clean
-- supervisor-cron: every 30min — alerts working
-- agent-manager-cron: every 30min — active cleanup working
-- All other agents (dev, content, research, meta, etc.) running on schedule
-
-### Memory System
-- Main store: 16/16 files indexed, ~62-69 chunks, status clean
-- No dirty flags
-- Last reindex: ~3 days ago (not needed)
-
-### Disk & Gateway
-- Disk usage: ~43% healthy
+### System Health
+- Disk usage: ~42% healthy
 - Gateway: running on port 18789, healthy
-- No pending APT updates
+- Memory: 16/16 files indexed, ~70 chunks, clean
+- APT updates: 3 pending (non-critical)
+- Downloads: 13 files, 3.3GB (within thresholds)
+
+### Active Cron Jobs
+- All jobs status=ok, consecutiveErrors=0
+- Recent token optimization: schedules reduced (hourly instead of more frequent), some max-token limits reverted due to output issues
+- Supervisor: running every 30min, alerts working
+- Agent-manager: running every 30min, maintaining locks and cleanup
+
+### Agents & Automation
+- Dev-agent: hourly 8-22 ICT, last run 02:00 UTC
+- Content-agent: hourly 8-22 ICT
+- Research-agent: hourly 8-22 ICT
+- Meta-agent: hourly, autonomous planning
+- Agni cycle: every 2h UTC, last plan 02:13 UTC (addressed opportunities)
+- Rudra: executed last plan successfully
 
 ### Active Tasks Registry
-- File: `active-tasks.md` — currently empty (no running agents)
-- Size: 1521 bytes (<2KB limit) ✓
+- File: `active-tasks.md` — empty (no running agents)
+- Size: 889 bytes (<2KB limit) ✓
 
 ---
 
-## Identified Issues
+## Identified Issues & Opportunities
 
-1. **Unpushed commit** — Local commit not yet pushed to origin
-2. **git-janitor incomplete** — Script auto-commits but does not push (should push per CRON_JOBS.md)
-3. **Notifier-agent fix** — Already fixed in codebase; need to verify it's properly tracked and tested
+### 1. Torrent-bot incomplete commands (TODO)
+**Location:** `torrent-bot/main.py`  
+**Items:**
+- Pause download: `/torrent pause <gid>` — not implemented
+- Resume download: `/torrent resume <gid>` — not implemented  
+- Remove download: `/torrent remove <gid>` — not implemented
+
+**Impact:** Users cannot manage active downloads via chat; limited to adding and listing. Completing these makes torrent management fully functional.
+
+**Effort:** Low (3 commands, following existing patterns)
+
+### 2. Agni opportunity handling inconsistency
+**Observation:** Last Agni plan "Address found opportunities" resulted in commit that only modified `agni-cycle.sh` scanner, not the TODOs themselves. The opportunities scan still lists same TODO comments.
+
+**Possible causes:**
+- Rudra's plan decided to skip the TODOs (maybe low priority)
+- Opportunity detection false positives (e.g., comments in template files)
+- Planning logic filters based on complexity or risk
+
+**Action:** Not urgent; monitor next few cycles. If persists, may need to adjust Agni's opportunity scoring or Rudra's task selection.
+
+### 3. Optional: On-chain verification TODO
+**Location:** `skills/neural-memory/SKILL.md` — `verifyTransactionOnChain(txHash)`  
+**Priority:** Low (blockchain integration not core to current workflow)
 
 ---
 
 ## Verification Plan
 
-- [ ] Pushed commit reaches remote and CI/CD (if any) passes
-- [ ] git-janitor script includes `git push` and handles errors gracefully
-- [ ] Notifier-agent dry run produces no errors
-- [ ] Health check passes: `./quick health`
-- [ ] No temp files, workspace clean
-- [ ] active-tasks.md remains under 2KB
+- [ ] Torrent commands implement correctly (syntax validation, functional test if possible)
+- [ ] Update help/README if needed
+- [ ] Health checks pass: `./quick health`
+- [ ] Torrent status command still works: `./quick torrent-status`
+- [ ] Memory status clean, no reindex needed
+- [ ] No temp files left behind
+- [ ] active-tasks.md stays <2KB
 
 ---
 
 ## Notes
 
-- No changes to cron schedules recommended
-- No token optimization re-attempt (lesson learned: aggressive caps break output)
-- Focus on reliability and completeness
+- Focus on completing the torrent-bot feature set (high value, low risk)
+- Preserve existing functionality; avoid breaking changes
+- Follow existing code style and RPC interaction patterns
+- Commit as standalone improvement; do not refactor Agni in same commit

@@ -52,6 +52,12 @@ Commands:
                   Example: quick torrent-add "magnet:?xt=urn:btih:..."
                   Example: quick torrent-add "/path/to/file.torrent" "my_secret"
   torrent-status [--json] [--watch SECS]  Show aria2 download progress (alias for downloads). Use --watch to auto-refresh.
+  torrent-pause <gid> [rpc_secret]       Pause a download by GID.
+                  Example: quick torrent-pause 2089b25e43546773
+  torrent-resume <gid> [rpc_secret]      Resume a paused download by GID.
+                  Example: quick torrent-resume 2089b25e43546773
+  torrent-remove <gid> [rpc_secret]      Remove a download from aria2 (stops and removes from queue).
+                  Example: quick torrent-remove 2089b25e43546773
   nyaa-search <query> [--limit N] [--category cat]  Search Sukebei.Nyaa.si for
                   torrents. Categories: all, anime (default), anime_raw, anime_non_translated,
                   audio, lit, pics, software. Outputs JSON to stdout.
@@ -447,6 +453,21 @@ case "$cmd" in
   torrent-status)
     # Show current torrent download status (alias for downloads)
     python3 "$WORKSPACE/downloads-status" "$@"
+    ;;
+  torrent-pause)
+    # Pause a download in aria2
+    # Usage: quick torrent-pause <gid> [rpc_secret]
+    "$WORKSPACE/torrent-pause" "$@"
+    ;;
+  torrent-resume)
+    # Resume a paused download in aria2
+    # Usage: quick torrent-resume <gid> [rpc_secret]
+    "$WORKSPACE/torrent-resume" "$@"
+    ;;
+  torrent-remove)
+    # Remove a download from aria2
+    # Usage: quick torrent-remove <gid> [rpc_secret]
+    "$WORKSPACE/torrent-remove" "$@"
     ;;
   nyaa-search)
     # Search Sukebei.Nyaa.si for torrents
