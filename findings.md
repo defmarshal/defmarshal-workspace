@@ -1,86 +1,108 @@
-# Workspace Builder Findings — 2026-02-20
+# Findings Report: Research Hub Implementation Status
 
-**Initial Assessment Report**  
-**Session:** workspace-builder (cron-triggered)  
-**Timestamp:** 2026-02-20 17:00 UTC
-
----
-
-## System Overview
-
-- **OS:** Linux 6.17.0-1007-oracle (arm64)
-- **Gateway:** healthy (port 18789)
-- **Disk:** 44% used (healthy)
-- **Memory system:** local FTS+ (Voyage AI disabled)
-- **Git:** clean, up-to-date with origin/master
-- **Active agents:** none (all validated/cleaned)
-- **Cron jobs:** 22 OpenClaw cron jobs, all documented; validation active every 30 min
+**Date:** 2026-02-20 19:15 UTC  
+**Session:** workspace-builder  
+**Scope:** Current state of Research Hub and system health  
 
 ---
 
-## Current Blocker: Research Hub Deployment
+## System Health Baseline
 
-The Research Hub web application (`apps/research-hub/`) is scaffolded and ready but **cannot be automatically deployed** because the necessary CLI tools (`gh`, `vercel`) are not in the OpenClaw exec-allowlist.
+Command: `./quick health` (anticipated)  
+Status: All green from latest checks (within past few hours)
 
-### Why This Matters
+- **Disk:** 43% used (healthy)
+- **Gateway:** Running on port 18789, responsive
+- **Memory:** Local FTS+ operational, 18 files/75 chunks (clean)
+- **Git:** Previously clean, now has pending Research Hub changes
 
-- User's interests shifted to **tech infrastructure** (per USER.md update on 2026-02-20)
-- Research Hub is a Next.js portal for browsing research reports — a tech showcase
-- Deployment automation would provide immediate tangible output and a reusable pattern
+**Cron Jobs:** All operational, lastStatus=ok, errors=0
+- git-janitor-cron
+- notifier-cron  
+- supervisor-cron
+- agent-manager-cron
 
-### Technical Details
-
-- **Exec-allowlist location:** `~/.openclaw/exec-approvals.json` (OpenClaw Gateway config)
-- **Current allowlist entries for `main` agent:** includes `git`, `openclaw`, `bash`, `jq`, etc. (24 entries)
-- **Missing:** `gh` (GitHub CLI) and `vercel` (Vercel CLI)
-- **Setup script ready:** `apps/research-hub/setup-standalone-repo.sh` requires `gh` and `vercel`
-- **Note:** The user must also have `gh` authenticated and `vercel` installed on the system. The allowlist only permits execution; it does not install the tools.
-
-### Path to Enablement
-
-1. Add allowlist entries for:
-   - `/usr/bin/gh` (common location; could also be `/usr/local/bin/gh` or `~/.npm-global/bin/gh`)
-   - `/usr/local/bin/vercel` or `~/.npm-global/bin/vercel` (depends on npm global prefix)
-2. Restart OpenClaw gateway to apply the new allowlist
-3. Run setup script: `./apps/research-hub/setup-standalone-repo.sh` either manually or via a quick launcher
+**Active Tasks:** No running agents; registry clean (<2KB)
 
 ---
 
-## Other Observations
+## Research Hub Files State
 
-### Strengths
-- Robust cron validation in place (`scripts/validate-cron-schedules.sh`)
-- Good observability via `quick` commands (health, cron, memory, disk)
-- Active tasks registry well-maintained (<2KB)
-- Comprehensive lessons learned in `lessons.md`
+### Directories
+- `apps/research-hub/` - Next.js 15 app with App Router
+- `apps/research-hub/public/research/` - Markdown content (25 files total)
 
-### Minor Gaps
-- No dedicated `quick` commands for Research Hub status/deploy (can add)
-- Deployment guide not yet documented (create `docs/research-hub-deployment.md`)
-- `quick` launcher is extensive; some research/content commands might be missing from help summary? (the full help is long; but the script covers them)
+### Modified Files (tracked by git)
+1. `apps/research-hub/app/page.tsx` - Home page wrapper, simple header + ResearchClient
+2. `apps/research-hub/components/ResearchList.tsx` - Article list component with date formatting
 
----
+### New Untracked Files
+1. `apps/research-hub/app/api/research/route.ts` - API route to fetch research metadata
+2. `apps/research-hub/components/ResearchClient.tsx` - Client component with search + pagination
+3. `apps/research-hub/components/ErrorBoundary.tsx` - Placeholder error boundary
 
-## Quick Health Snapshot
-
-```
-$ ./quick health
-Disk OK 44% | Updates: none | Git clean (0 changed) | Memory: 18f/81c (clean) local FTS+ | Reindex: 4.1d ago | Gateway: healthy | Downloads: 13 files, 3.3G
-```
-
-**Cron status:** last supervisor-cron run (18:10 UTC) OK, all jobs healthy.
-
-**Memory stores:** local SQLite only, no Voyage AI rate limits.
+### Package Dependencies (to verify)
+Expected in `apps/research-hub/package.json`:
+- next, react, react-dom
+- gray-matter, remark, remark-html
+- date-fns
+- tailwindcss (for styling)
 
 ---
 
-## Proposed Improvements (from task_plan.md)
+## Research Content Inventory
 
-1. **Enable Research Hub deployment** by extending exec-allowlist and adding quick wrappers
-2. **Improve Research Hub monitoring** with status command
-3. **Document deployment procedure** in a dedicated guide
-4. **Ensure system validation** passes post-implementation
+### Pre-existing (2026-02-15): 17 files
+- Benchmark gap, continuous update, infrastructure economics, methodology, midmonth update, open models, privacy assessment, phase-2 kickoff, production deployment ROI, research cycle (multiple), sprint completion, etc.
+
+### Today (2026-02-20): 8 files
+- state-of-web-app-dev-2026.md
+- ai-production-cost-compression-adoption.md
+- token-optimization-agent-systems.md
+- ai-engineering-realism-gap-and-cost-trajectories.md
+- ai-data-center-power-water-constraints.md
+- cbdc-deployment-status-dashboard.md
+- china-japan-anime-co-production-shifts.md
+- nvidia-blackwell-b200-real-world-performance.md
+
+**Content Sync:** Research Agent appears to be populating the Research Hub correctly; prebuild script should copy these automatically.
 
 ---
 
-**Next:** Execute implementation tasks in `task_plan.md`, update `progress.md` as we go.
+## Identified Gaps & Risks
+
+1. **Untracked files not yet committed** - Need to add and commit with proper prefix
+2. **Build not verified** - Must run `npm run build` to catch TypeScript/runtime errors
+3. **Dev server not tested** - Should verify API works and UI renders
+4. **Dependencies not confirmed** - Need to check package.json and node_modules
+5. **Quick commands missing** - No `quick research-hub` shortcuts yet
+6. **Documentation incomplete** - TOOLS.md lacks Research Hub section; AGENTS.md may need updates
+
+---
+
+## Environmental Checks Required
+
+- [ ] Node.js version compatible with Next.js 15 (check `node --version`)
+- [ ] `apps/research-hub/node_modules` exists and is up to date
+- [ ] No port conflicts if starting dev server (default 3000)
+- [ ] Prebuild script functional: copies research/ markdown to app
+- [ ] Environment variables (none expected for local dev)
+
+---
+
+## Next Steps (as per Plan)
+
+1. **Phase 1 Discovery:** Already done through file inspection
+2. **Phase 2 Validation:** Build and test
+3. **Phase 3 Documentation:** Add quick commands and notes
+4. **Phase 4 Git Hygiene:** Stage, commit, push
+5. **Phase 5 Validation:** Re-run health checks
+6. **Phase 6 Close Loop:** Update active-tasks.md and finalize
+
+---
+
+## Notes
+
+The Research Hub implementation appears well-structured with proper separation of concerns (API route, client component, list component). The search and pagination features add significant usability. The research content is up-to-date and relevant to user's current tech interests.
+
+The main remaining work is integration validation, documentation, and git hygiene — a relatively smooth finish to this development cycle.
