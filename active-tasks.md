@@ -19,5 +19,4 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Documentation cleanup and system validation (started: 2026-02-20 05:00 UTC, status: validated)
-  - Verification: health OK (Disk 43%, Gateway healthy, Memory clean), cron-status OK, markdown syntax intact, all changes pushed.
+*(none — all agents validated/cleaned)*
