@@ -1,4 +1,4 @@
-import ResearchList from "@/components/ResearchList";
+import ResearchClient from "@/components/ResearchClient";
 
 export default function HomePage() {
   return (
@@ -11,7 +11,7 @@ export default function HomePage() {
           </p>
         </header>
 
-        <ResearchList />
+        <ResearchClient />
       </div>
     </main>
   );

@@ -1,19 +1,17 @@
-import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
-import { format, parseISO, isValid } from "date-fns";
-import { readdir, readFile } from "fs/promises";
-import { join } from "path";
+"use client";
 
-type ResearchFile = {
+import { format, parseISO, isValid } from "date-fns";
+
+export type ResearchItem = {
   slug: string;
   title: string;
   date: string;
   excerpt: string;
-  content: string;
 };
 
-const RESEARCH_DIR = join(process.cwd(), "public", "research");
+interface ResearchListProps {
+  items: ResearchItem[];
+}
 
 function safeFormatDate(dateStr: string): string {
   try {
@@ -27,71 +25,14 @@ function safeFormatDate(dateStr: string): string {
   return dateStr; // raw if unparsable
 }
 
-async function getResearch(): Promise<ResearchFile[]> {
-  try {
-    const files = await readdir(RESEARCH_DIR).catch(() => []);
-    const markdownFiles = files.filter((f: string) => f.endsWith(".md"));
-
-    const research = await Promise.all(
-      markdownFiles.map(async (filename: string) => {
-        const slug = filename.replace(/\.md$/, "");
-        const fullPath = join(RESEARCH_DIR, filename);
-        const fileContent = await readFile(fullPath, "utf8");
-        const { data, content } = matter(fileContent);
-        const processed = await remark().use(html).process(content);
-        const htmlContent = processed.toString();
-
-        let date = data.date || slug.split("-").slice(0, 3).join("-");
-        // Ensure date is a valid ISO string for sorting
-        let sortDate = date;
-        try {
-          const parsed = parseISO(date);
-          if (isValid(parsed)) {
-            sortDate = parsed.toISOString();
-          }
-        } catch {
-          // keep as-is if unparsable
-        }
-
-        return {
-          slug,
-          title: data.title || slug,
-          date,
-          excerpt: htmlContent.slice(0, 200).replace(/<[^>]*>?/gm, "") + "...",
-          content: htmlContent,
-          sortDate,
-        };
-      })
-    );
-
-    return research.sort((a, b) => {
-      try {
-        const dateA = parseISO(a.sortDate);
-        const dateB = parseISO(b.sortDate);
-        if (isValid(dateA) && isValid(dateB)) {
-          return b.date > a.date ? 1 : -1;
-        }
-      } catch {
-        // fallback to string comparison
-      }
-      return b.sortDate.localeCompare(a.sortDate);
-    });
-  } catch (error) {
-    console.error("Error reading research directory:", error);
-    return [];
-  }
-}
-
-export default async function ResearchList() {
-  const research = await getResearch();
-
-  if (research.length === 0) {
+export default function ResearchList({ items }: ResearchListProps) {
+  if (items.length === 0) {
     return <p className="text-muted-foreground">No research found.</p>;
   }
 
   return (
     <div className="space-y-6">
-      {research.map((item) => (
+      {items.map((item) => (
         <article
           key={item.slug}
           className="border rounded-lg p-6 hover:shadow-md transition-shadow"
