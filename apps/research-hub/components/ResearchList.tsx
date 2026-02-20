@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import { format } from "date-fns";
+import { format, parseISO, isValid } from "date-fns";
 import { readdir, readFile } from "fs/promises";
 import { join } from "path";
 
@@ -14,6 +14,18 @@ type ResearchFile = {
 };
 
 const RESEARCH_DIR = join(process.cwd(), "public", "research");
+
+function safeFormatDate(dateStr: string): string {
+  try {
+    const parsed = parseISO(dateStr);
+    if (isValid(parsed)) {
+      return format(parsed, "MMMM d, yyyy");
+    }
+  } catch {
+    // fall through
+  }
+  return dateStr; // raw if unparsable
+}
 
 async function getResearch(): Promise<ResearchFile[]> {
   try {
@@ -29,17 +41,41 @@ async function getResearch(): Promise<ResearchFile[]> {
         const processed = await remark().use(html).process(content);
         const htmlContent = processed.toString();
 
+        let date = data.date || slug.split("-").slice(0, 3).join("-");
+        // Ensure date is a valid ISO string for sorting
+        let sortDate = date;
+        try {
+          const parsed = parseISO(date);
+          if (isValid(parsed)) {
+            sortDate = parsed.toISOString();
+          }
+        } catch {
+          // keep as-is if unparsable
+        }
+
         return {
           slug,
           title: data.title || slug,
-          date: data.date || slug.split("-").slice(0, 3).join("-"),
+          date,
           excerpt: htmlContent.slice(0, 200).replace(/<[^>]*>?/gm, "") + "...",
           content: htmlContent,
+          sortDate,
         };
       })
     );
 
-    return research.sort((a, b) => (b.date > a.date ? 1 : -1));
+    return research.sort((a, b) => {
+      try {
+        const dateA = parseISO(a.sortDate);
+        const dateB = parseISO(b.sortDate);
+        if (isValid(dateA) && isValid(dateB)) {
+          return b.date > a.date ? 1 : -1;
+        }
+      } catch {
+        // fallback to string comparison
+      }
+      return b.sortDate.localeCompare(a.sortDate);
+    });
   } catch (error) {
     console.error("Error reading research directory:", error);
     return [];
@@ -61,7 +97,7 @@ export default async function ResearchList() {
           className="border rounded-lg p-6 hover:shadow-md transition-shadow"
         >
           <time className="text-sm text-muted-foreground">
-            {format(new Date(item.date), "MMMM d, yyyy")}
+            {safeFormatDate(item.date)}
           </time>
           <h2 className="text-2xl font-semibold mt-1 mb-3">{item.title}</h2>
           <p className="text-muted-foreground mb-4">{item.excerpt}</p>
