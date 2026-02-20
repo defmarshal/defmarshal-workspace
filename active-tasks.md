@@ -8,12 +8,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 - Update immediately when spawning or killing agents
 - Include session key, goal, started timestamp, and verification status
 
-## Agent Lifecycle
-
-1. **Spawning**: Add entry with `status: running`
-2. **Validation**: After completion, update `status: validated` and add verification notes
-3. **Cleanup**: Remove entry after verification (or archive to daily log)
-
 ## Format
 
 ```
@@ -25,6 +19,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-- (none)
-
-
+- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Documentation cleanup and system validation (started: 2026-02-20 05:00 UTC, status: validated)
+  - Verification: health OK (Disk 43%, Gateway healthy, Memory clean), cron-status OK, markdown syntax intact, all changes pushed.

@@ -42,7 +42,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - **Provider**: Voyage AI (voyage-4-large) — **not in use** due to rate limits on free tier (3 RPM)
 - **Status**: Semantic search disabled; fallback to grep (`msearch`) or local SQLite FTS only
 - **Stores**: Two memory stores exist:
-  - `main`: primary workspace memory (15/15 files indexed, 43 chunks, clean)
+  - `main`: primary workspace memory (use `quick memory-status` for current index status)
   - `torrent-bot`: separate store for torrent-bot agent (dirty, not reindexed)
 - **Reindex**: Auto-reindex disabled in meta-agent and agent-manager to avoid rate limits. Run manually with `quick memory-reindex` (will attempt all stores sequentially with 120s delays) when Voyage limits are sufficient.
 - **Rate-lock**: After a 429 error, reindex is skipped for 6 hours (rate-lock file in `memory/.voyage-rate-lock`).

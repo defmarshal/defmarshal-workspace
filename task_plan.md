@@ -1,86 +1,87 @@
-# Workspace Builder Task Plan — Fresh Cycle
-**Session:** cron:23dad379-21ad-4f7a-8c68-528f98203a33  
-**Timestamp:** 2026-02-20 03:00 AM UTC  
-**Goal:** Address outstanding opportunities and enhance system reliability
+# Workspace Builder Plan: Documentation Cleanup & Validation
+
+**Session Key:** (will be assigned by active-tasks.md)
+**Started:** 2026-02-20 05:00 UTC
+**Goal:** Improve documentation clarity and fix structural issues in CRON_JOBS.md; ensure all metadata is accurate.
 
 ---
 
 ## Phase 1: Assessment & Planning
 
-### Discoveries
-- Git status: clean, up-to-date with origin
-- Recent Agni cycle found TODOs but Rudra only modified scanner (didn't implement features)
-- Outstanding TODO items:
-  - `torrent-bot/main.py`: pause, resume, remove commands (marked TODO)
-  - `skills/neural-memory/SKILL.md`: on-chain verification (lower priority)
-- System health: all OK (Disk 42%, Gateway healthy, Memory clean)
-- No active agents running
+**Actions:**
+- Read AGENTS.md, MEMORY.md, recent daily logs (2026-02-19, 2026-02-20)
+- Review active-tasks.md → confirmed empty (no conflicts)
+- Analyze system health → all OK
+- Identify documentation issues:
+  - CRON_JOBS.md "System Cron" section has malformed headings and mixed entries
+  - TOOLS.md memory section notes are slightly outdated (mentions 15/15 files, 43 chunks vs current 16/16, 69)
+  - Could add a note about the autonomous schedule validation script
 
-### Identified Improvements (Prioritized)
-1. **Implement torrent-bot pause/resume/remove** — Complete the torrent management commands
-2. **Review and optimize Agni opportunity handling** — Ensure Rudra actually addresses found items
-3. **Update documentation** — Reflect new commands in README/help
-4. **Validation** — Test new commands, run health checks, ensure no regressions
-5. **Commit with `build:` prefix** — Follow convention
+**Verification:** Create task_plan.md, findings.md, progress.md and commit them early.
 
 ---
 
-## Phase 2: Execution Steps
+## Phase 2: Documentation Fixes
 
-### Step 1: Analyze torrent-bot current state
-- Read `torrent-bot/main.py` to understand existing command structure
-- Identify how to implement pause/resume/remove using aria2 RPC
-- Check existing command implementations (list, add, status) as templates
+### Fix 1: Restructure System Cron section in CRON_JOBS.md
 
-### Step 2: Implement missing torrent commands
-- Add `torrent_pause(gid)`: call `aria2.tellStatus` then `aria2.pause`
-- Add `torrent_resume(gid)`: call `aria2.unpause`
-- Add `torrent_remove(gid)`: call `aria2.remove` (with file removal option)
-- Add proper error handling and user feedback
-- Update help text/command listing
+**Current problems:**
+- Headings are adjacent: "### Agent Startup (Daemon Bootstrap)" followed by "### Gateway Watchdog (system crontab)" on next line, but the content that follows is misaligned.
+- The hourly gateway watchdog entry appears first, then separator `---`, then the `@reboot` agent startup entry. It's confusing which heading goes with which.
+- The description for "Agent Startup" actually says "Ensures all background agents and daemons (dev, content, research, torrent-bot, aria2) are running after system boot." That matches @reboot, not the hourly watchdog.
 
-### Step 3: Update documentation (if applicable)
-- Update ANIME_COMPANION_README.md or any docs that describe torrent commands
-- Add examples for new commands
+**Correct structure:**
+```
+## System Cron (user crontab)
+(as of note...)
 
-### Step 4: Test implementation
-- Dry-run: verify script syntax (`bash -n` doesn't work for Python, use `python -m py_compile`)
-- Functional test: if aria2 is running, test each command with a safe gid (or simulate)
-- Check that error messages are clear
+### Gateway Watchdog (system crontab)
+- Schedule: Every hour (`0 * * * *`)
+- Command: /path/to/gateway-watchdog.sh
+- Description: Checks gateway, restarts if down. Runs outside OpenClaw.
 
-### Step 5: Comprehensive validation
-- Run `./quick health`
-- Check `./quick torrent-status` (ensure it still works)
-- Verify memory status
-- Ensure no temp files, workspace clean
-- active-tasks.md size < 2KB
+### Agent Startup (Daemon Bootstrap)
+- Schedule: `@reboot` with 60-second delay
+- Command: start-background-agents.sh
+- Description: Ensures agents (dev, content, research, torrent-bot, aria2) are running after boot.
+```
 
-### Step 6: Commit and push
-- Stage changes: `git add -A`
-- Commit message: `build: implement torrent-bot pause/resume/remove commands; enhance completeness`
+**Action:** Edit CRON_JOBS.md to separate these clearly.
+
+### Fix 2: Update TOOLS.md memory section
+
+**Current:** States Voyage AI not in use due to rate limits; references "15/15 files indexed, 43 chunks" (likely old data). Should reflect current status: Voyage disabled, local FTS+ fallback active and healthy.
+
+**Action:** Adjust wording to be accurate without specific numbers that drift. Mention that `quick memory-status` shows current health.
+
+### Fix 3: Add note about schedule validation
+
+The `scripts/validate-cron-schedules.sh` runs automatically and corrects drift. Document this in CRON_JOBS.md near the top or in a "Maintenance" section.
+
+---
+
+## Phase 3: Validation
+
+- Run `./quick health` → must be clean
+- Run `./quick cron-status` → ensure no errors
+- Run `./quick validate` (if available) or manually check key aspects
+- Verify that all changes are proper markdown (no broken formatting)
+- Check `active-tasks.md` size (<2KB)
+
+---
+
+## Phase 4: Commit & Update
+
+- Commit all changes with prefix `build:`
 - Push to origin
-- Update active-tasks.md: mark this builder session as validated, then remove entry
-
----
-
-## Phase 3: Close the Loop
-- Re-run health check after push
-- Optionally test Agni opportunity handling separately (out of scope for this build)
-- Document final status in `progress.md`
-- Ensure workspace builder self-clears from registry
-
----
-
-## Risks & Mitigations
-- **Breaking existing torrent commands** — Implement conservatively, test thoroughly
-- **Aria2 RPC auth issues** — Use existing RPC secret handling pattern; don't hardcode credentials
-- **Incomplete feature** — Ensure all three commands implement proper feedback to user
+- Update active-tasks.md: mark this workspace-builder session as `validated` and include verification notes
+- Archive planning files (task_plan.md, findings.md, progress.md) to daily log or keep? They become part of the commit.
 
 ---
 
 ## Success Criteria
-✅ Pause, resume, remove commands added and documented  
-✅ Existing torrent functionality unaffected  
-✅ All health checks pass  
-✅ Changes committed with `build:` prefix and pushed  
-✅ active-tasks.md remains under 2KB after cleanup  
+
+- CRON_JOBS.md System Cron section is clear, correctly paired, no ambiguity
+- TOOLS.md memory section accurately reflects current state (Voyage disabled, fallback working)
+- All files valid markdown; system health passes
+- Changes pushed; active-tasks.md updated
