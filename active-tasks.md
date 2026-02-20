@@ -19,7 +19,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-*(none — all agents validated/cleaned)*
+- [workspace-builder-20260220-1300] workspace-builder - Workspace hygiene: ignore meta-supervisor artifacts; clean temp; validate; commit (started: 2026-02-20 13:00 UTC, status: running)
+  - Verification: Pending
 
 ## Recently Completed
 

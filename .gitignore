@@ -68,4 +68,8 @@ agents/vishwakarma/logs/
 # Meta-supervisor generated reports
 agents/meta-supervisor/reports/
 
+# Meta-supervisor daemon runtime artifacts (do not commit)
+agents/meta-supervisor/.meta-supervisor.pid
+agents/meta-supervisor/meta-supervisor.nohup
+
 # End of additions
