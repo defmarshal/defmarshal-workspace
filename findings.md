@@ -1,115 +1,64 @@
-# Initial Findings — Workspace Analysis
-
-**Date:** 2026-02-19 23:00 UTC
-**Session:** workspace-builder (cron)
-
----
-
-## System Overview
-
-| Metric | Status |
-|--------|--------|
-| Disk usage | 42% (healthy) |
-| Gateway | healthy, port 18789 |
-| Memory index | 16 files, 70+ chunks, clean |
-| Voyage AI | rate-limited (free tier 3 RPM), reindex not needed |
-| Git status | dirty (1 modified, 1 untracked) |
+# Workspace Builder Findings
+**Date:** 2026-02-20  
+**Session:** cron:23dad379-21ad-4f7a-8c68-528f98203a33  
 
 ---
 
-## Issues & Root Causes
+## Current System State
 
-### 1. Dirty Git Workspace
+### Git & Deployment
+- Local branch: master
+- Ahead of origin by: 1 commit (6cabacf)
+- Commit content: added 39 lines to `memory/2026-02-19.md` (maintenance log from today 00:06 UTC)
+- Remote: `https://github.com/defmarshal/defmarshal-workspace.git`
+- Credential helper: `store` (file exists: `/home/ubuntu/.git-credentials`)
+- Conclusion: Safe to push; no auth issues expected
 
-**Observed:**
-- `content/INDEX.md` modified (tracked)
-- `content/2026-02-19-daily-digest.md` untracked (new file)
+### Active Cron Jobs (Health)
+- All jobs show `status=ok` and `consecutiveErrors=0`
+- git-janitor-cron: every 6h (UTC) — last run logs exist, no recent errors
+- notifier-cron: every 2h (UTC) — script fixed, runs clean
+- supervisor-cron: every 30min — alerts working
+- agent-manager-cron: every 30min — active cleanup working
+- All other agents (dev, content, research, meta, etc.) running on schedule
 
-**Expected:** Agent-manager should auto-commit these changes when file count < 10.
+### Memory System
+- Main store: 16/16 files indexed, ~62-69 chunks, status clean
+- No dirty flags
+- Last reindex: ~3 days ago (not needed)
 
-**Hypothesis:** Either:
-- Agent-manager hasn't run since files were created, OR
-- The threshold logic skipped due to "many changes" detection, OR
-- Agent-manager itself had issues (previous day showed SIGKILL)
+### Disk & Gateway
+- Disk usage: ~43% healthy
+- Gateway: running on port 18789, healthy
+- No pending APT updates
 
-**Action:** Check agent-manager logs, manually run if needed.
-
----
-
-### 2. git-janitor-cron Errors
-
-**Observed:** Supervisor monitoring reports `consecutiveErrors: 1` for git-janitor-cron.
-
-**Likely cause:** OpenRouter API rate limits (free tier 3 RPM) causing failed API calls during git operations.
-
-**Impact:** Automated git cleanup may be failing; could lead to accumulation of old files.
-
-**Action:** Inspect `memory/git-janitor-agent.log` to confirm error pattern, consider adjusting schedule or rate-limit handling.
-
----
-
-### 3. Notifier-Agent Recent Fix
-
-**Issue (2026-02-19 19:12):** Script called undefined `log` function → crashes.
-
-**Fix Applied:** Added `log` function definition to `agents/notifier-agent.sh`.
-
-**Validation Needed:** Run script manually to ensure no errors; check next cron run (21:00 UTC).
+### Active Tasks Registry
+- File: `active-tasks.md` — currently empty (no running agents)
+- Size: 1521 bytes (<2KB limit) ✓
 
 ---
 
-### 4. Token Optimization Experiment
+## Identified Issues
 
-**What happened:**
-- Phase 1 implemented: maxTokens limits, conciseness prompts, payload compression
-- Initial commit `0f590af` pushed
-- Immediate revert `9ba22d4` applied due to output truncation/failures
-- System self-corrected; baseline restored
-
-**Learnings:**
-- Aggressive token caps (3000, 2000, 1500) too strict for agent outputs
-- Output truncation broke information delivery
-- Need gentler caps or per-agent thresholds based on typical output size
-- Should test in isolated environment before global rollout
-
-**Documentation:** Need to capture this in MEMORY.md and lessons.md.
+1. **Unpushed commit** — Local commit not yet pushed to origin
+2. **git-janitor incomplete** — Script auto-commits but does not push (should push per CRON_JOBS.md)
+3. **Notifier-agent fix** — Already fixed in codebase; need to verify it's properly tracked and tested
 
 ---
 
-## Active-Tasks Registry Check
+## Verification Plan
 
-`active-tasks.md` currently shows:
-```
-- [sessionKey] workspace-builder - Sync CRON_JOBS.md with actual cron jobs (status: validated)
-```
-
-That entry is old and should be removed (workspace-builder task completed). Current session is running as a fresh cron-triggered agent (different session key).
-
-**Action:** Clean up stale validated entries to keep file under 2KB.
-
----
-
-## Documentation Gaps
-
-- **MEMORY.md** does not yet include token optimization lessons (recent event)
-- **lessons.md** may need new section on token management pitfalls
-- **TOOLS.md** already has memory system notes (good)
-
----
-
-## Execution Priorities
-
-1. **Git cleanup** – ensure workspace clean before committing changes
-2. **Notifier validation** – verify fix works
-3. **MEMORY.md update** – add recent learnings (token opt, git-janitor issues)
-4. **lessons.md** – document token optimization failure patterns
-5. **active-tasks.md** – prune stale entries
-6. **Final commit** – include planning docs, findings, progress updates
+- [ ] Pushed commit reaches remote and CI/CD (if any) passes
+- [ ] git-janitor script includes `git push` and handles errors gracefully
+- [ ] Notifier-agent dry run produces no errors
+- [ ] Health check passes: `./quick health`
+- [ ] No temp files, workspace clean
+- [ ] active-tasks.md remains under 2KB
 
 ---
 
 ## Notes
 
-- All changes should be small, focused, and validated before proceeding
-- Use `./quick health` and other quick commands for validation
-- Respect the "close the loop" process: validate → commit → update active-tasks
+- No changes to cron schedules recommended
+- No token optimization re-attempt (lesson learned: aggressive caps break output)
+- Focus on reliability and completeness

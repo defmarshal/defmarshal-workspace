@@ -23,3 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
+## Currently Running
+
+- [cron:23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - strategic improvements (started: 2026-02-20 01:00 UTC, status: running)
+  - Verification: pending
+
+
