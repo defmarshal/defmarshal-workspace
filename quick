@@ -311,6 +311,38 @@ case "$cmd" in
       echo "  openclaw CLI not available"
     fi
     ;;
+  meta-status)
+    # Show meta-supervisor daemon health: PID, latest report, recent log tail
+    echo "Meta-Supervisor Status"
+    echo "---------------------"
+    PID_FILE="$WORKSPACE/agents/meta-supervisor/.meta-supervisor.pid"
+    if [ -f "$PID_FILE" ]; then
+      PID=$(cat "$PID_FILE")
+      if ps -p "$PID" >/dev/null 2>&1; then
+        echo "Daemon: running (PID $PID)"
+      else
+        echo "Daemon: stale PID file (process not running)"
+      fi
+    else
+      echo "Daemon: no PID file (not running?)"
+    fi
+    REPORT="$WORKSPACE/agents/meta-supervisor/reports/report-$(date +%Y-%m-%d).md"
+    if [ -f "$REPORT" ]; then
+      echo "Latest report: $(basename "$REPORT") (modified $(date -r "$REPORT" '+%H:%M'))"
+    else
+      echo "Latest report: not found"
+    fi
+    LOG_DIR="$WORKSPACE/agents/meta-supervisor/logs"
+    if [ -d "$LOG_DIR" ]; then
+      LATEST_LOG=$(ls -t "$LOG_DIR"/meta-supervisor-daemon-*.log 2>/dev/null | head -1)
+      if [ -n "$LATEST_LOG" ]; then
+        echo "Recent log (tail of $(basename "$LATEST_LOG")):"
+        tail -3 "$LATEST_LOG" | sed 's/^/  /'
+      else
+        echo "No daemon logs found"
+      fi
+    fi
+    ;;
   memory-stats)
     # Show memory system statistics (wrapper around memory-stats script)
     "$WORKSPACE/memory-stats" "$@"
