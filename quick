@@ -76,6 +76,7 @@ Commands:
   agents [flags]               List running sessions/agents; flags passed to `openclaw sessions` (e.g., --json, --help)
   downloads [--json] [--watch SECS]  Show aria2 download progress (active downloads). Use --watch to auto-refresh.
   content-latest              Show the latest content digest/note from content/ directory.
+  today-content               Show today's content files and daily digest status (created today UTC?)
   content-index-update        Regenerate content/INDEX.md to reflect current content files.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   reports                     List daily digest reports in reports/ (most recent first)
@@ -578,6 +579,30 @@ case "$cmd" in
     fi
     cat "$latest"
     ;;
+
+  today-content)
+    # Show today's content files and digest status
+    today=$(date -u +%Y-%m-%d)
+    echo "Today's Content ($today)"
+    echo "---------------------"
+    files=$(ls -1 content/${today}*.md 2>/dev/null || true)
+    if [ -z "$files" ]; then
+      echo "No content files created today yet."
+    else
+      echo "$files" | while IFS= read -r f; do
+        size=$(stat -c%s "$f" 2>/dev/null || echo "?")
+        printf "  %-40s %6s bytes\n" "$(basename "$f")" "$size"
+      done
+    fi
+    echo ""
+    digest="content/${today}-daily-digest.md"
+    if [ -f "$digest" ]; then
+      echo "✅ Daily digest exists: $digest"
+    else
+      echo "⚠️  Daily digest NOT created yet for today"
+    fi
+    ;;
+
   content-index-update)
     # Regenerate content/INDEX.md to reflect current content files
     "$WORKSPACE/update-content-index.sh"
