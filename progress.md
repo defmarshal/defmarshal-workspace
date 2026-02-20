@@ -45,11 +45,42 @@
 
 ### Step 5: Final commit & push
 - Stage changes: `git add -A`
-- Commit with message: `build: push git-janitor enhancement; verify notifier fix; maintain system hygiene`
+- Commit with message: `build: implement torrent-bot pause/resume/remove commands; enhance quick launcher; validate system`
 - Push: `git push origin master`
-- Update active-tasks.md: mark this builder session validated
-- Remove builder entry from active-tasks (self-clean)
-- **Status:** Pending
+- Update active-tasks.md: mark this builder session validated (then remove entry)
+- **Status:** ✅ Complete
+
+---
+## Phase 3: Close the Loop — ✅ Complete
+
+- Final health check: all OK (Disk 42%, Gateway healthy, Memory clean, Git clean)
+- Remote HEAD matches local (88d8786)
+- Workspace fully validated
+- Planning docs archived (task_plan.md, findings.md, progress.md included in commit)
+- No temp files, no regressions
+
+---
+## Outcome
+
+✅ **Torrent management completed:**
+- Added `torrent-pause`, `torrent-resume`, `torrent-remove` scripts
+- Updated `quick` launcher with new commands
+- Modified `agents/torrent-bot/main.py` to use new commands (removed TODOs)
+- Help text updated in both `quick` and torrent-bot
+
+✅ **Validation passed:** All health checks green, no issues
+
+✅ **Git hygiene:** Commits pushed with `build:` prefix; active-tasks.md cleaned
+
+**Commit history:**
+- `88d8786` (HEAD) – cleanup active-tasks after builder validation
+- `ce4be44` – main build commit (new torrent commands)
+- (prior: 2fda28d dev commit, etc.)
+
+---
+
+**Session:** `cron:23dad379-21ad-4f7a-8c68-528f98203a33` — Complete ✓
+
 
 ---
 
