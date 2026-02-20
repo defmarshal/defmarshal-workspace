@@ -110,6 +110,7 @@ Commands:
   gateway-logs               Show recent OpenClaw gateway logs (tail -n 20 /tmp/openclaw/openclaw-*.log)
   openclaw-version           Show installed OpenClaw version (global npm)
   openclaw-status            Show OpenClaw system status (sessions, channels, recipients)
+  config-provider             Show configured AI provider (openrouter/local) for agents
   uptime                     Show system and OpenClaw gateway uptime
   apt-check                  Show APT update count and short status
   feedback <agent> <score>   Give feedback on an agent (1-5). Meta-agent will adjust spawn weights accordingly. Example: quick feedback dev 5
@@ -792,6 +793,21 @@ case "$cmd" in
       echo "openclaw CLI not found"
     fi
     ;;
+
+  config-provider)
+    # Show configured AI provider (OpenRouter, local, etc.) for agents
+    CONFIG="/home/ubuntu/.openclaw/openclaw.json"
+    if [ ! -f "$CONFIG" ]; then
+      echo "Config not found: $CONFIG"
+      exit 1
+    fi
+    echo "Agent AI Provider (from openclaw.json):"
+    PROVIDER=$(python3 -c "import json; print(json.load(open('$CONFIG')).get('agents',{}).get('defaults',{}).get('model',{}).get('primary','?'))" 2>/dev/null || echo "?")
+    echo "  Model primary: $PROVIDER"
+    MEM_PROVIDER=$(python3 -c "import json; print(json.load(open('$CONFIG')).get('agents',{}).get('defaults',{}).get('memorySearch',{}).get('provider','?'))" 2>/dev/null || echo "?")
+    echo "  Memory search: $MEM_PROVIDER"
+    ;;
+
   uptime)
     # Show system and OpenClaw gateway uptime
     echo "=== System Uptime ==="
