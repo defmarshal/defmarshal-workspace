@@ -25,6 +25,7 @@ Commands:
   memory-reindex-check  Check if memory reindex is needed based on dirty flag and age. Exit 0 if ok, 1 if reindex recommended
   memory-reindex Force reindex of memory files (openclaw memory index)
   memory-stores    List all memory store files (SQLite DBs) with size and age
+  memory-provider Show current memory search provider (from openclaw.json)
   voyage-status    Check recent Voyage AI rate limit status from memory reindex logs; shows warnings if rate-limited recently
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
@@ -256,6 +257,17 @@ case "$cmd" in
     else
       echo "No memory directory found."
     fi
+    ;;
+
+  memory-provider)
+    # Show current memory search provider from openclaw.json defaults
+    CONFIG="/home/ubuntu/.openclaw/openclaw.json"
+    if [ ! -f "$CONFIG" ]; then
+      echo "Config not found: $CONFIG"
+      exit 1
+    fi
+    PROVIDER=$(python3 -c "import json; print(json.load(open('$CONFIG')).get('agents',{}).get('defaults',{}).get('memorySearch',{}).get('provider','?'))" 2>/dev/null || echo "?")
+    echo "Memory search provider: $PROVIDER"
     ;;
 
   memory-stats)
