@@ -56,6 +56,18 @@
     "aria2": {
       "version": "1.0.2",
       "installedAt": 1771041242372
+    },
+    "game-cog": {
+      "version": "1.0.3",
+      "installedAt": 1771653060773
+    },
+    "developer": {
+      "version": "1.0.0",
+      "installedAt": 1771653070285
+    },
+    "fivem-dev": {
+      "version": "0.1.0",
+      "installedAt": 1771653181164
     }
   }
 }
