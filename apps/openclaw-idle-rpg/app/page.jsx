@@ -170,7 +170,7 @@ export default function HomePage() {
             addFloatingText(text, Math.random() * 80 + 10, Math.random() * 40 + 20, '#a5f3fc');
           }
         });
-        Object.keys(newRes).forEach(k => (newRes[k] = Math.round(newRes[k] * 100) / 100);
+        Object.keys(newRes).forEach(k => { newRes[k] = Math.round(newRes[k] * 100) / 100; });
         return newRes;
       });
     }, 1000);
