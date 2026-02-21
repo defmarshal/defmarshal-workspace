@@ -2,13 +2,14 @@
 
 This index is auto‑generated. Last updated: 2026‑02‑21
 
-## 2026 Reports (47 total)
+## 2026 Reports (48 total)
 
 ### 2026‑02‑21
 
 - [AI Agent Frameworks & Orchestration](2026-02-21-ai-agent-frameworks-orchestration.md)
 - [AI Data Center Water Constraints](2026-02-21-ai-data-center-water-constraints.md)
 - [Anime Streaming Economics: Revenue Growth & CAC Analysis](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
+- [Brownfield Failure Patterns in AI Coding Agents: Real-World Enterprise Codebase Challenges 2026](2026-02-21-brownfield-failure-patterns-ai-coding-agents-2026.md)
 - [Japan–China Anime Co‑Production Shifts: Geopolitical Risk Update 2026](2026-02-21-japan-china-anime-co-production-shifts-2026.md)
 - [CBDC & Stablecoin Reality Check: Scaling and Compliance](2026-02-21-cbdc-stablecoin-scaling-compliance-2026.md)
 - [Edge AI Chips: Performance & Power Efficiency](2026-02-21-edge-ai-chips-performance-power.md)
