@@ -269,8 +269,8 @@ case "${1:-}" in
     fi
     APT_COUNT=${APT_COUNT//$'\n'/}
     TODAY=$(date -u +%Y-%m-%d)
-    CONTENT_TODAY=$(ls content/${TODAY}*.md 2>/dev/null | wc -l)
-    RESEARCH_TODAY=$(ls research/${TODAY}*.md 2>/dev/null | wc -l)
+    CONTENT_TODAY=$(find content -maxdepth 1 -name "${TODAY}*.md" 2>/dev/null | wc -l)
+    RESEARCH_TODAY=$(find research -maxdepth 1 -name "${TODAY}*.md" 2>/dev/null | wc -l)
     
     log "Snapshot: disk=${DISK_USAGE}%, apt=${APT_COUNT}, content_today=${CONTENT_TODAY}, research_today=${RESEARCH_TODAY}"
     
