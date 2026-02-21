@@ -102,6 +102,12 @@ for ((s=0; s<STEP_COUNT; s++)); do
   STEP_RESULTS+=("$STATUS")
 done
 
+# Count failed steps
+FAILED_COUNT=0
+for result in "${STEP_RESULTS[@]}"; do
+  [[ "$result" == "failed" ]] && ((FAILED_COUNT++))
+done
+
 # ------------------------------------------------------------
 # Quality validation: ensure idea produced meaningful changes
 # Reject placeholder commits (only touched 'quick' or no changes)
