@@ -147,6 +147,7 @@
 | 2026-02-21 | ["AI Agent Frameworks in 2026: LangGraph, CrewAI, AutoGen Comparison"](2026-02-21-ai-agent-frameworks-orchestration.md) | topics: |
 | 2026-02-21 | ["AI Data Centers Face Water and Power Constraints"](2026-02-21-ai-data-center-water-constraints.md) | topics: |
 | 2026-02-21 | ["Edge AI Chips 2026: Performance, Power, and Market Dynamics"](2026-02-21-edge-ai-chips-performance-power.md) | topics: |
+| 2026-02-21 | ["Practical Quantum Computing Applications in 2026"](2026-02-21-quantum-computing-practical-applications-2026.md) | topics: |
 |  | [ai-anime-2026-year-of-dragon-outlook.md](ai-anime-2026-year-of-dragon-outlook.md) |  |
 |  | [ai-anime-fan-engagement-subscription-economics-2026.md](ai-anime-fan-engagement-subscription-economics-2026.md) |  |
 |  | [ai-anime-finance-convergence-q1-2026-update.md](ai-anime-finance-convergence-q1-2026-update.md) |  |
