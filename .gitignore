@@ -75,5 +75,9 @@ agents/meta-supervisor/meta-supervisor.nohup
 # Idea generator/executor runtime artifacts (do not commit)
 agents/ideas/*.json
 
+# Environment files (secrets, config)
+*.env
+.env
+
 # End of additions
 .vercel
