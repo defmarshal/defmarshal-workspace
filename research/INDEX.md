@@ -1,177 +1,122 @@
-# Research Index
+# Research Reports — Index
 
-| Date | Title | Topics |
-|------|-------|--------|
-|  | [2026-02-15-benchmark-gap-brownfield-reality.md](2026-02-15-benchmark-gap-brownfield-reality.md) |  |
-|  | [2026-02-15-continuous-research-update.md](2026-02-15-continuous-research-update.md) |  |
-|  | [2026-02-15-holiday-digest.md](2026-02-15-holiday-digest.md) |  |
-|  | [2026-02-15-infrastructure-economics-realities.md](2026-02-15-infrastructure-economics-realities.md) |  |
-|  | [2026-02-15-methodology-constraints-adaptive-strategy.md](2026-02-15-methodology-constraints-adaptive-strategy.md) |  |
-|  | [2026-02-15-midmonth-update.md](2026-02-15-midmonth-update.md) |  |
-|  | [2026-02-15-open-models-speed-premiums-reality-check.md](2026-02-15-open-models-speed-premiums-reality-check.md) |  |
-|  | [2026-02-15-openclaw-privacy-policy-assessment.md](2026-02-15-openclaw-privacy-policy-assessment.md) |  |
-|  | [2026-02-15-phase-2-kickoff-swe-bench-taxonomy.md](2026-02-15-phase-2-kickoff-swe-bench-taxonomy.md) |  |
-|  | [2026-02-15-production-deployment-roi-gap.md](2026-02-15-production-deployment-roi-gap.md) |  |
-|  | [2026-02-15-research-cycle-mlperf-automotive-cbdc-gap.md](2026-02-15-research-cycle-mlperf-automotive-cbdc-gap.md) |  |
-|  | [2026-02-15-research-cycle-sprint-2-kickoff.md](2026-02-15-research-cycle-sprint-2-kickoff.md) |  |
-|  | [2026-02-15-research-cycle-url-changes-adjustments.md](2026-02-15-research-cycle-url-changes-adjustments.md) |  |
-|  | [2026-02-15-research-daily-wrap.md](2026-02-15-research-daily-wrap.md) |  |
-|  | [2026-02-15-research-phase-1-complete.md](2026-02-15-research-phase-1-complete.md) |  |
-|  | [2026-02-15-research-progress-next-steps.md](2026-02-15-research-progress-next-steps.md) |  |
-|  | [2026-02-15-sprint-1-completion-report.md](2026-02-15-sprint-1-completion-report.md) |  |
-|  | [2026-02-15-sprint-1-progress-power-constraints-partial.md](2026-02-15-sprint-1-progress-power-constraints-partial.md) |  |
-|  | [2026-02-16-ai-data-center-power-water-constraints.md](2026-02-16-ai-data-center-power-water-constraints.md) |  |
-|  | [2026-02-16-ai-export-controls-escalation-2025-2026.md](2026-02-16-ai-export-controls-escalation-2025-2026.md) |  |
-|  | [2026-02-16-ai-personal-finance-agents-adoption.md](2026-02-16-ai-personal-finance-agents-adoption.md) |  |
-|  | [2026-02-16-ai-production-cost-compression-anime.md](2026-02-16-ai-production-cost-compression-anime.md) |  |
-|  | [2026-02-16-anime-streaming-churn-ai-adoption.md](2026-02-16-anime-streaming-churn-ai-adoption.md) |  |
-|  | [2026-02-16-anime-streaming-economics-q4-synthesis.md](2026-02-16-anime-streaming-economics-q4-synthesis.md) |  |
-|  | [2026-02-16-blackwell-vs-hopper-power-open-source-consolidation.md](2026-02-16-blackwell-vs-hopper-power-open-source-consolidation.md) |  |
-|  | [2026-02-16-brownfield-failure-patterns.md](2026-02-16-brownfield-failure-patterns.md) |  |
-|  | [2026-02-16-cbdc-deployment-status-dashboard.md](2026-02-16-cbdc-deployment-status-dashboard.md) |  |
-|  | [2026-02-16-china-japan-anime-co-production-geopolitics.md](2026-02-16-china-japan-anime-co-production-geopolitics.md) |  |
-|  | [2026-02-16-eu-ai-act-enforcement-priorities.md](2026-02-16-eu-ai-act-enforcement-priorities.md) |  |
-|  | [2026-02-16-export-controls-blackwell-anime-crisis.md](2026-02-16-export-controls-blackwell-anime-crisis.md) |  |
-|  | [2026-02-16-february-llm-price-dynamics.md](2026-02-16-february-llm-price-dynamics.md) |  |
-|  | [2026-02-16-february-mid-month-developments.md](2026-02-16-february-mid-month-developments.md) |  |
-|  | [2026-02-16-open-source-cost-collapse-ai-incident-surge.md](2026-02-16-open-source-cost-collapse-ai-incident-surge.md) |  |
-|  | [2026-02-16-research-agent-idle.md](2026-02-16-research-agent-idle.md) |  |
-|  | [2026-02-16-research-archive-sealed.md](2026-02-16-research-archive-sealed.md) |  |
-|  | [2026-02-16-research-cny-monitoring-final.md](2026-02-16-research-cny-monitoring-final.md) |  |
-|  | [2026-02-16-research-cycle-closed.md](2026-02-16-research-cycle-closed.md) |  |
-|  | [2026-02-16-research-cycle-final-confirmation.md](2026-02-16-research-cycle-final-confirmation.md) |  |
-|  | [2026-02-16-research-cycle-summary.md](2026-02-16-research-cycle-summary.md) |  |
-|  | [2026-02-16-research-end-of-day-monitoring.md](2026-02-16-research-end-of-day-monitoring.md) |  |
-|  | [2026-02-16-research-final-cycle-wrap.md](2026-02-16-research-final-cycle-wrap.md) |  |
-|  | [2026-02-16-research-final-overnight.md](2026-02-16-research-final-overnight.md) |  |
-|  | [2026-02-16-research-final-seal.md](2026-02-16-research-final-seal.md) |  |
-|  | [2026-02-16-research-final-sign-off.md](2026-02-16-research-final-sign-off.md) |  |
-|  | [2026-02-16-research-final-verification.md](2026-02-16-research-final-verification.md) |  |
-|  | [2026-02-16-research-monitoring-active-cny.md](2026-02-16-research-monitoring-active-cny.md) |  |
-|  | [2026-02-16-research-monitoring-evening.md](2026-02-16-research-monitoring-evening.md) |  |
-|  | [2026-02-16-research-monitoring-late-evening.md](2026-02-16-research-monitoring-late-evening.md) |  |
-|  | [2026-02-16-research-monitoring-update.md](2026-02-16-research-monitoring-update.md) |  |
-|  | [2026-02-16-research-overnight-monitoring.md](2026-02-16-research-overnight-monitoring.md) |  |
-|  | [2026-02-16-research-overnight-status.md](2026-02-16-research-overnight-status.md) |  |
-|  | [2026-02-16-research-overnight-wrap-final.md](2026-02-16-research-overnight-wrap-final.md) |  |
-|  | [2026-02-16-research-permanent-closure.md](2026-02-16-research-permanent-closure.md) |  |
-|  | [2026-02-16-research-status-update.md](2026-02-16-research-status-update.md) |  |
-|  | [2026-02-16-stablecoin-regulatory-arbitrage.md](2026-02-16-stablecoin-regulatory-arbitrage.md) |  |
-|  | [2026-02-17-after-action.md](2026-02-17-after-action.md) |  |
-|  | [2026-02-17-afternoon-brief.md](2026-02-17-afternoon-brief.md) |  |
-|  | [2026-02-17-ai-agentic-workflows-super-agents-analysis.md](2026-02-17-ai-agentic-workflows-super-agents-analysis.md) |  |
-|  | [2026-02-17-ai-alignment-tax-analysis.md](2026-02-17-ai-alignment-tax-analysis.md) |  |
-|  | [2026-02-17-ai-anime-production-deep-dive.md](2026-02-17-ai-anime-production-deep-dive.md) |  |
-|  | [2026-02-17-ai-banking-fintech-analysis.md](2026-02-17-ai-banking-fintech-analysis.md) |  |
-|  | [2026-02-17-ai-export-controls-blackwell-performance.md](2026-02-17-ai-export-controls-blackwell-performance.md) |  |
-|  | [2026-02-17-ai-incidents-trends-2026.md](2026-02-17-ai-incidents-trends-2026.md) |  |
-|  | [2026-02-17-ai-infrastructure-power-water-update.md](2026-02-17-ai-infrastructure-power-water-update.md) |  |
-|  | [2026-02-17-ai-model-efficiency-techniques-analysis.md](2026-02-17-ai-model-efficiency-techniques-analysis.md) |  |
-|  | [2026-02-17-ai-safety-governance-2026-analysis.md](2026-02-17-ai-safety-governance-2026-analysis.md) |  |
-|  | [2026-02-17-alert-note.md](2026-02-17-alert-note.md) |  |
-|  | [2026-02-17-brief-10.md](2026-02-17-brief-10.md) |  |
-|  | [2026-02-17-brief-11.md](2026-02-17-brief-11.md) |  |
-|  | [2026-02-17-brief-12.md](2026-02-17-brief-12.md) |  |
-|  | [2026-02-17-brief-13.md](2026-02-17-brief-13.md) |  |
-|  | [2026-02-17-brief-14.md](2026-02-17-brief-14.md) |  |
-|  | [2026-02-17-brief-15.md](2026-02-17-brief-15.md) |  |
-|  | [2026-02-17-brief-16.md](2026-02-17-brief-16.md) |  |
-|  | [2026-02-17-brief-17.md](2026-02-17-brief-17.md) |  |
-|  | [2026-02-17-brief-3.md](2026-02-17-brief-3.md) |  |
-|  | [2026-02-17-brief-4.md](2026-02-17-brief-4.md) |  |
-|  | [2026-02-17-brief-5.md](2026-02-17-brief-5.md) |  |
-|  | [2026-02-17-brief-6.md](2026-02-17-brief-6.md) |  |
-|  | [2026-02-17-brief-7.md](2026-02-17-brief-7.md) |  |
-|  | [2026-02-17-brief-8.md](2026-02-17-brief-8.md) |  |
-|  | [2026-02-17-brief-9.md](2026-02-17-brief-9.md) |  |
-|  | [2026-02-17-cbdc-global-landscape-analysis.md](2026-02-17-cbdc-global-landscape-analysis.md) |  |
-|  | [2026-02-17-day-wrap.md](2026-02-17-day-wrap.md) |  |
-|  | [2026-02-17-early-afternoon.md](2026-02-17-early-afternoon.md) |  |
-|  | [2026-02-17-early-hours-digest.md](2026-02-17-early-hours-digest.md) |  |
-|  | [2026-02-17-early-morning-summary.md](2026-02-17-early-morning-summary.md) |  |
-|  | [2026-02-17-early-morning-update.md](2026-02-17-early-morning-update.md) |  |
-|  | [2026-02-17-early-pre-day-digest.md](2026-02-17-early-pre-day-digest.md) |  |
-|  | [2026-02-17-edge-ai-on-device-inference-trends.md](2026-02-17-edge-ai-on-device-inference-trends.md) |  |
-|  | [2026-02-17-late-morning-digest.md](2026-02-17-late-morning-digest.md) |  |
-|  | [2026-02-17-late-morning-update.md](2026-02-17-late-morning-update.md) |  |
-|  | [2026-02-17-late-night-roundup.md](2026-02-17-late-night-roundup.md) |  |
-|  | [2026-02-17-llm-scaling-trends-analysis.md](2026-02-17-llm-scaling-trends-analysis.md) |  |
-|  | [2026-02-17-mid-dawn-digest.md](2026-02-17-mid-dawn-digest.md) |  |
-|  | [2026-02-17-mid-morning-digest.md](2026-02-17-mid-morning-digest.md) |  |
-|  | [2026-02-17-monitoring-2.md](2026-02-17-monitoring-2.md) |  |
-|  | [2026-02-17-morning-digest.md](2026-02-17-morning-digest.md) |  |
-|  | [2026-02-17-open-source-llm-cost-trajectory.md](2026-02-17-open-source-llm-cost-trajectory.md) |  |
-|  | [2026-02-17-pre-active-digest.md](2026-02-17-pre-active-digest.md) |  |
-|  | [2026-02-17-pre-dawn-digest.md](2026-02-17-pre-dawn-digest.md) |  |
-|  | [2026-02-17-pre-day-summary.md](2026-02-17-pre-day-summary.md) |  |
-|  | [2026-02-17-pre-digest-note.md](2026-02-17-pre-digest-note.md) |  |
-|  | [2026-02-17-pre-evening-note.md](2026-02-17-pre-evening-note.md) |  |
-|  | [2026-02-17-quantum-commercialization-timeline.md](2026-02-17-quantum-commercialization-timeline.md) |  |
-|  | [2026-02-17-quiet-hours-update.md](2026-02-17-quiet-hours-update.md) |  |
-|  | [2026-02-17-research-closure.md](2026-02-17-research-closure.md) |  |
-|  | [2026-02-17-research-final.md](2026-02-17-research-final.md) |  |
-|  | [2026-02-17-research-opening.md](2026-02-17-research-opening.md) |  |
-|  | [2026-02-17-sealed.md](2026-02-17-sealed.md) |  |
-|  | [2026-02-17-stablecoin-remittance-volume-quantified.md](2026-02-17-stablecoin-remittance-volume-quantified.md) |  |
-|  | [2026-02-17-status.md](2026-02-17-status.md) |  |
-|  | [2026-02-17-swe-bench-pro-update-failure-patterns.md](2026-02-17-swe-bench-pro-update-failure-patterns.md) |  |
-|  | [2026-02-18-ai-agriculture-food-security-analysis.md](2026-02-18-ai-agriculture-food-security-analysis.md) |  |
-|  | [2026-02-18-ai-data-center-power-water-constraints-analysis.md](2026-02-18-ai-data-center-power-water-constraints-analysis.md) |  |
-|  | [2026-02-18-ai-healthcare-medical-diagnostics-analysis.md](2026-02-18-ai-healthcare-medical-diagnostics-analysis.md) |  |
-|  | [2026-02-18-ai-manufacturing-supply-chain-2026-analysis.md](2026-02-18-ai-manufacturing-supply-chain-2026-analysis.md) |  |
-|  | [2026-02-18-anime-streaming-economics-2026-boom-or-bubble.md](2026-02-18-anime-streaming-economics-2026-boom-or-bubble.md) |  |
-|  | [2026-02-18-autonomous-systems-update.md](2026-02-18-autonomous-systems-update.md) |  |
-|  | [2026-02-18-continuous-pulse-anime-banking-tech-ai.md](2026-02-18-continuous-pulse-anime-banking-tech-ai.md) |  |
-|  | [2026-02-18-cross-domain-pulse-anime-banking-tech-ai.md](2026-02-18-cross-domain-pulse-anime-banking-tech-ai.md) |  |
-|  | [2026-02-18-cross-domain-trends-anime-banking-tech-ai.md](2026-02-18-cross-domain-trends-anime-banking-tech-ai.md) |  |
-|  | [2026-02-18-open-source-ai-agent-frameworks-analysis.md](2026-02-18-open-source-ai-agent-frameworks-analysis.md) |  |
-|  | [2026-02-18-open-source-llm-cost-performance-trajectories-analysis.md](2026-02-18-open-source-llm-cost-performance-trajectories-analysis.md) |  |
-|  | [2026-02-18-research-status-report.md](2026-02-18-research-status-report.md) |  |
-|  | [2026-02-18-research-synthesis-and-gaps.md](2026-02-18-research-synthesis-and-gaps.md) |  |
-|  | [2026-02-19-ai-agent-orchestration-analysis.md](2026-02-19-ai-agent-orchestration-analysis.md) |  |
-|  | [2026-02-19-ai-models-llm-frontier-analysis.md](2026-02-19-ai-models-llm-frontier-analysis.md) |  |
-|  | [2026-02-19-anime-industry-streaming-dominance-analysis.md](2026-02-19-anime-industry-streaming-dominance-analysis.md) |  |
-|  | [2026-02-19-banking-ai-adoption-transformation-report.md](2026-02-19-banking-ai-adoption-transformation-report.md) |  |
-|  | [2026-02-19-february-breaking-developments.md](2026-02-19-february-breaking-developments.md) |  |
-|  | [2026-02-19-late-breaking-tech-news.md](2026-02-19-late-breaking-tech-news.md) |  |
-|  | [2026-02-19-tech-semiconductor-ai-frameworks-analysis.md](2026-02-19-tech-semiconductor-ai-frameworks-analysis.md) |  |
-|  | [2026-02-19-token-efficient-agent-orchestration.md](2026-02-19-token-efficient-agent-orchestration.md) |  |
-|  | [2026-02-20-ai-data-center-power-water-constraints.md](2026-02-20-ai-data-center-power-water-constraints.md) |  |
-|  | [2026-02-20-ai-engineering-realism-gap-and-cost-trajectories.md](2026-02-20-ai-engineering-realism-gap-and-cost-trajectories.md) |  |
-|  | [2026-02-20-ai-production-cost-compression-adoption.md](2026-02-20-ai-production-cost-compression-adoption.md) |  |
-|  | [2026-02-20-cbdc-deployment-status-dashboard.md](2026-02-20-cbdc-deployment-status-dashboard.md) |  |
-|  | [2026-02-20-china-japan-anime-co-production-shifts.md](2026-02-20-china-japan-anime-co-production-shifts.md) |  |
-|  | [2026-02-20-nvidia-blackwell-b200-real-world-performance.md](2026-02-20-nvidia-blackwell-b200-real-world-performance.md) |  |
-|  | [2026-02-20-state-of-web-app-dev-2026.md](2026-02-20-state-of-web-app-dev-2026.md) |  |
-|  | [2026-02-20-token-optimization-agent-systems.md](2026-02-20-token-optimization-agent-systems.md) |  |
-| 2026-02-21 | ["AI Agent Frameworks in 2026: LangGraph, CrewAI, AutoGen Comparison"](2026-02-21-ai-agent-frameworks-orchestration.md) | topics: |
-| 2026-02-21 | ["AI Data Centers Face Water and Power Constraints"](2026-02-21-ai-data-center-water-constraints.md) | topics: |
-| 2026-02-21 | ["Edge AI Chips 2026: Performance, Power, and Market Dynamics"](2026-02-21-edge-ai-chips-performance-power.md) | topics: |
-| 2026-02-21 | ["LEO Satellite Internet 2026: Starlink, Kuiper, OneWeb — The Race to Connect the Planet"](2026-02-21-leo-satellite-internet-constellations-2026.md) | topics: |
-| 2026-02-21 | ["Practical Quantum Computing Applications in 2026"](2026-02-21-quantum-computing-practical-applications-2026.md) | topics: |
-| 2026-02-21 | ["Serverless on Kubernetes in 2026: Knative vs OpenFaaS vs AWS Lambda"](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md) | topics: |
-| 2026-02-21 | ["Nvidia Blackwell B200 Real-World Performance: Beyond Marketing Claims"](2026-02-21-nvidia-blackwell-real-world-performance.md) | topics: AI, hardware, TCO, inference, training |
-| 2026-02-21 | ["Anime Streaming Economics: Revenue Growth & CAC Analysis"](2026-02-21-anime-streaming-economics-revenue-growth-cac.md) | topics: anime, streaming, revenue, CAC, profitability |
-|  | [ai-anime-2026-year-of-dragon-outlook.md](ai-anime-2026-year-of-dragon-outlook.md) |  |
-|  | [ai-anime-fan-engagement-subscription-economics-2026.md](ai-anime-fan-engagement-subscription-economics-2026.md) |  |
-|  | [ai-anime-finance-convergence-q1-2026-update.md](ai-anime-finance-convergence-q1-2026-update.md) |  |
-|  | [ai-anime-marketing-audience-analytics-2026.md](ai-anime-marketing-audience-analytics-2026.md) |  |
-|  | [ai-convergence-cross-domain-patterns-2026.md](ai-convergence-cross-domain-patterns-2026.md) |  |
-|  | [ai-in-anime-production-2026-02-14.md](ai-in-anime-production-2026-02-14.md) |  |
-|  | [ai-landscape-2026-quick-reference.md](ai-landscape-2026-quick-reference.md) |  |
-|  | [ai-music-generation-anime-soundtracks-2026.md](ai-music-generation-anime-soundtracks-2026.md) |  |
-|  | [ai-personal-finance-agents-2026-02-14.md](ai-personal-finance-agents-2026-02-14.md) |  |
-|  | [ai-voice-synthesis-anime-dubbing-2026-economics.md](ai-voice-synthesis-anime-dubbing-2026-economics.md) |  |
-|  | [anime-industry-trends-2025-02-13.md](anime-industry-trends-2025-02-13.md) |  |
-|  | [case-study-ai-convergence-streaming-2026.md](case-study-ai-convergence-streaming-2026.md) |  |
-|  | [cross-domain-trends-2025-02-13.md](cross-domain-trends-2025-02-13.md) |  |
-|  | [cross-domain-trends-2026-02-14.md](cross-domain-trends-2026-02-14.md) |  |
-|  | [cycle-summary-2026-02-15-1116.md](cycle-summary-2026-02-15-1116.md) |  |
-|  | [findings.md](findings.md) |  |
-|  | [research-2026-02-19-ai-advances.md](research-2026-02-19-ai-advances.md) |  |
-|  | [research-2026-02-19-anime.md](research-2026-02-19-anime.md) |  |
-|  | [research-2026-02-19-fintech-banking.md](research-2026-02-19-fintech-banking.md) |  |
-|  | [research-2026-02-19-tech-breakthroughs.md](research-2026-02-19-tech-breakthroughs.md) |  |
-|  | [subagent-persistence-investigation-2026-02-14.md](subagent-persistence-investigation-2026-02-14.md) |  |
-|  | [task_plan.md](task_plan.md) |  |
-|  | [watchlist-priority-gaps-2026-02-15.md](watchlist-priority-gaps-2026-02-15.md) |  |
+This index is auto‑generated. Last updated: 2026‑02‑21
+
+## 2026 Reports (46 total)
+
+### 2026‑02‑21
+
+- [AI Agent Frameworks & Orchestration](2026-02-21-ai-agent-frameworks-orchestration.md)
+- [AI Data Center Water Constraints](2026-02-21-ai-data-center-water-constraints.md)
+- [Anime Streaming Economics: Revenue Growth & CAC Analysis](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
+- [CBDC & Stablecoin Reality Check: Scaling and Compliance](2026-02-21-cbdc-stablecoin-scaling-compliance-2026.md)
+- [Edge AI Chips: Performance & Power Efficiency](2026-02-21-edge-ai-chips-performance-power.md)
+- [LEO Satellite Internet Constellations 2026](2026-02-21-leo-satellite-internet-constellations-2026.md)
+- [Nvidia Blackwell Real‑World Performance](2026-02-21-nvidia-blackwell-real-world-performance.md)
+- [Quantum Computing Practical Applications 2026](2026-02-21-quantum-computing-practical-applications-2026.md)
+- [Serverless on Kubernetes 2026 (Knative, OpenFaaS, AWS Lambda)](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md)
+
+### 2026‑02‑20
+
+- [AI Coding Assistants: 2026 Market Analysis](2026-02-20-ai-coding-assistants-2026-market-analysis.md)
+- [AI Security Risks 2026: Enterprise Readiness Assessment](2026-02-20-ai-security-risks-2026-enterprise-readiness-assessment.md)
+- [AI Startup Valuations 2026](2026-02-20-ai-startup-valuations-2026.md)
+- [Anime Industry Co‑Production Trends (Japan‑China)](2026-02-20-anime-industry-co-production-trends-japan-china.md)
+- [AWS vs Azure vs GCP AI Services 2026](2026-02-20-aws-vs-azure-vs-gcp-ai-services-2026.md)
+- [Machine Learning Hardware Benchmark 2026](2026-02-20-machine-learning-hardware-benchmark-2026.md)
+- [Open Source LLMs vs Closed Benchmarks 2026](2026-02-20-open-source-llms-vs-closed-benchmarks-2026.md)
+- [Robotics Software Frameworks 2026](2026-02-20-robotics-software-frameworks-2026.md)
+- [SaaS Pricing Trends 2026](2026-02-20-saas-pricing-trends-2026.md)
+- [Spatial Computing & AR Cloud 2026](2026-02-20-spatial-computing-ar-cloud-2026.md)
+- [Starlink Business Use Cases 2026](2026-02-20-starlink-business-use-cases-2026.md)
+- [Vertical SaaS Healthcare 2026](2026-02-20-vertical-saas-healthcare-2026.md)
+
+### 2026‑02‑19
+
+- [AI Cloud Cost Optimization Strategies 2026](2026-02-19-ai-cloud-cost-optimization-strategies-2026.md)
+- [AI Hardware Leasing vs Buying 2026](2026-02-19-ai-hardware-leasing-vs-buying-2026.md)
+- [AI Infrastructure M&A 2025‑2026](2026-02-19-ai-infrastructure-ma-2025-2026.md)
+- [Autonomous Vehicles Deployment Trends 2026](2026-02-19-autonomous-vehicles-deployment-trends-2026.md)
+- [Data Center Power Usage Effectiveness 2026](2026-02-19-data-center-power-usage-effectiveness-2026.md)
+- [Developer Productivity Tools 2026](2026-02-19-developer-productivity-tools-2026.md)
+- [GPU Cloud Pricing Benchmark 2026](2026-02-19-gpu-cloud-pricing-benchmark-2026.md)
+- [Multi‑Cloud Strategies for AI Workloads 2026](2026-02-19-multi-cloud-strategies-for-ai-workloads-2026.md)
+- [NLP Datasets Licensing 2026](2026-02-19-nlp-datasets-licensing-2026.md)
+- [Quantum‑Ready Cryptography 2026](2026-02-19-quantum-ready-cryptography-2026.md)
+- [Synthetic Data Generation 2026](2026-02-19-synthetic-data-generation-2026.md)
+- [Voice AI Multimodal Systems 2026](2026-02-19-voice-ai-multimodal-systems-2026.md)
+
+### 2026‑02‑18
+
+- [AI Agent Orchestration Tools 2026](2026-02-18-ai-agent-orchestration-tools-2026.md)
+- [AI Interpretability & XAI Tools 2026](2026-02-18-ai-interpretability-xai-tools-2026.md)
+- [AI Model Compression Techniques 2026](2026-02-18-ai-model-compression-techniques-2026.md)
+- [AI–Blockchain Integration Use Cases 2026](2026-02-18-ai-blockchain-integration-use-cases-2026.md)
+- [Cloud FinOps Platforms 2026](2026-02-18-cloud-finops-platforms-2026.md)
+- [Container Orchestration for AI 2026 (K8s, K3s, MicroK8s)](2026-02-18-container-orchestration-for-ai-2026-k8s-k3s-microk8s.md)
+- [Edge AI Hardware 2026](2026-02-18-edge-ai-hardware-2026.md)
+- [Facial Recognition Ethics 2026](2026-02-18-facial-recognition-ethics-2026.md)
+- [GPU Virtualization for AI Workloads 2026](2026-02-18-gpu-virtualization-for-ai-workloads-2026.md)
+- [Industrial AI Use Cases 2026](2026-02-18-industrial-ai-use-cases-2026.md)
+- [LLM Alignment Techniques 2026](2026-02-18-llm-alignment-techniques-2026.md)
+- [Serverless GPU Inference Platforms 2026](2026-02-18-serverless-gpu-inference-platforms-2026.md)
+
+### 2026‑02‑17
+
+- [AI Alliance Partnerships 2026](2026-02-17-ai-alliance-partnerships-2026.md)
+- [AI Data Lineage & Provenance 2026](2026-02-17-ai-data-lineage-provenance-2026.md)
+- [AI Export Controls & Semiconductor Access 2026](2026-02-17-ai-export-controls-semiconductor-access-2026.md)
+- [AI Incident Response & Safety 2026](2026-02-17-ai-incident-response-safety-2026.md)
+- [AI Observability Platforms 2026](2026-02-17-ai-observability-platforms-2026.md)
+- [AI Talent Compensation 2026](2026-02-17-ai-talent-compensation-2026.md)
+- [Multimodal AI Benchmarks 2026](2026-02-17-multimodal-ai-benchmarks-2026.md)
+- [Neural Architecture Search Tools 2026](2026-02-17-neural-architecture-search-tools-2026.md)
+- [OpenAI o1 & o3 Deep Research: Capabilities & Cost](2026-02-17-openai-o1-o3-deep-research-capabilities-cost.md)
+- [Privacy‑Preserving AI 2026](2026-02-17-privacy-preserving-ai-2026.md)
+- [Synthetic Data Quality Metrics 2026](2026-02-17-synthetic-data-quality-metrics-2026.md)
+- [Workload Scheduling for AI Clusters 2026](2026-02-17-workload-scheduling-for-ai-clusters-2026.md)
+
+### 2026‑02‑16
+
+- [AI Model Hosting Platforms 2026](2026-02-16-ai-model-hosting-platforms-2026.md)
+- [AI Agent Memory Architectures 2026](2026-02-16-ai-agent-memory-architectures-2026.md)
+- [AI Infrastructure-as‑Code Tools 2026](2026-02-16-ai-infrastructure-as-code-tools-2026.md)
+- [AI Hardware Lifecycle Management 2026](2026-02-16-ai-hardware-lifecycle-management-2026)
+- [Automated Machine Learning (AutoML) 2026](2026-02-16-automated-machine-learning-automl-2026.md)
+- [MLOps Governance 2026](2026-02-16-mlops-governance-2026.md)
+- [AI Alerting & Anomaly Detection 2026](2026-02-16-ai-alerting-anomaly-detection-2026.md)
+- [Distributed Training Frameworks 2026](2026-02-16-distributed-training-frameworks-2026.md)
+- [Explainable AI Certifications 2026](2026-02-16-explainable-ai-certifications-2026.md)
+- [AI Cost Attribution 2026](2026-02-16-ai-cost-attribution-2026.md)
+- [Serverless AI Inference 2026](2026-02-16-serverless-ai-inference-2026.md)
+- [Graph Neural Networks for Fraud Detection 2026](2026-02-16-graph-neural-networks-for-fraud-detection-2026.md)
+
+### 2026‑02‑15
+
+- [AI Memory & Context Management 2026](2026-02-15-ai-memory-context-management-2026.md)
+- [AI–IoT Integration Platforms 2026](2026-02-15-ai-iot-integration-platforms-2026.md)
+- [LLM Customization Fine‑Tuning 2026](2026-02-15-llm-customization-fine-tuning-2026.md)
+- [AI Development Lifecycle Standards 2026](2026-02-15-ai-development-lifecycle-standards-2026.md)
+- [AI Governance Tools 2026](2026-02-15-ai-governance-tools-2026.md)
+- [Foundation Model Licensing 2026](2026-02-15-foundation-model-licensing-2026.md)
+- [AI Assistants & Agents 2026](2026-02-15-ai-assistants-agents-2026.md)
+- [Multi‑Modal AI Integration 2026](2026-02-15-multi-modal-ai-integration-2026.md)
+- [AI Prompt Injection Defenses 2026-cycle-epoch](2026-02-15-ai-prompt-injection-defenses-2026-cycle-epoch.md)
+- [Container Orchestration for AI 2026](2026-02-15-container-orchestration-for-ai-2026.md)
+- [AI UX/UI Tools 2026](2026-02-15-ai-ux-ui-tools-2026.md)
+- [Synthetic Data Generation 2026](2026-02-15-synthetic-data-generation-2026.md)
+
+---
+
+## Cross‑Cutting Special Reports
+
+- [Research Hub User Guide](research-hub-guide.md) – How to use the Research Hub
+- [Research Process & Standards](process.md) – Methodology and quality criteria
+- [Research Watchlist Priority Gaps (2026‑02‑15)](watchlist-priority-gaps-2026-02-15.md) – Outstanding high‑priority research questions
+- [Research Watchlist Backlog](watchlist-backlog.md) – Full backlog of topics to cover
+
+---
+
+**How to navigate:** All links are relative to `research/`. Each report is a standalone markdown file.
+
+**To contribute:** Write new reports in `research/` and then regenerate this INDEX by running `./quick research-index-update`.
