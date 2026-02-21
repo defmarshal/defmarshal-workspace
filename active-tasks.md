@@ -23,6 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260221-0900] workspace-builder - Fix daily digest cron rate limit issue by simplifying payload and updating docs (started: 2026-02-21 09:00 UTC, status: validated)
+  - Verification: daily-digest-cron payload updated to direct exec; manual test of `./agents/daily-digest.sh` succeeded; CRON_JOBS.md updated; ./quick health OK; no temp files; changes committed.
+
 - [workspace-builder-20260221-0300] workspace-builder - Idea executor validation + monthly digest feature (started: 2026-02-21 03:00 UTC, status: validated)
   - Verification: idea executor validation added; monthly digest created and tested; health OK; no temp files.
 

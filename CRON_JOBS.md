@@ -101,8 +101,8 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 
 14. **daily-digest-cron**
     - **Schedule**: Twice daily at 12:00 and 20:00 Asia/Bangkok (`0 12,20 * * *`)
-    - **Payload**: agentTurn that runs a daily digest agent (message prompts it to gather content/research highlights, dev commits, health, and write `reports/YYYY-MM-DD-daily-digest.md` then announce to Telegram)
-    - **Description**: Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Individual agent announcements are suppressed; this is the sole daily summary.
+    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/daily-digest.sh 2>> memory/daily-digest.log'`
+    - **Description**: Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Stderr (errors) logged to `memory/daily-digest.log`. Simplified on 2026-02-21 to reduce LLM usage and avoid rate limits (direct exec instead of verbose agent prompt).
 
 15. **agent-manager-cron**
     - **Schedule**: Every 30 minutes (`*/30 * * * *`) in Asia/Bangkok

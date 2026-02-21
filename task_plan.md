@@ -1,71 +1,60 @@
-# Workspace Builder Plan
-## Analysis & Improvement Cycle - 2026-02-21
+# Workspace Builder Plan - 2026-02-21
 
-**Goal:** Analyze current workspace state, identify meaningful improvements, implement them, and validate.
-
-**Context:**
-- Branch: `idea/add-dark-mode-toggle-to` (uncommitted changes likely exist)
-- Recent work: OpenClaw Idle RPG game deployed, dark mode styling started
-- System health: Clean, stable
-- Known issues: dev-agent occasional hangs (needs investigation)
+**Started**: 2026-02-21 09:00 UTC  
+**Goal**: Strategic analysis and meaningful improvements to the OpenClaw workspace  
+**Session Key**: workspace-builder-20260221-0900
 
 ---
 
-## Phase 1: Discovery & Analysis
+## Phase 1: Analysis & Discovery
 
-**Tasks:**
-1. Check git diff to see what's on the current branch (dark mode work)
-2. Verify active-tasks.md is clean (no orphaned entries)
-3. Review memory health and reindex status
-4. Check cron job status (all schedules match CRON_JOBS.md)
-5. Validate idea generator/executor quality (review latest ideas)
-6. Investigate dev-agent hanging pattern (review logs)
+### Objectives
+- Review system health and recent activity
+- Identify areas for improvement based on lessons learned
+- Validate that all recent changes are properly documented and committed
+- Check for consistency across agent scripts and cron configuration
 
-**Success criteria:**
-- Clear understanding of what needs improvement
-- Prioritized list of actionable items
-
----
-
-## Phase 2: Implement Improvements
-
-**Potential improvements (choose based on findings):**
-- **A.** Complete dark mode toggle implementation for OpenClaw Idle RPG (if incomplete)
-- **B.** Fix dev-agent hanging issue (investigate timeout/session handling)
-- **C.** Enhance idea executor validation (already has quality checks; verify effectiveness)
-- **D.** Optimize memory reindex schedule (currently 4.7d ago; might need manual trigger)
-- **E.** Add monitoring for cron job failures (supervisor already exists; verify it's catching issues)
-- **F.** Document any new lessons learned from recent incidents
-
-**Execution approach:**
-- Make small, focused commits with `build:` prefix
-- Update progress.md after each task
-- Test changes immediately
+### Tasks
+1. Read recent memory files (today + yesterday)
+2. Check MEMORY.md index accuracy
+3. Verify active-tasks.md is current and <2KB
+4. Review CRON_JOBS.md for accuracy vs actual cron state
+5. Examine agent scripts for code quality, safety patterns, and consistency
+6. Check that idea generator/executor are functioning properly
+7. Validate that monthly digest feature exists and works
+8. Review git status; ensure no uncommitted changes
 
 ---
 
-## Phase 3: Validation & Close the Loop
+## Phase 2: Targeted Improvements
 
-**Checklist:**
-- `./quick health` passes (no errors)
-- `./quick memory-status` clean
-- `git status` clean (all changes committed and pushed)
-- No temporary files left in workspace
-- Active tasks registry updated correctly
-- Modified commands tested (if any quick commands changed)
-- Verify remote push successful
+### Potential Areas
+- **Documentation gaps**: Update CRON_JOBS.md or create monitoring guide if needed
+- **Agent script hygiene**: Standardize error handling, logging, and validation patterns
+- **Quick command completeness**: Verify all documented `quick` commands exist and work
+- **Memory maintenance**: Ensure memory index is clean and reindex schedule is appropriate
+- **Cron validation**: Verify `agent-manager` is enforcing schedule integrity
 
-**Final steps:**
-- Commit all changes with descriptive messages
-- Push to GitHub
-- Update active-tasks.md with validation notes and remove completed entries
-- Archive planning files to daily log
+### Selection Criteria
+- Changes must be small but meaningful
+- Must improve reliability, maintainability, or observability
+- Must not introduce complexity without clear benefit
+- Must be fully validated before commit
+
+---
+
+## Phase 3: Implementation & Validation
+
+### Process
+- For each improvement: implement → test → verify → document
+- Create task_plan, findings, progress as we go
+- At end: run `quick health`, test modified commands, check git status
+- Commit with prefix `build:` and push
+- Update active-tasks.md with validation results
 
 ---
 
 ## Notes
-
-- Keep all changes small and meaningful
-- Do not break existing functionality
-- Respect the 2KB limit on active-tasks.md
-- Use `memory_search` before making decisions based on past context
+- All work follows the "close the loop" principle: verify everything
+- Respect existing architecture; avoid major refactors without explicit need
+- Maintain kawaii efficiency (fast, reliable, clean)
