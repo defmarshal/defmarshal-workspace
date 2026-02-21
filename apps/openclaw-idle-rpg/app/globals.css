@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700;800;900&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@800;900&family=Press+Start+2P&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,21 +6,21 @@
 
 :root {
   --kawaii-pink: #ff1493; /* deep pink */
-  --kawaii-purple: #9b30ff; /* purple */
-  --kawaii-blue: #00bfff; /* deep sky blue */
-  --kawaii-mint: #00e676; /* bright mint */
-  --kawaii-yellow: #ffea00; /* bright yellow */
+  --kawaii-purple: #6a0dad; /* dark purple for text */
+  --kawaii-blue: #0097ff; /* darker blue */
+  --kawaii-mint: #00c853; /* darker mint */
+  --kawaii-yellow: #ffc107; /* amber */
   --kawaii-orange: #ff6f00; /* deep orange */
 }
 
 body {
-  @apply bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 text-gray-900 font-['Quicksand'];
+  @apply bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 text-gray-900 font-['Quicksand'];
   min-height: 100vh;
 }
 
 /* Kawaii card style */
 .kawaii-card {
-  @apply bg-white border-2 border-pink-400 rounded-3xl shadow-lg shadow-pink-400/50 p-4;
+  @apply bg-white/98 border-2 border-pink-500 rounded-3xl shadow-lg shadow-pink-500/40 p-4;
 }
 
 /* Kawaii button */
