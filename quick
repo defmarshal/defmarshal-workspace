@@ -147,6 +147,7 @@ Commands:
   ideas-status              Show idea generator/executor status (pending count, logs)
   ideas-generate            Manually trigger idea generator cycle
   ideas-execute             Manually trigger idea executor cycle
+  idea-clean                Clean up stale idea/* branches (merged or rejected). Use --execute to delete.
   cron              List OpenClaw cron jobs (concise summary)
   cron-health       Show health overview of all cron jobs (status, errors, schedule)
   cron-status                 Show status of important cron jobs (email-cleaner, torrent auto-download, etc.)
@@ -1380,6 +1381,10 @@ except Exception:
   ideas-execute)
     # Manually trigger idea executor (runs one cycle)
     "$WORKSPACE/agents/idea-executor/idea-executor-cycle.sh"
+    ;;
+  idea-clean)
+    # Clean up stale idea/* branches (dry-run by default; use --execute to delete)
+    "$WORKSPACE/scripts/cleanup-idea-branches.sh" "$@"
     ;;
   cleanup-agent-artifacts)
     "$WORKSPACE/cleanup-agent-artifacts.sh" "$@"
