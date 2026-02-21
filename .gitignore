@@ -76,3 +76,4 @@ agents/meta-supervisor/meta-supervisor.nohup
 agents/ideas/*.json
 
 # End of additions
+.vercel
