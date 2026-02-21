@@ -14,7 +14,7 @@ A unified CLI tool that combines anime lookup (via Jikan API) with text-to-speec
 ## Installation
 
 The skill dependencies are already installed:
-- `anime-lookup` (Jikan API client)
+- `anime` (Jikan API client) — formerly anime-lookup
 - `edge-tts` (Node.js TTS converter)
 
 The `anime-companion` script is located at the workspace root.

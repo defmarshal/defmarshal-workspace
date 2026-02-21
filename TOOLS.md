@@ -60,7 +60,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - `simple-memory-search` — Grep-based fallback (provides `msearch` command)
 
 **Removed (2026-02-21 cleanup):**
-- `anime-lookup` — duplicate of `anime`
+- `anime` — Active (anime-lookup duplicate removed 2026-02-21)
 - `fivem-dev` — FiveM-specific, unused
 - `clawaifu-selfie` — unclear purpose, unused
 
