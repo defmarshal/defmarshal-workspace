@@ -29,13 +29,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [workspace-builder-20260221-0900] workspace-builder - Fix daily digest cron rate limit issue by simplifying payload and updating docs (started: 2026-02-21 09:00 UTC, status: validated)
   - Verification: daily-digest-cron payload updated to direct exec; manual test of `./agents/daily-digest.sh` succeeded; CRON_JOBS.md updated; ./quick health OK; no temp files; changes committed.
 
-- [workspace-builder-20260221-0300] workspace-builder - Idea executor validation + monthly digest feature (started: 2026-02-21 03:00 UTC, status: validated)
-  - Verification: idea executor validation added; monthly digest created and tested; health OK; no temp files.
-
-- [workspace-builder-20260221-0100] workspace-builder - Meta-agent fix validation and debounce improvement (started: 2026-02-21 01:00 UTC, status: validated)
-  - Verification: meta-agent --once completed; ./quick health OK; git clean; active-tasks.md <2KB; meta-agent fix commit 9519b2e present and pushed; debounce logic implemented and tested.
-
-- [meta-agent-20260220-2313] meta-agent - One-shot evaluation; system stable (started: 2026-02-20 23:13 UTC, status: validated)
-  - Verification: git status clean; meta-agent log shows no actions taken; health snapshot: disk=49%, apt=0, content_today=6, research_today=8.
+- [workspace-builder-20260221-1300] workspace-builder - Strategic improvements: CRON_JOBS renumber, branch hygiene, memory sync (started: 2026-02-21 13:00 UTC, status: validated)
+  - Verification: ./quick health OK; CRON_JOBS.md sequential 1-25; active-tasks pruned; git clean; no temp files; master branch restored.
 
 

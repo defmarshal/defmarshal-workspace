@@ -73,99 +73,99 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/dev-cycle.sh >> dev-agent.log 2>&1'`
    - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Includes retry logic for transient OpenRouter rate limits. Reduced from every 20 min to hourly (token optimization, 2026-02-19).
 
-8. **content-agent-cron**
+9. **content-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/content-cycle.sh >> content-agent.log 2>&1'`
    - **Description**: Performs one content-agent cycle (create anime summaries, tech writeups, digests). Includes retry logic for transient OpenRouter rate limits. Reduced from every 10 min to hourly (token optimization, 2026-02-19).
 
-9. **research-agent-cron**
+10. **research-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/research-cycle.sh >> research-agent.log 2>&1'`
    - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Includes retry logic for transient OpenRouter rate limits. Reduced from every 15 min to hourly (token optimization, 2026-02-19).
 
-10. **cleanup-downloads-cron**
+11. **cleanup-downloads-cron**
     - **Schedule**: Weekly on Sunday at 06:00 Asia/Bangkok (`0 6 * * 0`)
     - **Payload**: agentTurn executing `quick cleanup-downloads --execute --days 30` and appending to `memory/cleanup-downloads.log`
     - **Description**: Automated cleanup of old torrent downloads (retention: 30 days). Runs dry-run by default through the wrapper; cron uses `--execute` to apply.
 
-11. **backup-cleanup-cron**
+12. **backup-cleanup-cron**
     - **Schedule**: Weekly on Sunday at 07:00 Asia/Bangkok (`0 7 * * 0`)
     - **Payload**: agentTurn executing `./quick cleanup-backups --execute --keep 1` and appending to `memory/backup-cleanup.log`
     - **Description**: Automated cleanup of old backup tarballs (retention: keep 1). Runs with `--execute` via cron.
 
-12. **cleanup-agent-artifacts-cron**
+13. **cleanup-agent-artifacts-cron**
     - **Schedule**: Weekly on Sunday at 09:30 Asia/Bangkok (`30 9 * * 0`)
     - **Payload**: agentTurn executing `./quick cleanup-agent-artifacts --execute --force` and appending to `memory/cleanup-agent-artifacts-cron.log`
     - **Description**: Automated cleanup of stale agent artifacts (lock files, empty plan files). Runs with `--execute` and `--force` to ensure it operates during quiet hours if needed. Respects quiet hours by default when run manually.
 
-13. **archiver-manager-cron**
+14. **archiver-manager-cron**
     - **Schedule**: Weekly on Sunday at 02:00 UTC (`0 2 * * 0`)
     - **Payload**: agentTurn executing `./agents/archiver-manager.sh >> memory/archiver-manager.log 2>&1'`
     - **Log**: `memory/archiver-manager.log`
     - **Description**: Manages archiving of old content and research files to maintain workspace organization and prevent clutter.
 
-14. **daily-digest-cron**
+15. **daily-digest-cron**
     - **Schedule**: Twice daily at 12:00 and 20:00 Asia/Bangkok (`0 12,20 * * *`)
     - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/daily-digest.sh 2>> memory/daily-digest.log'`
     - **Description**: Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Stderr (errors) logged to `memory/daily-digest.log`. Simplified on 2026-02-21 to reduce LLM usage and avoid rate limits (direct exec instead of verbose agent prompt).
 
-15. **agent-manager-cron**
+16. **agent-manager-cron**
     - **Schedule**: Every 30 minutes (`*/30 * * * *`) in Asia/Bangkok
     - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/agent-manager.sh --once'`
     - **Log**: `memory/agent-manager.log`
     - **Description**: Monitors and manages other background agents (prevents duplicate runs, cleans stale locks, maintains agent health).
 
-16. **git-janitor-cron**
+17. **git-janitor-cron**
     - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
     - **Payload**: agentTurn executing `./agents/git-janitor-cycle.sh >> memory/git-janitor.log 2>&1'`
     - **Log**: `memory/git-janitor.log`
     - **Description**: Git maintenance cycle (auto-commit when thresholds met, cleanup, push). Handles rate limits and coordinates with agent manager.
 
-17. **agni-cron**
+18. **agni-cron**
     - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
     - **Payload**: agentTurn that runs the Agni brainstorming cycle (spawns Rudra to execute plans). Command: `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/agni-cycle.sh >> agents/agni/agni.log 2>&1'`
     - **Log**: `agents/agni/agni.log`
     - **Description**: Brainstorming agent that generates creative ideas and plans, then spawns Rudra agent to implement them.
 
-18. **vishwakarma-cron**
+19. **vishwakarma-cron**
     - **Schedule**: Every 4 hours (`0 */4 * * *`) in Asia/Bangkok
     - **Payload**: agentTurn that runs the Vishwakarma game development planning cycle (spawns Krishna to build games). Command: `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/vishwakarma-cycle.sh >> agents/vishwakarma/vishwakarma.log 2>&1'`
     - **Log**: `agents/vishwakarma/vishwakarma.log`
     - **Description**: Game development planning agent that designs game projects and spawns Krishna agent to build them.
 
-19. **supervisor-cron**
+20. **supervisor-cron**
     - **Schedule**: Every 30 minutes (`0,30 * * * *`) in Asia/Bangkok
     - **Payload**: agentTurn executing `./agents/supervisor.sh`
     - **Log**: `memory/supervisor.log`
     - **Delivery**: `announce` (only when alerts)
     - **Description**: Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Reduced from every 5 min to 30 min (token optimization, 2026-02-19).
 
-20. **notifier-cron**
+21. **notifier-cron**
     - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
     - **Payload**: agentTurn executing `./agents/notifier-agent.sh >> memory/notifier-agent.log 2>&1'`
     - **Log**: `memory/notifier-agent.log`
     - **Description**: Monitors cron failures, disk usage, gateway status; sends Telegram alerts when thresholds exceeded. Focused on alerting only.
 
-21. **meta-agent-cron**
+22. **meta-agent-cron**
     - **Schedule**: Every hour (`0 * * * *`) in Asia/Bangkok
     - **Payload**: agentTurn executing `./agents/meta-agent.sh --once`
     - **Log**: `memory/meta-agent.log`
     - **Delivery**: `announce` (summary of actions taken)
     - **Description**: Autonomous planner that observes system health, decides on maintenance/improvement actions, spawns sub‑agents to execute them, validates outcomes, and commits changes with `meta:` prefix. Core of the self‑extending system.
 
-22. **meta-supervisor-agent**
+23. **meta-supervisor-agent**
     - **Schedule**: Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
     - **Payload**: agentTurn that ensures meta-supervisor daemon is running (spawns if not)
     - **Log**: `agents/meta-supervisor/logs/meta-supervisor-agent.log` (via agent session)
     - **Description**: Keepalive cron that starts the meta-supervisor daemon if down. Maintains continuous auditing.
 
-23. **idea-generator-cron**
+24. **idea-generator-cron**
     - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
     - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/idea-generator/idea-generator-cycle.sh >> memory/idea-generator.log 2>&1'`
     - **Log**: `memory/idea-generator.log`
     - **Description**: Autonomous creative brainstorming agent; generates 10 innovative project/improvement ideas each run and writes to `agents/ideas/latest.json`. Idea quality is designed to be fun and practical.
 
-24. **idea-executor-cron**
+25. **idea-executor-cron**
     - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
     - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/idea-executor/idea-executor-cycle.sh >> memory/idea-executor.log 2>&1'`
     - **Log**: `memory/idea-executor.log`
