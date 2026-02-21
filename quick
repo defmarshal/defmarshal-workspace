@@ -112,6 +112,8 @@ Commands:
   cleanup-build-archive [options] Prune old build directories in builds/ (default: dry-run, keep 10)
                              Options: --keep N, --execute
                               Example: quick cleanup-build-archive --keep 5 --execute
+  cleanup-logs                Rotate and clean agent logs: compress large logs (>100MB), delete archives older than 30 days
+                              Runs daily via cron; manual use for immediate cleanup.
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder, manager). Default: all.
   today-agents               Show which cron agents have runs today (UTC) by counting log entries.
   agent-manager              Run agent-manager maintenance checks (used by cron)
@@ -734,6 +736,10 @@ case "$cmd" in
   cleanup-build-archive)
     # Prune old build directories (default dry-run, keep 10)
     "$WORKSPACE/scripts/cleanup-build-archive.sh" "$@"
+    ;;
+  cleanup-logs)
+    # Rotate and clean agent logs (compress large, delete old archives)
+    "$WORKSPACE/scripts/cleanup-agent-logs.sh"
     ;;
   email-clean)
     python3 "$WORKSPACE/email-cleaner.py" "$@"
