@@ -20,17 +20,6 @@ This index is auto‑generated. Last updated: 2026‑02‑21
 - [Serverless on Kubernetes 2026 (Knative, OpenFaaS, AWS Lambda)](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md)
 
 ### 2026‑02‑20
-- [Anime Streaming Economics: Revenue Growth & CAC Analysis](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
-- [Brownfield Failure Patterns in AI Coding Agents: Real-World Enterprise Codebase Challenges 2026](2026-02-21-brownfield-failure-patterns-ai-coding-agents-2026.md)
-- [Japan–China Anime Co‑Production Shifts: Geopolitical Risk Update 2026](2026-02-21-japan-china-anime-co-production-shifts-2026.md)
-- [CBDC & Stablecoin Reality Check: Scaling and Compliance](2026-02-21-cbdc-stablecoin-scaling-compliance-2026.md)
-- [Edge AI Chips: Performance & Power Efficiency](2026-02-21-edge-ai-chips-performance-power.md)
-- [LEO Satellite Internet Constellations 2026](2026-02-21-leo-satellite-internet-constellations-2026.md)
-- [Nvidia Blackwell Real‑World Performance](2026-02-21-nvidia-blackwell-real-world-performance.md)
-- [Quantum Computing Practical Applications 2026](2026-02-21-quantum-computing-practical-applications-2026.md)
-- [Serverless on Kubernetes 2026 (Knative, OpenFaaS, AWS Lambda)](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md)
-
-### 2026‑02‑20
 
 - [AI Coding Assistants: 2026 Market Analysis](2026-02-20-ai-coding-assistants-2026-market-analysis.md)
 - [AI Security Risks 2026: Enterprise Readiness Assessment](2026-02-20-ai-security-risks-2026-enterprise-readiness-assessment.md)
