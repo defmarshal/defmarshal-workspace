@@ -1,72 +1,44 @@
-# Workspace Builder - Findings & Progress
+# Workspace Builder - Progress Log
 
-## Initial Assessment (2026-02-21 21:00 UTC)
+## Initial Assessment (2026-02-21 23:00 UTC)
 
 ### System Overview
-- **Health:** All OK (Disk 54%, Gateway healthy, Memory: 20f/109c clean, local FTS+)
-- **Git:** Clean working tree, 1 stale branch identified
-- **Memory:** Last reindex 5.2 days ago (still healthy)
+- **Health:** All OK (Disk 53%, Gateway healthy, Memory: 20f/109c clean, local FTS+)
+- **Git:** Clean working tree
+- **Memory:** Last reindex ~5 days ago (acceptable)
 - **Downloads:** 15 files, 5.2G total
+- **Cron Health:** agent-manager-cron shows ✗ error (timeout), others OK
 
 ### Issues Identified
-
-1. **active-tasks.md needs pruning**
-   - Contains 2 validated entries from today
-   - Should archive to daily log to prevent indefinite growth
-   - Current size acceptable but needs maintenance
-
-2. **Orphaned backup file**
-   - `CRON_JOBS.md.bak` (13092 bytes) present in workspace root
-   - Should be removed
-
-3. **Stale git branch**
-   - `idea/create-a-health-check-for` (incomplete name) exists
-   - Likely abandoned/duplicate; safe to delete
-
-4. **Idea pipeline documentation** (potential enhancement)
-   - New system implemented earlier today
-   - Could benefit from a dedicated README in `agents/ideas/`
-   - Ensure operators know how to monitor and use it
+1. **agent-manager-cron timeout too short** → causes error status and potential missed maintenance
 
 ---
 
 ## Execution Log
 
-### Task 1: Archive Completed Active Tasks
-- [ ] Read memory/2026-02-21.md structure
-- [ ] Extract the 2 validated entries
-- [ ] Append to memory/2026-02-21.md (under Workspace Builder section)
-- [ ] Update active-tasks.md to keep only current running (empty) and maybe a note about archival
+### Task 1: Update Cron Job Timeout
+- [x] Get current agent-manager-cron job ID (should be `524a0d6f-d520-4868-9647-0f89f7990f62`)
+- [x] Run `openclaw cron edit 524a0d6f-d520-4868-9647-0f89f7990f62 --timeout-seconds 900`
+- [x] Verify change: `openclaw cron list --json` shows `"timeoutSeconds":900` in payload
 
-### Task 2: Cleanup Temporary Files
-- [ ] Remove CRON_JOBS.md.bak
-- [ ] Search for other temp files (`.tmp`, `.temp`, `.swp`, `.swo`, `.bak` excluding intentional ones)
-- [ ] Remove any found
+### Task 2: Validate the Fix
+- [x] Run `./quick cron-health` – agent-manager-cron still shows error (expected until next run), but config updated
+- [x] Run `./quick health` – overall OK
+- [x] Run `./agents/agent-manager.sh --once` manually – completes cleanly, no errors
 
-### Task 3: Git Branch Hygiene
-- [ ] Delete branch `idea/create-a-health-check-for` locally and remotely
-- [ ] Verify with `git branch -a`
-- [ ] Check no other stale branches
+### Task 3: Record the Improvement
+- [x] Appended to `memory/2026-02-21.md` new section "Workspace Builder: Agent Manager Cron Timeout Fix"
+- [x] Included problem, root cause, fix, validation, outcome.
 
-### Task 4: Enhance Idea Pipeline Documentation
-- [ ] Check if agents/ideas/README.md exists
-- [ ] If not or sparse, create comprehensive README
-- [ ] Update TOOLS.md quick command reference if needed
+### Task 4: Update active-tasks.md
+- [x] Changed session entry status from `running` to `validated`
+- [x] Added Verification notes summarizing the fix.
 
-### Task 5: Validation & Testing
-- [ ] Run `./quick health`
-- [ ] Run `quick ideas-status` (if exists) or check JSON files validity
-- [ ] `git status` must be clean
-- [ ] `ls -la` no temp files
-- [ ] Check active-tasks.md size
-- [ ] `./quick memory-status`
-
-### Task 6: Commit & Push
-- [ ] Stage all changes
-- [ ] Commit with message: `build: workspace hygiene - prune tasks, cleanup temp files, delete stale branch, enhance docs`
-- [ ] Push to origin
-- [ ] Add validated entry to active-tasks.md
-- [ ] Update verification notes
+### Task 5: Commit & Push
+- [ ] `git add -A` (pending)
+- [ ] `git commit -m "build: increase agent-manager-cron timeout to 900s to prevent errors"`
+- [ ] `git push origin master`
+- [ ] Verify push succeeded
 
 ---
 
@@ -74,17 +46,15 @@
 
 - [ ] Health check passes
 - [ ] No temp files left
-- [ ] Git clean
-- [ ] active-tasks.md pruned and <2KB
-- [ ] Stale branch deleted
-- [ ] Documentation complete
-- [ ] Changes committed with build: prefix
-- [ ] active-tasks.md updated with this session's validated entry
+- [ ] Git clean after commit
+- [ ] active-tasks.md reflects validated entry and size <2KB
+- [ ] Cron configuration updated; future runs will succeed
+- [ ] Changes pushed to remote
 
 ---
 
 ## Status
 
-**Current Phase:** Starting execution  
-**Started:** 2026-02-21 21:00 UTC  
+**Current Phase:** Ready to commit  
+**Started:** 2026-02-21 23:00 UTC  
 **Agent:** workspace-builder (cron)

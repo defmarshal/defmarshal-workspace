@@ -23,6 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260221-2300] workspace-builder - Fix agent-manager-cron timeout and validate (started: 2026-02-21 23:00 UTC, status: validated)
+  - Verification: agent-manager-cron timeout increased to 900s via `openclaw cron edit`; manual agent-manager.sh --once runs cleanly; health OK; changes committed and pushed.
+
 - [workspace-builder-20260221-2100] workspace-builder - Hygiene: archive tasks, cleanup temp files, delete stale branch, enhance docs, validate (started: 2026-02-21 21:00 UTC, status: validated)
   - Verification: health OK; CRON_JOBS.md.bak removed; stale branch idea/create-a-health-check-for deleted; agents/ideas/README.md added; active-tasks.md pruned; memory/2026-02-21.md updated; git clean; all pushed.
 

@@ -1,6 +1,6 @@
-# Findings: Workspace Builder - Close the Loop
+# Findings: Workspace Builder - Initial Assessment
 
-**Date**: 2026-02-21 19:00 UTC  
+**Date**: 2026-02-21 23:00 UTC  
 **Phase**: 1 (Assessment)  
 **Session**: workspace-builder (cron-triggered)
 
@@ -8,74 +8,44 @@
 
 ## Assessment Findings
 
-### 1. Repository State
+### 1. Cron Health Status
+- Ran `quick cron-health` and observed `agent-manager-cron` marked with `✗ error`.
+- Other cron jobs all show `✓ ok`.
+- This indicates a systemic issue with the agent manager monitoring itself.
 
-- **Current HEAD**: `ac107a6` (feat(webdav): add iOS direct access via nginx WebDAV)
-- **Branch status**:
-  - Master is at ac107a6 with recent commits including webdav and obsidian features
-  - The previously identified stale branches `idea/generate-a-monthly-digest-of` and `idea/build-a-quick-command-that` are **already deleted**
-  - **Remaining stale branch**: `idea/design-a-fun-dashboard-to` still exists and should be cleaned up
-- **Uncommitted changes**: `MEMORY.md`, `memory/2026-02-21.md`, `task_plan.md` (and potentially others pending)
+### 2. Root Cause Analysis
+- Reviewed `agents/agent-manager.sh`: When no content/research exists for today, the script spawns two agents with `openclaw agent ... --timeout 600000` (10 minutes).
+- The agent-manager-cron job has a `timeoutSeconds` of 300 (5 minutes).
+- If the spawned agents take significant time, the cron job exceeds its timeout and is killed, resulting in error status.
+- Manual run (`./agents/agent-manager.sh --once`) completes quickly because it may not spawn agents (today already has content/research) or agents finish quickly. However, the cron history shows last run hit the 300s limit (`lastDurationMs: 300002`).
 
-### 2. Documentation Audit
+### 3. Impact
+- The agent manager is responsible for critical maintenance: auto-commits, memory reindex triggering, downloads cleanup, cron schedule validation, and spawning content/research when needed.
+- If it consistently times out, these tasks may not execute reliably.
 
-- **CRON_JOBS.md**: Well-maintained, sequential numbering 1-26, all jobs documented
-- **active-tasks.md**: Clean, size ~1.7KB (<2KB), proper format. Contains three recently validated workspace-builder entries (11:00, 13:00, 17:00). Need to add entry for this current session after completion.
-- **AGENTS.md**: Core reference, up-to-date
-- **TOOLS.md**: Recently updated with skill cleanup notes; includes inventory and memory system notes
-- **HEARTBEAT.md**: Simple checklist, appropriate size
-- **Planning files**: `task_plan.md`, `findings.md`, `progress.md` exist but describe previous state; need refresh to reflect current run
+### 4. Solution Proposed
+- Increase `agent-manager-cron` `timeoutSeconds` from 300 to 900 seconds (15 minutes) to safely cover worst-case agent spawns.
+- This is a safe, one-line configuration change via `openclaw cron update`.
+- No changes needed to the agent-manager script itself.
 
-### 3. System Health
+### 5. Additional Observations
+- Overall workspace health is excellent: disk 53%, gateway healthy, memory clean, git clean.
+- active-tasks.md is well-maintained (<2KB).
+- No temp files or orphaned branches.
+- Memory index healthy; Voyage AI disabled but local FTS+ working.
+- Documentation (CRON_JOBS.md, AGENTS.md, TOOLS.md) is up to date.
 
-**Health Check (`./quick health`)**:
-- Disk: 51% used (healthy)
-- Gateway: healthy on port 18789
-- Memory: 20 files, 114 chunks, provider=local FTS+ (clean)
-- APT updates: none pending
-- Git: dirty (2 changed files: MEMORY.md, memory/2026-02-21.md)
-- Downloads: 14 files, 4.0G (all <30 days retention)
-
-**Cron Health**:
-- All OpenClaw cron jobs status: `ok`
-- No consecutive errors reported
-
-**Agents**:
-- Background daemons active: dev-agent, content-agent, research-agent, torrent-bot, meta-supervisor
-- Idea generator and executor operating via cron
-- No orphaned sessions
-
-### 4. Uncommitted Changes Analysis
-
-- **MEMORY.md**: Added one line+paragraph about capability-evolver first cycle (distilled learning from 2026-02-21). This is a legitimate long-term memory update (index remains within ~30 lines). Should be committed as `docs:` or `chore:` update.
-- **memory/2026-02-21.md**: Restructured the daily log by replacing a generic "System Notes" section with a detailed Capability Evolver cycle entry. This improves the raw daily log quality. Should be committed as `feat(cycle):` or similar, but ultimately belongs to the evolver agent's output; if it's from a cron agent, it may auto-commit. We should commit it as part of this builder run to avoid leaving it uncommitted.
-
-### 5. Identified Improvements Needed
-
-- Delete stale branch `idea/design-a-fun-dashboard-to` (likely merged already but left lingering)
-- Commit the uncommitted memory changes to preserve work and keep git clean
-- Update planning documents (task_plan.md, findings.md, progress.md) to accurately describe THIS session's plan and progress
-- Add a new entry to `active-tasks.md` for this workspace-builder run, with verification steps, and later mark it validated
-- Final validation: health check, git clean, no temp files, active-tasks.md size <2KB
-- Push all commits to origin
-
-### 6. Observations
-
-- Previous workspace-builder runs have been consistently validating and committing. The current run continues the pattern of closing administrative loops.
-- Memory system stable with local FTS+ provider; no Voyage AI rate limit issues
-- Workspace hygiene good; .gitignore properly excludes env files; no temp files detected
-- Branch hygiene mostly good; only one stale branch remains
+### 6. Plan Derived
+- **Primary**: Fix agent-manager-cron timeout.
+- **Secondary**: Document the fix in daily memory log.
+- **Optional**: Add timeout note to CRON_JOBS.md job entry for clarity.
+- Validation: cron-health should show OK, health check clean, active-tasks updated.
+- Commit all relevant changes with `build:` prefix.
 
 ---
 
 ## Conclusion
 
-Workspace is healthy but has minor cleanup pending: one stale branch, uncommitted memory updates, and administrative record-keeping. The improvements are straightforward and low-risk. This session will complete the cleanup, commit changes with appropriate prefixes, update active-tasks.md, and push to remote.
+The workspace is in good shape; addressing the agent-manager-cron timeout will improve reliability of the self-maintenance system. The fix is low-risk and straightforward.
 
-**Next steps**:
-1. Delete stale branch
-2. Verify memory changes are correct
-3. Refresh findings.md and progress.md to match current state
-4. Commit all substantive changes (memory files, planning docs)
-5. Update active-tasks.md with validated entry
-6. Push and final validation
+**Next steps**: Execute the plan as outlined in `task_plan.md`.
