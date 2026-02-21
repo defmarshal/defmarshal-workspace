@@ -229,6 +229,36 @@ This separation allows independent evolution of the Research Hub frontend withou
 
 ---
 
+## Critical Pitfalls (Lessons Learned 2026‑02‑20)
+
+### 1. Project Privacy Must Be Public
+
+Even if the build succeeds, a **private** Vercel project will return `401 Unauthorized` on the production URL. This breaks public sharing.
+
+**Fix:** When creating the Vercel project, use:
+```bash
+vercel projects add research-hub --public
+```
+If project already exists and is private, either delete and recreate with `--public`, or change visibility in the Vercel dashboard (Settings → General → Visibility).
+
+### 2. Serverless Functions Cannot Read Filesystem at Runtime
+
+An API route that uses `fs.readFileSync` to read `public/research` at request time will fail on Vercel because serverless functions run in an ephemeral environment without the project files baked in.
+
+**Fix:** Read the research files in a **server component** (`app/page.tsx`) during SSR, or bundle the content at build time. The final architecture:
+
+- `app/page.tsx` (server component) reads `public/research/*.md` and extracts frontmatter/content.
+- Passes data as props to `ResearchClient` (client component) for search/pagination.
+- No custom API route needed; this avoids serverless function filesystem limitations.
+
+### 3. Content Must Be Committed
+
+The research files copied into `public/research` must be tracked in the standalone repo and pushed to GitHub. Vercel builds from that repo. If `public/research` is empty or missing, the app builds but shows "No research found."
+
+**Check:** Verify `git ls-files public/research` shows markdown files before pushing.
+
+---
+
 ## Future Enhancements
 
 - Auto-sync script that watches `research/` and updates standalone repo automatically (maybe via cron)
