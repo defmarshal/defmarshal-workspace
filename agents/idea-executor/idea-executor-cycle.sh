@@ -151,6 +151,7 @@ validate_idea_execution() {
   del=${del:-0}
 
   # Check if all changes are to 'quick' only
+  changed_files=()  # ensure array is initialized even if mapfile fails
   mapfile -t changed_files < <(git diff --name-only HEAD~1 HEAD 2>/dev/null)
 
   local only_quick=true
@@ -204,6 +205,7 @@ else
 fi
 
 # Determine overall result considering validation
+: "${FAILED_COUNT:=0}"  # safety default if unset
 if [[ $FAILED_COUNT -eq 0 && $VALIDATION_PASSED -eq 1 ]]; then
   FINAL_RESULT="success"
 elif [[ $VALIDATION_PASSED -eq 0 ]]; then

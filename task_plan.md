@@ -1,79 +1,71 @@
-# Workspace Builder Task Plan
-**Started**: 2026-02-21 03:00 UTC  
-**Goal**: Strategic improvements based on current workspace analysis
+# Workspace Builder Plan
+## Analysis & Improvement Cycle - 2026-02-21
 
-## Analysis Summary
+**Goal:** Analyze current workspace state, identify meaningful improvements, implement them, and validate.
 
-**Current Branch**: `idea/generate-a-monthly-digest-of` (incomplete feature)
-**System Health**: All green (disk 49%, memory clean, gateway healthy)
-**Core Finding**: Idea generator produces low-value placeholder ideas; monthly digest attempt incomplete
-
-## Identified Improvement Areas
-
-1. **Idea System Quality** (Critical)
-   - Ideas are generic templates with placeholder execution steps
-   - Current execution: `touch quick`, `echo '...'`, `git commit` with vague messages
-   - Produces noise commits without actual functionality
-   - Need: Either enhance generator with concrete, valuable ideas or decommission it
-
-2. **Monthly Digest Feature** (Incomplete)
-   - Branch exists: `idea/generate-a-monthly-digest-of`
-   - Last commit (247804d) added research file but no monthly digest implementation
-   - Daily digest exists and works; monthly summary would be logical extension
-   - Could complete the feature by adding `quick monthly-digest` command
-
-3. **Documentation Gaps**
-   - Idea system not documented in AGENTS.md or READMEs
-   - No clear purpose/quality standards for generated ideas
-   - No guidance on what makes a "good" idea
-
-4. **Branch Hygiene**
-   - Stale feature branch not merged; may clutter repo
-   - Should either complete and merge, or delete
-
-## Proposed Plan (3 Phases)
-
-### Phase 1: Immediate Cleanup & Quality Gate
-- Add quality validation to idea executor (require actual code changes, not just touch quick)
-- Add pre-commit hook or validation step to reject placeholder commits
-- Document minimum acceptance criteria for idea execution
-- Clean up existing low-value commits (interactive rebase to squash/remove noise)
-
-### Phase 2: Implement or Remove Monthly Digest Feature
-- Option A (Implement): Create `quick monthly-digest` that aggregates monthly reports from daily digests
-- Option B (Remove): Delete the incomplete branch; document that idea generator needs enhancement first
-- Decision based on user preference; I'll implement Option A as it's useful
-
-### Phase 3: Enhance Idea Generator (Long-term)
-- Replace template-based random generation with:
-  - Scan for actual TODO/FIXME comments and suggest fixes
-  - Analyze unused/deprecated files and suggest removal
-  - Identify missing quick utilities from common tasks
-  - Look for stale locks/stale artifacts and propose cleanup
-- Output: concrete PR-ready branches with actual changes (not just commit placeholders)
-- Add quality metrics: must touch at least 2 real files (not just quick), must include tests/docs
-
-## Success Criteria
-
-- No more noise commits with generic "feat(idea):" messages lacking substance
-- Idea system either produces valuable, implementable improvements or is paused
-- Monthly digest feature (if implemented) works and generates useful reports
-- All changes validated: `./quick health` clean, git clean, no temp files
-- Active-tasks.md updated with verification notes
-
-## Risks & Mitigations
-
-- **Risk**: Idea generator enhancement may be complex
-- **Mitigation**: Phase approach; can disable generator cron temporarily if needed
-- **Risk**: Monthly digest implementation time
-- **Mitigation**: Keep simple—use existing daily digest data, just aggregate by month
-
-## Resources
-
-- Existing daily digest infrastructure: `content/YYYY-MM-DD-daily-digest.md`, `reports/`
-- Idea generator/executor scripts already in place
-- Quick launcher pattern for adding utilities
+**Context:**
+- Branch: `idea/add-dark-mode-toggle-to` (uncommitted changes likely exist)
+- Recent work: OpenClaw Idle RPG game deployed, dark mode styling started
+- System health: Clean, stable
+- Known issues: dev-agent occasional hangs (needs investigation)
 
 ---
 
-**Status**: Planning complete • Ready to execute Phase 1 then Phase 2
+## Phase 1: Discovery & Analysis
+
+**Tasks:**
+1. Check git diff to see what's on the current branch (dark mode work)
+2. Verify active-tasks.md is clean (no orphaned entries)
+3. Review memory health and reindex status
+4. Check cron job status (all schedules match CRON_JOBS.md)
+5. Validate idea generator/executor quality (review latest ideas)
+6. Investigate dev-agent hanging pattern (review logs)
+
+**Success criteria:**
+- Clear understanding of what needs improvement
+- Prioritized list of actionable items
+
+---
+
+## Phase 2: Implement Improvements
+
+**Potential improvements (choose based on findings):**
+- **A.** Complete dark mode toggle implementation for OpenClaw Idle RPG (if incomplete)
+- **B.** Fix dev-agent hanging issue (investigate timeout/session handling)
+- **C.** Enhance idea executor validation (already has quality checks; verify effectiveness)
+- **D.** Optimize memory reindex schedule (currently 4.7d ago; might need manual trigger)
+- **E.** Add monitoring for cron job failures (supervisor already exists; verify it's catching issues)
+- **F.** Document any new lessons learned from recent incidents
+
+**Execution approach:**
+- Make small, focused commits with `build:` prefix
+- Update progress.md after each task
+- Test changes immediately
+
+---
+
+## Phase 3: Validation & Close the Loop
+
+**Checklist:**
+- `./quick health` passes (no errors)
+- `./quick memory-status` clean
+- `git status` clean (all changes committed and pushed)
+- No temporary files left in workspace
+- Active tasks registry updated correctly
+- Modified commands tested (if any quick commands changed)
+- Verify remote push successful
+
+**Final steps:**
+- Commit all changes with descriptive messages
+- Push to GitHub
+- Update active-tasks.md with validation notes and remove completed entries
+- Archive planning files to daily log
+
+---
+
+## Notes
+
+- Keep all changes small and meaningful
+- Do not break existing functionality
+- Respect the 2KB limit on active-tasks.md
+- Use `memory_search` before making decisions based on past context
