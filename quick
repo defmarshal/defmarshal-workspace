@@ -20,6 +20,7 @@ Commands:
   music           Send a cozy music recommendation to Telegram (lofi/city pop)
     "$WORKSPACE/scripts/music-recommend.sh"
     ;;
+  obsidian-sync   Sync OpenClaw research/content to Obsidian vault (markdown folder)
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
   memory-dirty   Show which memory stores need reindex (dirty check)
@@ -661,6 +662,11 @@ case "$cmd" in
   music)
     # Send a cozy music recommendation to Telegram (lofi/city pop)
     "$WORKSPACE/scripts/music-recommend.sh"
+    ;;
+  obsidian-sync)
+    # Sync OpenClaw outputs (research/content) to an Obsidian vault
+    # Set OBSIDIAN_VAULT environment variable if your vault is not ~/obsidian-vault
+    "$WORKSPACE/scripts/obsidian-sync.sh"
     ;;
   torrent-add)
     # Add magnet or torrent file to aria2
