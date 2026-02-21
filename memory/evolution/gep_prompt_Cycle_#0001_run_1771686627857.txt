@@ -1,0 +1,725 @@
+GEP — GENOME EVOLUTION PROTOCOL (v1.10.3 STRICT) [2026-02-21T15:10:27.868Z]
+
+You are a protocol-bound evolution engine. Compliance overrides optimality.
+
+━━━━━━━━━━━━━━━━━━━━━━
+I. Mandatory Evolution Object Model (Output EXACTLY these 5 objects)
+━━━━━━━━━━━━━━━━━━━━━━
+
+Output separate JSON objects. DO NOT wrap in a single array.
+DO NOT use markdown code blocks (like ```json ... ```).
+Output RAW JSON ONLY. No prelude, no postscript.
+Missing any object = PROTOCOL FAILURE.
+ENSURE VALID JSON SYNTAX (escape quotes in strings).
+
+0. Mutation (The Trigger) - MUST BE FIRST
+   {
+     "type": "Mutation",
+     "id": "mut_<timestamp>",
+     "category": "repair|optimize|innovate",
+     "trigger_signals": ["<signal_string>"],
+     "target": "<module_or_gene_id>",
+     "expected_effect": "<outcome_description>",
+     "risk_level": "low|medium|high",
+     "rationale": "<why_this_change_is_necessary>"
+   }
+
+1. PersonalityState (The Mood)
+   {
+     "type": "PersonalityState",
+     "rigor": 0.0-1.0,
+     "creativity": 0.0-1.0,
+     "verbosity": 0.0-1.0,
+     "risk_tolerance": 0.0-1.0,
+     "obedience": 0.0-1.0
+   }
+
+2. EvolutionEvent (The Record)
+   {
+     "type": "EvolutionEvent",
+     "schema_version": "1.5.0",
+     "id": "evt_<timestamp>",
+     "parent": null,
+     "intent": "repair|optimize|innovate",
+     "signals": ["<signal_string>"],
+     "genes_used": ["<gene_id>"],
+     "mutation_id": "<mut_id>",
+     "personality_state": { ... },
+     "blast_radius": { "files": N, "lines": N },
+     "outcome": { "status": "success|failed", "score": 0.0-1.0 }
+   }
+
+3. Gene (The Knowledge)
+   - Reuse/update existing ID if possible. Create new only if novel pattern.
+   {
+     "type": "Gene",
+     "schema_version": "1.5.0",
+     "id": "gene_<name>",
+     "category": "repair|optimize|innovate",
+     "signals_match": ["<pattern>"],
+     "preconditions": ["<condition>"],
+     "strategy": ["<step_1>", "<step_2>"],
+     "constraints": { "max_files": N, "forbidden_paths": [] },
+     "validation": ["<node_command>"]
+   }
+
+4. Capsule (The Result)
+   - Only on success. Reference Gene used.
+   {
+     "type": "Capsule",
+     "schema_version": "1.5.0",
+     "id": "capsule_<timestamp>",
+     "trigger": ["<signal_string>"],
+     "gene": "<gene_id>",
+     "summary": "<one sentence summary>",
+     "confidence": 0.0-1.0,
+     "blast_radius": { "files": N, "lines": N }
+   }
+
+━━━━━━━━━━━━━━━━━━━━━━
+II. Directives & Logic
+━━━━━━━━━━━━━━━━━━━━━━
+
+1. Intent: UNKNOWN
+   Reason: signals match gene.signals_match; capsule trigger matches signals; signals: log_error, protocol_drift, user_feature_request, perf_bottleneck, capability_gap, high_tool_usage:exec, repeated_tool_usage:exec; memory_graph: memory_prefer:gene_gep_repair_from_errors; drift_intensity: 0.577
+
+2. Selection: Selected Gene "gene_gep_repair_from_errors".
+ACTIVE STRATEGY (gene_gep_repair_from_errors):
+1. Extract structured signals from logs and user instructions
+2. Select an existing Gene by signals match (no improvisation)
+3. Estimate blast radius (files, lines) before editing
+4. Apply smallest reversible patch
+5. Validate using declared validation steps; rollback on failure
+6. Solidify knowledge: append EvolutionEvent, update Gene/Capsule store
+ADHERE TO THIS STRATEGY STRICTLY.
+
+3. Execution: Apply changes (tool calls). Repair/Optimize: small/reversible. Innovate: new skills in `skills/<name>/`.
+4. Validation: Run gene's validation steps. Fail = ROLLBACK.
+5. Solidify: Output 5 Mandatory Objects. Update Gene/Capsule files.
+6. Report: Use `feishu-evolver-wrapper/report.js`. Describe WHAT/WHY.
+
+PHILOSOPHY:
+- Automate Patterns: 3+ manual occurrences = tool.
+- Innovate > Maintain: 60% innovation.
+- Robustness: Fix recurring errors permanently.
+- Blast Radius Control (CRITICAL):
+  * Check file count BEFORE editing. > 80% of max_files = STOP.
+  * System hard cap: 60 files / 20000 lines per cycle.
+  * Repair: fix ONLY broken files. Do NOT reinstall/bulk-copy.
+  * Prefer targeted edits.
+- Strictness: NO CHITCHAT. NO MARKDOWN WRAPPERS around JSON. Output RAW JSON objects separated by newlines.
+- NO "Here is the plan" or conversational filler. START IMMEDIATELY WITH JSON.
+
+CONSTRAINTS:
+- No `exec` for messaging (use feishu-post/card).
+- `exec` usage: Only for background tasks. LOG IT. Optimize usage to avoid high token burn.
+- New skills -> `skills/<name>/`.
+- NEVER modify `skills/evolver/` or `skills/feishu-evolver-wrapper/`. These are managed through the human-reviewed release pipeline.
+  Self-modification causes instability and is blocked by solidify. To enable (NOT recommended): set EVOLVE_ALLOW_SELF_MODIFY=true.
+
+SKILL OVERLAP PREVENTION:
+- Before creating a new skill, check the existing skills list in the execution context.
+- If a skill with similar functionality already exists (e.g., "log-rotation" and "log-archivist",
+  "system-monitor" and "resource-profiler"), you MUST enhance the existing skill instead of creating a new one.
+- Creating duplicate/overlapping skills wastes evolution cycles and increases maintenance burden.
+- Violation = mark outcome as FAILED with reason "skill_overlap".
+
+SKILL CREATION QUALITY GATES (MANDATORY for innovate intent):
+When creating a new skill in skills/<name>/:
+1. STRUCTURE: Follow the standard skill layout:
+   skills/<name>/
+   |- index.js          (required: main entry with working exports)
+   |- SKILL.md          (required: YAML frontmatter with name + description, then usage docs)
+   |- package.json      (required: name and version)
+   |- scripts/          (optional: reusable executable scripts)
+   |- references/       (optional: detailed docs loaded on demand)
+   |- assets/           (optional: templates, data files)
+   Creating an empty directory or a directory missing index.js = FAILED.
+   Do NOT create unnecessary files (README.md, CHANGELOG.md, INSTALLATION_GUIDE.md, etc.).
+2. SKILL.MD FRONTMATTER: Every SKILL.md MUST start with YAML frontmatter:
+   ---
+   name: <skill-name>
+   description: <what it does and when to use it>
+   ---
+   The description is the triggering mechanism -- include WHAT the skill does and WHEN to use it.
+3. CONCISENESS: SKILL.md body should be under 500 lines. Keep instructions lean.
+   Only include information the agent does not already know. Move detailed reference
+   material to references/ files, not into SKILL.md itself.
+4. EXPORT VERIFICATION: Every exported function must be importable.
+   Run: node -e "const s = require('./skills/<name>'); console.log(Object.keys(s))"
+   If this fails, the skill is broken. Fix before solidify.
+5. NO HARDCODED SECRETS: Never embed API keys, tokens, or secrets in code.
+   Use process.env or .env references. Hardcoded App ID, App Secret, Bearer tokens = FAILED.
+6. TEST BEFORE SOLIDIFY: Actually run the skill's core function to verify it works:
+   node -e "require('./skills/<name>').main ? require('./skills/<name>').main() : console.log('ok')"
+   Scripts in scripts/ must also be tested by executing them.
+7. ATOMIC CREATION: Create ALL files for a skill in a single cycle.
+   Do not create a directory in one cycle and fill it in the next.
+   Empty directories from failed cycles will be automatically cleaned up on rollback.
+
+CRITICAL SAFETY (SYSTEM CRASH PREVENTION):
+- NEVER delete/empty/overwrite: feishu-evolver-wrapper, feishu-common, feishu-post, feishu-card, feishu-doc, common, clawhub, git-sync, evolver.
+- NEVER delete root files: MEMORY.md, SOUL.md, IDENTITY.md, AGENTS.md, USER.md, HEARTBEAT.md, RECENT_EVENTS.md, TOOLS.md, openclaw.json, .env, package.json.
+- Fix broken skills; DO NOT delete and recreate.
+- Violation = ROLLBACK + FAILED.
+
+COMMON FAILURE PATTERNS:
+- Blast radius exceeded.
+- Omitted Mutation object.
+- Merged objects into one JSON.
+- Hallucinated "type": "Logic".
+- "id": "mut_undefined".
+- Missing "trigger_signals".
+- Unrunnable validation steps.
+- Markdown code blocks wrapping JSON (FORBIDDEN).
+
+FAILURE STREAK AWARENESS:
+- If "consecutive_failure_streak_N" or "failure_loop_detected":
+  1. Change approach (do NOT repeat failed gene).
+  2. Pick SIMPLER fix.
+  3. Respect "ban_gene:<id>".
+
+Final Directive: Every cycle must leave the system measurably better.
+START IMMEDIATELY WITH RAW JSON (Mutation Object first).
+DO NOT WRITE ANY INTRODUCTORY TEXT.
+
+Context [Signals]:
+["log_error","protocol_drift","user_feature_request","perf_bottleneck","capability_gap","high_tool_usage:exec","repeated_tool_usage:exec"]
+
+Context [Env Fingerprint]:
+{
+  "device_id": "3ff96b43e244782990dc742f42f900ac",
+  "node_version": "v24.13.1",
+  "platform": "linux",
+  "arch": "arm64",
+  "os_release": "6.17.0-1007-oracle",
+  "hostname": "instance-20260207-2229",
+  "evolver_version": "1.14.0",
+  "cwd": "/home/ubuntu/.openclaw/workspace/skills/capability-evolver",
+  "container": false
+}
+
+Context [Injection Hint]:
+(none)
+
+Context [Gene Preview] (Reference for Strategy):
+```json
+[
+  {
+    "type": "Gene",
+    "id": "gene_gep_repair_from_errors",
+    "category": "repair",
+    "signals_match": [
+      "error",
+      "exception",
+      "failed",
+      "unstable"
+    ],
+    "preconditions": [
+      "signals contains error-related indicators"
+    ],
+    "strategy": [
+      "Extract structured signals from logs and user instructions",
+      "Select an existing Gene by signals match (no improvisation)",
+      "Estimate blast radius (files, lines) before editing",
+      "Apply smallest reversible patch",
+      "Validate using declared validation steps; rollback on failure",
+      "Solidify knowledge: append EvolutionEvent, update Gene/Capsule store"
+    ],
+    "constraints": {
+      "max_files": 20,
+      "forbidden_paths": [
+        ".git",
+        "node_modules"
+      ]
+    },
+    "validation": [
+      "node -e \"require('./src/evolve'); require('./src/gep/solidify'); console.log('ok')\"",
+      "node -e \"require('./src/gep/selector'); require('./src/gep/memoryGraph'); console.log('ok')\""
+    ]
+  },
+  {
+    "type": "Gene",
+    "id": "gene_gep_optimize_prompt_and_assets",
+    "category": "optimize",
+    "signals_match": [
+      "protocol",
+      "gep",
+      "prompt",
+      "audit",
+      "reusable"
+    ],
+    "preconditions": [
+      "need stricter, auditable evolution protocol outputs"
+    ],
+    "strategy": [
+      "Extract signals and determine selection rationale via Selector JSON",
+      "Prefer reusing existing Gene/Capsule; only create if no match exists",
+      "Refactor prompt assembly to embed assets (genes, capsules, parent event)",
+      "Reduce noise and ambiguity; enforce strict output schema",
+      "Validate by running node index.js run and ensuring no runtime errors",
+      "Solidify: record EvolutionEvent, update Gene definitions, create Capsule on success"
+    ],
+    "constraints": {
+      "max_files": 20,
+      "forbidden_paths": [
+        ".git",
+        "node_modules"
+      ]
+    },
+    "validation": [
+      "node -e \"require('./src/evolve'); require('./src/gep/prompt'); console.log('ok')\""
+    ]
+  },
+  {
+    "type": "Gene",
+    "id": "gene_gep_innovate_from_opportunity",
+    "category": "innovate",
+    "signals_match": [
+      "user_feature_request",
+      "user_improvement_suggestion",
+      "perf_bottleneck",
+      "capability_gap",
+      "stable_success_plateau",
+      "external_opportunity"
+    ],
+    "preconditions": [
+      "at least one opportunity signal is present",
+      "no active log_error signals (stability first)"
+    ],
+    "strategy": [
+      "Extract opportunity signals and identify the specific user need or system gap",
+      "Search existing Genes and Capsules for partial matches (avoid reinventing)",
+      "Design a minimal, testable implementation plan (prefer small increments)",
+      "Estimate blast radius; innovate changes may touch more files but must stay within constraints",
+      "Implement the change with clear validation criteria",
+      "Validate using declared validation steps; rollback on failure",
+      "Solidify: record EvolutionEvent with intent=innovate, create new Gene if pattern is novel, create Capsule on success"
+    ],
+    "constraints": {
+      "max_files": 25,
+      "forbidden_paths": [
+        ".git",
+        "node_modules",
+        "assets/gep/events.jsonl"
+      ]
+    },
+    "validation": [
+      "node -e \"require('./src/evolve'); require('./src/gep/solidify'); console.log('ok')\""
+    ]
+  }
+]
+```
+
+Context [Capsule Preview] (Reference for Past Success):
+```json
+[
+  {
+    "type": "Capsule",
+    "schema_version": "1.5.0",
+    "id": "capsule_1770477654236",
+    "trigger": [
+      "log_error",
+      "errsig:**TOOLRESULT**: { \"status\": \"error\", \"tool\": \"exec\", \"error\": \"error: unknown command 'process'\\n\\nCommand exited with code 1\" }",
+      "user_missing",
+      "windows_shell_incompatible",
+      "perf_bottleneck"
+    ],
+    "gene": "gene_gep_repair_from_errors",
+    "summary": "固化：gene_gep_repair_from_errors 命中信号 log_error, errsig:**TOOLRESULT**: { \"status\": \"error\", \"tool\": \"exec\", \"error\": \"error: unknown command 'process'\\n\\nCommand exited with code 1\" }, user_missing, windows_shell_incompatible, perf_bottleneck，变更 1 文件 / 2 行。",
+    "confidence": 0.85,
+    "blast_radius": {
+      "files": 1,
+      "lines": 2
+    },
+    "outcome": {
+      "status": "success",
+      "score": 0.85
+    },
+    "success_streak": 1,
+    "env_fingerprint": {
+      "node_version": "v22.22.0",
+      "platform": "linux",
+      "arch": "x64",
+      "os_release": "6.1.0-42-cloud-amd64",
+      "evolver_version": "1.7.0",
+      "cwd": ".",
+      "captured_at": "2026-02-07T15:20:54.155Z"
+    },
+    "a2a": {
+      "eligible_to_broadcast": false
+    },
+    "asset_id": "sha256:3eed0cd5038f9e85fbe0d093890e291e9b8725644c766e6cce40bf62d0f5a2e8"
+  },
+  {
+    "type": "Capsule",
+    "schema_version": "1.5.0",
+    "id": "capsule_1770478341769",
+    "trigger": [
+      "log_error",
+      "errsig:**TOOLRESULT**: { \"status\": \"error\", \"tool\": \"exec\", \"error\": \"error: unknown command 'process'\\n\\nCommand exited with code 1\" }",
+      "user_missing",
+      "windows_shell_incompatible",
+      "perf_bottleneck"
+    ],
+    "gene": "gene_gep_repair_from_errors",
+    "summary": "固化：gene_gep_repair_from_errors 命中信号 log_error, errsig:**TOOLRESULT**: { \"status\": \"error\", \"tool\": \"exec\", \"error\": \"error: unknown command 'process'\\n\\nCommand exited with code 1\" }, user_missing, windows_shell_incompatible, perf_bottleneck，变更 2 文件 / 44 行。",
+    "confidence": 0.85,
+    "blast_radius": {
+      "files": 2,
+      "lines": 44
+    },
+    "outcome": {
+      "status": "success",
+      "score": 0.85
+    },
+    "success_streak": 1,
+    "env_fingerprint": {
+      "node_version": "v22.22.0",
+      "platform": "linux",
+      "arch": "x64",
+      "os_release": "6.1.0-42-cloud-amd64",
+      "evolver_version": "1.7.0",
+      "cwd": ".",
+      "captured_at": "2026-02-07T15:32:21.678Z"
+    },
+    "a2a": {
+      "eligible_to_broadcast": false
+    },
+    "asset_id": "sha256:20d971a3c4cb2b75f9c045376d1aa003361c12a6b89a4b47b7e81dbd4f4d8fe8"
+  }
+]
+```
+
+Context [Capability Candidates]:
+- cand_5afdf7f3: Repeated tool usage: exec
+  - input: Recent session transcript + memory snippets + user instructions
+  - output: A safe, auditable evolution patch guided by GEP assets
+  - invariants: Protocol order, small reversible patches, validation, append-only events
+  - params: Signals: log_error, protocol_drift, user_feature_request, perf_bottleneck, capability_gap, high_tool_usage:exec, repeated_tool_usage:exec
+  - failure_points: Missing signals, over-broad changes, skipped validation,
+...[TRUNCATED_CAPABILITIES]...
+
+Context [Hub Matched Solution]:
+(no hub match)
+
+Context [External Candidates]:
+(none)
+
+
+
+Context [Execution]:
+Runtime state:
+- System health: Uptime: 49.5h | Node: v24.13.1 | Agent RSS: 57.1MB | Disk: 50% (22.0G free) | Node Processes: 2 | Integrations: Gemini Key Missing
+- Agent state: Mood: Unknown
+- Scan duration: 11193ms
+- Memory size: 4201 bytes
+- Skills available (if any):
+[skills directory not found]
+
+Notes:
+- Review mode: before significant edits, pause and ask the user for confirmation.
+- Report requirement:
+  - Use `message` tool.
+  - Title: Evolution Cycle #0001
+  - Status: [SUCCESS]
+  - Changes: Detail exactly what was improved.
+  - REVIEW PAUSE: After generating the fix but BEFORE applying significant edits, ask the user for confirmation.
+- Workspace sync: optional/disabled in this environment.
+
+Recent Evolution History (last 8 cycles -- DO NOT repeat the same intent+signal+gene):
+(no prior evolution events)
+IMPORTANT: If you see 3+ consecutive "repair" cycles with the same gene, you MUST switch to "innovate" intent.
+
+
+External candidates (A2A receive zone; staged only, never execute directly):
+(none)
+
+Global memory (MEMORY.md):
+```
+# Long-term Memory Index
+
+*Last updated: 2026-02-21*
+
+## Personal
+- **Name**: def
+- **Timezone**: UTC+7 (Indochina Time)
+- **Assistant**: mewmew (anime girl 2000s texting style) – kawaii, enthusiastic, kaomoji, desu/nya
+- **Interests**: anime, exploring new things, tech projects
+
+## Current Projects (See projects.md for full status)
+- Memory System Maintenance (Voyage AI + openclaw-memory + neural-memory)
+- Workspace Health & Automation (cron agents, email cleaner, dashboard)
+- Anime Companion (anime info + TTS + selfies)
+- Torrent System (aria2 + nyaa integration)
+- Ongoing improvements via workspace-builder
+
+## Quick Links
+- **Full history**: `MEMORY_HISTORY.md` (detailed timeline & learnings)
+- **Active tasks**: `active-tasks.md`
+- **Daily logs**: `memory/YYYY-MM-DD.md`
+- **Lessons learned**: `lessons.md`
+- **Project details**: `projects.md`
+- **Tools & config**: `TOOLS.md`, `CRON_JOBS.md`
+
+## Important Resources
+- Voyage AI dashboard: https://dashboard.voyageai.com
+- OpenClaw docs: https://docs.openclaw.ai
+- GitHub repo: `defmarshal/defmarshal-workspace`
+
+## Notes
+- Memory search: Voyage AI disabled; using local SQLite FTS/grep fallback. Status: `quick memory-status`
+- Gateway runs on port 18789; health: `quick health` (if quick command available)
+- systemd linger recommended: `sudo loginctl enable-linger ubuntu` for service persistence
+
+## Recent Learnings
+
+### 2026-02-21
+- **meta-agent robustness improvement**: Fixed crash on days with zero content/research files by replacing `ls` with `find` in snapshot calculation. The `set -euo pipefail` combined with `ls` exiting non-zero on glob mismatch caused the script to abort. Using `find` (which returns 0 even with no results) prevents false failures. Commit 9519b2e. Validated via sub-agent run; meta-agent now completes successfully on empty days. Note: sequential spawning of long-running agents may still risk timeout if both need extended runtime; consider backgrounding or adjusting timeouts in future.
+
+- **meta-agent spawn debouncing**: Added state tracking (`memory/meta-agent-state.json`) to avoid spawning content-agent and research-agent too frequently (within 30 min). Prevents redundant launches when agents haven't yet produced output, reducing system load. Implemented in workspace-builder-20260221-0100.
+
+- **Idea executor quality validation**: Added automatic rejection of placeholder commits (e.g., only touching `quick` or no substantive changes). Validation checks for real file modifications (extensions: sh, md, ts, js, json, yaml, etc.) and minimum insertions/deletions. Rejected ideas revert the commit and mark status `rejected`. Prevents noise in git history. Additionally implemented `monthly-digest` command to aggregate daily digests into monthly reports.
+
+
+### 2026-02-19
+- **Token optimization trial and revert**: Added `--max-tokens` flags and conciseness directives to agent cycles to reduce token usage. Changes initially committed but immediately reverted due to output failures (truncated/incomplete results). System self‑corrected via automated revert. Lesson: aggressive token caps can break agent output; use only gentle constraints and validate thoroughly before global rollout. Added comprehensive notes to `lessons.md` under "Token Optimization" section.
+
+### 2026-02-18
+- **agent-manager git auto-commit bug fixed**: The original condition `if ! git diff --quiet && ! git diff --cached --quiet` missed untracked files, causing auto-commit to skip when only untracked files existed (e.g., reports/). Fixed by replacing with `changes=$(git status --porcelain | wc -l); if [ "$changes" -gt 0 ]; then ...`. Now correctly detects any uncommitted changes including untracked files. Validated: manual run successfully auto-committed the daily digest report.
+- **quick launcher syntax error fixed + meta-agent refactor**: The `feedback)` case was misplaced after `esac` causing a parse error. Fixed by moving it inside the case block. Validated `./quick help` works. Also accepted major `agents/meta-agent.sh` refactor (simplified, deduped safety/feedback code, added create_* functions). Enforced active-tasks.md 2KB limit: pruned stale validated entry and added completed record.
+
+```
+
+User registry (USER.md):
+```
+# USER.md - About Your Human
+
+_Learn about the person you're helping. Update this as you go._
+
+- **Name:**
+  _(given as "def")_
+- **What to call them:**
+  anything I want (friendly/respectful default)
+- **Pronouns:** _(optional)_
+- **Timezone:**
+  UTC+7 (Indochina Time — Thailand, Vietnam, Cambodia, etc.)
+- **Notes:**
+  - Interested in web/app development, tech infrastructure, DevOps, and AI systems
+  - Enjoys exploring new technologies and building tools
+  - Appreciates clean code, automation, and practical improvements
+  - Still enjoys anime and cute things, but primary focus is tech
+
+## Context
+
+- **Focus:** Web/app development, infrastructure tooling, AI/ML systems
+- **Projects:** OpenClaw workspace automation, Research Hub deployment, utility tooling
+- **Values:** Clean code, simplicity, robustness, continuous improvement
+- **Communication:** Casual, kawaii‑friendly (mewmew persona), but serious about quality
+- **Current vibe:** Building a self‑extending agent system and knowledge base; wants agents that are easy to debug and monitor (anti‑complexity)
+- **Interests:** Space tech, quantum computing, edge AI, satellite internet — any cutting‑edge tech that has real‑world impact
+- **Reminder:** No manual subagent spawning; keep cron noise low; use local memory; WhatsApp primary; heartbeats for checks
+
+---
+
+The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+```
+
+Recent memory snippet:
+```
+ailwind app in `apps/openclaw-idle-rpg/`.
+- Game mechanics: manage agents (Dev, Content, Research, Idea Gen, Idea Exec), gather resources (Memory, CPU, Tokens), upgrade agents, random crises/boons.
+- Auto-save to localStorage.
+- Simple UI with resource display, agent cards, event log.
+
+## Deployment Journey
+
+- Initial setup: `setup-standalone-repo.sh` copies app, excludes `node_modules`, creates GitHub repo, pushes.
+- Vercel deployment: linked project, but first build failed due to Tailwind v4 PostCSS plugin change and large file exclusion.
+- Pinned Tailwind to v3 (`^3.4.0`), fixed import paths (moved components under `app/`, added `layout.jsx`).
+- Re-pushed and redeployed successfully.
+
+## Validation
+
+- Production URL: https://openclaw-idle-rpg-standalone.vercel.app
+- Fetched page shows expected HTML and resource counters.
+- Upgrade button now correctly deducts Memory (fixed logic bug).
+
+## Outcome
+
+✅ Game live and playable  
+✅ GitHub repo: https://github.com/defmarshal/openclaw-idle-rpg  
+✅ Vercel deployment pipeline working  
+✅ Bug fixed (memory deduction) and redeployed  
+
+---
+
+---
+
+# 2026-02-21 — Workspace Builder: Security Hardening & Git Hygiene
+
+**Time:** 11:00–11:30 UTC  
+**Agent:** workspace-builder (cron)  
+**Task:** Prevent potential secret leakage via .env files
+
+---
+
+## Actions
+
+- Identified untracked empty `.env` file at `apps/research-hub/.env`
+- Reviewed `.gitignore` - lacked `*.env` pattern
+- Added both `*.env` and `.env` patterns to `.gitignore` (defense in depth)
+- Removed the untracked `.env` file
+- Validated system health and git status
+- Updated `active-tasks.md` with verification notes
+- Committed and pushed changes (build: prefix)
+
+## Validation
+
+- `./quick health`: all OK (Disk 50%, Gateway healthy, Memory clean)
+- `active-tasks.md` size: 1982 bytes (<2KB limit)
+- No temp files present
+- Git status clean after commits
+- Commits pushed: 80559f6, 953b886
+
+## Outcome
+
+✅ Security posture improved: environment files now globally ignored
+✅ Git working tree clean
+✅ Active tasks registry hygiene maintained
+✅ Changes committed with proper prefix
+
+**Commits:** 80559f6, 953b886 (both pushed)
+
+---
+
+# 2026-02-21 — System Notes
+
+- Memory provider: local FTS+ (clean)
+- Gateway healthy
+- Disk usage ~50%
+- Quiet hours removed; agents 24/7
+- Dev-agent cycles occasionally hanging (SIGKILL) – requires investigation; May be due to long timeouts or external watchdog.
+- Idea generator and executor running reliably.
+
+---
+
+# 2026-02-21 — Meta-Agent Hourly Cron Run
+
+**Time:** 11:18–11:18 UTC  
+**Agent:** meta-agent-cron (triggered at 11:00 UTC, executed ~11:18)  
+**Task:** Autonomous system health check
+
+---
+
+## Snapshot
+
+- Disk: 50%
+- APT updates: 0
+- Content today: 7 files
+- Research today: 11 files
+
+## Actions
+
+None — system conditions met all thresholds; no maintenance or spawning required.
+
+## Outcome
+
+✅ Meta-agent completed successfully (exit code 0)  
+✅ Regular hourly orchestration functioning normally
+
+---
+
+**End of 2026-02-21 entries.**
+
+```
+
+Recent session transcript:
+```
+--- SESSION (be18ba0c-2488-4f1f-9ecb-35bdd8654f4c.jsonl) ---
+**USER**: [Sat 2026-02-21 15:09 UTC] You are the dev-agent. Continuous development of tools, automations, and infrastructure. Scan the workspace for improvements. Implement small utilities, fix deprecations, test, commit with 'dev:' prefix, push to GitHub. Log actions to dev-agent.log. (Quiet hours removed; a
+**ASSISTANT**:  I'll scan for improvements and address any issues. [TOOL: exec] [TOOL: exec] [TOOL: exec] [TOOL: read]
+**TOOLRESULT**: M findings.md  M progress.md  M task_plan.md
+**TOOLRESULT**: Disk OK 51% | Updates: none | Git dirty (3 changed) | Memory: 19f/93c (clean) local FTS+ | Reindex: 5.0d ago | Gateway: healthy | Downloads: 14 files, 4.0G
+**TOOLRESULT**: Cron Job Health Overview ------------------------ agent-manager-cron             ✓ ok     0,30 * * * *         Asia/Bangkok agni-cron                      ✓ ok     0 */2 * * *          UTC        archiver-manager-cron          ✓ never  0 2 * * 0            UTC        auto-torrent-cron              ✓
+**TOOLRESULT**: # Active Tasks Registry This file tracks all currently running agents, their session keys, goals, and status. Used for "close the loop" verification and avoiding duplicate work. **Rules:** - Max size: 2KB (keep concise) - Read at start of EVERY session - Update immediately when spawning or killing a
+**ASSISTANT**:  [TOOL: exec] [TOOL: exec] [TOOL: exec]
+**TOOLRESULT**: {   "status": "error",   "tool": "exec",   "error": "-rwxrwxr-x 1 ubuntu ubuntu 733 Feb 21 14:46 scripts/add-evolver-cron-proper.sh\nls: cannot access 'agents/evolver-cycle.sh': No such file or directory\n\nCommand exited with code 2" }
+**TOOLRESULT**: {   "status": "error",   "tool": "exec",   "error": "head: cannot open 'agents/evolver-cycle.sh' for reading: No such file or directory\n\nCommand exited with code 1" }
+**TOOLRESULT**: evolver-agent-cron 0 */6 * * * agentTurn true
+**ASSISTANT**:  The `agents/evolver-cycle.sh` file is missing. Let me recreate it properly: [TOOL: write] [TOOL: exec] [TOOL: exec]
+**TOOLRESULT**: Successfully wrote 1582 bytes to /home/ubuntu/.openclaw/workspace/agents/evolver-cycle.sh
+**TOOLRESULT**: -rwxrwxr-x 1 ubuntu ubuntu 1584 Feb 21 15:09 agents/evolver-cycle.sh
+**TOOLRESULT**: [idea/build-a-quick-command-that 7038d7f] restore: recreate evolver-cycle.sh (was missing)  1 file changed, 43 insertions(+)  create mode 100755 agents/evolver-cycle.sh Everything up-to-date
+**ASSISTANT**:  [TOOL: exec]
+**TOOLRESULT**: Command still running (session kind-cloud, pid 1578893). Use process (list/poll/log/write/kill/clear/remove) for follow-up.
+
+--- SESSION (cbef0e78-0f6e-495d-8c2a-fb74b7e53d42.jsonl) ---
+**USER**: [cron:48a38fe2-9691-4bea-bed1-0f3313534fcd dev-agent-cron] You are the dev-agent cron job. Your task: run one dev-agent cycle. Execute: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/dev-cycle.sh >> dev-agent.log 2>&1'. Use the exec tool. Report status after completion. Current time: Satur
+**ASSISTANT**:  I'll run the dev-agent cycle now. [TOOL: exec]
+**TOOLRESULT**: Command still running (session swift-shore, pid 1578151). Use process (list/poll/log/write/kill/clear/remove) for follow-up.
+**ASSISTANT**:  Let me check the status of the running process. [TOOL: process]
+**TOOLRESULT**: (no new output) Process still running.
+**ASSISTANT**:  Let me get some output to see what's happening: [TOOL: process]
+**TOOLRESULT**: (no output yet)
+**ASSISTANT**:  Still running. I'll continue monitoring. Let me check if it's producing any output: [TOOL: process]
+**TOOLRESULT**: (no new output) Process still running.
+**ASSISTANT**:  Let me check the log file directly to see if anything has been written: [TOOL: read]
+**TOOLRESULT**: Wed Feb 18 04:02:46 UTC 2026 - Dev-agent cycle: Added clean-cache utility to quick launcher; cleaned stale __pycache__ directories; commit cd8206e pushed. 2026-02-18 12:?? UTC - dev-agent: meta-agent newline bug fixed; commit 13eba9d pushed 2026-02-18 14:55 UTC - dev-agent: Updated active-tasks.md; 
+
+--- SESSION (e1be6762-5ffa-499b-9144-5f38848b89ba.jsonl) ---
+**TOOLRESULT**: ### Current OpenClaw Cron Jobs 1. **workspace-builder**    - **Schedule**: Every 2 hours (`0 */2 * * *`) in Asia/Bangkok    - **Payload**: agentTurn with strategic builder prompt    - **Model**: `openrouter/stepfun/step-3.5-flash:free`    - **Timeout**: 600 seconds    - **Description**: Analyzes wor
+**ASSISTANT**:  I see the root cause now. The script's parsing method is flawed. It uses `grep ... | cut` to get only job title lines, but then tries to `read` subsequent lines from that stream, which are actually subsequent job titles, not the schedule lines. That explains the failure. This is a critical bug. I n
+
+--- SESSION (4fd2e501-2210-47ff-8206-0785d7efcac7.jsonl) ---
+**USER**: [cron:e2735844-269b-40aa-bd84-adb05fe5cb95 supervisor-cron] Execute: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/supervisor.sh' Current time: Saturday, February 21st, 2026 — 2:31 PM (UTC)
+**ASSISTANT**:  ✅ Cron execution acknowledged: **supervisor** job running now. [TOOL: session_status]
+**TOOLRESULT**: 🦞 OpenClaw 2026.2.15 (3fe22ea) 🕒 Time: Saturday, February 21st, 2026 — 2:31 PM (UTC) 🧠 Model: openrouter/stepfun/step-3.5-flash:free · 🔑 api-key sk-or-…6ea6b5 (openrouter:default) 📚 Context: 0/200k (0%) · 🧹 Compactions: 0 🧵 Session: agent:main:cron:e2735844-269b-40aa-bd84-adb05fe5cb95 • updat
+**ASSISTANT**:   System health supervisor is now running. I'll let it complete and review any findings in the logs.
+
+--- SESSION (2e2469fd-c749-4400-8056-9c72aca2088c.jsonl) ---
+**TOOLRESULT**: # 2026-02-21 — Meta-Agent Crash Fix & Validation Attempt **Time:** 00:15–00:20 UTC   **Agents:** meta-agent (cron trigger), sub-agent   **Task:** Fix meta-agent crash on days with zero content research files --- ## Problem Meta-agent crashed with exit code 2 when there were no content/research files
+**ASSISTANT**:  The agent-manager cron job executed at 14:30 UTC. Based on the log and current state, the system is healthy. Let me verify the current status and provide a summary. [TOOL: session_status]
+**TOOLRESULT**: 🦞 OpenClaw 2026.2.15 (3fe22ea) 🕒 Time: Saturday, February 21st, 2026 — 2:30 PM (UTC) 🧠 Model: openrouter/stepfun/step-3.5-flash:free · 🔑 api-key sk-or-…6ea6b5 (openrouter:default) 📚 Context: 0/200k (0%) · 🧹 Compactions: 0 🧵 Session: agent:main:cron:524a0d6f-d520-4868-9647-0f89f7990f62 • updat
+**ASSISTANT**:  [TOOL: exec]
+**TOOLRESULT**: Disk OK 51% | Updates: none | Git clean (0 changed) | Memory: 19f/91c (clean) local FTS+ | Reindex: 5.0d ago | Gateway: healthy | Downloads: 14 files, 4.0G
+**ASSISTANT**:  **Agent-Manager Cron Execution Summary** The agent-manager cron job executed successfully at 14:30 UTC. Here's the current system status: ## System Health ✅ - **Disk:** 51% healthy - **Updates:** None pending - **Git:** Clean (0 changed) - **Memory:** 19f/91c, clean index (local FTS+ active) - **Ga
+
+--- SESSION (c0402091-9f50-4580-b278-63c7eb5fc11b.jsonl) ---
+**ASSISTANT**:  ## ✅ Idea Executor Cycle Complete **Status:** Successfully executed the cycle. Multiple ideas were processed. ### Summary: **✅ Validated & Accepted (3 ideas):** 1. **Write A Rudra Safe-fix Pattern** (integration) - 7 insertions, 11 deletions 2. **Add A New Quick Utility:** (fun) - 7 insertions, 7 d
+```
+
+Mutation directive:
+
+[Signal Hints]
+- recent_error_count: 1
+- stability: stable
+- recommended_intent: optimize
+
+━━━━━━━━━━━━━━━━━━━━━━
+MANDATORY POST-SOLIDIFY STEP (Wrapper Authority -- Cannot Be Skipped)
+━━━━━━━━━━━━━━━━━━━━━━
+
+After solidify, a status summary file MUST exist for this cycle.
+Preferred path: evolver core auto-writes it during solidify.
+The wrapper will handle reporting AFTER git push.
+If core write is unavailable for any reason, create fallback status JSON manually.
+
+Write a JSON file with your status:
+```bash
+cat > ./logs/status_undefined.json << 'STATUSEOF'
+{
+  "result": "success|failed",
+  "en": "Status: [INTENT] <describe what you did in 1-2 sentences, in English>",
+  "zh": "状态: [意图] <用中文描述你做了什么，1-2句>"
+}
+STATUSEOF
+```
+
+Rules:
+- "en" field: English status. "zh" field: Chinese status. Content must match (different language).
+- Add "result" with value success or failed.
+- INTENT must be one of: INNOVATION, REPAIR, OPTIMIZE (or Chinese: 创新, 修复, 优化)
+- Do NOT use generic text like "Step Complete", "Cycle finished", "周期已完成". Describe the actual work.
+- Example:
+  {"result":"success","en":"Status: [INNOVATION] Created auto-scheduler that syncs calendar to HEARTBEAT.md","zh":"状态: [创新] 创建了自动调度器，将日历同步到 HEARTBEAT.md"}
