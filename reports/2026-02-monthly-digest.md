@@ -1,0 +1,193 @@
+# Monthly Digest — 2026-02
+
+**Generated**: Sat Feb 21 03:05:06 UTC 2026
+
+## Overview
+- Days with digests: 4
+
+- Total content items produced: 2
+- Total research reports written: 4
+
+## Dev Commits (month)
+- dev: fix Research Hub setup script; add deploy script and quick commands
+- dev: add Vercel deployment automation (quick vercel); script handles init, link, deploy, logs, status
+- dev: fix meta-supervisor daemon stale-PID detection (zombie handling); add meta-supervisor-agent to CRON_JOBS.md; add quick meta-restart utility; update help and daemons list
+- dev: enhance quick utilities: add meta-supervisor to daemons, add meta-supervisor-report command, update help
+- dev: meta-supervisor daemon with keepalive cron; refined checks
+- dev: convert meta-supervisor to daemon agent; add keepalive cron
+- dev: add meta-supervisor agent to audit agent outcomes; fix Python/bridging bugs; add reports to .gitignore
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-02-20_0606)
+- dev: add quick agni-run, rudra-status; auto-clean stale Agni locks; memory update
+- dev: add config-provider utility to display AI and memory search providers
+- dev: add memory-summary utility for consolidated memory health view
+- dev: add memory-provider utility to display current memory search provider; verify local
+- dev: add memory-stores utility; fix dev-cycle.log path (should be in memory/)
+- dev: add today-content utility to quickly view today's content files and digest status
+- dev: fix cron-runs duration display for never-run jobs; show '-' instead of misleading value
+- dev: add cron-runs utility to monitor recent cron job executions (last run, status, duration)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-02-20_0213)
+- dev: add disk-usage quick command to monitor workspace growth trends
+- dev: refactor cron validator to parse CRON_JOBS.md (no more hard-coded schedules); improve reliability
+- dev: add retry logic to dev-cycle and research-cycle to handle transient rate limits; update docs
+- dev: optimize token usage - reduce dev/content/research to hourly, supervisor to 30min; sync docs and validator; fix creds perms
+- dev: add git-branches command to quick launcher; applied system updates; rotated aria2.log
+- dev: enhance gateway-fix to remove token override; add cron-health command to quick launcher for monitoring cron job statuses
+- dev: update active-tasks; mark dev-agent validated; note gateway-fix.sh guidance
+- dev: fix meta-agent newline bug; use if-guards for count aggregations to prevent duplicate outputs
+- dev: add clean-cache quick command; remove stale __pycache__ directories
+- dev: fix icon colors — use emoji with job class border colors; remove placeholder sprites
+- dev: add dashboard manager script and quick integration; improve usability
+- dev: FF ATB dashboard polish — victory fanfare, party health %, tooltips with schedule, sprite bounce, atb glow
+- dev: Final Fantasy ATB dashboard polish — pixel sprites, hover battle sound, pending status for never-run jobs
+- dev: fix dashboard JS syntax error (missing parenthesis in pctBar)
+- dev: transform RPG dashboard to Final Fantasy ATB style; pixel font, job classes, ATB/Morale/Magic bars, stone panel aesthetic
+- dev: make RPG dashboard remotely accessible (bind 0.0.0.0); add to startup script
+- dev: convert cron-supervisor to cron-triggered agent; fix allowlist and PATH; remove daemon loop; fix torrent-bot perms; update start script
+- dev: disable quiet hours for torrent operations; random-downloader and auto-torrent-cron now run 24/7
+- dev: fix script permissions; add auto-torrent-add.sh; fix auto-torrent-cron payload (external config); update memory; add cross-domain trends research
+- dev: mark torrent-bot daemon running; restored keepalive loop
+- dev: clean up obsolete torrent-manager directory after migration revert
+- dev: remove obsolete torrent-bot daemon; agent is on-demand via slash command; random-torrent-downloader cron remains
+- dev: restore working torrent-bot daemon (keepalive); separate random-downloader cron remains; unified attempt reverted
+- dev: unify torrent-bot daemon + auto-fetch (2h interval); remove broken torrent-manager; restore stable operation
+- dev: fix torrent-manager daemon spawn syntax (use openclaw agents spawn); verified running
+- dev: update active-tasks to reflect torrent-manager daemon (unified); pending updates check
+- dev: add unified torrent-manager daemon (combines keepalive + auto-fetch); pending switchover
+- dev: mark Phase 1 complete; log research-agent agriculture output; workspace clean
+- dev: update MEMORY.md; note Voyage AI disabled, local fallback in use
+- dev: disable Voyage AI in meta-agent; comment out reindex actions; update TOOLS.md
+- dev: update workspace-validate.sh; remove quiet hours check (agents run 24/7 system-wide)
+- dev: fix quick status agent count; count actual daemons instead of obsolete agent-loop.sh pattern
+- dev: update progress.md; mark Phases 3/4 completed, add verification details and build summary
+- dev: improve memory reindex resilience; meta-agent 6h Voyage rate-lock; quick memory-index delay 120s between agents
+- dev: document meta-agent Voyage AI rate limit failures; add timeline and options
+- dev: update agent documentation to reflect 24/7 operation; remove quiet hours references from READMEs and templates
+- dev: remove quiet hour checks from agents and scripts; update quick help; 24/7 operation cleanup
+- dev: remove quiet hours from agent-manager (24/7 operation); update lessons; enhance memory-reindex-check with Voyage warning; add research cycle logs
+- dev: refine voyage-status to check agent-manager.log first; improve robustness
+- dev: improve memory reindex to gentle sequential mode; add voyage-status diagnostic; update quick launcher
+- dev: health check - ignore untracked files in git dirty count; avoid false positives from logs/artifacts
+- dev: improve dev-cycle.sh - log to memory/, add error handling, set -euo pipefail
+- dev: close critical gaps - export controls timeline + Blackwell benchmarks; AI incidents trends (Nov 2025–Jan 2026)
+- dev: add retry logic to content-agent for transient auth errors; increase cron timeouts for dev and content agents
+- dev: workspace improvements - agni-cycle.sh flock lock, .gitignore updates, add daily digest
+- dev: add agni-status utility; monitor agni lock state
+- dev: add supervisor-schedule utility; show cron expr
+- dev: fix gateway-token --force to not pass extraneous args
+- dev: add tailscale-status utility to show IP and connectivity
+- dev: fix gateway-token detection; add --force flag
+- dev: add gateway-token utility to inspect/rotate device token
+- dev: add supervisor-status command for concise health summary
+- dev: fix supervisor APT check pipeline; add apt-check utility
+- dev: add uptime command to show system and gateway uptime
+- dev: add openclaw-status utility to show system status
+- dev: add gateway-logs and openclaw-version utilities
+- dev: add gateway-info quick command; show detailed gateway status and troubleshooting
+- dev: add git-recent command to show recent commit one-liners
+- dev: add quick cron-failures command to monitor erroring cron jobs
+- dev: increase workspace-builder timeout to 1800s; supervisor-cron already at 300s
+- dev: quick - add archive-sizes command to monitor directory growth
+- dev: quick - increase weather timeout from 5s to 15s for reliability
+- dev: quick - add git-last command to show last commit details
+- dev: supervisor - fix cron health jq query to use state.lastStatus
+- dev: quick - add cleanup-untracked utility
+- dev: quick - add meta-commit utility for auto-committing planning files
+- dev: quick - add 'today' command to list files modified today
+- dev: quick - add session-locks utility for diagnostics
+- dev: quick - add checkpoints and phase commands for autonomous system visibility
+- dev: supervisor - robust APT check; ignore dry-run failures
+- dev: add supervisor daemon; quick extensions; docs updated
+- dev: quick - extend agent-logs to include agent-manager; usage updated
+- dev: record dev-agent cycle; add agent-manager cron; quick updates
+- dev: quick launcher - add agent-manager and enhance agent-spawn
+- dev: add agent-manager daemon (proactive maintenance)
+- dev: remove stray research file (midday-update renamed to late-morning-update)
+- dev: add quick summary (one-line status) and quick digest (show latest daily digest); cleanup stray research file
+- dev: add quick agent-status and reports commands; improve cron overview formatting
+- dev: improve vishwakarma game automation (non-interactive), update build script and main.py; add .gitignore for plans/logs; refresh daily digest report
+- dev: add daily-digest utility and cron documentation; generate today's report
+- dev: enhance spawner-agent.sh with robust flag handling and failure tolerance; validate quick/TOOLS.md integration
+- dev: add agent-spawn utility to spawn agents via sessions_spawn; document in TOOLS.md and quick help
+- dev: add weather command to TOOLS.md quick reference
+- dev: add weather quick command via wttr.in; update help
+- dev: update TOOLS.md with complete quick command reference; add cron, gateway-fix, hygiene, etc.
+- dev: add cron quick command; improve gateway-info to use JSON status; enhance output clarity
+- dev: fix gateway watchdog to check port instead of systemd (user bus unavailable in cron); improve health message; Gateway now 'healthy' when port listening
+- dev: add gateway watchdog (system crontab); update quick, TOOLS.md, CRON_JOBS.md
+- dev: fix quick launcher help break; add proper social-monitor case; respect quiet hours
+- dev: update TOOLS.md with new utilities (cleanup-agent-artifacts, gateway-info, hygiene, memory-reindex, schedules)
+- dev: finalize builder work; integrate updates-check/apply; add gateway-info, hygiene; update docs
+- dev: add workspace-hygiene-check utility; integrate into quick launcher; respects quiet hours (read-only)
+- dev: add gateway-info utility; integrate into quick launcher for remote access setup guidance
+- dev: generalize .gitignore to exclude all agent .lock files
+- dev: add cleanup-agent-artifacts utility; integrate into quick launcher; schedule daily cron at 2 AM Asia/Bangkok
+- dev: add vishwakarma lock to gitignore; clean up empty plan files; remove pycache
+- dev: remove completed workspace-builder entry from active-tasks.md; clean up stale validation records
+- dev: fix quick verify to tolerate missing agent-loop.sh daemons (agents now use cron)
+- dev: fix quick help text for memory-reindex-check (remove stray parenthesis)
+- dev: fix workspace-validate cron count (now 14); add gateway status retry; improve robustness
+- dev: enhance workspace-health with retry for gateway service status to handle transient activating state
+- dev: fix permissions; enhance cleanup-downloads with verbose; add comprehensive log rotation for all critical logs; create memory-reindex-check utility; add quick command; improve script robustness
+- dev: update agents/README.md — add Vishwakarma & Kṛṣṇa game dev duo documentation
+- dev: add master summary for Feb 16, 2026 — all systems archived
+- dev: finalize Feb 16 — add content epilogue, research final monitoring note; update indexes
+- dev: adjust Kṛṣṇa error handling; fix Vishwakarma test step
+- dev: fix Vishwakarma & Kṛṣṇa — convert to concrete build script; add first plan
+- dev: create game dev agent duo (Vishwakarma & Kṛṣṇa) with Anime Studio Tycoon plan
+- dev: finalize content for Feb 16; update index; note streaming disabled
+- dev: remove quiet hours system-wide; agents now 24/7. Updated cron schedules, payloads, Agni script, HEARTBEAT.md, AGENTS.md, CRON_JOBS.md.
+- dev: introduce Agni & Rudra autonomous agent duo (planner + executor)
+- dev: finalize migration; add content digest; add research synthesis; update indexes; ensure gateway supervised
+- dev: prune active-tasks.md to under 2KB; keep only running daemons
+- dev: add validate command and workspace-validate utility for comprehensive health checks
+- dev: add comprehensive cron guide and fresh install task list
+- dev: add gateway-status/fix commands; enhance workspace-health with gateway monitoring; add gateway-fix utility
+- dev: add short digest; validate cron migration in active-tasks
+- dev: add social-monitor-agent.sh for hourly Twitter trending digest; add quick wrapper
+- dev: fix quick verify cron count parsing (handle non-JSON output gracefully)
+- dev: add quick status command for concise one‑line system summary (local, no approvals)
+- dev: add torrent-status command (alias for downloads); fix random-torrent-downloader parsing and retries
+- dev: update quick help to include restart-gateway command; improve formatting
+- dev: add quick restart-gateway convenience command; gateway is now active after manual restart
+- dev: enhance quick verify to show gateway restart reminder when inactive
+- dev: add gateway status to quick verify; improve system visibility
+- dev: add log-rotate-cron job and documentation; schedule weekly aria2.log rotation
+- dev: quick health fix; added verify command; cleaned CRON_JOBS.md; updated planning docs and content index
+- dev: add torrent cron setup script and content index updater
+- dev: add cron-status and setup-all commands to quick launcher
+- dev: add git-today command to quick launcher
+- dev: add sudo-check and agent-logs commands to quick launcher
+- dev: expose research watchlist via quick; update INDEX.md for new report
+- dev: add sudo setup utility + test script; track recent content files
+- dev: organize content archive; add content INDEX.md and stage recent digests
+- dev: add research archive index + stage new content & research reports
+- dev: update planning files after memory system enhancement build
+- dev: update active-tasks: workspace-builder validated with memory commands
+- dev: update planning files and add CNY final wrap
+- dev: add Chinese New Year content and AI fan engagement research
+- dev: add Chinese New Year evening wrap digest
+- dev: add Chinese New Year content and streaming AI convergence case study
+- dev: add Chinese New Year tech update (web dashboard recent memories)
+- dev: add torrent-downloader cron script with quiet hours and disk space check
+- dev: final 2026-02-14 content index and AI anime marketing research report
+- dev: add evening wrap-up, late afternoon note, and AI music soundtrack research
+- dev: add content final digest and research report on AI dubbing economics
+- dev: fix quick search quoting; add afternoon update; commit builder outputs
+- dev: remove deprecated daily memory summarization from CRON_JOBS.md; update active-tasks tracking
+- dev: fix anime-lookup skill - add missing script symlink
+- dev: workspace improvements and cleanup
+
+## Daily Breakdown
+- 2026-02-17: 0 content, 0 research
+- 2026-02-18: 0 content, 0 research
+- 2026-02-20: 0 content, 0 research
+- 2026-02-21: 2 content, 4 research
+
+## Daily Digest Links
+- [2026-02-17](reports/2026-02-17-daily-digest.md)
+- [2026-02-18](reports/2026-02-18-daily-digest.md)
+- [2026-02-20](reports/2026-02-20-daily-digest.md)
+- [2026-02-21](reports/2026-02-21-daily-digest.md)
+
+---
+*Generated by scripts/generate-monthly-digest.sh*

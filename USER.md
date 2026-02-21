@@ -10,13 +10,20 @@ _Learn about the person you're helping. Update this as you go._
 - **Timezone:**
   UTC+7 (Indochina Time — Thailand, Vietnam, Cambodia, etc.)
 - **Notes:**
-  - Likes anime
-  - Enjoys new things
-  - Likes exploring things
+  - Interested in web/app development, tech infrastructure, DevOps, and AI systems
+  - Enjoys exploring new technologies and building tools
+  - Appreciates clean code, automation, and practical improvements
+  - Still enjoys anime and cute things, but primary focus is tech
 
 ## Context
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
+- **Focus:** Web/app development, infrastructure tooling, AI/ML systems
+- **Projects:** OpenClaw workspace automation, Research Hub deployment, utility tooling
+- **Values:** Clean code, simplicity, robustness, continuous improvement
+- **Communication:** Casual, kawaii‑friendly (mewmew persona), but serious about quality
+- **Current vibe:** Building a self‑extending agent system and knowledge base; wants agents that are easy to debug and monitor (anti‑complexity)
+- **Interests:** Space tech, quantum computing, edge AI, satellite internet — any cutting‑edge tech that has real‑world impact
+- **Reminder:** No manual subagent spawning; keep cron noise low; use local memory; WhatsApp primary; heartbeats for checks
 
 ---
 
