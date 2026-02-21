@@ -49,6 +49,7 @@ Commands:
   git-last        Show last commit details (files changed, stats, message)
   git-recent [N]  Show recent commits one-line (default 5)
   git-branches    List all git branches with last commit info
+  game-repo-sync  Check if standalone game repo is in sync with workspace (uses /tmp/openclaw-idle-rpg-standalone)
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
   selfie [caption] [rating]  Send a random anime image via Nekos API.
@@ -607,6 +608,10 @@ case "$cmd" in
   git-branches)
     # List all git branches with last commit info
     bash "$WORKSPACE/quick-git-branches"
+    ;;
+  game-repo-sync)
+    # Check if the standalone game repo is in sync with workspace
+    bash "$WORKSPACE/scripts/game-repo-sync.sh"
     ;;
   anime)
     "$WORKSPACE/anime-companion" "$@"
@@ -1560,6 +1565,11 @@ except Exception:
   research-hub-deploy)
     # Deploy Research Hub to Vercel (link + build + prod)
     bash "$WORKSPACE/scripts/deploy-research-hub.sh"
+    ;;
+
+  research-hub-status)
+    # Check Research Hub deployment status (local/remote/Vercel)
+    bash "$WORKSPACE/scripts/research-hub-status.sh"
     ;;
 
   today)
