@@ -173,5 +173,3 @@
 |  | [subagent-persistence-investigation-2026-02-14.md](subagent-persistence-investigation-2026-02-14.md) |  |
 |  | [task_plan.md](task_plan.md) |  |
 |  | [watchlist-priority-gaps-2026-02-15.md](watchlist-priority-gaps-2026-02-15.md) |  |
-|  | [2026-02-21-ai-coding-assistants-2026-market-analysis.md](2026-02-21-ai-coding-assistants-2026-market-analysis.md) | AI Coding Assistants market analysis, benchmarks, pricing, recommendations |
-|  | [2026-02-21-autonomous-vehicles-2026-deployment-trends.md](2026-02-21-autonomous-vehicles-2026-deployment-trends.md) | Autonomous vehicles deployment, market trends, outlook 2026–2030 |
