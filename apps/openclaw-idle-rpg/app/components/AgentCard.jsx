@@ -1,7 +1,9 @@
-export default function AgentCard({ agent, onUpgrade, resources }) {
+export default function AgentCard({ agent, onUpgrade, resources, onUseAbility, abilityCooldown }) {
   const cost = Math.floor(10 * Math.pow(agent.costMultiplier, agent.level));
   const canAfford = resources >= cost;
   const rate = (agent.baseRate * agent.level).toFixed(2);
+  const ability = agent.ability;
+  const onCooldown = abilityCooldown > 0;
 
   return (
     <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
@@ -15,14 +17,32 @@ export default function AgentCard({ agent, onUpgrade, resources }) {
       <button
         onClick={() => canAfford && onUpgrade(agent.id)}
         disabled={!canAfford}
-        className={`w-full py-2 rounded font-medium ${
+        className={`w-full py-2 rounded font-medium mb-2 ${
           canAfford
-            ? 'bg-mewmew-primary hover:bg-purple-600 text-white'
+            ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
             : 'bg-gray-700 text-gray-500 cursor-not-allowed'
         }`}
       >
         Upgrade ({cost} Memory)
       </button>
+      {ability && (
+        <div className="border-t border-gray-700 pt-2 mt-2">
+          <button
+            onClick={() => onUseAbility()}
+            disabled={onCooldown}
+            title={ability.desc}
+            className={`w-full py-2 rounded text-sm font-medium flex items-center justify-center gap-2 ${
+              onCooldown
+                ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                : 'bg-pink-600 hover:bg-pink-700 text-white'
+            }`}
+          >
+            {ability.name} {onCooldown && `(${(abilityCooldown/1000).toFixed(0)}s)`}
+          </button>
+          <div className="text-xs text-gray-400 mt-1">{ability.desc}</div>
+        </div>
+      )}
     </div>
   );
 }
+
