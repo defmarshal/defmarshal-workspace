@@ -37,6 +37,39 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
+## Skill Inventory (2026-02-21)
+
+**Core (keep, actively used):**
+- `developer` / `cli-developer` — Code quality, CLI tool building (dev-agent)
+- `planning-with-files` — Structured planning for complex tasks
+- `tavily` / `perplexity` / `exa-web-search-free` — Web research (tiered)
+- `gmail` — Email automation (OAuth managed)
+- `humanizer` — Improve text naturalness
+- `edge-tts` — Text-to-speech (kawaii fun)
+- `anime` — Anime info lookup via Jikan (content/research agents)
+- `stock-analysis` — Financial data (watchlists, scoring)
+- `self-improvement` — Learn from errors/corrections (recommend enable all agents)
+- `capability-evolver` — Self-evolution engine (active: every 6h UTC, review mode)
+- `aria2` — Torrent downloads (torrent-bot)
+- `game-cog` — Deep game design reasoning (OpenClaw Idle RPG dev)
+- `games` / `gaming` — Game recommendations & systems
+
+**Memory / Persistence (mixed status):**
+- `openclaw-memory` — Voyage AI semantic search (disabled due to rate limits; local fallback active)
+- `neural-memory` — Advanced associative graph memory (requires `pip install neural-memory`; optional)
+- `simple-memory-search` — Grep-based fallback (provides `msearch` command)
+
+**Removed (2026-02-21 cleanup):**
+- `anime-lookup` — duplicate of `anime`
+- `fivem-dev` — FiveM-specific, unused
+- `clawaifu-selfie` — unclear purpose, unused
+
+**Notes:**
+- Duplicate `anime` skill had identical description; kept the one with more complete installation metadata.
+- Memory skills: currently using local SQLite FTS + grep; Voyage AI disabled until payment added.
+
+---
+
 ### Memory System (Voyage AI) — DISABLED
 
 - **Provider**: Voyage AI (voyage-4-large) — **not in use** due to rate limits on free tier (3 RPM)
