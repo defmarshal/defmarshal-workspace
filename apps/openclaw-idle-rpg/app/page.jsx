@@ -105,7 +105,7 @@ export default function HomePage() {
           newRes.cpu += base * 0.3 * cpuMult;
           newRes.tokens += base * 0.2 * tokenMult;
         });
-        Object.keys(newRes).forEach(k => (newRes[k] = Math.round(newRes[k] * 100) / 100);
+        Object.keys(newRes).forEach(k => { newRes[k] = Math.round(newRes[k] * 100) / 100; });
         return newRes;
       });
     }, 1000);
