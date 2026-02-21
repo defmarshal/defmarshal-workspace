@@ -144,6 +144,7 @@
 |  | [2026-02-20-nvidia-blackwell-b200-real-world-performance.md](2026-02-20-nvidia-blackwell-b200-real-world-performance.md) |  |
 |  | [2026-02-20-state-of-web-app-dev-2026.md](2026-02-20-state-of-web-app-dev-2026.md) |  |
 |  | [2026-02-20-token-optimization-agent-systems.md](2026-02-20-token-optimization-agent-systems.md) |  |
+| 2026-02-21 | ["AI Agent Frameworks in 2026: LangGraph, CrewAI, AutoGen Comparison"](2026-02-21-ai-agent-frameworks-orchestration.md) | topics: |
 | 2026-02-21 | ["AI Data Centers Face Water and Power Constraints"](2026-02-21-ai-data-center-water-constraints.md) | topics: |
 |  | [ai-anime-2026-year-of-dragon-outlook.md](ai-anime-2026-year-of-dragon-outlook.md) |  |
 |  | [ai-anime-fan-engagement-subscription-economics-2026.md](ai-anime-fan-engagement-subscription-economics-2026.md) |  |
