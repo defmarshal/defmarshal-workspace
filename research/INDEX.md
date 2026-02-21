@@ -149,6 +149,7 @@
 | 2026-02-21 | ["Edge AI Chips 2026: Performance, Power, and Market Dynamics"](2026-02-21-edge-ai-chips-performance-power.md) | topics: |
 | 2026-02-21 | ["LEO Satellite Internet 2026: Starlink, Kuiper, OneWeb — The Race to Connect the Planet"](2026-02-21-leo-satellite-internet-constellations-2026.md) | topics: |
 | 2026-02-21 | ["Practical Quantum Computing Applications in 2026"](2026-02-21-quantum-computing-practical-applications-2026.md) | topics: |
+| 2026-02-21 | ["Serverless on Kubernetes in 2026: Knative vs OpenFaaS vs AWS Lambda"](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md) | topics: |
 |  | [ai-anime-2026-year-of-dragon-outlook.md](ai-anime-2026-year-of-dragon-outlook.md) |  |
 |  | [ai-anime-fan-engagement-subscription-economics-2026.md](ai-anime-fan-engagement-subscription-economics-2026.md) |  |
 |  | [ai-anime-finance-convergence-q1-2026-update.md](ai-anime-finance-convergence-q1-2026-update.md) |  |
