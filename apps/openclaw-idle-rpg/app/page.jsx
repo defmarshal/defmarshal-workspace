@@ -407,20 +407,20 @@ export default function HomePage() {
       {/* Header with kawaii decorations */}
       <header className="mb-6 text-center relative">
         <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-2xl animate-sparkle">★ ♡ ★</div>
-        <h1 className="text-4xl font-bold text-purple-600 drop-shadow-sm" style={{ fontFamily: "'Press Start 2P', cursive" }}>OpenClaw Idle RPG</h1>
-        <p className="text-pink-500 font-semibold">✨ Manage agents, gather resources, survive crises! ✨</p>
+        <h1 className="text-4xl font-bold text-purple-800 drop-shadow-md" style={{ fontFamily: "'Press Start 2P', cursive" }}>OpenClaw Idle RPG</h1>
+        <p className="text-purple-700 font-semibold text-lg">✨ Manage agents, gather resources, survive crises! ✨</p>
         <div className="mt-3 flex justify-center gap-4 text-sm">
-          <div className="kawaii-card px-3 py-1 flex items-center gap-1">
+          <div className="kawaii-card px-3 py-1 flex items-center gap-1 bg-white/90">
             <span>💎</span>
             <span>Prestige:</span>
             <span className="text-pink-600 font-bold">{prestigePoints}</span>
-            <span className="text-purple-500">(+{prestigeBonus}% production)</span>
+            <span className="text-purple-700">(+{prestigeBonus}% production)</span>
           </div>
-          <div className="kawaii-card px-3 py-1 flex items-center gap-1">
+          <div className="kawaii-card px-3 py-1 flex items-center gap-1 bg-white/90">
             <span>📅</span>
             <span>Streak:</span>
             <span className="text-green-600 font-bold">{dailyStreak}</span>
-            <span className="text-purple-500">days</span>
+            <span className="text-purple-700">days</span>
           </div>
         </div>
       </header>
@@ -428,10 +428,10 @@ export default function HomePage() {
       {/* Resources */}
       <div className="grid grid-cols-3 gap-4 mb-8">
         {Object.entries(RESOURCE_NAMES).map(([key, label]) => (
-          <div key={key} className="kawaii-card text-center transform hover:scale-105 transition-transform">
-            <div className="text-sm text-purple-400 mb-1">{label}</div>
-            <div className="text-3xl font-bold text-purple-600">{Math.floor(resources[key])}</div>
-            <div className="text-xs text-pink-400 mt-1">💖</div>
+          <div key={key} className="kawaii-card text-center transform hover:scale-105 transition-shadow hover:shadow-lg">
+            <div className="text-sm font-bold text-purple-700 mb-1">{label}</div>
+            <div className="text-4xl font-extrabold text-purple-800 drop-shadow-sm">{Math.floor(resources[key])}</div>
+            <div className="text-xs text-pink-500 mt-1">💖</div>
           </div>
         ))}
       </div>
