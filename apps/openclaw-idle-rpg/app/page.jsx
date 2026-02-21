@@ -407,20 +407,20 @@ export default function HomePage() {
       {/* Header with kawaii decorations */}
       <header className="mb-8 text-center relative">
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-3xl animate-sparkle">★ ♡ ★</div>
-        <h1 className="text-5xl font-black text-purple-900 drop-shadow-lg mb-2" style={{ fontFamily: "'Press Start 2P', cursive" }}>OpenClaw Idle RPG</h1>
-        <p className="text-purple-800 font-bold text-2xl">✨ Manage agents, gather resources, survive crises! ✨</p>
+        <h1 className="text-5xl font-black text-gray-900 drop-shadow-lg mb-2" style={{ fontFamily: "'Press Start 2P', cursive" }}>OpenClaw Idle RPG</h1>
+        <p className="text-gray-800 font-bold text-2xl">✨ Manage agents, gather resources, survive crises! ✨</p>
         <div className="mt-4 flex justify-center gap-6 text-base">
-          <div className="kawaii-card px-4 py-2 flex items-center gap-2 bg-white/95">
+          <div className="kawaii-card px-4 py-2 flex items-center gap-2">
             <span className="text-2xl">💎</span>
-            <span className="font-bold text-purple-800">Prestige:</span>
+            <span className="font-bold text-gray-900">Prestige:</span>
             <span className="text-pink-600 font-black text-xl">{prestigePoints}</span>
-            <span className="text-purple-800 font-bold">(+{prestigeBonus}% production)</span>
+            <span className="text-gray-900 font-bold">(+{prestigeBonus}% production)</span>
           </div>
-          <div className="kawaii-card px-4 py-2 flex items-center gap-2 bg-white/95">
+          <div className="kawaii-card px-4 py-2 flex items-center gap-2">
             <span className="text-2xl">📅</span>
-            <span className="font-bold text-purple-800">Streak:</span>
-            <span className="text-green-600 font-black text-xl">{dailyStreak}</span>
-            <span className="text-purple-800 font-bold">days</span>
+            <span className="font-bold text-gray-900">Streak:</span>
+            <span className="text-green-700 font-black text-xl">{dailyStreak}</span>
+            <span className="text-gray-900 font-bold">days</span>
           </div>
         </div>
       </header>
@@ -429,9 +429,9 @@ export default function HomePage() {
       <div className="grid grid-cols-3 gap-4 mb-8">
         {Object.entries(RESOURCE_NAMES).map(([key, label]) => (
           <div key={key} className="kawaii-card text-center transform hover:scale-105 transition-shadow hover:shadow-lg">
-            <div className="text-base font-extrabold text-purple-800 mb-2 uppercase tracking-wide">{label}</div>
-            <div className="text-6xl font-black text-purple-900 drop-shadow-lg">{Math.floor(resources[key])}</div>
-            <div className="text-sm text-pink-600 mt-2 font-bold">💖</div>
+            <div className="text-lg font-black text-gray-900 mb-3 uppercase tracking-wide">{label}</div>
+            <div className="text-7xl font-black text-gray-900 drop-shadow-md">{Math.floor(resources[key])}</div>
+            <div className="text-base text-pink-600 mt-2 font-bold">💖</div>
           </div>
         ))}
       </div>
@@ -450,13 +450,13 @@ export default function HomePage() {
       {/* Prestige button */}
       {canPrestige && (
         <div className="mb-6 text-center animate-pulse">
-          <button onClick={prestige} className="kawaii-btn px-8 py-4 text-xl flex items-center gap-3 mx-auto bg-gradient-to-r from-yellow-300 to-pink-300 text-purple-800">
+          <button onClick={prestige} className="kawaii-btn px-8 py-4 text-xl flex items-center gap-3 mx-auto bg-gradient-to-r from-yellow-300 to-pink-300 text-gray-900 font-black">
             <span>🌟</span>
             <span>Prestige!</span>
             <span>+1 PP</span>
             <span>+5% ⬆️</span>
           </button>
-          <div className="text-xs text-purple-500 mt-2">Requires {PRESTIGE_THRESHOLD.toLocaleString()} Memory. Resets progress but gives permanent bonus.</div>
+          <div className="text-sm text-gray-800 mt-2 font-bold">Requires {PRESTIGE_THRESHOLD.toLocaleString()} Memory. Resets progress but gives permanent bonus.</div>
         </div>
       )}
 
@@ -504,11 +504,11 @@ export default function HomePage() {
       )}
 
       {activeTab === 'settings' && (
-        <div className="kawaii-card max-w-md mx-auto">
-          <h3 className="text-lg font-bold text-purple-600 mb-4 flex items-center gap-2">⚙️ Settings</h3>
+        <div className="kawaii-card max-w-md mx-auto bg-white/99">
+          <h3 className="text-2xl font-black text-gray-900 mb-5 flex items-center gap-2">⚙️ Settings</h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-pink-500 mb-2">💾 Save Management</label>
+              <label className="block text-base font-bold text-gray-900 mb-2">💾 Save Management</label>
               <div className="flex gap-2">
                 <button onClick={exportSave} className="kawaii-btn flex-1">📤 Export Save</button>
                 <label className="kawaii-btn flex-1 text-center cursor-pointer">
@@ -518,9 +518,9 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <button onClick={resetSave} className="kawaii-btn w-full bg-red-400 hover:bg-red-500">🗑️ Reset Save (danger)</button>
+              <button onClick={resetSave} className="kawaii-btn w-full bg-red-500 hover:bg-red-600 text-white font-black">🗑️ Reset Save (danger)</button>
             </div>
-            <div className="text-sm text-purple-500 bg-pink-50 p-3 rounded-xl">
+            <div className="text-base text-gray-800 bg-pink-50 p-4 rounded-xl border border-pink-200">
               <p><strong>Game version:</strong> 2</p>
               <p><strong>Prestige points:</strong> {prestigePoints}</p>
               <p><strong>Production bonus:</strong> +{prestigeBonus}%</p>
@@ -531,11 +531,11 @@ export default function HomePage() {
 
       {/* Event Log */}
       <div className="mt-8 mb-8">
-        <h2 className="text-2xl font-black text-purple-900 mb-3 flex items-center gap-2 justify-center">📜 Event Log</h2>
+        <h2 className="text-2xl font-black text-gray-900 mb-3 flex items-center gap-2 justify-center">📜 Event Log</h2>
         <EventLog entries={log} />
       </div>
 
-      <footer className="text-center text-purple-800 text-lg font-bold">
+      <footer className="text-center text-gray-900 text-lg font-bold">
         <p>✨ Auto-save every 10s. Close anytime; return to resume. ✨</p>
       </footer>
     </div>
