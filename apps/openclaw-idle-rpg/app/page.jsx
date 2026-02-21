@@ -396,59 +396,86 @@ export default function HomePage() {
   const prestigeBonus = Math.round(prestigePoints * 5);
 
   return (
-    <div className="min-h-screen p-4 bg-gray-900 text-gray-100 relative overflow-hidden">
+    <div className="min-h-screen p-4 relative overflow-hidden bg-hearts">
       {/* Floating resource gain texts */}
       {floatingTexts.map(t => (
-        <div key={t.id} className="fixed pointer-events-none animate-bounce" style={{ left: t.x, top: t.y, color: t.color }}>
-          {t.text}
+        <div key={t.id} className="fixed pointer-events-none animate-bounce z-50" style={{ left: t.x, top: t.y, color: t.color, textShadow: '0 0 5px white' }}>
+          <span className="text-2xl">✨</span>
         </div>
       ))}
 
-      <header className="mb-6 text-center">
-        <h1 className="text-4xl font-bold text-indigo-400">OpenClaw Idle RPG</h1>
-        <p className="text-gray-400">Manage agents, gather resources, survive crises!</p>
-        <div className="mt-2 flex justify-center gap-4 text-sm">
-          <div className="bg-gray-800 px-3 py-1 rounded">Prestige: <span className="text-yellow-400">{prestigePoints}</span> (+{prestigeBonus}% production)</div>
-          <div className="bg-gray-800 px-3 py-1 rounded">Streak: <span className="text-green-400">{dailyStreak}</span> days</div>
+      {/* Header with kawaii decorations */}
+      <header className="mb-6 text-center relative">
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-2xl animate-sparkle">★ ♡ ★</div>
+        <h1 className="text-4xl font-bold text-purple-600 drop-shadow-sm" style={{ fontFamily: "'Press Start 2P', cursive" }}>OpenClaw Idle RPG</h1>
+        <p className="text-pink-500 font-semibold">✨ Manage agents, gather resources, survive crises! ✨</p>
+        <div className="mt-3 flex justify-center gap-4 text-sm">
+          <div className="kawaii-card px-3 py-1 flex items-center gap-1">
+            <span>💎</span>
+            <span>Prestige:</span>
+            <span className="text-pink-600 font-bold">{prestigePoints}</span>
+            <span className="text-purple-500">(+{prestigeBonus}% production)</span>
+          </div>
+          <div className="kawaii-card px-3 py-1 flex items-center gap-1">
+            <span>📅</span>
+            <span>Streak:</span>
+            <span className="text-green-600 font-bold">{dailyStreak}</span>
+            <span className="text-purple-500">days</span>
+          </div>
         </div>
       </header>
 
       {/* Resources */}
       <div className="grid grid-cols-3 gap-4 mb-8">
         {Object.entries(RESOURCE_NAMES).map(([key, label]) => (
-          <div key={key} className="bg-gray-800 p-4 rounded-lg text-center border border-gray-700">
-            <div className="text-sm text-gray-400">{label}</div>
-            <div className="text-2xl font-bold text-indigo-300">{Math.floor(resources[key])}</div>
+          <div key={key} className="kawaii-card text-center transform hover:scale-105 transition-transform">
+            <div className="text-sm text-purple-400 mb-1">{label}</div>
+            <div className="text-3xl font-bold text-purple-600">{Math.floor(resources[key])}</div>
+            <div className="text-xs text-pink-400 mt-1">💖</div>
           </div>
         ))}
       </div>
 
       {/* Daily claim button */}
       {!dailyClaimed && (
-        <div className="mb-4 text-center">
-          <button onClick={claimDaily} className="px-4 py-2 bg-green-700 hover:bg-green-800 rounded">
-            Claim Daily Reward (+{100 + (prestigePoints * 20)} Memory)
+        <div className="mb-6 text-center">
+          <button onClick={claimDaily} className="kawaii-btn px-6 py-3 text-lg flex items-center gap-2 mx-auto">
+            <span>🎁</span>
+            <span>Claim Daily Reward!</span>
+            <span>+{100 + (prestigePoints * 20)} 💾</span>
           </button>
         </div>
       )}
 
       {/* Prestige button */}
       {canPrestige && (
-        <div className="mb-4 text-center">
-          <button onClick={prestige} className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 rounded font-bold animate-pulse">
-            Prestige! (+1 PP, +5% production)
+        <div className="mb-6 text-center animate-pulse">
+          <button onClick={prestige} className="kawaii-btn px-8 py-4 text-xl flex items-center gap-3 mx-auto bg-gradient-to-r from-yellow-300 to-pink-300 text-purple-800">
+            <span>🌟</span>
+            <span>Prestige!</span>
+            <span>+1 PP</span>
+            <span>+5% ⬆️</span>
           </button>
-          <div className="text-xs text-gray-400 mt-1">Requires {PRESTIGE_THRESHOLD.toLocaleString()} Memory. Resets progress but gives permanent bonus.</div>
+          <div className="text-xs text-purple-500 mt-2">Requires {PRESTIGE_THRESHOLD.toLocaleString()} Memory. Resets progress but gives permanent bonus.</div>
         </div>
       )}
 
       {/* Tabs */}
-      <div className="mb-4">
-        <div className="flex flex-wrap gap-2">
-          <button onClick={() => setActiveTab('agents')} className={`px-4 py-2 rounded ${activeTab === 'agents' ? 'bg-indigo-700' : 'bg-gray-700'}`}>Agents</button>
-          <button onClick={() => setActiveTab('tech')} className={`px-4 py-2 rounded ${activeTab === 'tech' ? 'bg-indigo-700' : 'bg-gray-700'}`}>Tech Tree</button>
-          <button onClick={() => setActiveTab('achievements')} className={`px-4 py-2 rounded ${activeTab === 'achievements' ? 'bg-indigo-700' : 'bg-gray-700'}`}>Achievements</button>
-          <button onClick={() => setActiveTab('settings')} className={`px-4 py-2 rounded ${activeTab === 'settings' ? 'bg-indigo-700' : 'bg-gray-700'}`}>Settings</button>
+      <div className="mb-6">
+        <div className="flex flex-wrap gap-2 justify-center">
+          {['agents', 'tech', 'achievements', 'settings'].map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`kawaii-btn px-4 py-2 capitalize ${activeTab === tab ? 'ring-2 ring-pink-400' : ''}`}
+            >
+              {tab === 'agents' && '👾 '}
+              {tab === 'tech' && '🔧 '}
+              {tab === 'achievements' && '🏆 '}
+              {tab === 'settings' && '⚙️ '}
+              {tab}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -477,26 +504,26 @@ export default function HomePage() {
       )}
 
       {activeTab === 'settings' && (
-        <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-          <h3 className="text-lg font-semibold mb-3">Settings</h3>
-          <div className="space-y-3">
+        <div className="kawaii-card max-w-md mx-auto">
+          <h3 className="text-lg font-bold text-purple-600 mb-4 flex items-center gap-2">⚙️ Settings</h3>
+          <div className="space-y-4">
             <div>
-              <label className="block text-sm mb-1">Export / Import Save</label>
+              <label className="block text-sm font-semibold text-pink-500 mb-2">💾 Save Management</label>
               <div className="flex gap-2">
-                <button onClick={exportSave} className="px-3 py-1 bg-indigo-600 rounded">Export Save</button>
-                <label className="px-3 py-1 bg-gray-600 rounded cursor-pointer">
-                  Import Save
+                <button onClick={exportSave} className="kawaii-btn flex-1">📤 Export Save</button>
+                <label className="kawaii-btn flex-1 text-center cursor-pointer">
+                  📥 Import Save
                   <input type="file" accept=".json" className="hidden" onChange={importSave} />
                 </label>
               </div>
             </div>
             <div>
-              <button onClick={resetSave} className="px-3 py-1 bg-red-700 rounded">Reset Save (danger)</button>
+              <button onClick={resetSave} className="kawaii-btn w-full bg-red-400 hover:bg-red-500">🗑️ Reset Save (danger)</button>
             </div>
-            <div className="text-sm text-gray-400">
-              <p>Game version: 2</p>
-              <p>Prestige points: {prestigePoints}</p>
-              <p>Production bonus from prestige: +{prestigeBonus}%</p>
+            <div className="text-sm text-purple-500 bg-pink-50 p-3 rounded-xl">
+              <p><strong>Game version:</strong> 2</p>
+              <p><strong>Prestige points:</strong> {prestigePoints}</p>
+              <p><strong>Production bonus:</strong> +{prestigeBonus}%</p>
             </div>
           </div>
         </div>
@@ -504,12 +531,12 @@ export default function HomePage() {
 
       {/* Event Log */}
       <div className="mt-8 mb-8">
-        <h2 className="text-xl font-semibold mb-2">Event Log</h2>
+        <h2 className="text-xl font-bold text-purple-600 mb-2 flex items-center gap-2">📜 Event Log</h2>
         <EventLog entries={log} />
       </div>
 
-      <footer className="text-center text-gray-500 text-sm">
-        <p>Auto-save every 10s. Close anytime; return to resume.</p>
+      <footer className="text-center text-purple-400 text-sm">
+        <p>✨ Auto-save every 10s. Close anytime; return to resume. ✨</p>
       </footer>
     </div>
   );

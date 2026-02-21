@@ -8,44 +8,56 @@ export default function AgentCard({ agent, onUpgrade, resources, onUseAbility, a
   const cooldownPercent = cooldownTotal > 0 ? ((cooldownTotal - abilityCooldown) / cooldownTotal) * 100 : 0;
 
   return (
-    <div className={`bg-gray-800 p-4 rounded-lg border ${onCooldown ? 'border-gray-600 opacity-75' : 'border-indigo-500'}`}>
-      <div className="flex justify-between items-center mb-2">
-        <h3 className="text-lg font-semibold">{agent.name}</h3>
-        <span className="text-sm bg-gray-700 px-2 py-1 rounded">Lv {agent.level}</span>
+    <div className={`kawaii-card relative overflow-hidden ${onCooldown ? 'opacity-80' : 'ability-ready'}`}>
+      {/* Kawaii decorations */}
+      <div className="absolute -top-2 -right-2 text-yellow-300 text-xl animate-sparkle">✦</div>
+
+      <div className="flex justify-between items-center mb-3">
+        <h3 className="text-lg font-bold text-purple-600">{agent.name}</h3>
+        <span className="px-3 py-1 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full text-purple-800 font-bold text-sm">
+          Lv {agent.level}
+        </span>
       </div>
-      <div className="text-sm text-gray-400 mb-3">
-        Produces ~{rate} resources/sec
+
+      <div className="text-sm text-pink-500 mb-3 flex items-center gap-1">
+        <span>⚡</span>
+        <span>~{rate} resources/sec</span>
       </div>
+
+      {/* Upgrade button */}
       <button
         onClick={() => canAfford && onUpgrade(agent.id)}
         disabled={!canAfford}
-        className={`w-full py-2 rounded font-medium mb-2 transition-transform active:scale-95 ${
-          canAfford
-            ? 'bg-indigo-600 hover:bg-indigo-700 text-white hover:shadow-lg'
-            : 'bg-gray-700 text-gray-500 cursor-not-allowed'
-        }`}
+        className={`kawaii-btn w-full mb-3 ${!canAfford ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
-        Upgrade ({cost} Memory)
+        <span className="flex items-center justify-center gap-2">
+          <span>📈</span>
+          <span>Upgrade</span>
+          <span>{cost} 💾</span>
+        </span>
       </button>
+
+      {/* Ability section */}
       {ability && (
-        <div className="border-t border-gray-700 pt-2 mt-2">
+        <div className="border-t-2 border-pink-200 pt-3 mt-2">
           <button
             onClick={() => onUseAbility()}
             disabled={onCooldown}
             title={ability.desc}
-            className={`w-full py-2 rounded text-sm font-medium flex items-center justify-center gap-2 relative overflow-hidden ${
+            className={`w-full py-2 rounded-full text-sm font-bold flex items-center justify-center gap-2 relative overflow-hidden transition-all ${
               onCooldown
-                ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                : 'bg-pink-600 hover:bg-pink-700 text-white hover:shadow-lg'
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gradient-to-r from-purple-400 to-pink-400 text-white hover:shadow-lg hover:scale-105'
             }`}
           >
             {onCooldown && (
-              <div className="absolute inset-0 bg-black/30" style={{ width: `${cooldownPercent}%` }} />
+              <div className="absolute inset-0 bg-white/50" style={{ width: `${cooldownPercent}%` }} />
             )}
             <span className="relative z-10">{ability.name}</span>
-            {onCooldown && <span className="relative z-10 text-xs">({(abilityCooldown/1000).toFixed(0)}s)</span>}
+            {onCooldown && <span className="relative z-10 text-xs">⏳ {(abilityCooldown/1000).toFixed(0)}s</span>}
+            {!onCooldown && <span className="relative z-10">✨</span>}
           </button>
-          <div className="text-xs text-gray-400 mt-1">{ability.desc}</div>
+          <div className="text-xs text-purple-400 mt-2 text-center">{ability.desc}</div>
         </div>
       )}
     </div>
