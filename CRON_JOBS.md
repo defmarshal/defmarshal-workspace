@@ -171,6 +171,14 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Log**: `memory/idea-executor.log`
     - **Description**: Executes one pending idea per cycle using simple `exec` commands; updates `agents/ideas/latest.json` with results and status. Runs sequentially, easy to monitor.
 
+26. **evolver-agent-cron**
+   - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
+   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/evolver-cycle.sh >> memory/evolver-agent.log 2>&1'`
+   - **Log**: `memory/evolver-agent.log`
+   - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
+
+---
+
 ---
 
 
