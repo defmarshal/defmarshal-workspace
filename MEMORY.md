@@ -38,6 +38,8 @@
 ### 2026-02-21
 - **meta-agent robustness improvement**: Fixed crash on days with zero content/research files by replacing `ls` with `find` in snapshot calculation. The `set -euo pipefail` combined with `ls` exiting non-zero on glob mismatch caused the script to abort. Using `find` (which returns 0 even with no results) prevents false failures. Commit 9519b2e. Validated via sub-agent run; meta-agent now completes successfully on empty days. Note: sequential spawning of long-running agents may still risk timeout if both need extended runtime; consider backgrounding or adjusting timeouts in future.
 
+- **meta-agent spawn debouncing**: Added state tracking (`memory/meta-agent-state.json`) to avoid spawning content-agent and research-agent too frequently (within 30 min). Prevents redundant launches when agents haven't yet produced output, reducing system load. Implemented in workspace-builder-20260221-0100.
+
 ### 2026-02-19
 - **Token optimization trial and revert**: Added `--max-tokens` flags and conciseness directives to agent cycles to reduce token usage. Changes initially committed but immediately reverted due to output failures (truncated/incomplete results). System self‑corrected via automated revert. Lesson: aggressive token caps can break agent output; use only gentle constraints and validate thoroughly before global rollout. Added comprehensive notes to `lessons.md` under "Token Optimization" section.
 

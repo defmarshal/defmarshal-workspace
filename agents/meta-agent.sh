@@ -6,6 +6,7 @@ set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
 LOGFILE="memory/meta-agent.log"
+STATE_FILE="memory/meta-agent-state.json"
 REPORT_FILE="meta-report-latest.md"
 mkdir -p memory
 
@@ -338,12 +339,26 @@ case "${1:-}" in
     
     # Spawn agents if missing today
     if [ "$CONTENT_TODAY" -eq 0 ]; then
-      ACTIONS+=("spawn content-agent")
-      log "No content for today; will spawn"
+      # Debounce: check if we spawned content-agent recently (<30 min)
+      LAST_CONTENT_SPAWN=$(jq -r '.content_agent_last_spawn // 0' "$STATE_FILE" 2>/dev/null || echo "0")
+      NOW_EPOCH=$(date +%s)
+      if [ $(( NOW_EPOCH - LAST_CONTENT_SPAWN )) -lt 1800 ]; then
+        log "Debounce: content-agent spawned recently (${NOW_EPOCH-$LAST_CONTENT_SPAWN}s ago), skipping"
+      else
+        ACTIONS+=("spawn content-agent")
+        log "No content for today; will spawn"
+      fi
     fi
     if [ "$RESEARCH_TODAY" -eq 0 ]; then
-      ACTIONS+=("spawn research-agent")
-      log "No research for today; will spawn"
+      # Debounce: check if we spawned research-agent recently (<30 min)
+      LAST_RESEARCH_SPAWN=$(jq -r '.research_agent_last_spawn // 0' "$STATE_FILE" 2>/dev/null || echo "0")
+      NOW_EPOCH=$(date +%s)
+      if [ $(( NOW_EPOCH - LAST_RESEARCH_SPAWN )) -lt 1800 ]; then
+        log "Debounce: research-agent spawned recently (${NOW_EPOCH-$LAST_RESEARCH_SPAWN}s ago), skipping"
+      else
+        ACTIONS+=("spawn research-agent")
+        log "No research for today; will spawn"
+      fi
     fi
     
     # Create permanent agents if missing
@@ -375,10 +390,24 @@ case "${1:-}" in
         "spawn content-agent")
           log "Spawning content-agent"
           openclaw agent --agent main --message "You are the content-agent. Create anime summaries, tech writeups, or daily digests. Check for pending tasks. If none, generate a short daily digest." --thinking low --timeout 600000 >> "$LOGFILE" 2>&1 || true
+          # Update debounce state
+          NOW_EPOCH=$(date +%s)
+          if [ -f "$STATE_FILE" ]; then
+            jq ".content_agent_last_spawn = $NOW_EPOCH" "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE" 2>/dev/null || true
+          else
+            echo "{\"content_agent_last_spawn\": $NOW_EPOCH}" > "$STATE_FILE"
+          fi
           ;;
         "spawn research-agent")
           log "Spawning research-agent"
           openclaw agent --agent main --message "You are the research-agent. Conduct continuous research on anime, banking, tech, AI. Use web_search, web_fetch, memory tools. Create detailed reports in research/." --thinking low --timeout 600000 >> "$LOGFILE" 2>&1 || true
+          # Update debounce state
+          NOW_EPOCH=$(date +%s)
+          if [ -f "$STATE_FILE" ]; then
+            jq ".research_agent_last_spawn = $NOW_EPOCH" "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE" 2>/dev/null || true
+          else
+            echo "{\"research_agent_last_spawn\": $NOW_EPOCH}" > "$STATE_FILE"
+          fi
           ;;
         "create archive-agent")
           create_archive_agent

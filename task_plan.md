@@ -1,66 +1,64 @@
 # Workspace Builder Task Plan
 
-**Session ID:** workspace-builder-20260220-2300  
-**Start Time:** 2026-02-20 23:00 UTC  
-**Goal:** Fix idea generator/executor pipeline and clean up git tracking
+**Session ID:** workspace-builder-20260221-0100
+**Start Time:** 2026-02-21 01:00 UTC
+**Goal:** Diagnose meta-agent timeout, improve spawning logic, update documentation, and validate system
 
 ---
 
-## Phase 1: Assessment & Planning
+## Phase 1: Assessment & Diagnosis
 
 **Status:** In Progress
 
 ### Tasks
-1.1 Analyze current state (git status, logs, cron, scripts)  
-1.2 Identify blocking issues (JSON invalid, untracked files)  
-1.3 Document findings in `findings.md`  
-1.4 Define success criteria
+1.1 Check meta-agent fix commit status (pushed? local?)  
+1.2 Analyze meta-agent performance: run manually with `time` to measure duration  
+1.3 Inspect meta-agent log to identify why it timed out on cron  
+1.4 Check for overlapping runs or resource contention  
+1.5 Document findings in `findings.md`
 
 **Success Criteria:**
-- Idea generator produces valid JSON (jq-parsable)
-- Idea executor can read and update latest.json without errors
-- Generated idea files are gitignored
-- All changes committed with `build:` prefix
-- active-tasks.md updated with validation
+- Understand root cause of the 10-minute timeout
+- Identify at least one concrete improvement to prevent recurrence
+- All changes committed and pushed with `build:` prefix
+- active-tasks.md updated and clean (<2KB)
 
 ---
 
-## Phase 2: Implementation - Core Fixes
+## Phase 2: Implementation - Meta-Agent Improvements
 
 **Status:** Pending
 
-### Task 2.1: Fix idea-generator-cycle.sh JSON generation
-- Replace manual JSON building with jq-based construction
-- Ensure proper escaping of all string fields
-- Keep existing functionality intact
-- Test: generator output must be valid JSON
+### Task 2.1: Add spawn debouncing / state tracking
+- Create `memory/meta-agent-state.json` to track last spawn times for content-agent and research-agent
+- Before spawning, check if we spawned that same agent type within the last 30 minutes
+- If recent spawn exists, skip spawning and log "recent spawn, skipping"
+- This prevents overlapping runs when agent hasn't produced output yet
 
-### Task 2.2: Update .gitignore
-- Add `agents/ideas/*.json` to ignore generated idea artifacts
-- Also ignore any executor logs in that dir if any
+### Task 2.2: Consider concurrent agent limit adjustment
+- The `safe_to_spawn` already checks `SAFETY_MAX_CONCURRENT_AGENTS=10`. That's reasonable.
+- Maybe add a specific check for meta-agent itself to avoid spawning when a previous meta-agent run is still active? Could cause the multiple runs seen in logs. But cron shouldn't start a new one if previous is still running. We'll skip for now unless diagnostics show overlapping.
 
-### Task 2.3: Commit and validate
-- Run generator manually to produce new valid JSON
-- Run executor manually to process an idea
-- Verify logs and status files
-- Clean up old broken JSON files (remove from git tracking, keep disk or remove)
-- Commit changes with proper messages
+### Task 2.3: Improve logging
+- Add explicit timestamps and duration at start and completion (already have start; ensure completion logs always appear even on early exit? Use trap?)
+- Use `log "Meta-Agent completed in ${duration}s"` at the end.
 
 ---
 
-## Phase 3: Validation & Documentation
+## Phase 3: Documentation & Validation
 
 **Status:** Pending
 
-- Run `./quick health` and ensure all OK
-- Verify no leftover temp files
-- Check active-tasks.md size <2KB
-- Ensure changes are pushed to origin
-- Update memory files as needed
+- Update `MEMORY.md` with the meta-agent crash fix resolution and new debouncing improvement
+- Update `active-tasks.md`: mark previous failed meta-agent entry as archived, add new builder entry
+- Run `./quick health` to ensure system OK
+- Validate: no temp files, no uncommitted changes except intended docs
+- Commit all changes with proper `build:` messages
+- Push to origin
 
 ---
 
 ## Notes
-- The cron jobs (idea-generator-cron, idea-executor-cron) already exist and are scheduled.
-- jq is available on system.
-- The generator script has 755 permissions; preserve.
+- The meta-agent fix (find instead of ls) is already in place (commit 9519b2e). Need to ensure it's pushed.
+- The meta-agent-cron has a 600s timeout; typical runs should be <60s.
+- The meta-supervisor daemon is running and monitoring; will report issues.
