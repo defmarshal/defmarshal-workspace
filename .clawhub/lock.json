@@ -68,6 +68,18 @@
     "fivem-dev": {
       "version": "0.1.0",
       "installedAt": 1771653181164
+    },
+    "cli-developer": {
+      "version": "0.1.0",
+      "installedAt": 1771653439233
+    },
+    "games": {
+      "version": "1.0.0",
+      "installedAt": 1771653447948
+    },
+    "gaming": {
+      "version": "1.0.0",
+      "installedAt": 1771653665298
     }
   }
 }
