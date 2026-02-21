@@ -1,83 +1,85 @@
-# Task Plan: Workspace Builder - Close the Loop
+# Workspace Builder - Task Plan
 
-**Date**: 2026-02-21 19:00 UTC  
-**Session**: workspace-builder (cron:23dad379-21ad-4f7a-8c68-528f98203a33)  
-**Goal**: Complete final cleanup, validate workspace, commit changes, and update active-tasks.md.
-
----
-
-## Phase 1: Assessment (In Progress)
-
-- [x] Check repository state: master at ac107a6, one stale branch: `idea/design-a-fun-dashboard-to`
-- [x] Git status shows modified: MEMORY.md, memory/2026-02-21.md (uncommitted)
-- [x] Health check: Disk 51%, Gateway healthy, Memory clean, Downloads 4.0G (14 files)
-- [x] active-tasks.md: clean, <2KB, three recent validated entries
-- [x] Planning files exist but describe previous state; need regeneration for current session
-
-### Identified Gaps
-- Stale feature branch `idea/design-a-fun-dashboard-to` remains (should be deleted)
-- Uncommitted changes to memory files (should be committed with proper prefix? Or are they from today's logging? Need to check if they represent substantive changes)
-- Previous task claimed completion but branch still exists → finish the cleanup
-- Planning documents need updating to reflect actual current state (not the old plan)
+**Session:** workspace-builder (cron)
+**Date:** 2026-02-21 21:00 UTC
+**Goal:** Strategic workspace improvements and hygiene
 
 ---
 
-## Phase 2: Implementation Plan
+## Phase 1: Assessment & Planning
 
-### Task 2.1: Verify memory file changes
-- Examine diffs: Are changes just logging updates or significant content?
-- If only daily log additions → those are expected and should be committed separately (build:log or similar)
-- If MEMORY.md updated → ensure it stays within 30-line index limit
+### Analysis
+- Read SOUL.md, USER.md, MEMORY.md, active-tasks.md, recent daily logs
+- Check git status, branch hygiene, temp files
+- Run health checks (`./quick health`)
+- Identify actionable improvements
 
-### Task 2.2: Delete remaining stale branch
-- `git branch -d idea/design-a-fun-dashboard-to`
-- Verify deletion
+### Findings
+- active-tasks.md: Contains 2 validated entries that should be archived (size OK but should not accumulate indefinitely)
+- Temp files: CRON_JOBS.md.bak present (13092 bytes) - should be removed
+- Git branches: One stale/incomplete branch: `idea/create-a-health-check-for`
+- Idea pipeline: Recent implementation, documentation may need enhancement
+- System health: All OK (Disk 54%, Gateway healthy, Memory clean)
 
-### Task 2.3: Validate health comprehensively
-- Run `./quick health` (already did, but will re-run after any changes)
-- Check no temp files
-- Ensure active-tasks.md size <2KB
+---
 
-### Task 2.4: Prepare planning documents for THIS run
-- Overwrite task_plan.md, findings.md, progress.md with current actual plan and status
-- Ensure they accurately describe what we're doing NOW (not repeating past work)
+## Phase 2: Execution Plan
 
-### Task 2.5: Commit any substantive changes
-- If MEMORY.md changes are significant (beyond daily logging), commit with appropriate prefix
-- If only daily logs, they may already be tracked appropriately; consider whether we need to commit them as part of this builder run (they may be auto-committed by another agent)
+### Task 1: Archive Completed Active Tasks
+- Move the 2 validated entries from `active-tasks.md` to `memory/2026-02-21.md`
+- Keep only "Currently Running" section (empty) and maybe very recent (last 1-2) if needed
+- Ensure file stays <2KB
 
-### Task 2.6: Update active-tasks.md
-- Add new entry for THIS workspace-builder session with:
-  - Session key: workspace-builder-YYYY-MM-DD-HHMM (use current time)
-  - Goal: Final cleanup and validation
-  - Started timestamp
-  - Status: validated (after verification)
-  - Verification: health OK, branch deleted, git clean, planning docs updated
+### Task 2: Cleanup Temporary Files
+- Remove `CRON_JOBS.md.bak`
+- Verify no other temp files (`.tmp`, `.temp`, `.swp`, etc.)
 
-### Task 2.7: Final validation (close the loop)
-- Re-run `./quick health`
-- Confirm git clean (or document deliberate uncommitted files)
-- Verify no temp files
-- Check active-tasks.md size
+### Task 3: Git Branch Hygiene
+- Delete stale branch `idea/create-a-health-check-for`
+- Verify branch deletion pushed to origin
+- Ensure no other stale branches
 
-### Task 2.8: Commit and push
-- Stage: task_plan.md, findings.md, progress.md, active-tasks.md (if changed)
-- Commit message: `build: workspace-builder final cleanup and validation ($(date +%Y-%m-%d))`
+### Task 4: Enhance Idea Pipeline Documentation
+- Check if `agents/ideas/README.md` exists and is adequate
+- If missing or sparse, create comprehensive README covering:
+  - Purpose of generator/executor
+  - How to monitor status (`quick ideas-status`)
+  - How to manually trigger
+  - Log locations
+  - Validation rules (what makes an idea valid)
+- Update `TOOLS.md` or `docs/` if appropriate
+
+### Task 5: Validation & Testing
+- Run `./quick health` - must pass
+- Test `quick ideas-status` command if available
+- Check `git status` - must be clean
+- Check active-tasks.md size (<2KB)
+- Verify no temp files remain
+- Check memory status
+
+### Task 6: Commit & Push
+- Commit all changes with prefix `build:`
 - Push to origin
-- Verify push succeeded
+- Update active-tasks.md with this session's entry (after committing, mark validated)
+- Include verification notes
 
 ---
 
-## Phase 3: Contingencies
+## Phase 3: Close the Loop
 
-- If git push fails (network/remote issues) → note in findings, keep changes local
-- If branch deletion fails (not fully merged) → investigate, force-delete if safe (already merged? check reflog)
-- If memory file changes are large/unexpected → review for errors, may need correction
+After commit:
+- Run final health check
+- Confirm all validations passed
+- Ensure git working tree clean
+- No leftover temp files
 
 ---
 
-## Notes
+## Success Criteria
 
-- This is a "close the loop" session: previous runs mostly completed work but left some administrative items (planning docs, active-tasks entry) incomplete.
-- Keep changes minimal and focused on validation/record-keeping, not new features.
-- Maintain the 2KB limit on active-tasks.md.
+✅ All tasks completed and validated  
+✅ No temp files remain  
+✅ Git clean, branches tidy  
+✅ active-tasks.md pruned and <2KB  
+✅ Health checks pass  
+✅ Changes committed and pushed
