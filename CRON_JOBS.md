@@ -173,14 +173,6 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 
 ---
 
-26. **evolver-agent-cron**
-   - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
-   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/evolver-cycle.sh >> memory/evolver-agent.log 2>&1'`
-   - **Log**: `memory/evolver-agent.log`
-   - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
-
----
-
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
 
