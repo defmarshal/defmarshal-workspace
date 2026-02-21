@@ -19,12 +19,12 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-- [workspace-builder-20260221-0300] workspace-builder - Idea executor validation + monthly digest implementation (started: 2026-02-21 03:00 UTC, status: running)
-  - Verification: In progress
-
 *(none — all agents validated/cleaned)*
 
 ## Recently Completed
+
+- [workspace-builder-20260221-0300] workspace-builder - Idea executor validation + monthly digest feature (started: 2026-02-21 03:00 UTC, status: validated)
+  - Verification: idea executor script syntax OK; validation logic added (rejects placeholder commits); monthly digest created and tested producing 4-day summary; quick help shows monthly-digest; AGENTS.md updated with idea system docs; all changes committed and pushed; active-tasks.md <2KB; no temp files; health OK (disk 49%, memory local FTS+ clean).
 
 - [workspace-builder-20260221-0100] workspace-builder - Meta-agent fix validation and debounce improvement (started: 2026-02-21 01:00 UTC, status: validated)
   - Verification: meta-agent --once completed in 10.3s; ./quick health OK; git clean; no temp files; active-tasks.md <2KB; meta-agent fix commit 9519b2e present and pushed; debounce logic implemented and tested.
