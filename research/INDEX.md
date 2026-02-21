@@ -2,12 +2,24 @@
 
 This index is auto‑generated. Last updated: 2026‑02‑21
 
-## 2026 Reports (48 total)
+## 2026 Reports (49 total)
 
 ### 2026‑02‑21
 
 - [AI Agent Frameworks & Orchestration](2026-02-21-ai-agent-frameworks-orchestration.md)
 - [AI Data Center Water Constraints](2026-02-21-ai-data-center-water-constraints.md)
+- [Anime Streaming Economics: Revenue Growth & CAC Analysis](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
+- [Brownfield Failure Patterns in AI Coding Agents: Real-World Enterprise Codebase Challenges 2026](2026-02-21-brownfield-failure-patterns-ai-coding-agents-2026.md)
+- [Japan–China Anime Co‑Production Shifts: Geopolitical Risk Update 2026](2026-02-21-japan-china-anime-co-production-shifts-2026.md)
+- [CBDC & Stablecoin Reality Check: Scaling and Compliance](2026-02-21-cbdc-stablecoin-scaling-compliance-2026.md)
+- [Edge AI Chips: Performance & Power Efficiency](2026-02-21-edge-ai-chips-performance-power.md)
+- [LEO Satellite Internet Constellations 2026](2026-02-21-leo-satellite-internet-constellations-2026.md)
+- [Nvidia Blackwell Real‑World Performance](2026-02-21-nvidia-blackwell-real-world-performance.md)
+- [Open‑Source LLM Ecosystem Consolidation: Sustainability & Enterprise Adoption 2026](2026-02-21-open-source-llm-ecosystem-consolidation-2026.md)
+- [Quantum Computing Practical Applications 2026](2026-02-21-quantum-computing-practical-applications-2026.md)
+- [Serverless on Kubernetes 2026 (Knative, OpenFaaS, AWS Lambda)](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md)
+
+### 2026‑02‑20
 - [Anime Streaming Economics: Revenue Growth & CAC Analysis](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
 - [Brownfield Failure Patterns in AI Coding Agents: Real-World Enterprise Codebase Challenges 2026](2026-02-21-brownfield-failure-patterns-ai-coding-agents-2026.md)
 - [Japan–China Anime Co‑Production Shifts: Geopolitical Risk Update 2026](2026-02-21-japan-china-anime-co-production-shifts-2026.md)
