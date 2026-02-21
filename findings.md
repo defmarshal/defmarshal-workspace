@@ -1,82 +1,69 @@
 # Workspace Builder Findings
+**Date**: 2026-02-21  
+**Session**: Cron-triggered strategic improvement cycle
 
-**Date:** 2026-02-21 01:00 UTC
-**Session:** workspace-builder-20260221-0100
+## Discovery: Idea System Produces Low-Value Placeholder Commits
 
----
+### Evidence
 
-## Current State
+**Latest executed ideas** (from `agents/ideas/latest.json`):
+1. `add-a-new-quick-utility` → Steps: `grep -r validate`, `git checkout`, `touch quick`, `git add`, `git commit` (no actual utility added)
+2. `generate-a-monthly-digest-of` → Steps: `grep -r deploy`, `git checkout`, `touch quick`, `git commit` (no monthly digest implemented)
 
-### Git Status
-- Clean (no unstaged changes except task_plan.md which is part of this builder run)
-- Branch: idea/add-a-new-quick-utility (ahead of origin/master by 4 commits)
-- Meta-agent fix commit `9519b2e` is present in history and already on master (pushed)
+**Execution logs** show:
+- Commits created with vague messages like `feat(idea): Add A New Quick Utility:`
+- Only `quick` file touched (updated timestamp)
+- No actual code changes or implementations
+- Result: noise commits without functional improvements
 
-### System Health (via `./quick health`)
-- Disk: 49% OK
-- Gateway: healthy
-- Memory: 19f/85c clean, local FTS+
-- Updates: none pending
-- Downloads: 14 files, 4.0G
+### Root Cause
 
-### Cron Status (key jobs)
-- meta-agent-cron: last run completed successfully (duration ~10s). The previous "error" status was from the buggy version before the find/ls fix; it has now been resolved.
-- All other agents (dev, content, research, supervisor, agent-manager, etc.) are running without consecutive errors.
+The idea generator uses **template-based random combination**:
+- Templates like "Add a new quick utility: {action}"
+- Randomized substitution of words (action, target, topic, etc.)
+- Steps are generic: `touch quick`, `git add -A`, `git commit`
+- No actual code generation or concrete plan
 
-### Meta-Agent Diagnostics
-- Manual test: `time ./agents/meta-agent.sh --once` completed in 10.324 seconds with exit code 0.
-- Snapshot: disk=49%, apt=0, content_today=1, research_today=3.
-- Actions: none (content and research already produced for today).
-- Log shows that earlier runs (00:07-00:22 UTC) successfully spawned content-agent and research-agent, which then produced output. The system is functioning as intended.
+The idea executor blindly follows these steps without validation:
+- Creates feature branch
+- Touches `quick` (triggers rebuild)
+- Commits with message
+- No verification that meaningful changes were made
 
-### Active Tasks Registry
-- Contains a stale failed entry from 00:15 UTC regarding a meta-agent sub-agent validation that was killed. That entry should be removed as the fix is now complete and documented.
+### Impact
 
----
+- **Noise in git history**: Commits that don't improve the system
+- **Wasted cycles**: Executor runs produce no value
+- **Branch clutter**: Multiple `idea/*` branches with empty implementations
+- **Misleading metrics**: Idea system appears active but is non-functional
 
-## Blocking Issues Resolved
+### Monthly Digest Feature Status
 
-- **Meta-agent crash on empty glob** (fixed in commit 9519b2e). The script now uses `find` instead of `ls` to avoid `set -e` exit when no files match. This fix has been validated: meta-agent runs successfully even when content/research for today are initially absent.
-- **Error status in cron** was due to the previous bug; the latest run (post-fix) succeeded. The consecutiveErrors counter will reset on next successful run (agent-manager handles this).
+- Branch: `idea/generate-a-monthly-digest-of` (current HEAD)
+- Commit `247804d`: claims "Generate A Monthly Digest Of" but only added a research file
+- No actual monthly digest command or report exists
+- Daily digest works; monthly aggregation would be logical next step
 
----
+## System Health Snapshot
 
-## Proposed Improvements
+```
+Disk: 49% used ✓
+Gateway: healthy ✓
+Memory: 19f/86c (clean) local FTS+ ✓
+Git: clean (0 changed) ✓
+Cron: All documented jobs running ✓
+Active tasks: All validated, no orphans ✓
+```
 
-### 1. Add spawn debouncing to meta-agent
-- **Problem**: If meta-agent runs before content/research agents have produced output, it may spawn duplicate agents unnecessarily, leading to resource waste.
-- **Solution**: Track last spawn timestamps for content-agent and research-agent in `memory/meta-agent-state.json`. Before spawning, check if we've spawned that agent type within the last 30 minutes. If yes, skip.
-- **Impact**: Prevents redundant agent launches, reduces system load.
+## Recommendations
 
-### 2. Clean up active-tasks.md
-- Remove the stale failed meta-agent sub-agent entry.
-- Add this builder run as validated with verification details.
-
-### 3. Document resolution in MEMORY.md
-- The recent learning about the meta-agent crash fix is already recorded (commit 5de16e7). Add a brief note that validation completed successfully.
-
----
-
-## Verification Plan
-
-1. Modify `agents/meta-agent.sh` to implement debounce logic.
-2. Test meta-agent manually: first run should be normal, second run within 30m should skip spawns if state is fresh.
-3. Ensure `memory/meta-agent-state.json` is created/updated properly.
-4. Run `./quick health` to confirm system OK.
-5. Commit changes with prefix `build:`.
-6. Push to remote (origin master? or current branch? We'll push to current branch; gatekeeper may handle).
-7. Update active-tasks.md with validated entry.
+1. **Short-term**: Add validation to reject placeholder commits (require actual code changes)
+2. **Medium-term**: Implement monthly digest feature as proof of concept for valuable idea
+3. **Long-term**: Redesign idea generator to produce implementable, high-value suggestions based on workspace analysis (TODO scanning, stale file detection, missing utilities)
 
 ---
 
-## Risks & Mitigations
-
-- **Risk**: Debounce state could become stale if meta-agent crashes before updating. Mitigation: The state is updated only after spawn decision; if skip, state unchanged. That's fine.
-- **Risk**: jq not available? Already used in system; safe.
-- **Risk**: Lock contention if multiple meta-agent instances run concurrently. The state file may be read/written concurrently. Mitigation: Use atomic writes via temp file and mv. But concurrency unlikely (cron hourly). We'll keep it simple.
-
----
-
-## End Time (target)
-
-2026-02-21 02:00 UTC
+**Related commits**:
+- `b2e7a8b` - meta-agent spawn debounce; clean active-tasks; update MEMORY.md
+- `247804d` - feat(idea): Generate A Monthly Digest Of (low-value commit)
+- `a1cf97c` - content: supplement daily digest 2026-02-21

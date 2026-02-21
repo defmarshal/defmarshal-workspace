@@ -1,64 +1,79 @@
 # Workspace Builder Task Plan
+**Started**: 2026-02-21 03:00 UTC  
+**Goal**: Strategic improvements based on current workspace analysis
 
-**Session ID:** workspace-builder-20260221-0100
-**Start Time:** 2026-02-21 01:00 UTC
-**Goal:** Diagnose meta-agent timeout, improve spawning logic, update documentation, and validate system
+## Analysis Summary
+
+**Current Branch**: `idea/generate-a-monthly-digest-of` (incomplete feature)
+**System Health**: All green (disk 49%, memory clean, gateway healthy)
+**Core Finding**: Idea generator produces low-value placeholder ideas; monthly digest attempt incomplete
+
+## Identified Improvement Areas
+
+1. **Idea System Quality** (Critical)
+   - Ideas are generic templates with placeholder execution steps
+   - Current execution: `touch quick`, `echo '...'`, `git commit` with vague messages
+   - Produces noise commits without actual functionality
+   - Need: Either enhance generator with concrete, valuable ideas or decommission it
+
+2. **Monthly Digest Feature** (Incomplete)
+   - Branch exists: `idea/generate-a-monthly-digest-of`
+   - Last commit (247804d) added research file but no monthly digest implementation
+   - Daily digest exists and works; monthly summary would be logical extension
+   - Could complete the feature by adding `quick monthly-digest` command
+
+3. **Documentation Gaps**
+   - Idea system not documented in AGENTS.md or READMEs
+   - No clear purpose/quality standards for generated ideas
+   - No guidance on what makes a "good" idea
+
+4. **Branch Hygiene**
+   - Stale feature branch not merged; may clutter repo
+   - Should either complete and merge, or delete
+
+## Proposed Plan (3 Phases)
+
+### Phase 1: Immediate Cleanup & Quality Gate
+- Add quality validation to idea executor (require actual code changes, not just touch quick)
+- Add pre-commit hook or validation step to reject placeholder commits
+- Document minimum acceptance criteria for idea execution
+- Clean up existing low-value commits (interactive rebase to squash/remove noise)
+
+### Phase 2: Implement or Remove Monthly Digest Feature
+- Option A (Implement): Create `quick monthly-digest` that aggregates monthly reports from daily digests
+- Option B (Remove): Delete the incomplete branch; document that idea generator needs enhancement first
+- Decision based on user preference; I'll implement Option A as it's useful
+
+### Phase 3: Enhance Idea Generator (Long-term)
+- Replace template-based random generation with:
+  - Scan for actual TODO/FIXME comments and suggest fixes
+  - Analyze unused/deprecated files and suggest removal
+  - Identify missing quick utilities from common tasks
+  - Look for stale locks/stale artifacts and propose cleanup
+- Output: concrete PR-ready branches with actual changes (not just commit placeholders)
+- Add quality metrics: must touch at least 2 real files (not just quick), must include tests/docs
+
+## Success Criteria
+
+- No more noise commits with generic "feat(idea):" messages lacking substance
+- Idea system either produces valuable, implementable improvements or is paused
+- Monthly digest feature (if implemented) works and generates useful reports
+- All changes validated: `./quick health` clean, git clean, no temp files
+- Active-tasks.md updated with verification notes
+
+## Risks & Mitigations
+
+- **Risk**: Idea generator enhancement may be complex
+- **Mitigation**: Phase approach; can disable generator cron temporarily if needed
+- **Risk**: Monthly digest implementation time
+- **Mitigation**: Keep simple—use existing daily digest data, just aggregate by month
+
+## Resources
+
+- Existing daily digest infrastructure: `content/YYYY-MM-DD-daily-digest.md`, `reports/`
+- Idea generator/executor scripts already in place
+- Quick launcher pattern for adding utilities
 
 ---
 
-## Phase 1: Assessment & Diagnosis
-
-**Status:** In Progress
-
-### Tasks
-1.1 Check meta-agent fix commit status (pushed? local?)  
-1.2 Analyze meta-agent performance: run manually with `time` to measure duration  
-1.3 Inspect meta-agent log to identify why it timed out on cron  
-1.4 Check for overlapping runs or resource contention  
-1.5 Document findings in `findings.md`
-
-**Success Criteria:**
-- Understand root cause of the 10-minute timeout
-- Identify at least one concrete improvement to prevent recurrence
-- All changes committed and pushed with `build:` prefix
-- active-tasks.md updated and clean (<2KB)
-
----
-
-## Phase 2: Implementation - Meta-Agent Improvements
-
-**Status:** Pending
-
-### Task 2.1: Add spawn debouncing / state tracking
-- Create `memory/meta-agent-state.json` to track last spawn times for content-agent and research-agent
-- Before spawning, check if we spawned that same agent type within the last 30 minutes
-- If recent spawn exists, skip spawning and log "recent spawn, skipping"
-- This prevents overlapping runs when agent hasn't produced output yet
-
-### Task 2.2: Consider concurrent agent limit adjustment
-- The `safe_to_spawn` already checks `SAFETY_MAX_CONCURRENT_AGENTS=10`. That's reasonable.
-- Maybe add a specific check for meta-agent itself to avoid spawning when a previous meta-agent run is still active? Could cause the multiple runs seen in logs. But cron shouldn't start a new one if previous is still running. We'll skip for now unless diagnostics show overlapping.
-
-### Task 2.3: Improve logging
-- Add explicit timestamps and duration at start and completion (already have start; ensure completion logs always appear even on early exit? Use trap?)
-- Use `log "Meta-Agent completed in ${duration}s"` at the end.
-
----
-
-## Phase 3: Documentation & Validation
-
-**Status:** Pending
-
-- Update `MEMORY.md` with the meta-agent crash fix resolution and new debouncing improvement
-- Update `active-tasks.md`: mark previous failed meta-agent entry as archived, add new builder entry
-- Run `./quick health` to ensure system OK
-- Validate: no temp files, no uncommitted changes except intended docs
-- Commit all changes with proper `build:` messages
-- Push to origin
-
----
-
-## Notes
-- The meta-agent fix (find instead of ls) is already in place (commit 9519b2e). Need to ensure it's pushed.
-- The meta-agent-cron has a 600s timeout; typical runs should be <60s.
-- The meta-supervisor daemon is running and monitoring; will report issues.
+**Status**: Planning complete • Ready to execute Phase 1 then Phase 2

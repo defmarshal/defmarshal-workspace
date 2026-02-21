@@ -19,6 +19,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
+- [workspace-builder-20260221-0300] workspace-builder - Idea executor validation + monthly digest implementation (started: 2026-02-21 03:00 UTC, status: running)
+  - Verification: In progress
+
 *(none — all agents validated/cleaned)*
 
 ## Recently Completed

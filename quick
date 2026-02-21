@@ -93,6 +93,7 @@ Commands:
   digest                     Show the latest daily digest report from reports/ (cat the most recent)
   social-monitor                  Run the social monitor agent (Twitter trending digest)
   daily-digest [YYYY-MM-DD]       Generate daily digest report (default: today UTC). Saves to reports/ and prints.
+  monthly-digest [YYYY-MM]       Generate monthly digest report (default: current month). Saves to reports/ and prints.
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   today                     Show files modified today across the workspace (since midnight UTC)
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
@@ -883,6 +884,10 @@ case "$cmd" in
   daily-digest)
     # Generate daily digest report (default: today UTC)
     bash "$WORKSPACE/agents/daily-digest.sh" "${1:-}"
+    ;;
+  monthly-digest)
+    # Generate monthly digest report (default: current month UTC)
+    bash "$WORKSPACE/scripts/generate-monthly-digest.sh" "${1:-}"
     ;;
   sudo-check)
     # Check if passwordless sudo is configured

@@ -102,31 +102,126 @@ for ((s=0; s<STEP_COUNT; s++)); do
   STEP_RESULTS+=("$STATUS")
 done
 
-# Determine overall result: all success => success, any failure => partial/failed
-FAILED_COUNT=0
-for r in "${STEP_RESULTS[@]}"; do
-  [[ "$r" == "failed" ]] && ((FAILED_COUNT++))
-done
+# ------------------------------------------------------------
+# Quality validation: ensure idea produced meaningful changes
+# Reject placeholder commits (only touched 'quick' or no changes)
+# ------------------------------------------------------------
+validate_idea_execution() {
+  local slug="$1"
+  local idx="$2"
+  local log_ref="$EXEC_LOG"
 
-if [[ $FAILED_COUNT -eq 0 ]]; then
-  RESULT="success"
-else
-  if [[ $FAILED_COUNT -lt ${#STEP_RESULTS[@]} ]]; then
-    RESULT="partial"
-  else
-    RESULT="failed"
+  # Check if there's a recent commit on current branch matching this idea
+  # We expect the last commit message to contain the idea title/slug
+  local last_msg
+  last_msg=$(git log -1 --oneline --decorate-refs-exclude="refs/heads/idea/*" 2>/dev/null || git log -1 --oneline)
+
+  # Verify it's our commit by checking slug presence
+  if [[ "$last_msg" != *"$slug"* ]] && [[ "$last_msg" != *"$TITLE"* ]]; then
+    # No matching commit found; could be that steps didn't commit
+    echo "VALIDATION: No matching commit found for idea '$slug'. Last: $last_msg" | tee -a "$log_ref"
+    return 1  # reject
   fi
+
+  # Get commit stats for the last commit
+  local stats
+  stats=$(git show --stat --pretty="" HEAD 2>/dev/null)
+  if [[ -z "$stats" ]]; then
+    echo "VALIDATION: Could not get stats for last commit" | tee -a "$log_ref"
+    return 1
+  fi
+
+  # Count insertions/deletions excluding changes to 'quick'
+  # git show --stat format: " file | N changes" but we can use --shortstat for numeric
+  local shortstats
+  shortstats=$(git show --shortstat HEAD 2>/dev/null)
+
+  # Extract total insertions/deletions
+  local ins del
+  ins=$(echo "$shortstats" | grep -oE '[0-9]+ insertion' | grep -oE '[0-9]+' || echo "0")
+  del=$(echo "$shortstats" | grep -oE '[0-9]+ deletion' | grep -oE '[0-9]+' || echo "0")
+  # Ensure numeric
+  ins=${ins:-0}
+  del=${del:-0}
+
+  # Check if all changes are to 'quick' only
+  local changed_files
+  changed_files=$(git diff --name-only HEAD~1 HEAD 2>/dev/null)
+
+  local only_quick=true
+  if [[ -n "$changed_files" ]]; then
+    while IFS= read -r f; do
+      [[ "$f" == "quick" ]] && continue
+      # Also ignore empty lines
+      [[ -z "$f" ]] && continue
+      # Some file changed besides quick
+      only_quick=false
+      break
+    done <<< "$changed_files"
+  else
+    # No changed files detected (maybe empty commit)
+    only_quick=true
+  fi
+
+  if [[ "$only_quick" == "true" ]] && (( ins < 5 && del < 5 )); then
+    echo "VALIDATION FAILED: Only 'quick' modified or no significant changes (ins=$ins, del=$del). Rejecting idea." | tee -a "$log_ref"
+    return 1
+  fi
+
+  # Additional heuristic: at least one substantive file (extensions) should be changed
+  local substantive_ext_regex='\.(sh|md|ts|js|json|yml|yaml|py|rb|go|rs|c|cpp|h|txt|html|css)$'
+  local has_substantive=false
+  if [[ -n "$changed_files" ]]; then
+    while IFS= read -r f; do
+      [[ "$f" == "quick" ]] && continue
+      if echo "$f" | grep -qE "$substantive_ext_regex"; then
+        has_substantive=true
+        break
+      fi
+    done <<< "$changed_files"
+  fi
+
+  if [[ "$has_substantive" == "false" ]]; then
+    echo "VALIDATION FAILED: No substantive source files modified (only quick or non-code files). Rejecting." | tee -a "$log_ref"
+    return 1
+  fi
+
+  echo "VALIDATION PASSED: substantive changes detected (ins=$ins, del=$del, files=${#changed_files[@]})" | tee -a "$log_ref"
+  return 0
+}
+
+# ------------------------------------------------------------
+# Execution steps already completed. Now validate before marking executed.
+# ------------------------------------------------------------
+log "Execution steps finished. Validating outcome..."
+VALIDATION_PASSED=0
+if validate_idea_execution "$NEXT_SLUG" "$NEXT_IDX"; then
+  VALIDATION_PASSED=1
+else
+  VALIDATION_PASSED=0
 fi
 
-log "Idea execution completed: $RESULT ($FAILED_COUNT failures)"
+# Determine overall result considering validation
+if [[ $FAILED_COUNT -eq 0 && $VALIDATION_PASSED -eq 1 ]]; then
+  FINAL_RESULT="success"
+elif [[ $VALIDATION_PASSED -eq 0 ]]; then
+  FINAL_RESULT="rejected"
+  log "Idea rejected by quality validation."
+  # Revert the commit(s) made by this idea
+  # We'll revert the most recent commit if it matches our slug
+  git revert --no-edit HEAD 2>/dev/null || true
+  # Ensure we don't leave the branch in a weird state; stay on original branch
+  # (We might be on a feature branch created by the idea)
+else
+  FINAL_RESULT="partial"
+fi
 
-# Mark idea as executed in latest.json
-# We'll update the .executed field to true and add result and log path
+# Mark idea as executed (or rejected) in latest.json with final result
 TMP_JSON=$(mktemp)
-jq ".[$NEXT_IDX].executed = true | .[$NEXT_IDX].execution_result = \"$RESULT\" | .[$NEXT_IDX].executed_at = \"$RUN_TIMESTAMP\" | .[$NEXT_IDX].execution_log = \"$EXEC_LOG\"" "$IDEA_FILE" > "$TMP_JSON" && mv "$TMP_JSON" "$IDEA_FILE"
+jq ".[$NEXT_IDX].executed = true | .[$NEXT_IDX].execution_result = \"$FINAL_RESULT\" | .[$NEXT_IDX].executed_at = \"$RUN_TIMESTAMP\" | .[$NEXT_IDX].execution_log = \"$EXEC_LOG\" | .[$NEXT_IDX].validated = true" "$IDEA_FILE" > "$TMP_JSON" && mv "$TMP_JSON" "$IDEA_FILE"
 
 # Update status back to idle (we keep current_idea for info)
-echo "{\"status\":\"idle\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":\"$NEXT_SLUG\",\"result\":\"$RESULT\",\"run_id\":\"$RUN_ID\"}" > "$STATUS_FILE"
+echo "{\"status\":\"idle\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":\"$NEXT_SLUG\",\"result\":\"$FINAL_RESULT\",\"run_id\":\"$RUN_ID\"}" > "$STATUS_FILE"
 
 log "Executor cycle complete."
 

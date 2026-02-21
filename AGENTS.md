@@ -168,6 +168,52 @@ Skills provide your tools. When you need one, check its `SKILL.md`. Keep local n
 - **Discord links:** Wrap multiple links in `<>` to suppress embeds: `<https://example.com>`
 - **WhatsApp:** No headers — use **bold** or CAPS for emphasis
 
+## 🧪 Idea Executor & Quality Validation
+
+Your workspace includes an autonomous **Idea Generator** (runs every 6h) that creates project/improvement ideas, and an **Idea Executor** (runs every 2h) that implements them. This system enables self-directed improvement without constant human input.
+
+### Quality Standards (Non-Negotiable)
+
+To prevent noise commits and wasted cycles, every executed idea must pass **automatic validation**. Ideas are rejected if they:
+
+- Only modify the `quick` launcher (touch/rebuild) without touching any substantive source file
+- Have ≤5 insertions/deletions total (i.e., no meaningful change)
+- Fail to modify at least one file with a recognized code extension: `sh, md, ts, js, json, yml, yaml, py, rb, go, rs, c, cpp, h, txt, html, css`
+- Produce empty commits or commits that don't match the idea's slug/title
+
+**Validation outcome:**
+- `success`: All steps passed and substantive changes detected
+- `rejected`: Placeholder/noisy commit identified → automatically reverted
+- `partial`: Steps failed but some changes remain (kept for manual review)
+
+The executor updates `agents/ideas/latest.json` with `.executed=true`, `.execution_result`, and `.validated=true` every cycle.
+
+### Idea Lifecycle
+
+1. **Generation**: Scans workspace (TODOs, stale files, recent content, active tasks) and produces 10 diverse ideas as JSON with title, description, category, steps, and priority.
+2. **Execution**: Picks next pending idea, creates feature branch `idea/<slug>`, executes steps sequentially, logs output.
+3. **Validation**: Checks last commit for substantive changes; reverts if rejected.
+4. **Status**: Updates `agents/ideas/status.json` (values: `idle`, `generating`, `executing`).
+
+### Monitoring
+
+- Check status: `cat agents/ideas/status.json`
+- View latest ideas: `cat agents/ideas/latest.json | jq '.'`
+- Execution logs: `agents/ideas/exec-<slug>-<timestamp>.log`
+- Executor log: `memory/idea-executor.log`
+- Generator log: `memory/idea-generator.log`
+
+### Branch Hygiene
+
+Feature branches `idea/*` are created per idea. After validation:
+- ✅ Accepted: branch remains; merge after manual review if desired
+- ❌ Rejected: commit reverted; branch may be deleted manually
+- 🔄 Re-iteration: modify generator prompts to improve quality
+
+**Note**: The idea system is experimental. If quality remains low, consider pausing the generator cron until prompt engineering is improved.
+
+---
+
 ## 💓 Heartbeats - Be Proactive!
 
 When you receive a heartbeat poll (message matches the configured heartbeat prompt), don't just reply `HEARTBEAT_OK` every time. Use heartbeats productively!
