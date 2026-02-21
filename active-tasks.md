@@ -23,11 +23,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260221-1700] workspace-builder - Merge doc updates from feature branch; delete merged/stale branches; validate health (started: 2026-02-21 17:00 UTC, status: validated)
+  - Verification: master fast-forwarded to 2354738; branches idea/generate-a-monthly-digest-of and idea/build-a-quick-command-that deleted locally; ./quick health OK; no temp files; active-tasks.md size 1.7KB (<2KB); changes committed and pushed.
+
 - [workspace-builder-20260221-1100] workspace-builder - Security hardening: add *.env to .gitignore; remove empty env file (started: 2026-02-21 11:00 UTC, status: validated)
   - Verification: git clean after commit 80559f6 pushed; active-tasks.md size 1982 bytes (<2KB); no temp files; health OK.
-
-- [workspace-builder-20260221-0900] workspace-builder - Fix daily digest cron rate limit issue by simplifying payload and updating docs (started: 2026-02-21 09:00 UTC, status: validated)
-  - Verification: daily-digest-cron payload updated to direct exec; manual test of `./agents/daily-digest.sh` succeeded; CRON_JOBS.md updated; ./quick health OK; no temp files; changes committed.
 
 - [workspace-builder-20260221-1300] workspace-builder - Strategic improvements: CRON_JOBS renumber, branch hygiene, memory sync (started: 2026-02-21 13:00 UTC, status: validated)
   - Verification: ./quick health OK; CRON_JOBS.md sequential 1-25; active-tasks pruned; git clean; no temp files; master branch restored.
