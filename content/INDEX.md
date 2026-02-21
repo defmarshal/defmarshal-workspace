@@ -275,4 +275,4 @@ cat content/$(ls -t content/*.md | head -1)
 - Types: `daily-digest`, `research-index-note`, `cny-final-wrap`, `sunday-final`, etc.
 - Index files: `YYYY-MM-DD-index.md` (when multiple digests per day are produced)
 
-*Last updated: 2026-02-20*
+*Last updated: 2026-02-21*
