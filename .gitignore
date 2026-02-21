@@ -79,5 +79,8 @@ agents/ideas/*.json
 *.env
 .env
 
+# Self-improvement skill runtime logs (learnings, errors, feature requests)
+.learnings/
+
 # End of additions
 .vercel
