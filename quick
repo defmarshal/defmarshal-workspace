@@ -17,7 +17,7 @@ Commands:
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
   hygiene         Run workspace hygiene check (CRLF, exec bits, large files, caches)
   mem             Show recent memories (claw memory list)
-  music)          Send a cozy music recommendation to Telegram (lofi/city pop)
+  music           Send a cozy music recommendation to Telegram (lofi/city pop)
     "$WORKSPACE/scripts/music-recommend.sh"
     ;;
   search <query>  Search memories (claw memory search)
@@ -110,6 +110,7 @@ Commands:
                              Options: --keep N, --execute
                               Example: quick cleanup-build-archive --keep 5 --execute
   agent-logs [name]           Show recent logs for an agent (dev, content, research, builder, manager). Default: all.
+  today-agents               Show which cron agents have runs today (UTC) by counting log entries.
   agent-manager              Run agent-manager maintenance checks (used by cron)
   supervisor                 Run supervisor health check (cron monitoring, gateway, disk, memory)
   supervisor-logs            Show supervisor log (memory/supervisor.log)
@@ -1291,6 +1292,17 @@ except Exception:
         exit 1
         ;;
     esac
+    ;;
+  today-agents)
+    # Show which agents have runs today (UTC)
+    echo "=== Agent Activity Today (UTC) ==="
+    today=$(date -u +%Y-%m-%d)
+    for log in dev-agent content-agent research-agent workspace-builder agent-manager meta-agent; do
+      path="$WORKSPACE/memory/${log}.log"
+      [[ -f "$path" ]] || { echo "$log: no log file"; continue; }
+      count=$(grep -c "\[$today" "$path" 2>/dev/null || echo 0)
+      echo "$log: $count runs"
+    done
     ;;
   agent-spawn)
     # Spawn an agent (one-shot or daemon)
