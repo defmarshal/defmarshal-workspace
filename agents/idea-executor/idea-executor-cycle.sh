@@ -151,21 +151,17 @@ validate_idea_execution() {
   del=${del:-0}
 
   # Check if all changes are to 'quick' only
-  local changed_files
-  changed_files=$(git diff --name-only HEAD~1 HEAD 2>/dev/null)
+  mapfile -t changed_files < <(git diff --name-only HEAD~1 HEAD 2>/dev/null)
 
   local only_quick=true
-  if [[ -n "$changed_files" ]]; then
-    while IFS= read -r f; do
+  if (( ${#changed_files[@]} > 0 )); then
+    for f in "${changed_files[@]}"; do
       [[ "$f" == "quick" ]] && continue
-      # Also ignore empty lines
       [[ -z "$f" ]] && continue
-      # Some file changed besides quick
       only_quick=false
       break
-    done <<< "$changed_files"
+    done
   else
-    # No changed files detected (maybe empty commit)
     only_quick=true
   fi
 
@@ -177,14 +173,14 @@ validate_idea_execution() {
   # Additional heuristic: at least one substantive file (extensions) should be changed
   local substantive_ext_regex='\.(sh|md|ts|js|json|yml|yaml|py|rb|go|rs|c|cpp|h|txt|html|css)$'
   local has_substantive=false
-  if [[ -n "$changed_files" ]]; then
-    while IFS= read -r f; do
+  if (( ${#changed_files[@]} > 0 )); then
+    for f in "${changed_files[@]}"; do
       [[ "$f" == "quick" ]] && continue
       if echo "$f" | grep -qE "$substantive_ext_regex"; then
         has_substantive=true
         break
       fi
-    done <<< "$changed_files"
+    done
   fi
 
   if [[ "$has_substantive" == "false" ]]; then
