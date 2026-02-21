@@ -1327,11 +1327,24 @@ except Exception:
   today-agents)
     # Show which agents have runs today (UTC)
     echo "=== Agent Activity Today (UTC) ==="
-    today=$(date -u +%Y-%m-%d)
+    iso_today=$(date -u +%Y-%m-%d)
+    short_today=$(date -u +"%b %d" | sed 's/^0*//;s/ 0*/ /')
     for log in dev-agent content-agent research-agent workspace-builder agent-manager meta-agent; do
-      path="$WORKSPACE/memory/${log}.log"
+      case "$log" in
+        dev-agent|agent-manager|meta-agent|workspace-builder)
+          path="$WORKSPACE/memory/${log}.log"
+          ;;
+        content-agent|research-agent)
+          path="$WORKSPACE/${log}.log"
+          ;;
+        *)
+          path="$WORKSPACE/memory/${log}.log"
+          ;;
+      esac
       [[ -f "$path" ]] || { echo "$log: no log file"; continue; }
-      count=$(grep -c "\[$today" "$path" 2>/dev/null || echo 0)
+      # Count lines that look like log entries with today's date AND a cycle-related keyword
+      # This avoids counting every line from the cycle
+      count=$(grep -E "($iso_today|$short_today).*UTC" "$path" 2>/dev/null | grep -Ei "cycle|starting|completed|attempt|retry" | wc -l || echo 0)
       echo "$log: $count runs"
     done
     ;;

@@ -63,7 +63,12 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Payload**: agentTurn executing `./quick log-rotate` and appending to `memory/log-rotate.log`
    - **Description**: Rotates aria2.log when it exceeds 100 MB, keeping up to 4 compressed archives. Prevents uncontrolled log growth.
 
-7. **dev-agent-cron**
+7. **cleanup-logs-cron**
+   - **Schedule**: Weekly on Sunday at 05:30 Asia/Bangkok (`30 5 * * 0`)
+   - **Payload**: agentTurn executing `./quick cleanup-logs` and appending to `memory/cleanup-logs.log`
+   - **Description**: Rotates large agent logs (>100 MB) and deletes compressed archives older than 30 days. Runs immediate cleanup; retention configurable via script env vars.
+
+8. **dev-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/dev-cycle.sh >> dev-agent.log 2>&1'`
    - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Includes retry logic for transient OpenRouter rate limits. Reduced from every 20 min to hourly (token optimization, 2026-02-19).
