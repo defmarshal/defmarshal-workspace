@@ -1,6 +1,6 @@
 # Monthly Digest — 2026-02
 
-**Generated**: Sat Feb 21 03:05:06 UTC 2026
+**Generated**: Sat Feb 21 09:01:32 UTC 2026
 
 ## Overview
 - Days with digests: 4
@@ -9,6 +9,15 @@
 - Total research reports written: 4
 
 ## Dev Commits (month)
+- dev: add git-branch-clean utility and improve branch hygiene
+- dev: improve workspace utilities and fix scripts
+- dev: fix quick launcher - add missing 'music' case handler
+- dev: install gaming skill from ClawHub
+- dev: complete game dev skills install
+- dev: install game development skills from ClawHub
+- dev: fix execute permission on generate-monthly-digest.sh
+- dev: increase dev-agent cycle timeout to 20 minutes
+- dev: quick improvements - fix music help typo, add today-agents utility
 - dev: fix Research Hub setup script; add deploy script and quick commands
 - dev: add Vercel deployment automation (quick vercel); script handles init, link, deploy, logs, status
 - dev: fix meta-supervisor daemon stale-PID detection (zombie handling); add meta-supervisor-agent to CRON_JOBS.md; add quick meta-restart utility; update help and daemons list
