@@ -33,6 +33,7 @@ Commands:
   voyage-status    Check recent Voyage AI rate limit status from memory reindex logs; shows warnings if rate-limited recently
   daemons        Show status of persistent background agents (dev, content, research, torrent-bot)
   agent-status   Show OpenClaw cron jobs overview (next run, last status, schedule)
+  dev-log        Show recent dev-agent log (last 20 lines)
   orphan-check   Check for orphaned agent sessions (stale running sessions)
   cron-schedules Validate and correct cron schedules against CRON_JOBS.md documentation
   cron-runs      Show recent runs for all cron jobs (last run, status, duration)
@@ -478,6 +479,15 @@ case "$cmd" in
       fi
       printf "%-25s %-15s %-8s %-16s %-10s %6ss\n" "$name" "$expr" "${tz:0:3}" "$nextdt" "$status" "$duration"
     done || echo "Error: jq not available or openclaw CLI issue"
+    ;;
+  dev-log)
+    COUNT="${1:-20}"
+    LOGFILE="$WORKSPACE/dev-agent.log"
+    if [ ! -f "$LOGFILE" ]; then
+      echo "No dev-agent.log found at $LOGFILE"
+      exit 1
+    fi
+    tail -n "$COUNT" "$LOGFILE"
     ;;
   orphan-check)
     # Check for orphaned agent sessions (stale running sessions)
