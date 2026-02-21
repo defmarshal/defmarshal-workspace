@@ -40,6 +40,9 @@
 
 - **meta-agent spawn debouncing**: Added state tracking (`memory/meta-agent-state.json`) to avoid spawning content-agent and research-agent too frequently (within 30 min). Prevents redundant launches when agents haven't yet produced output, reducing system load. Implemented in workspace-builder-20260221-0100.
 
+- **Idea executor quality validation**: Added automatic rejection of placeholder commits (e.g., only touching `quick` or no substantive changes). Validation checks for real file modifications (extensions: sh, md, ts, js, json, yaml, etc.) and minimum insertions/deletions. Rejected ideas revert the commit and mark status `rejected`. Prevents noise in git history. Additionally implemented `monthly-digest` command to aggregate daily digests into monthly reports.
+
+
 ### 2026-02-19
 - **Token optimization trial and revert**: Added `--max-tokens` flags and conciseness directives to agent cycles to reduce token usage. Changes initially committed but immediately reverted due to output failures (truncated/incomplete results). System self‑corrected via automated revert. Lesson: aggressive token caps can break agent output; use only gentle constraints and validate thoroughly before global rollout. Added comprehensive notes to `lessons.md` under "Token Optimization" section.
 
