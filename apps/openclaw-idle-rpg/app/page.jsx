@@ -405,22 +405,22 @@ export default function HomePage() {
       ))}
 
       {/* Header with kawaii decorations */}
-      <header className="mb-6 text-center relative">
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-2xl animate-sparkle">★ ♡ ★</div>
-        <h1 className="text-4xl font-bold text-purple-800 drop-shadow-md" style={{ fontFamily: "'Press Start 2P', cursive" }}>OpenClaw Idle RPG</h1>
-        <p className="text-purple-700 font-semibold text-lg">✨ Manage agents, gather resources, survive crises! ✨</p>
-        <div className="mt-3 flex justify-center gap-4 text-sm">
-          <div className="kawaii-card px-3 py-1 flex items-center gap-1 bg-white/90">
-            <span>💎</span>
-            <span>Prestige:</span>
-            <span className="text-pink-600 font-bold">{prestigePoints}</span>
-            <span className="text-purple-700">(+{prestigeBonus}% production)</span>
+      <header className="mb-8 text-center relative">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-3xl animate-sparkle">★ ♡ ★</div>
+        <h1 className="text-5xl font-black text-purple-900 drop-shadow-lg mb-2" style={{ fontFamily: "'Press Start 2P', cursive" }}>OpenClaw Idle RPG</h1>
+        <p className="text-purple-800 font-bold text-2xl">✨ Manage agents, gather resources, survive crises! ✨</p>
+        <div className="mt-4 flex justify-center gap-6 text-base">
+          <div className="kawaii-card px-4 py-2 flex items-center gap-2 bg-white/95">
+            <span className="text-2xl">💎</span>
+            <span className="font-bold text-purple-800">Prestige:</span>
+            <span className="text-pink-600 font-black text-xl">{prestigePoints}</span>
+            <span className="text-purple-800 font-bold">(+{prestigeBonus}% production)</span>
           </div>
-          <div className="kawaii-card px-3 py-1 flex items-center gap-1 bg-white/90">
-            <span>📅</span>
-            <span>Streak:</span>
-            <span className="text-green-600 font-bold">{dailyStreak}</span>
-            <span className="text-purple-700">days</span>
+          <div className="kawaii-card px-4 py-2 flex items-center gap-2 bg-white/95">
+            <span className="text-2xl">📅</span>
+            <span className="font-bold text-purple-800">Streak:</span>
+            <span className="text-green-600 font-black text-xl">{dailyStreak}</span>
+            <span className="text-purple-800 font-bold">days</span>
           </div>
         </div>
       </header>
@@ -429,9 +429,9 @@ export default function HomePage() {
       <div className="grid grid-cols-3 gap-4 mb-8">
         {Object.entries(RESOURCE_NAMES).map(([key, label]) => (
           <div key={key} className="kawaii-card text-center transform hover:scale-105 transition-shadow hover:shadow-lg">
-            <div className="text-sm font-bold text-purple-700 mb-1">{label}</div>
-            <div className="text-4xl font-extrabold text-purple-800 drop-shadow-sm">{Math.floor(resources[key])}</div>
-            <div className="text-xs text-pink-500 mt-1">💖</div>
+            <div className="text-base font-extrabold text-purple-800 mb-2 uppercase tracking-wide">{label}</div>
+            <div className="text-6xl font-black text-purple-900 drop-shadow-lg">{Math.floor(resources[key])}</div>
+            <div className="text-sm text-pink-600 mt-2 font-bold">💖</div>
           </div>
         ))}
       </div>
@@ -462,12 +462,12 @@ export default function HomePage() {
 
       {/* Tabs */}
       <div className="mb-6">
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap gap-3 justify-center">
           {['agents', 'tech', 'achievements', 'settings'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`kawaii-btn px-4 py-2 capitalize ${activeTab === tab ? 'ring-2 ring-pink-400' : ''}`}
+              className={`kawaii-btn px-6 py-3 text-lg capitalize font-bold ${activeTab === tab ? 'ring-4 ring-pink-500 scale-105' : ''}`}
             >
               {tab === 'agents' && '👾 '}
               {tab === 'tech' && '🔧 '}
@@ -531,11 +531,11 @@ export default function HomePage() {
 
       {/* Event Log */}
       <div className="mt-8 mb-8">
-        <h2 className="text-xl font-bold text-purple-600 mb-2 flex items-center gap-2">📜 Event Log</h2>
+        <h2 className="text-2xl font-black text-purple-900 mb-3 flex items-center gap-2 justify-center">📜 Event Log</h2>
         <EventLog entries={log} />
       </div>
 
-      <footer className="text-center text-purple-400 text-sm">
+      <footer className="text-center text-purple-800 text-lg font-bold">
         <p>✨ Auto-save every 10s. Close anytime; return to resume. ✨</p>
       </footer>
     </div>

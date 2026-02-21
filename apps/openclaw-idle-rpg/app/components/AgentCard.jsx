@@ -8,18 +8,18 @@ export default function AgentCard({ agent, onUpgrade, resources, onUseAbility, a
   const cooldownPercent = cooldownTotal > 0 ? ((cooldownTotal - abilityCooldown) / cooldownTotal) * 100 : 0;
 
   return (
-    <div className={`kawaii-card relative overflow-hidden ${onCooldown ? 'opacity-80' : 'ability-ready'}`}>
+    <div className={`kawaii-card relative overflow-hidden ${onCooldown ? 'opacity-90' : 'ability-ready'}`}>
       {/* Kawaii decorations */}
-      <div className="absolute -top-2 -right-2 text-yellow-300 text-xl animate-sparkle">✦</div>
+      <div className="absolute -top-3 -right-3 text-yellow-400 text-2xl animate-sparkle drop-shadow">✦</div>
 
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="text-lg font-bold text-purple-600">{agent.name}</h3>
-        <span className="px-3 py-1 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full text-purple-800 font-bold text-sm">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-2xl font-black text-purple-900">{agent.name}</h3>
+        <span className="px-4 py-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full text-purple-900 font-extrabold text-lg shadow">
           Lv {agent.level}
         </span>
       </div>
 
-      <div className="text-sm text-pink-500 mb-3 flex items-center gap-1">
+      <div className="text-lg font-bold text-purple-800 mb-4 flex items-center justify-center gap-2">
         <span>⚡</span>
         <span>~{rate} resources/sec</span>
       </div>
@@ -28,36 +28,36 @@ export default function AgentCard({ agent, onUpgrade, resources, onUseAbility, a
       <button
         onClick={() => canAfford && onUpgrade(agent.id)}
         disabled={!canAfford}
-        className={`kawaii-btn w-full mb-3 ${!canAfford ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`kawaii-btn w-full mb-4 text-xl font-black ${!canAfford ? 'opacity-40 cursor-not-allowed' : ''}`}
       >
-        <span className="flex items-center justify-center gap-2">
+        <span className="flex items-center justify-center gap-3">
           <span>📈</span>
-          <span>Upgrade</span>
+          <span>UPGRADE</span>
           <span>{cost} 💾</span>
         </span>
       </button>
 
       {/* Ability section */}
       {ability && (
-        <div className="border-t-2 border-pink-200 pt-3 mt-2">
+        <div className="border-t-4 border-pink-400 pt-4 mt-2">
           <button
             onClick={() => onUseAbility()}
             disabled={onCooldown}
             title={ability.desc}
-            className={`w-full py-2 rounded-full text-sm font-bold flex items-center justify-center gap-2 relative overflow-hidden transition-all ${
+            className={`w-full py-3 rounded-full text-base font-black flex items-center justify-center gap-2 relative overflow-hidden transition-all ${
               onCooldown
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-purple-400 to-pink-400 text-white hover:shadow-lg hover:scale-105'
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-xl hover:scale-105'
             }`}
           >
             {onCooldown && (
-              <div className="absolute inset-0 bg-white/50" style={{ width: `${cooldownPercent}%` }} />
+              <div className="absolute inset-0 bg-white/60" style={{ width: `${cooldownPercent}%` }} />
             )}
             <span className="relative z-10">{ability.name}</span>
-            {onCooldown && <span className="relative z-10 text-xs">⏳ {(abilityCooldown/1000).toFixed(0)}s</span>}
-            {!onCooldown && <span className="relative z-10">✨</span>}
+            {onCooldown && <span className="relative z-10 text-sm">⏳ {(abilityCooldown/1000).toFixed(0)}s</span>}
+            {!onCooldown && <span className="relative z-10 text-2xl">✨</span>}
           </button>
-          <div className="text-xs text-purple-400 mt-2 text-center">{ability.desc}</div>
+          <div className="text-sm text-purple-700 mt-3 text-center font-bold">{ability.desc}</div>
         </div>
       )}
     </div>
