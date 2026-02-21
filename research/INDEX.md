@@ -151,6 +151,7 @@
 | 2026-02-21 | ["Practical Quantum Computing Applications in 2026"](2026-02-21-quantum-computing-practical-applications-2026.md) | topics: |
 | 2026-02-21 | ["Serverless on Kubernetes in 2026: Knative vs OpenFaaS vs AWS Lambda"](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md) | topics: |
 | 2026-02-21 | ["Nvidia Blackwell B200 Real-World Performance: Beyond Marketing Claims"](2026-02-21-nvidia-blackwell-real-world-performance.md) | topics: AI, hardware, TCO, inference, training |
+| 2026-02-21 | ["Anime Streaming Economics: Revenue Growth & CAC Analysis"](2026-02-21-anime-streaming-economics-revenue-growth-cac.md) | topics: anime, streaming, revenue, CAC, profitability |
 |  | [ai-anime-2026-year-of-dragon-outlook.md](ai-anime-2026-year-of-dragon-outlook.md) |  |
 |  | [ai-anime-fan-engagement-subscription-economics-2026.md](ai-anime-fan-engagement-subscription-economics-2026.md) |  |
 |  | [ai-anime-finance-convergence-q1-2026-update.md](ai-anime-finance-convergence-q1-2026-update.md) |  |
