@@ -635,6 +635,10 @@ case "$cmd" in
     caption="${*:-}"
     "$WORKSPACE/skills/clawaifu-selfie/grok-selfie-batch.sh" "$count" "$rating" "$caption"
     ;;
+  music)
+    # Send a cozy music recommendation to Telegram (lofi/city pop)
+    "$WORKSPACE/scripts/music-recommend.sh"
+    ;;
   torrent-add)
     # Add magnet or torrent file to aria2
     # Usage: quick torrent-add <magnet_or_file> [rpc_secret]
