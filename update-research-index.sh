@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Update research/INDEX.md by scanning all research markdown files.
-# Groups by year-month, counts totals, preserves special reports section.
+# Groups by year-month, lists reports with readable titles.
+# Automatically includes special reports section if present.
 
 set -euo pipefail
 
@@ -16,19 +17,32 @@ if [ ! -d "$RESEARCH_DIR" ]; then
   exit 1
 fi
 
-# Collect all report files (YYYY-MM-DD-*.md), excluding special files and INDEX.md
+# Collect all report files (YYYY-MM-DD-*.md), sorted reverse chronological (newest first)
 mapfile -t report_files < <(find "$RESEARCH_DIR" -maxdepth 1 -type f -name '????-??-??-*.md' | sort -r)
 
-# Group by year-month
-declare -A month_groups
+if [ ${#report_files[@]} -eq 0 ]; then
+  echo "Warning: no research report files found."
+  cat > "$INDEX_FILE" <<EOF
+# Research Reports — Index
+
+This index is auto‑generated. Last updated: $(date +%Y-%m-%d)
+
+## No reports found
+
+EOF
+  exit 0
+fi
+
+# Group files by month (YYYY-MM)
+declare -A month_files
 for file in "${report_files[@]}"; do
   filename=$(basename "$file")
   month=${filename:0:7}  # YYYY-MM
-  month_groups["$month"]+="$filename"$'\n'
+  month_files["$month"]+="$filename"$'\n'
 done
 
-# Count total reports
-total_reports=${#report_files[@]}
+# Sort months descending (newest first)
+sorted_months=($(printf "%s\n" "${!month_files[@]}" | sort -r))
 
 # Build new index
 cat > "$INDEX_FILE" <<EOF
@@ -36,41 +50,33 @@ cat > "$INDEX_FILE" <<EOF
 
 This index is auto‑generated. Last updated: $(date +%Y-%m-%d)
 
-## $(date +%Y) Reports ($total_reports total)
+## ${sorted_months[0]:0:4} Reports (${#report_files[@]} total)
 
 EOF
 
-# Output each month section in reverse chronological order (newest month first)
-for month in "${!month_groups[@]}"; do
-  # Count reports in this month
-  month_reports=()
-  while IFS= read -r line; do
-    [[ -n "$line" ]] && month_reports+=("$line")
-  done <<< "${month_groups[$month]}"
-  
-  # Month header
+# Output each month section
+for month in "${sorted_months[@]}"; do
   echo "### $month" >> "$INDEX_FILE"
   
-  # List each report: - [Title](filename) — extract title from first heading in file
-  for filename in "${month_reports[@]}"; do
+  # Get files for this month (newline-separated)
+  files_str=${month_files[$month]}
+  # Iterate each filename
+  while IFS= read -r filename; do
+    [ -z "$filename" ] && continue
     filepath="$RESEARCH_DIR/$filename"
-    # Extract first markdown heading (line starting with #)
-    title=$(grep -m1 '^#' "$filepath" | sed 's/^#* //' | tr -d '\r' || echo "$filename")
-    # Clean title: remove trailing punctuation, ensure single line
+    # Extract first markdown heading (line starting with #) as title
+    title=$(grep -m1 '^#' "$filepath" 2>/dev/null | sed 's/^#* //' | tr -d '\r' || echo "$filename")
+    # Clean title: remove trailing punctuation
     title=$(echo "$title" | sed 's/[[:punct:]]*$//')
-    # If title is too generic, use filename-based title (slug to readable)
-    if [[ "$title" =~ ^(Introduction|Summary|Overview|Executive Summary|Abstract)$ ]]; then
+    # Fallback: if title is generic or empty, convert filename slug to title
+    if [[ "$title" =~ ^(Introduction|Summary|Overview|Executive Summary|Abstract|Note)$ ]] || [ -z "$title" ]; then
       base=${filename#????-??-??-}
       base=${base%.md}
       title=$(echo "$base" | sed 's/-/ /g')
       title=$(echo "$title" | sed 's/\b\(.\)/\u\1/g')
     fi
-    # Final fallback: if still empty, use filename
-    if [ -z "$title" ]; then
-      title="$filename"
-    fi
     echo "- [$title]($filename)" >> "$INDEX_FILE"
-  done
+  done <<< "$files_str"
   
   echo "" >> "$INDEX_FILE"
 done
@@ -100,8 +106,7 @@ if $has_special; then
 SPECIAL_HEADER
   for f in "${special_files[@]}"; do
     if [ -f "$RESEARCH_DIR/$f" ]; then
-      # Get title from first heading or fallback to filename
-      title=$(grep -m1 '^#' "$RESEARCH_DIR/$f" | sed 's/^#* //' | tr -d '\r' || echo "$f")
+      title=$(grep -m1 '^#' "$RESEARCH_DIR/$f" 2>/dev/null | sed 's/^#* //' | tr -d '\r' || echo "$f")
       title=$(echo "$title" | sed 's/[[:punct:]]*$//')
       echo "- [$title]($f)" >> "$INDEX_FILE"
     fi
@@ -109,7 +114,7 @@ SPECIAL_HEADER
   echo "" >> "$INDEX_FILE"
 fi
 
-# Append footer
+# Footer
 cat >> "$INDEX_FILE" <<'FOOTER'
 
 ---
@@ -121,4 +126,4 @@ cat >> "$INDEX_FILE" <<'FOOTER'
 FOOTER
 
 echo "✅ Research index updated: $INDEX_FILE"
-echo "   Tracked $total_reports research reports across ${#month_groups[@]} months."
+echo "   Tracked ${#report_files[@]} research reports across ${#sorted_months[@]} months."
