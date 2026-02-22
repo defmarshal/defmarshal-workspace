@@ -63,6 +63,7 @@ Commands:
                   Example: quick tts-research research/2026-02-22-ai-infrastructure-constraints.md
   tts-research-all                         Generate TTS for all research reports missing .mp3 (idempotent)
   tts-status                               Show TTS coverage (how many reports have audio)
+  tts-stats                                Show detailed TTS statistics (coverage, language breakdown)
   torrent-add <magnet_or_file> [rpc_secret]  Add a magnet link or .torrent file to
                   the aria2 downloader. RPC secret defaults to 'openclaw_secret_123'.
                   Example: quick torrent-add "magnet:?xt=urn:btih:..."
@@ -1704,6 +1705,10 @@ except Exception:
     echo "Research reports: $total"
     echo "With TTS audio: $with_mp3"
     echo "Remaining: $((total - with_mp3))"
+    ;;
+  tts-stats)
+    # Detailed TTS statistics
+    "$WORKSPACE/scripts/tts-stats.sh"
     ;;
   *)
     echo "Error: Unknown command '$cmd'" >&2
