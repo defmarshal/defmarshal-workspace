@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Safe git sync: fetch, check status, and optionally pull
+# Safe git sync for OpenClaw workspace: fetch, check status, and optionally pull
 # Usage: git-sync [--pull]
 
 set -euo pipefail
