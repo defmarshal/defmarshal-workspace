@@ -67,6 +67,8 @@ Commands:
   tts-stats                                Show detailed TTS statistics (coverage, language breakdown)
   tts-say <text>                           Generate TTS audio for given text (Kokoro, English)
                   Example: quick tts-say "Hello, world! This is a test."
+  tts-play <mp3-file>                      Play a TTS MP3 file (uses aplay/afplay/mpg123)
+                  Example: quick tts-play research/2026-02-22-some-report.mp3
   torrent-add <magnet_or_file> [rpc_secret]  Add a magnet link or .torrent file to
                   the aria2 downloader. RPC secret defaults to 'openclaw_secret_123'.
                   Example: quick torrent-add "magnet:?xt=urn:btih:..."
@@ -1720,6 +1722,10 @@ except Exception:
   tts-say)
     # Generate TTS for given text
     "$WORKSPACE/scripts/tts-say.sh" "$@"
+    ;;
+  tts-play)
+    # Play a TTS MP3 file
+    "$WORKSPACE/scripts/tts-play.sh" "$@"
     ;;
   *)
     echo "Error: Unknown command '$cmd'" >&2
