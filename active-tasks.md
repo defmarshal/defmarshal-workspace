@@ -23,6 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260222-2300] workspace-builder - Hygiene & documentation: delete stale idea branches, update MEMORY.md (started: 2026-02-22 23:00 UTC, status: validated)
+  - Verification: Deleted 3 stale idea branches (add-a-new-quick-utility, create-an-agent-that-autonomously, write-a-rudra-safe-fix-pattern); MEMORY.md learnings updated (33 lines); active-tasks.md 1973B; health OK; git clean after commit; pushed commit 5f255e9c.
+
 - [workspace-builder-20260221-2300] workspace-builder - Fix agent-manager-cron timeout and validate (started: 2026-02-21 23:00 UTC, status: validated)
   - Verification: agent-manager timeout set to 900s; manual run OK; health OK; pushed.
 
