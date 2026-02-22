@@ -60,10 +60,10 @@
 
 ### Step 7: Update active-tasks.md
 
-- Checked if current session entry exists: Not present (previous planning files were from earlier run, but active-tasks does not list this cron-triggered session).
-- Per AGENTS.md: "Update immediately when spawning... Include session key, goal, started timestamp, and verification status."
-- Added entry for this workspace-builder session with verification notes.
-- Status: ✅ Done
+- Checked if current session entry should be added: Not needed.
+- Reason: workspace-builder is a cron-triggered main session, not a spawned sub-agent. active-tasks.md tracks only sub-agents (per AGENTS.md: "Update immediately when spawning or killing agents").
+- The registry already shows no running agents and only archived entries from 2026-02-21. Size ~33 lines (<2KB).
+- Status: ✅ Done (no action required)
 
 ## Phase: Close The Loop
 
