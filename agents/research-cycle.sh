@@ -1,13 +1,16 @@
 #!/bin/bash
-# Research Agent - One Cycle (with retry)
-# This script performs a single research-agent cycle with retry on transient errors.
+# Research Agent - One Cycle (with retry + auto TTS)
+# This script performs a single research-agent cycle with retry on transient errors,
+# then generates TTS audio for any new research reports.
 
 LOGFILE="/home/ubuntu/.openclaw/workspace/research-agent.log"
+WORKSPACE="/home/ubuntu/.openclaw/workspace"
+TTS_SCRIPT="$WORKSPACE/scripts/tts-research.sh"
 
 echo "$(date -u) - Starting research-agent cycle" >> "$LOGFILE"
 
 MAX_RETRIES=3
-INITIAL_DELAY=30  # seconds
+INITIAL_DELAY=30
 
 attempt=1
 while [ $attempt -le $MAX_RETRIES ]; do
@@ -37,9 +40,30 @@ while [ $attempt -le $MAX_RETRIES ]; do
     fi
   fi
 
-  # If we got here, the agent finished (success or non-retryable error)
   break
 done
 
 echo "$(date -u) - Research-agent cycle completed (exit $exit_code)" >> "$LOGFILE"
+
+# Generate TTS for any new reports (those without existing .mp3)
+if [ -f "$TTS_SCRIPT" ]; then
+  echo "$(date -u) - Starting TTS generation for new reports" >> "$LOGFILE"
+  # Find all research markdown files that don't have a corresponding MP3
+  new_count=0
+  for md in research/*.md; do
+    [ -f "$md" ] || continue
+    mp3="${md%.md}.mp3"
+    if [ ! -f "$mp3" ]; then
+      new_count=$((new_count+1))
+      echo "$(date -u) - Generating TTS for: $(basename "$md")" >> "$LOGFILE"
+      "$TTS_SCRIPT" "$md" >> "$LOGFILE" 2>&1 || echo "$(date -u) - TTS failed for: $(basename "$md")" >> "$LOGFILE"
+      # Small delay to avoid rate limiting
+      sleep 5
+    fi
+  done
+  echo "$(date -u) - TTS generation complete (processed $new_count new reports)" >> "$LOGFILE"
+else
+  echo "$(date -u) - TTS script not found at $TTS_SCRIPT, skipping audio generation" >> "$LOGFILE"
+fi
+
 exit $exit_code

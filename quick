@@ -59,6 +59,10 @@ Commands:
                   rating: safe (default) or explicit. Caption optional.
   selfie-batch <count> [rating] [caption]  Fetch multiple anime images (1-20) and
                   send as a single zip file. Default count=5, rating=safe.
+  tts-research <file>                       Generate TTS audio for a research report (creates .mp3)
+                  Example: quick tts-research research/2026-02-22-ai-infrastructure-constraints.md
+  tts-research-all                         Generate TTS for all research reports missing .mp3 (idempotent)
+  tts-status                               Show TTS coverage (how many reports have audio)
   torrent-add <magnet_or_file> [rpc_secret]  Add a magnet link or .torrent file to
                   the aria2 downloader. RPC secret defaults to 'openclaw_secret_123'.
                   Example: quick torrent-add "magnet:?xt=urn:btih:..."
@@ -1647,6 +1651,55 @@ except Exception:
     TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
     echo "{\"agent\":\"$AGENT\",\"score\":$SCORE,\"timestamp\":\"$TIMESTAMP\"}" >> "$FEEDBACK_FILE"
     echo "Feedback recorded: $AGENT rated $SCORE/5"
+    ;;
+  tts-research)
+    # Generate TTS for a specific research report
+    if [ $# -lt 1 ]; then
+      echo "Usage: quick tts-research <research-file.md> [voice] [rate]"
+      echo "Example: quick tts-research research/2026-02-22-ai-infrastructure-constraints.md en-US-MichelleNeural +10%"
+      exit 1
+    fi
+    FILE="$1"
+    VOICE="${2:-en-US-MichelleNeural}"
+    RATE="${3:-+10%}"
+    if [ ! -f "$FILE" ]; then
+      echo "Error: file not found: $FILE"
+      exit 1
+    fi
+    "$WORKSPACE/scripts/tts-research.sh" "$FILE" "$VOICE" "$RATE"
+    ;;
+  tts-research-all)
+    # Generate TTS for all research reports missing .mp3
+    TTS_SCRIPT="$WORKSPACE/scripts/tts-research.sh"
+    if [ ! -f "$TTS_SCRIPT" ]; then
+      echo "Error: TTS script not found at $TTS_SCRIPT"
+      exit 1
+    fi
+    count=0
+    failed=0
+    for md in "$WORKSPACE"/research/*.md; do
+      [ -f "$md" ] || continue
+      mp3="${md%.md}.mp3"
+      if [ ! -f "$mp3" ]; then
+        echo "Processing: $(basename "$md")"
+        if "$TTS_SCRIPT" "$md"; then
+          count=$((count+1))
+        else
+          failed=$((failed+1))
+          echo "Warning: TTS failed for $(basename "$md")"
+        fi
+        sleep 5
+      fi
+    done
+    echo "TTS batch complete: $count generated, $failed failed."
+    ;;
+  tts-status)
+    # Show TTS coverage: how many reports have mp3 companions
+    total=$(ls -1 "$WORKSPACE"/research/*.md 2>/dev/null | wc -l)
+    with_mp3=$(ls -1 "$WORKSPACE"/research/*.mp3 2>/dev/null | wc -l)
+    echo "Research reports: $total"
+    echo "With TTS audio: $with_mp3"
+    echo "Remaining: $((total - with_mp3))"
     ;;
   *)
     echo "Error: Unknown command '$cmd'" >&2

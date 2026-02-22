@@ -1,196 +1,127 @@
-# Workspace Builder — Progress Log
-
-**Session Started**: 2026-02-22 01:00 UTC  
-**Cron Job ID**: 23dad379-21ad-4f7a-8c68-528f98203a33  
-**Current Branch**: idea/build-a-cli-game-inside
+# Workspace Builder: Execution Progress
+**Session:** 23dad379-21ad-4f7a-8c68-528f98203a33
+**Started:** 2026-02-22 03:00 UTC
 
 ---
 
-## Phase 1: Analysis & Documentation
+## Progress Tracker
 
-**Status**: ✅ Complete (2026-02-22 01:05 UTC)
-
-- Read active-tasks.md, SOUL.md, USER.md, memory files
-- Ran `git status`, `./quick health`, `./quick memory-status`
-- Inspected `agents/ideas/latest.json` — found validation bypass
-- Created `task_plan.md` (4947 bytes)
-- Created `findings.md` (6433 bytes)
-
-**Deliverables**:
-- `task_plan.md` — complete plan with 7 phases
-- `findings.md` — detailed analysis of 5 issues
-
-**Notes**: This progress file will be updated after each phase.
-
----
-
-## Phase 2: Fix Idea Validation Logic
-
-**Status**: ✅ Complete (01:15 UTC)
-
-**Root cause identified**: The executor did not check for uncommitted changes before running. The `build-a-cli-game-inside` idea's `git add -A` picked up pre-existing untracked research reports (2 new research files) and committed them along with `quick`, resulting in 568 insertions. The validator saw a large commit and accepted it, even though the idea itself only produced trivial changes.
-
-**Fix implemented**: Added pre-execution cleanliness check in `agents/idea-executor/idea-executor-cycle.sh`:
-- Before executing steps, check `git status --porcelain`
-- If any uncommitted changes (tracked or untracked), reject the idea with `workspace_dirty` error
-- This prevents contamination and ensures only idea-generated changes are committed
-
-**Code changes**:
-- Inserted check after status update (lines ~115-130)
-- Rejects idea, marks `execution_result: "rejected"`, logs error
-
-**Validation**: Next idea execution with dirty workspace will be rejected and logged.
-
-**Next**: Phase 3 (Clean up stale branch) — ✅ Already completed (01:12 UTC) before this fix. Branch deleted locally and remotely.
+| Step | Status | Timestamp (UTC) | Notes |
+|------|--------|-----------------|-------|
+| 1. Review planning files | ⏳ Pending | | |
+| 2. Clean .mp3 files | ⏳ Pending | | |
+| 3. Delete stale branch | ⏳ Pending | | |
+| 4. Commit changes | ⏳ Pending | | |
+| 5. Push commits | ⏳ Pending | | |
+| 6. Run health check | ⏳ Pending | | |
+| 7. Validate active-tasks.md | ⏳ Pending | | |
+| 8. Check for temp files | ⏳ Pending | | |
+| 9. Verify git status | ⏳ Pending | | |
+| 10. Update active-tasks.md | ⏳ Pending | | |
+| 11. Update findings.md | ⏳ Pending | | |
+| 12. Update progress.md | ⏳ Pending | | |
 
 ---
 
-## Phase 3: Clean Up Stale Branch
+## Step Details
 
-**Status**: ✅ Complete (01:12 UTC)
+### Step 1: Review Planning Files
+- **Status:** Not started
+- **Action:** Read task_plan.md, findings.md, progress.md to ensure plan is correct
+- **Outcome:** (pending)
 
-**Actions**:
-- Deleted local branch: `git branch -D idea/build-a-cli-game-inside`
-- Deleted remote branch: `git push origin --delete idea/build-a-cli-game-inside`
-- Verified: `git branch -a` no longer lists it
+### Step 2: Clean .mp3 Files
+- **Status:** Not started
+- **Action:** Delete the three untracked .mp3 files from research/
+- **Command:** `rm research/*.mp3`
+- **Verification:** `git status --porcelain` should no longer list them
+- **Outcome:** (pending)
 
----
+### Step 3: Delete Stale Branch
+- **Status:** Not started
+- **Action:** Delete local and remote `idea/add-a-new-quick-utility` branch
+- **Commands:**
+  - `git branch -D idea/add-a-new-quick-utility`
+  - `git push origin --delete idea/add-a-new-quick-utility` (if exists)
+- **Verification:** `git branch -a` should not show the branch
+- **Outcome:** (pending)
 
-## Phase 4: Commit Pending Daily Digest
+### Step 4: Commit Changes
+- **Status:** Not started
+- **Action:** Stage and commit the `quick` file changes
+- **Commands:**
+  - `git add quick`
+  - `git commit -m "build: add TTS commands to quick launcher for research reports"`
+- **Verification:** `git log -1` shows the commit with correct prefix
+- **Outcome:** (pending)
 
-**Status**: ✅ Complete (01:20 UTC)
+### Step 5: Push Commits
+- **Status:** Not started
+- **Action:** Push commits to GitHub
+- **Command:** `git push origin master`
+- **Verification:** Remote master updated; no errors
+- **Outcome:** (pending)
 
-**File**: `content/2026-02-22-daily-digest.md`
-- Committed with message: `content: daily digest - 2026-02-22`
-- Pushed to origin/master (commit 9bc0600)
+### Step 6: Run Health Check
+- **Status:** Not started
+- **Action:** Execute `./quick health`
+- **Expected:** "Disk OK 54% | Updates: none | Git clean | Memory: ... | Gateway: healthy"
+- **Verification:** Output shows "Git clean"
+- **Outcome:** (pending)
 
----
+### Step 7: Validate active-tasks.md
+- **Status:** Not started
+- **Action:** Check file size and format
+- **Commands:**
+  - `wc -c < active-tasks.md` (should be <2048 bytes)
+  - Verify markdown formatting is valid
+- **Outcome:** (pending)
 
-## Phase 5: Update Documentation & Memory
+### Step 8: Check for Temp Files
+- **Status:** Not started
+- **Action:** Search for common temp file patterns
+- **Command:** `find . -maxdepth 3 -type f \( -name "*.tmp" -o -name "*~" -o -name "#*#" \) -not -path "./.git/*" 2>/dev/null`
+- **Expected:** No results
+- **Outcome:** (pending)
 
-**Status**: ✅ Complete (01:25 UTC)
+### Step 9: Verify Git Status
+- **Status:** Not started
+- **Action:** Confirm working tree is clean
+- **Command:** `git status --porcelain`
+- **Expected:** Empty output
+- **Outcome:** (pending)
 
-**Modifications**:
-- `MEMORY.md`: updated "Last updated" to 2026-02-22; added learning bullet: "Idea executor added pre-execution cleanliness check..."
-- `active-tasks.md`: added this session entry (`workspace-builder-20260222-0100`) with status validated and verification notes
+### Step 10: Update active-tasks.md
+- **Status:** Not started
+- **Action:** Mark this workspace-builder session as `validated` and add verification notes
+- **Format:**
+  ```
+  - [23dad379...] workspace-builder - (started: 2026-02-22 03:00 UTC, status: validated)
+    - Verification: quick health OK; git clean; no temp files; active-tasks.md 1982 bytes; branch deleted; commits pushed (build: prefix); all validations passed.
+  ```
+- **Outcome:** (pending)
 
----
+### Step 11: Update findings.md
+- **Status:** Not started
+- **Action:** Append "Resolution Log" section summarizing actions taken and outcomes
+- **Outcome:** (pending)
 
-## Phase 6: Close the Loop Validation
-
-**Status**: ✅ Complete (01:30 UTC)
-
-**Checks**:
-- `./quick health`: Disk OK 54% | Updates: none | Git clean | Memory clean | Gateway healthy
-- Syntax check: `bash -n agents/idea-executor/idea-executor-cycle.sh` → OK
-- No temp files: `find . -name "*.tmp"` → none
-- active-tasks.md size: 1744 bytes (<2KB)
-- Git status: clean
-
----
-
-## Phase 7: Final Commit & Push
-
-**Status**: ✅ Complete (01:35 UTC)
-
-**Commits made**:
-1. `9bc0600` — content: daily digest - 2026-02-22
-2. `c9fc9ce` — build: fix idea executor validation, clean stale branch, update docs
-3. `f868cbe` — build: archive old tasks to daily log, keep active-tasks under 2KB
-
-All pushed to origin/master.
-
----
-
-## Summary
-
-- **Idea executor now robust** against workspace contamination
-- **Stale branch removed** (idea/build-a-cli-game-inside)
-- **Daily digest pipeline** operational and committed
-- **Documentation updated** (MEMORY.md, active-tasks.md, daily log)
-- **Size limits enforced** (active-tasks.md 1744B < 2KB)
-- **System health**: all green
-
-**Session ended**: 2026-02-22 01:35 UTC
-
-
----
-
-## Phase 3: Clean Up Stale Branch
-
-**Status**: ⏳ Pending (after Phase 2 complete)
-
-**Objective**: Delete `idea/build-a-cli-game-inside` locally and remotely.
-
-**Commands**:
-```bash
-git branch -D idea/build-a-cli-game-inside
-git push origin --delete idea/build-a-cli-game-inside  # if exists
-```
-
-**Pre-checks**:
-- Ensure no valuable work on branch (compare with master: `git log --oneline master..idea/build-a-cli-game-inside`)
-- Confirm branch is fully merged? (No — it's noise; safe to force delete)
-
----
-
-## Phase 4: Commit Pending Daily Digest
-
-**Status**: ⏳ Pending (after Phase 3)
-
-**File**: `content/2026-02-22-daily-digest.md`
-
-**Actions**:
-- Verify content quality
-- `git add content/2026-02-22-daily-digest.md`
-- `git commit -m "content: daily digest - 2026-02-22"`
-- `git push origin <current-branch>` (will be master after branch cleanup)
+### Step 12: Update progress.md
+- **Status:** Not start ed
+- **Action:** Mark all steps as done with timestamps
+- **Outcome:** (pending)
 
 ---
 
-## Phase 5: Update Documentation & Memory
+## Execution Notes
 
-**Status**: ⏳ Pending (after Phase 4)
-
-**Files**:
-- `MEMORY.md` — add 2026-02-22 entry
-- `active-tasks.md` — mark this session validated; add verification notes
-
----
-
-## Phase 6: Close the Loop Validation
-
-**Status**: ⏳ Pending (after Phase 5)
-
-**Checks**:
-- `./quick health`
-- `./quick git-status`
-- No temp files
-- active-tasks.md size < 2KB
-- MEMORY.md < 30 lines
+- All commands are safe and non-destructive (except branch deletion and file removal, which are verified)
+- No human input required
+- If any step fails, I will:
+  1. Stop and debug
+  2. Log the error in `findings.md`
+  3. Abort the remaining steps until resolved
 
 ---
 
-## Phase 7: Final Commit & Push
-
-**Status**: ⏳ Pending (after Phase 6)
-
-- Ensure all commits pushed
-- Create summary build commit if needed (some phases may have separate commits)
-
----
-
-## Query Log
-
-**01:05 UTC**: `read agents/ideas/latest.json` — confirmed validation bypass  
-**01:06 UTC**: `read agents/idea-executor/idea-executor-cycle.sh` — examining validation logic (next)
-
----
-
-## Errors & Debug Notes
-
-*(none yet)*
-
----
-
-**End of progress log (incomplete)**
+**Progress tracking ready.** Starting execution now.
