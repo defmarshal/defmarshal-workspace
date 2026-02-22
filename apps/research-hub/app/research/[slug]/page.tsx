@@ -1,6 +1,7 @@
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import gfm from "remark-gfm";
 import { notFound } from "next/navigation";
 import { readFile, access } from "fs/promises";
 import { join } from "path";
@@ -14,7 +15,10 @@ async function getResearchBySlug(slug: string) {
   try {
     const fileContent = await readFile(fullPath, "utf8");
     const { data, content } = matter(fileContent);
-    const processed = await remark().use(html).process(content);
+    const processed = await remark()
+      .use(gfm)
+      .use(html)
+      .process(content);
     const htmlContent = processed.toString();
 
     return {

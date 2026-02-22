@@ -21,10 +21,12 @@
 
 ## Phase 3: Commit & Push
 
-- [ ] Stage all changes (git add)
-- [ ] Craft commit message with prefix `build:`
-- [ ] Commit
-- [ ] Push to origin
+- [x] Stage all changes (git add)
+- [x] Craft commit message with prefix `build:`
+- [x] Commit (first batch: production work, docs, planning)
+- [x] Push to origin
+- [x] Discovered additional improvements (RSS GFM support) after initial commit
+- [ ] Stage and commit second batch (Research Hub enhancements)
 
 ## Phase 4: Close the Loop
 
