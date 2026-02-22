@@ -1,117 +1,163 @@
 #!/usr/bin/env bash
-# obsidian-sync - Sync OpenClaw outputs to an Obsidian vault (plain markdown approach)
-# Works without external CLI tools — just copy/transform files.
+# obsidian-sync - Sync OpenClaw outputs to an Obsidian vault (complete archive)
+# Copies all research and content files, organized by year-month.
+# Creates daily summary note and dashboard.
 
 set -euo pipefail
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 VAULT_DIR="${OBSIDIAN_VAULT:-$HOME/obsidian-vault}"
+
+echo "== Syncing OpenClaw outputs to Obsidian vault =="
+echo "Vault: $VAULT_DIR"
 mkdir -p "$VAULT_DIR"
 
-echo "Syncing OpenClaw outputs to Obsidian vault at: $VAULT_DIR"
-
-# 1. Daily note (YYYY-MM-DD.md in vault root or Daily Notes folder)
+# 1. Create/update daily summary note for TODAY
 DATE=$(date +%Y-%m-%d)
-DAILY_NOTE="$VAULT_DIR/$DATE.md"
+DAILY_NOTE="$VAULT_DIR/Daily/$DATE.md"
 mkdir -p "$VAULT_DIR/Daily"
 
-# Build daily summary
 SUMMARY="# $DATE — OpenClaw Summary\n\n"
 SUMMARY+="**Generated:** $(date -u '+%Y-%m-%d %H:%M UTC')\n\n"
 
-# Research today
-RESEARCH_COUNT=$(ls -1 research/${DATE}-*.md 2>/dev/null | wc -l)
-if [ "$RESEARCH_COUNT" -gt 0 ]; then
-  SUMMARY+="## Research ($RESEARCH_COUNT)\n"
-  for f in research/${DATE}-*.md; do
-    [ -e "$f" ] || continue
+# Today's research
+TODAY_RESEARCH=$(ls -1 research/${DATE}-*.md 2>/dev/null || true)
+if [ -n "$TODAY_RESEARCH" ]; then
+  RESEARCH_COUNT=$(echo "$TODAY_RESEARCH" | wc -l)
+  SUMMARY+="## Research Today ($RESEARCH_COUNT)\n"
+  for f in $TODAY_RESEARCH; do
     TITLE=$(head -1 "$f" | sed 's/^# //;s/\.md$//')
-    SUMMARY+="- [[$TITLE]] (research/$(basename $f))\n"
+    SUMMARY+="- [[$TITLE]] (Research/$(basename $f))\n"
   done
   SUMMARY+="\n"
 fi
 
-# Content today
-CONTENT_COUNT=$(ls -1 content/${DATE}-*.md 2>/dev/null | wc -l)
-if [ "$CONTENT_COUNT" -gt 0 ]; then
-  SUMMARY+="## Content ($CONTENT_COUNT)\n"
-  for f in content/${DATE}-*.md; do
-    [ -e "$f" ] || continue
+# Today's content
+TODAY_CONTENT=$(ls -1 content/${DATE}-*.md 2>/dev/null || true)
+if [ -n "$TODAY_CONTENT" ]; then
+  CONTENT_COUNT=$(echo "$TODAY_CONTENT" | wc -l)
+  SUMMARY+="## Content Today ($CONTENT_COUNT)\n"
+  for f in $TODAY_CONTENT; do
     TITLE=$(head -1 "$f" | sed 's/^# //;s/\.md$//')
-    SUMMARY+="- [[$TITLE]] (content/$(basename $f))\n"
+    SUMMARY+="- [[$TITLE]] (Content/$(basename $f))\n"
   done
   SUMMARY+="\n"
 fi
 
-# System health
+# System health snapshot
 HEALTH=$(./quick health 2>/dev/null || echo "N/A")
 SUMMARY+="## System Health\n"
-SUMMARY+="- $(echo "$HEALTH" | head -1)\n"
-SUMMARY+="- Memory: $(./quick memory-status 2>/dev/null | head -1 || echo "N/A")\n"
+SUMMARY+="- $HEALTH\n"
+SUMMARY+="- Memory: $(./quick memory-summary 2>/dev/null | head -1 || echo "N/A")\n"
 SUMMARY+="- Gateway: $(openclaw gateway status 2>/dev/null | head -1 || echo "N/A")\n"
 
-# Write daily note
 echo -e "$SUMMARY" > "$DAILY_NOTE"
 echo "✓ Created daily note: $DAILY_NOTE"
 
-# 2. Create an index note for latest research (if it doesn't exist or update it)
-INDEX_NOTE="$VAULT_DIR/Research/Index.md"
-mkdir -p "$VAULT_DIR/Research"
-if [ ! -f "$INDEX_NOTE" ]; then
-  cat > "$INDEX_NOTE" <<'EOF'
+# 2. Sync ALL research files (organized by year-month)
+RESEARCH_VAULT="$VAULT_DIR/Research"
+mkdir -p "$RESEARCH_VAULT"
+
+# Copy all research reports (YYYY-MM-DD-*.md) preserving year-month structure
+while IFS= read -r file; do
+  filename=$(basename "$file")
+  year_month=${filename:0:7}  # YYYY-MM
+  dest_dir="$RESEARCH_VAULT/$year_month"
+  mkdir -p "$dest_dir"
+  dest="$dest_dir/$filename"
+  if [ ! -f "$dest" ] || [ "$file" -nt "$dest" ]; then
+    cp "$file" "$dest"
+    echo "✓ Copied research: $year_month/$filename"
+  fi
+done < <(find research -maxdepth 1 -type f -name '????-??-??-*.md' 2>/dev/null | sort)
+
+# 3. Sync ALL content files (organized by year-month)
+CONTENT_VAULT="$VAULT_DIR/Content"
+mkdir -p "$CONTENT_VAULT"
+
+while IFS= read -r file; do
+  filename=$(basename "$file")
+  year_month=${filename:0:7}
+  dest_dir="$CONTENT_VAULT/$year_month"
+  mkdir -p "$dest_dir"
+  dest="$dest_dir/$filename"
+  if [ ! -f "$dest" ] || [ "$file" -nt "$dest" ]; then
+    cp "$file" "$dest"
+    echo "✓ Copied content: $year_month/$filename"
+  fi
+done < <(find content -maxdepth 1 -type f -name '????-??-??-*.md' 2>/dev/null | sort)
+
+# 4. Create/update Research Index note (with dataview suggestion)
+RESEARCH_INDEX="$VAULT_DIR/Research/Index.md"
+if [ ! -f "$RESEARCH_INDEX" ]; then
+  cat > "$RESEARCH_INDEX" <<'EOF'
 # Research Index
 
-This note is auto-generated. It lists all research reports by date.
+All research reports are organized by year-month folders below.
+
+To browse, use the file pane or this Dataview query:
 
 ```dataview
-TABLE file.mtime as Updated
+TABLE file.mtime as Modified
 FROM "Research"
 SORT file.name DESC
 ```
 EOF
-  echo "✓ Created research index"
+  echo "✓ Created research index note"
 fi
 
-# 3. Copy today's research files to vault (as symlinks or copies)
-RESEARCH_VAULT="$VAULT_DIR/Research/$(date +%Y-%m)"
-mkdir -p "$RESEARCH_VAULT"
-for f in research/${DATE}-*.md; do
-  [ -e "$f" ] || continue
-  DEST="$RESEARCH_VAULT/$(basename $f)"
-  if [ ! -f "$DEST" ]; then
-    cp "$f" "$DEST"
-    echo "✓ Copied $(basename $f) to vault"
-  fi
-done
+# 5. Create/update Content Index note
+CONTENT_INDEX="$VAULT_DIR/Content/Index.md"
+if [ ! -f "$CONTENT_INDEX" ]; then
+  cat > "$CONTENT_INDEX" <<'EOF'
+# Content Index
 
-# 4. Create/update a dashboard note with stats
+Daily digests and content notes organized by year-month.
+
+```dataview
+TABLE file.mtime as Modified
+FROM "Content"
+SORT file.name DESC
+```
+EOF
+  echo "✓ Created content index note"
+fi
+
+# 6. Update Dashboard with comprehensive stats
 DASHBOARD="$VAULT_DIR/Dashboard.md"
-TOTAL_RESEARCH=$(ls research/*.md 2>/dev/null | wc -l)
-TOTAL_CONTENT=$(ls content/*.md 2>/dev/null | wc -l)
+TOTAL_RESEARCH=$(find research -name '????-??-??-*.md' 2>/dev/null | wc -l)
+TOTAL_CONTENT=$(find content -name '????-??-??-*.md' 2>/dev/null | wc -l)
+TOTAL_DAILY=$(find Daily -name '*.md' 2>/dev/null | wc -l)
+
 cat > "$DASHBOARD" <<EOF
 # OpenClaw Dashboard
 
-**Last updated:** $(date -u '+%Y-%m-%d %H:%M UTC')
+**Last sync:** $(date -u '+%Y-%m-%d %H:%M UTC')
 
-## Stats
+## Archive Stats
 - Research reports: $TOTAL_RESEARCH
 - Content files: $TOTAL_CONTENT
-- Disk usage: $(df -h . | awk 'NR==2 {print $5}')
+- Daily notes: $TOTAL_DAILY
+- Workspace disk: $(df -h "$WORKSPACE" | awk 'NR==2 {print $5 " used"}')
 
-## Latest Research
+## Quick Links
+- [[Research/Index|Research Index]]
+- [[Content/Index|Content Index]]
+- [[Daily|Daily Notes]]
 
+## Upcoming Indonesian Holidays
+$(./quick holidays 2>/dev/null | sed -n '4,13p' | sed 's/^/ - /' || echo " - (none this month)")
+
+## Recent Research (latest 5)
 \`\`\`dataview
-TABLE file.mtime as Updated
+TABLE file.mtime as Modified
 FROM "Research"
-SORT file.mtime DESC
-LIMIT 10
+SORT file.name DESC
+LIMIT 5
 \`\`\`
-
-## Upcoming Holidays
-$(./quick holidays 2>/dev/null | head -10 | sed 's/^/ - /')
 EOF
 echo "✓ Updated dashboard"
 
 echo ""
-echo "Sync complete! Open your Obsidian vault to see changes."
-echo "If you use Dataview plugin, the dashboard and index will show live tables."
+echo "✅ Sync complete! All research and content archives are now in the vault."
+echo "   Use Obsidian's file pane or Dataview queries to browse."
