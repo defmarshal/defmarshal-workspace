@@ -2,14 +2,14 @@ import ResearchClient from "@/components/ResearchClient";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import { readdir, readFile } from "fs/promises";
+import { readdir, readFile, access } from "fs/promises";
 import { join } from "path";
 
 export const dynamic = "force-dynamic"; // avoid caching
 
 export default async function HomePage() {
   const RESEARCH_DIR = join(process.cwd(), "public", "research");
-  let researchData: { slug: string; title: string; date: string; excerpt: string }[] = [];
+  let researchData: { slug: string; title: string; date: string; excerpt: string; hasAudio: boolean }[] = [];
 
   try {
     const files = await readdir(RESEARCH_DIR).catch(() => []);
@@ -24,11 +24,22 @@ export default async function HomePage() {
         const processed = await remark().use(html).process(content);
         const htmlContent = processed.toString();
 
+        // Check if audio file exists
+        const audioPath = join(RESEARCH_DIR, `${slug}.mp3`);
+        let hasAudio = false;
+        try {
+          await access(audioPath);
+          hasAudio = true;
+        } catch {
+          // no audio
+        }
+
         return {
           slug,
           title: data.title || slug,
           date: data.date || slug.split("-").slice(0, 3).join("-"),
           excerpt: htmlContent.slice(0, 200).replace(/<[^>]*>?/gm, "") + "...",
+          hasAudio,
         };
       })
     );

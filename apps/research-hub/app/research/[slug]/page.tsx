@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 import { notFound } from "next/navigation";
-import { readFile } from "fs/promises";
+import { readFile, access } from "fs/promises";
 import { join } from "path";
 
 type Props = {
@@ -27,6 +27,17 @@ async function getResearchBySlug(slug: string) {
   }
 }
 
+// Check if audio exists for this slug
+async function hasAudio(slug: string): Promise<boolean> {
+  const audioPath = join(process.cwd(), "public", "research", `${slug}.mp3`);
+  try {
+    await access(audioPath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const research = await getResearchBySlug(slug);
@@ -43,6 +54,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function ResearchPage({ params }: Props) {
   const { slug } = await params;
   const research = await getResearchBySlug(slug);
+  const audioAvailable = await hasAudio(slug);
 
   if (!research) {
     notFound();
@@ -63,6 +75,14 @@ export default async function ResearchPage({ params }: Props) {
                 day: "numeric",
               })}
             </time>
+            {audioAvailable && (
+              <div className="mt-4">
+                <audio controls className="w-full max-w-md">
+                  <source src={`/research/${slug}.mp3`} type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            )}
           </header>
           <div
             className="research-content"
