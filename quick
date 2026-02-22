@@ -89,6 +89,7 @@ Commands:
   content-latest              Show the latest content digest/note from content/ directory.
   today-content               Show today's content files and daily digest status (created today UTC?)
   content-index-update        Regenerate content/INDEX.md to reflect current content files.
+  research-index-update      Regenerate research/INDEX.md to reflect current research reports.
   research-watchlist          Show the latest research planning watchlist (research/watchlist-*.md)
   reports                     List daily digest reports in reports/ (most recent first)
   research-hub-deploy         Deploy Research Hub to standalone GitHub repo and Vercel (requires gh & vercel)
@@ -803,6 +804,10 @@ case "$cmd" in
   content-index-update)
     # Regenerate content/INDEX.md to reflect current content files
     "$WORKSPACE/update-content-index.sh"
+    ;;
+  research-index-update)
+    # Regenerate research/INDEX.md to reflect current research reports
+    "$WORKSPACE/update-research-index.sh"
     ;;
   research-watchlist)
     # Show the latest research watchlist file
