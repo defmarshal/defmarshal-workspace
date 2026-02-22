@@ -19,8 +19,8 @@ fi
 # Create destination if it doesn't exist
 mkdir -p "$DEST"
 
-# Copy all markdown files (rsync for efficiency)
+# Copy all markdown and mp3 files (rsync for efficiency)
 echo "Syncing files..."
-rsync -av --delete --include="*.md" --exclude="*" "$SOURCE/" "$DEST/"
+rsync -av --delete --include="*.md" --include="*.mp3" --exclude="*" "$SOURCE/" "$DEST/"
 
 echo "✅ Prebuild complete: $(ls -1 "$DEST" | wc -l) research files in $DEST"
