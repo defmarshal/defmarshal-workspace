@@ -60,6 +60,18 @@ fi
 RUN_ID="exec-$NEXT_SLUG-$(date -u +%s)"
 echo "{\"status\":\"executing\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":\"$NEXT_SLUG\",\"run_id\":\"$RUN_ID\"}" > "$STATUS_FILE"
 
+# ------------------------------------------------------------
+# Pre-execution sanity: ensure workspace is clean
+# ------------------------------------------------------------
+if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
+  log "ERROR: Workspace contains uncommitted changes. Aborting to prevent commit contamination."
+  # Mark idea as rejected due to dirty workspace
+  TMP_JSON=$(mktemp)
+  jq ".[$NEXT_IDX].executed = true | .[$NEXT_IDX].execution_result = \"rejected\" | .[$NEXT_IDX].executed_at = \"$RUN_TIMESTAMP\" | .[$NEXT_IDX].execution_log = \"$LOG_FILE\" | .[$NEXT_IDX].validated = true | .[$NEXT_IDX].error = \"workspace_dirty\"" "$IDEA_FILE" > "$TMP_JSON" && mv "$TMP_JSON" "$IDEA_FILE"
+  echo "{\"status\":\"idle\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":\"$NEXT_SLUG\",\"result\":\"rejected\",\"error\":\"workspace_dirty\"}" > "$STATUS_FILE"
+  exit 0
+fi
+
 log() {
   echo "[$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)] $*" >> "$LOG_FILE"
 }

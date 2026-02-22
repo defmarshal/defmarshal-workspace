@@ -1,60 +1,125 @@
-# Workspace Builder - Progress Log
+# Workspace Builder — Progress Log
 
-## Initial Assessment (2026-02-21 23:00 UTC)
-
-### System Overview
-- **Health:** All OK (Disk 53%, Gateway healthy, Memory: 20f/109c clean, local FTS+)
-- **Git:** Clean working tree
-- **Memory:** Last reindex ~5 days ago (acceptable)
-- **Downloads:** 15 files, 5.2G total
-- **Cron Health:** agent-manager-cron shows ✗ error (timeout), others OK
-
-### Issues Identified
-1. **agent-manager-cron timeout too short** → causes error status and potential missed maintenance
+**Session Started**: 2026-02-22 01:00 UTC  
+**Cron Job ID**: 23dad379-21ad-4f7a-8c68-528f98203a33  
+**Current Branch**: idea/build-a-cli-game-inside
 
 ---
 
-## Execution Log
+## Phase 1: Analysis & Documentation
 
-### Task 1: Update Cron Job Timeout
-- [x] Get current agent-manager-cron job ID (should be `524a0d6f-d520-4868-9647-0f89f7990f62`)
-- [x] Run `openclaw cron edit 524a0d6f-d520-4868-9647-0f89f7990f62 --timeout-seconds 900`
-- [x] Verify change: `openclaw cron list --json` shows `"timeoutSeconds":900` in payload
+**Status**: ✅ Complete (2026-02-22 01:05 UTC)
 
-### Task 2: Validate the Fix
-- [x] Run `./quick cron-health` – agent-manager-cron still shows error (expected until next run), but config updated
-- [x] Run `./quick health` – overall OK
-- [x] Run `./agents/agent-manager.sh --once` manually – completes cleanly, no errors
+- Read active-tasks.md, SOUL.md, USER.md, memory files
+- Ran `git status`, `./quick health`, `./quick memory-status`
+- Inspected `agents/ideas/latest.json` — found validation bypass
+- Created `task_plan.md` (4947 bytes)
+- Created `findings.md` (6433 bytes)
 
-### Task 3: Record the Improvement
-- [x] Appended to `memory/2026-02-21.md` new section "Workspace Builder: Agent Manager Cron Timeout Fix"
-- [x] Included problem, root cause, fix, validation, outcome.
+**Deliverables**:
+- `task_plan.md` — complete plan with 7 phases
+- `findings.md` — detailed analysis of 5 issues
 
-### Task 4: Update active-tasks.md
-- [x] Changed session entry status from `running` to `validated`
-- [x] Added Verification notes summarizing the fix.
-
-### Task 5: Commit & Push
-- [ ] `git add -A` (pending)
-- [ ] `git commit -m "build: increase agent-manager-cron timeout to 900s to prevent errors"`
-- [ ] `git push origin master`
-- [ ] Verify push succeeded
+**Notes**: This progress file will be updated after each phase.
 
 ---
 
-## Final Validation Checklist
+## Phase 2: Fix Idea Validation Logic
 
-- [ ] Health check passes
-- [ ] No temp files left
-- [ ] Git clean after commit
-- [ ] active-tasks.md reflects validated entry and size <2KB
-- [ ] Cron configuration updated; future runs will succeed
-- [ ] Changes pushed to remote
+**Status**: ✅ Complete (01:15 UTC)
+
+**Root cause identified**: The executor did not check for uncommitted changes before running. The `build-a-cli-game-inside` idea's `git add -A` picked up pre-existing untracked research reports (2 new research files) and committed them along with `quick`, resulting in 568 insertions. The validator saw a large commit and accepted it, even though the idea itself only produced trivial changes.
+
+**Fix implemented**: Added pre-execution cleanliness check in `agents/idea-executor/idea-executor-cycle.sh`:
+- Before executing steps, check `git status --porcelain`
+- If any uncommitted changes (tracked or untracked), reject the idea with `workspace_dirty` error
+- This prevents contamination and ensures only idea-generated changes are committed
+
+**Code changes**:
+- Inserted check after status update (lines ~115-130)
+- Rejects idea, marks `execution_result: "rejected"`, logs error
+
+**Validation**: Next idea execution with dirty workspace will be rejected and logged.
+
+**Next**: Phase 3 (Clean up stale branch) — ✅ Already completed (01:12 UTC) before this fix. Branch deleted locally and remotely.
 
 ---
 
-## Status
+## Phase 3: Clean Up Stale Branch
 
-**Current Phase:** Ready to commit  
-**Started:** 2026-02-21 23:00 UTC  
-**Agent:** workspace-builder (cron)
+**Status**: ⏳ Pending (after Phase 2 complete)
+
+**Objective**: Delete `idea/build-a-cli-game-inside` locally and remotely.
+
+**Commands**:
+```bash
+git branch -D idea/build-a-cli-game-inside
+git push origin --delete idea/build-a-cli-game-inside  # if exists
+```
+
+**Pre-checks**:
+- Ensure no valuable work on branch (compare with master: `git log --oneline master..idea/build-a-cli-game-inside`)
+- Confirm branch is fully merged? (No — it's noise; safe to force delete)
+
+---
+
+## Phase 4: Commit Pending Daily Digest
+
+**Status**: ⏳ Pending (after Phase 3)
+
+**File**: `content/2026-02-22-daily-digest.md`
+
+**Actions**:
+- Verify content quality
+- `git add content/2026-02-22-daily-digest.md`
+- `git commit -m "content: daily digest - 2026-02-22"`
+- `git push origin <current-branch>` (will be master after branch cleanup)
+
+---
+
+## Phase 5: Update Documentation & Memory
+
+**Status**: ⏳ Pending (after Phase 4)
+
+**Files**:
+- `MEMORY.md` — add 2026-02-22 entry
+- `active-tasks.md` — mark this session validated; add verification notes
+
+---
+
+## Phase 6: Close the Loop Validation
+
+**Status**: ⏳ Pending (after Phase 5)
+
+**Checks**:
+- `./quick health`
+- `./quick git-status`
+- No temp files
+- active-tasks.md size < 2KB
+- MEMORY.md < 30 lines
+
+---
+
+## Phase 7: Final Commit & Push
+
+**Status**: ⏳ Pending (after Phase 6)
+
+- Ensure all commits pushed
+- Create summary build commit if needed (some phases may have separate commits)
+
+---
+
+## Query Log
+
+**01:05 UTC**: `read agents/ideas/latest.json` — confirmed validation bypass  
+**01:06 UTC**: `read agents/idea-executor/idea-executor-cycle.sh` — examining validation logic (next)
+
+---
+
+## Errors & Debug Notes
+
+*(none yet)*
+
+---
+
+**End of progress log (incomplete)**

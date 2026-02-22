@@ -1,51 +1,193 @@
-# Findings: Workspace Builder - Initial Assessment
+# Workspace Builder — Findings Report
 
-**Date**: 2026-02-21 23:00 UTC  
-**Phase**: 1 (Assessment)  
-**Session**: workspace-builder (cron-triggered)
-
----
-
-## Assessment Findings
-
-### 1. Cron Health Status
-- Ran `quick cron-health` and observed `agent-manager-cron` marked with `✗ error`.
-- Other cron jobs all show `✓ ok`.
-- This indicates a systemic issue with the agent manager monitoring itself.
-
-### 2. Root Cause Analysis
-- Reviewed `agents/agent-manager.sh`: When no content/research exists for today, the script spawns two agents with `openclaw agent ... --timeout 600000` (10 minutes).
-- The agent-manager-cron job has a `timeoutSeconds` of 300 (5 minutes).
-- If the spawned agents take significant time, the cron job exceeds its timeout and is killed, resulting in error status.
-- Manual run (`./agents/agent-manager.sh --once`) completes quickly because it may not spawn agents (today already has content/research) or agents finish quickly. However, the cron history shows last run hit the 300s limit (`lastDurationMs: 300002`).
-
-### 3. Impact
-- The agent manager is responsible for critical maintenance: auto-commits, memory reindex triggering, downloads cleanup, cron schedule validation, and spawning content/research when needed.
-- If it consistently times out, these tasks may not execute reliably.
-
-### 4. Solution Proposed
-- Increase `agent-manager-cron` `timeoutSeconds` from 300 to 900 seconds (15 minutes) to safely cover worst-case agent spawns.
-- This is a safe, one-line configuration change via `openclaw cron update`.
-- No changes needed to the agent-manager script itself.
-
-### 5. Additional Observations
-- Overall workspace health is excellent: disk 53%, gateway healthy, memory clean, git clean.
-- active-tasks.md is well-maintained (<2KB).
-- No temp files or orphaned branches.
-- Memory index healthy; Voyage AI disabled but local FTS+ working.
-- Documentation (CRON_JOBS.md, AGENTS.md, TOOLS.md) is up to date.
-
-### 6. Plan Derived
-- **Primary**: Fix agent-manager-cron timeout.
-- **Secondary**: Document the fix in daily memory log.
-- **Optional**: Add timeout note to CRON_JOBS.md job entry for clarity.
-- Validation: cron-health should show OK, health check clean, active-tasks updated.
-- Commit all relevant changes with `build:` prefix.
+**Date**: 2026-02-22 01:00 UTC  
+**Session**: cron:23dad379-21ad-4f7a-8c68-528f98203a33  
+**Branch**: idea/build-a-cli-game-inside (stale)
 
 ---
 
-## Conclusion
+## Executive Summary
 
-The workspace is in good shape; addressing the agent-manager-cron timeout will improve reliability of the self-maintenance system. The fix is low-risk and straightforward.
+Identified **3 critical issues** and **2 minor improvements**:
 
-**Next steps**: Execute the plan as outlined in `task_plan.md`.
+1. **Idea validation bypassed** — Noise commit passed as "validated" despite touching only `quick` with ≤5 lines
+2. **Stale feature branch** — `idea/build-a-cli-game-inside` with noise commits should be removed
+3. **Untracked daily digest** — `content/2026-02-22-daily-digest.md` not committed (pipeline gap)
+4. **Documentation stale** — MEMORY.md needs updating since Feb 21
+5. **active-tasks.md** — Needs current session entry and archival
+
+---
+
+## Detailed Findings
+
+### 1. Idea Validation Failure (CRITICAL)
+
+**Location**: `agents/ideas/latest.json` shows:
+```json
+{
+  "slug": "build-a-cli-game-inside",
+  "executed": true,
+  "validated": true,
+  "steps": [
+    "grep -r track /home/ubuntu/.openclaw/workspace > /dev/null",
+    "git checkout -b idea/build-a-cli-game-inside 2>/dev/null || git checkout idea/build-a-cli-game-inside",
+    "touch quick 2>/dev/null || true",
+    "git add -A",
+    "git commit -m 'feat(idea): Build A Cli Game Inside' || true"
+  ]
+}
+```
+
+**Problem**:
+- Step 3 only touches `quick` (launcher file)
+- No substantive source files modified
+- Commit likely had ≤5 insertions/deletions (touch command)
+- Yet `validated: true` indicates validation passed incorrectly
+
+**Impact**:
+- Noise commits pollute git history
+- Wastes token budget and OpenRouter rate limits
+- Creates stale branches that need manual cleanup
+
+**Root Cause**:
+The idea executor's validation check is either:
+- Not being applied to this idea (maybe skipped due to error)
+- Too permissive (doesn't check file types or change size)
+- Not reading the `validated` flag properly
+
+**Recommendation**:
+- Inspect `agents/idea-executor/idea-executor-cycle.sh` and its validation subroutine
+- Ensure it checks:
+  - `git diff --stat` → total lines changed > 5
+  - Modified files include at least one recognized code extension (sh, md, ts, js, json, yml, py, rb, go, rs, c, cpp, h, txt, html, css)
+  - Exclude launcher-only changes (`quick` file by itself)
+  - Reject empty commits (`git diff-index HEAD` empty)
+- Mark `validated: false` and `execution_result: "rejected"` if criteria fail
+
+---
+
+### 2. Stale Feature Branch (CRITICAL)
+
+**Branch**: `idea/build-a-cli-game-inside`
+- Commit: `571dde5 feat(idea): Build A Cli Game Inside`
+- Only modified: `quick` (or nothing substantive)
+- No further development; abandoned
+
+**Impact**:
+- Clutters branch list
+- May be pushed to remote (needs verification)
+- Confusion about active work
+
+**Action**: Delete both locally and remotely after validation fix is confirmed.
+
+---
+
+### 3. Untracked Daily Digest (HIGH)
+
+**File**: `content/2026-02-22-daily-digest.md`
+- Generated by content-agent cron (likely at 00:35 UTC)
+- Size: ~2.5KB, properly formatted
+- Not committed to git
+
+**Why it matters**:
+- Content files should be versioned
+- The git-janitor or agent-manager is supposed to auto-commit uncommitted content daily
+- Failure to commit indicates either:
+  - The file is in `.gitignore` by mistake (unlikely — content/*.md tracked)
+  - The agent-manager's auto-commit didn't run or skipped this file
+  - File is too new and hasn't been picked up yet (possible timing)
+
+**Check**:
+```bash
+git status --porcelain
+# Should show "?? content/2026-02-22-daily-digest.md"
+```
+
+**Action**:
+- Manually commit now with `content:` prefix
+- Investigate why auto-commit missed it (maybe the janitor runs at different cadence)
+- If persistent, review `agents/git-janitor-cycle.sh` thresholds
+
+---
+
+### 4. MEMORY.md Stale (MEDIUM)
+
+**Last updated**: 2026-02-21 (yesterday)
+**Today**: 2026-02-22 — needs entry for:
+- Idea validation fix (in progress)
+- Noise commit cleanup
+- Daily digest pipeline monitoring
+
+**Format**: Index-only, ≤30 lines. Use bullet points with links to detailed files.
+
+**Suggested addition**:
+- `2026-02-22: Fixed idea validation bypass; cleaned stale branch; improved content pipeline monitoring.`
+
+---
+
+### 5. active-tasks.md Needs Update (LOW)
+
+**Current state**: Shows "none — all agents validated/cleaned" but this session (workspace-builder cron) is running.
+
+**Action**:
+- Add entry for this session at top of "Currently Running" with:
+  - sessionKey (from environment: likely `workspace-builder-20260222-0100`)
+  - goal: "Fix idea validation, clean stale branch, commit digest, update docs"
+  - started: 2026-02-22 01:00 UTC
+  - status: running
+- After validation phase, update to `validated` and add verification notes
+- Archive old entries from "Recently Completed" if file size >2KB
+
+---
+
+## Other Observations
+
+- **System health**: All green (disk 54%, gateway healthy, memory clean)
+- **Memory index**: 20/21 files indexed, dirty: no
+- **Agent load**: Many cron agents running; all appear healthy in sessions list
+- **Git branch list**: Clean except for the stale idea branch
+- **Cron jobs**: All documented in CRON_JOBS.md; no drift detected recently
+
+---
+
+## Risks & Mitigations
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| Breaking idea executor validation | Low | Medium | Test on dummy idea before applying; keep changes minimal |
+| Deleting branch with valuable work | Low | Medium | Verify branch has no unique commits not on master (git log comparison) |
+| Missing a required update elsewhere | Low | Low | Review entire plan; cross-check with MEMORY.md and active-tasks.md rules |
+
+---
+
+## Proposed Commit Messages
+
+1. **Content digest** (manual now):
+   ```
+   content: daily digest - 2026-02-22
+   ```
+
+2. **Builder session** (after validation):
+   ```
+   build: fix idea validation, clean stale branch, commit digest
+   ```
+
+3. **Documentation updates** (if separate):
+   ```
+   docs: update MEMORY.md with 2026-02-22 learnings
+   ```
+
+---
+
+## Success Indicators
+
+- [ ] Idea executor rejects future launcher-only proposals automatically
+- [ ] Branch `idea/build-a-cli-game-inside` deleted locally and remotely
+- [ ] `git status` clean (no untracked files in content/, except new daily digest which gets committed)
+- [ ] MEMORY.md ≤30 lines, includes today's key points
+- [ ] active-tasks.md ≤2KB, current session marked validated with verification output
+- [ ] `./quick health` passes all checks
+
+---
+
+**Next**: Execute Phase 2 (Fix Idea Validation)

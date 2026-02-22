@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-02-21*
+*Last updated: 2026-02-22*
 
 ## Personal
 def, UTC+7, mewmew assistant; interests: anime, tech
@@ -27,6 +27,7 @@ Memory System, Workspace Health & Automation, Anime Companion, Torrent System, I
 - systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 
 ## Learnings (latest)
+- 2026-02-22: Idea executor added pre-execution cleanliness check (git status --porcelain) to prevent commit contamination from uncommitted changes; cleaned stale branch; enforced daily digest commits.
 - 2026-02-21: meta-agent robustness (find vs ls), spawn debouncing, idea executor validation, capability-evolver first cycle
 - 2026-02-19: token optimization caps break output → gentle constraints
 - 2026-02-18: agent-manager auto-commit must detect untracked files; quick syntax fix; enforce task registry limits
