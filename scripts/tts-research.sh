@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-# Polyglot TTS for research reports: Kokoro (English) or Edge TTS (Japanese)
+# Polyglot TTS for research reports: fully Kokoro (English + Japanese)
 # Usage: ./tts-research.sh <research-file.md>
 
 set -euo pipefail
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
-EDGE_SCRIPT="$WORKSPACE/scripts/tts-edge.sh"
 KOKORO_HELPER="$WORKSPACE/scripts/kokoro-generate.py"
 KOKORO_VENV_PYTHON="$WORKSPACE/skills/kokoro-tts/venv/bin/python"
 
@@ -28,7 +27,7 @@ else
   OUTPUT_FILE="$WORKSPACE/${RESEARCH_FILE%.md}.mp3"
 fi
 
-# Extract text summary (same as tts-edge.sh)
+# Extract text summary (same approach as before)
 mapfile -t lines < "$RESEARCH_FILE"
 
 start_idx=0
@@ -82,15 +81,27 @@ fi
 if python3 -c "import sys; s = sys.argv[1]; 
 def is_ja(cp): return (0x3040 <= cp <= 0x309F or 0x30A0 <= cp <= 0x30FF or 0x4E00 <= cp <= 0x9FFF)
 sys.exit(0 if any(is_ja(ord(c)) for c in s) else 1)" "$text"; then
-  echo "Detected Japanese text → using Edge TTS (ja-JP-NanamiNeural)"
-  "$EDGE_SCRIPT" "$RESEARCH_FILE" "ja-JP-NanamiNeural" "+18%"
+  echo "Detected Japanese text → using Kokoro (jf_nezumi)"
+  LANG_CODE='j'
+  VOICE='jf_nezumi'
+  SPEED=1.1
 else
   echo "Detected non‑Japanese (English/other) → using Kokoro (af_heart)"
-  "$KOKORO_VENV_PYTHON" "$KOKORO_HELPER" "$text" "$OUTPUT_FILE"
-  if [ -f "$OUTPUT_FILE" ]; then
-    echo "✓ Created: $OUTPUT_FILE ($(du -h "$OUTPUT_FILE" | cut -f1))"
-  else
-    echo "✗ Kokoro generation failed"
-    exit 1
-  fi
+  LANG_CODE='a'
+  VOICE='af_heart'
+  SPEED=1.1
+fi
+
+"$KOKORO_VENV_PYTHON" "$KOKORO_HELPER" \
+  --lang "$LANG_CODE" \
+  --voice "$VOICE" \
+  --speed "$SPEED" \
+  --file /dev/stdin \
+  "$OUTPUT_FILE" <<< "$text"
+
+if [ -f "$OUTPUT_FILE" ]; then
+  echo "✓ Created: $OUTPUT_FILE ($(du -h "$OUTPUT_FILE" | cut -f1))"
+else
+  echo "✗ Kokoro generation failed"
+  exit 1
 fi
