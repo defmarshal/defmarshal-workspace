@@ -1,64 +1,72 @@
 # Workspace Builder Plan
 
 **Session ID:** 23dad379-21ad-4f7a-8c68-528f98203a33
-**Triggered:** 2026-02-22 05:00 UTC (cron) — ACTIVE SESSION
-**Goal:** Implement meaningful workspace improvements while keeping changes small but valuable.
+**Triggered:** 2026-02-22 09:00 UTC (cron)
+**Goal:** Analyze workspace state and implement meaningful improvements (cleanup, hygiene, bug fixes).
 
-## Current Context (2026-02-22 07:00 UTC)
+## Current Context (2026-02-22 09:00 UTC)
 
-- Previous workspace-builder run (05:00 UTC) successfully completed TTS utilities cleanup and active-tasks pruning.
-- New uncommitted work appeared post that run:
-  1. `memory/evolver-summary.md` - Modified with latest evolver cycle details (06:11 UTC)
-  2. `content/2026-02-22-infrastructure-digest.md` - Untracked daily digest from content-agent
-- Both files represent legitimate agent outputs that should be committed to preserve work and maintain history.
-- Git status currently dirty; these changes need to be finalized and pushed.
+- Previous workspace-builder run (05:00-07:00 UTC) completed successfully: committed agent artifacts (evolver-summary, infrastructure digest), validated health, pushed changes.
+- System health remains excellent: Disk 64%, Memory clean, Gateway healthy.
+- Git status: clean working tree (no uncommitted changes).
+- **However**: HEAD is on feature branch `idea/automate-memory-stores-cleanup-using` which is stale and should be cleaned up.
+  - This branch originated from a failed idea execution (validation rejected).
+  - Last commit on branch is a revert of `feat: Add quick git-sync for safe fetch/pull workflow`.
+  - The `git-sync.sh` script was deleted.
+  - The branch should be removed to keep repository tidy and avoid confusion.
+  - We are currently on this branch; must switch to master before deletion.
+- Active tasks registry clean (<2KB), no running agents.
+- No pending updates.
 
 ## Analysis
 
-- The evolver-summary.md is a rolling log of capability evolver cycles. The modification is a standard append of a new cycle summary (exit 0, backoff due to session count). This should be committed to retain the evolutionary record.
-- The infrastructure digest is a content file documenting significant updates (Kokoro TTS unification, tts-stats, idea-executor fix). It follows the daily digest naming convention and belongs in the content/ directory. It should be added and committed.
-- Active tasks registry shows no running agents; only archived entries from Feb 21 remain. The Feb 22 05:00 workspace-builder entry was already removed by that run. Registry is healthy (<2KB). No changes needed to active-tasks.md.
-- System health: Disk 64%, Memory clean, Gateway healthy, no pending updates. All OK.
-- `.gitignore` already contains `*.mp3` (from previous run) and other appropriate patterns.
+The workspace has an orphaned feature branch that is not merged and contains no valuable work (the only commit was a revert). It should be deleted. Additionally, we might consider whether the git-sync utility itself is valuable enough to restore as a proper feature, but that is a separate decision. For hygiene, removing the stale branch is the priority.
+
+The branch name matches a rejected idea; its presence could confuse the idea executor or future workspace-builder runs. Cleaning it up improves repository organization.
 
 ## Objectives
 
-1. Add the untracked digest file to the repository (`content/2026-02-22-infrastructure-digest.md`)
-2. Commit the modification to `memory/evolver-summary.md`
-3. Perform close-the-loop validation: health check, git status, temp file check
-4. Push commits to origin with appropriate message prefix
-5. Verify no updates needed to active-tasks.md (registry remains clean)
-6. Document this session in active-tasks.md if applicable (as a running agent)
+1. Switch from the stale feature branch to `master` (or main) branch.
+2. Delete the local branch `idea/automate-memory-stores-cleanup-using`.
+3. Delete the remote branch (if exists) to fully clean up.
+4. Verify `master` is the current HEAD and git status is clean.
+5. Perform close-the-loop validation: health check, ensure no temp files.
+6. Document this cleanup in the daily log (`memory/2026-02-22.md`).
+7. Update `active-tasks.md` only if this session needs to be tracked (not required for cron-triggered main session).
+8. Push any necessary updates (branch deletion to remote).
 
 ## Steps
 
-- [ ] **Step 1:** Stage untracked digest: `git add content/2026-02-22-infrastructure-digest.md`
-- [ ] **Step 2:** Stage modified evolver-summary: `git add memory/evolver-summary.md`
-- [ ] **Step 3:** Review staged changes with `git diff --cached`
-- [ ] **Step 4:** Write commit message explaining these are agent-run artifacts requiring preservation
-- [ ] **Step 5:** Commit with prefix `build:` (workspace-builder's work to finalize uncommitted changes)
-- [ ] **Step 6:** Push to origin: `git push`
-- [ ] **Step 7:** Run verification: `quick health`, `git status`, check for temp files
-- [ ] **Step 8:** Update `active-tasks.md` (if this session is not yet recorded; add entry with validation status)
-- [ ] **Step 9:** Close the loop: Ensure all validation criteria met
+- [ ] **Step 1:** Check current branch: `git branch --show-current`
+- [ ] **Step 2:** Switch to master: `git checkout master`
+- [ ] **Step 3:** Fetch and prune origin: `git fetch --prune origin`
+- [ ] **Step 4:** Delete local branch: `git branch -D idea/automate-memory-stores-cleanup-using`
+- [ ] **Step 5:** Delete remote branch: `git push origin --delete idea/automate-memory-stores-cleanup-using`
+- [ ] **Step 6:** Verify branch gone: `git branch -a | grep automate-memory-stores-cleanup-using` (should return nothing)
+- [ ] **Step 7:** Run health check: `quick health`
+- [ ] **Step 8:** Check for temp files: `find . -name "*.tmp" -o -name "*~" 2>/dev/null | head`
+- [ ] **Step 9:** Append daily log entry in `memory/2026-02-22.md` summarizing the cleanup.
+- [ ] **Step 10:** Push any changes (if daily log updated) to origin.
 
 ## Validation Criteria
 
-- `git status` shows clean working tree (or only expected current session changes)
-- Commits contain both files (digest added, evolver-summary updated)
-- `quick health` passes (Disk <80%, Memory clean, Gateway healthy, no updates)
+- Current branch is `master`
+- Stale branch deleted locally and remotely
+- No leftover branch references
+- Health check passes
 - No temporary files present
-- Active-tasks.md reflects current session (if applicable) and is <2KB
-- Commits pushed successfully to origin
+- Daily log updated with this session's action
+- Git status clean (or only daily log changes)
+- active-tasks.md remains clean and <2KB (no changes needed)
 
 ## Risks & Mitigations
 
-- Risk: Committing large files accidentally. Mitigation: Verify file sizes before commit (digest ~3KB, evolver-summary small).
-- Risk: Overwriting active-tasks entry incorrectly. Mitigation: Only add if this session is not already listed; check before editing.
-- Risk: Commit message not following convention. Mitigation: Use `build:` prefix as per workspace-builder commits.
+- Risk: Accidentally deleting wrong branch. Mitigation: Double-check branch name before deletion; use `-D` only after confirming it's not needed.
+- Risk: Remote deletion fails due to permissions or branch already deleted. Mitigation: `git push --delete` may error; check and ignore if already absent.
+- Risk: Daily log append may cause merge conflict if multiple builder runs write concurrently. Mitigation: Append safely; if conflict arises, handle via retry or manual resolution.
 
 ## Notes
 
-- This is essentially a "finalization and cleanup" run: preserve legitimate agent outputs that were generated after the previous builder run.
-- The changes are substantive: new content file and historical log update.
-- Keep commit atomic: one commit for both files (they are related as "uncommitted agent artifacts").
+- This is a hygiene-focused run: repository cleanup, branch hygiene.
+- The task is small but meaningful: prevents clutter and potential confusion.
+- The session ID matches the cron-triggered job; no need to add to active-tasks.md per AGENTS.md guidelines for main sessions.
