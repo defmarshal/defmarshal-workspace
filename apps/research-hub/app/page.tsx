@@ -2,6 +2,7 @@ import ResearchClient from "@/components/ResearchClient";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import gfm from "remark-gfm";
 import { readdir, readFile, access } from "fs/promises";
 import { join } from "path";
 
@@ -21,7 +22,10 @@ export default async function HomePage() {
         const fullPath = join(RESEARCH_DIR, filename);
         const fileContent = await readFile(fullPath, "utf8");
         const { data, content } = matter(fileContent);
-        const processed = await remark().use(html).process(content);
+        const processed = await remark()
+          .use(gfm)
+          .use(html)
+          .process(content);
         const htmlContent = processed.toString();
 
         // Check if audio file exists
