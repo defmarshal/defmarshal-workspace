@@ -23,6 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260222-2100] workspace-builder - Maintenance & validation: rotated aria2.log (403MB), refreshed content index (258 files), verified system health, documented polyglot TTS learning. (started: 2026-02-22 21:00 UTC, status: validated)
+  - Verification: log-rotate completed; content-index-update: 258 files; hygiene: CRLF in MP3 benign; research sync: 182 .md/.mp3 matched; cron schedules: all match CRON_JOBS.md; memory: clean; active-tasks: 1.7KB; MEMORY.md updated; commit pushed (4 files). Git clean after commit.
+
 - [workspace-builder-20260221-2300] workspace-builder - Fix agent-manager-cron timeout and validate (started: 2026-02-21 23:00 UTC, status: validated)
   - Verification: agent-manager timeout set to 900s; manual run OK; health OK; pushed.
 
