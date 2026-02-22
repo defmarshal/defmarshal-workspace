@@ -1,82 +1,84 @@
-# Workspace Builder Task Plan
+# Workspace Builder Plan - 2026-02-22 23:00 UTC
 
-**Session:** workspace-builder (cron: 23dad379-21ad-4f7a-8c68-528f98203a33)
-**Triggered:** 2026-02-22 19:00 UTC
-**Goal:** Commit capability evolver cycle artifacts, document outcome, and validate workspace hygiene
+**Session:** workspace-builder (cron:23dad379-21ad-4f7a-8c68-528f98203a33)
+**Model:** openrouter/stepfun/step-3.5-flash:free
 
-## Current State Analysis
+---
 
-- **Git status:** Dirty (7 changed: 5 modified, 2 untracked)
-- **Health:** OK (Disk 66%, Gateway healthy, Memory clean)
-- **Active tasks:** None running
+## Mission
 
-### Uncommitted Changes Identified
+Analyze workspace state (files, MEMORY.md, active-tasks.md, git, cron) and implement meaningful improvements. Keep changes small but valuable.
 
-All changes are from the successful capability evolver cycle at 2026-02-22 18:06:03 UTC:
+---
 
-1. **Memory/evolution state updates** (4 modified):
-   - `memory/evolution/evolution_solidify_state.json`
-   - `memory/evolution/memory_graph.jsonl`
-   - `memory/evolution/memory_graph_state.json`
-   - `memory/evolution/personality_state.json`
-   These represent the evolver's internal state after processing.
+## Analysis Phase
 
-2. **Evolver metadata** (modified):
-   - `memory/evolver-summary.md` - includes entry for the 18:06 cycle
-   - `memory/evolver_update_check.json`
-   - `skills/capability-evolver/assets/gep/candidates.jsonl` - added 4 new capability candidates based on recent session signals
+**Tasks:**
+1. Review active-tasks.md for conflicts
+2. Check system health (`quick health`)
+3. Check memory status (`quick memory-status`)
+4. Check cron job health (`quick cron-status`)
+5. Identify stale git branches (`git branch -a | grep idea/`)
+6. Review MEMORY.md for required updates
+7. Check for temp files/artifacts (agents/ideas logs, etc.)
+8. Verify daily logs completeness
 
-3. **Artifact files** (untracked):
-   - `memory/evolution/evolution_state.json` (new)
-   - `memory/evolution/gep_prompt_Cycle_#0001_run_1771783563895.{json,txt}` (prompt files for audit trail)
+**Expected outcome:** Complete picture of workspace health and improvement opportunities.
 
-These artifacts should be committed to preserve the system's learned knowledge and maintain a complete audit trail.
+---
 
-### Additional Considerations
+## Implementation Phase
 
-- The evolver selected `gene_gep_innovate_from_opportunity` with signals: `user_feature_request, user_improvement_suggestion`.
-- Outcome: No code changes were made; the system expanded its candidate pool by identifying new patterns (repeated tool usage for `exec` and `read`, plus user improvement suggestions). This is a valid evolution step that improves the system's situational awareness.
-- Need to append a summary of this cycle to `memory/2026-02-22.md` to maintain daily continuity.
-- MEMORY.md may optionally be updated to reflect learnings, but not strictly required.
+**Tasks:**
+1. Delete stale idea branches (if any):
+   - idea/add-a-new-quick-utility (executed, rejected)
+   - idea/create-an-agent-that-autonomously (executed, rejected)
+   - idea/write-a-rudra-safe-fix-pattern (executed, rejected)
+2. Update MEMORY.md with key learnings from Feb 21-22:
+   - Idea generator/executor pipeline
+   - Meta-agent robustness (find vs ls)
+   - Research Hub deployment pitfalls
+   - Capability evolver first cycle insights
+   - Polyglot TTS architecture
+3. (Optional) Add note about executor branch cleanup pattern to lessons.md if needed
 
-## Plan Phases
+**Constraints:**
+- Keep MEMORY.md under ~30 lines (index only)
+- active-tasks.md remains <2KB
+- No temp files left behind
 
-### Phase 1: Documentation Update
-- [ ] Append entry to `memory/2026-02-22.md` summarizing evolver cycle results
-- [ ] Optionally update MEMORY.md with brief note about evolver's pattern detection (keep concise)
+---
 
-### Phase 2: Git Operations
-- [ ] Stage all changes: `git add memory/evolution/ skills/capability-evolver/assets/gep/candidates.jsonl memory/evolver-summary.md memory/evolver_update_check.json`
-- [ ] Add untracked artifact files: `git add memory/evolution/evolution_state.json memory/evolution/gep_prompt_Cycle_#0001_run_1771783563895.*`
-- [ ] Commit with message prefix `build:` and descriptive summary
-- [ ] Push to origin
+## Validation Phase
 
-### Phase 3: Validation & Close the Loop
-- [ ] Run `quick health` (should be all OK)
-- [ ] Verify git working tree clean
-- [ ] Check active-tasks.md size (<2KB)
-- [ ] Ensure no temp files left behind
-- [ ] Update this task plan and findings/progress docs
-- [ ] Add validation entry to active-tasks.md
+**Tasks:**
+1. Run `quick health` - all OK?
+2. Verify git status clean (0 changed)
+3. Check active-tasks.md size (<2KB)
+4. Confirm no temp files (e.g., leftover branches, temp scripts)
+5. Review MEMORY.md line count and content
+6. Verify branches deleted locally and remotely (if needed)
 
-### Phase 4: Housekeeping (if needed)
-- [ ] Prune any stale entries from active-tasks.md if size approaches limit
+---
+
+## Close The Loop
+
+1. Commit changes with `build:` prefix
+2. Push to origin
+3. Update active-tasks.md with this session entry (status: validated)
+4. Include verification notes in active-tasks.md entry
+5. Ensure git clean after commit
+
+---
 
 ## Error Handling
 
-- If commit fails: check network/auth, retry once; if still fails, log to findings.md and abort.
-- If validation fails after commit: investigate; may need rollback or corrective commit.
-- If daily log append fails: log error and retry; ensure continuity is preserved.
-
-## Success Criteria
-
-- ✅ All evolver artifacts committed with clear commit message
-- ✅ Daily log (memory/2026-02-22.md) updated with cycle outcome
-- ✅ Git working tree clean
-- ✅ Health status OK
-- ✅ active-tasks.md <= 2KB
-- ✅ No temp files
-- ✅ Changes pushed to GitHub
+- If branch deletion fails, document reason and skip
+- If MEMORY.md update would exceed line limit, summarize more concisely
+- If any check fails, debug before proceeding (e.g., memory reindex if dirty)
 
 ---
-**Status:** COMPLETED (validated, pushed)
+
+## Timeline
+
+Target completion: within 30 minutes (before next builder run at 01:00 UTC)
