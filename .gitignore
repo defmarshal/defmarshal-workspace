@@ -84,3 +84,4 @@ agents/ideas/*.json
 
 # End of additions
 .vercel
+skills/kokoro-tts/venv/
