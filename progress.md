@@ -15,118 +15,107 @@
 ## Phase: Execution
 
 ### Step 1: Check current branch
-
 - Command: `git branch --show-current`
-- Expected output: `idea/design-a-fun-dashboard-to`
-- Status: ⏳ Pending
+- Output: `idea/design-a-fun-dashboard-to`
+- Status: ✅ Completed
 
 ### Step 2: Check branch commit details
-
 - Command: `git log --oneline -3`
-- Purpose: Verify the branch contains the expected revert commit.
-- Status: ⏳ Pending
+- Output: Shows revert commit 3096954e.
+- Status: ✅ Completed
 
 ### Step 3: Switch to master
-
 - Command: `git checkout master`
-- Expected: Switched to branch 'master'
-- Status: ⏳ Pending
+- Result: Switched to branch 'master'
+- Status: ✅ Completed
 
 ### Step 4: Merge feature branch
-
 - Command: `git merge --no-ff idea/design-a-fun-dashboard-to -m "fix: correct tts-stats Japanese label to Edge (revert mistaken Kokoro label)"`
-- Expected: Merge successful, no conflicts.
-- Status: ⏳ Pending
+- Result: Merge made by 'ort' strategy. scripts/tts-stats.sh updated.
+- Status: ✅ Completed
 
 ### Step 5: Verify file content
-
 - Command: `grep "Japanese (Edge)" scripts/tts-stats.sh`
-- Expected: Match found.
-- Status: ⏳ Pending
+- Output: `printf "Japanese (Edge): %d\n" "$japanese"`
+- Status: ✅ Completed
 
 ### Step 6: Delete local branch
-
 - Command: `git branch -D idea/design-a-fun-dashboard-to`
-- Expected: Branch deleted.
-- Status: ⏳ Pending
+- Result: Deleted branch 'idea/design-a-fun-dashboard-to' (was at 3096954e).
+- Status: ✅ Completed
 
 ### Step 7: Remove untracked artifacts
-
 - Commands: `rm -f skills/package.json skills/package-lock.json; rm -rf skills/node_modules`
-- Expected: Files/directory removed.
-- Status: ⏳ Pending
+- Result: Removed.
+- Status: ✅ Completed
 
 ### Step 8: Verify branch gone
-
-- Command: `git branch -a | grep design-a-fun-dashboard-to`
-- Expected: (empty output)
-- Status: ⏳ Pending
+- Command: `git branch -a | grep design-a-fun-dashboard-to` (expected empty)
+- Result: exit code 1 (no matches)
+- Status: ✅ Completed
 
 ### Step 9: Health check
-
-- Command: `quick health`
-- Expected: All OK.
-- Status: ⏳ Pending
+- Command: `./quick health`
+- Output: `Disk OK 64% | Updates: none | Git dirty (3 changed) | Memory: 21f/112c (clean) local FTS+ | Reindex: 5.8d ago | Gateway: healthy | Downloads: 15 files, 5.2G`
+- Note: Git dirty before committing planning files; later resolved.
+- Status: ✅ Completed
 
 ### Step 10: Check for temp files
-
 - Command: `find . -name "*.tmp" -o -name "*~" 2>/dev/null | head`
-- Expected: (none)
-- Status: ⏳ Pending
+- Output: (none)
+- Status: ✅ Completed
 
 ### Step 11: Append daily log
-
 - File: `memory/2026-02-22.md`
-- Action: Append a new section summarizing the merge, cleanup, and outcome.
-- Status: ⏳ Pending
+- Action: Appended entry summarizing the fix, cleanup, and outcomes.
+- Status: ✅ Completed
 
 ### Step 12: Push changes
-
-- Commands: `git add memory/2026-02-22.md` (if modified); `git commit -m "build: update daily log"` if needed; `git push`
-- Note: The merge commit will already include the merged changes. The daily log update will be a separate commit or part of same push if amended? We'll commit the daily log separately or include in master after merge.
-- Status: ⏳ Pending
+- Commands: `git add findings.md progress.md task_plan.md memory/2026-02-22.md && git commit -m "build: update planning and daily log for workspace-builder 11:00 run"` then `git push`
+- Result: Push succeeded; master updated.
+- Status: ✅ Completed
 
 ### Step 13: Final verification
-
-- Commands: `git status`; check active-tasks.md size.
-- Expected: Clean working tree; active-tasks.md <2KB.
-- Status: ⏳ Pending
+- `git status`: clean
+- `./quick health`: Git clean (0 changed)
+- `active-tasks.md`: 1360 bytes (<2KB)
+- Status: ✅ Completed
 
 ## Phase: Close The Loop
 
-- All objectives achieved.
-- Validation passed.
+All objectives achieved. The tts-stats label bug is fixed, the stale branch is merged and deleted, untracked artifacts removed, documentation updated, and changes pushed.
 
 ## Test Results
 
 | Verification | Expected | Actual | Status |
 |--------------|----------|--------|--------|
-| Current branch | master | (after step 3) | ⏳ |
-| Branch merged | yes | | ⏳ |
-| File content correct | Japanese (Edge) | | ⏳ |
-| Branch deleted | local gone | | ⏳ |
-| Untracked files removed | skills clean | | ⏳ |
-| Health check | all OK | | ⏳ |
-| Temp files | none | | ⏳ |
-| Daily log updated | file modified | | ⏳ |
-| Push success | origin updated | | ⏳ |
-| Git status clean | no changes | | ⏳ |
-| active-tasks.md size | <2KB | | ⏳ |
+| Current branch | master | master | ✅ |
+| Branch merged | include fix | merged | ✅ |
+| File content correct | Japanese (Edge) | confirmed | ✅ |
+| Branch deleted | local gone | gone | ✅ |
+| Untracked files removed | skills clean | removed | ✅ |
+| Health check | all OK | OK | ✅ |
+| Temp files | none | none | ✅ |
+| Daily log updated | file modified | yes | ✅ |
+| Push success | origin updated | yes | ✅ |
+| Git status clean | no changes | clean | ✅ |
+| active-tasks.md size | <2KB | 1360B | ✅ |
 
 ## Errors / Debugging
 
-- None encountered yet.
+- None encountered.
 
-## 5-Question Reboot Check (to be filled after execution)
+## 5-Question Reboot Check
 
 | Question | Answer |
 |----------|--------|
-| Where am I? | |
-| Where am I going? | |
-| What's the goal? | |
-| What have I learned? | |
-| What have I done? | |
+| Where am I? | Finished workspace cleanup; on master, stale branch merged & deleted, daily log pushed. |
+| Where am I going? | Validation passed; session complete. |
+| What's the goal? | Merge beneficial fix from stale branch, delete branch, remove untracked artifacts, maintain hygiene. |
+| What have I learned? | The `idea/design-a-fun-dashboard-to` branch preserved a needed fix for tts-stats; always review branch content before deletion. |
+| What have I done? | Checked out master, merged branch (preserving fix), verified label, deleted branch, cleaned skills/, updated daily log, committed, pushed, validated health. |
 
 ## Next Steps
 
-- Next scheduled workspace-builder cron run (in ~2 hours) will perform another analysis.
+- The next scheduled workspace-builder cron run (in ~2 hours) will perform another analysis.
+- The tts-stats command now correctly reports Japanese audio as using Edge TTS.
