@@ -3,6 +3,15 @@ import matter from 'gray-matter';
 import { readdir, readFile } from 'fs/promises';
 import { join } from 'path';
 
+function xmlEscape(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 export async function GET() {
   const RESEARCH_DIR = join(process.cwd(), 'public', 'research');
   const files = await readdir(RESEARCH_DIR).catch(() => []);
@@ -43,9 +52,9 @@ export async function GET() {
   <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
   ${validItems.map(item => `
   <item>
-    <title>${item.title}</title>
+    <title>${xmlEscape(item.title)}</title>
     <link>${siteUrl}/research/${item.slug}</link>
-    <description>${item.description}...</description>
+    <description>${xmlEscape(item.description)}...</description>
     <pubDate>${item.pubDate}</pubDate>
     <guid>${siteUrl}/research/${item.slug}</guid>
   </item>`).join('\n')}

@@ -340,3 +340,10 @@ We have **15 substantial reports** and rising. Quality > quantity from here on o
 *Size:* 4.2 KB  
 *Saved:* `research/watchlist-priority-gaps-2026-02-15.md`  
 *Research‑agent strategic planning, nya~ (◕‿◕)♡
+
+### NEW: Liquidity Gap Calculation (Banking Risk Management)
+
+**Priority:** 🔴 HIGH  
+**Reason:** Liquidity gaps are core to bank treasury and regulatory compliance (Basel III LCR/NSFR). Many mid‑size banks still lack automated gap reporting.  
+**Scope:** Define liquidity gap, calculation methods (static vs dynamic), time buckets, sources/uses of funds, regulatory ratios, limitations, and example.  
+**Deliverable:** One comprehensive report with illustrative balance sheet and gap table.
