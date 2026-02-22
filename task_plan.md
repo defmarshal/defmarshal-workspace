@@ -1,75 +1,75 @@
 # Workspace Builder Task Plan
 
-**Session:** workspace-builder (cron: 23dad379-21ad-4f7a-8c68-528f98203a33)  
-**Triggered:** 2026-02-22 17:00 UTC (next run 19:00 UTC)  
-**Goal:** Commit uncommitted production work and maintain workspace hygiene
+**Session:** workspace-builder (cron: 23dad379-21ad-4f7a-8c68-528f98203a33)
+**Triggered:** 2026-02-22 21:00 UTC (next run 23:00 UTC)
+**Goal:** Perform comprehensive hygiene, validation, and small improvements
 
 ## Current State Analysis
 
-**Git status:** Dirty (3 modified, 2 untracked)
-**Health:** All OK (Disk 65%, Gateway healthy, Memory clean)
+**Git status:** Clean (0 changed)
+**Health:** OK (Disk 66%, Gateway healthy, Memory clean, No updates)
 **Active tasks:** None running
+**Idea executor:** Idle (last idea rejected)
+**Cron jobs:** All green, no failures
+**Logs:** aria2.log 403MB (needs rotation)
+**Research Hub:** research/ and public/research/ both 25M (likely in sync)
+**Content index:** Unknown freshness (last cron: 2026-02-22 22:30 UTC? Actually 05:30 Bangkok = 22:30 UTC previous day; needs check)
+**Memory index:** Clean, 21/21 files indexed
 
-### Uncommitted Changes Identified
+## Identified Opportunities
 
-1. **Security fix** - `apps/research-hub/app/feed/route.ts` 
-   - Added XML escaping for RSS feed titles/descriptions (prevents XML injection)
-   - Valid improvement, production-ready
-
-2. **New research report** - `apps/research-hub/public/research/2026-02-22-liquidity-gap-calculation-banking.md` (193 lines)
-   - Comprehensive report on banking liquidity gap calculations
-   - High-quality content, should be committed
-
-3. **Documentation** - `docs/OPTION_1_PUBLISH_RESEARCH.md` (2.7KB)
-   - Documents research publishing pipeline (auto-deploy, auto-tweet, newsletter, analytics)
-   - Should be committed to docs
-
-4. **Watchlist updates** - `research/watchlist-priority-gaps-2026-02-15.md` (and public copy)
-   - Added new research item for the liquidity gap report
-   - Must commit both copies to maintain consistency
+1. **Log rotation**: aria2.log exceeds 100MB threshold; rotate proactively
+2. **Content index refresh**: ensure new research reports are included if any appeared since last index update
+3. **Hygiene check**: run `./quick hygiene` to catch any subtle issues
+4. **Research sync verification**: confirm public/research/ matches research/ (inode counts, timestamps)
+5. **Cron schedule validation**: verify schedules match CRON_JOBS.md (even though auto-validation runs, we double-check)
+6. **Documentation currency**: check if MEMORY.md needs today's learnings distilled from daily log
+7. **Active tasks sanity**: ensure active-tasks.md is clean and <2KB
 
 ## Plan Phases
 
-### Phase 1: Validation & Quality Check
-- [ ] Verify research report completeness (no placeholders)
-- [ ] Ensure watchlist entries match report metadata
-- [ ] Confirm RSS feed fix doesn't break RSS validation
-- [ ] Check for any stray temp files in workspace
-- [ ] Run `quick health` baseline
+### Phase 1: Maintenance Actions
+- [ ] Rotate aria2.log using `./quick log-rotate` (or direct script)
+- [ ] Regenerate content index: `./quick content-index-update`
+- [ ] Run hygiene check: `./quick hygiene` and address any findings
 
-### Phase 2: Organization & Consistency
-- [ ] Add new research to research index (`./quick content-index-update`)
-- [ ] Verify Research Hub build would succeed (check imports, routing)
-- [ ] Ensure documentation follows project standards
-- [ ] Confirm no sensitive data in any files
+### Phase 2: Verification
+- [ ] Compare research/ vs apps/research-hub/public/research/ file counts and sizes
+- [ ] Validate cron schedules: `./quick cron-schedules` (should report all match)
+- [ ] Check memory status: `./quick memory-status` (should show clean)
+- [ ] Verify active-tasks.md size (<2KB) and format
 
-### Phase 3: Commit & Push
-- [ ] Stage all changes (git add)
-- [ ] Commit with prefix `build:`
-- [ ] Push to origin
-- [ ] Verify push succeeded
+### Phase 3: Documentation
+- [ ] Review MEMORY.md: is last updated date current? Does it include key learnings from recent runs (e.g., today's workspace-builder success patterns)?
+- [ ] If needed, append a concise learning bullet with today's date
 
 ### Phase 4: Close the Loop
-- [ ] Run `quick health` post-commit
-- [ ] Verify git status clean
-- [ ] Check active-tasks.md size (<2KB)
-- [ ] Update planning docs (task_plan.md, findings.md, progress.md)
-- [ ] Archive any completed tasks if needed
+- [ ] Run `quick health` baseline post-maintenance
+- [ ] Verify git status (expect some changes from maintenance)
+- [ ] Stage, commit (with prefix 'build:' for hygiene, 'docs:' for MEMORY updates), push
+- [ ] Update active-tasks.md: add entry for this session, mark validated, include verification notes
+- [ ] Final health check
 
 ## Error Handling
 
-- If validation fails: log to findings.md, abort commit, notify via session
-- If push fails: check network/auth, retry once, else abort and log
-- If health check fails after commit: investigate immediately, may need rollback
+- If log rotation fails: log error, continue; may need manual intervention
+- If content index fails: capture output, abort commit until resolved
+- If hygiene check finds serious issues: escalate, pause and ask user
+- If git push fails: check network/auth, retry once, else abort and log
+- If verification fails: do not commit; log to findings and notify
 
 ## Success Criteria
 
-- ✅ All uncommitted production work committed with meaningful commit message
-- ✅ Git working tree clean
-- ✅ Health status OK
+- ✅ aria2.log rotated (old archived, new empty)
+- ✅ Content/INDEX.md updated with latest content
+- ✅ Hygiene check passes with no critical findings
+- ✅ Research sync verified (both directories in sync)
+- ✅ Cron schedules validated (all match CRON_JOBS.md)
+- ✅ Memory index clean
 - ✅ active-tasks.md <= 2KB
-- ✅ No temp files left behind
-- ✅ Changes pushed to GitHub
+- ✅ MEMORY.md updated if needed
+- ✅ Git working tree clean after commit and push
+- ✅ Session entry added to active-tasks.md with verification output
 
 ---
-**Status:** TODO (not started)
+**Status:** In Progress (starting Phase 1)

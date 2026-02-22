@@ -27,6 +27,7 @@ Memory System, Workspace Health & Automation, Anime Companion, Torrent System, I
 - systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 
 ## Learnings (latest)
+- 2026-02-22: Polyglot TTS deployment combined offline Kokoro (English, ~200KB) with Edge TTS (Japanese, ~20KB), auto-detecting language; achieved 96.7% coverage (175/181 reports) and 10x size reduction for Japanese. Demonstrates hybrid TTS optimization.
 - 2026-02-22: Idea executor added pre-execution cleanliness check (git status --porcelain) to prevent commit contamination from uncommitted changes; cleaned stale branch; enforced daily digest commits.
 - 2026-02-21: meta-agent robustness (find vs ls), spawn debouncing, idea executor validation, capability-evolver first cycle
 - 2026-02-19: token optimization caps break output → gentle constraints

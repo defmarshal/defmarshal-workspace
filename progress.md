@@ -1,40 +1,35 @@
 # Workspace Builder Progress
 
-**Session:** workspace-builder (cron: 23dad379)  
-**Started:** 2026-02-22 17:00 UTC
+**Session:** workspace-builder (cron: 23dad379)
+**Started:** 2026-02-22 21:00 UTC
 
-## Phase 1: Validation & Quality Check
+## Phase 1: Maintenance Actions
 
-- [x] Baseline health check: `quick health` → Disk 65%, Gateway OK, Memory clean, Git dirty (3 changed, 2 untracked)
-- [x] Identified uncommitted changes: 3 modified, 2 untracked files (all legitimate production work)
-- [x] Verify research report completeness: Report complete with conclusion and further reading; no placeholders
-- [x] Ensure watchlist entries match report metadata: Both watchlist copies updated with liquidity gap item matching report scope
-- [x] Confirm RSS feed XML escaping correctness: Properly escapes & < > " ' in titles and descriptions
-- [x] Check for temp files: None found; only legitimate untracked files
+- [x] Rotate aria2.log using `./quick log-rotate` (rotated 422MB, archives created)
+- [x] Regenerate content index: `./quick content-index-update` (258 files tracked)
+- [x] Run hygiene check: `./quick hygiene` (found CRLF in MP3 - false positive; binary file, benign)
 
-## Phase 2: Organization & Consistency
+## Phase 2: Verification
 
-- [x] Update research index (content-index-update): Added new report, 258 files tracked
-- [x] Verify Research Hub build viability: RSS path correct, imports valid
-- [x] Check documentation standards: `docs/OPTION_1_PUBLISH_RESEARCH.md` follows project doc style
-- [x] Confirm no sensitive data: No passwords/keys/tokens in any changed files
+- [x] Compare research/ vs apps/research-hub/public/research/ (both: 182 .md, 182 .mp3, 25M)
+- [x] Validate cron schedules: `./quick cron-schedules` (all match CRON_JOBS.md)
+- [x] Check memory status: `./quick memory-status` (clean, 21/21 indexed, FTS ready)
+- [x] Verify active-tasks.md size: 36 lines, 1.7KB (<2KB) - OK
 
-## Phase 3: Commit & Push
+## Phase 3: Documentation
 
-- [x] Stage all changes (git add)
-- [x] Craft commit message with prefix `build:`
-- [x] Commit (first batch: production work, docs, planning)
-- [x] Push to origin
-- [x] Discovered additional improvements (RSS GFM support) after initial commit
-- [ ] Stage and commit second batch (Research Hub enhancements)
+- [x] Review MEMORY.md for needed updates
+- [x] Append learning bullets if appropriate (with today's date) — added polyglot TTS deployment learning
+- [ ] Update memory/2026-02-22.md with this run's summary after completion
 
 ## Phase 4: Close the Loop
 
-- [ ] Post-commit health check
-- [ ] Verify git clean
-- [ ] active-tasks.md size check
-- [ ] Update planning docs (this file)
-- [ ] Archive if needed
+- [ ] Run `quick health` post-maintenance
+- [ ] Verify git status (expected: some changes from rotation, index)
+- [ ] Stage and commit changes with proper prefixes
+- [ ] Push to origin
+- [ ] Update active-tasks.md: add entry for this session with verification notes
+- [ ] Final health check to ensure clean state
 
 ---
-**Status:** In Progress (Phase 3 - Ready to commit)
+**Status:** Starting Phase 1
