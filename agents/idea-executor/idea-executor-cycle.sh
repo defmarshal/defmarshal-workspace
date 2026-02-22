@@ -10,9 +10,13 @@ IDEA_FILE="$IDEAS_DIR/latest.json"
 LOG_FILE="$WORKSPACE/memory/idea-executor.log"
 RUN_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
 
+log() {
+  echo "[$(date -u +%Y-%m-%d %H:%M:%S UTC)] $*" >> "$LOG_FILE"
+}
+
 # Ensure files exist
 if [[ ! -f "$IDEA_FILE" ]]; then
-  echo "[$RUN_TIMESTAMP] No latest ideas file found, skipping." >> "$LOG_FILE"
+  log "No latest ideas file found, skipping."
   # Set status idle
   echo "{\"status\":\"idle\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":null}" > "$STATUS_FILE"
   exit 0
@@ -27,7 +31,7 @@ else
 fi
 
 if [[ $IDEAS_COUNT -eq 0 ]]; then
-  echo "[$RUN_TIMESTAMP] No ideas to execute." >> "$LOG_FILE"
+  log "No ideas to execute."
   echo "{\"status\":\"idle\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":null}" > "$STATUS_FILE"
   exit 0
 fi
@@ -46,12 +50,12 @@ else
   # This is a bit hacky but works for basic JSON
   MATCH=$(grep -n '"slug":' -m1 "$IDEA_FILE")
   # Actually easier: assume first non-executed; we'll need to grep for executed: false. Let's skip fallback complexity and require jq.
-  echo "[$RUN_TIMESTAMP] jq not available; install jq for executor." >> "$LOG_FILE"
+  log echo "[$RUN_TIMESTAMP] jq not available; install jq for executor." >> "$LOG_FILE"
   exit 1
 fi
 
 if [[ -z "$NEXT_SLUG" ]]; then
-  echo "[$RUN_TIMESTAMP] All ideas executed." >> "$LOG_FILE"
+  log echo "[$RUN_TIMESTAMP] All ideas executed." >> "$LOG_FILE"
   echo "{\"status\":\"idle\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":null}" > "$STATUS_FILE"
   exit 0
 fi
@@ -71,10 +75,6 @@ if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
   echo "{\"status\":\"idle\",\"last_run\":\"$RUN_TIMESTAMP\",\"current_idea\":\"$NEXT_SLUG\",\"result\":\"rejected\",\"error\":\"workspace_dirty\"}" > "$STATUS_FILE"
   exit 0
 fi
-
-log() {
-  echo "[$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)] $*" >> "$LOG_FILE"
-}
 
 log "Executor starting on idea: $NEXT_SLUG (index $NEXT_IDX)"
 
