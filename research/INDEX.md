@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-22
 
-## 2026 Reports (154 total)
+## 2026 Reports (155 total)
 
 ### 2026-02
+- [AI Infrastructure Constraints 2026–2028: Power, Water, and the Grid Reckoning](2026-02-22-ai-infrastructure-constraints-2026-2028-power-water-grid-reckoning.md)
 - [Serverless Kubernetes 2026 Knative Openfaas Aws Lambda](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md)
 - [Quantum Computing Practical Applications 2026](2026-02-21-quantum-computing-practical-applications-2026.md)
 - [Open-Source LLM Ecosystem Consolidation: Sustainability & Enterprise Adoption 2026](2026-02-21-open-source-llm-ecosystem-consolidation-2026.md)
