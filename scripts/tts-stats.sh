@@ -8,6 +8,7 @@ with_tts=0
 english=0
 japanese=0
 other=0
+missing_files=()
 
 for md in "$WORKSPACE"/research/*.md; do
   [ -f "$md" ] || continue
@@ -21,6 +22,8 @@ for md in "$WORKSPACE"/research/*.md; do
     else
       english=$((english+1))
     fi
+  else
+    missing_files+=("$(basename "$md")")
   fi
 done
 
@@ -35,3 +38,7 @@ printf "Japanese (Edge): %d\n" "$japanese"
 printf "Other/Unclassified: %d\n" "$other"
 echo
 echo "Missing audio: $((total - with_tts)) files"
+if [ ${#missing_files[@]} -gt 0 ]; then
+  echo "Files without audio:"
+  printf '  - %s\n' "${missing_files[@]}"
+fi
