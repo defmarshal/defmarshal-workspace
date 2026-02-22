@@ -19,11 +19,12 @@ echo "Recent agent activity:"
 for agent in research-agent content-agent dev-agent idea-executor meta-agent workspace-builder notifier-agent torrent-bot agni vishwakarma; do
   log="$WORKSPACE/$agent.log"
   if [ -f "$log" ]; then
-    last=$(tail -1 "$log" | awk '{print $1, $2}' 2>/dev/null)
+    # Get last non-empty line and extract a reasonable timestamp (first 4-6 fields)
+    last=$(tail -1 "$log" 2>/dev/null | head -c 50)
     if [ -n "$last" ]; then
       echo "  $agent: $last"
     else
-      echo "  $agent: (no log entries)"
+      echo "  $agent: (empty log)"
     fi
   else
     echo "  $agent: (no log file)"
@@ -33,4 +34,4 @@ done
 # Show cron status
 echo
 echo "Cron jobs (via openclaw):"
-openclaw cron list 2>/dev/null | grep -E "ok|error" | head -5 | sed 's/^/  /'
+openclaw cron list 2>/dev/null | grep -E "ok|error" | head -5 | sed 's/^/  /' || echo "  (none or error)"
