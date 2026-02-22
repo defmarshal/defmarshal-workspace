@@ -82,6 +82,9 @@ agents/ideas/*.json
 # Self-improvement skill runtime logs (learnings, errors, feature requests)
 .learnings/
 
+# TTS audio outputs (generated, large, not source of truth)
+*.mp3
+
 # End of additions
 .vercel
 skills/kokoro-tts/venv/

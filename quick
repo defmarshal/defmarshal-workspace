@@ -1652,6 +1652,10 @@ except Exception:
     echo "{\"agent\":\"$AGENT\",\"score\":$SCORE,\"timestamp\":\"$TIMESTAMP\"}" >> "$FEEDBACK_FILE"
     echo "Feedback recorded: $AGENT rated $SCORE/5"
     ;;
+  tts-random)
+    # Play a random TTS-narrated research report (fun)
+    "$WORKSPACE/scripts/tts-random.sh"
+    ;;
   tts-research)
     # Generate TTS for a specific research report
     if [ $# -lt 1 ]; then

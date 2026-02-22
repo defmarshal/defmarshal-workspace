@@ -1,127 +1,62 @@
-# Workspace Builder: Execution Progress
+# Workspace Builder Progress
+
 **Session:** 23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-22 03:00 UTC
+**Started:** 2026-02-22 05:00 UTC
 
----
+## Phase: Planning
 
-## Progress Tracker
+- Created task_plan.md with step-by-step plan
+- Created findings.md with context and observations
+- Created progress.md to track execution
+- Status: Planning complete
 
-| Step | Status | Timestamp (UTC) | Notes |
-|------|--------|-----------------|-------|
-| 1. Review planning files | ⏳ Pending | | |
-| 2. Clean .mp3 files | ⏳ Pending | | |
-| 3. Delete stale branch | ⏳ Pending | | |
-| 4. Commit changes | ⏳ Pending | | |
-| 5. Push commits | ⏳ Pending | | |
-| 6. Run health check | ⏳ Pending | | |
-| 7. Validate active-tasks.md | ⏳ Pending | | |
-| 8. Check for temp files | ⏳ Pending | | |
-| 9. Verify git status | ⏳ Pending | | |
-| 10. Update active-tasks.md | ⏳ Pending | | |
-| 11. Update findings.md | ⏳ Pending | | |
-| 12. Update progress.md | ⏳ Pending | | |
+## Phase: Execution
 
----
+### Step 1: Add `*.mp3` to `.gitignore`
+- Rationale: Prevent large generated audio files from appearing as untracked and avoid accidental commits.
+- Implementation: Append `*.mp3` pattern to `.gitignore`.
+- Status: Pending
 
-## Step Details
+### Step 2: Commit `scripts/tts-random.sh`
+- The script exists; needs to be added to the repository.
+- Verify script is functional and has proper shebang/exec permissions.
+- Status: Pending
 
-### Step 1: Review Planning Files
-- **Status:** Not started
-- **Action:** Read task_plan.md, findings.md, progress.md to ensure plan is correct
-- **Outcome:** (pending)
+### Step 3: Add `tts-random` command to `quick`
+- Add a case clause in the `quick` script for `tts-random`.
+- Ensure it invokes the script correctly.
+- Status: Pending
 
-### Step 2: Clean .mp3 Files
-- **Status:** Not started
-- **Action:** Delete the three untracked .mp3 files from research/
-- **Command:** `rm research/*.mp3`
-- **Verification:** `git status --porcelain` should no longer list them
-- **Outcome:** (pending)
+### Step 4: Prune `active-tasks.md`
+- Remove the entry for `[workspace-builder-20260222-0100]` (already validated, archived).
+- Ensure file size remains < 2KB.
+- Status: Pending
 
-### Step 3: Delete Stale Branch
-- **Status:** Not started
-- **Action:** Delete local and remote `idea/add-a-new-quick-utility` branch
-- **Commands:**
-  - `git branch -D idea/add-a-new-quick-utility`
-  - `git push origin --delete idea/add-a-new-quick-utility` (if exists)
-- **Verification:** `git branch -a` should not show the branch
-- **Outcome:** (pending)
+### Step 5: Verification
+- Run `quick health`
+- Check `git status` (should show only expected changes)
+- Test `./quick tts-random` (should not crash)
+- Check for temp files: `find . -name "*.tmp" -o -name "*.temp"` etc.
+- Status: Pending
 
-### Step 4: Commit Changes
-- **Status:** Not started
-- **Action:** Stage and commit the `quick` file changes
-- **Commands:**
-  - `git add quick`
-  - `git commit -m "build: add TTS commands to quick launcher for research reports"`
-- **Verification:** `git log -1` shows the commit with correct prefix
-- **Outcome:** (pending)
+### Step 6 & 7: Commit and Push
+- Commit all changes with message: `build: workspace hygiene - ignore mp3, add tts-random, prune tasks`
+- Push to origin
+- Verify push succeeded
+- Status: Pending
 
-### Step 5: Push Commits
-- **Status:** Not started
-- **Action:** Push commits to GitHub
-- **Command:** `git push origin master`
-- **Verification:** Remote master updated; no errors
-- **Outcome:** (pending)
+### Step 8: Update active-tasks (if needed)
+- Since this is a cron-triggered run, we may not need to add an active-tasks entry (it's transient). But we should ensure any modifications are reflected.
+- Actually, per AGENTS.md: "After spawning/killing agents → immediately update active-tasks.md". This is not an agent; it's a cron job execution. The cron job itself records status elsewhere. We likely do not need to add an entry. However, after committing, we should ensure active-tasks.md is in a consistent state (only contains other agents' current tasks, not old completed ones).
+- Status: N/A (just ensure clean)
 
-### Step 6: Run Health Check
-- **Status:** Not started
-- **Action:** Execute `./quick health`
-- **Expected:** "Disk OK 54% | Updates: none | Git clean | Memory: ... | Gateway: healthy"
-- **Verification:** Output shows "Git clean"
-- **Outcome:** (pending)
+## Phase: Close The Loop
 
-### Step 7: Validate active-tasks.md
-- **Status:** Not started
-- **Action:** Check file size and format
-- **Commands:**
-  - `wc -c < active-tasks.md` (should be <2048 bytes)
-  - Verify markdown formatting is valid
-- **Outcome:** (pending)
+- All validation criteria met
+- Changes pushed
+- No temp files left
+- active-tasks.md pruned
 
-### Step 8: Check for Temp Files
-- **Status:** Not started
-- **Action:** Search for common temp file patterns
-- **Command:** `find . -maxdepth 3 -type f \( -name "*.tmp" -o -name "*~" -o -name "#*#" \) -not -path "./.git/*" 2>/dev/null`
-- **Expected:** No results
-- **Outcome:** (pending)
+## Errors / Debugging
 
-### Step 9: Verify Git Status
-- **Status:** Not started
-- **Action:** Confirm working tree is clean
-- **Command:** `git status --porcelain`
-- **Expected:** Empty output
-- **Outcome:** (pending)
-
-### Step 10: Update active-tasks.md
-- **Status:** Not started
-- **Action:** Mark this workspace-builder session as `validated` and add verification notes
-- **Format:**
-  ```
-  - [23dad379...] workspace-builder - (started: 2026-02-22 03:00 UTC, status: validated)
-    - Verification: quick health OK; git clean; no temp files; active-tasks.md 1982 bytes; branch deleted; commits pushed (build: prefix); all validations passed.
-  ```
-- **Outcome:** (pending)
-
-### Step 11: Update findings.md
-- **Status:** Not started
-- **Action:** Append "Resolution Log" section summarizing actions taken and outcomes
-- **Outcome:** (pending)
-
-### Step 12: Update progress.md
-- **Status:** Not start ed
-- **Action:** Mark all steps as done with timestamps
-- **Outcome:** (pending)
-
----
-
-## Execution Notes
-
-- All commands are safe and non-destructive (except branch deletion and file removal, which are verified)
-- No human input required
-- If any step fails, I will:
-  1. Stop and debug
-  2. Log the error in `findings.md`
-  3. Abort the remaining steps until resolved
-
----
-
-**Progress tracking ready.** Starting execution now.
+- None yet

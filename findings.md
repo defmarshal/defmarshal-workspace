@@ -1,58 +1,36 @@
-# Workspace Builder: Findings Log
+# Workspace Builder Findings
+
 **Session:** 23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-22 03:00 UTC
+**Date:** 2026-02-22
 
----
+## Initial Assessment
 
-## Initial Findings (Pre-Execution)
+- Workspace overall healthy (disk 64%, no pending updates, memory clean)
+- Git working tree shows untracked files (research TTS .mp3 artifacts and new script)
+- Active tasks registry contains a validated/archived entry that needs pruning
+- Opportunity to improve developer experience by integrating the `tts-random` utility
 
-### Issue 1: Untracked Artifact Files
-- **Files:** `research/2026-02-15-benchmark-gap-brownfield-reality.mp3`, `research/2026-02-22-ai-infrastructure-constraints-2026-2028-power-water-grid-reckoning.mp3`, `research/2026-02-22-eu-ai-act-enforcement-priorities-2026-2027-compliance-guide.mp3`
-- **Size:** ~287KB each (total ~907KB)
-- **Status:** Untracked by git
-- **Analysis:** These are generated TTS audio files from the newly added `tts-research` commands. They are artifacts, not source material. The source `.md` files are already tracked. Binary bloat risk if committed.
-- **Action:** Delete these files. They can be regenerated on demand using `quick tts-research` or `quick tts-research-all`.
+## Observations
 
-### Issue 2: Stale Feature Branch
-- **Branch:** `idea/add-a-new-quick-utility`
-- **Status:** Local branch exists, likely not merged to master
-- **Analysis:** This is an abandoned feature branch from the idea system. It contributes to repository clutter and should be removed.
-- **Action:** Delete both local and remote branches (after verification).
+1. **Untracked TTS files:** Approximately 200 .mp3 files in `research/` directory. These are generated audio outputs from research reports. They should not be committed (large and reproducible). Currently they appear as untracked, cluttering `git status`.
 
-### Issue 3: Uncommitted Improvements
-- **File:** `quick`
-- **Changes:** Added two new commands: `tts-research` and `tts-research-all`
-- **Analysis:** These are legitimate feature additions that enhance the launcher. They should be committed with the proper `build:` prefix and pushed to GitHub.
-- **Action:** Stage, commit, and push changes.
+2. **New utility script:** `scripts/tts-random.sh` is a handy tool to play random TTS audio and send to Telegram. It is untracked and not accessible via the `quick` launcher.
 
-### Issue 4: Workspace Health (Baseline)
-- **Disk:** 54% (healthy)
-- **Gateway:** healthy
-- **Memory:** clean (20 indexed files, 111 chunks)
-- **Updates:** none pending
-- **Git:** dirty (2 changed files: quick + untracked mp3s)
-- **Active-tasks.md:** 1982 bytes, format correct, one validated entry from previous run
-- **Temp files:** none observed
-- **Status:** Generally healthy, just needs tidying
+3. **Active tasks hygiene:** `active-tasks.md` contains an entry for a workspace-builder run from 2026-02-22 01:00 UTC that is already validated and archived in the daily log. The registry should only contain active/unvalidated tasks.
 
----
+4. **Quick launcher:** The `quick` script is the primary utility interface. Adding `tts-random` as a command will make it easier to use.
 
-## Hypotheses (To Be Confirmed)
+## Planned Actions
 
-1. The `quick` modifications are complete and functional (TTS script exists, tested)
-2. The stale branch has no unmerged work needed (will verify)
-3. After cleanup, `quick health` will show "Git clean"
-4. No additional untracked files exist beyond the three mp3s
+- Update `.gitignore` to ignore `*.mp3` files globally (defense in depth; research folder already not committed but ignoring prevents accidental adds)
+- Commit `scripts/tts-random.sh` into the repository (it's a useful tool)
+- Add `tts-random` function to `quick` launcher
+- Prune archived entry from `active-tasks.md`
+- Perform full validation and commit with `build:` prefix
 
----
+## Success Criteria
 
-## Validation Plan
-
-- Post-cleanup: `git status --porcelain` should show nothing
-- Health check: `./quick health` should show "Git clean"
-- Active tasks: `active-tasks.md` size <2KB
-- Branch list: only master and any active feature branches (not the stale one)
-
----
-
-**Findings log initialized.** Updates will be added after each execution phase.
+- `git status` clean (or only expected changes)
+- `./quick tts-random` responds with usage or plays audio
+- active-tasks.md size < 2KB
+- Health check passes

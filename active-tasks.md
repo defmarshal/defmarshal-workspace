@@ -19,9 +19,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Currently Running
 
-- [workspace-builder-20260222-0100] workspace-builder - Fix idea validation bypass, clean stale branch, commit digest, update docs (started: 2026-02-22 01:00 UTC, status: validated)
-  - Verification: executor script updated with pre-execution git status check; stale branch deleted; daily digest committed (9bc0600); MEMORY.md updated; active-tasks.md updated; health OK; syntax OK.
-
 *(none — all agents validated/cleaned)*
 
 ## Recently Completed
