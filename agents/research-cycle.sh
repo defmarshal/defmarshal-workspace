@@ -71,8 +71,14 @@ if [ -f "$TTS_SCRIPT" ]; then
     else
       echo "$(date -u) - deploy-research-hub.sh not found, skipping deploy" >> "$LOGFILE"
     fi
+
+    # Auto‑tweet new reports (if credentials present)
+    if [ -x "$WORKSPACE/scripts/tweet-new-reports.sh" ]; then
+      echo "$(date -u) - Attempting to tweet new reports..." >> "$LOGFILE"
+      "$WORKSPACE/scripts/tweet-new-reports.sh" >> "$LOGFILE" 2>&1 || echo "$(date -u) - Tweet script failed (continuing)" >> "$LOGFILE"
+    fi
   else
-    echo "$(date -u) - No new reports, skipping deploy" >> "$LOGFILE"
+    echo "$(date -u) - No new reports, skipping deploy and tweet" >> "$LOGFILE"
   fi
 else
   echo "$(date -u) - TTS script not found at $TTS_SCRIPT, skipping audio generation and deploy" >> "$LOGFILE"

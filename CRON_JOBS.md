@@ -194,3 +194,11 @@ Weekly automation:
 - cleanup-downloads-cron (Sunday 06:00)
 - backup-cleanup-cron (Sunday 07:00)
 - cleanup-agent-artifacts-cron (Sunday 09:30)
+
+### Additional OpenClaw Cron Jobs (Proposed)
+
+7. **research-digest-cron**
+   - **Schedule**: Daily at 18:00 Asia/Bangkok (`0 18 * * *`)
+   - **Payload**: agentTurn executing `/bin/bash /home/ubuntu/.openclaw/workspace/scripts/send-research-digest.sh`
+   - **Log**: `logs/digest.log` (rotated by log‑rotate)
+   - **Description**: Emails a daily digest of new research reports to the configured recipient (set `DIGEST_TO_EMAIL`). Requires `MATON_API_KEY`.

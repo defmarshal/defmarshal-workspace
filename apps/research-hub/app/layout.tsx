@@ -14,9 +14,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Google Analytics 4 (set NEXT_PUBLIC_GA_ID in Vercel env)
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        {gaId && (
+          <>
+            {/* Google Analytics 4 */}
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag() { dataLayer.push(arguments); }
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}', { page_path: window.location.pathname });
+                `,
+              }}
+            />
+          </>
+        )}
+      </body>
     </html>
   );
 }
