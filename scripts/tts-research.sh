@@ -54,11 +54,15 @@ if [ $section_start -ge 0 ]; then
     text+="$line"$'\n'
   done
 else
+  # No specific summary section found; collect initial content
+  # Skip over headings but capture their child content (bullet points, paragraphs)
   count=0
   char_count=0
   for ((i=start_idx; i<${#lines[@]}; i++)); do
     line="${lines[i]}"
-    if [[ "$line" =~ ^# ]]; then break; fi
+    if [[ "$line" =~ ^# ]]; then
+      continue  # Skip heading lines, don't stop
+    fi
     text+="$line"$'\n'
     count=$((count+1))
     char_count=$((char_count+${#line}))
