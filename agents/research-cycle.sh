@@ -62,8 +62,20 @@ if [ -f "$TTS_SCRIPT" ]; then
     fi
   done
   echo "$(date -u) - TTS generation complete (processed $new_count new reports)" >> "$LOGFILE"
+
+  # Auto-deploy Research Hub if new audio was generated
+  if [ $new_count -gt 0 ]; then
+    echo "$(date -u) - New reports detected, deploying Research Hub..." >> "$LOGFILE"
+    if [ -x "$WORKSPACE/scripts/deploy-research-hub.sh" ]; then
+      "$WORKSPACE/scripts/deploy-research-hub.sh" >> "$LOGFILE" 2>&1 || echo "$(date -u) - Deploy failed (continuing)" >> "$LOGFILE"
+    else
+      echo "$(date -u) - deploy-research-hub.sh not found, skipping deploy" >> "$LOGFILE"
+    fi
+  else
+    echo "$(date -u) - No new reports, skipping deploy" >> "$LOGFILE"
+  fi
 else
-  echo "$(date -u) - TTS script not found at $TTS_SCRIPT, skipping audio generation" >> "$LOGFILE"
+  echo "$(date -u) - TTS script not found at $TTS_SCRIPT, skipping audio generation and deploy" >> "$LOGFILE"
 fi
 
 exit $exit_code
