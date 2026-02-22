@@ -16,7 +16,7 @@ for md in "$WORKSPACE"/research/*.md; do
   mp3="${md%.md}.mp3"
   if [ -f "$mp3" ]; then
     with_tts=$((with_tts+1))
-    # Detect language: if file contains non-ASCII printable chars, assume Japanese
+    # Detect language by checking for Japanese chars in the markdown
     if grep -q '[^[:print:]]' "$md" 2>/dev/null; then
       japanese=$((japanese+1))
     else
@@ -34,7 +34,7 @@ echo "----------------------"
 printf "Total reports: %d\n" "$total"
 printf "With audio: %d (%.1f%%)\n" "$with_tts" "$(awk "BEGIN {printf ($with_tts/$total)*100}")"
 printf "English (Kokoro): %d\n" "$english"
-printf "Japanese (Kokoro): %d\n" "$japanese"
+printf "Japanese (Edge): %d\n" "$japanese"
 printf "Other/Unclassified: %d\n" "$other"
 echo
 echo "Missing audio: $((total - with_tts)) files"
