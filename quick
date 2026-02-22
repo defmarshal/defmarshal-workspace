@@ -52,6 +52,7 @@ Commands:
   git-recent [N]  Show recent commits one-line (default 5)
   git-branches    List all git branches with last commit info
   git-branch-clean Clean up merged branches (safe: protects master/main/current; use --execute to delete)
+  git-sync          Safe git sync: fetch, check status, and optionally pull (--pull)
   game-repo-sync  Check if standalone game repo is in sync with workspace (uses /tmp/openclaw-idle-rpg-standalone)
   anime <cmd>     Anime companion: search, info, top, season, upcoming
                   Example: quick anime search "frieren" [--tts]
@@ -635,6 +636,10 @@ case "$cmd" in
   git-branch-clean)
     # Clean up merged branches (safe by default; use --execute to delete)
     bash "$WORKSPACE/scripts/git-branch-clean.sh" "$@"
+    ;;
+  git-sync)
+    # Safe git sync: fetch status and optionally pull
+    bash "$WORKSPACE/scripts/git-sync.sh" "$@"
     ;;
   game-repo-sync)
     # Check if the standalone game repo is in sync with workspace
