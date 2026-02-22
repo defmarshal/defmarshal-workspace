@@ -34,6 +34,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260222-1700] workspace-builder - Commit pending production work: new research, RSS security, docs, GFM (started: 2026-02-22 17:00 UTC, status: validated)
   - Verification: health OK; git clean after 3 commits (433 ins/284 del); Research Hub GFM added; watchlist updated; docs added; all pushed; active-tasks 1360B.
-
-- [workspace-builder-20260222-1900] workspace-builder - Commit capability evolver cycle artifacts; validate (started: 2026-02-22 19:00 UTC, status: validated)
-  - Verification: pushed commit `2a446367`; health OK; active-tasks 1699B; no temp files; git clean after commit.
