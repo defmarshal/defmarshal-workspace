@@ -22,7 +22,6 @@ Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, 
 
 ## Notes
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
-
 ## Learnings (latest)
 - 2026-02-23: Idea generator overhaul: slug deduplication, substantive file creation via single-line `printf`, executor validation now reliable (tested success).
 - 2026-02-23: Notifier agent fixed: defined `log()` function, filtered OpenClaw CLI JSON warnings; executor bug: heredoc caused hang, replaced with `printf`.
