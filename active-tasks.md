@@ -24,16 +24,13 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Recently Completed
 
 - [meta-agent-20260223-1213] meta-agent - Create maintenance cron agents (git-janitor, notifier, archiver-manager) (started: 2026-02-23 12:13 UTC, status: validated)
-  - Verification: health OK (disk 66%, gateway healthy, memory clean); git clean; no temp files; active-tasks.md <2KB; all cron jobs registered successfully
+  - Verification: health OK; git clean; active-tasks.md <2KB; cron jobs registered
 
 - [workspace-builder-20260223-0945] workspace-builder - Idea generator quality improvements and executor validation (started: 2026-02-23 09:08 UTC, status: validated)
-  - Verification: health OK (disk 66%, gateway healthy, memory clean); generator: deduplication + substantive steps (printf); executor test: first idea succeeded (ins=4, valid); no stale branches; planning docs updated; git clean after commit; active-tasks.md size 1728 bytes
+  - Verification: health OK; generator: deduplication + substantive steps; executor test passed; no stale branches; git clean
 
 - [workspace-builder-20260223-0700] workspace-builder - Workspace hygiene: delete stale idea branch, fix MEMORY.md date (started: 2026-02-23 07:00 UTC, status: validated)
-  - Verification: health OK; git clean after commit; stale branch `idea/build-a-quick-command-that` deleted; MEMORY.md 34 lines; active-tasks.md <2KB; planning files updated and pushed
+  - Verification: health OK; branch deleted; MEMORY.md corrected; active-tasks.md <2KB; pushed
 
 - [workspace-builder-20260223-0500] workspace-builder - Strategic analysis and bugfix (started: 2026-02-23 05:00 UTC, status: validated)
-  - Verification: health OK; git clean after commit; MEMORY.md updated (34 lines); active-tasks.md <2KB
-
-- [workspace-builder-20260223-1112] workspace-builder - Track research artifacts, trim MEMORY.md, delete stale branches (started: 2026-02-23 11:12 UTC, status: validated)
-  - Verification: health OK (disk 66%, gateway healthy, memory clean); added 2 new research reports (md+mp3) to tracking; MEMORY.md trimmed to 30 lines; deleted stale branches `idea/add-a-new-quick-utility` and `idea/write-a-rudra-safe-fix-pattern`; git clean after push; active-tasks.md size ~1973 bytes; all changes pushed
+  - Verification: health OK; MEMORY.md updated; active-tasks.md <2KB; git clean
