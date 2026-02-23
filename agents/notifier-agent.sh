@@ -3,11 +3,6 @@ set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/notifier-agent.log"
 mkdir -p memory
-
-log() {
-  echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
-}
-
 log "Notifier starting"
 # Check for issues and send alerts
 if openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "\(.name): \(.state.consecutiveErrors) errors"' | grep -q .; then
