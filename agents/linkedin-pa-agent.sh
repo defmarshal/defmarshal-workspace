@@ -145,12 +145,12 @@ else
   log "No changes to commit"
 fi
 
-# Sync to Obsidian vault if configured
-if [ -n "${OBSIDIAN_VAULT:-}" ] && [ -d "$OBSIDIAN_VAULT" ]; then
-  log "Syncing to Obsidian vault: $OBSIDIAN_VAULT"
-  "$VAULT_SYNC_SCRIPT" >> "$LOGFILE" 2>&1 || true
+# Sync to Obsidian vault using the standard OpenClaw sync script
+if [ -f "$WORKSPACE/scripts/obsidian-sync.sh" ]; then
+  log "Syncing all outputs to Obsidian vault (via obsidian-sync.sh)"
+  "$WORKSPACE/scripts/obsidian-sync.sh" >> "$LOGFILE" 2>&1 || true
 else
-  log "Obsidian vault not configured (set OBSIDIAN_VAULT) — skipping sync"
+  log "Warning: obsidian-sync.sh not found — skipping Obsidian sync"
 fi
 
 log "LinkedIn PA agent cycle completed"
