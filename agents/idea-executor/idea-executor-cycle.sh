@@ -10,6 +10,21 @@ IDEA_FILE="$IDEAS_DIR/latest.json"
 LOG_FILE="$WORKSPACE/memory/idea-executor.log"
 RUN_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
 
+# Capture original branch for cleanup (avoid leaving workspace on an idea branch)
+ORIGINAL_BRANCH=$(git -C "$WORKSPACE" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
+
+cleanup() {
+  # Restore original branch if we switched away from it
+  if [[ -n "$ORIGINAL_BRANCH" ]]; then
+    CURRENT_BRANCH=$(git -C "$WORKSPACE" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
+    if [[ "$CURRENT_BRANCH" != "$ORIGINAL_BRANCH" ]]; then
+      log "Restoring original branch: $ORIGINAL_BRANCH"
+      git -C "$WORKSPACE" checkout "$ORIGINAL_BRANCH" 2>/dev/null || true
+    fi
+  fi
+}
+trap cleanup EXIT
+
 log() {
   echo "[$(date -u +"%Y-%m-%d %H:%M:%S UTC")] $*" >> "$LOG_FILE"
 }
