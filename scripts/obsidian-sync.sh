@@ -71,10 +71,13 @@ while IFS= read -r file; do
   fi
 done < <(find research -maxdepth 1 -type f -name '????-??-??-*.md' 2>/dev/null | sort)
 
-# 3. Sync ALL content files (organized by year-month)
+# 3. Sync ALL content files (organized by type)
+# Regular content (daily digests, notes) → Content/YYYY-MM/
+# LinkedIn PA posts → Content/LinkedIn/YYYY-MM/
 CONTENT_VAULT="$VAULT_DIR/Content"
 mkdir -p "$CONTENT_VAULT"
 
+# 3a. Regular content (exclude LinkedIn PA specific files)
 while IFS= read -r file; do
   filename=$(basename "$file")
   year_month=${filename:0:7}
@@ -85,7 +88,22 @@ while IFS= read -r file; do
     cp "$file" "$dest"
     echo "✓ Copied content: $year_month/$filename"
   fi
-done < <(find content -maxdepth 1 -type f -name '????-??-??-*.md' 2>/dev/null | sort)
+done < <(find content -maxdepth 1 -type f -name '????-??-??-*.md' 2>/dev/null | grep -v 'linkedin-pa' | sort)
+
+# 3b. LinkedIn PA specific content → Content/LinkedIn/YYYY-MM/
+LINKEDIN_VAULT="$CONTENT_VAULT/LinkedIn"
+mkdir -p "$LINKEDIN_VAULT"
+while IFS= read -r file; do
+  filename=$(basename "$file")
+  year_month=${filename:0:7}
+  dest_dir="$LINKEDIN_VAULT/$year_month"
+  mkdir -p "$dest_dir"
+  dest="$dest_dir/$filename"
+  if [ ! -f "$dest" ] || [ "$file" -nt "$dest" ]; then
+    cp "$file" "$dest"
+    echo "✓ Copied LinkedIn PA: LinkedIn/$year_month/$filename"
+  fi
+done < <(find content -maxdepth 1 -type f -name '????-??-??-*linkedin-pa*.md' 2>/dev/null | sort)
 
 # 4. Create/update Research Index note (with dataview suggestion)
 RESEARCH_INDEX="$VAULT_DIR/Research/Index.md"
@@ -123,10 +141,29 @@ EOF
   echo "✓ Created content index note"
 fi
 
+# 5b. Create/update LinkedIn Index note
+LINKEDIN_INDEX="$VAULT_DIR/Content/LinkedIn/Index.md"
+if [ ! -f "$LINKEDIN_INDEX" ]; then
+  mkdir -p "$VAULT_DIR/Content/LinkedIn"
+  cat > "$LINKEDIN_INDEX" <<'EOF'
+# LinkedIn Content Index
+
+IBM Planning Analytics LinkedIn posts and digests organized by year-month.
+
+```dataview
+TABLE file.mtime as Modified
+FROM "Content/LinkedIn"
+SORT file.name DESC
+```
+EOF
+  echo "✓ Created LinkedIn content index note"
+fi
+
 # 6. Update Dashboard with comprehensive stats
 DASHBOARD="$VAULT_DIR/Dashboard.md"
 TOTAL_RESEARCH=$(find research -name '????-??-??-*.md' 2>/dev/null | wc -l)
-TOTAL_CONTENT=$(find content -name '????-??-??-*.md' 2>/dev/null | wc -l)
+TOTAL_CONTENT=$(find content -maxdepth 1 -name '????-??-??-*.md' 2>/dev/null | grep -v 'linkedin-pa' | wc -l)
+TOTAL_LINKEDIN=$(find content -maxdepth 1 -name '????-??-??-*linkedin-pa*.md' 2>/dev/null | wc -l)
 TOTAL_DAILY=$(find Daily -name '*.md' 2>/dev/null | wc -l)
 
 cat > "$DASHBOARD" <<EOF
@@ -137,12 +174,14 @@ cat > "$DASHBOARD" <<EOF
 ## Archive Stats
 - Research reports: $TOTAL_RESEARCH
 - Content files: $TOTAL_CONTENT
+- LinkedIn PA posts: $TOTAL_LINKEDIN
 - Daily notes: $TOTAL_DAILY
 - Workspace disk: $(df -h "$WORKSPACE" | awk 'NR==2 {print $5 " used"}')
 
 ## Quick Links
 - [[Research/Index|Research Index]]
 - [[Content/Index|Content Index]]
+- [[LinkedIn/Index|LinkedIn Content]]
 - [[Daily|Daily Notes]]
 
 ## Upcoming Indonesian Holidays

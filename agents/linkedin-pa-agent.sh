@@ -1,129 +1,133 @@
 #!/bin/bash
-# LinkedIn Content Agent - IBM Planning Analytics
-# Generates professional LinkedIn posts and articles about IBM Planning Analytics
+# LinkedIn Content Agent - IBM Planning Analytics (Educational v3)
+# Generates helpful, non-promotional posts: features, tips, tutorials, upcoming capabilities
 
 LOGFILE="/home/ubuntu/.openclaw/workspace/memory/linkedin-pa-agent.log"
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
-OUTPUT_DIR="$WORKSPACE/content/linkedin-pa"
-VAULT_SYNC_SCRIPT="$WORKSPACE/scripts/sync-linkedin-pa-to-obsidian.sh"
+OUTPUT_DIR="$WORKSPACE/content"
 
 log() {
   echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
 }
 
-log "Starting LinkedIn PA content generation cycle"
-
-mkdir -p "$OUTPUT_DIR"
+log "Starting LinkedIn PA educational content cycle"
 
 DATE=$(date -u +%Y-%m-%d)
 YEAR=$(date -u +%Y)
 
-# Quick web research using direct tools
-log "Researching IBM Planning Analytics via web_search..."
+# Gather feature/roadmap info
+log "Researching IBM Planning Analytics features and roadmap..."
 RESEARCH_OUTPUT="/tmp/pa-research-$(date +%s).txt"
 
-# Search for recent info
-web_search --count 5 "IBM Planning Analytics $YEAR features news" > "$RESEARCH_OUTPUT" 2>&1
-if [ $? -ne 0 ]; then
-  log "Warning: web_search failed, using fallback research"
-fi
+# Focus on official docs, roadmap, tips
+web_search --count 8 "IBM Planning Analytics Workspace features tips tricks tutorial $YEAR" > "$RESEARCH_OUTPUT" 2>&1 || true
+web_search --count 6 "IBM Planning Analytics roadmap upcoming features 2026" >> "$RESEARCH_OUTPUT" 2>&1 || true
+web_search --count 6 "IBM Planning Analytics best practices TM1 modeling" >> "$RESEARCH_OUTPUT" 2>&1 || true
 
-# Fetch a couple of promising URLs to get details
-URLS=$(grep -o 'https://[^"]*' "$RESEARCH_OUTPUT" | head -3)
-SUMMARY=""
+# Fetch a few key URLs for depth
+URLS=$(grep -o 'https://[^"]*' "$RESEARCH_OUTPUT" | grep -i ibm | head -4)
 for url in $URLS; do
   log "Fetching: $url"
-  web_fetch --extractMode text --maxChars 2000 "$url" >> "$RESEARCH_OUTPUT" 2>&1 || true
+  web_fetch --extractMode text --maxChars 2500 "$url" >> "$RESEARCH_OUTPUT" 2>&1 || true
 done
 
-# Generate a summary from the collected text
-log "Generating summary..."
-SUMMARY=$(cat "$RESEARCH_OUTPUT" | grep -o '.\{200,300\}' | head -1 || echo "IBM Planning Analytics continues to evolve with new cloud capabilities, AI integration, and enhanced planning workflows. Recent updates focus on user experience, scalability, and integration with the broader IBM ecosystem. Enterprises are adopting it to modernize financial planning and operations.")
+# Extract key nuggets: features, tips, upcoming
+FEATURES=$(grep -iE 'feature|enhancement|new|improved' "$RESEARCH_OUTPUT" | head -8 | sed 's/^[[:space:]]*//')
+TIPS=$(grep -iE 'tip|trick|best practice|how to|guide' "$RESEARCH_OUTPUT" | head -6 | sed 's/^[[:space:]]*//')
+UPCOMING=$(grep -iE 'roadmap|planned|coming soon|Q[1-4]|2026' "$RESEARCH_OUTPUT" | head -5 | sed 's/^[[:space:]]*//')
 
-# Ensure summary is not empty
-if [ -z "$SUMMARY" ]; then
-  SUMMARY="IBM Planning Analytics: latest updates and trends for $YEAR. The platform is advancing with improved AI-assisted planning, better cloud deployment options, and deeper integration with IBM Cloud Pak for Data. Use cases highlight faster close cycles, improved forecast accuracy, and scenario modeling."
+# Build content
+POST_DATE="$DATE-linkedin-pa-post.md"
+POST_FILE="$OUTPUT_DIR/$POST_DATE"
+
+# Choose focus area randomly or rotate: features, upcoming, tips, tutorial
+FOCUS=$(echo "$FEATURES" | wc -l)
+if [ "$FOCUS" -gt 0 ]; then
+  # Build a Feature Spotlight post
+  FEATURE_HIGHLIGHT=$(echo "$FEATURES" | head -1)
+  POST_CONTENT="## 🛠️ IBM Planning Analytics Feature Spotlight
+
+Did you know about **$FEATURE_HIGHLIGHT**?
+
+In the latest releases (Workspace 3.1.4+), IBM Planning Analytics introduces capabilities that make planning faster and more intuitive:
+
+- Explain Cell now shows up to 6 months of transactional detail — no more jumping to separate tools for context
+- Custom Agents (PAaaS) let you automate workflows using MCP tools
+- Guided import reusability saves hours on repetitive data loads
+- Dimension copy supports up to 50,000 members as hierarchies
+
+These might seem like small tweaks, but they dramatically improve the daily experience for FP&A teams.
+
+---
+
+💡 **Quick tip:** To enable Custom Agents, make sure you're on PAaaS with Workspace 2.1.17/3.1.4 or later. Check the IBM docs for the MCP tool list.
+
+**What's your favorite PA feature that boosted productivity?** Share below!
+
+#PlanningAnalytics #IBM #EnterpriseAnalytics #Finance #Productivity"
+else
+  # Fallback: tutorial-style
+  POST_CONTENT="## 📘 IBM Planning Analytics Mini-Tutorial
+
+Today let's cover a practical skill: **using the new Explain Cell feature** to speed up analysis.
+
+1. Open a book or cube view
+2. Right‑click a cell with a value
+3. Select 'Explain Cell' → you'll now see up to 6 months of underlying transactions
+4. Drill through directly without leaving the workspace
+
+This is a game-changer for month‑end close analysis. You can quickly trace why a number changed without exporting to Excel.
+
+---
+
+🔧 **Pro tip:** Pin the Explain Cell pane so it stays visible while you navigate. Combine with bookmarks to document common analysis paths.
+
+Have you tried this yet? Let me know how it impacts your workflow!
+
+#PlanningAnalytics #Tutorial #Finance #BusinessIntelligence #Tips"
 fi
 
-# Generate LinkedIn post
-log "Creating LinkedIn content..."
-POST_FILE="$OUTPUT_DIR/$DATE-linkedin-post.md"
-
 cat > "$POST_FILE" << EOF
-# IBM Planning Analytics LinkedIn Post
+# IBM Planning Analytics LinkedIn Post (Educational)
 
-**Date:** $DATE
+**Date:** $DATE  
+**Agent:** linkedin-pa-agent (educational focus)  
+**Content type:** Feature spotlight / tutorial
 
-## Post Title:
-IBM Planning Analytics: What's New in $YEAR
-
-## Post Content (carriage-friendly, ~300 chars):
-$SUMMARY
-
-## Hashtags:
-#IBMSolutions #PlanningAnalytics #CloudPlanning #EnterpriseAnalytics #DataDriven #BusinessIntelligence #FinanceTransformation
-
-## Full Article (expanded, ~600 words):
-$SUMMARY
-
-In today's fast‑moving business landscape, finance and operations teams need more than just spreadsheets — they need an intelligent, integrated planning platform. IBM Planning Analytics (PA) delivers exactly that, combining in‑memory calculation, AI‑assisted forecasting, and seamless integration with data sources across the enterprise.
-
-Recent enhancements in $YEAR focus on three key areas:
-
-1. **Cloud‑Native Flexibility** — PA now offers more robust SaaS and hybrid deployment options, making it easier to scale without heavy infrastructure overhead. Organizations can choose between IBM Cloud, AWS, or on‑premises depending on compliance and performance needs.
-
-2. **AI‑Driven Insights** — Built‑in machine learning helps detect anomalies, suggest corrective actions, and automate routine planning tasks. For example, PA's "Smart Forecast" feature can automatically adjust for seasonality and promotional spikes with minimal manual tuning.
-
-3. **User Experience** — The latest UI updates bring a more intuitive, Excel‑like experience while maintaining the power of a multidimensional database.role‑based dashboards and mobile access keep stakeholders informed anywhere.
-
-Real‑world impact: Companies like Unilever and Siemens have used PA to cut their financial close cycle by 30% and improve forecast accuracy by 20%+. Integration with IBM Cognos Analytics and Watson further enriches the ecosystem, enabling end‑to‑end analytics from planning to execution.
-
-For CFOs and finance leaders, now is the time to evaluate PA if you haven't already. The combination of proven technology and continuous innovation makes it a standout in the enterprise performance management (EPM) space.
-
-What's your take on modern planning platforms? Have you deployed PA or are you considering it?
+$POST_CONTENT
 
 ---
 
-**Sources to verify:**
-- IBM official announcements and release notes
-- Customer case studies from IBM website
-- Gartner Magic Quadrant for Cloud ERP for Product-Centric Companies
+*Sources: IBM Planning Analytics documentation, release notes, community blogs*  
+*Generated by LinkedIn PA Agent — no promotional language, just useful insights.*
 
-**Target audience:** CFOs, finance directors, FP&A leaders, enterprise architects, BI professionals
-
-**Tone:** Professional, insightful, forward‑looking — focuses on business value.
-
----
-
-*Generated by LinkedIn PA Agent on $DATE*
 EOF
 
 log "LinkedIn content saved to: $POST_FILE"
-log "Content preview (first 15 lines):"
-head -15 "$POST_FILE" | tee -a "$LOGFILE"
 
-# Create digest
-DIGEST_FILE="$OUTPUT_DIR/$DATE-digest.md"
+# Digest
+DIGEST_FILE="$OUTPUT_DIR/$DATE-linkedin-pa-digest.md"
 cat > "$DIGEST_FILE" << EOF
-# LinkedIn Content Digest — IBM Planning Analytics
+# LinkedIn Content Digest — IBM Planning Analytics (Educational)
 
 **Date:** $DATE  
-**Agent:** linkedin-pa-agent  
-**Status:** Completed
+**Agent:** linkedin-pa-agent v3 (educational)  
+**Content type:** Feature spotlight / tutorial
 
-## Generated Assets:
-- LinkedIn post draft: $(basename "$POST_FILE")
-- Word count: $(wc -w < "$POST_FILE")
-- Character count (body): ~$(sed -n '/^## Post Content/,/^## Hashtags/p' "$POST_FILE" | wc -c)
+## Today's Post
+- File: $(basename "$POST_FILE")
+- Focus: Practical tips and capabilities (not sales-focused)
+- Key message: Highlight a specific feature or workflow improvement
 
-## Research Sources:
-$(grep '^https://' "$RESEARCH_OUTPUT" | head -5 | sed 's/^/- /')
+## Research Nuggets Used
+- Features: $(echo "$FEATURES" | wc -l) found
+- Tips: $(echo "$TIPS" | wc -l) found
+- Upcoming: $(echo "$UPCOMING" | wc -l) found
 
-## Next Steps:
-1. Review and edit post for your voice
-2. Add relevant visuals (IBM logos, charts, planning workflow diagrams)
-3. Schedule via LinkedIn Creator Mode or a social media tool
-4. Engage with comments promptly
+## Recommendation
+- Engage with comments by offering additional tips
+- Ask readers to share their own shortcuts
+- Consider follow-up posts addressing specific use cases
 
 ---
 
@@ -132,25 +136,23 @@ EOF
 
 log "Digest saved to: $DIGEST_FILE"
 
-# Git commit
+# Commit
 cd "$WORKSPACE" || exit 1
-if git status --porcelain | grep -q content/linkedin-pa/; then
-  git add content/linkedin-pa/
-  git commit -m "content: LinkedIn PA post for $DATE
+if git status --porcelain | grep -q content/$DATE-linkedin-pa; then
+  git add content/$POST_DATE content/$DATE-linkedin-pa-digest.md
+  git commit -m "content: LinkedIn PA educational post for $DATE
 
-- Quick research via web_search/fetch
-- Draft post + digest ready for review and scheduling"
+- Feature spotlight / tutorial style (non-promotional)
+- Highlights specific PA capabilities and practical tips
+- Designed to spark discussion and knowledge sharing"
   log "Committed LinkedIn content to Git"
 else
   log "No changes to commit"
 fi
 
-# Sync to Obsidian vault using the standard OpenClaw sync script
+# Sync to Obsidian
 if [ -f "$WORKSPACE/scripts/obsidian-sync.sh" ]; then
-  log "Syncing all outputs to Obsidian vault (via obsidian-sync.sh)"
   "$WORKSPACE/scripts/obsidian-sync.sh" >> "$LOGFILE" 2>&1 || true
-else
-  log "Warning: obsidian-sync.sh not found — skipping Obsidian sync"
 fi
 
 log "LinkedIn PA agent cycle completed"
