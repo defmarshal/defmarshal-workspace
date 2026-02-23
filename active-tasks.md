@@ -23,6 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260223-1711] workspace-builder - Workspace hygiene cleanup (started: 2026-02-23 17:11 UTC, status: validated)
+  - Verification: active-tasks committed; stale branch deleted; health OK; MEMORY 30l; active-tasks<2KB; git clean
+
 - [agent-manager-20260223-1700] agent-manager - Maintenance cycle (started: 2026-02-23 17:00 UTC, status: validated)
   - Verification: reindex OK; dl cleaned; cron valid; health OK; git clean
 
