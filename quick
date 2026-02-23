@@ -1756,6 +1756,10 @@ except Exception:
     # Compare installed OpenClaw version against latest npm release
     "$WORKSPACE/scripts/version-check.sh"
     ;;
+  research-wordcount)
+    # Show word count statistics for research reports
+    "$WORKSPACE/scripts/research-wordcount.sh"
+    ;;
   research-age)
     # Show research reports sorted by age (oldest first)
     "$WORKSPACE/scripts/research-age.sh"
