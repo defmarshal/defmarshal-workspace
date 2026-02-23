@@ -144,6 +144,11 @@ set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/git-janitor.log"
 mkdir -p memory
+
+log() {
+  echo "$(date -u +%Y-%m-%d\ %H:%M:%S) UTC - $*" >> "$LOGFILE"
+}
+
 log "Git janitor starting"
 # Stage safe untracked files (excluding node_modules, .git, etc.)
 git add -A 2>/dev/null || true
@@ -184,10 +189,15 @@ set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 LOGFILE="memory/notifier-agent.log"
 mkdir -p memory
+
+log() {
+  echo "$(date -u +%Y-%m-%d\ %H:%M:%S) UTC - $*" >> "$LOGFILE"
+}
+
 log "Notifier starting"
 # Check for issues and send alerts
-if openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "\(.name): \(.state.consecutiveErrors) errors"' | grep -q .; then
-  FAILURES=$(openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "- \(.name): \(.state.consecutiveErrors) errors"' | paste -sd '\n' -)
+if openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "\(.name): \(.state.consecutiveErrors) errors"' | grep -q .; then
+  FAILURES=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "- \(.name): \(.state.consecutiveErrors) errors"' | paste -sd '\n' -)
   openclaw message send --channel telegram --to 952170974 --text "🚨 *OpenClaw Alert*\nCron job failures:\n$FAILURES" 2>/dev/null || true
 fi
 USAGE=$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')
