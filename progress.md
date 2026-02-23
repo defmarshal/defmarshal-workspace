@@ -29,11 +29,14 @@
 
 ## Phase 4: Commit & Handover
 
-- [ ] Stage changes: `git add MEMORY.md active-tasks.md task_plan.md findings.md progress.md`
-- [ ] Commit: `git commit -m "build: workspace hygiene - delete stale idea branch, fix MEMORY.md date"`
-- [ ] Push: `git push origin master`
-- [ ] Update active-tasks.md with validated entry (include verification notes)
-- [ ] Final `git status` → clean
+- [x] Stage changes: `git add MEMORY.md active-tasks.md task_plan.md findings.md progress.md`
+- [x] Commit: `git commit -m "build: workspace hygiene - delete stale idea branch, fix MEMORY.md date metadata"`
+- [x] Push: `git push origin master`
+- [x] Update active-tasks.md with validated entry (includes verification notes)
+- [x] Final `git status` → clean (on master, up-to-date)
+
+**Commit:** 0a01f482 "build: workspace hygiene - delete stale idea branch, update MEMORY.md date metadata"
+**Push:** Successfully pushed to origin/master.
 
 ## Outcome
 
