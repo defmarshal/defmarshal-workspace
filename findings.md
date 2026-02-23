@@ -1,81 +1,71 @@
-# Workspace Analysis (2026-02-23 03:00 UTC)
+# Workspace Builder — Findings Log
 
-**Session:** workspace-builder
-**Model:** openrouter/stepfun/step-3.5-flash:free
+**Session started:** 2026-02-23 05:00 UTC
 
----
+## Initial State
 
-## Health Overview
+- Git status: clean (0 changed)
+- active-tasks.md: 39 lines, all agents validated
+- MEMORY.md: 33 lines, last updated 2026-02-22
+- Memory index: 21/112 chunks, clean, local FTS+ (Voyage disabled)
+- Disk: 65% used
+- Gateway: healthy
+- Downloads: 15 files, 5.2G
 
-| Metric | Status | Details |
-|--------|--------|---------|
-| Disk usage | 65% | Healthy |
-| Gateway | Healthy | Port 18789 |
-| Memory index | Clean | 21/21 files, 112 chunks, local FTS+, dirty: no |
-| Git status | Dirty (expected) | 1 modified: `memory/meta-agent-state.json` |
-| Cron jobs | All OK | 0 consecutive errors; schedules match CRON_JOBS.md |
-| active-tasks.md | Healthy | ~1.5KB, no orphaned entries |
-| Temp files | None | Clean |
-| MEMORY.md | Current | 33 lines, last updated 2026-02-22 |
+## Phase 1: Health & Hygiene Audit
 
----
+### Git & Files
+- ✓ Clean working tree
+- No untracked files detected (`git status --short` empty)
+- ✓ No temp files in workspace root (checked common patterns: *.tmp, *.temp, .*.swp)
+- active-tasks.md size: ~2KB (within limit)
 
-## Identified Actions
+### Memory System
+- Voyage AI disabled (rate-limited free tier)
+- Local FTS+ active; last reindex 6.6 days ago (scheduled weekly on Sundays at 04:00 Asia/Bangkok)
+- Memory dirty flag: clean (21/112 chunks indexed)
 
-### 1. Commit meta-agent-state.json (HIGH)
+### .gitignore Review
+- Comprehensive: covers node_modules, __pycache__, logs, state files, idea artifacts, etc.
+- Specific venv ignore: skills/kokoro-tts/venv/
+- Media outputs: *.mp3 ignored
+- No immediate additions required
 
-**Finding:** `memory/meta-agent-state.json` has a legitimate timestamp update:
-- `research_agent_last_spawn`: 1771808966 → 1771812406
+### Hygiene Check Results
+- `quick hygiene` reported CRLF in binary .mp3 file (false positive; safe to ignore)
+- `quick clean-cache` removed 12,520 Python cache items (pyc, __pycache__) — good maintenance
 
-This indicates recent research-agent activity. It's part of operational state and should be committed to persist tracking.
+## Phase 2: System Analysis
 
-**Action:** Stage and commit with `build:` prefix.
+### Idea Pipeline
+- Generator: every 6h UTC, produces 10 ideas in `agents/ideas/latest.json`
+- Executor: every 2h UTC, picks first pending and runs steps
+- Current status (from `ideas-status`): idle, last run 2026-02-23 04:05 UTC, current idea "build-a-voice-based-tts-news" rejected
+- Pending count: 7/10 ideas
+- Executor logs reveal repeated `date: extra operand` errors
 
-**Impact:** Keeps state consistent across runs; prevents loss of spawn timing data.
+### Bug Discovery: Idea Executor Logging Failure
+- Root cause: In `agents/idea-executor/idea-executor-cycle.sh`, the `log` function uses `date -u +%Y-%m-%d %H:%M:%S UTC` without quotes.
+- The shell splits the format string, causing `date` to interpret `%H:%M:%S` as an extra operand.
+- This results in "date: extra operand" errors for every log entry, cluttering logs and potentially masking issues.
+- Impact: Log integrity compromised; status.json updates still work but logs are mostly empty/erroneous.
+- Fix applied: Quoted format string as `date -u +"%Y-%m-%d %H:%M:%S UTC"`.
 
----
+### Documentation Accuracy
+- All quick commands in TOOLS.md have corresponding implementations (scripts or built-in cases).
+- CRON_JOBS.md appears up-to-date; agent-manager validates schedules every 30 min.
+- Active-tasks registry clean.
+- No outdated info found in AGENTS.md or TOOLS.md.
 
-### 2. Review MEMORY.md Currency (MEDIUM)
+## Phase 3: Validation & Next Steps
 
-**Finding:** MEMORY.md last updated 2026-02-22. Today is Feb 23. Recent learnings from Feb 22-23 include:
-- Polyglot TTS coverage stats (96.7%) and Edge TTS for Japanese
-- Research Hub audio player integration and mp3 syncing
-- Capability evolver cycle artifacts commit
-- Ongoing workspace hygiene patterns
+- The fix is small, targeted, and improves system observability.
+- MEMORY.md updated with bugfix learning (2026-02-23).
+- Close-the-loop validation will confirm health post-fix.
+- No other urgent issues detected.
 
-However, MEMORY.md is an index (max ~30 lines). Current length is 33 lines (slightly over). Recent "Learnings (latest)" entries are from 2026-02-22, 2026-02-21, etc. It is already fairly current. Significant new pattern may warrant a concise update.
+## Outcome
 
-**Decision:** Perform a brief review; if there's a new distinct pattern since Feb 22 that isn't captured, add one line. Otherwise, leave as is to respect brevity.
-
-**Potential new pattern (if any):** The recent meta-agent state tracking and the consistent pattern of workspace-builder performing branch cleanup and commit of agent artifacts could be distilled. But the existing "Autonomous idea pipeline" and "Meta-agent robustness" already cover similar ground. Likely no update needed.
-
----
-
-### 3. active-tasks.md Maintenance (LOW)
-
-**Finding:** active-tasks.md has no entry for the current builder session yet. Previous run (2026-02-23 01:00) is already validated and listed under "Recently Completed". For continuity, we should add a new entry for this session when we start and update it to validated upon completion.
-
-**Action:** Update active-tasks.md after commit/push with:
-```
-- [workspace-builder-20260223-0300] workspace-builder - Hygiene & state commit (started: 2026-02-23 03:00 UTC, status: validated)
-  - Verification: health OK; git clean; meta-agent-state.json pushed; MEMORY.md unchanged (33 lines)
-```
-
-**Constraint:** Keep file <2KB. Current size ~1500 bytes, adding ~200 bytes will keep it under limit.
-
----
-
-## Other Observations
-
-- **Cron schedule validation:** All jobs healthy; no drift detected.
-- **Agent manager:** Timeout increase to 900s successful; no timeout errors in recent logs.
-- **Memory reindex:** Last run 6.4 days ago; no dirty files. Next scheduled: Sunday 04:00 Asia/Bangkok.
-- **Research Hub:** Production-deployed with audio player; prebuild sync includes mp3; all TTS coverage stable.
-- **Idea pipeline:** No stale `idea/*` branches; generator/executor running on schedule.
-- **No temp files** or orphaned artifacts detected.
-
----
-
-## Conclusion
-
-Primary task: Commit the meta-agent-state.json update. Secondary: Consider MEMORY.md update (likely not needed). Ensure active-tasks.md reflects this run.
+- **Primary improvement**: Fixed idea executor logging bug.
+- **Secondary**: Cleaned Python cache (via clean-cache).
+- Documentation remains accurate.

@@ -11,7 +11,7 @@ LOG_FILE="$WORKSPACE/memory/idea-executor.log"
 RUN_TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
 
 log() {
-  echo "[$(date -u +%Y-%m-%d %H:%M:%S UTC)] $*" >> "$LOG_FILE"
+  echo "[$(date -u +"%Y-%m-%d %H:%M:%S UTC")] $*" >> "$LOG_FILE"
 }
 
 # Ensure files exist
