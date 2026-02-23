@@ -17,7 +17,7 @@ alert() {
 
 # 1. Cron job health (via openclaw cron list)
 if command -v openclaw &>/dev/null; then
-  if CRON_JSON=$(openclaw cron list --json 2>/dev/null); then
+  if CRON_JSON=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p'); then
     # jq available? (should be)
     if command -v jq &>/dev/null; then
       PROBLEMS=$(echo "$CRON_JSON" | jq -r '.jobs[] | select((.state.lastStatus // "ok") != "ok" or (.state.consecutiveErrors // 0) > 2) | "- \(.name): \(.state.lastStatus // "no status"), errors \(.state.consecutiveErrors // 0)"')
