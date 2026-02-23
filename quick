@@ -73,6 +73,7 @@ Commands:
   check-hub-sync                          Check if Research Hub public/ is in sync with research/
   disk-usage                              Show workspace disk usage by top directories
   git-by-agent                            Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
+  research-age                            Show research reports sorted by age (oldest first)
   research-stats                           Show research library statistics (reports, TTS %, latest)
   send-digest                              Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
                   Example: quick send-digest
@@ -1749,6 +1750,10 @@ except Exception:
   disk-usage)
     # Show workspace disk usage by top directories
     "$WORKSPACE/scripts/disk-usage.sh"
+    ;;
+  research-age)
+    # Show research reports sorted by age (oldest first)
+    "$WORKSPACE/scripts/research-age.sh"
     ;;
   git-by-agent)
     # Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
