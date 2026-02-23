@@ -146,44 +146,31 @@ for i in {1..10}; do
   # 1. Create/switch to feature branch
   STEPS+=("git checkout -b idea/$SLUG 2>/dev/null || git checkout idea/$SLUG")
 
-  # 2. Category-specific substantive file creation/modification
+  # 2. Category-specific substantive file creation (single-line commands)
   case "$CATEGORY" in
     "utility"|"automation"|"monitoring"|"security"|"integration"|"fun")
       SCRIPT_NAME="scripts/${SLUG//-/_}.sh"
-      STEPS+=("cat <<'EOF' > $SCRIPT_NAME")
-      STEPS+=("#!/usr/bin/env bash")
-      STEPS+=("# $TITLE")
-      STEPS+=("set -euo pipefail")
-      STEPS+=("echo 'Running: $TITLE'")
-      STEPS+=("EOF")
+      # Use printf to create file with multiple lines in a single command
+      STEPS+=("printf '%s\n' '#!/usr/bin/env bash' '# $TITLE' 'set -euo pipefail' 'echo \"Running: $TITLE\"' > $SCRIPT_NAME")
       STEPS+=("chmod +x $SCRIPT_NAME")
       ;;
     "content"|"research")
       DIR="content"
       [[ "$CATEGORY" == "research" ]] && DIR="research"
       FILE="$DIR/${SLUG//-/_}.md"
-      STEPS+=("cat <<'EOF' > $FILE")
-      STEPS+=("# $TITLE")
-      STEPS+=("")
-      STEPS+=("Auto-generated from idea.")
-      STEPS+=("")
-      STEPS+=("*TODO: Expand*")
-      STEPS+=("EOF")
+      STEPS+=("printf '%s\n' '# $TITLE' '' 'Auto-generated from idea.' '' '*TODO: Expand*' > $FILE")
       ;;
     "ux")
       STEPS+=("echo '.$SLUG { /* new style */ }' >> styles/custom.css 2>/dev/null || true")
       ;;
     *)
       SCRIPT_NAME="scripts/${SLUG//-/_}.sh"
-      STEPS+=("cat <<'EOF' > $SCRIPT_NAME")
-      STEPS+=("#!/usr/bin/env bash")
-      STEPS+=("echo '$TITLE'")
-      STEPS+=("EOF")
+      STEPS+=("printf '%s\n' '#!/usr/bin/env bash' 'echo \"$TITLE\"' > $SCRIPT_NAME")
       STEPS+=("chmod +x $SCRIPT_NAME")
       ;;
   esac
 
-  # 3. Quick launcher placeholder (actual integration done later by builder)
+  # 3. Quick launcher placeholder
   STEPS+=("echo '# Quick command stub for $SLUG'")
 
   # 4. Stage and commit
