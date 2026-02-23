@@ -72,6 +72,7 @@ Commands:
   agents-health                            Show health summary of all agents (gateway, logs, cron)
   check-hub-sync                          Check if Research Hub public/ is in sync with research/
   disk-usage                              Show workspace disk usage by top directories
+  git-by-agent                            Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
   research-stats                           Show research library statistics (reports, TTS %, latest)
   send-digest                              Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
                   Example: quick send-digest
@@ -1748,6 +1749,10 @@ except Exception:
   disk-usage)
     # Show workspace disk usage by top directories
     "$WORKSPACE/scripts/disk-usage.sh"
+    ;;
+  git-by-agent)
+    # Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
+    "$WORKSPACE/scripts/git-by-agent.sh"
     ;;
   send-digest)
     # Send daily research digest email (requires DIGEST_TO_EMAIL and MATON_API_KEY)
