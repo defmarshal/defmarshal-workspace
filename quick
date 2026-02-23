@@ -70,6 +70,7 @@ Commands:
   tts-play <mp3-file>                      Play a TTS MP3 file (uses aplay/afplay/mpg123)
                   Example: quick tts-play research/2026-02-22-some-report.mp3
   agents-health                            Show health summary of all agents (gateway, logs, cron)
+  check-hub-sync                          Check if Research Hub public/ is in sync with research/
   research-stats                           Show research library statistics (reports, TTS %, latest)
   send-digest                              Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
                   Example: quick send-digest
@@ -1738,6 +1739,10 @@ except Exception:
   agents-health)
     # Show health summary of all agents
     "$WORKSPACE/scripts/agents-health.sh"
+    ;;
+  check-hub-sync)
+    # Check if Research Hub public/ is in sync with research/
+    "$WORKSPACE/scripts/check-hub-sync.sh"
     ;;
   send-digest)
     # Send daily research digest email (requires DIGEST_TO_EMAIL and MATON_API_KEY)
