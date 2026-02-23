@@ -1,40 +1,78 @@
-# Task Plan: Workspace Builder Run 2026-02-23 17:11 UTC
+# Workspace Builder Task Plan
 
-## Mission
-Analyze workspace health, clean up stale artifacts, commit pending changes, and validate system integrity.
+**Session:** workspace-builder-20260223-1909  
+**Trigger:** Cron (2-hourly cycle)  
+**Time:** 2026-02-23 19:09 UTC  
+**Goal:** Commit capability evolver output, validate workspace hygiene, maintain documentation constraints
 
-## Phases
+---
 
-### Phase 1: Analysis
-- Check system health (`./quick health`)
-- Review git status and identify pending changes
-- Inspect active-tasks.md size and MEMORY.md line count
-- Check for stale idea branches (`git branch | grep 'idea/'`)
-- Verify idea pipeline health (latest.json)
-- Scan for any uncommitted but valid improvements
+## Analysis Summary
 
-### Phase 2: Improvement Implementation
-Based on findings, implement:
-- Commit pending active-tasks.md cleanup (formatting improvement)
-- Delete stale idea branch `idea/build-a-cli-game-inside` (executed 2026-02-23 16:13, validated, unmerged)
-- Update planning docs (task_plan.md, findings.md, progress.md)
-- Add validated entry to active-tasks.md after verification
+**Current State:**
+- Health: OK (Disk 67%, Gateway healthy, Memory clean)
+- Git: Dirty (9 changed files, 2 untracked)
+- active-tasks.md: 42 lines (<2KB) ✓
+- MEMORY.md: 30 lines (≤30) ✓
+- Idea branches: None ✓
+- Memory reindex: Stale (7 days) - note for future consideration
 
-### Phase 3: Validation & Close the Loop
-- Run `./quick health` and verify all metrics OK
-- Verify active-tasks.md < 2KB and MEMORY.md ≤ 30 lines
-- Ensure no temp files
-- Check git status clean after commits
-- Confirm remote branch state (no stale idea branches)
+**Uncommitted Changes Detected:**
+- Modified evolution state files (memory/evolution/*.json, *.jsonl)
+- Modified evolver-summary.md
+- Modified candidates.jsonl
+- Untracked: gep_prompt_Cycle_#0003_run_1771870705173.{json,txt}
+- Untracked: skills/evolver/ directory
 
-### Phase 4: Documentation & Push
-- Push all commits to origin
-- Confirm workspace hygiene
+**Root Cause:** Capability evolver cycle #0003 executed (likely from 2026-02-23 18:?? UTC) and produced artifacts that are not yet committed.
+
+---
+
+## Task Phases
+
+### Phase 1: Document Analysis & Planning (Current)
+- Review git status and identify all changed files
+- Understand evolver output structure and completeness
+- Plan commit strategy with build: prefix
+
+### Phase 2: Commit Evolver Artifacts
+- Stage all evolver-related files
+- Create commit with message: `build: commit capability evolver cycle #0003 artifacts`
+- Push to origin
+- Verify git clean state
+
+### Phase 3: Update active-tasks.md
+- Add validated entry for this workspace-builder run
+- Prune if size exceeds 2KB (expected <40 lines currently)
+- Verify line count and file size
+
+### Phase 4: Close The Loop Validation
+- Run `./quick health` - expect OK
+- Check for temp files: `find . -name '*.tmp' -o -name '*~'` (should be none)
+- Validate MEMORY.md still ≤30 lines (should be unchanged)
+- Validate active-tasks.md <2KB
+- Verify no stale idea branches
+- Confirm all commits pushed
+
+### Phase 5: Final Documentation
+- Update progress.md with completion status
+- Append daily log entry to memory/2026-02-23.md
+
+---
 
 ## Success Criteria
-- Health OK; git clean; active-tasks.md ≤ 2KB; MEMORY.md ≤ 30 lines; no temp files; all changes committed and pushed.
-- No stale idea branches remain.
-- active-tasks.md includes this session's validated entry.
 
-## Session Key
-workspace-builder-20260223-1711
+- All evolver artifacts committed with proper build: prefix
+- Git working tree clean after push
+- active-tasks.md updated and <2KB
+- All validation checks pass
+- No temp files left behind
+- Documentation current
+
+---
+
+## Risk Mitigation
+
+- **Blast radius:** Only evolver files are modified; no code changes
+- **Rollback:** If commit fails, keep working tree dirty and report error
+- **Validation:** Close-the-loop checklist ensures no artifacts left uncommitted

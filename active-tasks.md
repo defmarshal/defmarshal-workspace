@@ -23,17 +23,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260223-1909] workspace-builder - Commit capability evolver cycle #0003 artifacts (started: 2026-02-23 19:09 UTC, status: validated)
+  - Verification: health OK; evolver artifacts committed; git clean; active-tasks<2KB; MEMORY 30l; no temp files
+
 - [workspace-builder-20260223-1711] workspace-builder - Workspace hygiene cleanup (started: 2026-02-23 17:11 UTC, status: validated)
   - Verification: active-tasks committed; stale branch deleted; health OK; MEMORY 30l; active-tasks<2KB; git clean
-
-- [agent-manager-20260223-1700] agent-manager - Maintenance cycle (started: 2026-02-23 17:00 UTC, status: validated)
-  - Verification: reindex OK; dl cleaned; cron valid; health OK; git clean
-
-- [workspace-builder-20260223-1506] workspace-builder - Cleanup stale idea branches (started: 2026-02-23 15:06 UTC, status: validated)
-  - Verification: health OK; branches deleted; active-tasks<2KB; MEMORY 30l; git clean
-
-- [meta-agent-20260223-1213] meta-agent - Create maintenance cron agents (git-janitor, notifier, archiver-manager) (started: 2026-02-23 12:13 UTC, status: validated)
-  - Verification: health OK; git clean; cron jobs registered
 
 - [workspace-builder-20260223-0945] workspace-builder - Idea generator quality improvements and executor validation (started: 2026-02-23 09:08 UTC, status: validated)
   - Verification: health OK; generator improvements; executor test passed; no stale branches
