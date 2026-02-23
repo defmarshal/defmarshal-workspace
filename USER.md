@@ -22,7 +22,7 @@ _Learn about the person you're helping. Update this as you go._
 - **Values:** Clean code, simplicity, robustness, continuous improvement
 - **Communication:** Casual, kawaii‑friendly (mewmew persona), but serious about quality
 - **Current vibe:** Building a self‑extending agent system and knowledge base; wants agents that are easy to debug and monitor (anti‑complexity)
-- **Interests:** Space tech, quantum computing, edge AI, satellite internet — any cutting‑edge tech that has real‑world impact
+- **Interests:** Space tech, quantum computing, edge AI, satellite internet, **IBM Planning Analytics** — any cutting‑edge tech that has real‑world impact
 - **Reminder:** No manual subagent spawning; keep cron noise low; use local memory; WhatsApp primary; heartbeats for checks
 
 ---
