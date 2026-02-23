@@ -1,11 +1,15 @@
 {
   "lastChecks": {
-    "timestamp": "2026-02-21T15:30:00Z",
+    "timestamp": "2026-02-22T23:31:00Z",
+    "supervisor_run": "OK",
     "health": "ok",
     "cron": "all_jobs_running",
     "memory": "clean",
-    "git_status": "dirty",
-    "downloads": "14_files_4.0GB",
-    "notes": "Uncommitted changes: findings.md, progress.md, task_plan.md; untracked: evolver artifacts, skills-assessment"
+    "git_status": "clean",
+    "downloads": "aria2_active",
+    "disk_usage": "65%",
+    "apt_updates": 0,
+    "gateway": "running",
+    "notes": "All systems healthy. Weather check in progress (Bangkok)."
   }
 }
