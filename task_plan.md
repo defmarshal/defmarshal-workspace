@@ -1,53 +1,49 @@
-# Workspace Builder Session Plan
+# Workspace Builder Task Plan
+**Session:** 2026-02-23 09:08 UTC
+**Goal:** Strategic improvements based on current state analysis
 
-**Started:** 2026-02-23 07:00 UTC
-**Trigger:** Cron (workspace-builder-cron)
-**Goal:** Workspace hygiene and minor improvements (branch cleanup, metadata fix, validation)
+## Phase 1: Analyze Current State (COMPLETED)
+- ✅ Read active-tasks.md, MEMORY.md, daily logs
+- ✅ Check git status (clean)
+- ✅ Check idea executor status (idle, 1 rejected idea)
+- ✅ Identify stale idea branch: `idea/build-a-voice-based-tts-news`
+- ✅ Review idea generator quality issues (low-value template placeholders)
 
-## Analysis Phases
+## Phase 2: Immediate Hygiene Fixes
+- Delete stale idea branch
+- Verify no other stale branches remain
+- Clean up any orphaned artifacts
 
-### Phase 1: State Assessment
-- Check git branches for stale idea/* branches
-- Check MEMORY.md metadata accuracy ("Last updated")
-- Verify active-tasks.md status (size <2KB)
-- Review idea pipeline status (rejected ideas, branch artifacts)
-- Inspect daily log for completeness
+## Phase 3: Improve Idea Generator Quality
+**Problem:** Generator produces low-value ideas that only "touch quick" without substantive changes.
+**Root cause:** Templates and step generation encourage minimal placeholder commits.
 
-### Phase 2: Hygiene Implementation
-- Delete stale idea branch `idea/build-a-quick-command-that` (rejected idea)
-- Update MEMORY.md "Last updated" to 2026-02-23 (reflects recent bugfix learning)
-- Verify active-tasks.md remains within size limits
-- Ensure no untracked files or temp artifacts
+**Actions:**
+- Enhance templates to include actual implementation steps (not just "touch quick")
+- Add deduplication: check slug uniqueness before emitting
+- Expand inspiration sources: analyze git log for common patterns, check memory files for recurring themes
+- Improve steps generation: avoid generic `touch quick` as the only file modification
 
-### Phase 3: Validation
-- Run `quick health` → expect all OK
-- Verify git working tree is clean
-- Check branch deletion confirmed
-- Ensure MEMORY.md line count ~34 or less
+## Phase 4: Documentation Updates
+- Update findings.md with analysis and changes
+- Update progress.md throughout execution
+- Ensure MEMORY.md stays within 30 lines (currently 34)
 
-### Phase 4: Commit & Handover
-- Stage changes: MEMORY.md, active-tasks.md, planning docs
-- Commit with prefix `build:`
-- Push to origin
-- Update active-tasks.md with validated entry (include verification notes)
-- Close the loop
+## Phase 5: Close the Loop Validation
+- Run `./quick health`
+- Check active-tasks.md size (<2KB)
+- Verify git clean after commits
+- Ensure no temp files left
+- Push changes with `build:` prefix
 
-## Success Criteria
+## Phase 6: Update active-tasks.md
+- Add validated entry with verification notes
 
-- Health metrics pass
+---
+
+**Success criteria:**
 - Stale branch deleted
-- MEMORY.md metadata consistent
-- No temp files
-- Git clean before and after commit
-- All changes pushed
-
-## Risks & Mitigations
-
-- **Risk:** Branch deletion conflicts if executor is currently using it
-  - **Mitigation:** Check idea executor status first; ensure it's idle; if branch is current in any session, skip with note
-
-- **Risk:** MEMORY.md update might overwrite concurrent changes
-  - **Mitigation:** Git was clean at start; changes are minimal (one line); low conflict risk
-
-- **Risk:** active-tasks.md may exceed 2KB if too verbose
-  - **Mitigation:** Keep entry concise; prune if needed
+- Idea generator produces at least 2 substantive ideas (≥5 lines changed, modifies non-quick files)
+- Generator deduplicates slugs
+- All validation checks pass
+- Commits pushed with proper prefixes

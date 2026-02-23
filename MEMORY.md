@@ -3,18 +3,17 @@
 *Last updated: 2026-02-23*
 
 ## Personal
-def, UTC+7, mewmew assistant; interests: anime, tech
+def, UTC+7, mewmew assistant; anime, tech
 
 ## Projects
-Memory System, Workspace Health & Automation, Anime Companion, Torrent System, Idea pipeline, openclaw-idle-rpg, research-hub
+Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, Research Hub, Torrent System
 
 ## Links
-- `active-tasks.md` current work
-- `memory/YYYY-MM-DD.md` daily logs
-- `lessons.md` patterns
-- `projects.md` status
-- `TOOLS.md` config
-- `CRON_JOBS.md` schedules
+- `active-tasks.md` (current work)
+- `memory/YYYY-MM-DD.md` (daily logs)
+- `lessons.md` (patterns)
+- `TOOLS.md` (config)
+- `CRON_JOBS.md` (schedules)
 
 ## Resources
 - Voyage AI: https://dashboard.voyageai.com
@@ -22,14 +21,11 @@ Memory System, Workspace Health & Automation, Anime Companion, Torrent System, I
 - GitHub: defmarshal/defmarshal-workspace
 
 ## Notes
-- Memory: local FTS+ only (Voyage disabled)
-- Gateway: port 18789
-- systemd linger recommended: `sudo loginctl enable-linger ubuntu`
+- Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 
 ## Learnings (latest)
-- 2026-02-23: Fixed date quoting bug in idea-executor-cycle.sh (unquoted format caused logging failures and status errors).
-- 2026-02-23: Notifier agent reliability: defined missing log() function and filtered OpenClaw CLI 'Doctor' warnings from JSON output using sed to prevent jq parse errors.
-- 2026-02-22: Autonomous idea pipeline: generator (6h UTC) proposes, executor (2h UTC) implements; latest.json tracks state; executor validation rejects placeholder commits (≥5 lines, substantive changes).
-- 2026-02-21: Meta-agent robustness (use find not ls with set -euo pipefail), Research Hub Vercel deployment (server component reads public/; project must be public), polyglot TTS (Kokoro English + Edge TTS Japanese, auto-detect via Unicode, 96.7% coverage), capability evolver skills-assessment leading to duplicate skill consolidation.
-- 2026-02-19: token optimization caps break output → gentle constraints
-- 2026-02-18: agent-manager auto-commit must detect untracked files; quick syntax fix; enforce task registry limits
+- 2026-02-23: Idea generator overhaul: slug deduplication, substantive file creation via single-line `printf`, executor validation now reliable (tested success).
+- 2026-02-23: Notifier agent fixed: defined `log()` function, filtered OpenClaw CLI JSON warnings; executor bug: heredoc caused hang, replaced with `printf`.
+- 2026-02-22: Autonomous idea pipeline: generator (6h UTC) proposes, executor (2h UTC) implements; validation rejects placeholder commits (≥5 lines, substantive changes).
+- 2026-02-21: Meta-agent robustness (find vs ls with set -euo pipefail), Research Hub Vercel deployment (server reads public/), polyglot TTS (Kokoro + Edge, 96.7% coverage), capability evolver skills-assessment outcomes.
+- 2026-02-20: Earlier patterns archived in `lessons.md`
