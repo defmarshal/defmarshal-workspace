@@ -13,6 +13,7 @@ log() {
 log "Starting LinkedIn PA educational content cycle"
 
 DATE=$(date -u +%Y-%m-%d)
+TIME_STAMP=$(date -u +%H%M)  # e.g., 1300, 1800
 YEAR=$(date -u +%Y)
 
 # Gather feature/roadmap info
@@ -37,7 +38,7 @@ TIPS=$(grep -iE 'tip|trick|best practice|how to|guide' "$RESEARCH_OUTPUT" | head
 UPCOMING=$(grep -iE 'roadmap|planned|coming soon|Q[1-4]|2026' "$RESEARCH_OUTPUT" | head -5 | sed 's/^[[:space:]]*//')
 
 # Build content
-POST_DATE="$DATE-linkedin-pa-post.md"
+POST_DATE="$DATE-$TIME_STAMP-linkedin-pa-post.md"
 POST_FILE="$OUTPUT_DIR/$POST_DATE"
 
 # Choose focus area randomly or rotate: features, upcoming, tips, tutorial
@@ -106,7 +107,7 @@ EOF
 log "LinkedIn content saved to: $POST_FILE"
 
 # Digest
-DIGEST_FILE="$OUTPUT_DIR/$DATE-linkedin-pa-digest.md"
+DIGEST_FILE="$OUTPUT_DIR/$DATE-$TIME_STAMP-linkedin-pa-digest.md"
 cat > "$DIGEST_FILE" << EOF
 # LinkedIn Content Digest — IBM Planning Analytics (Educational)
 
@@ -138,8 +139,8 @@ log "Digest saved to: $DIGEST_FILE"
 
 # Commit
 cd "$WORKSPACE" || exit 1
-if git status --porcelain | grep -q content/$DATE-linkedin-pa; then
-  git add content/$POST_DATE content/$DATE-linkedin-pa-digest.md
+if [ -f "$POST_FILE" ] && [ -f "$DIGEST_FILE" ]; then
+  git add "$POST_FILE" "$DIGEST_FILE"
   git commit -m "content: LinkedIn PA educational post for $DATE
 
 - Feature spotlight / tutorial style (non-promotional)
