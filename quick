@@ -70,6 +70,7 @@ Commands:
   tts-play <mp3-file>                      Play a TTS MP3 file (uses aplay/afplay/mpg123)
                   Example: quick tts-play research/2026-02-22-some-report.mp3
   agents-health                            Show health summary of all agents (gateway, logs, cron)
+  research-stats                           Show research library statistics (reports, TTS %, latest)
   send-digest                              Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
                   Example: quick send-digest
   torrent-add <magnet_or_file> [rpc_secret]  Add a magnet link or .torrent file to
@@ -1721,6 +1722,10 @@ except Exception:
   tts-stats)
     # Detailed TTS statistics
     "$WORKSPACE/scripts/tts-stats.sh"
+    ;;
+  research-stats)
+    # Show research library statistics
+    "$WORKSPACE/scripts/research-stats.sh"
     ;;
   tts-say)
     # Generate TTS for given text
