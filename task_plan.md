@@ -1,4 +1,4 @@
-# Task Plan: Workspace Builder Run 2026-02-23 13:09 UTC
+# Task Plan: Workspace Builder Run 2026-02-23 15:06 UTC
 
 ## Mission
 Analyze workspace health and implement meaningful improvements; validate and commit changes with `build:` prefix.
@@ -8,16 +8,18 @@ Analyze workspace health and implement meaningful improvements; validate and com
 ### Phase 1: Analysis
 - Check system health (`./quick health`)
 - Review git status and identify pending changes
-- Inspect active-tasks.md size andMEMORY.md line count
+- Inspect active-tasks.md size and MEMORY.md line count
 - Verify idea generator and executor health (logs, latest.json)
 - Scan agent logs for errors
+- Evaluate memory reindex staleness (weekly schedule)
+- Check for any stale branches or orphaned artifacts
 
 ### Phase 2: Improvement Implementation
-- Commit pending changes with proper prefixes:
-  - Add untracked daily digest report (`reports/2026-02-23-daily-digest.md`)
-  - Commit staged deletion of `scripts/sync-linkedin-pa-to-obsidian.sh` (unused)
-- Ensure all commits follow `build:` prefix
-- Keep changes small and meaningful
+Based on findings, implement small but meaningful improvements:
+- Potentially prune old entries from active-tasks.md if approaching 2KB
+- Clean any stale branches or artifacts
+- Update documentation if needed
+- Fix any minor issues discovered
 
 ### Phase 3: Validation & Close the Loop
 - Run `./quick health` and verify all metrics OK
@@ -36,4 +38,4 @@ Analyze workspace health and implement meaningful improvements; validate and com
 - No regressions introduced.
 
 ## Session Key
-workspace-builder-20260223-1309
+workspace-builder-20260223-1506
