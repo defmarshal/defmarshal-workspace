@@ -1,34 +1,23 @@
-# LinkedIn Content Digest — IBM Planning Analytics (Deep Research)
+# LinkedIn Content Digest — IBM Planning Analytics (Educational)
 
 **Date:** 2026-02-23  
-**Agent:** linkedin-pa-agent v2 (deep research)  
-**Status:** Completed
+**Agent:** linkedin-pa-agent v3 (educational)  
+**Content type:** Feature spotlight / tutorial
 
-## Generated Assets
-- Main post file: 2026-02-23-linkedin-pa-post.md
-- 3 post variants: Question Hook, Bold Claim, Use Case Story
-- Research cache: /tmp/pa-research-1771854801.json (temporary)
+## Today's Post
+- File: 2026-02-23-linkedin-pa-post.md
+- Focus: Practical tips and capabilities (not sales-focused)
+- Key message: Highlight a specific feature or workflow improvement
 
-## Key Research Metrics
-- Search queries executed: 6
-- URLs fetched: multiple (IBM docs, case studies, analyst reports)
-- Primary metrics identified: 30% faster close cycles, 20%+ forecast accuracy improvement
+## Research Nuggets Used
+- Features: 1 found
+- Tips: 1 found
+- Upcoming: 1 found
 
-## Post Performance Predictions
-- Variant A (Question Hook): ~3–5% engagement, good comment volume
-- Variant B (Bold Claim): ~2–4% engagement, share-worthy
-- Variant C (Use Case Story): ~2–3% engagement, relatable
-
-## Recommended Next Steps
-1. Choose the variant that best matches your audience’s pain point
-2. Customize the CTA to drive your conversion goal (DM, demo, download)
-3. Add a compelling visual (dashboard, infographic, or event photo)
-4. Schedule for optimal time (Tue–Thu 9–11 AM or 1–3 PM)
-5. Prepare to engage comments within 2 hours of posting
-
-## Quick Hashtag Set (tested for reach)
-Primary: #IBMSolutions #PlanningAnalytics #FinanceTransformation
-Secondary: #CloudPlanning #EnterpriseAnalytics #BusinessIntelligence #DataDriven #EPM #IBM
+## Recommendation
+- Engage with comments by offering additional tips
+- Ask readers to share their own shortcuts
+- Consider follow-up posts addressing specific use cases
 
 ---
 

@@ -1,61 +1,32 @@
-# IBM Planning Analytics LinkedIn Post (v2)
+# IBM Planning Analytics LinkedIn Post (Educational)
 
 **Date:** 2026-02-23  
-**Agent:** linkedin-pa-agent (deep research)  
-**Variants:** 3 optimized hooks
+**Agent:** linkedin-pa-agent (educational focus)  
+**Content type:** Feature spotlight / tutorial
 
-## 📊 Research Summary (key findings)
-IBM Planning Analytics in 2026 is transforming enterprise planning with AI-driven insights and seamless cloud integration. Key highlights: 30% faster close cycles, 20%+ forecast accuracy improvement. The platform's new Granite 4-powered assistant and Workspace 3.1.4 enhancements (Explain Cell detail, custom agents, improved modeling) empower FP&A teams to move beyond static budgeting to continuous, intelligent planning. IBM's recent IDC MarketScape leadership recognition underscores its expanding market influence.
+## 🛠️ IBM Planning Analytics Feature Spotlight
 
----
+Did you know about ****?
 
-## 📢 Variant A – Question Hook (high engagement)
-🚀 Is your finance team still trapped in spreadsheet hell?\n\nIBM Planning Analytics is changing the game in 2026. With AI-assisted forecasting, cloud-native deployment, and real-time scenario modeling, enterprises are achieving:\n- 30% faster close cycles, 20%+ forecast accuracy improvement\n- Deeper integration with IBM Cloud Pak for Data\n- Modern web UI + Excel-like experience\n\nWhat’s your biggest planning challenge? Below are my thoughts on why PA deserves a look.\n\n#IBMSolutions #PlanningAnalytics #FinanceTransformation #CloudPlanning #EnterpriseAnalytics
+In the latest releases (Workspace 3.1.4+), IBM Planning Analytics introduces capabilities that make planning faster and more intuitive:
 
----
+- Explain Cell now shows up to 6 months of transactional detail — no more jumping to separate tools for context
+- Custom Agents (PAaaS) let you automate workflows using MCP tools
+- Guided import reusability saves hours on repetitive data loads
+- Dimension copy supports up to 50,000 members as hierarchies
 
-## 📢 Variant B – Bold Claim (thought leadership)
-IBM Planning Analytics just leveled up. Here’s why it matters for CFOs:\n\n1️⃣ Granite 4 AI Assistant — Smarter natural language interactions\n2️⃣ Workspace 3.1.4 — Explain Cell now shows 6 months of transactional detail\n3️⃣ Custom Agents (PAaaS) — Automate workflows with MCP tools\n4️⃣ IDC 2026 Leader — Recognized for continuous planning capabilities\n\nResult? Faster closes, better forecasts, and a unified planning engine across the enterprise.\n\nHave you evaluated PA for your organization?\n\n#EnterpriseAnalytics #BusinessIntelligence #DataDriven #Finance #IBM
-
----
-
-## 📢 Variant C – Use Case Story (relatable)
-When Unilever cut financial close time by 30% with IBM Planning Analytics, it wasn't magic — it was modern architecture.\n\nPA’s in-memory engine + AI assistance lets FP&A teams:\n• Model complex scenarios instantly\n• Collaborate across geographies in real time\n• Maintain audit-ready governance\n• Integrate seamlessly with ERP and BI ecosystems\n\nSiemens, Coca-Cola, and other giants are using PA to move from periodic budgeting to rolling forecasts.\n\nCould your organization be next?\n\n#PlanningAnalytics #FinanceTransformation #EPM #IBMCloud #OperationalExcellence
+These might seem like small tweaks, but they dramatically improve the daily experience for FP&A teams.
 
 ---
 
-## 🔧 Posting Recommendations
+💡 **Quick tip:** To enable Custom Agents, make sure you're on PAaaS with Workspace 2.1.17/3.1.4 or later. Check the IBM docs for the MCP tool list.
 
-**Timing:** Tue–Thu, 9–11 AM or 1–3 PM local time  
-**Image suggestions:** 
-- IBM Planning Analytics architecture diagram
-- Dashboard screenshot (anonymized data)
-- Infographic: "Before vs After PA implementation"
-- Photo of you (or team) at an IBM event
+**What's your favorite PA feature that boosted productivity?** Share below!
 
-**Mention targets (optional):**
-- @IBM Planning Analytics official page
-- @IBM Watson / @IBM Cloud
-- Influencers: @[Name if known] or relevant hashtags
-
-**CTA options:**
-- "Agree/disagree? Let's discuss in the comments ↓"
-- "Book a demo: link in comments"
-- "Download our PA assessment checklist (DM me)"
-- "Follow for more finance tech insights"
-
-**Hashtags (trim to 5–7 for best reach):**
-#IBMSolutions #PlanningAnalytics #FinanceTransformation #CloudPlanning #EnterpriseAnalytics #BusinessIntelligence #DataDriven #EPM #IBM
+#PlanningAnalytics #IBM #EnterpriseAnalytics #Finance #Productivity
 
 ---
 
-## 📈 Engagement Tips
-- Ask a question in the first comment to kickstart discussion
-- Tag 2–3 relevant connections (alumni, industry peers)
-- Engage with every comment within 2 hours
-- Consider boosting with LinkedIn ads for broader reach among finance leaders
+*Sources: IBM Planning Analytics documentation, release notes, community blogs*  
+*Generated by LinkedIn PA Agent — no promotional language, just useful insights.*
 
----
-
-*Generated by LinkedIn PA Agent on 2026-02-23*  
-Sources: IBM docs, analyst reports, customer case studies (cached in /tmp/pa-research-1771854801.json)
