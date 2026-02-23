@@ -1,78 +1,69 @@
 # Workspace Builder Task Plan
 
-**Session:** workspace-builder-20260223-1909  
-**Trigger:** Cron (2-hourly cycle)  
-**Time:** 2026-02-23 19:09 UTC  
-**Goal:** Commit capability evolver output, validate workspace hygiene, maintain documentation constraints
+**Session:** workspace-builder-20260223-2107
+**Trigger:** Manual follow-up (noise reduction)
+**Time:** 2026-02-23 21:07 UTC
+**Goal:** Prevent .clawhub/lock.json from appearing as modified by ignoring lock files in .gitignore
 
 ---
 
 ## Analysis Summary
 
 **Current State:**
-- Health: OK (Disk 67%, Gateway healthy, Memory clean)
-- Git: Dirty (9 changed files, 2 untracked)
-- active-tasks.md: 42 lines (<2KB) ✓
+- Health: OK ( Disk 67%, Gateway healthy, Memory clean, Git clean)
+- active-tasks.md: 39 lines (<2KB) ✓
 - MEMORY.md: 30 lines (≤30) ✓
-- Idea branches: None ✓
-- Memory reindex: Stale (7 days) - note for future consideration
+- No stale branches ✓
 
-**Uncommitted Changes Detected:**
-- Modified evolution state files (memory/evolution/*.json, *.jsonl)
-- Modified evolver-summary.md
-- Modified candidates.jsonl
-- Untracked: gep_prompt_Cycle_#0003_run_1771870705173.{json,txt}
-- Untracked: skills/evolver/ directory
+**Issue Identified:**
+- `.clawhub/lock.json` periodically shows as modified in git status
+- It is a transient lock file and should not be tracked
+- `.gitignore` currently lacks a pattern for `*.lock.json`
 
-**Root Cause:** Capability evolver cycle #0003 executed (likely from 2026-02-23 18:?? UTC) and produced artifacts that are not yet committed.
+**Root Cause:** OpenClaw uses lock files for concurrency control; these are runtime artifacts, not source files.
 
 ---
 
 ## Task Phases
 
-### Phase 1: Document Analysis & Planning (Current)
-- Review git status and identify all changed files
-- Understand evolver output structure and completeness
-- Plan commit strategy with build: prefix
+### Phase 1: Analysis & Planning
+- Verify .clawhub contents: lock.json present, config.json exists and should be kept
+- Determine safe ignore pattern: `*.lock.json` (covers all lock files)
+- Edit .gitignore to add the pattern at the end
 
-### Phase 2: Commit Evolver Artifacts
-- Stage all evolver-related files
-- Create commit with message: `build: commit capability evolver cycle #0003 artifacts`
+### Phase 2: Implementation
+- Add `*.lock.json` to .gitignore
+- Ensure file formatting is clean (no trailing spaces, newline at EOF)
+- Stage .gitignore: `git add .gitignore`
+- Commit with message: `build: ignore OpenClaw lock files (*.lock.json) to prevent noise`
 - Push to origin
-- Verify git clean state
 
-### Phase 3: Update active-tasks.md
-- Add validated entry for this workspace-builder run
-- Prune if size exceeds 2KB (expected <40 lines currently)
-- Verify line count and file size
-
-### Phase 4: Close The Loop Validation
+### Phase 3: Validation
 - Run `./quick health` - expect OK
-- Check for temp files: `find . -name '*.tmp' -o -name '*~'` (should be none)
-- Validate MEMORY.md still ≤30 lines (should be unchanged)
-- Validate active-tasks.md <2KB
-- Verify no stale idea branches
-- Confirm all commits pushed
+- Verify git status: clean
+- Check no temp files exist
+- Confirm .clawhub/config.json remains tracked (if exists)
 
-### Phase 5: Final Documentation
-- Update progress.md with completion status
-- Append daily log entry to memory/2026-02-23.md
+### Phase 4: Documentation
+- Update active-tasks.md: add entry for this session with verification notes
+- Update planning files (task_plan.md, findings.md, progress.md) with completion status
+- Append summary to memory/2026-02-23.md
 
 ---
 
 ## Success Criteria
 
-- All evolver artifacts committed with proper build: prefix
-- Git working tree clean after push
+- .gitignore updated with `*.lock.json`
+- Commit pushed to origin
+- Git working tree clean
 - active-tasks.md updated and <2KB
 - All validation checks pass
-- No temp files left behind
-- Documentation current
 
 ---
 
 ## Risk Mitigation
 
-- **Blast radius:** Only evolver files are modified; no code changes
-- **Rollback:** If commit fails, keep working tree dirty and report error
-- **Validation:** Close-the-loop checklist ensures no artifacts left uncommitted
+- **Risk:** Ignoring too broadly (e.g., all .json in .clawhub)
+  - **Mitigation:** Use precise pattern `*.lock.json` to avoid ignoring config.json
+- **Risk:** Breaking existing ignores
+  - **Mitigation:** Append to file; no removals

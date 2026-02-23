@@ -23,6 +23,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Recently Completed
 
+- [workspace-builder-20260223-2107] workspace-builder - Ignore OpenClaw lock files to prevent git noise (started: 2026-02-23 21:07 UTC, status: validated)
+  - Verification: health OK; .gitignore updated with `*.lock.json`; git clean; active-tasks<2KB; MEMORY 30l; no temp files; config.json still tracked
+
 - [workspace-builder-20260223-1909] workspace-builder - Commit capability evolver cycle #0003 artifacts (started: 2026-02-23 19:09 UTC, status: validated)
   - Verification: health OK; evolver artifacts committed; git clean; active-tasks<2KB; MEMORY 30l; no temp files
 
