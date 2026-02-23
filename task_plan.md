@@ -1,63 +1,53 @@
 # Workspace Builder Session Plan
 
-**Started:** 2026-02-23 05:00 UTC
+**Started:** 2026-02-23 07:00 UTC
 **Trigger:** Cron (workspace-builder-cron)
-**Goal:** Strategic workspace analysis and meaningful improvements
+**Goal:** Workspace hygiene and minor improvements (branch cleanup, metadata fix, validation)
 
 ## Analysis Phases
 
-### Phase 1: Health & Hygiene Audit
-- Check git status, uncommitted changes, untracked files
-- Verify active-tasks.md size (<2KB) and format
-- Check MEMORY.md currency (last updated, line count)
-- Inspect memory index health (Voyage/local status)
-- Review disk usage and temp files
-- Validate .gitignore completeness
+### Phase 1: State Assessment
+- Check git branches for stale idea/* branches
+- Check MEMORY.md metadata accuracy ("Last updated")
+- Verify active-tasks.md status (size <2KB)
+- Review idea pipeline status (rejected ideas, branch artifacts)
+- Inspect daily log for completeness
 
-### Phase 2: Documentation Quality
-- Review CRON_JOBS.md accuracy vs actual schedules
-- Check AGENTS.md for outdated info
-- Verify TOOLS.md local notes are current
-- Ensure planning files (task_plan.md, findings.md, progress.md) follow protocol
+### Phase 2: Hygiene Implementation
+- Delete stale idea branch `idea/build-a-quick-command-that` (rejected idea)
+- Update MEMORY.md "Last updated" to 2026-02-23 (reflects recent bugfix learning)
+- Verify active-tasks.md remains within size limits
+- Ensure no untracked files or temp artifacts
 
-### Phase 3: System Optimization
-- Look for redundant/duplicate skills (per 2026-02-21 cleanup)
-- Identify quick command improvements (quick launcher)
-- Check log rotation effectiveness
-- Review idea pipeline health (generator/executor status)
-- Test memory search fallback (msearch)
+### Phase 3: Validation
+- Run `quick health` → expect all OK
+- Verify git working tree is clean
+- Check branch deletion confirmed
+- Ensure MEMORY.md line count ~34 or less
 
-### Phase 4: Proactive Maintenance
-- Prune stale feature branches (idea/*)
-- Archive old memory files if needed
-- Update MEMORY.md with recent learnings (if needed)
-- Validate cron schedule integrity
-
-### Phase 5: Validation & Handover
-- Run `quick health` and verify all OK
-- Test modified quick commands
-- Check that no temp files remain
-- Ensure git clean before commit
-- Update active-tasks.md with validated entry
-- Commit with `build:` prefix and push
+### Phase 4: Commit & Handover
+- Stage changes: MEMORY.md, active-tasks.md, planning docs
+- Commit with prefix `build:`
+- Push to origin
+- Update active-tasks.md with validated entry (include verification notes)
+- Close the loop
 
 ## Success Criteria
 
-- All health metrics pass
-- At least one meaningful improvement implemented
-- No stale branches or temp files
-- Documentation accurate
-- active-tasks.md under 2KB
-- MEMORY.md <= ~30 lines
-- All changes committed and pushed
+- Health metrics pass
+- Stale branch deleted
+- MEMORY.md metadata consistent
+- No temp files
+- Git clean before and after commit
+- All changes pushed
 
 ## Risks & Mitigations
 
-- **Risk:** Running into locked files from other agents
-  - **Mitigation:** Check active-tasks.md first; skip if other agents running; proceed with read-only analysis if needed
+- **Risk:** Branch deletion conflicts if executor is currently using it
+  - **Mitigation:** Check idea executor status first; ensure it's idle; if branch is current in any session, skip with note
 
-- **Risk:** Making changes that break automated systems
-  - **Mitigation:** Validate each change with tests; use dry-run where available; keep changes small and reversible
+- **Risk:** MEMORY.md update might overwrite concurrent changes
+  - **Mitigation:** Git was clean at start; changes are minimal (one line); low conflict risk
 
-- **Risk:** Idea executor running concurrently and creating conflicts
-  - **Mitigation:** Check git status frequently; if conflict arises, resolve gracefully and document
+- **Risk:** active-tasks.md may exceed 2KB if too verbose
+  - **Mitigation:** Keep entry concise; prune if needed
