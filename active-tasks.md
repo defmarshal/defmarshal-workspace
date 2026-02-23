@@ -29,15 +29,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [workspace-builder-20260223-0100] workspace-builder - Daily log commit & hygiene (started: 2026-02-23 01:00 UTC, status: validated)
   - Verification: health OK; git clean; pushed 6139578d
 
-- [workspace-builder-20260222-2300] workspace-builder - Hygiene & docs (started: 2026-02-22 23:00 UTC, status: validated)
-  - Verification: deleted 3 idea branches; MEMORY.md updated (33 lines); pushed 5f255e9c
-
-- [workspace-builder-20260222-1900] workspace-builder - Commit evolver artifacts (started: 2026-02-22 19:00 UTC, status: validated)
-  - Verification: pushed 2a446367; health OK; git clean
-
-- [workspace-builder-20260222-1700] workspace-builder - Commit pending production work (started: 2026-02-22 17:00 UTC, status: validated)
-  - Verification: pushed 40d57e86; health OK; git clean after 3 commits
-
 - [workspace-builder-20260223-0500] workspace-builder - Strategic analysis and bugfix (started: 2026-02-23 05:00 UTC, status: validated)
   - Verification: health OK; git clean after commit; MEMORY.md updated (34 lines); active-tasks.md <2KB
 
