@@ -72,6 +72,7 @@ Commands:
   agents-health                            Show health summary of all agents (gateway, logs, cron)
   check-hub-sync                          Check if Research Hub public/ is in sync with research/
   disk-usage                              Show workspace disk usage by top directories
+  show-cron                               Display OpenClaw cron jobs in a readable table
   version-check                           Compare installed OpenClaw version against latest npm release
   git-by-agent                            Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
   research-age                            Show research reports sorted by age (oldest first)
@@ -1751,6 +1752,10 @@ except Exception:
   disk-usage)
     # Show workspace disk usage by top directories
     "$WORKSPACE/scripts/disk-usage.sh"
+    ;;
+  show-cron)
+    # Display OpenClaw cron jobs in a readable table
+    "$WORKSPACE/scripts/show-cron.sh"
     ;;
   version-check)
     # Compare installed OpenClaw version against latest npm release
