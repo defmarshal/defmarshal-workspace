@@ -80,6 +80,10 @@
     "gaming": {
       "version": "1.0.0",
       "installedAt": 1771653665298
+    },
+    "evolver": {
+      "version": "1.14.0",
+      "installedAt": 1771870698607
     }
   }
 }
