@@ -85,6 +85,9 @@ agents/ideas/*.json
 # TTS audio outputs (generated, large, not source of truth)
 *.mp3
 
+# OpenClaw lock files (transient runtime state)
+*.lock.json
+
 # End of additions
 .vercel
 skills/kokoro-tts/venv/
