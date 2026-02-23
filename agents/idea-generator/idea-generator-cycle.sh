@@ -91,8 +91,8 @@ SEED=$(date -u +%s)
 SEED=$((SEED + ${#TEMPLATES[@]} + TOTAL_LINES))
 RANDOM=$SEED
 
-# Files to touch for quick launcher updates
-FILES_TOUCH=(quick)
+# Deduplication: track slugs in associative array (bash 4+)
+declare -A SLUG_SEEN
 
 # Create empty file; we'll generate individual JSON objects and then combine into an array
 : > "$IDEA_OUTPUT"
@@ -132,23 +132,63 @@ for i in {1..10}; do
   # Ensure not empty
   [[ -z "$SLUG" ]] && SLUG="idea-$i"
 
-  # Build idea steps (executable commands)
-  STEPS=(
-    "grep -r $ACTION $WORKSPACE > /dev/null"
-    "git checkout -b idea/$SLUG 2>/dev/null || git checkout idea/$SLUG"
-    "touch ${FILES_TOUCH[@]} 2>/dev/null || true"
-    "git add -A"
-    "git commit -m 'feat(idea): $TITLE' || true"
-  )
+  # Deduplicate: if slug already seen, skip this idea (we'll generate another)
+  if [[ -n "${SLUG_SEEN[$SLUG]:-}" ]]; then
+    log "Duplicate slug '$SLUG' detected, skipping this iteration."
+    ((i--))  # retry this index
+    continue
+  fi
+  SLUG_SEEN[$SLUG]=1
 
-  # Add category-specific command
+  # Build idea steps: must include branch creation and commit; also add substantive file modification
+  STEPS=()
+
+  # 1. Create/switch to feature branch
+  STEPS+=("git checkout -b idea/$SLUG 2>/dev/null || git checkout idea/$SLUG")
+
+  # 2. Category-specific substantive file creation/modification
   case "$CATEGORY" in
-    "automation") STEPS+=("echo 'Add cron schedule: 0 */4 * * *'");;
-    "ux") STEPS+=("echo 'Accessibility: use sufficient contrast'");;
-    "research") STEPS+=("echo 'Update research/INDEX.md after adding files'");;
-    "monitoring") STEPS+=("echo 'Integrate into quick health output'");;
-    "fun") STEPS+=("echo 'Add emojis and playful messages'");;
+    "utility"|"automation"|"monitoring"|"security"|"integration"|"fun")
+      SCRIPT_NAME="scripts/${SLUG//-/_}.sh"
+      STEPS+=("cat <<'EOF' > $SCRIPT_NAME")
+      STEPS+=("#!/usr/bin/env bash")
+      STEPS+=("# $TITLE")
+      STEPS+=("set -euo pipefail")
+      STEPS+=("echo 'Running: $TITLE'")
+      STEPS+=("EOF")
+      STEPS+=("chmod +x $SCRIPT_NAME")
+      ;;
+    "content"|"research")
+      DIR="content"
+      [[ "$CATEGORY" == "research" ]] && DIR="research"
+      FILE="$DIR/${SLUG//-/_}.md"
+      STEPS+=("cat <<'EOF' > $FILE")
+      STEPS+=("# $TITLE")
+      STEPS+=("")
+      STEPS+=("Auto-generated from idea.")
+      STEPS+=("")
+      STEPS+=("*TODO: Expand*")
+      STEPS+=("EOF")
+      ;;
+    "ux")
+      STEPS+=("echo '.$SLUG { /* new style */ }' >> styles/custom.css 2>/dev/null || true")
+      ;;
+    *)
+      SCRIPT_NAME="scripts/${SLUG//-/_}.sh"
+      STEPS+=("cat <<'EOF' > $SCRIPT_NAME")
+      STEPS+=("#!/usr/bin/env bash")
+      STEPS+=("echo '$TITLE'")
+      STEPS+=("EOF")
+      STEPS+=("chmod +x $SCRIPT_NAME")
+      ;;
   esac
+
+  # 3. Quick launcher placeholder (actual integration done later by builder)
+  STEPS+=("echo '# Quick command stub for $SLUG'")
+
+  # 4. Stage and commit
+  STEPS+=("git add -A")
+  STEPS+=("git commit -m \"feat(idea): $TITLE\" || true")
 
   # Generate JSON safely using jq to ensure proper escaping
   # Convert STEPS array to JSON array string
@@ -164,7 +204,7 @@ for i in {1..10}; do
     '{slug:$slug, title:$title, description:$desc, category:$cat, steps:$steps, priority:$priority, files_to_touch:["quick"]}' \
     >> "$IDEA_OUTPUT"
 
-  log "Idea $i: $TITLE"
+  log "Idea $i: $TITLE (slug: $SLUG)"
 done
 
 # The IDEA_OUTPUT file currently contains one JSON object per line (not a valid array yet)
