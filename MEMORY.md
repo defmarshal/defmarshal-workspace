@@ -24,7 +24,7 @@ Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, 
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 ## Learnings (latest)
 - 2026-02-23: Idea generator overhaul (slug deduplication, substantive file creation via printf, reliable executor validation) and notifier agent fix (log function, OpenClaw JSON filtering); executor bug: replaced heredoc with printf.
-- 2026-02-24: Meta-agent cron duplication bug fixed: added JSON filtering (sed -n '/^{/,$p') before jq in all cron checks; corrected git-janitor-cron schedule from hourly (`15 * * * *`) to every 6 hours (`0 */6 * * *`) per CRON_JOBS.md; cleaned up duplicate cron entries, preventing uncontrolled accumulation.
+- 2026-02-24: Meta-agent cron duplication bug fixed: added JSON filtering (sed -n '/^{/,$p') before jq in all cron checks; corrected git-janitor-cron schedule from hourly (`15 * * * *`) to every 6 hours (`0 */6 * * *`) per CRON_JOBS.md; cleaned up duplicate cron entries, preventing uncontrolled accumulation. Plus: automated stale idea branch cleanup in git-janitor (merge-check, age threshold, safe arithmetic) with self-correction of merge-base logic.
 - 2026-02-22: Autonomous idea pipeline: generator (6h UTC) proposes, executor (2h UTC) implements; validation rejects placeholder commits (≥5 lines, substantive changes).
 - 2026-02-21: Meta-agent robustness (find vs ls with set -euo pipefail), Research Hub Vercel deployment (server reads public/), polyglot TTS (Kokoro + Edge, 96.7% coverage), capability evolver skills-assessment outcomes.
 - 2026-02-20: Earlier patterns archived in `lessons.md`
