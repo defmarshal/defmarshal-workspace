@@ -177,6 +177,12 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/evolver-agent.log`
    - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
 
+27. **linkedin-pa-agent-cron**
+   - **Schedule**: Hourly (`0 * * * *`) in UTC
+   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/linkedin-pa-agent.sh >> memory/linkedin-pa-agent.log 2>&1'`
+   - **Log**: `memory/linkedin-pa-agent.log`
+   - **Description**: Generates research‑oriented LinkedIn content about IBM Planning Analytics. Produces hourly posts with unique timestamps; rotates through 5 content types (technical analysis, trends, benchmarks, architecture, industry perspective). Outputs committed to Git and synced to Obsidian vault. Non‑promotional, focused on knowledge sharing.
+
 ---
 
 ---
