@@ -70,6 +70,7 @@ Commands:
   tts-play <mp3-file>                      Play a TTS MP3 file (uses aplay/afplay/mpg123)
                   Example: quick tts-play research/2026-02-22-some-report.mp3
   agents-health                            Show health summary of all agents (gateway, logs, cron)
+  agent-runs                              Show recent agent runs from memory logs
   check-hub-sync                          Check if Research Hub public/ is in sync with research/
   disk-usage                              Show workspace disk usage by top directories
   show-cron                               Display OpenClaw cron jobs in a readable table
@@ -1756,6 +1757,10 @@ except Exception:
   show-cron)
     # Display OpenClaw cron jobs in a readable table
     "$WORKSPACE/scripts/show-cron.sh"
+    ;;
+  agent-runs)
+    # Show recent agent runs from memory logs
+    "$WORKSPACE/scripts/agent-runs.sh"
     ;;
   version-check)
     # Compare installed OpenClaw version against latest npm release
