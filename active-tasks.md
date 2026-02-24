@@ -21,7 +21,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 *(none — all agents validated/cleaned)*
 
-## Recently Completed
+- [workspace-builder-20260224-0505] workspace-builder - Enhance git-janitor auto-commit patterns and add idea branch cleanup (started: 2026-02-24 05:05 UTC, status: validated)
+  - Verification: health OK; git-janitor test OK; active-tasks<2K; MEMORY 30l
 
 - [meta-agent-20260224-0322] meta-agent - Autonomous planning cycle (started: 2026-02-24 03:22 UTC, status: validated)
   - Verification: snapshot OK; content=9, research=1; no actions; active-tasks<2K; MEMORY 30l
@@ -34,9 +35,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260223-2300] workspace-builder - Prune active-tasks ≤2KB (started: 2026-02-23 23:00 UTC, status: validated)
   - Verification: OK; 1622b; MEMORY 30l; git clean
-
-- [workspace-builder-20260223-2107] workspace-builder - Ignore lock files, reduce git noise (started: 2026-02-23 21:07 UTC, status: validated)
-  - Verification: OK; .gitignore `*.lock.json`; active-tasks<2K; MEMORY 30l
-
-- [workspace-builder-20260223-1909] workspace-builder - Commit evolver cycle #0003 artifacts (started: 2026-02-23 19:09 UTC, status: validated)
-  - Verification: OK; evolver artifacts; active-tasks<2K; MEMORY 30l
