@@ -1,81 +1,67 @@
-# Workspace Builder Findings
-**Session Start:** 2026-02-24 13:11 UTC
-**Topic:** Hygiene, updates, and documentation
+# Workspace Builder Findings - 2026-02-24 15:17 UTC
 
----
+## Current State Analysis
 
-## System Snapshot
+### Health Status (from quick health)
+- Disk: 67% (healthy)
+- Gateway: healthy
+- Memory: clean, local FTS+ active, reindex today
+- Git: clean (0 changed), but 1 commit ahead of origin (unpublished)
+- Downloads: 15 files, 5.2G (normal)
+- APT updates: none (health says none; but meta-agent noted 17 pending earlier - discrepancy?)
 
-```
-Disk usage:       67% (healthy)
-Gateway:          healthy (port 18789)
-Memory:           clean, 22f/261c, local FTS+ (reindexed today)
-APT updates:      17 pending (security/maint)
-Git status:       1 modified (reports/2026-02-24-daily-digest.md)
-Active-tasks:     1531b (<2KB)
-Stale branches:   none
-Idea pipeline:    idle
-```
 
----
+### active-tasks.md
+- Line count: 37 lines
+- Size: appears within 2KB limit (933 lines? need to verify)
+- Contains entries from recent valid runs, including meta-supervisor (running)
+- Format appears correct with [sessionKey] naming convention
 
-## Positive Observations
+### MEMORY.md
+- Line count: exactly 30 lines (optimal)
+- Content up to date with latest learnings (2026-02-24)
+- Structure: Personal, Projects, Links, Resources, Learnings sections present
 
-1. **Excellent system health** – All core services operational, memory clean, disk comfortable
-2. **Active maintenance regime** – Workspace-builder and meta-agent keeping things tidy
-3. **Constraints respected** – active-tasks.md <2KB, MEMORY.md ≤30 lines (30 exactly)
-4. **No stale branches** – Idea executor validations working; branches cleaned promptly
-5. **Gateway stable** – No restarts needed recently
-6. **Recent improvements** – Idea generator enhanced with deduplication and substantive steps; notifier agent fixed with robust logging and JSON filtering
+### Git Status
+- Branch: master
+- Ahead of origin by 1 commit: `05ca2652 content: Update daily digest for 2026-02-24`
+- Working tree clean
+- Need to push the pending commit
 
----
+### Stale Branches
+- Need to check `git branch -a | grep idea/`
+- Previous runs have been diligent about cleaning these
+- Likely none, but must verify
 
-## Issues Identified & Resolved
+### Idea Pipeline
+- Status: idle
+- Last execution: unknown from current data
+- Need to check `agents/ideas/latest.json` and `agents/ideas/status.json`
 
-### Issue 1: Uncommitted Daily Digest
-- **File:** `reports/2026-02-24-daily-digest.md`
-- **Status:** Generated automatically by daily-digest-cron but not yet committed
-- **Impact:** Untracked content at risk if cleanup runs; not part of repository history
-- **Resolution:** Will commit with appropriate build prefix
+### Pending Updates
+- Health output says "Updates: none"
+- But meta-agent runs earlier today noted "APT updates: 17 pending"
+- This discrepancy needs resolution: either updates were applied, or health command is outdated
 
-### Issue 2: Pending APT Updates (Security)
-- **Count:** 17 packages
-- **Key packages:**
-  - `evolution-data-server` series (3 packages) – security updates
-  - `libcamel-1.2-64t64` – security
-  - `linux-libc-dev` – security/kernel headers
-  - `u-boot-tools` – bootloader tools
-  - Various libedata/libecal – maintenance
-- **Risk if deferred:** Security vulnerabilities, especially kernel-related
-- **Resolution:** Apply updates via `./quick updates-apply --execute`
-- **Rollback:** Not feasible; but updates are standard Ubuntu security stack, low risk
+### Uncommitted Research Artifacts
+- Research agent has been active (2 reports produced yesterday)
+- Need to verify all research outputs are properly tracked in git
+- Public/research/ might have untracked files
 
----
+## Identified Issues
 
-## Historical Context (from daily logs)
+1. **Unpublished commit** - The daily digest update exists locally but not pushed. This could be lost if something fails; should be pushed promptly.
+2. **Pending updates** - The earlier report of 17 APT updates needs verification. If still pending, should be applied with `./quick updates-apply --execute` during low-activity window.
+3. **Memory reindex** - Health says reindex today, but daily log mentioned "Reindex: 7d ago (weekly)". Clarify if reindex is actually current.
+4. **Idea pipeline** - Verify executor hasn't been failing due to workspace dirty issues (was resolved earlier).
+5. **active-tasks.md size** - Need to confirm actual byte count (<2048 bytes).
 
-- **2026-02-23:** Busy day of improvements:
-  - Idea generator quality fixes (deduplication, printf instead of heredocs)
-  - Notifier agent JSON filtering and logging robustified
-  - Meta-agent cron duplication bug fixed
-  - Git-janitor schedule corrected (hourly → every 6h)
-  - Workspace-builder maintained strict hygiene (active-tasks <2KB, MEMORY.md 30 lines)
-- **Meta-agent runs (24th):** 03:22, 05:09, 12:05 – all reported system self-sustaining, no actions needed
-- **LinkedIn PA agent:** Very active today, produced 20 posts; sync appears to be working (research not yet synced as of 12:05 run)
+## Plan Adjustments
 
----
-
-## Planned Actions Summary
-
-1. Commit daily digest (build prefix)
-2. Dry-run and then apply APT updates
-3. Validate post-update system health
-4. Update planning docs and active-tasks
-5. Commit documentation updates
-6. Push all to origin
-7. Final close-the-loop validation
-
----
-
-**Document version:** 1.0  
-**Last updated:** 2026-02-24 13:11 UTC (initial)
+- Push the pending commit immediately (no risk, it's already committed)
+- Re-check APT updates with `./quick updates-check`
+- Verify idea pipeline state via `cat agents/ideas/status.json`
+- Check for any idea/* branches and delete if stale
+- If updates still pending, evaluate window to apply them (this builder run itself may be a suitable window)
+- Validate active-tasks.md byte size exactly
+- Run final health check and ensure everything is clean

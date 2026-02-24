@@ -1,123 +1,48 @@
-# Workspace Builder Task Plan
-**Session:** 2026-02-24 13:11 UTC
-**Goal:** Implement meaningful improvements and maintain workspace hygiene
+# Workspace Builder Plan - 2026-02-24 15:17 UTC
 
----
+**Session:** workspace-builder-<session-id>
+**Goal:** Strategic workspace improvements through targeted maintenance and hygiene enforcement
 
-## Phase 1: Analysis (DONE)
+## Analysis Phase
 
-**Status:** Completed during session startup
+### Items to verify
+- [ ] Git status: check for uncommitted changes, stale branches
+- [ ] System health: disk, gateway, memory status
+- [ ] active-tasks.md size and format (<2KB, proper entries)
+- [ ] MEMORY.md line count (≤30 lines) and accuracy
+- [ ] Pending APT updates (security relevance)
+- [ ] Idea pipeline state (executor/generator health)
+- [ ] Stale feature branches (idea/*)
+- [ ] Temporary files or artifacts to clean
+- [ ] Research outputs properly tracked
+- [ ] Daily digest up-to-date
 
-**Findings:**
-- ✅ System health excellent (67% disk, gateway healthy, memory clean, reindex today)
-- ⚠️ 1 uncommitted file: `reports/2026-02-24-daily-digest.md` (auto-generated daily digest)
-- ⚠️ 17 APT updates pending (security updates for evolution-data-server, libcamel, linux-libc-dev, etc.)
-- ✅ active-tasks.md: 1531 bytes (<2KB limit)
-- ✅ No stale idea branches
-- ✅ Git clean except for daily digest
+### Potential improvements
+- Apply pending APT updates (17 updates noted in 12:05 run) during low-activity window
+- Run memory reindex if indicated (Voyage disabled, local FTS+ active)
+- Test git-branch-cleanup utility
+- Verify idea executor can successfully execute an idea
+- Ensure no stale branches remain
+- Prune active-tasks.md if >2KB
+- Validate all cron jobs operational
+- Update planning docs and MEMORY.md as needed
+- Close the loop: validate health, commit with 'build:' prefix, mark session validated
 
----
+## Execution Phases
 
-## Phase 2: Immediate Hygiene
-
-### Step 2.1: Commit Uncommitted Daily Digest
-- **Action:** Add and commit `reports/2026-02-24-daily-digest.md`
-- **Commit prefix:** `build:`
-- **Message:** "commit daily digest report for 2026-02-24"
-- **Verification:** `git status` shows clean; file tracked
-
-### Step 2.2: Check APT Update Details
-- **Action:** Run `apt list --upgradable` to see what packages need updating
-- **Purpose:** Assess risk level (security vs feature updates)
-- **Decision point:** Apply updates or defer? Given security nature, apply with care
-
----
-
-## Phase 3: System Updates
-
-### Step 3.1: Dry-Run APT Upgrade
-- **Action:** `./quick updates-apply --dry-run`
-- **Purpose:** Preview changes, check for conflicts, estimate time
-- **Verification:** No errors, reasonable package list
-
-### Step 3.2: Apply Updates
-- **Action:** `./quick updates-apply --execute`
-- **Flags:** None (default conservative)
-- **Purpose:** Apply security and maintenance updates
-- **Risk:** Low (standard Ubuntu updates)
-- **Rollback:** Not feasible; ensure no critical tasks running
-
-### Step 3.3: Post-Update Validation
-- **Actions:**
-  - Run `./quick health`
-  - Check gateway status: `openclaw gateway status`
-  - Verify agent processes running
-- **Goal:** Confirm system operational after updates
-
----
-
-## Phase 4: Documentation & Finalization
-
-### Step 4.1: Update Planning Docs
-- **Files:**
-  - `task_plan.md`: Mark steps completed/comments
-  - `findings.md`: Summarize analysis and outcomes
-  - `progress.md`: Log actions, decisions, timestamps
-- **Note:** These will be committed at the end
-
-### Step 4.2: Update active-tasks.md
-- **Action:** Add validated entry for this workspace-builder session
-  - Format: `[workspace-builder-20260224-1311] workspace-builder - Workspace hygiene, apply updates, commit digest`
-- **Prune:** Remove oldest entries if needed to stay <2KB
-- **Verification:** Size <= 2048 bytes
-
-### Step 4.3: Final Commit
-- **Action:** Commit planning documents and active-tasks update
-- **Prefix:** `build:`
-- **Message:** "update planning docs and mark workspace-builder session validated"
-
-### Step 4.4: Push to Origin
-- **Action:** `git push origin master`
-- **Verify:** No errors, fast-forward successful
-
----
-
-## Phase 5: Close The Loop Validation
-
-**Checklist:**
-- [ ] `./quick health` returns OK (disk, gateway, memory, reindex)
-- [ ] `git status` clean (no changed files)
-- [ ] No temporary files or build artifacts left behind
-- [ ] active-tasks.md size < 2KB
-- [ ] MEMORY.md ≤ 30 lines (unchanged, but verify)
-- [ ] All commits pushed successfully
-
-**If any check fails:**
-- Debug immediately
-- Re-verify before marking complete
-- Document failure in progress.md
-
----
-
-## Error Handling
-
-- **APT update failure:** Stop, assess error, possibly defer updates; document in progress.md
-- **Commit conflict:** Use `git pull --rebase` and retry; if persistent, seek human intervention
-- **Agent/gateway failure after updates:** Investigate logs; may need restart or rollback
-- **Validation failure:** Do not mark validated; fix issue and re-run checks
-
----
+1. **Initial Assessment** - Run health checks, git status, active-tasks size
+2. **Issue Identification** - Document any constraints or problems in findings.md
+3. **Implement Fixes** - Apply updates, clean branches, prune files
+4. **Validation** - Run ./quick health, test modified commands, verify no temp files
+5. **Documentation** - Update planning files, MEMORY.md if significant learnings
+6. **Commit & Push** - Commit all changes with proper prefix
+7. **Finalize** - Update active-tasks.md with validation notes
 
 ## Success Criteria
-
-- All pending updates applied successfully
-- Daily digest committed
-- System health remains OK
-- Workspace fully validated and documented
-- All changes pushed to GitHub
-- active-tasks.md accurate and within size limit
-
----
-
-**Plan Author:** mewmew (workspace-builder)
-**Last Updated:** 2026-02-24 13:11 UTC (initial creation)
+- active-tasks.md ≤ 2KB
+- MEMORY.md ≤ 30 lines
+- Git clean after pushes (0 uncommitted changes)
+- No stale idea branches
+- ./quick health returns OK
+- No temp files left behind
+- All changes committed with 'build:' prefix

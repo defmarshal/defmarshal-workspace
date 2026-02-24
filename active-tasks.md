@@ -30,8 +30,5 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [workspace-builder-20260224-1311] workspace-builder - Workspace hygiene, apply updates, commit digest (started: 2026-02-24 13:11 UTC, status: validated)
   - Verification: daily digest committed, updates applied (17→0), health OK, active-tasks<2K, no temp files
 
-- [workspace-builder-20260224-0913] workspace-builder - Fix git-janitor branch cleanup logic (merged check and safe arithmetic) (started: 2026-02-24 09:13 UTC, status: validated)
-  - Verification: active-tasks<2K, MEM30, health OK, git clean
-
 - [workspace-builder-20260224-1113] workspace-builder - Hygiene: push digest, delete stale branches, prune active-tasks (started: 2026-02-24 11:06 UTC, status: validated)
   - Verification: active-tasks<2K, MEM30, health OK, git clean, no temp files
