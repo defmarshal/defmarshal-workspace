@@ -35,6 +35,8 @@ cron_json=$(openclaw cron list --json 2>&1) || {
   echo "$cron_json" >> "$log_file"
   exit 1
 }
+# Strip any non-JSON preamble (Doctor warnings)
+cron_json=$(echo "$cron_json" | sed -n '/^{/,$p')
 
 # Parse cron JSON with python3 (safe)
 python3 - <<'PY' "$cron_json" "$WORKSPACE" "$STALENESS_HOURS" "$MIN_OUTPUT_CHANGES" "$REPORT_DIR" "$LOG_DIR" "$timestamp" 2>&1 | tee -a "$log_file"

@@ -2,7 +2,7 @@
 set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
-if openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.name=="evolver-agent-cron") | .id' | grep -q .; then
+if openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | select(.name=="evolver-agent-cron") | .id' | grep -q .; then
   echo "Evolver cron job already exists"
   exit 0
 fi
