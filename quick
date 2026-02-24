@@ -1809,6 +1809,10 @@ except Exception:
     # Check agent scripts for safe timestamp arithmetic (avoid octal parsing)
     "$WORKSPACE/scripts/validate-timestamps.sh"
     ;;
+  agents-health-improved)
+    # Show recent agent activity with clearer timestamps and status
+    "$WORKSPACE/scripts/agents-health-improved.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
