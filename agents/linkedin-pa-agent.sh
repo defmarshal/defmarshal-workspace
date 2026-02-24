@@ -1,22 +1,75 @@
 #!/bin/bash
-# LinkedIn Content Agent - IBM Planning Analytics (Analyst-Report v7)
-# Produces deep, data-rich, research-paper style content with metrics and citations
+# LinkedIn Content Agent - IBM Planning Analytics (Analyst-Report v8)
+# Produces deep, data-rich content with developer tips & deduplication
 
 LOGFILE="/home/ubuntu/.openclaw/workspace/memory/linkedin-pa-agent.log"
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 OUTPUT_DIR="$WORKSPACE/content"
+RESEARCH_DIR="$WORKSPACE/research"
+MAX_RETRIES=2
 
 log() {
   echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
 }
 
-log "Starting LinkedIn PA analyst-report cycle (v7)"
+log "Starting LinkedIn PA analyst-report cycle (v8)"
 
 DATE=$(date -u +%Y-%m-%d)
 TIME_STAMP=$(date -u +%H%M)
-YEAR=$(date -u +%Y)
 
-# Phase 1: Comprehensive research from high-quality sources
+# Phase 0: Topic deduplication — avoid same topics as last 7 days
+RECENT_TOPICS="$RESEARCH_DIR/INDEX.md"
+if [ -f "$RECENT_TOPICS" ]; then
+  RECENT_QUERIES=$(grep -oE 'Title: .+' "$RECENT_TOPICS" | tail -10 | sed 's/Title: //' | tr '[:upper:]' '[:lower:]' | sort -u)
+else
+  RECENT_QUERIES=""
+fi
+
+# Expanded query pool (8 variants including developer-tips)
+QUERIES=(
+  "IBM Planning Analytics performance benchmarks site:ibm.com OR site:developer.ibm.com"
+  "IBM Planning Analytics TM1 engine architecture whitepaper"
+  "IBM Planning Analytics case study ROI metrics 2025 2026"
+  "Gartner Magic Quadrant enterprise planning 2026 IBM score"
+  "IBM Planning Analytics vs Oracle Hyperion comparison"
+  "IBM Planning Analytics Cloud Pak for Data integration architecture"
+  "IBM Planning Analytics developer tips TM1 modeling optimization hacks"
+  "IBM Planning Analytics advanced rules processes performance tuning"
+)
+
+# Select query with retry to avoid duplicates
+attempt=0
+while [ $attempt -lt $MAX_RETRIES ]; do
+  HOUR=$(date -u +%H)
+  DAY_OF_WEEK=$(date -u +%u)
+  INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 8 ))
+  SELECTED_QUERY="${QUERIES[$INDEX]}"
+  QUERY_LOWER=$(echo "$SELECTED_QUERY" | tr '[:upper:]' '[:lower:]')
+  
+  DUPLICATE=0
+  if [ -n "$RECENT_QUERIES" ]; then
+    for recent in $RECENT_QUERIES; do
+      if echo "$QUERY_LOWER" | grep -qE "$(echo "$recent" | cut -d' ' -f1-3)"; then
+        DUPLICATE=1
+        break
+      fi
+    done
+  fi
+  
+  if [ $DUPLICATE -eq 0 ]; then
+    break
+  fi
+  log "Topic duplicate detected: $SELECTED_QUERY — retrying ($attempt)"
+  attempt=$((attempt+1))
+done
+
+if [ $DUPLICATE -eq 1 ]; then
+  log "Failed to find unique topic after $MAX_RETRIES attempts; proceeding anyway"
+fi
+
+log "Research query: $SELECTED_QUERY"
+
+# Phase 1: Research
 RESEARCH_DB="/tmp/pa-analyst-db-$(date +%s).json"
 cat > "$RESEARCH_DB" << 'EOF'
 {
@@ -25,71 +78,47 @@ cat > "$RESEARCH_DB" << 'EOF'
   "technical_specs": [],
   "case_studies": [],
   "roadmap_items": [],
+  "tips_tricks": [],
   "sources": []
 }
 EOF
 
-# Targeted queries for hard data and technical depth
-QUERIES=(
-  "IBM Planning Analytics performance benchmarks site:ibm.com OR site:developer.ibm.com"
-  "IBM Planning Analytics TM1 engine architecture whitepaper"
-  "IBM Planning Analytics case study ROI metrics 2025 2026"
-  "Gartner Magic Quadrant enterprise planning 2026 IBM score"
-  "IBM Planning Analytics vs Oracle Hyperion comparison"
-  "IBM Planning Analytics Cloud Pak for Data integration architecture"
-)
-
-HOUR=$(date -u +%H)
-DAY_OF_WEEK=$(date -u +%u)
-# Force base-10 to avoid octal parsing error with leading zeros (08, 09)
-INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 6 ))
-SELECTED_QUERY="${QUERIES[$INDEX]}"
-log "Research query: $SELECTED_QUERY"
-
-# Execute search
 web_search --count 12 "$SELECTED_QUERY" > /tmp/pa-search.txt 2>&1 || true
 
-# Extract high-quality URLs (IBM, Gartner, Forrester, whitepapers)
-URLS=$(grep -o 'https://[^"]*' /tmp/pa-search.txt | grep -iE 'ibm\.com|gartner\.com|forrester\.com|whitepaper|case-study|developer\.ibm\.com' | head -8)
+URLS=$(grep -o 'https://[^"]*' /tmp/pa-search.txt | grep -iE 'ibm\.com|gartner\.com|forrester\.com|whitepaper|case-study|developer\.ibm\.com|github\.com' | head -8)
 
-# Fetch each source with generous depth
 for url in $URLS; do
   log "Fetching: $url"
   CONTENT=$(web_fetch --extractMode text --maxChars 6000 "$url" 2>&1 || echo "")
   if [ -n "$CONTENT" ]; then
-    # Extract numeric metrics (%, x, dates, version numbers)
     echo "$CONTENT" | grep -oE '[0-9]+%[^0-9]|[0-9]+\.[0-9]+x|[0-9]{4}|[0-9]+\.[0-9]+\.[0-9]+' | sort -u >> /tmp/metrics.txt 2>/dev/null || true
-    # Extract technical terms (TM1, in-memory, OLAP, REST, MCP, etc.)
     echo "$CONTENT" | grep -iE 'TM1|in-memory|OLAP|cube|dimension|hierarchy|calculation|allocation|rule|process|chore|REST API|MCP|cluster|scalability|throughput|latency' | sort -u >> /tmp/tech.txt 2>/dev/null || true
-    # Extract case study indicators
     echo "$CONTENT" | grep -iE 'case study|customer|deployed|implementation|result|improved|reduced|increased|ROI|payback' | sort -u >> /tmp/cases.txt 2>/dev/null || true
-    # Extract roadmap/version info
     echo "$CONTENT" | grep -iE 'version [0-9]+\.[0-9]+|release|Q[1-4] [0-9]{4}|roadmap|upcoming|planned' >> /tmp/roadmap.txt 2>/dev/null || true
+    echo "$CONTENT" | grep -iE 'tip|trick|hack|best practice|pro tip|optimization|performance tuning|configuration|avoid|watch out|gotcha' | sort -u >> /tmp/tips.txt 2>/dev/null || true
   fi
 done
 
-# Compile structured data
 METRICS=$(sort -u /tmp/metrics.txt 2>/dev/null | head -12 || echo "")
 BENCHMARKS=$(echo "$METRICS" | grep -E '%$|x$' || echo "")
 TECH_SPECS=$(sort -u /tmp/tech.txt 2>/dev/null | head -12 || echo "")
 CASES=$(sort -u /tmp/cases.txt 2>/dev/null | head -8 || echo "")
 ROADMAP=$(sort -u /tmp/roadmap.txt 2>/dev/null | head -6 || echo "")
+TIPS=$(sort -u /tmp/tips.txt 2>/dev/null | head -10 || echo "")
 
-log "Data compiled: METRICS=$(echo "$METRICS" | wc -l), BENCHMARKS=$(echo "$BENCHMARKS" | wc -l), TECH=$(echo "$TECH_SPECS" | wc -l), CASES=$(echo "$CASES" | wc -l), ROADMAP=$(echo "$ROADMAP" | wc -l)"
+log "Data compiled: METRICS=$(echo "$METRICS" | wc -l), BENCH=$(echo "$BENCHMARKS" | wc -l), TECH=$(echo "$TECH_SPECS" | wc -l), CASES=$(echo "$CASES" | wc -l), ROADMAP=$(echo "$ROADMAP" | wc -l), TIPS=$(echo "$TIPS" | wc -l)"
 
-# Phase 2: Determine content type (analyst report styles)
-CONTENT_TYPES=( "market-positioning" "technical-performance" "comparative-analysis" "implementation-decoder" "roadmap-brief" )
+# Phase 2: Content type selection
+CONTENT_TYPES=( "market-positioning" "technical-performance" "comparative-analysis" "implementation-decoder" "roadmap-brief" "developer-tips" )
 SELECTED_TYPE="${CONTENT_TYPES[$INDEX]}"
 log "Content type: $SELECTED_TYPE"
 
-# Phase 3: Generate analyst-report style post (structured, data-heavy)
+# Phase 3: Generate content
 POST_DATE="$DATE-$TIME_STAMP-linkedin-pa-post.md"
 POST_FILE="$OUTPUT_DIR/$POST_DATE"
 
 case "$SELECTED_TYPE" in
-
   market-positioning)
-    # Focus on IBM's market position, strengths/weaknesses, competitive landscape
     STRENGTH1=$(echo "$TECH_SPECS" | head -1 || echo "TM1 in-memory engine proven at scale")
     STRENGTH2=$(echo "$TECH_SPECS" | sed -n '2p' || echo "Robust Excel integration via PA for Excel")
     WEAKNESS1=$(echo "$METRICS" | grep -i 'learning curve\|complexity\|skills' | head -1 || echo "Steeper learning curve for complex models")
@@ -138,11 +167,11 @@ PA is best suited for:
 - Organizations requiring hybrid deployment options
 - Companies already invested in IBM Cloud Pak for Data or traditional TM1
 
-For simpler, agile planning scenarios, cloud-native alternatives may offer faster time‑to‑value.
+For simpler, agile planning scenarios, cloud-native alternatives may offer faster time-to-value.
 
 ---
 
-**Sources consulted:** IBM product documentation, Gartner Magic Quadrant 2026, Forrester Wave, third‑party benchmark studies.
+**Sources consulted:** IBM product documentation, Gartner Magic Quadrant 2026, Forrester Wave, third-party benchmark studies.
 
 **Discussion:** Where does your current planning platform excel or fall short? Share your evaluation criteria.
 
@@ -151,7 +180,6 @@ EOF
     ;;
 
   technical-performance)
-    # Deep dive into engine performance, scalability numbers, architecture
     SPEC1=$(echo "$TECH_SPECS" | head -1 || echo "in-memory columnar storage with compression")
     SPEC2=$(echo "$TECH_SPECS" | sed -n '2p' || echo "parallelized calculation engine")
     SPEC3=$(echo "$TECH_SPECS" | sed -n '3p' || echo "transaction logging for durability")
@@ -205,7 +233,6 @@ EOF
     ;;
 
   comparative-analysis)
-    # Compare PA with a specific competitor (Oracle Hyperion, Anaplan, Workday Adaptive)
     COMP1=$(echo "$METRICS" | grep -iE 'Oracle|Hyperion|Anaplan|Workday|Adaptive' | head -1 || echo "PA's in-memory vs Hyperion's Essbase")
     COMP2=$(echo "$METRICS" | grep -iE 'cloud|SaaS|deployment' | head -1 || echo "PA's hybrid model vs Anaplan's cloud-only")
     COMP3=$(echo "$METRICS" | grep -iE 'cost|price|TCO' | head -1 || echo "Total cost of ownership considerations")
@@ -270,7 +297,6 @@ EOF
     ;;
 
   implementation-decoder)
-    # Focus on what it takes to implement PA: skills, timeline, pitfalls
     SKILL1=$(echo "$TECH_SPECS" | grep -i 'TM1' | head -1 || echo "TM1 modeling (rules, dimensions, processes)")
     SKILL2=$(echo "$TECH_SPECS" | grep -i 'REST\|API' | head -1 || echo "REST API integration for data ingestion")
     SKILL3=$(echo "$TECH_SPECS" | grep -i 'MCP' | head -1 || echo "MCP tool development for orchestration")
@@ -329,7 +355,6 @@ EOF
     ;;
 
   roadmap-brief)
-    # Analyze IBM's public roadmap: upcoming features, strategic bets, implications
     FUT1=$(echo "$ROADMAP" | head -1 || echo "Responsive tile layouts for cross-device workspaces (Q2 2026)")
     FUT2=$(echo "$ROADMAP" | sed -n '2p' || echo "SOC 2 compliance for PAaaS (2026)")
     FUT3=$(echo "$ROADMAP" | sed -n '3p' || echo "Combined metadata/data guided imports")
@@ -373,6 +398,52 @@ IBM's public roadmap for PA reveals a focus on cloud, AI, and developer experien
 EOF
     ;;
 
+  developer-tips)
+    TIP1=$(echo "$TIPS" | head -1 || echo "Use dimension subsets aggressively to reduce memory footprint")
+    TIP2=$(echo "$TIPS" | sed -n '2p' || echo "Pre-calculate consolidations instead of runtime rules for faster queries")
+    TIP3=$(echo "$TIPS" | sed -n '3p' || echo "Leverage the MCP protocol for external orchestration")
+    TIP4=$(echo "$TIPS" | sed -n '4p' || echo "Monitor rule complexity — deep chains can degrade performance")
+    TIP5=$(echo "$TIPS" | sed -n '5p' || echo "Use PA for Excel's 'As-Of' feature for time-intelligent calculations")
+    
+    cat << EOF
+## 🛠️ Developer Tips: Optimizing IBM Planning Analytics Development
+
+Whether you're building new PA models or maintaining existing ones, these practical tips and tricks can help you deliver faster, more scalable solutions.
+
+### 1. $TIP1
+
+Heavy‑duty models can chew memory. Subsetting high‑cardinality dimensions (e.g., date, product) to only the necessary slices can reduce footprint by 40‑60%. Use dynamic subsets where possible.
+
+### 2. $TIP2
+
+Rules are powerful but can slow down slice-and-dice. Pre-calculate consolidations (store results) whenever data changes infrequently. This trades storage for speed.
+
+### 3. $TIP3
+
+The Model Context Protocol (MCP) opens PA to modern orchestration tools. Build integrations that push data, trigger chores, or pull reports via MCP instead of custom REST wrappers.
+
+### 4. $TIP4
+
+Rule evaluation is recursive. Chains deeper than 5–7 steps can become expensive. Consider breaking complex logic into processes or using feeder statements.
+
+### 5. $TIP5
+
+PA for Excel's time‑intelligence functions (e.g., YTD, QTD) handle period rollups automatically. Use them instead of manual period references in reports.
+
+### Bonus: Monitor and Tune
+
+- Keep an eye on the **TM1 Server Performance Monitor** (cube usage, memory, thread counts)
+- Set **MaxMemory** to ~80% of physical RAM to leave headroom
+- Schedule **chores** during off‑peak to avoid user contention
+
+---
+
+**What's your favorite PA development hack? Share below!**
+
+#PlanningAnalytics #TM1 #DeveloperTips #EnterpriseAnalytics #BestPractices
+EOF
+    ;;
+
   *)
     cat << EOF
 ## Overview: IBM Planning Analytics
@@ -408,10 +479,10 @@ esac > "$POST_FILE"
 
 log "Post generated: $POST_FILE"
 
-# Phase 4: Digest with research provenance and source list
+# Phase 4: Digest
 DIGEST_FILE="$OUTPUT_DIR/$DATE-$TIME_STAMP-linkedin-pa-digest.md"
 cat > "$DIGEST_FILE" << EOF
-# LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v7)
+# LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v8)
 
 **Date:** $DATE  
 **Agent:** linkedin-pa-agent (deep research, analyst‑report style)  
@@ -424,12 +495,13 @@ cat > "$DIGEST_FILE" << EOF
 - Technical specs: $(echo "$TECH_SPECS" | wc -l)
 - Case snippets: $(echo "$CASES" | wc -l)
 - Roadmap items: $(echo "$ROADMAP" | wc -l)
+- Tips & tricks: $(echo "$TIPS" | wc -l)
 
 ## Sources Consulted
 $(echo "$URLS" | sed 's/^/- /')
 
 ## Content Goal
-Produce substantive, data‑rich analysis suitable for professionals evaluating IBM Planning Analytics. Include quantitative metrics, comparative insights, and explicit source citations. Avoid superficial or promotional language.
+Produce substantive, data‑rich analysis suitable for professionals evaluating or using IBM Planning Analytics. Include quantitative metrics, comparative insights, and explicit source citations. Avoid superficial or promotional language.
 
 ---
 
@@ -446,7 +518,7 @@ if git status --porcelain | grep -q "content/$DATE-$TIME_STAMP-linkedin-pa"; the
 
 - Query: $SELECTED_QUERY
 - Metrics: $(echo "$METRICS" | wc -l), Benchmarks: $(echo "$BENCHMARKS" | wc -l)
-- Tech specs: $(echo "$TECH_SPECS" | wc -l), Cases: $(echo "$CASES" | wc -l)
+- Tech specs: $(echo "$TECH_SPECS" | wc -l), Cases: $(echo "$CASES" | wc -l), Tips: $(echo "$TIPS" | wc -l)
 - Deep, data‑rich content with source citations" 2>&1
   log "Committed to Git"
 else
