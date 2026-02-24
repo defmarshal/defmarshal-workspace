@@ -1813,6 +1813,10 @@ except Exception:
     # Show recent agent activity with clearer timestamps and status
     "$WORKSPACE/scripts/agents-health-improved.sh"
     ;;
+  health-report)
+    # Comprehensive health report (system, updates, agents, downloads)
+    "$WORKSPACE/scripts/health-report.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
