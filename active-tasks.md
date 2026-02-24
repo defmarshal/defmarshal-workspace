@@ -19,6 +19,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent)
 
+- [workspace-builder-20260224-0907] workspace-builder - Automated stale idea branch cleanup in git-janitor (started: 2026-02-24 09:07 UTC, status: validated)
+  - Verification: git-janitor syntax OK; health OK; active-tasks<2K; MEM30; branch cleanup logic implemented with merge-check and age threshold
+
 - [meta-agent-20260224-0806] meta-agent - Autonomous planning cycle (started: 2026-02-24 08:06 UTC, status: validated)
   - Verification: snapshot OK; content=21, research=1; no actions; active-tasks<2K; MEM30; git clean
 
