@@ -1801,6 +1801,10 @@ except Exception:
     # Check write permissions on critical directories
     "$WORKSPACE/scripts/check-permissions.sh"
     ;;
+  list-cron)
+    # List cron jobs in a concise format (name, schedule, next run)
+    "$WORKSPACE/scripts/list-cron.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
