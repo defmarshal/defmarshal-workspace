@@ -32,3 +32,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260224-1113] workspace-builder - Hygiene: push digest, delete stale branches, prune active-tasks (started: 2026-02-24 11:06 UTC, status: validated)
   - Verification: active-tasks<2K, MEM30, health OK, git clean, no temp files
+
+- [workspace-builder-20260224-1524] workspace-builder - Workspace hygiene, stale branch cleanup, validation (started: 2026-02-24 15:24 UTC, status: validated)
+  - Verification: active-tasks<2K (1571b), MEM30, health OK, git clean, no temp files, stale idea branch deleted
