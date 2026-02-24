@@ -73,12 +73,13 @@ Commands:
   agent-runs                              Show recent agent runs from memory logs
   check-hub-sync                          Check if Research Hub public/ is in sync with research/
   disk-usage                              Show workspace disk usage by top directories
+  memory-usage                            Show system memory and disk usage (RAM, swap, workspace)
   show-cron                               Display OpenClaw cron jobs in a readable table
   version-check                           Compare installed OpenClaw version against latest npm release
   git-by-agent                            Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
   research-age                            Show research reports sorted by age (oldest first)
   research-stats                           Show research library statistics (reports, TTS %, latest)
-  send-digest                              Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
+  send-digest                             Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
                   Example: quick send-digest
   torrent-add <magnet_or_file> [rpc_secret]  Add a magnet link or .torrent file to
                   the aria2 downloader. RPC secret defaults to 'openclaw_secret_123'.
@@ -1753,6 +1754,10 @@ except Exception:
   disk-usage)
     # Show workspace disk usage by top directories
     "$WORKSPACE/scripts/disk-usage.sh"
+    ;;
+  memory-usage)
+    # Show system memory and disk usage
+    "$WORKSPACE/scripts/memory-usage.sh"
     ;;
   show-cron)
     # Display OpenClaw cron jobs in a readable table
