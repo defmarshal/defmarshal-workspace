@@ -1785,6 +1785,10 @@ except Exception:
     # Show tag statistics for research reports
     "$WORKSPACE/scripts/research-tags.sh"
     ;;
+  repo-status)
+    # Show git repository status (branch, remote, recent commits)
+    "$WORKSPACE/scripts/repo-status.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
