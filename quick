@@ -1813,6 +1813,10 @@ except Exception:
     # Show recent agent activity with clearer timestamps and status
     "$WORKSPACE/scripts/agents-health-improved.sh"
     ;;
+  git-branch-cleanup)
+    # Interactively delete stale feature branches (>30 days, not merged)
+    "$WORKSPACE/scripts/git-branch-cleanup.sh"
+    ;;
   health-report)
     # Comprehensive health report (system, updates, agents, downloads)
     "$WORKSPACE/scripts/health-report.sh"
