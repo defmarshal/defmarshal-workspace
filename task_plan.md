@@ -1,47 +1,40 @@
-# Task Plan - Workspace Builder Session
+# Workspace Builder Session Plan
+**Date:** 2026-02-24 23:00 UTC  
+**Goal:** Maintain workspace hygiene, commit pending content changes, validate constraints, and push to origin.
 
-**Session:** 2026-02-24 21:00 UTC
-**Goal:** Strategic maintenance and improvements
+## Analysis Phase
+- [x] Read SOUL.md, USER.md, active-tasks.md, MEMORY.md, daily logs (2026-02-23, 2026-02-24)
+- [x] Check git status: 1 modified file (content/INDEX.md)
+- [x] Verify health metrics: Disk 68%, Gateway healthy, Memory clean, Downloads 5.7G
+- [x] Check constraints: active-tasks.md 1913b (<2KB), MEMORY.md 30 lines, 0 stale idea branches
+- [ ] Identify improvements needed
 
-## Phase 1: Analysis & Assessment
-- [x] Read active-tasks.md, MEMORY.md, daily logs (2026-02-23, 2026-02-24)
-- [x] Check system health (`./quick health`)
-- [x] Check git status, stale branches, uncommitted files
-- [x] Verify constraints: active-tasks.md <2KB, MEMORY.md ≤30 lines
+## Implementation Phase
+1. Commit content/INDEX.md changes with appropriate message
+2. Verify active-tasks.md size remains <2KB after adding new entry
+3. Verify MEMORY.md remains ≤30 lines (no changes needed)
+4. Check for any other uncommitted files (none expected)
+5. Update active-tasks.md with validated entry for this session
+6. Commit the active-tasks.md update
+7. Push all commits to origin
 
-**Findings:**
-- System health: OK (Disk 68%, Gateway healthy, Memory clean)
-- Git: clean, no stale branches
-- active-tasks.md: 37 lines (within limit)
-- MEMORY.md: 30 lines (optimal)
-- Downloads: 17 files, 5.7G (monitor - no old files to purge)
-- No pending research artifacts to commit
-- All planning docs need creation/update for this session
+## Validation Phase (Close the Loop)
+- Run `./quick health` and confirm OK
+- Verify git status clean
+- Confirm no temp files
+- Check no stale idea branches
+- Validate active-tasks.md size <2KB
+- Validate MEMORY.md ≤30 lines
+- Ensure all commits pushed
 
-## Phase 2: Strategic Improvements
-1. **Create/update planning documents** (task_plan.md, findings.md, progress.md)
-2. **Review download size**: 5.7GB is elevated but files are recent; no cleanup needed yet. Log observation.
-3. **Validate active-tasks.md** size and content accuracy
-4. **Ensure MEMORY.md** remains concise (already at 30 lines)
-5. **Check for any untracked research outputs** - none found
-6. **Feature branch hygiene** - already clean (no stale branches)
+## Known Constraints
+- active-tasks.md ≤ 2048 bytes (strict limit)
+- MEMORY.md ≤ ~30 lines (curated memory)
+- No untracked files (except transient locks in .clawhub)
+- All changes must be committed with 'build:' prefix
+- All commits must be pushed to origin
 
-## Phase 3: Close-the-Loop Validation
-- Run `./quick health` - confirm OK
-- Check active-tasks.md size <2KB
-- Verify MEMORY.md ≤30 lines
-- Ensure no temp files (`find . -maxdepth 1 -name "*.tmp" -o -name "*.log"` excluding expected)
-- Git clean after commits
-- Test modified commands (if any)
-- All commits pushed to origin
-
-## Phase 4: Commit & Push
-- Commit planning docs with `build:` prefix
-- Update active-tasks.md with validated entry
-- Push to origin
-
-## Success Criteria
-- Health checks OK
-- Constraints met (<2KB active-tasks, ≤30 lines MEMORY.md)
-- Git clean, pushed
-- Planning docs current
+## Risk Mitigation
+- If active-tasks.md exceeds limit after adding entry: prune oldest entries and shorten verification text
+- If MEMORY.md exceeds lines: condense entries, remove blank lines
+- If push fails: check network, retry, or abort with error logged to daily log
