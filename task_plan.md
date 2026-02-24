@@ -1,62 +1,123 @@
-# Workspace Builder Plan — 2026-02-24 11:06 UTC
+# Workspace Builder Task Plan
+**Session:** 2026-02-24 13:11 UTC
+**Goal:** Implement meaningful improvements and maintain workspace hygiene
 
-## Mission
-Improve workspace hygiene by addressing pending items: push unpushed commits, clean stale idea branches, prune active-tasks.md to meet size constraint, and validate all health constraints.
+---
 
-## Analysis Summary
-- Git status: 1 unpushed commit (daily digest 0a4f8d7f)
-- Stale idea branches: 5 local branches from executed ideas
-- active-tasks.md: 2190 bytes, 40 lines → exceeds 2KB limit
-- MEMORY.md: 30 lines (optimal)
-- System health: OK (disk, gateway, memory)
-- No temp files or artefacts
+## Phase 1: Analysis (DONE)
 
-## Tasks
+**Status:** Completed during session startup
 
-1. Push pending commit to origin
-   - Pull first to ensure no conflicts (fast-forward only)
-   - Push the daily digest commit
+**Findings:**
+- ✅ System health excellent (67% disk, gateway healthy, memory clean, reindex today)
+- ⚠️ 1 uncommitted file: `reports/2026-02-24-daily-digest.md` (auto-generated daily digest)
+- ⚠️ 17 APT updates pending (security updates for evolution-data-server, libcamel, linux-libc-dev, etc.)
+- ✅ active-tasks.md: 1531 bytes (<2KB limit)
+- ✅ No stale idea branches
+- ✅ Git clean except for daily digest
 
-2. Delete stale idea branches
-   - Branches to delete:
-     - idea/add-a-new-quick-utility
-     - idea/add-pagination-to-research-list
-     - idea/create-an-agent-that-autonomously
-     - idea/generate-a-monthly-digest-of
-     - idea/write-a-rudra-safe-fix-pattern
-   - Confirm only local branches exist (no remote tracking)
+---
 
-3. Prune active-tasks.md to ≤2KB
-   - Remove oldest two completed entries (0505, 0706) to reduce size
-   - Shorten remaining verification lines to minimal metrics (e.g., "active-tasks<2K, MEM30, health OK")
-   - Ensure file remains under 2KB after adding final entry
+## Phase 2: Immediate Hygiene
 
-4. Validate workspace constraints
-   - Run `./quick health`
-   - Check active-tasks.md ≤ 2048 bytes
-   - Check MEMORY.md ≤ 30 lines
-   - Ensure git clean, no temp files, no stale branches
+### Step 2.1: Commit Uncommitted Daily Digest
+- **Action:** Add and commit `reports/2026-02-24-daily-digest.md`
+- **Commit prefix:** `build:`
+- **Message:** "commit daily digest report for 2026-02-24"
+- **Verification:** `git status` shows clean; file tracked
 
-5. Document the session
-   - Create/update task_plan.md, findings.md, progress.md
-   - Add validated entry to active-tasks.md after validation
+### Step 2.2: Check APT Update Details
+- **Action:** Run `apt list --upgradable` to see what packages need updating
+- **Purpose:** Assess risk level (security vs feature updates)
+- **Decision point:** Apply updates or defer? Given security nature, apply with care
 
-6. Commit and push changes
-   - Commit planning docs and active-tasks updates with prefix `build:`
-   - Push allpending commits to origin
+---
 
-7. Final verification
-   - Re-run health check
-   - Confirm remote is up-to-date
+## Phase 3: System Updates
+
+### Step 3.1: Dry-Run APT Upgrade
+- **Action:** `./quick updates-apply --dry-run`
+- **Purpose:** Preview changes, check for conflicts, estimate time
+- **Verification:** No errors, reasonable package list
+
+### Step 3.2: Apply Updates
+- **Action:** `./quick updates-apply --execute`
+- **Flags:** None (default conservative)
+- **Purpose:** Apply security and maintenance updates
+- **Risk:** Low (standard Ubuntu updates)
+- **Rollback:** Not feasible; ensure no critical tasks running
+
+### Step 3.3: Post-Update Validation
+- **Actions:**
+  - Run `./quick health`
+  - Check gateway status: `openclaw gateway status`
+  - Verify agent processes running
+- **Goal:** Confirm system operational after updates
+
+---
+
+## Phase 4: Documentation & Finalization
+
+### Step 4.1: Update Planning Docs
+- **Files:**
+  - `task_plan.md`: Mark steps completed/comments
+  - `findings.md`: Summarize analysis and outcomes
+  - `progress.md`: Log actions, decisions, timestamps
+- **Note:** These will be committed at the end
+
+### Step 4.2: Update active-tasks.md
+- **Action:** Add validated entry for this workspace-builder session
+  - Format: `[workspace-builder-20260224-1311] workspace-builder - Workspace hygiene, apply updates, commit digest`
+- **Prune:** Remove oldest entries if needed to stay <2KB
+- **Verification:** Size <= 2048 bytes
+
+### Step 4.3: Final Commit
+- **Action:** Commit planning documents and active-tasks update
+- **Prefix:** `build:`
+- **Message:** "update planning docs and mark workspace-builder session validated"
+
+### Step 4.4: Push to Origin
+- **Action:** `git push origin master`
+- **Verify:** No errors, fast-forward successful
+
+---
+
+## Phase 5: Close The Loop Validation
+
+**Checklist:**
+- [ ] `./quick health` returns OK (disk, gateway, memory, reindex)
+- [ ] `git status` clean (no changed files)
+- [ ] No temporary files or build artifacts left behind
+- [ ] active-tasks.md size < 2KB
+- [ ] MEMORY.md ≤ 30 lines (unchanged, but verify)
+- [ ] All commits pushed successfully
+
+**If any check fails:**
+- Debug immediately
+- Re-verify before marking complete
+- Document failure in progress.md
+
+---
+
+## Error Handling
+
+- **APT update failure:** Stop, assess error, possibly defer updates; document in progress.md
+- **Commit conflict:** Use `git pull --rebase` and retry; if persistent, seek human intervention
+- **Agent/gateway failure after updates:** Investigate logs; may need restart or rollback
+- **Validation failure:** Do not mark validated; fix issue and re-run checks
+
+---
 
 ## Success Criteria
-- active-tasks.md ≤ 2KB
-- MEMORY.md ≤ 30 lines
-- No stale idea branches
-- Git clean and pushed
-- Health OK
 
-## Risks & Mitigations
-- Accidentally removing needed entries: Archive removed entries in daily logs (already there)
-- Over-pruning active-tasks: Keep at least 2 recent completed entries plus running
-- Branch deletion of unmerged work: All listed branches correspond to executed/validated ideas; safe to delete
+- All pending updates applied successfully
+- Daily digest committed
+- System health remains OK
+- Workspace fully validated and documented
+- All changes pushed to GitHub
+- active-tasks.md accurate and within size limit
+
+---
+
+**Plan Author:** mewmew (workspace-builder)
+**Last Updated:** 2026-02-24 13:11 UTC (initial creation)
