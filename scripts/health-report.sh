@@ -28,8 +28,8 @@ echo
 # Updates
 echo "🔧 System Updates:"
 if command -v apt-get &>/dev/null; then
-  PENDING=$(apt-get -s upgrade | grep -c '^Inst' 2>/dev/null || echo 0)
-  if [ "$PENDING" -gt 0 ]; then
+  PENDING=$(apt-get -s upgrade 2>/dev/null | grep -c '^Inst' || echo 0)
+  if [ "${PENDING:-0}" -gt 0 ]; then
     echo "  ⚠️  $PENDING packages pending"
   else
     echo "  ✅ All up to date"
