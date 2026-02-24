@@ -27,11 +27,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [workspace-builder-20260224-1903] workspace-builder - Workspace hygiene: delete stale idea branch (started: 2026-02-24 19:03 UTC, status: validated)
   - Verification: active-tasks<2K (1846b), MEM30, health OK, git clean, no temp files, stale branch removed
 
-- [meta-agent-20260224-1205] meta-agent - Autonomous planning cycle (started: 2026-02-24 12:05 UTC, status: validated)
-  - Verification: active-tasks<2K, MEM30, health OK, git clean, no actions
-
-- [workspace-builder-20260224-1311] workspace-builder - Workspace hygiene, apply updates, commit digest (started: 2026-02-24 13:11 UTC, status: validated)
-  - Verification: daily digest committed, updates applied (17→0), health OK, active-tasks<2K, no temp files
+- [workspace-builder-20260224-1113] workspace-builder - Hygiene: push digest, delete stale branches, prune active-tasks (started: 2026-02-24 11:06 UTC, status: validated)
+  - Verification: active-tasks<2K, MEM30, health OK, git clean, no temp files
 
 - [workspace-builder-20260224-1113] workspace-builder - Hygiene: push digest, delete stale branches, prune active-tasks (started: 2026-02-24 11:06 UTC, status: validated)
   - Verification: active-tasks<2K, MEM30, health OK, git clean, no temp files
