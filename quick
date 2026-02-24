@@ -1793,6 +1793,10 @@ except Exception:
     # Show detailed info about the last commit (files, stats, message)
     "$WORKSPACE/scripts/show-last-commit.sh"
     ;;
+  audit-quick)
+    # Audit the quick launcher for issues (duplicates, missing scripts)
+    "$WORKSPACE/scripts/audit-quick.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
