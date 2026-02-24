@@ -2,7 +2,7 @@
 # Validate and correct cron job schedules against CRON_JOBS.md documentation
 # Now parses CRON_JOBS.md dynamically to avoid duplication and drift.
 
-set -euo pipefail
+set -uo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
 LOGFILE="memory/cron-schedules.log"
@@ -22,10 +22,17 @@ if ! command -v jq &>/dev/null; then
   exit 1
 fi
 
-# Fetch cron jobs JSON
-CRON_JSON=$(openclaw cron list --json 2>/dev/null)
-if [ -z "$CRON_JSON" ]; then
-  log "ERROR: Failed to fetch cron jobs JSON"
+# Fetch cron jobs JSON, stripping any non-JSON preamble (Doctor warnings)
+JSON=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p')
+if [ -z "$JSON" ]; then
+  log "ERROR: Failed to fetch cron jobs JSON (empty after filtering)"
+  exit 1
+fi
+
+# Validate JSON structure
+if ! echo "$JSON" | jq empty 2>/dev/null; then
+  log "ERROR: Cron list JSON is invalid. Dumping raw output for debugging:"
+  openclaw cron list --json 2>/dev/null | head -20
   exit 1
 fi
 
@@ -64,9 +71,9 @@ for job in "${!INTENDED_EXPR[@]}"; do
   intended_tz="${INTENDED_TZ[$job]:-Asia/Bangkok}"
 
   # Extract job info from JSON
-  job_id=$(echo "$CRON_JSON" | jq -r ".jobs[] | select(.name==\"$job\") | .id" 2>/dev/null || true)
-  current_expr=$(echo "$CRON_JSON" | jq -r ".jobs[] | select(.name==\"$job\") | .schedule.expr" 2>/dev/null || true)
-  current_tz=$(echo "$CRON_JSON" | jq -r ".jobs[] | select(.name==\"$job\") | .schedule.tz // empty" 2>/dev/null || true)
+  job_id=$(echo "$JSON" | jq -r ".jobs[] | select(.name==\"$job\") | .id" 2>/dev/null || true)
+  current_expr=$(echo "$JSON" | jq -r ".jobs[] | select(.name==\"$job\") | .schedule.expr" 2>/dev/null || true)
+  current_tz=$(echo "$JSON" | jq -r ".jobs[] | select(.name==\"$job\") | .schedule.tz // empty" 2>/dev/null || true)
 
   if [ -z "$job_id" ]; then
     log "WARN: Job '$job' not found in cron list (maybe not created yet)"
