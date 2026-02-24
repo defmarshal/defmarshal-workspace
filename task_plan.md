@@ -1,42 +1,62 @@
-# Task Plan - Workspace Builder (2026-02-24 09:07 UTC)
+# Workspace Builder Plan — 2026-02-24 11:06 UTC
 
-## Objective
-Implement automated cleanup of stale `idea/*` branches to reduce manual maintenance and prevent branch accumulation.
+## Mission
+Improve workspace hygiene by addressing pending items: push unpushed commits, clean stale idea branches, prune active-tasks.md to meet size constraint, and validate all health constraints.
 
-## Current State
-- No stale branches exist currently (system clean)
-- Manual deletion performed in previous builder cycles when stale branches detected
-- Git-janitor handles auto-commits but not branch cleanup
-- Idea executor leaves feature branches intact for manual review (policy: retain after success for review)
+## Analysis Summary
+- Git status: 1 unpushed commit (daily digest 0a4f8d7f)
+- Stale idea branches: 5 local branches from executed ideas
+- active-tasks.md: 2190 bytes, 40 lines → exceeds 2KB limit
+- MEMORY.md: 30 lines (optimal)
+- System health: OK (disk, gateway, memory)
+- No temp files or artefacts
 
-## Problem
-Stale idea branches (from rejected or long-completed ideas) accumulate if not manually cleaned. This creates clutter and increases cognitive load.
+## Tasks
 
-## Proposed Solution
-Add automated stale branch cleanup to **git-janitor-cycle.sh** with safe guards:
-- Define stale threshold: branches older than 7 days (configurable)
-- Only delete `idea/*` branches that are fully merged into master (safe)
-- Log cleanup actions
-- Respect policy: keep successful branches for 7 days before deletion
+1. Push pending commit to origin
+   - Pull first to ensure no conflicts (fast-forward only)
+   - Push the daily digest commit
 
-## Steps
+2. Delete stale idea branches
+   - Branches to delete:
+     - idea/add-a-new-quick-utility
+     - idea/add-pagination-to-research-list
+     - idea/create-an-agent-that-autonomously
+     - idea/generate-a-monthly-digest-of
+     - idea/write-a-rudra-safe-fix-pattern
+   - Confirm only local branches exist (no remote tracking)
 
-1. Analyze git-janitor current behavior and structure
-2. Design branch cleanup logic with safety constraints
-3. Implement cleanup function in `agents/git-janitor-cycle.sh`
-4. Test manually (dry-run mode)
-5. Update documentation (CRON_JOBS.md if needed)
-6. Close-the-loop validation:
+3. Prune active-tasks.md to ≤2KB
+   - Remove oldest two completed entries (0505, 0706) to reduce size
+   - Shorten remaining verification lines to minimal metrics (e.g., "active-tasks<2K, MEM30, health OK")
+   - Ensure file remains under 2KB after adding final entry
+
+4. Validate workspace constraints
    - Run `./quick health`
-   - Verify git-janitor runs clean
-   - Check active-tasks.md size (<2KB)
-   - Confirm MEMORY.md ≤30 lines
-   - Ensure no temp files, git clean
-7. Commit changes with `build:` prefix and push
+   - Check active-tasks.md ≤ 2048 bytes
+   - Check MEMORY.md ≤ 30 lines
+   - Ensure git clean, no temp files, no stale branches
+
+5. Document the session
+   - Create/update task_plan.md, findings.md, progress.md
+   - Add validated entry to active-tasks.md after validation
+
+6. Commit and push changes
+   - Commit planning docs and active-tasks updates with prefix `build:`
+   - Push allpending commits to origin
+
+7. Final verification
+   - Re-run health check
+   - Confirm remote is up-to-date
 
 ## Success Criteria
-- Automated cleanup runs without manual intervention
-- Only merged, stale (>7d) idea branches removed
-- No accidental deletion of active branches
-- Updated planning documents committed
-- All validation checks pass
+- active-tasks.md ≤ 2KB
+- MEMORY.md ≤ 30 lines
+- No stale idea branches
+- Git clean and pushed
+- Health OK
+
+## Risks & Mitigations
+- Accidentally removing needed entries: Archive removed entries in daily logs (already there)
+- Over-pruning active-tasks: Keep at least 2 recent completed entries plus running
+- Branch deletion of unmerged work: All listed branches correspond to executed/validated ideas; safe to delete

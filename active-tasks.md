@@ -25,16 +25,14 @@ This file tracks all currently running agents, their session keys, goals, and st
 ## Completed (recent)
 
 - [workspace-builder-20260224-0913] workspace-builder - Fix git-janitor branch cleanup logic (merged check and safe arithmetic) (started: 2026-02-24 09:13 UTC, status: validated)
-  - Verification: git-janitor runs clean; logs show 5 unmerged (skipped); script syntax OK; health OK; git clean
+  - Verification: active-tasks<2K, MEM30, health OK, git clean
 
 - [workspace-builder-20260224-0907] workspace-builder - Automated stale idea branch cleanup in git-janitor (started: 2026-02-24 09:07 UTC, status: validated)
-  - Verification: git-janitor syntax OK; health OK; active-tasks<2K; MEM30; branch cleanup logic implemented with merge-check and age threshold
+  - Verification: active-tasks<2K, MEM30, health OK, branch cleanup OK
 
 - [meta-agent-20260224-0806] meta-agent - Autonomous planning cycle (started: 2026-02-24 08:06 UTC, status: validated)
-  - Verification: snapshot OK; content=21, research=1; no actions; active-tasks<2K; MEM30; git clean
+  - Verification: active-tasks<2K, MEM30, health OK, git clean, no actions
 
-- [workspace-builder-20260224-0706] workspace-builder - Fix cron-status/cron JSON parsing; validate system health (started: 2026-02-24 07:06 UTC, status: validated)
-  - Verification: cron-status/cron fixed; health OK; hygiene OK; active-tasks=2.0K; git pushed
 
-- [workspace-builder-20260224-0505] workspace-builder - Enhance git-janitor auto-commit patterns and add idea branch cleanup (started: 2026-02-24 05:05 UTC, status: validated)
-  - Verification: health OK; git-janitor test OK; active-tasks<2K; MEM30
+- [workspace-builder-20260224-1113] workspace-builder - Workspace hygiene: push daily digest, delete 5 stale idea branches, prune active-tasks (started: 2026-02-24 11:06 UTC, status: validated)
+  - Verification: active-tasks=1531b, MEM30, health OK, git clean, no temp files, idea branches cleared
