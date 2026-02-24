@@ -1,7 +1,7 @@
 ⏰ UTC+7 time (24/7 operation)
 🌤️ Weather Bangkok (rain alert)
 💾 System: disk, updates
-🎉 Holiday: next Indonesian holiday
+🎉 Holiday: Nyepi (Mar 18–19) — Day of Silence / Balinese New Year
 🤖 Agents: verify running (from active-tasks.md)
 
 🌙 Night 22:00-06:00 UTC+7 (agents still running):
