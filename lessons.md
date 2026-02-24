@@ -43,6 +43,8 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Email cleaner** → Always dry-run first (`--max 1`). Review rules before `--execute`.
 - **Memory search** → Use semantic search (`claw memory search`) over vector-based if rate limited. Simple grep as fallback.
 - **Exit code vs output** → When writing conditional logic based on a script's result, use the command's exit code (`$?`) rather than parsing its stdout. Output is for human consumption; exit codes are for machine decisions. Prevents bugs like meta-agent always triggering due to multi-line status text.
+- **OpenClaw CLI JSON parsing** → `openclaw ... --json` may prepend Doctor warnings (config notices) to stdout. Always filter with `sed -n '/^{/,$p'` before piping to `jq`. Example: `openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq ...`
+- **Binary file detection in grep** → When scanning files for text patterns (like CRLF), use `grep -I` to ignore binary files. Binary files contain arbitrary bytes that can match any pattern and cause false positives.
 
 ## Performance
 

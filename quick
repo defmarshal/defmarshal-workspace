@@ -497,7 +497,7 @@ case "$cmd" in
     # Show OpenClaw cron jobs overview (next run, last status, schedule)
     echo "OpenClaw Cron Jobs Overview:"
     echo "----------------------------"
-    openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | "\(.name)|\(.schedule.expr)|\(.schedule.tz // "UTC")|\(.state.nextRunAtMs // 0)|\(.state.lastStatus // "never")|\(.state.lastDurationMs // 0 / 1000|floor)"' | while IFS='|' read -r name expr tz nextMs status duration; do
+    openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | "\(.name)|\(.schedule.expr)|\(.schedule.tz // "UTC")|\(.state.nextRunAtMs // 0)|\(.state.lastStatus // "never")|\(.state.lastDurationMs // 0 / 1000|floor)"' | while IFS='|' read -r name expr tz nextMs status duration; do
       if [ "$nextMs" -gt 0 ]; then
         nextdt=$(date -u -d "@$((nextMs/1000))" '+%Y-%m-%d %H:%M' 2>/dev/null || echo "?")
       else
@@ -530,7 +530,7 @@ case "$cmd" in
     # Show recent runs for all cron jobs (last run, status, duration)
     echo "Recent Cron Job Runs"
     echo "--------------------"
-    openclaw cron list --json 2>/dev/null | jq -r '
+    openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '
       .jobs |
       sort_by(.name) |
       .[] |
@@ -557,7 +557,7 @@ case "$cmd" in
     # Show compact health overview of all cron jobs
     echo "Cron Job Health Overview"
     echo "------------------------"
-    openclaw cron list --json 2>/dev/null | jq -r '
+    openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '
       .jobs |
       sort_by(.name) |
       .[] |
@@ -578,7 +578,7 @@ case "$cmd" in
     # Show cron jobs with errors (consecutiveErrors > 0 or lastStatus != "ok")
     echo "Failed/Error Cron Jobs:"
     echo "----------------------"
-    openclaw cron list --json 2>/dev/null | jq -r '.jobs[] | select(.state.consecutiveErrors > 0 or .state.lastStatus != "ok") | "\(.name)|\(.state.lastStatus)|\(.state.consecutiveErrors)|\(.state.nextRunAtMs // 0)"' | while IFS='|' read -r name status errors nextMs; do
+    openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | select(.state.consecutiveErrors > 0 or .state.lastStatus != "ok") | "\(.name)|\(.state.lastStatus)|\(.state.consecutiveErrors)|\(.state.nextRunAtMs // 0)"' | while IFS='|' read -r name status errors nextMs; do
       if [ "$nextMs" -gt 0 ]; then
         nextdt=$(date -u -d "@$((nextMs/1000))" '+%Y-%m-%d %H:%M' 2>/dev/null || echo "?")
       else

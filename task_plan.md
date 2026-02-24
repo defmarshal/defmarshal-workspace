@@ -1,8 +1,8 @@
 # Workspace Builder Task Plan
 
-**Session Key:** workspace-builder-20260223-2300  
-**Trigger:** Cron schedule (every 2h UTC)  
-**Timestamp:** 2026-02-23 23:00 UTC
+**Session Key:** workspace-builder-20260224-0107
+**Trigger:** Cron schedule (every 2h UTC)
+**Timestamp:** 2026-02-24 01:07 UTC
 
 ---
 
@@ -25,15 +25,17 @@ Analyze workspace health, enforce constraints, and implement meaningful improvem
 
 ## Current State (Pre-Analysis)
 
-- **Git status:** Clean (no changed files)
-- **Disk usage:** 67% (healthy)
+- **Git status:** Clean (master up-to-date with origin)
+- **Disk usage:** 68% (healthy)
 - **Gateway:** Healthy
-- **Memory index:** Clean, stale (7d) but acceptable
+- **Memory index:** Clean, 22 files, 261 chunks, stale (7d) but acceptable (weekly reindex)
 - **MEMORY.md:** 30 lines (optimal)
-- **active-tasks.md:** 2062 bytes, 39 lines → **NEEDS PRUNING** (14 bytes over limit)
-- **Stale branches:** None (checked)
+- **active-tasks.md:** 1857 bytes, 36 lines — ✅ <2KB
+- **Stale branches:** None
 - **Temp files:** None
-- **Uncommitted research artifacts:** None
+- **CRLF warning:** One MP3 file flagged (false positive; binary file)
+- **Critical bug:** `quick agent-status` fails with jq parse error due to Doctor warnings in `openclaw cron list --json` output
+- **Affected commands:** agent-status, cron-runs, cron-health, cron-failures, show-cron
 
 ---
 
@@ -42,67 +44,65 @@ Analyze workspace health, enforce constraints, and implement meaningful improvem
 **Goal:** Document current state and identify all issues.
 
 **Tasks:**
-1.1 Check active-tasks.md size and content  
-1.2 Verify MEMORY.md line count  
-1.3 Check git status for any modified/untracked files  
-1.4 Check for stale idea branches  
-1.5 Check for temp files  
-1.6 Check workspace health via `quick health`  
-1.7 Record all findings in `findings.md`
+1.1 Check which quick commands parse `openclaw cron list --json`
+1.2 Verify the JSON filtering needed (strip Doctor warnings)
+1.3 Check CRLF warning source (workspace-hygiene-check.sh)
+1.4 Validate active-tasks.md and MEMORY.md constraints
+1.5 Check git status for any untracked/modified files
+1.6 Record findings in `findings.md`
 
 ---
 
 ## Phase 2: Implementation
 
-**Goal:** Fix any violations.
+**Goal:** Fix the identified issues.
 
 **Planned actions:**
-2.1 Prune `active-tasks.md` to ≤ 2KB
-   - Strategy: Remove oldest entries that are already well-archived in daily logs
-   - Keep at least 3-5 recent entries for context
-   - Optionally shorten verification lines to save bytes
-2.2 Verify MEMORY.md remains ≤ 30 lines (no action if already compliant)
-2.3 Ensure no temp files or untracked artifacts
+
+2.1 **Fix JSON parsing in quick script** (critical)
+   - Add `sed -n '/^{/,$p'` filter before piping to jq in all affected commands
+   - Commands to fix: agent-status, cron-runs, cron-health, cron-failures
+   - Also fix external script `scripts/show-cron.sh` if needed
+   - Test each command after fix to ensure they work
+
+2.2 **Address CRLF warning (false positive)**
+   - Option A: Modify workspace-hygiene-check.sh to skip binary files (check file type)
+   - Option B: Add binary attribute in .gitattributes for .mp3 files
+   - Option C: Accept as benign warning (MP3 is binary, CRLF check not meaningful)
+   - Decision: Implement Option A for robustness; skip non-text files during CRLF check
+
+2.3 **Validate constraints**
+   - active-tasks.md size remains <2KB
+   - MEMORY.md remains ≤30 lines
+   - If needed, prune active-tasks entries slightly to maintain buffer
+
+2.4 **Close the loop validation**
+   - Run `./quick health`, `./quick agent-status`, `./quick hygiene`
+   - Verify all commands succeed
+   - Ensure no temp files, git clean
 
 ---
 
-## Phase 3: Close the Loop
-
-**Goal:** Validate workspace hygiene.
-
-**Validation checks:**
-- `./quick health` passes
-- active-tasks.md size < 2048 bytes
-- MEMORY.md ≤ 30 lines
-- Git clean (no uncommitted changes after commits)
-- No temp files
-- All planning docs committed with `build:` prefix
-- Feature branches cleaned (only master)
+## Phase 3: Finalization
 
 **Actions:**
-3.1 Create `progress.md` and update throughout  
-3.2 Commit changes (if any)  
-3.3 Update `active-tasks.md` with validated entry for this session  
-3.4 Push to origin  
-3.5 Final validation
-
----
-
-## Phase 4: Memory Updates (If Needed)
-
-If any important learnings emerged during this run, update MEMORY.md while keeping ≤ 30 lines. Likely no changes needed as this is routine maintenance.
+3.1 Create/update progress.md throughout
+3.2 Commit all changes with `build:` prefix
+3.3 Update active-tasks.md with validated entry for this session
+3.4 Push to origin
+3.5 Final verification
 
 ---
 
 ## Success Criteria
 
-- active-tasks.md ≤ 2KB
-- MEMORY.md ≤ 30 lines
+- `quick agent-status` displays cron job table without error
+- `quick hygiene` passes without CRLF false positive warnings
+- active-tasks.md ≤ 2KB, MEMORY.md ≤ 30 lines
 - All validation checks pass
-- Commits pushed
-- active-tasks.md entry added
+- Commits pushed, active-tasks updated
 
 ---
 
-**Plan created:** 2026-02-23 23:00 UTC  
-**Estimated duration:** 5-10 minutes
+**Plan created:** 2026-02-24 01:15 UTC
+**Estimated duration:** 10-15 minutes

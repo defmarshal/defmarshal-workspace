@@ -15,7 +15,8 @@ echo ""
 echo "1. Tracking CRLF line endings in tracked files..."
 CRLF_COUNT=0
 while IFS= read -r file; do
-  if grep -q $'\r' "$file" 2>/dev/null; then
+  # Use grep -I to ignore binary files (avoid false positives)
+  if grep -qI $'\r' "$file" 2>/dev/null; then
     echo "   ⚠ CRLF found: $file"
     ((CRLF_COUNT++))
   fi
