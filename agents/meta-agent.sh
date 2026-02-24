@@ -109,7 +109,7 @@ check_and_install_skill() {
 }
 
 create_archive_agent() {
-  if openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archive-agent-cron$'; then
+  if openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archive-agent-cron$'; then
     return 0
   fi
   log "Creating archive-agent"
@@ -134,7 +134,7 @@ EOF
 }
 
 create_git_janitor_agent() {
-  if openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^git-janitor-cron$'; then
+  if openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^git-janitor-cron$'; then
     return 0
   fi
   log "Creating git-janitor-agent"
@@ -159,14 +159,14 @@ fi
 log "Git janitor completed"
 EOF
   chmod +x agents/git-janitor-cycle.sh
-  openclaw cron add --name "git-janitor-cron" --cron "15 * * * *" --tz "UTC" \
+  openclaw cron add --name "git-janitor-cron" --cron "0 */6 * * *" --tz "UTC" \
     --message "Execute git janitor: bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/git-janitor-cycle.sh >> memory/git-janitor.log 2>&1'" \
     --session isolated --no-deliver >> "$LOGFILE" 2>&1 || true
   log "Git-janitor cron registered"
 }
 
 create_archiver_manager() {
-  if openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archiver-manager-cron$'; then
+  if openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archiver-manager-cron$'; then
     return 0
   fi
   log "Creating archiver-manager"
@@ -179,7 +179,7 @@ create_archiver_manager() {
 }
 
 create_notifier_agent() {
-  if openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^notifier-cron$'; then
+  if openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^notifier-cron$'; then
     return 0
   fi
   log "Creating notifier-agent"
@@ -246,9 +246,9 @@ adjust_scheduling() {
   )
   
   for job_name in "${!JOB_SCHEDULES[@]}"; do
-    JOB_ID=$(openclaw cron list --json 2>/dev/null | jq -r ".jobs[] | select(.name==\"$job_name\") | .id" 2>/dev/null || true)
+    JOB_ID=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r ".jobs[] | select(.name==\"$job_name\") | .id" 2>/dev/null || true)
     if [ -n "$JOB_ID" ]; then
-      CURRENT_EXPR=$(openclaw cron list --json 2>/dev/null | jq -r ".jobs[] | select(.name==\"$job_name\") | .schedule.expr" 2>/dev/null || true)
+      CURRENT_EXPR=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r ".jobs[] | select(.name==\"$job_name\") | .schedule.expr" 2>/dev/null || true)
       NEW_EXPR="$SCHED_EXPR"
       if [ "$SCHED_TIER" = "normal" ]; then
         NEW_EXPR="${JOB_SCHEDULES[$job_name]}"
@@ -372,21 +372,21 @@ case "${1:-}" in
     fi
     
     # Create permanent agents if missing
-    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archive-agent-cron$'; then
+    if ! openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archive-agent-cron$'; then
       if find content -type f -name '*.md' -mtime +90 2>/dev/null | read -r; then
         ACTIONS+=("create archive-agent")
       fi
     fi
     
-    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^git-janitor-cron$'; then
+    if ! openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^git-janitor-cron$'; then
       ACTIONS+=("create git-janitor-agent")
     fi
     
-    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^notifier-cron$'; then
+    if ! openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^notifier-cron$'; then
       ACTIONS+=("create notifier-agent")
     fi
     
-    if ! openclaw cron list --json 2>/dev/null | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archiver-manager-cron$'; then
+    if ! openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[].name' 2>/dev/null | grep -q '^archiver-manager-cron$'; then
       ACTIONS+=("create archiver-manager")
     fi
     
