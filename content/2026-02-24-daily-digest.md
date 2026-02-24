@@ -2,28 +2,20 @@
 
 ## Highlights from 2026‑02‑23
 
-- **LinkedIn PA agent** upgraded to educational content style (features, tips, tutorials)
-  - Now runs 4× daily (01:00, 07:00, 13:00, 19:00 UTC)
-  - Outputs synced to Obsidian `Content/LinkedIn/` with unique timestamps
-- **Obsidian sync** improved: dedicated LinkedIn folder, index note, dashboard stats
-- **Research agent** produced compelling reports:
-  - *Quantum Computing Commercialization: 2026 Industry Outlook* — deep dive into IonQ, IBM, Google, Quantinuum roadmaps
-  - *Mechanistic Interpretability* — MIT Tech Review breakthrough, AI black‑box transparency
-- **System updates:** OpenClaw updated to `2026.2.22-2` (gateway restart handled)
-- **Weather:** Rain/storms in Bangkok — alert active
+- **Research:** Added *Agentic AI Trends 2026* — deep dive into autonomous enterprise systems, multi-agent collaboration, governance, case studies (Toyota, telecom)
+- **LinkedIn PA agent:** Now runs hourly, producing research‑oriented content (technical analysis, benchmarks, case studies, architecture, trends). All synced to Obsidian.
+- **Dev:** New quick commands:
+  - `run-agent` — manually trigger any agent
+  - `repo-status` — git branch/remote overview
+  - `research-tags` — tag statistics for research library
+  - `memory-usage` — system RAM/disk overview
+  - `show-cron` + `agent-runs` — operational visibility
 
-## Content Index
+## Today’s Focus
 
-- Research: 184 reports (184 with audio — 100% TTS coverage)
-- Daily digests: 5 (including today)
-- LinkedIn PA posts: 4 runs (timestamped, synced)
-- TTS status: 100% coverage
-
-## Upcoming
-
-- Continue research cycles on AI, banking, tech, anime
-- Monitor LinkedIn PA engagement; iterate on content format
-- Optional: deep‑dive into IBM Planning Analytics features (based on research)
+- Continue research cycles (AI, banking, tech, anime)
+- Monitor LinkedIn PA content depth and engagement
+- Maintain system health (disk 68%, gateway OK, weather alert)
 
 ---
 
