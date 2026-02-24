@@ -1805,6 +1805,10 @@ except Exception:
     # List cron jobs in a concise format (name, schedule, next run)
     "$WORKSPACE/scripts/list-cron.sh"
     ;;
+  validate-timestamps)
+    # Check agent scripts for safe timestamp arithmetic (avoid octal parsing)
+    "$WORKSPACE/scripts/validate-timestamps.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"

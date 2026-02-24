@@ -41,7 +41,8 @@ QUERIES=(
 
 HOUR=$(date -u +%H)
 DAY_OF_WEEK=$(date -u +%u)
-INDEX=$(( (DAY_OF_WEEK * 24 + HOUR) % 6 ))
+# Force base-10 to avoid octal parsing error with leading zeros (08, 09)
+INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 6 ))
 SELECTED_QUERY="${QUERIES[$INDEX]}"
 log "Research query: $SELECTED_QUERY"
 
