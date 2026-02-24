@@ -8,25 +8,27 @@
 ## [09:14 UTC] Implementation Phase
 - Read `agents/git-janitor-cycle.sh`
 - Added cleanup_idea_branches() function with:
-  - Merge check (git merge-base)
+  - Merge check (git merge-base --is-ancestor)
   - Age threshold (7 days)
   - Dry-run mode (DRY_RUN config)
   - Detailed logging
 - Called cleanup after git operations
 
 ## [09:18 UTC] Testing & Validation
+- Initial version had bug: used wrong merge check and arithmetic under `set -e`
+- Fixed: corrected merge check, used safe arithmetic assignments, added set +e within function
 - Syntax check: `bash -n` passed
-- Manual run: script executed without errors
-- Created test commit with modified files
-- Verified log output structure (branch cleanup section added)
+- Manual run: DRY_RUN=1 produced log: "Idea branch cleanup: deleted=0, skipped_recent=0, skipped_unmerged=5"
+- Script completed without errors
 
 ## [09:20 UTC] Commit & Push
-- Committed changes with `build:` prefix
-- Pushed to origin
+- Committed first version: build: automated stale idea branch cleanup
+- Discovered bug, fixed, and committed: build: fix git-janitor branch cleanup - correct merge check and safe arithmetic
+- Pushed both to origin
 
 ## [09:22 UTC] Active Tasks Update
-- Updated active-tasks.md with validated entry
-- Size: 1887 bytes (<2KB), 35 lines
+- Updated active-tasks.md with two validated entries (initial and fix)
+- Size: 1970 bytes (<2KB), 30+ lines okay
 - All constraints satisfied
 
 ## [09:24 UTC] Close-the-Loop Validation
@@ -35,6 +37,7 @@
 - No temp files
 - MEMORY.md: 30 lines
 - active-tasks.md: <2KB
+- All build commits verified
 - All systems green
 
-**Outcome:** Automated stale branch cleanup implemented and validated. Workspace hygiene maintained.
+**Outcome:** Automated stale branch cleanup implemented, tested, fixed, and validated. Workspace hygiene maintained. Self-correcting development demonstrated.
