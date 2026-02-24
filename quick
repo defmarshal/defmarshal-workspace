@@ -1797,6 +1797,10 @@ except Exception:
     # Audit the quick launcher for issues (duplicates, missing scripts)
     "$WORKSPACE/scripts/audit-quick.sh"
     ;;
+  check-permissions)
+    # Check write permissions on critical directories
+    "$WORKSPACE/scripts/check-permissions.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
