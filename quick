@@ -80,6 +80,7 @@ Commands:
   research-age                            Show research reports sorted by age (oldest first)
   research-stats                          Show research library statistics (reports, TTS %, latest)
   research-tags                          Show tag statistics for research reports
+  run-agent                              Run an OpenClaw agent with a message (usage: quick run-agent <agent-id> <message>)
   send-digest                             Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
                   Example: quick send-digest
   torrent-add <magnet_or_file> [rpc_secret]  Add a magnet link or .torrent file to
@@ -1783,6 +1784,10 @@ except Exception:
   research-tags)
     # Show tag statistics for research reports
     "$WORKSPACE/scripts/research-tags.sh"
+    ;;
+  run-agent)
+    # Run an OpenClaw agent with a message
+    "$WORKSPACE/scripts/run-agent.sh" "$@"
     ;;
   git-by-agent)
     # Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
