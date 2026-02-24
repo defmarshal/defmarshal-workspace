@@ -42,7 +42,7 @@ attempt=0
 while [ $attempt -lt $MAX_RETRIES ]; do
   HOUR=$(date -u +%H)
   DAY_OF_WEEK=$(date -u +%u)
-  INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 8 ))
+  INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 6 ))
   SELECTED_QUERY="${QUERIES[$INDEX]}"
   QUERY_LOWER=$(echo "$SELECTED_QUERY" | tr '[:upper:]' '[:lower:]')
   
