@@ -1,22 +1,22 @@
 # Daily Digest — 2026‑02‑24
 
-## Highlights from 2026‑02‑23
+## Highlights (so far)
 
-- **Research:** Added *Agentic AI Trends 2026* — deep dive into autonomous enterprise systems, multi-agent collaboration, governance, case studies (Toyota, telecom)
-- **LinkedIn PA agent:** Now runs hourly, producing research‑oriented content (technical analysis, benchmarks, case studies, architecture, trends). All synced to Obsidian.
-- **Dev:** New quick commands:
-  - `run-agent` — manually trigger any agent
-  - `repo-status` — git branch/remote overview
-  - `research-tags` — tag statistics for research library
-  - `memory-usage` — system RAM/disk overview
-  - `show-cron` + `agent-runs` — operational visibility
+- **Research:** Added *AI in Banking 2026* — comprehensive report on fraud detection, personalization, FinTech partnerships, generative AI, regulation, and future outlook.
+- **LinkedIn PA agent:** Continues hourly deep‑research posts. Latest at 11:13 UTC — market‑positioning analyst report with competitive comparison (vs Oracle Hyperion).
+- **Dev:** Added `list-cron` command for concise cron overview; `check-permissions` helps diagnose directory access issues.
 
-## Today’s Focus
+## Stats
 
-- Continue research cycles (AI, banking, tech, anime)
-- Monitor LinkedIn PA content depth and engagement
-- Maintain system health (disk 68%, gateway OK, weather alert)
+- Research library: 186 reports (100% TTS)
+- LinkedIn PA posts today: 11 (hourly cadence, deep analyst‑report style)
+- System health: All good (disk 68%, gateway stable)
+
+## Upcoming
+
+- Research cycles continue throughout the day
+- Monitor LinkedIn content engagement (Obsidian vault synced)
 
 ---
 
-*All systems operational. No critical issues.* (◕‿◕)♡
+*All systems operational.* (◕‿◕)♡
