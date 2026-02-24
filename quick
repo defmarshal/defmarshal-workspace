@@ -1789,6 +1789,10 @@ except Exception:
     # Show git repository status (branch, remote, recent commits)
     "$WORKSPACE/scripts/repo-status.sh"
     ;;
+  show-last-commit)
+    # Show detailed info about the last commit (files, stats, message)
+    "$WORKSPACE/scripts/show-last-commit.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
