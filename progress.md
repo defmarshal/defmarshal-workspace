@@ -12,20 +12,20 @@
 - [x] Run `./quick health` (pre-commit baseline) → OK
 - [x] Confirm no temp files (only tracked changes)
 - [x] Update planning docs with actual results (findings.md, progress.md)
-- [ ] Commit cleanup changes: `git add -A && git commit -m "build: workspace hygiene - delete stale idea branch"`
-- [ ] Push to origin
+- [x] Commit cleanup changes: `git add -A && git commit -m "build: workspace hygiene - delete stale idea branch"`
+- [x] Push to origin
 
 ## Phase 3: Active Tasks Update
-- [ ] Add validated entry for this session to active-tasks.md
-- [ ] Commit: `git commit -am "build: mark workspace-builder session validated (2026-02-24 19:03 UTC)"`
-- [ ] Push
+- [x] Add validated entry for this session to active-tasks.md
+- [x] Commit: `git commit -am "build: mark workspace-builder session validated (2026-02-24 19:03 UTC)"`
+- [x] Push
 
 ## Phase 4: Final Close-the-Loop
-- [ ] Re-run `./quick health` (post-commit)
-- [ ] Verify active-tasks.md size ≤2KB
-- [ ] Verify MEMORY.md ≤30 lines
-- [ ] Confirm no idea branches remain
-- [ ] Final push of planning updates
+- [x] Re-run `./quick health` (post-commit)
+- [x] Verify active-tasks.md size ≤2KB
+- [x] Verify MEMORY.md ≤30 lines
+- [x] Confirm no idea branches remain
+- [x] Final push of planning updates
 
 ## Notes
 - active-tasks.md already within 2KB constraint (1846 bytes) - no pruning needed
