@@ -81,7 +81,15 @@ result = subprocess.run(['openclaw','cron','list','--json'], capture_output=True
 if result.returncode != 0:
     print(f"ERROR: openclaw cron list failed: {result.stderr}")
     sys.exit(1)
-data = json.loads(result.stdout)
+# Extract pure JSON from output (filter out diagnostic messages that may be printed to stdout)
+output = result.stdout
+start = output.find('{')
+end = output.rfind('}') + 1
+if start == -1 or end <= start:
+    print(f"ERROR: Could not extract JSON from openclaw output. Raw output: {output[:200]}")
+    sys.exit(1)
+json_str = output[start:end]
+data = json.loads(json_str)
 jobs = data.get('jobs', [])
 
 # purposes map
