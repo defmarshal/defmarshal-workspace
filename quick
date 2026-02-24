@@ -1469,7 +1469,7 @@ except Exception:
     echo "✅ Cleaned $total cache item(s)"
     ;;
   cron)
-    openclaw cron list --json | jq -r '.jobs[] | "\(.schedule.kind) \(.schedule.expr // "\(.schedule.everyMs)ms") \(.payload.kind) \(.sessionTarget)"' 2>/dev/null || openclaw cron list
+    openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | "\(.schedule.kind) \(.schedule.expr // "\(.schedule.everyMs)ms") \(.payload.kind) \(.sessionTarget)"' 2>/dev/null || openclaw cron list
     ;;
   cron-status)
     # Show status of important cron jobs
@@ -1477,7 +1477,7 @@ except Exception:
     crontab -l 2>/dev/null | grep -E 'email-clean|nyaa-top|traffic' || echo "No matching cron entries found"
     echo ""
     echo "== OpenClaw Cron (via openclaw cron) =="
-    /home/ubuntu/.npm-global/bin/openclaw cron list --json 2>/dev/null | python3 -m json.tool 2>/dev/null || echo "Unable to list OpenClaw cron jobs"
+    /home/ubuntu/.npm-global/bin/openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | python3 -m json.tool 2>/dev/null || echo "Unable to list OpenClaw cron jobs"
     ;;
   supervisor-schedule)
     # Show supervisor-cron schedule (cron expression)
