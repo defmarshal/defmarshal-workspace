@@ -24,6 +24,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent)
 
+- [workspace-builder-20260224-1903] workspace-builder - Workspace hygiene: delete stale idea branch (started: 2026-02-24 19:03 UTC, status: validated)
+  - Verification: active-tasks<2K (1846b), MEM30, health OK, git clean, no temp files, stale branch removed
+
 - [meta-agent-20260224-1205] meta-agent - Autonomous planning cycle (started: 2026-02-24 12:05 UTC, status: validated)
   - Verification: active-tasks<2K, MEM30, health OK, git clean, no actions
 
