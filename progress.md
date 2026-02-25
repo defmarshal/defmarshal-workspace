@@ -2,7 +2,7 @@
 
 **Session:** workspace-builder-23dad379  
 **Started:** 2026-02-25 21:00 UTC  
-**Status:** Running
+**Status:** Validated
 
 ## Phase 1: Workspace Analysis ✅ COMPLETE
 
@@ -175,3 +175,50 @@ Let me implement this.
 ---
 
 **Status:** Implementing script now...
+
+---
+
+## Phase 4: Close the Loop Validation ✅ COMPLETE
+
+**Time:** 23:30-23:40 UTC  
+**Actions:**
+- Ran `./quick validate-constraints` → all constraints satisfied
+- Verified active-tasks.md size: 2036 bytes → pruned oldest completed entry to maintain <2KB (final: 1903 bytes)
+- Updated active-tasks.md: moved running entry (23dad379) to Completed with verification details
+- Verified MEMORY.md: 31 lines (≤35)
+- Confirmed git clean and all pushes successful
+- Updated daily memory log (2026-02-25.md) with session completion notes
+
+**Committed:**
+- `build: mark workspace-builder session validated (23dad379) - validate-constraints added, all constraints satisfied`
+- `build: log workspace-builder session 23dad379 completion (validate-constraints feature) in daily memory`
+
+**Final state:**
+- active-tasks.md: 1903 bytes (<2KB)
+- MEMORY.md: 31 lines
+- Git: clean, up-to-date with origin
+- No stale branches, no temp files
+- All constraints green
+
+---
+
+## Phase 5: Finalize and Report ✅ COMPLETE
+
+**Time:** 23:40-23:42 UTC  
+**Actions:**
+- Pushed all commits to origin (5 commits total from this session)
+- Verified repository state: clean, validated, constraints enforced
+- Session closed successfully
+
+**Deliverables:**
+- `scripts/validate-constraints.sh` (new, 79 lines)
+- `quick` alias already present
+- Updated `active-tasks.md` with validation entry and pruning
+- Updated `memory/2026-02-25.md` with completion log
+- Planning docs created (task_plan.md, findings.md, progress.md)
+
+**Outcome:** Workspace constraint validation command implemented, fully tested, and integrated. All traces committed. Session complete.
+
+---
+
+*Session completed: 2026-02-25 23:42 UTC*
