@@ -1814,6 +1814,10 @@ except Exception:
     # Show recent agent activity with clearer timestamps and status
     "$WORKSPACE/scripts/agents-health-improved.sh"
     ;;
+  agent-commit-age)
+    # Show age of most recent commits by agent prefix
+    "$WORKSPACE/scripts/agent-commit-age.sh"
+    ;;
   content-distribution)
     # Show LinkedIn PA content distribution by hour
     "$WORKSPACE/scripts/content-distribution.sh"
