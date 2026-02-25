@@ -1,33 +1,54 @@
-# Task Plan: Track Daily Digest Report
+# Workspace Builder - Task Plan
+**Session ID:** workspace-builder-20260225-0705  
+**Started:** 2026-02-25 07:05 UTC  
+**Goal:** Strategic maintenance: apply updates, cleanup stale branches, enforce constraints, and validate repository health
 
-**Goal:** Ensure today's daily digest report (reports/2026-02-25-daily-digest.md) is tracked in git and pushed to origin.
+## Phases
 
-**Phases:**
+### Phase 1: Analysis
+- Check system health (./quick health)
+- Check git status and untracked files
+- Count active-tasks.md size (must be <2KB)
+- Verify MEMORY.md line count (~30 lines)
+- Identify stale idea branches
+- Check pending APT updates
+- Check memory reindex status
 
-1. **Analysis** (done)
-   - Check git status: one untracked file in reports/
-   - Verify reports directory structure
-   - Confirm other daily digests are tracked
+**Acceptance:** Complete when baseline metrics documented in findings.md
 
-2. **Implementation**
-   - Stage the untracked file: `git add reports/2026-02-25-daily-digest.md`
-   - Commit with message: `content: add daily digest report for 2026-02-25`
-   - Validate commit created correctly
+### Phase 2: Maintenance Actions
+- Apply pending APT security updates (3 packages)
+- Delete stale idea branches (`idea/add-dark-mode-toggle-to`, `idea/create-quick-command-to-find`)
+- Prune active-tasks.md by removing oldest validated entries to stay <2KB
+- Run memory reindex check (if needed)
+- Update MEMORY.md if critical changes occurred
 
-3. **Verification**
-   - Run `git status` to confirm no remaining untracked files
-   - Run `quick health` to confirm all constraints satisfied
-   - Check active-tasks.md size (<2KB)
-   - Check MEMORY.md line count (~30)
+**Acceptance:** All actions completed without errors; git status clean
 
-4. **Finalization**
-   - Push commit to origin: `git push`
-   - Verify push succeeded
-   - Optionally add entry to active-tasks.md (may skip if trivial; but to follow protocol strictly, will add a concise entry)
-   - Close the loop with full validation
+### Phase 3: Validation & Documentation
+- Run comprehensive health check (./quick health)
+- Verify all constraints: active-tasks < 2KB, MEMORY.md ~30 lines, no stale branches, no temp files
+- Update progress.md with detailed log of actions
+- Update active-tasks.md with this session's validation entry
+- Commit changes with prefix 'build:'
+- Push commits to origin
 
-**Success Criteria:**
-- Daily digest file tracked and committed
-- Git clean after push
-- Health check green
-- active-tasks.md updated (if applicable)
+**Acceptance:** All validation checks pass; git clean; pushes successful
+
+### Phase 4: Close the Loop
+- Re-run health check to confirm final state
+- Verify no untracked files remain
+- Confirm no temp files in workspace
+- Document final metrics in progress.md
+
+**Acceptance:** System fully validated and stable
+
+## Error Handling
+- If any command fails, log error in progress.md and halt before proceeding to next phase
+- Debug and retry failed steps before continuing
+- If validation fails, iterate until all constraints satisfied
+
+## Notes
+- Keep changes small but meaningful
+- Follow commit message format: `build: <description>`
+- Respect active-tasks.md size constraint strictly (max 2048 bytes)
