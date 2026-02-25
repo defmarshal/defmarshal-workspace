@@ -1,73 +1,80 @@
 #!/bin/bash
-# LinkedIn Content Agent - IBM Planning Analytics (Analyst-Report v8)
-# Produces deep, data-rich content with developer tips & deduplication
+# LinkedIn Content Agent - IBM Planning Analytics (Analyst-Report v10)
+# Dynamic LLM-generated queries + topic bucket rotation
 
 LOGFILE="/home/ubuntu/.openclaw/workspace/memory/linkedin-pa-agent.log"
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 OUTPUT_DIR="$WORKSPACE/content"
 RESEARCH_DIR="$WORKSPACE/research"
-MAX_RETRIES=2
 
 log() {
   echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') - $*" | tee -a "$LOGFILE"
 }
 
-log "Starting LinkedIn PA analyst-report cycle (v8)"
+log "Starting LinkedIn PA analyst-report cycle (v10 — dynamic queries)"
 
 DATE=$(date -u +%Y-%m-%d)
 TIME_STAMP=$(date -u +%H%M)
 
-# Phase 0: Topic deduplication — avoid same topics as last 7 days
+# Content types (6 buckets)
+CONTENT_TYPES=("market-positioning" "technical-performance" "comparative-analysis" "implementation-decoder" "roadmap-brief" "developer-tips")
+
+# Dedup: avoid recent research topics
 RECENT_TOPICS="$RESEARCH_DIR/INDEX.md"
 if [ -f "$RECENT_TOPICS" ]; then
-  RECENT_QUERIES=$(grep -oE 'Title: .+' "$RECENT_TOPICS" | tail -10 | sed 's/Title: //' | tr '[:upper:]' '[:lower:]' | sort -u)
+  RECENT_QUERIES=$(grep -oE 'Title: .+' "$RECENT_TOPICS" | tail -20 | sed 's/Title: //' | tr '[:upper:]' '[:lower:]' | sort -u)
 else
   RECENT_QUERIES=""
 fi
 
-# Expanded query pool (8 variants including developer-tips)
-QUERIES=(
-  "IBM Planning Analytics performance benchmarks site:ibm.com OR site:developer.ibm.com"
-  "IBM Planning Analytics TM1 engine architecture whitepaper"
-  "IBM Planning Analytics case study ROI metrics 2025 2026"
-  "Gartner Magic Quadrant enterprise planning 2026 IBM score"
-  "IBM Planning Analytics vs Oracle Hyperion comparison"
-  "IBM Planning Analytics Cloud Pak for Data integration architecture"
-  "IBM Planning Analytics developer tips TM1 modeling optimization hacks"
-  "IBM Planning Analytics advanced rules processes performance tuning"
+# Select content type by hour rotation (ensures each appears 4x/day)
+HOUR=$(date -u +%H)
+DAY_OF_WEEK=$(date -u +%u)
+INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 6 ))
+SELECTED_TYPE="${CONTENT_TYPES[$INDEX]}"
+
+# Static fallback query pool (high-quality, authoritative)
+STATIC_QUERIES=(
+  "IBM Planning Analytics Gartner Magic Quadrant 2026 site:gartner.com OR site:ibm.com"
+  "IBM Planning Analytics TM1 engine architecture whitepaper site:ibm.com OR site:developer.ibm.com"
+  "IBM Planning Analytics vs Oracle Hyperion comparison site:ibm.com OR site:oracle.com"
+  "IBM Planning Analytics Cloud Pak for Data integration best practices site:ibm.com OR site:developer.ibm.com"
+  "IBM Planning Analytics 2026 roadmap upcoming features site:ibm.com OR site:developer.ibm.com"
+  "TM1 modeling optimization rules processes developer tips site:ibm.com OR site:developer.ibm.com"
 )
 
-# Select query with retry to avoid duplicates
-attempt=0
-while [ $attempt -lt $MAX_RETRIES ]; do
-  HOUR=$(date -u +%H)
-  DAY_OF_WEEK=$(date -u +%u)
-  INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 6 ))
-  SELECTED_QUERY="${QUERIES[$INDEX]}"
-  QUERY_LOWER=$(echo "$SELECTED_QUERY" | tr '[:upper:]' '[:lower:]')
-  
-  DUPLICATE=0
-  if [ -n "$RECENT_QUERIES" ]; then
-    for recent in $RECENT_QUERIES; do
-      if echo "$QUERY_LOWER" | grep -qE "$(echo "$recent" | cut -d' ' -f1-3)"; then
-        DUPLICATE=1
-        break
-      fi
-    done
-  fi
-  
-  if [ $DUPLICATE -eq 0 ]; then
-    break
-  fi
-  log "Topic duplicate detected: $SELECTED_QUERY — retrying ($attempt)"
-  attempt=$((attempt+1))
-done
+# Dynamic query generation via LLM (preferred)
+log "Generating dynamic search query for: $SELECTED_TYPE"
+PROMPT="Generate a concise web search query (max 150 chars) to find authoritative sources (ibm.com, developer.ibm.com, gartner.com, forrester.com) for a LinkedIn post about IBM Planning Analytics: $SELECTED_TYPE. Focus on 2025-2026. Include site: filters. Return ONLY the query string."
 
-if [ $DUPLICATE -eq 1 ]; then
-  log "Failed to find unique topic after $MAX_RETRIES attempts; proceeding anyway"
+# Call main agent to generate query
+DYNAMIC_QUERY=$(openclaw agent --agent main --json <<<"{\"messages\":[{\"role\":\"user\",\"content\":\"$PROMPT\"}]}" 2>/dev/null | jq -r '.response.content' 2>/dev/null || echo "")
+DYNAMIC_QUERY=$(echo "$DYNAMIC_QUERY" | tr -d '\"' | tr -d '\n' | xargs)
+
+# Validate
+if [ -z "$DYNAMIC_QUERY" ] || [ ${#DYNAMIC_QUERY} -lt 20 ] || [ ${#DYNAMIC_QUERY} -gt 200 ] || ! echo "$DYNAMIC_QUERY" | grep -qiE 'IBM Planning Analytics|TM1'; then
+  log "Dynamic query invalid; using static fallback"
+  SELECTED_QUERY="${STATIC_QUERIES[$INDEX]}"
+else
+  SELECTED_QUERY="$DYNAMIC_QUERY"
+  log "Dynamic query: $SELECTED_QUERY"
 fi
 
-log "Research query: $SELECTED_QUERY"
+# Additional dedup: avoid similarity to recent topics
+if [ -n "$RECENT_QUERIES" ]; then
+  QUERY_LOWER=$(echo "$SELECTED_QUERY" | tr '[:upper:]' '[:lower:]')
+  for recent in $RECENT_QUERIES; do
+    recent_prefix=$(echo "$recent" | cut -d' ' -f1-3)
+    if echo "$QUERY_LOWER" | grep -q "$recent_prefix"; then
+      log "Query too similar to recent ($recent); using static fallback"
+      SELECTED_QUERY="${STATIC_QUERIES[$INDEX]}"
+      break
+    fi
+  done
+fi
+
+log "Final query: $SELECTED_QUERY"
+log "Content type: $SELECTED_TYPE"
 
 # Phase 1: Research
 RESEARCH_DB="/tmp/pa-analyst-db-$(date +%s).json"
@@ -108,12 +115,7 @@ TIPS=$(sort -u /tmp/tips.txt 2>/dev/null | head -10 || echo "")
 
 log "Data compiled: METRICS=$(echo "$METRICS" | wc -l), BENCH=$(echo "$BENCHMARKS" | wc -l), TECH=$(echo "$TECH_SPECS" | wc -l), CASES=$(echo "$CASES" | wc -l), ROADMAP=$(echo "$ROADMAP" | wc -l), TIPS=$(echo "$TIPS" | wc -l)"
 
-# Phase 2: Content type selection
-CONTENT_TYPES=( "market-positioning" "technical-performance" "comparative-analysis" "implementation-decoder" "roadmap-brief" "developer-tips" )
-SELECTED_TYPE="${CONTENT_TYPES[$INDEX]}"
-log "Content type: $SELECTED_TYPE"
-
-# Phase 3: Generate content
+# Phase 2 & 3: Generate content (same case block from v8)
 POST_DATE="$DATE-$TIME_STAMP-linkedin-pa-post.md"
 POST_FILE="$OUTPUT_DIR/$POST_DATE"
 
@@ -125,7 +127,6 @@ case "$SELECTED_TYPE" in
     WEAKNESS2=$(echo "$METRICS" | grep -i 'cost\|price\|expense' | head -1 || echo "Higher total cost of ownership vs cloud-native competitors")
     BENCH1=$(echo "$BENCHMARKS" | head -1 || echo "30% faster close cycles")
     BENCH2=$(echo "$BENCHMARKS" | sed -n '2p' || echo "20%+ forecast accuracy improvement")
-
     cat << EOF
 ## 📊 Market Positioning: IBM Planning Analytics in the Enterprise Planning Landscape
 
@@ -167,25 +168,23 @@ PA is best suited for:
 - Organizations requiring hybrid deployment options
 - Companies already invested in IBM Cloud Pak for Data or traditional TM1
 
-For simpler, agile planning scenarios, cloud-native alternatives may offer faster time-to-value.
+For simpler, agile planning scenarios, cloud-native alternatives may offer faster time‑to‑value.
 
 ---
 
-**Sources consulted:** IBM product documentation, Gartner Magic Quadrant 2026, Forrester Wave, third-party benchmark studies.
+**Sources consulted:** IBM product documentation, Gartner Magic Quadrant 2026, Forrester Wave, third‑party benchmark studies.
 
 **Discussion:** Where does your current planning platform excel or fall short? Share your evaluation criteria.
 
 #PlanningAnalytics #EnterpriseAnalytics #MarketPositioning #IBM #EPM
 EOF
     ;;
-
   technical-performance)
     SPEC1=$(echo "$TECH_SPECS" | head -1 || echo "in-memory columnar storage with compression")
     SPEC2=$(echo "$TECH_SPECS" | sed -n '2p' || echo "parallelized calculation engine")
     SPEC3=$(echo "$TECH_SPECS" | sed -n '3p' || echo "transaction logging for durability")
     BENCH1=$(echo "$BENCHMARKS" | head -1 || echo "sub-100ms query latency")
     BENCH2=$(echo "$BENCHMARKS" | sed -n '2p' || echo "scales to 10M+ cell cubes")
-
     cat << EOF
 ## ⚙️ Technical Performance: IBM Planning Analytics Engine Deep Dive
 
@@ -231,12 +230,10 @@ Key knobs for performance optimization:
 #Performance #EnterprisePlanning #TechnicalDeepDive #TM1 #IBM
 EOF
     ;;
-
   comparative-analysis)
     COMP1=$(echo "$METRICS" | grep -iE 'Oracle|Hyperion|Anaplan|Workday|Adaptive' | head -1 || echo "PA's in-memory vs Hyperion's Essbase")
     COMP2=$(echo "$METRICS" | grep -iE 'cloud|SaaS|deployment' | head -1 || echo "PA's hybrid model vs Anaplan's cloud-only")
     COMP3=$(echo "$METRICS" | grep -iE 'cost|price|TCO' | head -1 || echo "Total cost of ownership considerations")
-
     cat << EOF
 ## ⚖️ Comparative Analysis: IBM Planning Analytics vs. Oracle Hyperion
 
@@ -295,14 +292,12 @@ Choose **Oracle Hyperion** if:
 #PlanningAnalytics #OracleHyperion #EPM #EnterpriseAnalytics #PlatformComparison
 EOF
     ;;
-
   implementation-decoder)
     SKILL1=$(echo "$TECH_SPECS" | grep -i 'TM1' | head -1 || echo "TM1 modeling (rules, dimensions, processes)")
     SKILL2=$(echo "$TECH_SPECS" | grep -i 'REST\|API' | head -1 || echo "REST API integration for data ingestion")
     SKILL3=$(echo "$TECH_SPECS" | grep -i 'MCP' | head -1 || echo "MCP tool development for orchestration")
     IMPL1=$(echo "$CASES" | grep -i 'timeframe\|duration\|weeks\|months' | head -1 || echo "Typical implementation: 6–12 months for enterprise deployment")
     IMPL2=$(echo "$CASES" | grep -i 'team\|resource\|consultant' | head -1 || echo "Team size: 3–5 FTEs plus subject matter experts")
-
     cat << EOF
 ## 🛠️ Implementation Decoder: What It Really Takes to Deploy IBM Planning Analytics
 
@@ -353,14 +348,12 @@ Plan for:
 #Implementation #PlanningAnalytics #ProjectManagement #EnterpriseSystems #BestPractices
 EOF
     ;;
-
   roadmap-brief)
     FUT1=$(echo "$ROADMAP" | head -1 || echo "Responsive tile layouts for cross-device workspaces (Q2 2026)")
     FUT2=$(echo "$ROADMAP" | sed -n '2p' || echo "SOC 2 compliance for PAaaS (2026)")
     FUT3=$(echo "$ROADMAP" | sed -n '3p' || echo "Combined metadata/data guided imports")
     STRAT1=$(echo "$METRICS" | grep -i 'AI|watsonx|machine learning' | head -1 || echo "AI infusion across planning workflows")
     STRAT2=$(echo "$METRICS" | grep -i 'MCP|standard|open' | head -1 || echo " Embracing MCP for ecosystem interoperability")
-
     cat << EOF
 ## 🛣️ Roadmap Brief: IBM Planning Analytics Strategic Direction
 
@@ -397,14 +390,12 @@ IBM's public roadmap for PA reveals a focus on cloud, AI, and developer experien
 #Roadmap #PlanningAnalytics #IBM #EnterpriseTech #FutureOfWork
 EOF
     ;;
-
   developer-tips)
     TIP1=$(echo "$TIPS" | head -1 || echo "Use dimension subsets aggressively to reduce memory footprint")
     TIP2=$(echo "$TIPS" | sed -n '2p' || echo "Pre-calculate consolidations instead of runtime rules for faster queries")
     TIP3=$(echo "$TIPS" | sed -n '3p' || echo "Leverage the MCP protocol for external orchestration")
     TIP4=$(echo "$TIPS" | sed -n '4p' || echo "Monitor rule complexity — deep chains can degrade performance")
     TIP5=$(echo "$TIPS" | sed -n '5p' || echo "Use PA for Excel's 'As-Of' feature for time-intelligent calculations")
-    
     cat << EOF
 ## 🛠️ Developer Tips: Optimizing IBM Planning Analytics Development
 
@@ -443,38 +434,6 @@ PA for Excel's time‑intelligence functions (e.g., YTD, QTD) handle period roll
 #PlanningAnalytics #TM1 #DeveloperTips #EnterpriseAnalytics #BestPractices
 EOF
     ;;
-
-  *)
-    cat << EOF
-## Overview: IBM Planning Analytics
-
-IBM Planning Analytics (PA) is an enterprise performance management platform built on the TM1 engine. It combines in-memory storage, rule-based calculations, and flexible deployment options.
-
-### Key Capabilities
-
-- In-memory multidimensional database
-- Rule-based calculation engine (allocations, custom logic)
-- REST APIs and MCP for integrations
-- Excel front-end (PA for Excel) and web Workspace UI
-
-### Typical Use Cases
-
-- Financial planning & analysis (FP&A)
-- Sales forecasting and demand planning
-- Supply chain planning
-- Operational modeling
-
-### Considerations
-
-PA targets large enterprises with complex planning needs. Requires investment in TM1 skills and infrastructure. For simpler use cases, lighter tools may suffice.
-
----
-
-**Question:** What dimensions of a planning platform are most critical for your organization? Let’s discuss.
-
-#PlanningAnalytics #Enterprise #IBM
-EOF
-    ;;
 esac > "$POST_FILE"
 
 log "Post generated: $POST_FILE"
@@ -482,10 +441,10 @@ log "Post generated: $POST_FILE"
 # Phase 4: Digest
 DIGEST_FILE="$OUTPUT_DIR/$DATE-$TIME_STAMP-linkedin-pa-digest.md"
 cat > "$DIGEST_FILE" << EOF
-# LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v8)
+# LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)
 
 **Date:** $DATE  
-**Agent:** linkedin-pa-agent (deep research, analyst‑report style)  
+**Agent:** linkedin-pa-agent (dynamic queries)  
 **Content type:** $SELECTED_TYPE  
 **Research query:** $SELECTED_QUERY
 
@@ -514,11 +473,11 @@ log "Digest saved: $DIGEST_FILE"
 cd "$WORKSPACE" || exit 1
 if git status --porcelain | grep -q "content/$DATE-$TIME_STAMP-linkedin-pa"; then
   git add "content/$DATE-$TIME_STAMP-linkedin-pa-post.md" "content/$DATE-$TIME_STAMP-linkedin-pa-digest.md"
-  git commit -m "content: LinkedIn PA $SELECTED_TYPE analyst‑report for $DATE $TIME_STAMP
+  git commit -m "content: LinkedIn PA $SELECTED_TYPE analyst‑report for $DATE $TIME_STAMP (v10 dynamic)
 
 - Query: $SELECTED_QUERY
 - Metrics: $(echo "$METRICS" | wc -l), Benchmarks: $(echo "$BENCHMARKS" | wc -l)
-- Tech specs: $(echo "$TECH_SPECS" | wc -l), Cases: $(echo "$CASES" | wc -l), Tips: $(echo "$TIPS" | wc -l)
+- Tech: $(echo "$TECH_SPECS" | wc -l), Cases: $(echo "$CASES" | wc -l), Tips: $(echo "$TIPS" | wc -l)
 - Deep, data‑rich content with source citations" 2>&1
   log "Committed to Git"
 else
