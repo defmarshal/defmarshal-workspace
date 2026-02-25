@@ -1822,6 +1822,10 @@ except Exception:
     # Show Git commit activity by agent prefix (last 7 days)
     "$WORKSPACE/scripts/git-activity-summary.sh"
     ;;
+  agent-logs-health)
+    # Check presence and freshness of agent log files in memory/
+    "$WORKSPACE/scripts/agent-logs-health.sh"
+    ;;
   agents-health-improved)
     # Show recent agent activity with clearer timestamps and status
     "$WORKSPACE/scripts/agents-health-improved.sh"
