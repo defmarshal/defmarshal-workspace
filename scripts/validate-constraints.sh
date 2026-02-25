@@ -49,7 +49,7 @@ fi
 
 # 4. Health check (disk <80%, no pending updates, memory clean, gateway healthy)
 health=$(./quick health 2>/dev/null || echo "Health check failed")
-if echo "$health" | grep -q "Updates none" && \
+if echo "$health" | grep -q "Updates.*none" && \
    echo "$health" | grep -q "clean" && \
    echo "$health" | grep -q "Gateway.*healthy"; then
     echo "✅ Health check: green"
