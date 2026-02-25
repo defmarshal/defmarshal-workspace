@@ -1,4 +1,4 @@
-# Workspace Builder Plan — 2026-02-25 01:10 UTC
+# Workspace Builder Plan — 2026-02-25 03:08 UTC
 
 **Mission:** Strategic maintenance and improvements for the OpenClaw workspace
 
@@ -19,54 +19,53 @@
 
 ## Phase 2: Prioritized Improvements
 
-### 2.1 Handle Untracked Research File
-**Why:** Research agent produced a new file that's untracked; needs proper indexing and commitment
+### 2.1 Commit Pending Research Index Changes
+**Why:** Research Hub INDEX.md shows as modified; it appears to be auto-regenerated with new reports. Should be committed to keep repository clean.
 **What:**
-- Add research file to git tracking
-- Update content/research index if needed
-- Commit with appropriate message
+- Review diff to ensure changes are legitimate
+- Stage and commit with appropriate message
 
-### 2.2 Apply Pending APT Updates
-**Why:** Security updates available (curl, nodejs); should be applied promptly
+### 2.2 Update Daily Log with This Session
+**Why:** memory/2026-02-25.md is modified from earlier runs today (meta-agent, agent-manager, previous workspace-builder). This new session's activities need to be logged.
 **What:**
-- Run `quick updates-apply --execute` to apply 4 pending updates
-- Verify no updates remain pending
+- Append entry for this workspace-builder run (analysis, actions, validation)
+- Ensure format consistent with existing logs
 
-### 2.3 Clean Stale Idea Branch
-**Why:** `idea/add-progress-bar-to-the` branch appears incomplete/abandoned; should be removed
+### 2.3 Apply Security Update if Still Pending
+**Why:** Quick health shows "Updates: 1". A wireless-regdb security update is available.
 **What:**
-- Delete the stale branch
-- Prune remote if needed
+- Run `./quick updates-apply --execute` to apply it
+- Verify no updates remain
 
-### 2.4 Validate Index Files
-**Why:** New research may need to be referenced in INDEX.md for discoverability
-**What:**
-- Check if research file should be listed in any index (content/INDEX.md or research index)
-- Update indexes if appropriate
-
-### 2.5 Final Health Validation
+### 2.4 Validate & Close Loop
 **What:**
 - Run `quick health` to confirm system green
 - Verify active-tasks.md size < 2KB
 - Check MEMORY.md line count ~30
-- Confirm git clean
+- Confirm git clean after commits
 - No temp files, no stale branches
 
-### 2.6 Commit & Push
+### 2.5 Update active-tasks.md
 **What:**
-- Create build commits following conventions
-- Push to origin
-- Update active-tasks.md with this session's validation entry
+- Add completion entry with session key `workspace-builder-20260225-0308`
+- Include verification details
+- Prune oldest entry to maintain <2KB size constraint
+- Commit validation update
+
+### 2.6 Push Commits to Origin
+**What:**
+- Push all commits (research index, daily log, active-tasks update)
+- Verify push succeeded
 
 ---
 
 ## Execution Order
-1. Apply APT updates (system hygiene)
-2. Handle untracked research file (git add, commit)
-3. Update indexes if needed
-4. Clean stale idea branch
-5. Comprehensive health validation
-6. Record validation in active-tasks.md
+1. Review git diff to understand changes
+2. Apply security update if present (updates-check)
+3. Commit INDEX.md changes
+4. Append to daily log memory/2026-02-25.md and commit
+5. Run comprehensive health validation
+6. Update active-tasks.md with validation entry
 7. Commit active-tasks update
 8. Push all commits
 9. Final verification
@@ -75,20 +74,20 @@
 
 **Success Criteria:**
 - ✅ All pending APT updates applied
-- ✅ Git clean (no untracked files)
+- ✅ Git clean (no uncommitted changes)
 - ✅ active-tasks.md < 2KB
 - ✅ MEMORY.md ~30 lines
 - ✅ No stale branches
-- ✅ Health check green
+- ✅ Health check all green
 - ✅ Commits pushed with `build:` prefix
 - ✅ Validation documented
 
 **Risk Mitigation:**
-- Run updates with `--dry-run` first to preview
-- Verify file contents before committing
+- Review diff before committing
 - Use `git status` after each step
 - Keep changes small and reversible
+- Do not modify core config without explicit reason
 
 ---
 
-*Plan created: 2026-02-25 01:15 UTC*
+*Plan created: 2026-02-25 03:10 UTC*
