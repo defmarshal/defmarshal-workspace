@@ -1822,6 +1822,10 @@ except Exception:
     # Delete log files in memory/ older than 7 days (dry-run first)
     "$WORKSPACE/scripts/cleanup-old-logs.sh"
     ;;
+  show-agent-versions)
+    # Show agent script versions (from Git history)
+    "$WORKSPACE/scripts/show-agent-versions.sh"
+    ;;
   list-missing-logs)
     # List expected agent log files that are missing from memory/
     "$WORKSPACE/scripts/list-missing-logs.sh"

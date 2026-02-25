@@ -438,6 +438,17 @@ esac > "$POST_FILE"
 
 log "Post generated: $POST_FILE"
 
+# Post-hoc validation (lightweight quality checks)
+WORD_COUNT=$(wc -w < "$POST_FILE")
+if [ "$WORD_COUNT" -lt 300 ]; then
+  log "WARNING: Post word count ($WORD_COUNT) below 300"
+fi
+# Check for presence of key terms (TM1, PA, performance, benchmark, architecture, ROI, case study)
+KEY_TERM_COUNT=$(grep -ioE 'TM1|IBM Planning Analytics|performance|benchmark|architecture|ROI|case study|implementation' "$POST_FILE" | wc -l)
+if [ "$KEY_TERM_COUNT" -lt 2 ]; then
+  log "WARNING: Post contains few key terms ($KEY_TERM_COUNT)"
+fi
+
 # Phase 4: Digest
 DIGEST_FILE="$OUTPUT_DIR/$DATE-$TIME_STAMP-linkedin-pa-digest.md"
 cat > "$DIGEST_FILE" << EOF
