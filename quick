@@ -1818,6 +1818,10 @@ except Exception:
     # Delete log files in memory/ older than 7 days (dry-run first)
     "$WORKSPACE/scripts/cleanup-old-logs.sh"
     ;;
+  git-activity-summary)
+    # Show Git commit activity by agent prefix (last 7 days)
+    "$WORKSPACE/scripts/git-activity-summary.sh"
+    ;;
   agents-health-improved)
     # Show recent agent activity with clearer timestamps and status
     "$WORKSPACE/scripts/agents-health-improved.sh"
