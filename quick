@@ -1825,6 +1825,10 @@ except Exception:
     # Comprehensive health report (system, updates, agents, downloads)
     "$WORKSPACE/scripts/health-report.sh"
     ;;
+  research-recent)
+    # Show recent research reports with TTS audio status
+    "$WORKSPACE/scripts/research-recent.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
