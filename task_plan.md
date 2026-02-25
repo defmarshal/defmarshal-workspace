@@ -1,40 +1,94 @@
-# Workspace Builder Session Plan
-**Date:** 2026-02-24 23:00 UTC  
-**Goal:** Maintain workspace hygiene, commit pending content changes, validate constraints, and push to origin.
+# Workspace Builder Plan — 2026-02-25 01:10 UTC
 
-## Analysis Phase
-- [x] Read SOUL.md, USER.md, active-tasks.md, MEMORY.md, daily logs (2026-02-23, 2026-02-24)
-- [x] Check git status: 1 modified file (content/INDEX.md)
-- [x] Verify health metrics: Disk 68%, Gateway healthy, Memory clean, Downloads 5.7G
-- [x] Check constraints: active-tasks.md 1913b (<2KB), MEMORY.md 30 lines, 0 stale idea branches
-- [ ] Identify improvements needed
+**Mission:** Strategic maintenance and improvements for the OpenClaw workspace
 
-## Implementation Phase
-1. Commit content/INDEX.md changes with appropriate message
-2. Verify active-tasks.md size remains <2KB after adding new entry
-3. Verify MEMORY.md remains ≤30 lines (no changes needed)
-4. Check for any other uncommitted files (none expected)
-5. Update active-tasks.md with validated entry for this session
-6. Commit the active-tasks.md update
-7. Push all commits to origin
+**Scope:** Small, meaningful changes that enhance system health and automation
 
-## Validation Phase (Close the Loop)
-- Run `./quick health` and confirm OK
-- Verify git status clean
-- Confirm no temp files
-- Check no stale idea branches
-- Validate active-tasks.md size <2KB
-- Validate MEMORY.md ≤30 lines
-- Ensure all commits pushed
+---
 
-## Known Constraints
-- active-tasks.md ≤ 2048 bytes (strict limit)
-- MEMORY.md ≤ ~30 lines (curated memory)
-- No untracked files (except transient locks in .clawhub)
-- All changes must be committed with 'build:' prefix
-- All commits must be pushed to origin
+## Phase 1: Analysis & Assessment
+- [x] Read SOUL.md, USER.md, active-tasks.md, MEMORY.md, daily logs
+- [x] Check git status, recent commits, untracked files
+- [x] Run health check, verify system state
+- [x] Inspect content/research archives, identify orphaned files
+- [x] Identify stale branches, pending updates, potential issues
 
-## Risk Mitigation
-- If active-tasks.md exceeds limit after adding entry: prune oldest entries and shorten verification text
-- If MEMORY.md exceeds lines: condense entries, remove blank lines
-- If push fails: check network, retry, or abort with error logged to daily log
+**Findings:** See `findings.md`
+
+---
+
+## Phase 2: Prioritized Improvements
+
+### 2.1 Handle Untracked Research File
+**Why:** Research agent produced a new file that's untracked; needs proper indexing and commitment
+**What:**
+- Add research file to git tracking
+- Update content/research index if needed
+- Commit with appropriate message
+
+### 2.2 Apply Pending APT Updates
+**Why:** Security updates available (curl, nodejs); should be applied promptly
+**What:**
+- Run `quick updates-apply --execute` to apply 4 pending updates
+- Verify no updates remain pending
+
+### 2.3 Clean Stale Idea Branch
+**Why:** `idea/add-progress-bar-to-the` branch appears incomplete/abandoned; should be removed
+**What:**
+- Delete the stale branch
+- Prune remote if needed
+
+### 2.4 Validate Index Files
+**Why:** New research may need to be referenced in INDEX.md for discoverability
+**What:**
+- Check if research file should be listed in any index (content/INDEX.md or research index)
+- Update indexes if appropriate
+
+### 2.5 Final Health Validation
+**What:**
+- Run `quick health` to confirm system green
+- Verify active-tasks.md size < 2KB
+- Check MEMORY.md line count ~30
+- Confirm git clean
+- No temp files, no stale branches
+
+### 2.6 Commit & Push
+**What:**
+- Create build commits following conventions
+- Push to origin
+- Update active-tasks.md with this session's validation entry
+
+---
+
+## Execution Order
+1. Apply APT updates (system hygiene)
+2. Handle untracked research file (git add, commit)
+3. Update indexes if needed
+4. Clean stale idea branch
+5. Comprehensive health validation
+6. Record validation in active-tasks.md
+7. Commit active-tasks update
+8. Push all commits
+9. Final verification
+
+---
+
+**Success Criteria:**
+- ✅ All pending APT updates applied
+- ✅ Git clean (no untracked files)
+- ✅ active-tasks.md < 2KB
+- ✅ MEMORY.md ~30 lines
+- ✅ No stale branches
+- ✅ Health check green
+- ✅ Commits pushed with `build:` prefix
+- ✅ Validation documented
+
+**Risk Mitigation:**
+- Run updates with `--dry-run` first to preview
+- Verify file contents before committing
+- Use `git status` after each step
+- Keep changes small and reversible
+
+---
+
+*Plan created: 2026-02-25 01:15 UTC*
