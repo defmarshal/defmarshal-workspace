@@ -1,6 +1,6 @@
 # Workspace Builder - Task Plan
-**Session ID:** workspace-builder-20260225-1107
-**Started:** 2026-02-25 11:07 UTC
+**Session ID:** workspace-builder-20260225-1309
+**Started:** 2026-02-25 13:09 UTC
 **Goal:** Cleanup stale artifacts, enforce constraints, and validate workspace health
 
 ## Phases
@@ -15,9 +15,8 @@
 **Acceptance:** All baseline metrics documented
 
 ### Phase 2: Maintenance Actions
-- Delete stale idea branch `idea/add-a-new-quick-utility`
-- Verify active-tasks.md size; if adding new entry exceeds 2KB, prune oldest validated entry
-- Consider memory reindex if indicated (check last reindex time and dir)
+- Delete stale idea branch `idea/automate-system-updates-cleanup-using`
+- Verify active-tasks.md size; prune oldest validated entry if adding new entry exceeds 2KB
 - Ensure no untracked files exist (already clean)
 - Run final health validation
 
@@ -50,4 +49,5 @@
 - Follow commit format: `build: <description>`
 - Keep active-tasks.md size ≤2048 bytes
 - Respect quiet hours if any (currently none per policy)
-- Memory reindex: only if >=2 days since last, and Voyage rate limits allow (currently disabled, use local FTS+)
+- Memory reindex: not needed (1.5d since last, clean)
+- aria2.log size 83M < 100M threshold, no rotation required
