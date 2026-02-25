@@ -1,54 +1,53 @@
 # Workspace Builder - Task Plan
-**Session ID:** workspace-builder-20260225-0705  
-**Started:** 2026-02-25 07:05 UTC  
-**Goal:** Strategic maintenance: apply updates, cleanup stale branches, enforce constraints, and validate repository health
+**Session ID:** workspace-builder-20260225-0909
+**Started:** 2026-02-25 09:09 UTC
+**Goal:** Finalize pending changes, clean stale artifacts, and validate workspace health
 
 ## Phases
 
 ### Phase 1: Analysis
-- Check system health (./quick health)
-- Check git status and untracked files
-- Count active-tasks.md size (must be <2KB)
-- Verify MEMORY.md line count (~30 lines)
-- Identify stale idea branches
-- Check pending APT updates
-- Check memory reindex status
+- Run comprehensive health check (./quick health)
+- Identify untracked files, modified tracked files, stale branches
+- Verify constraints: active-tasks.md <2KB, MEMORY.md ~30 lines
+- Check memory status, downloads size, pending updates
+- Document findings in findings.md
 
-**Acceptance:** Complete when baseline metrics documented in findings.md
+**Acceptance:** All baseline metrics documented
 
 ### Phase 2: Maintenance Actions
-- Apply pending APT security updates (3 packages)
-- Delete stale idea branches (`idea/add-dark-mode-toggle-to`, `idea/create-quick-command-to-find`)
-- Prune active-tasks.md by removing oldest validated entries to stay <2KB
-- Run memory reindex check (if needed)
-- Update MEMORY.md if critical changes occurred
+- Commit modified content/INDEX.md (content index update)
+- Add and commit untracked research file (quantum computing commercialization)
+- Delete stale idea branch `idea/build-a-voice-based-tts-news`
+- Verify log rotation completed (aria2.log size now acceptable)
+- Run memory-status check (should be clean)
+- Clean up any temporary/cache files if needed
 
-**Acceptance:** All actions completed without errors; git status clean
+**Acceptance:** All actions completed without errors; git nearing clean state
 
 ### Phase 3: Validation & Documentation
-- Run comprehensive health check (./quick health)
-- Verify all constraints: active-tasks < 2KB, MEMORY.md ~30 lines, no stale branches, no temp files
-- Update progress.md with detailed log of actions
+- Re-run health check (./quick health)
+- Verify all constraints satisfied
+- Update progress.md with detailed execution log
 - Update active-tasks.md with this session's validation entry
-- Commit changes with prefix 'build:'
-- Push commits to origin
+- Commit planning documents and active-tasks update with 'build:' prefix
+- Push all commits to origin
 
-**Acceptance:** All validation checks pass; git clean; pushes successful
+**Acceptance:** All validation checks pass; git clean; push successful
 
 ### Phase 4: Close the Loop
-- Re-run health check to confirm final state
-- Verify no untracked files remain
-- Confirm no temp files in workspace
-- Document final metrics in progress.md
+- Final health check
+- Confirm no untracked files remain
+- Verify no temp files or oversized logs
+- Document final metrics
 
 **Acceptance:** System fully validated and stable
 
 ## Error Handling
-- If any command fails, log error in progress.md and halt before proceeding to next phase
-- Debug and retry failed steps before continuing
+- If any command fails, log error in progress.md and halt
+- Debug and retry before proceeding
 - If validation fails, iterate until all constraints satisfied
 
 ## Notes
-- Keep changes small but meaningful
-- Follow commit message format: `build: <description>`
-- Respect active-tasks.md size constraint strictly (max 2048 bytes)
+- Follow commit format: `build: <description>`
+- Keep active-tasks.md size ≤2048 bytes
+- Respect quiet hours if any (currently none per policy)
