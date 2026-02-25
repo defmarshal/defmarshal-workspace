@@ -1814,6 +1814,10 @@ except Exception:
     # Check for consistent date formatting in filenames (YYYY-MM-DD-HHMM)
     "$WORKSPACE/scripts/check-date-formats.sh"
     ;;
+  check-daily-digest)
+    # Verify daily digest is in sync with actual content counts
+    "$WORKSPACE/scripts/check-daily-digest.sh"
+    ;;
   cleanup-old-logs)
     # Delete log files in memory/ older than 7 days (dry-run first)
     "$WORKSPACE/scripts/cleanup-old-logs.sh"
