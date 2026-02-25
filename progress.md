@@ -1,115 +1,177 @@
-# Workspace Builder Progress Log
+# Progress Log - Workspace Builder Session
 
-**Session:** workspace-builder-20260225-1906
-**Start:** 2026-02-25 19:06 UTC
-**Operator:** mewmew (OpenClaw agent)
-**Workflow:** planning-with-files
+**Session:** workspace-builder-23dad379  
+**Started:** 2026-02-25 21:00 UTC  
+**Status:** Running
 
----
+## Phase 1: Workspace Analysis ✅ COMPLETE
 
-## Execution Timeline
+**Time:** 21:00-21:30 UTC  
+**Actions:**
+- Read all context files (SOUL.md, USER.md, active-tasks.md, MEMORY.md, daily logs)
+- Analyzed workspace health from logs
+- Identified patterns and improvement opportunities
+- Selected target improvement: Add `quick validate-constraints` command
 
-### 2026-02-25 19:06 — Session Start
+**Deliverables:**
+- `task_plan.md` created with full plan
+- `findings.md` created with analysis and selected improvement
+- This `progress.md` initialized
 
-**Trigger:** Cron job `workspace-builder-cron` (2-hourly cycle)
-**Context:** Previous successful run at 17:00 UTC; system healthy, no pending issues
-
-**Initial assessment:**
-- Read SOUL.md, USER.md, active-tasks.md
-- Reviewed daily logs (2026-02-24, 2026-02-25)
-- Ran `./quick health` — all green
-- Git status: clean
-- No stale idea branches
-- active-tasks.md: 37 lines, 2024 bytes
-- MEMORY.md: 30 lines, last updated 2026-02-24
-- No pending updates
-- Downloads: 17 files, 5.7GB
-
-**Decision:** Proceed with maintenance (MEMORY.md update, active-tasks pruning, planning docs refresh)
+**Validation:** Plan approved; ready to implement
 
 ---
 
-### 19:07 — Phase 1: Health Assessment Complete
+## Phase 2: Identify Improvement Opportunities ✅ COMPLETE
 
-All metrics collected and documented in `findings.md`.
+**Time:** 21:30-21:35 UTC  
+**Actions:**
+- Reviewed recurring patterns in workspace builder logs
+- Evaluated constraint enforcement gaps
+- Decided on **Priority 2**: Pre-commit constraint validation via `quick validate-constraints`
 
----
+**Rationale:**
+- High utility: catches issues before they become commits
+- Low risk: adds value without changing existing workflows
+- Reusable: all agents can call it
+- Aligns with existing `quick` ecosystem
 
-### 19:08 — Phase 2: Knowledge Distillation ✅ Complete
-
-**Objective:** Update MEMORY.md with 2026-02-25 learnings
-
-**Actions performed:**
-- Updated "*Last updated: 2026-02-24*" → "*Last updated: 2026-02-25*"
-- Inserted new learning entry after 2026-02-24 bullet:
-  - 2026-02-25: Workspace-builder refined maintenance patterns: phased APT updates override (`-o APT::Get::Always-Include-Phased-Updates=true`) for package-phased updates; active-tasks.md pruning (remove oldest validated entries + shorten verification) to maintain <2KB; systematic stale idea branch cleanup (local+remote verification); push pending commits first pattern. System health consistently green.
-- Result: MEMORY.md now 31 lines (still concise; ~30 lines guideline met)
-
-**Verification:** cat MEMORY.md shows new entry in place; last updated date 2026-02-25.
-
-**Status:** ✅ Phase 2 complete
-
----
-
-### 19:10 — Phase 3: Active Tasks Maintenance ✅ Complete
-
-**Action:** Ensure active-tasks.md <2KB after adding validation entry
-
-**Steps performed:**
-1. Pruned oldest validated entry: removed `workspace-builder-20260225-0909`
-2. Added new running entry for this session at top of Completed (recent):
-   - `workspace-builder-20260225-1906` status: running
-3. Verified pre-commit size: 1829 bytes (<2KB) — plenty of buffer
-
-**Result:** active-tasks.md now 1829 bytes, well under limit.
-
-**Status:** ✅ Phase 3 complete
+**Scope defined:**
+- Create command that verifies:
+  - active-tasks.md < 2048 bytes (2KB)
+  - MEMORY.md ≤ 35 lines (buffer from 30)
+  - Git status clean (no uncommitted changes that might violate constraints)
+  - Health summary green (disk <80%, no pending updates, memory clean, gateway healthy)
+  - No temp files in workspace root
+- Exit code 0 if all pass, non-zero if any fail
+- Print concise summary of results
+- Document in TOOLS.md
 
 ---
 
-### 19:12 — Phase 4: Planning Documentation ✅ Complete
+## Phase 3: Implementation
 
-- ✅ `task_plan.md` — strategic plan (3986 bytes)
-- ✅ `findings.md` — analysis summary (4499 bytes)
-- ✅ `progress.md` — execution log (this file)
+### Step 3.1: Design validate-constraints command
 
-All planning documents created and up to date.
+**Time:** 21:35-21:40 UTC  
+**Design Decisions:**
+- Shell script or function? → Shell script: `scripts/validate-constraints.sh` (executable)
+- Output format: Concise human-readable; also machine-parsable (summary line)
+- Integration: Add quick alias `validate-constraints` or `constraints`
+- Dependencies: Existing quick commands (health, git-status, memory-status)
+
+**Constraints to check:**
+1. active-tasks.md size: `wc -c < active-tasks.md` → ≤ 2048
+2. MEMORY.md line count: `wc -l < MEMORY.md` → ≤ 35 (allow buffer)
+3. Git clean: `./quick git-status` contains "nothing to commit"
+4. Health: `./quick health` contains all green indicators
+5. Temp files: `find . -maxdepth 1 -type f \( -name "*.tmp" -o -name "*~" -o -name ".#*" \)` → empty
+6. No pending APT updates: `./quick updates-check` → empty or "No updates"
+
+**Exit codes:**
+- 0: all constraints satisfied
+- 1: one or more constraints violated
+
+**Output:**
+- Line per check: ✅ or ❌ with description
+- Final line: "All constraints satisfied." or "Constraint violations detected."
 
 ---
 
-### 19:13 — Phase 5: Commit & Push ⏳ In Progress
+### Step 3.2: Create validation script
 
-**Pre-commit validation:**
-- `./quick health`: Disk 69%, Updates none, Memory clean, Gateway healthy, Downloads 17/5.7G
-- `active-tasks.md` size: 1928 bytes (<2KB) ✅
-- `MEMORY.md` line count: 31 lines (~30) ✅
-- No temp files, no untracked files (except planning docs which are tracked after add)
-- All changes ready: MEMORY.md, active-tasks.md, task_plan.md, findings.md, progress.md
+**Time:** 21:40-21:50 UTC  
+**Implementation:**
 
-**Commit message (planned):**
-`build: update MEMORY with 2026-02-25 learnings, enforce active-tasks constraint, refresh planning docs`
+Create `scripts/validate-constraints.sh` with the following logic:
 
-**Planned actions:**
 ```bash
-git add -A
-git commit -m "build: update MEMORY with 2026-02-25 learnings, enforce active-tasks constraint, refresh planning docs"
-git push origin master
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+errors=0
+
+# 1. active-tasks.md size
+size=$(wc -c < active-tasks.md)
+if [ "$size" -le 2048 ]; then
+    echo "✅ active-tasks.md size: $size bytes (≤2KB)"
+else
+    echo "❌ active-tasks.md size: $size bytes (>2KB limit)"
+    errors=$((errors+1))
+fi
+
+# 2. MEMORY.md line count
+lines=$(wc -l < MEMORY.md)
+if [ "$lines" -le 35 ]; then
+    echo "✅ MEMORY.md lines: $lines (≤35)"
+else
+    echo "❌ MEMORY.md lines: $lines (>35 limit)"
+    errors=$((errors+1))
+fi
+
+# 3. Git status
+if ./quick git-status | grep -q "nothing to commit"; then
+    echo "✅ Git status: clean"
+elif ./quick git-status | grep -q "clean"; then
+    echo "✅ Git status: clean"
+else
+    echo "❌ Git status: dirty or untracked files"
+    errors=$((errors+1))
+fi
+
+# 4. Health check
+health=$(./quick health)
+if echo "$health" | grep -q "Updates none" && \
+   echo "$health" | grep -q "Memory clean" && \
+   echo "$health" | grep -q "Gateway healthy"; then
+    echo "✅ Health check: green"
+else
+    echo "❌ Health check: issues detected"
+    echo "$health" | sed 's/^/   /'
+    errors=$((errors+1))
+fi
+
+# 5. Temp files
+temp_files=$(find . -maxdepth 1 -type f \( -name "*.tmp" -o -name "*~" -o -name ".#*" \) 2>/dev/null || true)
+if [ -z "$temp_files" ]; then
+    echo "✅ Temp files: none"
+else
+    echo "❌ Temp files detected:"
+    echo "$temp_files" | sed 's/^/   /'
+    errors=$((errors+1))
+fi
+
+# 6. APT updates
+updates=$(./quick updates-check)
+if echo "$updates" | grep -q "No pending" || echo "$updates" | grep -q "0 packages"; then
+    echo "✅ APT updates: none pending"
+elif echo "$updates" | grep -qE "[0-9]+ packages"; then
+    echo "❌ APT updates pending:"
+    echo "$updates" | sed 's/^/   /'
+    errors=$((errors+1))
+else
+    echo "⚠️ APT updates check could not parse output"
+fi
+
+# Summary
+echo ""
+if [ "$errors" -eq 0 ]; then
+    echo "All constraints satisfied."
+    exit 0
+else
+    echo "Constraint violations detected: $errors check(s) failed."
+    exit 1
+fi
 ```
 
----
+Then:
+- chmod +x scripts/validate-constraints.sh
+- Add quick alias: `constraints` or `validate-constraints`
 
-### Pending — Phase 6: Final Validation
-
-Will verify after push:
-- `./quick health` — all green
-- `./quick git-status` — clean, no pending commits
-- `active-tasks.md` size remains <2KB
-- `MEMORY.md` ~30 lines and last updated 2026-02-25
-- Remote up-to-date (our commit present)
-- active-tasks.md entry reflects validated status with accurate metrics
+Let me implement this.
 
 ---
 
-## Summary
-
-Phases 1-4 complete; ready to commit and validate (Phases 5-6).
+**Status:** Implementing script now...

@@ -1,127 +1,51 @@
-# Workspace Builder Task Plan
+# Task Plan - Strategic Workspace Builder
 
-**Session:** workspace-builder (cron triggered)
-**Timestamp:** 2026-02-25 19:06 UTC
-**Session Key:** workspace-builder-20260225-1906
-**Goal:** Maintain workspace hygiene, enforce constraints, and implement meaningful improvements
+**Session:** 2026-02-25 21:00 UTC  
+**Session Key:** workspace-builder-23dad379-21ad-4f7a-8c68-528f98203a33  
+**Trigger:** Cron (workspace-builder-cron)  
+**Goal:** Analyze workspace and implement meaningful improvements while maintaining strict constraints
 
----
+## Phase 1: Workspace Analysis (30 min)
+- Read all memory files (today + yesterday) and MEMORY.md
+- Check active-tasks.md for running agents
+- Run comprehensive health check (`./quick health`)
+- Analyze git status and recent commits
+- Identify constraints violations or risks
 
-## Phase 1: System Health Assessment
+## Phase 2: Identify Improvement Opportunities (20 min)
+- Review past logs for recurring patterns
+- Check for unused files/stale branches
+- Evaluate active-tasks.md size trends
+- Assess planning documentation quality
+- Identify 1-2 meaningful, small-scope improvements
 
-**Objective:** Gather comprehensive workspace state
+## Phase 3: Implement Changes (40 min)
+- Create/modify files with surgical precision
+- Update active-tasks.md with running entry
+- Document each step in progress.md
+- Commit changes incrementally with 'build:' prefix
+- Push after each successful validation
 
-- [x] Read SOUL.md, USER.md, active-tasks.md
-- [x] Read recent daily logs (2026-02-24, 2026-02-25)
-- [x] Run `./quick health` - verify all constraints
-- [x] Check git status - confirm clean state
-- [x] Identify stale idea branches
-- [x] Verify active-tasks.md size (~2024 bytes, <2KB)
-- [x] Verify MEMORY.md line count (30 lines)
-- [x] Check for pending APT updates (none)
-- [x] Check downloads status (17 files, 5.7GB, all <30d)
+## Phase 4: Close the Loop Validation (20 min)
+- Run `./quick health` - ensure all constraints green
+- Test any modified commands
+- Verify active-tasks.md <2KB
+- Verify MEMORY.md ~30 lines
+- Confirm no temp files or untracked artifacts
+- Ensure git clean and pushed
 
-**Status:** ✅ Complete - system healthy, no urgent issues
-
----
-
-## Phase 2: Knowledge Distillation
-
-**Objective:** Update MEMORY.md with recent learnings
-
-- Review daily log 2026-02-25 for significant insights
-- Add concise entry covering key patterns:
-  - Phased APT updates override technique
-  - active-tasks.md pruning strategy (remove oldest validated + shorten verification)
-  - Systematic stale idea branch cleanup routine
-  - Push pending commits first pattern
-- Ensure MEMORY.md remains ~30 lines (may need minor reflow)
-- Update "*Last updated:*" date to 2026-02-25
-
-**Rationale:** Important operational knowledge should be captured while fresh; current MEMORY.md still at 2026-02-24.
-
-**Status:** ⏳ Pending execution
-
----
-
-## Phase 3: Active Tasks Maintenance
-
-**Objective:** Ensure active-tasks.md stays under 2KB
-
-- Check current size (2024 bytes - safe but near limit)
-- After adding validation entry, verify size stays <2KB
-- Prune oldest validated entry if needed before adding new one
-- Shorten verification texts if necessary to conserve space
-
-**Status:** ⏳ Pending final verification (after Phase 4)
-
----
-
-## Phase 4: Planning Documentation
-
-**Objective:** Create structured documentation per workflow
-
-- Create `task_plan.md` (this file) - strategic plan
-- Create `findings.md` - analysis summary (current state, decisions)
-- Create `progress.md` - execution log with timestamps
-
-**Format:** Markdown, concise, actionable, based on previous run templates
-
-**Status:** ⏳ In progress (this file complete; others pending)
-
----
-
-## Phase 5: Commit Changes
-
-**Objective:** Push all maintenance work
-
-- Stage changes:
-  - Updated MEMORY.md
-  - Updated active-tasks.md with validation entry
-  - New/modified planning docs (task_plan.md, findings.md, progress.md)
-- Commit with message: `build: update MEMORY with 2026-02-25 learnings, enforce active-tasks constraint, refresh planning docs`
-- Verify commit includes all changes
+## Phase 5: Finalize and Report (10 min)
+- Update active-tasks.md status to validated with verification metrics
+- Commit final validation entry
 - Push to origin
+- Log completion in daily memory file
 
-**Status:** ⏳ Pending
-
----
-
-## Phase 6: Final Validation
-
-**Objective:** Verify successful deployment
-
-- Run `./quick health` - all green
-- Run `./quick git-status` - clean, no pending commits
-- Verify `active-tasks.md` size < 2KB
-- Verify `MEMORY.md` ~30 lines and last updated 2026-02-25
-- Check no temp files created
-- Confirm remote up-to-date
-
-**Status:** ⏳ Pending
+**Success Criteria:**
+- All constraints (active-tasks.md size, MEMORY.md length, health checks) satisfied
+- At least one meaningful improvement implemented
+- Full traceability in planning docs
+- Git clean and up-to-date
 
 ---
 
-## Success Criteria
-
-- ✅ All constraints enforced (file sizes, git clean, health green)
-- ✅ MEMORY.md updated with 2026-02-25 learnings
-- ✅ Planning docs created and committed
-- ✅ Changes pushed to origin
-- ✅ active-tasks.md updated with verification metrics
-- ✅ No errors logged; full traceability
-
----
-
-## Risk Mitigation
-
-- **Risk:** MEMORY.md exceeding 30 lines after adding entry
-  - **Mitigation:** Craft concise bullet; trim existing entries slightly if needed; verify line count after edit
-- **Risk:** active-tasks.md exceeding 2KB after adding validation entry
-  - **Mitigation:** Prune oldest validated entry before adding new one; shorten verification texts; measure size before/after
-- **Risk:** Forgetting to push commits
-  - **Mitigation:** Final validation includes `git status` check; use checklist
-
----
-
-**Plan Approved:** Ready for execution
+*Plan created: 2026-02-25 21:00 UTC*

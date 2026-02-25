@@ -19,8 +19,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Running
 
-- [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-24 10:12 UTC, status: running)
-  - Verification: daemon process PID 3376045; nohup log active; cycle completed
+- [workspace-builder-23dad379] workspace-builder - Add validate-constraints command, refactor planning docs, expand quick launcher (started: 2026-02-25 21:00 UTC, status: running)
+  - Verification: (pending final commit & validation)
+
+- [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-25 20:06 UTC, status: running)
+  - Verification: daemon process PID 3904683; log shows cycle completed and report generated; sleeping until next cycle
 
 ## Completed (recent)
 

@@ -183,6 +183,7 @@ Commands:
   gateway-status              Show detailed gateway status (service, port, RPC)
   gateway-fix                 Fix gateway issues (stop stray processes, restart cleanly)
   validate                    Run comprehensive validation (health, memory, agents, git, cron, logs)
+  validate-constraints        Validate workspace constraints (active-tasks size, MEMORY lines, git status, health, temp files, updates)
   status                      Show concise one-line system summary (local only, no approvals)
   vercel                      Vercel deployment helper (init, link, deploy, logs, status). Usage: quick vercel [command]
   research-hub-prebuild        Copy research markdown into Research Hub's public/ directory (prebuild step)
@@ -1630,6 +1631,10 @@ except Exception:
   validate)
     # Run the workspace-validate script
     bash "$WORKSPACE/workspace-validate.sh"
+    ;;
+  validate-constraints)
+    # Validate workspace constraints (active-tasks size, MEMORY line count, git status, health, temp files, updates)
+    bash "$WORKSPACE/scripts/validate-constraints.sh"
     ;;
   vercel)
     # Vercel deployment helper
