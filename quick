@@ -1810,6 +1810,10 @@ except Exception:
     # Check agent scripts for safe timestamp arithmetic (avoid octal parsing)
     "$WORKSPACE/scripts/validate-timestamps.sh"
     ;;
+  check-date-formats)
+    # Check for consistent date formatting in filenames (YYYY-MM-DD-HHMM)
+    "$WORKSPACE/scripts/check-date-formats.sh"
+    ;;
   agents-health-improved)
     # Show recent agent activity with clearer timestamps and status
     "$WORKSPACE/scripts/agents-health-improved.sh"
