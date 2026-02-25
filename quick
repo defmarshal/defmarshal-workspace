@@ -1830,6 +1830,10 @@ except Exception:
     # Show recent research reports with TTS audio status
     "$WORKSPACE/scripts/research-recent.sh"
     ;;
+  research-hub-status)
+    # Check Research Hub deployment status (local + remote)
+    "$WORKSPACE/scripts/research-hub-status.sh"
+    ;;
   research-index-check)
     # Check Research Hub INDEX.md consistency with research/ directory
     "$WORKSPACE/scripts/research-index-check.sh"
