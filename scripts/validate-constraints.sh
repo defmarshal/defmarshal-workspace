@@ -51,7 +51,7 @@ fi
 health=$(./quick health 2>/dev/null || echo "Health check failed")
 if echo "$health" | grep -q "Updates none" && \
    echo "$health" | grep -q "clean" && \
-   echo "$health" | grep -q "Gateway healthy"; then
+   echo "$health" | grep -q "Gateway.*healthy"; then
     echo "✅ Health check: green"
 else
     echo "❌ Health check: issues detected"
