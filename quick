@@ -1842,6 +1842,10 @@ except Exception:
     # Regenerate Research Hub INDEX.md from actual research files
     "$WORKSPACE/scripts/research-index-update.sh"
     ;;
+  research-tts-coverage)
+    # Check TTS audio coverage for all research reports
+    "$WORKSPACE/scripts/research-tts-coverage.sh"
+    ;;
   run-agent)
     # Run an OpenClaw agent with a message
     "$WORKSPACE/scripts/run-agent.sh" "$@"
