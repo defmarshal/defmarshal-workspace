@@ -1,7 +1,7 @@
 # Workspace Builder - Task Plan
-**Session ID:** workspace-builder-20260225-0909
-**Started:** 2026-02-25 09:09 UTC
-**Goal:** Finalize pending changes, clean stale artifacts, and validate workspace health
+**Session ID:** workspace-builder-20260225-1107
+**Started:** 2026-02-25 11:07 UTC
+**Goal:** Cleanup stale artifacts, enforce constraints, and validate workspace health
 
 ## Phases
 
@@ -15,14 +15,13 @@
 **Acceptance:** All baseline metrics documented
 
 ### Phase 2: Maintenance Actions
-- Commit modified content/INDEX.md (content index update)
-- Add and commit untracked research file (quantum computing commercialization)
-- Delete stale idea branch `idea/build-a-voice-based-tts-news`
-- Verify log rotation completed (aria2.log size now acceptable)
-- Run memory-status check (should be clean)
-- Clean up any temporary/cache files if needed
+- Delete stale idea branch `idea/add-a-new-quick-utility`
+- Verify active-tasks.md size; if adding new entry exceeds 2KB, prune oldest validated entry
+- Consider memory reindex if indicated (check last reindex time and dir)
+- Ensure no untracked files exist (already clean)
+- Run final health validation
 
-**Acceptance:** All actions completed without errors; git nearing clean state
+**Acceptance:** All actions completed without errors; git remains clean
 
 ### Phase 3: Validation & Documentation
 - Re-run health check (./quick health)
@@ -51,3 +50,4 @@
 - Follow commit format: `build: <description>`
 - Keep active-tasks.md size ≤2048 bytes
 - Respect quiet hours if any (currently none per policy)
+- Memory reindex: only if >=2 days since last, and Voyage rate limits allow (currently disabled, use local FTS+)
