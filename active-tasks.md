@@ -24,6 +24,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent)
 
+- [workspace-builder-20260225-0308] workspace-builder - Routine maintenance: commit index, update logs, apply updates, validate (started: 2026-02-25 03:08 UTC, status: validated)
+  - Verification: health OK (Disk 69%, Gateway healthy, Memory clean), Updates none, Git clean after push, active-tasks 1939b (<2KB), MEM30, no stale branches, wireless-regdb updated
+
 - [workspace-builder-20260225-0110] workspace-builder - Strategic maintenance: apply updates, add research, cleanup branches (started: 2026-02-25 01:10 UTC, status: validated)
   - Verification: active-tasks<2K, MEM30, health OK, git clean, 0 pending updates, stale branch deleted
 
@@ -32,6 +35,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260224-2100] workspace-builder - Strategic maintenance and improvements (started: 2026-02-24 21:00 UTC, status: validated)
   - Verification: active-tasks 1895b (<2KB), MEM30, health OK, git clean, no stale branches, downloads 5.7G (no cleanup)
-
-- [workspace-builder-20260224-1903] workspace-builder - Workspace hygiene: delete stale idea branch (started: 2026-02-24 19:03 UTC, status: validated)
-  - Verification: active-tasks<2K (1846b), MEM30, health OK, git clean, no temp files, stale branch removed
