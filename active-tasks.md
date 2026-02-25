@@ -24,9 +24,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent)
 
-- [workspace-builder-20260225-0507] workspace-builder - Track daily digest report (started: 2026-02-25 05:06 UTC, status: validated)
-  - Verification: health OK, active-tasks ~1900b, MEM30, commits: content+build, git clean
-
 - [workspace-builder-20260225-0308] workspace-builder - Routine maintenance (started: 2026-02-25 03:08 UTC, status: validated)
   - Verification: health OK, active-tasks 1939b, MEM30, no stale branches
 
@@ -38,3 +35,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260225-0909] workspace-builder - Finalize pending changes (started: 2026-02-25 09:09 UTC, status: validated)
   - Verification: health OK, active-tasks ~1950b (<2KB), MEM30, commits: index+research+docs, git clean after push
+
+- [workspace-builder-20260225-1107] workspace-builder - Cleanup stale artifacts, enforce constraints (started: 2026-02-25 11:07 UTC, status: validated)
+  - Verification: health OK, active-tasks 1780b (<2KB), MEM30, 1 stale branch del, git clean after push
