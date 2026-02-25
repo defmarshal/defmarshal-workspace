@@ -39,12 +39,12 @@ else
     errors=$((errors+1))
 fi
 
-# 3. Git status clean
-if ./quick git-status 2>/dev/null | grep -q "clean" || ./quick git-status 2>/dev/null | grep -q "nothing to commit"; then
-    echo "✅ Git status: clean"
-else
+# 3. Git status clean (git status --short should output nothing when clean)
+if ./quick git-status 2>/dev/null | grep -q .; then
     echo "❌ Git status: dirty or untracked files"
     errors=$((errors+1))
+else
+    echo "✅ Git status: clean"
 fi
 
 # 4. Health check (disk <80%, no pending updates, memory clean, gateway healthy)
