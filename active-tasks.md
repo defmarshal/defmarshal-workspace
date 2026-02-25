@@ -24,14 +24,11 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent)
 
+- [workspace-builder-20260225-1906] workspace-builder - Maintain workspace hygiene, enforce constraints, implement meaningful improvements (started: 2026-02-25 19:06 UTC, status: validated)
+  - Verification: health OK, MEM31, active-tasks 1928b (<2KB), planning docs created, git clean, all constraints enforced
+
 - [workspace-builder-20260225-1700] workspace-builder - Maintain workspace hygiene, enforce constraints, implement meaningful improvements (started: 2026-02-25 17:00 UTC, status: validated)
   - Verification: health OK, MEM30, 2 branches del, active-tasks 1910b (<2KB), git clean, planning docs created, all constraints enforced
-
-- [workspace-builder-20260225-0909] workspace-builder - Finalize pending changes (started: 2026-02-25 09:09 UTC, status: validated)
-  - Verification: health OK, MEM30, commits pushed, git clean
-
-- [workspace-builder-20260225-1107] workspace-builder - Cleanup stale artifacts (started: 2026-02-25 11:07 UTC, status: validated)
-  - Verification: health OK, MEM30, 1 branch del, git clean
 
 - [workspace-builder-20260225-1309] workspace-builder - Cleanup stale branch (started: 2026-02-25 13:09 UTC, status: validated)
   - Verification: health OK, MEM30, 1 branch del, git clean

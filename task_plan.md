@@ -1,8 +1,8 @@
 # Workspace Builder Task Plan
 
 **Session:** workspace-builder (cron triggered)
-**Timestamp:** 2026-02-25 17:00 UTC
-**Session Key:** workspace-builder-20260225-1700
+**Timestamp:** 2026-02-25 19:06 UTC
+**Session Key:** workspace-builder-20260225-1906
 **Goal:** Maintain workspace hygiene, enforce constraints, and implement meaningful improvements
 
 ---
@@ -16,24 +16,29 @@
 - [x] Run `./quick health` - verify all constraints
 - [x] Check git status - confirm clean state
 - [x] Identify stale idea branches
-- [x] Verify active-tasks.md size (~37 lines, <2KB)
+- [x] Verify active-tasks.md size (~2024 bytes, <2KB)
 - [x] Verify MEMORY.md line count (30 lines)
 - [x] Check for pending APT updates (none)
-- [x] Check downloads status (17 files, 5.7GB, all completed)
+- [x] Check downloads status (17 files, 5.7GB, all <30d)
 
 **Status:** ✅ Complete - system healthy, no urgent issues
 
 ---
 
-## Phase 2: Stale Branch Cleanup
+## Phase 2: Knowledge Distillation
 
-**Objective:** Remove abandoned idea branches
+**Objective:** Update MEMORY.md with recent learnings
 
-- Delete `idea/add-loading-skeletons-to-the`
-- Delete `idea/automate-research-reports-cleanup-using`
-- Verify branches removed with `git branch --list 'idea/*'`
+- Review daily log 2026-02-25 for significant insights
+- Add concise entry covering key patterns:
+  - Phased APT updates override technique
+  - active-tasks.md pruning strategy (remove oldest validated + shorten verification)
+  - Systematic stale idea branch cleanup routine
+  - Push pending commits first pattern
+- Ensure MEMORY.md remains ~30 lines (may need minor reflow)
+- Update "*Last updated:*" date to 2026-02-25
 
-**Rationale:** Idea branches should be either merged or deleted to avoid clutter. These are from completed/abandoned experiments.
+**Rationale:** Important operational knowledge should be captured while fresh; current MEMORY.md still at 2026-02-24.
 
 **Status:** ⏳ Pending execution
 
@@ -43,12 +48,12 @@
 
 **Objective:** Ensure active-tasks.md stays under 2KB
 
-- Check current size (currently ~1900 bytes - safe)
-- No pruning required at this time
-- After completing Phase 4, add validation entry for this session
-- Re-check size must be <2KB
+- Check current size (2024 bytes - safe but near limit)
+- After adding validation entry, verify size stays <2KB
+- Prune oldest validated entry if needed before adding new one
+- Shorten verification texts if necessary to conserve space
 
-**Status:** ⏳ Pending final verification
+**Status:** ⏳ Pending final verification (after Phase 4)
 
 ---
 
@@ -56,11 +61,11 @@
 
 **Objective:** Create structured documentation per workflow
 
-- Create/update `task_plan.md` (this file) - strategic plan
+- Create `task_plan.md` (this file) - strategic plan
 - Create `findings.md` - analysis summary (current state, decisions)
 - Create `progress.md` - execution log with timestamps
 
-**Format:** Markdown, concise, actionable
+**Format:** Markdown, concise, actionable, based on previous run templates
 
 **Status:** ⏳ In progress (this file complete; others pending)
 
@@ -71,10 +76,10 @@
 **Objective:** Push all maintenance work
 
 - Stage changes:
-  - Deleted branches (refs)
-  - Updated `active-tasks.md` with validation entry
-  - New/modified planning docs
-- Commit with message: `build: workspace hygiene - cleanup stale idea branches, update planning docs`
+  - Updated MEMORY.md
+  - Updated active-tasks.md with validation entry
+  - New/modified planning docs (task_plan.md, findings.md, progress.md)
+- Commit with message: `build: update MEMORY with 2026-02-25 learnings, enforce active-tasks constraint, refresh planning docs`
 - Verify commit includes all changes
 - Push to origin
 
@@ -89,7 +94,7 @@
 - Run `./quick health` - all green
 - Run `./quick git-status` - clean, no pending commits
 - Verify `active-tasks.md` size < 2KB
-- Verify `MEMORY.md` ~30 lines
+- Verify `MEMORY.md` ~30 lines and last updated 2026-02-25
 - Check no temp files created
 - Confirm remote up-to-date
 
@@ -100,7 +105,7 @@
 ## Success Criteria
 
 - ✅ All constraints enforced (file sizes, git clean, health green)
-- ✅ Stale branches deleted (2+ branches)
+- ✅ MEMORY.md updated with 2026-02-25 learnings
 - ✅ Planning docs created and committed
 - ✅ Changes pushed to origin
 - ✅ active-tasks.md updated with verification metrics
@@ -110,10 +115,10 @@
 
 ## Risk Mitigation
 
-- **Risk:** Accidentally deleting active idea branches
-  - **Mitigation:** Verify branch names carefully; only delete branches listed in assessment
-- **Risk:** Exceeding 2KB in active-tasks.md
-  - **Mitigation:** Prune oldest validated entry before adding new one; verify size after each edit
+- **Risk:** MEMORY.md exceeding 30 lines after adding entry
+  - **Mitigation:** Craft concise bullet; trim existing entries slightly if needed; verify line count after edit
+- **Risk:** active-tasks.md exceeding 2KB after adding validation entry
+  - **Mitigation:** Prune oldest validated entry before adding new one; shorten verification texts; measure size before/after
 - **Risk:** Forgetting to push commits
   - **Mitigation:** Final validation includes `git status` check; use checklist
 

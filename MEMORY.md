@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-02-24*
+*Last updated: 2026-02-25*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech
@@ -25,6 +25,7 @@ Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, 
 ## Learnings (latest)
 - 2026-02-23: Idea generator overhaul (slug deduplication, substantive file creation via printf, reliable executor validation) and notifier agent fix (log function, OpenClaw JSON filtering); executor bug: replaced heredoc with printf.
 - 2026-02-24: Meta-agent cron duplication bug fixed: added JSON filtering (sed -n '/^{/,$p') before jq in all cron checks; corrected git-janitor-cron schedule from hourly (`15 * * * *`) to every 6 hours (`0 */6 * * *`) per CRON_JOBS.md; cleaned up duplicate cron entries, preventing uncontrolled accumulation. Plus: automated stale idea branch cleanup in git-janitor (merge-check, age threshold, safe arithmetic) with self-correction of merge-base logic. Additionally: workspace-builder applied 17 security updates and validated system health (disk 67%, gateway healthy, memory clean).
+- 2026-02-25: Workspace-builder refined maintenance patterns: phased APT updates override (`-o APT::Get::Always-Include-Phased-Updates=true`) for package-phased updates; active-tasks.md pruning (remove oldest validated entries + shorten verification) to maintain <2KB; systematic stale idea branch cleanup (local+remote verification); push pending commits first pattern. System health consistently green.
 - 2026-02-22: Autonomous idea pipeline: generator (6h UTC) proposes, executor (2h UTC) implements; validation rejects placeholder commits (≥5 lines, substantive changes).
 - 2026-02-21: Meta-agent robustness (find vs ls with set -euo pipefail), Research Hub Vercel deployment (server reads public/), polyglot TTS (Kokoro + Edge, 96.7% coverage), capability evolver skills-assessment outcomes.
 - 2026-02-20: Earlier patterns archived in `lessons.md`
