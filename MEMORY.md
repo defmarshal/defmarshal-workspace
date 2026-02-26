@@ -28,4 +28,3 @@ Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, 
 - 2026-02-25: Workspace-builder refined maintenance patterns: phased APT updates override; active-tasks.md pruning to <2KB; systematic stale idea branch cleanup; push-pending-first pattern; implemented `quick validate-constraints` command for proactive enforcement. System health consistently green.
 - 2026-02-22: Autonomous idea pipeline: generator (6h UTC) proposes, executor (2h UTC) implements; validation rejects placeholder commits (≥5 lines, substantive changes).
 - 2026-02-21: Meta-agent robustness (find vs ls with set -euo pipefail), Research Hub Vercel deployment (server reads public/), polyglot TTS (Kokoro + Edge, 96.7% coverage), capability evolver skills-assessment outcomes.
-- 2026-02-20: Earlier patterns archived in `lessons.md`
