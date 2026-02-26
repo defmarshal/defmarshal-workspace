@@ -1,109 +1,56 @@
-# Workspace Builder Session Plan
+# Workspace Builder Task Plan
+
 **Session Key:** workspace-builder-23dad379
-**Trigger:** Cron (workspace-builder-cron)
-**Timestamp:** 2026-02-26 17:00 UTC
+**Started:** 2026-02-26 19:02 UTC
+**Goal:** Strategic workspace maintenance, cleanup, and constraint enforcement
 
-## 1. Context Analysis
+## Phases
 
-### Current State
-- Disk: 71% (healthy)
-- Gateway: healthy
-- Memory: clean, local FTS+, reindexed 2.6d ago
-- Git: dirty (1 modified file `quick`, 4 untracked enhancement-bot scripts)
-- Updates: none pending
-- Downloads: 17 files, 5.7GB (all <30d)
-- active-tasks.md: 1920 bytes (<2KB)
-- MEMORY.md: 30 lines
-- Last commit: `ea98bdc` build: workspace hygiene maintenance
+### Phase 1: Analysis & Discovery
+- Validate all workspace constraints (active-tasks size, MEMORY.md line count, git status, health)
+- Identify stale branches (idea/*)
+- Identify temporary files
+- Review recent daily logs for any unresolved issues
 
-### Identified Issues
-- **Git dirty**: The `quick` launcher has been modified to include enhancement-bot commands
-- **Untracked files**: 4 enhancement-bot scripts exist but are not committed
-- **Incomplete system**: The enhancement-bot daemon expects an `enhancements/` directory which doesn't exist
+### Phase 2: Cleanup & Organization
+- Delete identified stale branches
+- Remove temporary files
+- Prune active-tasks.md if needed to maintain <2KB
+- Verify active-tasks.md structure and completeness
 
-### Opportunity
-The enhancement-bot is an automation system for processing improvement proposals. It's partially implemented with:
-- `scripts/enhancement-bot-daemon.sh` (auto-processes JSON proposals)
-- `scripts/enhancement-bot-start.sh` / `stop.sh` (daemon control)
-- `scripts/enhancement-list.sh` (queue viewer)
-- `scripts/enhancement-propose.sh` (proposal creation)
-- Commands already integrated into `quick` launcher
+### Phase 3: Documentation & Planning
+- Create/update task_plan.md (this file)
+- Create/update findings.md (analysis results)
+- Create/update progress.md (execution log)
+- Ensure all planning documents follow the planning-with-files workflow
 
-This is a **meaningful improvement** to the workspace's self-improvement capabilities. It should be completed and committed.
-
-## 2. Goals
-
-**Primary:** Bring the enhancement-bot system to a committed, operational state
-- Create missing `enhancements/` directory
-- Add documentation (README)
-- Ensure scripts are executable and properly formed
-- Commit all changes with appropriate message
+### Phase 4: Validation & Commit
+- Run `./quick validate-constraints` to verify all constraints
+- Run `./quick health` to confirm system health
+- Update active-tasks.md with validated entry and verification metrics
+- Commit all changes with `build:` prefix
 - Push to origin
-- Validate all workspace constraints
 
-**Secondary:** Maintain overall workspace hygiene
-- Ensure active-tasks.md stays <2KB
-- Keep MEMORY.md at 30 lines
-- Final git status clean
+### Phase 5: Close the Loop
+- Final validation: health, constraints, git status
+- Ensure all changes are pushed
+- Update active-tasks.md entry to validated status with complete verification notes
 
-## 3. Execution Plan
+## Success Criteria
 
-### Phase 1: Preparation & Audit
-- [ ] Verify all enhancement-bot script permissions (executable bits)
-- [ ] Check `quick` launcher for correct integration
-- [ ] Review script content for any missing dependencies or issues
+- All constraints satisfied (active-tasks ≤2KB, MEMORY.md ≤35 lines, git clean, health green, no temp files, no pending updates)
+- Zero stale idea branches
+- Zero temporary files
+- active-tasks.md properly updated with this session's validation entry
+- Planning documents (task_plan.md, findings.md, progress.md) created/updated and committed
+- All changes pushed to origin
+- Final health check green
 
-### Phase 2: Complete the System
-- [ ] Create `enhancements/` directory
-- [ ] Add `enhancements/README.md` explaining the system
-- [ ] Add an example proposal JSON to demonstrate format
-- [ ] Create any missing helper scripts (if needed)
+## Risks & Mitigations
 
-### Phase 3: Integration & Testing
-- [ ] Ensure `quick enhancement-*` commands work
-- [ ] Test `quick enhancement-list` (should show empty or example)
-- [ ] Test daemon start/stop (optional, may skip in automated session)
-- [ ] Verify `quick validate-constraints` passes
-
-### Phase 4: Documentation & Planning Files
-- [ ] Create `task_plan.md` (this document)
-- [ ] Create `findings.md` (analysis summary)
-- [ ] Create `progress.md` (execution log)
-- [ ] Update `active-tasks.md` with running session entry
-
-### Phase 5: Commit & Push
-- [ ] Stage all enhancement-bot related changes
-- [ ] Stage planning documents
-- [ ] Commit with prefix `build:` and descriptive message
-- [ ] Push to origin
-- [ ] Validate final state (git clean, constraints green)
-
-### Phase 6: Session Closure
-- [ ] Update `active-tasks.md`: mark session validated
-- [ ] Add verification metrics
-- [ ] Prune oldest completed entry to maintain <2KB
-- [ ] Commit and push final active-tasks update
-
-## 4. Validation Checklist
-
-After execution, run:
-- `./quick health` → must be green
-- `./quick validate-constraints` → all checks pass
-- `git status --short` → clean (0 changed)
-- `active-tasks.md` size < 2KB
-- `MEMORY.md` lines ≤ 30
-- Remote `origin` up-to-date
-
-## 5. Risk Mitigation
-
-- **Script errors**: Test commands before committing
-- **Permission issues**: Ensure all scripts have executable bit (`chmod +x`)
-- **Broken references**: Verify paths in `quick` launcher match actual locations
-- **Orphaned processes**: Enhancement bot daemon is not running; start check will be skipped if not needed
-
-## 6. Success Criteria
-
-- Enhancement-bot system fully committed and documented
-- All constraints validated
-- Workspace clean and push complete
-- active-tasks.md maintained within size limit
+- **Risk:** active-tasks.md exceeds 2KB after adding new entry
+  - **Mitigation:** Prune oldest completed entries before adding new validation entry
+- **Risk:** Commit doesn't match validation criteria
+  - **Mitigation:** Run `./quick validate-constraints` before committing and fix any issues
+- **Risk:** Push fails due to remote conflicts
+  - **Mitigation:** Pull first, resolve conflicts, then push
