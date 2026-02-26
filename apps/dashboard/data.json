@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-26T22:00:02Z",
+  "generated_at": "2026-02-26T23:00:01Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -14,7 +14,7 @@
     {
       "name": "linkedin-pa-agent",
       "active": true,
-      "last_run": "2026-02-26 21:11"
+      "last_run": "2026-02-26 22:03"
     },
     {
       "name": "research-agent",
@@ -39,11 +39,11 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-26 20:00"
+      "last_run": "2026-02-26 22:00"
     },
     {
       "name": "meta-agent",
-      "active": true,
+      "active": false,
       "last_run": "2026-02-26 19:08"
     }
   ],
@@ -54,6 +54,16 @@
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "agent": "content",
+      "message": "LinkedIn PA roadmap-brief analyst‑report for 2026-02-26 2203 (v10 dynamic)",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-26)",
+      "time": ""
+    },
     {
       "agent": "content",
       "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-02-26 2111 (v10 dynamic)",
@@ -92,16 +102,6 @@
     {
       "agent": "chore",
       "message": "add generate-daily-digest.sh utility script",
-      "time": ""
-    },
-    {
-      "agent": "content",
-      "message": "Regenerate daily digest 2026-02-26 (19 posts)",
-      "time": ""
-    },
-    {
-      "agent": "content",
-      "message": "LinkedIn PA market-positioning analyst‑report for 2026-02-26 1805 (v10 dynamic)",
       "time": ""
     }
   ]

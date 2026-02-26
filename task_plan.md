@@ -1,56 +1,104 @@
 # Workspace Builder Task Plan
+**Session**: workspace-builder-23dad379-21ad-4f7a-8c68-528f98203a33
+**Time**: 2026-02-26 23:00 UTC
+**Goal**: Clean workspace, commit pending changes, enforce constraints, validate health
 
-**Session Key:** workspace-builder-23dad379
-**Started:** 2026-02-26 19:02 UTC
-**Goal:** Strategic workspace maintenance, cleanup, and constraint enforcement
+---
 
-## Phases
+## Phase 1: Assessment & Analysis
+**Objective**: Understand the current workspace state and pending changes
 
-### Phase 1: Analysis & Discovery
-- Validate all workspace constraints (active-tasks size, MEMORY.md line count, git status, health)
-- Identify stale branches (idea/*)
-- Identify temporary files
-- Review recent daily logs for any unresolved issues
+- [ ] Read modified files: `apps/dashboard/data.json`, `apps/dashboard/vercel.json`, `content/INDEX.md`
+- [ ] Check untracked file: `apps/dashboard/.gitignore` - determine if it should be added
+- [ ] Run `git status -s` and `./quick health` to establish baseline
+- [ ] Review recent daily logs for context on these changes
+- [ ] Document findings in `findings.md`
 
-### Phase 2: Cleanup & Organization
-- Delete identified stale branches
-- Remove temporary files
-- Prune active-tasks.md if needed to maintain <2KB
-- Verify active-tasks.md structure and completeness
+**Success Criteria**: Clear understanding of all modifications and their intent
 
-### Phase 3: Documentation & Planning
-- Create/update task_plan.md (this file)
-- Create/update findings.md (analysis results)
-- Create/update progress.md (execution log)
-- Ensure all planning documents follow the planning-with-files workflow
+---
 
-### Phase 4: Validation & Commit
-- Run `./quick validate-constraints` to verify all constraints
-- Run `./quick health` to confirm system health
-- Update active-tasks.md with validated entry and verification metrics
-- Commit all changes with `build:` prefix
-- Push to origin
+## Phase 2: Content INDEX.md Validation & Regeneration
+**Objective**: Ensure content/INDEX.md is properly synchronized with actual content files
 
-### Phase 5: Close the Loop
-- Final validation: health, constraints, git status
-- Ensure all changes are pushed
-- Update active-tasks.md entry to validated status with complete verification notes
+- [ ] Compare current INDEX.md against `./quick content-index-update` output (dry-run)
+- [ ] If discrepancies found, regenerate INDEX.md using `./quick content-index-update` (with commit)
+- [ ] Verify INDEX.md includes all recent content items (no missing entries)
 
-## Success Criteria
+**Success Criteria**: INDEX.md accurately reflects all content files
 
-- All constraints satisfied (active-tasks ≤2KB, MEMORY.md ≤35 lines, git clean, health green, no temp files, no pending updates)
-- Zero stale idea branches
-- Zero temporary files
-- active-tasks.md properly updated with this session's validation entry
-- Planning documents (task_plan.md, findings.md, progress.md) created/updated and committed
-- All changes pushed to origin
-- Final health check green
+---
 
-## Risks & Mitigations
+## Phase 3: .gitignore Review
+**Objective**: Determine if `.gitignore` should be tracked and properly configured
 
-- **Risk:** active-tasks.md exceeds 2KB after adding new entry
-  - **Mitigation:** Prune oldest completed entries before adding new validation entry
-- **Risk:** Commit doesn't match validation criteria
-  - **Mitigation:** Run `./quick validate-constraints` before committing and fix any issues
-- **Risk:** Push fails due to remote conflicts
-  - **Mitigation:** Pull first, resolve conflicts, then push
+- [ ] Read `apps/dashboard/.gitignore` contents
+- [ ] Determine if it's appropriate to track (likely yes if it contains project-specific ignores)
+- [ ] If needed, add to git and ensure no sensitive info is committed
+
+**Success Criteria**: .gitignore appropriately configured and tracked if necessary
+
+---
+
+## Phase 4: Commit & Push Pending Changes
+**Objective**: Commit all pending changes with proper build prefix, push to origin
+
+- [ ] Stage all modified and new files (respecting .gitignore)
+- [ ] Create commit with message: `build: workspace-builder session 20260226-2300 - commit pending changes, enforce constraints`
+- [ ] Push to origin: `git push origin master`
+- [ ] Verify push successful, no errors
+
+**Success Criteria**: Git clean, remote synchronized, no uncommitted changes
+
+---
+
+## Phase 5: Constraint Validation
+**Objective**: Run comprehensive validation to ensure all workspace constraints are satisfied
+
+- [ ] Run `./quick health` - confirm all green
+- [ ] Run `./quick validate-constraints` - confirm all constraints pass
+- [ ] Check `active-tasks.md` size (<2KB)
+- [ ] Check `MEMORY.md` lines (≤30)
+- [ ] Verify no temp files exist (e.g., *.tmp)
+- [ ] Verify no stale `idea/*` branches
+- [ ] Check disk usage, gateway status, memory reindex age
+
+**Success Criteria**: All constraints satisfied; ready for documentation
+
+---
+
+## Phase 6: Documentation & Active Tasks Update
+**Objective**: Document session outcomes and update active-tasks.md
+
+- [ ] Add validated entry to `active-tasks.md` with:
+  - Session key: `workspace-builder-23dad379`
+  - Verification metrics (active-tasks size, MEM30, health green, git clean)
+- [ ] Prune oldest completed entry if active-tasks.md > 2KB
+- [ ] Commit `active-tasks.md` updates: `build: mark workspace-builder session validated (2026-02-26 23:00 UTC)`
+- [ ] Push commit
+
+**Success Criteria**: active-tasks.md updated, all documentation committed and pushed
+
+---
+
+## Phase 7: Final Verification
+**Objective**: Ensure workspace is fully clean and all systems operational
+
+- [ ] Final `git status` - must be clean
+- `./quick health` - final check
+- [ ] Review `findings.md` and `progress.md` completeness
+- [ ] If any step failed, debug and re-run before proceeding
+
+**Success Criteria**: No remaining issues; session complete
+
+---
+
+## Error Handling
+- If any validation fails, pause and debug before proceeding
+- Document errors in `findings.md` with remediation steps
+- Do not commit if constraints not satisfied
+
+---
+
+**Start Time**: 2026-02-26 23:00 UTC
+**Status**: Ready to execute
