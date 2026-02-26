@@ -1,10 +1,21 @@
 # Research Reports — Index
 
-This index is auto‑generated. Last updated: 2026-02-22
+This index is auto‑generated. Last updated: 2026-02-26
 
-## 2026 Reports (157 total)
+## 2026 Reports (168 total)
 
 ### 2026-02
+- [Edge AI & TinyML 2026 — State of the Art](2026-02-26-edge-ai-tinyml-2026.md)
+- [AI Agent Frameworks 2026 — Comparison & Trends](2026-02-26-ai-agent-frameworks-2026-comparison.md)
+- [Traffic Prediction APIs & State of the Art — 2026](2026-02-25-traffic-prediction-apis-state-of-the-art-2026.md)
+- [Quantum Computing Commercialization 2026: From Labs to Real-World Applications](2026-02-25-quantum-computing-commercialization-2026.md)
+- [Open Banking API Standards 2026: PSD2, UK Open Banking, and Global Adoption](2026-02-25-open-banking-api-standards-2026.md)
+- [Anime Industry Trends 2026: Streaming, Globalization, and Cloud Production](2026-02-25-anime-industry-trends-2026.md)
+- [AI Agent Frameworks 2026: Open-Source Orchestration Platforms Compared](2026-02-25-ai-agent-frameworks-2026-comparison.md)
+- [AI in Banking 2026: Transforming Finance with Intelligence](2026-02-24-ai-in-banking-2026-transforming-finance-with-intelligence.md)
+- [Agentic AI Trends 2026: The Rise of Autonomous Enterprise Systems](2026-02-24-agentic-ai-trends-2026-autonomous-enterprise-systems.md)
+- [Quantum Computing Commercialization: 2026 Industry Outlook](2026-02-23-quantum-computing-commercialization-2026-outlook.md)
+- [Liquidity Gap Calculation in Banking: Methodology and Regulatory compliance](2026-02-22-liquidity-gap-calculation-banking.md)
 - [EU AI Act Enforcement 2026–2027: Priorities, Penalties, and Compliance Guide](2026-02-22-eu-ai-act-enforcement-priorities-2026-2027-compliance-guide.md)
 - [AI Infrastructure Constraints 2026–2028: Power, Water, and the Grid Reckoning](2026-02-22-ai-infrastructure-constraints-2026-2028-power-water-grid-reckoning.md)
 - [AI Export Controls & Ecosystem Fragmentation 2026–2028: The Great Bifurcation](2026-02-22-ai-export-controls-ecosystem-fragmentation-2026-2028-great-bifurcation.md)
