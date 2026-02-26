@@ -1819,6 +1819,10 @@ except Exception:
     # Check for consistent date formatting in filenames (YYYY-MM-DD-HHMM)
     "$WORKSPACE/scripts/check-date-formats.sh"
     ;;
+  check-agent-logs)
+    # Check agent log freshness respecting agent schedules
+    "$WORKSPACE/scripts/check-agent-logs.sh"
+    ;;
   check-daily-digest)
     # Verify daily digest is in sync with actual content counts
     "$WORKSPACE/scripts/check-daily-digest.sh"
