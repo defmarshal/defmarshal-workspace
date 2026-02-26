@@ -1,94 +1,86 @@
-# Workspace Builder Plan
-**Session:** 2026-02-26 09:10 UTC (cron:23dad379)
-**Goal:** Push pending commits, cleanup stale branches, validate constraints, document session
+# Workspace Builder Plan — 2026-02-26 13:09 UTC
 
-## Current State Analysis
-- Git: Ahead of origin by 6 commits (content + dev work)
-- active-tasks.md: ~1900 bytes (<2KB, healthy)
-- MEMORY.md: 30 lines (exactly at target)
-- Stale idea branch detected: `idea/create-an-agent-that-autonomously` (appears old, needs age verification)
-- No untracked files, no temp files
-- System health: green (disk 70%, gateway healthy, memory clean)
-- Memory reindex age: ~2.2 days (fresh; weekly cron on Sunday)
-- Previous planning docs exist but will be overwritten per workflow
+**Session Key:** workspace-builder-23dad379  
+**Goal:** Enforce workspace constraints, commit pending changes, push to remote, update tracking, and validate system health.
 
-## Constraints to Enforce
-- active-tasks.md must be ≤2KB (will add entry, so prune oldest first)
-- MEMORY.md must be ≤35 lines (currently 30, safe)
-- Git must be clean and up-to-date with origin after push
-- No stale branches (idea/* older than threshold, typically >1 day)
-- Health must be green
-- All changes must be committed and pushed with 'build:' prefix
+## Current Context
 
-## Proposed Phases
+- Git status: dirty (1 modified file: `reports/2026-02-26-daily-digest.md`)
+- Repository ahead by 15 commits (unpublished work from content & dev agents)
+- Health: green (disk 71%, no updates, memory clean, gateway healthy)
+- active-tasks.md: 1656 bytes (within 2KB limit)
+- MEMORY.md: 30 lines (within 30-line target)
+- Constraint violation: Git working tree must be clean
 
-### Phase 1: Push Pending Commits
-**Why:** Synchronize local repository with remote; maintain backup and collaboration readiness.
-- Step 1.1: List ahead commits: `git log origin/master..HEAD --oneline`
-- Step 1.2: Push to origin: `git push origin master`
-- Step 1.3: Verify: `git status` should show "up to date"
-- Step 1.4: If push fails, diagnose and retry
+## Strategic Priorities (in order)
 
-### Phase 2: Stale Branch Cleanup
-**Why:** Keep repository tidy; remove abandoned experimental branches.
-- Step 2.1: List all idea branches with dates: `git for-each-ref --format='%(refname:short) %(committerdate:relative)' refs/heads/idea/`
-- Step 2.2: Identify stale branches (older than ~1 day, or from old dates like "X days ago")
-- Step 2.3: Delete local branches: `git branch -D <branch>`
-- Step 2.4: Attempt remote deletions: `git push origin --delete <branch>` (may no-op if not remote)
-- Step 2.5: Verify none remain: `git branch | grep 'idea/'`
+1. **Commit pending changes** — stage and commit modified daily digest
+2. **Push all commits** — synchronize with origin (15 pending commits + new commit)
+3. **Validate constraints** — run `./quick validate-constraints` to ensure all checks pass
+4. **Update active-tasks.md** — add validated entry for this session with verification metrics
+5. **Final validation** — re-run health and constraint checks; confirm clean state
+6. **Commit & push documentation** — commit active-tasks.md update and push
 
-### Phase 3: active-tasks.md Maintenance
-**Why:** Add this session's entry while respecting 2KB limit.
-- Step 3.1: Read current file to assess size and entries
-- Step 3.2: Prune oldest completed workspace-builder entry to make room (target removal of 1-2 entries)
-- Step 3.3: After validation (Phase 5), add validated entry with:
-  - Session key: `workspace-builder-20260226-0910`
-  - Goal, started time, verification metrics (health, size, memory lines, etc.)
-- Step 3.4: Final size check: must be <2KB
+## Step-by-Step Execution Plan
 
-### Phase 4: Planning Documentation
-**Why:** Follow planning-with-files workflow for traceability and audit.
-- Write `task_plan.md` (this file)
-- Write `findings.md` with analysis snapshot and decisions
-- Write `progress.md` with execution log (update after each phase)
+### Phase 1: Publish Local Commits
+- Command: `git push origin master`
+- Expected: All 15 pending commits pushed successfully
+- Verification: `git status` shows "up-to-date with origin"
 
-### Phase 5: Close the Loop Validation
-**Why:** Ensure workspace meets all constraints before marking success.
-- Run `./quick health` — all metrics green
-- Run `./quick validate-constraints` — all checks pass
-- Check `git status` — clean and up-to-date
-- Verify no temp files in workspace root
-- Verify active-tasks.md size <2KB and MEMORY.md ≤35 lines
-- Check no stale idea branches remain
+### Phase 2: Commit Modified Files
+- Command: `git add reports/2026-02-26-daily-digest.md`
+- Command: `git commit -m "build: update daily digest report for 2026-02-26 (workspace-builder session 20260226-1309)"`
+- Verification: `git status` shows working tree clean after commit
 
-### Phase 6: Commit and Push
-**Why:** Record all changes in version control.
-- Stage changes: `git add -A` (active-tasks.md, task_plan.md, findings.md, progress.md)
-- Commit with message: `build: enforce constraints - push commits, cleanup branches, update active-tasks, document session (20260226-0910)`
-- Push to origin: `git push origin master`
-- Verify remote includes new commit
+### Phase 3: Push New Commit
+- Command: `git push origin master`
+- Verification: remote includes new commit
 
-### Phase 7: Update active-tasks.md Status
-- After commit and push, verify everything is clean
-- This entry will already be in active-tasks.md as "validated" with verification metrics
-- No further action needed if committed with metrics
+### Phase 4: Validate All Constraints
+- Command: `./quick validate-constraints`
+- Expected output: All checks ✅ (active-tasks size, MEMORY lines, git clean, health green, no temp files, no pending updates)
+- If any check fails: debug and fix before proceeding
+
+### Phase 5: Update active-tasks.md
+- Add validated entry with:
+  - Session key: `workspace-builder-23dad379`
+  - Started: 2026-02-26 13:09 UTC
+  - Status: `validated`
+  - Verification metrics: active-tasks size, MEMORY.md lines, health status, git clean, commit SHAs
+- Prune oldest completed entry if size approaches 2KB (target: <1900 bytes)
+- Verify size: `wc -c < active-tasks.md` (must be ≤2048 bytes)
+
+### Phase 6: Commit & Push active-tasks.md
+- Command: `git add active-tasks.md`
+- Command: `git commit -m "build: mark workspace-builder session validated (2026-02-26 13:09 UTC)"`
+- Command: `git push origin master`
+- Verification: remote up-to-date, working tree clean
+
+### Phase 7: Final System Health Check
+- Command: `./quick health`
+- Command: `./quick validate-constraints`
+- All must pass; if not, investigate and remediate
 
 ## Success Criteria
-✅ Remote origin up-to-date (no ahead/behind)
-✅ active-tasks.md <2KB and contains this validated session entry
-✅ All constraints satisfied (health, git, memory, no temp files, no stale branches)
-✅ Planning docs created and committed
-✅ Changes pushed to GitHub
 
-## Risk Mitigation
-- Each phase validated before proceeding to next
-- If `git push` fails, check network/auth and retry once; if still fails, abort and log error
-- Prune active-tasks carefully: only remove oldest completed workspace-builder entries; never remove running agents
-- Keep planning docs concise (<10KB each) and focused
-- If stale branch deletion fails (protected or remote-only), document and continue
+- ✅ Git working tree clean (no unstaged changes, no untracked files)
+- ✅ Repository synchronized with origin (no ahead/behind)
+- ✅ active-tasks.md ≤ 2KB and contains validated entry for this session
+- ✅ MEMORY.md ≤ 30 lines (no change needed; already compliant)
+- ✅ Health check green (disk <80%, no pending updates, memory clean, gateway healthy)
+- ✅ No temporary files or stale branches
+- ✅ All commits pushed to origin
+- ✅ Planning docs (task_plan.md, findings.md, progress.md) updated with execution log
+
+## Error Handling
+
+- **Push fails** (network/auth): Log error, retain commits locally, skip remote sync, proceed with local validation; retry logic not implemented in this cycle (will be caught by next builder run)
+- **Constraint violation persists**: Investigate root cause, add remediation step, update findings.md with lessons
+- **active-tasks.md exceeds 2KB after pruning**: Remove older entries aggressively; target <1800 bytes to allow future runs
 
 ## Notes
-- This plan will be updated incrementally during execution
-- All steps correspond to documented best practices from AGENTS.md and TOOLS.md
-- The validate-constraints command will be used as the final gate
-- Session key format: workspace-builder-YYYYMMDD-HHMM (UTC)
+
+- This is a routine maintenance cycle; no major system changes expected
+- Follow the principle: "If it's not in a file, it doesn't exist" — document all actions
+- Keep changes minimal and focused on constraint enforcement
