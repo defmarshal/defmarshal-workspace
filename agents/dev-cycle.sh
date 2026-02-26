@@ -7,14 +7,14 @@ set -euo pipefail
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 LOGFILE="$WORKSPACE/memory/dev-agent.log"
 
-echo "$(date -u) - Starting dev-agent cycle" >> "$LOGFILE"
+echo "$(date -u +"%Y-%m-%d %H:%M:%S UTC") - Starting dev-agent cycle" >> "$LOGFILE"
 
 MAX_RETRIES=3
 INITIAL_DELAY=30  # seconds
 
 attempt=1
 while [ $attempt -le $MAX_RETRIES ]; do
-  echo "$(date -u) - Attempt $attempt/$MAX_RETRIES" >> "$LOGFILE"
+  echo "$(date -u +"%Y-%m-%d %H:%M:%S UTC") - Attempt $attempt/$MAX_RETRIES" >> "$LOGFILE"
 
   # Run the agent and capture output
   output=$(openclaw agent \
@@ -30,12 +30,12 @@ while [ $attempt -le $MAX_RETRIES ]; do
   if echo "$output" | grep -qi "No available auth profile\|rate limit\|cooldown\|unavailable"; then
     if [ $attempt -lt $MAX_RETRIES ]; then
       delay=$((INITIAL_DELAY * (2 ** (attempt - 1))))
-      echo "$(date -u) - Transient error detected, retrying in ${delay}s..." >> "$LOGFILE"
+      echo "$(date -u +"%Y-%m-%d %H:%M:%S UTC") - Transient error detected, retrying in ${delay}s..." >> "$LOGFILE"
       sleep $delay
       attempt=$((attempt + 1))
       continue
     else
-      echo "$(date -u) - Max retries reached, giving up." >> "$LOGFILE"
+      echo "$(date -u +"%Y-%m-%d %H:%M:%S UTC") - Max retries reached, giving up." >> "$LOGFILE"
       exit 1
     fi
   fi
@@ -44,5 +44,5 @@ while [ $attempt -le $MAX_RETRIES ]; do
   break
 done
 
-echo "$(date -u) - Dev-agent cycle completed (exit $exit_code)" >> "$LOGFILE"
+echo "$(date -u +"%Y-%m-%d %H:%M:%S UTC") - Dev-agent cycle completed (exit $exit_code)" >> "$LOGFILE"
 exit $exit_code
