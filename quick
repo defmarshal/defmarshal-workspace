@@ -661,11 +661,6 @@ case "$cmd" in
     count="${1:-5}"
     git -C "$WORKSPACE" log --oneline -"$count" || echo "No commits"
     ;;
-  hygiene)
-    # Workspace maintenance: logs, branches, downloads, builds, temp files, vacuum
-    # Use --execute to apply changes (dry-run by default)
-    "$WORKSPACE/scripts/hygiene.sh" "$@"
-    ;;
   git-branches)
     # List all git branches with last commit info
     bash "$WORKSPACE/quick-git-branches"
@@ -1470,6 +1465,11 @@ except Exception:
     ;;
   hygiene)
     "$WORKSPACE/workspace-hygiene-check.sh"
+    ;;
+  workspace-cleanup)
+    # Workspace maintenance: logs, branches, downloads, builds, temp files, vacuum
+    # Use --execute to apply changes (dry-run by default)
+    "$WORKSPACE/scripts/hygiene.sh" "$@"
     ;;
   clean-cache)
     # Clean Python bytecode cache (__pycache__ directories and .pyc files)
