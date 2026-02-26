@@ -1,55 +1,121 @@
-# Task Plan - Strategic Workspace Builder
+# Task Plan: Workspace Builder Session (2026-02-26 03:05 UTC)
 
-**Session:** 2026-02-26 01:08 UTC
-**Session Key:** workspace-builder-20260226-0108
-**Trigger:** Cron (workspace-builder-cron)
-**Goal:** Push pending commits, enforce memory constraints, maintain hygiene, and document execution
+## Mission
+Analyze workspace, implement meaningful improvements, validate constraints, and maintain system health.
 
-## Phase 1: Workspace Analysis (20 min)
-- Read all memory files (today + yesterday) and MEMORY.md
-- Check active-tasks.md for running agents
-- Run comprehensive health check (`./quick health`)
-- Analyze git status and recent commits
-- Identify constraints violations or risks
+## Current State Assessment
+- ✅ System healthy: disk 70%, gateway operational, memory clean
+- ✅ Git clean, remote up-to-date
+- ✅ active-tasks.md: 1866b (<2KB)
+- ✅ MEMORY.md: 30 lines (target ≤30)
+- ✅ No pending APT updates, no stale branches
+- ⚠️ Memory reindex: 2.1d ago (mild concern, monitor)
+- ✅ All constraints satisfied
 
-## Phase 2: Identify Improvement Opportunities (15 min)
-- Review pending commits that need pushing (2 commits ahead)
-- Check MEMORY.md line count (currently 31, need ≤30)
-- Evaluate active-tasks.md size (1903b, safe but monitor)
-- Verify no stale branches or temp files
-- Plan minimal but meaningful changes
+## Strategic Focus
+Since system is stable, focus on:
+1. **Maintenance automation**: Enhance validate-constraints integration into cron workflow
+2. **Documentation improvements**: Review and update planning docs structure based on recent runner experiences
+3. **Quick command completeness**: Audit quick launcher for missing but useful utilities
+4. **Memory hygiene**: Monitor MEMORY.md for timely trimming (already good, but establish clearer guidelines)
 
-## Phase 3: Implement Changes (30 min)
-- Push pending commits to origin
-- Trim MEMORY.md to 30 lines (remove one non-essential line)
-- Verify active-tasks.md remains <2KB; prune if needed
-- Create planning documentation (task_plan.md, findings.md, progress.md)
-- Update active-tasks.md with running entry (session key: workspace-builder-20260226-0108)
-- Document each step in progress.md
+## Implementation Steps
 
-## Phase 4: Close the Loop Validation (15 min)
-- Run `./quick health` - ensure all constraints green
-- Run `./quick validate-constraints` - verify all checks
-- Confirm MEMORY.md ≤ 30 lines
-- Confirm active-tasks.md < 2KB
-- Ensure git clean and pushed
-- No temp files or untracked artifacts
+### Phase 1: Planning Documentation Setup
+- Create `task_plan.md` (this file)
+- Create `findings.md` for analysis
+- Create `progress.md` for execution tracking
+- Commit initial planning setup (if needed)
 
-## Phase 5: Finalize and Report (10 min)
-- Update active-tasks.md status to validated with verification metrics
-- Commit final changes with 'build:' prefix
+### Phase 2: System Analysis & Improvement Identification
+- Run `./quick validate-constraints` to verify current state
+- Check for any stale idea branches that might have appeared since last cleanup
+- Review active-tasks.md for any orphaned entries or size optimization opportunities
+- Audit quick launcher commands for usefulness and completeness
+- Check daily logs for any patterns or recurring issues
+
+### Phase 3: Implement Enhancements
+Based on findings, perform up to 2-3 targeted improvements:
+- Possible additions:
+  - Update `quick validate-constraints` to include memory reindex age check (warning if >3d)
+  - Add quick command `quick show-validation-checks` to display what validate-constraints monitors
+  - Enhance planning docs with troubleshooting section based on common bugs encountered
+  - Add constraint check for pending GitHub commits (should be zero)
+  - Improve active-tasks.md pruning logic documentation
+
+### Phase 4: Close the Loop Validation
+- Run `./quick health`
+- Run `./quick validate-constraints`
+- Verify `git status` clean
+- Check no temp files generated
+- Confirm active-tasks.md <2KB and MEMORY.md ≤30 lines
+- Ensure no stale branches
+
+### Phase 5: Commit & Push
+- Commit all changes with `build:` prefix
 - Push to origin
-- Create/update daily memory log (memory/2026-02-26.md)
-- Ensure all docs are current
+- Update active-tasks.md with validation entry (session key: workspace-builder-YYYYMMDD-HHMM)
+- Prune old entries to maintain <2KB after addition
 
-**Success Criteria:**
-- All constraints satisfied
-- Pending commits pushed
-- MEMORY.md trimmed to ≤30 lines
-- active-tasks.md <2KB
-- Git clean and up-to-date
-- Full traceability in planning docs
+## Success Criteria
+- System health remains green
+- All constraints pass
+- Changes are meaningful but minimal (≤5 files modified, small diff)
+- Documentation updated where needed
+- active-tasks.md updated with proper verification metrics
+
+## Risk Mitigation
+- If no improvements found, simply validate and document "no action required" with reasoning
+- Avoid over-engineering; keep changes small and practical
+- Follow the "Text > Brain" principle: log all decisions in progress.md and findings.md
+
+## Troubleshooting Patterns (Lessons Learned)
+Based on recent workspace-builder iterations, document common pitfalls:
+
+### 1. Git Status Parsing in validate-constraints
+- **Issue**: Using `git status --short` vs `./quick git-status` may behave differently if quick wrapper adds formatting.
+- **Solution**: Call `./quick git-status` (which may just alias to git status --porcelain?) But ensure consistent behavior. Validate script should use `git status --porcelain --untracked-files=all` directly to avoid alias differences.
+
+### 2. Health Summary Parsing
+- **Issue**: `./quick health` output format changes can break grep patterns.
+- **Solution**: Use precise JSON from internal health check if available; otherwise use robust regex. Current script expects "Updates.*none", "clean", "Gateway.*healthy". Keep patterns in sync with health output.
+
+### 3. active-tasks.md Size Management
+- **Issue**: Adding a validation entry pushes size over 2KB; need to prune BEFORE adding.
+- **Solution**: Prune oldest completed entries first, then add new entry, then verify final size. Use `wc -c` to measure bytes, not lines. Target <2000 bytes.
+
+### 4. MEMORY.md Line Limit
+- **Issue**: Target is 30 lines for curated content, but constraint allows ≤35 as buffer. Manual trimming needed to avoid losing important learnings.
+- **Solution**: During heartbeat or workspace-builder runs, review MEMORY.md for outdated entries and remove oldest learnings to maintain ≤30 lines. Document trimming decisions in daily log.
+
+### 5. Memory Reindex Age
+- **Issue**: Reindex log may not exist if reindex never ran or log rotated.
+- **Solution**: Check existence of `memory/memory-reindex.log`. If missing, show warning but don't fail (constraint remains warning). The age threshold is: ≤3d fresh, 4-7d stale (warning), >7d very stale (error).
+
+### 6. APT Updates Parsing
+- **Issue**: `./quick updates-check` output varies (e.g., "No pending updates" vs "0 packages").
+- **Solution**: Support both patterns; if parsing fails, show warning but don't fail (constraint is best-effort).
+
+### 7. Commit Message Hygiene
+- **Issue**: Accidentally committing temporary files or sensitive data.
+- **Solution**: Use `./quick validate-constraints` before committing; it catches temp files and untracked files. Also run `git status --short` to review staged changes.
+
+### 8. active-tasks.md Entry Format
+- **Issue**: Inconsistent formatting makes parsing and pruning error-prone.
+- **Solution**: Strictly follow the format:
+```
+- [session-key] agent-name - goal (started: YYYY-MM-DD HH:MM UTC, status: running/validated/failed)
+  - Verification: <output or metrics>
+```
+Keep verification text concise (one line if possible) to save bytes.
+
+### 9. QUICK Launcher Sync
+- **Issue**: Adding new commands requires updating both help text and case statement; easy to forget one.
+- **Solution**: Add both in same edit or immediately verify by running `quick help | grep -A2 <command>`. Maintain a checklist in this section.
+
+### 10. Feature Validation Before Commit
+- **Issue**: Implemented feature but forgot to test in validation loop.
+- **Solution**: Use the Close the Loop checklist strictly: health, constraints, git clean, no temp files, then commit. Document test results in progress.md before committing.
 
 ---
-
-*Plan created: 2026-02-26 01:10 UTC*
+Keep this section updated as new patterns emerge.

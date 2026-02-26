@@ -183,7 +183,8 @@ Commands:
   gateway-status              Show detailed gateway status (service, port, RPC)
   gateway-fix                 Fix gateway issues (stop stray processes, restart cleanly)
   validate                    Run comprehensive validation (health, memory, agents, git, cron, logs)
-  validate-constraints        Validate workspace constraints (active-tasks size, MEMORY lines, git status, health, temp files, updates)
+  show-validation-checks      Show what the validate-constraints command checks (constraint list)
+  validate-constraints        Validate workspace constraints (active-tasks size, MEMORY lines, git status, health, temp files, updates, reindex age)
   status                      Show concise one-line system summary (local only, no approvals)
   vercel                      Vercel deployment helper (init, link, deploy, logs, status). Usage: quick vercel [command]
   research-hub-prebuild        Copy research markdown into Research Hub's public/ directory (prebuild step)
@@ -1632,8 +1633,22 @@ except Exception:
     # Run the workspace-validate script
     bash "$WORKSPACE/workspace-validate.sh"
     ;;
+  show-validation-checks)
+    # Display the list of constraints validated by validate-constraints
+    cat <<'EOF'
+Workspace constraints validated by 'quick validate-constraints':
+  ✅ active-tasks.md size ≤ 2KB
+  ✅ MEMORY.md lines ≤ 35 (buffer from target 30)
+  ✅ Git status clean (no pending changes)
+  ✅ Health check green (disk <80%, no updates, memory clean, gateway healthy)
+  ✅ No temp files in workspace root
+  ✅ APT updates none pending
+  ✅ Memory reindex age ≤ 3 days (warning 4-7d, error >7d)
+Run 'quick validate-constraints' to execute all checks.
+EOF
+    ;;
   validate-constraints)
-    # Validate workspace constraints (active-tasks size, MEMORY line count, git status, health, temp files, updates)
+    # Validate workspace constraints (active-tasks size, MEMORY line count, git status, health, temp files, updates, reindex age)
     bash "$WORKSPACE/scripts/validate-constraints.sh"
     ;;
   vercel)

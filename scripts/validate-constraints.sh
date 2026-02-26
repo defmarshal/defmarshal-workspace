@@ -81,6 +81,22 @@ else
     echo "⚠️ APT updates check could not parse output"
 fi
 
+# 7. Memory reindex age (warning if >3 days, error if >7 days)
+REINDEX_LOG="memory/memory-reindex.log"
+if [ -f "$REINDEX_LOG" ]; then
+    AGE_DAYS=$(( ( $(date +%s) - $(stat -c %Y "$REINDEX_LOG") ) / 86400 ))
+    if [ "$AGE_DAYS" -le 3 ]; then
+        echo "✅ Memory reindex age: $AGE_DAYS day(s) (fresh)"
+    elif [ "$AGE_DAYS" -le 7 ]; then
+        echo "⚠️ Memory reindex age: $AGE_DAYS day(s) (stale, consider reindex)"
+    else
+        echo "❌ Memory reindex age: $AGE_DAYS day(s) (very stale, reindex needed)"
+        errors=$((errors+1))
+    fi
+else
+    echo "⚠️ Memory reindex log not found (cannot assess reindex age)"
+fi
+
 # Summary
 echo ""
 if [ "$errors" -eq 0 ]; then
