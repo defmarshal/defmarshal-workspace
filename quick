@@ -18,6 +18,8 @@ Commands:
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
   heartbeat-state  Show last heartbeat check timestamps and statuses (from memory/heartbeat-state.json)
   hygiene         Run workspace hygiene check (CRLF, exec bits, large files, caches)
+  check-word-count List LinkedIn PA posts below 300 words (for quality monitoring)
+  fix-word-count   Expand short posts (<300 words) by appending Key Takeaways. Use --execute to apply (dry-run default)
   workspace-cleanup Perform workspace maintenance: compress old logs, delete stale branches, prune downloads/ and builds/, remove temp files, vacuum SQLite. Dry-run by default; use --execute to apply.
   mem             Show recent memories (claw memory list)
   music           Send a cozy music recommendation to Telegram (lofi/city pop)
@@ -1493,6 +1495,14 @@ except Exception:
     find "$WORKSPACE" -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
     find "$WORKSPACE" -type f -name "*.pyc" -delete 2>/dev/null || true
     echo "✅ Cleaned $total cache item(s)"
+    ;;
+  check-word-count)
+    # List LinkedIn PA posts below 300 words
+    "$WORKSPACE/scripts/check-word-count.sh"
+    ;;
+  fix-word-count)
+    # Expand short posts (<300 words) by adding Key Takeaways. Use --execute to apply.
+    "$WORKSPACE/scripts/fix-word-count.sh" "$@"
     ;;
   cron)
     openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | "\(.schedule.kind) \(.schedule.expr // "\(.schedule.everyMs)ms") \(.payload.kind) \(.sessionTarget)"' 2>/dev/null || openclaw cron list
