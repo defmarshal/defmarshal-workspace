@@ -1862,6 +1862,10 @@ EOF
     # Check for pending APT updates (dry-run); use --execute to apply
     "$WORKSPACE/scripts/pending-updates.sh" "$@"
     ;;
+  summary)
+    # One-line system summary (status, disk, updates, git)
+    "$WORKSPACE/scripts/system-summary.sh"
+    ;;
   git-activity-summary)
     # Show Git commit activity by agent prefix (last 7 days)
     "$WORKSPACE/scripts/git-activity-summary.sh"
