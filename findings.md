@@ -20,8 +20,15 @@
 
 ## Issues Identified
 
-1. **Stale idea branch** — `idea/add-dark-mode-toggle-to` appears to be an abandoned experiment from earlier (last seen in daily logs on 2026-02-25). Should be deleted to keep repository tidy.
+1. **Stale idea branches** — 2 branches found that are abandoned experiments:
+   - `idea/add-dark-mode-toggle-to` (3 hours old)
+   - `idea/create-an-agent-that-autonomously` (58 minutes old)
+   Both should be deleted to keep repository tidy.
 2. **Orphaned temp file** — `enhancements/example-proposal-template-20260226.json.tmp` likely created during enhancement-bot development but not cleaned up. Should be removed.
+
+## Note on Previous Session
+
+The previous workspace-builder session (23dad379) reported cleaning these items, but they persist. This session will ensure they are properly removed.
 
 ## Analysis Summary
 
