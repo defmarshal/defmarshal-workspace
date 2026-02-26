@@ -1,36 +1,42 @@
 #!/usr/bin/env bash
-# Regenerate Research Hub INDEX.md from actual research files
+# Update Research Hub INDEX.md from all research/*.md files.
+# Generates a markdown index sorted by date descending.
 
+set -euo pipefail
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
-RESEARCH_DIR="$WORKSPACE/research"
-INDEX_FILE="$WORKSPACE/apps/research-hub/public/research/INDEX.md"
+cd "$WORKSPACE" || exit 1
 
-echo "Regenerating Research Hub INDEX.md..."
-echo
+INDEX_FILE="apps/research-hub/INDEX.md"
+mkdir -p "$(dirname "$INDEX_FILE")"
 
-# Get all .md files except INDEX.md itself, sort by name
-mapfile -t files < <(ls -1 "$RESEARCH_DIR"/*.md 2>/dev/null | grep -v 'INDEX.md' | xargs -I{} basename {} .md | sort)
+echo "# Research Hub — Index" > "$INDEX_FILE"
+echo "" >> "$INDEX_FILE"
+echo "Last updated: $(date -u '+%Y-%m-%d %H:%M UTC')" >> "$INDEX_FILE"
+echo "" >> "$INDEX_FILE"
+echo "| Date | Title | Topics | TTS |" >> "$INDEX_FILE"
+echo "|------|-------|--------|-----|" >> "$INDEX_FILE"
 
-if [ ${#files[@]} -eq 0 ]; then
-  echo "❌ No research reports found in $RESEARCH_DIR"
-  exit 1
-fi
-
-# Generate INDEX.md with simple markdown list
-cat > "$INDEX_FILE" << EOF
-# Research Hub Index
-
-Updated: $(date -u '+%Y-%m-%d %H:%M UTC')
-
-Total reports: ${#files[@]}
-
-## Reports
-
-EOF
-
-for file in "${files[@]}"; do
-  echo "- [$file]($file.md)" >> "$INDEX_FILE"
+# Parse each research file for title and topics
+for md in research/*.md; do
+  [ -f "$md" ] || continue
+  filename=$(basename "$md")
+  # Extract date from filename: YYYY-MM-DD...
+  DATE=$(echo "$filename" | sed -n 's/^\(202[0-9]-[0-9][0-9]-[0-9][0-9]\).*/\1/p')
+  # Extract title: first line starting with '# '
+  TITLE=$(grep -m1 '^# ' "$md" | sed 's/^# //; s/[\r\n]//g')
+  # Extract topics from the first paragraph (heuristic: look for keywords)
+  TOPICS=$(grep -m1 -E '^[A-Za-z]' "$md" | head -1 | sed 's/[\r\n]//g' | cut -c1-80)
+  # TTS status
+  if [ -f "research/${filename%.md}.mp3" ]; then
+    TTS="✅"
+  else
+    TTS="❌"
+  fi
+  # Escape pipes in title/topics
+  TITLE=$(echo "$TITLE" | sed 's/|/\\|/g')
+  TOPICS=$(echo "$TOPICS" | sed 's/|/\\|/g')
+  echo "| $DATE | $TITLE | $TOPICS | $TTS |" >> "$INDEX_FILE"
 done
 
-echo "✅ INDEX.md generated with ${#files[@]} entries"
-echo "   Location: $INDEX_FILE"
+echo "✅ Research Hub index updated: $INDEX_FILE"
+echo "💡 Deploy with: quick deploy-research-hub"

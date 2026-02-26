@@ -1,38 +1,18 @@
 #!/usr/bin/env bash
-# Auto-deploy Research Hub to Vercel when new research is available
-# Usage: ./deploy-research-hub.sh [--dry-run]
+# Deploy Research Hub to Vercel (production).
+# Requires Vercel CLI installed and logged in.
 
 set -euo pipefail
-
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
-APP_DIR="$WORKSPACE/apps/research-hub"
-DRY_RUN=0
-
-if [[ "${1:-}" == "--dry-run" ]]; then
-  DRY_RUN=1
-fi
-
-echo "=== Research Hub Deploy ==="
-
-# Check for Vercel CLI
-if ! command -v vercel &>/dev/null; then
-  echo "Vercel CLI not installed. Skipping deploy."
+cd "$WORKSPACE/apps/research-hub" || {
+  echo "❌ research-hub app not found at $WORKSPACE/apps/research-hub"
   exit 1
-fi
+}
 
-# Prebuild: sync research + audio
-echo "Running prebuild..."
-bash "$APP_DIR/prebuild.sh"
+# Ensure INDEX.md is up to date
+"$WORKSPACE/scripts/research-index-update.sh"
 
-# Build (optional check)
-if [ $DRY_RUN -eq 1 ]; then
-  echo "Dry run: would build and deploy now."
-  exit 0
-fi
+echo "🚀 Deploying Research Hub to Vercel (production)..."
+vercel --prod
 
-# Deploy to production
-echo "Deploying to Vercel production..."
-cd "$APP_DIR"
-vercel --prod --yes
-
-echo "✅ Research Hub deployed!"
+echo "✅ Deployment complete. Live at: $(vercel ls | grep -Eo 'https://[^ ]+' | head -1)"
