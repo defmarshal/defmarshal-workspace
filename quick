@@ -1858,6 +1858,10 @@ EOF
     # List expected agent log files that are missing from memory/
     "$WORKSPACE/scripts/list-missing-logs.sh"
     ;;
+  pending-updates)
+    # Check for pending APT updates (dry-run); use --execute to apply
+    "$WORKSPACE/scripts/pending-updates.sh" "$@"
+    ;;
   git-activity-summary)
     # Show Git commit activity by agent prefix (last 7 days)
     "$WORKSPACE/scripts/git-activity-summary.sh"
