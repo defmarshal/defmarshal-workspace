@@ -13,9 +13,12 @@ Quick workspace utility launcher
 Commands:
   dash            Run the CLI dashboard (dashboard.py)
   web             Run the web dashboard (web-dashboard.py)
+  dashboard       Generate dashboard data JSON and show access instructions (unified observability dashboard)
   gateway-info    Show gateway status and remote access setup instructions
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
+  heartbeat-state  Show last heartbeat check timestamps and statuses (from memory/heartbeat-state.json)
   hygiene         Run workspace hygiene check (CRLF, exec bits, large files, caches)
+  workspace-cleanup Perform workspace maintenance: compress old logs, delete stale branches, prune downloads/ and builds/, remove temp files, vacuum SQLite. Dry-run by default; use --execute to apply.
   mem             Show recent memories (claw memory list)
   music           Send a cozy music recommendation to Telegram (lofi/city pop)
     "$WORKSPACE/scripts/music-recommend.sh"
@@ -24,10 +27,11 @@ Commands:
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
   memory-dirty   Show which memory stores need reindex (dirty check)
-  memory-index  Reindex memory files (openclaw memory index)
-  memory-stats  Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
+  memory-index   Reindex memory files (openclaw memory index)
+  memory-stats   Show detailed memory system statistics (files, chunks, cache, FTS, etc.)
+  memory-reindex  Force reindex of memory files (openclaw memory index)
+  memory-reindex-if-stale Reindex memory only if the index is older than N days (default 7); respects Voyage rate-lock
   memory-reindex-check  Check if memory reindex is needed based on dirty flag and age. Exit 0 if ok, 1 if reindex recommended
-  memory-reindex Force reindex of memory files (openclaw memory index)
   memory-stores    List all memory store files (SQLite DBs) with size and age
   memory-provider Show current memory search provider (from openclaw.json)
   memory-summary  Consolidated memory health: provider, stores, dirty status, stats
@@ -39,6 +43,7 @@ Commands:
   cron-schedules Validate and correct cron schedules against CRON_JOBS.md documentation
   cron-runs      Show recent runs for all cron jobs (last run, status, duration)
   cron-health     Show health overview of all cron jobs (status, errors, schedule)
+  cron-validate   Validate and correct OpenClaw cron schedules against CRON_JOBS.md
   quiet-hours    Show current quiet hours status (Asia/Bangkok 23:00-08:00) and whether system is in quiet mode
   health          Show workspace health summary (workspace-health)
   summary         Show one-line system summary (status, disk, updates, git)
