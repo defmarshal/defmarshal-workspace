@@ -2,7 +2,13 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenClaw Dashboard</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#58a6ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/icon-192.svg">
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #0d1117; color: #e6edf3; }
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
@@ -25,6 +31,8 @@
   <div class="container">
     <h1>🦾 OpenClaw Dashboard</h1>
     <div id="last-updated" class="muted">Loading…</div>
+    <!-- PWA Install Button -->
+    <button id="installBtn" style="display:none;position:absolute;top:20px;right:20px;padding:8px 12px;background:#58a6ff;color:#0d1117;border:none;border-radius:6px;cursor:pointer;">Install App</button>
 
     <div class="grid">
       <!-- System Overview -->
