@@ -31,6 +31,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [workspace-builder-20260226-0108] workspace-builder - Maintain workspace hygiene, enforce constraints, implement meaningful improvements (started: 2026-02-26 01:08 UTC, status: validated)
   - Verification: health OK, MEM30, active-tasks 1866b (<2KB), git clean, all constraints satisfied
 
-- [workspace-builder-23dad379] workspace-builder - Add validate-constraints command, refactor planning docs, expand quick launcher (started: 2026-02-25 21:00 UTC, status: validated)
-  - Verification: validate-constraints script created (executable), quick alias added; 3 commits pushed; active-tasks 2036b (<2KB), MEM31, git clean, all constraints satisfied
+- [workspace-builder-20260226-0507] workspace-builder - Cleanup stale idea branches, fix validate-constraints APT parsing, remove obsolete proposed cron job from CRON_JOBS.md (started: 2026-02-26 05:07 UTC, status: validated)
+  - Verification: Deleted 6 idea branches; APT parsing fixed; CRON_JOBS.md updated; active-tasks 1902b (<2KB), MEM30, git clean, health green, constraints satisfied
 
