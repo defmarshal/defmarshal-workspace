@@ -71,14 +71,14 @@ fi
 
 # 6. APT updates (should be none pending)
 updates=$(./quick updates-check 2>/dev/null || echo "Update check unavailable")
-if echo "$updates" | grep -q "No pending" || echo "$updates" | grep -q "0 packages"; then
+if echo "$updates" | grep -q "All packages are up to date"; then
     echo "✅ APT updates: none pending"
-elif echo "$updates" | grep -qE "[0-9]+ packages"; then
+elif echo "$updates" | grep -qE "[0-9]+ packages? can be upgraded"; then
     echo "❌ APT updates pending:"
     echo "$updates" | sed 's/^/   /'
     errors=$((errors+1))
 else
-    echo "⚠️ APT updates check could not parse output"
+    echo "⚠️ APT updates check could not parse output (non-critical)"
 fi
 
 # 7. Memory reindex age (warning if >3 days, error if >7 days)
