@@ -28,9 +28,9 @@ else
 fi
 
 # Select content type by hour rotation (ensures each appears 4x/day)
-HOUR=$(date -u +%H)
+HOUR=$((10#$(date -u +%H)))
 DAY_OF_WEEK=$(date -u +%u)
-INDEX=$(( (DAY_OF_WEEK * 24 + 10#$HOUR) % 6 ))
+INDEX=$(( (DAY_OF_WEEK * 24 + HOUR) % 6 ))
 SELECTED_TYPE="${CONTENT_TYPES[$INDEX]}"
 
 # Static fallback query pool (high-quality, authoritative)

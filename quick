@@ -517,6 +517,10 @@ case "$cmd" in
       printf "%-25s %-15s %-8s %-16s %-10s %6ss\n" "$name" "$expr" "${tz:0:3}" "$nextdt" "$status" "$duration"
     done || echo "Error: jq not available or openclaw CLI issue"
     ;;
+  cron-validate)
+    # Validate cron schedules against CRON_JOBS.md and correct drift
+    "$WORKSPACE/scripts/validate-cron-schedules.sh"
+    ;;
   dev-log)
     COUNT="${1:-20}"
     LOGFILE="$WORKSPACE/dev-agent.log"
