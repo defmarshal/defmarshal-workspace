@@ -1823,6 +1823,10 @@ except Exception:
     # Check agent log freshness respecting agent schedules
     "$WORKSPACE/scripts/check-agent-logs.sh"
     ;;
+  commit-tts)
+    # Commit any untracked TTS .mp3 files in research/
+    "$WORKSPACE/scripts/commit-tts.sh"
+    ;;
   check-daily-digest)
     # Verify daily digest is in sync with actual content counts
     "$WORKSPACE/scripts/check-daily-digest.sh"
