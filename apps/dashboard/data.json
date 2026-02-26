@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-26T23:00:01Z",
+  "generated_at": "2026-02-26T23:30:01Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -14,7 +14,7 @@
     {
       "name": "linkedin-pa-agent",
       "active": true,
-      "last_run": "2026-02-26 22:03"
+      "last_run": "2026-02-26 23:09"
     },
     {
       "name": "research-agent",
@@ -43,8 +43,8 @@
     },
     {
       "name": "meta-agent",
-      "active": false,
-      "last_run": "2026-02-26 19:08"
+      "active": true,
+      "last_run": "2026-02-26 23:06"
     }
   ],
   "research": {
@@ -54,6 +54,21 @@
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "agent": "content",
+      "message": "LinkedIn PA developer-tips analyst‑report for 2026-02-26 2309 (v10 dynamic)",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "mark workspace-builder session validated (2026-02-26 23:00 UTC)",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "workspace-builder session 20260226-2300 - commit dashboard updates, content index regeneration, add .gitignore, create planning docs",
+      "time": ""
+    },
     {
       "agent": "content",
       "message": "LinkedIn PA roadmap-brief analyst‑report for 2026-02-26 2203 (v10 dynamic)",
@@ -87,21 +102,6 @@
     {
       "agent": "content",
       "message": "LinkedIn PA technical-performance analyst‑report for 2026-02-26 1909 (v10 dynamic)",
-      "time": ""
-    },
-    {
-      "agent": "build",
-      "message": "log workspace-builder session 23dad379 — routine maintenance validation",
-      "time": ""
-    },
-    {
-      "agent": "build",
-      "message": "workspace-builder routine maintenance - cleanup stale branch & temp file, enforce constraints, create planning docs (session 23dad379)",
-      "time": ""
-    },
-    {
-      "agent": "chore",
-      "message": "add generate-daily-digest.sh utility script",
       "time": ""
     }
   ]
