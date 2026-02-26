@@ -1684,6 +1684,34 @@ EOF
     # Validate workspace constraints (active-tasks size, MEMORY line count, git status, health, temp files, updates, reindex age)
     bash "$WORKSPACE/scripts/validate-constraints.sh"
     ;;
+  enhancement-bot-start)
+    "$WORKSPACE/scripts/enhancement-bot-start.sh"
+    ;;
+  enhancement-bot-stop)
+    "$WORKSPACE/scripts/enhancement-bot-stop.sh"
+    ;;
+  enhancement-list)
+    "$WORKSPACE/scripts/enhancement-list.sh"
+    ;;
+  enhancement-propose)
+    # Usage: enhancement-propose "title" "description" priority script
+    shift
+    "$WORKSPACE/scripts/enhancement-propose.sh" "$@"
+    ;;
+  enhancement-bot-start)
+    "$WORKSPACE/scripts/enhancement-bot-start.sh"
+    ;;
+  enhancement-bot-stop)
+    "$WORKSPACE/scripts/enhancement-bot-stop.sh"
+    ;;
+  enhancement-list)
+    "$WORKSPACE/scripts/enhancement-list.sh"
+    ;;
+  enhancement-propose)
+    # Usage: enhancement-propose "title" "description" priority script
+    shift
+    "$WORKSPACE/scripts/enhancement-propose.sh" "$@"
+    ;;
   vercel)
     # Vercel deployment helper
     "$WORKSPACE/scripts/vercel-deploy.sh" "$@"
