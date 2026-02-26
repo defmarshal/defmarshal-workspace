@@ -1668,7 +1668,12 @@ EOF
     # Vercel deployment helper
     "$WORKSPACE/scripts/vercel-deploy.sh" "$@"
     ;;
-
+  dashboard)
+    # Generate dashboard data JSON and print URL to open
+    "$WORKSPACE/scripts/generate-dashboard-data.sh"
+    echo "Dashboard available at: file://$WORKSPACE/apps/dashboard/index.html"
+    echo "To serve: cd $WORKSPACE/apps/dashboard && python3 -m http.server 8080"
+    ;;
   research-hub-prebuild)
     # Copy research files into Research Hub's public directory
     bash "$WORKSPACE/apps/research-hub/prebuild.sh"
