@@ -294,6 +294,11 @@ case "$cmd" in
     echo "Memory reindex sequence completed."
     ;;
 
+  memory-reindex-if-stale)
+    # Reindex memory if older than threshold (default 7 days)
+    "$WORKSPACE/scripts/memory-reindex-if-stale.sh" "${@:-7}"
+    ;;
+
   memory-reindex-check)
     # Check if memory reindex is needed
     "$WORKSPACE/memory-reindex-check"
