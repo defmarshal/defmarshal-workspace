@@ -20,6 +20,8 @@ Commands:
   top-commits     Show top recent commits with agent prefixes (default: 10; usage: quick top-commits [N])
   vercel-status   Check Vercel dashboard deployment health (HTTP + JSON)
   health-snapshot Fetch live dashboard data in compact JSON (deployed endpoint)
+  semantic-index    Build local semantic search index over memory/research/content (first run downloads ~80MB model)
+  semantic-search   Search memory with local embeddings (usage: quick semantic-search "<query>" [--top N])
   ensure-clawdash-deployed  Regenerate data, commit, and deploy Clawdash to Vercel
   today           Show files modified today (since midnight UTC)
   gateway-info    Show gateway status and remote access setup instructions
@@ -260,6 +262,13 @@ case "$cmd" in
 
   health-snapshot)
     node "$WORKSPACE/scripts/health-snapshot.js"
+    ;;
+
+  semantic-index)
+    node "$WORKSPACE/scripts/semantic-index.js"
+    ;;
+  semantic-search)
+    node "$WORKSPACE/scripts/semantic-search.js" "$@"
     ;;
 
   today)
@@ -1671,9 +1680,6 @@ except Exception:
   gateway-fix)
     # Run the gateway fix script
     bash "$WORKSPACE/gateway-fix.sh"
-    ;;
-  check-quick-commands)
-    bash "$WORKSPACE/scripts/quick-check-commands.sh"
     ;;
   status)
     # Concise one-line system summary (local only)
