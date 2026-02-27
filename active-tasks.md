@@ -24,8 +24,8 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (recent)
 
-- [workspace-builder-20260227-0709] workspace-builder - Strategic maintenance: resolve git dirty state, push pending commits, enforce constraints, validate health (started: 2026-02-27 07:09 UTC, status: validated)
-  - Verification: active-tasks 1694b (<2KB), MEM30, health green & pushed (pushed 2 commits: space-economics research + INDEX timestamp), remote synced; all constraints satisfied; no temp files; memory reindex 3d fresh
-
 - [workspace-builder-23dad379] workspace-builder - Update MEMORY.md with latest learning, enforce constraints, validate workspace health (started: 2026-02-27 09:21 UTC, status: validated)
   - Verification: active-tasks ~1920b (<2KB), MEM31 (≤35), health green, git clean after commit; MEMORY.md updated with 2026-02-26 learning; all constraints satisfied.
+
+- [workspace-builder-20260227-1112] workspace-builder - Refresh research-hub index, commit pending changes, cleanup stale branches, enforce constraints (started: 2026-02-27 11:12 UTC, status: validated)
+  - Verification: active-tasks 1695→1698b (<2KB), MEM30, health green, git clean & pushed (commits: INDEX enhancement + heartbeat-state + docs), remote synced; stale branch `idea/add-a-new-quick-utility` deleted; no temp files; memory reindex 3.4d fresh; all constraints satisfied ✅
