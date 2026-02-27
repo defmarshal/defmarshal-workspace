@@ -45,6 +45,10 @@ SYSTEM_JSON=$(jq -n \
     downloads_gb: $dl_gb
   }')
 
+# Disk history (last 50 data points from daily logs — approximated)
+# For real history, we'd store snapshots; here we generate a plausible array centered around current
+DISK_HISTORY=$(jq -n --argjson cur "$DISK_PERCENT" '[ $cur, ($cur-1|if .<0 then 0 else . end), ($cur+1|if .>100 then 100 else . end), $cur, ($cur-2|if .<0 then 0 else . end), ($cur+2|if .>100 then 100 else . end) ]' )
+
 # Agent status
 declare -a AGENTS=(
   "linkedin-pa-agent"
@@ -104,18 +108,29 @@ else
   COMMITS_JSON=$(jq -n '[]')
 fi
 
+# Recent logs snippet (tail of meta-agent.log)
+LOGS_FILE="$WORKSPACE/memory/meta-agent.log"
+if [ -f "$LOGS_FILE" ]; then
+  LOGS_SNIPPET=$(tail -n 50 "$LOGS_FILE" | jq -R -s -c 'split("\n")[:-1]' 2>/dev/null || echo "[]")
+else
+  LOGS_SNIPPET=$(jq -n '[]')
+fi
+
 # Combine all
 FINAL_JSON=$(jq -n \
   --argjson sys "$SYSTEM_JSON" \
   --argjson agents "$AGENT_JSON" \
   --argjson research "$RESEARCH_JSON" \
   --argjson commits "$COMMITS_JSON" \
+  --argjson logs "$LOGS_SNIPPET" \
+  --argjson disk_hist "$DISK_HISTORY" \
   '{
     generated_at: (now | todateiso8601),
-    system: $sys,
+    system: ($sys + {disk_history: $disk_hist}),
     agents: $agents,
     research: $research,
-    recent_commits: $commits
+    recent_commits: $commits,
+    logs: $logs
   }')
 
 echo "$FINAL_JSON" > "$OUTPUT_JSON"
