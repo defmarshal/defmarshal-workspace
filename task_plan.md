@@ -1,55 +1,113 @@
-# Task Plan - Workspace Builder Session
+# Task Plan — Workspace Builder (23dad379)
 
-**Session Key:** workspace-builder-23dad379  
-**Trigger:** Cron job `workspace-builder-cron` (2026-02-27 09:17 UTC)  
-**Goal:** Implement meaningful improvements while workspace is healthy.
+**Session**: 2026-02-27 11:12 UTC  
+**Goal**: Enforce constraints, commit pending changes, clean stale branches, validate health, push to origin.
 
-## Analysis Findings
+---
 
-- Workspace health: all constraints satisfied (✅ active-tasks 1733b <2KB, MEM30, git clean, health green, no temp files, APT none, reindex 3.3d fresh)
-- Git status: clean, up-to-date with origin
-- active-tasks.md: contains 2 validated entries from earlier today (01:09, 07:09), plus running meta-supervisor daemon; no entry for current session yet.
-- MEMORY.md: last updated 2026-02-25; missing recent learnings (enhancement-bot deployment on 2026-02-26).
-- Documentation gap: MEMORY.md at 30 lines (acceptable) but slightly stale; can be updated with new learning without exceeding 35-line buffer.
+## Phase 1 — Assessment (Context Gathering)
 
-## Planned Improvements
+- [x] Read SOUL.md, USER.md, active-tasks.md, MEMORY.md
+- [x] Read daily logs: 2026-02-27, 2026-02-26
+- [x] Run `quick health` and `quick validate-constraints`
+- [x] Check git status and identify modified files
+- [x] List stale idea branches
 
-1. **Update MEMORY.md** with latest learning:
-   - Add new bullet: "2026-02-26: Enhancement-bot automation system deployed (proposal directory, scripts, documentation) and validated."
-   - Update "*Last updated:*" date to 2026-02-27.
-   - Expected lines: 31 (still ≤35).
+**Status**: ✅ Complete
 
-2. **Track session in active-tasks.md**:
-   - Add running entry with session key `workspace-builder-23dad379` and goal.
-   - After validation, mark as validated with verification metrics.
-   - Prune oldest completed entry if needed to maintain <2KB.
+**Findings**:
+- 2 modified files: `apps/research-hub/INDEX.md` (major restructuring), `memory/heartbeat-state.json` (routine update)
+- 1 stale idea branch: `idea/add-a-new-quick-utility`
+- Constraints fail: Git dirty (expected — needs commit)
+- active-tasks.md: 1695 bytes (healthy)
+- MEMORY.md: 31 lines (within ≤35 limit, target ≤30 for optimal)
+- Memory reindex age: 3.4d (fresh)
+- All other constraints green
 
-3. **Validate constraints**:
-   - Run `quick validate-constraints` to confirm workspace remains healthy after changes.
-   - Verify no temp files, git clean.
+---
 
-4. **Commit and push**:
-   - Commit with prefix `build:` describing improvements.
-   - Push to origin.
-   - Verify remote synchronized.
+## Phase 2 — Execution (Fix & Publish)
 
-## Step-by-Step Execution
+### Step 1: Commit pending changes
+**Task**: Stage and commit the 2 modified files with appropriate messages.
+**Detail**:
+- `apps/research-hub/INDEX.md`: restructured index with full descriptive headlines (substantive improvement)
+- `memory/heartbeat-state.json`: timestamp, disk usage, weather status update (routine)
+- Commit message: `build: refresh research-hub index with enhanced metadata + heartbeat-state update (workspace-builder 20260227)`
+- Push to origin/master
 
-- [ ] Step 1: Create planning docs (task_plan.md, findings.md, progress.md).
-- [ ] Step 2: Add running entry to active-tasks.md.
-- [ ] Step 3: Validate constraints pre-change (baseline already green, but confirm).
-- [ ] Step 4: Update MEMORY.md (add learning, update date).
-- [ ] Step 5: Re-validate constraints (ensure still green).
-- [ ] Step 6: Update active-tasks.md entry to validated with verification metrics; prune size.
-- [ ] Step 7: Commit all changes with proper message.
-- [ ] Step 8: Push to origin.
-- [ ] Step 9: Final validation (health, constraints, git clean).
+**Verification**:
+- `git status` should show clean after commit
+- `git log -1` shows new commit with correct message
+- `git push` succeeds
 
-## Risks & Mitigations
+### Step 2: Cleanup stale idea branch
+**Task**: Delete local branch `idea/add-a-new-quick-utility` (confirmed stale from logs)
+- Command: `git branch -D idea/add-a-new-quick-utility`
+- Verify no other `idea/*` branches remain
 
-- **Risk**: MEMORY.md exceeds 35 lines after update.
-  - **Mitigation**: Count lines before commit; if >35, trim older/less relevant entries (e.g., 2026-02-22 or 2026-02-21).
-- **Risk**: active-tasks.md exceeds 2KB after adding entry.
-  - **Mitigation**: After validation, prune oldest completed entries (already done in previous runs). Target <1900 bytes.
-- **Risk**: Validation fails due to transient issue.
-  - **Mitigation**: Debug and resolve before proceeding; if memory reindex needed, run `quick memory-reindex` and re-check.
+**Verification**:
+- `git branch | grep 'idea/'` shows nothing
+
+### Step 3: Update active-tasks.md
+**Task**: Mark current session as validated, prune oldest entry to keep <2KB.
+- Add validated entry for session `workspace-builder-23dad379`
+- Include verification metrics (size, constraints status, git clean)
+- Remove oldest completed entry (likely `workspace-builder-20260227-0921`) to prevent bloat
+- Re-check size: must be ≤2048 bytes
+
+**Verification**:
+- `wc -c active-tasks.md` shows <2048
+- Entry format follows spec: `- [sessionKey] agent-name - goal (started: time, status: validated)`
+
+### Step 4: Commit documentation updates
+**Task**: Commit `active-tasks.md` reorganization.
+- Commit message: `build: mark workspace-builder session validated, prune active-tasks (session 23dad379)`
+- Push to origin
+
+**Verification**:
+- Git clean after push
+- Remote synchronized
+
+---
+
+## Phase 3 — Close the Loop Validation
+
+Run comprehensive checks:
+
+- `./quick health` → all green
+- `./quick validate-constraints` → all constraints ✅
+  - active-tasks.md ≤2KB
+  - MEMORY.md ≤35 lines
+  - git clean
+  - no temp files
+  - APT none pending
+  - memory reindex age fresh
+- `git status --short` → nothing
+- `ls -m *tmp* *.tmp` → no matches (temp files absent)
+- Review active-tasks.md format correctness
+
+If any check fails: debug BEFORE committing.
+
+---
+
+## Phase 4 — Finalization
+
+- Ensure no dangling processes (meta-supervisor is allowed to run)
+- Write final session log to `memory/2026-02-27.md` (append)
+- Update active-tasks.md entry with verification notes (already done in Step 3)
+- Session complete
+
+---
+
+## Risk Notes
+
+- Low risk: standard maintenance pattern, well-tested
+- Potential issue: active-tasks.md size bloat → prune carefully
+- Git push conflicts unlikely (no concurrent push-pending agents expected at this hour)
+
+---
+
+## Success Criteria
+
+All constraints satisfied, workspace clean, remote synchronized, documentation up-to-date.
