@@ -1,6 +1,6 @@
 # Daily Digest — 2026-02-27
 
-**Generated:** 2026-02-27 01:00 UTC  
+**Generated:** 2026-02-27 02:10 UTC  
 **Agent:** content-agent (daily build)  
 **Workspace:** defmarshal/openclaw
 
@@ -9,10 +9,10 @@
 ## Summary
 
 - System health: ✅ Green (constraints satisfied)
-- Content produced: 1+ LinkedIn PA posts (early morning)
-- Research reports: 1 new (Spring 2026 anime trends)
-- Agents running: meta-supervisor, workspace-builder (24/7), linkedin-pa-agent, enhancement‑bot
-- Notable: Dashboard subproject separated; workspace constraints enforced
+- Content produced: 2 LinkedIn PA posts (v10 dynamic)
+- Research reports: 2 new today (Spring 2026 anime trends, LEO satellite internet 2026 status)
+- Agents running: meta-supervisor, workspace-builder, linkedin-pa-agent, enhancement‑bot, research‑agent
+- Notable: Dashboard fixes (cache‑busting, no‑cache headers), Clawdash enhancements (chat, charts)
 
 ---
 
@@ -20,13 +20,18 @@
 
 ### LinkedIn PA (IBM Planning Analytics)
 
-**Posts today (so far):**
+**Posts today (Feb 27):**
 ```
 2026-02-27-0008-linkedin-pa-post.md
   Type: market-positioning analyst-report (v10 dynamic)
+
+2026-02-27-0119-linkedin-pa-post.md
+  Type: technical-performance analyst-report (v10 dynamic)
 ```
 
-Full production volume expected by end-of-day (typical 20–25 posts).
+Both posts include full research digests and are synced to Obsidian vault.
+
+---
 
 ### Research
 
@@ -34,30 +39,34 @@ Full production volume expected by end-of-day (typical 20–25 posts).
   - Comprehensive Spring 2026 anime season preview
   - Covers major sequels (My Hero Academia, Demon Slayer, Spy x Family, Vinland Saga) and new adaptations (Sakamoto Days, Witch Hat Atelier, Kagurabachi)
   - Streaming guide (Crunchyroll, Netflix) and industry trends
-  - Includes data from GamesRadar, Anime Tiger, LiveChart, ScorpioLikeYou
-  - TTS audio generated (coverage 99%)
+  - TTS audio generated (coverage 100%)
+
+- `research/2026-02-27-leo-satellite-internet-constellations-2026-status-update.md`
+  - Status update on LEO satellite internet: Starlink (7k+ sats, 6M+ users, price cuts), OneWeb (enterprise focus), Project Kuiper (pre‑launch)
+  - Competitive dynamics, pricing pressure, technology trends
+  - TTS audio generated
 
 ---
 
 ## System Activity
 
-- **Workspace Builder** (cron, every 2h): recent runs
-  - Enforced constraints (active-tasks<2KB, MEM30, git clean)
-  - Removed stale dashboard tracking from main repo; added .gitignore rule
-  - All constraints currently green
+- **Workspace Builder** (cron, every 2h): recent validated run (01:09 UTC)
+  - Enforced constraints (active‑tasks<2KB, MEM30, git clean)
+  - Committed pending changes; INDEX updates
+  - Removed stray temp files; kept repo tidy
 
-- **Meta-Agent** (cron, every 6h): periodic audits; no major issues
+- **Meta-Agent** (cron, every 6h): periodic audits, spawned content‑ and research‑agents as needed
 
 - **Supervisor** (cron, every 30min): health monitoring green
 
-- **Enhancement‑Bot** deployed; minor fixes to Clawdash (chat, caching)
+- **Enhancement‑Bot** active: Clawdash improvements (test‑dashboard utility, cache fixes, chat)
 
 ---
 
 ## Health Metrics
 
 - Disk: 72% used
-- Memory index: local FTS+ (last reindex ~2.9d ago)
+- Memory index: local FTS+ (last reindex ~3d ago)
 - Updates: none pending
 - Git: clean
 - Gateway: healthy
@@ -67,18 +76,18 @@ Full production volume expected by end-of-day (typical 20–25 posts).
 
 ## Issues & Notes
 
-- **Clawdash data visibility:** Earlier reports of blank dashboard due to caching. Deployed no‑cache headers and cache-busting fetches. If still blank, hard refresh.
-- **PWA dashboard project** on Vercel remains Private; set to Public for install prompt to work.
-- LinkedIn PA dynamic queries sometimes fall back to static; brief posts (<300 words) for some types are warnings.
+- **Clawdash data visibility:** Some users see blank page due to aggressive caching. Deployed no‑cache headers, cache‑busting fetches, and console diagnostics. If blank, hard refresh (Ctrl+F5) and clear site storage.
+- **PWA dashboard project** on Vercel remains Private; set to Public in Vercel dashboard for install prompt to work.
+- LinkedIn PA dynamic queries sometimes fall back to static; brief posts (<300 words) for some types are warnings (developer‑tips, roadmap‑brief).
 
 ---
 
 ## Plans for 2026-02-27
 
-- Maintain constraints green; monitor workspace-builder cycles
-- Continue LinkedIn PA production (typical 20–25 posts)
-- Consider adding more agent health details to Clawdash (uptime, durations)
-- Review research TTS coverage; aim for 100%
+- Keep constraints green; monitor workspace‑builder cycles
+- Continue LinkedIn PA production (typical 20–25 posts/day)
+- Consider adding agent uptime/duration details to Clawdash
+- Research TTS coverage at 100%; fill gaps if any
 
 ---
 
