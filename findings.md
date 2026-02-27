@@ -1,108 +1,104 @@
-# Workspace Builder — Findings & Observations
+# Findings & Notes — Workspace Builder Session (2026-02-27 07:09 UTC)
 
-**Session:** 23dad379-21ad-4f7a-8c68-528f98203a33
-**Started:** 2026-02-27 03:10 AM UTC
-
----
-
-## Analysis Results
-
-### System Health Snapshot
-
-```
-Disk: 70% (healthy)
-Updates: none pending
-Git: dirty (1 changed: apps/research-hub/INDEX.md)
-Memory: 25f/298c (clean), local FTS+
-Reindex: 3.1 days ago (within fresh threshold of 4 days)
-Gateway: healthy
-Downloads: 17 files, 5.7GB
-```
-
-### Constraint Validation
-
-| Check | Status | Details |
-|-------|--------|---------|
-| active-tasks.md size | ✅ 1719 bytes | < 2KB limit |
-| MEMORY.md lines | ✅ 30 lines | ≤ 35 target |
-| Git status | ❌ dirty | 1 uncommitted file |
-| Health check | ✅ green | All systems green |
-| Temp files | ✅ none | No temp files found |
-| APT updates | ✅ none | No pending updates |
-| Memory reindex age | ✅ 3 days | Fresh (<4 days) |
-
-**Violations:** 1 (git dirty)
+**Session Key:** workspace-builder-20260227-0709
 
 ---
 
-## Issues & Resolutions
+## Initial System Snapshot
 
-### 1. Git Dirty — INDEX.md Timestamp
+**Health:**
+- Disk: 71% (OK)
+- Gateway: healthy
+- Memory: clean, local FTS+, reindex 3 days old (slightly aged but acceptable)
+- Updates: none pending
+- Downloads: 17 files, 5.7GB (all seeding, <30d)
+- active-tasks.md: 1694 bytes (<2KB)
+- MEMORY.md: 30 lines
 
-**Details:** `apps/research-hub/INDEX.md` had an updated "Last updated" timestamp.
+**Git Status:**
+- Branch: master
+- Ahead of origin by: 1 commit
+- Uncommitted changes: 1 file (`apps/research-hub/INDEX.md`)
+- Local-only commit: `6eaef8f3` (research: Space launch economics & market 2026)
 
-**Action:** Committed with message `build: update research-hub index timestamp (workspace-builder session 20260227-0315)`
-
-**Status:** ✅ Resolved
-
----
-
-### 2. Active Tasks Misorganization
-
-**Details:** A validated workspace-builder entry was still in the Running section instead of Completed.
-
-**Action:** Reorganized active-tasks.md:
-- Moved `workspace-builder-20260227-0109` to Completed
-- Added new running entry for current session: `workspace-builder-23dad379`
-- After validation, moved current entry to Completed and pruned oldest (`workspace-builder-20260226-2300`) to maintain <2KB
-- Final size: 1698 bytes
-
-**Status:** ✅ Resolved
-
----
-
-### 3. Enhancement-Bot Daemon Critical Bug
-
-**Discovery:** Recurring temp file `enhancements/example-proposal-template-20260226.json.tmp` appeared repeatedly despite cleanup.
-
-**Root Cause Analysis:**
-- Daemon's jq command used **comma operator** in filter: `.status = $status, .implemented_at = $ts, .result = $result`
-- In jq, comma creates a **stream** of separate outputs, not a single modified object. This emitted three JSON values (status, timestamp, result) to the output file, leading to concatenated multiple JSON objects and file corruption.
-- Additionally, the filter lacked dots for some field assignments, causing jq errors.
-- The combination prevented status updates and left `.tmp` files behind.
-
-**Impact:**
-- Example proposal stuck in "proposed" indefinitely
-- Continuous .tmp file accumulation
-- Violation of "no temp files" constraint
-- Potential JSON corruption and daemon instability
-
-**Fix Applied:**
-1. Changed jq filters to use **pipe operator** (`|`) to chain modifications and emit a single object:
-   - `.status = $status | .implemented_at = $ts | .result = $result`
-2. Added dots for all field assignments (e.g., `.failed_at` not `failed_at`)
-3. Wrapped jq and mv in error checks: on failure, log error and clean up temp file
-4. Restarted daemon with corrected script
-5. Restored clean example proposal and verified correct behavior:
-   - Single valid JSON produced
-   - Status transitions to "implemented"
-   - No `.tmp` files left
-   - JSON passes `python3 -m json.tool` validation
-
-**Commits:**
-- `4b60bac0 build: fix enhancement-bot daemon jq filters (use pipes) - correct multi-output bug causing JSON corruption`
-- `7a5efe5f build: add example proposal file for enhancement-bot`
-
-**Status:** ✅ Resolved
+**Constraint Validation:**
+- ❌ Git status dirty (uncommitted changes)
+- ✅ active-tasks.md size: 1694b (<2KB)
+- ✅ MEMORY.md lines: 30 (≤30)
+- ✅ Health: green
+- ✅ No temp files
+- ✅ No APT updates
+- ✅ Memory reindex age: 3 days (fresh)
 
 ---
 
-## Additional Notes
+## Root Cause Analysis
 
-- All validations pass: health green, git clean, active-tasks <2KB, MEMORY.md 30 lines, zero temp files.
-- Daemon now operates correctly; enhancement proposals will update as intended.
-- Lesson learned: In jq, use `|` to chain modifications, not `,`. Commas create multiple output values.
+### Why is INDEX.md constantly being modified?
+
+From daily logs (2026-02-26, 2026-02-27):
+- The `notifier-cron` or `content-agent` updates the research hub index timestamp regularly
+- Pattern: daily digest generation or content pipeline triggers a refresh of the "Last updated" field
+- Previous runs show this is expected behavior, not an error
+- The routine is: workspace-builder commits the INDEX.md change during its 2h cycle
+
+**Conclusion:** This is by design. The content pipeline periodically updates the index timestamp. The workspace-builder is supposed to commit it.
+
+### Why are there unpushed commits?
+
+Looking at `git log --oneline -5`:
+1. `6eaef8f3` - research: Space launch economics & market 2026 — **unpublished**
+2. `01199956` - dev: add quick vercel-status
+3. `134e769b` - log: document notifier-triggered maintenance and fix
+4. `d9571441` - build: update research-hub index timestamp (notifier-triggered cleanup)
+5. `a3aa917b` - content: LinkedIn PA market-positioning analyst-report
+
+The commit at `6eaef8f3` was created after the last push. This needs to be published.
 
 ---
 
-**Final workspace state:** All constraints satisfied, all documentation up to date, remote synchronized.
+## Action Plan Derived from Findings
+
+1. **Commit the INDEX.md modification** with message: `build: update research-hub index timestamp (workspace-builder session 20260227-0709)`
+2. **Push the outstanding local commit** (`6eaef8f3`) to origin
+3. **Verify git clean** and push the INDEX.md commit
+4. **Run full constraint validation** — should all pass once git clean
+5. **Update active-tasks.md** with this session's validated entry
+6. **Prune oldest completed entry** to maintain <2KB limit
+7. **Commit and push** the planning docs and active-tasks update
+
+---
+
+## Observations on System Health
+
+- **All core services running well:** gateway stable, memory clean, no updates pending
+- **Download directory at 17 files/5.7GB** — appears stable; no cleanup needed yet (all <30d)
+- **Memory reindex age 3 days** — acceptable; reindex check passes (≤7 days)
+- **No stale branches** currently
+- **No temp files** currently
+
+The system is in excellent shape. This is a routine synchronization and constraint enforcement cycle.
+
+---
+
+## Risks & Mitigations
+
+| Risk | Mitigation |
+|------|------------|
+| Pushing while another agent is writing could cause conflicts | Check active-tasks.md; meta-supervisor is only running agent, no recent commits from others in last hour; proceed carefully |
+| active-tasks.md size exceeding 2KB after adding entry | Prune oldest completed entry immediately before committing |
+| MEMORY.md accidentally modified | Do not edit MEMORY.md unless needed; it's already at target 30 lines |
+| Pending commits contain broken work | Inspect the diff/commit message; the space-economics research appears substantive and should be published |
+
+---
+
+## Success Criteria (Checklist)
+
+- [ ] Git working tree clean (0 uncommitted changes)
+- [ ] Branch up-to-date with origin
+- [ ] `./quick validate-constraints` returns all green
+- [ ] active-tasks.md ≤ 2KB
+- [ ] MEMORY.md ≤ 35 lines (target 30)
+- [ ] No temp files, no stale branches
+- [ ] All planning docs committed and pushed
+- [ ] active-tasks.md entry includes verification metrics and session marked validated
