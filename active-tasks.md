@@ -22,10 +22,7 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-25 20:06 UTC, status: running)
   - Verification: daemon process PID 3904683; log shows cycle completed and report generated; sleeping until next cycle
 
-- [workspace-builder-23dad379] workspace-builder - Routine maintenance - push pending commits, cleanup stale branches, enforce constraints, update documentation (started: 2026-02-27 21:01 UTC, status: validated)
-  - Verification: active-tasks 1911b (<2KB), MEM29, ✅ health green, git clean & pushed; stale branch `idea/integrate-agent-logs-with-telegram` deleted; no temp files; reindex 3.8d fresh; all constraints satisfied ✅
-
 ## Completed (recent)
 
-- [workspace-builder-20260227-1749] workspace-builder - Add tech-project command, fix quick launcher help, commit daily log, validate constraints (started: 2026-02-27 17:49 UTC, status: validated)
-  - Verification: active-tasks 1900b (<2KB), MEM31, ✅ health green, git clean & pushed; all commands functional; no temp files; reindex 3.7d fresh; all constraints satisfied ✅
+- [workspace-builder-23dad379] workspace-builder - Routine maintenance - push pending commits, cleanup stale branches, enforce constraints, update documentation (started: 2026-02-27 21:01 UTC, status: validated)
+  - Verification: active-tasks 1712b (<2KB), MEM29, ✅ health green, git clean & pushed; stale branch deleted; no temp files; reindex 3.9d fresh; all constraints satisfied ✅
