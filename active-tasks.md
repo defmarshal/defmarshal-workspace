@@ -30,6 +30,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260226-2300] workspace-builder - Strategic maintenance: commit dashboard updates, regenerate content INDEX, add .gitignore, enforce constraints (started: 2026-02-26 23:00 UTC, status: validated)
   - Verification: active-tasks 1679b (<2KB), MEM30, health green, git clean & pushed, no temp files, all constraints satisfied; INDEX tracking 424 content files, dashboard vercel v2 deployed, .gitignore tracked
-
-- [workspace-builder-23dad379] workspace-builder - Routine maintenance: cleanup stale branch & temp file, enforce constraints (started: 2026-02-26 19:02 UTC, status: validated)
-  - Verification: active-tasks 2010b (<2KB), MEM30, health green, git clean & pushed, constraints all satisfied; removed 1 stale idea branch, 1 temp file; planning docs created (task_plan, findings, progress)
