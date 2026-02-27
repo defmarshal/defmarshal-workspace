@@ -2,12 +2,13 @@
 
 This index is auto‑generated. Last updated: 2026-02-27
 
-## 2026 Reports (173 total)
+## 2026 Reports (174 total)
 
 ### 2026-02
 - [Spring 2026 Anime Season Trends — Lineup, Streaming, and Highlights](2026-02-27-spring-2026-anime-season-trends.md)
 - [Real-Time Payments & Digital Banking Transformation 2026](2026-02-27-real-time-payments-digital-banking-transformation-2026.md)
 - [Quantum Networking & Quantum Internet 2026 — QKD Networks, Standards, and Scaling Challenges](2026-02-27-quantum-networking-quantum-internet-2026-QKD-networks-standards-scaling.md)
+- [Neuromorphic Computing & Chips 2026 — Brain‑Inspired Silicon, Event‑Driven AI Acceleration](2026-02-27-neuromorphic-computing-chips-2026-brain-inspired-silicon-event-driven-ai.md)
 - [LEO Satellite Internet Constellations 2026 — Starlink, OneWeb, Project Kuiper](2026-02-27-leo-satellite-internet-constellations-2026-status-update.md)
 - [6G Networks: 2026 Trials, Spectrum, and IMT-2030 Roadmap](2026-02-27-6g-networks-2026-trials-spectrum-imt-2030-roadmap.md)
 - [Edge AI & TinyML 2026 — State of the Art](2026-02-26-edge-ai-tinyml-2026.md)
