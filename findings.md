@@ -38,17 +38,25 @@ Downloads: 17 files, 5.7GB
 1. **Git dirty — INDEX.md timestamp**
    - File: `apps/research-hub/INDEX.md`
    - Change: "Last updated" timestamp from `2026-02-27 02:13 UTC` → `2026-02-27 03:09 UTC`
-   - Cause: Likely content-agent regenerated INDEX or daily digest
+   - Cause: content-agent regenerated INDEX or daily digest
    - Severity: Minor (cleanup needed to maintain constraint)
 
 2. **Active tasks structure**
-   - Current structure has validated entry in Running section (misplaced)
-   - Needs reorganization: Running vs Completed sections
+   - Current structure had validated entry in Running section (misplaced)
+   - Reorganized: Running only contains truly running agents; Completed contains validated sessions
 
-3. **Planning docs needed**
+3. **Enhancement-bot daemon bug (critical)**
+   - The daemon's jq command uses wrong assignment syntax: `.status=$status, implemented_at=$ts, result=$result`
+   - Missing dots before `implemented_at` and `result` causes jq compilation error
+   - This leaves `.tmp` files behind and prevents proposal status updates
+   - Recurring temp file: `enhancements/example-proposal-template-20260226.json.tmp` is recreated continuously
+   - Impact: Demo proposal stuck in "proposed"; temp files accumulate; violates no-temp-files constraint
+   - Fix: Change jq filter to `.status = $status, .implemented_at = $ts, .result = $result` (also add error handling around mv)
+
+4. **Planning docs**
    - task_plan.md ✅ created
    - findings.md 📝 in progress
-   - progress.md 📝 to be created/updated during execution
+   - progress.md 📝 tracking
 
 ### Observations
 

@@ -56,14 +56,37 @@
 
 ## Phase 4: Close The Loop
 
-**Status:** ⏳ Pending
+**Status:** ✅ Completed (2026-02-27 03:20 UTC)
 
 ### Steps
 
-- ⏳ Update active-tasks.md entry to validated
-- ⏳ Add verification metrics
-- ⏳ Prune if needed
-- ⏳ Final commit and push
+- ✅ Update active-tasks.md: changed session entry to validated with verification metrics
+- ✅ Pruned oldest completed entry (workspace-builder-20260226-2300) to maintain <2KB
+- ✅ Final size: 1698 bytes
+- ✅ Committed and pushed active-tasks update
+
+---
+
+## Phase 5: Critical Bug Fix — Enhancement Bot Daemon
+
+**Status:** 🔄 In progress (discovered 03:21 UTC)
+
+### Issue
+
+The enhancement-bot daemon has a bug in its jq command that prevents proposal updates and leaves `.tmp` files behind. This causes recurring temp file violations.
+
+### Fix Plan
+
+1. Correct jq filter syntax in `scripts/enhancement-bot-daemon.sh`
+   - Change: `.status=$status, implemented_at=$ts, result=$result`
+   - To: `.status = $status, .implemented_at = $ts, .result = $result`
+2. Add robust error handling: check jq exit code; if failed, log error and continue; ensure temp file removed on failure
+3. Add check for mv success; cleanup temp if mv fails
+4. Test fix manually by running daemon snippet
+5. Kill and restart daemon to pick up changes
+6. Verify example proposal transitions to "implemented" and temp file does not reappear
+
+### Next action: Patch daemon script
 
 ---
 
