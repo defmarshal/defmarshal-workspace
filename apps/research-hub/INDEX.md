@@ -1,6 +1,6 @@
 # Research Hub — Index
 
-Last updated: Fri, 27 Feb 2026 14:05:17 UTC
+Last updated: Fri, 27 Feb 2026 15:07:58 UTC
 
 | Date | Title | Topics | TTS |
 |------|-------|--------|-----|
@@ -32,7 +32,8 @@ Last updated: Fri, 27 Feb 2026 14:05:17 UTC
 | 2026-02-27 | AI in Healthcare 2026 — The Clinical and Commercial Inflection Point | General research | ✅ |
 | 2026-02-27 | AI-Powered Cybersecurity 2026 — The Autonomous Arms Race | General research | ✅ |
 | 2026-02-27 | AI Safety, Alignment, and Governance 2026 — Regulatory Surge, Agentic Challenges, and Operational Readiness | General research | ✅ |
-| 2026-02-27 | Climate Tech 2026 — CCUS, Green Hydrogen, and the Carbon Economy | General research |  |
+| 2026-02-27 | Climate Tech 2026 — CCUS, Green Hydrogen, and the Carbon Economy | General research | ✅ |
+| 2026-02-27 | Edge AI and TinyML 2026 — On-Device Intelligence Becomes Mainstream | General research | ✅ |
 | 2026-02-27 | Fusion Energy Breakthroughs 2026 — Tokamaks, Inertial Confinement, and Private Startups | General research | ✅ |
 | 2026-02-27 | LEO Satellite Internet Constellations 2026 — Starlink, OneWeb, Project Kuiper | General research | ✅ |
 | 2026-02-27 | Neuromorphic Computing & Chips 2026 — Brain‑Inspired Silicon, Event‑Driven AI Acceleration | General research | ✅ |

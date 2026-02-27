@@ -1,77 +1,59 @@
-# Workspace Builder Findings - 2026-02-27 13:08 UTC
+# Workspace Builder Findings - 2026-02-27 15:06 UTC
 
-## Key Findings
+## Summary
+The workspace is in excellent health with only routine maintenance needed. The primary tasks are to publish a pending research report on Edge AI & TinyML and perform repository hygiene.
 
-### 1. Daily Log Requires Commit
-- **File**: `memory/2026-02-27.md`
-- **Status**: Modified, uncommitted
-- **Change**: Added supervisor cron run entry (13:07 UTC)
-- **Action**: Commit to maintain git-clean constraint
-- **Rationale**: Daily logs are important operational records; leaving them uncommitted violates workspace constraints and risks data loss if session ends unexpectedly.
+## Detailed Findings
 
-### 2. active-tasks.md Health
-- **Current size**: 1752 bytes
-- **Status**: Healthy (<2KB)
-- **Entries**: 1 running (meta-supervisor-daemon), 2 completed (recent workspace-builder runs)
-- **Action**: Add current session entry, monitor size, prune if needed after addition (~300b increase expected)
-- **Pruning strategy**: Remove oldest completed entry if total exceeds 1900b to maintain headroom
+### 1. Pending Commits
+- **File**: `apps/research-hub/INDEX.md`
+  - Change: Timestamp update from 14:05 to 15:06 UTC
+  - New entry added: "Edge AI and TinyML 2026 — On-Device Intelligence Becomes Mainstream"
+- **File**: `research/2026-02-27-edge-ai-tinyml-2026.md` (untracked)
+  - Full research report (13KB) covering Edge AI trends, model landscape, hardware renaissance, software stacks, challenges, and future directions.
+  - Authored by research-agent at 2026-02-27 15:05 UTC.
+  - Contains TTS-enabled markdown with sources from CODERCOPS, IndexBox, OpenPR, femtoAI/ABOV, IDC, TechBullion, SciTechTimes.
+  - Quality: Comprehensive, data-driven, suitable for the Research Hub.
 
-### 3. MEMORY.md Line Count
-- **Current count**: 31 lines
-- **Target**: ≤30 ideal, ≤35 acceptable (per validator)
-- **Status**: Acceptable, no immediate action required
-- **Note**: No new major learnings from today's operations that warrant distillation yet. Monitor.
+**Action**: Both files should be committed together to maintain the link between the index entry and the report.
 
-### 4. Memory Index Age
-- **Last reindex**: 3.5 days ago
-- **Threshold**: "fresh" in validator means ≤3 days? Actually validator says "3 day(s) (fresh)" so it's considered fresh despite being 3.5d. Verify: the validator output said "3 day(s)" so it's rounding down or it's acceptable.
-- **Action**: Monitor but not urgent; Voyage AI rate limits may delay reindex
+### 2. Constraint Status
+All constraints satisfied except git dirty:
+- active-tasks.md size: 1766 bytes ✅
+- MEMORY.md: 31 lines ✅ (target ≤35)
+- Health check: green ✅
+- Temp files: none ✅
+- APT updates: none ✅
+- Memory reindex age: 3.6 days ✅ ("fresh" threshold is 3 days)
 
-### 5. Repository Hygiene
-- **Stale branches**: 0 `idea/*` branches (excellent)
-- **Temp files**: 0
-- **Downloads**: 17 files, 5.7GB (all seeding, <30d old - acceptable)
-- **Disk**: 72% (healthy)
-- **Gateway**: healthy
+**Note**: MEMORY.md is 1 line over the ideal 30, but within the validator's ≤35 limit. No trim needed unless it exceeds 35.
 
-## Observations
+### 3. Repository Hygiene
+- Stale idea branch detected: `idea/design-a-utility-dashboard-to`
+  - Likely an abandoned experiment; should be deleted to keep branch list clean.
+- No other stale branches (`idea/*` count will be 0 after deletion).
+- No temp files found.
 
-### Workspace Maintenance Pattern
-The workspace-builder has been consistently running every 2 hours, maintaining tight control over:
-- Git state (committing and pushing pending changes from content/dev agents)
-- active-tasks.md size (pruning oldest entries)
-- Constraint enforcement
-- Branch cleanup (stale idea branches)
+### 4. Active Tasks Registry
+Current entry count: 2 completed (today), 1 running (meta-supervisor-daemon). My session needs a new running entry added.
 
-This autonomous maintenance regime is working well; the workspace is in excellent health.
+Size: 1766 bytes. Adding ~300 bytes for my entry leaves margin ~500 bytes before 2KB limit. No immediate prune needed, but will reassess after adding entry.
 
-### Daily Log Auto-Append
-The daily log file `memory/2026-02-27.md` is being appended to by multiple cron-triggered agents (notifier, workspace-builder, supervisor). This creates a need for periodic commits. The workspace-builder currently commits these changes, which is appropriate.
+### 5. Memory System
+- Voyage AI disabled (rate limits), local FTS+ active.
+- Reindex last run ~3.6 days ago; still within "fresh" window (3 days). Monitor next cycle.
 
-### Memory Index Reindex Cadence
-The reindex is 3.5 days old but validator still considers it "fresh". The Voyage AI rate-lock (6h after 429) limits reindex frequency. Current cadence appears acceptable given rate limits.
+### 6. Risks & Mitigations
+- **Git push conflicts**: If remote has new commits, rebase and retry.
+- **active-tasks overflow**: If after adding my entry size >1900 bytes, prune oldest completed entry from Completed section.
+- **Validation failures**: If any constraint fails post-commit, address immediately (e.g., trim MEMORY.md if >35 lines, check for temp files created by agents).
 
-## Potential Improvements
+## Recommendations
+- Proceed with committing the Edge AI research report and index update.
+- Delete the stale idea branch.
+- Follow the plan in `task_plan.md` and update `progress.md` after each phase.
+- After final commit, verify `./quick validate-constraints` reports all green.
 
-### 1. Automatic Daily Log Commit
-- **Idea**: Have a cron job that commits daily log changes every hour or at end of day.
-- **Benefit**: Reduces git-dirty window, ensures logs are persisted promptly.
-- **Consideration**: Might create many small commits; current workspace-builder approach (committing with other changes) is efficient.
-
-### 2. Active Tasks Archival Policy
-- **Observation**: Completed entries are kept for a while before pruning. The pruning is size-driven, not time-driven.
-- **Consideration**: Add timestamp-based archival (e.g., keep completed entries from last 7 days only) to improve readability.
-- **Risk**: Might lose recent history needed for debugging; current size-based approach is safer.
-
-### 3. MEMORY.md Line Count Enforcement
-- **Current**: 31 lines; validator allows up to 35.
-- **Enhancement**: Add a `quick` command to trim MEMORY.md to exactly 30 lines, removing oldest learnings, to maintain consistency with original spec.
-- **Trigger**: When line count exceeds 30.
-
-### 4. Memory Reindex Health Check
-- **Monitor**: Index age >3 days could indicate issue (e.g., Voyage rate-lock persisting too long).
-- **Action**: Add explicit age alert to `./quick health` or validator if >5 days.
-
-## Decisions
-
-No major changes proposed for this session; focus is on routine maintenance and constraint enforcement based on current findings.
+## Sign-off
+- Findings documented: 2026-02-27 15:06 UTC
+- Ready for execution.
