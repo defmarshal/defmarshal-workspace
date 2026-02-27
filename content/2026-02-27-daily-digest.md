@@ -1,6 +1,6 @@
 # Daily Digest — 2026-02-27
 
-**Generated:** 2026-02-27 05:05 UTC  
+**Generated:** 2026-02-27 08:05 UTC  
 **Agent:** content-agent (daily build)  
 **Workspace:** defmarshal/openclaw
 
@@ -9,10 +9,10 @@
 ## Summary
 
 - System health: ✅ Green (constraints satisfied)
-- Content produced: 5 LinkedIn PA posts (v10 dynamic)
-- Research reports: 5 new today (anime trends, LEO satellite, real-time payments, quantum networking, 6G networks)
+- Content produced: 6+ LinkedIn PA posts (v10 dynamic)
+- Research reports: 8 new today (anime, LEO satellite, payments, quantum, 6G, neuromorphic, fusion, space launch)
 - Agents running: meta-supervisor daemon, workspace-builder (validated), LinkedIn PA agent (active), research-agent (fresh), enhancement-bot, dev-agent
-- Notable: Continuous maintenance, utilities added, Clawdash enhancements ongoing
+- Notable: Continuous content and research output; utilities added; Clawdash debugging ongoing
 
 ---
 
@@ -36,6 +36,9 @@
 
 2026-02-27-0414-linkedin-pa-post.md
   latest cycle (type varies)
+
+2026-02-27-0711-linkedin-pa-post.md
+  technical-performance analyst-report (272 words)
 ```
 
 All posts include full digests; synced to Obsidian vault.
@@ -43,36 +46,45 @@ All posts include full digests; synced to Obsidian vault.
 ### Research
 
 - `research/2026-02-27-spring-2026-anime-season-trends.md`
-  - Spring 2026 anime preview: My Hero Academia, Demon Slayer, Spy x Family, Vinland Saga, Sakamoto Days, Witch Hat Atelier, Kagurabachi; streaming guide (Crunchyroll, Netflix); industry trends.
+  - Spring 2026 anime preview: major sequels and new series; streaming guide.
 
 - `research/2026-02-27-leo-satellite-internet-constellations-2026-status-update.md`
-  - Starlink (9k+ sats, 6M+ users, $120/mo residential, Jan 2026 price cuts), OneWeb (enterprise B2B), Project Kuiper (pre-launch). Competitive dynamics.
+  - Starlink, OneWeb, Project Kuiper status and competitive dynamics.
 
 - `research/2026-02-27-real-time-payments-digital-banking-transformation-2026.md`
-  - RTP volume $22T (2024) → $58T (2028); RTP in US, EU, India; stablecoins enterprise; CBDC $213B by 2030; neobank slowdown; programmable payments APIs.
+  - RTP growth, stablecoins, CBDC projections, neobank slowdown.
 
 - `research/2026-02-27-quantum-networking-quantum-internet-2026-QKD-networks-standards-scaling.md`
-  - QKD deployments (China 2000km, EU MadQCI, UK); trusted-node vs entanglement; ETSI standards; challenges (photon loss, repeaters, cost); 5–10 year adoption horizon.
+  - QKD deployments, ETSI standards, trusted-node vs entanglement.
 
 - `research/2026-02-27-6g-networks-2026-trials-spectrum-imt-2030-roadmap.md`
-  - ITU IMT-2030 framework (15 capabilities); spectrum sub-THz (7–24 GHz above 100 GHz); early trials (NTT Docomo 100 Gbps, SK Telecom, Deutsche Telekom); 3GPP timeline; standards 2030; commercial 2030–2035.
+  - ITU IMT-2030 framework, sub-THz spectrum, early trials.
+
+- `research/2026-02-27-neuromorphic-computing-chips-2026-brain-inspired-silicon-event-driven-ai.md`
+  - Intel Loihi 3, IBM successor, BrainScaleS, edge AI applications.
+
+- `research/2026-02-27-fusion-energy-breakthroughs-2026-tokamak-inertial-private-startups.md`
+  - ITER progress, private startups (Helion, CFS, TAE), inertial confinement.
+
+- `research/2026-02-27-space-launch-economics-market-2026-cost-per-kg-reusability-rideshare.md`
+  - Cost per kg, rideshare boom, reusability impact, competitive landscape.
 
 ---
 
 ## System Activity
 
-- **Workspace Builder** (cron, every 2h): validated runs enforce constraints, update INDEX, commit pending changes, remove temp files. Last run 03:15 UTC.
+- **Workspace Builder** (cron, every 2h): validated runs enforce constraints, update INDEX, commit pending changes.
 - **Meta-Agent** (cron, every 6h): audits; spawns content/research as needed.
 - **Supervisor** (cron, every 30min): health monitoring green.
 - **Enhancement‑Bot**: Clawdash improvements; utilities added.
-- **Dev‑Agent**: added `quick log-tail`, `quick top-commits`, `quick agents-summary`, `quick test-dashboard`; planning docs updates; constraint clean‑ups.
+- **Dev‑Agent**: added `quick vercel-status`, `quick today`; planning docs updates.
 
 ---
 
 ## Health Metrics
 
 - Disk: 72% used
-- Memory index: local FTS+ (last reindex ~3d ago)
+- Memory index: local FTS+ (last reindex ~3.1d ago)
 - Updates: none pending
 - Git: clean
 - Gateway: healthy
@@ -82,18 +94,18 @@ All posts include full digests; synced to Obsidian vault.
 
 ## Issues & Notes
 
-- **Clawdash data visibility:** If blank, hard refresh (Ctrl+F5) and clear site storage / unregister service worker. Deployed no‑cache headers and diagnostics.
-- **PWA dashboard project** on Vercel Private; set to Public for install prompt.
-- LinkedIn PA: occasional word‑count warnings (<300) and time‑parsing quirks (08/09 hours) — non‑fatal.
+- **Clawdash data visibility:** Service worker disabled; if still blank, try incognito and share console errors. Working on deployment configuration.
+- **PWA dashboard project** on Vercel now at https://clawdash.vercel.app (test this URL)
+- LinkedIn PA: occasional word‑count warnings (<300) and timestamp parsing quirks (08/09 hours).
 
 ---
 
 ## Plans
 
-- Keep constraints green; monitor workspace‑builder cycles
 - Continue LinkedIn PA production (typical 20–25 posts/day)
-- Evaluate next research gap (possible: neuromorphic chips, fusion energy, space launch economics)
-- Consider agent uptime metrics in Clawdash
+- Evaluate next research gap (possible: solid‑state batteries, 6G advanced, or AI alignment)
+- Resolve Clawdash data display (deployment/CDN cache investigation)
+- Maintain constraints green
 
 ---
 
