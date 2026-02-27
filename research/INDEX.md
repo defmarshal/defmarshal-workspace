@@ -1,10 +1,11 @@
 # Research Reports — Index
 
-This index is auto‑generated. Last updated: 2026-02-26
+This index is auto‑generated. Last updated: 2026-02-27
 
-## 2026 Reports (168 total)
+## 2026 Reports (169 total)
 
 ### 2026-02
+- [Spring 2026 Anime Season Trends — Lineup, Streaming, and Highlights](2026-02-27-spring-2026-anime-season-trends.md)
 - [Edge AI & TinyML 2026 — State of the Art](2026-02-26-edge-ai-tinyml-2026.md)
 - [AI Agent Frameworks 2026 — Comparison & Trends](2026-02-26-ai-agent-frameworks-2026-comparison.md)
 - [Traffic Prediction APIs & State of the Art — 2026](2026-02-25-traffic-prediction-apis-state-of-the-art-2026.md)
