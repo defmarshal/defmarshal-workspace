@@ -1,16 +1,16 @@
 {
   "lastChecks": {
-    "timestamp": "2026-02-27T11:11:00Z",
+    "timestamp": "2026-02-27T11:30:00Z",
     "supervisor_run": "OK",
     "health": "ok",
     "cron": "all_jobs_running",
-    "memory": "clean",
+    "memory": "clean (26f/302c, reindex 3.4d)",
     "git_status": "clean",
-    "downloads": "aria2_active",
+    "downloads": "aria2_active (17 files, 5.7GB)",
     "disk_usage": "71%",
     "apt_updates": 0,
     "gateway": "running",
     "weather": "timeout (wttr.in unreachable)",
-    "notes": "All core systems healthy. Agent-manager cron executed successfully. Weather service temporarily unavailable."
+    "notes": "All core systems healthy. Supervisor-cron executed successfully with all green. No issues detected."
   }
 }
