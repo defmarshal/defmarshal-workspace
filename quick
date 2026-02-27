@@ -14,6 +14,7 @@ Commands:
   dash            Run the CLI dashboard (dashboard.py)
   web             Run the web dashboard (web-dashboard.py)
   dashboard       Generate dashboard data JSON and show access instructions (unified observability dashboard)
+  test-dashboard  Quick health check: validate data.json and verify Vercel endpoint
   gateway-info    Show gateway status and remote access setup instructions
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
   heartbeat-state  Show last heartbeat check timestamps and statuses (from memory/heartbeat-state.json)
@@ -214,6 +215,23 @@ cmd="${1:-help}"
 shift || true
 
 case "$cmd" in
+  test-dashboard)
+    DATA="$WORKSPACE/apps/dashboard/data.json"
+    if [ ! -f "$DATA" ]; then
+      echo "❌ data.json not found at $DATA"
+      exit 1
+    fi
+    echo "✅ data.json exists"
+    echo "📊 Content:"
+    jq '.system | {gateway, disk_percent, agents: (.agents | length), research: .research.total, commits: (.recent_commits | length)}' "$DATA" 2>/dev/null || {
+      echo "❌ Invalid JSON"
+      exit 1
+    }
+    echo "🔗 Live endpoint check:"
+    curl -s -o /dev/null -w "HTTP %{http_code}\n" https://openclaw-dashboard-delta.vercel.app/data.json || echo "❌ curl failed"
+    echo "✅ Dashboard data test passed"
+    ;;
+
   dash|dashboard)
     python3 "$WORKSPACE/dashboard.py"
     ;;
