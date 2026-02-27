@@ -45,6 +45,7 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Exit code vs output** → When writing conditional logic based on a script's result, use the command's exit code (`$?`) rather than parsing its stdout. Output is for human consumption; exit codes are for machine decisions. Prevents bugs like meta-agent always triggering due to multi-line status text.
 - **OpenClaw CLI JSON parsing** → `openclaw ... --json` may prepend Doctor warnings (config notices) to stdout. Always filter with `sed -n '/^{/,$p'` before piping to `jq`. Example: `openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq ...`
 - **Binary file detection in grep** → When scanning files for text patterns (like CRLF), use `grep -I` to ignore binary files. Binary files contain arbitrary bytes that can match any pattern and cause false positives.
+- **jq output semantics** → The comma operator (`,`) in jq creates a stream of multiple outputs, not a single modified object. To chain modifications and emit a single JSON object, use the pipe operator (`|`). Example: `.status = $status | .implemented_at = $ts | .result = $result`. Using commas will write multiple JSON objects to the output, corrupting files expecting a single object. This bug caused enhancement-bot proposal corruption and temp file accumulation.
 
 ## Performance
 
