@@ -1,0 +1,12 @@
+{
+  "title": "Example: Add workspace health badge to README",
+  "description": "This is a demonstration proposal showing the Enhancement Bot's JSON format. It serves as a template for future proposals. The associated script is a no-op that logs its execution. In a real proposal, the script would perform an actual improvement like fixing typos, updating documentation, or cleaning up stale files.",
+  "priority": 5,
+  "script": "scripts/example-noop.sh",
+  "status": "implemented",
+  "created_at": "2026-02-26T17:00:00Z",
+  "updated_at": "2026-02-26T17:00:00Z",
+  "implemented_at": "2026-02-27T03:21:40Z",
+  "failed_at": null,
+  "result": "=== Example Enhancement Bot Script ===\nThis script would perform a real improvement if this were a real proposal.\nFor demonstration purposes, it simply logs and exits successfully.\n\nProposal: Add workspace health badge to README\nStatus: Would have updated README.md with health metrics badge\n\n Enhancement proposals should:\n  - Be idempotent (safe to run multiple times)\n  - Include validation (check that changes took effect)\n  - Exit 0 on success, non-zero on failure\n\nExample completed successfully."
+}
