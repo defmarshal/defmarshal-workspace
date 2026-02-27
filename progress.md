@@ -5,30 +5,46 @@ This file logs the step-by-step execution of the workspace-builder session.
 ## Phase Log
 
 ### Phase 1: Commit Pending Changes
-- **Status**: pending
+- **Status**: ✅ completed
 - **Started**: 2026-02-27 15:06 UTC
+- **Completed**: 2026-02-27 15:06 UTC
 - **Actions**:
   - `git add -A`
   - `git commit -m "build: publish edge AI research report and update research-hub index timestamp (workspace-builder session 20260227-1506)"`
   - `git push origin master`
-- **Output**: (to be captured)
-- **Verification**: Git status clean, remote up-to-date
+- **Output**:
+  ```
+  [master f4caa025] build: publish edge AI research report and update research-hub index timestamp (workspace-builder session 20260227-1506)
+   5 files changed, 385 insertions(+), 160 deletions(-)
+   create mode 100644 research/2026-02-27-edge-ai-tinyml-2026.md
+  ```
+- **Verification**: Git status clean, remote up-to-date (fast-forward)
 
 ### Phase 2: Delete Stale Branch
-- **Status**: pending
+- **Status**: ✅ completed
+- **Started**: 2026-02-27 15:06 UTC
+- **Completed**: 2026-02-27 15:06 UTC
 - **Actions**:
   - `git branch -D idea/design-a-utility-dashboard-to`
-  - `git push origin --delete idea/design-a-utility-dashboard-to` (if exists on remote)
-- **Output**: (to be captured)
-- **Verification**: `git branch --list 'idea/*'` returns 0 branches
+  - `git push origin --delete idea/design-a-utility-dashboard-to` (remote didn't exist)
+- **Output**:
+  ```
+  Deleted branch idea/design-a-utility-dashboard-to (was 41331f36).
+  error: unable to delete 'idea/design-a-utility-dashboard-to': remote ref does not exist
+  ```
+- **Verification**: `git branch --list 'idea/*'` returns 0 branches (stale branch cleaned)
 
 ### Phase 3: active-tasks.md Update
-- **Status**: pending
+- **Status**: ✅ completed
+- **Started**: 2026-02-27 15:06 UTC
+- **Completed**: 2026-02-27 15:06 UTC
 - **Actions**:
-  - Add running entry for session `workspace-builder-20260227-1506`
-  - After Phase 5 validation, update entry to validated with metrics
-  - Prune oldest completed entry if size >1900 bytes
-- **Verification**: active-tasks.md size <2KB, entry correctly formatted
+  - Added running entry:
+    ```
+    - [workspace-builder-20260227-1506] workspace-builder - Commit research report, cleanup stale branches, enforce constraints (started: 2026-02-27 15:06 UTC, status: running)
+      - Verification: (pending validation)
+    ```
+- **Verification**: active-tasks.md size still <2KB (1766→~1900), format correct
 
 ### Phase 4: Planning Documentation
 - **Status**: completed (initial creation)
