@@ -9,6 +9,7 @@ const { pipeline } = require('@xenova/transformers');
 
 const ROOT = process.env.WORKSPACE || '/home/ubuntu/.openclaw/workspace';
 const MEM_DIR = path.join(ROOT, 'memory');
+const KNOW_DIR = path.join(MEM_DIR, 'knowledge');
 const RESEARCH_DIR = path.join(ROOT, 'research');
 const CONTENT_DIR = path.join(ROOT, 'content');
 const INDEX_PATH = path.join(MEM_DIR, '.semantic_index.json');
@@ -24,7 +25,7 @@ async function chunkText(text, maxChars = 2000) {
 
 async function collectFiles() {
   const files = [];
-  for (const dir of [MEM_DIR, RESEARCH_DIR, CONTENT_DIR]) {
+  for (const dir of [MEM_DIR, KNOW_DIR, RESEARCH_DIR, CONTENT_DIR]) {
     if (!fs.existsSync(dir)) continue;
     for (const f of fs.readdirSync(dir)) {
       if (f.endsWith('.md') && !f.startsWith('.') && f !== 'INDEX.md') {
