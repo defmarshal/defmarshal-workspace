@@ -33,49 +33,76 @@ Downloads: 17 files, 5.7GB
 
 **Violations:** 1 (git dirty)
 
-### Issues Identified
+---
 
-1. **Git dirty — INDEX.md timestamp**
-   - File: `apps/research-hub/INDEX.md`
-   - Change: "Last updated" timestamp from `2026-02-27 02:13 UTC` → `2026-02-27 03:09 UTC`
-   - Cause: content-agent regenerated INDEX or daily digest
-   - Severity: Minor (cleanup needed to maintain constraint)
+## Issues & Resolutions
 
-2. **Active tasks structure**
-   - Current structure had validated entry in Running section (misplaced)
-   - Reorganized: Running only contains truly running agents; Completed contains validated sessions
+### 1. Git Dirty — INDEX.md Timestamp
 
-3. **Enhancement-bot daemon bug (critical)**
-   - The daemon's jq command uses wrong assignment syntax: `.status=$status, implemented_at=$ts, result=$result`
-   - Missing dots before `implemented_at` and `result` causes jq compilation error
-   - This leaves `.tmp` files behind and prevents proposal status updates
-   - Recurring temp file: `enhancements/example-proposal-template-20260226.json.tmp` is recreated continuously
-   - Impact: Demo proposal stuck in "proposed"; temp files accumulate; violates no-temp-files constraint
-   - Fix: Change jq filter to `.status = $status, .implemented_at = $ts, .result = $result` (also add error handling around mv)
+**Details:** `apps/research-hub/INDEX.md` had an updated "Last updated" timestamp.
 
-4. **Planning docs**
-   - task_plan.md ✅ created
-   - findings.md 📝 in progress
-   - progress.md 📝 tracking
+**Action:** Committed with message `build: update research-hub index timestamp (workspace-builder session 20260227-0315)`
 
-### Observations
-
-- System overall in excellent health
-- Memory index age acceptable (3.1 days)
-- No stale branches or temp files
-- active-tasks.md well-maintained (1719 bytes)
-- Recent enhancement-bot system deployment (2026-02-26 17:05) adds automation capabilities
+**Status:** ✅ Resolved
 
 ---
 
-## Decisions
+### 2. Active Tasks Misorganization
 
-- Fix git dirty by committing the INDEX.md timestamp update
-- Reorganize active-tasks.md to separate Running/Completed properly
-- Prune oldest completed entry after adding current session entry to maintain <2KB
-- Follow standard workspace-builder pattern from previous runs
-- Ensure all constraints pass before final commit
+**Details:** A validated workspace-builder entry was still in the Running section instead of Completed.
+
+**Action:** Reorganized active-tasks.md:
+- Moved `workspace-builder-20260227-0109` to Completed
+- Added new running entry for current session: `workspace-builder-23dad379`
+- After validation, moved current entry to Completed and pruned oldest (`workspace-builder-20260226-2300`) to maintain <2KB
+- Final size: 1698 bytes
+
+**Status:** ✅ Resolved
 
 ---
 
-**Next:** Execute Phase 2 (Cleanup & Corrections)
+### 3. Enhancement-Bot Daemon Critical Bug
+
+**Discovery:** Recurring temp file `enhancements/example-proposal-template-20260226.json.tmp` appeared repeatedly despite cleanup.
+
+**Root Cause Analysis:**
+- Daemon's jq command used **comma operator** in filter: `.status = $status, .implemented_at = $ts, .result = $result`
+- In jq, comma creates a **stream** of separate outputs, not a single modified object. This emitted three JSON values (status, timestamp, result) to the output file, leading to concatenated multiple JSON objects and file corruption.
+- Additionally, the filter lacked dots for some field assignments, causing jq errors.
+- The combination prevented status updates and left `.tmp` files behind.
+
+**Impact:**
+- Example proposal stuck in "proposed" indefinitely
+- Continuous .tmp file accumulation
+- Violation of "no temp files" constraint
+- Potential JSON corruption and daemon instability
+
+**Fix Applied:**
+1. Changed jq filters to use **pipe operator** (`|`) to chain modifications and emit a single object:
+   - `.status = $status | .implemented_at = $ts | .result = $result`
+2. Added dots for all field assignments (e.g., `.failed_at` not `failed_at`)
+3. Wrapped jq and mv in error checks: on failure, log error and clean up temp file
+4. Restarted daemon with corrected script
+5. Restored clean example proposal and verified correct behavior:
+   - Single valid JSON produced
+   - Status transitions to "implemented"
+   - No `.tmp` files left
+   - JSON passes `python3 -m json.tool` validation
+
+**Commits:**
+- `4b60bac0 build: fix enhancement-bot daemon jq filters (use pipes) - correct multi-output bug causing JSON corruption`
+- `7a5efe5f build: add example proposal file for enhancement-bot`
+
+**Status:** ✅ Resolved
+
+---
+
+## Additional Notes
+
+- All validations pass: health green, git clean, active-tasks <2KB, MEMORY.md 30 lines, zero temp files.
+- Daemon now operates correctly; enhancement proposals will update as intended.
+- Lesson learned: In jq, use `|` to chain modifications, not `,`. Commas create multiple output values.
+
+---
+
+**Final workspace state:** All constraints satisfied, all documentation up to date, remote synchronized.
