@@ -1,0 +1,41 @@
+    async function load() {
+      try {
+        const bust = Date.now();
+        const url = `/data.json?bust=${bust}`;
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        const data = JSON.parse(text);
+        renderSystem(data);
+        renderAgents(data.agents);
+        renderResearch(data.research);
+        renderCommits(data.recent_commits || []);
+        document.getElementById('last-updated').textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+        hideError();
+      } catch (e) {
+        console.error(e);
+        showError(`Load failed: ${e.message}`);
+      }
+    }
+
+    function showError(msg) {
+      const banner = document.getElementById('status-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        banner.className = 'bad';
+        banner.textContent = msg;
+      }
+      document.getElementById('last-updated').textContent = 'Error';
+    }
+    function hideError() {
+      const banner = document.getElementById('status-banner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      load();
+      setInterval(load, 60000);
+    });
+  </script>
+</body>
+</html>
