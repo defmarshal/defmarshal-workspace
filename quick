@@ -19,6 +19,7 @@ Commands:
   log-tail        Show recent log tail for agents (default: all; usage: quick log-tail [agent-name])
   top-commits     Show top recent commits with agent prefixes (default: 10; usage: quick top-commits [N])
   vercel-status   Check Vercel dashboard deployment health (HTTP + JSON)
+  ensure-clawdash-deployed  Regenerate data, commit, and deploy Clawdash to Vercel
   today           Show files modified today (since midnight UTC)
   gateway-info    Show gateway status and remote access setup instructions
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
@@ -250,6 +251,10 @@ case "$cmd" in
 
   vercel-status)
     bash "$WORKSPACE/scripts/quick-vercel-status.sh"
+    ;;
+
+  ensure-clawdash-deployed)
+    bash "$WORKSPACE/scripts/quick-ensure-clawdash-deployed.sh"
     ;;
 
   today)
