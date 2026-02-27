@@ -1,90 +1,109 @@
-# Workspace Builder Task Plan
-**Session**: workspace-builder-20260227-0109
-**Time**: 2026-02-27 01:09 UTC
-**Goal**: Commit pending changes, enforce constraints, maintain active-tasks.md, validate health
+# Workspace Builder Session Plan
+
+**Session Key:** 23dad379-21ad-4f7a-8c68-528f98203a33
+**Started:** 2026-02-27 03:10 AM UTC
+**Goal:** Strategic maintenance: enforce constraints, clean workspace, validate health, and document outcomes
 
 ---
 
-## Phase 1: Assessment & Analysis
-**Objective**: Understand current workspace state and identify violations
+## Context
 
-- [ ] Run `git status -s` and `git diff` to see modified files
-- [ ] Run `./quick health` and `./quick validate-constraints` to capture baseline
-- [ ] Analyze the dirty file (apps/research-hub/INDEX.md) to understand modification
-- [ ] Review active-tasks.md structure: note validated entry under "Running" section (should be moved to Completed)
-- [ ] Check active-tasks.md size and need for pruning
-- [ ] Document findings in `findings.md`
-
-**Success Criteria**: Clear picture of all issues and required actions
-
----
-
-## Phase 2: Commit Pending Changes
-**Objective**: Stage and commit the modified INDEX.md with appropriate message
-
-- [ ] Verify change is legitimate (timestamp update for research-hub index)
-- [ ] Stage file: `git add apps/research-hub/INDEX.md`
-- [ ] Commit: `git commit -m "build: update research-hub index timestamp (workspace-builder session 20260227-0109)"`
-- [ ] Push: `git push origin master`
-- [ ] Verify push succeeded and git is clean
-
-**Success Criteria**: Git clean, remote synchronized
+- **Previous run:** 2026-02-27 01:09 UTC (successful, validated)
+- **Current state:** Healthy but git dirty (INDEX.md timestamp update)
+- **Constraints to enforce:**
+  - active-tasks.md ≤ 2KB
+  - MEMORY.md ≤ 30 lines
+  - Git clean & pushed
+  - No temp files, no stale branches
+  - Health green
+  - Memory reindex age acceptable (<4 days)
 
 ---
 
-## Phase 3: active-tasks.md Organization
-**Objective**: Reorganize active-tasks.md entries and add current session
+## Phase 1: Analysis & Diagnosis
 
-- [ ] Move validated entry `[workspace-builder-20260226-2300]` from "Running" to "Completed (recent)" section
-- [ ] Add new running entry for current session with session key `workspace-builder-20260227-0109`
-- [ ] Check file size: if >2KB, prune oldest completed entry (likely workspace-builder-23dad379)
-- [ ] Verify active-tasks.md remains valid markdown and <2KB
+**Objective:** Understand current workspace state and identify issues
 
-**Success Criteria**: active-tasks.md properly structured, size within limit
+**Steps:**
+1. Run `./quick health` and capture output
+2. Run `./quick validate-constraints` (check if exists)
+3. Check git status and identify uncommitted changes
+4. Check active-tasks.md structure (Running vs Completed sections)
+5. Look for stale branches (`git branch --list 'idea/*'`)
+6. Look for temp files (`find . -name "*.tmp" -o -name "*~"`)
+7. Check memory index age and health
+8. Verify quick commands functionality (agents-summary, etc.)
 
----
-
-## Phase 4: Constraint Validation
-**Objective**: Ensure all workspace constraints are satisfied
-
-- [ ] Run `./quick health` - must be all green
-- [ ] Run `./quick validate-constraints` - must pass all checks
-- [ ] Verify: active-tasks.md size <2KB, MEMORY.md ≤30 lines, no temp files, no stale branches, memory reindex age fresh
-
-**Success Criteria**: All constraints passing
+**Success criteria:** Complete understanding of all violations and opportunities
 
 ---
 
-## Phase 5: Documentation & Final Commit
-**Objective**: Commit planning docs and active-tasks updates
+## Phase 2: Cleanup & Corrections
 
-- [ ] Stage planning files: task_plan.md, findings.md, progress.md (once updated)
-- [ ] Stage updated active-tasks.md
-- [ ] Commit: `git commit -m "build: mark workspace-builder session validated (2026-02-27 01:09 UTC)"`
-- [ ] Push to origin
-- [ ] Verify push successful
+**Objective:** Fix all identified issues
 
-**Success Criteria**: All documentation committed, remote up-to-date
+**Steps:**
+1. Commit any pending changes (e.g., INDEX.md timestamp update)
+2. Push commits to origin if needed
+3. Delete stale idea branches if any
+4. Remove temp files if any
+5. Reorganize active-tasks.md:
+   - Move validated entries from Running to Completed
+   - Prune oldest completed entries to stay <2KB
+   - Add current session entry (status: running)
+6. Ensure MEMORY.md size ≤ 30 lines
+7. Fix any broken quick commands or missing files
 
----
-
-## Phase 6: Final Verification
-**Objective**: Confirm workspace fully clean and healthy
-
-- [ ] Final `git status` - clean
-- [ ] Final `./quick health` - green
-- [ ] Final `./quick validate-constraints` - all pass
-- [ ] Review progress.md completeness
-
-**Success Criteria**: Session complete with no remaining issues
+**Success criteria:** All constraints passing, workspace clean
 
 ---
 
-## Error Handling
-- If validation fails at any point, debug and document in findings.md before proceeding
-- Do not mark session validated until all constraints satisfied
+## Phase 3: Documentation & Validation
+
+**Objective:** Document work and verify completeness
+
+**Steps:**
+1. Create/update planning docs (task_plan.md, findings.md, progress.md)
+2. Run comprehensive validation:
+   - `./quick validate-constraints`
+   - `./quick health`
+   - `./quick git-status`
+3. Verify:
+   - No untracked files (except expected)
+   - active-tasks.md size < 2KB
+   - MEMORY.md ≤ 30 lines
+   - All services healthy
+4. If all green, commit planning docs with prefix 'build:'
+5. Push commit to origin
+
+**Success criteria:** All validations pass, changes committed and pushed
 
 ---
 
-**Start Time**: 2026-02-27 01:09 UTC
-**Status**: Ready to execute
+## Phase 4: Close The Loop
+
+**Objective:** Mark session validated and update active-tasks
+
+**Steps:**
+1. Update active-tasks.md:
+   - Change current entry status from running → validated
+   - Add verification notes (size metrics, validation results)
+2. Prune oldest completed entry if size approaching 2KB
+3. Final validation sweep
+4. Commit active-tasks.md update
+5. Push to origin
+
+**Success criteria:** active-tasks.md organized, session fully documented, remote synced
+
+---
+
+## Notes
+
+- Keep changes small and focused
+- Follow text-over-brain principle: document everything
+- Use `memory_get` for specific lines if needed
+- Respect existing patterns (see previous logs in memory/)
+
+---
+
+**Status:** 📋 Planning phase ready → Ready to execute
