@@ -1672,6 +1672,9 @@ except Exception:
     # Run the gateway fix script
     bash "$WORKSPACE/gateway-fix.sh"
     ;;
+  check-quick-commands)
+    bash "$WORKSPACE/scripts/quick-check-commands.sh"
+    ;;
   status)
     # Concise one-line system summary (local only)
     disk=$(df -h / | awk 'NR==2 {print $5}')
