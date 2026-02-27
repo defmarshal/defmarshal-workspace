@@ -15,6 +15,7 @@ Commands:
   web             Run the web dashboard (web-dashboard.py)
   dashboard       Generate dashboard data JSON and show access instructions (unified observability dashboard)
   test-dashboard  Quick health check: validate data.json and verify Vercel endpoint
+  agents-summary  Show one-line status of all agents from active-tasks.md
   gateway-info    Show gateway status and remote access setup instructions
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
   heartbeat-state  Show last heartbeat check timestamps and statuses (from memory/heartbeat-state.json)
@@ -24,8 +25,6 @@ Commands:
   workspace-cleanup Perform workspace maintenance: compress old logs, delete stale branches, prune downloads/ and builds/, remove temp files, vacuum SQLite. Dry-run by default; use --execute to apply.
   mem             Show recent memories (claw memory list)
   music           Send a cozy music recommendation to Telegram (lofi/city pop)
-    "$WORKSPACE/scripts/music-recommend.sh"
-    ;;
   obsidian-sync   Sync OpenClaw research/content to Obsidian vault (markdown folder)
   search <query>  Search memories (claw memory search)
   memory-status  Show memory index status (openclaw memory status)
@@ -230,6 +229,10 @@ case "$cmd" in
     echo "🔗 Live endpoint check:"
     curl -s -o /dev/null -w "HTTP %{http_code}\n" https://openclaw-dashboard-delta.vercel.app/data.json || echo "❌ curl failed"
     echo "✅ Dashboard data test passed"
+    ;;
+
+  agents-summary)
+    bash "$WORKSPACE/scripts/quick-agents-summary.sh"
     ;;
 
   dash|dashboard)
