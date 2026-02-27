@@ -91,3 +91,6 @@ agents/ideas/*.json
 # End of additions
 .vercel
 skills/kokoro-tts/venv/
+
+# Dashboard subproject (tracked in its own repo)
+apps/dashboard/
