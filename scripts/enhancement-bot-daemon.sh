@@ -56,12 +56,32 @@ while true; do
 
   if [ $EXIT_CODE -eq 0 ]; then
     log "SUCCESS: $ITEM"
-    jq --arg status "implemented" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg result "$(cat "$OUTPUT")" \
-      '.status=$status, implemented_at=$ts, result=$result' "$ITEM" > "$ITEM.tmp" && mv "$ITEM.tmp" "$ITEM"
+    if jq --arg status "implemented" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg result "$(cat "$OUTPUT")" \
+      '.status = $status, .implemented_at = $ts, .result = $result' "$ITEM" > "$ITEM.tmp"; then
+      if mv "$ITEM.tmp" "$ITEM"; then
+        log "Updated proposal status to implemented"
+      else
+        log "ERROR: mv failed for $ITEM.tmp -> $ITEM"
+        rm -f "$ITEM.tmp"
+      fi
+    else
+      log "ERROR: jq failed for $ITEM"
+      rm -f "$ITEM.tmp"
+    fi
   else
     log "FAILED: $ITEM (exit $EXIT_CODE). Output: $(cat "$OUTPUT")"
-    jq --arg status "failed" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg result "$(cat "$OUTPUT")" \
-      '.status=$status, failed_at=$ts, result=$result' "$ITEM" > "$ITEM.tmp" && mv "$ITEM.tmp" "$ITEM"
+    if jq --arg status "failed" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg result "$(cat "$OUTPUT")" \
+      '.status = $status, .failed_at = $ts, .result = $result' "$ITEM" > "$ITEM.tmp"; then
+      if mv "$ITEM.tmp" "$ITEM"; then
+        log "Updated proposal status to failed"
+      else
+        log "ERROR: mv failed for $ITEM.tmp -> $ITEM"
+        rm -f "$ITEM.tmp"
+      fi
+    else
+      log "ERROR: jq failed for $ITEM"
+      rm -f "$ITEM.tmp"
+    fi
   fi
   rm -f "$OUTPUT"
 
