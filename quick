@@ -278,6 +278,7 @@ case "$cmd" in
     less "$WORKSPACE/content/$(date +%Y-%m-%d)-daily-digest.md" || echo "No digest for today yet"
     ;;
 
+  random-project       Suggest a fun non-web weekend project (maker, game, music, art)
   today)
     bash "$WORKSPACE/scripts/quick-today.sh" "${2:-}"
     ;;
@@ -1794,6 +1795,7 @@ EOF
     bash "$WORKSPACE/scripts/research-hub-status.sh"
     ;;
 
+  random-project       Suggest a fun non-web weekend project (maker, game, music, art)
   today)
     # Show files modified today (since midnight UTC)
     find "$WORKSPACE" -type f ! -path '*/\.git/*' -mtime -1 -printf '%T+ %p\n' 2>/dev/null | sort || echo "No files modified today"
