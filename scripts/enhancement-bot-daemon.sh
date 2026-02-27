@@ -43,7 +43,7 @@ while true; do
   SCRIPT=$(jq -r '.script' "$ITEM" 2>/dev/null || echo "")
   if [ -z "$SCRIPT" ] || [ ! -x "$SCRIPT" ]; then
     log "ERROR: Missing or non-executable script: $SCRIPT"
-    jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '.status="failed", failed_at=$ts, result="Script missing or not executable"' "$ITEM" > "$ITEM.tmp" && mv "$ITEM.tmp" "$ITEM"
+    jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '.status = "failed" | .failed_at = $ts | .result = "Script missing or not executable"' "$ITEM" > "$ITEM.tmp" && mv "$ITEM.tmp" "$ITEM"
     sleep 2
     continue
   fi
@@ -57,7 +57,7 @@ while true; do
   if [ $EXIT_CODE -eq 0 ]; then
     log "SUCCESS: $ITEM"
     if jq --arg status "implemented" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg result "$(cat "$OUTPUT")" \
-      '.status = $status, .implemented_at = $ts, .result = $result' "$ITEM" > "$ITEM.tmp"; then
+      '.status = $status | .implemented_at = $ts | .result = $result' "$ITEM" > "$ITEM.tmp"; then
       if mv "$ITEM.tmp" "$ITEM"; then
         log "Updated proposal status to implemented"
       else
@@ -71,7 +71,7 @@ while true; do
   else
     log "FAILED: $ITEM (exit $EXIT_CODE). Output: $(cat "$OUTPUT")"
     if jq --arg status "failed" --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg result "$(cat "$OUTPUT")" \
-      '.status = $status, .failed_at = $ts, .result = $result' "$ITEM" > "$ITEM.tmp"; then
+      '.status = $status | .failed_at = $ts | .result = $result' "$ITEM" > "$ITEM.tmp"; then
       if mv "$ITEM.tmp" "$ITEM"; then
         log "Updated proposal status to failed"
       else
