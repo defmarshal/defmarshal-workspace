@@ -18,6 +18,7 @@ Commands:
   agents-summary  Show one-line status of all agents from active-tasks.md
   log-tail        Show recent log tail for agents (default: all; usage: quick log-tail [agent-name])
   top-commits     Show top recent commits with agent prefixes (default: 10; usage: quick top-commits [N])
+  vercel-status   Check Vercel dashboard deployment health (HTTP + JSON)
   today           Show files modified today (since midnight UTC)
   gateway-info    Show gateway status and remote access setup instructions
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
@@ -245,6 +246,10 @@ case "$cmd" in
   top-commits)
     N="${2:-10}"
     bash "$WORKSPACE/scripts/quick-top-commits.sh" "$N"
+    ;;
+
+  vercel-status)
+    bash "$WORKSPACE/scripts/quick-vercel-status.sh"
     ;;
 
   today)
