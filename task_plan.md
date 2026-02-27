@@ -1,104 +1,90 @@
 # Workspace Builder Task Plan
-**Session**: workspace-builder-23dad379-21ad-4f7a-8c68-528f98203a33
-**Time**: 2026-02-26 23:00 UTC
-**Goal**: Clean workspace, commit pending changes, enforce constraints, validate health
+**Session**: workspace-builder-20260227-0109
+**Time**: 2026-02-27 01:09 UTC
+**Goal**: Commit pending changes, enforce constraints, maintain active-tasks.md, validate health
 
 ---
 
 ## Phase 1: Assessment & Analysis
-**Objective**: Understand the current workspace state and pending changes
+**Objective**: Understand current workspace state and identify violations
 
-- [ ] Read modified files: `apps/dashboard/data.json`, `apps/dashboard/vercel.json`, `content/INDEX.md`
-- [ ] Check untracked file: `apps/dashboard/.gitignore` - determine if it should be added
-- [ ] Run `git status -s` and `./quick health` to establish baseline
-- [ ] Review recent daily logs for context on these changes
+- [ ] Run `git status -s` and `git diff` to see modified files
+- [ ] Run `./quick health` and `./quick validate-constraints` to capture baseline
+- [ ] Analyze the dirty file (apps/research-hub/INDEX.md) to understand modification
+- [ ] Review active-tasks.md structure: note validated entry under "Running" section (should be moved to Completed)
+- [ ] Check active-tasks.md size and need for pruning
 - [ ] Document findings in `findings.md`
 
-**Success Criteria**: Clear understanding of all modifications and their intent
+**Success Criteria**: Clear picture of all issues and required actions
 
 ---
 
-## Phase 2: Content INDEX.md Validation & Regeneration
-**Objective**: Ensure content/INDEX.md is properly synchronized with actual content files
+## Phase 2: Commit Pending Changes
+**Objective**: Stage and commit the modified INDEX.md with appropriate message
 
-- [ ] Compare current INDEX.md against `./quick content-index-update` output (dry-run)
-- [ ] If discrepancies found, regenerate INDEX.md using `./quick content-index-update` (with commit)
-- [ ] Verify INDEX.md includes all recent content items (no missing entries)
+- [ ] Verify change is legitimate (timestamp update for research-hub index)
+- [ ] Stage file: `git add apps/research-hub/INDEX.md`
+- [ ] Commit: `git commit -m "build: update research-hub index timestamp (workspace-builder session 20260227-0109)"`
+- [ ] Push: `git push origin master`
+- [ ] Verify push succeeded and git is clean
 
-**Success Criteria**: INDEX.md accurately reflects all content files
-
----
-
-## Phase 3: .gitignore Review
-**Objective**: Determine if `.gitignore` should be tracked and properly configured
-
-- [ ] Read `apps/dashboard/.gitignore` contents
-- [ ] Determine if it's appropriate to track (likely yes if it contains project-specific ignores)
-- [ ] If needed, add to git and ensure no sensitive info is committed
-
-**Success Criteria**: .gitignore appropriately configured and tracked if necessary
+**Success Criteria**: Git clean, remote synchronized
 
 ---
 
-## Phase 4: Commit & Push Pending Changes
-**Objective**: Commit all pending changes with proper build prefix, push to origin
+## Phase 3: active-tasks.md Organization
+**Objective**: Reorganize active-tasks.md entries and add current session
 
-- [ ] Stage all modified and new files (respecting .gitignore)
-- [ ] Create commit with message: `build: workspace-builder session 20260226-2300 - commit pending changes, enforce constraints`
-- [ ] Push to origin: `git push origin master`
-- [ ] Verify push successful, no errors
+- [ ] Move validated entry `[workspace-builder-20260226-2300]` from "Running" to "Completed (recent)" section
+- [ ] Add new running entry for current session with session key `workspace-builder-20260227-0109`
+- [ ] Check file size: if >2KB, prune oldest completed entry (likely workspace-builder-23dad379)
+- [ ] Verify active-tasks.md remains valid markdown and <2KB
 
-**Success Criteria**: Git clean, remote synchronized, no uncommitted changes
-
----
-
-## Phase 5: Constraint Validation
-**Objective**: Run comprehensive validation to ensure all workspace constraints are satisfied
-
-- [ ] Run `./quick health` - confirm all green
-- [ ] Run `./quick validate-constraints` - confirm all constraints pass
-- [ ] Check `active-tasks.md` size (<2KB)
-- [ ] Check `MEMORY.md` lines (≤30)
-- [ ] Verify no temp files exist (e.g., *.tmp)
-- [ ] Verify no stale `idea/*` branches
-- [ ] Check disk usage, gateway status, memory reindex age
-
-**Success Criteria**: All constraints satisfied; ready for documentation
+**Success Criteria**: active-tasks.md properly structured, size within limit
 
 ---
 
-## Phase 6: Documentation & Active Tasks Update
-**Objective**: Document session outcomes and update active-tasks.md
+## Phase 4: Constraint Validation
+**Objective**: Ensure all workspace constraints are satisfied
 
-- [ ] Add validated entry to `active-tasks.md` with:
-  - Session key: `workspace-builder-23dad379`
-  - Verification metrics (active-tasks size, MEM30, health green, git clean)
-- [ ] Prune oldest completed entry if active-tasks.md > 2KB
-- [ ] Commit `active-tasks.md` updates: `build: mark workspace-builder session validated (2026-02-26 23:00 UTC)`
-- [ ] Push commit
+- [ ] Run `./quick health` - must be all green
+- [ ] Run `./quick validate-constraints` - must pass all checks
+- [ ] Verify: active-tasks.md size <2KB, MEMORY.md ≤30 lines, no temp files, no stale branches, memory reindex age fresh
 
-**Success Criteria**: active-tasks.md updated, all documentation committed and pushed
+**Success Criteria**: All constraints passing
 
 ---
 
-## Phase 7: Final Verification
-**Objective**: Ensure workspace is fully clean and all systems operational
+## Phase 5: Documentation & Final Commit
+**Objective**: Commit planning docs and active-tasks updates
 
-- [ ] Final `git status` - must be clean
-- `./quick health` - final check
-- [ ] Review `findings.md` and `progress.md` completeness
-- [ ] If any step failed, debug and re-run before proceeding
+- [ ] Stage planning files: task_plan.md, findings.md, progress.md (once updated)
+- [ ] Stage updated active-tasks.md
+- [ ] Commit: `git commit -m "build: mark workspace-builder session validated (2026-02-27 01:09 UTC)"`
+- [ ] Push to origin
+- [ ] Verify push successful
 
-**Success Criteria**: No remaining issues; session complete
+**Success Criteria**: All documentation committed, remote up-to-date
+
+---
+
+## Phase 6: Final Verification
+**Objective**: Confirm workspace fully clean and healthy
+
+- [ ] Final `git status` - clean
+- [ ] Final `./quick health` - green
+- [ ] Final `./quick validate-constraints` - all pass
+- [ ] Review progress.md completeness
+
+**Success Criteria**: Session complete with no remaining issues
 
 ---
 
 ## Error Handling
-- If any validation fails, pause and debug before proceeding
-- Document errors in `findings.md` with remediation steps
-- Do not commit if constraints not satisfied
+- If validation fails at any point, debug and document in findings.md before proceeding
+- Do not mark session validated until all constraints satisfied
 
 ---
 
-**Start Time**: 2026-02-26 23:00 UTC
+**Start Time**: 2026-02-27 01:09 UTC
 **Status**: Ready to execute
