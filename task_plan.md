@@ -1,52 +1,101 @@
-# Workspace Builder Plan — 2026-02-27 17:49 UTC
+# Workspace Builder Plan
+
+**Trigger:** Cron job execution (session: 23dad379-21ad-4f7a-8c68-528f98203a33)
+**Timestamp:** 2026-02-27 21:01 UTC
+**Human:** def
+
+---
 
 ## Goal
-Clean workspace, close pending changes, enforce constraints, and implement missing tech-project command integration.
 
-## Current State Analysis
-- Git dirty: M quick (duplicate random-project entries removed) + ?? memory/2026-02-27-1749.md
-- active-tasks.md: 1645b (<2KB), MEMORY.md: 31 lines (≤35)
-- Health: green, no updates, memory clean, gateway healthy
-- Idea branches: 0 (clean)
-- Temp files: none
-- Missing feature: tech-project command not registered in quick launcher (script exists but no case entry)
+Implement meaningful workspace improvements by:
+1. Pushing pending commits to origin (2 commits pending)
+2. Cleaning up stale idea branch
+3. Enforcing MEMORY.md ≤30 lines constraint
+4. Verifying all workspace constraints are satisfied
+5. Updating active-tasks.md with validated session entry
+6. Committing all documentation changes
 
-## Phases
+---
 
-### Phase 1: Diagnose & Plan
-- [x] Read active-tasks.md, MEMORY.md, daily logs
-- [x] Check git status, health, constraints
-- [x] Identify issues: missing tech-project entry, uncommitted daily log, quick launcher partially cleaned
+## Analysis Summary
 
-### Phase 2: Fix quick Launcher Integration
-- Add single `tech-project` case entry to quick (removing duplicates not needed — already done)
-- Add `tech-project` to help output
-- Verify both random-project and tech-project are present exactly once each
+**System health:** ✅ Green across all metrics
+- Disk: 73% (healthy)
+- Gateway: healthy
+- Memory: clean, local FTS+, reindex 3.8d old (acceptable)
+- Updates: none pending
 
-### Phase 3: Commit Pending Changes
-- Stage and commit daily log: memory/2026-02-27-1749.md
-- Stage and commit quick launcher updates
-- Push to origin
+**Git status:**
+- Working tree clean
+- Ahead of origin by 2 commits (needs push)
+- No untracked files
+- One stale branch: `idea/integrate-agent-logs-with-telegram`
 
-### Phase 4: Validate Constraints
-- Run `quick validate-constraints` (expect green)
-- Run `quick health` (expect green)
-- Verify active-tasks.md size <2KB
-- Verify git clean
-- Verify no temp files, no stale branches
+**Constraints:**
+- active-tasks.md: 1670 bytes (<2KB) ✅
+- MEMORY.md: 31 lines ⚠️ (over limit of 30)
+- No temp files ✅
+- Health green ✅
+- Reindex age acceptable ✅
 
-### Phase 5: Update active-tasks.md
-- Add validated entry for this session
-- Prune oldest completed entry to maintain <2KB
-- Commit and push active-tasks.md update
+---
 
-### Phase 6: Verification
-- Re-run constraints
-- Confirm remote synced
+## Plan Steps
+
+### Phase 1: Git Synchronization
+1. Push pending commits to origin/master
+2. Verify push successful
+
+### Phase 2: Repository Hygiene
+1. Delete stale idea branch `idea/integrate-agent-logs-with-telegram`
+2. Verify no remaining idea branches
+
+### Phase 3: Memory Maintenance
+1. Trim MEMORY.md to 30 lines by removing oldest entry (2026-02-21)
+2. Verify line count
+
+### Phase 4: Planning Documentation
+1. Create task_plan.md (this file)
+2. Create findings.md (analysis snapshot)
+3. Create progress.md (tracking template)
+
+### Phase 5: Active Tasks Update
+1. Add running entry for current workspace-builder session
+2. Verify active-tasks.md size remains <2KB
+3. After validation, mark entry as validated with metrics
+4. Prune one oldest completed entry if needed to maintain <2KB
+
+### Phase 6: Validation & Commit
+1. Run `./quick health` - verify green
+2. Run `./quick validate-constraints` - verify all satisfied
+3. Check no temp files, no stale branches
+4. Git status: clean and up-to-date
+5. If all pass, commit changes with prefix `build:`
+6. Push to origin
+7. Final verification
+
+---
+
+## Risk Mitigation
+
+- **If push fails:** Check remote branch divergence; use `git push --force-with-lease` if safe
+- **If MEMORY.md trimming removes needed info:** Preserve content in daily log first; only remove oldest entry (least recent learning)
+- **If constraints fail:** Debug immediately; do not proceed until all green
+- **If active-tasks.md exceeds 2KB:** Prune oldest completed entries aggressively
+
+---
 
 ## Success Criteria
-- All constraints green
-- Git clean and pushed
-- Both random-project and tech-project commands work
-- active-tasks.md <2KB
-- No temp files, no stale branches
+
+✅ All constraints satisfied (health, active-tasks size, MEMORY.md ≤30, git clean, no temp files, reindex fresh)
+✅ All changes committed and pushed
+✅ active-tasks.md updated with validated session entry
+✅ Documentation complete (task_plan.md, findings.md, progress.md)
+✅ Repository hygiene maintained (no stale branches, no temp files)
+
+---
+
+## Notes
+
+This is a routine maintenance cycle. The workspace is already in excellent health; we are enforcing constraints and pushing pending work.
