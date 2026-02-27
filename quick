@@ -271,6 +271,13 @@ case "$cmd" in
     node "$WORKSPACE/scripts/semantic-search.js" "$@"
     ;;
 
+  knowledge-add)
+    node "$WORKSPACE/scripts/knowledge-add.js" "$@"
+    ;;
+  digest)
+    less "$WORKSPACE/content/$(date +%Y-%m-%d)-daily-digest.md" || echo "No digest for today yet"
+    ;;
+
   today)
     bash "$WORKSPACE/scripts/quick-today.sh" "${2:-}"
     ;;
