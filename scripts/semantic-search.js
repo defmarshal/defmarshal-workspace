@@ -45,7 +45,13 @@ async function main() {
   const qEmb = Array.from(qOut.data);
 
   console.log(`Scoring ${index.length} chunks...`);
-  const scores = index.map(item => ({ file: item.file, chunk: item.chunk, score: cosine(qEmb, item.embedding) }));
+  const scores = [];
+  for (const item of index) {
+    const score = cosine(qEmb, item.embedding);
+    scores.push({ file: item.file, chunk: item.chunk, score: isFinite(score) ? score : 0 });
+    if (scores.length % 500 === 0) process.stdout.write(`.${scores.length}`);
+  }
+  console.log();
   scores.sort((a, b) => b.score - a.score);
 
   console.log(`\nTop ${top} results:\n`);
