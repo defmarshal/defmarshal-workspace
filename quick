@@ -92,6 +92,8 @@ Commands:
   show-cron                               Display OpenClaw cron jobs in a readable table
   version-check                           Compare installed OpenClaw version against latest npm release
   git-by-agent                            Show recent commits grouped by agent prefix (dev:, research:, content:, etc.)
+  random-project       Suggest a fun non-web weekend project (maker, game, music, art)
+  tech-project         Suggest a deep technical project (systems, embedded, compilers, robotics, hardware)
   research-age                            Show research reports sorted by age (oldest first)
   research-stats                          Show research library statistics (reports, TTS %, latest)
   research-tags                          Show tag statistics for research reports
@@ -278,7 +280,13 @@ case "$cmd" in
     less "$WORKSPACE/content/$(date +%Y-%m-%d)-daily-digest.md" || echo "No digest for today yet"
     ;;
 
-  random-project       Suggest a fun non-web weekend project (maker, game, music, art)
+  random-project)
+    bash "$WORKSPACE/scripts/random-project.sh"
+    ;;
+  tech-project)
+    bash "$WORKSPACE/scripts/tech-project.sh"
+    ;;
+
   today)
     bash "$WORKSPACE/scripts/quick-today.sh" "${2:-}"
     ;;
@@ -1795,7 +1803,6 @@ EOF
     bash "$WORKSPACE/scripts/research-hub-status.sh"
     ;;
 
-  random-project       Suggest a fun non-web weekend project (maker, game, music, art)
   today)
     # Show files modified today (since midnight UTC)
     find "$WORKSPACE" -type f ! -path '*/\.git/*' -mtime -1 -printf '%T+ %p\n' 2>/dev/null | sort || echo "No files modified today"
