@@ -17,6 +17,7 @@ Commands:
   test-dashboard  Quick health check: validate data.json and verify Vercel endpoint
   agents-summary  Show one-line status of all agents from active-tasks.md
   log-tail        Show recent log tail for agents (default: all; usage: quick log-tail [agent-name])
+  top-commits     Show top recent commits with agent prefixes (default: 10; usage: quick top-commits [N])
   gateway-info    Show gateway status and remote access setup instructions
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
   heartbeat-state  Show last heartbeat check timestamps and statuses (from memory/heartbeat-state.json)
@@ -238,6 +239,11 @@ case "$cmd" in
 
   log-tail)
     bash "$WORKSPACE/scripts/quick-log-tail.sh" "${2:-all}"
+    ;;
+
+  top-commits)
+    N="${2:-10}"
+    bash "$WORKSPACE/scripts/quick-top-commits.sh" "$N"
     ;;
 
   dash|dashboard)
