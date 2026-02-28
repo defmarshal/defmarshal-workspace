@@ -145,13 +145,17 @@ Commands:
   monthly-digest [YYYY-MM]       Generate monthly digest report (default: current month). Saves to reports/ and prints.
   sudo-check                  Check if passwordless sudo is configured (runs 'sudo -n true')
   today                     Show files modified today across the workspace (since midnight UTC)
-  log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
+  log-rotate                  Rotate workspace logs if >50MB (aria2, dev/content/research agents, etc.)
   disk-usage                  Show disk usage by top-level directories in the workspace (monitor growth)
   trim-agent-logs [options]   Trim oversized agent logs in memory/ (default: >500KB → keep last 1000 lines)
                                Options: --size KB, --keep LINES, --dry-run, --dir DIR
   find-large-files [options]  Find large files in the workspace (default: >10MB)
                                Options: --size SIZE (e.g. 5M, 1G), --days N (older than N days), --dir PATH, --top N
                                Example: quick find-large-files --size 50M --days 30
+  disk-usage-breakdown [options]  Workspace disk usage by top-level directory with status flags
+                               Options: --top N, --threshold MB, --json
+  git-latest-by-prefix         Show latest commit per agent prefix (dev:, research:, content:, etc.)
+  research-tts-verify [--generate]  Verify TTS coverage for research reports; list missing .mp3 files
   updates-check                Check for pending system updates (APT)
   updates-apply [--dry-run|--execute] Apply system updates (dry-run by default; use --execute to actually upgrade)
   cleanup-downloads [options] Clean up old downloads (default: dry-run, retains 30 days)
@@ -866,6 +870,15 @@ case "$cmd" in
 
   find-large-files)
     "$WORKSPACE/scripts/find-large-files.sh" "$@"
+    ;;
+  disk-usage-breakdown)
+    "$WORKSPACE/scripts/disk-usage-breakdown.sh" "$@"
+    ;;
+  git-latest-by-prefix)
+    "$WORKSPACE/scripts/git-latest-by-prefix.sh" "$@"
+    ;;
+  research-tts-verify)
+    "$WORKSPACE/scripts/research-tts-verify.sh" "$@"
     ;;
   trim-agent-logs)
     "$WORKSPACE/scripts/trim-agent-logs.sh" "$@"
