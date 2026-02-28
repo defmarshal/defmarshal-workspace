@@ -180,6 +180,9 @@
     @media (max-width: 640px) {
       .chat-sidebar { display: none; }
       .msg { max-width: 92%; }
+      .header-right #last-updated { display: none; }
+      .header-right #backend-status { display: none; }
+      header h1 span.subtitle { display: none; }
     }
   </style>
 </head>
@@ -190,7 +193,7 @@
   <div class="header-right">
     <span id="conn-dot" title="Connection status"></span>
     <span id="backend-status" class="bad">loading</span>
-    <button id="push-btn" title="Enable push notifications" onclick="togglePush()" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:14px;padding:3px 7px;line-height:1;">🔕</button>
+    <button id="push-btn" title="Enable push notifications" onclick="togglePush()" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:16px;padding:4px 8px;line-height:1;">🔕</button>
     <button id="theme-btn" title="Toggle light/dark">🌙</button>
     <span id="last-updated" class="muted">Loading…</span>
   </div>
@@ -241,6 +244,11 @@
 
 <!-- Chat -->
 <div id="tab-chat" class="tab-panel">
+  <div id="push-banner" style="display:none;background:var(--surface);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+    <span style="font-size:13px;color:var(--muted)">🔔 Get notified when mewmew replies</span>
+    <button onclick="setupPush();this.closest('#push-banner').style.display='none';" style="background:var(--blue);color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600;">Enable</button>
+    <button onclick="this.closest('#push-banner').style.display='none';" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;">✕</button>
+  </div>
   <div class="chat-main">
     <div id="chat-messages"></div>
     <div class="chat-input-wrap">
@@ -311,7 +319,14 @@ function switchTab(tab) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + tab));
   activeTab = tab;
   localStorage.setItem('clawdash-tab', tab);
-  if (tab === 'chat') { scrollChat(); startChatPoll(); } else { stopChatPoll(); }
+  if (tab === 'chat') {
+    scrollChat(); startChatPoll();
+    // Show push banner if not subscribed
+    if (!pushSubscribed && !ON_VERCEL && 'PushManager' in window) {
+      const banner = document.getElementById('push-banner');
+      if (banner) banner.style.display = 'flex';
+    }
+  } else { stopChatPoll(); }
 }
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
