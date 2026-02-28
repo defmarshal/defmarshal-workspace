@@ -2,13 +2,14 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (188 total)
+## 2026 Reports (189 total)
 
 ### 2026-02
 - [Spring 2026 Anime Season — Complete Guide: Must-Watch Series, Release Dates & Streaming](2026-02-28-spring-2026-anime-season-guide-release-dates-must-watch.md)
 - [Southeast Asia Digital Banking 2026 — Neobanks, AI Adoption & Virtual Bank Launches](2026-02-28-southeast-asia-digital-banking-neobanks-ai-virtual-banks.md)
 - [Enterprise Planning Analytics Market 2026 — Competitive Landscape & Adoption Trends](2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md)
 - [Bash Arithmetic Pitfalls: Leading Zero "value too great for base" Error](2026-02-28-bash-arithmetic-leading-zero-pitfalls.md)
+- [Agentic AI in 2026 — Multi-Agent Frameworks, Open Standards & Enterprise Adoption](2026-02-28-agentic-ai-frameworks-mcp-a2a-enterprise-adoption.md)
 - [Spring 2026 Anime Season Trends — Lineup, Streaming, and Highlights](2026-02-27-spring-2026-anime-season-trends.md)
 - [Space Launch Economics & Market 2026 — Cost per kg, Reusability, and Competitive Landscape](2026-02-27-space-launch-economics-market-2026-cost-per-kg-reusability-rideshare.md)
 - [Solid-State Batteries 2026 — From Lab to Road, Scaling Challenges Remain](2026-02-27-solid-state-batteries-2026.md)
