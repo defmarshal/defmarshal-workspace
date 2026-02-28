@@ -15,12 +15,15 @@ const path = require('path');
 const { spawn, execFile } = require('child_process');
 
 const PORT = 3001;
+const HTTPS_PORT = 3443;
 const HOST = '0.0.0.0';
 const WORKSPACE = path.join(process.env.HOME, '.openclaw', 'workspace');
 const DASHBOARD_DIR = path.join(WORKSPACE, 'apps', 'dashboard');
 const DATA_JSON = path.join(DASHBOARD_DIR, 'data.json');
 const SESSIONS_JSON = path.join(process.env.HOME, '.openclaw', 'agents', 'main', 'sessions', 'sessions.json');
 const SESSIONS_DIR = path.join(process.env.HOME, '.openclaw', 'agents', 'main', 'sessions');
+const CERT_PATH = path.join(DASHBOARD_DIR, 'tls.crt');
+const KEY_PATH  = path.join(DASHBOARD_DIR, 'tls.key');
 
 // Allowed quick commands (whitelist for safety)
 const ALLOWED_QUICK = new Set([
@@ -213,7 +216,21 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`🦾 ClawDash backend listening on http://${HOST}:${PORT}`);
-  console.log(`   Dashboard: http://localhost:${PORT}`);
-  console.log(`   Tailscale: http://100.108.208.45:${PORT}`);
+  console.log(`🦾 ClawDash HTTP  → http://localhost:${PORT}`);
+  console.log(`   Tailscale IP   → http://100.108.208.45:${PORT}`);
 });
+
+// HTTPS server for PWA install (Chrome on Android requires HTTPS)
+try {
+  const tlsOpts = {
+    cert: fs.readFileSync(CERT_PATH),
+    key:  fs.readFileSync(KEY_PATH),
+  };
+  const httpsServer = https.createServer(tlsOpts, server.listeners('request')[0]);
+  httpsServer.listen(HTTPS_PORT, HOST, () => {
+    console.log(`🔒 ClawDash HTTPS → https://instance-20260207-2229.tail2dd22b.ts.net:${HTTPS_PORT}`);
+    console.log(`   (use HTTPS URL for PWA install on Android Chrome)`);
+  });
+} catch (e) {
+  console.warn('⚠️  HTTPS not available:', e.message);
+}

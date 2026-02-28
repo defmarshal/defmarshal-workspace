@@ -95,3 +95,5 @@ skills/kokoro-tts/venv/
 # Dashboard subproject (tracked in its own repo)
 # apps/dashboard/ — re-enabled so data.json can be committed by cron
 memory/enhancement-bot.pid
+apps/dashboard/tls.crt
+apps/dashboard/tls.key
