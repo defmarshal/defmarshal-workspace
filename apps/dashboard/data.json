@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T04:10:02Z",
+  "generated_at": "2026-02-28T04:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -52,23 +52,41 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 03:30",
-      "last_line": "2026-02-28 03:30:08 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 04:13",
+      "last_line": "2026-02-28 04:13:43 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 03:23",
-      "last_line": "2026-02-28 03:23:16 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 04:14",
+      "last_line": "2026-02-28 04:14:24 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
-    "total": 213,
-    "tts_coverage": "99%",
+    "total": 214,
+    "tts_coverage": "100%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "sha": "d1f5941b",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": ""
+    },
+    {
+      "sha": "e30751c3",
+      "agent": "research",
+      "message": "Agentic AI 2026 — multi-agent frameworks (LangGraph/CrewAI/AG2/OpenAI SDK/Pydantic/ADK/Bedrock), MCP vs A2A protocols, AAIF open standards, enterprise adoption",
+      "time": ""
+    },
+    {
+      "sha": "75f0bddb",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "sha": "211d5f8b",
       "agent": "research",
@@ -137,24 +155,6 @@
     },
     {
       "sha": "179c3f1d",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "sha": "7c8f6498",
-      "agent": "feat",
-      "message": "clawdash v2 — 4-tab dashboard (Overview/Heartbeat/Agents/Chat) with live data",
-      "time": ""
-    },
-    {
-      "sha": "89b00f7c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "sha": "0564a9c8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": ""
