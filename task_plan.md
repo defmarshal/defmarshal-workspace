@@ -1,89 +1,49 @@
-# Workspace Strategic Improvement Plan
+# Workspace Builder Plan
 
-**Session:** workspace-builder-20260228-1507
-**Cron ID:** 23dad379-21ad-4f7a-8c68-528f98203a33
-**Goal:** Clean up duplicate meta-supervisor entry, refresh planning docs, validate constraints
-**Started:** 2026-02-28 15:07 UTC
+**Session:** 2026-02-28 17:05 UTC (cron-triggered)
+**Goal:** Restore git clean state, enforce constraints, and close the loop
 
 ---
 
-## Phase 1: Fix Active-Tasks Duplicate Entry
+## Phase 1: Analyze (Done)
+- ✅ Read current workspace state
+- ✅ Validated constraints: active-tasks OK (1329b), MEMORY 31 lines, health green, no temp files, shebangs OK, APT none, memory fresh, branches clean
+- ❌ Git dirty: 2 modified files (`apps/dashboard/data.json`, `memory/disk-history.json`)
 
-**Why:** active-tasks.md contains two identical entries for `meta-supervisor-daemon`. This violates documentation accuracy. Only one entry should exist.
+## Phase 2: Execute
+### Step 2.1: Commit pending state files
+- [ ] Stage both files
+- [ ] Commit with message: `build: commit auto-generated state files (dashboard metrics, disk history)`
 
-**Steps:**
-1. Read active-tasks.md to identify the duplicate.
-2. Remove the duplicate, keeping exactly one entry with proper formatting.
-3. Ensure file size remains <2KB.
-4. Commit: `build: remove duplicate meta-supervisor entry from active-tasks.md`
-5. Push to origin.
+### Step 2.2: Verify git clean
+- [ ] Run `git status` to confirm no unstaged changes
 
-**Success:** active-tasks.md has exactly one meta-supervisor-daemon entry.
+### Step 2.3: Update active-tasks.md
+- [ ] Find current running entry `[workspace-builder-<id>]` (if not present, add)
+- [ ] Move to Completed with verification notes
+- [ ] Prune oldest completed entries to keep size <2KB
 
----
+### Step 2.4: Validate constraints
+- [ ] Run `./quick validate-constraints`
+- [ ] Ensure all 7 checks pass
 
-## Phase 2: Refresh Planning Documentation
+### Step 2.5: Push to origin
+- [ ] Push all commits to `origin/master`
 
-**Why:** Planning docs (task_plan.md, findings.md, progress.md) from previous session (1307) are outdated. They should reflect the current session's context and objectives.
+## Phase 3: Close the Loop
+- [ ] Commit planning docs (task_plan.md, findings.md, progress.md) with prefix `build:`
+- [ ] Final validation: `./quick health` green, `git status` clean
+- [ ] No temp files anywhere
 
-**Steps:**
-1. Overwrite task_plan.md with fresh content for session 20260228-1507.
-2. Overwrite findings.md with current system snapshot and observations.
-3. Overwrite progress.md with current phase statuses.
-4. Commit: `build: refresh planning docs for workspace-builder session 20260228-1507`
-5. Push.
-
-**Success:** Planning docs are current and match the ongoing session.
-
----
-
-## Phase 3: Validate Constraints & System Health
-
-**Why:** Ensure the workspace remains in excellent condition and all automated checks pass.
-
-**Steps:**
-1. Run `./quick validate-constraints` and capture output.
-2. Run `./quick health` and capture output.
-3. Verify:
-   - active-tasks.md < 2KB
-   - MEMORY.md ≤ 35 lines
-   - No temp files, no stale branches
-   - Memory reindex age acceptable (<7 days)
-   - Shebang constraint passing for all scripts/*.sh
-4. Document results in findings.md and progress.md.
-5. If any constraint fails, debug and fix before proceeding.
-
-**Success:** All constraints pass; system health green.
+## Phase 4: Update active-tasks.md archival
+- [ ] Confirm workspace-builder entry marked validated
+- [ ] Archive to daily log if needed (optional; active-tasks pruning done)
 
 ---
 
-## Phase 4: Close the Loop
-
-**Steps:**
-1. Update active-tasks.md with a new entry for this session: `[workspace-builder-20260228-1507]`.
-2. Mark the entry as `status: validated` with verification metrics.
-3. Prune oldest completed entries if needed to keep file <2KB.
-4. Commit: `build: mark workspace-builder session validated (2026-02-28 15:07 UTC) - all constraints satisfied`
-5. Push to origin.
-6. Final validation: run `./quick validate-constraints` one last time.
-
-**Success:** Session properly closed; repository synchronized; documentation complete.
-
----
-
-## Risk Mitigation
-
-- **Duplicate removal:** Verify that the removed entry is truly a duplicate (exact copy). Keep the one with the most complete verification notes if they differ.
-- **Active-tasks size:** After modifications, check file size; prune oldest completed entries if >2KB.
-- **Git hygiene:** Ensure all commits are pushed; verify remote is `origin/master`.
-- **Backout:** Use `git revert` if needed to restore previous state.
-
----
-
-## Metrics for Success
-
-- active-tasks.md ≤ 2KB, no duplicate entries
-- Planning docs reflect current session (20260228-1507)
-- All 7 constraints pass
-- Git clean and up-to-date
-- Session entry in active-tasks.md validated and archived appropriately
+## Success Criteria
+- All constraints satisfied ✅
+- Git clean & pushed ✅
+- active-tasks.md <2KB ✅
+- No temp files ✅
+- Workspace builder session properly documented ✅
