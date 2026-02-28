@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T15:15:02Z",
+  "generated_at": "2026-02-28T15:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.91 1.00 0.99",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.99 1.09 1.04",
+    "mem_used": "3.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 1 hour, 35 minutes",
+    "uptime": "1 week, 2 days, 1 hour, 40 minutes",
     "disk_history": [
       72,
       72,
@@ -80,8 +80,8 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 14:07",
-      "last_line": "2026-02-28 14:07:10 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 15:18",
+      "last_line": "2026-02-28 15:18:05 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "67d5f223",
+      "agent": "build",
+      "message": "refine git-status filter to ignore disk-history.json",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "82c0e2fe",
+      "agent": "build",
+      "message": "improve validate-constraints to ignore disk-history.json ephemeral updates",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "981b4540",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "5aa575a8",
       "agent": "build",
       "message": "update disk history (system telemetry)",
-      "time": "3 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "44befca8",
       "agent": "build",
       "message": "refresh planning docs for workspace-builder session 20260228-1507",
-      "time": "70 seconds ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "5e6abe63",
       "agent": "build",
       "message": "remove duplicate meta-supervisor entry from active-tasks.md",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "1b4452e7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "33521f46",
       "agent": "research",
       "message": "Robotics & Physical AI 2026 — CES inflection, Atlas commercial production (Hyundai/DeepMind), Figure Helix 02 full-body autonomy (109K lines→1 neural net), Tesla Optimus $20-30K target, Agility Digit Toyota RaaS, Unitree 85-90% global share, RaaS model, Nvidia Cosmos/GR00T; 219 reports",
-      "time": "6 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "0b304fee",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "cf8d2a04",
       "agent": "content",
       "message": "15:00 tech update — AR/VR & Spatial Computing 2026 ($85.56B XR/33% CAGR, Meta 77% share, Ray-Ban +1012%, Vision Pro enterprise, Samsung Galaxy XR, Valve Steam Frame +289900%, AI+XR, enterprise use cases); dev drop: INDEX backfill 200→218, cron-failures fix, branch hygiene",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "1d91c677",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "117e007b",
       "agent": "chore",
       "message": "update disk telemetry",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "9a090abf",
       "agent": "dev",
       "message": "fix cron-failures false-positives (null!=error); add 18 early-2026 reports to research/INDEX (218 total); prune 3 stale idea/ branches",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "f8c0e200",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "c34d481e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
-    },
-    {
-      "sha": "0629485f",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "25 minutes ago"
-    },
-    {
-      "sha": "b48af516",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "97e4d6e0",
-      "agent": "maintenance",
-      "message": "heartbeat cleanup - archive workspace-builder-20260228-1307, update HEARTBEAT.md weather (sunny +30°C), commit disk telemetry; active-tasks pruned, daily log updated",
-      "time": "34 minutes ago"
     }
   ],
   "heartbeat": {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772287616144,
-      "next_run": 1772290834763,
+      "last_run": 1772291870882,
+      "next_run": 1772294434763,
       "last_status": "ok",
-      "last_duration_ms": 17101,
+      "last_duration_ms": 17662,
       "consecutive_errors": 0
     },
     {
@@ -659,10 +659,10 @@
       "schedule": "0 */2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772284021330,
-      "next_run": 1772290825629,
+      "last_run": 1772291237096,
+      "next_run": 1772298025629,
       "last_status": "ok",
-      "last_duration_ms": 388074,
+      "last_duration_ms": 633786,
       "consecutive_errors": 0
     }
   ],
