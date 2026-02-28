@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T07:05:02Z",
+  "generated_at": "2026-02-28T07:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -28,14 +28,14 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 06:12",
-      "last_line": "[2026-02-28T06:12:48Z] [research-agent] Completed edge AI on-device LLMs 2026 report (15.7KB, 4b319cb6). 192 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI."
+      "last_run": "2026-02-28 07:08",
+      "last_line": "[2026-02-28T07:08:05Z] [research-agent] Completed quantum computing 2026 report (13.9KB, 53f8de28). 193 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing."
     },
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-02-28 06:09",
-      "last_line": "[2026-02-28T06:09:41Z] [content-agent] Cycle skipped — 06:05 spotlight is 4min old, no new content since. Avoiding duplicate."
+      "last_run": "2026-02-28 07:05",
+      "last_line": "[2026-02-28T07:05:42Z] [content-agent] Generated 07:00 tech update (3.2KB, d8484540). Covered: edge AI on-device LLMs report + trim-agent-logs dev drop. 192 research reports, 14 content pieces today."
     },
     {
       "name": "dev-agent",
@@ -52,8 +52,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 07:04",
-      "last_line": "2026-02-28 06:30:25 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 07:07",
+      "last_line": "2026-02-28 07:07:02 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -63,101 +63,101 @@
     }
   ],
   "research": {
-    "total": 217,
+    "total": 218,
     "tts_coverage": "98%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "3dd2dbbf",
-      "agent": "dev",
-      "message": "add trim-agent-logs.sh utility; lower aria2.log rotate threshold 100MB→50MB; commit web-push dep; trim enhancement-bot+agent-manager logs (1.1MB freed)",
-      "time": "23 seconds ago"
+      "sha": "53f8de28",
+      "agent": "research",
+      "message": "quantum computing 2026 — IBM Nighthawk/Kookaburra, Google Willow below-threshold, Microsoft Majorana 1 topological qubits, neutral atoms; 193 total reports",
+      "time": "2 minutes ago"
     },
     {
-      "sha": "0a907860",
+      "sha": "d8484540",
+      "agent": "content",
+      "message": "07:00 tech update — edge AI on-device LLMs report + trim-agent-logs dev drop; 192 research reports total",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "cda7c065",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "7353dcb2",
+      "sha": "3dd2dbbf",
+      "agent": "dev",
+      "message": "add trim-agent-logs.sh utility; lower aria2.log rotate threshold 100MB→50MB; commit web-push dep; trim enhancement-bot+agent-manager logs (1.1MB freed)",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "0a907860",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "2dd15987",
+      "sha": "7353dcb2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "1d368f6d",
+      "sha": "2dd15987",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "1bfb211b",
+      "sha": "1d368f6d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "e63b0e65",
+      "sha": "1bfb211b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "e63b0e65",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "39bfeeec",
       "agent": "misc",
       "message": "feat(clawdash): push notifications — VAPID, subscribe endpoint, chat watcher, bell button in header",
-      "time": "33 minutes ago"
+      "time": "38 minutes ago"
     },
     {
       "sha": "5952ce00",
       "agent": "chore",
       "message": "ignore *.key, *.crt, *.pem files (Tailscale/TLS keys)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "5c543bc6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "c1a1f682",
       "agent": "misc",
       "message": "feat(clawdash): HTTPS on port 3443 via Tailscale cert for PWA install on Android Chrome",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "6043bb60",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "824a646d",
-      "agent": "misc",
-      "message": "feat(clawdash): full PWA — PNG icons, updated manifest (id/shortcuts/maskable), sw.js v4, iOS/Android meta tags, ?tab= URL shortcuts",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "325600d2",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "45 minutes ago"
-    },
-    {
-      "sha": "a60a551b",
-      "agent": "misc",
-      "message": "fix(clawdash): send via agent session (detached) so messages come FROM user, reply arrives in Telegram",
-      "time": "47 minutes ago"
     }
   ],
   "heartbeat": {
@@ -209,6 +209,12 @@
     "2026-02-28 03:30:23 UTC - OK"
   ],
   "agent_outputs": [
+    {
+      "file": "2026-02-28-0700-tech-update",
+      "ts": "2026-02-28-0700",
+      "title": "Tech Update — 2026-02-28 (07:00 UTC)",
+      "size": 3288
+    },
     {
       "file": "2026-02-28-0605-research-spotlight",
       "ts": "2026-02-28-0605",
@@ -322,12 +328,6 @@
       "ts": "2026-02-27-2108",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
       "size": 766
-    },
-    {
-      "file": "2026-02-27-2108-linkedin-pa-post",
-      "ts": "2026-02-27-2108",
-      "title": "🛠️ Implementation Decoder: What It Really Takes to Deploy IBM Planning Analytics",
-      "size": 2272
     }
   ],
   "chat": [
