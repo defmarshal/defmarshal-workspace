@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (186 total)
+## 2026 Reports (187 total)
 
 ### 2026-02
+- [Southeast Asia Digital Banking 2026 — Neobanks, AI Adoption & Virtual Bank Launches](2026-02-28-southeast-asia-digital-banking-neobanks-ai-virtual-banks.md)
 - [Enterprise Planning Analytics Market 2026 — Competitive Landscape & Adoption Trends](2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md)
 - [Bash Arithmetic Pitfalls: Leading Zero "value too great for base" Error](2026-02-28-bash-arithmetic-leading-zero-pitfalls.md)
 - [Spring 2026 Anime Season Trends — Lineup, Streaming, and Highlights](2026-02-27-spring-2026-anime-season-trends.md)
