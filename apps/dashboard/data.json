@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T20:15:03Z",
+  "generated_at": "2026-02-28T20:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "2.48 1.86 1.32",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.56 1.03 1.11",
+    "mem_used": "3.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 6 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 6 hours, 40 minutes",
     "disk_history": [
       80,
       80,
@@ -36,7 +36,7 @@
       80,
       80,
       80,
-      80,
+      79,
       79
     ]
   },
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "9d086bbe",
+      "sha": "34db039c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "f77caa8e",
+      "sha": "9d086bbe",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "49fea84c",
+      "sha": "f77caa8e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "2d0dd27b",
+      "sha": "49fea84c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "a0cb404c",
+      "sha": "2d0dd27b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "52763d47",
+      "sha": "a0cb404c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "7f8d18cb",
+      "sha": "52763d47",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "038c6615",
+      "sha": "7f8d18cb",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "74a32f10",
+      "sha": "038c6615",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "d51d11ee",
+      "sha": "74a32f10",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "05013119",
+      "sha": "d51d11ee",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "7ae637f2",
+      "sha": "05013119",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "d34944e2",
+      "sha": "7ae637f2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
     },
     {
+      "sha": "d34944e2",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "70 minutes ago"
+    },
+    {
       "sha": "62e30d59",
       "agent": "build",
       "message": "archive workspace-builder session 20260228-1705 closure to daily log",
-      "time": "69 minutes ago"
-    },
-    {
-      "sha": "205385c0",
-      "agent": "build",
-      "message": "update disk history (post-closure telemetry)",
-      "time": "69 minutes ago"
+      "time": "74 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772309603485,
-      "next_run": 1772309723485,
+      "last_run": 1772309963526,
+      "next_run": 1772310083526,
       "last_status": "ok",
-      "last_duration_ms": 28484,
+      "last_duration_ms": 28576,
       "consecutive_errors": 0
     },
     {
