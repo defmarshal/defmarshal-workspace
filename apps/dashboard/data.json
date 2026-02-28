@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T11:55:03Z",
+  "generated_at": "2026-02-28T12:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.22 1.04 0.97",
+    "load_avg": "0.86 0.87 0.91",
     "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 22 hours, 15 minutes",
+    "uptime": "1 week, 1 day, 22 hours, 20 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "ba0260f2",
+      "sha": "20272d9f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "f263e608",
+      "sha": "ba0260f2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "8ae68582",
+      "sha": "f263e608",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "d962f1c9",
+      "sha": "8ae68582",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
+      "sha": "d962f1c9",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "25 minutes ago"
+    },
+    {
       "sha": "43b1dde1",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "35980718",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "b545dc3c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "efd5f7fb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "6eb4bf51",
       "agent": "build",
       "message": "update MEMORY with 2026-02-28 improvements (shebang check, active-tasks archival)",
-      "time": "36 minutes ago"
+      "time": "41 minutes ago"
     },
     {
       "sha": "e29c21d5",
       "agent": "build",
       "message": "finalize workspace-builder session 20260228-1107 - progress complete",
-      "time": "37 minutes ago"
+      "time": "42 minutes ago"
     },
     {
       "sha": "2ee715cc",
       "agent": "build",
       "message": "refresh dashboard data and disk history (auto-updated)",
-      "time": "39 minutes ago"
+      "time": "44 minutes ago"
     },
     {
       "sha": "45e3b9d5",
       "agent": "misc",
       "message": "fix(clawdash): guard renderChat in load() with chatSending flag — main 60s poll was wiping optimistic UI; SW v15",
-      "time": "39 minutes ago"
+      "time": "44 minutes ago"
     },
     {
       "sha": "580c583f",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 11:07 UTC) - all constraints satisfied",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "53851e58",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "952d526d",
-      "agent": "build",
-      "message": "add shebang constraint validation, archive old task, refresh planning",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     }
   ],
   "heartbeat": {
@@ -690,16 +690,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-02-28T10:17:40.091Z",
-      "text": "[[reply_to_current]] review pass done desu~ (^^) here's what changed:\n\n- 🔄 **Refresh button** added to tab bar — tap to manually reload data\n- 💬 **Better message rendering** — newlines show as actual line breaks\n- ⚡ **Quick sheet output panel** — result shows inline in sheet with label + close button\n- 📐 **Chat layout fix** — `min-height: 0` all the way down, input should be visible now\n- 📦 **Slimmer header + tabs** — saves ~8px vertical space on mobile\n- 💬 **Empty chat state** — friendly message instead of blank screen\n- 🔄 **SW bumped to v6** — clear cache and reopen to get the update\n\nclear PWA cache and reopen nyaa~ 🐾"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T10:18:51.027Z",
-      "text": "[Sat 2026-02-28 10:18 UTC] keep doing it"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-02-28T10:18:55.690Z",
       "text": "on it~ let me dig deeper nyaa~"
     },
@@ -937,6 +927,16 @@
       "role": "assistant",
       "ts": "2026-02-28T11:15:50.035Z",
       "text": "[[reply_to_current]] ugh found it (ಠ_ಠ) there's a **second** background loop — the main `load()` function runs every 60s and refreshes ALL dashboard data including chat, completely ignoring the `chatSending` flag desu~\n\none-line fix: `if (!chatSending) renderChat(...)` in `load()` too\n\nclear cache → v15 → should finally work nyaa~ 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:58:58.906Z",
+      "text": "[Sat 2026-02-28 11:58 UTC] test"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:59:03.679Z",
+      "text": "[[reply_to_current]] nyaa~ did the message stay this time? (^^) 🐾"
     }
   ]
 }
