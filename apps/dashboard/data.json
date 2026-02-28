@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T09:00:02Z",
+  "generated_at": "2026-02-28T09:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -34,14 +34,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-02-28 08:03",
-      "last_line": "[2026-02-28T08:03:50Z] [content-agent] Generated 08:00 tech update (3.8KB, 946b875c). Covered: quantum computing 2026 research + workspace-summary dev drop. 193 reports, 15 content pieces today."
+      "last_run": "2026-02-28 09:04",
+      "last_line": "[2026-02-28T09:04:39Z] [content-agent] Generated 09:00 tech update (4.1KB, 1ffe4f91). Covered: WebAssembly 2026 research (WASM 3.0, WASI 0.3 async, Component Model, Akamai/Fermyon 4k edge) + dev tooling drop (research-recent fix, research-topics-today). 194 research reports, 16 content pieces today."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 08:02",
-      "last_line": "[2026-02-28T08:02:56Z] [dev-agent] Completed cycle (69d1b8c0): fixed research-stats.sh (193 accurate count, exclude INDEX.md, guard div-by-zero, paired mp3 counting); added workspace-summary.sh (system+research+content+git+agents, --json mode); registered both in quick."
+      "last_run": "2026-02-28 09:02",
+      "last_line": "[2026-02-28T09:02:31Z] [dev-agent] Completed cycle (0f8e22d8): fixed research-recent.sh (INDEX.md exclusion, N arg, local+hub audio, set -euo pipefail); added research-topics-today.sh (dedup helper, --short mode, topic suggestions); registered in quick."
     },
     {
       "name": "supervisor",
@@ -70,91 +70,91 @@
   },
   "recent_commits": [
     {
-      "sha": "a45a76d2",
+      "sha": "1ffe4f91",
+      "agent": "content",
+      "message": "09:00 tech update — WebAssembly 2026 (WASM 3.0/WASI 0.3/Component Model, Akamai/Fermyon 4k edge) + research tooling dev drop",
+      "time": "29 seconds ago"
+    },
+    {
+      "sha": "0f8e22d8",
+      "agent": "dev",
+      "message": "fix research-recent.sh (exclude INDEX.md, accept N arg, local+hub audio check); add research-topics-today.sh (dedup helper with suggestions, --short mode); register in quick",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "922b5bb0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "a8712f06",
+      "sha": "a45a76d2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "6bbb1c6c",
+      "sha": "a8712f06",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "35c50e17",
+      "sha": "6bbb1c6c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "9411dacb",
+      "sha": "35c50e17",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "5d7ce19c",
+      "sha": "9411dacb",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "afd6bd50",
+      "sha": "5d7ce19c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "739c4c5c",
+      "sha": "afd6bd50",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "65570338",
+      "sha": "739c4c5c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "2d5982ec",
+      "sha": "65570338",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "7ec651ce",
-      "agent": "research",
-      "message": "WebAssembly 2026 — WASM 3.0, WASI 0.3 async I/O, Component Model, edge cloud adoption; Cloudflare/Akamai/Fermyon production; 194 reports",
-      "time": "53 minutes ago"
-    },
-    {
-      "sha": "ef0865e1",
+      "sha": "2d5982ec",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "946b875c",
-      "agent": "content",
-      "message": "08:00 tech update — quantum computing 2026 (IBM/Google/Microsoft/neutral atoms) + workspace-summary dev drop; 193 reports total",
-      "time": "56 minutes ago"
+      "sha": "7ec651ce",
+      "agent": "research",
+      "message": "WebAssembly 2026 — WASM 3.0, WASI 0.3 async I/O, Component Model, edge cloud adoption; Cloudflare/Akamai/Fermyon production; 194 reports",
+      "time": "58 minutes ago"
     },
     {
-      "sha": "69d1b8c0",
-      "agent": "dev",
-      "message": "fix research-stats.sh (accurate 193 count, exclude INDEX.md, guard div-by-zero); add workspace-summary.sh (one-page daily status, --json mode); register both in quick",
-      "time": "57 minutes ago"
-    },
-    {
-      "sha": "07fca23f",
+      "sha": "ef0865e1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
@@ -209,6 +209,12 @@
     "2026-02-28 03:30:23 UTC - OK"
   ],
   "agent_outputs": [
+    {
+      "file": "2026-02-28-0900-tech-update",
+      "ts": "2026-02-28-0900",
+      "title": "Tech Update — 09:00 UTC, Feb 28 2026",
+      "size": 4159
+    },
     {
       "file": "2026-02-28-0800-tech-update",
       "ts": "2026-02-28-0800",
@@ -322,12 +328,6 @@
       "ts": "2026-02-27-2202",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
       "size": 742
-    },
-    {
-      "file": "2026-02-27-2202-linkedin-pa-post",
-      "ts": "2026-02-27-2202",
-      "title": "🛣️ Roadmap Brief: IBM Planning Analytics Strategic Direction",
-      "size": 1766
     }
   ],
   "chat": [
