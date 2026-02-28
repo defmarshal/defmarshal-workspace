@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T16:40:02Z",
+  "generated_at": "2026-02-28T16:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 76,
@@ -9,15 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 11,
     "downloads_gb": "7.5G",
-    "load_avg": "0.77 1.33 1.54",
-    "mem_used": "3.9Gi",
+    "load_avg": "1.01 1.20 1.42",
+    "mem_used": "3.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 3 hours, 0 minutes",
+    "uptime": "1 week, 2 days, 3 hours, 5 minutes",
     "disk_history": [
-      72,
-      72,
-      72,
-      72,
       72,
       72,
       72,
@@ -34,6 +30,10 @@
       72,
       73,
       75,
+      76,
+      76,
+      76,
+      76,
       76,
       76,
       76,
@@ -87,96 +87,96 @@
   "research": {
     "total": 226,
     "tts_coverage": "94%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "ec2c40e5",
+      "sha": "a08d55f0",
+      "agent": "misc",
+      "message": "fix(clawdash): agent detail last-log column out of bounds — table-layout:fixed, colgroup widths, ellipsis on all cells (SW v23)",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "af76b49a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
+    },
+    {
+      "sha": "ec2c40e5",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
     },
     {
       "sha": "390ffc64",
       "agent": "misc",
       "message": "fix(torrent): auto-torrent-add.sh — add duplicate check (queue + history), pick from full top-10 randomly",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "3d95cff9",
       "agent": "misc",
       "message": "fix(torrent): seed-ratio=1.0 seed-time=60 — stop hogging slots seeding forever with 0 upload",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "d12a9467",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "651c210f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "1236ae47",
       "agent": "misc",
       "message": "fix(torrent): torrent-add smart arg order detection; downloader shuffles top-20, checks aria2 queue + history file to avoid re-downloads",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "08f45f49",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "8075a233",
       "agent": "misc",
       "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "e22c3569",
       "agent": "misc",
       "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
-      "time": "19 minutes ago"
+      "time": "24 minutes ago"
     },
     {
       "sha": "b9a42f46",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "fd4de115",
       "agent": "misc",
       "message": "fix(clawdash): add missing torrent card div to Overview + cron tab button to nav; SW v20",
-      "time": "23 minutes ago"
+      "time": "28 minutes ago"
     },
     {
       "sha": "3e84e287",
       "agent": "misc",
       "message": "fix(clawdash): pop sound — reuse unlocked AudioContext, unlock on first click/keydown, only play on new assistant msg; SW v19",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "5dbe8996",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
-    },
-    {
-      "sha": "bcf35709",
-      "agent": "misc",
-      "message": "feat(clawdash): r6 — torrent card (aria2), cron tab, SSE chat (real-time), mewmew avatars, pop sound; SW v18",
-      "time": "27 minutes ago"
-    },
-    {
-      "sha": "e4ebbdec",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
@@ -689,36 +689,6 @@
   },
   "chat": [
     {
-      "role": "user",
-      "ts": "2026-02-28T16:06:25.128Z",
-      "text": "[Sat 2026-02-28 16:06 UTC] it's ok"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:06:30.733Z",
-      "text": "[[reply_to_current]] YESSS finally nyaa~~ 🎉🐾 \n\ntook like 6 attempts but we got there desu~ that sliding window bug was sneaky (ಠ_ಠ) lesson learned — never use counts when you have timestamps! ♪\n\nwhat do you want to work on next? (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:06:55.807Z",
-      "text": "[Sat 2026-02-28 16:06 UTC] give me an idea"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:07:06.916Z",
-      "text": "[[reply_to_current]] ooh let me think~ here are some fun ones nyaa (^^):\n\n**🔧 UX polish**\n1. **Message reactions** — tap a chat bubble to react with emoji (stored locally, just for fun)\n2. **Chat search** — filter messages by keyword, super useful with 100+ msgs\n3. **Swipe to reply** — swipe right on a bubble to quote-reply\n\n**📊 New cards**\n4. **Torrent status card** — live aria2 downloads with progress bars in Overview\n5. **Cron tab** — dedicated tab with full job list, run history, enable/disable toggles\n\n**⚡ Performance**\n6. **Server-sent events (SSE)** — replace 5s polling with real push from server → instant chat updates, no lag\n\n**🎨 Fun**\n7. **mewmew avatar** — cute animated avatar next to assistant bubbles in chat\n8. **Typing sound** — subtle *pop* when a new message arrives\n\n---\n\nmy pick? **#6 SSE** desu~ it'd make chat feel instant and remove all that polling complexity that caused the bugs we just fixed. plus it's cleaner than timers everywhere (｡◕‿◕｡)♡\n\nor **#5 Cron tab** if you want more observability~\n\nwhich vibe? ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:07:55.975Z",
-      "text": "[Sat 2026-02-28 16:07 UTC] 4-8"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:08:05.100Z",
-      "text": "big batch nyaa~ let me plan this properly and ship them all desu (^^)"
-    },
-    {
       "role": "assistant",
       "ts": "2026-02-28T16:08:37.302Z",
       "text": "Got aria2 data. Now let me build all 5 features:"
@@ -937,6 +907,36 @@
       "role": "assistant",
       "ts": "2026-02-28T16:39:52.790Z",
       "text": "Now fix the `renderAgentDetail` function — set explicit column widths and remove the redundant inline `max-width/overflow/white-space` since they'll be handled by table CSS:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:40:29.561Z",
+      "text": "[[reply_to_current]] fixed nyaa~ (SW v23) ✅\n\n**root cause:** the table had no `table-layout: fixed`, so the \"Last Log\" column could grow as wide as its content, pushing it outside the card on narrow screens\n\n**fix:**\n- `table-layout: fixed` on all tables — columns respect their width, no overflow\n- Added `<colgroup>` to `#agent-detail-table`: Agent 22% / Status 14% / Last Run 18% / **Last Log 46%** (gets the most space)\n- `overflow: hidden` + `text-overflow: ellipsis` on all `td`/`th` globally — long text clips cleanly with `…`\n- Removed the old inline `max-width:280px` + `slice(0,70)` hack — CSS handles it now, full text in `title` tooltip\n\nlive at `https://instance-20260207-2229.tail2dd22b.ts.net:8443` ♪ (Vercel hit daily deploy limit, updates there when it resets desu~)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:41:23.701Z",
+      "text": "[Sat 2026-02-28 16:41 UTC] don't deploy to vercel in the future. i only use tailscale"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:41:30.284Z",
+      "text": "got it nyaa~ no more Vercel deploys, Tailscale only from now on (^^)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:41:34.327Z",
+      "text": "noted and saved to lessons ♪ deploy flow from now on: `git commit → git push → pm2 restart clawdash-backend`. that's it desu~"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:42:44.419Z",
+      "text": "[Sat 2026-02-28 16:42 UTC] for torrent download, how do we classify torrent as complete?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:43:07.391Z",
+      "text": "so aria2 has three relevant states nyaa~:\n\n- **`active` + 100% completedLength** = done downloading, currently seeding — this is what clogged the queue earlier\n- **`complete`** (in `tellStopped`) = fully finished AND removed from active (seed-ratio/time limit hit, or manually removed)\n- **`error`** (in `tellStopped`) = failed\n\nso \"complete\" for our purposes should be:\n1. **`status=complete` in `tellStopped`** — aria2's official \"done\" state, hash is in `infoHash`\n2. **`status=active` with `completedLength == totalLength`** — downloading done, still seeding\n\nright now `torrent-history.txt` only records when we *add* a torrent, not when it finishes. want me to also track completion — so the history file gets updated with a `completed` timestamp when aria2 moves it to `complete` status? that way future duplicate checks are more reliable desu~ (^^)"
     }
   ]
 }
