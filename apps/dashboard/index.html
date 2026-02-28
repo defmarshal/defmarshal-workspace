@@ -692,33 +692,47 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 async function setupPush() {
-  if (ON_VERCEL || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+  if (ON_VERCEL) { toast('Push requires local backend', 'bad'); return; }
+  if (!('serviceWorker' in navigator)) { toast('❌ Service worker not supported', 'bad'); return; }
+  if (!('PushManager' in window)) { toast('❌ Push not supported on this browser', 'bad'); return; }
   try {
+    toast('⏳ Setting up push…', 'ok', 2000);
+
     const res = await fetch('/api/vapid-key');
     const { publicKey } = await res.json();
-    if (!publicKey) return;
+    if (!publicKey) { toast('❌ No VAPID key from server', 'bad'); return; }
 
-    const reg = await navigator.serviceWorker.ready;
+    const reg = await Promise.race([
+      navigator.serviceWorker.ready,
+      new Promise((_, rej) => setTimeout(() => rej(new Error('SW timeout')), 8000))
+    ]);
+
     let sub = await reg.pushManager.getSubscription();
 
     if (!sub) {
       const perm = await Notification.requestPermission();
-      if (perm !== 'granted') return;
+      if (perm !== 'granted') { toast('❌ Notification permission denied', 'bad'); return; }
       sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(publicKey),
       });
-      await fetch('/api/subscribe', {
+      const saveRes = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sub.toJSON()),
       });
-      toast('🔔 Push notifications enabled!', 'ok', 3000);
+      if (!saveRes.ok) { toast('❌ Failed to save subscription', 'bad'); return; }
     }
     pushSubscribed = true;
     updatePushBtn(true);
+    document.getElementById('push-banner').style.display = 'none';
+    toast('🔔 Push notifications enabled!', 'ok', 3000);
+
+    // Send a test push so user confirms it works
+    fetch('/api/notify-test', { method: 'POST' });
   } catch (e) {
-    console.warn('Push setup failed:', e);
+    toast('❌ Push failed: ' + e.message, 'bad', 6000);
+    console.error('Push setup failed:', e);
   }
 }
 
