@@ -22,9 +22,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)
   - Verification: daemon process PID 1121739; log shows cycle started; sleeping until next interval
 
-- [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)
-  - Verification: daemon process PID 1121739; log shows cycle started; sleeping until next interval
-
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
 ## Completed (Archived)
