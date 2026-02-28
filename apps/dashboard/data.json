@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T16:10:02Z",
+  "generated_at": "2026-02-28T16:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.93 1.03 1.08",
-    "mem_used": "3.7Gi",
+    "load_avg": "1.19 1.11 1.09",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 30 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 35 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "ab28f9e7",
+      "sha": "bcf35709",
+      "agent": "misc",
+      "message": "feat(clawdash): r6 — torrent card (aria2), cron tab, SSE chat (real-time), mewmew avatars, pop sound; SW v18",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "e4ebbdec",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "ab28f9e7",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "53f9cfe5",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "66c43037",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "37a71265",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "4d3cc34c",
       "agent": "misc",
       "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "44bec76a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "fcafff4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "10cd2510",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "11df490b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "b8f05427",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "16b85631",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "57a14f97",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "2b41492d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "67d5f223",
-      "agent": "build",
-      "message": "refine git-status filter to ignore disk-history.json",
-      "time": "52 minutes ago"
-    },
-    {
-      "sha": "82c0e2fe",
-      "agent": "build",
-      "message": "improve validate-constraints to ignore disk-history.json ephemeral updates",
-      "time": "53 minutes ago"
+      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
@@ -690,46 +690,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-02-28T10:40:54.466Z",
-      "text": "Zero leaks nyaa~ (^^)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:41:04.587Z",
-      "text": "r5 done nyaa~ (^^) here's what shipped:\n\n**New sections**\n- 🧠 **Active Tasks panel** in Agents tab — shows running/validated agents from `active-tasks.md` with status chips\n- 📰 **Content Stats card** in Overview — total pieces (494), today (17), latest title\n\n**Data fixes**\n- 💾 **Real disk history** — appends actual `%` every 5min, sparkline now shows real trend\n- 🧹 **Chat leak filter** — `NO_REPLY`, `HEARTBEAT_OK`, `Pre-compaction`, `Continueeee`, `Continue` all scrubbed (0 leaks ✅)\n- 🛠️ Fixed content stats using Python `os.listdir` instead of broken `ls *.md` glob\n\n**Agents tab**\n- Two-column grid layout (agent details + content side by side on desktop)\n\n**Mobile**\n- Cron table hides Schedule/Next/Duration cols on narrow screens — just Name + Status\n\nclear cache + reopen to get v10 desu~ 🐾✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T10:59:09.951Z",
-      "text": "[Sat 2026-02-28 10:59 UTC] push failed registration failed push service error"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:00:07.991Z",
-      "text": "Push sends fine from backend! The error is on the **frontend** side — \"registration failed push service error\" happens during `pushManager.subscribe()`. This is a Chrome/FCM-side issue, not our server~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:00:29.634Z",
-      "text": "[[reply_to_current]] backend is fine — push sends 201 OK to your subscriptions desu~ the \"push service error\" is Chrome/FCM-side (usually temporary) nyaa~\n\n**what I fixed:**\n- 🔄 **Auto-retry** — tries subscribing 3 times with 2s/4s backoff before giving up\n- 💬 **Clearer error messages** — \"Push service unavailable after 3 tries. Try clearing browser cache or check Tailscale connection.\"\n- 🧹 Cleaned stale `test` entry from subscriptions file\n\n**if it still fails after retries:**\n1. Clear site data in Chrome → Settings → Privacy → Clear browsing data (site settings)\n2. Make sure you're on the Tailscale URL (`instance-20260207-2229.tail2dd22b.ts.net:8443`)\n3. Try again — FCM push service errors are often transient (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T11:02:16.713Z",
-      "text": "[Sat 2026-02-28 11:00 UTC] you there?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:02:21.861Z",
-      "text": "[[reply_to_current]] yes yes nyaa~ (^^) just pushed the push notification fix! 🐾\n\ndid the retry help or still getting the error? if you tap Enable again it should now retry 3 times automatically desu~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T11:04:34.277Z",
-      "text": "[Sat 2026-02-28 11:04 UTC] still error"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-02-28T11:05:10.866Z",
       "text": "Found the likely culprit — `mailto:admin@clawdash.local` is not a valid public domain. FCM/Chrome rejects VAPID subjects with `.local` domains. Let me fix that + regenerate fresh VAPID keys:"
     },
@@ -937,6 +897,46 @@
       "role": "assistant",
       "ts": "2026-02-28T16:09:39.828Z",
       "text": "The aria2/SSE code landed after `http.createServer` — need to move it before. Let me just do the whole server.js cleanly:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:11:42.839Z",
+      "text": "Backend APIs all working. Now implement all the frontend features:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:12:17.451Z",
+      "text": "Now add the torrent card HTML to Overview, SSE in chat, and Cron tab:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:12:35.323Z",
+      "text": "All 5 features wired up. Now add the Cron tab:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:12:57.395Z",
+      "text": "All features confirmed. Bump SW and deploy:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:13:07.049Z",
+      "text": "[[reply_to_current]] r6 shipped nyaa~~ 🎉🐾 clear cache → v18 and you get:\n\n**4 · 🧲 Torrents card** — live aria2 status in Overview, progress bars, speed, seeders, 5 active + 2 waiting shown\n\n**5 · ⏰ Cron tab** — new tab with full job list, schedule, last/next run, status chips, error counts\n\n**6 · ⚡ SSE chat** — replaced 5s polling with Server-Sent Events, replies appear instantly! Falls back to polling if SSE drops\n\n**7 · 🐾 Avatars** — `🐾` on mewmew bubbles, `👤` on yours, stacked nicely\n\n**8 · 🔔 Pop sound** — subtle tone when a new message arrives (uses AudioContext, no files needed)\n\ndesu~ (｡◕‿◕｡)♡"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:14:13.208Z",
+      "text": "[Sat 2026-02-28 16:14 UTC] test chat"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:14:18.005Z",
+      "text": "[[reply_to_current]] nyaa~ 🐾 did the message stay + did you hear the pop sound when this arrived? (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:14:38.350Z",
+      "text": "[Sat 2026-02-28 16:14 UTC] wait i don't hear the pop"
     }
   ]
 }
