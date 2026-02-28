@@ -145,6 +145,9 @@ Commands:
   today                     Show files modified today across the workspace (since midnight UTC)
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
   disk-usage                  Show disk usage by top-level directories in the workspace (monitor growth)
+  find-large-files [options]  Find large files in the workspace (default: >10MB)
+                               Options: --size SIZE (e.g. 5M, 1G), --days N (older than N days), --dir PATH, --top N
+                               Example: quick find-large-files --size 50M --days 30
   updates-check                Check for pending system updates (APT)
   updates-apply [--dry-run|--execute] Apply system updates (dry-run by default; use --execute to actually upgrade)
   cleanup-downloads [options] Clean up old downloads (default: dry-run, retains 30 days)
@@ -855,6 +858,10 @@ case "$cmd" in
     else
       echo "  (no downloads directory)"
     fi
+    ;;
+
+  find-large-files)
+    "$WORKSPACE/scripts/find-large-files.sh" "$@"
     ;;
 
   updates-check)

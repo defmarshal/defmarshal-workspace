@@ -139,6 +139,7 @@ Common utilities (run `./quick help` for full list):
 - `social-monitor` — Run social monitor agent (Twitter trending digest)
 - `sudo-check` — Check passwordless sudo
 - `log-rotate` — Rotate aria2.log if >100MB
+- `find-large-files [options]` — Find large files in workspace (default: >10MB). Options: `--size SIZE`, `--days N`, `--dir PATH`, `--top N`
 - `cron-schedules` — Validate and correct cron schedules against CRON_JOBS.md documentation
 - `updates-check` — Check pending APT updates
 - `updates-apply [--dry-run|--execute]` — Apply system updates
