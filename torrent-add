@@ -5,45 +5,73 @@
 set -euo pipefail
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
+RPC_URL="http://localhost:6800/jsonrpc"
 
-# Default RPC secret from our aria2.conf
-RPC_SECRET="${1:-openclaw_secret_123}"
-if [ "$RPC_SECRET" = "openclaw_secret_123" ]; then
-  echo "Warning: using default RPC secret. Consider changing aria2.conf for security." >&2
-fi
-
-# Check input: either a magnet: URI or a .torrent file path
-INPUT="${2:-}"
-if [ -z "$INPUT" ]; then
+# Smart arg detection: magnet can be first OR second arg
+if [[ "${1:-}" == magnet:* ]] || [ -f "${1:-}" ]; then
+  INPUT="$1"
+  RPC_SECRET="${2:-openclaw_secret_123}"
+elif [[ "${2:-}" == magnet:* ]] || [ -f "${2:-}" ]; then
+  RPC_SECRET="$1"
+  INPUT="$2"
+else
   echo "Usage: quick torrent-add <magnet_or_torrent_file> [rpc_secret]" >&2
   echo "Example: quick torrent-add 'magnet:?xt=urn:btih:...' 'my_secret'" >&2
   echo "        quick torrent-add '/path/to/file.torrent'" >&2
   exit 1
 fi
 
-RPC_URL="http://localhost:6800/jsonrpc"
-
 if [[ "$INPUT" == magnet:* ]]; then
-  # Add magnet link
+  # Extract btih hash for duplicate check
+  BTIH=$(echo "$INPUT" | grep -oP 'btih:\K[a-fA-F0-9]+' | head -1 | tr '[:upper:]' '[:lower:]')
+
+  # Check if already present in aria2 (active + waiting + stopped)
+  if [ -n "$BTIH" ]; then
+    EXISTING=$(curl -s "$RPC_URL" \
+      -H "Content-Type: application/json" \
+      -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.tellActive\",\"params\":[\"token:$RPC_SECRET\",[\"gid\",\"infoHash\"]]}" | \
+      python3 -c "import json,sys; r=json.load(sys.stdin).get('result',[]); print('\n'.join(x.get('infoHash','').lower() for x in r))" 2>/dev/null)
+    EXISTING_W=$(curl -s "$RPC_URL" \
+      -H "Content-Type: application/json" \
+      -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.tellWaiting\",\"params\":[\"token:$RPC_SECRET\",0,100,[\"gid\",\"infoHash\"]]}" | \
+      python3 -c "import json,sys; r=json.load(sys.stdin).get('result',[]); print('\n'.join(x.get('infoHash','').lower() for x in r))" 2>/dev/null)
+
+    if echo "$EXISTING$EXISTING_W" | grep -qi "$BTIH"; then
+      echo "⚠️  Already in aria2 queue (hash: $BTIH), skipping."
+      exit 0
+    fi
+  fi
+
+  # Also check download history log to avoid re-downloading completed ones
+  HISTORY_FILE="$WORKSPACE/memory/torrent-history.txt"
+  if [ -f "$HISTORY_FILE" ] && [ -n "$BTIH" ] && grep -qi "$BTIH" "$HISTORY_FILE" 2>/dev/null; then
+    echo "⚠️  Already downloaded before (hash: $BTIH), skipping."
+    exit 0
+  fi
+
   echo "Adding magnet to aria2..."
-  curl -s "$RPC_URL" \
+  RESULT=$(curl -s "$RPC_URL" \
     -H "Content-Type: application/json" \
-    -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.addUri\",\"params\":[\"token:$RPC_SECRET\",[\"$INPUT\"]]}" \
-    | python3 -m json.tool 2>/dev/null || echo "Added (response may be empty if no json tool)"
-  echo "✓ Magnet added."
+    -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.addUri\",\"params\":[\"token:$RPC_SECRET\",[\"$INPUT\"]]}")
+  GID=$(echo "$RESULT" | python3 -c "import json,sys; print(json.load(sys.stdin).get('result','?'))" 2>/dev/null || echo "?")
+  echo "✓ Magnet added. GID: $GID"
+
+  # Log to history
+  if [ -n "$BTIH" ]; then
+    echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) $BTIH $INPUT" >> "$HISTORY_FILE"
+  fi
 
 elif [ -f "$INPUT" ]; then
-  # Torrent file: base64 encode and add
   echo "Adding torrent file..."
   TORRENT_B64=$(base64 -w0 "$INPUT" 2>/dev/null || base64 "$INPUT")
-  curl -s "$RPC_URL" \
+  RESULT=$(curl -s "$RPC_URL" \
     -H "Content-Type: application/json" \
-    -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.addTorrent\",\"params\":[\"token:$RPC_SECRET\",\"$TORRENT_B64\"]}" \
-    | python3 -m json.tool 2>/dev/null || echo "Added (response may be empty if no json tool)"
-  echo "✓ Torrent added."
+    -d "{\"jsonrpc\":\"2.0\",\"id\":\"1\",\"method\":\"aria2.addTorrent\",\"params\":[\"token:$RPC_SECRET\",\"$TORRENT_B64\"]}")
+  GID=$(echo "$RESULT" | python3 -c "import json,sys; print(json.load(sys.stdin).get('result','?'))" 2>/dev/null || echo "?")
+  echo "✓ Torrent added. GID: $GID"
 else
   echo "Error: '$INPUT' is not a magnet link or existing file." >&2
   exit 1
 fi
 
-echo "Check downloads: quick downloads-list"
+echo "Check downloads: quick downloads"
