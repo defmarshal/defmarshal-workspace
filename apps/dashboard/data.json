@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T16:00:02Z",
+  "generated_at": "2026-02-28T16:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.57 1.05 1.15",
-    "mem_used": "3.3Gi",
+    "load_avg": "1.04 1.01 1.09",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 25 minutes",
     "disk_history": [
       72,
       72,
@@ -74,14 +74,14 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 15:30",
-      "last_line": "2026-02-28 15:30:10 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 16:00",
+      "last_line": "2026-02-28 16:00:10 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 15:18",
-      "last_line": "2026-02-28 15:18:05 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 16:00",
+      "last_line": "2026-02-28 16:00:49 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "37a71265",
+      "sha": "53f9cfe5",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "66c43037",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "4d3cc34c",
-      "agent": "misc",
-      "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
-      "time": "7 minutes ago"
-    },
-    {
-      "sha": "44bec76a",
+      "sha": "37a71265",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "fcafff4c",
+      "sha": "4d3cc34c",
+      "agent": "misc",
+      "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "44bec76a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "10cd2510",
+      "sha": "fcafff4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "11df490b",
+      "sha": "10cd2510",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "11df490b",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "b8f05427",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "16b85631",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "57a14f97",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "2b41492d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "67d5f223",
       "agent": "build",
       "message": "refine git-status filter to ignore disk-history.json",
-      "time": "42 minutes ago"
+      "time": "47 minutes ago"
     },
     {
       "sha": "82c0e2fe",
       "agent": "build",
       "message": "improve validate-constraints to ignore disk-history.json ephemeral updates",
-      "time": "43 minutes ago"
+      "time": "48 minutes ago"
     },
     {
       "sha": "981b4540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "5aa575a8",
-      "agent": "build",
-      "message": "update disk history (system telemetry)",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "44befca8",
-      "agent": "build",
-      "message": "refresh planning docs for workspace-builder session 20260228-1507",
-      "time": "46 minutes ago"
+      "time": "50 minutes ago"
     }
   ],
   "heartbeat": {
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772292600013,
-      "next_run": 1772294400000,
+      "last_run": 1772294400008,
+      "next_run": 1772296200000,
       "last_status": "ok",
-      "last_duration_ms": 12987,
+      "last_duration_ms": 13138,
       "consecutive_errors": 0
     },
     {
@@ -371,10 +371,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772287607432,
-      "next_run": 1772294536434,
+      "last_run": 1772294536458,
+      "next_run": 1772301736434,
       "last_status": "ok",
-      "last_duration_ms": 8712,
+      "last_duration_ms": 8815,
       "consecutive_errors": 0
     },
     {
@@ -515,10 +515,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772287633245,
-      "next_run": 1772294575341,
+      "last_run": 1772294575372,
+      "next_run": 1772301775341,
       "last_status": "ok",
-      "last_duration_ms": 11487,
+      "last_duration_ms": 12193,
       "consecutive_errors": 0
     },
     {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772291870882,
-      "next_run": 1772294434763,
+      "last_run": 1772294434775,
+      "next_run": 1772298034763,
       "last_status": "ok",
-      "last_duration_ms": 17662,
+      "last_duration_ms": 17198,
       "consecutive_errors": 0
     },
     {
@@ -599,10 +599,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772287644732,
-      "next_run": 1772294639125,
+      "last_run": 1772294639136,
+      "next_run": 1772301839125,
       "last_status": "ok",
-      "last_duration_ms": 12456,
+      "last_duration_ms": 11599,
       "consecutive_errors": 0
     },
     {
@@ -611,10 +611,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772287591192,
-      "next_run": 1772294517835,
+      "last_run": 1772294517842,
+      "next_run": 1772301717835,
       "last_status": "ok",
-      "last_duration_ms": 16239,
+      "last_duration_ms": 16589,
       "consecutive_errors": 0
     },
     {
