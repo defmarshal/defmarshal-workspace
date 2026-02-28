@@ -1,100 +1,104 @@
-# Workspace Builder Plan
+# Workspace Builder - Task Plan
 
-**Session:** workspace-builder-20260228-1705
-**Start Time:** 2026-02-28 17:05 UTC
-**Goal:** Commit pending state files, enforce constraints, close loop
-
----
-
-## Phase 1: Assessment
-
-### Current State
-- Git status: dirty (2 modified files)
-  - `memory/2026-02-28.md` - contains uncommitted feature documentation (Slash Commands, Token Dashboard, YouTube Digest)
-  - `memory/disk-history.json` - disk usage tracking updates
-- Disk usage: 80% (warning threshold)
-- active-tasks.md: 1639 bytes (<2KB) ✅
-- MEMORY.md: 31 lines (≤35) ✅
-- Memory reindex: fresh (today)
-- Health: green (except disk warning)
-- No temp files, no stale branches
-
-### Identified Tasks
-1. Commit pending daily log and disk history changes
-2. Validate all workspace constraints after commit
-3. Update active-tasks.md: move current session entry to Completed with proper verification metrics
-4. Prune oldest completed entry if active-tasks exceeds 2KB
-5. Commit active-tasks.md update and push
-6. Final validation: constraints, health, git status
-7. Close the loop
+**Session ID:** workspace-builder-$(date +%Y%m%d-%H%M)
+**Started:** 2026-02-28 21:01 UTC
+**Goal:** Analyze workspace state, implement meaningful improvements, enforce constraints, and maintain system health.
 
 ---
 
-## Phase 2: Execution Steps
+## Phase 1: Assessment & Diagnosis
 
-### Step 1: Commit pending state files
-- Stage: `memory/2026-02-28.md`, `memory/disk-history.json`
-- Commit message: `build: commit pending daily log and disk history (workspace-builder session 20260228-1705)`
-- Push to origin/master
+**Objective:** Understand current workspace state and identify actionable improvements.
 
-### Step 2: Validate constraints immediately after commit
-- Run `./quick validate-constraints`
-- Verify git clean
-- Check active-tasks size
-- Confirm MEMORY.md size
-- Ensure no temp files
+**Tasks:**
+1. Read core workspace files (AGENTS.md, TOOLS.md, MEMORY.md, active-tasks.md)
+2. Check git status and recent commits
+3. Review daily log (memory/2026-02-28.md) for context
+4. Examine CRON_JOBS.md vs actual cron job states (via `quick cron-status`)
+5. Validate workspace constraints (`quick validate-constraints`)
+6. Assess disk usage and large files (`quick find-large-files`)
 
-### Step 3: Update active-tasks.md
-- Move `[workspace-builder-20260228-1705]` from Running → Completed
-- Add verification metrics:
-  - active-tasks size
-  - MEMORY.md lines
-  - Health status
-  - Git status
-  - Constraint results
-- Prune oldest completed entry to maintain <2KB
-- Ensure format consistency
-
-### Step 4: Commit active-tasks.md
-- Commit message: `build: mark workspace-builder session validated (2026-02-28 17:05 UTC) - constraints satisfied`
-- Push to origin/master
-
-### Step 5: Final validation
-- Run `./quick health`
-- Run `./quick validate-constraints`
-- Verify git clean & up-to-date
-- Check no temp files exist
-
-### Step 6: Update progress.md with closure notes
-- Document completion
-- Record all metrics
-- Log any issues (none expected)
+**Success criteria:** Complete picture of workspace health, identify at least 1 meaningful improvement.
 
 ---
 
-## Phase 3: Close the Loop
+## Phase 2: Fix Cron Job Inconsistency
 
-- Archive findings to memory/YYYY-MM-DD.md if significant
-- Ensure all documentation is current
-- Signal session complete
+**Objective:** Align actual cron job states with documentation (disable jobs marked as inactive).
 
----
+**Tasks:**
+1. Compare CRON_JOBS.md "Inactive Cron Jobs" section with `openclaw cron list --json`
+2. For each job documented as disabled but actually enabled:
+   - Disable via `openclaw cron disable <job-id>`
+   - Log action and verify
+3. Double-check that enabled jobs match documentation
+4. Update CRON_JOBS.md if any documentation is outdated
 
-## Success Criteria
-
-✅ Git clean and pushed to origin/master
-✅ active-tasks.md ≤ 2KB
-✅ MEMORY.md ≤ 35 lines
-✅ All 7 constraints satisfied
-✅ Health check green (disk warning acceptable at 80%)
-✅ No temp files or stale branches
-✅ active-tasks entry properly marked validated with metrics
+**Success criteria:** All jobs documented as disabled are actually disabled; no unintended token consumption.
 
 ---
 
-## Risk Mitigation
+## Phase 3: Git Hygiene & Data Commit
 
-- If commit fails: check git status, resolve conflicts, retry
-- If constraints fail: identify violating item, fix before proceeding
-- If active-tasks exceeds 2KB after update: prune oldest completed entries aggressively
-- Always verify push succeeded before marking session complete
+**Objective:** Ensure all meaningful changes are tracked and committed.
+
+**Tasks:**
+1. Stage `memory/disk-history.json` (legitimate tracking data)
+2. Check for any other untracked files that should be committed
+3. Review staged changes with `git diff --cached`
+4. Commit with appropriate message(s)
+5. Push to origin
+
+**Success criteria:** Git clean, all valuable artifacts tracked.
+
+---
+
+## Phase 4: Constraint Validation
+
+**Objective:** Verify all workspace constraints are satisfied.
+
+**Checks:**
+- `active-tasks.md` ≤ 2KB
+- `MEMORY.md` ≤ 35 lines
+- No temp files in workspace root
+- All scripts have shebangs
+- No pending APT updates
+- Memory reindex is fresh (<7 days)
+- Git status clean
+- Branch hygiene (no stale `idea/*` branches)
+
+**Success criteria:** All constraints green.
+
+---
+
+## Phase 5: Documentation Update & Close Loop
+
+**Objective:** Update tracking files and archive session.
+
+**Tasks:**
+1. Update `active-tasks.md`:
+   - Add running entry for this workspace-builder session
+   - After validation, move to Completed with verification metrics
+2. Update `MEMORY.md` if any significant learnings emerged
+3. Generate final verification report (health, constraints, git status)
+4. Commit any documentation updates with `build:` prefix
+5. Push all changes
+
+**Success criteria:** Session fully validated and archived; workspace in green state.
+
+---
+
+## Error Handling
+
+- If any step fails, log the error in `progress.md`, debug, and retry.
+- If a fix causes unexpected behavior, revert and investigate.
+- Always run `quick health` after changes to ensure system stability.
+
+---
+
+## Notes
+
+- Keep changes small but meaningful.
+- Do not make large, sweeping modifications without clear justification.
+- Respect existing patterns and conventions.
+- Test affected commands before and after changes.

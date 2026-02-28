@@ -1,160 +1,80 @@
-# Workspace Builder Progress
+# Workspace Builder - Progress
 
-**Session:** workspace-builder-20260228-1705
-**Start:** 2026-02-28 17:05 UTC
-**Updated:** 2026-02-28 19:01 UTC (this update)
-
----
-
-## Phase 1: Assessment ✅ COMPLETE
-
-- Analyzed git status: 2 modified files
-- Checked constraints: 1 violation (git dirty)
-- Validated active-tasks size (1639b) and MEMORY.md lines (31)
-- Confirmed health green (disk 80% warning)
-- Identified uncommitted content value
-
-**Deliverable:** findings.md completed
+**Session ID:** workspace-builder-20260228-2101
+**Started:** 2026-02-28 21:01 UTC
+**Status:** In Progress
 
 ---
 
-## Phase 2: Execution
+## Phase 1: Assessment & Diagnosis — ✅ Complete
 
-### Step 1: Commit pending state files
-**Status:** Pending
-**Action:**
-```bash
-git add memory/2026-02-28.md memory/disk-history.json
-git commit -m "build: commit pending daily log and disk history (workspace-builder session 20260228-1705)"
-git push origin master
-```
+**Start time:** 21:01 UTC
+**End time:** 21:02 UTC
 
-### Step 2: Validate constraints after commit
-**Status:** Pending
-**Checks:**
-- `./quick validate-constraints` → expect all green
-- `git status` → clean
-- manual verify active-tasks size and MEMORY.md lines
+**Actions:**
+- Read core workspace files (AGENTS.md, TOOLS.md, MEMORY.md, active-tasks.md)
+- Checked git status: `memory/disk-history.json` modified, not staged
+- Reviewed today's daily log (memory/2026-02-28.md)
+- Examined cron job states via `quick cron-status`
+- Validated constraints: all satisfied
+- Ran `quick find-large-files` (monitoring)
 
-### Step 3: Update active-tasks.md
-**Status:** Pending
-**Changes:**
-- Move `[workspace-builder-20260228-1705]` from Running → Completed
-- Add verification metrics:
-  ```
-  - Verification: active-tasks 1292b (<2KB), MEM31, ✅ health green, git clean & pushed; state files committed; all constraints satisfied ✅
-  ```
-- Prune oldest completed entry to keep <2KB
+**Key discovery:** Cron job state inconsistency:
+- Documentation says 4 jobs disabled (daily-digest-cron, supervisor-cron, meta-supervisor-agent, linkedin-pa-agent-cron)
+- Actual state: all 4 are ENABLED
+- This undermines token conservation goal from 2026-02-28 user request
 
-### Step 4: Commit active-tasks.md
-**Status:** Pending
-```bash
-git add active-tasks.md
-git commit -m "build: mark workspace-builder session validated (2026-02-28 17:05 UTC) - constraints satisfied"
-git push origin master
-```
-
-### Step 5: Final validation
-**Status:** Pending
-- `./quick health`
-- `./quick validate-constraints`
-- `git status`
-
-### Step 6: Finalize progress.md
-**Status:** Pending
-- Add closure notes
-- Record final metrics
-- Archive if needed
+**Next:** Phase 2 — Fix cron job states.
 
 ---
 
-## Metrics Log
+## Phase 2: Fix Cron Job Inconsistency — ⏳ In Progress
 
-| Checkpoint | Value | Status |
-|------------|-------|--------|
-| active-tasks size (initial) | 1639 bytes | ✅ |
-| MEMORY.md lines | 31 | ✅ |
-| Git dirty files | 2 | ❌ |
-| Disk usage | 80% | ⚠️ (warning) |
-| Health | green | ✅ |
-| Constraints passed | 6/7 | ⚠️ |
+**Start time:** — (not yet started)
+**Target:** Disable the 4 jobs documented as inactive.
 
-**Expected final state:** All constraints green, git clean, active-tasks ≤2KB, pushed to origin
+**Jobs to disable:**
+1. daily-digest-cron (ID: 5b6a002d-b059-4ddf-b6d6-dd171924ecae)
+2. supervisor-cron (ID: e2735844-269b-40aa-bd84-adb05fe5cb95)
+3. meta-supervisor-agent (ID: a1381566-c214-4d0d-b853-f5d965c519a1)
+4. linkedin-pa-agent-cron (ID: 7df39652-0c4c-4864-b6e3-a0a8233ccdac)
 
----
-
-## Issues & Resolutions
-
-**Issue:** Session marked as validated in active-tasks but git was dirty
-**Resolution:** Will correct with accurate verification after committing pending files
+**Plan:** Use `openclaw cron disable <id>` for each, verify with `quick cron-status`, then update CRON_JOBS.md if needed.
 
 ---
 
-## Next Actions
+## Phase 3: Git Hygiene & Data Commit — ⏳ Pending
 
-1. Execute Step 1 (commit pending files)
-2. Immediately validate and proceed through remaining steps
-3. Ensure all pushes succeed
-4. Double-check active-tasks format and size after prune
-5. Mark session complete
-
----
-
-## Completion Checklist
-
-- [x] All pending files committed and pushed
-- [x] active-tasks entry moved to Completed with accurate metrics
-- [x] active-tasks.md pruned to <2KB (1703b)
-- [x] All constraints satisfied (validate-constraints passes)
-- [x] Health check green
-- [x] No temp files or stale branches
-- [x] final push completed
-- [x] progress.md updated with closure summary
+**Tasks:**
+- Stage `memory/disk-history.json`
+- Check for other untracked files
+- Commit with message: `build: commit disk history + disable inactive cron jobs (token conservation)`
+- Push to origin
 
 ---
 
-## Closure Summary
+## Phase 4: Constraint Validation — ⏳ Pending
 
-**Session:** workspace-builder-20260228-1705
-**Closed:** 2026-02-28 19:01 UTC
+Re-run `quick validate-constraints` after Phase 3, verify all green.
 
-### Actions Performed
+---
 
-1. Committed pending state files:
-   - `memory/2026-02-28.md` (feature documentation)
-   - `memory/disk-history.json` (disk telemetry)
-   - Commit: `build: commit pending daily log and disk history (workspace-builder session 20260228-1705)`
+## Phase 5: Documentation Update & Close Loop — ⏳ Pending
 
-2. Created planning documentation:
-   - `task_plan.md`
-   - `findings.md`
-   - `progress.md`
-   - Commit: `build: workspace-builder planning docs (session 20260228-1705)`
+- Update active-tasks.md: add session entry, then mark validated with verification metrics
+- Update MEMORY.md if significant learnings
+- Final health check
+- Push any remaining docs
 
-3. Updated `active-tasks.md`:
-   - Moved `[workspace-builder-20260228-1705]` from Running → Completed
-   - Added verification: `active-tasks 1639b (<2KB), MEM31, ✅ health green, git clean & pushed; state files committed; all constraints satisfied ✅`
-   - Added archive timestamp: `2026-02-28 19:01 UTC (workspace-builder closure)`
-   - Commit: `build: mark workspace-builder session validated (2026-02-28 17:05 UTC) - constraints satisfied`
+---
 
-4. Pushed all commits to origin/master
+## Errors / Issues
 
-### Final Metrics
+**None yet.**
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| active-tasks.md size | 1703 bytes | ✅ <2KB |
-| MEMORY.md lines | 31 | ✅ ≤35 |
-| Git status | clean | ✅ |
-| Health check | green (disk 80% warning) | ✅ |
-| Memory reindex | fresh (0d) | ✅ |
-| Temp files | none | ✅ |
-| Stale branches | none | ✅ |
-| Constraints pass | 9/9 | ✅ |
+---
 
-### Outcome
+## Notes
 
-Workspace fully validated and synchronized. Session properly closed with comprehensive documentation. All constraints enforced. Repository in excellent health.
-
-**No open issues.** Next workspace-builder run in ~2 hours will continue routine maintenance.
-
+- 2026-02-28 Token conservation was user-requested; this fix honors that.
+- Need to be careful: supervisor-cron provides monitoring; but agent-manager and notifier already handle health alerts. The user explicitly disabled these jobs, so we comply.
