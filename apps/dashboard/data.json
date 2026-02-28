@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T18:00:02Z",
+  "generated_at": "2026-02-28T18:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.72 0.78 0.81",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.73 0.81 0.82",
+    "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 4 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 4 hours, 25 minutes",
     "disk_history": [
       79,
       79,
@@ -24,7 +24,7 @@
       79,
       79,
       79,
-      79,
+      80,
       80,
       80,
       80,
@@ -61,7 +61,7 @@
     },
     {
       "name": "dev-agent",
-      "active": true,
+      "active": false,
       "last_run": "2026-02-28 15:04",
       "last_line": "[2026-02-28T15:04:36Z] [dev-agent] Completed cycle (9a090abf): fixed cron-failures false-positives (null≠error, rewrote with python3); added 18 early-2026 research reports to INDEX.md (200→218 total); pruned 3 stale idea/ branches (add-a-new-quick-utility, build-a-cli-game-inside, create-a-health-check-for). Workspace: clean, git pushed, 0 errors, 0 idea branches."
     },
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "8a3b0758",
-      "agent": "feat",
-      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
-      "time": "31 seconds ago"
-    },
-    {
-      "sha": "90a6ca76",
+      "sha": "dd60d6b1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "3573d162",
+      "sha": "8a3b0758",
+      "agent": "feat",
+      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "90a6ca76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "2bf98fe7",
+      "sha": "3573d162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "d5f9d656",
+      "sha": "2bf98fe7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "7ac9aa37",
+      "sha": "d5f9d656",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "7ac9aa37",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "c62ee743",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "bc1cecec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "32ba6ef0",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "e4d9f7d7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "fcefe9ab",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "ed38d41a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "8c70170c",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.2 — morale system, 20 events, income balance",
-      "time": "51 minutes ago"
+      "time": "56 minutes ago"
     },
     {
       "sha": "577307b6",
       "agent": "build",
       "message": "enhance anime-studio-tycoon (v1.2): events, morale, merch, sponsors, auto-AI, polished UI",
-      "time": "51 minutes ago"
-    },
-    {
-      "sha": "4a74145a",
-      "agent": "build",
-      "message": "update progress.md with finalization details (Phase 4 complete)",
-      "time": "52 minutes ago"
+      "time": "56 minutes ago"
     }
   ],
   "heartbeat": {
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772299800008,
-      "next_run": 1772301600000,
+      "last_run": 1772301600007,
+      "next_run": 1772303400000,
       "last_status": "ok",
-      "last_duration_ms": 15105,
+      "last_duration_ms": 28730,
       "consecutive_errors": 0
     },
     {
@@ -371,10 +371,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772294536458,
-      "next_run": 1772301736434,
+      "last_run": 1772301768234,
+      "next_run": 1772308936434,
       "last_status": "ok",
-      "last_duration_ms": 8815,
+      "last_duration_ms": 27601,
       "consecutive_errors": 0
     },
     {
@@ -503,10 +503,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772280556769,
-      "next_run": 1772301787460,
+      "last_run": 1772301851605,
+      "next_run": 1772323387460,
       "last_status": "ok",
-      "last_duration_ms": 7119,
+      "last_duration_ms": 27716,
       "consecutive_errors": 0
     },
     {
@@ -515,10 +515,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772294575372,
-      "next_run": 1772301775341,
+      "last_run": 1772301823643,
+      "next_run": 1772308975341,
       "last_status": "ok",
-      "last_duration_ms": 12193,
+      "last_duration_ms": 27962,
       "consecutive_errors": 0
     },
     {
@@ -527,10 +527,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772280467317,
-      "next_run": 1772301611600,
+      "last_run": 1772301685022,
+      "next_run": 1772323211600,
       "last_status": "ok",
-      "last_duration_ms": 11160,
+      "last_duration_ms": 28092,
       "consecutive_errors": 0
     },
     {
@@ -539,10 +539,10 @@
       "schedule": "0 * * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772298235470,
-      "next_run": 1772301686213,
+      "last_run": 1772301795835,
+      "next_run": 1772305286213,
       "last_status": "ok",
-      "last_duration_ms": 196928,
+      "last_duration_ms": 27784,
       "consecutive_errors": 0
     },
     {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772298217444,
-      "next_run": 1772301634763,
+      "last_run": 1772301656884,
+      "next_run": 1772305234763,
       "last_status": "ok",
-      "last_duration_ms": 18026,
+      "last_duration_ms": 28138,
       "consecutive_errors": 0
     },
     {
@@ -611,10 +611,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772294517842,
-      "next_run": 1772301717835,
+      "last_run": 1772301741003,
+      "next_run": 1772308917835,
       "last_status": "ok",
-      "last_duration_ms": 16589,
+      "last_duration_ms": 27231,
       "consecutive_errors": 0
     },
     {
@@ -635,10 +635,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772299815113,
-      "next_run": 1772301600000,
+      "last_run": 1772301628737,
+      "next_run": 1772303400000,
       "last_status": "ok",
-      "last_duration_ms": 14874,
+      "last_duration_ms": 28019,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772301510142,
-      "next_run": 1772301630142,
+      "last_run": 1772301713114,
+      "next_run": 1772301833114,
       "last_status": "ok",
-      "last_duration_ms": 28567,
+      "last_duration_ms": 27870,
       "consecutive_errors": 0
     },
     {
@@ -719,11 +719,6 @@
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:23:19.111Z",
-      "text": "[[reply_to_current]] fixed nyaa~ the issue was `timeAgoMs()` always appended `\" ago\"`, so next run showed `\"in 7m ago\"` — and the negative diff path was also broken desu~\n\nadded `fmtDuration()` for plain durations, now shows:\n- **last:** `20m ago` ✅\n- **next:** `in 7m` in blue ✅  \n- **overdue:** `5m overdue` in red ✅\n\nclear cache → v22 (^^) 🐾"
-    },
     {
       "role": "user",
       "ts": "2026-02-28T16:24:47.623Z",
@@ -968,6 +963,11 @@
       "role": "assistant",
       "ts": "2026-02-28T17:52:57.685Z",
       "text": "steered nyaa~ dropped the watch history part, keeping just subscriptions → new uploads → summary → Telegram daily digest desu~ ♪ will ping when done (^^)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T18:00:07.018Z",
+      "text": "✅ Subagent main finished\n\nAll 3 features are complete. Here's the full summary:\n\n---\n\n## ✅ Done — 3 Features Built & Deployed\n\n### Feature 1: Telegram Slash Commands\n**`agents/slash-handler.sh`** — polls the main Telegram session JSONL for slash commands and responds via `openclaw agent --deliver`. Commands supported:\n- `/status` → `./quick status`\n- `/health` → `./quick health`\n- `/downloads` → aria2 active downloads (formatted)\n- `/cron` → cron job list with schedule + status\n- `/disk` → disk usage summary\n- `/help` → command list\n\nCron job `telegram-slash-handler` runs every **2 minutes** (isolated, no delivery).\n\n---\n\n### Feature 2: 💰 Tokens Tab in ClawDash\n- **`/api/tokens` endpoint** in `server.js` — reads all cron session JSONL files from the last 7 days, groups by job name, returns total_in/out/cache, run counts, avg tokens, last run\n- **Tab panel** with 3 summary cards (week total, jobs tracked, top job) + sortable table with CSS progress bars showing relative share\n- Lazy-loads on first click (no unnecessary API calls)\n- **SW bumped to `clawdash-v24`**\n\n---\n\n### Feature 3: YouTube Subscription Digest\n- **`scripts/youtube-oauth-setup.sh`** — interactive OAuth flow, saves tokens to `config/youtube-credentials.json` (gitignored)\n- **`scripts/youtube-digest.sh`** — fetches all subscriptions (paginated), checks uploads playlist per channel for last 24h, gets video details + transcripts (auto-installs `youtube-transcript-api`), saves Markdown digest to `content/youtube-digest-*.md`, sends to Telegram\n- Cron job `youtube-digest-daily` at **02:00 UTC = 09:00 Bangkok** daily\n\n### ⚠️ Action needed for YouTube:\n```bash\n./scripts/youtube-oauth-setup.sh\n```\nYou'll need a Google Cloud project with **YouTube Data API v3** enabled and an OAuth 2.0 Desktop client ID/secret."
     }
   ]
 }
