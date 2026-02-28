@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T11:15:10Z",
+  "generated_at": "2026-02-28T11:20:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.02 1.03 0.96",
-    "mem_used": "3.7Gi",
+    "load_avg": "1.84 1.31 1.09",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 35 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 40 minutes",
     "disk_history": [
       72,
       72,
@@ -80,8 +80,8 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 10:06",
-      "last_line": "2026-02-28 10:06:41 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 11:17",
+      "last_line": "2026-02-28 11:17:01 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "6eb4bf51",
+      "agent": "build",
+      "message": "update MEMORY with 2026-02-28 improvements (shebang check, active-tasks archival)",
+      "time": "40 seconds ago"
+    },
+    {
+      "sha": "e29c21d5",
+      "agent": "build",
+      "message": "finalize workspace-builder session 20260228-1107 - progress complete",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "2ee715cc",
+      "agent": "build",
+      "message": "refresh dashboard data and disk history (auto-updated)",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "45e3b9d5",
+      "agent": "misc",
+      "message": "fix(clawdash): guard renderChat in load() with chatSending flag — main 60s poll was wiping optimistic UI; SW v15",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "580c583f",
+      "agent": "build",
+      "message": "mark workspace-builder session validated (2026-02-28 11:07 UTC) - all constraints satisfied",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "53851e58",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "8 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "952d526d",
       "agent": "build",
       "message": "add shebang constraint validation, archive old task, refresh planning",
-      "time": "18 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "a817e436",
       "agent": "build",
       "message": "update dashboard data and disk history (workspace-builder 20260228-1107)",
-      "time": "2 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "5d167e3b",
       "agent": "build",
       "message": "archive completed workspace-builder session 20260228-0907",
-      "time": "2 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "25e97726",
       "agent": "misc",
       "message": "fix(clawdash): silent fetch in waitForReply — never renderChat while in-flight; only render when reply arrives; SW v14",
-      "time": "4 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "5cbda29d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "0b39380d",
       "agent": "misc",
       "message": "fix(clawdash): chat optimistic UI — suppress poll re-renders while msg in-flight (chatSending flag); SW v13",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "80167a14",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "fd655f2c",
       "agent": "misc",
       "message": "fix(clawdash): regenerate VAPID keys (was .local domain, FCM rejected); full SW unregister on push setup; SW v12",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "a1b6b091",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
-    },
-    {
-      "sha": "6651112a",
-      "agent": "content",
-      "message": "11:00 tech update — Satellite Internet 2026 (Starlink 6M/450Tbps, Amazon Leo Ultra 1Gbps/AWS, DTC, SEA angle) + content INDEX sync dev drop",
-      "time": "10 minutes ago"
-    },
-    {
-      "sha": "8cf0189a",
-      "agent": "dev",
-      "message": "sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh",
-      "time": "14 minutes ago"
-    },
-    {
-      "sha": "6bee803a",
-      "agent": "misc",
-      "message": "fix(clawdash): push subscribe retry (3x backoff) + clearer error msgs for 'push service error'",
       "time": "15 minutes ago"
-    },
-    {
-      "sha": "321f269e",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "15 minutes ago"
-    },
-    {
-      "sha": "6700193a",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "20 minutes ago"
     }
   ],
   "heartbeat": {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772273187787,
-      "next_run": 1772276434763,
+      "last_run": 1772277407251,
+      "next_run": 1772280034763,
       "last_status": "ok",
-      "last_duration_ms": 16501,
+      "last_duration_ms": 16995,
       "consecutive_errors": 0
     },
     {
@@ -659,10 +659,10 @@
       "schedule": "0 */2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772269633514,
-      "next_run": 1772276425629,
+      "last_run": 1772276853661,
+      "next_run": 1772283625629,
       "last_status": "ok",
-      "last_duration_ms": 640025,
+      "last_duration_ms": 553590,
       "consecutive_errors": 0
     }
   ],
@@ -679,7 +679,7 @@
       "agent": "workspace-builder",
       "goal": "Archive tasks, commit data, enhance validation",
       "started": "2026-02-28 11:07 UTC",
-      "status": "running"
+      "status": "validated"
     }
   ],
   "content_stats": {
@@ -688,21 +688,6 @@
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T10:16:45.142Z",
-      "text": "[Sat 2026-02-28 10:16 UTC] nice. review the app and make any necessary update, fix or enhancement"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:16:50.569Z",
-      "text": "Let me do a full review first~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:17:24.104Z",
-      "text": "Good full picture. Issues I can see:\n\n1. **Chat input layout** — still broken on mobile (the whole reason for the scroll problem)\n2. **Quick sheet result** uses `<pre>` but styled as `display:none` initially — but code checks `.visible` class; also no close button for result\n3. **No haptic feedback** on mobile taps\n4. **Chat messages not rendering markdown** — bold/code works but no line breaks between paragraphs\n5. **Refresh button missing** — no manual reload, only auto every 60s\n6. **Tab bar emoji** too wide on small screens — wastes space\n7. **Quick sheet** closes when you tap overlay but not when swipe down\n8. **No empty state** for chat while loading\n9. **Header too tall** on mobile — wastes vertical space"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T10:17:40.091Z",
@@ -937,6 +922,21 @@
       "role": "assistant",
       "ts": "2026-02-28T11:15:05.171Z",
       "text": "[[reply_to_current]] hey hey~ did the message stay put this time or still disappearing? (^^) 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:15:20.633Z",
+      "text": "[Sat 2026-02-28 11:15 UTC] disappearing"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:15:40.366Z",
+      "text": "There it is — line 1076: `setInterval(load, 60000)`. The **main `load()` function runs every 60 seconds** and calls `renderChat()` unconditionally, completely ignoring the `chatSending` flag! That's what's wiping the UI desu~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:15:50.035Z",
+      "text": "[[reply_to_current]] ugh found it (ಠ_ಠ) there's a **second** background loop — the main `load()` function runs every 60s and refreshes ALL dashboard data including chat, completely ignoring the `chatSending` flag desu~\n\none-line fix: `if (!chatSending) renderChat(...)` in `load()` too\n\nclear cache → v15 → should finally work nyaa~ 🐾"
     }
   ]
 }
