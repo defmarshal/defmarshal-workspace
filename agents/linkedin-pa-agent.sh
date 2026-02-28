@@ -23,7 +23,7 @@ CONTENT_TYPES=("market-positioning" "technical-performance" "comparative-analysi
 # Dedup: avoid recent research topics
 RECENT_TOPICS="$RESEARCH_DIR/INDEX.md"
 if [ -f "$RECENT_TOPICS" ]; then
-  RECENT_QUERIES=$(grep -oE 'Title: .+' "$RECENT_TOPICS" | tail -20 | sed 's/Title: //' | tr '[:upper:]' '[:lower:]' | sort -u)
+  RECENT_QUERIES=$(grep -oE 'Title: .+' "$RECENT_TOPICS" 2>/dev/null | tail -20 | sed 's/Title: //' | tr '[:upper:]' '[:lower:]' | sort -u || true)
 else
   RECENT_QUERIES=""
 fi
@@ -93,7 +93,7 @@ EOF
 
 web_search --count 12 "$SELECTED_QUERY" > /tmp/pa-search.txt 2>&1 || true
 
-URLS=$(grep -o 'https://[^"]*' /tmp/pa-search.txt | grep -iE 'ibm\.com|gartner\.com|forrester\.com|whitepaper|case-study|developer\.ibm\.com|github\.com' | head -8)
+URLS=$(grep -o 'https://[^"]*' /tmp/pa-search.txt | grep -iE 'ibm\.com|gartner\.com|forrester\.com|whitepaper|case-study|developer\.ibm\.com|github\.com' | head -8 || true)
 
 for url in $URLS; do
   log "Fetching: $url"
