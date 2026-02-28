@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T08:05:02Z",
+  "generated_at": "2026-02-28T08:10:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -28,8 +28,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 07:08",
-      "last_line": "[2026-02-28T07:08:05Z] [research-agent] Completed quantum computing 2026 report (13.9KB, 53f8de28). 193 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing."
+      "last_run": "2026-02-28 08:07",
+      "last_line": "[2026-02-28T08:07:25Z] [research-agent] Completed WebAssembly 2026 report (15.2KB, 7ec651ce). 194 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing, WebAssembly."
     },
     {
       "name": "content-agent",
@@ -52,112 +52,112 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 07:30",
-      "last_line": "2026-02-28 07:30:09 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 08:06",
+      "last_line": "2026-02-28 08:06:26 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 07:13",
-      "last_line": "2026-02-28 07:13:43 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 08:07",
+      "last_line": "2026-02-28 08:07:08 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
-    "total": 218,
-    "tts_coverage": "98%",
+    "total": 219,
+    "tts_coverage": "97%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "946b875c",
-      "agent": "content",
-      "message": "08:00 tech update — quantum computing 2026 (IBM/Google/Microsoft/neutral atoms) + workspace-summary dev drop; 193 reports total",
-      "time": "78 seconds ago"
+      "sha": "7ec651ce",
+      "agent": "research",
+      "message": "WebAssembly 2026 — WASM 3.0, WASI 0.3 async I/O, Component Model, edge cloud adoption; Cloudflare/Akamai/Fermyon production; 194 reports",
+      "time": "3 minutes ago"
     },
     {
-      "sha": "69d1b8c0",
-      "agent": "dev",
-      "message": "fix research-stats.sh (accurate 193 count, exclude INDEX.md, guard div-by-zero); add workspace-summary.sh (one-page daily status, --json mode); register both in quick",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "07fca23f",
+      "sha": "ef0865e1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "995c80c8",
+      "sha": "946b875c",
+      "agent": "content",
+      "message": "08:00 tech update — quantum computing 2026 (IBM/Google/Microsoft/neutral atoms) + workspace-summary dev drop; 193 reports total",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "69d1b8c0",
+      "agent": "dev",
+      "message": "fix research-stats.sh (accurate 193 count, exclude INDEX.md, guard div-by-zero); add workspace-summary.sh (one-page daily status, --json mode); register both in quick",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "07fca23f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "096345ce",
+      "sha": "995c80c8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "167352ea",
+      "sha": "096345ce",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "723dd1e0",
+      "sha": "167352ea",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "d1944941",
+      "sha": "723dd1e0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "676da941",
+      "sha": "d1944941",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "fd2bd085",
+      "sha": "676da941",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "958ded76",
+      "sha": "fd2bd085",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "c023bf0c",
+      "sha": "958ded76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
+      "sha": "c023bf0c",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "55 minutes ago"
+    },
+    {
       "sha": "257b995a",
       "agent": "build",
       "message": "update daily log 2026-02-28 with latest agent activity",
-      "time": "52 minutes ago"
-    },
-    {
-      "sha": "c82aad79",
-      "agent": "build",
-      "message": "update workspace-builder progress log (session 20260228-0707 completed)",
-      "time": "52 minutes ago"
-    },
-    {
-      "sha": "c8e2a4df",
-      "agent": "build",
-      "message": "update dashboard data.json (auto-generated)",
-      "time": "53 minutes ago"
+      "time": "57 minutes ago"
     }
   ],
   "heartbeat": {
