@@ -1,77 +1,95 @@
 # Workspace Builder Task Plan
 
-**Session:** 2026-02-28 01:07 UTC
-**Trigger:** Cron (workspace-builder-cron)
-**Goal:** Maintain workspace health, enforce constraints, and implement meaningful improvements
-
-## Current State Analysis
-
-- Git: clean (0 changed tracked files), 3 untracked files
-- active-tasks.md: 1292 bytes (<2KB) ✅
-- MEMORY.md: 29 lines (≤30) ✅
-- Health: green (disk 73%, gateway healthy, memory clean, no updates)
-- Memory reindex: 4.0 days old (fresh) ✅
-- No temp files, no stale branches
-- Daily log (2026-02-28.md): incomplete, early day (01:06 entries only)
-
-## Identified Improvements
-
-1. **Track valuable untracked artifacts:**
-   - `research/2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md` (substantive research report)
-   - `scripts/meta-supervisor-restart.sh` (utility script for daemon management)
-2. **Add quick command for meta-supervisor restart** (convenience)
-3. **Update daily log** to document this workspace-builder session (will be updated throughout the day as needed)
-4. **Validate constraints** after changes
-5. **Commit with proper build prefix** and push to origin
-
-## Execution Plan
-
-### Phase 1: Review and Stage Artifacts
-- [ ] Verify content of untracked files (research report, restart script)
-- [ ] `git add` these files to track them
-- [ ] Check for any other issues (temp files, stale branches)
-
-### Phase 2: Enhance Tooling (Optional)
-- [ ] Add `restart-meta-supervisor` command to `quick` launcher (if missing)
-- [ ] Test the new command
-
-### Phase 3: Update Daily Log
-- [ ] Append current workspace-builder run details to `memory/2026-02-28.md`
-- [ ] Keep log entry concise but informative
-
-### Phase 4: Validation
-- [ ] Run `./quick health`
-- [ ] Run `./quick validate-constraints`
-- [ ] Verify no temp files, active-tasks size <2KB, MEMORY.md ≤30 lines
-- [ ] Check that added files have appropriate content
-
-### Phase 5: Commit and Push
-- [ ] `git commit -m "build: track research report and meta-supervisor restart script; add quick command"`
-- [ ] `git push origin master`
-- [ ] Update `active-tasks.md` with validated entry and prune if needed
-- [ ] Commit active-tasks update with `build:` prefix and push
-
-### Phase 6: Final Validation
-- [ ] Re-run constraints to confirm green status
-- [ ] Ensure git clean and remote synced
-
-## Success Criteria
-
-- All constraints satisfied (7/7)
-- Git clean and pushed
-- active-tasks.md <2KB, MEMORY.md ≤30 lines
-- No temp files, no stale branches
-- Research report and restart script tracked
-- Quick command added (if applicable)
-- Daily log updated with workshop-builder session
-
-## Risk Mitigation
-
-- If validation fails, debug immediately before committing
-- Keep commits small and focused
-- Preserve existing documentation style
-- Avoid unnecessary changes
+**Session ID:** workspace-builder-20260228-0306  
+**Trigger:** Cron (every 2 hours)  
+**Start Time:** 2026-02-28 03:06 UTC  
+**Goal:** Analyze workspace and implement meaningful improvements
 
 ---
 
-*Plan created: 2026-02-28 01:07 UTC*
+## Phase 1: Assessment & Discovery
+
+**Status:** ✅ Completed  
+**Findings:**
+- Git status: clean, all artifacts tracked
+- active-tasks.md: 1685 bytes, 31 lines, contains 2 completed entries that can be archived
+- MEMORY.md: 29 lines (healthy)
+- Health: green (disk 73%, gateway healthy, no updates)
+- Memory index: 4 days old (stale, should reindex)
+- Stale branches: 2 idea branches (5h and 3h old) - recent from idea system, not stale
+- Research reports: all tracked, INDEX.md up-to-date
+- meta-supervisor-restart.sh script: tracked in git but not documented in TOOLS.md
+
+---
+
+## Phase 2: Improvement Implementation Steps
+
+### Step 1: Prune active-tasks.md (Archive Completed Entries)
+- **Why:** Keep active-tasks lean (<2KB), remove completed tasks per AGENTS.md guidelines
+- **What:** Archive `workspace-builder-23dad379` (Feb 27) to memory/2026-02-28.md
+- **What:** Remove validated entry `workspace-builder-20260228-0107` (current session should not archive itself)
+- **Verify:** active-tasks size decreases, still <2KB
+
+### Step 2: Trigger Memory Reindex
+- **Why:** Memory index is 4 days old; freshness improves search performance
+- **What:** Run `./quick memory-index` and monitor completion
+- **Verify:** `quick memory-status` shows fresh index
+
+### Step 3: Enhance validate-constraints with Branch Hygiene Check
+- **Why:** Proactively detect stale idea branches (>7 days old) before they accumulate
+- **What:** Add branch age check to `scripts/validate-constraints.sh` or create new check
+- **Verify:** Running validate-constraints shows branch hygiene status
+
+### Step 4: Document meta-supervisor-restart.sh in TOOLS.md
+- **Why:** Utility script should be documented for easy reference
+- **What:** Add "Meta Supervisor Restart" section with usage in TOOLS.md
+- **Verify:** TOOLS.md updated with script reference
+
+### Step 5: Close-the-Loop Validation
+- **Run:** `./quick validate-constraints` - all constraints green
+- **Check:** No temp files left behind
+- **Check:** Git status clean (only planned changes)
+- **Check:** active-tasks.md size <2KB
+- **Check:** Memory index fresh
+- **Check:** No unintended side effects
+
+### Step 6: Commit & Push
+- **Commit Prefix:** `build:`
+- **Message:** Summarize improvements implemented
+- **Push:** To origin/master
+
+### Step 7: Update active-tasks.md
+- **Mark:** This session as `validated`
+- **Add:** Verification notes
+- **Size Check:** Ensure <2KB
+
+---
+
+## Risk Mitigation
+
+- **Backup:** Daily log already contains prior state; edits are additive
+- **Rollback:** Git allows revert if any step causes issues
+- **Validation:** Each step verified before proceeding
+- **Error Handling:** If step fails, debug and fix before continuing; log errors in progress.md
+
+---
+
+## Success Criteria
+
+✅ active-tasks.md pruned and archived  
+✅ Memory reindex completed  
+✅ Branch hygiene check added (or documented)  
+✅ TOOLS.md updated with restart script reference  
+✅ All constraints pass validation  
+✅ Changes committed with `build:` prefix and pushed  
+✅ active-tasks.md updated with this session validated  
+✅ No temp files, no broken state
+
+---
+
+## Notes
+
+- Keep changes small but meaningful
+- Follow "close the loop" discipline: validate before commit
+- Update progress.md after each step with outcomes
+- If validation fails, fix issues before proceeding

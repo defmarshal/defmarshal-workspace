@@ -97,6 +97,27 @@ else
     echo "⚠️ Memory reindex log not found (cannot assess reindex age)"
 fi
 
+# 8. Branch hygiene: stale idea branches (informational)
+STALE_THRESHOLD_DAYS=7
+# Get local idea branches
+stale_branches=$(git branch --list 'idea/*' 2>/dev/null | while read branch; do
+    clean_branch=$(echo "$branch" | sed 's/^\*\s*//')
+    last_commit_ts=$(git log -1 --format=%ct "$clean_branch" 2>/dev/null || echo 0)
+    if [ "$last_commit_ts" -gt 0 ]; then
+        age_days=$(( ( $(date +%s) - last_commit_ts ) / 86400 ))
+        if [ "$age_days" -ge "$STALE_THRESHOLD_DAYS" ]; then
+            echo "$clean_branch ($age_days days old)"
+        fi
+    fi
+done)
+
+if [ -n "$stale_branches" ]; then
+    echo "⚠️ Stale idea branches (≥${STALE_THRESHOLD_DAYS} days):"
+    echo "$stale_branches" | sed 's/^/   /'
+else
+    echo "✅ Branch hygiene: no stale idea branches"
+fi
+
 # Summary
 echo ""
 if [ "$errors" -eq 0 ]; then

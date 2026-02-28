@@ -24,8 +24,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260228-0107] workspace-builder - Routine maintenance - track research report & restart script, enforce constraints (started: 2026-02-28 01:07 UTC, status: validated)
   - Verification: active-tasks 1517b (<2KB), MEM29, ✅ health green, git clean & pushed; research report tracked, restart script tracked; planning docs added; no temp files; reindex 3d fresh; all constraints satisfied ✅
-
-## Completed (recent)
-
-- [workspace-builder-23dad379] workspace-builder - Routine maintenance - push pending commits, cleanup stale branches, enforce constraints, update documentation (started: 2026-02-27 21:01 UTC, status: validated)
-  - Verification: active-tasks 1712b (<2KB), MEM29, ✅ health green, git clean & pushed; stale branch deleted; no temp files; reindex 3.9d fresh; all constraints satisfied ✅

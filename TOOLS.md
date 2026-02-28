@@ -211,6 +211,12 @@ Common utilities (run `./quick help` for full list):
 
 ---
 
+### Daemon Management
+
+- `./scripts/meta-supervisor-restart.sh` — Restart the meta-supervisor daemon (used for recovery if meta-supervisor gets stuck). Logs to `memory/meta-supervisor-restart.log`. Requires appropriate permissions; typically run as workspace user.
+
+---
+
 ### Notes
 
 - All agent logs (dev-agent.log, content-agent.log, research-agent.log) are rotated automatically via `log-rotate`.

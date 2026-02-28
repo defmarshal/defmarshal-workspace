@@ -1,51 +1,171 @@
-# Workspace Builder Progress
+# Workspace Builder Progress Log
 
-**Session:** 2026-02-28 01:07 UTC
-**Status:** Completed ✅
-
----
-
-## Phase 1: Review and Stage Artifacts
-
-- [x] Verified content of untracked files
-  - Research report: high-quality, substantive, should be tracked
-  - Restart script: clean, functional, should be tracked
-- [x] Staged files for commit
-- [x] Checked for other issues — none found (no temp files, no stale branches)
-
-## Phase 2: Enhance Tooling
-
-- [x] Verified `meta-restart` quick command already exists in quick launcher ✅
-- [x] Tested meta-status — daemon healthy
-
-## Phase 3: Update Daily Log
-
-- [x] Appended workspace-builder session details to `memory/2026-02-28.md`
-- [x] Included findings and actions taken
-
-## Phase 4: Validation
-
-- [x] Ran `./quick health` — green ✅
-- [x] Ran `./quick validate-constraints` — all 7 constraints satisfied ✅
-- [x] Verified no temp files, active-tasks size (1705b), MEMORY.md (29 lines)
-- [x] Confirmed all changes appropriate
-
-## Phase 5: Commit and Push
-
-- [x] First commit: "build: track research report and meta-supervisor restart script; add planning docs and update daily log"
-- [x] Pushed to origin/master successfully
-- [x] Updated `active-tasks.md` to validated entry with verification metrics
-- [x] No pruning needed (size 1705b <2KB)
-- [x] Second commit: "build: mark workspace-builder session validated (2026-02-28 01:07 UTC) - all constraints satisfied"
-- [x] Pushed final update
-
-## Phase 6: Final Validation
-
-- [x] Re-ran constraints — all green ✅
-- [x] Final check: git clean, pushed, no temp files, all systems healthy ✅
-
-**Session completed successfully. All constraints satisfied, repository synchronized, and documentation up to date.**
+**Session:** workspace-builder-20260228-0306  
+**Start:** 2026-02-28 03:06 UTC
 
 ---
 
-*Progress finalized: 2026-02-28 01:xx UTC*
+## Legend
+
+- ⏳ Pending
+- 🔄 In Progress
+- ✅ Completed
+- ❌ Failed (with notes)
+
+---
+
+## Step-by-Step Progress
+
+### Step 1: Prune active-tasks.md (Archive Completed Entries)
+
+**Status:** ✅ Completed (2026-02-28 03:12 UTC)  
+**Actions:**
+- Archived `workspace-builder-23dad379` to memory/2026-02-28.md under "Archived Completed Tasks"
+- Removed "Completed (recent)" section from active-tasks.md
+- active-tasks.md size: 1268 bytes (<2KB)
+
+**Verification:**
+- Archive entry contains full verification details
+- active-tasks.md clean, contains only Running section
+- Size well under 2KB limit
+
+**Notes:** Kept `workspace-builder-20260228-0107` in Running section as it's part of current state (will be archived by its own session later)
+
+---
+
+### Step 2: Trigger Memory Reindex
+
+**Status:** ✅ Completed (2026-02-28 03:18 UTC)  
+**Actions:**
+- Ran `./quick memory-index`
+- Process completed (main store fully reindexed, cron-supervisor store reindexed/clean)
+- Verified with `./quick memory-status`
+
+**Verification:**
+```
+$ ./quick memory-status
+Memory Search (main): Indexed 29/29 files · 316 chunks, Dirty: no
+Memory Search (cron-supervisor): Indexed 26/29 files · 288 chunks, Dirty: no
+```
+- All stores clean, index fresh (age reset)
+
+**Notes:** Reindex process terminated normally after completion; all FTS+ stores healthy
+
+---
+
+### Step 3: Enhance validate-constraints with Branch Hygiene Check
+
+**Status:** ✅ Completed (2026-02-28 03:25 UTC)  
+**Actions:**
+- Edited `scripts/validate-constraints.sh`
+- Added check #8: stale idea branches (≥7 days old) - informational only, does not fail
+- Branch list: `git branch --list 'idea/*'`, age computed from last commit timestamp
+- Output: "✅ Branch hygiene: no stale idea branches" or "⚠️ Stale idea branches: ..."
+
+**Verification:**
+```
+$ ./quick validate-constraints
+...
+✅ Branch hygiene: no stale idea branches
+```
+- New check integrated without affecting exit code (non-blocking)
+- Script syntax validated
+
+**Notes:** Decision to keep informational avoids blocking builds while providing visibility
+
+---
+
+### Step 4: Document meta-supervisor-restart.sh in TOOLS.md
+
+**Status:** ✅ Completed (2026-02-28 03:30 UTC)  
+**Actions:**
+- Edited `TOOLS.md`
+- Added new subsection "Daemon Management" under System Maintenance
+- Documented: `./scripts/meta-supervisor-restart.sh` with description and log location
+- Placement: after existing maintenance commands, before Monitoring section
+
+**Verification:**
+- TOOLS.md updated with clear usage instructions
+- Section formatted consistently with rest of file
+- Path and purpose accurately described
+
+**Notes:** Provides quick reference for daemon recovery operations
+
+---
+
+### Step 5: Close-the-Loop Validation
+
+**Status:** ⏳ Not Started  
+**Plan:**
+- Run `./quick validate-constraints` - ensure all green
+- Check `git status` - should show only our planned changes
+- Verify no temp files: `find . -maxdepth 1 -name "*.tmp" -o -name "*.temp"`
+- Confirm active-tasks.md <2KB
+- Confirm memory index fresh
+- Run `./quick health` - green
+
+---
+
+### Step 6: Commit & Push
+
+**Status:** ⏳ Not Started  
+**Plan:**
+- `git add -A` (only our changes should be pending)
+- `git commit -m "build: <summary of improvements"`
+- `git push origin master`
+- Verify push succeeded
+
+---
+
+### Step 7: Update active-tasks.md
+
+**Status:** ⏳ Not Started  
+**Plan:**
+- Add entry: `[workspace-builder-20260228-0306] workspace-builder - Strategic maintenance [...] (started: 2026-02-28 03:06 UTC, status: validated)`
+- Include verification notes: active-tasks size, constraints green, memory fresh, etc.
+- Verify file still <2KB
+- Commit and push the update
+
+---
+
+## Dependencies & Order
+
+1 → 2 → 3 → 4 → 5 → 6 → 7
+
+Cannot proceed to next step until current completes and validates.
+
+---
+
+## Timestamps
+
+- **Started:** 2026-02-28 03:06 UTC
+- **Step 1 start:** —
+- **Step 2 start:** —
+- **Step 3 start:** —
+- **Step 4 start:** —
+- **Step 5 start:** —
+- **Step 6 start:** —
+- **Step 7 start:** —
+- **Estimated completion:** within 10 minutes
+
+---
+
+## Issues & Resolutions
+
+*(Will be populated during execution)*
+
+---
+
+## Final Validation Checklist
+
+- [ ] active-tasks.md pruned and archived
+- [ ] Memory reindex completed and verified
+- [ ] validate-constraints enhanced with branch check
+- [ ] TOOLS.md updated with restart script
+- [ ] All constraints green
+- [ ] No temp files
+- [ ] Git status clean (only our commits)
+- [ ] Changes pushed to origin
+- [ ] active-tasks.md updated with this session validated
+- [ ] active-tasks.md size <2KB
+- [ ] Daily log updated if needed
