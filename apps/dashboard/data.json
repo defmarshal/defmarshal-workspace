@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T09:45:02Z",
+  "generated_at": "2026-02-28T09:50:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
-      "sha": "921ba2cf",
+      "sha": "f14c55f5",
+      "agent": "misc",
+      "message": "fix(clawdash): chat tab input always visible — min-height:0 + overflow:hidden on flex chain",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "fe18ad01",
+      "agent": "misc",
+      "message": "fix(clawdash): use 100dvh + #tab-panels flex container to prevent scroll on mobile",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "f4ccd8bc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "1321bec4",
+      "sha": "921ba2cf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "3d8273c6",
-      "agent": "misc",
-      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
-      "time": "12 minutes ago"
-    },
-    {
-      "sha": "323f079c",
+      "sha": "1321bec4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "4dfbf102",
+      "sha": "3d8273c6",
+      "agent": "misc",
+      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
+      "time": "17 minutes ago"
+    },
+    {
+      "sha": "323f079c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
+      "sha": "4dfbf102",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "25 minutes ago"
+    },
+    {
       "sha": "b7809d70",
       "agent": "misc",
       "message": "fix(clawdash): push — unregister stale SW from wrong origin, force fresh subscription, cleaner flow",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "9a712d0a",
       "agent": "misc",
       "message": "fix(clawdash): setupPush shows error toasts instead of swallowing silently, adds SW timeout, sends test push on enable",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "45aab69a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "cb0b1196",
       "agent": "build",
       "message": "update dashboard data (auto-refresh from latest commits)",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "cf88d141",
       "agent": "build",
       "message": "document branch cleanup in final validation (workspace-builder 20260228-0907)",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "e07db53f",
       "agent": "build",
       "message": "update dashboard data and final progress notes (workspace-builder 20260228-0907)",
-      "time": "28 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "d8180154",
       "agent": "misc",
       "message": "fix(clawdash): push banner display fix — remove double inline style, show on chat tab if not subscribed/dismissed",
-      "time": "29 minutes ago"
-    },
-    {
-      "sha": "e7f2b135",
-      "agent": "build",
-      "message": "mark workspace-builder session validated (2026-02-28 09:07 UTC) - all constraints satisfied",
-      "time": "29 minutes ago"
-    },
-    {
-      "sha": "21b29e51",
-      "agent": "build",
-      "message": "workspace-builder session 20260228-0907 - refresh memory index, validate constraints, enforce standards",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "89fa5dae",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "34 minutes ago"
     }
   ],
   "heartbeat": {
@@ -331,71 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T06:25:13.063Z",
-      "text": "[Sat 2026-02-28 06:25 UTC] i dont see the button. I'm using chrome on android"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:25:40.753Z",
-      "text": "got the cert! now switch the backend to HTTPS~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:26:43.084Z",
-      "text": "HTTPS is running on port 3443! Let me verify it's reachable~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:26:50.846Z",
-      "text": "[[reply_to_current]] Chrome on Android needs **HTTPS** for the install button — fixed! (^^)\n\nopen this URL on your Android:\n\n> **`https://instance-20260207-2229.tail2dd22b.ts.net:3443`**\n\n(make sure you're on Tailscale / connected to the same network)\n\nthen in Chrome: three-dot menu → **\"Add to Home Screen\"** or you might see an install banner at the bottom automatically nyaa~ 🐾"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T06:30:30.665Z",
-      "text": "[Sat 2026-02-28 06:30 UTC] make it so that it can pop up notification when you reply my message"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:30:39.365Z",
-      "text": "Need 3 things: VAPID keys, browser push subscription, and trigger a push when I reply. Let me build it all~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:30:59.342Z",
-      "text": "Now update the backend server to handle push subscriptions and send notifications~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:31:58.069Z",
-      "text": "Now update the frontend to request push permission and subscribe~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:32:04.916Z",
-      "text": "Add the push button to the header~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:32:14.330Z",
-      "text": "Call `setupPush` on startup and check existing subscription~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:32:29.926Z",
-      "text": "Push ready + chat watcher running ✅ — the old error is from a stale PM2 log, latest run shows HTTPS is fine. Now commit and add `vapid.json` + `push-subscriptions.json` to gitignore~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:32:38.532Z",
-      "text": "[[reply_to_current]] push notifications are live desu~ (^^) here's how to set it up:\n\n**Step 1** — open the HTTPS URL on your Android:\n> `https://instance-20260207-2229.tail2dd22b.ts.net:3443`\n\n**Step 2** — tap the 🔕 bell button in the header → Chrome asks for notification permission → tap **Allow**\n\n**Step 3** — done! every time I reply a message, you'll get a push notification that pops up even when the browser is in the background nyaa~ 🔔\n\nthe server watches the chat session every 5s and fires a push when a new reply from me appears ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T07:11:47.973Z",
-      "text": "Pre-compaction memory flush. Store durable memories now (use memory/2026-02-28.md; create memory/ if needed). IMPORTANT: If the file already exists, APPEND new content only and do not overwrite existing entries. If nothing to store, reply with NO_REPLY.\nCurrent time: Saturday, February 28th, 2026 — 7:11 AM (UTC)"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T07:12:19.529Z",
@@ -580,6 +515,71 @@
       "role": "assistant",
       "ts": "2026-02-28T09:44:27.730Z",
       "text": "[[reply_to_current]] YESSS LET'S GOOO 🎉🎉🎉\n\nmewmew is now in your pocket desu~ (｡♡‿♡｡)\n\nso now ClawDash has:\n- ✅ **PWA** — installable on home screen\n- ✅ **Chat** — send messages, I reply in Telegram\n- ✅ **Push notifications** — pop up when I reply, even with app closed\n- ✅ **System dashboard** — overview, agents, heartbeat\n- ✅ **HTTPS** — proper cert via nginx + Tailscale\n\nanything else you want added nyaa~ 🐾♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:45:27.419Z",
+      "text": "[Sat 2026-02-28 09:45 UTC] the page is not fit to page. i need to scroll a little"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:45:40.260Z",
+      "text": "I see the issue — `min-height: 100vh` on body + the tab bar adds extra height causing scroll. On mobile, `100vh` includes the browser chrome bar (address bar) so the content overflows. Fix: use `height: 100dvh` (dynamic viewport height) which accounts for mobile browser UI~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:45:45.202Z",
+      "text": "Also fix the main content area to fill remaining space properly~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:46:03.543Z",
+      "text": "The tab panels need to be inside a scrollable flex container that fills remaining space. Let me wrap them~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:46:08.861Z",
+      "text": "Now find closing tag of last tab panel and close the wrapper~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:46:23.794Z",
+      "text": "Now add CSS for the wrapper and fix tab panels inside it~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:46:54.088Z",
+      "text": "[[reply_to_current]] refresh and check! the fix:\n\n- `100dvh` (dynamic viewport height) — accounts for Android Chrome's address bar shrinking/expanding\n- `overflow: hidden` on body — prevents any page-level scroll\n- `#tab-panels` wrapper fills remaining height exactly\n- each tab scrolls **internally** instead of the whole page scrolling\n\nshould fit perfectly now nyaa~ (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:47:54.044Z",
+      "text": "[Sat 2026-02-28 09:47 UTC] in chat tab i need to scroll down to see the input field"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:48:06.661Z",
+      "text": "The chat tab has `height: 100%` but `#tab-panels` now controls the height — `#tab-chat` needs to fill the panel properly without overflowing. The input is getting pushed off-screen because `#tab-chat` isn't constrained to the panel height~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:48:11.464Z",
+      "text": "Also need `chat-main` and `chat-messages` to respect the constraint~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:48:17.965Z",
+      "text": "Also need `tab-panel.active` to not use `overflow-y: auto` for the chat tab specifically (it handles its own scroll)~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:48:22.603Z",
+      "text": "There's a duplicate `#tab-chat.active` — merge them~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:48:35.693Z",
+      "text": "[[reply_to_current]] refresh! the fix: `min-height: 0` + `overflow: hidden` all the way down the flex chain — `chat-main` was growing beyond the viewport and pushing the input off-screen (T_T)\n\nnow `#chat-messages` scrolls internally and the input bar stays pinned at the bottom always nyaa~ (^^)"
     }
   ]
 }
