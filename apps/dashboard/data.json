@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T19:15:02Z",
+  "generated_at": "2026-02-28T19:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.72 0.84 0.81",
+    "load_avg": "0.47 0.69 0.77",
     "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 5 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 5 hours, 40 minutes",
     "disk_history": [
       80,
       80,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "d34944e2",
+      "sha": "7ae637f2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "d34944e2",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "62e30d59",
       "agent": "build",
       "message": "archive workspace-builder session 20260228-1705 closure to daily log",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "205385c0",
       "agent": "build",
       "message": "update disk history (post-closure telemetry)",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "69705dea",
       "agent": "build",
       "message": "finalize workspace-builder session closure (20260228-1705)",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "c46ed458",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "be087466",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 17:05 UTC) - constraints satisfied",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "2a15ec75",
       "agent": "build",
       "message": "workspace-builder planning docs (session 20260228-1705)",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "ac9c003c",
       "agent": "build",
       "message": "commit pending daily log and disk history (workspace-builder session 20260228-1705)",
-      "time": "12 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "5860f823",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "61372c3b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "44acc07a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "f6368f97",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "7f58fecb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "0fca7c6e",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "877ac721",
+      "sha": "0fca7c6e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772306061165,
-      "next_run": 1772306181165,
+      "last_run": 1772306301183,
+      "next_run": 1772306421183,
       "last_status": "ok",
-      "last_duration_ms": 28893,
+      "last_duration_ms": 28431,
       "consecutive_errors": 0
     },
     {
