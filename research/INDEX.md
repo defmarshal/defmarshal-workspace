@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (195 total)
+## 2026 Reports (196 total)
 
 ### 2026-02
+- [Satellite Internet 2026 — Starlink vs Amazon Leo, LEO Broadband Race & Global Connectivity](2026-02-28-satellite-internet-2026-starlink-amazon-leo-leo-broadband-race.md)
 - [Cybersecurity 2026 — AI Threats, Zero Trust Identity, NHI, SaaS Ransomware & Permanent Instability](2026-02-28-cybersecurity-2026-ai-threats-zero-trust-nhi-saas-ransomware.md)
 - [WebAssembly 2026 — WASM 3.0, WASI 0.3, Component Model & The Cloud Runtime Revolution](2026-02-28-webassembly-2026-wasm3-wasi03-component-model-edge-cloud.md)
 - [Quantum Computing 2026 — IBM, Google Willow, Microsoft Majorana, Neutral Atoms & The Race to Practical Advantage](2026-02-28-quantum-computing-2026-ibm-google-microsoft-race-practical-advantage.md)
