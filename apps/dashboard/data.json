@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T12:05:02Z",
+  "generated_at": "2026-02-28T12:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.70 0.83 0.89",
-    "mem_used": "3.9Gi",
+    "load_avg": "1.15 0.95 0.93",
+    "mem_used": "3.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 22 hours, 25 minutes",
+    "uptime": "1 week, 1 day, 22 hours, 30 minutes",
     "disk_history": [
       72,
       72,
@@ -50,8 +50,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 11:07",
-      "last_line": "[2026-02-28T11:07:52Z] [research-agent] Completed Fintech 2026 report (16KB, captured in agent-manager build 80167a14). 14 macro-trends: agentic finance, embedded ecosystems, BaaS $5.26B APAC, open finance, RTP, deobanks, CBDC tokenisation, SEA super-app landscape. 197 total reports. 13 topics today."
+      "last_run": "2026-02-28 12:07",
+      "last_line": "[2026-02-28T12:07:48Z] [research-agent] Completed Cloud Cost Optimization 2026 report (16.2KB, 7378665a). $189B global cloud waste, FinOps 3-phase framework, 10 strategies, AWS/Azure/GCP tactics, AI workload FinOps, tooling landscape. 198 total reports. 14 topics today."
     },
     {
       "name": "content-agent",
@@ -74,112 +74,112 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 11:30",
-      "last_line": "2026-02-28 11:30:10 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 12:07",
+      "last_line": "2026-02-28 12:07:00 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 11:17",
-      "last_line": "2026-02-28 11:17:01 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 12:07",
+      "last_line": "2026-02-28 12:07:44 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
-    "total": 222,
-    "tts_coverage": "96%",
+    "total": 223,
+    "tts_coverage": "95%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "b0cf050a",
-      "agent": "content",
-      "message": "12:00 tech update — Fintech 2026 (FaaS $484B, BaaS APAC $5.26B, agentic commerce, open finance, CBDCs, SEA 290M unbanked) + index-drift/log-tail/top-commits dev drop",
+      "sha": "04693d4e",
+      "agent": "auto",
+      "message": "maintenance update 2026-02-28 12:09 UTC",
       "time": "42 seconds ago"
     },
     {
-      "sha": "058f3235",
-      "agent": "dev",
-      "message": "add quick-log-tail.sh, quick-top-commits.sh, index-drift.sh (zero-drift check 197 research/495 content); fix log-tail arg passthrough; add content INDEX 11:00 entry; register index-drift in quick",
+      "sha": "7378665a",
+      "agent": "research",
+      "message": "Cloud Cost Optimization 2026 — $189B waste/32% of cloud spend, FinOps framework, 10 strategies (rightsizing/Spot/zombies/K8s/unit-economics), AWS/Azure/GCP quick wins, AI workload FinOps; 198 reports",
       "time": "2 minutes ago"
     },
     {
-      "sha": "0d00fbc7",
+      "sha": "d826b2d9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "e5d9c072",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "20272d9f",
+      "sha": "b0cf050a",
+      "agent": "content",
+      "message": "12:00 tech update — Fintech 2026 (FaaS $484B, BaaS APAC $5.26B, agentic commerce, open finance, CBDCs, SEA 290M unbanked) + index-drift/log-tail/top-commits dev drop",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "058f3235",
+      "agent": "dev",
+      "message": "add quick-log-tail.sh, quick-top-commits.sh, index-drift.sh (zero-drift check 197 research/495 content); fix log-tail arg passthrough; add content INDEX 11:00 entry; register index-drift in quick",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "0d00fbc7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ba0260f2",
+      "sha": "20272d9f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "f263e608",
+      "sha": "ba0260f2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "8ae68582",
+      "sha": "f263e608",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "d962f1c9",
+      "sha": "8ae68582",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "d962f1c9",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "43b1dde1",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "35980718",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "b545dc3c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "efd5f7fb",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "45 minutes ago"
-    },
-    {
-      "sha": "6eb4bf51",
-      "agent": "build",
-      "message": "update MEMORY with 2026-02-28 improvements (shebang check, active-tasks archival)",
-      "time": "46 minutes ago"
-    },
-    {
-      "sha": "e29c21d5",
-      "agent": "build",
-      "message": "finalize workspace-builder session 20260228-1107 - progress complete",
-      "time": "47 minutes ago"
-    },
-    {
-      "sha": "2ee715cc",
-      "agent": "build",
-      "message": "refresh dashboard data and disk history (auto-updated)",
-      "time": "49 minutes ago"
     }
   ],
   "heartbeat": {
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772278200009,
-      "next_run": 1772280000000,
+      "last_run": 1772280410527,
+      "next_run": 1772281800000,
       "last_status": "ok",
-      "last_duration_ms": 14931,
+      "last_duration_ms": 14485,
       "consecutive_errors": 0
     },
     {
@@ -371,10 +371,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772273179227,
-      "next_run": 1772280136434,
+      "last_run": 1772280440858,
+      "next_run": 1772287336434,
       "last_status": "ok",
-      "last_duration_ms": 8560,
+      "last_duration_ms": 9446,
       "consecutive_errors": 0
     },
     {
@@ -443,10 +443,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772276622144,
-      "next_run": 1772280000000,
+      "last_run": 1772280132024,
+      "next_run": 1772283600000,
       "last_status": "ok",
-      "last_duration_ms": 79807,
+      "last_duration_ms": 139895,
       "consecutive_errors": 0
     },
     {
@@ -479,10 +479,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772276400014,
-      "next_run": 1772280000000,
+      "last_run": 1772280000011,
+      "next_run": 1772283600000,
       "last_status": "ok",
-      "last_duration_ms": 222130,
+      "last_duration_ms": 132013,
       "consecutive_errors": 0
     },
     {
@@ -491,10 +491,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772259193945,
-      "next_run": 1772280278568,
+      "last_run": 1772280490089,
+      "next_run": 1772301878568,
       "last_status": "ok",
-      "last_duration_ms": 66859,
+      "last_duration_ms": 66680,
       "consecutive_errors": 0
     },
     {
@@ -503,10 +503,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772259260804,
-      "next_run": 1772280187460,
+      "last_run": 1772280556769,
+      "next_run": 1772301787460,
       "last_status": "ok",
-      "last_duration_ms": 7462,
+      "last_duration_ms": 7119,
       "consecutive_errors": 0
     },
     {
@@ -515,10 +515,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772273204288,
-      "next_run": 1772280175341,
+      "last_run": 1772280478477,
+      "next_run": 1772287375341,
       "last_status": "ok",
-      "last_duration_ms": 11425,
+      "last_duration_ms": 11612,
       "consecutive_errors": 0
     },
     {
@@ -527,10 +527,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772259177196,
-      "next_run": 1772280011600,
+      "last_run": 1772280467317,
+      "next_run": 1772301611600,
       "last_status": "ok",
-      "last_duration_ms": 6472,
+      "last_duration_ms": 11160,
       "consecutive_errors": 0
     },
     {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772277407251,
-      "next_run": 1772280034763,
+      "last_run": 1772280450304,
+      "next_run": 1772283634763,
       "last_status": "ok",
-      "last_duration_ms": 16995,
+      "last_duration_ms": 17013,
       "consecutive_errors": 0
     },
     {
@@ -599,10 +599,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772273215713,
-      "next_run": 1772280239125,
+      "last_run": 1772280563888,
+      "next_run": 1772287439125,
       "last_status": "ok",
-      "last_duration_ms": 15268,
+      "last_duration_ms": 11247,
       "consecutive_errors": 0
     },
     {
@@ -611,10 +611,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772273163342,
-      "next_run": 1772280117835,
+      "last_run": 1772280425156,
+      "next_run": 1772287317835,
       "last_status": "ok",
-      "last_duration_ms": 15885,
+      "last_duration_ms": 15702,
       "consecutive_errors": 0
     },
     {
@@ -623,10 +623,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772276701951,
-      "next_run": 1772280000000,
+      "last_run": 1772280271919,
+      "next_run": 1772283600000,
       "last_status": "ok",
-      "last_duration_ms": 137044,
+      "last_duration_ms": 138608,
       "consecutive_errors": 0
     },
     {
