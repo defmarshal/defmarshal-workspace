@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T10:33:01Z",
+  "generated_at": "2026-02-28T10:35:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.23 1.07 0.99",
+    "load_avg": "0.78 0.96 0.96",
     "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 20 hours, 53 minutes",
+    "uptime": "1 week, 1 day, 20 hours, 55 minutes",
     "disk_history": [
       72,
       71,
@@ -74,94 +74,94 @@
   },
   "recent_commits": [
     {
+      "sha": "7aaf2074",
+      "agent": "misc",
+      "message": "feat(clawdash): r4 — load/mem/uptime in system card, relative output timestamps, HB notes highlight, commit sha+prefix chips, char counter, send spinner, Escape clears input, research latest fix",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "d20257e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "3 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "3c5ef746",
       "agent": "misc",
       "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
-      "time": "3 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "56905322",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "8 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "ee8968a6",
       "agent": "misc",
       "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
-      "time": "13 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "e0c27976",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "13 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "3c8aee3b",
       "agent": "misc",
       "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "16 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "6bea6b48",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "18 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "42e16f1c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "23 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "ce054294",
       "agent": "research",
       "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "27 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "23d6deac",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "28 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "df194d97",
       "agent": "content",
       "message": "10:00 tech update — Cybersecurity 2026 (agentic AI, NHI, SaaS .85M ransomware, AMTD, ZT2.0) + disk-usage-breakdown dev drop",
-      "time": "30 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "fbd858c1",
       "agent": "dev",
       "message": "add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)",
-      "time": "31 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "d6200918",
       "agent": "misc",
       "message": "chore(clawdash): bump SW cache to v5 to force update",
-      "time": "33 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "6e1a5278",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "33 minutes ago"
-    },
-    {
-      "sha": "dc3b3070",
-      "agent": "misc",
-      "message": "feat(clawdash): ⚡ quick commands bottom sheet — tap button in chat, slide-up grid, run & view output inline",
-      "time": "34 minutes ago"
+      "time": "35 minutes ago"
     }
   ],
   "heartbeat": {
@@ -650,11 +650,6 @@
   ],
   "chat": [
     {
-      "role": "assistant",
-      "ts": "2026-02-28T09:44:27.730Z",
-      "text": "[[reply_to_current]] YESSS LET'S GOOO 🎉🎉🎉\n\nmewmew is now in your pocket desu~ (｡♡‿♡｡)\n\nso now ClawDash has:\n- ✅ **PWA** — installable on home screen\n- ✅ **Chat** — send messages, I reply in Telegram\n- ✅ **Push notifications** — pop up when I reply, even with app closed\n- ✅ **System dashboard** — overview, agents, heartbeat\n- ✅ **HTTPS** — proper cert via nginx + Tailscale\n\nanything else you want added nyaa~ 🐾♪"
-    },
-    {
       "role": "user",
       "ts": "2026-02-28T09:45:27.419Z",
       "text": "[Sat 2026-02-28 09:45 UTC] the page is not fit to page. i need to scroll a little"
@@ -898,6 +893,11 @@
       "role": "assistant",
       "ts": "2026-02-28T10:32:25.406Z",
       "text": "Good — now I have a full picture. Let me build a big round of improvements:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:33:19.146Z",
+      "text": "r4 shipped nyaa~ (^^) here's what changed:\n\n**Overview — System card**\n- 🖥️ **Load avg** (1-min, 5-min, 15-min)\n- 💾 **RAM** used / total (3.5Gi / 23Gi)\n- ⏱️ **Uptime** (1 week, 1 day…)\n\n**Overview — Commits**\n- `a1b2c3d` sha + `feat`/`fix`/`build` coloured prefix chips\n\n**Agents tab**\n- 📄 Output timestamps now show \"2h ago\" instead of raw `2026-02-28-1000`\n\n**Heartbeat tab**\n- 💚 Notes field highlighted in green banner at top\n- Status values auto-coloured (ok/warn/bad)\n\n**Chat**\n- 🔢 Character counter while typing\n- ⏳ Send button shows spinner, reverts on done\n- ⎋ Escape clears input\n\n**Research**\n- Fixed \"INDEX\\nnone\" garbage in latest field\n\nclear cache + reopen to get v9 desu~ 🐾✨"
     }
   ]
 }
