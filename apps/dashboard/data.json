@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T10:30:02Z",
+  "generated_at": "2026-02-28T10:33:01Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,6 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
+    "load_avg": "1.23 1.07 0.99",
+    "mem_used": "3.5Gi",
+    "mem_total": "23Gi",
+    "uptime": "1 week, 1 day, 20 hours, 53 minutes",
     "disk_history": [
       72,
       71,
@@ -52,8 +56,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 10:06",
-      "last_line": "2026-02-28 10:06:00 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 10:30",
+      "last_line": "2026-02-28 10:30:08 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -70,94 +74,94 @@
   },
   "recent_commits": [
     {
+      "sha": "d20257e5",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "3 minutes ago"
+    },
+    {
       "sha": "3c5ef746",
       "agent": "misc",
       "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
-      "time": "0 seconds ago"
+      "time": "3 minutes ago"
     },
     {
       "sha": "56905322",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "ee8968a6",
       "agent": "misc",
       "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
-      "time": "10 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "e0c27976",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "3c8aee3b",
       "agent": "misc",
       "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "13 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "6bea6b48",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "42e16f1c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "ce054294",
       "agent": "research",
       "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "24 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "23d6deac",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "28 minutes ago"
     },
     {
       "sha": "df194d97",
       "agent": "content",
       "message": "10:00 tech update — Cybersecurity 2026 (agentic AI, NHI, SaaS .85M ransomware, AMTD, ZT2.0) + disk-usage-breakdown dev drop",
-      "time": "27 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "fbd858c1",
       "agent": "dev",
       "message": "add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)",
-      "time": "28 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "d6200918",
       "agent": "misc",
       "message": "chore(clawdash): bump SW cache to v5 to force update",
-      "time": "30 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "6e1a5278",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "dc3b3070",
       "agent": "misc",
       "message": "feat(clawdash): ⚡ quick commands bottom sheet — tap button in chat, slide-up grid, run & view output inline",
-      "time": "31 minutes ago"
-    },
-    {
-      "sha": "3fb6b828",
-      "agent": "misc",
-      "message": "feat(clawdash): thinking indicator persists until new reply arrives (polls every 3s, max 3min)",
-      "time": "32 minutes ago"
+      "time": "34 minutes ago"
     }
   ],
   "heartbeat": {
@@ -337,10 +341,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772273151977,
-      "next_run": 1772274600000,
+      "last_run": 1772274600007,
+      "next_run": 1772276400000,
       "last_status": "ok",
-      "last_duration_ms": 11218,
+      "last_duration_ms": 11686,
       "consecutive_errors": 0
     },
     {
@@ -647,26 +651,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-02-28T09:33:40.469Z",
-      "text": "[[reply_to_current]] the issue was Chrome blocks notifications on non-standard ports (3443) even with a valid cert! fixed with nginx on port 8443 nyaa~\n\ntry this URL now:\n> **`https://instance-20260207-2229.tail2dd22b.ts.net:8443`**\n\n1. open in Chrome → it should load without any security warning\n2. tap **Chat tab** → tap **Enable** on the banner\n3. Chrome should now ask for notification permission properly — tap **Allow**\n4. you'll get a test notification immediately to confirm it works (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T09:43:31.730Z",
-      "text": "[Sat 2026-02-28 09:43 UTC] test notif"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:43:43.562Z",
-      "text": "[[reply_to_current]] sent! `subs: 1` means you're subscribed successfully desu~ 🎉\n\ndid the test notification pop up on your Android? if yes, push is fully working — every time I reply you'll get a notification nyaa~ 🔔✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T09:44:20.257Z",
-      "text": "[Sat 2026-02-28 09:44 UTC] yesssss it's workingggg"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-02-28T09:44:27.730Z",
       "text": "[[reply_to_current]] YESSS LET'S GOOO 🎉🎉🎉\n\nmewmew is now in your pocket desu~ (｡♡‿♡｡)\n\nso now ClawDash has:\n- ✅ **PWA** — installable on home screen\n- ✅ **Chat** — send messages, I reply in Telegram\n- ✅ **Push notifications** — pop up when I reply, even with app closed\n- ✅ **System dashboard** — overview, agents, heartbeat\n- ✅ **HTTPS** — proper cert via nginx + Tailscale\n\nanything else you want added nyaa~ 🐾♪"
     },
@@ -894,6 +878,26 @@
       "role": "assistant",
       "ts": "2026-02-28T10:29:55.558Z",
       "text": "26 cron jobs with full data. Now update the dashboard to show next-run times and enabled/disabled status~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:30:10.884Z",
+      "text": "r3 done nyaa~ (^^) here's what landed:\n\n**Overview**\n- ⏰ **Cron jobs card** — all 26 enabled jobs with schedule, last run (relative), next run (\"in 2h\"), duration, status chips\n\n**Chat**\n- 📅 **Date separators** — \"Fri, Feb 28\" dividers between days\n\n**Quick sheet**\n- 👆 **Swipe down to close** on mobile\n- ➖ **Drag handle** at top of sheet\n\n**Agents**\n- 🕐 Timeline bars + tables now correctly parse \"2026-02-28 10:06\" → \"3m ago\"\n\n**Heartbeat**\n- 🕐 Unix timestamps in lastChecks show as relative time\n\nclear cache + reopen PWA to get v8 desu~ 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T10:30:59.230Z",
+      "text": "Continueeee"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:31:06.555Z",
+      "text": "nyaa~ not stopping~ let me audit everything more deeply (^^)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:32:25.406Z",
+      "text": "Good — now I have a full picture. Let me build a big round of improvements:"
     }
   ]
 }

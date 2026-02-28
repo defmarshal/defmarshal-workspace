@@ -243,6 +243,7 @@
     <div class="card" style="grid-column:1/-1">
       <h2>💓 Last Heartbeat</h2>
       <div id="hb-grid" class="hb-grid"></div>
+      <div id="hb-notes" style="display:none;background:#1a3a2a;border:1px solid var(--green);border-radius:6px;padding:9px 12px;font-size:12px;color:var(--green);margin-bottom:12px;"></div>
       <h2 style="margin-top:4px">📋 Supervisor Log</h2>
       <div id="supervisor-log" class="log-box"></div>
     </div>
@@ -272,6 +273,7 @@
     <div id="chat-messages"></div>
     <div class="chat-input-wrap">
       <textarea id="chat-input" rows="1" placeholder="Message mewmew… (Cmd+K for commands)"></textarea>
+      <span id="chat-char-count" style="font-size:10px;color:var(--muted);align-self:center;white-space:nowrap;"></span>
       <button id="quick-sheet-btn" title="Quick commands" onclick="openQuickSheet()">⚡</button>
       <button id="send-btn">Send ↑</button>
     </div>
@@ -477,18 +479,31 @@ function renderAgentSummary(agents) {
 }
 
 function renderResearch(r) {
+  // Clean up latest — strip "INDEX\nnone" junk
+  let latest = (r.latest || 'none').replace(/^INDEX\s*/,'').replace(/^none$/i,'—').trim();
+  if (latest.length > 50) latest = latest.slice(0,47) + '…';
+  const covPct = parseInt(r.tts_coverage) || 0;
+  const covCol = covPct >= 95 ? 'ok' : covPct >= 80 ? 'warn' : 'bad';
   document.getElementById('research-table').innerHTML = `
     <tr><td>Reports</td><td><strong>${esc(r.total)}</strong></td></tr>
-    <tr><td>TTS</td><td><span class="${r.tts_coverage==='100%'?'ok':'warn'}">${esc(r.tts_coverage)}</span></td></tr>
-    <tr><td>Latest</td><td class="muted" style="font-size:10px">${esc((r.latest||'none').slice(0,40))}</td></tr>
+    <tr><td>TTS audio</td><td><span class="${covCol}">${esc(r.tts_coverage)}</span></td></tr>
+    <tr><td>Latest</td><td class="muted" style="font-size:10px;word-break:break-word">${esc(latest)}</td></tr>
     <tr><td>Hub</td><td>${r.hub_deployed?chip('live','ok'):chip('offline','warn')}</td></tr>`;
 }
 
 function renderCommits(commits) {
-  document.getElementById('commit-table').innerHTML = (commits||[]).map(c=>`
-    <tr><td>${chip(esc(c.agent),'muted')}</td>
-    <td style="font-size:11px">${esc(c.message)}</td>
-    <td class="muted" style="white-space:nowrap">${timeAgo(c.ts)}</td></tr>`).join('');
+  document.getElementById('commit-table').innerHTML = '<tr><th>Sha</th><th>Message</th><th>When</th></tr>' +
+    (commits||[]).map(c=>{
+      const prefix = (c.message||'').match(/^(\w[\w-]*(?:\(.+?\))?):/) ?
+        c.message.split(':')[0] : (c.agent||'misc');
+      const msg = (c.message||'').replace(/^[^:]+:\s*/,'').slice(0,60);
+      const chipCls = prefix.startsWith('feat') ? 'ok' : prefix.startsWith('fix') ? 'warn' : prefix.startsWith('build') ? 'ok' : 'muted';
+      return `<tr>
+        <td><code style="font-size:10px;color:var(--muted)">${esc((c.sha||'').slice(0,7))}</code></td>
+        <td style="font-size:11px">${chip(esc(prefix), chipCls)} ${esc(msg)}</td>
+        <td class="muted" style="font-size:10px;white-space:nowrap">${esc(c.time||'')}</td>
+      </tr>`;
+    }).join('');
 }
 function renderCron(crons) {
   const el = document.getElementById('cron-table');
@@ -520,12 +535,23 @@ function renderCron(crons) {
 
 function renderHeartbeat(hb, log) {
   const checks = hb?.lastChecks || {};
-  document.getElementById('hb-grid').innerHTML = Object.entries(checks).map(([k,v])=>{
+  const notes = checks.notes || null;
+  const entries = Object.entries(checks).filter(([k]) => k !== 'notes');
+  document.getElementById('hb-grid').innerHTML = entries.map(([k,v])=>{
     let display = String(v);
-    // if it looks like a unix timestamp
     if (typeof v === 'number' && v > 1000000000) display = timeAgoMs(Date.now() - v * 1000);
-    return `<div class="hb-item"><div class="hb-key">${esc(k)}</div><div class="hb-val">${esc(display)}</div></div>`;
+    // colour-code known status fields
+    let valClass = '';
+    const vl = display.toLowerCase();
+    if (/^ok$|running|healthy|clean|active/.test(vl)) valClass = 'ok';
+    else if (/error|fail|down|critical/.test(vl)) valClass = 'bad';
+    else if (/warn|timeout|pending/.test(vl)) valClass = 'warn';
+    return `<div class="hb-item"><div class="hb-key">${esc(k)}</div><div class="hb-val ${valClass}">${esc(display)}</div></div>`;
   }).join('') || '<span class="muted">No data.</span>';
+  if (notes) {
+    const notesEl = document.getElementById('hb-notes');
+    if (notesEl) { notesEl.style.display = 'block'; notesEl.textContent = notes; }
+  }
   const lb = document.getElementById('supervisor-log');
   lb.innerHTML = (log||[]).map(line => {
     const el = line.toLowerCase();
@@ -546,13 +572,25 @@ function renderAgentDetail(agents) {
     </tr>`).join('');
 }
 
+function parseOutputTs(ts) {
+  // "2026-02-28-1000" → Date
+  if (!ts) return null;
+  const m = ts.match(/^(\d{4})-(\d{2})-(\d{2})-(\d{2})(\d{2})$/);
+  if (m) return new Date(`${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:00Z`);
+  return null;
+}
 function renderOutputs(outputs) {
   const el = document.getElementById('output-list');
   el.innerHTML = (outputs||[]).length === 0 ? '<span class="muted">No outputs.</span>' :
-    (outputs||[]).map(o=>`<div class="output-item">
-      <div class="out-title">${esc(o.title||o.file)}</div>
-      <div class="out-meta"><span>📅 ${esc(o.ts||'—')}</span><span>${esc(o.file)}</span><span class="muted">${Math.round((o.size||0)/1024*10)/10}KB</span></div>
-    </div>`).join('');
+    (outputs||[]).map(o=>{
+      const d = parseOutputTs(o.ts);
+      const age = d ? timeAgoMs(Date.now() - d.getTime()) : (o.ts||'—');
+      const kb = Math.round((o.size||0)/1024*10)/10;
+      return `<div class="output-item">
+        <div class="out-title">${esc(o.title||o.file)}</div>
+        <div class="out-meta"><span>📅 ${age}</span><span class="muted">${kb}KB</span></div>
+      </div>`;
+    }).join('');
 }
 
 // ── Chat ──────────────────────────────────────────────────────────────────
@@ -638,9 +676,16 @@ const sendBtn = document.getElementById('send-btn');
 chatInput.addEventListener('input', () => {
   chatInput.style.height = 'auto';
   chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+  const len = chatInput.value.length;
+  const counter = document.getElementById('chat-char-count');
+  if (counter) {
+    counter.textContent = len > 0 ? len + ' chars' : '';
+    counter.style.opacity = len > 200 ? '1' : '0.5';
+  }
 });
 chatInput.addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  if (e.key === 'Escape') { chatInput.value = ''; chatInput.style.height = 'auto'; }
 });
 sendBtn.addEventListener('click', sendMessage);
 
@@ -656,6 +701,7 @@ async function sendMessage() {
   chatInput.value = '';
   chatInput.style.height = 'auto';
   sendBtn.disabled = true;
+  sendBtn.textContent = '⏳';
 
   const container = document.getElementById('chat-messages');
   const tempId = 'msg-' + Date.now();
@@ -674,6 +720,7 @@ async function sendMessage() {
       el.classList.remove('sending');
       el.querySelector('.msg-meta').textContent = '👤 def · ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     }
+    sendBtn.textContent = 'Send ↑';
     toast('✅ Message sent', 'ok', 2000);
     showTypingIndicator();
     // Keep polling every 3s until a new assistant message arrives (max 3 min)
@@ -690,9 +737,11 @@ async function sendMessage() {
   } catch (e) {
     const el = document.getElementById(tempId);
     if (el) el.querySelector('.msg-bubble').style.borderColor = 'var(--red)';
+    sendBtn.textContent = 'Send ↑';
     toast('❌ Send failed: ' + e.message, 'bad');
   }
   sendBtn.disabled = false;
+  if (sendBtn.textContent === '⏳') sendBtn.textContent = 'Send ↑';
 }
 
 // ── Quick commands ────────────────────────────────────────────────────────

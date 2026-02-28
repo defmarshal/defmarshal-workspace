@@ -24,6 +24,11 @@ else
   GATEWAY="down"
 fi
 
+LOAD_AVG=$(cut -d' ' -f1-3 /proc/loadavg 2>/dev/null || echo "")
+MEM_USED=$(free -h 2>/dev/null | awk '/^Mem:/{print $3}' || echo "")
+MEM_TOTAL=$(free -h 2>/dev/null | awk '/^Mem:/{print $2}' || echo "")
+SYS_UPTIME=$(uptime -p 2>/dev/null | sed 's/up //' || echo "")
+
 SYSTEM_JSON=$(jq -n \
   --arg gw "$GATEWAY" \
   --arg disk "$DISK_PERCENT" \
@@ -33,6 +38,10 @@ SYSTEM_JSON=$(jq -n \
   --argjson mem_age "$MEMORY_INDEX_AGE" \
   --argjson dl_count "$DOWNLOAD_COUNT" \
   --arg dl_gb "$DOWNLOAD_GB" \
+  --arg load_avg "$LOAD_AVG" \
+  --arg mem_used "$MEM_USED" \
+  --arg mem_total "$MEM_TOTAL" \
+  --arg uptime "$SYS_UPTIME" \
   '{
     gateway: $gw,
     disk_percent: ($disk | tonumber),
@@ -41,7 +50,11 @@ SYSTEM_JSON=$(jq -n \
     git_clean: $git_clean,
     memory_age_days: $mem_age,
     downloads_count: $dl_count,
-    downloads_gb: $dl_gb
+    downloads_gb: $dl_gb,
+    load_avg: $load_avg,
+    mem_used: $mem_used,
+    mem_total: $mem_total,
+    uptime: $uptime
   }')
 
 DISK_HISTORY=$(jq -n --argjson cur "$DISK_PERCENT" \
