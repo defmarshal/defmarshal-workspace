@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T14:05:02Z",
+  "generated_at": "2026-02-28T14:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.80 0.94 0.85",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.93 1.00 0.91",
+    "mem_used": "3.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 25 minutes",
+    "uptime": "1 week, 2 days, 30 minutes",
     "disk_history": [
       72,
       72,
@@ -50,8 +50,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 13:06",
-      "last_line": "[2026-02-28T13:06:45Z] [research-agent] Completed Developer Productivity 2026 report (15.3KB, 47e42cd3). 84% AI adoption/41% AI-generated code, full tool stack (Cursor/Copilot/Claude Code/Devin/Qodo/Snyk), platform engineering/IDPs/DORA, productivity paradox (29-46% trust). 199 total reports. 15 topics today."
+      "last_run": "2026-02-28 14:06",
+      "last_line": "[2026-02-28T14:06:18Z] [research-agent] Completed AR/VR & Spatial Computing 2026 report (13.4KB, 93635418). $85.56B XR market/33% CAGR, Meta 77% hardware share, Apple Vision Pro enterprise pivot, Ray-Ban Meta +1012% YoY, Samsung Galaxy XR/Android XR, Valve Steam Frame +289900%, AI+XR convergence, enterprise use cases, platform ecosystem table. 200 total reports (MILESTONE). 16 topics today."
     },
     {
       "name": "content-agent",
@@ -74,111 +74,111 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 13:30",
-      "last_line": "2026-02-28 13:30:09 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 14:06",
+      "last_line": "2026-02-28 14:06:28 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 13:13",
-      "last_line": "2026-02-28 13:13:51 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 14:07",
+      "last_line": "2026-02-28 14:07:10 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
-    "total": 224,
+    "total": 225,
     "tts_coverage": "95%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "40ad1bb1",
-      "agent": "content",
-      "message": "14:00 tech update — Developer Productivity 2026 (84% AI adoption/41% AI-gen code, Cursor/Copilot/Claude Code/Devin stack, platform eng/IDPs/DORA/FinDev, productivity paradox) + 107-script pipefail hardening dev drop",
-      "time": "84 seconds ago"
-    },
-    {
-      "sha": "e05d6f1d",
-      "agent": "dev",
-      "message": "harden all 107 scripts/*.sh + 4 agents/*.sh with set -euo pipefail (0 syntax errors); 51→0 missing coverage across entire scripts/ dir",
+      "sha": "0153f7ff",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
       "time": "4 minutes ago"
     },
     {
-      "sha": "fac15f02",
+      "sha": "93635418",
+      "agent": "research",
+      "message": "AR/VR & Spatial Computing 2026 — $85.56B XR market/33% CAGR, Meta 77% share, Apple Vision Pro enterprise pivot, Ray-Ban Meta glasses +1012% YoY, Samsung Galaxy XR, AI+XR convergence, enterprise use cases; 200 reports milestone!",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "92793ad8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "49659c93",
+      "sha": "40ad1bb1",
+      "agent": "content",
+      "message": "14:00 tech update — Developer Productivity 2026 (84% AI adoption/41% AI-gen code, Cursor/Copilot/Claude Code/Devin stack, platform eng/IDPs/DORA/FinDev, productivity paradox) + 107-script pipefail hardening dev drop",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "e05d6f1d",
+      "agent": "dev",
+      "message": "harden all 107 scripts/*.sh + 4 agents/*.sh with set -euo pipefail (0 syntax errors); 51→0 missing coverage across entire scripts/ dir",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "fac15f02",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "731aef86",
+      "sha": "49659c93",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "b3766c00",
+      "sha": "731aef86",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "3e4f77e1",
+      "sha": "b3766c00",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "11874e8d",
+      "sha": "3e4f77e1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "11874e8d",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "b32522ad",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "664e8f26",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "46ffccd5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "29b5d543",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "0988b308",
-      "agent": "build",
-      "message": "refresh disk history (workspace-builder 20260228-1307 finalization)",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "105b90dc",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "0e910881",
-      "agent": "build",
-      "message": "archive workspace-builder session 20260228-1107, finalize 1307; validate constraints, prune branches (none stale), update docs",
       "time": "50 minutes ago"
     }
   ],
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772285400008,
-      "next_run": 1772287200000,
+      "last_run": 1772287578285,
+      "next_run": 1772289000000,
       "last_status": "ok",
-      "last_duration_ms": 14064,
+      "last_duration_ms": 12733,
       "consecutive_errors": 0
     },
     {
@@ -371,10 +371,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772280440858,
-      "next_run": 1772287336434,
+      "last_run": 1772287607432,
+      "next_run": 1772294536434,
       "last_status": "ok",
-      "last_duration_ms": 9446,
+      "last_duration_ms": 8712,
       "consecutive_errors": 0
     },
     {
@@ -443,10 +443,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772283732416,
-      "next_run": 1772287200000,
+      "last_run": 1772287308125,
+      "next_run": 1772290800000,
       "last_status": "ok",
-      "last_duration_ms": 140217,
+      "last_duration_ms": 135897,
       "consecutive_errors": 0
     },
     {
@@ -479,10 +479,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772283600012,
-      "next_run": 1772287200000,
+      "last_run": 1772287200009,
+      "next_run": 1772290800000,
       "last_status": "ok",
-      "last_duration_ms": 132404,
+      "last_duration_ms": 108116,
       "consecutive_errors": 0
     },
     {
@@ -515,10 +515,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772280478477,
-      "next_run": 1772287375341,
+      "last_run": 1772287633245,
+      "next_run": 1772294575341,
       "last_status": "ok",
-      "last_duration_ms": 11612,
+      "last_duration_ms": 11487,
       "consecutive_errors": 0
     },
     {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772284418058,
-      "next_run": 1772287234763,
+      "last_run": 1772287616144,
+      "next_run": 1772290834763,
       "last_status": "ok",
-      "last_duration_ms": 16252,
+      "last_duration_ms": 17101,
       "consecutive_errors": 0
     },
     {
@@ -599,10 +599,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772280563888,
-      "next_run": 1772287439125,
+      "last_run": 1772287644732,
+      "next_run": 1772294639125,
       "last_status": "ok",
-      "last_duration_ms": 11247,
+      "last_duration_ms": 12456,
       "consecutive_errors": 0
     },
     {
@@ -611,10 +611,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772280425156,
-      "next_run": 1772287317835,
+      "last_run": 1772287591192,
+      "next_run": 1772294517835,
       "last_status": "ok",
-      "last_duration_ms": 15702,
+      "last_duration_ms": 16239,
       "consecutive_errors": 0
     },
     {
@@ -623,10 +623,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772283872633,
-      "next_run": 1772287200000,
+      "last_run": 1772287444022,
+      "next_run": 1772290800000,
       "last_status": "ok",
-      "last_duration_ms": 135827,
+      "last_duration_ms": 134263,
       "consecutive_errors": 0
     },
     {
