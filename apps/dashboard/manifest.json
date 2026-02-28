@@ -1,12 +1,28 @@
 {
-  "name": "OpenClaw Dashboard",
+  "id": "/",
+  "name": "ClawDash — OpenClaw",
   "short_name": "ClawDash",
-  "description": "OpenClaw Workspace Observability Dashboard",
+  "description": "OpenClaw workspace dashboard — system health, agents, chat",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#0d1117",
   "theme_color": "#58a6ff",
+  "categories": ["utilities", "productivity"],
   "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "/icon-192.svg",
       "sizes": "192x192",
@@ -16,6 +32,22 @@
       "src": "/icon-512.svg",
       "sizes": "512x512",
       "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Chat",
+      "short_name": "Chat",
+      "description": "Open chat with mewmew",
+      "url": "/?tab=chat",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Overview",
+      "short_name": "Status",
+      "description": "System overview",
+      "url": "/?tab=overview",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
