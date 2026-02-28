@@ -1,4 +1,4 @@
-const CACHE_NAME = 'clawdash-v21';
+const CACHE_NAME = 'clawdash-v22';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

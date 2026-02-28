@@ -409,12 +409,16 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function chip(l, c) { return `<span class="chip ${c}">${l}</span>`; }
 
+function fmtDuration(ms) {
+  // returns plain duration like "7m", "2h", "3d"
+  const s = Math.floor(Math.abs(ms) / 1000);
+  if (s < 60) return s + 's';
+  if (s < 3600) return Math.floor(s/60) + 'm';
+  if (s < 86400) return Math.floor(s/3600) + 'h';
+  return Math.floor(s/86400) + 'd';
+}
 function timeAgoMs(ms) {
-  const s = Math.floor(ms / 1000);
-  if (s < 60) return s + 's ago';
-  if (s < 3600) return Math.floor(s/60) + 'm ago';
-  if (s < 86400) return Math.floor(s/3600) + 'h ago';
-  return Math.floor(s/86400) + 'd ago';
+  return fmtDuration(ms) + ' ago';
 }
 function timeAgo(ts) {
   if (!ts) return '';
@@ -676,12 +680,12 @@ function renderCronTab(crons) {
       </div>
       <div style="font-size:10px;color:var(--muted);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap">
         <span>🕐 ${esc(c.schedule||'?')}</span>
-        ${c.last_run ? `<span>last: ${timeAgoMs(Date.now() - c.last_run)}</span>` : ''}
+        ${c.last_run ? `<span>${fmtDuration(Date.now() - c.last_run)} ago</span>` : ''}
         ${c.next_run ? (() => {
           const diff = c.next_run - Date.now();
           return diff > 0
-            ? `<span style="color:var(--blue)">next in ${timeAgoMs(diff)}</span>`
-            : `<span>next: ${timeAgoMs(-diff)} overdue</span>`;
+            ? `<span style="color:var(--blue)">in ${fmtDuration(diff)}</span>`
+            : `<span style="color:var(--red)">${fmtDuration(-diff)} overdue</span>`;
         })() : ''}
         ${c.last_duration ? `<span>⚡ ${c.last_duration}</span>` : ''}
       </div>
