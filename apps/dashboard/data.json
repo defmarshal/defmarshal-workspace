@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T03:55:02Z",
+  "generated_at": "2026-02-28T04:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
     "disk_free": "12G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -69,6 +69,12 @@
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "sha": "4613a3e6",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "sha": "435237d9",
       "agent": "chore",
@@ -149,12 +155,6 @@
     },
     {
       "sha": "2323ed92",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "sha": "062a3bce",
       "agent": "chore",
       "message": "update clawdash data",
       "time": ""
@@ -331,26 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T02:33:27.318Z",
-      "text": "[[reply_to_current]] hey hey~! (^^)♪ what's up, def? anything i can help with today? nyaa~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T02:33:45.767Z",
-      "text": "hey"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T02:33:50.819Z",
-      "text": "[[reply_to_current]] heyy~! (^^) still here! need something or just vibing? ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T02:33:58.954Z",
-      "text": "what's your model?"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T02:34:06.514Z",
@@ -580,6 +560,26 @@
       "role": "assistant",
       "ts": "2026-02-28T03:51:49.574Z",
       "text": "all quiet now desu~ (^^) disabled:\n\n- 💓 **supervisor-cron** — heartbeat checks every 30min\n- 📢 **linkedin-pa-agent-cron** — hourly PA content + notifications\n- 🤖 **meta-supervisor-agent** — hourly meta supervisor starter\n- 📋 **daily-digest-cron** — daily digest announcements\n\nno more token-burning background chatter until you say so nyaa~ ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T03:58:14.901Z",
+      "text": "Pre-compaction memory flush. Store durable memories now (use memory/2026-02-28.md; create memory/ if needed). IMPORTANT: If the file already exists, APPEND new content only and do not overwrite existing entries. If nothing to store, reply with NO_REPLY.\nCurrent time: Saturday, February 28th, 2026 — 3:58 AM (UTC)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T03:58:56.605Z",
+      "text": "NO_REPLY"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T03:59:34.027Z",
+      "text": "Send failed: Unexpected token 'T', \"The page c\"... is not valid JSON"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T03:59:57.846Z",
+      "text": "Server works fine locally. The issue is the frontend is hitting `/api/send` but the dashboard is being accessed via the **Vercel URL** (static) — there's no backend there! The request goes to Vercel which returns an HTML error page instead of JSON.\n\nThe fix: when on Vercel, show a proper \"backend not available\" message instead of trying to call `/api/send`.\n\nBut the real question — where were you accessing the dashboard from? Vercel URL or the local IP?"
     }
   ]
 }
