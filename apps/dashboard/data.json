@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T09:50:02Z",
+  "generated_at": "2026-02-28T09:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
-      "sha": "f14c55f5",
+      "sha": "b41d5516",
       "agent": "misc",
-      "message": "fix(clawdash): chat tab input always visible — min-height:0 + overflow:hidden on flex chain",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "fe18ad01",
-      "agent": "misc",
-      "message": "fix(clawdash): use 100dvh + #tab-panels flex container to prevent scroll on mobile",
+      "message": "fix(clawdash): chat input pinned to bottom — fix flex chain min-height:0 on active tab panel",
       "time": "3 minutes ago"
     },
     {
-      "sha": "f4ccd8bc",
+      "sha": "c3b069b3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "921ba2cf",
+      "sha": "f14c55f5",
+      "agent": "misc",
+      "message": "fix(clawdash): chat tab input always visible — min-height:0 + overflow:hidden on flex chain",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "fe18ad01",
+      "agent": "misc",
+      "message": "fix(clawdash): use 100dvh + #tab-panels flex container to prevent scroll on mobile",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "f4ccd8bc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "1321bec4",
+      "sha": "921ba2cf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "3d8273c6",
-      "agent": "misc",
-      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
-      "time": "17 minutes ago"
-    },
-    {
-      "sha": "323f079c",
+      "sha": "1321bec4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "4dfbf102",
+      "sha": "3d8273c6",
+      "agent": "misc",
+      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
+      "time": "22 minutes ago"
+    },
+    {
+      "sha": "323f079c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "b7809d70",
-      "agent": "misc",
-      "message": "fix(clawdash): push — unregister stale SW from wrong origin, force fresh subscription, cleaner flow",
-      "time": "27 minutes ago"
-    },
-    {
-      "sha": "9a712d0a",
-      "agent": "misc",
-      "message": "fix(clawdash): setupPush shows error toasts instead of swallowing silently, adds SW timeout, sends test push on enable",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "45aab69a",
+      "sha": "4dfbf102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "b7809d70",
+      "agent": "misc",
+      "message": "fix(clawdash): push — unregister stale SW from wrong origin, force fresh subscription, cleaner flow",
+      "time": "32 minutes ago"
+    },
+    {
+      "sha": "9a712d0a",
+      "agent": "misc",
+      "message": "fix(clawdash): setupPush shows error toasts instead of swallowing silently, adds SW timeout, sends test push on enable",
+      "time": "35 minutes ago"
+    },
+    {
+      "sha": "45aab69a",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "cb0b1196",
       "agent": "build",
       "message": "update dashboard data (auto-refresh from latest commits)",
-      "time": "32 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "cf88d141",
       "agent": "build",
       "message": "document branch cleanup in final validation (workspace-builder 20260228-0907)",
-      "time": "32 minutes ago"
-    },
-    {
-      "sha": "e07db53f",
-      "agent": "build",
-      "message": "update dashboard data and final progress notes (workspace-builder 20260228-0907)",
-      "time": "33 minutes ago"
-    },
-    {
-      "sha": "d8180154",
-      "agent": "misc",
-      "message": "fix(clawdash): push banner display fix — remove double inline style, show on chat tab if not subscribed/dismissed",
-      "time": "34 minutes ago"
+      "time": "37 minutes ago"
     }
   ],
   "heartbeat": {
@@ -331,31 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T07:12:19.529Z",
-      "text": "NO_REPLY"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T07:12:19.935Z",
-      "text": "i meant for the pwa not the web"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T07:12:43.813Z",
-      "text": "the push notification setup I just built works exactly for the installed PWA desu~ (^^) it uses the **service worker**, which runs in the background even when the app is closed!\n\nthe flow is:\n1. **Install the PWA first** — open `https://instance-20260207-2229.tail2dd22b.ts.net:3443` on Chrome Android → three-dot menu → Add to Home Screen\n2. **Open the installed app** (from home screen icon)\n3. **Tap 🔕 bell button** in the header → allow notifications\n4. Done — whenever I reply, a **native Android notification** pops up even when the app is completely closed nyaa~ 🔔\n\nthe key part: `sw.js` has a `push` event listener that calls `self.registration.showNotification(...)` — that's what makes it pop up as a real system notification, not just a browser thing ♪\n\nare you able to install the PWA now? if the install button still isn't showing, let me know what URL you're opening and we can debug it~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T09:05:29.835Z",
-      "text": "i did not see bell button"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:05:40.261Z",
-      "text": "button is there in the HTML — the issue is it's **hidden on mobile** because the header is too cramped. let me check the responsive CSS~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T09:05:50.480Z",
@@ -580,6 +555,31 @@
       "role": "assistant",
       "ts": "2026-02-28T09:48:35.693Z",
       "text": "[[reply_to_current]] refresh! the fix: `min-height: 0` + `overflow: hidden` all the way down the flex chain — `chat-main` was growing beyond the viewport and pushing the input off-screen (T_T)\n\nnow `#chat-messages` scrolls internally and the input bar stays pinned at the bottom always nyaa~ (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:52:08.114Z",
+      "text": "[Sat 2026-02-28 09:52 UTC] the scroll is internal but the input field is still way too down there"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:52:13.268Z",
+      "text": "Let me look at the exact structure of the chat tab~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:52:19.410Z",
+      "text": "The `#tab-chat` has `.tab-panel` class which has `flex: 1` — but `.tab-panel.active` has `display: flex; flex-direction: column` while `#tab-chat.active` overrides with `flex-direction: row`. The problem is `.tab-panel` itself gets `flex: 1` but when it becomes the chat tab it needs to be a proper flex child of `#tab-panels` with `min-height: 0`. Let me just nail this with explicit heights~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:52:38.863Z",
+      "text": "[[reply_to_current]] refresh and check nyaa~ \n\nthe fix: `.tab-panel.active` now gets `flex: 1; min-height: 0` instead of the chat tab trying to set it itself — this properly constrains the whole chat panel to the available viewport height so the input bar sits at the bottom (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:54:55.322Z",
+      "text": "[Sat 2026-02-28 09:54 UTC] reduce the height of chat screen so that the input field can be seen without scrolling down"
     }
   ]
 }
