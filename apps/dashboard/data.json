@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T18:10:02Z",
+  "generated_at": "2026-02-28T18:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.85 0.76 0.79",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.67 0.69 0.76",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 4 hours, 30 minutes",
+    "uptime": "1 week, 2 days, 4 hours, 35 minutes",
     "disk_history": [
       79,
       79,
@@ -22,7 +22,7 @@
       79,
       79,
       79,
-      79,
+      80,
       80,
       80,
       80,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "5aff7f68",
+      "sha": "639ffc6f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "dd60d6b1",
+      "sha": "5aff7f68",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "8a3b0758",
-      "agent": "feat",
-      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
-      "time": "11 minutes ago"
-    },
-    {
-      "sha": "90a6ca76",
+      "sha": "dd60d6b1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "3573d162",
+      "sha": "8a3b0758",
+      "agent": "feat",
+      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
+      "time": "16 minutes ago"
+    },
+    {
+      "sha": "90a6ca76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "2bf98fe7",
+      "sha": "3573d162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "d5f9d656",
+      "sha": "2bf98fe7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "7ac9aa37",
+      "sha": "d5f9d656",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
+      "sha": "7ac9aa37",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "40 minutes ago"
+    },
+    {
       "sha": "c62ee743",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "bc1cecec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "32ba6ef0",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "e4d9f7d7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "fcefe9ab",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
+      "time": "60 minutes ago"
     },
     {
       "sha": "ed38d41a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "8c70170c",
-      "agent": "game",
-      "message": "polish Anime Studio Tycoon v1.2 — morale system, 20 events, income balance",
-      "time": "61 minutes ago"
+      "time": "65 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772302055917,
-      "next_run": 1772302175917,
+      "last_run": 1772302415945,
+      "next_run": 1772302535945,
       "last_status": "ok",
-      "last_duration_ms": 29073,
+      "last_duration_ms": 28315,
       "consecutive_errors": 0
     },
     {
