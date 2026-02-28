@@ -1,18 +1,26 @@
 # Research Reports — Index
 
-This index is auto‑generated. Last updated: 2026-02-27
+This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (177 total)
+## 2026 Reports (185 total)
 
 ### 2026-02
+- [Enterprise Planning Analytics Market 2026 — Competitive Landscape & Adoption Trends](2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md)
 - [Spring 2026 Anime Season Trends — Lineup, Streaming, and Highlights](2026-02-27-spring-2026-anime-season-trends.md)
 - [Space Launch Economics & Market 2026 — Cost per kg, Reusability, and Competitive Landscape](2026-02-27-space-launch-economics-market-2026-cost-per-kg-reusability-rideshare.md)
+- [Solid-State Batteries 2026 — From Lab to Road, Scaling Challenges Remain](2026-02-27-solid-state-batteries-2026.md)
 - [Real-Time Payments & Digital Banking Transformation 2026](2026-02-27-real-time-payments-digital-banking-transformation-2026.md)
 - [Quantum Networking & Quantum Internet 2026 — QKD Networks, Standards, and Scaling Challenges](2026-02-27-quantum-networking-quantum-internet-2026-QKD-networks-standards-scaling.md)
+- [Privacy-Preserving Machine Learning 2026 — Federated Learning, Differential Privacy, and the LA‑LoRA Breakthrough](2026-02-27-privacy-preserving-ml-2026.md)
 - [Post-Quantum Cryptography Adoption 2026 — NIST Standards, Migration, and Enterprise Readiness](2026-02-27-post-quantum-cryptography-adoption-2026-nist-standards-migration-enterprise-readiness.md)
 - [Neuromorphic Computing & Chips 2026 — Brain‑Inspired Silicon, Event‑Driven AI Acceleration](2026-02-27-neuromorphic-computing-chips-2026-brain-inspired-silicon-event-driven-ai.md)
 - [LEO Satellite Internet Constellations 2026 — Starlink, OneWeb, Project Kuiper](2026-02-27-leo-satellite-internet-constellations-2026-status-update.md)
 - [Fusion Energy Breakthroughs 2026 — Tokamaks, Inertial Confinement, and Private Startups](2026-02-27-fusion-energy-breakthroughs-2026-tokamak-inertial-private-startups.md)
+- [Edge AI and TinyML 2026 — On-Device Intelligence Becomes Mainstream](2026-02-27-edge-ai-tinyml-2026.md)
+- [Climate Tech 2026 — CCUS, Green Hydrogen, and the Carbon Economy](2026-02-27-climate-tech-2026.md)
+- [AI Safety, Alignment, and Governance 2026 — Regulatory Surge, Agentic Challenges, and Operational Readiness](2026-02-27-ai-safety-alignment-governance-2026.md)
+- [AI-Powered Cybersecurity 2026 — The Autonomous Arms Race](2026-02-27-ai-powered-cybersecurity-2026.md)
+- [AI in Healthcare 2026 — The Clinical and Commercial Inflection Point](2026-02-27-ai-in-healthcare-2026.md)
 - [6G Networks: 2026 Trials, Spectrum, and IMT-2030 Roadmap](2026-02-27-6g-networks-2026-trials-spectrum-imt-2030-roadmap.md)
 - [Edge AI & TinyML 2026 — State of the Art](2026-02-26-edge-ai-tinyml-2026.md)
 - [AI Agent Frameworks 2026 — Comparison & Trends](2026-02-26-ai-agent-frameworks-2026-comparison.md)
