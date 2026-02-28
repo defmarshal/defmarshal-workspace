@@ -131,25 +131,27 @@ const server = http.createServer(async (req, res) => {
     const body = await readBody(req);
     const message = (body.message || '').trim();
     if (!message) return json(res, 400, { error: 'message required' });
-    // Use message send (fast, no LLM turn) to deliver directly to Telegram chat
-    const result = await run('openclaw', [
-      'message', 'send',
-      '--channel', 'telegram',
-      '--target', '952170974',
-      '--message', message,
-      '--json',
-    ]);
-    // parse JSON from stdout (openclaw prints doctor noise before actual JSON)
-    let ok = false;
-    let output = (result.stdout + result.stderr).trim();
+
+    // Look up session ID dynamically
+    let sessionId = null;
     try {
-      const jsonStart = output.indexOf('{');
-      if (jsonStart >= 0) {
-        const parsed = JSON.parse(output.slice(jsonStart));
-        ok = parsed?.payload?.ok === true;
-      }
+      const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
+      sessionId = sessions['agent:main:telegram:direct:952170974']?.sessionId;
     } catch {}
-    return json(res, ok ? 200 : 500, { ok, output });
+
+    if (!sessionId) {
+      return json(res, 500, { ok: false, error: 'Could not resolve session ID' });
+    }
+
+    // Fire agent turn detached (background) — returns immediately, reply arrives in Telegram
+    const proc = require('child_process').spawn(
+      'openclaw',
+      ['agent', '--session-id', sessionId, '--message', message, '--deliver'],
+      { detached: true, stdio: 'ignore', cwd: WORKSPACE }
+    );
+    proc.unref();
+
+    return json(res, 200, { ok: true, output: 'Message queued — reply coming via Telegram' });
   }
 
   // ── API: run quick command ─────────────────────────────────────────────────
