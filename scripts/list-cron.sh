@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # List OpenClaw cron jobs in a concise format
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

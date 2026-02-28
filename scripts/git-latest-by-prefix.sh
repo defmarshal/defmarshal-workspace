@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show latest commit per agent prefix (dev:, research:, content:, etc.)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

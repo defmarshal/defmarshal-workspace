@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Clean up old log files in memory/ directory (keep recent for debugging)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

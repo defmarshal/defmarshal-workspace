@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check LinkedIn PA posts for word count below threshold (default 300).
 # Lists files that are too short.
 

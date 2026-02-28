@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Clean up archived files older than 90 days (dry-run by default)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show research reports by age (oldest first)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

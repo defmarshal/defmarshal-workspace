@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show detailed information about the last commit
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

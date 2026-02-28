@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check that today's daily digest is up-to-date with actual content
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # List expected agent log files that are missing
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

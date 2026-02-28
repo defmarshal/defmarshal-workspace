@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # LinkedIn Content Agent - IBM Planning Analytics (Analyst-Report v10)
 # Dynamic LLM-generated queries + topic bucket rotation
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Play a random TTS-narrated research report
 # Usage: quick tts-random
 

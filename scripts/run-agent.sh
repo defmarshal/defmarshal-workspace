@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Run an OpenClaw agent with a given message
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

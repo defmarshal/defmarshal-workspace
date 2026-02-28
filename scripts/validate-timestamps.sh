@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Validate timestamp arithmetic in agent scripts for octal parsing safety
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

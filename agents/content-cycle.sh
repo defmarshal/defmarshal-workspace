@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Content Agent - One Cycle (with retry)
 # This script performs a single content-agent cycle with retry on transient errors.
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show recent agent activity from memory logs with clearer timestamps
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

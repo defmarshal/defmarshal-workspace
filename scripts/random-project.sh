@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # random-project — suggest a fun weekend project (non-web)
 
 projects=(

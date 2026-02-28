@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show recent git commits grouped by agent prefix
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

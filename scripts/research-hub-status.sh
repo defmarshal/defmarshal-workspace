@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check Research Hub deployment status (local + remote)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

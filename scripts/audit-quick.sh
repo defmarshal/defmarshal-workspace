@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Audit the quick launcher for common issues
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

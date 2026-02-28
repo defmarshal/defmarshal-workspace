@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Clean up stale feature branches (idea/*, hotfix/*, etc.) older than 30 days
 # Prompts for confirmation before deletion.
 

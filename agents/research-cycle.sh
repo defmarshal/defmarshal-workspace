@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Research Agent - One Cycle (with retry + auto TTS)
 # This script performs a single research-agent cycle with retry on transient errors,
 # then generates TTS audio for any new research reports.

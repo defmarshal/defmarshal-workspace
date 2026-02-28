@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Commit newly generated TTS audio files (research/*.mp3) that are not yet tracked.
 # Useful as a post‑TTS step or periodic cron job.
 

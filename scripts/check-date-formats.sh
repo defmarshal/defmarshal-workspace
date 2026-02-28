@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check for consistent date formatting in filenames (YYYY-MM-DD-HHMM)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

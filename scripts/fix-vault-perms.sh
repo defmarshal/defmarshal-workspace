@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Fix vault permissions for nginx WebDAV
 
 VAULT_DIR="/home/ubuntu/obsidian-vault"

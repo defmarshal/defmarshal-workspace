@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show system memory and disk usage
 
 echo "System Memory & Disk Usage"

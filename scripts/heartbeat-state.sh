@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show heartbeat state (last check times per channel) in a readable format.
 # Reads memory/heartbeat-state.json if present.
 

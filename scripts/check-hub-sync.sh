@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check if Research Hub needs redeployment by comparing research/ and public/research
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

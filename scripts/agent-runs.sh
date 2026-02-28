@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show recent agent runs from memory logs
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

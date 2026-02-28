@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Kṛṣṇa — Game Builder Agent
 # Executes game development plans from Vishwakarma
 

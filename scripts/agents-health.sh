@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show health summary of all OpenClaw agents
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

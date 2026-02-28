@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check and ensure agent log files exist in memory/
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

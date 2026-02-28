@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # tech-project — suggest a technical (non-web, non-mobile) weekend project
 
 projects=(

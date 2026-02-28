@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check agent log freshness with awareness of typical schedules.
 # Green: active within expected window; Yellow: stale but within quiet period; Red: missing or clearly stale.
 

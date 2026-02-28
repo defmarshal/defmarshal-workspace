@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check OpenClaw version against latest npm release
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

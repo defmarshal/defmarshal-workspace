@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Comprehensive health report — single view of system status
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

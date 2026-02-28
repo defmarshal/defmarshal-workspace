@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show TTS coverage statistics for research reports
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

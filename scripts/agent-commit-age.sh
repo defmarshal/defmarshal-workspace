@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show age of most recent commits by agent prefix (dev:, research:, content:, etc.)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

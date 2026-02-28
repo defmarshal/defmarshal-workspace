@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Check Research Hub INDEX.md for consistency with research/ directory
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

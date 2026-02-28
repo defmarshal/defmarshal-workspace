@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show agent script versions (from Git history or script header)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

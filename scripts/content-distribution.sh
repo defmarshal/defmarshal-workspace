@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show distribution of LinkedIn PA content types
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

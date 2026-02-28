@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # enhancement-list.sh — show enhancement queue
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

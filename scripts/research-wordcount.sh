@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show word count statistics for research reports
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

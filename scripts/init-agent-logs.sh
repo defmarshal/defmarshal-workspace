@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Initialize missing agent log files with a placeholder entry.
 # This helps health checks detect presence even if the agent hasn't run yet.
 

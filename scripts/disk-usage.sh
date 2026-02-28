@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show disk usage summary of the workspace
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"

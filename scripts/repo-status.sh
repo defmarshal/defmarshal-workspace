@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Show git repository status (branch, remote, recent commits)
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
