@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T06:10:02Z",
+  "generated_at": "2026-02-28T06:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -28,8 +28,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 05:12",
-      "last_line": "[2026-02-28T05:12:50Z] [research-agent] Completed open source LLM landscape 2026 report (17.8KB, cc43e3d3). 191 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs."
+      "last_run": "2026-02-28 06:12",
+      "last_line": "[2026-02-28T06:12:48Z] [research-agent] Completed edge AI on-device LLMs 2026 report (15.7KB, 4b319cb6). 192 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI."
     },
     {
       "name": "content-agent",
@@ -52,109 +52,109 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 05:30",
-      "last_line": "2026-02-28 05:30:09 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 06:12",
+      "last_line": "2026-02-28 06:12:13 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 05:28",
-      "last_line": "2026-02-28 05:28:13 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 06:12",
+      "last_line": "2026-02-28 06:12:53 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
-    "total": 216,
-    "tts_coverage": "99%",
+    "total": 217,
+    "tts_coverage": "98%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "6b972f78",
-      "agent": "content",
-      "message": "06:05 research spotlight — agentic AI, open-source LLMs, spring anime, SEA banking; 6 reports today, 191 total",
-      "time": "77 seconds ago"
+      "sha": "fbfb4bc7",
+      "agent": "auto",
+      "message": "maintenance update 2026-02-28 06:14 UTC",
+      "time": "38 seconds ago"
     },
     {
-      "sha": "fcd93b73",
-      "agent": "dev",
-      "message": "add agent-health-report script — per-agent status, error counts, gateway/disk/git; fix content INDEX; prune stale idea branch",
+      "sha": "4b319cb6",
+      "agent": "research",
+      "message": "edge AI on-device LLMs 2026 — Qualcomm X2 85 TOPS, Nvidia N1X 180 TOPS, Apple M4, small models, quantization, deployment guide",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "a5abb106",
+      "agent": "misc",
+      "message": "fix(clawdash): use openclaw message send instead of agent --deliver for instant chat (no LLM turn)",
       "time": "3 minutes ago"
     },
     {
-      "sha": "a0a2dc4c",
+      "sha": "bda488ea",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "9dc857f5",
-      "agent": "misc",
-      "message": "feat(clawdash): v4 — dark/light toggle, disk bar+sparkline, agent timeline, relative timestamps, typing indicator, chat autopoll 10s, Cmd+K palette, toasts, error highlighting in logs, tab persistence",
-      "time": "7 minutes ago"
+      "sha": "6b972f78",
+      "agent": "content",
+      "message": "06:05 research spotlight — agentic AI, open-source LLMs, spring anime, SEA banking; 6 reports today, 191 total",
+      "time": "6 minutes ago"
     },
     {
-      "sha": "eefca116",
+      "sha": "fcd93b73",
+      "agent": "dev",
+      "message": "add agent-health-report script — per-agent status, error counts, gateway/disk/git; fix content INDEX; prune stale idea branch",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "a0a2dc4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ec44fd0b",
+      "sha": "9dc857f5",
+      "agent": "misc",
+      "message": "feat(clawdash): v4 — dark/light toggle, disk bar+sparkline, agent timeline, relative timestamps, typing indicator, chat autopoll 10s, Cmd+K palette, toasts, error highlighting in logs, tab persistence",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "eefca116",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "15c9e2d9",
+      "sha": "ec44fd0b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "d7d38718",
+      "sha": "15c9e2d9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "3e7b2493",
+      "sha": "d7d38718",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "359a6f4a",
+      "sha": "3e7b2493",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "69986a05",
+      "sha": "359a6f4a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "dc4fc71b",
-      "agent": "build",
-      "message": "finalize progress log for workspace-builder 20260228-0510",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "4d12a09e",
-      "agent": "build",
-      "message": "mark workspace-builder session 20260228-0510 validated - all constraints satisfied",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "d1be2a2c",
-      "agent": "build",
-      "message": "archive old active-tasks entry, mark disabled cron jobs in docs, document ClawDash backend",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "ba8bfb66",
+      "sha": "69986a05",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
@@ -331,31 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T02:41:15.240Z",
-      "text": "deployed! ✅ let me verify it's live with fresh data~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T02:41:22.989Z",
-      "text": "all fixed, desu~! ✅ here's what i did:\n\n1. **Removed `apps/dashboard/` from `.gitignore`** — that was blocking the cron from committing\n2. **Committed all dashboard files** to git and pushed to master\n3. **Fixed the cron job** — cleaned up the broken `cp` step, now properly does `git add → commit (only if changed) → push`\n4. **Redeployed to Vercel** (`openclaw-dashboard-delta.vercel.app`) with fresh data\n\nLive site now shows: `generated_at: 2026-02-28T02:40:02Z`, gateway up, disk 73%, 7 agents tracked (^^)♪\n\nFrom now on the cron every 5min will auto-update `data.json` → commit → push → Vercel auto-deploys! nyaa~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T03:05:26.228Z",
-      "text": "please fix it. use however method you want"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T03:05:52.465Z",
-      "text": "let me check current state first then figure out the cleanest fix~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T03:05:57.885Z",
-      "text": "both are serving fine... let me open the actual dashboard in browser and see what's visually broken~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T03:06:28.529Z",
@@ -580,6 +555,31 @@
       "role": "assistant",
       "ts": "2026-02-28T06:08:31.969Z",
       "text": "`--to` expects an **E.164 phone number**, not `telegram:952170974`! That's why it's hanging — it's trying to look up a phone number. The correct approach is `--session-id`. Let me find the right session ID and fix the server~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T06:11:27.608Z",
+      "text": "`openclaw message send` works instantly and doesn't burn tokens — no LLM involved. The old `openclaw agent --deliver` was firing a full AI turn. Let me fix the server~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T06:11:46.411Z",
+      "text": "`ok: true`! Working instantly now. Commit and push~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T06:11:55.234Z",
+      "text": "[[reply_to_current]] found the bug! (^^)\n\nthe old code was using `openclaw agent --deliver` which fires a **full AI turn** (model call, waits for reply, etc) — that was hanging silently and timing out, so your \"yo\" just… disappeared (T_T)\n\nfixed it to use `openclaw message send --channel telegram --target 952170974` instead — that's a **direct Telegram send**, no LLM involved, responds in ~1 second~\n\ntry sending something from **http://100.108.208.45:3001** now — should work instantly desu~ ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T06:11:55.553Z",
+      "text": "[Sat 2026-02-28 06:08 UTC] test from dashboard backend — ignore"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T06:12:03.638Z",
+      "text": "hehe that one's from earlier when I was debugging~ it was the old `openclaw agent --deliver` test that finally came through after hanging for ages (T_T)\n\nthe new fix uses direct message send so it's instant now — no more ghost messages nya~ ✅"
     }
   ]
 }
