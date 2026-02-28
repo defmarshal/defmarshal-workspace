@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T16:30:02Z",
+  "generated_at": "2026-02-28T16:35:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 72,
-    "disk_free": "13G",
+    "disk_percent": 76,
+    "disk_free": "11G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
-    "downloads_count": 8,
-    "downloads_gb": "5.7G",
-    "load_avg": "2.11 2.04 1.63",
-    "mem_used": "4.1Gi",
+    "downloads_count": 13,
+    "downloads_gb": "7.5G",
+    "load_avg": "2.38 2.28 1.83",
+    "mem_used": "3.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 50 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 55 minutes",
     "disk_history": [
       72,
       72,
@@ -35,9 +35,9 @@
       72,
       72,
       72,
-      72,
-      72,
-      72
+      73,
+      75,
+      76
     ]
   },
   "agents": [
@@ -74,8 +74,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 16:00",
-      "last_line": "2026-02-28 16:00:10 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 16:30",
+      "last_line": "2026-02-28 16:30:09 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "1236ae47",
+      "sha": "390ffc64",
       "agent": "misc",
-      "message": "fix(torrent): torrent-add smart arg order detection; downloader shuffles top-20, checks aria2 queue + history file to avoid re-downloads",
-      "time": "81 seconds ago"
+      "message": "fix(torrent): auto-torrent-add.sh — add duplicate check (queue + history), pick from full top-10 randomly",
+      "time": "14 seconds ago"
     },
     {
-      "sha": "08f45f49",
+      "sha": "3d95cff9",
+      "agent": "misc",
+      "message": "fix(torrent): seed-ratio=1.0 seed-time=60 — stop hogging slots seeding forever with 0 upload",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "d12a9467",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "651c210f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "8075a233",
+      "sha": "1236ae47",
       "agent": "misc",
-      "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
-      "time": "7 minutes ago"
+      "message": "fix(torrent): torrent-add smart arg order detection; downloader shuffles top-20, checks aria2 queue + history file to avoid re-downloads",
+      "time": "6 minutes ago"
     },
     {
-      "sha": "e22c3569",
-      "agent": "misc",
-      "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "b9a42f46",
+      "sha": "08f45f49",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "8075a233",
+      "agent": "misc",
+      "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "e22c3569",
+      "agent": "misc",
+      "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "b9a42f46",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "fd4de115",
       "agent": "misc",
       "message": "fix(clawdash): add missing torrent card div to Overview + cron tab button to nav; SW v20",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "3e84e287",
       "agent": "misc",
       "message": "fix(clawdash): pop sound — reuse unlocked AudioContext, unlock on first click/keydown, only play on new assistant msg; SW v19",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "5dbe8996",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "bcf35709",
       "agent": "misc",
       "message": "feat(clawdash): r6 — torrent card (aria2), cron tab, SSE chat (real-time), mewmew avatars, pop sound; SW v18",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "e4ebbdec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "ab28f9e7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
-    },
-    {
-      "sha": "53f9cfe5",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
       "time": "30 minutes ago"
-    },
-    {
-      "sha": "66c43037",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "37a71265",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "4d3cc34c",
-      "agent": "misc",
-      "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
-      "time": "37 minutes ago"
     }
   ],
   "heartbeat": {
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772294400008,
-      "next_run": 1772296200000,
+      "last_run": 1772296200010,
+      "next_run": 1772298000000,
       "last_status": "ok",
-      "last_duration_ms": 13138,
+      "last_duration_ms": 12513,
       "consecutive_errors": 0
     },
     {
@@ -689,46 +689,6 @@
   },
   "chat": [
     {
-      "role": "user",
-      "ts": "2026-02-28T11:58:58.906Z",
-      "text": "[Sat 2026-02-28 11:58 UTC] test"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:59:03.679Z",
-      "text": "[[reply_to_current]] nyaa~ did the message stay this time? (^^) 🐾"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T13:10:16.484Z",
-      "text": "[Sat 2026-02-28 13:10 UTC] the chat is stuck at thinking indicator"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T13:10:31.946Z",
-      "text": "Found it — `prevCount` counts `.msg.assistant` DOM elements, but since we're now suppressing `renderChat`, those elements are the OLD ones from before the message was sent. The count never changes because we never re-render! The 3min timeout is the only escape desu~\n\nThe fix: compare against the last known chat length from the server, not DOM elements:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T13:10:41.902Z",
-      "text": "[[reply_to_current]] ugh another logic hole desu~ (ಠ_ಠ)\n\n**root cause:** `prevCount` was counting `.msg.assistant` DOM elements — but since we freeze the DOM while sending, those elements never change, so the watcher never detects a new reply!\n\n**fix:** now uses `chatData` (the last server snapshot) to compare counts — that's the actual source of truth, not the frozen DOM\n\nclear cache → v16 → try again nyaa~ 🐾"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T14:45:30.820Z",
-      "text": "[Sat 2026-02-28 14:45 UTC] testing"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T14:45:35.359Z",
-      "text": "[[reply_to_current]] nyaa~ watching for your report! (^^) 🐾"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T15:52:01.005Z",
-      "text": "[Sat 2026-02-28 15:52 UTC] still stuck at thinking."
-    },
-    {
       "role": "assistant",
       "ts": "2026-02-28T15:52:08.691Z",
       "text": "Let me add some debug logging to understand exactly what's happening:"
@@ -937,6 +897,46 @@
       "role": "user",
       "ts": "2026-02-28T16:29:52.468Z",
       "text": "[Sat 2026-02-28 16:29 UTC] do the test run"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:30:18.064Z",
+      "text": "[[reply_to_current]] working perfectly nyaa~ ✅🐾\n\n```\nAlready in queue: [Emotion] Iribitari Gal... → skip\nAlready in queue: [HentaiHub] Room of Guilty... → skip  \nAlready in queue: [AmateurSubs] Iribitari... → skip\nAlready in queue: [荻原沙优]入り浸りギャル... → skip\n✓ Added: [AmateurSubs] Imaizumin-chi wa Douyara...\n```\n\nshuffled through 4 already-queued ones, found a fresh one and added it desu~ duplicate detection working exactly as intended (^^) ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:31:16.572Z",
+      "text": "[Sat 2026-02-28 16:31 UTC] the torrent is all waiting. waiting for what?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:31:38.255Z",
+      "text": "[[reply_to_current]] they're waiting because `max-concurrent-downloads = 5` and there are already **5 active** downloads nyaa~ so the queue is full desu~\n\nbut there's another issue — those 5 \"active\" ones all show `seeders=0` and most have `connections=0`, meaning they're **stalled** — no peers connecting. The ones at 100% from earlier are probably just seeding with no upload limit but not actually transferring anything anymore.\n\nlet me check what's stuck:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:31:46.904Z",
+      "text": "All 5 \"active\" are 100% done but stuck in **seeding mode**, hogging all 5 slots! They need to be removed/stopped to let the waiting ones start:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:32:06.594Z",
+      "text": "Downloading now nyaa~ 🎉 also let me fix aria2 config so completed torrents auto-remove from seeding after they finish:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:32:30.509Z",
+      "text": "[[reply_to_current]] the 5 \"active\" ones were all **100% done but stuck seeding with 0 upload** — blocking all 5 slots so the queue couldn't start nyaa~ (ಠ_ಠ)\n\n**fixed two things:**\n1. 🧹 **Removed the stuck completed torrents** — queue immediately started downloading (up to 21 MB/s now!)\n2. ⚙️ **Fixed `aria2.conf`**: `seed-ratio=1.0` + `seed-time=60` — once a torrent is done, it seeds until it's uploaded as much as it downloaded (or 60 min max), then **auto-removes** from the slot desu~\n\nso from now on completed downloads won't hog slots forever ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:32:48.729Z",
+      "text": "[Sat 2026-02-28 16:32 UTC] nice. can you check any other cron that is failing silently?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:35:00.588Z",
+      "text": "[[reply_to_current]] audit done nyaa~ here's the full picture desu~\n\n**❌ Confirmed broken (all fixed now):**\n1. **`random-torrent-downloader`** — `torrent-add` arg order bug, was calling `torrent-add \"$MAGNET\"` but script expected secret first → \"Usage:\" every run, never added anything for who knows how long\n2. **`auto-torrent-cron`** — same root issue via `--add` flag, PLUS no duplicate check at all\n3. **`seed-ratio=0`** — completed torrents seeded forever, hogging all 5 slots so nothing could download\n\n**⚠️ Minor / non-critical:**\n4. **`archiver-manager-cron`** — never run but that's expected, it's weekly (Sunday 2am UTC), just hasn't hit yet\n5. **`agni-cron`** — spawning sub-agents but `session: unknown` (spawn output parsing issue), logs show it's technically running\n\n**✅ Everything else healthy:**\n- notifier, evolver, dev/content/research agents, meta-agent, supervisor — all running fine with proper logs\n\nthe two torrent scripts were the only real silent failures (ಠ_ಠ) both fixed + history-based dedup added so they'll never re-download the same thing ♪"
     }
   ]
 }
