@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T07:00:02Z",
+  "generated_at": "2026-02-28T07:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -40,8 +40,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 06:07",
-      "last_line": "[2026-02-28T06:07:33Z] Dev-agent cycle completed (exit 0)"
+      "last_run": "2026-02-28 07:04",
+      "last_line": "[2026-02-28T07:04:47Z] [dev-agent] Completed cycle (3dd2dbbf): trim-agent-logs.sh created (--size/--keep/--dry-run/--dir), aria2 rotate threshold 100MB→50MB, pruned 4 old aria2.gz archives, trimmed enhancement-bot.log 610KB→87KB + agent-manager.log 515KB→138KB. Quick registered. web-push dep committed."
     },
     {
       "name": "supervisor",
@@ -52,7 +52,7 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 06:30",
+      "last_run": "2026-02-28 07:04",
       "last_line": "2026-02-28 06:30:25 UTC - Agent Manager stopped"
     },
     {
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
-      "sha": "7353dcb2",
+      "sha": "3dd2dbbf",
+      "agent": "dev",
+      "message": "add trim-agent-logs.sh utility; lower aria2.log rotate threshold 100MB→50MB; commit web-push dep; trim enhancement-bot+agent-manager logs (1.1MB freed)",
+      "time": "23 seconds ago"
+    },
+    {
+      "sha": "0a907860",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "2dd15987",
+      "sha": "7353dcb2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "1d368f6d",
+      "sha": "2dd15987",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "1bfb211b",
+      "sha": "1d368f6d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "e63b0e65",
+      "sha": "1bfb211b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "e63b0e65",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "39bfeeec",
       "agent": "misc",
       "message": "feat(clawdash): push notifications — VAPID, subscribe endpoint, chat watcher, bell button in header",
-      "time": "28 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "5952ce00",
       "agent": "chore",
       "message": "ignore *.key, *.crt, *.pem files (Tailscale/TLS keys)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "5c543bc6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "c1a1f682",
       "agent": "misc",
       "message": "feat(clawdash): HTTPS on port 3443 via Tailscale cert for PWA install on Android Chrome",
-      "time": "33 minutes ago"
+      "time": "38 minutes ago"
     },
     {
       "sha": "6043bb60",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "824a646d",
       "agent": "misc",
       "message": "feat(clawdash): full PWA — PNG icons, updated manifest (id/shortcuts/maskable), sw.js v4, iOS/Android meta tags, ?tab= URL shortcuts",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "325600d2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "a60a551b",
       "agent": "misc",
       "message": "fix(clawdash): send via agent session (detached) so messages come FROM user, reply arrives in Telegram",
-      "time": "42 minutes ago"
-    },
-    {
-      "sha": "f25f17b6",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "fbfb4bc7",
-      "agent": "auto",
-      "message": "maintenance update 2026-02-28 06:14 UTC",
-      "time": "46 minutes ago"
+      "time": "47 minutes ago"
     }
   ],
   "heartbeat": {
