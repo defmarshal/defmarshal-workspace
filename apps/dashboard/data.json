@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T16:20:02Z",
+  "generated_at": "2026-02-28T16:25:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.94 1.16 1.14",
-    "mem_used": "3.2Gi",
+    "load_avg": "1.78 1.68 1.38",
+    "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 40 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 45 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "8075a233",
+      "agent": "misc",
+      "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "e22c3569",
+      "agent": "misc",
+      "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "b9a42f46",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "fd4de115",
       "agent": "misc",
       "message": "fix(clawdash): add missing torrent card div to Overview + cron tab button to nav; SW v20",
-      "time": "3 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "3e84e287",
       "agent": "misc",
       "message": "fix(clawdash): pop sound — reuse unlocked AudioContext, unlock on first click/keydown, only play on new assistant msg; SW v19",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "5dbe8996",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "bcf35709",
       "agent": "misc",
       "message": "feat(clawdash): r6 — torrent card (aria2), cron tab, SSE chat (real-time), mewmew avatars, pop sound; SW v18",
-      "time": "7 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "e4ebbdec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "ab28f9e7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "53f9cfe5",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "66c43037",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "37a71265",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "4d3cc34c",
       "agent": "misc",
       "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "44bec76a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "fcafff4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "10cd2510",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "40 minutes ago"
-    },
-    {
-      "sha": "11df490b",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "b8f05427",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "50 minutes ago"
     }
   ],
   "heartbeat": {
@@ -689,46 +689,6 @@
   },
   "chat": [
     {
-      "role": "assistant",
-      "ts": "2026-02-28T11:09:54.300Z",
-      "text": "[[reply_to_current]] found it and fixed it nyaa~ (^^)\n\n**root cause:** the 5s background poll was calling `renderChat()` which does a full `innerHTML` replace — wiping your optimistic message + typing indicator, then rewriting everything fresh from server data (now with timestamp) desu~\n\n**fix:** added `chatSending` flag:\n- set `true` when you hit send\n- background poll **skips** while flag is true\n- dedicated reply-watcher still checks every 3s (temporarily unlocks, fetches, re-locks)\n- unlocks when reply arrives or 3min timeout\n\nclear cache to get v13 — should feel smooth now with no disappearing messages~ ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T11:10:49.477Z",
-      "text": "[Sat 2026-02-28 11:10 UTC] let's try"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:10:54.163Z",
-      "text": "[[reply_to_current]] go for it nyaa~ 🐾 send something in the chat tab and tell me if the message stays put this time (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T11:11:17.197Z",
-      "text": "[Sat 2026-02-28 11:11 UTC] the message is still replaced and thinking indicator still disappears"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:11:33.756Z",
-      "text": "The `waitForReply` loop itself calls `refreshChat` after temporarily setting `chatSending = false` — so it wipes things every 3s anyway. My fix had a logic hole desu~ Let me do this properly:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:11:43.613Z",
-      "text": "[[reply_to_current]] sorry about that, my fix had a hole — the reply-watcher itself was still calling `renderChat` nyaa~ (ಠ_ಠ)\n\n**real fix now:** the watcher does a **silent fetch** — checks message count in the background without ever touching the DOM. Only renders once when a new reply actually arrives. The optimistic message + typing indicator stay put the whole time desu~\n\nclear cache → v14 → try again~ 🐾"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T11:12:22.789Z",
-      "text": "[Sat 2026-02-28 11:12 UTC] try"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:12:27.150Z",
-      "text": "[[reply_to_current]] nyaa~ send something in the chat tab and let me know if it stays this time! (^^) 🐾"
-    },
-    {
       "role": "user",
       "ts": "2026-02-28T11:15:00.066Z",
       "text": "[Sat 2026-02-28 11:14 UTC] hey"
@@ -937,6 +897,46 @@
       "role": "assistant",
       "ts": "2026-02-28T16:18:26.764Z",
       "text": "[[reply_to_current]] easiest way nyaa~ (^^)\n\n**Option 1 — DevTools (quick)**\n1. Open Chrome DevTools → **Network** tab\n2. Filter by **\"EventSource\"** or search `/api/chat-stream`\n3. You should see it as a persistent request (status `200`, type `eventsource`, never closes)\n4. Click it → **EventStream** tab → you'll see messages streaming in live 🔴\n\n**Option 2 — curl (nerdy)**\n```bash\ncurl -N https://instance-20260207-2229.tail2dd22b.ts.net:8443/api/chat-stream\n```\nYou should see:\n```\n: connected\n\ndata: {\"chat\":[...]}\n```\nAnd it stays open waiting for more nyaa~\n\n**Option 3 — just send a message**\n- Open Network tab first\n- Send a chat message\n- Watch if `/api/chat-stream` gets a new `data:` event the moment I reply — vs waiting 5s for a poll\n\n**Red flag 🚩** — if you see `/api/chat` being called every 5s in Network tab, SSE failed and it fell back to polling desu~\n\n**Green flag ✅** — only `/api/chat-stream` open, no repeated `/api/chat` calls\n\ntry option 1 first, it's the easiest! (｡◕‿◕｡)♡"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:20:08.434Z",
+      "text": "[Sat 2026-02-28 16:20 UTC] last and next field on cron tab looks wrong"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:20:34.143Z",
+      "text": "OK so the timestamps are correct milliseconds — but `timeAgo()` in the cron tab is treating them wrong. Let me check:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:20:43.307Z",
+      "text": "Found it — `timeAgo()` does `new Date(ts * 1000)` when ts is a number, but `last_run` and `next_run` are already **milliseconds** (not seconds). So it's multiplying by 1000 again → year 58131 nyaa~ (ಠ_ಠ)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:20:57.979Z",
+      "text": "[[reply_to_current]] classic off-by-1000 bug desu~ (ಠ_ಠ)\n\n`last_run` / `next_run` are already **milliseconds**, but `timeAgo()` was doing `ts × 1000` on top — so it was computing times in year 58131 nyaa~\n\nfixed to use `timeAgoMs()` directly:\n- **last:** `20m ago` ✅  \n- **next:** `in 9m` in blue ✅ (or `Xm overdue` if missed)\n\nclear cache → v21 (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:22:37.672Z",
+      "text": "[Sat 2026-02-28 16:22 UTC] next field is wrong. 8h ago? it should be in the future"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:23:05.232Z",
+      "text": "The `timeAgoMs(diff)` always appends `\" ago\"` — the `.replace(' ago','')` in the overview cron table handles it but the cron tab doesn't, so `\"in 7m ago\"` shows up wrong. Also the negative diff path calls `timeAgoMs(-diff)` which gives a positive \"Xh ago\". Let me fix `timeAgoMs` to accept a raw duration and fix the cron tab rendering:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:23:19.111Z",
+      "text": "[[reply_to_current]] fixed nyaa~ the issue was `timeAgoMs()` always appended `\" ago\"`, so next run showed `\"in 7m ago\"` — and the negative diff path was also broken desu~\n\nadded `fmtDuration()` for plain durations, now shows:\n- **last:** `20m ago` ✅\n- **next:** `in 7m` in blue ✅  \n- **overdue:** `5m overdue` in red ✅\n\nclear cache → v22 (^^) 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:24:47.623Z",
+      "text": "[Sat 2026-02-28 16:24 UTC] can you check random torrent downloader cron?"
     }
   ]
 }
