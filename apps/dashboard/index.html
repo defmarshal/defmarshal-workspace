@@ -87,7 +87,7 @@
     .chat-input-wrap { border-top: 1px solid var(--border); padding: 12px 16px; display: flex; gap: 8px; background: var(--surface); flex-shrink: 0; }
     #chat-input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 9px 12px; font-size: 13px; resize: none; font-family: inherit; line-height: 1.4; max-height: 120px; outline: none; transition: border-color .15s; }
     #chat-input:focus { border-color: var(--blue); }
-    #send-btn { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
+    #send-btn { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: opacity .15s; min-width: 64px; }
     #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     #send-btn:hover:not(:disabled) { opacity: 0.85; }
 
@@ -262,7 +262,7 @@
 
 <!-- Chat -->
 <div id="tab-chat" class="tab-panel">
-  <div id="push-banner" style="display:none;padding:10px 16px;align-items:center;justify-content:space-between;gap:10px;background:var(--surface);border-bottom:1px solid var(--border);">
+  <div id="push-banner" style="display:none;padding:8px 14px;align-items:center;justify-content:space-between;gap:10px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;">
     <span style="font-size:13px;color:var(--muted)">🔔 Get notified when mewmew replies</span>
     <button onclick="setupPush().then(()=>document.getElementById('push-banner').style.display='none');" style="background:var(--blue);color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600;">Enable</button>
     <button onclick="document.getElementById('push-banner').style.display='none';localStorage.setItem('push-dismissed','1');" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;">✕</button>
@@ -359,7 +359,7 @@ function switchTab(tab) {
   activeTab = tab;
   localStorage.setItem('clawdash-tab', tab);
   if (tab === 'chat') {
-    scrollChat(); startChatPoll();
+    setTimeout(scrollChat, 50); startChatPoll();
     // Show push banner if not subscribed and not dismissed
     const banner = document.getElementById('push-banner');
     if (banner && !pushSubscribed && !ON_VERCEL && !localStorage.getItem('push-dismissed')) {
@@ -375,6 +375,13 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function chip(l, c) { return `<span class="chip ${c}">${l}</span>`; }
 
+function timeAgoMs(ms) {
+  const s = Math.floor(ms / 1000);
+  if (s < 60) return s + 's ago';
+  if (s < 3600) return Math.floor(s/60) + 'm ago';
+  if (s < 86400) return Math.floor(s/3600) + 'h ago';
+  return Math.floor(s/86400) + 'd ago';
+}
 function timeAgo(ts) {
   if (!ts) return '';
   const d = typeof ts === 'number' ? new Date(ts * 1000) : new Date(ts);
@@ -435,25 +442,35 @@ function renderSparkline(history) {
   </svg>`;
 }
 
+function parseAgentTs(last_run) {
+  // last_run is like "2026-02-28 10:06" (UTC)
+  if (!last_run) return null;
+  try { return new Date(last_run.replace(' ', 'T') + ':00Z').getTime(); } catch { return null; }
+}
 function renderAgentSummary(agents) {
   // Timeline
   const now = Date.now();
   const tl = document.getElementById('agent-timeline');
   tl.innerHTML = (agents||[]).map(a => {
-    const age = a.last_run_ts ? Math.max(0, now - a.last_run_ts * 1000) : null;
+    const ts = a.last_run_ts ? a.last_run_ts * 1000 : parseAgentTs(a.last_run);
+    const age = ts ? Math.max(0, now - ts) : null;
     const maxAge = 24 * 3600 * 1000;
     const pct = age !== null ? Math.max(4, 100 - (age / maxAge * 100)) : 4;
     const dot = a.active ? 'var(--green)' : 'var(--muted)';
+    const ageStr = age !== null ? timeAgoMs(age) : '—';
     return `<div class="tl-item">
       <div class="tl-dot" style="background:${dot}"></div>
       <div class="tl-name muted">${esc(a.name)}</div>
       <div class="tl-bar-wrap"><div class="tl-bar" style="width:${pct.toFixed(0)}%"></div></div>
-      <div class="tl-age">${age !== null ? timeAgo(a.last_run_ts) : '—'}</div>
+      <div class="tl-age">${ageStr}</div>
     </div>`;
   }).join('');
 
-  document.getElementById('agent-table').innerHTML = (agents||[]).map(a=>`
-    <tr><td>${esc(a.name)}</td><td>${a.active?chip('active','ok'):chip('idle','muted')}</td><td class="muted">${esc(a.last_run)}</td></tr>`).join('');
+  document.getElementById('agent-table').innerHTML = (agents||[]).map(a=>{
+    const ts = a.last_run_ts ? a.last_run_ts * 1000 : parseAgentTs(a.last_run);
+    const age = ts ? timeAgoMs(Date.now() - ts) : esc(a.last_run||'—');
+    return `<tr><td>${esc(a.name)}</td><td>${a.active?chip('active','ok'):chip('idle','muted')}</td><td class="muted">${age}</td></tr>`;
+  }).join('');
   document.getElementById('badge-agents').textContent = (agents||[]).filter(a=>a.active).length+'/'+(agents||[]).length;
 }
 
@@ -491,7 +508,7 @@ function renderAgentDetail(agents) {
     (agents||[]).map(a=>`<tr>
       <td><strong>${esc(a.name)}</strong></td>
       <td>${a.active?chip('active','ok'):chip('idle','muted')}</td>
-      <td class="muted">${timeAgo(a.last_run_ts) || esc(a.last_run)}</td>
+      <td class="muted">${(()=>{const ts=a.last_run_ts?a.last_run_ts*1000:parseAgentTs(a.last_run);return ts?timeAgoMs(Date.now()-ts):esc(a.last_run||'—');})()}</td>
       <td class="muted" style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(a.last_line)}">${esc((a.last_line||'').slice(0,70))}</td>
     </tr>`).join('');
 }
@@ -511,7 +528,7 @@ let lastChatLen = 0;
 
 function renderChat(messages, preserve_scroll = false) {
   chatData = messages || [];
-  document.getElementById('badge-chat').textContent = chatData.length;
+  document.getElementById('badge-chat').textContent = chatData.length > 99 ? '99+' : chatData.length;
   const container = document.getElementById('chat-messages');
   const atBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 60;
 
@@ -520,9 +537,14 @@ function renderChat(messages, preserve_scroll = false) {
     const role = m.role === 'user' ? 'user' : 'assistant';
     const label = role === 'user' ? '👤 def' : '🐾 mewmew';
     let text = esc(m.text || '');
+    // code blocks first (multiline)
+    text = text.replace(/```[\s\S]*?```/g, m => {
+      const code = m.slice(3, -3).replace(/^[a-z]+\n/, '');
+      return '<pre style="background:#0a0d11;padding:8px;border-radius:6px;font-size:10px;overflow-x:auto;margin:4px 0;white-space:pre-wrap;color:#8b949e">' + code + '</pre>';
+    });
     text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/`([^`\n]+)`/g, '<code style="background:#0a0d11;padding:1px 4px;border-radius:3px;font-size:10px;font-family:monospace">$1</code>');
     text = text.replace(/\n/g, '<br>');
-    text = text.replace(/`([^`\n]+)`/g, '<code style="background:#0a0d11;padding:1px 4px;border-radius:3px;font-family:monospace;font-size:11px">$1</code>');
     return `<div class="msg ${role}">
       <div class="msg-bubble">${text}</div>
       <div class="msg-meta">${label} · ${fmtTime(m.ts)}</div>
@@ -556,7 +578,7 @@ function removeTypingIndicator() {
 // ── Chat polling ──────────────────────────────────────────────────────────
 function startChatPoll() {
   if (ON_VERCEL || chatPollTimer) return;
-  chatPollTimer = setInterval(refreshChat, 10000);
+  chatPollTimer = setInterval(refreshChat, 5000);
 }
 function stopChatPoll() {
   if (chatPollTimer) { clearInterval(chatPollTimer); chatPollTimer = null; }
@@ -654,6 +676,8 @@ const QUICK_CMDS = [
   { label: '🌊 supervisor log', cmd: 'supervisor-logs' },
   { label: '📈 meta report',    cmd: 'meta-report' },
   { label: '🔄 updates check',  cmd: 'updates-check' },
+  { label: '💡 meta logs',       cmd: 'meta-logs' },
+  { label: '🔬 validate',        cmd: 'validate' },
 ];
 
 function buildQuickList() {
@@ -828,6 +852,7 @@ function updatePushBtn(enabled) {
 }
 let loadErrors = 0;
 async function load() {
+  document.getElementById('conn-dot').className = 'warn';
   try {
     let data;
     if (!ON_VERCEL) {
@@ -858,7 +883,7 @@ async function load() {
     renderAgentDetail(data.agents);
     renderOutputs(data.agent_outputs);
     renderChat(data.chat || [], true);
-    document.getElementById('last-updated').textContent = 'Updated ' + timeAgo(new Date());
+    const ts = new Date(); document.getElementById('last-updated').textContent = ts.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     document.getElementById('error-banner').style.display = 'none';
     document.getElementById('conn-dot').className = '';
     loadErrors = 0;
