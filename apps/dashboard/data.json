@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T15:45:02Z",
+  "generated_at": "2026-02-28T15:50:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.85 0.86 0.88",
-    "mem_used": "3.3Gi",
+    "load_avg": "1.89 1.42 1.11",
+    "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 5 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 10 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "10cd2510",
+      "sha": "fcafff4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "11df490b",
+      "sha": "10cd2510",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "11df490b",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "b8f05427",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "16b85631",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "57a14f97",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "2b41492d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "67d5f223",
       "agent": "build",
       "message": "refine git-status filter to ignore disk-history.json",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "82c0e2fe",
       "agent": "build",
       "message": "improve validate-constraints to ignore disk-history.json ephemeral updates",
-      "time": "28 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "981b4540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "5aa575a8",
       "agent": "build",
       "message": "update disk history (system telemetry)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "44befca8",
       "agent": "build",
       "message": "refresh planning docs for workspace-builder session 20260228-1507",
-      "time": "31 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "5e6abe63",
       "agent": "build",
       "message": "remove duplicate meta-supervisor entry from active-tasks.md",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "1b4452e7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "33521f46",
       "agent": "research",
       "message": "Robotics & Physical AI 2026 — CES inflection, Atlas commercial production (Hyundai/DeepMind), Figure Helix 02 full-body autonomy (109K lines→1 neural net), Tesla Optimus $20-30K target, Agility Digit Toyota RaaS, Unitree 85-90% global share, RaaS model, Nvidia Cosmos/GR00T; 219 reports",
-      "time": "36 minutes ago"
-    },
-    {
-      "sha": "0b304fee",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "38 minutes ago"
+      "time": "41 minutes ago"
     }
   ],
   "heartbeat": {
