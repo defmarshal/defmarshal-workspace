@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T23:30:02Z",
+  "generated_at": "2026-02-28T23:35:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.68 0.70 0.72",
-    "mem_used": "3.8Gi",
+    "load_avg": "0.81 0.74 0.74",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 9 hours, 50 minutes",
+    "uptime": "1 week, 2 days, 9 hours, 55 minutes",
     "disk_history": [
       80,
       80,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "c9797f76",
+      "sha": "4a0b08ea",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "3b0048d9",
+      "sha": "c9797f76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ffa92f4a",
+      "sha": "3b0048d9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "86915b26",
+      "sha": "ffa92f4a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
+      "sha": "86915b26",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "25 minutes ago"
+    },
+    {
       "sha": "001fca27",
       "agent": "build",
       "message": "workspace-builder session 23dad379: add planning docs, prune active-tasks, validate constraints",
-      "time": "23 minutes ago"
+      "time": "28 minutes ago"
     },
     {
       "sha": "687b204c",
       "agent": "build",
       "message": "workspace-builder validation close-the-loop; remove completed entry",
-      "time": "23 minutes ago"
+      "time": "28 minutes ago"
     },
     {
       "sha": "7c81d5e8",
       "agent": "build",
       "message": "prune active-tasks to <2KB; update disk history telemetry",
-      "time": "24 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "f42c44e7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "9ab659b3",
       "agent": "build",
       "message": "add running entry for current workspace-builder session",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "308f25b2",
       "agent": "build",
       "message": "add workspace-builder planning docs (findings, task_plan, progress) and update disk history",
-      "time": "26 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "4515ae3a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "b5e4000d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "a900a445",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "9a0adeb2",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "bd6d225c",
+      "sha": "9a0adeb2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772319628845,
-      "next_run": 1772321400000,
+      "last_run": 1772321400009,
+      "next_run": 1772323200000,
       "last_status": "ok",
-      "last_duration_ms": 75224,
+      "last_duration_ms": 28553,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772321281500,
-      "next_run": 1772321401500,
+      "last_run": 1772321668812,
+      "next_run": 1772321788812,
       "last_status": "ok",
-      "last_duration_ms": 28543,
+      "last_duration_ms": 28766,
       "consecutive_errors": 0
     },
     {
