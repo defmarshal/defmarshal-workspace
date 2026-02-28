@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (193 total)
+## 2026 Reports (194 total)
 
 ### 2026-02
+- [WebAssembly 2026 — WASM 3.0, WASI 0.3, Component Model & The Cloud Runtime Revolution](2026-02-28-webassembly-2026-wasm3-wasi03-component-model-edge-cloud.md)
 - [Quantum Computing 2026 — IBM, Google Willow, Microsoft Majorana, Neutral Atoms & The Race to Practical Advantage](2026-02-28-quantum-computing-2026-ibm-google-microsoft-race-practical-advantage.md)
 - [Edge AI & On-Device LLMs 2026 — NPU Chips, Qualcomm X2, Apple M4, Nvidia N1X, Local Inference Guide](2026-02-28-edge-ai-on-device-llms-2026-npu-chips-qualcomm-apple-nvidia.md)
 - [Open Source LLM Landscape 2026 — DeepSeek, Llama 4, Qwen3, Mistral & The Performance Gap Collapse](2026-02-28-open-source-llm-landscape-2026-deepseek-llama4-qwen3-mistral.md)
