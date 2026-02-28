@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T03:10:01Z",
+  "generated_at": "2026-02-28T03:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
@@ -58,10 +58,15 @@
   "research": {
     "total": 212,
     "tts_coverage": "99%",
-    "latest": "INDEX\nnone",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "agent": "fix",
       "message": "clawdash sw.js icon paths (.png→.svg), bump cache version, register SW in index.html",
@@ -95,11 +100,6 @@
     {
       "agent": "dev",
       "message": "add apps/dashboard/.gitignore (contains .vercel exclusion)",
-      "time": ""
-    },
-    {
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": ""
     },
     {
