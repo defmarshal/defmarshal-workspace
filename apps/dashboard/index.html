@@ -12,108 +12,109 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --border: #30363d;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --blue: #58a6ff;
-      --green: #7ee787;
-      --yellow: #d29922;
-      --red: #ff7b72;
-      --purple: #bc8cff;
-      --cyan: #79c0ff;
+      --bg: #0d1117; --surface: #161b22; --border: #30363d;
+      --text: #e6edf3; --muted: #8b949e;
+      --blue: #58a6ff; --green: #7ee787; --yellow: #d29922;
+      --red: #ff7b72; --purple: #bc8cff; --cyan: #79c0ff;
     }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    html, body { height: 100%; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
 
-    /* ── Header ── */
-    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
-    header h1 { font-size: 18px; color: var(--blue); display: flex; align-items: center; gap: 8px; }
-    header h1 span.logo { font-size: 22px; }
-    #last-updated { font-size: 12px; color: var(--muted); }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    header h1 { font-size: 17px; color: var(--blue); display: flex; align-items: center; gap: 8px; }
+    #last-updated { font-size: 11px; color: var(--muted); }
+    #backend-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+    #backend-status.ok  { background: #1a3a2a; color: var(--green); }
+    #backend-status.bad { background: #3a1a1a; color: var(--red); }
 
-    /* ── Tabs ── */
-    .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface); padding: 0 20px; overflow-x: auto; }
-    .tab-btn { padding: 12px 18px; font-size: 14px; color: var(--muted); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+    .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface); padding: 0 16px; overflow-x: auto; flex-shrink: 0; }
+    .tab-btn { padding: 11px 16px; font-size: 13px; color: var(--muted); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s, border-color .15s; }
     .tab-btn:hover { color: var(--text); }
     .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
-    .tab-btn .badge { display: inline-block; background: var(--border); color: var(--muted); border-radius: 10px; padding: 1px 7px; font-size: 11px; margin-left: 6px; }
+    .badge { display: inline-block; background: var(--border); color: var(--muted); border-radius: 10px; padding: 1px 6px; font-size: 10px; margin-left: 4px; }
     .tab-btn.active .badge { background: #1f3a5a; color: var(--blue); }
 
-    /* ── Tab panels ── */
-    .tab-panel { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
-    .tab-panel.active { display: block; }
+    .tab-panel { display: none; padding: 16px 20px; max-width: 1200px; margin: 0 auto; width: 100%; flex: 1; }
+    .tab-panel.active { display: flex; flex-direction: column; }
 
-    /* ── Grid ── */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    /* ── Chat tab — full height ── */
+    #tab-chat { padding: 0; max-width: 100%; height: 0; flex: 1; }
+    #tab-chat.active { display: flex; flex-direction: row; height: 100%; }
+    .chat-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    .chat-sidebar { width: 260px; flex-shrink: 0; background: var(--surface); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
 
-    /* ── Card ── */
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
-    .card h2 { font-size: 14px; color: var(--cyan); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 6px; }
+    #chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .msg { display: flex; flex-direction: column; max-width: 75%; }
+    .msg.user { align-self: flex-end; align-items: flex-end; }
+    .msg.assistant { align-self: flex-start; align-items: flex-start; }
+    .msg-bubble { padding: 9px 13px; border-radius: 12px; font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+    .msg.user .msg-bubble { background: #1f3a5a; color: var(--text); border-bottom-right-radius: 3px; }
+    .msg.assistant .msg-bubble { background: var(--surface); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 3px; }
+    .msg-meta { font-size: 10px; color: var(--muted); margin-top: 2px; }
+    .msg.sending .msg-bubble { opacity: 0.6; }
 
-    /* ── Table ── */
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #21262d; }
-    th { color: var(--muted); font-weight: 500; font-size: 12px; }
+    /* ── Chat input ── */
+    .chat-input-wrap { border-top: 1px solid var(--border); padding: 12px 16px; display: flex; gap: 8px; background: var(--surface); flex-shrink: 0; }
+    #chat-input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 9px 12px; font-size: 13px; resize: none; font-family: inherit; line-height: 1.4; max-height: 120px; outline: none; }
+    #chat-input:focus { border-color: var(--blue); }
+    #send-btn { background: var(--blue); color: #0d1117; border: none; border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
+    #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    #send-btn:hover:not(:disabled) { opacity: 0.85; }
+
+    /* ── Quick commands sidebar ── */
+    .sidebar-title { font-size: 12px; color: var(--muted); padding: 12px 14px 6px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .quick-list { flex: 1; overflow-y: auto; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .quick-btn { background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; padding: 6px 10px; cursor: pointer; text-align: left; transition: background .1s, border-color .1s; }
+    .quick-btn:hover { background: #1f2937; border-color: var(--blue); color: var(--blue); }
+    .quick-output { flex-shrink: 0; border-top: 1px solid var(--border); }
+    .quick-output-header { font-size: 11px; color: var(--muted); padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; }
+    .quick-output-header button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; }
+    #quick-result { font-family: "SF Mono", Menlo, monospace; font-size: 11px; color: #8b949e; padding: 8px 14px; max-height: 180px; overflow-y: auto; white-space: pre-wrap; background: #0a0d11; min-height: 40px; }
+
+    /* ── Other tabs ── */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+    .card h2 { font-size: 13px; color: var(--cyan); margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th, td { text-align: left; padding: 5px 4px; border-bottom: 1px solid #21262d; }
+    th { color: var(--muted); font-weight: 500; font-size: 11px; }
     tr:last-child td { border-bottom: none; }
-
-    /* ── Status chips ── */
-    .ok    { color: var(--green); }
-    .warn  { color: var(--yellow); }
-    .bad   { color: var(--red); }
-    .muted { color: var(--muted); font-size: 12px; }
-    .chip  { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+    .ok   { color: var(--green); }
+    .warn { color: var(--yellow); }
+    .bad  { color: var(--red); }
+    .muted { color: var(--muted); font-size: 11px; }
+    .chip { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; }
     .chip.ok   { background: #1a3a2a; color: var(--green); }
     .chip.warn { background: #3a2a0a; color: var(--yellow); }
     .chip.bad  { background: #3a1a1a; color: var(--red); }
     .chip.muted { background: var(--border); color: var(--muted); }
+    .log-box { background: #0a0d11; border: 1px solid var(--border); border-radius: 6px; padding: 10px; font-family: "SF Mono", Menlo, monospace; font-size: 11px; color: #8b949e; max-height: 260px; overflow-y: auto; white-space: pre-wrap; }
+    .output-item { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; margin-bottom: 6px; }
+    .output-item .out-title { font-size: 12px; color: var(--text); margin-bottom: 3px; }
+    .output-item .out-meta { font-size: 10px; color: var(--muted); display: flex; gap: 8px; }
+    .hb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-bottom: 14px; }
+    .hb-item { background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; }
+    .hb-key { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .hb-val { font-size: 12px; color: var(--text); word-break: break-word; }
+    #error-banner { display: none; background: #3a1a1a; border: 1px solid var(--red); color: var(--red); border-radius: 6px; padding: 7px 12px; margin: 10px 20px; font-size: 12px; }
 
-    /* ── Chat ── */
-    #chat-container { display: flex; flex-direction: column; gap: 12px; max-height: 70vh; overflow-y: auto; padding: 4px 2px; }
-    .msg { display: flex; flex-direction: column; max-width: 80%; }
-    .msg.user { align-self: flex-end; align-items: flex-end; }
-    .msg.assistant { align-self: flex-start; align-items: flex-start; }
-    .msg-bubble { padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
-    .msg.user .msg-bubble { background: #1f3a5a; color: var(--text); border-bottom-right-radius: 3px; }
-    .msg.assistant .msg-bubble { background: var(--surface); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 3px; }
-    .msg-meta { font-size: 11px; color: var(--muted); margin-top: 3px; }
-
-    /* ── Agent output list ── */
-    .output-list { display: flex; flex-direction: column; gap: 8px; }
-    .output-item { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; cursor: pointer; transition: border-color 0.15s; }
-    .output-item:hover { border-color: var(--blue); }
-    .output-item .out-title { font-size: 13px; color: var(--text); margin-bottom: 4px; }
-    .output-item .out-meta { font-size: 11px; color: var(--muted); display: flex; gap: 10px; }
-
-    /* ── Heartbeat ── */
-    .hb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-    .hb-item { background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; }
-    .hb-key { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-    .hb-val { font-size: 13px; color: var(--text); word-break: break-word; }
-
-    .log-box { background: #0a0d11; border: 1px solid var(--border); border-radius: 6px; padding: 10px; font-family: "SF Mono", Menlo, monospace; font-size: 11px; color: #8b949e; max-height: 300px; overflow-y: auto; white-space: pre-wrap; }
-
-    /* ── Error banner ── */
-    #error-banner { display: none; background: #3a1a1a; border: 1px solid var(--red); color: var(--red); border-radius: 6px; padding: 8px 12px; margin: 12px 20px; font-size: 13px; }
-
-    /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-    footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
-
-    @media (max-width: 600px) {
-      .tab-btn { padding: 10px 12px; font-size: 13px; }
-      .msg { max-width: 95%; }
+    @media (max-width: 640px) {
+      .chat-sidebar { display: none; }
+      .msg { max-width: 92%; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1><span class="logo">🦾</span> ClawDash</h1>
-  <span id="last-updated" class="muted">Loading…</span>
+  <h1>🦾 ClawDash</h1>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span id="backend-status" class="bad">⚡ local</span>
+    <span id="last-updated" class="muted">Loading…</span>
+  </div>
 </header>
 
 <div id="error-banner"></div>
@@ -125,258 +126,348 @@
   <button class="tab-btn" data-tab="chat">💬 Chat <span class="badge" id="badge-chat">…</span></button>
 </nav>
 
-<!-- ── Overview ── -->
+<!-- Overview -->
 <div id="tab-overview" class="tab-panel active">
   <div class="grid">
-    <div class="card">
-      <h2>🖥️ System</h2>
-      <table id="sys-table"></table>
-    </div>
-    <div class="card">
-      <h2>🤖 Agent Status</h2>
-      <table id="agent-table"></table>
-    </div>
-    <div class="card">
-      <h2>📚 Research Library</h2>
-      <table id="research-table"></table>
-    </div>
-    <div class="card">
-      <h2>📝 Recent Commits</h2>
-      <table id="commit-table"></table>
-    </div>
+    <div class="card"><h2>🖥️ System</h2><table id="sys-table"></table></div>
+    <div class="card"><h2>🤖 Agent Status</h2><table id="agent-table"></table></div>
+    <div class="card"><h2>📚 Research Library</h2><table id="research-table"></table></div>
+    <div class="card"><h2>📝 Recent Commits</h2><table id="commit-table"></table></div>
   </div>
 </div>
 
-<!-- ── Heartbeat ── -->
+<!-- Heartbeat -->
 <div id="tab-heartbeat" class="tab-panel">
   <div class="grid">
-    <div class="card" style="grid-column: 1/-1">
+    <div class="card" style="grid-column:1/-1">
       <h2>💓 Last Heartbeat</h2>
-      <div id="hb-grid" class="hb-grid" style="margin-bottom:16px"></div>
-      <h2 style="margin-top:4px">📋 Supervisor Log</h2>
+      <div id="hb-grid" class="hb-grid"></div>
+      <h2>📋 Supervisor Log</h2>
       <div id="supervisor-log" class="log-box"></div>
     </div>
   </div>
 </div>
 
-<!-- ── Agents ── -->
+<!-- Agents -->
 <div id="tab-agents" class="tab-panel">
-  <div class="grid" style="margin-bottom:20px">
-    <div class="card" style="grid-column: 1/-1">
-      <h2>🤖 Agent Details</h2>
-      <table id="agent-detail-table" style="margin-bottom:0"></table>
-    </div>
+  <div class="card" style="margin-bottom:14px">
+    <h2>🤖 Agent Details</h2>
+    <table id="agent-detail-table"></table>
   </div>
   <div class="card">
     <h2>📄 Recent Agent Outputs</h2>
-    <div id="output-list" class="output-list"></div>
+    <div id="output-list"></div>
   </div>
 </div>
 
-<!-- ── Chat ── -->
+<!-- Chat -->
 <div id="tab-chat" class="tab-panel">
-  <div class="card" style="padding:16px">
-    <h2>💬 Conversation with mewmew</h2>
-    <div id="chat-container" style="margin-top:12px"></div>
+  <div class="chat-main">
+    <div id="chat-messages"></div>
+    <div class="chat-input-wrap">
+      <textarea id="chat-input" rows="1" placeholder="Message mewmew…"></textarea>
+      <button id="send-btn">Send ↑</button>
+    </div>
+  </div>
+  <div class="chat-sidebar">
+    <div class="sidebar-title">⚡ Quick Commands</div>
+    <div class="quick-list" id="quick-list"></div>
+    <div class="quick-output">
+      <div class="quick-output-header">
+        <span id="quick-cmd-label" style="color:var(--muted)">output</span>
+        <button onclick="clearQuickResult()">✕</button>
+      </div>
+      <div id="quick-result"></div>
+    </div>
   </div>
 </div>
-
-<footer>ClawDash — auto-refresh every 60s</footer>
 
 <script>
-  // ── Tab switching ──────────────────────────────────────────────────────────
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-      if (btn.dataset.tab === 'chat') scrollChatToBottom();
-    });
+const IS_LOCAL = window.location.hostname !== 'localhost' ? false : true;
+const API = IS_LOCAL ? '' : ''; // same origin
+
+// Auto-detect if we're on local backend
+let backendAvailable = false;
+
+// ── Tab switching ──────────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    if (btn.dataset.tab === 'chat') scrollChat();
   });
+});
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
-  function esc(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-  function chip(label, cls) {
-    return `<span class="chip ${cls}">${label}</span>`;
-  }
-  function fmtTs(ts) {
-    if (!ts) return '';
-    try {
-      const d = new Date(ts);
-      return d.toISOString().replace('T',' ').slice(0,16) + ' UTC';
-    } catch { return ts; }
-  }
+// ── Helpers ───────────────────────────────────────────────────────────────
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function chip(l, c) { return `<span class="chip ${c}">${l}</span>`; }
+function fmtTs(ts) {
+  if (!ts) return '';
+  try { return new Date(ts).toISOString().replace('T',' ').slice(0,16)+' UTC'; } catch { return ts; }
+}
+function fmtTime(ts) {
+  if (!ts) return '';
+  try { return new Date(ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); } catch { return ''; }
+}
 
-  // ── Overview renders ──────────────────────────────────────────────────────
-  function renderSystem(data) {
-    const t = document.getElementById('sys-table');
-    const s = data.system || {};
-    const gw = s.gateway === 'up' ? chip('up','ok') : chip('down','bad');
-    const disk = s.disk_percent >= 90 ? chip(s.disk_percent+'%','bad')
-               : s.disk_percent >= 80 ? chip(s.disk_percent+'%','warn')
-               : chip(s.disk_percent+'%','ok');
-    const upd = s.updates > 0 ? chip(s.updates+' pending','warn') : chip('0','ok');
-    const git = s.git_clean ? chip('clean','ok') : chip('dirty','warn');
-    const mem = s.memory_age_days <= 7 ? chip(s.memory_age_days+'d','ok') : chip(s.memory_age_days+'d','warn');
-    t.innerHTML = `
-      <tr><th>Gateway</th><td>${gw}</td></tr>
-      <tr><th>Disk</th><td>${disk} <span class="muted">(${esc(s.disk_free)} free)</span></td></tr>
-      <tr><th>Updates</th><td>${upd}</td></tr>
-      <tr><th>Git</th><td>${git}</td></tr>
-      <tr><th>Memory Index</th><td>${mem}</td></tr>
-      <tr><th>Downloads</th><td>${esc(s.downloads_count)} files <span class="muted">(${esc(s.downloads_gb)})</span></td></tr>
-    `;
-  }
+// ── Renders ───────────────────────────────────────────────────────────────
+function renderSystem(d) {
+  const s = d.system || {};
+  const gw = s.gateway==='up' ? chip('up','ok') : chip('down','bad');
+  const disk = s.disk_percent>=90 ? chip(s.disk_percent+'%','bad') : s.disk_percent>=80 ? chip(s.disk_percent+'%','warn') : chip(s.disk_percent+'%','ok');
+  const upd = s.updates>0 ? chip(s.updates+' pending','warn') : chip('0','ok');
+  document.getElementById('sys-table').innerHTML = `
+    <tr><th>Gateway</th><td>${gw}</td></tr>
+    <tr><th>Disk</th><td>${disk} <span class="muted">${esc(s.disk_free)} free</span></td></tr>
+    <tr><th>Updates</th><td>${upd}</td></tr>
+    <tr><th>Git</th><td>${s.git_clean ? chip('clean','ok') : chip('dirty','warn')}</td></tr>
+    <tr><th>Memory Index</th><td>${chip(s.memory_age_days+'d', s.memory_age_days<=7?'ok':'warn')}</td></tr>
+    <tr><th>Downloads</th><td>${esc(s.downloads_count)} files <span class="muted">${esc(s.downloads_gb)}</span></td></tr>`;
+}
+function renderAgentSummary(agents) {
+  document.getElementById('agent-table').innerHTML = (agents||[]).map(a=>`
+    <tr><td>${esc(a.name)}</td><td>${a.active?chip('active','ok'):chip('idle','muted')}</td><td class="muted">${esc(a.last_run)}</td></tr>`).join('');
+  document.getElementById('badge-agents').textContent = (agents||[]).filter(a=>a.active).length+'/'+(agents||[]).length;
+}
+function renderResearch(r) {
+  document.getElementById('research-table').innerHTML = `
+    <tr><td>Reports</td><td><strong>${esc(r.total)}</strong></td></tr>
+    <tr><td>TTS</td><td><span class="${r.tts_coverage==='100%'?'ok':'warn'}">${esc(r.tts_coverage)}</span></td></tr>
+    <tr><td>Latest</td><td class="muted" style="font-size:10px">${esc((r.latest||'none').slice(0,40))}</td></tr>
+    <tr><td>Hub</td><td>${r.hub_deployed?chip('live','ok'):chip('offline','warn')}</td></tr>`;
+}
+function renderCommits(commits) {
+  document.getElementById('commit-table').innerHTML = (commits||[]).map(c=>`
+    <tr><td>${chip(esc(c.agent),'muted')}</td><td style="font-size:11px">${esc(c.message)}</td></tr>`).join('');
+}
+function renderHeartbeat(hb, log) {
+  const checks = hb?.lastChecks || {};
+  document.getElementById('hb-grid').innerHTML = Object.entries(checks).map(([k,v])=>`
+    <div class="hb-item"><div class="hb-key">${esc(k)}</div><div class="hb-val">${esc(String(v))}</div></div>`).join('') || '<span class="muted">No data.</span>';
+  const lb = document.getElementById('supervisor-log');
+  lb.textContent = (log||[]).join('\n') || 'No supervisor log.';
+  lb.scrollTop = lb.scrollHeight;
+}
+function renderAgentDetail(agents) {
+  document.getElementById('agent-detail-table').innerHTML = '<tr><th>Agent</th><th>Status</th><th>Last Run</th><th>Last Log</th></tr>' +
+    (agents||[]).map(a=>`<tr>
+      <td><strong>${esc(a.name)}</strong></td>
+      <td>${a.active?chip('active','ok'):chip('idle','muted')}</td>
+      <td class="muted">${esc(a.last_run)}</td>
+      <td class="muted" style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(a.last_line)}">${esc((a.last_line||'').slice(0,70))}</td>
+    </tr>`).join('');
+}
+function renderOutputs(outputs) {
+  const el = document.getElementById('output-list');
+  el.innerHTML = (outputs||[]).length === 0 ? '<span class="muted">No outputs.</span>' :
+    (outputs||[]).map(o=>`<div class="output-item">
+      <div class="out-title">${esc(o.title||o.file)}</div>
+      <div class="out-meta"><span>📅 ${esc(o.ts||'—')}</span><span>${esc(o.file)}</span><span class="muted">${Math.round((o.size||0)/1024*10)/10}KB</span></div>
+    </div>`).join('');
+}
 
-  function renderAgents(agents) {
-    const t = document.getElementById('agent-table');
-    t.innerHTML = (agents || []).map(a => `
-      <tr>
-        <td>${esc(a.name)}</td>
-        <td>${a.active ? chip('active','ok') : chip('idle','muted')}</td>
-        <td class="muted">${esc(a.last_run)}</td>
-      </tr>
-    `).join('');
-    document.getElementById('badge-agents').textContent = (agents||[]).filter(a=>a.active).length + '/' + (agents||[]).length;
-  }
+// ── Chat ──────────────────────────────────────────────────────────────────
+let chatData = [];
+function renderChat(messages) {
+  chatData = messages || [];
+  document.getElementById('badge-chat').textContent = chatData.length;
+  const container = document.getElementById('chat-messages');
+  if (!chatData.length) { container.innerHTML = '<span class="muted" style="padding:16px;display:block">No chat history.</span>'; return; }
+  container.innerHTML = chatData.map(m => {
+    const role = m.role === 'user' ? 'user' : 'assistant';
+    const label = role === 'user' ? '👤 def' : '🐾 mewmew';
+    let text = esc(m.text || '');
+    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/`([^`\n]+)`/g, '<code style="background:#0d1117;padding:1px 4px;border-radius:3px;font-family:monospace;font-size:11px">$1</code>');
+    return `<div class="msg ${role}">
+      <div class="msg-bubble">${text}</div>
+      <div class="msg-meta">${label} · ${fmtTime(m.ts)}</div>
+    </div>`;
+  }).join('');
+  scrollChat();
+}
+function scrollChat() {
+  const c = document.getElementById('chat-messages');
+  c.scrollTop = c.scrollHeight;
+}
 
-  function renderResearch(r) {
-    const t = document.getElementById('research-table');
-    t.innerHTML = `
-      <tr><td>Total Reports</td><td><strong>${esc(r.total)}</strong></td></tr>
-      <tr><td>TTS Coverage</td><td><span class="${r.tts_coverage==='100%'?'ok':'warn'}">${esc(r.tts_coverage)}</span></td></tr>
-      <tr><td>Latest</td><td class="muted">${esc(r.latest||'none')}</td></tr>
-      <tr><td>Hub Deployed</td><td>${r.hub_deployed ? chip('yes','ok') : chip('no','warn')}</td></tr>
-    `;
-  }
+// ── Send message ──────────────────────────────────────────────────────────
+const chatInput = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
 
-  function renderCommits(commits) {
-    const t = document.getElementById('commit-table');
-    t.innerHTML = (commits||[]).map(c => `
-      <tr>
-        <td><span class="chip muted">${esc(c.agent)}</span></td>
-        <td style="font-size:12px">${esc(c.message)}</td>
-      </tr>
-    `).join('');
-  }
+// auto-resize textarea
+chatInput.addEventListener('input', () => {
+  chatInput.style.height = 'auto';
+  chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+});
+chatInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+sendBtn.addEventListener('click', sendMessage);
 
-  // ── Heartbeat render ───────────────────────────────────────────────────────
-  function renderHeartbeat(hb, supervisorLog) {
-    const checks = hb?.lastChecks || {};
-    const grid = document.getElementById('hb-grid');
-    const items = Object.entries(checks).map(([k, v]) => `
-      <div class="hb-item">
-        <div class="hb-key">${esc(k)}</div>
-        <div class="hb-val">${esc(String(v))}</div>
-      </div>
-    `).join('') || '<span class="muted">No heartbeat data yet.</span>';
-    grid.innerHTML = items;
+async function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  chatInput.value = '';
+  chatInput.style.height = 'auto';
+  sendBtn.disabled = true;
 
-    const logBox = document.getElementById('supervisor-log');
-    logBox.textContent = (supervisorLog || []).join('\n') || 'No supervisor log.';
-    logBox.scrollTop = logBox.scrollHeight;
-  }
+  // optimistically add user message
+  const container = document.getElementById('chat-messages');
+  const tempId = 'msg-' + Date.now();
+  const div = document.createElement('div');
+  div.className = 'msg user sending';
+  div.id = tempId;
+  div.innerHTML = `<div class="msg-bubble">${esc(text)}</div><div class="msg-meta">👤 def · sending…</div>`;
+  container.appendChild(div);
+  scrollChat();
 
-  // ── Agent detail + outputs render ─────────────────────────────────────────
-  function renderAgentDetail(agents) {
-    const t = document.getElementById('agent-detail-table');
-    t.innerHTML = `<tr><th>Agent</th><th>Status</th><th>Last Run</th><th>Last Log</th></tr>` +
-      (agents||[]).map(a => `
-        <tr>
-          <td><strong>${esc(a.name)}</strong></td>
-          <td>${a.active ? chip('active','ok') : chip('idle','muted')}</td>
-          <td class="muted">${esc(a.last_run)}</td>
-          <td class="muted" style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(a.last_line)}">${esc((a.last_line||'').slice(0,80))}</td>
-        </tr>
-      `).join('');
-  }
-
-  function renderOutputs(outputs) {
-    const el = document.getElementById('output-list');
-    if (!outputs || outputs.length === 0) {
-      el.innerHTML = '<span class="muted">No agent outputs found.</span>';
-      return;
+  try {
+    const res = await fetch('/api/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text }),
+    });
+    const data = await res.json();
+    const el = document.getElementById(tempId);
+    if (el) {
+      el.classList.remove('sending');
+      el.querySelector('.msg-meta').textContent = '👤 def · ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
     }
-    el.innerHTML = outputs.map(o => `
-      <div class="output-item">
-        <div class="out-title">${esc(o.title || o.file)}</div>
-        <div class="out-meta">
-          <span>📅 ${esc(o.ts || '—')}</span>
-          <span>📄 ${esc(o.file)}</span>
-          <span class="muted">${esc(Math.round((o.size||0)/1024*10)/10)} KB</span>
-        </div>
-      </div>
-    `).join('');
+    // refresh chat after short delay to pick up reply
+    setTimeout(() => refreshChat(), 3000);
+    setTimeout(() => refreshChat(), 8000);
+  } catch (e) {
+    const el = document.getElementById(tempId);
+    if (el) el.querySelector('.msg-bubble').style.borderColor = 'var(--red)';
+    showError('Send failed: ' + e.message);
   }
+  sendBtn.disabled = false;
+}
 
-  // ── Chat render ────────────────────────────────────────────────────────────
-  function renderChat(messages) {
-    const container = document.getElementById('chat-container');
-    document.getElementById('badge-chat').textContent = (messages||[]).length;
-    if (!messages || messages.length === 0) {
-      container.innerHTML = '<span class="muted">No chat history available.</span>';
-      return;
-    }
-    container.innerHTML = messages.map(m => {
-      const role = m.role === 'user' ? 'user' : 'assistant';
-      const label = role === 'user' ? '👤 def' : '🐾 mewmew';
-      const time = fmtTs(m.ts);
-      // simple markdown: bold, code
-      let text = esc(m.text || '');
-      text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      text = text.replace(/`([^`]+)`/g, '<code style="background:#0d1117;padding:1px 4px;border-radius:3px;font-family:monospace;font-size:12px">$1</code>');
-      return `
-        <div class="msg ${role}">
-          <div class="msg-bubble">${text}</div>
-          <div class="msg-meta">${label} · ${time}</div>
-        </div>
-      `;
-    }).join('');
-    scrollChatToBottom();
+async function refreshChat() {
+  try {
+    const res = await fetch('/api/chat');
+    if (!res.ok) return;
+    const data = await res.json();
+    renderChat(data.chat);
+  } catch {}
+}
+
+// ── Quick commands ────────────────────────────────────────────────────────
+const QUICK_CMDS = [
+  { label: '🏥 health',        cmd: 'health' },
+  { label: '📊 status',        cmd: 'status' },
+  { label: '🤖 agents',        cmd: 'agents-summary' },
+  { label: '💾 memory status', cmd: 'memory-status' },
+  { label: '📝 git today',     cmd: 'git-today' },
+  { label: '📝 git last',      cmd: 'git-last' },
+  { label: '🕐 today',         cmd: 'today' },
+  { label: '📋 digest',        cmd: 'digest' },
+  { label: '📥 downloads',     cmd: 'downloads' },
+  { label: '🔁 cron status',   cmd: 'cron-status' },
+  { label: '⚠️  cron failures', cmd: 'cron-failures' },
+  { label: '🛡️  hygiene',       cmd: 'hygiene' },
+  { label: '📌 checkpoints',   cmd: 'checkpoints' },
+  { label: '🔍 orphan check',  cmd: 'orphan-check' },
+  { label: '📡 gateway info',  cmd: 'gateway-info' },
+  { label: '🌊 supervisor log','cmd': 'supervisor-logs' },
+  { label: '📈 meta report',   cmd: 'meta-report' },
+  { label: '🔄 updates check', cmd: 'updates-check' },
+];
+
+function buildQuickList() {
+  const el = document.getElementById('quick-list');
+  el.innerHTML = QUICK_CMDS.map(q => `
+    <button class="quick-btn" data-cmd="${esc(q.cmd)}">${esc(q.label)}</button>`).join('');
+  el.querySelectorAll('.quick-btn').forEach(btn => {
+    btn.addEventListener('click', () => runQuick(btn.dataset.cmd, btn.textContent));
+  });
+}
+
+async function runQuick(cmd, label) {
+  const resultEl = document.getElementById('quick-result');
+  const labelEl = document.getElementById('quick-cmd-label');
+  labelEl.textContent = '⏳ ' + cmd;
+  resultEl.textContent = 'Running…';
+  try {
+    const res = await fetch('/api/quick', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cmd }),
+    });
+    const data = await res.json();
+    labelEl.textContent = '✅ ' + cmd;
+    resultEl.textContent = data.output || '(no output)';
+    resultEl.scrollTop = 0;
+  } catch (e) {
+    labelEl.textContent = '❌ ' + cmd;
+    resultEl.textContent = 'Error: ' + e.message + '\n\n(backend not available — run server.js locally)';
   }
+}
 
-  function scrollChatToBottom() {
-    const c = document.getElementById('chat-container');
-    c.scrollTop = c.scrollHeight;
-  }
+function clearQuickResult() {
+  document.getElementById('quick-result').textContent = '';
+  document.getElementById('quick-cmd-label').textContent = 'output';
+}
 
-  // ── Load data ─────────────────────────────────────────────────────────────
-  async function load() {
+// ── Data loading ──────────────────────────────────────────────────────────
+async function load() {
+  try {
+    // try local backend first (live data + chat)
+    let data;
     try {
+      const res = await fetch('/api/data', { signal: AbortSignal.timeout(5000) });
+      if (res.ok) {
+        data = await res.json();
+        backendAvailable = true;
+        const bs = document.getElementById('backend-status');
+        bs.textContent = '⚡ live';
+        bs.className = 'ok';
+      }
+    } catch {}
+
+    // fallback to static data.json (Vercel / offline)
+    if (!data) {
       const res = await fetch('/data.json?bust=' + Date.now(), { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-
-      renderSystem(data);
-      renderAgents(data.agents);
-      renderResearch(data.research);
-      renderCommits(data.recent_commits);
-      renderHeartbeat(data.heartbeat, data.supervisor_log);
-      renderAgentDetail(data.agents);
-      renderOutputs(data.agent_outputs);
-      renderChat(data.chat);
-
-      document.getElementById('last-updated').textContent = 'Updated: ' + new Date().toLocaleTimeString();
-      document.getElementById('error-banner').style.display = 'none';
-    } catch (e) {
-      console.error(e);
-      const b = document.getElementById('error-banner');
-      b.textContent = '⚠️ Load failed: ' + e.message;
-      b.style.display = 'block';
-      document.getElementById('last-updated').textContent = 'Error';
+      data = await res.json();
+      backendAvailable = false;
+      const bs = document.getElementById('backend-status');
+      bs.textContent = '📦 static';
+      bs.className = 'bad';
     }
+
+    renderSystem(data);
+    renderAgentSummary(data.agents);
+    renderResearch(data.research);
+    renderCommits(data.recent_commits);
+    renderHeartbeat(data.heartbeat, data.supervisor_log);
+    renderAgentDetail(data.agents);
+    renderOutputs(data.agent_outputs);
+    renderChat(data.chat || []);
+    document.getElementById('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    document.getElementById('error-banner').style.display = 'none';
+  } catch (e) {
+    showError('Load failed: ' + e.message);
   }
+}
 
-  document.addEventListener('DOMContentLoaded', () => {
-    load();
-    setInterval(load, 60000);
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
-    }
-  });
+function showError(msg) {
+  const b = document.getElementById('error-banner');
+  b.textContent = '⚠️ ' + msg;
+  b.style.display = 'block';
+  document.getElementById('last-updated').textContent = 'Error';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildQuickList();
+  load();
+  setInterval(load, 60000);
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+});
 </script>
 </body>
 </html>
