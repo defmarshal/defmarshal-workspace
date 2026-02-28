@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T03:25:02Z",
+  "generated_at": "2026-02-28T03:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
@@ -63,6 +63,11 @@
   },
   "recent_commits": [
     {
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
+    {
       "agent": "content",
       "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-02-28 0323 (v10 dynamic)",
       "time": ""
@@ -105,11 +110,6 @@
     {
       "agent": "build",
       "message": "update research index with SEA digital banking 2026 report",
-      "time": ""
-    },
-    {
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
       "time": ""
     }
   ],
