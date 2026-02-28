@@ -132,8 +132,8 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
     .card h2 { font-size: 13px; color: var(--cyan); margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
-    table { width: 100%; border-collapse: collapse; font-size: 12px; }
-    th, td { text-align: left; padding: 5px 4px; border-bottom: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; }
+    th, td { text-align: left; padding: 5px 4px; border-bottom: 1px solid var(--border); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     th { color: var(--muted); font-weight: 500; font-size: 11px; }
     tr:last-child td { border-bottom: none; }
     .ok   { color: var(--green); }
@@ -607,12 +607,14 @@ function renderHeartbeat(hb, log) {
 }
 
 function renderAgentDetail(agents) {
-  document.getElementById('agent-detail-table').innerHTML = '<tr><th>Agent</th><th>Status</th><th>Last Run</th><th>Last Log</th></tr>' +
+  document.getElementById('agent-detail-table').innerHTML =
+    '<colgroup><col style="width:22%"><col style="width:14%"><col style="width:18%"><col style="width:46%"></colgroup>' +
+    '<tr><th>Agent</th><th>Status</th><th>Last Run</th><th>Last Log</th></tr>' +
     (agents||[]).map(a=>`<tr>
-      <td><strong>${esc(a.name)}</strong></td>
+      <td title="${esc(a.name)}"><strong>${esc(a.name)}</strong></td>
       <td>${a.active?chip('active','ok'):chip('idle','muted')}</td>
       <td class="muted">${(()=>{const ts=a.last_run_ts?a.last_run_ts*1000:parseAgentTs(a.last_run);return ts?timeAgoMs(Date.now()-ts):esc(a.last_run||'—');})()}</td>
-      <td class="muted" style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(a.last_line)}">${esc((a.last_line||'').slice(0,70))}</td>
+      <td class="muted" title="${esc(a.last_line)}">${esc(a.last_line||'—')}</td>
     </tr>`).join('');
 }
 
