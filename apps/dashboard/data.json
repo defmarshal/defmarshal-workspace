@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T11:25:02Z",
+  "generated_at": "2026-02-28T11:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.90 1.00 1.00",
-    "mem_used": "3.4Gi",
+    "load_avg": "0.85 1.01 1.01",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 45 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 50 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "efd5f7fb",
+      "sha": "b545dc3c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "efd5f7fb",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "6eb4bf51",
       "agent": "build",
       "message": "update MEMORY with 2026-02-28 improvements (shebang check, active-tasks archival)",
-      "time": "6 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "e29c21d5",
       "agent": "build",
       "message": "finalize workspace-builder session 20260228-1107 - progress complete",
-      "time": "7 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "2ee715cc",
       "agent": "build",
       "message": "refresh dashboard data and disk history (auto-updated)",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "45e3b9d5",
       "agent": "misc",
       "message": "fix(clawdash): guard renderChat in load() with chatSending flag — main 60s poll was wiping optimistic UI; SW v15",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "580c583f",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 11:07 UTC) - all constraints satisfied",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "53851e58",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "952d526d",
       "agent": "build",
       "message": "add shebang constraint validation, archive old task, refresh planning",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "a817e436",
       "agent": "build",
       "message": "update dashboard data and disk history (workspace-builder 20260228-1107)",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "5d167e3b",
       "agent": "build",
       "message": "archive completed workspace-builder session 20260228-0907",
-      "time": "12 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "25e97726",
       "agent": "misc",
       "message": "fix(clawdash): silent fetch in waitForReply — never renderChat while in-flight; only render when reply arrives; SW v14",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "5cbda29d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "0b39380d",
       "agent": "misc",
       "message": "fix(clawdash): chat optimistic UI — suppress poll re-renders while msg in-flight (chatSending flag); SW v13",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "80167a14",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "18 minutes ago"
-    },
-    {
-      "sha": "fd655f2c",
-      "agent": "misc",
-      "message": "fix(clawdash): regenerate VAPID keys (was .local domain, FCM rejected); full SW unregister on push setup; SW v12",
-      "time": "19 minutes ago"
+      "time": "23 minutes ago"
     }
   ],
   "heartbeat": {
