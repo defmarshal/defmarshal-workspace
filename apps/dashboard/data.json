@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T11:12:10Z",
+  "generated_at": "2026-02-28T11:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.87 1.05 0.95",
-    "mem_used": "3.3Gi",
+    "load_avg": "1.02 1.03 0.96",
+    "mem_used": "4.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 32 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 35 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "952d526d",
+      "agent": "build",
+      "message": "add shebang constraint validation, archive old task, refresh planning",
+      "time": "10 seconds ago"
+    },
+    {
+      "sha": "a817e436",
+      "agent": "build",
+      "message": "update dashboard data and disk history (workspace-builder 20260228-1107)",
+      "time": "86 seconds ago"
+    },
+    {
+      "sha": "5d167e3b",
+      "agent": "build",
+      "message": "archive completed workspace-builder session 20260228-0907",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "25e97726",
       "agent": "misc",
       "message": "fix(clawdash): silent fetch in waitForReply — never renderChat while in-flight; only render when reply arrives; SW v14",
-      "time": "33 seconds ago"
+      "time": "3 minutes ago"
     },
     {
       "sha": "5cbda29d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "2 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "0b39380d",
       "agent": "misc",
       "message": "fix(clawdash): chat optimistic UI — suppress poll re-renders while msg in-flight (chatSending flag); SW v13",
-      "time": "2 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "80167a14",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "5 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "fd655f2c",
       "agent": "misc",
       "message": "fix(clawdash): regenerate VAPID keys (was .local domain, FCM rejected); full SW unregister on push setup; SW v12",
-      "time": "6 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "a1b6b091",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "6651112a",
       "agent": "content",
       "message": "11:00 tech update — Satellite Internet 2026 (Starlink 6M/450Tbps, Amazon Leo Ultra 1Gbps/AWS, DTC, SEA angle) + content INDEX sync dev drop",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "8cf0189a",
       "agent": "dev",
       "message": "sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh",
-      "time": "11 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "6bee803a",
       "agent": "misc",
       "message": "fix(clawdash): push subscribe retry (3x backoff) + clearer error msgs for 'push service error'",
-      "time": "12 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "321f269e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "12 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "6700193a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "17 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "aaa0d5cf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "22 minutes ago"
-    },
-    {
-      "sha": "624a1ff4",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "27 minutes ago"
-    },
-    {
-      "sha": "8b82bad1",
-      "agent": "misc",
-      "message": "feat(clawdash): r5 — active tasks panel, content stats card, real disk history, chat leak filter (NO_REPLY/HEARTBEAT/Continue), mobile cron col hide, agents 2-col grid",
-      "time": "31 minutes ago"
-    },
-    {
-      "sha": "cd8cd299",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "37 minutes ago"
+      "time": "25 minutes ago"
     }
   ],
   "heartbeat": {
@@ -675,11 +675,11 @@
       "status": "running"
     },
     {
-      "session_key": "workspace-builder-20260228-0907",
+      "session_key": "workspace-builder-20260228-1107",
       "agent": "workspace-builder",
-      "goal": "Strategic maintenance - memory reindex, validate constraints, enforce standards",
-      "started": "2026-02-28 09:07 UTC",
-      "status": "validated"
+      "goal": "Archive tasks, commit data, enhance validation",
+      "started": "2026-02-28 11:07 UTC",
+      "status": "running"
     }
   ],
   "content_stats": {
@@ -688,21 +688,6 @@
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:00:20.136Z",
-      "text": "easiest way — clear the SW cache nyaa~\n\n**Option 1 — from inside the PWA:**\n1. Tap the address bar (or three-dot menu) → **Settings**\n2. **Site Settings** → **Storage** → **Clear & Reset**\n3. Reopen the app\n\n**Option 2 — Chrome Android:**\n1. Open `chrome://settings/site-data` in Chrome\n2. Search for `tail2dd22b`\n3. Tap → **Clear & Reset**\n4. Reopen PWA from home screen\n\n**Option 3 (fastest) — I'll bump the SW cache version** so it auto-updates on next open~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:00:32.191Z",
-      "text": "[[reply_to_current]] SW cache bumped to v5 — just **close and reopen the PWA from your home screen icon** (don't just switch apps, fully close it). Should auto-update and show the ⚡ button nyaa~ (^^)\n\nif it still doesn't update, go with Option 2 to nuke the cache manually desu~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T10:03:03.653Z",
-      "text": "[Sat 2026-02-28 10:03 UTC] The web page at chrome://settings/site-data might be temporarily down or it may have moved permanently to a new web address.\nERR_INVALID_URL"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T10:03:11.124Z",
@@ -937,6 +922,21 @@
       "role": "assistant",
       "ts": "2026-02-28T11:11:43.613Z",
       "text": "[[reply_to_current]] sorry about that, my fix had a hole — the reply-watcher itself was still calling `renderChat` nyaa~ (ಠ_ಠ)\n\n**real fix now:** the watcher does a **silent fetch** — checks message count in the background without ever touching the DOM. Only renders once when a new reply actually arrives. The optimistic message + typing indicator stay put the whole time desu~\n\nclear cache → v14 → try again~ 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:12:22.789Z",
+      "text": "[Sat 2026-02-28 11:12 UTC] try"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:12:27.150Z",
+      "text": "[[reply_to_current]] nyaa~ send something in the chat tab and let me know if it stays this time! (^^) 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:15:00.066Z",
+      "text": "[Sat 2026-02-28 11:14 UTC] hey"
     }
   ]
 }
