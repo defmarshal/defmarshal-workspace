@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T21:05:02Z",
+  "generated_at": "2026-02-28T21:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
     "disk_free": "9.3G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "1.04 0.88 0.80",
-    "mem_used": "3.7Gi",
+    "load_avg": "1.26 1.01 0.87",
+    "mem_used": "3.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 7 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 7 hours, 30 minutes",
     "disk_history": [
       80,
       80,
@@ -26,13 +26,13 @@
       80,
       80,
       80,
+      79,
+      79,
+      79,
+      79,
+      79,
+      79,
       80,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
       80,
       80,
       80,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "55fca476",
+      "sha": "9af97dd4",
+      "agent": "build",
+      "message": "prune active-tasks.md to satisfy 2KB constraint",
+      "time": "30 seconds ago"
+    },
+    {
+      "sha": "c4ef74c5",
+      "agent": "build",
+      "message": "close loop - archive workspace-builder session with verification metrics",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "825a46b0",
+      "agent": "build",
+      "message": "token conservation - disable 4 cron jobs (daily-digest, supervisor, meta-supervisor, linkedin-pa); add workspace-builder planning docs; commit disk-history.json",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "c1802e1f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "53c5246e",
+      "sha": "55fca476",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "319bcd6a",
+      "sha": "53c5246e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "4dc051ce",
+      "sha": "319bcd6a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "ef9647ce",
+      "sha": "4dc051ce",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "bba16643",
+      "sha": "ef9647ce",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "191a5bf3",
+      "sha": "bba16643",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "366e1574",
+      "sha": "191a5bf3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "8dfca3b8",
+      "sha": "366e1574",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "34db039c",
+      "sha": "8dfca3b8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "9d086bbe",
+      "sha": "34db039c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "f77caa8e",
+      "sha": "9d086bbe",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
-    },
-    {
-      "sha": "49fea84c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "65 minutes ago"
-    },
-    {
-      "sha": "2d0dd27b",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "70 minutes ago"
-    },
-    {
-      "sha": "a0cb404c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "75 minutes ago"
     }
   ],
   "heartbeat": {
@@ -692,18 +692,18 @@
   ],
   "active_tasks": [
     {
-      "session_key": "workspace-builder-20260228-2101",
-      "agent": "workspace-builder",
-      "goal": "Strategic maintenance: fix cron states, commit disk history, enforce constraints",
-      "started": "2026-02-28 21:01 UTC",
-      "status": "running"
-    },
-    {
       "session_key": "meta-supervisor-daemon",
       "agent": "meta-supervisor",
       "goal": "Continuous agent outcome auditor",
       "started": "2026-02-28 02:00 UTC",
       "status": "running"
+    },
+    {
+      "session_key": "workspace-builder-20260228-2101",
+      "agent": "workspace-builder",
+      "goal": "Token conservation: disabled 4 cron jobs; committed disk history & planning docs",
+      "started": "2026-02-28 21:01 UTC",
+      "status": "validated"
     },
     {
       "session_key": "workspace-builder-20260228-1705",
