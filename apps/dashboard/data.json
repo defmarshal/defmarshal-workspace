@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T12:00:02Z",
+  "generated_at": "2026-02-28T12:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.86 0.87 0.91",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.70 0.83 0.89",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 22 hours, 20 minutes",
+    "uptime": "1 week, 1 day, 22 hours, 25 minutes",
     "disk_history": [
       72,
       72,
@@ -56,14 +56,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-02-28 11:04",
-      "last_line": "[2026-02-28T11:04:50Z] [content-agent] Generated 11:00 tech update (5.5KB, 6651112a). Covered: Satellite Internet 2026 (Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, DTC, AST SpaceMobile, SEA angle) + content INDEX sync dev drop. 196 research reports, 18 content pieces today."
+      "last_run": "2026-02-28 12:04",
+      "last_line": "[2026-02-28T12:04:27Z] [content-agent] Generated 12:00 tech update (4.8KB, b0cf050a). Covered: Fintech 2026 (FaaS $484B/BaaS $5.26B APAC, 14 trends, SEA 290M unbanked, deobanks/CBDCs/open finance) + index-drift dev drop (0 drift confirmed). 197 research reports, 19 content pieces today."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 11:03",
-      "last_line": "2026-02-28 11:03:23 UTC - Dev-agent cycle completed (exit 0)"
+      "last_run": "2026-02-28 12:03",
+      "last_line": "[2026-02-28T12:03:21Z] [dev-agent] Completed cycle (058f3235): added quick-log-tail.sh (agent log tail viewer), quick-top-commits.sh (prefix commit stats: 442 build/383 content/272 dev/157 research this month), index-drift.sh (INDEX vs filesystem checker, now shows 0 drift); fixed log-tail arg passthrough bug; synced content/INDEX.md (11:00 tech update)."
     },
     {
       "name": "supervisor",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "20272d9f",
+      "sha": "b0cf050a",
+      "agent": "content",
+      "message": "12:00 tech update — Fintech 2026 (FaaS $484B, BaaS APAC $5.26B, agentic commerce, open finance, CBDCs, SEA 290M unbanked) + index-drift/log-tail/top-commits dev drop",
+      "time": "42 seconds ago"
+    },
+    {
+      "sha": "058f3235",
+      "agent": "dev",
+      "message": "add quick-log-tail.sh, quick-top-commits.sh, index-drift.sh (zero-drift check 197 research/495 content); fix log-tail arg passthrough; add content INDEX 11:00 entry; register index-drift in quick",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "0d00fbc7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "ba0260f2",
+      "sha": "20272d9f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "f263e608",
+      "sha": "ba0260f2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "8ae68582",
+      "sha": "f263e608",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "d962f1c9",
+      "sha": "8ae68582",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "d962f1c9",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "43b1dde1",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "35980718",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "b545dc3c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "efd5f7fb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "6eb4bf51",
       "agent": "build",
       "message": "update MEMORY with 2026-02-28 improvements (shebang check, active-tasks archival)",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "e29c21d5",
       "agent": "build",
       "message": "finalize workspace-builder session 20260228-1107 - progress complete",
-      "time": "42 minutes ago"
+      "time": "47 minutes ago"
     },
     {
       "sha": "2ee715cc",
       "agent": "build",
       "message": "refresh dashboard data and disk history (auto-updated)",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "45e3b9d5",
-      "agent": "misc",
-      "message": "fix(clawdash): guard renderChat in load() with chatSending flag — main 60s poll was wiping optimistic UI; SW v15",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "580c583f",
-      "agent": "build",
-      "message": "mark workspace-builder session validated (2026-02-28 11:07 UTC) - all constraints satisfied",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "53851e58",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "49 minutes ago"
     }
   ],
   "heartbeat": {
@@ -232,16 +232,22 @@
   ],
   "agent_outputs": [
     {
-      "file": "2026-02-28-1100-tech-update",
-      "ts": "2026-02-28-1100",
-      "title": "Tech Update — 11:00 UTC, Feb 28 2026",
-      "size": 5518
+      "file": "2026-02-28-1200-tech-update",
+      "ts": "2026-02-28-1200",
+      "title": "Tech Update — 12:00 UTC, Feb 28 2026",
+      "size": 4830
     },
     {
       "file": "INDEX",
       "ts": "",
       "title": "Content Archive Index",
-      "size": 51923
+      "size": 52008
+    },
+    {
+      "file": "2026-02-28-1100-tech-update",
+      "ts": "2026-02-28-1100",
+      "title": "Tech Update — 11:00 UTC, Feb 28 2026",
+      "size": 5518
     },
     {
       "file": "2026-02-28-1000-tech-update",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-0005",
       "title": "📊 Market Positioning: IBM Planning Analytics in the Enterprise Planning Landscape",
       "size": 2562
-    },
-    {
-      "file": "2026-02-27-2304-linkedin-pa-digest",
-      "ts": "2026-02-27-2304",
-      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
-      "size": 746
     }
   ],
   "cron_jobs": [
@@ -683,8 +683,8 @@
     }
   ],
   "content_stats": {
-    "total": 495,
-    "today": 18,
+    "total": 496,
+    "today": 19,
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
