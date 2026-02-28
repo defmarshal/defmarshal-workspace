@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T23:05:02Z",
+  "generated_at": "2026-02-28T23:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
     "disk_free": "9.2G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.77 0.77 0.75",
-    "mem_used": "3.6Gi",
+    "load_avg": "0.73 0.74 0.74",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 9 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 9 hours, 30 minutes",
     "disk_history": [
       80,
       80,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "9ab659b3",
+      "sha": "001fca27",
       "agent": "build",
-      "message": "add running entry for current workspace-builder session",
-      "time": "0 seconds ago"
+      "message": "workspace-builder session 23dad379: add planning docs, prune active-tasks, validate constraints",
+      "time": "3 minutes ago"
     },
     {
-      "sha": "308f25b2",
+      "sha": "687b204c",
       "agent": "build",
-      "message": "add workspace-builder planning docs (findings, task_plan, progress) and update disk history",
-      "time": "42 seconds ago"
+      "message": "workspace-builder validation close-the-loop; remove completed entry",
+      "time": "3 minutes ago"
     },
     {
-      "sha": "4515ae3a",
+      "sha": "7c81d5e8",
+      "agent": "build",
+      "message": "prune active-tasks to <2KB; update disk history telemetry",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "f42c44e7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "b5e4000d",
+      "sha": "9ab659b3",
+      "agent": "build",
+      "message": "add running entry for current workspace-builder session",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "308f25b2",
+      "agent": "build",
+      "message": "add workspace-builder planning docs (findings, task_plan, progress) and update disk history",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "4515ae3a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "a900a445",
+      "sha": "b5e4000d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "9a0adeb2",
+      "sha": "a900a445",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "bd6d225c",
+      "sha": "9a0adeb2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "6b94a6b9",
+      "sha": "bd6d225c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "915d1bf4",
+      "sha": "6b94a6b9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "1d53c04d",
+      "sha": "915d1bf4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "9837cbb3",
+      "sha": "1d53c04d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "5a510f28",
+      "sha": "9837cbb3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
-    },
-    {
-      "sha": "8c8cb523",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "d94e2d32",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "846b8f82",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "65 minutes ago"
     }
   ],
   "heartbeat": {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772316057584,
-      "next_run": 1772319634763,
+      "last_run": 1772320052593,
+      "next_run": 1772323234763,
       "last_status": "ok",
-      "last_duration_ms": 62463,
+      "last_duration_ms": 28819,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772319537695,
-      "next_run": 1772319657695,
+      "last_run": 1772320081412,
+      "next_run": 1772320201412,
       "last_status": "ok",
-      "last_duration_ms": 28456,
+      "last_duration_ms": 27710,
       "consecutive_errors": 0
     },
     {
@@ -671,10 +671,10 @@
       "schedule": "0 */2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772312484613,
-      "next_run": 1772319625629,
+      "last_run": 1772319704296,
+      "next_run": 1772326825629,
       "last_status": "ok",
-      "last_duration_ms": 650343,
+      "last_duration_ms": 348297,
       "consecutive_errors": 0
     },
     {
@@ -692,39 +692,11 @@
   ],
   "active_tasks": [
     {
-      "session_key": "workspace-builder-23dad379",
-      "agent": "workspace-builder",
-      "goal": "Enforce constraints, commit planning docs, validate system",
-      "started": "2026-02-28 23:01 UTC",
-      "status": "running"
-    },
-    {
       "session_key": "meta-supervisor-daemon",
       "agent": "meta-supervisor",
       "goal": "Continuous agent outcome auditor",
       "started": "2026-02-28 02:00 UTC",
       "status": "running"
-    },
-    {
-      "session_key": "workspace-builder-20260228-2101",
-      "agent": "workspace-builder",
-      "goal": "Token conservation: disabled 4 cron jobs; committed disk history & planning docs",
-      "started": "2026-02-28 21:01 UTC",
-      "status": "validated"
-    },
-    {
-      "session_key": "workspace-builder-20260228-1705",
-      "agent": "workspace-builder",
-      "goal": "Commit pending state files, enforce constraints, close loop",
-      "started": "2026-02-28 17:05 UTC",
-      "status": "validated"
-    },
-    {
-      "session_key": "workspace-builder-20260228-1307",
-      "agent": "workspace-builder",
-      "goal": "Archive tasks, commit data, enhance validation",
-      "started": "2026-02-28 13:07 UTC",
-      "status": "validated"
     }
   ],
   "content_stats": {
