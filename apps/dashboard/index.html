@@ -190,6 +190,7 @@
   <div class="header-right">
     <span id="conn-dot" title="Connection status"></span>
     <span id="backend-status" class="bad">loading</span>
+    <button id="push-btn" title="Enable push notifications" onclick="togglePush()" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:14px;padding:3px 7px;line-height:1;">🔕</button>
     <button id="theme-btn" title="Toggle light/dark">🌙</button>
     <span id="last-updated" class="muted">Loading…</span>
   </div>
@@ -665,7 +666,71 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && overlay.classList.contains('open')) closePalette();
 });
 
-// ── Data loading ──────────────────────────────────────────────────────────
+// ── Push Notifications ────────────────────────────────────────────────────
+let pushSubscribed = false;
+
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const raw = atob(base64);
+  return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
+}
+
+async function setupPush() {
+  if (ON_VERCEL || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+  try {
+    const res = await fetch('/api/vapid-key');
+    const { publicKey } = await res.json();
+    if (!publicKey) return;
+
+    const reg = await navigator.serviceWorker.ready;
+    let sub = await reg.pushManager.getSubscription();
+
+    if (!sub) {
+      const perm = await Notification.requestPermission();
+      if (perm !== 'granted') return;
+      sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(publicKey),
+      });
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sub.toJSON()),
+      });
+      toast('🔔 Push notifications enabled!', 'ok', 3000);
+    }
+    pushSubscribed = true;
+    updatePushBtn(true);
+  } catch (e) {
+    console.warn('Push setup failed:', e);
+  }
+}
+
+async function togglePush() {
+  if (ON_VERCEL) { toast('Push requires local backend (HTTPS)', 'bad'); return; }
+  if (pushSubscribed) {
+    // Unsubscribe
+    try {
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.getSubscription();
+      if (sub) await sub.unsubscribe();
+      pushSubscribed = false;
+      updatePushBtn(false);
+      toast('🔕 Push notifications disabled', 'ok', 2000);
+    } catch {}
+  } else {
+    await setupPush();
+  }
+}
+
+function updatePushBtn(enabled) {
+  const btn = document.getElementById('push-btn');
+  if (!btn) return;
+  btn.textContent = enabled ? '🔔' : '🔕';
+  btn.title = enabled ? 'Push notifications ON — click to disable' : 'Enable push notifications';
+  btn.style.color = enabled ? 'var(--green)' : '';
+}
 let loadErrors = 0;
 async function load() {
   try {
@@ -723,13 +788,18 @@ document.addEventListener('DOMContentLoaded', () => {
   load();
   setInterval(load, 60000);
   if (ON_VERCEL) {
-    chatInput.placeholder = 'Chat requires local backend — open http://100.108.208.45:3001';
+    chatInput.placeholder = 'Chat requires local backend — open https://instance-20260207-2229.tail2dd22b.ts.net:3443';
     chatInput.disabled = true;
     sendBtn.disabled = true;
   }
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').then(reg => {
+    navigator.serviceWorker.register('/sw.js').then(async reg => {
       console.log('SW registered', reg.scope);
+      // Check if already subscribed
+      if (!ON_VERCEL) {
+        const sub = await reg.pushManager.getSubscription().catch(() => null);
+        if (sub) { pushSubscribed = true; updatePushBtn(true); }
+      }
     }).catch(e => console.warn('SW failed', e));
   }
 });

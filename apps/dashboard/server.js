@@ -2,30 +2,76 @@
 /**
  * ClawDash Backend Server
  * - Serves the PWA from apps/dashboard/
- * - POST /api/send   → sends message to mewmew via openclaw agent
- * - POST /api/quick  → runs ./quick <cmd> safely
- * - GET  /api/data   → returns latest data.json (regenerated on demand)
- * - GET  /api/chat   → returns chat messages from current telegram session
+ * - POST /api/send        → sends message to mewmew via openclaw agent
+ * - POST /api/quick       → runs ./quick <cmd> safely
+ * - GET  /api/data        → returns latest data.json (regenerated on demand)
+ * - GET  /api/chat        → returns chat messages from current telegram session
+ * - GET  /api/vapid-key   → returns VAPID public key for push subscription
+ * - POST /api/subscribe   → saves push subscription
+ * - POST /api/notify-test → send test push notification
  */
 
-const http = require('http');
+const http  = require('http');
 const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const fs    = require('fs');
+const path  = require('path');
 const { spawn, execFile } = require('child_process');
 
-const PORT = 3001;
+const PORT       = 3001;
 const HTTPS_PORT = 3443;
-const HOST = '0.0.0.0';
-const WORKSPACE = path.join(process.env.HOME, '.openclaw', 'workspace');
+const HOST       = '0.0.0.0';
+const WORKSPACE     = path.join(process.env.HOME, '.openclaw', 'workspace');
 const DASHBOARD_DIR = path.join(WORKSPACE, 'apps', 'dashboard');
-const DATA_JSON = path.join(DASHBOARD_DIR, 'data.json');
+const DATA_JSON     = path.join(DASHBOARD_DIR, 'data.json');
 const SESSIONS_JSON = path.join(process.env.HOME, '.openclaw', 'agents', 'main', 'sessions', 'sessions.json');
-const SESSIONS_DIR = path.join(process.env.HOME, '.openclaw', 'agents', 'main', 'sessions');
-const CERT_PATH = path.join(DASHBOARD_DIR, 'tls.crt');
-const KEY_PATH  = path.join(DASHBOARD_DIR, 'tls.key');
+const SESSIONS_DIR  = path.join(process.env.HOME, '.openclaw', 'agents', 'main', 'sessions');
+const CERT_PATH     = path.join(DASHBOARD_DIR, 'tls.crt');
+const KEY_PATH      = path.join(DASHBOARD_DIR, 'tls.key');
+const VAPID_PATH    = path.join(DASHBOARD_DIR, 'vapid.json');
+const SUBS_PATH     = path.join(DASHBOARD_DIR, 'push-subscriptions.json');
 
-// Allowed quick commands (whitelist for safety)
+// ── VAPID / web-push setup ─────────────────────────────────────────────────
+let webPush = null;
+let vapid = null;
+try {
+  webPush = require(path.join(WORKSPACE, 'node_modules', 'web-push'));
+  vapid = JSON.parse(fs.readFileSync(VAPID_PATH, 'utf8'));
+  webPush.setVapidDetails(vapid.subject, vapid.publicKey, vapid.privateKey);
+  console.log('🔔 Push notifications ready');
+} catch (e) {
+  console.warn('⚠️  web-push not available:', e.message);
+}
+
+// ── Subscription store ────────────────────────────────────────────────────
+function loadSubs() {
+  try { return JSON.parse(fs.readFileSync(SUBS_PATH, 'utf8')); } catch { return []; }
+}
+function saveSubs(subs) {
+  fs.writeFileSync(SUBS_PATH, JSON.stringify(subs, null, 2));
+}
+function addSub(sub) {
+  const subs = loadSubs();
+  const exists = subs.some(s => s.endpoint === sub.endpoint);
+  if (!exists) { subs.push(sub); saveSubs(subs); }
+}
+
+async function sendPushToAll(payload) {
+  if (!webPush) return;
+  const subs = loadSubs();
+  if (!subs.length) return;
+  const dead = [];
+  for (const sub of subs) {
+    try {
+      await webPush.sendNotification(sub, JSON.stringify(payload));
+    } catch (e) {
+      if (e.statusCode === 410 || e.statusCode === 404) dead.push(sub.endpoint);
+      else console.warn('push failed:', e.message);
+    }
+  }
+  if (dead.length) saveSubs(subs.filter(s => !dead.includes(s.endpoint)));
+}
+
+// ── Allowed quick commands ────────────────────────────────────────────────
 const ALLOWED_QUICK = new Set([
   'health', 'status', 'summary', 'dash', 'agents-summary', 'log-tail',
   'top-commits', 'mem', 'memory-status', 'memory-dirty', 'memory-stats',
@@ -39,14 +85,9 @@ const ALLOWED_QUICK = new Set([
 ]);
 
 const MIME = {
-  '.html': 'text/html',
-  '.js':   'application/javascript',
-  '.css':  'text/css',
-  '.json': 'application/json',
-  '.svg':  'image/svg+xml',
-  '.png':  'image/png',
-  '.ico':  'image/x-icon',
-  '.webp': 'image/webp',
+  '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css',
+  '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png',
+  '.ico': 'image/x-icon', '.webp': 'image/webp',
   '.webmanifest': 'application/manifest+json',
 };
 
@@ -55,25 +96,22 @@ function cors(res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
-
 function json(res, code, obj) {
   cors(res);
   res.writeHead(code, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify(obj));
 }
-
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = '';
-    req.on('data', d => { body += d; if (body.length > 8192) reject(new Error('body too large')); });
+    req.on('data', d => { body += d; if (body.length > 65536) reject(new Error('body too large')); });
     req.on('end', () => { try { resolve(JSON.parse(body)); } catch { resolve({}); } });
     req.on('error', reject);
   });
 }
-
 function run(cmd, args, opts = {}) {
   return new Promise((resolve) => {
-    const proc = execFile(cmd, args, { timeout: 30000, cwd: WORKSPACE, ...opts }, (err, stdout, stderr) => {
+    execFile(cmd, args, { timeout: 30000, cwd: WORKSPACE, ...opts }, (err, stdout, stderr) => {
       resolve({ ok: !err, stdout: stdout || '', stderr: stderr || '', code: err?.code || 0 });
     });
   });
@@ -90,10 +128,8 @@ function getChatHistory() {
     if (!sessionId) return [];
     const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
     if (!fs.existsSync(sessionFile)) return [];
-
     const msgs = [];
-    const lines = fs.readFileSync(sessionFile, 'utf8').split('\n');
-    for (const line of lines) {
+    for (const line of fs.readFileSync(sessionFile, 'utf8').split('\n')) {
       if (!line.trim()) continue;
       try {
         const m = JSON.parse(line);
@@ -104,133 +140,146 @@ function getChatHistory() {
         let text = '';
         if (Array.isArray(msg.content)) {
           text = msg.content.filter(c => c.type === 'text').map(c => c.text).join(' ');
-        } else {
-          text = String(msg.content || '');
-        }
-        // strip telegram metadata header
+        } else { text = String(msg.content || ''); }
         if (role === 'user' && text.includes('Conversation info')) {
           const end = text.indexOf('```\n\n');
           if (end >= 0) text = text.slice(end + 5).trim();
         }
-        // skip system/heartbeat messages
         if (!text.trim()) continue;
         if (text.startsWith('[System Message]') || text.startsWith('Read HEARTBEAT') || text === 'HEARTBEAT_OK') continue;
         msgs.push({ role, ts: m.timestamp, text });
       } catch {}
     }
     return msgs.slice(-100);
-  } catch (e) {
-    return [];
-  }
+  } catch { return []; }
 }
 
-const server = http.createServer(async (req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host}`);
+// ── Chat watcher — push notification on new assistant message ──────────────
+let lastAssistantMsgCount = 0;
+function startChatWatcher() {
+  setInterval(() => {
+    const msgs = getChatHistory();
+    const assistantCount = msgs.filter(m => m.role === 'assistant').length;
+    if (lastAssistantMsgCount > 0 && assistantCount > lastAssistantMsgCount) {
+      const latest = msgs.filter(m => m.role === 'assistant').pop();
+      const preview = (latest?.text || '').slice(0, 100).replace(/\n/g, ' ');
+      sendPushToAll({
+        title: '🐾 mewmew replied!',
+        body: preview || 'New message in ClawDash',
+        url: '/?tab=chat',
+        tag: 'clawdash-reply',
+      }).catch(() => {});
+    }
+    lastAssistantMsgCount = assistantCount;
+  }, 5000); // check every 5s
+}
+
+// ── Request handler ───────────────────────────────────────────────────────
+const handler = async (req, res) => {
+  const url = new URL(req.url, `https://${req.headers.host}`);
   const pathname = url.pathname;
 
   if (req.method === 'OPTIONS') { cors(res); res.writeHead(204); res.end(); return; }
 
-  // ── API: send message ──────────────────────────────────────────────────────
+  // ── VAPID public key ────────────────────────────────────────────────────
+  if (pathname === '/api/vapid-key' && req.method === 'GET') {
+    return json(res, 200, { publicKey: vapid?.publicKey || null });
+  }
+
+  // ── Save push subscription ──────────────────────────────────────────────
+  if (pathname === '/api/subscribe' && req.method === 'POST') {
+    const body = await readBody(req);
+    if (!body.endpoint) return json(res, 400, { error: 'invalid subscription' });
+    addSub(body);
+    console.log('New push subscriber:', body.endpoint.slice(0, 60) + '…');
+    return json(res, 200, { ok: true });
+  }
+
+  // ── Test push notification ──────────────────────────────────────────────
+  if (pathname === '/api/notify-test' && req.method === 'POST') {
+    await sendPushToAll({ title: '🦾 ClawDash test', body: 'Push notifications are working! nyaa~', url: '/', tag: 'test' });
+    return json(res, 200, { ok: true, subs: loadSubs().length });
+  }
+
+  // ── Send message ────────────────────────────────────────────────────────
   if (pathname === '/api/send' && req.method === 'POST') {
     const body = await readBody(req);
     const message = (body.message || '').trim();
     if (!message) return json(res, 400, { error: 'message required' });
-
-    // Look up session ID dynamically
     let sessionId = null;
     try {
       const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
       sessionId = sessions['agent:main:telegram:direct:952170974']?.sessionId;
     } catch {}
-
-    if (!sessionId) {
-      return json(res, 500, { ok: false, error: 'Could not resolve session ID' });
-    }
-
-    // Fire agent turn detached (background) — returns immediately, reply arrives in Telegram
-    const proc = require('child_process').spawn(
-      'openclaw',
-      ['agent', '--session-id', sessionId, '--message', message, '--deliver'],
-      { detached: true, stdio: 'ignore', cwd: WORKSPACE }
-    );
+    if (!sessionId) return json(res, 500, { ok: false, error: 'Could not resolve session ID' });
+    const proc = spawn('openclaw', ['agent', '--session-id', sessionId, '--message', message, '--deliver'],
+      { detached: true, stdio: 'ignore', cwd: WORKSPACE });
     proc.unref();
-
     return json(res, 200, { ok: true, output: 'Message queued — reply coming via Telegram' });
   }
 
-  // ── API: run quick command ─────────────────────────────────────────────────
+  // ── Quick command ───────────────────────────────────────────────────────
   if (pathname === '/api/quick' && req.method === 'POST') {
     const body = await readBody(req);
-    const cmd = (body.cmd || '').trim().split(/\s+/)[0];
-    const args = (body.cmd || '').trim().split(/\s+/).slice(1);
-    if (!ALLOWED_QUICK.has(cmd)) {
-      return json(res, 403, { error: `command '${cmd}' not allowed. Allowed: ${[...ALLOWED_QUICK].join(', ')}` });
-    }
+    const parts = (body.cmd || '').trim().split(/\s+/);
+    const cmd = parts[0], args = parts.slice(1);
+    if (!ALLOWED_QUICK.has(cmd))
+      return json(res, 403, { error: `command '${cmd}' not allowed` });
     const result = await run(path.join(WORKSPACE, 'quick'), [cmd, ...args]);
-    return json(res, 200, {
-      ok: result.ok,
-      output: (result.stdout + result.stderr).trim(),
-    });
+    return json(res, 200, { ok: result.ok, output: (result.stdout + result.stderr).trim() });
   }
 
-  // ── API: refresh + return data.json ───────────────────────────────────────
+  // ── Data (live) ─────────────────────────────────────────────────────────
   if (pathname === '/api/data' && req.method === 'GET') {
     await regenerateData();
     try {
       const data = JSON.parse(fs.readFileSync(DATA_JSON, 'utf8'));
       data.chat = getChatHistory();
+      data.push_enabled = webPush !== null;
       return json(res, 200, data);
-    } catch (e) {
-      return json(res, 500, { error: e.message });
-    }
+    } catch (e) { return json(res, 500, { error: e.message }); }
   }
 
-  // ── API: chat only (fast, no regen) ───────────────────────────────────────
+  // ── Chat only (fast) ────────────────────────────────────────────────────
   if (pathname === '/api/chat' && req.method === 'GET') {
     return json(res, 200, { chat: getChatHistory() });
   }
 
-  // ── Static files ──────────────────────────────────────────────────────────
+  // ── Static files ─────────────────────────────────────────────────────────
   let filePath = pathname === '/' ? '/index.html' : pathname;
   filePath = path.join(DASHBOARD_DIR, filePath.replace(/\.\./g, ''));
   if (!filePath.startsWith(DASHBOARD_DIR)) { res.writeHead(403); res.end('Forbidden'); return; }
-
   const ext = path.extname(filePath);
-  const mime = MIME[ext] || 'application/octet-stream';
-
   fs.readFile(filePath, (err, data) => {
     if (err) {
-      // fallback to index.html for PWA routing
-      fs.readFile(path.join(DASHBOARD_DIR, 'index.html'), (err2, d2) => {
-        if (err2) { res.writeHead(404); res.end('Not found'); return; }
-        cors(res);
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(d2);
+      fs.readFile(path.join(DASHBOARD_DIR, 'index.html'), (e2, d2) => {
+        if (e2) { res.writeHead(404); res.end('Not found'); return; }
+        cors(res); res.writeHead(200, { 'Content-Type': 'text/html' }); res.end(d2);
       });
       return;
     }
     cors(res);
-    res.writeHead(200, { 'Content-Type': mime });
+    res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
     res.end(data);
   });
-});
+};
 
+// ── Servers ───────────────────────────────────────────────────────────────
+const server = http.createServer(handler);
 server.listen(PORT, HOST, () => {
   console.log(`🦾 ClawDash HTTP  → http://localhost:${PORT}`);
   console.log(`   Tailscale IP   → http://100.108.208.45:${PORT}`);
 });
 
-// HTTPS server for PWA install (Chrome on Android requires HTTPS)
 try {
-  const tlsOpts = {
-    cert: fs.readFileSync(CERT_PATH),
-    key:  fs.readFileSync(KEY_PATH),
-  };
-  const httpsServer = https.createServer(tlsOpts, server.listeners('request')[0]);
+  const tlsOpts = { cert: fs.readFileSync(CERT_PATH), key: fs.readFileSync(KEY_PATH) };
+  const httpsServer = https.createServer(tlsOpts, handler);
   httpsServer.listen(HTTPS_PORT, HOST, () => {
     console.log(`🔒 ClawDash HTTPS → https://instance-20260207-2229.tail2dd22b.ts.net:${HTTPS_PORT}`);
-    console.log(`   (use HTTPS URL for PWA install on Android Chrome)`);
   });
 } catch (e) {
   console.warn('⚠️  HTTPS not available:', e.message);
 }
+
+startChatWatcher();
+console.log('👀 Chat watcher running — push on new reply');

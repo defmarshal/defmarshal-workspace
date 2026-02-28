@@ -101,3 +101,5 @@ apps/dashboard/tls.key
 *.key
 *.crt
 *.pem
+apps/dashboard/vapid.json
+apps/dashboard/push-subscriptions.json
