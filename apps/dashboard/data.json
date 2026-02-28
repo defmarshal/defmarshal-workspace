@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T10:25:02Z",
+  "generated_at": "2026-02-28T10:29:41Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
+      "sha": "56905322",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "ee8968a6",
       "agent": "misc",
       "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "e0c27976",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "3c8aee3b",
       "agent": "misc",
       "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "8 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "6bea6b48",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "42e16f1c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "ce054294",
       "agent": "research",
       "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "19 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "23d6deac",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "df194d97",
       "agent": "content",
       "message": "10:00 tech update — Cybersecurity 2026 (agentic AI, NHI, SaaS .85M ransomware, AMTD, ZT2.0) + disk-usage-breakdown dev drop",
-      "time": "22 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "fbd858c1",
       "agent": "dev",
       "message": "add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)",
-      "time": "23 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "d6200918",
       "agent": "misc",
       "message": "chore(clawdash): bump SW cache to v5 to force update",
-      "time": "25 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "6e1a5278",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "dc3b3070",
       "agent": "misc",
       "message": "feat(clawdash): ⚡ quick commands bottom sheet — tap button in chat, slide-up grid, run & view output inline",
-      "time": "26 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "3fb6b828",
       "agent": "misc",
       "message": "feat(clawdash): thinking indicator persists until new reply arrives (polls every 3s, max 3min)",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "9f66b64c",
       "agent": "misc",
       "message": "fix(clawdash): chat layout — height:100% on chat-main, overflow:hidden, input always visible",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "6b5c5617",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "34 minutes ago"
     }
   ],
   "heartbeat": {
@@ -330,27 +330,321 @@
       "size": 1527
     }
   ],
+  "cron_jobs": [
+    {
+      "id": "524a0d6f-d520-4868-9647-0f89f7990f62",
+      "name": "agent-manager-cron",
+      "schedule": "0,30 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772273151977,
+      "next_run": 1772274600000,
+      "last_status": "ok",
+      "last_duration_ms": 11218,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "23788edb-575a-4593-a60e-7f94b9c95db6",
+      "name": "agni-cron",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772273179227,
+      "next_run": 1772280136434,
+      "last_status": "ok",
+      "last_duration_ms": 8560,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "db19ad80-e15c-46d6-af15-8815366d638c",
+      "name": "archiver-manager-cron",
+      "schedule": "0 2 * * 0",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": null,
+      "next_run": 1772330400000,
+      "last_status": "—",
+      "last_duration_ms": 0,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "483e96ab-0837-4e5c-9086-a560635188af",
+      "name": "auto-torrent-cron",
+      "schedule": "0 2 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772218800020,
+      "next_run": 1772305200000,
+      "last_status": "ok",
+      "last_duration_ms": 51398,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "d5c6f526-52d7-4786-8dc0-4efff1f4e36b",
+      "name": "backup-cleanup-cron",
+      "schedule": "0 7 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1771718449694,
+      "next_run": 1772323200000,
+      "last_status": "ok",
+      "last_duration_ms": 19350,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "6e07b8d1-c443-4a9f-a95e-665e47f29e52",
+      "name": "cleanup-agent-artifacts-cron",
+      "schedule": "30 9 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1771731298164,
+      "next_run": 1772332200000,
+      "last_status": "ok",
+      "last_duration_ms": 135724,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "fb670b4f-717a-4a14-85e6-6ece389c8b61",
+      "name": "cleanup-downloads-cron",
+      "schedule": "0 6 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1771715562669,
+      "next_run": 1772319600000,
+      "last_status": "ok",
+      "last_duration_ms": 87376,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "e345525c-f289-4eab-bf25-6d6fa065e4b0",
+      "name": "content-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772272943108,
+      "next_run": 1772276400000,
+      "last_status": "ok",
+      "last_duration_ms": 75462,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "dada350a-4508-4358-8ac6-35f10e91cdd0",
+      "name": "content-index-update-cron",
+      "schedule": "30 5 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772231400007,
+      "next_run": 1772317800000,
+      "last_status": "ok",
+      "last_duration_ms": 30612,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "5b6a002d-b059-4ddf-b6d6-dd171924ecae",
+      "name": "daily-digest-cron",
+      "schedule": "0 12,20 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772197568918,
+      "next_run": null,
+      "last_status": "ok",
+      "last_duration_ms": 30531,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "48a38fe2-9691-4bea-bed1-0f3313534fcd",
+      "name": "dev-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772272800013,
+      "next_run": 1772276400000,
+      "last_status": "ok",
+      "last_duration_ms": 143095,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "6a1b4266-2a3d-4645-90a1-e07cde656b41",
+      "name": "evolver-agent-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772259193945,
+      "next_run": 1772280278568,
+      "last_status": "ok",
+      "last_duration_ms": 66859,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "a27a9b33-e501-4ad2-97f5-2c02b05a743a",
+      "name": "git-janitor-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772259260804,
+      "next_run": 1772280187460,
+      "last_status": "ok",
+      "last_duration_ms": 7462,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "86722825-c37c-4b96-a838-15cf224328e7",
+      "name": "idea-executor-cron",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772273204288,
+      "next_run": 1772280175341,
+      "last_status": "ok",
+      "last_duration_ms": 11425,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "9112eca8-0ccb-4db4-b016-e5841fa9ef30",
+      "name": "idea-generator-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772259177196,
+      "next_run": 1772280011600,
+      "last_status": "ok",
+      "last_duration_ms": 6472,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "7df39652-0c4c-4864-b6e3-a0a8233ccdac",
+      "name": "linkedin-pa-agent-cron",
+      "schedule": "0 * * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772249005862,
+      "next_run": null,
+      "last_status": "ok",
+      "last_duration_ms": 28723,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "c6bca31f-9459-4cc7-a8dd-d35b268506e0",
+      "name": "log-rotate-cron",
+      "schedule": "0 5 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1771711227259,
+      "next_run": 1772316000000,
+      "last_status": "ok",
+      "last_duration_ms": 244311,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "b84b1f5c-7027-49f3-b9da-799721ecec21",
+      "name": "memory-reindex-cron",
+      "schedule": "0 4 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1771707919752,
+      "next_run": 1772312400000,
+      "last_status": "ok",
+      "last_duration_ms": 6776,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "3291b8d1-cf95-4fed-8292-8dc724c38ae3",
+      "name": "meta-agent-cron",
+      "schedule": "0 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772273187787,
+      "next_run": 1772276434763,
+      "last_status": "ok",
+      "last_duration_ms": 16501,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "a1381566-c214-4d0d-b853-f5d965c519a1",
+      "name": "meta-supervisor-agent",
+      "schedule": "5 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772248999317,
+      "next_run": null,
+      "last_status": "ok",
+      "last_duration_ms": 6545,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "3cbadb80-f35c-4e4a-9c6e-0c14cc1c1974",
+      "name": "notifier-cron",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772273215713,
+      "next_run": 1772280239125,
+      "last_status": "ok",
+      "last_duration_ms": 15268,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "aadf040b-60d2-48ee-9825-0db68bb6c13b",
+      "name": "random-torrent-downloader",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772273163342,
+      "next_run": 1772280117835,
+      "last_status": "ok",
+      "last_duration_ms": 15885,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "f69140f6-7341-4217-bad3-f4a9615b0b94",
+      "name": "research-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772273018570,
+      "next_run": 1772276400000,
+      "last_status": "ok",
+      "last_duration_ms": 133407,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "e2735844-269b-40aa-bd84-adb05fe5cb95",
+      "name": "supervisor-cron",
+      "schedule": "0,30 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772249411311,
+      "next_run": null,
+      "last_status": "ok",
+      "last_duration_ms": 14565,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "6e5621c3-783a-416c-93c7-56ea2cb4e920",
+      "name": "vishwakarma-cron",
+      "schedule": "0 */4 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772270273539,
+      "next_run": 1772283833385,
+      "last_status": "ok",
+      "last_duration_ms": 8712,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "23dad379-21ad-4f7a-8c68-528f98203a33",
+      "name": "workspace-builder",
+      "schedule": "0 */2 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772269633514,
+      "next_run": 1772276425629,
+      "last_status": "ok",
+      "last_duration_ms": 640025,
+      "consecutive_errors": 0
+    }
+  ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:30:48.768Z",
-      "text": "Tailscale is already using port 443 on that IP. Let me use nginx on a different interface or configure it to proxy to our backend~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:30:58.017Z",
-      "text": "`tailscale serve` is exactly what we need — it proxies our backend through Tailscale's built-in HTTPS on port 443~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:32:38.541Z",
-      "text": "nginx is running on `10.0.0.18:443`! Let me verify it proxies correctly and get the LAN IP for the Android~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:32:55.449Z",
-      "text": "Editing the Tailscale state file directly is risky. Let me use a cleaner approach — nginx on the LAN IP but update the cert to cover it, or just use the simpler `tailscale serve` with the correct subpath syntax~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T09:33:23.926Z",
@@ -580,6 +874,26 @@
       "role": "assistant",
       "ts": "2026-02-28T10:20:13.243Z",
       "text": "[[reply_to_current]] round 2 done nyaa~ (^^) here's everything that changed:\n\n**Chat**\n- ⏱️ Chat now polls every **5s** (was 10s) — replies appear faster\n- 💬 Code blocks (` ``` `) render as formatted blocks in bubbles\n- ↩️ Proper line breaks in messages\n- 📲 Send button is bigger and bolder on mobile\n- ⬇️ Auto-scrolls to bottom when switching to chat tab\n\n**Agents**\n- 🕐 Agent \"last run\" times now show as **relative** (e.g. \"3m ago\") — works even without a unix timestamp\n\n**Overview**\n- 🕐 Last-updated shows actual **clock time** instead of \"Updated 0s ago\"\n- 🔄 Yellow dot flickers while refreshing so you know it's loading\n\n**Quick Commands**\n- ➕ Added `💡 meta logs` and `🔬 validate` to the sheet\n\nclear cache → reopen PWA desu~ 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T10:27:39.777Z",
+      "text": "Continue"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:27:46.690Z",
+      "text": "NO_REPLY"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T10:28:05.783Z",
+      "text": "Continue"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:29:35.097Z",
+      "text": "Now I have the real structure. Let me fix the data generator and add next-run times too~"
     }
   ]
 }

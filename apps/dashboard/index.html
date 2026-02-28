@@ -233,6 +233,7 @@
     <div class="card"><h2>🤖 Agent Status</h2><div id="agent-timeline" class="timeline" style="margin-bottom:10px"></div><table id="agent-table"></table></div>
     <div class="card"><h2>📚 Research Library</h2><table id="research-table"></table></div>
     <div class="card"><h2>📝 Recent Commits</h2><table id="commit-table"></table></div>
+    <div class="card"><h2>⏰ Cron Jobs</h2><table id="cron-table"></table></div>
   </div>
 </div>
 
@@ -301,6 +302,7 @@
 <!-- Quick commands bottom sheet -->
 <div id="quick-sheet-overlay" onclick="closeQuickSheet()"></div>
 <div id="quick-sheet">
+  <div style="width:40px;height:4px;background:var(--border);border-radius:2px;margin:10px auto 0;"></div>
   <div id="quick-sheet-header">
     <span>⚡ Quick Commands</span>
     <button onclick="closeQuickSheet()">✕</button>
@@ -488,11 +490,42 @@ function renderCommits(commits) {
     <td style="font-size:11px">${esc(c.message)}</td>
     <td class="muted" style="white-space:nowrap">${timeAgo(c.ts)}</td></tr>`).join('');
 }
+function renderCron(crons) {
+  const el = document.getElementById('cron-table');
+  if (!el) return;
+  if (!crons || !crons.length) { el.innerHTML = '<tr><td class="muted">No cron data.</td></tr>'; return; }
+  const enabled = crons.filter(c => c.enabled !== false);
+  el.innerHTML = '<tr><th>Job</th><th>Schedule</th><th>Last run</th><th>Next</th><th>Status</th></tr>' +
+    enabled.map(c => {
+      const st = c.consecutive_errors > 0 ? chip('err ×'+c.consecutive_errors,'bad')
+               : c.last_status === 'ok' ? chip('ok','ok')
+               : c.last_status === 'error' ? chip('err','bad')
+               : chip(c.last_status||'—','muted');
+      const lastRun = c.last_run ? timeAgoMs(Date.now() - c.last_run) : '—';
+      const nextRun = c.next_run ? timeAgoMs(c.next_run - Date.now()).replace(' ago','') : '—';
+      const nextStr = c.next_run && c.next_run > Date.now() ? 'in ' + nextRun : nextRun;
+      const dur = c.last_duration_ms ? (c.last_duration_ms > 60000 ? Math.round(c.last_duration_ms/60000)+'m' : Math.round(c.last_duration_ms/1000)+'s') : '';
+      return `<tr>
+        <td style="font-size:11px">${esc(c.name||c.id)}</td>
+        <td class="muted" style="font-size:10px;font-family:monospace">${esc(c.schedule||'—')}</td>
+        <td class="muted" style="font-size:10px;white-space:nowrap">${lastRun}${dur?' <span style="opacity:.5">('+dur+')</span>':''}</td>
+        <td class="muted" style="font-size:10px;white-space:nowrap">${nextStr}</td>
+        <td>${st}</td>
+      </tr>`;
+    }).join('');
+  // Show disabled count
+  const disabled = crons.filter(c => c.enabled === false).length;
+  if (disabled) el.innerHTML += `<tr><td colspan="5" class="muted" style="font-size:10px;padding-top:6px">+ ${disabled} disabled jobs</td></tr>`;
+}
 
 function renderHeartbeat(hb, log) {
   const checks = hb?.lastChecks || {};
-  document.getElementById('hb-grid').innerHTML = Object.entries(checks).map(([k,v])=>`
-    <div class="hb-item"><div class="hb-key">${esc(k)}</div><div class="hb-val">${esc(String(v))}</div></div>`).join('') || '<span class="muted">No data.</span>';
+  document.getElementById('hb-grid').innerHTML = Object.entries(checks).map(([k,v])=>{
+    let display = String(v);
+    // if it looks like a unix timestamp
+    if (typeof v === 'number' && v > 1000000000) display = timeAgoMs(Date.now() - v * 1000);
+    return `<div class="hb-item"><div class="hb-key">${esc(k)}</div><div class="hb-val">${esc(display)}</div></div>`;
+  }).join('') || '<span class="muted">No data.</span>';
   const lb = document.getElementById('supervisor-log');
   lb.innerHTML = (log||[]).map(line => {
     const el = line.toLowerCase();
@@ -533,19 +566,25 @@ function renderChat(messages, preserve_scroll = false) {
   const atBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 60;
 
   if (!chatData.length) { container.innerHTML = '<div style="padding:32px 16px;text-align:center;color:var(--muted);font-size:13px">💬 No messages yet.<br><span style="font-size:11px">Send something below to start chatting with mewmew~</span></div>'; return; }
+  let lastDate = null;
   container.innerHTML = chatData.map(m => {
     const role = m.role === 'user' ? 'user' : 'assistant';
     const label = role === 'user' ? '👤 def' : '🐾 mewmew';
     let text = esc(m.text || '');
     // code blocks first (multiline)
-    text = text.replace(/```[\s\S]*?```/g, m => {
-      const code = m.slice(3, -3).replace(/^[a-z]+\n/, '');
+    text = text.replace(/```[\s\S]*?```/g, b => {
+      const code = b.slice(3, -3).replace(/^[a-z]+\n/, '');
       return '<pre style="background:#0a0d11;padding:8px;border-radius:6px;font-size:10px;overflow-x:auto;margin:4px 0;white-space:pre-wrap;color:#8b949e">' + code + '</pre>';
     });
     text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     text = text.replace(/`([^`\n]+)`/g, '<code style="background:#0a0d11;padding:1px 4px;border-radius:3px;font-size:10px;font-family:monospace">$1</code>');
     text = text.replace(/\n/g, '<br>');
-    return `<div class="msg ${role}">
+    let sep = '';
+    if (m.ts) {
+      const d = new Date(m.ts).toLocaleDateString([], {weekday:'short', month:'short', day:'numeric'});
+      if (d !== lastDate) { lastDate = d; sep = `<div style="text-align:center;font-size:10px;color:var(--muted);padding:8px 0;user-select:none">${d}</div>`; }
+    }
+    return sep + `<div class="msg ${role}">
       <div class="msg-bubble">${text}</div>
       <div class="msg-meta">${label} · ${fmtTime(m.ts)}</div>
     </div>`;
@@ -879,11 +918,12 @@ async function load() {
     renderAgentSummary(data.agents);
     renderResearch(data.research);
     renderCommits(data.recent_commits);
+    renderCron(data.cron_jobs);
     renderHeartbeat(data.heartbeat, data.supervisor_log);
     renderAgentDetail(data.agents);
     renderOutputs(data.agent_outputs);
     renderChat(data.chat || [], true);
-    const ts = new Date(); document.getElementById('last-updated').textContent = ts.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('last-updated').textContent = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     document.getElementById('error-banner').style.display = 'none';
     document.getElementById('conn-dot').className = '';
     loadErrors = 0;
@@ -907,6 +947,10 @@ document.addEventListener('DOMContentLoaded', () => {
   switchTab(urlTab || activeTab);
   load();
   setInterval(load, 60000);
+  setInterval(() => {
+    const el = document.getElementById('last-updated');
+    if (el) el.textContent = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  }, 60000);
   if (ON_VERCEL) {
     chatInput.placeholder = 'Chat requires local backend — open https://instance-20260207-2229.tail2dd22b.ts.net:8443';
     chatInput.disabled = true;
@@ -944,7 +988,12 @@ function buildQuickSheet() {
 function openQuickSheet() {
   buildQuickSheet();
   document.getElementById('quick-sheet-overlay').classList.add('open');
-  document.getElementById('quick-sheet').classList.add('open');
+  const sheet = document.getElementById('quick-sheet');
+  sheet.classList.add('open');
+  // Swipe down to close
+  let startY = 0;
+  sheet.ontouchstart = e => { startY = e.touches[0].clientY; };
+  sheet.ontouchmove = e => { if (e.touches[0].clientY - startY > 60) closeQuickSheet(); };
 }
 function closeQuickSheet() {
   document.getElementById('quick-sheet-overlay').classList.remove('open');

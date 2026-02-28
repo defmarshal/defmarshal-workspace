@@ -229,6 +229,24 @@ else
   COMMITS_JSON=$(jq -n '[]')
 fi
 
+# ── Cron jobs ────────────────────────────────────────────────────────────────
+CRON_JSON="[]"
+CRON_FILE="$HOME/.openclaw/cron/jobs.json"
+if [ -f "$CRON_FILE" ]; then
+  CRON_JSON=$(jq '[.jobs[] | {
+    id: .id,
+    name: (.name // .id),
+    schedule: (.schedule.expr // ""),
+    tz: (.schedule.tz // "UTC"),
+    enabled: (.enabled // true),
+    last_run: (.state.lastRunAtMs // null),
+    next_run: (.state.nextRunAtMs // null),
+    last_status: (.state.lastStatus // "—"),
+    last_duration_ms: (.state.lastDurationMs // 0),
+    consecutive_errors: (.state.consecutiveErrors // 0)
+  }] | sort_by(.name)' "$CRON_FILE" 2>/dev/null || jq -n '[]')
+fi
+
 # ── Combine all ───────────────────────────────────────────────────────────────
 FINAL_JSON=$(jq -n \
   --argjson sys "$SYSTEM_JSON" \
@@ -238,6 +256,7 @@ FINAL_JSON=$(jq -n \
   --argjson heartbeat "$HEARTBEAT_JSON" \
   --argjson supervisor_log "$SUPERVISOR_LINES" \
   --argjson agent_outputs "$AGENT_OUTPUTS" \
+  --argjson cron_jobs "$CRON_JSON" \
   --argjson chat "$CHAT_JSON" \
   --argjson disk_hist "$DISK_HISTORY" \
   '{
@@ -249,6 +268,7 @@ FINAL_JSON=$(jq -n \
     heartbeat: $heartbeat,
     supervisor_log: $supervisor_log,
     agent_outputs: $agent_outputs,
+    cron_jobs: $cron_jobs,
     chat: $chat
   }')
 
