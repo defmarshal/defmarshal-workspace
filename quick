@@ -96,6 +96,7 @@ Commands:
   random-project       Suggest a fun non-web weekend project (maker, game, music, art)
   tech-project         Suggest a deep technical project (systems, embedded, compilers, robotics, hardware)
   research-age                            Show research reports sorted by age (oldest first)
+  workspace-summary [--json]              One-page daily status: system health, research, content, git, agents
   research-stats                          Show research library statistics (reports, TTS %, latest)
   research-tags                          Show tag statistics for research reports
   run-agent                              Run an OpenClaw agent with a message (usage: quick run-agent <agent-id> <message>)
@@ -1898,6 +1899,9 @@ EOF
   tts-stats)
     # Detailed TTS statistics
     "$WORKSPACE/scripts/tts-stats.sh"
+    ;;
+  workspace-summary)
+    "$WORKSPACE/scripts/workspace-summary.sh" "$@"
     ;;
   research-stats)
     # Show research library statistics
