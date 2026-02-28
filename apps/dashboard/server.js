@@ -131,16 +131,25 @@ const server = http.createServer(async (req, res) => {
     const body = await readBody(req);
     const message = (body.message || '').trim();
     if (!message) return json(res, 400, { error: 'message required' });
+    // Use message send (fast, no LLM turn) to deliver directly to Telegram chat
     const result = await run('openclaw', [
-      'agent',
-      '--to', 'telegram:952170974',
+      'message', 'send',
+      '--channel', 'telegram',
+      '--target', '952170974',
       '--message', message,
-      '--deliver',
+      '--json',
     ]);
-    return json(res, result.ok ? 200 : 500, {
-      ok: result.ok,
-      output: (result.stdout + result.stderr).trim(),
-    });
+    // parse JSON from stdout (openclaw prints doctor noise before actual JSON)
+    let ok = false;
+    let output = (result.stdout + result.stderr).trim();
+    try {
+      const jsonStart = output.indexOf('{');
+      if (jsonStart >= 0) {
+        const parsed = JSON.parse(output.slice(jsonStart));
+        ok = parsed?.payload?.ok === true;
+      }
+    } catch {}
+    return json(res, ok ? 200 : 500, { ok, output });
   }
 
   // ── API: run quick command ─────────────────────────────────────────────────
