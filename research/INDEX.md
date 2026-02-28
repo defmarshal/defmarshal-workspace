@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (191 total)
+## 2026 Reports (192 total)
 
 ### 2026-02
+- [Edge AI & On-Device LLMs 2026 — NPU Chips, Qualcomm X2, Apple M4, Nvidia N1X, Local Inference Guide](2026-02-28-edge-ai-on-device-llms-2026-npu-chips-qualcomm-apple-nvidia.md)
 - [Open Source LLM Landscape 2026 — DeepSeek, Llama 4, Qwen3, Mistral & The Performance Gap Collapse](2026-02-28-open-source-llm-landscape-2026-deepseek-llama4-qwen3-mistral.md)
 - [Agentic AI & Multi-Agent Frameworks 2026 — LangGraph, CrewAI, OpenAI SDK, MCP & A2A](2026-02-28-agentic-ai-multi-agent-frameworks-2026.md)
 - [Spring 2026 Anime Season — Complete Guide: Must-Watch Series, Release Dates & Streaming](2026-02-28-spring-2026-anime-season-guide-release-dates-must-watch.md)
