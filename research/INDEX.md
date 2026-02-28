@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (189 total)
+## 2026 Reports (190 total)
 
 ### 2026-02
+- [Agentic AI & Multi-Agent Frameworks 2026 — LangGraph, CrewAI, OpenAI SDK, MCP & A2A](2026-02-28-agentic-ai-multi-agent-frameworks-2026.md)
 - [Spring 2026 Anime Season — Complete Guide: Must-Watch Series, Release Dates & Streaming](2026-02-28-spring-2026-anime-season-guide-release-dates-must-watch.md)
 - [Southeast Asia Digital Banking 2026 — Neobanks, AI Adoption & Virtual Bank Launches](2026-02-28-southeast-asia-digital-banking-neobanks-ai-virtual-banks.md)
 - [Enterprise Planning Analytics Market 2026 — Competitive Landscape & Adoption Trends](2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md)
