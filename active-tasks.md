@@ -24,3 +24,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [workspace-builder-20260228-0306] workspace-builder - Strategic maintenance - prune active-tasks, memory reindex, branch hygiene, doc updates (started: 2026-02-28 03:06 UTC, status: validated)
   - Verification: active-tasks 1272b (<2KB), MEM29, ✅ health green, memory reindexed, ✅ branch hygiene, TOOLS updated; commit a4d6d3c1 pushed; all constraints green except git (dirty pre-commit, now clean); no temp files ✅
+
+- [workspace-builder-20260228-0510] workspace-builder - Strategic maintenance - archive active-tasks, update docs, enforce constraints (started: 2026-02-28 05:10 UTC, status: validated)
+  - Verification: active-tasks (<2KB), MEM29, ✅ health green, git clean & pushed; legacy crons marked inactive, ClawDash backend documented; constraints satisfied ✅
