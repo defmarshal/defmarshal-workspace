@@ -183,8 +183,9 @@
 </div>
 
 <script>
-const IS_LOCAL = window.location.hostname !== 'localhost' ? false : true;
-const API = IS_LOCAL ? '' : ''; // same origin
+// Backend is available when NOT on Vercel (i.e., served by our Node.js server)
+const ON_VERCEL = window.location.hostname.includes('vercel.app');
+const BACKEND_BASE = ON_VERCEL ? null : ''; // same-origin when on local server
 
 // Auto-detect if we're on local backend
 let backendAvailable = false;
@@ -310,6 +311,12 @@ sendBtn.addEventListener('click', sendMessage);
 async function sendMessage() {
   const text = chatInput.value.trim();
   if (!text) return;
+
+  if (ON_VERCEL) {
+    showError('Chat send requires the local backend. Open http://100.108.208.45:3001 instead of the Vercel URL.');
+    return;
+  }
+
   chatInput.value = '';
   chatInput.style.height = 'auto';
   sendBtn.disabled = true;
@@ -390,6 +397,13 @@ function buildQuickList() {
 async function runQuick(cmd, label) {
   const resultEl = document.getElementById('quick-result');
   const labelEl = document.getElementById('quick-cmd-label');
+
+  if (ON_VERCEL) {
+    labelEl.textContent = '⚠️ ' + cmd;
+    resultEl.textContent = 'Quick commands require the local backend.\nOpen http://100.108.208.45:3001 instead of the Vercel URL.';
+    return;
+  }
+
   labelEl.textContent = '⏳ ' + cmd;
   resultEl.textContent = 'Running…';
   try {
@@ -416,18 +430,21 @@ function clearQuickResult() {
 // ── Data loading ──────────────────────────────────────────────────────────
 async function load() {
   try {
-    // try local backend first (live data + chat)
     let data;
-    try {
-      const res = await fetch('/api/data', { signal: AbortSignal.timeout(5000) });
-      if (res.ok) {
-        data = await res.json();
-        backendAvailable = true;
-        const bs = document.getElementById('backend-status');
-        bs.textContent = '⚡ live';
-        bs.className = 'ok';
-      }
-    } catch {}
+
+    if (!ON_VERCEL) {
+      // Local backend — live data
+      try {
+        const res = await fetch('/api/data', { signal: AbortSignal.timeout(8000) });
+        if (res.ok) {
+          data = await res.json();
+          backendAvailable = true;
+          const bs = document.getElementById('backend-status');
+          bs.textContent = '⚡ live';
+          bs.className = 'ok';
+        }
+      } catch {}
+    }
 
     // fallback to static data.json (Vercel / offline)
     if (!data) {
@@ -436,7 +453,7 @@ async function load() {
       data = await res.json();
       backendAvailable = false;
       const bs = document.getElementById('backend-status');
-      bs.textContent = '📦 static';
+      bs.textContent = ON_VERCEL ? '📦 static (open :3001 for live)' : '📦 static';
       bs.className = 'bad';
     }
 
@@ -466,6 +483,12 @@ document.addEventListener('DOMContentLoaded', () => {
   buildQuickList();
   load();
   setInterval(load, 60000);
+  if (ON_VERCEL) {
+    chatInput.placeholder = 'Chat requires local backend — open http://100.108.208.45:3001';
+    chatInput.disabled = true;
+    sendBtn.disabled = true;
+    sendBtn.title = 'Not available on Vercel';
+  }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 });
 </script>
