@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T10:29:41Z",
+  "generated_at": "2026-02-28T10:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,6 +70,12 @@
   },
   "recent_commits": [
     {
+      "sha": "3c5ef746",
+      "agent": "misc",
+      "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
+      "time": "0 seconds ago"
+    },
+    {
       "sha": "56905322",
       "agent": "chore",
       "message": "update clawdash data",
@@ -91,7 +97,7 @@
       "sha": "3c8aee3b",
       "agent": "misc",
       "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "12 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "6bea6b48",
@@ -109,7 +115,7 @@
       "sha": "ce054294",
       "agent": "research",
       "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "23 minutes ago"
+      "time": "24 minutes ago"
     },
     {
       "sha": "23d6deac",
@@ -121,19 +127,19 @@
       "sha": "df194d97",
       "agent": "content",
       "message": "10:00 tech update — Cybersecurity 2026 (agentic AI, NHI, SaaS .85M ransomware, AMTD, ZT2.0) + disk-usage-breakdown dev drop",
-      "time": "26 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "fbd858c1",
       "agent": "dev",
       "message": "add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)",
-      "time": "27 minutes ago"
+      "time": "28 minutes ago"
     },
     {
       "sha": "d6200918",
       "agent": "misc",
       "message": "chore(clawdash): bump SW cache to v5 to force update",
-      "time": "29 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "6e1a5278",
@@ -152,12 +158,6 @@
       "agent": "misc",
       "message": "feat(clawdash): thinking indicator persists until new reply arrives (polls every 3s, max 3min)",
       "time": "32 minutes ago"
-    },
-    {
-      "sha": "9f66b64c",
-      "agent": "misc",
-      "message": "fix(clawdash): chat layout — height:100% on chat-main, overflow:hidden, input always visible",
-      "time": "34 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,11 +647,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-02-28T09:33:23.926Z",
-      "text": "Valid cert on port 8443! Chrome on Android allows notifications on any port as long as the cert is valid. Let me update the index.html to reference the correct URL and commit~"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-02-28T09:33:40.469Z",
       "text": "[[reply_to_current]] the issue was Chrome blocks notifications on non-standard ports (3443) even with a valid cert! fixed with nginx on port 8443 nyaa~\n\ntry this URL now:\n> **`https://instance-20260207-2229.tail2dd22b.ts.net:8443`**\n\n1. open in Chrome → it should load without any security warning\n2. tap **Chat tab** → tap **Enable** on the banner\n3. Chrome should now ask for notification permission properly — tap **Allow**\n4. you'll get a test notification immediately to confirm it works (^^)"
     },
@@ -894,6 +889,11 @@
       "role": "assistant",
       "ts": "2026-02-28T10:29:35.097Z",
       "text": "Now I have the real structure. Let me fix the data generator and add next-run times too~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:29:55.558Z",
+      "text": "26 cron jobs with full data. Now update the dashboard to show next-run times and enabled/disabled status~"
     }
   ]
 }
