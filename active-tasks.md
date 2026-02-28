@@ -19,6 +19,9 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Running
 
+- [workspace-builder-23dad379] workspace-builder - Enforce constraints, commit planning docs, validate system (started: 2026-02-28 23:01 UTC, status: running)
+  - Verification: pending final validation
+
 - [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)
   - Verification: daemon process PID 1121739; log shows cycle started; sleeping until next interval
 
