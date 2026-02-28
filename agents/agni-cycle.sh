@@ -100,12 +100,10 @@ spawn_cmd="bash agents/rudra-executor.sh $plan_file"
 # The agent will receive a message instructing it to exec the command
 message="You are Rudra the Executor. Your job: run the following command using the exec tool: $spawn_cmd. After the command completes, write a brief completion report to agents/rudra/reports/report-${timestamp}.md and then exit. Do not ask for confirmation."
 
-# Spawn the agent
-output=$(openclaw sessions spawn --agent main --label rudra-${timestamp} --task "$message" 2>&1)
-echo "$output" >> "$LOG"
-
-# Extract session key if possible (for logging)
-session_key=$(echo "$output" | grep -o '"sessionKey":"[^"]*"' | cut -d'"' -f4 || echo "unknown")
+# Spawn via openclaw agent (sends task to an isolated gateway session)
+session_key="rudra-${timestamp}"
+output=$(openclaw agent --session-id "$session_key" --message "$message" 2>&1) || true
+echo "$output" | head -5 >> "$LOG"
 echo "[$(date --iso-8601=seconds)] Rudra spawned (label: rudra-${timestamp}, session: $session_key)" >> "$LOG"
 
 echo "[$(date --iso-8601=seconds)] Agni cycle complete" >> "$LOG"

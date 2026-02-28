@@ -263,7 +263,7 @@ Workflow:
 
 Important: Use bash commands to create files and write code. For Python code, ensure proper indentation. Test often."
 
-openclaw sessions spawn --agent main --label krishna-${plan_id} --task "$message" 2>&1 >> "$LOG"
+openclaw agent --session-id "krishna-${plan_id}" --message "$message" 2>&1 >> "$LOG" || true
 
 echo "[$(date --iso-8601=seconds)] Kṛṣṇa spawned (label: krishna-${plan_id})" >> "$LOG"
 echo "[$(date --iso-8601=seconds)] Vishwakarma cycle complete" >> "$LOG"
