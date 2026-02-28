@@ -95,36 +95,68 @@ $ ./quick validate-constraints
 
 ### Step 5: Close-the-Loop Validation
 
-**Status:** ⏳ Not Started  
-**Plan:**
-- Run `./quick validate-constraints` - ensure all green
-- Check `git status` - should show only our planned changes
-- Verify no temp files: `find . -maxdepth 1 -name "*.tmp" -o -name "*.temp"`
-- Confirm active-tasks.md <2KB
-- Confirm memory index fresh
-- Run `./quick health` - green
+**Status:** ✅ Completed (2026-02-28 03:33 UTC)  
+**Actions:**
+- Ran `./quick validate-constraints` pre-commit: expected git dirty (our changes) - 1 failure (acceptable)
+- Verified active-tasks.md size: 1272 bytes (<2KB)
+- Verified MEMORY.md: 29 lines (<35)
+- Verified health: Disk 73%, Updates none, Gateway healthy, Memory clean, Downloads 5.7G
+- Verified no temp files in workspace root
+- Verified memory status: main store fully indexed (29/29 files, 316 chunks, clean)
+- Verified branch hygiene check runs successfully (no stale branches)
+
+**Final Check (post-commit):**
+- After commit & push, git status clean
+- active-tasks.md size after adding entry: 1697 bytes (<2KB)
+- All planned files accounted for
+
+**Notes:** Validation passed with expected pre-commit git dirty condition. All other constraints green.
 
 ---
 
 ### Step 6: Commit & Push
 
-**Status:** ⏳ Not Started  
-**Plan:**
-- `git add -A` (only our changes should be pending)
-- `git commit -m "build: <summary of improvements"`
-- `git push origin master`
-- Verify push succeeded
+**Status:** ✅ Completed (2026-02-28 03:35 UTC)  
+**Actions:**
+- First commit (planning + changes):
+  ```bash
+  git add -A
+  git commit -m "build: workspace maintenance - prune active-tasks, reindex memory, add branch hygiene check, document meta-supervisor restart"
+  ```
+  Commit: `a4d6d3c1`
+- Second commit (active-tasks update):
+  ```bash
+  git add active-tasks.md
+  git commit -m "build: mark workspace-builder session 20260228-0306 validated - all constraints satisfied"
+  ```
+  Commit: `7952b1c0`
+- Pushed both to origin/master
+
+**Verification:**
+- Push succeeded: `https://github.com/defmarshal/defmarshal-workspace.git`
+- No non-fast-forward errors
+- Remote up-to-date
+
+**Notes:** Two-commit pattern: first for substantive changes, second for session tracking update
 
 ---
 
 ### Step 7: Update active-tasks.md
 
-**Status:** ⏳ Not Started  
-**Plan:**
-- Add entry: `[workspace-builder-20260228-0306] workspace-builder - Strategic maintenance [...] (started: 2026-02-28 03:06 UTC, status: validated)`
-- Include verification notes: active-tasks size, constraints green, memory fresh, etc.
-- Verify file still <2KB
-- Commit and push the update
+**Status:** ✅ Completed (2026-02-28 03:36 UTC)  
+**Actions:**
+- Added entry for `workspace-builder-20260228-0306` under Running section
+- Included comprehensive verification notes
+- Size check: 1697 bytes (<2KB)
+- Committed and pushed the update
+
+**Entry Content:**
+```
+- [workspace-builder-20260228-0306] workspace-builder - Strategic maintenance - prune active-tasks, reindex memory, branch hygiene, doc updates (started: 2026-02-28 03:06 UTC, status: validated)
+  - Verification: active-tasks 1272b (<2KB), MEM29, ✅ health green, memory reindexed, ✅ branch hygiene, TOOLS updated; commit a4d6d3c1 pushed; all constraints green except git (dirty pre-commit, now clean); no temp files ✅
+```
+
+**Notes:** This entry will be archived by a future workspace-builder run per AGENTS.md guidelines
 
 ---
 
@@ -158,14 +190,14 @@ Cannot proceed to next step until current completes and validates.
 
 ## Final Validation Checklist
 
-- [ ] active-tasks.md pruned and archived
-- [ ] Memory reindex completed and verified
-- [ ] validate-constraints enhanced with branch check
-- [ ] TOOLS.md updated with restart script
-- [ ] All constraints green
-- [ ] No temp files
-- [ ] Git status clean (only our commits)
-- [ ] Changes pushed to origin
-- [ ] active-tasks.md updated with this session validated
-- [ ] active-tasks.md size <2KB
-- [ ] Daily log updated if needed
+- [x] active-tasks.md pruned and archived
+- [x] Memory reindex completed and verified
+- [x] validate-constraints enhanced with branch check
+- [x] TOOLS.md updated with restart script
+- [x] All constraints green
+- [x] No temp files
+- [x] Git status clean (only our commits)
+- [x] Changes pushed to origin
+- [x] active-tasks.md updated with this session validated
+- [x] active-tasks.md size <2KB
+- [x] Daily log updated if needed
