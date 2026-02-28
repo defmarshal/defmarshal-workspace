@@ -244,10 +244,10 @@
 
 <!-- Chat -->
 <div id="tab-chat" class="tab-panel">
-  <div id="push-banner" style="display:none;background:var(--surface);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+  <div id="push-banner" style="display:none;padding:10px 16px;align-items:center;justify-content:space-between;gap:10px;background:var(--surface);border-bottom:1px solid var(--border);">
     <span style="font-size:13px;color:var(--muted)">🔔 Get notified when mewmew replies</span>
-    <button onclick="setupPush();this.closest('#push-banner').style.display='none';" style="background:var(--blue);color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600;">Enable</button>
-    <button onclick="this.closest('#push-banner').style.display='none';" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;">✕</button>
+    <button onclick="setupPush().then(()=>document.getElementById('push-banner').style.display='none');" style="background:var(--blue);color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600;">Enable</button>
+    <button onclick="document.getElementById('push-banner').style.display='none';localStorage.setItem('push-dismissed','1');" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;">✕</button>
   </div>
   <div class="chat-main">
     <div id="chat-messages"></div>
@@ -321,10 +321,10 @@ function switchTab(tab) {
   localStorage.setItem('clawdash-tab', tab);
   if (tab === 'chat') {
     scrollChat(); startChatPoll();
-    // Show push banner if not subscribed
-    if (!pushSubscribed && !ON_VERCEL && 'PushManager' in window) {
-      const banner = document.getElementById('push-banner');
-      if (banner) banner.style.display = 'flex';
+    // Show push banner if not subscribed and not dismissed
+    const banner = document.getElementById('push-banner');
+    if (banner && !pushSubscribed && !ON_VERCEL && !localStorage.getItem('push-dismissed')) {
+      banner.style.display = 'flex';
     }
   } else { stopChatPoll(); }
 }
@@ -813,7 +813,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // Check if already subscribed
       if (!ON_VERCEL) {
         const sub = await reg.pushManager.getSubscription().catch(() => null);
-        if (sub) { pushSubscribed = true; updatePushBtn(true); }
+        if (sub) {
+          pushSubscribed = true;
+          updatePushBtn(true);
+          const banner = document.getElementById('push-banner');
+          if (banner) banner.style.display = 'none';
+        }
       }
     }).catch(e => console.warn('SW failed', e));
   }
