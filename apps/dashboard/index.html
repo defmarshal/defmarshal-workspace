@@ -231,6 +231,7 @@
   <button class="tab-btn" data-tab="agents">🤖 Agents <span class="badge" id="badge-agents">…</span></button>
   <button class="tab-btn" data-tab="chat">💬 Chat <span class="badge" id="badge-chat">…</span></button>
   <button class="tab-btn" data-tab="cron">⏰ Cron</button>
+  <button class="tab-btn" data-tab="tokens">💰 Tokens</button>
   <button class="tab-btn" onclick="load();toast('🔄 Refreshing…','ok',1500)" title="Refresh">🔄</button>
 </nav>
 
@@ -329,6 +330,36 @@
   <div style="overflow-y:auto;flex:1;padding:10px 14px" id="cron-tab-list"></div>
 </div>
 
+<!-- Tokens tab -->
+<div id="tab-tokens" class="tab-panel">
+  <div class="grid">
+    <div class="card" style="grid-column:1/-1">
+      <h2>💰 Token Usage (last 7 days)</h2>
+      <div id="tokens-summary" style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <div id="tokens-table-wrap" style="overflow-x:auto">
+        <table id="tokens-table" style="width:100%;border-collapse:collapse;font-size:12px">
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid var(--border)">
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500">Job</th>
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Runs</th>
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Avg tok</th>
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">In</th>
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Out</th>
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Total</th>
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500">Share</th>
+              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Last run</th>
+            </tr>
+          </thead>
+          <tbody id="tokens-tbody"></tbody>
+        </table>
+      </div>
+      <div id="tokens-empty" style="display:none;text-align:center;padding:20px;color:var(--muted);font-size:12px">
+        No token data found for the last 7 days.
+      </div>
+    </div>
+  </div>
+</div>
+
 </div><!-- #tab-panels -->
 
 <!-- Quick commands bottom sheet -->
@@ -400,6 +431,7 @@ function switchTab(tab) {
       banner.style.display = 'flex';
     }
   } else { stopChatPoll(); }
+  if (tab === 'tokens') loadTokens();
 }
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
@@ -659,6 +691,85 @@ function renderOutputs(outputs) {
         <div class="out-meta"><span>📅 ${age}</span><span class="muted">${kb}KB</span></div>
       </div>`;
     }).join('');
+}
+}
+
+// ── Tokens tab ────────────────────────────────────────────────────────────
+let tokensLoaded = false;
+async function loadTokens() {
+  if (tokensLoaded) return;
+  try {
+    const d = await fetch('/api/tokens').then(r => r.json());
+    tokensLoaded = true;
+    renderTokens(d);
+  } catch (e) {
+    const tbody = document.getElementById('tokens-tbody');
+    if (tbody) tbody.innerHTML = `<tr><td colspan="8" style="color:var(--red);padding:8px">Error: ${esc(e.message)}</td></tr>`;
+  }
+}
+function fmtK(n) {
+  n = n || 0;
+  if (n >= 1e6) return (n/1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return (n/1e3).toFixed(1) + 'k';
+  return String(n);
+}
+function renderTokens(d) {
+  const summary = document.getElementById('tokens-summary');
+  const tbody   = document.getElementById('tokens-tbody');
+  const empty   = document.getElementById('tokens-empty');
+  if (!tbody) return;
+
+  if (!d.ok || !d.rows || !d.rows.length) {
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+
+  // Summary cards
+  if (summary) {
+    const weekTotal = d.week?.total || 0;
+    const weekIn    = d.week?.total_in || 0;
+    const weekOut   = d.week?.total_out || 0;
+    summary.innerHTML = `
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;min-width:120px">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px">📅 WEEK TOTAL</div>
+        <div style="font-size:20px;font-weight:700;color:var(--blue)">${fmtK(weekTotal)}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">${fmtK(weekIn)} in · ${fmtK(weekOut)} out</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;min-width:120px">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px">🤖 JOBS TRACKED</div>
+        <div style="font-size:20px;font-weight:700;color:var(--green)">${d.rows.length}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">last 7 days</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;min-width:120px">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px">🔝 TOP JOB</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text)">${esc((d.rows[0]?.name||'—').slice(0,22))}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">${fmtK(d.rows[0]?.total||0)} tokens</div>
+      </div>`;
+  }
+
+  // Table
+  const maxTotal = d.rows[0]?.total || 1;
+  const now = Date.now();
+  tbody.innerHTML = d.rows.map((row, i) => {
+    const pct = Math.round((row.total / maxTotal) * 100);
+    const lastAgo = row.last_run_ms ? fmtDuration(now - row.last_run_ms) + ' ago' : '—';
+    const barColor = i === 0 ? 'var(--blue)' : i < 3 ? 'var(--green)' : 'var(--muted)';
+    return `<tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:7px 8px;font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(row.name)}">${esc(row.name)}</td>
+      <td style="padding:7px 8px;text-align:right;color:var(--muted)">${row.runs}</td>
+      <td style="padding:7px 8px;text-align:right">${fmtK(row.avg_tokens)}</td>
+      <td style="padding:7px 8px;text-align:right;color:var(--muted)">${fmtK(row.total_in)}</td>
+      <td style="padding:7px 8px;text-align:right;color:var(--muted)">${fmtK(row.total_out)}</td>
+      <td style="padding:7px 8px;text-align:right;font-weight:600">${fmtK(row.total)}</td>
+      <td style="padding:7px 8px;min-width:100px">
+        <div style="background:var(--surface2);border-radius:3px;height:8px;position:relative;overflow:hidden">
+          <div style="background:${barColor};height:100%;width:${pct}%;border-radius:3px;transition:width .3s"></div>
+        </div>
+        <span style="font-size:9px;color:var(--muted)">${pct}%</span>
+      </td>
+      <td style="padding:7px 8px;text-align:right;font-size:11px;color:var(--muted);white-space:nowrap">${lastAgo}</td>
+    </tr>`;
+  }).join('');
 }
 
 // ── Cron tab (full job list) ─────────────────────────────────────────────

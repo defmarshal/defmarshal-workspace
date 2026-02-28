@@ -8,6 +8,7 @@
  * - GET  /api/chat        → returns chat messages from current telegram session
  * - GET  /api/vapid-key   → returns VAPID public key for push subscription
  * - POST /api/subscribe   → saves push subscription
+ * - GET  /api/tokens      → token usage aggregated per cron job (last 7 days)
  * - POST /api/notify-test → send test push notification
  */
 
@@ -29,6 +30,8 @@ const CERT_PATH     = path.join(DASHBOARD_DIR, 'tls.crt');
 const KEY_PATH      = path.join(DASHBOARD_DIR, 'tls.key');
 const VAPID_PATH    = path.join(DASHBOARD_DIR, 'vapid.json');
 const SUBS_PATH     = path.join(DASHBOARD_DIR, 'push-subscriptions.json');
+const CRON_JOBS_JSON = path.join(process.env.HOME, '.openclaw', 'cron', 'jobs.json');
+const CRON_RUNS_DIR  = path.join(process.env.HOME, '.openclaw', 'cron', 'runs');
 
 // ── VAPID / web-push setup ─────────────────────────────────────────────────
 let webPush = null;
@@ -227,6 +230,143 @@ async function getTorrentStatus() {
   return { active: fmt(active), waiting: fmt(waiting), stopped: fmt(stopped) };
 }
 
+// ── Token usage aggregation ────────────────────────────────────────────────
+function getTokenStats() {
+  try {
+    // Load cron jobs to get id→name mapping
+    const cronData = JSON.parse(fs.readFileSync(CRON_JOBS_JSON, 'utf8'));
+    const jobs = cronData.jobs || [];
+    const idToName = {};
+    for (const j of jobs) idToName[j.id] = j.name || j.id;
+
+    const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000; // 7 days ago
+    const todayCutoff = new Date();
+    todayCutoff.setUTCHours(0, 0, 0, 0);
+
+    // Aggregate from session JSONL files
+    // sessions.json maps "agent:main:cron:<cronId>" -> { sessionId }
+    const sessionsMap = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
+
+    // Build cronId -> latest sessionId map
+    const cronSessions = {};
+    for (const [key, val] of Object.entries(sessionsMap)) {
+      const m = key.match(/^agent:main:cron:([^:]+)$/);
+      if (m) cronSessions[m[1]] = val.sessionId;
+    }
+
+    // Also scan runs/ JSONL files (one per job, contains run records with durationMs)
+    // For token data we need the session JSONL files
+    const stats = {}; // cronId -> { name, total_in, total_out, total_cache_read, total_cache_write, runs, last_run_ms }
+
+    // Walk all sessions in sessions.json, not just current ones — scan all JSONL files
+    // that correspond to cron sessions. The session file may have rotated but we scan all.
+    const allKeys = Object.entries(sessionsMap);
+    for (const [key, val] of allKeys) {
+      const m = key.match(/^agent:main:cron:([^:]+)$/);
+      if (!m) continue;
+      const cronId = m[1];
+      const sessionId = val.sessionId;
+      if (!sessionId) continue;
+      const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
+      if (!fs.existsSync(sessionFile)) continue;
+
+      // Read session file and sum usage
+      let totalIn = 0, totalOut = 0, totalCacheRead = 0, totalCacheWrite = 0;
+      let runCount = 0, lastTs = 0;
+      const lines = fs.readFileSync(sessionFile, 'utf8').split('\n');
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        try {
+          const obj = JSON.parse(line);
+          if (obj.type !== 'message') continue;
+          const ts = obj.timestamp ? new Date(obj.timestamp).getTime() : 0;
+          if (ts < cutoff) continue;
+          const usage = obj.message?.usage;
+          if (!usage) continue;
+          const inp = usage.input || 0;
+          const out = usage.output || 0;
+          if (inp === 0 && out === 0) continue;
+          totalIn += inp;
+          totalOut += out;
+          totalCacheRead += usage.cacheRead || 0;
+          totalCacheWrite += usage.cacheWrite || 0;
+          runCount++;
+          if (ts > lastTs) lastTs = ts;
+        } catch {}
+      }
+      if (runCount === 0 && totalIn === 0) continue;
+
+      const name = idToName[cronId] || `cron-${cronId.slice(0, 8)}`;
+      if (!stats[cronId]) {
+        stats[cronId] = { id: cronId, name, total_in: 0, total_out: 0, total_cache_read: 0, total_cache_write: 0, runs: 0, last_run_ms: 0 };
+      }
+      stats[cronId].total_in += totalIn;
+      stats[cronId].total_out += totalOut;
+      stats[cronId].total_cache_read += totalCacheRead;
+      stats[cronId].total_cache_write += totalCacheWrite;
+      stats[cronId].runs += runCount;
+      if (lastTs > stats[cronId].last_run_ms) stats[cronId].last_run_ms = lastTs;
+    }
+
+    // Also check runs JSONL for more accurate run counts if above is thin
+    // (runs dir has one file per job, each line is a run record)
+    if (fs.existsSync(CRON_RUNS_DIR)) {
+      for (const fname of fs.readdirSync(CRON_RUNS_DIR)) {
+        if (!fname.endsWith('.jsonl')) continue;
+        const cronId = fname.replace('.jsonl', '');
+        if (!stats[cronId]) continue; // only enrich jobs we already have
+        const runsFile = path.join(CRON_RUNS_DIR, fname);
+        let runCount = 0, lastTs = 0;
+        const lines = fs.readFileSync(runsFile, 'utf8').split('\n');
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          try {
+            const obj = JSON.parse(line);
+            if (obj.action !== 'finished') continue;
+            const ts = obj.ts || 0;
+            if (ts < cutoff) continue;
+            runCount++;
+            if (ts > lastTs) lastTs = ts;
+          } catch {}
+        }
+        // Use max of both counting methods
+        if (runCount > stats[cronId].runs) stats[cronId].runs = runCount;
+        if (lastTs > stats[cronId].last_run_ms) stats[cronId].last_run_ms = lastTs;
+      }
+    }
+
+    // Compute today's totals
+    let todayTotalIn = 0, todayTotalOut = 0;
+    let weekTotalIn = 0, weekTotalOut = 0;
+    const rows = Object.values(stats).map(s => {
+      const total = s.total_in + s.total_out;
+      const avg = s.runs > 0 ? Math.round(total / s.runs) : 0;
+      weekTotalIn += s.total_in;
+      weekTotalOut += s.total_out;
+      return {
+        id: s.id,
+        name: s.name,
+        runs: s.runs,
+        total_in: s.total_in,
+        total_out: s.total_out,
+        total_cache_read: s.total_cache_read,
+        total: total,
+        avg_tokens: avg,
+        last_run_ms: s.last_run_ms,
+      };
+    });
+    rows.sort((a, b) => b.total - a.total);
+
+    return {
+      ok: true,
+      week: { total_in: weekTotalIn, total_out: weekTotalOut, total: weekTotalIn + weekTotalOut },
+      rows,
+    };
+  } catch (e) {
+    return { ok: false, error: e.message, rows: [] };
+  }
+}
+
 // ── SSE — chat stream ─────────────────────────────────────────────────────
 const sseClients = new Set();
 function broadcastChat(msgs) {
@@ -328,6 +468,11 @@ const handler = async (req, res) => {
   // ── Chat only (fast) ────────────────────────────────────────────────────
   if (pathname === '/api/chat' && req.method === 'GET') {
     return json(res, 200, { chat: getChatHistory() });
+  }
+
+  // ── Token usage stats ────────────────────────────────────────────────────
+  if (pathname === '/api/tokens' && req.method === 'GET') {
+    return json(res, 200, getTokenStats());
   }
 
   // ── Static files ─────────────────────────────────────────────────────────

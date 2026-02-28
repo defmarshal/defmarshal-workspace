@@ -201,3 +201,15 @@ Weekly automation:
 - cleanup-downloads-cron (Sunday 06:00)
 - backup-cleanup-cron (Sunday 07:00)
 - cleanup-agent-artifacts-cron (Sunday 09:30)
+
+### telegram-slash-handler
+- **Schedule:** Every 2 minutes
+- **Job ID:** e26c12bd-635a-48cf-bc8d-1707bc4ffd59
+- **Description:** Polls the main Telegram session for slash commands (/status, /health, /downloads, /cron, /disk, /help) and responds with output from `./quick` commands. Script: `agents/slash-handler.sh`. State tracked in `memory/.slash-handler-state.json`.
+- **Status:** Enabled
+
+### youtube-digest-daily
+- **Schedule:** Daily 02:00 UTC (= 09:00 Asia/Bangkok)
+- **Job ID:** c6976c90-df08-4ac2-997a-a4a53be6c23c
+- **Description:** Fetches YouTube subscriptions via OAuth, checks for new uploads in the last 24h, generates a markdown digest with content previews/transcripts, and sends it to Telegram. Script: `scripts/youtube-digest.sh`. Credentials: `config/youtube-credentials.json` (gitignored). Run `scripts/youtube-oauth-setup.sh` to configure OAuth.
+- **Status:** Enabled (will skip gracefully if credentials not yet set up)

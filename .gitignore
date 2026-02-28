@@ -103,3 +103,4 @@ apps/dashboard/tls.key
 *.pem
 apps/dashboard/vapid.json
 apps/dashboard/push-subscriptions.json
+config/youtube-credentials.json
