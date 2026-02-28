@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (197 total)
+## 2026 Reports (198 total)
 
 ### 2026-02
+- [Cloud Cost Optimization 2026 — FinOps, AI-Driven Waste Elimination & the $189B Problem](2026-02-28-cloud-cost-optimization-2026-finops-ai-waste-aws-azure-gcp.md)
 - [Fintech 2026 — Embedded Finance, BaaS, and the API-ification of Money (SEA Focus)](2026-02-28-fintech-2026-embedded-finance-baas-api-money-sea.md)
 - [Satellite Internet 2026 — Starlink vs Amazon Leo, LEO Broadband Race & Global Connectivity](2026-02-28-satellite-internet-2026-starlink-amazon-leo-leo-broadband-race.md)
 - [Cybersecurity 2026 — AI Threats, Zero Trust Identity, NHI, SaaS Ransomware & Permanent Instability](2026-02-28-cybersecurity-2026-ai-threats-zero-trust-nhi-saas-ransomware.md)
