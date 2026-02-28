@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T15:50:02Z",
+  "generated_at": "2026-02-28T15:55:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.89 1.42 1.11",
-    "mem_used": "3.7Gi",
+    "load_avg": "1.42 1.65 1.31",
+    "mem_used": "3.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 10 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 15 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "fcafff4c",
+      "sha": "4d3cc34c",
+      "agent": "misc",
+      "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "44bec76a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "10cd2510",
+      "sha": "fcafff4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "11df490b",
+      "sha": "10cd2510",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "11df490b",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "b8f05427",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "16b85631",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "57a14f97",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "2b41492d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "67d5f223",
       "agent": "build",
       "message": "refine git-status filter to ignore disk-history.json",
-      "time": "32 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "82c0e2fe",
       "agent": "build",
       "message": "improve validate-constraints to ignore disk-history.json ephemeral updates",
-      "time": "33 minutes ago"
+      "time": "38 minutes ago"
     },
     {
       "sha": "981b4540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "5aa575a8",
       "agent": "build",
       "message": "update disk history (system telemetry)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "44befca8",
       "agent": "build",
       "message": "refresh planning docs for workspace-builder session 20260228-1507",
-      "time": "36 minutes ago"
+      "time": "41 minutes ago"
     },
     {
       "sha": "5e6abe63",
       "agent": "build",
       "message": "remove duplicate meta-supervisor entry from active-tasks.md",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "1b4452e7",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "33521f46",
-      "agent": "research",
-      "message": "Robotics & Physical AI 2026 — CES inflection, Atlas commercial production (Hyundai/DeepMind), Figure Helix 02 full-body autonomy (109K lines→1 neural net), Tesla Optimus $20-30K target, Agility Digit Toyota RaaS, Unitree 85-90% global share, RaaS model, Nvidia Cosmos/GR00T; 219 reports",
-      "time": "41 minutes ago"
+      "time": "45 minutes ago"
     }
   ],
   "heartbeat": {
@@ -690,26 +690,6 @@
   "chat": [
     {
       "role": "user",
-      "ts": "2026-02-28T10:28:05.783Z",
-      "text": "Continue"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:29:35.097Z",
-      "text": "Now I have the real structure. Let me fix the data generator and add next-run times too~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:29:55.558Z",
-      "text": "26 cron jobs with full data. Now update the dashboard to show next-run times and enabled/disabled status~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:30:10.884Z",
-      "text": "r3 done nyaa~ (^^) here's what landed:\n\n**Overview**\n- ⏰ **Cron jobs card** — all 26 enabled jobs with schedule, last run (relative), next run (\"in 2h\"), duration, status chips\n\n**Chat**\n- 📅 **Date separators** — \"Fri, Feb 28\" dividers between days\n\n**Quick sheet**\n- 👆 **Swipe down to close** on mobile\n- ➖ **Drag handle** at top of sheet\n\n**Agents**\n- 🕐 Timeline bars + tables now correctly parse \"2026-02-28 10:06\" → \"3m ago\"\n\n**Heartbeat**\n- 🕐 Unix timestamps in lastChecks show as relative time\n\nclear cache + reopen PWA to get v8 desu~ 🐾"
-    },
-    {
-      "role": "user",
       "ts": "2026-02-28T10:30:59.230Z",
       "text": "Continueeee"
     },
@@ -937,6 +917,26 @@
       "role": "assistant",
       "ts": "2026-02-28T14:45:35.359Z",
       "text": "[[reply_to_current]] nyaa~ watching for your report! (^^) 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T15:52:01.005Z",
+      "text": "[Sat 2026-02-28 15:52 UTC] still stuck at thinking."
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T15:52:08.691Z",
+      "text": "Let me add some debug logging to understand exactly what's happening:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T15:52:56.664Z",
+      "text": "Found the real bug — the 100-message sliding window! When user sends a message, the window shifts and old assistant messages drop out, keeping the count at 73 or even lower. Fix: use **message timestamps** instead of counting:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T15:53:09.423Z",
+      "text": "[[reply_to_current]] found the REAL bug finally nyaa~ (ಠ_ಠ)\n\n**root cause:** the API returns only the last **100 messages**. When you send a message, the window slides — old assistant messages fall off the end, so the assistant count stays at 73 or even drops. The watcher never saw \"more assistant msgs\" because the count never went up!\n\n**fix:** switched to **timestamp comparison** instead of counting — now looks for any assistant message with a timestamp newer than the last one we knew about. Sliding window can't fool timestamps desu~\n\nclear cache → v17 → should finally work properly this time~ 🐾✨"
     }
   ]
 }
