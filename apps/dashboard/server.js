@@ -146,7 +146,17 @@ function getChatHistory() {
           if (end >= 0) text = text.slice(end + 5).trim();
         }
         if (!text.trim()) continue;
-        if (text.startsWith('[System Message]') || text.startsWith('Read HEARTBEAT') || text === 'HEARTBEAT_OK') continue;
+        // Filter out system/meta messages
+        if (text === 'HEARTBEAT_OK') continue;
+        if (text.startsWith('[System Message]')) continue;
+        if (text.startsWith('Read HEARTBEAT')) continue;
+        if (text.startsWith('Pre-compaction memory flush')) continue;
+        if (text.startsWith('NO_REPLY')) continue;
+        if (text.includes('Conversation info (untrusted metadata)')) continue;
+        if (text.startsWith('Continue') && text.length < 20) continue;
+        if (text.startsWith('Continueeee')) continue;
+        if (role === 'assistant' && text === 'NO_REPLY') continue;
+        if (text.length < 2) continue;
         msgs.push({ role, ts: m.timestamp, text });
       } catch {}
     }

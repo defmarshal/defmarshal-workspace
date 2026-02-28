@@ -57,8 +57,26 @@ SYSTEM_JSON=$(jq -n \
     uptime: $uptime
   }')
 
-DISK_HISTORY=$(jq -n --argjson cur "$DISK_PERCENT" \
-  '[ $cur, ($cur-1|if .<0 then 0 else . end), ($cur+1|if .>100 then 100 else . end), $cur, ($cur-2|if .<0 then 0 else . end), ($cur+2|if .>100 then 100 else . end) ]')
+# Append current disk % to history file and read last 24 values
+DISK_HIST_FILE="$WORKSPACE/memory/disk-history.json"
+DISK_HISTORY_TIMESTAMP=$(date +%s)
+if [ -f "$DISK_HIST_FILE" ]; then
+  DISK_HISTORY=$(python3 -c "
+import json,os,time
+f='$DISK_HIST_FILE'
+try:
+    hist=json.load(open(f))
+except:
+    hist=[]
+hist.append({'ts':$DISK_HISTORY_TIMESTAMP,'pct':$DISK_PERCENT})
+hist=hist[-48:]
+open(f,'w').write(json.dumps(hist))
+print(json.dumps([h['pct'] for h in hist[-24:]]))
+" 2>/dev/null || echo "[$DISK_PERCENT]")
+else
+  echo "[{"ts":$DISK_HISTORY_TIMESTAMP,"pct":$DISK_PERCENT}]" > "$DISK_HIST_FILE"
+  DISK_HISTORY="[$DISK_PERCENT]"
+fi
 
 # ── Agent status ──────────────────────────────────────────────────────────────
 declare -a AGENTS=(
@@ -242,6 +260,46 @@ else
   COMMITS_JSON=$(jq -n '[]')
 fi
 
+# ── Active tasks ─────────────────────────────────────────────────────────────
+ACTIVE_TASKS_JSON="[]"
+ACTIVE_TASKS_FILE="$WORKSPACE/active-tasks.md"
+if [ -f "$ACTIVE_TASKS_FILE" ]; then
+  ACTIVE_TASKS_JSON=$(python3 -c "
+import re, json, sys
+txt = open(sys.argv[1]).read() if __import__('os').path.exists(sys.argv[1]) else ''
+tasks = [t for t in [
+    {'session_key': m.group(1), 'agent': m.group(2), 'goal': m.group(3).strip(), 'started': m.group(4).strip(), 'status': m.group(5).strip()}
+    for m in re.finditer(r'- \[([^\]]+)\] (\S+) - (.+?) \(started: ([^,]+), status: ([^)]+)\)', txt)
+] if t.get('session_key') != 'sessionKey']
+print(json.dumps(tasks))
+" "$ACTIVE_TASKS_FILE" 2>/dev/null || echo "[]")
+fi
+
+# ── Content stats ─────────────────────────────────────────────────────────────
+CONTENT_JSON="{}"
+if [ -d "$WORKSPACE/content" ]; then
+  TODAY_DATE=$(date +%Y-%m-%d)
+  CONTENT_JSON=$(python3 -c "
+import os, json, glob
+d = '$WORKSPACE/content'
+files = [f for f in os.listdir(d) if f.endswith('.md') and f != 'INDEX.md']
+total = len(files)
+today = sum(1 for f in files if f.startswith('$TODAY_DATE'))
+files_sorted = sorted(files, reverse=True)
+latest = files_sorted[0] if files_sorted else ''
+latest_title = ''
+if latest:
+    try:
+        for line in open(os.path.join(d, latest)):
+            if line.startswith('#'):
+                latest_title = line.lstrip('#').strip()
+                break
+    except: pass
+    if not latest_title: latest_title = latest.replace('.md','')
+print(json.dumps({'total': total, 'today': today, 'latest_title': latest_title}))
+" 2>/dev/null || echo '{}')
+fi
+
 # ── Cron jobs ────────────────────────────────────────────────────────────────
 CRON_JSON="[]"
 CRON_FILE="$HOME/.openclaw/cron/jobs.json"
@@ -270,6 +328,8 @@ FINAL_JSON=$(jq -n \
   --argjson supervisor_log "$SUPERVISOR_LINES" \
   --argjson agent_outputs "$AGENT_OUTPUTS" \
   --argjson cron_jobs "$CRON_JSON" \
+  --argjson active_tasks "$ACTIVE_TASKS_JSON" \
+  --argjson content_stats "$CONTENT_JSON" \
   --argjson chat "$CHAT_JSON" \
   --argjson disk_hist "$DISK_HISTORY" \
   '{
@@ -282,6 +342,8 @@ FINAL_JSON=$(jq -n \
     supervisor_log: $supervisor_log,
     agent_outputs: $agent_outputs,
     cron_jobs: $cron_jobs,
+    active_tasks: $active_tasks,
+    content_stats: $content_stats,
     chat: $chat
   }')
 

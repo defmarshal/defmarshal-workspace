@@ -1,25 +1,33 @@
 {
-  "generated_at": "2026-02-28T10:35:02Z",
+  "generated_at": "2026-02-28T10:40:37Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.78 0.96 0.96",
-    "mem_used": "3.5Gi",
+    "load_avg": "0.99 0.95 0.95",
+    "mem_used": "3.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 20 hours, 55 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 1 minute",
     "disk_history": [
       72,
-      71,
-      73,
       72,
-      70,
-      74
+      72,
+      72,
+      72,
+      72,
+      72,
+      72,
+      72,
+      72,
+      72,
+      72,
+      72,
+      72
     ]
   },
   "agents": [
@@ -74,94 +82,94 @@
   },
   "recent_commits": [
     {
+      "sha": "cd8cd299",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "6 minutes ago"
+    },
+    {
       "sha": "7aaf2074",
       "agent": "misc",
       "message": "feat(clawdash): r4 — load/mem/uptime in system card, relative output timestamps, HB notes highlight, commit sha+prefix chips, char counter, send spinner, Escape clears input, research latest fix",
-      "time": "2 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "d20257e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "3c5ef746",
       "agent": "misc",
       "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
-      "time": "5 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "56905322",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "ee8968a6",
       "agent": "misc",
       "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
-      "time": "15 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "e0c27976",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "3c8aee3b",
       "agent": "misc",
       "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "6bea6b48",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "42e16f1c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "ce054294",
       "agent": "research",
       "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "29 minutes ago"
+      "time": "34 minutes ago"
     },
     {
       "sha": "23d6deac",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "df194d97",
       "agent": "content",
       "message": "10:00 tech update — Cybersecurity 2026 (agentic AI, NHI, SaaS .85M ransomware, AMTD, ZT2.0) + disk-usage-breakdown dev drop",
-      "time": "32 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "fbd858c1",
       "agent": "dev",
       "message": "add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)",
-      "time": "33 minutes ago"
+      "time": "38 minutes ago"
     },
     {
       "sha": "d6200918",
       "agent": "misc",
       "message": "chore(clawdash): bump SW cache to v5 to force update",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "6e1a5278",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     }
   ],
   "heartbeat": {
@@ -648,27 +656,28 @@
       "consecutive_errors": 0
     }
   ],
+  "active_tasks": [
+    {
+      "session_key": "meta-supervisor-daemon",
+      "agent": "meta-supervisor",
+      "goal": "Continuous agent outcome auditor",
+      "started": "2026-02-28 02:00 UTC",
+      "status": "running"
+    },
+    {
+      "session_key": "workspace-builder-20260228-0907",
+      "agent": "workspace-builder",
+      "goal": "Strategic maintenance - memory reindex, validate constraints, enforce standards",
+      "started": "2026-02-28 09:07 UTC",
+      "status": "validated"
+    }
+  ],
+  "content_stats": {
+    "total": 494,
+    "today": 17,
+    "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
+  },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T09:45:27.419Z",
-      "text": "[Sat 2026-02-28 09:45 UTC] the page is not fit to page. i need to scroll a little"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:45:40.260Z",
-      "text": "I see the issue — `min-height: 100vh` on body + the tab bar adds extra height causing scroll. On mobile, `100vh` includes the browser chrome bar (address bar) so the content overflows. Fix: use `height: 100dvh` (dynamic viewport height) which accounts for mobile browser UI~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:45:45.202Z",
-      "text": "Also fix the main content area to fill remaining space properly~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:46:03.543Z",
-      "text": "The tab panels need to be inside a scrollable flex container that fills remaining space. Let me wrap them~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T09:46:08.861Z",
@@ -898,6 +907,26 @@
       "role": "assistant",
       "ts": "2026-02-28T10:33:19.146Z",
       "text": "r4 shipped nyaa~ (^^) here's what changed:\n\n**Overview — System card**\n- 🖥️ **Load avg** (1-min, 5-min, 15-min)\n- 💾 **RAM** used / total (3.5Gi / 23Gi)\n- ⏱️ **Uptime** (1 week, 1 day…)\n\n**Overview — Commits**\n- `a1b2c3d` sha + `feat`/`fix`/`build` coloured prefix chips\n\n**Agents tab**\n- 📄 Output timestamps now show \"2h ago\" instead of raw `2026-02-28-1000`\n\n**Heartbeat tab**\n- 💚 Notes field highlighted in green banner at top\n- Status values auto-coloured (ok/warn/bad)\n\n**Chat**\n- 🔢 Character counter while typing\n- ⏳ Send button shows spinner, reverts on done\n- ⎋ Escape clears input\n\n**Research**\n- Fixed \"INDEX\\nnone\" garbage in latest field\n\nclear cache + reopen to get v9 desu~ 🐾✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T10:36:10.302Z",
+      "text": "Continueeee"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:36:20.735Z",
+      "text": "nyaa~ let me keep digging (^^)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:37:03.946Z",
+      "text": "Found it — filter needs to be much stronger. Let me fix the server + build real disk history + fix the sparkline + more~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:40:31.716Z",
+      "text": "The issue is `ls -1t` with a wildcard still lists all 495 files which maxes out `ARG_MAX`. The `head -1` never runs because `ls` fails. Let me fix with a safer approach:"
     }
   ]
 }
