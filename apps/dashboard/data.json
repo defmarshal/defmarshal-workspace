@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T13:50:03Z",
+  "generated_at": "2026-02-28T13:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.59 0.65 0.74",
+    "load_avg": "0.70 0.71 0.74",
     "mem_used": "3.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 10 minutes",
+    "uptime": "1 week, 2 days, 15 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "b3766c00",
+      "sha": "731aef86",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "3e4f77e1",
+      "sha": "b3766c00",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "11874e8d",
+      "sha": "3e4f77e1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "11874e8d",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "b32522ad",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "664e8f26",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "46ffccd5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "29b5d543",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "0988b308",
       "agent": "build",
       "message": "refresh disk history (workspace-builder 20260228-1307 finalization)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "105b90dc",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "0e910881",
       "agent": "build",
       "message": "archive workspace-builder session 20260228-1107, finalize 1307; validate constraints, prune branches (none stale), update docs",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "d220e9c7",
       "agent": "misc",
       "message": "fix(clawdash): use chatData count (server snapshot) not DOM count in waitForReply — DOM frozen while chatSending; SW v16",
-      "time": "39 minutes ago"
+      "time": "44 minutes ago"
     },
     {
       "sha": "bf929fdd",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "6c9b51cf",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "43 minutes ago"
+      "time": "48 minutes ago"
     },
     {
       "sha": "47e42cd3",
       "agent": "research",
       "message": "Developer Productivity 2026 — 84% AI adoption/41% AI-generated code, Cursor/Copilot/Claude Code/Devin stack, platform engineering/IDPs/DORA, productivity paradox (29-46% trust), FinDev; 199 reports",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "5a7572c9",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "48 minutes ago"
     }
   ],
   "heartbeat": {
