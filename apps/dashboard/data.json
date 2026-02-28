@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T03:15:02Z",
+  "generated_at": "2026-02-28T03:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
     "disk_free": "12G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -58,10 +58,25 @@
   "research": {
     "total": 212,
     "tts_coverage": "99%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "agent": "build",
+      "message": "mark workspace-builder session 20260228-0306 validated - all constraints satisfied",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "workspace maintenance - prune active-tasks, reindex memory, add branch hygiene check, document meta-supervisor restart",
+      "time": ""
+    },
+    {
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "agent": "chore",
       "message": "update clawdash data",
@@ -95,21 +110,6 @@
     {
       "agent": "dev",
       "message": "archive unused linkedin-pa-agent-v9-backup.sh (contains unfixed octal timestamp bugs; superseded by v10)",
-      "time": ""
-    },
-    {
-      "agent": "dev",
-      "message": "add apps/dashboard/.gitignore (contains .vercel exclusion)",
-      "time": ""
-    },
-    {
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": ""
     }
   ],
