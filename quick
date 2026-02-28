@@ -146,6 +146,8 @@ Commands:
   today                     Show files modified today across the workspace (since midnight UTC)
   log-rotate                  Rotate aria2.log if >100MB, keep up to 4 compressed archives
   disk-usage                  Show disk usage by top-level directories in the workspace (monitor growth)
+  trim-agent-logs [options]   Trim oversized agent logs in memory/ (default: >500KB → keep last 1000 lines)
+                               Options: --size KB, --keep LINES, --dry-run, --dir DIR
   find-large-files [options]  Find large files in the workspace (default: >10MB)
                                Options: --size SIZE (e.g. 5M, 1G), --days N (older than N days), --dir PATH, --top N
                                Example: quick find-large-files --size 50M --days 30
@@ -863,6 +865,9 @@ case "$cmd" in
 
   find-large-files)
     "$WORKSPACE/scripts/find-large-files.sh" "$@"
+    ;;
+  trim-agent-logs)
+    "$WORKSPACE/scripts/trim-agent-logs.sh" "$@"
     ;;
 
   updates-check)

@@ -10,7 +10,7 @@ cd "$WORKSPACE"
 
 # Log definitions: name: (pattern, max_size_bytes)
 LOGS=(
-  "aria2.log:100000000"          # 100 MB
+  "aria2.log:50000000"           # 50 MB (was 100MB; aria2 logs grow fast)
   "memory-reindex.log:50000000"  # 50 MB
   "dev-agent.log:50000000"       # 50 MB
   "content-agent.log:50000000"   # 50 MB
