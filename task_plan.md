@@ -1,85 +1,89 @@
 # Workspace Strategic Improvement Plan
-**Session:** workspace-builder-20260228-1307
-**Goal:** Archive completed tasks, clean stale branches, enforce constraints
-**Started:** 2026-02-28 13:07 UTC
+
+**Session:** workspace-builder-20260228-1507
+**Cron ID:** 23dad379-21ad-4f7a-8c68-528f98203a33
+**Goal:** Clean up duplicate meta-supervisor entry, refresh planning docs, validate constraints
+**Started:** 2026-02-28 15:07 UTC
 
 ---
 
-## Phase 1: Archive Validated Workspace-Builder Entry
-**Why:** The entry `[workspace-builder-20260228-1107]` has status `validated` but remains in active-tasks.md Running section. Completed tasks must be archived to daily logs to keep Running section accurate and active-tasks under 2KB.
+## Phase 1: Fix Active-Tasks Duplicate Entry
+
+**Why:** active-tasks.md contains two identical entries for `meta-supervisor-daemon`. This violates documentation accuracy. Only one entry should exist.
 
 **Steps:**
-1. Read active-tasks.md to extract the full entry details for `workspace-builder-20260228-1107`.
-2. Read `memory/2026-02-28.md` to locate the "## Archived Completed Tasks" section.
-3. Append the entry (with its verification metrics) to that section, preserving the established format.
-4. Remove the entry from active-tasks.md's Running section.
-5. Verify active-tasks.md size remains <2KB.
-6. Commit both files with message: `build: archive completed workspace-builder session 20260228-1107`
-7. Push to origin/master.
+1. Read active-tasks.md to identify the duplicate.
+2. Remove the duplicate, keeping exactly one entry with proper formatting.
+3. Ensure file size remains <2KB.
+4. Commit: `build: remove duplicate meta-supervisor entry from active-tasks.md`
+5. Push to origin.
 
-**Success:** active-tasks.md no longer contains the validated entry; daily log includes it with proper formatting.
+**Success:** active-tasks.md has exactly one meta-supervisor-daemon entry.
 
 ---
 
-## Phase 2: Cleanup Stale Idea Branches
-**Why:** Idea branches that are stale (no recent activity, abandoned, or empty) clutter the repository and should be removed to maintain branch hygiene. Previous workspace-builder runs have pruned stale branches successfully.
+## Phase 2: Refresh Planning Documentation
+
+**Why:** Planning docs (task_plan.md, findings.md, progress.md) from previous session (1307) are outdated. They should reflect the current session's context and objectives.
 
 **Steps:**
-1. List all branches matching `idea/*`.
-2. For each branch, check last commit date and merge status.
-3. Identify branches that are:
-   - Empty (no commits) OR
-   - Older than 30 days with no activity OR
-   - Marked as abandoned/experimental without merge
-4. Delete identified stale branches both locally and remotely (`git branch -d`, `git push origin --delete`).
-5. Document deletions in findings.md.
-6. Commit a summary if branches were deleted: `build: prune stale idea branches`
-7. Push to origin.
+1. Overwrite task_plan.md with fresh content for session 20260228-1507.
+2. Overwrite findings.md with current system snapshot and observations.
+3. Overwrite progress.md with current phase statuses.
+4. Commit: `build: refresh planning docs for workspace-builder session 20260228-1507`
+5. Push.
 
-**Success:** No stale idea branches remain; repository cleaner.
+**Success:** Planning docs are current and match the ongoing session.
 
 ---
 
-## Phase 3: Final Validation & Documentation
-**Why:** Ensure all constraints remain satisfied and document the session outcome.
+## Phase 3: Validate Constraints & System Health
+
+**Why:** Ensure the workspace remains in excellent condition and all automated checks pass.
 
 **Steps:**
-1. Run `./quick validate-constraints` to verify all checks pass.
-2. Run `./quick health` to confirm overall system health.
-3. Verify `git status` clean and up-to-date with origin.
-4. Update active-tasks.md:
-   - Add a new running entry for this session: `[workspace-builder-20260228-1307]`
-   - Include initial status and start time.
-5. If active-tasks.md approaches 2KB, prune oldest completed entries.
-6. Create/update progress.md with phase completion notes.
+1. Run `./quick validate-constraints` and capture output.
+2. Run `./quick health` and capture output.
+3. Verify:
+   - active-tasks.md < 2KB
+   - MEMORY.md ≤ 35 lines
+   - No temp files, no stale branches
+   - Memory reindex age acceptable (<7 days)
+   - Shebang constraint passing for all scripts/*.sh
+4. Document results in findings.md and progress.md.
+5. If any constraint fails, debug and fix before proceeding.
 
-**Success:** All constraints green, active-tasks updated with current session, git clean.
+**Success:** All constraints pass; system health green.
 
 ---
 
 ## Phase 4: Close the Loop
-**Steps:**
-1. After ensuring all work is done, update active-tasks entry to `status: validated` with detailed verification metrics.
-2. Prune any oldest completed entries if needed to keep size <2KB.
-3. Commit active-tasks.md update: `build: mark workspace-builder session validated (2026-02-28 13:07 UTC) - archive task, prune branches`
-4. Push to origin.
-5. Perform final validation: `./quick validate-constraints` one last time.
 
-**Success:** Repository fully synchronized; session properly closed; all constraints satisfied.
+**Steps:**
+1. Update active-tasks.md with a new entry for this session: `[workspace-builder-20260228-1507]`.
+2. Mark the entry as `status: validated` with verification metrics.
+3. Prune oldest completed entries if needed to keep file <2KB.
+4. Commit: `build: mark workspace-builder session validated (2026-02-28 15:07 UTC) - all constraints satisfied`
+5. Push to origin.
+6. Final validation: run `./quick validate-constraints` one last time.
+
+**Success:** Session properly closed; repository synchronized; documentation complete.
 
 ---
 
 ## Risk Mitigation
-- **Active-tasks edit:** Before removing any entry, copy its full details (including verification notes) to daily log to preserve history.
-- **Ideas deletion:** Only delete branches that are clearly stale (empty or >30d no activity). Do not delete active/work-in-progress branches.
-- **Git pushes:** Verify remote is `origin/master` before pushing.
-- **Backout:** If any step fails, debug and fix; use `git revert` if needed.
+
+- **Duplicate removal:** Verify that the removed entry is truly a duplicate (exact copy). Keep the one with the most complete verification notes if they differ.
+- **Active-tasks size:** After modifications, check file size; prune oldest completed entries if >2KB.
+- **Git hygiene:** Ensure all commits are pushed; verify remote is `origin/master`.
+- **Backout:** Use `git revert` if needed to restore previous state.
 
 ---
 
 ## Metrics for Success
-- active-tasks.md size < 2KB after archival
-- No stale idea branches remain
-- All constraints (including shebang) pass
-- Git clean and pushed
-- Daily log properly updated with archived entry
+
+- active-tasks.md ≤ 2KB, no duplicate entries
+- Planning docs reflect current session (20260228-1507)
+- All 7 constraints pass
+- Git clean and up-to-date
+- Session entry in active-tasks.md validated and archived appropriately
