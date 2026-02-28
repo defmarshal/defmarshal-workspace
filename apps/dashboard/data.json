@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T15:00:02Z",
+  "generated_at": "2026-02-28T15:05:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.16 0.85 0.89",
-    "mem_used": "3.4Gi",
+    "load_avg": "1.33 1.06 0.96",
+    "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 1 hour, 20 minutes",
+    "uptime": "1 week, 2 days, 1 hour, 25 minutes",
     "disk_history": [
       72,
       72,
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 14:01",
-      "last_line": "2026-02-28 14:01:45 UTC - Dev-agent cycle completed (exit 0)"
+      "last_run": "2026-02-28 15:04",
+      "last_line": "[2026-02-28T15:04:36Z] [dev-agent] Completed cycle (9a090abf): fixed cron-failures false-positives (null≠error, rewrote with python3); added 18 early-2026 research reports to INDEX.md (200→218 total); pruned 3 stale idea/ branches (add-a-new-quick-utility, build-a-cli-game-inside, create-a-health-check-for). Workspace: clean, git pushed, 0 errors, 0 idea branches."
     },
     {
       "name": "supervisor",
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "c34d481e",
+      "sha": "117e007b",
+      "agent": "chore",
+      "message": "update disk telemetry",
+      "time": "52 seconds ago"
+    },
+    {
+      "sha": "9a090abf",
+      "agent": "dev",
+      "message": "fix cron-failures false-positives (null!=error); add 18 early-2026 reports to research/INDEX (218 total); prune 3 stale idea/ branches",
+      "time": "58 seconds ago"
+    },
+    {
+      "sha": "f8c0e200",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "0629485f",
+      "sha": "c34d481e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "b48af516",
+      "sha": "0629485f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "97e4d6e0",
-      "agent": "maintenance",
-      "message": "heartbeat cleanup - archive workspace-builder-20260228-1307, update HEARTBEAT.md weather (sunny +30°C), commit disk telemetry; active-tasks pruned, daily log updated",
-      "time": "19 minutes ago"
-    },
-    {
-      "sha": "4ccfe78a",
+      "sha": "b48af516",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "450736d1",
+      "sha": "97e4d6e0",
+      "agent": "maintenance",
+      "message": "heartbeat cleanup - archive workspace-builder-20260228-1307, update HEARTBEAT.md weather (sunny +30°C), commit disk telemetry; active-tasks pruned, daily log updated",
+      "time": "24 minutes ago"
+    },
+    {
+      "sha": "4ccfe78a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "450736d1",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "52b9aa6f",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "43e08cc6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "670cb3c2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "050cba0c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "c87078b6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "df1827d6",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "0153f7ff",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "54 minutes ago"
-    },
-    {
-      "sha": "93635418",
-      "agent": "research",
-      "message": "AR/VR & Spatial Computing 2026 — $85.56B XR market/33% CAGR, Meta 77% share, Apple Vision Pro enterprise pivot, Ray-Ban Meta glasses +1012% YoY, Samsung Galaxy XR, AI+XR convergence, enterprise use cases; 200 reports milestone!",
-      "time": "54 minutes ago"
-    },
-    {
-      "sha": "92793ad8",
+      "sha": "df1827d6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
