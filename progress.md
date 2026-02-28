@@ -78,7 +78,7 @@
 - ✅ Health check: green (Disk 72%, Gateway healthy, Memory 29f/321c, Reindex today)
 - ✅ Temp files: none
 - ✅ APT updates: none pending
-- ✅ Branch hygiene: no stale idea branches
+- ✅ Branch hygiene: cleaned 1 stale idea branch (`integrate-memory-stores-with-telegram`)
 - ✅ Memory reindex: fresh (0 days)
 - ✅ All planning docs committed and pushed
 
