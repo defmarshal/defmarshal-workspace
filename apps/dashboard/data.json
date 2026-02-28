@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T08:00:02Z",
+  "generated_at": "2026-02-28T08:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -34,14 +34,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-02-28 07:05",
-      "last_line": "[2026-02-28T07:05:42Z] [content-agent] Generated 07:00 tech update (3.2KB, d8484540). Covered: edge AI on-device LLMs report + trim-agent-logs dev drop. 192 research reports, 14 content pieces today."
+      "last_run": "2026-02-28 08:03",
+      "last_line": "[2026-02-28T08:03:50Z] [content-agent] Generated 08:00 tech update (3.8KB, 946b875c). Covered: quantum computing 2026 research + workspace-summary dev drop. 193 reports, 15 content pieces today."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 07:04",
-      "last_line": "[2026-02-28T07:04:47Z] [dev-agent] Completed cycle (3dd2dbbf): trim-agent-logs.sh created (--size/--keep/--dry-run/--dir), aria2 rotate threshold 100MB→50MB, pruned 4 old aria2.gz archives, trimmed enhancement-bot.log 610KB→87KB + agent-manager.log 515KB→138KB. Quick registered. web-push dep committed."
+      "last_run": "2026-02-28 08:02",
+      "last_line": "[2026-02-28T08:02:56Z] [dev-agent] Completed cycle (69d1b8c0): fixed research-stats.sh (193 accurate count, exclude INDEX.md, guard div-by-zero, paired mp3 counting); added workspace-summary.sh (system+research+content+git+agents, --json mode); registered both in quick."
     },
     {
       "name": "supervisor",
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
-      "sha": "995c80c8",
+      "sha": "946b875c",
+      "agent": "content",
+      "message": "08:00 tech update — quantum computing 2026 (IBM/Google/Microsoft/neutral atoms) + workspace-summary dev drop; 193 reports total",
+      "time": "78 seconds ago"
+    },
+    {
+      "sha": "69d1b8c0",
+      "agent": "dev",
+      "message": "fix research-stats.sh (accurate 193 count, exclude INDEX.md, guard div-by-zero); add workspace-summary.sh (one-page daily status, --json mode); register both in quick",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "07fca23f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "096345ce",
+      "sha": "995c80c8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "167352ea",
+      "sha": "096345ce",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "723dd1e0",
+      "sha": "167352ea",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "d1944941",
+      "sha": "723dd1e0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "676da941",
+      "sha": "d1944941",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "fd2bd085",
+      "sha": "676da941",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "958ded76",
+      "sha": "fd2bd085",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "c023bf0c",
+      "sha": "958ded76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
+      "sha": "c023bf0c",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "50 minutes ago"
+    },
+    {
       "sha": "257b995a",
       "agent": "build",
       "message": "update daily log 2026-02-28 with latest agent activity",
-      "time": "47 minutes ago"
+      "time": "52 minutes ago"
     },
     {
       "sha": "c82aad79",
       "agent": "build",
       "message": "update workspace-builder progress log (session 20260228-0707 completed)",
-      "time": "47 minutes ago"
+      "time": "52 minutes ago"
     },
     {
       "sha": "c8e2a4df",
       "agent": "build",
       "message": "update dashboard data.json (auto-generated)",
-      "time": "48 minutes ago"
-    },
-    {
-      "sha": "68d7b30c",
-      "agent": "build",
-      "message": "mark workspace-builder session 20260228-0707 validated - all constraints satisfied",
-      "time": "49 minutes ago"
-    },
-    {
-      "sha": "831001a2",
-      "agent": "build",
-      "message": "track quantum research report, archive validated active-tasks entries",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "c1618928",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "53 minutes ago"
     }
   ],
   "heartbeat": {
@@ -209,6 +209,12 @@
     "2026-02-28 03:30:23 UTC - OK"
   ],
   "agent_outputs": [
+    {
+      "file": "2026-02-28-0800-tech-update",
+      "ts": "2026-02-28-0800",
+      "title": "Tech Update — 2026-02-28 (08:00 UTC)",
+      "size": 3994
+    },
     {
       "file": "2026-02-28-0700-tech-update",
       "ts": "2026-02-28-0700",
@@ -322,12 +328,6 @@
       "ts": "2026-02-27-2202",
       "title": "🛣️ Roadmap Brief: IBM Planning Analytics Strategic Direction",
       "size": 1766
-    },
-    {
-      "file": "2026-02-27-2108-linkedin-pa-digest",
-      "ts": "2026-02-27-2108",
-      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
-      "size": 766
     }
   ],
   "chat": [
