@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-02-28T11:15:02Z",
+  "generated_at": "2026-02-28T11:15:10Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
     "load_avg": "1.02 1.03 0.96",
-    "mem_used": "4.1Gi",
+    "mem_used": "3.7Gi",
     "mem_total": "23Gi",
     "uptime": "1 week, 1 day, 21 hours, 35 minutes",
     "disk_history": [
@@ -92,16 +92,22 @@
   },
   "recent_commits": [
     {
+      "sha": "53851e58",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "8 seconds ago"
+    },
+    {
       "sha": "952d526d",
       "agent": "build",
       "message": "add shebang constraint validation, archive old task, refresh planning",
-      "time": "10 seconds ago"
+      "time": "18 seconds ago"
     },
     {
       "sha": "a817e436",
       "agent": "build",
       "message": "update dashboard data and disk history (workspace-builder 20260228-1107)",
-      "time": "86 seconds ago"
+      "time": "2 minutes ago"
     },
     {
       "sha": "5d167e3b",
@@ -113,7 +119,7 @@
       "sha": "25e97726",
       "agent": "misc",
       "message": "fix(clawdash): silent fetch in waitForReply — never renderChat while in-flight; only render when reply arrives; SW v14",
-      "time": "3 minutes ago"
+      "time": "4 minutes ago"
     },
     {
       "sha": "5cbda29d",
@@ -155,7 +161,7 @@
       "sha": "8cf0189a",
       "agent": "dev",
       "message": "sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh",
-      "time": "13 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "6bee803a",
@@ -174,12 +180,6 @@
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
-    },
-    {
-      "sha": "aaa0d5cf",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
     }
   ],
   "heartbeat": {
@@ -689,11 +689,6 @@
   },
   "chat": [
     {
-      "role": "assistant",
-      "ts": "2026-02-28T10:03:11.124Z",
-      "text": "hehe sorry, that URL only works on desktop Chrome (T_T)\n\non **Android Chrome** do this:\n\n1. Open Chrome → three-dot menu (⋮) → **Settings**\n2. **Privacy and security** → **Clear browsing data**\n3. Tap **Advanced** tab\n4. Check **Cached images and files** + **Site settings**\n5. Tap **Clear data**\n6. Reopen the PWA from home screen\n\n**OR faster:**\n1. Long-press the PWA icon on home screen → **App info**\n2. **Storage & cache** → **Clear cache**\n3. Reopen\n\nnyaa~ (^^)"
-    },
-    {
       "role": "user",
       "ts": "2026-02-28T10:16:45.142Z",
       "text": "[Sat 2026-02-28 10:16 UTC] nice. review the app and make any necessary update, fix or enhancement"
@@ -937,6 +932,11 @@
       "role": "user",
       "ts": "2026-02-28T11:15:00.066Z",
       "text": "[Sat 2026-02-28 11:14 UTC] hey"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:15:05.171Z",
+      "text": "[[reply_to_current]] hey hey~ did the message stay put this time or still disappearing? (^^) 🐾"
     }
   ]
 }
