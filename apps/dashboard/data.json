@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T06:40:02Z",
+  "generated_at": "2026-02-28T06:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
-      "sha": "e63b0e65",
+      "sha": "1bfb211b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "e63b0e65",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "39bfeeec",
       "agent": "misc",
       "message": "feat(clawdash): push notifications — VAPID, subscribe endpoint, chat watcher, bell button in header",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "5952ce00",
       "agent": "chore",
       "message": "ignore *.key, *.crt, *.pem files (Tailscale/TLS keys)",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "5c543bc6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "c1a1f682",
       "agent": "misc",
       "message": "feat(clawdash): HTTPS on port 3443 via Tailscale cert for PWA install on Android Chrome",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "6043bb60",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "824a646d",
       "agent": "misc",
       "message": "feat(clawdash): full PWA — PNG icons, updated manifest (id/shortcuts/maskable), sw.js v4, iOS/Android meta tags, ?tab= URL shortcuts",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "325600d2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "a60a551b",
       "agent": "misc",
       "message": "fix(clawdash): send via agent session (detached) so messages come FROM user, reply arrives in Telegram",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "f25f17b6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "fbfb4bc7",
       "agent": "auto",
       "message": "maintenance update 2026-02-28 06:14 UTC",
-      "time": "26 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "4b319cb6",
       "agent": "research",
       "message": "edge AI on-device LLMs 2026 — Qualcomm X2 85 TOPS, Nvidia N1X 180 TOPS, Apple M4, small models, quantization, deployment guide",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "a5abb106",
       "agent": "misc",
       "message": "fix(clawdash): use openclaw message send instead of agent --deliver for instant chat (no LLM turn)",
-      "time": "28 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "bda488ea",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "6b972f78",
-      "agent": "content",
-      "message": "06:05 research spotlight — agentic AI, open-source LLMs, spring anime, SEA banking; 6 reports today, 191 total",
-      "time": "31 minutes ago"
+      "time": "35 minutes ago"
     }
   ],
   "heartbeat": {
