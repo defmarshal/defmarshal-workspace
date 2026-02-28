@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw Dashboard</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#58a6ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/icon-192.svg">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #0d1117; color: #e6edf3; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    h1 { color: #58a6ff; margin-bottom: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
+    .card h2 { margin: 0 0 12px 0; font-size: 16px; color: #79c0ff; border-bottom: 1px solid #30363d; padding-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 6px; border-bottom: 1px solid #21262d; }
+    th { color: #8b949e; font-weight: 500; }
+    .ok { color: #7ee787; }
+    .warn { color: #d29922; }
+    .bad { color: #ff7b72; }
+    .muted { color: #8b949e; font-size: 12px; }
+    footer { margin-top: 24px; color: #8b949e; font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🦾 OpenClaw Dashboard</h1>
+    <div id="last-updated" class="muted">Loading…</div>
+    <div id="status-banner" style="display:none;padding:8px;border-radius:6px;margin-bottom:12px;"></div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>System Overview</h2>
+        <table id="sys-table"></table>
+      </div>
+      <div class="card">
+        <h2>Agent Status</h2>
+        <table id="agent-table"></table>
+      </div>
+      <div class="card">
+        <h2>Research Library</h2>
+        <table id="research-table"></table>
+      </div>
+      <div class="card">
+        <h2>Recent Commits</h2>
+        <table id="commit-table"></table>
+      </div>
+    </div>
+
+    <footer>Generated locally. Auto-refresh every 60s.</footer>
+  </div>
+
+  <script>
+    function colorize(value, type) {
+      if (type === 'disk') {
+        if (value >= 90) return `<span class="bad">${value}%</span>`;
+        if (value >= 80) return `<span class="warn">${value}%</span>`;
+        return `<span class="ok">${value}%</span>`;
+      }
+      if (type === 'updates') return value > 0 ? `<span class="warn">${value} pending</span>` : `<span class="ok">0</span>`;
+      if (type === 'memory') return value <= 7 ? `<span class="ok">${value}d</span>` : `<span class="warn">${value}d</span>`;
+      return value;
+    }
+
+    function renderSystem(data) {
+      const tbody = document.getElementById('sys-table');
+      tbody.innerHTML = `
+        <tr><th>Gateway</th><td><span class="${data.system?.gateway === 'up' ? 'ok' : 'bad'}">${data.system?.gateway || 'unknown'}</span></td></tr>
+        <tr><th>Disk</th><td>${colorize(data.system?.disk_percent ?? 0, 'disk')} (${data.system?.disk_free || '?'} free)</td></tr>
+        <tr><th>Updates</th><td>${colorize(data.system?.updates ?? 0, 'updates')}</td></tr>
+        <tr><th>Git</th><td><span class="${data.system?.git_clean ? 'ok' : 'warn'}">${data.system?.git_clean ? 'clean' : 'dirty'}</span></td></tr>
+        <tr><th>Memory Index</th><td>${colorize(data.system?.memory_age_days ?? 0, 'memory')}</td></tr>
+        <tr><th>Downloads</th><td>${data.system?.downloads_count || 0} files (${data.system?.downloads_gb || 0} GB)</td></tr>
+      `;
+    }
+
+    function renderAgents(agents) {
+      const tbody = document.getElementById('agent-table');
+      tbody.innerHTML = agents.map(a => `
+        <tr>
+          <td>${a.name}</td>
+          <td><span class="${a.active ? 'ok' : 'bad'}">${a.active ? 'active' : 'idle'}</span></td>
+          <td class="muted">${a.last_run || 'never'}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderResearch(data) {
+      const tbody = document.getElementById('research-table');
+      tbody.innerHTML = `
+        <tr><td>Total Reports</td><td><strong>${data.total}</strong></td></tr>
+        <tr><td>TTS Coverage</td><td><span class="${data.tts_coverage === '100%' ? 'ok' : 'warn'}">${data.tts_coverage}</span></td></tr>
+        <tr><td>Latest Report</td><td>${data.latest || 'none'}</td></tr>
+        <tr><td>Hub Deployed</td><td><span class="${data.hub_deployed ? 'ok' : 'warn'}">${data.hub_deployed ? 'yes' : 'no'}</span></td></tr>
+      `;
+    }
+
+    function renderCommits(commits) {
+      const tbody = document.getElementById('commit-table');
+      tbody.innerHTML = commits.map(c => `
+        <tr>
+          <td style="width:60px"><span class="muted">${c.agent}</span></td>
+          <td>${c.message}</td>
+          <td class="muted" style="text-align:right">${c.time}</td>
+        </tr>
+      `).join('');
+    }
+
+    async function load() {
+      try {
+        const bust = Date.now();
+        const url = `/data.json?bust=${bust}`;
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        const data = JSON.parse(text);
+        renderSystem(data);
+        renderAgents(data.agents);
+        renderResearch(data.research);
+        renderCommits(data.recent_commits || []);
+        document.getElementById('last-updated').textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+        hideError();
+      } catch (e) {
+        console.error(e);
+        showError(`Load failed: ${e.message}`);
+      }
+    }
+
+    function showError(msg) {
+      const banner = document.getElementById('status-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        banner.className = 'bad';
+        banner.textContent = msg;
+      }
+      document.getElementById('last-updated').textContent = 'Error';
+    }
+    function hideError() {
+      const banner = document.getElementById('status-banner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      load();
+      setInterval(load, 60000);
+    });
+  </script>
+</body>
+</html>

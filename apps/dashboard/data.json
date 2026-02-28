@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-02-28T02:39:12Z",
+  "system": {
+    "gateway": "up",
+    "disk_percent": 73,
+    "disk_free": "12G",
+    "updates": 0,
+    "git_clean": false,
+    "memory_age_days": 0,
+    "downloads_count": 8,
+    "downloads_gb": "5.7G",
+    "disk_history": [
+      73,
+      72,
+      74,
+      73,
+      71,
+      75
+    ]
+  },
+  "agents": [
+    {
+      "name": "linkedin-pa-agent",
+      "active": true,
+      "last_run": "2026-02-28 02:12"
+    },
+    {
+      "name": "research-agent",
+      "active": false,
+      "last_run": "never"
+    },
+    {
+      "name": "content-agent",
+      "active": false,
+      "last_run": "never"
+    },
+    {
+      "name": "dev-agent",
+      "active": true,
+      "last_run": "2026-02-28 02:01"
+    },
+    {
+      "name": "supervisor",
+      "active": true,
+      "last_run": "2026-02-28 02:30"
+    },
+    {
+      "name": "agent-manager",
+      "active": true,
+      "last_run": "2026-02-28 02:30"
+    },
+    {
+      "name": "meta-agent",
+      "active": false,
+      "last_run": "2026-02-27 23:04"
+    }
+  ],
+  "research": {
+    "total": 211,
+    "tts_coverage": "100%",
+    "latest": "INDEX\nnone",
+    "hub_deployed": true
+  },
+  "recent_commits": [
+    {
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": ""
+    },
+    {
+      "agent": "content",
+      "message": "LinkedIn PA comparative-analysis analyst‑report for 2026-02-28 0212 (v10 dynamic)",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "update research index with new Bash Arithmetic Pitfalls report",
+      "time": ""
+    },
+    {
+      "agent": "research",
+      "message": "add audio narration for Bash Arithmetic Pitfalls report",
+      "time": ""
+    },
+    {
+      "agent": "content",
+      "message": "daily digest supplement for 2026-02-28 - meta-supervisor restart, research report summary, LinkedIn PA status",
+      "time": ""
+    },
+    {
+      "agent": "content",
+      "message": "LinkedIn PA technical-performance analyst‑report for 2026-02-28 0118 (v10 dynamic)",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "mark workspace-builder session validated (2026-02-28 01:07 UTC) - all constraints satisfied",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "track research report (EPM market analysis) and meta-supervisor restart script; add planning docs and update daily log",
+      "time": ""
+    },
+    {
+      "agent": "dev",
+      "message": "mitigate short LinkedIn PA posts by auto‑appending Key Takeaways when <300 words",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "update research index with new Enterprise Planning Analytics Market 2026 report",
+      "time": ""
+    }
+  ],
+  "logs": [
+    "Now I’ll update the content index and commit:",
+    "✅ **Daily digest updated and committed**",
+    "",
+    "- `content/2026-02-26-daily-digest.md` refreshed with 23 LinkedIn PA posts, research highlights, system metrics, and tomorrow’s plans",
+    "- `content/INDEX.md` regenerated (426 content files tracked)",
+    "- Commit: `b2bc74e7`",
+    "",
+    "**Pending:** `apps/dashboard/data.json` and `vercel.json` modified but not committed (likely from earlier PWA work). Those will be handled by workspace‑builder or next maintenance run.  ",
+    "",
+    "All caught up! (◕‿◕)♡",
+    "2026-02-27 00:03:40 UTC - Spawning research-agent",
+    "Checking for pending research tasks…",
+    "I see there’s a pending research direction from meta-agent logs: “Spring 2026 anime trends” (mentioned in daily logs). I’ll conduct fresh research on **Spring 2026 anime season trends** and create a detailed report. Let’s gather web sources:",
+    "Now I’ll create a detailed research report on **Spring 2026 Anime Season Trends**:",
+    "Now I’ll update the research INDEX and commit:",
+    "**🟢 Heartbeat Check (00:03 UTC / 07:03 ICT, Feb 27)**",
+    "",
+    "✅ Gateway healthy  ",
+    "💾 Disk 72% (healthy)  ",
+    "✅ Updates: none pending  ",
+    "⚠️ Git: 3 modified files (data.json, vercel.json, memory/meta-agent-state.json) – expected background activity; workspace-builder will commit at next run  ",
+    "🧠 Memory: local FTS+ (reindex 2.8d ago)  ",
+    "⬇️ Downloads: 17 files, 5.7 GB  ",
+    "🤖 Agents: validated (meta-supervisor running; workspace-builder last run 23:00; LinkedIn PA active; enhancement‑bot deployed)  ",
+    "⚡ Research completed: “Spring 2026 anime season trends” — report generated and committed (ae03e10d)  ",
+    "⚠️ **Attention needed:** PWA dashboard project is **private** on Vercel → 401/404. Please set visibility to **Public** in Vercel dashboard (Settings → General → Project Visibility) for `openclaw-dashboard`. Once public, install button will work at the alias URL.",
+    "",
+    "All systems operational. HEARTBEAT_OK",
+    "2026-02-27 00:06:39 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)",
+    "2026-02-27 00:06:40 UTC - Meta-Agent one-shot completed; actions: spawn content-agent spawn research-agent",
+    "2026-02-27 11:16:06 UTC - Meta-Agent starting (one-shot)",
+    "2026-02-27 11:16:07 UTC - Snapshot: disk=71%, apt=0, content_today=24, research_today=12",
+    "2026-02-27 11:16:17 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)",
+    "2026-02-27 11:16:17 UTC - Meta-Agent one-shot completed; actions: none",
+    "2026-02-27 17:10:11 UTC - Meta-Agent starting (one-shot)",
+    "2026-02-27 17:10:12 UTC - Snapshot: disk=73%, apt=0, content_today=37, research_today=16",
+    "2026-02-27 17:10:22 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)",
+    "2026-02-27 17:10:22 UTC - Meta-Agent one-shot completed; actions: none",
+    "2026-02-27 19:14:00 UTC - Meta-Agent starting (one-shot)",
+    "2026-02-27 19:14:00 UTC - Snapshot: disk=73%, apt=0, content_today=41, research_today=16",
+    "2026-02-27 19:14:10 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)",
+    "2026-02-27 19:14:10 UTC - Meta-Agent one-shot completed; actions: none",
+    "2026-02-27 20:01:32 UTC - Meta-Agent starting (one-shot)",
+    "2026-02-27 20:01:33 UTC - Snapshot: disk=73%, apt=0, content_today=43, research_today=16",
+    "2026-02-27 20:01:42 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)",
+    "2026-02-27 20:01:42 UTC - Meta-Agent one-shot completed; actions: none",
+    "2026-02-27 23:04:10 UTC - Meta-Agent starting (one-shot)",
+    "2026-02-27 23:04:11 UTC - Snapshot: disk=73%, apt=0, content_today=49, research_today=16",
+    "2026-02-27 23:04:21 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)",
+    "2026-02-27 23:04:21 UTC - Meta-Agent one-shot completed; actions: none"
+  ]
+}

@@ -93,5 +93,5 @@ agents/ideas/*.json
 skills/kokoro-tts/venv/
 
 # Dashboard subproject (tracked in its own repo)
-apps/dashboard/
+# apps/dashboard/ — re-enabled so data.json can be committed by cron
 memory/enhancement-bot.pid
