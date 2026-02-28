@@ -24,19 +24,3 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 - [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)
   - Verification: daemon process PID 1121739; log shows cycle started; sleeping until next interval
-
-<!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
-
-## Completed (Archived)
-
-- [workspace-builder-20260228-2101] workspace-builder - Token conservation: disabled 4 cron jobs; committed disk history & planning docs (started: 2026-02-28 21:01 UTC, status: validated)
-  - Verification: active-tasks 1915b, MEM31, health green, constraints OK, git clean; disabled 4 cron jobs
-  - Archived: 2026-02-28 21:30 UTC
-
-- [workspace-builder-20260228-1705] workspace-builder - Commit pending state files, enforce constraints, close loop (started: 2026-02-28 17:05 UTC, status: validated)
-  - Verification: active-tasks 1639b, MEM31, health green, constraints OK, git clean & pushed
-  - Archived: 2026-02-28 19:01 UTC
-
-- [workspace-builder-20260228-1307] workspace-builder - Archive tasks, commit data, enhance validation (started: 2026-02-28 13:07 UTC, status: validated)
-  - Verification: active-tasks 1337b (<2KB), MEM31, ✅ health green, git clean & pushed; archive done, branch hygiene verified, all constraints satisfied ✅
-  - Archived: 2026-02-28 14:38 UTC (heartbeat cleanup)
