@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T15:55:03Z",
+  "generated_at": "2026-02-28T16:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.42 1.65 1.31",
-    "mem_used": "3.4Gi",
+    "load_avg": "0.57 1.05 1.15",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 15 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 20 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "4d3cc34c",
-      "agent": "misc",
-      "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "44bec76a",
+      "sha": "37a71265",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "fcafff4c",
+      "sha": "4d3cc34c",
+      "agent": "misc",
+      "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "44bec76a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "10cd2510",
+      "sha": "fcafff4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "11df490b",
+      "sha": "10cd2510",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
+      "sha": "11df490b",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "25 minutes ago"
+    },
+    {
       "sha": "b8f05427",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "16b85631",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "57a14f97",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "2b41492d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "67d5f223",
       "agent": "build",
       "message": "refine git-status filter to ignore disk-history.json",
-      "time": "37 minutes ago"
+      "time": "42 minutes ago"
     },
     {
       "sha": "82c0e2fe",
       "agent": "build",
       "message": "improve validate-constraints to ignore disk-history.json ephemeral updates",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "981b4540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "5aa575a8",
       "agent": "build",
       "message": "update disk history (system telemetry)",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "44befca8",
       "agent": "build",
       "message": "refresh planning docs for workspace-builder session 20260228-1507",
-      "time": "41 minutes ago"
-    },
-    {
-      "sha": "5e6abe63",
-      "agent": "build",
-      "message": "remove duplicate meta-supervisor entry from active-tasks.md",
-      "time": "45 minutes ago"
+      "time": "46 minutes ago"
     }
   ],
   "heartbeat": {
