@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T09:35:02Z",
+  "generated_at": "2026-02-28T09:40:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
-      "sha": "3d8273c6",
-      "agent": "misc",
-      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "323f079c",
+      "sha": "1321bec4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "4dfbf102",
+      "sha": "3d8273c6",
+      "agent": "misc",
+      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "323f079c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "4dfbf102",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "b7809d70",
       "agent": "misc",
       "message": "fix(clawdash): push — unregister stale SW from wrong origin, force fresh subscription, cleaner flow",
-      "time": "12 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "9a712d0a",
       "agent": "misc",
       "message": "fix(clawdash): setupPush shows error toasts instead of swallowing silently, adds SW timeout, sends test push on enable",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "45aab69a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "cb0b1196",
       "agent": "build",
       "message": "update dashboard data (auto-refresh from latest commits)",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "cf88d141",
       "agent": "build",
       "message": "document branch cleanup in final validation (workspace-builder 20260228-0907)",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "e07db53f",
       "agent": "build",
       "message": "update dashboard data and final progress notes (workspace-builder 20260228-0907)",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "d8180154",
       "agent": "misc",
       "message": "fix(clawdash): push banner display fix — remove double inline style, show on chat tab if not subscribed/dismissed",
-      "time": "19 minutes ago"
+      "time": "24 minutes ago"
     },
     {
       "sha": "e7f2b135",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 09:07 UTC) - all constraints satisfied",
-      "time": "19 minutes ago"
+      "time": "24 minutes ago"
     },
     {
       "sha": "21b29e51",
       "agent": "build",
       "message": "workspace-builder session 20260228-0907 - refresh memory index, validate constraints, enforce standards",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "89fa5dae",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "362d337f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
-    },
-    {
-      "sha": "478d85b4",
-      "agent": "research",
-      "message": "Cybersecurity 2026 — agentic AI attacks, NHI/SaaS identity, ransomware .85M avg, AMTD/ZT 2.0, PQC readiness; 195 reports",
-      "time": "28 minutes ago"
+      "time": "30 minutes ago"
     }
   ],
   "heartbeat": {
