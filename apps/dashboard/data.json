@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T13:20:02Z",
+  "generated_at": "2026-02-28T13:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.97 1.02 0.99",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.84 0.85 0.92",
+    "mem_used": "3.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 23 hours, 40 minutes",
+    "uptime": "1 week, 1 day, 23 hours, 45 minutes",
     "disk_history": [
       72,
       72,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
+      "sha": "29b5d543",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "0988b308",
       "agent": "build",
       "message": "refresh disk history (workspace-builder 20260228-1307 finalization)",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "105b90dc",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "0e910881",
       "agent": "build",
       "message": "archive workspace-builder session 20260228-1107, finalize 1307; validate constraints, prune branches (none stale), update docs",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "d220e9c7",
       "agent": "misc",
       "message": "fix(clawdash): use chatData count (server snapshot) not DOM count in waitForReply — DOM frozen while chatSending; SW v16",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "bf929fdd",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "6c9b51cf",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "47e42cd3",
       "agent": "research",
       "message": "Developer Productivity 2026 — 84% AI adoption/41% AI-generated code, Cursor/Copilot/Claude Code/Devin stack, platform engineering/IDPs/DORA, productivity paradox (29-46% trust), FinDev; 199 reports",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "5a7572c9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "bddcbb80",
       "agent": "content",
       "message": "13:00 tech update — Cloud Cost Optimization 2026 ($189B waste/32%, FinOps 3-phase, 10 strategies, Spot/K8s/unit-economics/AI-FinOps) + shebang hardening dev drop",
-      "time": "16 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "62774f66",
       "agent": "dev",
       "message": "rotate aria2.log (78MB→fresh); sync content INDEX (+1200 entry, 0 drift); fix set -euo pipefail in validate-cron-schedules.sh; upgrade #!/bin/bash→#!/usr/bin/env bash in vercel-deploy.sh + 6 agent scripts",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "d912fb7e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "1f925800",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "d4376955",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "7c11ebd6",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "50b7cf96",
+      "sha": "7c11ebd6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
