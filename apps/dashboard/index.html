@@ -17,15 +17,29 @@
       --blue: #58a6ff; --green: #7ee787; --yellow: #d29922;
       --red: #ff7b72; --purple: #bc8cff; --cyan: #79c0ff;
     }
+    [data-theme="light"] {
+      --bg: #f6f8fa; --surface: #ffffff; --border: #d0d7de;
+      --text: #1f2328; --muted: #656d76;
+      --blue: #0969da; --green: #1a7f37; --yellow: #9a6700;
+      --red: #cf222e; --purple: #8250df; --cyan: #0550ae;
+    }
     html, body { height: 100%; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; transition: background .2s, color .2s; }
 
     header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
     header h1 { font-size: 17px; color: var(--blue); display: flex; align-items: center; gap: 8px; }
+    .header-right { display: flex; align-items: center; gap: 8px; }
     #last-updated { font-size: 11px; color: var(--muted); }
-    #backend-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+    #conn-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; transition: background .3s; flex-shrink: 0; }
+    #conn-dot.bad { background: var(--red); }
+    #conn-dot.warn { background: var(--yellow); }
+    #backend-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; cursor: default; }
     #backend-status.ok  { background: #1a3a2a; color: var(--green); }
     #backend-status.bad { background: #3a1a1a; color: var(--red); }
+    [data-theme="light"] #backend-status.ok  { background: #d4edda; }
+    [data-theme="light"] #backend-status.bad { background: #f8d7da; }
+    #theme-btn { background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); cursor: pointer; font-size: 14px; padding: 3px 7px; line-height: 1; }
+    #theme-btn:hover { color: var(--text); border-color: var(--text); }
 
     .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface); padding: 0 16px; overflow-x: auto; flex-shrink: 0; }
     .tab-btn { padding: 11px 16px; font-size: 13px; color: var(--muted); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s, border-color .15s; }
@@ -33,6 +47,7 @@
     .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
     .badge { display: inline-block; background: var(--border); color: var(--muted); border-radius: 10px; padding: 1px 6px; font-size: 10px; margin-left: 4px; }
     .tab-btn.active .badge { background: #1f3a5a; color: var(--blue); }
+    [data-theme="light"] .tab-btn.active .badge { background: #dbeafe; color: var(--blue); }
 
     .tab-panel { display: none; padding: 16px 20px; max-width: 1200px; margin: 0 auto; width: 100%; flex: 1; }
     .tab-panel.active { display: flex; flex-direction: column; }
@@ -50,14 +65,20 @@
     .msg-bubble { padding: 9px 13px; border-radius: 12px; font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
     .msg.user .msg-bubble { background: #1f3a5a; color: var(--text); border-bottom-right-radius: 3px; }
     .msg.assistant .msg-bubble { background: var(--surface); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 3px; }
-    .msg-meta { font-size: 10px; color: var(--muted); margin-top: 2px; }
+    [data-theme="light"] .msg.user .msg-bubble { background: #dbeafe; }
+    .msg-meta { font-size: 10px; color: var(--muted); margin-top: 3px; }
     .msg.sending .msg-bubble { opacity: 0.6; }
+    .msg.typing .msg-bubble { background: var(--surface); border: 1px solid var(--border); }
+    .typing-dots span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); margin: 0 2px; animation: bounce 1.2s infinite; }
+    .typing-dots span:nth-child(2) { animation-delay: .2s; }
+    .typing-dots span:nth-child(3) { animation-delay: .4s; }
+    @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
 
     /* ── Chat input ── */
     .chat-input-wrap { border-top: 1px solid var(--border); padding: 12px 16px; display: flex; gap: 8px; background: var(--surface); flex-shrink: 0; }
-    #chat-input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 9px 12px; font-size: 13px; resize: none; font-family: inherit; line-height: 1.4; max-height: 120px; outline: none; }
+    #chat-input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 9px 12px; font-size: 13px; resize: none; font-family: inherit; line-height: 1.4; max-height: 120px; outline: none; transition: border-color .15s; }
     #chat-input:focus { border-color: var(--blue); }
-    #send-btn { background: var(--blue); color: #0d1117; border: none; border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
+    #send-btn { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
     #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     #send-btn:hover:not(:disabled) { opacity: 0.85; }
 
@@ -66,17 +87,39 @@
     .quick-list { flex: 1; overflow-y: auto; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
     .quick-btn { background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 12px; padding: 6px 10px; cursor: pointer; text-align: left; transition: background .1s, border-color .1s; }
     .quick-btn:hover { background: #1f2937; border-color: var(--blue); color: var(--blue); }
+    [data-theme="light"] .quick-btn:hover { background: #dbeafe; }
     .quick-output { flex-shrink: 0; border-top: 1px solid var(--border); }
     .quick-output-header { font-size: 11px; color: var(--muted); padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; }
     .quick-output-header button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 12px; }
     #quick-result { font-family: "SF Mono", Menlo, monospace; font-size: 11px; color: #8b949e; padding: 8px 14px; max-height: 180px; overflow-y: auto; white-space: pre-wrap; background: #0a0d11; min-height: 40px; }
+    [data-theme="light"] #quick-result { background: #f6f8fa; color: var(--muted); }
+
+    /* ── Command palette ── */
+    #palette-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 100; align-items: flex-start; justify-content: center; padding-top: 15vh; }
+    #palette-overlay.open { display: flex; }
+    #palette-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; width: 480px; max-width: 90vw; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.5); }
+    #palette-input { width: 100%; background: none; border: none; border-bottom: 1px solid var(--border); color: var(--text); font-size: 14px; padding: 14px 16px; outline: none; }
+    #palette-list { max-height: 320px; overflow-y: auto; }
+    .palette-item { padding: 9px 16px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 10px; }
+    .palette-item:hover, .palette-item.sel { background: #1f2937; }
+    [data-theme="light"] .palette-item:hover, [data-theme="light"] .palette-item.sel { background: #dbeafe; }
+    .palette-shortcut { margin-left: auto; font-size: 10px; color: var(--muted); background: var(--border); padding: 1px 5px; border-radius: 4px; }
+
+    /* ── Toast notifications ── */
+    #toast-wrap { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 8px; z-index: 200; pointer-events: none; }
+    .toast { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: 12px; color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,.3); animation: slide-in .2s ease; max-width: 280px; }
+    .toast.ok   { border-color: var(--green); }
+    .toast.bad  { border-color: var(--red); }
+    .toast.fade { animation: fade-out .3s ease forwards; }
+    @keyframes slide-in { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: none; } }
+    @keyframes fade-out { to { opacity:0; transform: translateY(12px); } }
 
     /* ── Other tabs ── */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
     .card h2 { font-size: 13px; color: var(--cyan); margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
     table { width: 100%; border-collapse: collapse; font-size: 12px; }
-    th, td { text-align: left; padding: 5px 4px; border-bottom: 1px solid #21262d; }
+    th, td { text-align: left; padding: 5px 4px; border-bottom: 1px solid var(--border); }
     th { color: var(--muted); font-weight: 500; font-size: 11px; }
     tr:last-child td { border-bottom: none; }
     .ok   { color: var(--green); }
@@ -88,15 +131,39 @@
     .chip.warn { background: #3a2a0a; color: var(--yellow); }
     .chip.bad  { background: #3a1a1a; color: var(--red); }
     .chip.muted { background: var(--border); color: var(--muted); }
+    [data-theme="light"] .chip.ok   { background: #d4edda; }
+    [data-theme="light"] .chip.warn { background: #fff3cd; }
+    [data-theme="light"] .chip.bad  { background: #f8d7da; }
     .log-box { background: #0a0d11; border: 1px solid var(--border); border-radius: 6px; padding: 10px; font-family: "SF Mono", Menlo, monospace; font-size: 11px; color: #8b949e; max-height: 260px; overflow-y: auto; white-space: pre-wrap; }
+    [data-theme="light"] .log-box { background: #f6f8fa; }
+    .log-box .log-err  { color: var(--red); }
+    .log-box .log-warn { color: var(--yellow); }
     .output-item { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; margin-bottom: 6px; }
     .output-item .out-title { font-size: 12px; color: var(--text); margin-bottom: 3px; }
     .output-item .out-meta { font-size: 10px; color: var(--muted); display: flex; gap: 8px; }
     .hb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-bottom: 14px; }
     .hb-item { background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; }
+    [data-theme="light"] .hb-item { background: #f6f8fa; }
     .hb-key { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
     .hb-val { font-size: 12px; color: var(--text); word-break: break-word; }
     #error-banner { display: none; background: #3a1a1a; border: 1px solid var(--red); color: var(--red); border-radius: 6px; padding: 7px 12px; margin: 10px 20px; font-size: 12px; }
+
+    /* ── Disk bar ── */
+    .disk-bar-wrap { margin-top: 4px; }
+    .disk-bar-bg { background: var(--border); border-radius: 4px; height: 6px; overflow: hidden; }
+    .disk-bar-fill { height: 100%; border-radius: 4px; transition: width .4s; }
+
+    /* ── Sparkline ── */
+    .sparkline { display: block; }
+
+    /* ── Timeline ── */
+    .timeline { display: flex; flex-direction: column; gap: 6px; }
+    .tl-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+    .tl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tl-name { min-width: 120px; }
+    .tl-bar-wrap { flex: 1; background: var(--border); border-radius: 3px; height: 4px; }
+    .tl-bar { height: 4px; border-radius: 3px; background: var(--blue); }
+    .tl-age { min-width: 60px; text-align: right; color: var(--muted); font-size: 10px; }
 
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -111,8 +178,10 @@
 
 <header>
   <h1>🦾 ClawDash</h1>
-  <div style="display:flex;align-items:center;gap:10px">
-    <span id="backend-status" class="bad">⚡ local</span>
+  <div class="header-right">
+    <span id="conn-dot" title="Connection status"></span>
+    <span id="backend-status" class="bad">loading</span>
+    <button id="theme-btn" title="Toggle light/dark">🌙</button>
     <span id="last-updated" class="muted">Loading…</span>
   </div>
 </header>
@@ -130,7 +199,7 @@
 <div id="tab-overview" class="tab-panel active">
   <div class="grid">
     <div class="card"><h2>🖥️ System</h2><table id="sys-table"></table></div>
-    <div class="card"><h2>🤖 Agent Status</h2><table id="agent-table"></table></div>
+    <div class="card"><h2>🤖 Agent Status</h2><div id="agent-timeline" class="timeline" style="margin-bottom:10px"></div><table id="agent-table"></table></div>
     <div class="card"><h2>📚 Research Library</h2><table id="research-table"></table></div>
     <div class="card"><h2>📝 Recent Commits</h2><table id="commit-table"></table></div>
   </div>
@@ -142,7 +211,7 @@
     <div class="card" style="grid-column:1/-1">
       <h2>💓 Last Heartbeat</h2>
       <div id="hb-grid" class="hb-grid"></div>
-      <h2>📋 Supervisor Log</h2>
+      <h2 style="margin-top:4px">📋 Supervisor Log</h2>
       <div id="supervisor-log" class="log-box"></div>
     </div>
   </div>
@@ -165,7 +234,7 @@
   <div class="chat-main">
     <div id="chat-messages"></div>
     <div class="chat-input-wrap">
-      <textarea id="chat-input" rows="1" placeholder="Message mewmew…"></textarea>
+      <textarea id="chat-input" rows="1" placeholder="Message mewmew… (Cmd+K for commands)"></textarea>
       <button id="send-btn">Send ↑</button>
     </div>
   </div>
@@ -182,56 +251,148 @@
   </div>
 </div>
 
+<!-- Command Palette -->
+<div id="palette-overlay">
+  <div id="palette-box">
+    <input id="palette-input" placeholder="⌘K — Type a command…" autocomplete="off" spellcheck="false">
+    <div id="palette-list"></div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div id="toast-wrap"></div>
+
 <script>
-// Backend is available when NOT on Vercel (i.e., served by our Node.js server)
+// ── Config ────────────────────────────────────────────────────────────────
 const ON_VERCEL = window.location.hostname.includes('vercel.app');
-const BACKEND_BASE = ON_VERCEL ? null : ''; // same-origin when on local server
-
-// Auto-detect if we're on local backend
 let backendAvailable = false;
+let activeTab = localStorage.getItem('clawdash-tab') || 'overview';
+let chatPollTimer = null;
+let typingMsgId = null;
 
-// ── Tab switching ──────────────────────────────────────────────────────────
+// ── Theme ─────────────────────────────────────────────────────────────────
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('theme-btn').textContent = t === 'light' ? '🌙' : '☀️';
+  localStorage.setItem('clawdash-theme', t);
+}
+const savedTheme = localStorage.getItem('clawdash-theme') || 'dark';
+applyTheme(savedTheme);
+document.getElementById('theme-btn').addEventListener('click', () => {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+// ── Toast ─────────────────────────────────────────────────────────────────
+function toast(msg, kind = 'ok', ms = 3000) {
+  const wrap = document.getElementById('toast-wrap');
+  const el = document.createElement('div');
+  el.className = 'toast ' + kind;
+  el.textContent = msg;
+  wrap.appendChild(el);
+  setTimeout(() => {
+    el.classList.add('fade');
+    el.addEventListener('animationend', () => el.remove());
+  }, ms);
+}
+
+// ── Tab switching ─────────────────────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + tab));
+  activeTab = tab;
+  localStorage.setItem('clawdash-tab', tab);
+  if (tab === 'chat') { scrollChat(); startChatPoll(); } else { stopChatPoll(); }
+}
 document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-    if (btn.dataset.tab === 'chat') scrollChat();
-  });
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
 
 // ── Helpers ───────────────────────────────────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function chip(l, c) { return `<span class="chip ${c}">${l}</span>`; }
-function fmtTs(ts) {
+
+function timeAgo(ts) {
   if (!ts) return '';
-  try { return new Date(ts).toISOString().replace('T',' ').slice(0,16)+' UTC'; } catch { return ts; }
+  const d = typeof ts === 'number' ? new Date(ts * 1000) : new Date(ts);
+  if (isNaN(d)) return ts;
+  const s = Math.floor((Date.now() - d) / 1000);
+  if (s < 60) return s + 's ago';
+  if (s < 3600) return Math.floor(s/60) + 'm ago';
+  if (s < 86400) return Math.floor(s/3600) + 'h ago';
+  return Math.floor(s/86400) + 'd ago';
 }
 function fmtTime(ts) {
   if (!ts) return '';
   try { return new Date(ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); } catch { return ''; }
 }
 
+function diskColor(pct) {
+  if (pct >= 90) return 'var(--red)';
+  if (pct >= 80) return 'var(--yellow)';
+  return 'var(--green)';
+}
+
 // ── Renders ───────────────────────────────────────────────────────────────
 function renderSystem(d) {
   const s = d.system || {};
   const gw = s.gateway==='up' ? chip('up','ok') : chip('down','bad');
-  const disk = s.disk_percent>=90 ? chip(s.disk_percent+'%','bad') : s.disk_percent>=80 ? chip(s.disk_percent+'%','warn') : chip(s.disk_percent+'%','ok');
+  const diskPct = parseInt(s.disk_percent) || 0;
+  const diskChip = diskPct>=90 ? chip(diskPct+'%','bad') : diskPct>=80 ? chip(diskPct+'%','warn') : chip(diskPct+'%','ok');
+  const diskBar = `<div class="disk-bar-wrap">
+    <div class="disk-bar-bg"><div class="disk-bar-fill" style="width:${diskPct}%;background:${diskColor(diskPct)}"></div></div>
+  </div>`;
+  const sparkHtml = renderSparkline(d.disk_history || []);
   const upd = s.updates>0 ? chip(s.updates+' pending','warn') : chip('0','ok');
   document.getElementById('sys-table').innerHTML = `
     <tr><th>Gateway</th><td>${gw}</td></tr>
-    <tr><th>Disk</th><td>${disk} <span class="muted">${esc(s.disk_free)} free</span></td></tr>
+    <tr><th>Disk</th><td>${diskChip} <span class="muted">${esc(s.disk_free)} free</span>${diskBar}</td></tr>
+    ${sparkHtml ? `<tr><th>Disk Trend</th><td>${sparkHtml}</td></tr>` : ''}
     <tr><th>Updates</th><td>${upd}</td></tr>
     <tr><th>Git</th><td>${s.git_clean ? chip('clean','ok') : chip('dirty','warn')}</td></tr>
     <tr><th>Memory Index</th><td>${chip(s.memory_age_days+'d', s.memory_age_days<=7?'ok':'warn')}</td></tr>
     <tr><th>Downloads</th><td>${esc(s.downloads_count)} files <span class="muted">${esc(s.downloads_gb)}</span></td></tr>`;
 }
+
+function renderSparkline(history) {
+  if (!history || history.length < 2) return '';
+  const w = 120, h = 24, pad = 2;
+  const vals = history.map(v => parseFloat(v) || 0);
+  const min = Math.min(...vals), max = Math.max(...vals);
+  const range = max - min || 1;
+  const pts = vals.map((v, i) => {
+    const x = pad + (i / (vals.length - 1)) * (w - pad*2);
+    const y = h - pad - ((v - min) / range) * (h - pad*2);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  const last = vals[vals.length-1];
+  const col = last >= 90 ? 'var(--red)' : last >= 80 ? 'var(--yellow)' : 'var(--green)';
+  return `<svg class="sparkline" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+    <polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>`;
+}
+
 function renderAgentSummary(agents) {
+  // Timeline
+  const now = Date.now();
+  const tl = document.getElementById('agent-timeline');
+  tl.innerHTML = (agents||[]).map(a => {
+    const age = a.last_run_ts ? Math.max(0, now - a.last_run_ts * 1000) : null;
+    const maxAge = 24 * 3600 * 1000;
+    const pct = age !== null ? Math.max(4, 100 - (age / maxAge * 100)) : 4;
+    const dot = a.active ? 'var(--green)' : 'var(--muted)';
+    return `<div class="tl-item">
+      <div class="tl-dot" style="background:${dot}"></div>
+      <div class="tl-name muted">${esc(a.name)}</div>
+      <div class="tl-bar-wrap"><div class="tl-bar" style="width:${pct.toFixed(0)}%"></div></div>
+      <div class="tl-age">${age !== null ? timeAgo(a.last_run_ts) : '—'}</div>
+    </div>`;
+  }).join('');
+
   document.getElementById('agent-table').innerHTML = (agents||[]).map(a=>`
     <tr><td>${esc(a.name)}</td><td>${a.active?chip('active','ok'):chip('idle','muted')}</td><td class="muted">${esc(a.last_run)}</td></tr>`).join('');
   document.getElementById('badge-agents').textContent = (agents||[]).filter(a=>a.active).length+'/'+(agents||[]).length;
 }
+
 function renderResearch(r) {
   document.getElementById('research-table').innerHTML = `
     <tr><td>Reports</td><td><strong>${esc(r.total)}</strong></td></tr>
@@ -239,27 +400,38 @@ function renderResearch(r) {
     <tr><td>Latest</td><td class="muted" style="font-size:10px">${esc((r.latest||'none').slice(0,40))}</td></tr>
     <tr><td>Hub</td><td>${r.hub_deployed?chip('live','ok'):chip('offline','warn')}</td></tr>`;
 }
+
 function renderCommits(commits) {
   document.getElementById('commit-table').innerHTML = (commits||[]).map(c=>`
-    <tr><td>${chip(esc(c.agent),'muted')}</td><td style="font-size:11px">${esc(c.message)}</td></tr>`).join('');
+    <tr><td>${chip(esc(c.agent),'muted')}</td>
+    <td style="font-size:11px">${esc(c.message)}</td>
+    <td class="muted" style="white-space:nowrap">${timeAgo(c.ts)}</td></tr>`).join('');
 }
+
 function renderHeartbeat(hb, log) {
   const checks = hb?.lastChecks || {};
   document.getElementById('hb-grid').innerHTML = Object.entries(checks).map(([k,v])=>`
     <div class="hb-item"><div class="hb-key">${esc(k)}</div><div class="hb-val">${esc(String(v))}</div></div>`).join('') || '<span class="muted">No data.</span>';
   const lb = document.getElementById('supervisor-log');
-  lb.textContent = (log||[]).join('\n') || 'No supervisor log.';
+  lb.innerHTML = (log||[]).map(line => {
+    const el = line.toLowerCase();
+    if (/error|fail|critical/.test(el)) return `<span class="log-err">${esc(line)}</span>`;
+    if (/warn|alert/.test(el)) return `<span class="log-warn">${esc(line)}</span>`;
+    return esc(line);
+  }).join('\n') || 'No supervisor log.';
   lb.scrollTop = lb.scrollHeight;
 }
+
 function renderAgentDetail(agents) {
   document.getElementById('agent-detail-table').innerHTML = '<tr><th>Agent</th><th>Status</th><th>Last Run</th><th>Last Log</th></tr>' +
     (agents||[]).map(a=>`<tr>
       <td><strong>${esc(a.name)}</strong></td>
       <td>${a.active?chip('active','ok'):chip('idle','muted')}</td>
-      <td class="muted">${esc(a.last_run)}</td>
+      <td class="muted">${timeAgo(a.last_run_ts) || esc(a.last_run)}</td>
       <td class="muted" style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(a.last_line)}">${esc((a.last_line||'').slice(0,70))}</td>
     </tr>`).join('');
 }
+
 function renderOutputs(outputs) {
   const el = document.getElementById('output-list');
   el.innerHTML = (outputs||[]).length === 0 ? '<span class="muted">No outputs.</span>' :
@@ -271,34 +443,72 @@ function renderOutputs(outputs) {
 
 // ── Chat ──────────────────────────────────────────────────────────────────
 let chatData = [];
-function renderChat(messages) {
+let lastChatLen = 0;
+
+function renderChat(messages, preserve_scroll = false) {
   chatData = messages || [];
   document.getElementById('badge-chat').textContent = chatData.length;
   const container = document.getElementById('chat-messages');
+  const atBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 60;
+
   if (!chatData.length) { container.innerHTML = '<span class="muted" style="padding:16px;display:block">No chat history.</span>'; return; }
   container.innerHTML = chatData.map(m => {
     const role = m.role === 'user' ? 'user' : 'assistant';
     const label = role === 'user' ? '👤 def' : '🐾 mewmew';
     let text = esc(m.text || '');
     text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    text = text.replace(/`([^`\n]+)`/g, '<code style="background:#0d1117;padding:1px 4px;border-radius:3px;font-family:monospace;font-size:11px">$1</code>');
+    text = text.replace(/`([^`\n]+)`/g, '<code style="background:#0a0d11;padding:1px 4px;border-radius:3px;font-family:monospace;font-size:11px">$1</code>');
     return `<div class="msg ${role}">
       <div class="msg-bubble">${text}</div>
       <div class="msg-meta">${label} · ${fmtTime(m.ts)}</div>
     </div>`;
   }).join('');
+
+  if (atBottom || !preserve_scroll) scrollChat();
+  if (chatData.length > lastChatLen && lastChatLen > 0) {
+    removeTypingIndicator();
+  }
+  lastChatLen = chatData.length;
+}
+
+function scrollChat() { const c = document.getElementById('chat-messages'); c.scrollTop = c.scrollHeight; }
+
+function showTypingIndicator() {
+  removeTypingIndicator();
+  const container = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg assistant typing';
+  div.id = 'typing-indicator';
+  div.innerHTML = `<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div><div class="msg-meta">🐾 mewmew</div>`;
+  container.appendChild(div);
   scrollChat();
 }
-function scrollChat() {
-  const c = document.getElementById('chat-messages');
-  c.scrollTop = c.scrollHeight;
+function removeTypingIndicator() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+// ── Chat polling ──────────────────────────────────────────────────────────
+function startChatPoll() {
+  if (ON_VERCEL || chatPollTimer) return;
+  chatPollTimer = setInterval(refreshChat, 10000);
+}
+function stopChatPoll() {
+  if (chatPollTimer) { clearInterval(chatPollTimer); chatPollTimer = null; }
+}
+async function refreshChat() {
+  try {
+    const res = await fetch('/api/chat');
+    if (!res.ok) return;
+    const data = await res.json();
+    renderChat(data.chat, true);
+  } catch {}
 }
 
 // ── Send message ──────────────────────────────────────────────────────────
 const chatInput = document.getElementById('chat-input');
 const sendBtn = document.getElementById('send-btn');
 
-// auto-resize textarea
 chatInput.addEventListener('input', () => {
   chatInput.style.height = 'auto';
   chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
@@ -321,7 +531,6 @@ async function sendMessage() {
   chatInput.style.height = 'auto';
   sendBtn.disabled = true;
 
-  // optimistically add user message
   const container = document.getElementById('chat-messages');
   const tempId = 'msg-' + Date.now();
   const div = document.createElement('div');
@@ -332,129 +541,144 @@ async function sendMessage() {
   scrollChat();
 
   try {
-    const res = await fetch('/api/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text }),
-    });
+    const res = await fetch('/api/send', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({message: text}) });
     const data = await res.json();
     const el = document.getElementById(tempId);
     if (el) {
       el.classList.remove('sending');
-      el.querySelector('.msg-meta').textContent = '👤 def · ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+      el.querySelector('.msg-meta').textContent = '👤 def · ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     }
-    // refresh chat after short delay to pick up reply
+    toast('✅ Message sent', 'ok', 2000);
+    showTypingIndicator();
     setTimeout(() => refreshChat(), 3000);
-    setTimeout(() => refreshChat(), 8000);
+    setTimeout(() => { removeTypingIndicator(); refreshChat(); }, 9000);
   } catch (e) {
     const el = document.getElementById(tempId);
     if (el) el.querySelector('.msg-bubble').style.borderColor = 'var(--red)';
-    showError('Send failed: ' + e.message);
+    toast('❌ Send failed: ' + e.message, 'bad');
   }
   sendBtn.disabled = false;
 }
 
-async function refreshChat() {
-  try {
-    const res = await fetch('/api/chat');
-    if (!res.ok) return;
-    const data = await res.json();
-    renderChat(data.chat);
-  } catch {}
-}
-
 // ── Quick commands ────────────────────────────────────────────────────────
 const QUICK_CMDS = [
-  { label: '🏥 health',        cmd: 'health' },
-  { label: '📊 status',        cmd: 'status' },
-  { label: '🤖 agents',        cmd: 'agents-summary' },
-  { label: '💾 memory status', cmd: 'memory-status' },
-  { label: '📝 git today',     cmd: 'git-today' },
-  { label: '📝 git last',      cmd: 'git-last' },
-  { label: '🕐 today',         cmd: 'today' },
-  { label: '📋 digest',        cmd: 'digest' },
-  { label: '📥 downloads',     cmd: 'downloads' },
-  { label: '🔁 cron status',   cmd: 'cron-status' },
-  { label: '⚠️  cron failures', cmd: 'cron-failures' },
-  { label: '🛡️  hygiene',       cmd: 'hygiene' },
-  { label: '📌 checkpoints',   cmd: 'checkpoints' },
-  { label: '🔍 orphan check',  cmd: 'orphan-check' },
-  { label: '📡 gateway info',  cmd: 'gateway-info' },
-  { label: '🌊 supervisor log','cmd': 'supervisor-logs' },
-  { label: '📈 meta report',   cmd: 'meta-report' },
-  { label: '🔄 updates check', cmd: 'updates-check' },
+  { label: '🏥 health',         cmd: 'health' },
+  { label: '📊 status',         cmd: 'status' },
+  { label: '🤖 agents',         cmd: 'agents-summary' },
+  { label: '💾 memory status',  cmd: 'memory-status' },
+  { label: '📝 git today',      cmd: 'git-today' },
+  { label: '📝 git last',       cmd: 'git-last' },
+  { label: '🕐 today',          cmd: 'today' },
+  { label: '📋 digest',         cmd: 'digest' },
+  { label: '📥 downloads',      cmd: 'downloads' },
+  { label: '🔁 cron status',    cmd: 'cron-status' },
+  { label: '⚠️ cron failures',  cmd: 'cron-failures' },
+  { label: '🛡️ hygiene',        cmd: 'hygiene' },
+  { label: '📌 checkpoints',    cmd: 'checkpoints' },
+  { label: '🔍 orphan check',   cmd: 'orphan-check' },
+  { label: '📡 gateway info',   cmd: 'gateway-info' },
+  { label: '🌊 supervisor log', cmd: 'supervisor-logs' },
+  { label: '📈 meta report',    cmd: 'meta-report' },
+  { label: '🔄 updates check',  cmd: 'updates-check' },
 ];
 
 function buildQuickList() {
   const el = document.getElementById('quick-list');
-  el.innerHTML = QUICK_CMDS.map(q => `
-    <button class="quick-btn" data-cmd="${esc(q.cmd)}">${esc(q.label)}</button>`).join('');
-  el.querySelectorAll('.quick-btn').forEach(btn => {
-    btn.addEventListener('click', () => runQuick(btn.dataset.cmd, btn.textContent));
-  });
+  el.innerHTML = QUICK_CMDS.map(q => `<button class="quick-btn" data-cmd="${esc(q.cmd)}">${esc(q.label)}</button>`).join('');
+  el.querySelectorAll('.quick-btn').forEach(btn => btn.addEventListener('click', () => runQuick(btn.dataset.cmd)));
 }
 
-async function runQuick(cmd, label) {
+async function runQuick(cmd) {
   const resultEl = document.getElementById('quick-result');
-  const labelEl = document.getElementById('quick-cmd-label');
-
+  const labelEl  = document.getElementById('quick-cmd-label');
   if (ON_VERCEL) {
     labelEl.textContent = '⚠️ ' + cmd;
-    resultEl.textContent = 'Quick commands require the local backend.\nOpen http://100.108.208.45:3001 instead of the Vercel URL.';
+    resultEl.textContent = 'Requires local backend.\nOpen http://100.108.208.45:3001';
     return;
   }
-
   labelEl.textContent = '⏳ ' + cmd;
   resultEl.textContent = 'Running…';
   try {
-    const res = await fetch('/api/quick', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cmd }),
-    });
+    const res = await fetch('/api/quick', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({cmd}) });
     const data = await res.json();
     labelEl.textContent = '✅ ' + cmd;
     resultEl.textContent = data.output || '(no output)';
     resultEl.scrollTop = 0;
+    toast('✅ ' + cmd, 'ok', 2000);
   } catch (e) {
     labelEl.textContent = '❌ ' + cmd;
-    resultEl.textContent = 'Error: ' + e.message + '\n\n(backend not available — run server.js locally)';
+    resultEl.textContent = 'Error: ' + e.message;
+    toast('❌ ' + cmd + ' failed', 'bad');
   }
 }
-
 function clearQuickResult() {
   document.getElementById('quick-result').textContent = '';
   document.getElementById('quick-cmd-label').textContent = 'output';
 }
 
+// ── Command palette ────────────────────────────────────────────────────────
+const overlay  = document.getElementById('palette-overlay');
+const palInput = document.getElementById('palette-input');
+const palList  = document.getElementById('palette-list');
+let palSel = 0;
+
+function openPalette() {
+  overlay.classList.add('open');
+  palInput.value = '';
+  palSel = 0;
+  renderPalette('');
+  palInput.focus();
+}
+function closePalette() { overlay.classList.remove('open'); }
+
+function renderPalette(q) {
+  const items = QUICK_CMDS.filter(c => !q || c.label.toLowerCase().includes(q.toLowerCase()) || c.cmd.includes(q.toLowerCase()));
+  palList.innerHTML = items.map((c, i) => `<div class="palette-item${i===palSel?' sel':''}" data-cmd="${esc(c.cmd)}">${esc(c.label)}<span class="palette-shortcut">↵ run</span></div>`).join('');
+  palList.querySelectorAll('.palette-item').forEach(el => el.addEventListener('click', () => { closePalette(); runQuickAndSwitch(el.dataset.cmd); }));
+}
+
+function runQuickAndSwitch(cmd) {
+  switchTab('chat');
+  runQuick(cmd);
+}
+
+palInput.addEventListener('input', () => { palSel = 0; renderPalette(palInput.value); });
+palInput.addEventListener('keydown', e => {
+  const items = palList.querySelectorAll('.palette-item');
+  if (e.key === 'ArrowDown') { palSel = Math.min(palSel+1, items.length-1); renderPalette(palInput.value); }
+  else if (e.key === 'ArrowUp') { palSel = Math.max(palSel-1, 0); renderPalette(palInput.value); }
+  else if (e.key === 'Enter') { const sel = palList.querySelector('.sel'); if (sel) { closePalette(); runQuickAndSwitch(sel.dataset.cmd); } }
+  else if (e.key === 'Escape') closePalette();
+});
+overlay.addEventListener('click', e => { if (e.target === overlay) closePalette(); });
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); overlay.classList.contains('open') ? closePalette() : openPalette(); }
+  if (e.key === 'Escape' && overlay.classList.contains('open')) closePalette();
+});
+
 // ── Data loading ──────────────────────────────────────────────────────────
+let loadErrors = 0;
 async function load() {
   try {
     let data;
-
     if (!ON_VERCEL) {
-      // Local backend — live data
       try {
         const res = await fetch('/api/data', { signal: AbortSignal.timeout(8000) });
         if (res.ok) {
           data = await res.json();
           backendAvailable = true;
-          const bs = document.getElementById('backend-status');
-          bs.textContent = '⚡ live';
-          bs.className = 'ok';
+          document.getElementById('backend-status').textContent = '⚡ live';
+          document.getElementById('backend-status').className = 'ok';
         }
       } catch {}
     }
-
-    // fallback to static data.json (Vercel / offline)
     if (!data) {
       const res = await fetch('/data.json?bust=' + Date.now(), { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
       data = await res.json();
       backendAvailable = false;
-      const bs = document.getElementById('backend-status');
-      bs.textContent = ON_VERCEL ? '📦 static (open :3001 for live)' : '📦 static';
-      bs.className = 'bad';
+      document.getElementById('backend-status').textContent = ON_VERCEL ? '📦 static (open :3001 for live)' : '📦 static';
+      document.getElementById('backend-status').className = 'bad';
     }
 
     renderSystem(data);
@@ -464,10 +688,14 @@ async function load() {
     renderHeartbeat(data.heartbeat, data.supervisor_log);
     renderAgentDetail(data.agents);
     renderOutputs(data.agent_outputs);
-    renderChat(data.chat || []);
-    document.getElementById('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    renderChat(data.chat || [], true);
+    document.getElementById('last-updated').textContent = 'Updated ' + timeAgo(new Date());
     document.getElementById('error-banner').style.display = 'none';
+    document.getElementById('conn-dot').className = '';
+    loadErrors = 0;
   } catch (e) {
+    loadErrors++;
+    document.getElementById('conn-dot').className = loadErrors > 1 ? 'bad' : 'warn';
     showError('Load failed: ' + e.message);
   }
 }
@@ -476,18 +704,17 @@ function showError(msg) {
   const b = document.getElementById('error-banner');
   b.textContent = '⚠️ ' + msg;
   b.style.display = 'block';
-  document.getElementById('last-updated').textContent = 'Error';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   buildQuickList();
+  switchTab(activeTab);
   load();
   setInterval(load, 60000);
   if (ON_VERCEL) {
     chatInput.placeholder = 'Chat requires local backend — open http://100.108.208.45:3001';
     chatInput.disabled = true;
     sendBtn.disabled = true;
-    sendBtn.title = 'Not available on Vercel';
   }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 });
