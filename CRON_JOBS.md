@@ -104,11 +104,6 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Log**: `memory/archiver-manager.log`
     - **Description**: Manages archiving of old content and research files to maintain workspace organization and prevent clutter.
 
-15. **daily-digest-cron**
-    - **Schedule**: Twice daily at 12:00 and 20:00 Asia/Bangkok (`0 12,20 * * *`)
-    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/daily-digest.sh 2>> memory/daily-digest.log'`
-    - **Description**: Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Stderr (errors) logged to `memory/daily-digest.log`. Simplified on 2026-02-21 to reduce LLM usage and avoid rate limits (direct exec instead of verbose agent prompt).
-
 16. **agent-manager-cron**
     - **Schedule**: Every 30 minutes (`*/30 * * * *`) in Asia/Bangkok
     - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/agent-manager.sh --once'`
@@ -133,13 +128,6 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Log**: `agents/vishwakarma/vishwakarma.log`
     - **Description**: Game development planning agent that designs game projects and spawns Krishna agent to build them.
 
-20. **supervisor-cron**
-    - **Schedule**: Every 30 minutes (`0,30 * * * *`) in Asia/Bangkok
-    - **Payload**: agentTurn executing `./agents/supervisor.sh`
-    - **Log**: `memory/supervisor.log`
-    - **Delivery**: `announce` (only when alerts)
-    - **Description**: Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Reduced from every 5 min to 30 min (token optimization, 2026-02-19).
-
 21. **notifier-cron**
     - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
     - **Payload**: agentTurn executing `./agents/notifier-agent.sh >> memory/notifier-agent.log 2>&1'`
@@ -152,12 +140,6 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Log**: `memory/meta-agent.log`
     - **Delivery**: `announce` (summary of actions taken)
     - **Description**: Autonomous planner that observes system health, decides on maintenance/improvement actions, spawns sub‑agents to execute them, validates outcomes, and commits changes with `meta:` prefix. Core of the self‑extending system.
-
-23. **meta-supervisor-agent**
-    - **Schedule**: Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
-    - **Payload**: agentTurn that ensures meta-supervisor daemon is running (spawns if not)
-    - **Log**: `agents/meta-supervisor/logs/meta-supervisor-agent.log` (via agent session)
-    - **Description**: Keepalive cron that starts the meta-supervisor daemon if down. Maintains continuous auditing.
 
 24. **idea-generator-cron**
     - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
@@ -177,18 +159,37 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/evolver-agent.log`
    - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
 
-27. **linkedin-pa-agent-cron**
-   - **Schedule**: Hourly (`0 * * * *`) in UTC
-   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/linkedin-pa-agent.sh >> memory/linkedin-pa-agent.log 2>&1'`
-   - **Log**: `memory/linkedin-pa-agent.log`
-   - **Description**: Generates research‑oriented LinkedIn content about IBM Planning Analytics. Produces hourly posts with unique timestamps; rotates through 5 content types (technical analysis, trends, benchmarks, architecture, industry perspective). Outputs committed to Git and synced to Obsidian vault. Non‑promotional, focused on knowledge sharing.
-
 ---
-
----
-
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
+
+## Inactive Cron Jobs
+
+The following cron jobs are currently **disabled** for token conservation (user request, 2026-02-28). They can be re-enabled with `openclaw cron enable <id>`.
+
+### daily-digest-cron
+- **Schedule:** Twice daily at 12:00 and 20:00 Asia/Bangkok (`0 12,20 * * *`)
+- **Original description:** Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Stderr (errors) logged to `memory/daily-digest.log`. Simplified on 2026-02-21 to reduce LLM usage and avoid rate limits (direct exec instead of verbose agent prompt).
+- **Status:** Disabled
+- **Re-enable:** `openclaw cron enable 5b6a002d`
+
+### supervisor-cron
+- **Schedule:** Every 30 minutes (`0,30 * * * *`) in Asia/Bangkok
+- **Original description:** Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Reduced from every 5 min to 30 min (token optimization, 2026-02-19).
+- **Status:** Disabled
+- **Re-enable:** `openclaw cron enable e2735844`
+
+### meta-supervisor-agent
+- **Schedule:** Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
+- **Original description:** Keepalive cron that ensures meta-supervisor daemon is running (spawns if not). Maintains continuous auditing.
+- **Status:** Disabled
+- **Re-enable:** `openclaw cron enable a1381566`
+
+### linkedin-pa-agent-cron
+- **Schedule:** Hourly (`0 * * * *`) in UTC
+- **Original description:** Generates research‑oriented LinkedIn content about IBM Planning Analytics. Produces hourly posts with unique timestamps; rotates through 5 content types (technical analysis, trends, benchmarks, architecture, industry perspective). Outputs committed to Git and synced to Obsidian vault. Non‑promotional, focused on knowledge sharing.
+- **Status:** Disabled
+- **Re-enable:** `openclaw cron enable 7df39652`
 
 ## Maintenance Commands
 
@@ -200,4 +201,3 @@ Weekly automation:
 - cleanup-downloads-cron (Sunday 06:00)
 - backup-cleanup-cron (Sunday 07:00)
 - cleanup-agent-artifacts-cron (Sunday 09:30)
-

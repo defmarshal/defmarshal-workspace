@@ -215,6 +215,7 @@ Common utilities (run `./quick help` for full list):
 ### Daemon Management
 
 - `./scripts/meta-supervisor-restart.sh` — Restart the meta-supervisor daemon (used for recovery if meta-supervisor gets stuck). Logs to `memory/meta-supervisor-restart.log`. Requires appropriate permissions; typically run as workspace user.
+- `pm2 restart clawdash-backend` — Restart ClawDash backend (Node.js server on port 3001). Use `pm2 logs clawdash-backend` to view logs. Provides live chat and quick commands for the dashboard. See also `dash`/`dashboard` quick commands.
 
 ---
 
