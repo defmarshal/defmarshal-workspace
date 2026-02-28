@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T10:10:02Z",
+  "generated_at": "2026-02-28T10:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
-      "sha": "ce054294",
-      "agent": "research",
-      "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "23d6deac",
+      "sha": "42e16f1c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "ce054294",
+      "agent": "research",
+      "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "23d6deac",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "df194d97",
       "agent": "content",
       "message": "10:00 tech update — Cybersecurity 2026 (agentic AI, NHI, SaaS .85M ransomware, AMTD, ZT2.0) + disk-usage-breakdown dev drop",
-      "time": "7 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "fbd858c1",
       "agent": "dev",
       "message": "add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "d6200918",
       "agent": "misc",
       "message": "chore(clawdash): bump SW cache to v5 to force update",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "6e1a5278",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "dc3b3070",
       "agent": "misc",
       "message": "feat(clawdash): ⚡ quick commands bottom sheet — tap button in chat, slide-up grid, run & view output inline",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "3fb6b828",
       "agent": "misc",
       "message": "feat(clawdash): thinking indicator persists until new reply arrives (polls every 3s, max 3min)",
-      "time": "12 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "9f66b64c",
       "agent": "misc",
       "message": "fix(clawdash): chat layout — height:100% on chat-main, overflow:hidden, input always visible",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "6b5c5617",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "b41d5516",
       "agent": "misc",
       "message": "fix(clawdash): chat input pinned to bottom — fix flex chain min-height:0 on active tab panel",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "c3b069b3",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "f14c55f5",
       "agent": "misc",
       "message": "fix(clawdash): chat tab input always visible — min-height:0 + overflow:hidden on flex chain",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "fe18ad01",
       "agent": "misc",
       "message": "fix(clawdash): use 100dvh + #tab-panels flex container to prevent scroll on mobile",
-      "time": "23 minutes ago"
-    },
-    {
-      "sha": "f4ccd8bc",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "28 minutes ago"
     }
   ],
   "heartbeat": {
