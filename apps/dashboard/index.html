@@ -702,36 +702,53 @@ async function setupPush() {
     const { publicKey } = await res.json();
     if (!publicKey) { toast('❌ No VAPID key from server', 'bad'); return; }
 
-    const reg = await Promise.race([
-      navigator.serviceWorker.ready,
-      new Promise((_, rej) => setTimeout(() => rej(new Error('SW timeout')), 8000))
-    ]);
-
-    let sub = await reg.pushManager.getSubscription();
-
-    if (!sub) {
-      const perm = await Notification.requestPermission();
-      if (perm !== 'granted') { toast('❌ Notification permission denied', 'bad'); return; }
-      sub = await reg.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicKey),
-      });
-      const saveRes = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(sub.toJSON()),
-      });
-      if (!saveRes.ok) { toast('❌ Failed to save subscription', 'bad'); return; }
+    // Unregister any stale SW from a different origin (e.g. HTTP vs HTTPS port mismatch)
+    const regs = await navigator.serviceWorker.getRegistrations();
+    for (const r of regs) {
+      if (!r.scope.startsWith(location.origin)) {
+        await r.unregister();
+      }
     }
+
+    // Re-register SW for current origin
+    const reg = await navigator.serviceWorker.register('/sw.js');
+    await navigator.serviceWorker.ready;
+
+    // Wait a moment for SW to activate
+    await new Promise(r => setTimeout(r, 500));
+
+    const perm = await Notification.requestPermission();
+    if (perm !== 'granted') { toast('❌ Notification permission denied', 'bad'); return; }
+
+    // Force fresh subscription (unsubscribe old if any)
+    let sub = null;
+    try {
+      const existing = await reg.pushManager.getSubscription();
+      if (existing) await existing.unsubscribe();
+    } catch {}
+
+    sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(publicKey),
+    });
+
+    const saveRes = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(sub.toJSON()),
+    });
+    if (!saveRes.ok) { toast('❌ Failed to save subscription', 'bad'); return; }
+
     pushSubscribed = true;
     updatePushBtn(true);
-    document.getElementById('push-banner').style.display = 'none';
-    toast('🔔 Push notifications enabled!', 'ok', 3000);
+    const banner = document.getElementById('push-banner');
+    if (banner) banner.style.display = 'none';
+    toast('🔔 Push enabled! Sending test…', 'ok', 3000);
 
     // Send a test push so user confirms it works
     fetch('/api/notify-test', { method: 'POST' });
   } catch (e) {
-    toast('❌ Push failed: ' + e.message, 'bad', 6000);
+    toast('❌ Push failed: ' + e.message, 'bad', 8000);
     console.error('Push setup failed:', e);
   }
 }
