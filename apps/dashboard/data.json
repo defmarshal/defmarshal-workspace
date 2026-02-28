@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T02:39:12Z",
+  "generated_at": "2026-02-28T02:40:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
     "disk_free": "12G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -63,6 +63,11 @@
   },
   "recent_commits": [
     {
+      "agent": "fix",
+      "message": "unignore apps/dashboard and add clawdash PWA files; data.json now trackable by cron",
+      "time": ""
+    },
+    {
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
       "time": ""
@@ -105,11 +110,6 @@
     {
       "agent": "dev",
       "message": "mitigate short LinkedIn PA posts by auto‑appending Key Takeaways when <300 words",
-      "time": ""
-    },
-    {
-      "agent": "build",
-      "message": "update research index with new Enterprise Planning Analytics Market 2026 report",
       "time": ""
     }
   ],
