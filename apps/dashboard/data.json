@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T10:55:02Z",
+  "generated_at": "2026-02-28T11:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,11 +9,14 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.67 0.72 0.80",
-    "mem_used": "3.5Gi",
+    "load_avg": "0.64 0.69 0.78",
+    "mem_used": "3.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 15 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 20 minutes",
     "disk_history": [
+      72,
+      72,
+      72,
       72,
       72,
       72,
@@ -86,94 +89,94 @@
   },
   "recent_commits": [
     {
-      "sha": "aaa0d5cf",
+      "sha": "6700193a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "624a1ff4",
+      "sha": "aaa0d5cf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "624a1ff4",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "8b82bad1",
       "agent": "misc",
       "message": "feat(clawdash): r5 — active tasks panel, content stats card, real disk history, chat leak filter (NO_REPLY/HEARTBEAT/Continue), mobile cron col hide, agents 2-col grid",
-      "time": "14 minutes ago"
+      "time": "19 minutes ago"
     },
     {
       "sha": "cd8cd299",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "7aaf2074",
       "agent": "misc",
       "message": "feat(clawdash): r4 — load/mem/uptime in system card, relative output timestamps, HB notes highlight, commit sha+prefix chips, char counter, send spinner, Escape clears input, research latest fix",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "d20257e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "3c5ef746",
       "agent": "misc",
       "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "56905322",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "ee8968a6",
       "agent": "misc",
       "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "e0c27976",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "3c8aee3b",
       "agent": "misc",
       "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "6bea6b48",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "42e16f1c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "ce054294",
       "agent": "research",
       "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "49 minutes ago"
-    },
-    {
-      "sha": "23d6deac",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "54 minutes ago"
     }
   ],
   "heartbeat": {
@@ -683,11 +686,6 @@
   },
   "chat": [
     {
-      "role": "user",
-      "ts": "2026-02-28T09:47:54.044Z",
-      "text": "[Sat 2026-02-28 09:47 UTC] in chat tab i need to scroll down to see the input field"
-    },
-    {
       "role": "assistant",
       "ts": "2026-02-28T09:48:06.661Z",
       "text": "The chat tab has `height: 100%` but `#tab-panels` now controls the height — `#tab-chat` needs to fill the panel properly without overflowing. The input is getting pushed off-screen because `#tab-chat` isn't constrained to the panel height~"
@@ -931,6 +929,11 @@
       "role": "assistant",
       "ts": "2026-02-28T10:41:04.587Z",
       "text": "r5 done nyaa~ (^^) here's what shipped:\n\n**New sections**\n- 🧠 **Active Tasks panel** in Agents tab — shows running/validated agents from `active-tasks.md` with status chips\n- 📰 **Content Stats card** in Overview — total pieces (494), today (17), latest title\n\n**Data fixes**\n- 💾 **Real disk history** — appends actual `%` every 5min, sparkline now shows real trend\n- 🧹 **Chat leak filter** — `NO_REPLY`, `HEARTBEAT_OK`, `Pre-compaction`, `Continueeee`, `Continue` all scrubbed (0 leaks ✅)\n- 🛠️ Fixed content stats using Python `os.listdir` instead of broken `ls *.md` glob\n\n**Agents tab**\n- Two-column grid layout (agent details + content side by side on desktop)\n\n**Mobile**\n- Cron table hides Schedule/Next/Duration cols on narrow screens — just Name + Status\n\nclear cache + reopen to get v10 desu~ 🐾✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T10:59:09.951Z",
+      "text": "[Sat 2026-02-28 10:59 UTC] push failed registration failed push service error"
     }
   ]
 }
