@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T18:05:02Z",
+  "generated_at": "2026-02-28T18:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.73 0.81 0.82",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.85 0.76 0.79",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 4 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 4 hours, 30 minutes",
     "disk_history": [
       79,
       79,
@@ -23,7 +23,7 @@
       79,
       79,
       79,
-      79,
+      80,
       80,
       80,
       80,
@@ -49,13 +49,13 @@
     },
     {
       "name": "research-agent",
-      "active": true,
+      "active": false,
       "last_run": "2026-02-28 15:08",
       "last_line": "[2026-02-28T15:08:50Z] [research-agent] Completed Robotics & Physical AI 2026 report (15.2KB, 33521f46). CES 2026 inflection point (Huang 'ChatGPT moment for physical AI'), Atlas commercial production (Hyundai/DeepMind fleet, 30K/yr capacity, Gemini Robotics), Figure Helix 02 full-body autonomy (4min dishwasher task, 109K C++ lines→single neural net), Tesla Optimus Gen3 ($20-30K target, FSD backbone), Agility Digit Toyota Canada RaaS (Feb 19), Unitree 85-90% global share 10-20K units, pricing table, RaaS model analysis, Nvidia Cosmos/GR00T layer, 6 H2 signals. 219 total reports. 17 topics today."
     },
     {
       "name": "content-agent",
-      "active": true,
+      "active": false,
       "last_run": "2026-02-28 15:06",
       "last_line": "[2026-02-28T15:06:09Z] [content-agent] Generated 15:00 tech update (5.7KB, cf8d2a04). Covered: AR/VR & Spatial Computing 2026 ($85.56B XR market, Meta 77% share, Ray-Ban +1012% YoY, Vision Pro enterprise pivot, Galaxy XR/Android XR, Valve Steam Frame +289900%, AI+XR convergence, 6 H2 2026 signals, location-based XR $12B) + dev drop (INDEX 200→218, cron-failures fix, 3 idea branches pruned). 218 research reports, 22 content pieces today."
     },
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "dd60d6b1",
+      "sha": "5aff7f68",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "8a3b0758",
-      "agent": "feat",
-      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
-      "time": "6 minutes ago"
-    },
-    {
-      "sha": "90a6ca76",
+      "sha": "dd60d6b1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "3573d162",
+      "sha": "8a3b0758",
+      "agent": "feat",
+      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "90a6ca76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "2bf98fe7",
+      "sha": "3573d162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "d5f9d656",
+      "sha": "2bf98fe7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "7ac9aa37",
+      "sha": "d5f9d656",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "7ac9aa37",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "c62ee743",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "bc1cecec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "32ba6ef0",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "e4d9f7d7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "fcefe9ab",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "ed38d41a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
+      "time": "60 minutes ago"
     },
     {
       "sha": "8c70170c",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.2 — morale system, 20 events, income balance",
-      "time": "56 minutes ago"
-    },
-    {
-      "sha": "577307b6",
-      "agent": "build",
-      "message": "enhance anime-studio-tycoon (v1.2): events, morale, merch, sponsors, auto-AI, polished UI",
-      "time": "56 minutes ago"
+      "time": "61 minutes ago"
     }
   ],
   "heartbeat": {
@@ -491,10 +491,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772280490089,
-      "next_run": 1772301878568,
+      "last_run": 1772301879340,
+      "next_run": 1772323478568,
       "last_status": "ok",
-      "last_duration_ms": 66680,
+      "last_duration_ms": 27883,
       "consecutive_errors": 0
     },
     {
@@ -587,10 +587,10 @@
       "schedule": "5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772298566850,
-      "next_run": 1772301900000,
+      "last_run": 1772301964055,
+      "next_run": 1772305500000,
       "last_status": "ok",
-      "last_duration_ms": 6613,
+      "last_duration_ms": 27523,
       "consecutive_errors": 0
     },
     {
@@ -599,10 +599,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772294639136,
-      "next_run": 1772301839125,
+      "last_run": 1772301907223,
+      "next_run": 1772309039125,
       "last_status": "ok",
-      "last_duration_ms": 11599,
+      "last_duration_ms": 28685,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772301713114,
-      "next_run": 1772301833114,
+      "last_run": 1772302055917,
+      "next_run": 1772302175917,
       "last_status": "ok",
-      "last_duration_ms": 27870,
+      "last_duration_ms": 29073,
       "consecutive_errors": 0
     },
     {
