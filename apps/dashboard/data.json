@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T11:40:02Z",
+  "generated_at": "2026-02-28T11:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.64 0.86 0.95",
+    "load_avg": "0.67 0.76 0.89",
     "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 22 hours, 0 minutes",
+    "uptime": "1 week, 1 day, 22 hours, 5 minutes",
     "disk_history": [
       72,
       72,
@@ -87,99 +87,99 @@
   "research": {
     "total": 222,
     "tts_coverage": "96%",
-    "latest": "INDEX\nnone",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "d962f1c9",
+      "sha": "8ae68582",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "d962f1c9",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "43b1dde1",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "35980718",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "b545dc3c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "efd5f7fb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "6eb4bf51",
       "agent": "build",
       "message": "update MEMORY with 2026-02-28 improvements (shebang check, active-tasks archival)",
-      "time": "21 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "e29c21d5",
       "agent": "build",
       "message": "finalize workspace-builder session 20260228-1107 - progress complete",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "2ee715cc",
       "agent": "build",
       "message": "refresh dashboard data and disk history (auto-updated)",
-      "time": "24 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "45e3b9d5",
       "agent": "misc",
       "message": "fix(clawdash): guard renderChat in load() with chatSending flag — main 60s poll was wiping optimistic UI; SW v15",
-      "time": "24 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "580c583f",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 11:07 UTC) - all constraints satisfied",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "53851e58",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "952d526d",
       "agent": "build",
       "message": "add shebang constraint validation, archive old task, refresh planning",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "a817e436",
       "agent": "build",
       "message": "update dashboard data and disk history (workspace-builder 20260228-1107)",
-      "time": "26 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "5d167e3b",
       "agent": "build",
       "message": "archive completed workspace-builder session 20260228-0907",
-      "time": "27 minutes ago"
-    },
-    {
-      "sha": "25e97726",
-      "agent": "misc",
-      "message": "fix(clawdash): silent fetch in waitForReply — never renderChat while in-flight; only render when reply arrives; SW v14",
-      "time": "28 minutes ago"
+      "time": "32 minutes ago"
     }
   ],
   "heartbeat": {
