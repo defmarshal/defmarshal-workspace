@@ -1,5 +1,5 @@
 ⏰ UTC+7 time (24/7 operation)
-🌤️ Weather Bangkok (rain alert)
+🌤️ Weather Bangkok: clear, +30°C
 💾 System: disk, updates
 🎉 Holiday: Nyepi (Mar 18–19) — Day of Silence / Balinese New Year
 🤖 Agents: verify running (from active-tasks.md)
