@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T14:15:02Z",
+  "generated_at": "2026-02-28T14:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.94 1.03 0.96",
-    "mem_used": "3.4Gi",
+    "load_avg": "1.13 0.92 0.92",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 35 minutes",
+    "uptime": "1 week, 2 days, 40 minutes",
     "disk_history": [
       72,
       72,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "df1827d6",
+      "sha": "c87078b6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "0153f7ff",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "93635418",
-      "agent": "research",
-      "message": "AR/VR & Spatial Computing 2026 — $85.56B XR market/33% CAGR, Meta 77% share, Apple Vision Pro enterprise pivot, Ray-Ban Meta glasses +1012% YoY, Samsung Galaxy XR, AI+XR convergence, enterprise use cases; 200 reports milestone!",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "92793ad8",
+      "sha": "df1827d6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "40ad1bb1",
-      "agent": "content",
-      "message": "14:00 tech update — Developer Productivity 2026 (84% AI adoption/41% AI-gen code, Cursor/Copilot/Claude Code/Devin stack, platform eng/IDPs/DORA/FinDev, productivity paradox) + 107-script pipefail hardening dev drop",
-      "time": "11 minutes ago"
-    },
-    {
-      "sha": "e05d6f1d",
-      "agent": "dev",
-      "message": "harden all 107 scripts/*.sh + 4 agents/*.sh with set -euo pipefail (0 syntax errors); 51→0 missing coverage across entire scripts/ dir",
+      "sha": "0153f7ff",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
       "time": "14 minutes ago"
     },
     {
-      "sha": "fac15f02",
+      "sha": "93635418",
+      "agent": "research",
+      "message": "AR/VR & Spatial Computing 2026 — $85.56B XR market/33% CAGR, Meta 77% share, Apple Vision Pro enterprise pivot, Ray-Ban Meta glasses +1012% YoY, Samsung Galaxy XR, AI+XR convergence, enterprise use cases; 200 reports milestone!",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "92793ad8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "49659c93",
+      "sha": "40ad1bb1",
+      "agent": "content",
+      "message": "14:00 tech update — Developer Productivity 2026 (84% AI adoption/41% AI-gen code, Cursor/Copilot/Claude Code/Devin stack, platform eng/IDPs/DORA/FinDev, productivity paradox) + 107-script pipefail hardening dev drop",
+      "time": "16 minutes ago"
+    },
+    {
+      "sha": "e05d6f1d",
+      "agent": "dev",
+      "message": "harden all 107 scripts/*.sh + 4 agents/*.sh with set -euo pipefail (0 syntax errors); 51→0 missing coverage across entire scripts/ dir",
+      "time": "19 minutes ago"
+    },
+    {
+      "sha": "fac15f02",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "731aef86",
+      "sha": "49659c93",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "b3766c00",
+      "sha": "731aef86",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "3e4f77e1",
+      "sha": "b3766c00",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "11874e8d",
+      "sha": "3e4f77e1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "b32522ad",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "664e8f26",
+      "sha": "11874e8d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "46ffccd5",
+      "sha": "b32522ad",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": "50 minutes ago"
+    },
+    {
+      "sha": "664e8f26",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
