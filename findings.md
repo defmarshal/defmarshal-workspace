@@ -1,22 +1,23 @@
 # Workspace Builder Findings
-**Session:** workspace-builder-20260228-0907  
+**Session:** workspace-builder-20260228-1107
 **Date:** 2026-02-28
 
 ---
 
 ## System Snapshot
 
-### Health & Constraints
-- Disk: 72% (healthy)
+### Health & Constraints (pre-run)
+- Disk: 73% (healthy)
 - Gateway: healthy
-- Memory: 29f/316c indexed, clean, local FTS+
-- Reindex age: 4.3 days (stale, needs refresh)
+- Memory: 29f/321c indexed, clean, local FTS+, reindex age 0 days (fresh from 09:07 run)
 - APT updates: none
-- Git: clean, up-to-date with origin
-- Downloads: 17 files, 5.7G (all < 30 days)
-- active-tasks.md: 1213 bytes (<2KB)
+- Git: **Dirty** (2 modified tracked files: apps/dashboard/data.json, memory/disk-history.json)
+- Downloads: 17 files, 5.7GB (all <30 days)
+- active-tasks.md: 27 lines, 1218 bytes (<2KB)
 - MEMORY.md: 29 lines (≤35)
-- Constraints: 7/7 satisfied ✅
+- Cron schedules: validated (agent-manager 11:07)
+- Stale branches: none
+- Temp files: none
 
 ### Active Agents
 - meta-supervisor-daemon (running, PID stable)
@@ -26,50 +27,73 @@
 
 ## Observations
 
-### 1. Memory Reindex Freshness
-The memory index is 4+ days old. While functional, refreshing improves search performance and ensures recent memory files are properly indexed.
+### 1. Git Dirty State
+Two tracked files have uncommitted changes:
+- `apps/dashboard/data.json`: Updated with latest system metrics (generated_at 11:09 UTC)
+- `memory/disk-history.json`: Latest disk percentage appended
 
-**Action:** Reindex memory during this session.
+These are legitimate auto-generated updates from recent supervisor/agent-manager runs. They should be committed to maintain repository hygiene.
 
-### 2. Downloads Hygiene
-The downloads directory contains 17 files totaling 5.7GB. All files are newer than 30 days, so no cleanup needed per policy.
+**Action:** Stage and commit in Phase 2.
 
-**Action:** None (monitor).
+---
 
-### 3. Documentation State
-- active-tasks.md well-maintained, recent entries properly moved to Completed
-- MEMORY.md at 29 lines, within limit
-- CRON_JOBS.md, TOOLS.md, AGENTS.md all up-to-date per recent commits
-- Daily logs for February complete through 2026-02-28
+### 2. Active Tasks Inconsistency
+The entry `[workspace-builder-20260228-0907]` in active-tasks.md has status `validated` but remains in the Running section. According to MD management guidelines, completed tasks should be archived to daily logs, not left in Running.
 
-### 4. Research & Content Index
-- `research/INDEX.md` and `content/INDEX.md` exist and are updated by notifier
-- Recent research files from 2026-02-28 present and tracked
-- No orphaned untracked files
+**Action:** Archive entry to today's daily log and remove from active-tasks.md in Phase 1.
+
+---
+
+### 3. Script Hygiene
+All shell scripts under `scripts/` have proper shebangs and executable permissions (checked 106 scripts). While currently clean, adding a constraint check ensures future scripts maintain this standard.
+
+**Action:** Extend validate-constraints.sh with a shebang validation step (Phase 3).
+
+---
+
+### 4. Memory Reindex Freshness
+Memory index was refreshed at 09:07 UTC today, so reindex age is 0 days. No reindex needed. Health overall green.
+
+---
+
+### 5. Downloads Hygiene
+Downloads directory at 5.7GB, 17 files. All files are within 30-day retention window. No cleanup triggered. Agent-manager logged at 11:07 that threshold exceeded but no eligible files for deletion.
+
+**Status:** Monitor only.
+
+---
+
+### 6. Idea Executor Status
+- Latest idea: `add-a-new-quick-utility` (executed 10:06:48 UTC) → succeeded
+- No aborts since 08:07 (workspace dirty at that time). Current dirty state may trigger abort if executor runs soon; but it runs every 2h UTC (next ~12:00). Our commits will clean git state before then.
+
+---
+
+### 7. Documentation State
+- CRON_JOBS.md up-to-date with disabled jobs documented.
+- TOOLS.md, AGENTS.md current.
+- Daily log 2026-02-28 contains entries up to 01:07 run; missing later runs including 09:07. We will append that in Phase 1.
 
 ---
 
 ## Risks & Notes
 
-### Voyage AI Rate Limits
-Rate limits previously caused reindex skipping. Check for rate-lock file before reindex:
-```bash
-test -f memory/.voyage-rate-lock && echo "Rate-locked" || ./quick memory-reindex
-```
+### Archival Consistency
+When moving the 09:07 entry to daily log, preserve the exact format (including verification metrics) to maintain audit trail.
 
-If rate-locked, skip and note in progress.md; reindex not critical for immediate operations.
+### Shebang Validation Scope
+Should only check `scripts/*.sh` to avoid false positives on other file types. Use `find` with `-name "*.sh"`.
 
-### Constraint Enforcement
-All constraints currently satisfied. Any changes must preserve:
-- active-tasks.md < 2KB
-- MEMORY.md ≤ 35 lines
-- Git clean after commit
-- No temp files
-- Health green
+### Commit Messages
+Use `build:` prefix as per convention.
 
 ---
 
 ## Conclusion
-Workspace is in excellent condition. Primary improvement: refresh memory index. Secondary: archive very old memory files (>14 days) if any exist, though current memory/ contains daily logs that remain relevant.
+Workspace in excellent health with minor bookkeeping needed:
+- Archive stale active-task entry
+- Commit auto-generated dashboard data
+- Add shebang constraint check (proactive improvement)
 
-No urgent issues. Proceed with planned phases.
+All phases low-risk and aligned with MD management best practices.

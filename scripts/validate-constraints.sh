@@ -69,6 +69,26 @@ else
     errors=$((errors+1))
 fi
 
+# 5b. Shebang check for scripts/*.sh
+sh_files=$(find scripts -type f -name "*.sh" 2>/dev/null || true)
+missing_shebang=0
+if [ -n "$sh_files" ]; then
+    while IFS= read -r file; do
+        first_line=$(head -n 1 "$file" 2>/dev/null || echo "")
+        if ! echo "$first_line" | grep -q '^#!'; then
+            echo "❌ Missing shebang in $file"
+            missing_shebang=1
+        fi
+    done <<< "$sh_files"
+fi
+if [ $missing_shebang -ne 0 ]; then
+    errors=$((errors+1))
+elif [ -n "$sh_files" ]; then
+    echo "✅ Shebang check: all scripts have #!"
+else
+    echo "⚠️ Shebang check: no .sh files found in scripts/"
+fi
+
 # 6. APT updates (should be none pending)
 updates=$(./quick updates-check 2>/dev/null || echo "Update check unavailable")
 if echo "$updates" | grep -q "All packages are up to date"; then
