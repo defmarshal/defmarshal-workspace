@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T09:05:02Z",
+  "generated_at": "2026-02-28T09:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -28,8 +28,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 08:07",
-      "last_line": "[2026-02-28T08:07:25Z] [research-agent] Completed WebAssembly 2026 report (15.2KB, 7ec651ce). 194 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing, WebAssembly."
+      "last_run": "2026-02-28 09:07",
+      "last_line": "[2026-02-28T09:07:03Z] [research-agent] Completed Cybersecurity 2026 report (13.4KB, 478d85b4). 195 total reports. 11 topics today."
     },
     {
       "name": "content-agent",
@@ -52,8 +52,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 08:30",
-      "last_line": "2026-02-28 08:30:09 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 09:07",
+      "last_line": "2026-02-28 09:07:10 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -63,101 +63,101 @@
     }
   ],
   "research": {
-    "total": 219,
+    "total": 220,
     "tts_coverage": "97%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "1ffe4f91",
-      "agent": "content",
-      "message": "09:00 tech update — WebAssembly 2026 (WASM 3.0/WASI 0.3/Component Model, Akamai/Fermyon 4k edge) + research tooling dev drop",
-      "time": "29 seconds ago"
-    },
-    {
-      "sha": "0f8e22d8",
-      "agent": "dev",
-      "message": "fix research-recent.sh (exclude INDEX.md, accept N arg, local+hub audio check); add research-topics-today.sh (dedup helper with suggestions, --short mode); register in quick",
+      "sha": "478d85b4",
+      "agent": "research",
+      "message": "Cybersecurity 2026 — agentic AI attacks, NHI/SaaS identity, ransomware .85M avg, AMTD/ZT 2.0, PQC readiness; 195 reports",
       "time": "3 minutes ago"
     },
     {
-      "sha": "922b5bb0",
+      "sha": "d85400fe",
+      "agent": "misc",
+      "message": "fix(clawdash): push bell visible on mobile — bigger icon, hide clutter on small screens, add push banner in chat tab",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "1e0d1b4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "a45a76d2",
+      "sha": "1ffe4f91",
+      "agent": "content",
+      "message": "09:00 tech update — WebAssembly 2026 (WASM 3.0/WASI 0.3/Component Model, Akamai/Fermyon 4k edge) + research tooling dev drop",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "0f8e22d8",
+      "agent": "dev",
+      "message": "fix research-recent.sh (exclude INDEX.md, accept N arg, local+hub audio check); add research-topics-today.sh (dedup helper with suggestions, --short mode); register in quick",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "922b5bb0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "a8712f06",
+      "sha": "a45a76d2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "6bbb1c6c",
+      "sha": "a8712f06",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "35c50e17",
+      "sha": "6bbb1c6c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "9411dacb",
+      "sha": "35c50e17",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "5d7ce19c",
+      "sha": "9411dacb",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "afd6bd50",
+      "sha": "5d7ce19c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "739c4c5c",
+      "sha": "afd6bd50",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "65570338",
+      "sha": "739c4c5c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "2d5982ec",
+      "sha": "65570338",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
-    },
-    {
-      "sha": "7ec651ce",
-      "agent": "research",
-      "message": "WebAssembly 2026 — WASM 3.0, WASI 0.3 async I/O, Component Model, edge cloud adoption; Cloudflare/Akamai/Fermyon production; 194 reports",
-      "time": "58 minutes ago"
-    },
-    {
-      "sha": "ef0865e1",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
     }
   ],
   "heartbeat": {
@@ -331,41 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T04:00:36.384Z",
-      "text": "Now deploy~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T04:01:16.621Z",
-      "text": "[[reply_to_current]] fixed desu~ (^^)\n\nthe error happened because you were on the **Vercel URL** (`vercel.app`) — which is static, has no backend, and returned an HTML error page instead of JSON when you tried to send nyaa~\n\n**what's different now:**\n- on Vercel → chat input is **disabled** with a clear message, quick commands show an error instead of crashing\n- header shows `📦 static (open :3001 for live)` as a reminder\n\n**for the full interactive chat + quick commands**, open:\n> 🌐 **http://100.108.208.45:3001** (Tailscale)\n\nthat one hits the real backend desu~ ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T05:44:25.383Z",
-      "text": "please enhance the web continuously"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T05:44:55.470Z",
-      "text": "WORKFLOW_AUTO.md doesn't exist — that audit message is spurious, ignoring it nyaa~\n\nGot it — **continuously enhance the web dashboard**! I'll spawn a dedicated sub-agent to keep iterating on ClawDash improvements in a loop~ (^^)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T05:45:08.171Z",
-      "text": "Enhancement agent is running desu~ (^^) it's got a full queue of improvements to work through:\n\n**Round 1 — Core UX:**\n- 🔄 Auto-refresh chat every 10s when tab is active\n- 📊 Disk usage progress bar (green/yellow/red)\n- ⏱️ Relative timestamps (\"2m ago\", \"1h ago\")\n- ⌨️ Cmd+K quick command palette\n- 💾 Tab persistence in localStorage\n- ✍️ \"mewmew is typing…\" indicator after send\n\n**Round 2 — Visualisation:**\n- 📈 Disk history sparkline chart\n- 🕐 Agent activity timeline\n- 📋 Cron job cards tab section\n- 🔴 Error highlighting in supervisor log\n\n**Round 3 — Polish:**\n- 🌙 Dark/light mode toggle\n- 🟢 Live connection status dot\n- 🍞 Toast notifications\n- 📱 Mobile slide-in sidebar\n\nIt commits after each feature and deploys to Vercel every 3 commits. I'll let you know when the first round is done nyaa~ ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T06:00:04.611Z",
-      "text": "how's the dashboard enhancement doing?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:00:23.196Z",
-      "text": "hmm, the sub-agent session ended and didn't run (history is restricted to the session tree, and there's no enhancement commits in git) (T_T) it looks like it spawned but didn't execute properly~\n\nlet me run the enhancements directly nyaa~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T06:02:51.448Z",
@@ -580,6 +545,41 @@
       "role": "assistant",
       "ts": "2026-02-28T07:12:43.813Z",
       "text": "the push notification setup I just built works exactly for the installed PWA desu~ (^^) it uses the **service worker**, which runs in the background even when the app is closed!\n\nthe flow is:\n1. **Install the PWA first** — open `https://instance-20260207-2229.tail2dd22b.ts.net:3443` on Chrome Android → three-dot menu → Add to Home Screen\n2. **Open the installed app** (from home screen icon)\n3. **Tap 🔕 bell button** in the header → allow notifications\n4. Done — whenever I reply, a **native Android notification** pops up even when the app is completely closed nyaa~ 🔔\n\nthe key part: `sw.js` has a `push` event listener that calls `self.registration.showNotification(...)` — that's what makes it pop up as a real system notification, not just a browser thing ♪\n\nare you able to install the PWA now? if the install button still isn't showing, let me know what URL you're opening and we can debug it~"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:05:29.835Z",
+      "text": "i did not see bell button"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:05:40.261Z",
+      "text": "button is there in the HTML — the issue is it's **hidden on mobile** because the header is too cramped. let me check the responsive CSS~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:05:50.480Z",
+      "text": "the button is there but the header is probably too crowded on mobile — `last-updated`, `backend-status`, `conn-dot`, `push-btn`, `theme-btn` all squeezed together. let me fix the mobile header to show only the essentials and move push setup elsewhere~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:05:57.082Z",
+      "text": "also move the push button to be more prominent — inside the chat tab as a banner so it's unmissable on mobile~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:06:01.133Z",
+      "text": "also add a push prompt banner inside the chat tab that shows when not yet subscribed~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:06:19.051Z",
+      "text": "Now show the banner when user switches to chat tab and isn't subscribed yet~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:06:48.110Z",
+      "text": "[[reply_to_current]] fixed desu~ refresh the page at `https://instance-20260207-2229.tail2dd22b.ts.net:3443` and you should see:\n\n1. **🔕 bell button** in the top-right header (bigger now, more visible on mobile)\n2. when you tap the **Chat tab** → a banner appears at the top: *\"🔔 Get notified when mewmew replies\"* with an **Enable** button — tap that!\n\nit'll ask for notification permission and you're all set nyaa~ (^^)"
     }
   ]
 }
