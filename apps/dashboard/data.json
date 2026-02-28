@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T11:05:02Z",
+  "generated_at": "2026-02-28T11:07:05Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.80 0.75 0.79",
+    "load_avg": "1.04 0.88 0.83",
     "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 25 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 27 minutes",
     "disk_history": [
       72,
       72,
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 221,
+    "total": 222,
     "tts_coverage": "96%",
-    "latest": "INDEX\nnone",
+    "latest": "2026-02-28-fintech-2026-embedded-finance-baas-api-money-sea",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "fd655f2c",
+      "agent": "misc",
+      "message": "fix(clawdash): regenerate VAPID keys (was .local domain, FCM rejected); full SW unregister on push setup; SW v12",
+      "time": "83 seconds ago"
+    },
+    {
+      "sha": "a1b6b091",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "6651112a",
       "agent": "content",
       "message": "11:00 tech update — Satellite Internet 2026 (Starlink 6M/450Tbps, Amazon Leo Ultra 1Gbps/AWS, DTC, SEA angle) + content INDEX sync dev drop",
-      "time": "18 seconds ago"
+      "time": "2 minutes ago"
     },
     {
       "sha": "8cf0189a",
       "agent": "dev",
       "message": "sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh",
-      "time": "3 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "6bee803a",
       "agent": "misc",
       "message": "fix(clawdash): push subscribe retry (3x backoff) + clearer error msgs for 'push service error'",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "321f269e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "6700193a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "aaa0d5cf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "624a1ff4",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "8b82bad1",
       "agent": "misc",
       "message": "feat(clawdash): r5 — active tasks panel, content stats card, real disk history, chat leak filter (NO_REPLY/HEARTBEAT/Continue), mobile cron col hide, agents 2-col grid",
-      "time": "24 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "cd8cd299",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "7aaf2074",
       "agent": "misc",
       "message": "feat(clawdash): r4 — load/mem/uptime in system card, relative output timestamps, HB notes highlight, commit sha+prefix chips, char counter, send spinner, Escape clears input, research latest fix",
-      "time": "32 minutes ago"
+      "time": "34 minutes ago"
     },
     {
       "sha": "d20257e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "3c5ef746",
       "agent": "misc",
       "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
-      "time": "35 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "56905322",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "ee8968a6",
-      "agent": "misc",
-      "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "e0c27976",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "42 minutes ago"
     }
   ],
   "heartbeat": {
@@ -689,31 +689,6 @@
   },
   "chat": [
     {
-      "role": "user",
-      "ts": "2026-02-28T09:52:08.114Z",
-      "text": "[Sat 2026-02-28 09:52 UTC] the scroll is internal but the input field is still way too down there"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:52:13.268Z",
-      "text": "Let me look at the exact structure of the chat tab~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:52:19.410Z",
-      "text": "The `#tab-chat` has `.tab-panel` class which has `flex: 1` — but `.tab-panel.active` has `display: flex; flex-direction: column` while `#tab-chat.active` overrides with `flex-direction: row`. The problem is `.tab-panel` itself gets `flex: 1` but when it becomes the chat tab it needs to be a proper flex child of `#tab-panels` with `min-height: 0`. Let me just nail this with explicit heights~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:52:38.863Z",
-      "text": "[[reply_to_current]] refresh and check nyaa~ \n\nthe fix: `.tab-panel.active` now gets `flex: 1; min-height: 0` instead of the chat tab trying to set it itself — this properly constrains the whole chat panel to the available viewport height so the input bar sits at the bottom (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T09:54:55.322Z",
-      "text": "[Sat 2026-02-28 09:54 UTC] reduce the height of chat screen so that the input field can be seen without scrolling down"
-    },
-    {
       "role": "assistant",
       "ts": "2026-02-28T09:55:14.930Z",
       "text": "The flex chain isn't reliably constraining on mobile. Let me just use explicit height calculation instead~"
@@ -937,6 +912,31 @@
       "role": "user",
       "ts": "2026-02-28T11:04:34.277Z",
       "text": "[Sat 2026-02-28 11:04 UTC] still error"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:05:10.866Z",
+      "text": "Found the likely culprit — `mailto:admin@clawdash.local` is not a valid public domain. FCM/Chrome rejects VAPID subjects with `.local` domains. Let me fix that + regenerate fresh VAPID keys:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:05:35.816Z",
+      "text": "New VAPID key live desu~ Now let me also add a step that clears the old SW subscription before re-registering, since the browser still has the stale key cached:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:05:50.055Z",
+      "text": "[[reply_to_current]] found the root cause nyaa~ 🐾\n\n**problem**: VAPID subject was `mailto:admin@clawdash.local` — FCM rejects `.local` domains silently, causing \"push service error\" on registration (TIL desu~)\n\n**what I fixed:**\n1. 🔑 **Regenerated VAPID keys** with proper subject `mailto:def@openclaw.ai`\n2. 🧹 **Full SW unregister** before re-subscribing — clears any stale cached key\n3. 🗑️ Cleared old subscriptions (they're useless with the old key anyway)\n\n**to enable push now:**\n1. Open `https://instance-20260207-2229.tail2dd22b.ts.net:8443` in Chrome\n2. Go to Chat tab → tap **Enable Push** button\n3. Should work this time! (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:06:41.484Z",
+      "text": "[Sat 2026-02-28 11:06 UTC] yesss it's workingg"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:06:46.926Z",
+      "text": "[[reply_to_current]] YESSS nyaa~~ 🎉🐾 \n\nfinally!! `.local` domain was the sneaky villain all along (ಠ_ಠ) FCM just silently rejects it with the vaguest error ever, desu~\n\nnow you'll get pinged straight to your phone whenever mewmew replies ♪ no more checking manually~~ (｡◕‿◕｡)♡"
     }
   ]
 }
