@@ -180,8 +180,60 @@ function startChatWatcher() {
         tag: 'clawdash-reply',
       }).catch(() => {});
     }
+    if (assistantCount !== lastAssistantMsgCount) broadcastChat(msgs);
     lastAssistantMsgCount = assistantCount;
   }, 5000); // check every 5s
+}
+
+// ── aria2 torrent status ──────────────────────────────────────────────────
+const ARIA2_URL = 'http://localhost:6800/jsonrpc';
+const ARIA2_TOKEN = 'token:openclaw_secret_123';
+
+async function aria2Call(method, params = []) {
+  try {
+    const body = JSON.stringify({ jsonrpc: '2.0', method, id: '1', params: [ARIA2_TOKEN, ...params] });
+    const res = await fetch(ARIA2_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+    const d = await res.json();
+    return d.result || [];
+  } catch { return []; }
+}
+function fmtBytes(n) {
+  n = parseInt(n) || 0;
+  if (n > 1e9) return (n/1e9).toFixed(1) + ' GB';
+  if (n > 1e6) return (n/1e6).toFixed(1) + ' MB';
+  if (n > 1e3) return (n/1e3).toFixed(1) + ' KB';
+  return n + ' B';
+}
+async function getTorrentStatus() {
+  const fields = ['gid','status','totalLength','completedLength','downloadSpeed','uploadSpeed','files','bittorrent','numSeeders','errorMessage'];
+  const [active, waiting, stopped] = await Promise.all([
+    aria2Call('aria2.tellActive', [fields]),
+    aria2Call('aria2.tellWaiting', [0, 10, fields]),
+    aria2Call('aria2.tellStopped', [0, 5, fields]),
+  ]);
+  const fmt = items => items.map(it => {
+    const name = it.bittorrent?.info?.name || it.files?.[0]?.path?.split('/').pop() || it.gid;
+    const total = parseInt(it.totalLength) || 0;
+    const done = parseInt(it.completedLength) || 0;
+    const pct = total > 0 ? Math.round(done / total * 100) : 0;
+    return {
+      gid: it.gid, name, status: it.status, pct,
+      speed_dn: fmtBytes(it.downloadSpeed) + '/s',
+      speed_up: fmtBytes(it.uploadSpeed) + '/s',
+      size: fmtBytes(total), seeders: parseInt(it.numSeeders) || 0,
+      error: it.errorMessage || null,
+    };
+  });
+  return { active: fmt(active), waiting: fmt(waiting), stopped: fmt(stopped) };
+}
+
+// ── SSE — chat stream ─────────────────────────────────────────────────────
+const sseClients = new Set();
+function broadcastChat(msgs) {
+  const data = 'data: ' + JSON.stringify({ chat: msgs }) + '\n\n';
+  for (const client of sseClients) {
+    try { client.write(data); } catch { sseClients.delete(client); }
+  }
 }
 
 // ── Request handler ───────────────────────────────────────────────────────
@@ -206,6 +258,29 @@ const handler = async (req, res) => {
   }
 
   // ── Test push notification ──────────────────────────────────────────────
+  if (pathname === '/api/torrents') {
+    const t = await getTorrentStatus();
+    cors(res); res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(t));
+    return;
+  }
+
+  // SSE chat stream
+  if (pathname === '/api/chat-stream') {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+      'Access-Control-Allow-Origin': '*',
+    });
+    res.write(': connected\n\n');
+    // Send current chat immediately
+    res.write('data: ' + JSON.stringify({ chat: getChatHistory() }) + '\n\n');
+    sseClients.add(res);
+    req.on('close', () => sseClients.delete(res));
+    return;
+  }
+
   if (pathname === '/api/notify-test' && req.method === 'POST') {
     await sendPushToAll({ title: '🦾 ClawDash test', body: 'Push notifications are working! nyaa~', url: '/', tag: 'test' });
     return json(res, 200, { ok: true, subs: loadSubs().length });
@@ -293,3 +368,4 @@ try {
 
 startChatWatcher();
 console.log('👀 Chat watcher running — push on new reply');
+// ── aria2 torrent status ──────────────────────────────────────────────────
