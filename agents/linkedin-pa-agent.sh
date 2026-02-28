@@ -438,10 +438,28 @@ esac > "$POST_FILE"
 
 log "Post generated: $POST_FILE"
 
-# Post-hoc validation (lightweight quality checks)
+# Mitigation for short posts: append Key Takeaways if word count < 300
 WORD_COUNT=$(wc -w < "$POST_FILE")
 if [ "$WORD_COUNT" -lt 300 ]; then
-  log "WARNING: Post word count ($WORD_COUNT) below 300"
+  # Append a Key Takeaways section using tips
+  {
+    echo ""
+    echo "## Key Takeaways"
+    echo ""
+    # Use up to 5 tips, each as bullet point
+    echo "$TIPS" | head -5 | while IFS= read -r tip; do
+      [ -n "$tip" ] && echo "- $tip"
+    done
+  } >> "$POST_FILE"
+  log "Appended Key Takeaways section to reach target word count"
+  # Recompute word count after append
+  WORD_COUNT=$(wc -w < "$POST_FILE")
+  log "Post word count after mitigation: $WORD_COUNT"
+fi
+
+# Post-hoc validation (lightweight quality checks)
+if [ "$WORD_COUNT" -lt 300 ]; then
+  log "WARNING: Post word count ($WORD_COUNT) still below 300 after mitigation"
 fi
 # Check for presence of key terms (TM1, PA, performance, benchmark, architecture, ROI, case study)
 KEY_TERM_COUNT=$(grep -ioE 'TM1|IBM Planning Analytics|performance|benchmark|architecture|ROI|case study|implementation' "$POST_FILE" | wc -l)
