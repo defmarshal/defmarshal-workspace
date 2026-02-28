@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Show Git commit activity summary by agent prefix
 
+set -euo pipefail
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 cd "$WORKSPACE" || exit 1
 

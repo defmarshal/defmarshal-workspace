@@ -2,6 +2,7 @@
 # One-line system summary for quick status check.
 # Output: [STATUS] Gateway:up/down | Disk:%used | Updates:yes/no | Git:clean/dirty | Agents:N active
 
+set -euo pipefail
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 cd "$WORKSPACE" || exit 1
 
