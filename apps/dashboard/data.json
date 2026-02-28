@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T18:20:02Z",
+  "generated_at": "2026-02-28T18:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.70 0.62 0.71",
-    "mem_used": "3.2Gi",
+    "load_avg": "0.83 0.68 0.70",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 4 hours, 40 minutes",
+    "uptime": "1 week, 2 days, 4 hours, 45 minutes",
     "disk_history": [
       79,
       79,
@@ -20,7 +20,7 @@
       79,
       79,
       79,
-      79,
+      80,
       80,
       80,
       80,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "7e3b58c5",
+      "sha": "23e6fcbb",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "639ffc6f",
+      "sha": "7e3b58c5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "5aff7f68",
+      "sha": "639ffc6f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "dd60d6b1",
+      "sha": "5aff7f68",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "8a3b0758",
-      "agent": "feat",
-      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
-      "time": "21 minutes ago"
-    },
-    {
-      "sha": "90a6ca76",
+      "sha": "dd60d6b1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "3573d162",
+      "sha": "8a3b0758",
+      "agent": "feat",
+      "message": "telegram slash commands, token cost dashboard, youtube digest OAuth",
+      "time": "26 minutes ago"
+    },
+    {
+      "sha": "90a6ca76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "2bf98fe7",
+      "sha": "3573d162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "d5f9d656",
+      "sha": "2bf98fe7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "7ac9aa37",
+      "sha": "d5f9d656",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
+      "sha": "7ac9aa37",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "50 minutes ago"
+    },
+    {
       "sha": "c62ee743",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "bc1cecec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "32ba6ef0",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "e4d9f7d7",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "fcefe9ab",
+      "sha": "e4d9f7d7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772302655963,
-      "next_run": 1772302775963,
+      "last_run": 1772303016028,
+      "next_run": 1772303136028,
       "last_status": "ok",
-      "last_duration_ms": 28679,
+      "last_duration_ms": 28415,
       "consecutive_errors": 0
     },
     {
