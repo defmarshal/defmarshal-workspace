@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T04:55:02Z",
+  "generated_at": "2026-02-28T05:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -69,6 +69,12 @@
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "sha": "279707ed",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "sha": "deade967",
       "agent": "chore",
@@ -151,12 +157,6 @@
       "sha": "8fa9028e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "sha": "84cf9132",
-      "agent": "dev",
-      "message": "add find-large-files utility; rotate 675MB aria2.log; prune stub idea branches",
       "time": ""
     }
   ],
