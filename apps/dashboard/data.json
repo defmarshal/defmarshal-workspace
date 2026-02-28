@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T16:25:03Z",
+  "generated_at": "2026-02-28T16:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.78 1.68 1.38",
-    "mem_used": "3.8Gi",
+    "load_avg": "2.11 2.04 1.63",
+    "mem_used": "4.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 45 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 50 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "8075a233",
+      "sha": "1236ae47",
       "agent": "misc",
-      "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
-      "time": "2 minutes ago"
+      "message": "fix(torrent): torrent-add smart arg order detection; downloader shuffles top-20, checks aria2 queue + history file to avoid re-downloads",
+      "time": "81 seconds ago"
     },
     {
-      "sha": "e22c3569",
-      "agent": "misc",
-      "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "b9a42f46",
+      "sha": "08f45f49",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "8075a233",
+      "agent": "misc",
+      "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "e22c3569",
+      "agent": "misc",
+      "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "b9a42f46",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "fd4de115",
       "agent": "misc",
       "message": "fix(clawdash): add missing torrent card div to Overview + cron tab button to nav; SW v20",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "3e84e287",
       "agent": "misc",
       "message": "fix(clawdash): pop sound — reuse unlocked AudioContext, unlock on first click/keydown, only play on new assistant msg; SW v19",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "5dbe8996",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "bcf35709",
       "agent": "misc",
       "message": "feat(clawdash): r6 — torrent card (aria2), cron tab, SSE chat (real-time), mewmew avatars, pop sound; SW v18",
-      "time": "12 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "e4ebbdec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "ab28f9e7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "53f9cfe5",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "66c43037",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "37a71265",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "4d3cc34c",
       "agent": "misc",
       "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
-      "time": "32 minutes ago"
-    },
-    {
-      "sha": "44bec76a",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "fcafff4c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "37 minutes ago"
     }
   ],
   "heartbeat": {
@@ -690,31 +690,6 @@
   "chat": [
     {
       "role": "user",
-      "ts": "2026-02-28T11:15:00.066Z",
-      "text": "[Sat 2026-02-28 11:14 UTC] hey"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:15:05.171Z",
-      "text": "[[reply_to_current]] hey hey~ did the message stay put this time or still disappearing? (^^) 🐾"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T11:15:20.633Z",
-      "text": "[Sat 2026-02-28 11:15 UTC] disappearing"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:15:40.366Z",
-      "text": "There it is — line 1076: `setInterval(load, 60000)`. The **main `load()` function runs every 60 seconds** and calls `renderChat()` unconditionally, completely ignoring the `chatSending` flag! That's what's wiping the UI desu~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T11:15:50.035Z",
-      "text": "[[reply_to_current]] ugh found it (ಠ_ಠ) there's a **second** background loop — the main `load()` function runs every 60s and refreshes ALL dashboard data including chat, completely ignoring the `chatSending` flag desu~\n\none-line fix: `if (!chatSending) renderChat(...)` in `load()` too\n\nclear cache → v15 → should finally work nyaa~ 🐾"
-    },
-    {
-      "role": "user",
       "ts": "2026-02-28T11:58:58.906Z",
       "text": "[Sat 2026-02-28 11:58 UTC] test"
     },
@@ -937,6 +912,31 @@
       "role": "user",
       "ts": "2026-02-28T16:24:47.623Z",
       "text": "[Sat 2026-02-28 16:24 UTC] can you check random torrent downloader cron?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:25:22.210Z",
+      "text": "[[reply_to_current]] found an issue nyaa~ (ಠ_ಠ)\n\n**status: ok but silently broken**\n\nthe cron runs every 2h and reports `ok`, but it's actually failing to add torrents every single run. The syslog shows:\n```\nUsage: quick torrent-add <magnet_or_torrent_file> [rpc_secret]\n```\n\nmeaning `./quick torrent-add \"$MAGNET\"` is being called with an **empty or missing magnet** — the magnet extraction from `nyaa-top --pick` is failing, so it falls through and calls `torrent-add` with no argument desu~\n\n**root cause:** `nyaa-top --pick N` probably doesn't output a `Magnet: ` line anymore (API change or format change), so `$MAGNET` is always empty and the script logs \"Failed after 3 attempts\" — but exits 0 instead of 1, so the cron thinks it's ok\n\n**quick test:**\n```bash\ncd /home/ubuntu/.openclaw/workspace\n./quick nyaa-top --limit 5 --max-size 1G --pick 1\n```\n\nwant me to debug and fix the script? 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:26:21.568Z",
+      "text": "[Sat 2026-02-28 16:26 UTC] please do. also find a way to make sure it avoids any downloaded torrent"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:27:10.536Z",
+      "text": "Found it — `torrent-add` expects args as `$1=secret $2=magnet`, but the script calls `./quick torrent-add \"$MAGNET\"` with magnet as `$1` (no secret), which gets interpreted as the RPC secret, leaving `$2` (INPUT) empty! Also need to build the duplicate detection. Let me fix both:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:28:51.332Z",
+      "text": "[[reply_to_current]] all fixed nyaa~ 🐾 here's the full breakdown:\n\n**root cause of broken cron:**\n`torrent-add` expected args as `secret magnet` but was called as `magnet` (no secret) → `$1` became the secret, `$2` was empty → \"Usage:\" error every time desu~ (ಠ_ಠ)\n\n**fixes:**\n1. **`torrent-add`** — smart arg detection: if `$1` starts with `magnet:` it's the magnet, otherwise it's the secret. Both orders work now\n2. **`torrent-downloader.sh`** — completely rewritten:\n   - Shuffles all 20 picks randomly (no bias to index 1)\n   - Checks **aria2 active + waiting queue** by infoHash before adding\n   - Checks **`memory/torrent-history.txt`** for previously downloaded torrents\n   - Tries next pick if current one is duplicate\n   - Logs every decision to syslog + stdout\n   - Exits 0 cleanly if nothing new to add\n\nhistory file lives at `memory/torrent-history.txt` — will grow over time and prevent re-downloads forever ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:29:52.468Z",
+      "text": "[Sat 2026-02-28 16:29 UTC] do the test run"
     }
   ]
 }
