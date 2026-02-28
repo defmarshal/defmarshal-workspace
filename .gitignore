@@ -97,3 +97,7 @@ skills/kokoro-tts/venv/
 memory/enhancement-bot.pid
 apps/dashboard/tls.crt
 apps/dashboard/tls.key
+# Tailscale/TLS key files
+*.key
+*.crt
+*.pem
