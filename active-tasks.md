@@ -22,5 +22,6 @@ This file tracks all currently running agents, their session keys, goals, and st
 - [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)
   - Verification: daemon process PID 1121739; log shows cycle started; sleeping until next interval
 
-- [workspace-builder-20260228-0707] workspace-builder - Strategic maintenance - archive validated tasks, track research, enforce constraints (started: 2026-02-28 07:07 UTC, status: validated)
-  - Verification: active-tasks 1087b (<2KB), MEM29, ✅ health green, git clean & pushed; research file tracked, archived tasks moved; constraints satisfied ✅
+- [workspace-builder-20260228-0907] workspace-builder - Strategic maintenance - memory reindex, validate constraints, enforce standards (started: 2026-02-28 09:07 UTC, status: running)
+  - Verification: in progress; Phase 1 complete (reindex fresh), Phases 2-4 pending
+
