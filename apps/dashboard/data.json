@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T11:00:02Z",
+  "generated_at": "2026-02-28T11:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,11 +9,14 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.64 0.69 0.78",
-    "mem_used": "3.6Gi",
+    "load_avg": "0.80 0.75 0.79",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 20 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 25 minutes",
     "disk_history": [
+      72,
+      72,
+      72,
       72,
       72,
       72,
@@ -53,14 +56,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-02-28 10:03",
-      "last_line": "[2026-02-28T10:03:27Z] [content-agent] Generated 10:00 tech update (4.8KB, df194d97). Covered: Cybersecurity 2026 research (agentic AI, NHI/SaaS, .85M ransomware, AMTD, ZT2.0, PQC) + disk-usage-breakdown dev drop. 195 research reports, 17 content pieces today."
+      "last_run": "2026-02-28 11:04",
+      "last_line": "[2026-02-28T11:04:50Z] [content-agent] Generated 11:00 tech update (5.5KB, 6651112a). Covered: Satellite Internet 2026 (Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, DTC, AST SpaceMobile, SEA angle) + content INDEX sync dev drop. 196 research reports, 18 content pieces today."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 10:02",
-      "last_line": "[2026-02-28T10:02:20Z] [dev-agent] Completed cycle (fbd858c1): aria2.log rotated 68MB→fresh; fixed log-rotate help text (100MB→50MB); added disk-usage-breakdown.sh with color-coded status tiers; registered disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick."
+      "last_run": "2026-02-28 11:03",
+      "last_line": "2026-02-28 11:03:23 UTC - Dev-agent cycle completed (exit 0)"
     },
     {
       "name": "supervisor",
@@ -89,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "6700193a",
+      "sha": "6651112a",
+      "agent": "content",
+      "message": "11:00 tech update — Satellite Internet 2026 (Starlink 6M/450Tbps, Amazon Leo Ultra 1Gbps/AWS, DTC, SEA angle) + content INDEX sync dev drop",
+      "time": "18 seconds ago"
+    },
+    {
+      "sha": "8cf0189a",
+      "agent": "dev",
+      "message": "sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "6bee803a",
+      "agent": "misc",
+      "message": "fix(clawdash): push subscribe retry (3x backoff) + clearer error msgs for 'push service error'",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "321f269e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "aaa0d5cf",
+      "sha": "6700193a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "624a1ff4",
+      "sha": "aaa0d5cf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "624a1ff4",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "8b82bad1",
       "agent": "misc",
       "message": "feat(clawdash): r5 — active tasks panel, content stats card, real disk history, chat leak filter (NO_REPLY/HEARTBEAT/Continue), mobile cron col hide, agents 2-col grid",
-      "time": "19 minutes ago"
+      "time": "24 minutes ago"
     },
     {
       "sha": "cd8cd299",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "7aaf2074",
       "agent": "misc",
       "message": "feat(clawdash): r4 — load/mem/uptime in system card, relative output timestamps, HB notes highlight, commit sha+prefix chips, char counter, send spinner, Escape clears input, research latest fix",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "d20257e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "3c5ef746",
       "agent": "misc",
       "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "56905322",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "ee8968a6",
       "agent": "misc",
       "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "e0c27976",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "3c8aee3b",
-      "agent": "misc",
-      "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "6bea6b48",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "45 minutes ago"
-    },
-    {
-      "sha": "42e16f1c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "ce054294",
-      "agent": "research",
-      "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "54 minutes ago"
     }
   ],
   "heartbeat": {
@@ -229,6 +232,18 @@
   ],
   "agent_outputs": [
     {
+      "file": "2026-02-28-1100-tech-update",
+      "ts": "2026-02-28-1100",
+      "title": "Tech Update — 11:00 UTC, Feb 28 2026",
+      "size": 5518
+    },
+    {
+      "file": "INDEX",
+      "ts": "",
+      "title": "Content Archive Index",
+      "size": 51923
+    },
+    {
       "file": "2026-02-28-1000-tech-update",
       "ts": "2026-02-28-1000",
       "title": "Tech Update — 10:00 UTC, Feb 28 2026",
@@ -257,12 +272,6 @@
       "ts": "2026-02-28-0605",
       "title": "Research Spotlight — 2026-02-28 (06:05 UTC)",
       "size": 4723
-    },
-    {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 51457
     },
     {
       "file": "2026-02-28-0504-research-spotlight",
@@ -341,12 +350,6 @@
       "ts": "2026-02-27-2304",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
       "size": 746
-    },
-    {
-      "file": "2026-02-27-2304-linkedin-pa-post",
-      "ts": "2026-02-27-2304",
-      "title": "🛠️ Developer Tips: Optimizing IBM Planning Analytics Development",
-      "size": 1527
     }
   ],
   "cron_jobs": [
@@ -680,36 +683,11 @@
     }
   ],
   "content_stats": {
-    "total": 494,
-    "today": 17,
+    "total": 495,
+    "today": 18,
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:48:06.661Z",
-      "text": "The chat tab has `height: 100%` but `#tab-panels` now controls the height — `#tab-chat` needs to fill the panel properly without overflowing. The input is getting pushed off-screen because `#tab-chat` isn't constrained to the panel height~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:48:11.464Z",
-      "text": "Also need `chat-main` and `chat-messages` to respect the constraint~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:48:17.965Z",
-      "text": "Also need `tab-panel.active` to not use `overflow-y: auto` for the chat tab specifically (it handles its own scroll)~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:48:22.603Z",
-      "text": "There's a duplicate `#tab-chat.active` — merge them~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:48:35.693Z",
-      "text": "[[reply_to_current]] refresh! the fix: `min-height: 0` + `overflow: hidden` all the way down the flex chain — `chat-main` was growing beyond the viewport and pushing the input off-screen (T_T)\n\nnow `#chat-messages` scrolls internally and the input bar stays pinned at the bottom always nyaa~ (^^)"
-    },
     {
       "role": "user",
       "ts": "2026-02-28T09:52:08.114Z",
@@ -934,6 +912,31 @@
       "role": "user",
       "ts": "2026-02-28T10:59:09.951Z",
       "text": "[Sat 2026-02-28 10:59 UTC] push failed registration failed push service error"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:00:07.991Z",
+      "text": "Push sends fine from backend! The error is on the **frontend** side — \"registration failed push service error\" happens during `pushManager.subscribe()`. This is a Chrome/FCM-side issue, not our server~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:00:29.634Z",
+      "text": "[[reply_to_current]] backend is fine — push sends 201 OK to your subscriptions desu~ the \"push service error\" is Chrome/FCM-side (usually temporary) nyaa~\n\n**what I fixed:**\n- 🔄 **Auto-retry** — tries subscribing 3 times with 2s/4s backoff before giving up\n- 💬 **Clearer error messages** — \"Push service unavailable after 3 tries. Try clearing browser cache or check Tailscale connection.\"\n- 🧹 Cleaned stale `test` entry from subscriptions file\n\n**if it still fails after retries:**\n1. Clear site data in Chrome → Settings → Privacy → Clear browsing data (site settings)\n2. Make sure you're on the Tailscale URL (`instance-20260207-2229.tail2dd22b.ts.net:8443`)\n3. Try again — FCM push service errors are often transient (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:02:16.713Z",
+      "text": "[Sat 2026-02-28 11:00 UTC] you there?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:02:21.861Z",
+      "text": "[[reply_to_current]] yes yes nyaa~ (^^) just pushed the push notification fix! 🐾\n\ndid the retry help or still getting the error? if you tap Enable again it should now retry 3 times automatically desu~"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:04:34.277Z",
+      "text": "[Sat 2026-02-28 11:04 UTC] still error"
     }
   ]
 }
