@@ -2,10 +2,11 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (185 total)
+## 2026 Reports (186 total)
 
 ### 2026-02
 - [Enterprise Planning Analytics Market 2026 — Competitive Landscape & Adoption Trends](2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md)
+- [Bash Arithmetic Pitfalls: Leading Zero "value too great for base" Error](2026-02-28-bash-arithmetic-leading-zero-pitfalls.md)
 - [Spring 2026 Anime Season Trends — Lineup, Streaming, and Highlights](2026-02-27-spring-2026-anime-season-trends.md)
 - [Space Launch Economics & Market 2026 — Cost per kg, Reusability, and Competitive Landscape](2026-02-27-space-launch-economics-market-2026-cost-per-kg-reusability-rideshare.md)
 - [Solid-State Batteries 2026 — From Lab to Road, Scaling Challenges Remain](2026-02-27-solid-state-batteries-2026.md)

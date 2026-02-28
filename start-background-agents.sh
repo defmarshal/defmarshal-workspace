@@ -36,7 +36,19 @@ start_if_missing() {
 # start_if_missing "torrent-bot" "agents/torrent-bot/loop.sh"  # Deprecated: CLI API changed; disabled 2026-02-19
 # cron-supervisor is now a cron-triggered agent (not a daemon loop).
 
-# Start aria2 daemon if not running
+# Start meta-supervisor daemon if not running (continuous agent outcome auditor)
+if pgrep -f "meta-supervisor-daemon.sh" > /dev/null; then
+  echo "  ✓ meta-supervisor daemon already running"
+else
+  echo "  → Starting meta-supervisor daemon..."
+  nohup bash "$WORKSPACE/agents/meta-supervisor/meta-supervisor-daemon.sh" > /dev/null 2>&1 &
+  sleep 1
+  if pgrep -f "meta-supervisor-daemon.sh" > /dev/null; then
+    echo "    ✓ meta-supervisor daemon started (PID $(pgrep -f "meta-supervisor-daemon.sh"))"
+  else
+    echo "    ⚠ Failed to start meta-supervisor daemon"
+  fi
+fi
 if pgrep -f "aria2c.*--conf-path=/home/ubuntu/.openclaw/workspace/aria2.conf" > /dev/null; then
   echo "  ✓ aria2 daemon already running"
 else
