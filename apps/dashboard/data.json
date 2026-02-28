@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T14:00:02Z",
+  "generated_at": "2026-02-28T14:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.13 0.80 0.76",
+    "load_avg": "0.80 0.94 0.85",
     "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 20 minutes",
+    "uptime": "1 week, 2 days, 25 minutes",
     "disk_history": [
       72,
       72,
@@ -56,14 +56,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-02-28 13:04",
-      "last_line": "[2026-02-28T13:04:31Z] [content-agent] Generated 13:00 tech update (7.2KB, bddcbb80). Covered: Cloud Cost Optimization 2026 ($189B waste/32%, FinOps Crawl/Walk/Run, 10 strategies, Spot/K8s/unit-econ/AI-FinOps, provider quick wins) + shebang/pipefail hardening dev drop. 198 research reports, 20 content pieces today."
+      "last_run": "2026-02-28 14:03",
+      "last_line": "[2026-02-28T14:03:46Z] [content-agent] Generated 14:00 tech update (6.5KB, 40ad1bb1). Covered: Developer Productivity 2026 (84% AI adoption/41% AI-gen code, layered stack model, Cursor/Copilot/Claude Code/Devin/Qodo/Snyk, platform eng/IDPs/DORA, FinDev, productivity paradox) + 107-script set -euo pipefail hardening dev drop. 199 research reports, 21 content pieces today."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 13:01",
-      "last_line": "[2026-02-28T13:01:41Z] [dev-agent] Completed cycle (62774f66): rotated aria2.log (78MB→fresh, 4 archives); synced content/INDEX.md (12:00 tech update, now 0 drift via index-drift); fixed validate-cron-schedules.sh set -uo→-euo; upgraded #!/bin/bash→#!/usr/bin/env bash in vercel-deploy.sh + 6 agent scripts (dev-cycle, content-cycle, research-cycle, linkedin-pa-agent, torrent-bot run/loop). Zero #!/bin/bash remaining."
+      "last_run": "2026-02-28 14:01",
+      "last_line": "2026-02-28 14:01:45 UTC - Dev-agent cycle completed (exit 0)"
     },
     {
       "name": "supervisor",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "49659c93",
+      "sha": "40ad1bb1",
+      "agent": "content",
+      "message": "14:00 tech update — Developer Productivity 2026 (84% AI adoption/41% AI-gen code, Cursor/Copilot/Claude Code/Devin stack, platform eng/IDPs/DORA/FinDev, productivity paradox) + 107-script pipefail hardening dev drop",
+      "time": "84 seconds ago"
+    },
+    {
+      "sha": "e05d6f1d",
+      "agent": "dev",
+      "message": "harden all 107 scripts/*.sh + 4 agents/*.sh with set -euo pipefail (0 syntax errors); 51→0 missing coverage across entire scripts/ dir",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "fac15f02",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "731aef86",
+      "sha": "49659c93",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "b3766c00",
+      "sha": "731aef86",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "3e4f77e1",
+      "sha": "b3766c00",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "11874e8d",
+      "sha": "3e4f77e1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "11874e8d",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "b32522ad",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "664e8f26",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "46ffccd5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "29b5d543",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "0988b308",
       "agent": "build",
       "message": "refresh disk history (workspace-builder 20260228-1307 finalization)",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "105b90dc",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "0e910881",
       "agent": "build",
       "message": "archive workspace-builder session 20260228-1107, finalize 1307; validate constraints, prune branches (none stale), update docs",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "d220e9c7",
-      "agent": "misc",
-      "message": "fix(clawdash): use chatData count (server snapshot) not DOM count in waitForReply — DOM frozen while chatSending; SW v16",
-      "time": "49 minutes ago"
-    },
-    {
-      "sha": "bf929fdd",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "50 minutes ago"
-    },
-    {
-      "sha": "6c9b51cf",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "53 minutes ago"
     }
   ],
   "heartbeat": {
@@ -235,7 +235,13 @@
       "file": "INDEX",
       "ts": "",
       "title": "Content Archive Index",
-      "size": 52178
+      "size": 52263
+    },
+    {
+      "file": "2026-02-28-1400-tech-update",
+      "ts": "2026-02-28-1400",
+      "title": "Tech Update — 14:00 UTC, Feb 28 2026",
+      "size": 6628
     },
     {
       "file": "2026-02-28-1300-tech-update",
@@ -344,12 +350,6 @@
       "ts": "",
       "title": "Daily Digest — 2026-02-28",
       "size": 2401
-    },
-    {
-      "file": "2026-02-28-0005-linkedin-pa-digest",
-      "ts": "2026-02-28-0005",
-      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
-      "size": 738
     }
   ],
   "cron_jobs": [
@@ -683,8 +683,8 @@
     }
   ],
   "content_stats": {
-    "total": 497,
-    "today": 20,
+    "total": 498,
+    "today": 21,
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
