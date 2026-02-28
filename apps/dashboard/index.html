@@ -769,19 +769,21 @@ async function sendMessage() {
     sendBtn.textContent = 'Send ↑';
     toast('✅ Message sent', 'ok', 2000);
     showTypingIndicator();
-    // Keep polling every 3s until a new assistant message arrives (max 3 min)
+    // Poll until a NEW assistant message appears after sentAt (max 3 min)
     const sentAt = Date.now();
-    // Use server-side count snapshot (not DOM — DOM is frozen while chatSending=true)
-    const prevServerCount = chatData.filter(m => m.role !== 'user').length;
+    // Use timestamp of last known assistant msg as baseline (immune to sliding window)
+    const asstMsgs = chatData.filter(m => m.role !== 'user');
+    const lastAsstTs = asstMsgs.length ? new Date(asstMsgs[asstMsgs.length - 1].ts).getTime() : 0;
     const waitForReply = setInterval(async () => {
       try {
         const r = await fetch('/api/chat');
         if (!r.ok) return;
         const d = await r.json();
         const msgs = d.chat || [];
-        const newCount = msgs.filter(m => m.role !== 'user').length;
+        // Look for any assistant msg newer than the last one we knew about
+        const newAsst = msgs.filter(m => m.role !== 'user' && new Date(m.ts).getTime() > lastAsstTs);
         const timedOut = Date.now() - sentAt > 180000;
-        if (newCount > prevServerCount || timedOut) {
+        if (newAsst.length > 0 || timedOut) {
           clearInterval(waitForReply);
           chatSending = false;
           removeTypingIndicator();
