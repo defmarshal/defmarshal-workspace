@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T04:05:02Z",
+  "generated_at": "2026-02-28T04:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -63,12 +63,30 @@
     }
   ],
   "research": {
-    "total": 212,
+    "total": 213,
     "tts_coverage": "99%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "sha": "211d5f8b",
+      "agent": "research",
+      "message": "Spring 2026 Anime Season Guide — release dates, must-watch series, Steel Ball Run, Witch Hat Atelier, One Piece Elbaf, Re:Zero S4, TenSura S4, Daemons of the Shadow Realm",
+      "time": ""
+    },
+    {
+      "sha": "72718d23",
+      "agent": "content",
+      "message": "morning digest 2026-02-28 04:05 UTC — clawdash v3, dev-agent utilities, SEA banking research",
+      "time": ""
+    },
+    {
+      "sha": "8fa9028e",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "sha": "84cf9132",
       "agent": "dev",
@@ -140,24 +158,6 @@
       "agent": "chore",
       "message": "update clawdash data",
       "time": ""
-    },
-    {
-      "sha": "0119068a",
-      "agent": "content",
-      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-02-28 0323 (v10 dynamic)",
-      "time": ""
-    },
-    {
-      "sha": "589e2418",
-      "agent": "build",
-      "message": "update progress.md with step 6-7 completions and final checklist",
-      "time": ""
-    },
-    {
-      "sha": "e5bc287c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": ""
     }
   ],
   "heartbeat": {
@@ -209,6 +209,12 @@
     "2026-02-28 03:30:23 UTC - OK"
   ],
   "agent_outputs": [
+    {
+      "file": "2026-02-28-morning-digest",
+      "ts": "",
+      "title": "Morning Digest — 2026-02-28 (04:05 UTC)",
+      "size": 4302
+    },
     {
       "file": "2026-02-28-0323-linkedin-pa-digest",
       "ts": "2026-02-28-0323",
@@ -322,12 +328,6 @@
       "ts": "2026-02-27-2002",
       "title": "⚖️ Comparative Analysis: IBM Planning Analytics vs. Oracle Hyperion",
       "size": 2642
-    },
-    {
-      "file": "2026-02-27-1914-linkedin-pa-digest",
-      "ts": "2026-02-27-1914",
-      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
-      "size": 754
     }
   ],
   "chat": [
