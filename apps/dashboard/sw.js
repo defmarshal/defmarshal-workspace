@@ -1,11 +1,10 @@
-const CACHE_NAME = 'clawdash-v1';
+const CACHE_NAME = 'clawdash-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/data.json',
   '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  '/icon-192.svg',
+  '/icon-512.svg'
 ];
 
 self.addEventListener('install', (event) => {
@@ -54,8 +53,8 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'New workspace notification',
-    icon: '/icon-192.png',
-    badge: '/icon-192.png',
+    icon: '/icon-192.svg',
+    badge: '/icon-192.svg',
     vibrate: [200, 100, 200],
     data: {
       url: '/' // navigate to dashboard on click

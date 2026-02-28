@@ -147,6 +147,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       load();
       setInterval(load, 60000);
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      }
     });
   </script>
 </body>

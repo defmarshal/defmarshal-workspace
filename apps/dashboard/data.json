@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T03:05:02Z",
+  "generated_at": "2026-02-28T03:06:50Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
     "disk_free": "12G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -42,12 +42,12 @@
     {
       "name": "supervisor",
       "active": true,
-      "last_run": "2026-02-28 02:30"
+      "last_run": "2026-02-28 03:06"
     },
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 02:30"
+      "last_run": "2026-02-28 03:05"
     },
     {
       "name": "meta-agent",
@@ -56,12 +56,27 @@
     }
   ],
   "research": {
-    "total": 211,
-    "tts_coverage": "100%",
-    "latest": "INDEX",
+    "total": 212,
+    "tts_coverage": "99%",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "agent": "build",
+      "message": "update research index with SEA digital banking 2026 report",
+      "time": ""
+    },
+    {
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": ""
+    },
+    {
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "agent": "content",
       "message": "daily digest report for 2026-02-28",
@@ -95,21 +110,6 @@
     {
       "agent": "chore",
       "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "agent": "fix",
-      "message": "unignore apps/dashboard and add clawdash PWA files; data.json now trackable by cron",
-      "time": ""
-    },
-    {
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
       "time": ""
     }
   ],
