@@ -63,9 +63,9 @@
     .tab-panel.active { display: flex; flex-direction: column; }
 
     /* ── Chat tab — full height ── */
-    #tab-chat { padding: 0; max-width: 100%; height: 0; flex: 1; }
-    #tab-chat.active { display: flex; flex-direction: row; height: 100%; }
-    .chat-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    #tab-chat { padding: 0; max-width: 100%; overflow: hidden; }
+    #tab-chat.active { display: flex; flex-direction: row; flex: 1; min-height: 0; overflow: hidden; }
+    .chat-main { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; }
     .chat-sidebar { width: 260px; flex-shrink: 0; background: var(--surface); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
 
     #chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
