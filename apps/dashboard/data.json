@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T17:00:51Z",
+  "generated_at": "2026-02-28T17:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.80 0.96 1.17",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.78 0.91 1.09",
+    "mem_used": "3.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 3 hours, 21 minutes",
+    "uptime": "1 week, 2 days, 3 hours, 25 minutes",
     "disk_history": [
-      72,
       72,
       73,
       75,
@@ -37,15 +36,16 @@
       79,
       79,
       79,
+      79,
       79
     ]
   },
   "agents": [
     {
       "name": "linkedin-pa-agent",
-      "active": false,
-      "last_run": "2026-02-28 03:23",
-      "last_line": "2026-02-28 03:23:39 UTC - Cycle completed"
+      "active": true,
+      "last_run": "2026-02-28 17:04",
+      "last_line": "2026-02-28 17:04:46 UTC - Content type: developer-tips"
     },
     {
       "name": "research-agent",
@@ -80,8 +80,8 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-02-28 16:00",
-      "last_line": "2026-02-28 16:00:49 UTC - Meta-Agent one-shot completed; actions: none"
+      "last_run": "2026-02-28 17:03",
+      "last_line": "2026-02-28 17:03:52 UTC - Meta-Agent one-shot completed; actions: none"
     }
   ],
   "research": {
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "dd9e0b84",
+      "agent": "build",
+      "message": "commit auto-generated state files (dashboard metrics, disk history)",
+      "time": "3 minutes ago"
+    },
+    {
       "sha": "3cc21b98",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "48 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "d73e736f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "49 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "75489d8f",
       "agent": "chore",
       "message": "commit lessons, daily log, disk history, torrent history",
-      "time": "4 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "cc5312cb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "6 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "8405254a",
       "agent": "misc",
       "message": "fix(agents): replace broken 'openclaw sessions spawn' CLI (doesn't exist) with 'openclaw agent --session-id' in agni-cycle + vishwakarma-cycle; Rudra/Krishna were never actually spawning",
-      "time": "7 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "e2a3547e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "11 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "ec841437",
       "agent": "misc",
       "message": "fix(torrent): aria2-slot-cleaner every 5min removes 100% complete from active; seed-ratio=0.0 seed-time=1 in conf",
-      "time": "14 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "cfbdfb78",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "16 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "a08d55f0",
       "agent": "misc",
       "message": "fix(clawdash): agent detail last-log column out of bounds — table-layout:fixed, colgroup widths, ellipsis on all cells (SW v23)",
-      "time": "21 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "af76b49a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "21 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "ec2c40e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "26 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "390ffc64",
       "agent": "misc",
       "message": "fix(torrent): auto-torrent-add.sh — add duplicate check (queue + history), pick from full top-10 randomly",
-      "time": "26 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "3d95cff9",
       "agent": "misc",
       "message": "fix(torrent): seed-ratio=1.0 seed-time=60 — stop hogging slots seeding forever with 0 upload",
-      "time": "29 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "d12a9467",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "31 minutes ago"
-    },
-    {
-      "sha": "651c210f",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "31 minutes ago"
+      "time": "35 minutes ago"
     }
   ],
   "heartbeat": {
@@ -659,14 +659,21 @@
       "schedule": "0 */2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772291237096,
-      "next_run": 1772298025629,
+      "last_run": 1772298028948,
+      "next_run": 1772305225629,
       "last_status": "ok",
-      "last_duration_ms": 633786,
+      "last_duration_ms": 188479,
       "consecutive_errors": 0
     }
   ],
   "active_tasks": [
+    {
+      "session_key": "workspace-builder-20260228-1705",
+      "agent": "workspace-builder",
+      "goal": "Commit pending state files, enforce constraints, close loop",
+      "started": "2026-02-28 17:05 UTC",
+      "status": "running"
+    },
     {
       "session_key": "meta-supervisor-daemon",
       "agent": "meta-supervisor",
@@ -688,16 +695,6 @@
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:15:15.737Z",
-      "text": "[[reply_to_current]] two bugs fixed nyaa~\n\n**problem 1**: Chrome blocks AudioContext until you interact with the page — now it unlocks on your first tap/click automatically\n\n**problem 2**: the sound trigger was comparing total message count wrong, could fire on page load instead of new messages — now only plays when a new **assistant** message arrives\n\nclear cache → v19 → tap anywhere on the page first, then send a message and wait for my reply — you should hear a little *ping* 🔔 (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:15:55.290Z",
-      "text": "[Sat 2026-02-28 16:15 UTC] where is torrent card and cron tab?"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T16:16:16.865Z",
@@ -937,6 +934,16 @@
       "role": "assistant",
       "ts": "2026-02-28T16:56:51.454Z",
       "text": "[[reply_to_current]] pretty clean overall nyaa~ here's what i found and fixed (^^)\n\n**fixed:**\n- 🔴 `clawdash-backend` was crash-looping (13 restarts) — old `CORS` uppercase ref from a previous version; current code is fine, server is online ✅\n- 🌿 deleted stale idea branch `idea/automate-active-tasks-cleanup-using`\n- 🗂️ committed untracked `memory/lessons.md` + daily log/history files\n- 📁 pruned 126 stale agni plans down to 5 (kept latest)\n\n**nothing critical left:**\n- 💾 disk at 79% — downloads folder is 8.8GB, all recent torrents; `quick cleanup-downloads` could trim old ones if needed\n- 🤖 agni/rudra spawn fix will kick in at next 4h cycle (first real Rudra run in 8 days!)\n- ✅ 0 cron errors, gateway healthy, git clean, no pending APT updates\n\npretty much all green desu~ ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T17:00:57.733Z",
+      "text": "[Sat 2026-02-28 17:00 UTC] nice. let's build something new. any ideas?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T17:01:16.935Z",
+      "text": "here's what's rattling around in my head nyaa~ 🐾\n\n**🎯 practical & high-value:**\n\n1. **Telegram slash commands** — `/status`, `/downloads`, `/health`, `/ask` directly in chat without opening ClawDash. You already text me anyway, just make it structured desu~\n\n2. **Smart news digest** — daily briefing on topics you actually care about (space tech, edge AI, quantum, anime releases) pulled from RSS/APIs, summarised by an agent, sent to Telegram at 9am Bangkok time\n\n3. **Anime episode tracker** — watch list + AniList/MAL sync, auto-notify when new episodes drop, integrated into ClawDash as a new tab\n\n**🔧 infrastructure:**\n\n4. **Token/cost dashboard** — track how much each cron agent is spending per day, which ones are wasteful, visual breakdown in ClawDash\n\n5. **Self-healing cron monitor** — detects when a cron agent starts silently failing (like torrent-downloader was) and pings you *before* it becomes a week-old bug\n\n**🎮 fun:**\n\n6. **openclaw-idle-rpg** — Vishwakarma/Krishna have been trying to build this for weeks; with the spawn fix now working we could actually drive it to completion\n\n---\n\nwhat vibe are you feeling? quick utility, something fun, or infrastructure? (｡◕‿◕｡)♡"
     }
   ]
 }
