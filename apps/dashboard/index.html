@@ -1049,7 +1049,7 @@ async function load() {
     renderAgentDetail(data.agents);
     renderOutputs(data.agent_outputs);
     renderActiveTasks(data.active_tasks);
-    renderChat(data.chat || [], true);
+    if (!chatSending) renderChat(data.chat || [], true);
     document.getElementById('last-updated').textContent = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     document.getElementById('error-banner').style.display = 'none';
     document.getElementById('conn-dot').className = '';
