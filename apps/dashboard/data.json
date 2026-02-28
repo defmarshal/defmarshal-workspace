@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T12:20:03Z",
+  "generated_at": "2026-02-28T12:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.84 0.81 0.87",
-    "mem_used": "3.2Gi",
+    "load_avg": "0.71 0.81 0.86",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 22 hours, 40 minutes",
+    "uptime": "1 week, 1 day, 22 hours, 45 minutes",
     "disk_history": [
       72,
       72,
@@ -92,93 +92,93 @@
   },
   "recent_commits": [
     {
-      "sha": "3ef16e83",
+      "sha": "0bff3ccc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "14cd99e9",
+      "sha": "3ef16e83",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "04693d4e",
-      "agent": "auto",
-      "message": "maintenance update 2026-02-28 12:09 UTC",
-      "time": "11 minutes ago"
-    },
-    {
-      "sha": "7378665a",
-      "agent": "research",
-      "message": "Cloud Cost Optimization 2026 — $189B waste/32% of cloud spend, FinOps framework, 10 strategies (rightsizing/Spot/zombies/K8s/unit-economics), AWS/Azure/GCP quick wins, AI workload FinOps; 198 reports",
-      "time": "12 minutes ago"
-    },
-    {
-      "sha": "d826b2d9",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "13 minutes ago"
-    },
-    {
-      "sha": "e5d9c072",
+      "sha": "14cd99e9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "b0cf050a",
-      "agent": "content",
-      "message": "12:00 tech update — Fintech 2026 (FaaS $484B, BaaS APAC $5.26B, agentic commerce, open finance, CBDCs, SEA 290M unbanked) + index-drift/log-tail/top-commits dev drop",
+      "sha": "04693d4e",
+      "agent": "auto",
+      "message": "maintenance update 2026-02-28 12:09 UTC",
       "time": "16 minutes ago"
     },
     {
-      "sha": "058f3235",
-      "agent": "dev",
-      "message": "add quick-log-tail.sh, quick-top-commits.sh, index-drift.sh (zero-drift check 197 research/495 content); fix log-tail arg passthrough; add content INDEX 11:00 entry; register index-drift in quick",
+      "sha": "7378665a",
+      "agent": "research",
+      "message": "Cloud Cost Optimization 2026 — $189B waste/32% of cloud spend, FinOps framework, 10 strategies (rightsizing/Spot/zombies/K8s/unit-economics), AWS/Azure/GCP quick wins, AI workload FinOps; 198 reports",
       "time": "17 minutes ago"
     },
     {
-      "sha": "0d00fbc7",
+      "sha": "d826b2d9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": "18 minutes ago"
+    },
+    {
+      "sha": "e5d9c072",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "20272d9f",
+      "sha": "b0cf050a",
+      "agent": "content",
+      "message": "12:00 tech update — Fintech 2026 (FaaS $484B, BaaS APAC $5.26B, agentic commerce, open finance, CBDCs, SEA 290M unbanked) + index-drift/log-tail/top-commits dev drop",
+      "time": "21 minutes ago"
+    },
+    {
+      "sha": "058f3235",
+      "agent": "dev",
+      "message": "add quick-log-tail.sh, quick-top-commits.sh, index-drift.sh (zero-drift check 197 research/495 content); fix log-tail arg passthrough; add content INDEX 11:00 entry; register index-drift in quick",
+      "time": "22 minutes ago"
+    },
+    {
+      "sha": "0d00fbc7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "ba0260f2",
+      "sha": "20272d9f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "f263e608",
+      "sha": "ba0260f2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "8ae68582",
+      "sha": "f263e608",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "d962f1c9",
+      "sha": "8ae68582",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "43b1dde1",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
+      "sha": "d962f1c9",
+      "agent": "chore",
+      "message": "update clawdash data",
       "time": "50 minutes ago"
     }
   ],
