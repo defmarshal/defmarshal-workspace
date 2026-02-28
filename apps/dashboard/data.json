@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T21:40:02Z",
+  "generated_at": "2026-02-28T21:45:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,23 +9,23 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.79 0.72 0.73",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.87 0.73 0.74",
+    "mem_used": "3.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 8 hours, 0 minutes",
+    "uptime": "1 week, 2 days, 8 hours, 5 minutes",
     "disk_history": [
       80,
       80,
       80,
       80,
       80,
+      79,
+      79,
+      79,
+      79,
+      79,
+      79,
       80,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
       80,
       80,
       80,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "af563aed",
+      "sha": "90d0ebfe",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "6d177e60",
+      "sha": "af563aed",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "02107dfc",
+      "sha": "6d177e60",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "1a6b77ce",
+      "sha": "02107dfc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "8cb186ac",
+      "sha": "1a6b77ce",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "4f31320c",
-      "agent": "build",
-      "message": "update disk usage history tracking",
-      "time": "29 minutes ago"
-    },
-    {
-      "sha": "0dd7750d",
-      "agent": "build",
-      "message": "document cron job state drift lesson (state synchronization)",
-      "time": "29 minutes ago"
-    },
-    {
-      "sha": "8a2260e0",
+      "sha": "8cb186ac",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "9af97dd4",
+      "sha": "4f31320c",
       "agent": "build",
-      "message": "prune active-tasks.md to satisfy 2KB constraint",
-      "time": "31 minutes ago"
-    },
-    {
-      "sha": "c4ef74c5",
-      "agent": "build",
-      "message": "close loop - archive workspace-builder session with verification metrics",
-      "time": "32 minutes ago"
-    },
-    {
-      "sha": "825a46b0",
-      "agent": "build",
-      "message": "token conservation - disable 4 cron jobs (daily-digest, supervisor, meta-supervisor, linkedin-pa); add workspace-builder planning docs; commit disk-history.json",
+      "message": "update disk usage history tracking",
       "time": "34 minutes ago"
     },
     {
-      "sha": "c1802e1f",
+      "sha": "0dd7750d",
+      "agent": "build",
+      "message": "document cron job state drift lesson (state synchronization)",
+      "time": "34 minutes ago"
+    },
+    {
+      "sha": "8a2260e0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "55fca476",
+      "sha": "9af97dd4",
+      "agent": "build",
+      "message": "prune active-tasks.md to satisfy 2KB constraint",
+      "time": "36 minutes ago"
+    },
+    {
+      "sha": "c4ef74c5",
+      "agent": "build",
+      "message": "close loop - archive workspace-builder session with verification metrics",
+      "time": "37 minutes ago"
+    },
+    {
+      "sha": "825a46b0",
+      "agent": "build",
+      "message": "token conservation - disable 4 cron jobs (daily-digest, supervisor, meta-supervisor, linkedin-pa); add workspace-builder planning docs; commit disk-history.json",
+      "time": "39 minutes ago"
+    },
+    {
+      "sha": "c1802e1f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "53c5246e",
+      "sha": "55fca476",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "319bcd6a",
+      "sha": "53c5246e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772314723717,
-      "next_run": 1772314843717,
+      "last_run": 1772314963740,
+      "next_run": 1772315083740,
       "last_status": "ok",
-      "last_duration_ms": 28822,
+      "last_duration_ms": 28873,
       "consecutive_errors": 0
     },
     {
