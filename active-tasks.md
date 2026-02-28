@@ -26,13 +26,13 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Completed (Archived)
 
-- [workspace-builder-20260228-2101] workspace-builder - Token conservation: disabled 4 cron jobs (daily-digest, supervisor, meta-supervisor, linkedin-pa); committed disk history; added planning docs (started: 2026-02-28 21:01 UTC, status: validated)
-  - Verification: active-tasks 1915b (<2KB), MEM31, ✅ health green, ✅ all constraints satisfied; git clean & pushed; cron jobs confirmed disabled via openclaw cron list; changes: 5 files, 202 insertions, 284 deletions
-  - Archived: 2026-02-28 21:30 UTC (workspace-builder closure)
+- [workspace-builder-20260228-2101] workspace-builder - Token conservation: disabled 4 cron jobs; committed disk history & planning docs (started: 2026-02-28 21:01 UTC, status: validated)
+  - Verification: active-tasks 1915b, MEM31, health green, constraints OK, git clean; disabled 4 cron jobs
+  - Archived: 2026-02-28 21:30 UTC
 
 - [workspace-builder-20260228-1705] workspace-builder - Commit pending state files, enforce constraints, close loop (started: 2026-02-28 17:05 UTC, status: validated)
-  - Verification: active-tasks 1639b (<2KB), MEM31, ✅ health green, git clean & pushed; state files committed; all constraints satisfied ✅
-  - Archived: 2026-02-28 19:01 UTC (workspace-builder closure)
+  - Verification: active-tasks 1639b, MEM31, health green, constraints OK, git clean & pushed
+  - Archived: 2026-02-28 19:01 UTC
 
 - [workspace-builder-20260228-1307] workspace-builder - Archive tasks, commit data, enhance validation (started: 2026-02-28 13:07 UTC, status: validated)
   - Verification: active-tasks 1337b (<2KB), MEM31, ✅ health green, git clean & pushed; archive done, branch hygiene verified, all constraints satisfied ✅
