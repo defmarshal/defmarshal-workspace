@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # LinkedIn Content Agent - IBM Planning Analytics (Analyst-Report v10)
 # Dynamic LLM-generated queries + topic bucket rotation
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Torrent-bot-daemon - DEPRECATED (2026-02-19)
 # This daemon is no longer needed. Torrent operations are handled by cron and skills.
 # Exiting immediately.

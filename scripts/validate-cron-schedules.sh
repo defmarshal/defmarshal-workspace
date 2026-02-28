@@ -2,7 +2,7 @@
 # Validate and correct cron job schedules against CRON_JOBS.md documentation
 # Now parses CRON_JOBS.md dynamically to avoid duplication and drift.
 
-set -uo pipefail
+set -euo pipefail
 cd /home/ubuntu/.openclaw/workspace
 
 LOGFILE="memory/cron-schedules.log"

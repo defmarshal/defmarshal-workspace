@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Dev Agent - One Cycle (with retry)
 # This script performs a single dev-agent cycle with retry on transient errors.
 

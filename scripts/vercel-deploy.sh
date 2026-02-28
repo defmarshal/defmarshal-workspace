@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Vercel Deployment Helper — link, configure, and deploy a project to Vercel
 # Usage: quick vercel [subcommand]
 # Subcommands: init, deploy, logs, link, unlink

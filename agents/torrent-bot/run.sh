@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Torrent-bot script - DEPRECATED (2026-02-19)
 # The 'openclaw agents spawn' command is no longer supported.
 # Torrent management is now handled by:
