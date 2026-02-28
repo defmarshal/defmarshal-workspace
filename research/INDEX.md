@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (190 total)
+## 2026 Reports (191 total)
 
 ### 2026-02
+- [Open Source LLM Landscape 2026 — DeepSeek, Llama 4, Qwen3, Mistral & The Performance Gap Collapse](2026-02-28-open-source-llm-landscape-2026-deepseek-llama4-qwen3-mistral.md)
 - [Agentic AI & Multi-Agent Frameworks 2026 — LangGraph, CrewAI, OpenAI SDK, MCP & A2A](2026-02-28-agentic-ai-multi-agent-frameworks-2026.md)
 - [Spring 2026 Anime Season — Complete Guide: Must-Watch Series, Release Dates & Streaming](2026-02-28-spring-2026-anime-season-guide-release-dates-must-watch.md)
 - [Southeast Asia Digital Banking 2026 — Neobanks, AI Adoption & Virtual Bank Launches](2026-02-28-southeast-asia-digital-banking-neobanks-ai-virtual-banks.md)
