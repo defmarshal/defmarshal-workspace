@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T03:33:12Z",
+  "generated_at": "2026-02-28T03:35:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
     "disk_free": "12G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -69,6 +69,12 @@
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "sha": "7c8f6498",
+      "agent": "feat",
+      "message": "clawdash v2 — 4-tab dashboard (Overview/Heartbeat/Agents/Chat) with live data",
+      "time": ""
+    },
     {
       "sha": "89b00f7c",
       "agent": "chore",
@@ -151,12 +157,6 @@
       "sha": "7c1d128c",
       "agent": "content",
       "message": "daily digest report for 2026-02-28",
-      "time": ""
-    },
-    {
-      "sha": "38d0d747",
-      "agent": "dev",
-      "message": "archive unused linkedin-pa-agent-v9-backup.sh (contains unfixed octal timestamp bugs; superseded by v10)",
       "time": ""
     }
   ],
@@ -520,6 +520,16 @@
       "role": "assistant",
       "ts": "2026-02-28T03:33:06.043Z",
       "text": "data is rich~ now let me write the full tabbed `index.html`~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T03:33:43.605Z",
+      "text": "live~! let me verify the tabs and data are all there (^^)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T03:33:52.162Z",
+      "text": "all tabs live with real data desu~! ✅ (^^)♪\n\n**ClawDash v2 is up at:** https://openclaw-dashboard-delta.vercel.app\n\n**4 tabs:**\n- 📊 **Overview** — system health, agent status, research library, recent commits\n- 💓 **Heartbeat** — last heartbeat state (all 12 keys) + supervisor log\n- 🤖 **Agents** — agent detail table with last log line + recent agent output files (20 latest)\n- 💬 **Chat** — our full Telegram conversation, bubble-style, auto-scrolls to bottom\n\n**Also:** every 5min the cron regenerates `data.json` → commits → pushes → Vercel redeploys, so chat + agent outputs stay fresh automatically nyaa~"
     }
   ]
 }
