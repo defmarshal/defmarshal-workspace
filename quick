@@ -689,17 +689,30 @@ case "$cmd" in
       done
     ;;
   cron-failures)
-    # Show cron jobs with errors (consecutiveErrors > 0 or lastStatus != "ok")
+    # Show cron jobs with errors (consecutiveErrors > 0 or lastStatus == "error"/"failed")
+    # NOTE: null/none status = never run yet (not an error)
     echo "Failed/Error Cron Jobs:"
     echo "----------------------"
-    openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | select(.state.consecutiveErrors > 0 or .state.lastStatus != "ok") | "\(.name)|\(.state.lastStatus)|\(.state.consecutiveErrors)|\(.state.nextRunAtMs // 0)"' | while IFS='|' read -r name status errors nextMs; do
-      if [ "$nextMs" -gt 0 ]; then
-        nextdt=$(date -u -d "@$((nextMs/1000))" '+%Y-%m-%d %H:%M' 2>/dev/null || echo "?")
-      else
-        nextdt="-"
-      fi
-      printf "%-25s %-10s %-6s %-16s\n" "$name" "$status" "$errors" "$nextdt"
-    done
+    openclaw cron list --json 2>/dev/null | python3 -c "
+import json,sys,os
+raw=sys.stdin.read()
+idx=min((raw.find('[') if raw.find('[')>=0 else 99999),(raw.find('{') if raw.find('{')>=0 else 99999))
+if idx==99999: sys.exit(0)
+data=json.loads(raw[idx:])
+jobs=data if isinstance(data,list) else data.get('jobs',[])
+found=False
+for j in jobs:
+    state=j.get('state',{})
+    errors=state.get('consecutiveErrors',0) or 0
+    status=state.get('lastStatus') or ''
+    if errors>0 or status.lower() in ('error','failed','fail'):
+        nxt=state.get('nextRunAtMs',0) or 0
+        import datetime
+        nxtdt=datetime.datetime.utcfromtimestamp(nxt/1000).strftime('%Y-%m-%d %H:%M') if nxt else '-'
+        print(f\"{j.get('name','?'):<28} {str(status):<12} {errors:<6} {nxtdt}\")
+        found=True
+if not found: print('  (none)')
+" 2>/dev/null
     ;;
   summary)
     # One-line system summary

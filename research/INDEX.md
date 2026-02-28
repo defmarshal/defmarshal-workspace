@@ -2,7 +2,7 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (200 total)
+## 2026 Reports (218 total)
 
 ### 2026-02
 - [AR/VR & Spatial Computing 2026 — Apple Vision Pro, Meta Quest, Smart Glasses & the Enterprise Inflection](2026-02-28-ar-vr-spatial-computing-2026-apple-vision-pro-meta-quest-enterprise-xr.md)
@@ -205,6 +205,30 @@ This index is auto‑generated. Last updated: 2026-02-28
 - [Research Digest — 2026-02-15 (Chinese New Year](2026-02-15-holiday-digest.md)
 - [Continuous Research Update: February 15, 2026](2026-02-15-continuous-research-update.md)
 - [AI Benchmark Gap: SWE-Bench Pro Reveals Brownfield Reality (Feb 15, 2026](2026-02-15-benchmark-gap-brownfield-reality.md)
+
+
+---
+
+## Early 2026 Reports (Feb 13–19)
+
+- [Cross-Domain Research: Anime, Banking, Tech & AI Trends](cross-domain-trends-2025-02-13.md)
+- [Cross-Domain Trends: Anime, Banking, Tech & AI (Feb 14)](cross-domain-trends-2026-02-14.md)
+- [AI Advances & Trends — February 2026 Deep Dive](research-2026-02-19-ai-advances.md)
+- [Cutting-Edge Technology Breakthroughs — Early 2026](research-2026-02-19-tech-breakthroughs.md)
+- [Banking & Fintech Developments — February 2026](research-2026-02-19-fintech-banking.md)
+- [Winter 2026 Anime Trends Report](research-2026-02-19-anime.md)
+- [AI in Anime Production: 2026 Transformation Report](ai-in-anime-production-2026-02-14.md)
+- [AI Voice Synthesis & Anime Dubbing Economics 2026](ai-voice-synthesis-anime-dubbing-2026-economics.md)
+- [AI Anime Fan Engagement & Subscription Economics 2026](ai-anime-fan-engagement-subscription-economics-2026.md)
+- [AI Anime Marketing & Audience Analytics 2026](ai-anime-marketing-audience-analytics-2026.md)
+- [AI Music Generation & Anime Soundtracks 2026](ai-music-generation-anime-soundtracks-2026.md)
+- [Case Study: AI Convergence in Streaming 2026](case-study-ai-convergence-streaming-2026.md)
+- [Anime Industry Trends 2025 — Feb 13 Report](anime-industry-trends-2025-02-13.md)
+- [AI Convergence Cross-Domain Patterns 2026](ai-convergence-cross-domain-patterns-2026.md)
+- [AI Anime 2026 — Year of Dragon Outlook](ai-anime-2026-year-of-dragon-outlook.md)
+- [AI Personal Finance Agents — Feb 14, 2026](ai-personal-finance-agents-2026-02-14.md)
+- [AI-Anime-Finance Convergence: Q1 2026 Update](ai-anime-finance-convergence-q1-2026-update.md)
+- [AI Landscape 2026 Quick Reference](ai-landscape-2026-quick-reference.md)
 
 
 ---
