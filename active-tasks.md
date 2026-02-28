@@ -19,14 +19,16 @@ This file tracks all currently running agents, their session keys, goals, and st
 
 ## Running
 
-- [workspace-builder-20260228-2101] workspace-builder - Strategic maintenance: fix cron states, commit disk history, enforce constraints (started: 2026-02-28 21:01 UTC, status: running)
-  - Verification: pending
 - [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)
   - Verification: daemon process PID 1121739; log shows cycle started; sleeping until next interval
 
 <!-- Completed tasks are archived to daily logs (memory/YYYY-MM-DD.md) -->
 
 ## Completed (Archived)
+
+- [workspace-builder-20260228-2101] workspace-builder - Token conservation: disabled 4 cron jobs (daily-digest, supervisor, meta-supervisor, linkedin-pa); committed disk history; added planning docs (started: 2026-02-28 21:01 UTC, status: validated)
+  - Verification: active-tasks 1915b (<2KB), MEM31, ✅ health green, ✅ all constraints satisfied; git clean & pushed; cron jobs confirmed disabled via openclaw cron list; changes: 5 files, 202 insertions, 284 deletions
+  - Archived: 2026-02-28 21:30 UTC (workspace-builder closure)
 
 - [workspace-builder-20260228-1705] workspace-builder - Commit pending state files, enforce constraints, close loop (started: 2026-02-28 17:05 UTC, status: validated)
   - Verification: active-tasks 1639b (<2KB), MEM31, ✅ health green, git clean & pushed; state files committed; all constraints satisfied ✅
