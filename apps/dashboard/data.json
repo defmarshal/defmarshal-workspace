@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T17:45:02Z",
+  "generated_at": "2026-02-28T17:50:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.77 0.78 0.80",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.71 0.81 0.81",
+    "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 4 hours, 5 minutes",
+    "uptime": "1 week, 2 days, 4 hours, 10 minutes",
     "disk_history": [
-      77,
       78,
       79,
       79,
@@ -31,6 +30,7 @@
       79,
       79,
       79,
+      80,
       80,
       80,
       80,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "d5f9d656",
+      "sha": "2bf98fe7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "7ac9aa37",
+      "sha": "d5f9d656",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "7ac9aa37",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "c62ee743",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "bc1cecec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "32ba6ef0",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "e4d9f7d7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "fcefe9ab",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "ed38d41a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "8c70170c",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.2 — morale system, 20 events, income balance",
-      "time": "36 minutes ago"
+      "time": "41 minutes ago"
     },
     {
       "sha": "577307b6",
       "agent": "build",
       "message": "enhance anime-studio-tycoon (v1.2): events, morale, merch, sponsors, auto-AI, polished UI",
-      "time": "36 minutes ago"
+      "time": "41 minutes ago"
     },
     {
       "sha": "4a74145a",
       "agent": "build",
       "message": "update progress.md with finalization details (Phase 4 complete)",
-      "time": "37 minutes ago"
+      "time": "42 minutes ago"
     },
     {
       "sha": "cd539a39",
       "agent": "build",
       "message": "continue agent robustness fixes; capture latest content output",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "9948a6f2",
       "agent": "content",
       "message": "LinkedIn PA developer-tips analyst‑report for 2026-02-28 1706 (v10 dynamic)",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "10698b8c",
       "agent": "build",
       "message": "commit pending agent outputs (linkedin-pa fix, disk history, new content)",
-      "time": "39 minutes ago"
-    },
-    {
-      "sha": "7bd79eb1",
-      "agent": "build",
-      "message": "mark workspace-builder session validated (2026-02-28 17:05 UTC) - constraints satisfied, planning docs added",
-      "time": "39 minutes ago"
+      "time": "44 minutes ago"
     }
   ],
   "heartbeat": {
