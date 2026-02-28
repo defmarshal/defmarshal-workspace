@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T13:00:02Z",
+  "generated_at": "2026-02-28T13:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.97 0.94 0.91",
-    "mem_used": "3.3Gi",
+    "load_avg": "0.96 1.11 1.01",
+    "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 23 hours, 20 minutes",
+    "uptime": "1 week, 1 day, 23 hours, 25 minutes",
     "disk_history": [
       72,
       72,
@@ -56,14 +56,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-02-28 12:04",
-      "last_line": "[2026-02-28T12:04:27Z] [content-agent] Generated 12:00 tech update (4.8KB, b0cf050a). Covered: Fintech 2026 (FaaS $484B/BaaS $5.26B APAC, 14 trends, SEA 290M unbanked, deobanks/CBDCs/open finance) + index-drift dev drop (0 drift confirmed). 197 research reports, 19 content pieces today."
+      "last_run": "2026-02-28 13:04",
+      "last_line": "[2026-02-28T13:04:31Z] [content-agent] Generated 13:00 tech update (7.2KB, bddcbb80). Covered: Cloud Cost Optimization 2026 ($189B waste/32%, FinOps Crawl/Walk/Run, 10 strategies, Spot/K8s/unit-econ/AI-FinOps, provider quick wins) + shebang/pipefail hardening dev drop. 198 research reports, 20 content pieces today."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-02-28 12:03",
-      "last_line": "[2026-02-28T12:03:21Z] [dev-agent] Completed cycle (058f3235): added quick-log-tail.sh (agent log tail viewer), quick-top-commits.sh (prefix commit stats: 442 build/383 content/272 dev/157 research this month), index-drift.sh (INDEX vs filesystem checker, now shows 0 drift); fixed log-tail arg passthrough bug; synced content/INDEX.md (11:00 tech update)."
+      "last_run": "2026-02-28 13:01",
+      "last_line": "[2026-02-28T13:01:41Z] [dev-agent] Completed cycle (62774f66): rotated aria2.log (78MB→fresh, 4 archives); synced content/INDEX.md (12:00 tech update, now 0 drift via index-drift); fixed validate-cron-schedules.sh set -uo→-euo; upgraded #!/bin/bash→#!/usr/bin/env bash in vercel-deploy.sh + 6 agent scripts (dev-cycle, content-cycle, research-cycle, linkedin-pa-agent, torrent-bot run/loop). Zero #!/bin/bash remaining."
     },
     {
       "name": "supervisor",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "1f925800",
+      "sha": "bddcbb80",
+      "agent": "content",
+      "message": "13:00 tech update — Cloud Cost Optimization 2026 ($189B waste/32%, FinOps 3-phase, 10 strategies, Spot/K8s/unit-economics/AI-FinOps) + shebang hardening dev drop",
+      "time": "37 seconds ago"
+    },
+    {
+      "sha": "62774f66",
+      "agent": "dev",
+      "message": "rotate aria2.log (78MB→fresh); sync content INDEX (+1200 entry, 0 drift); fix set -euo pipefail in validate-cron-schedules.sh; upgrade #!/bin/bash→#!/usr/bin/env bash in vercel-deploy.sh + 6 agent scripts",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "d912fb7e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "d4376955",
+      "sha": "1f925800",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "7c11ebd6",
+      "sha": "d4376955",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "50b7cf96",
+      "sha": "7c11ebd6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "0a8b04ee",
+      "sha": "50b7cf96",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "0a8b04ee",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "09fb3a79",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "2b1b9cb5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "32d6d41e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "0bff3ccc",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "3ef16e83",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "14cd99e9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "04693d4e",
       "agent": "auto",
       "message": "maintenance update 2026-02-28 12:09 UTC",
-      "time": "51 minutes ago"
-    },
-    {
-      "sha": "7378665a",
-      "agent": "research",
-      "message": "Cloud Cost Optimization 2026 — $189B waste/32% of cloud spend, FinOps framework, 10 strategies (rightsizing/Spot/zombies/K8s/unit-economics), AWS/Azure/GCP quick wins, AI workload FinOps; 198 reports",
-      "time": "52 minutes ago"
-    },
-    {
-      "sha": "d826b2d9",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "53 minutes ago"
-    },
-    {
-      "sha": "e5d9c072",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
+      "time": "56 minutes ago"
     }
   ],
   "heartbeat": {
@@ -232,16 +232,22 @@
   ],
   "agent_outputs": [
     {
+      "file": "INDEX",
+      "ts": "",
+      "title": "Content Archive Index",
+      "size": 52178
+    },
+    {
+      "file": "2026-02-28-1300-tech-update",
+      "ts": "2026-02-28-1300",
+      "title": "Tech Update — 13:00 UTC, Feb 28 2026",
+      "size": 7239
+    },
+    {
       "file": "2026-02-28-1200-tech-update",
       "ts": "2026-02-28-1200",
       "title": "Tech Update — 12:00 UTC, Feb 28 2026",
       "size": 4830
-    },
-    {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 52008
     },
     {
       "file": "2026-02-28-1100-tech-update",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-0005",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
       "size": 738
-    },
-    {
-      "file": "2026-02-28-0005-linkedin-pa-post",
-      "ts": "2026-02-28-0005",
-      "title": "📊 Market Positioning: IBM Planning Analytics in the Enterprise Planning Landscape",
-      "size": 2562
     }
   ],
   "cron_jobs": [
@@ -683,8 +683,8 @@
     }
   ],
   "content_stats": {
-    "total": 496,
-    "today": 19,
+    "total": 497,
+    "today": 20,
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
