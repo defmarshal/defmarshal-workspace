@@ -2053,7 +2053,10 @@ EOF
     ;;
   research-recent)
     # Show recent research reports with TTS audio status
-    "$WORKSPACE/scripts/research-recent.sh"
+    "$WORKSPACE/scripts/research-recent.sh" "$@"
+    ;;
+  research-topics-today)
+    "$WORKSPACE/scripts/research-topics-today.sh" "$@"
     ;;
   research-hub-status)
     # Check Research Hub deployment status (local + remote)
