@@ -579,8 +579,17 @@ async function sendMessage() {
     }
     toast('✅ Message sent', 'ok', 2000);
     showTypingIndicator();
-    setTimeout(() => refreshChat(), 3000);
-    setTimeout(() => { removeTypingIndicator(); refreshChat(); }, 9000);
+    // Keep polling every 3s until a new assistant message arrives (max 3 min)
+    const sentAt = Date.now();
+    const prevCount = document.querySelectorAll('.msg.assistant').length;
+    const waitForReply = setInterval(async () => {
+      await refreshChat();
+      const newCount = document.querySelectorAll('.msg.assistant').length;
+      if (newCount > prevCount || Date.now() - sentAt > 180000) {
+        clearInterval(waitForReply);
+        removeTypingIndicator();
+      }
+    }, 3000);
   } catch (e) {
     const el = document.getElementById(tempId);
     if (el) el.querySelector('.msg-bubble').style.borderColor = 'var(--red)';
