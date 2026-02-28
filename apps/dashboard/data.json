@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T03:50:02Z",
+  "generated_at": "2026-02-28T03:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
@@ -69,6 +69,12 @@
     "hub_deployed": true
   },
   "recent_commits": [
+    {
+      "sha": "435237d9",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
     {
       "sha": "85f8619d",
       "agent": "feat",
@@ -151,12 +157,6 @@
       "sha": "062a3bce",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": ""
-    },
-    {
-      "sha": "44de87df",
-      "agent": "fix",
-      "message": "clawdash sw.js icon paths (.png→.svg), bump cache version, register SW in index.html",
       "time": ""
     }
   ],
@@ -331,11 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T02:33:22.905Z",
-      "text": "hey"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T02:33:27.318Z",
@@ -570,6 +565,21 @@
       "role": "assistant",
       "ts": "2026-02-28T03:47:59.998Z",
       "text": "all done desu~! ✅ here's what's new:\n\n**ClawDash v3 (^^)♪**\n\n**💬 Chat tab (full replacement):**\n- Bubble-style chat UI — user on right, mewmew on left\n- **Message input** — type + Enter or click Send, auto-resize textarea\n- Sends via `openclaw agent --deliver` → shows up in Telegram AND updates chat\n- Optimistic send (message appears immediately, updates after reply)\n- Auto-refreshes 3s and 8s after sending to catch my reply\n\n**⚡ Quick Commands sidebar (right side of chat):**\n- 18 one-click commands: health, status, git-today, digest, cron-status, hygiene, etc.\n- Output appears in a panel below — no terminal needed\n- Commands are whitelisted so nothing dangerous can run\n\n**Backend:**\n- Node.js server running on **port 3001** via PM2 (persists on restart)\n- `GET /api/data` — live regenerated data\n- `GET /api/chat` — fast chat-only refresh\n- `POST /api/send` — sends message\n- `POST /api/quick` — runs quick cmd\n\n**Access:**\n- 🏠 Local: `http://localhost:3001`\n- 🌐 Tailscale: `http://100.108.208.45:3001`\n- 📦 Vercel (static/readonly): `https://openclaw-dashboard-delta.vercel.app`\n\nThe header shows **⚡ live** when connected to the backend, or **📦 static** when on Vercel! nyaa~"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T03:50:35.472Z",
+      "text": "I want you to preserve token for now. Disable heartbeat and pa agent notification"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T03:51:01.054Z",
+      "text": "all 3 disabled desu~ ✅ let me also check if there are any other chatty crons~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T03:51:49.574Z",
+      "text": "all quiet now desu~ (^^) disabled:\n\n- 💓 **supervisor-cron** — heartbeat checks every 30min\n- 📢 **linkedin-pa-agent-cron** — hourly PA content + notifications\n- 🤖 **meta-supervisor-agent** — hourly meta supervisor starter\n- 📋 **daily-digest-cron** — daily digest announcements\n\nno more token-burning background chatter until you say so nyaa~ ♪"
     }
   ]
 }
