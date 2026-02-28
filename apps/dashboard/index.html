@@ -771,20 +771,21 @@ async function sendMessage() {
     showTypingIndicator();
     // Keep polling every 3s until a new assistant message arrives (max 3 min)
     const sentAt = Date.now();
-    const prevCount = document.querySelectorAll('.msg.assistant').length;
+    // Use server-side count snapshot (not DOM — DOM is frozen while chatSending=true)
+    const prevServerCount = chatData.filter(m => m.role !== 'user').length;
     const waitForReply = setInterval(async () => {
       try {
-        // Silent fetch — check count WITHOUT calling renderChat (preserves optimistic UI)
         const r = await fetch('/api/chat');
         if (!r.ok) return;
         const d = await r.json();
         const msgs = d.chat || [];
         const newCount = msgs.filter(m => m.role !== 'user').length;
-        if (newCount > prevCount || Date.now() - sentAt > 180000) {
+        const timedOut = Date.now() - sentAt > 180000;
+        if (newCount > prevServerCount || timedOut) {
           clearInterval(waitForReply);
-          chatSending = false; // unlock before final render
+          chatSending = false;
           removeTypingIndicator();
-          renderChat(msgs, true); // now safe to re-render with real data
+          renderChat(msgs, true);
         }
       } catch {}
     }, 3000);
