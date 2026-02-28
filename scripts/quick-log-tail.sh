@@ -1,27 +1,34 @@
 #!/usr/bin/env bash
-# Show recent log tail for a given agent or all
-# Usage: quick log-tail [agent-name]
+# Tail recent lines from agent logs
+# Usage: quick log-tail [agent|all] [lines]
 
 set -euo pipefail
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
-LOGS_DIR="$WORKSPACE/memory"
+MEMORY="$WORKSPACE/memory"
 
-AGENT="${1:-all}"
+TARGET="${1:-all}"
+LINES="${2:-30}"
 
-if [ "$AGENT" = "all" ]; then
-  echo "Recent log tails (last 10 lines) for all agents:"
-  for log in "$LOGS_DIR"/*.log; do
-    [ -f "$log" ] || continue
-    name=$(basename "$log" .log)
-    echo "=== $name ==="
-    tail -n 10 "$log" 2>/dev/null || echo "(empty or unreadable)"
+AGENTS=(dev-agent content-agent research-agent meta-agent idea-executor idea-generator supervisor agent-manager)
+
+tail_log() {
+  local name="$1"
+  local file="$MEMORY/${name}.log"
+  if [[ -f "$file" ]]; then
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "  📋 ${name}.log (last ${LINES} lines)"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    tail -n "$LINES" "$file"
     echo ""
+  else
+    echo "  ⚠️  ${name}.log not found"
+  fi
+}
+
+if [[ "$TARGET" == "all" ]]; then
+  for agent in "${AGENTS[@]}"; do
+    tail_log "$agent"
   done
 else
-  LOG="$LOGS_DIR/$AGENT.log"
-  if [ ! -f "$LOG" ]; then
-    echo "❌ Log not found: $LOG"
-    exit 1
-  fi
-  tail -n 20 "$LOG"
+  tail_log "$TARGET"
 fi
