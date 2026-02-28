@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T02:55:01Z",
+  "generated_at": "2026-02-28T03:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
@@ -78,6 +78,11 @@
       "time": ""
     },
     {
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
+    {
       "agent": "fix",
       "message": "unignore apps/dashboard and add clawdash PWA files; data.json now trackable by cron",
       "time": ""
@@ -105,11 +110,6 @@
     {
       "agent": "content",
       "message": "daily digest supplement for 2026-02-28 - meta-supervisor restart, research report summary, LinkedIn PA status",
-      "time": ""
-    },
-    {
-      "agent": "content",
-      "message": "LinkedIn PA technical-performance analyst‑report for 2026-02-28 0118 (v10 dynamic)",
       "time": ""
     }
   ],
