@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T16:35:02Z",
+  "generated_at": "2026-02-28T16:40:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 76,
@@ -7,16 +7,13 @@
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
-    "downloads_count": 13,
+    "downloads_count": 11,
     "downloads_gb": "7.5G",
-    "load_avg": "2.38 2.28 1.83",
-    "mem_used": "3.4Gi",
+    "load_avg": "0.77 1.33 1.54",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 55 minutes",
+    "uptime": "1 week, 2 days, 3 hours, 0 minutes",
     "disk_history": [
-      72,
-      72,
-      72,
       72,
       72,
       72,
@@ -37,6 +34,9 @@
       72,
       73,
       75,
+      76,
+      76,
+      76,
       76
     ]
   },
@@ -87,96 +87,96 @@
   "research": {
     "total": 226,
     "tts_coverage": "94%",
-    "latest": "INDEX\nnone",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "ec2c40e5",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "390ffc64",
       "agent": "misc",
       "message": "fix(torrent): auto-torrent-add.sh — add duplicate check (queue + history), pick from full top-10 randomly",
-      "time": "14 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "3d95cff9",
       "agent": "misc",
       "message": "fix(torrent): seed-ratio=1.0 seed-time=60 — stop hogging slots seeding forever with 0 upload",
-      "time": "3 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "d12a9467",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "651c210f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "1236ae47",
       "agent": "misc",
       "message": "fix(torrent): torrent-add smart arg order detection; downloader shuffles top-20, checks aria2 queue + history file to avoid re-downloads",
-      "time": "6 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "08f45f49",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "8075a233",
       "agent": "misc",
       "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
-      "time": "12 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "e22c3569",
       "agent": "misc",
       "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
-      "time": "14 minutes ago"
+      "time": "19 minutes ago"
     },
     {
       "sha": "b9a42f46",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "fd4de115",
       "agent": "misc",
       "message": "fix(clawdash): add missing torrent card div to Overview + cron tab button to nav; SW v20",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "3e84e287",
       "agent": "misc",
       "message": "fix(clawdash): pop sound — reuse unlocked AudioContext, unlock on first click/keydown, only play on new assistant msg; SW v19",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "5dbe8996",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "bcf35709",
       "agent": "misc",
       "message": "feat(clawdash): r6 — torrent card (aria2), cron tab, SSE chat (real-time), mewmew avatars, pop sound; SW v18",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "e4ebbdec",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
-    },
-    {
-      "sha": "ab28f9e7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
@@ -689,21 +689,6 @@
   },
   "chat": [
     {
-      "role": "assistant",
-      "ts": "2026-02-28T15:52:08.691Z",
-      "text": "Let me add some debug logging to understand exactly what's happening:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T15:52:56.664Z",
-      "text": "Found the real bug — the 100-message sliding window! When user sends a message, the window shifts and old assistant messages drop out, keeping the count at 73 or even lower. Fix: use **message timestamps** instead of counting:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T15:53:09.423Z",
-      "text": "[[reply_to_current]] found the REAL bug finally nyaa~ (ಠ_ಠ)\n\n**root cause:** the API returns only the last **100 messages**. When you send a message, the window slides — old assistant messages fall off the end, so the assistant count stays at 73 or even drops. The watcher never saw \"more assistant msgs\" because the count never went up!\n\n**fix:** switched to **timestamp comparison** instead of counting — now looks for any assistant message with a timestamp newer than the last one we knew about. Sliding window can't fool timestamps desu~\n\nclear cache → v17 → should finally work properly this time~ 🐾✨"
-    },
-    {
       "role": "user",
       "ts": "2026-02-28T16:06:25.128Z",
       "text": "[Sat 2026-02-28 16:06 UTC] it's ok"
@@ -937,6 +922,21 @@
       "role": "assistant",
       "ts": "2026-02-28T16:35:00.588Z",
       "text": "[[reply_to_current]] audit done nyaa~ here's the full picture desu~\n\n**❌ Confirmed broken (all fixed now):**\n1. **`random-torrent-downloader`** — `torrent-add` arg order bug, was calling `torrent-add \"$MAGNET\"` but script expected secret first → \"Usage:\" every run, never added anything for who knows how long\n2. **`auto-torrent-cron`** — same root issue via `--add` flag, PLUS no duplicate check at all\n3. **`seed-ratio=0`** — completed torrents seeded forever, hogging all 5 slots so nothing could download\n\n**⚠️ Minor / non-critical:**\n4. **`archiver-manager-cron`** — never run but that's expected, it's weekly (Sunday 2am UTC), just hasn't hit yet\n5. **`agni-cron`** — spawning sub-agents but `session: unknown` (spawn output parsing issue), logs show it's technically running\n\n**✅ Everything else healthy:**\n- notifier, evolver, dev/content/research agents, meta-agent, supervisor — all running fine with proper logs\n\nthe two torrent scripts were the only real silent failures (ಠ_ಠ) both fixed + history-based dedup added so they'll never re-download the same thing ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:38:56.118Z",
+      "text": "[Sat 2026-02-28 16:38 UTC] on agent details, last log is out of bound"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:39:43.156Z",
+      "text": "Now I can see the issue — the \"Last Log\" column uses `max-width:280px` with `white-space:nowrap` and `overflow:hidden` but there's no `table-layout:fixed` so on mobile/narrow screens the table overflows the card. Let me fix:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:39:52.790Z",
+      "text": "Now fix the `renderAgentDetail` function — set explicit column widths and remove the redundant inline `max-width/overflow/white-space` since they'll be handled by table CSS:"
     }
   ]
 }
