@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T02:40:02Z",
+  "generated_at": "2026-02-28T02:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
@@ -63,6 +63,11 @@
   },
   "recent_commits": [
     {
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": ""
+    },
+    {
       "agent": "fix",
       "message": "unignore apps/dashboard and add clawdash PWA files; data.json now trackable by cron",
       "time": ""
@@ -105,11 +110,6 @@
     {
       "agent": "build",
       "message": "track research report (EPM market analysis) and meta-supervisor restart script; add planning docs and update daily log",
-      "time": ""
-    },
-    {
-      "agent": "dev",
-      "message": "mitigate short LinkedIn PA posts by auto‑appending Key Takeaways when <300 words",
       "time": ""
     }
   ],
