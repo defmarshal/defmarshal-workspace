@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T17:15:02Z",
+  "generated_at": "2026-02-28T17:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.64 0.91 1.05",
-    "mem_used": "3.5Gi",
+    "load_avg": "0.88 0.85 0.99",
+    "mem_used": "3.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 3 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 3 hours, 40 minutes",
     "disk_history": [
-      75,
       76,
       76,
       76,
@@ -27,6 +26,7 @@
       77,
       77,
       78,
+      79,
       79,
       79,
       79,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "ed38d41a",
+      "sha": "fcefe9ab",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "8c70170c",
-      "agent": "game",
-      "message": "polish Anime Studio Tycoon v1.2 — morale system, 20 events, income balance",
-      "time": "6 minutes ago"
-    },
-    {
-      "sha": "577307b6",
-      "agent": "build",
-      "message": "enhance anime-studio-tycoon (v1.2): events, morale, merch, sponsors, auto-AI, polished UI",
-      "time": "6 minutes ago"
-    },
-    {
-      "sha": "4a74145a",
-      "agent": "build",
-      "message": "update progress.md with finalization details (Phase 4 complete)",
-      "time": "7 minutes ago"
-    },
-    {
-      "sha": "cd539a39",
-      "agent": "build",
-      "message": "continue agent robustness fixes; capture latest content output",
-      "time": "8 minutes ago"
-    },
-    {
-      "sha": "9948a6f2",
-      "agent": "content",
-      "message": "LinkedIn PA developer-tips analyst‑report for 2026-02-28 1706 (v10 dynamic)",
-      "time": "8 minutes ago"
-    },
-    {
-      "sha": "10698b8c",
-      "agent": "build",
-      "message": "commit pending agent outputs (linkedin-pa fix, disk history, new content)",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "7bd79eb1",
-      "agent": "build",
-      "message": "mark workspace-builder session validated (2026-02-28 17:05 UTC) - constraints satisfied, planning docs added",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "9cce18a1",
+      "sha": "ed38d41a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "8c70170c",
+      "agent": "game",
+      "message": "polish Anime Studio Tycoon v1.2 — morale system, 20 events, income balance",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "577307b6",
+      "agent": "build",
+      "message": "enhance anime-studio-tycoon (v1.2): events, morale, merch, sponsors, auto-AI, polished UI",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "4a74145a",
+      "agent": "build",
+      "message": "update progress.md with finalization details (Phase 4 complete)",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "cd539a39",
+      "agent": "build",
+      "message": "continue agent robustness fixes; capture latest content output",
+      "time": "13 minutes ago"
+    },
+    {
+      "sha": "9948a6f2",
+      "agent": "content",
+      "message": "LinkedIn PA developer-tips analyst‑report for 2026-02-28 1706 (v10 dynamic)",
+      "time": "13 minutes ago"
+    },
+    {
+      "sha": "10698b8c",
+      "agent": "build",
+      "message": "commit pending agent outputs (linkedin-pa fix, disk history, new content)",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "7bd79eb1",
+      "agent": "build",
+      "message": "mark workspace-builder session validated (2026-02-28 17:05 UTC) - constraints satisfied, planning docs added",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "9cce18a1",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "dd9e0b84",
       "agent": "build",
       "message": "commit auto-generated state files (dashboard metrics, disk history)",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "3cc21b98",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "d73e736f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "75489d8f",
       "agent": "chore",
       "message": "commit lessons, daily log, disk history, torrent history",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "cc5312cb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
-    },
-    {
-      "sha": "8405254a",
-      "agent": "misc",
-      "message": "fix(agents): replace broken 'openclaw sessions spawn' CLI (doesn't exist) with 'openclaw agent --session-id' in agni-cycle + vishwakarma-cycle; Rudra/Krishna were never actually spawning",
-      "time": "21 minutes ago"
+      "time": "25 minutes ago"
     }
   ],
   "heartbeat": {
