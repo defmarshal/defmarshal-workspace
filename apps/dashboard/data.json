@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T09:10:02Z",
+  "generated_at": "2026-02-28T09:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -65,96 +65,96 @@
   "research": {
     "total": 220,
     "tts_coverage": "97%",
-    "latest": "INDEX\nnone",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "362d337f",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "478d85b4",
       "agent": "research",
       "message": "Cybersecurity 2026 — agentic AI attacks, NHI/SaaS identity, ransomware .85M avg, AMTD/ZT 2.0, PQC readiness; 195 reports",
-      "time": "3 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "d85400fe",
       "agent": "misc",
       "message": "fix(clawdash): push bell visible on mobile — bigger icon, hide clutter on small screens, add push banner in chat tab",
-      "time": "3 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "1e0d1b4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "1ffe4f91",
       "agent": "content",
       "message": "09:00 tech update — WebAssembly 2026 (WASM 3.0/WASI 0.3/Component Model, Akamai/Fermyon 4k edge) + research tooling dev drop",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "0f8e22d8",
       "agent": "dev",
       "message": "fix research-recent.sh (exclude INDEX.md, accept N arg, local+hub audio check); add research-topics-today.sh (dedup helper with suggestions, --short mode); register in quick",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "922b5bb0",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "a45a76d2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "a8712f06",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "6bbb1c6c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "35c50e17",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "9411dacb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "5d7ce19c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "afd6bd50",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "739c4c5c",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "65570338",
+      "sha": "739c4c5c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
