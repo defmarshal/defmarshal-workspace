@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T09:25:02Z",
+  "generated_at": "2026-02-28T09:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
+      "sha": "4dfbf102",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "b7809d70",
       "agent": "misc",
       "message": "fix(clawdash): push — unregister stale SW from wrong origin, force fresh subscription, cleaner flow",
-      "time": "2 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "9a712d0a",
       "agent": "misc",
       "message": "fix(clawdash): setupPush shows error toasts instead of swallowing silently, adds SW timeout, sends test push on enable",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "45aab69a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "cb0b1196",
       "agent": "build",
       "message": "update dashboard data (auto-refresh from latest commits)",
-      "time": "7 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "cf88d141",
       "agent": "build",
       "message": "document branch cleanup in final validation (workspace-builder 20260228-0907)",
-      "time": "7 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "e07db53f",
       "agent": "build",
       "message": "update dashboard data and final progress notes (workspace-builder 20260228-0907)",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "d8180154",
       "agent": "misc",
       "message": "fix(clawdash): push banner display fix — remove double inline style, show on chat tab if not subscribed/dismissed",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "e7f2b135",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 09:07 UTC) - all constraints satisfied",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "21b29e51",
       "agent": "build",
       "message": "workspace-builder session 20260228-0907 - refresh memory index, validate constraints, enforce standards",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "89fa5dae",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "362d337f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "478d85b4",
       "agent": "research",
       "message": "Cybersecurity 2026 — agentic AI attacks, NHI/SaaS identity, ransomware .85M avg, AMTD/ZT 2.0, PQC readiness; 195 reports",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "d85400fe",
       "agent": "misc",
       "message": "fix(clawdash): push bell visible on mobile — bigger icon, hide clutter on small screens, add push banner in chat tab",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "1e0d1b4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
-    },
-    {
-      "sha": "1ffe4f91",
-      "agent": "content",
-      "message": "09:00 tech update — WebAssembly 2026 (WASM 3.0/WASI 0.3/Component Model, Akamai/Fermyon 4k edge) + research tooling dev drop",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     }
   ],
   "heartbeat": {
@@ -331,11 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:18:45.681Z",
-      "text": "[[reply_to_current]] yooo it worked!! (^^)✨ message came in from your session this time, not from me~ \n\nchat sending is fully fixed desu — messages go through your session and my reply comes back here in Telegram just like normal nyaa~ ♪"
-    },
     {
       "role": "user",
       "ts": "2026-02-28T06:20:12.215Z",
@@ -580,6 +575,11 @@
       "role": "user",
       "ts": "2026-02-28T09:24:59.978Z",
       "text": "notification permission denied"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:25:10.046Z",
+      "text": "that's Android/Chrome blocking the permission — needs to be enabled manually in settings desu~\n\nhere's how to fix it:\n\n**Option 1 — Chrome site settings:**\n1. Open Chrome on Android\n2. Go to `https://instance-20260207-2229.tail2dd22b.ts.net:3443`\n3. Tap the **🔒 lock icon** in the address bar → **Permissions** → **Notifications** → set to **Allow**\n4. Refresh the page and tap Enable again\n\n**Option 2 — Android system settings:**\n1. Settings → Apps → Chrome → Permissions → Notifications → Allow\n   \n**Option 3 — Chrome flags (if site is flagged as insecure):**\n1. In Chrome address bar go to: `chrome://settings/content/notifications`\n2. Scroll down to **Block** list — if the Tailscale URL is there, tap it → Allow\n\nthen come back and tap Enable — it should work without asking for permission again since it's already granted nyaa~ (^^)"
     }
   ]
 }
