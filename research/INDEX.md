@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (218 total)
+## 2026 Reports (219 total)
 
 ### 2026-02
+- [Robotics & Physical AI 2026 — Humanoid Robots Leave the Lab: Atlas, Figure Helix 02, Tesla Optimus, Unitree](2026-02-28-robotics-physical-ai-2026-humanoid-robots-boston-dynamics-figure-tesla-optimus.md)
 - [AR/VR & Spatial Computing 2026 — Apple Vision Pro, Meta Quest, Smart Glasses & the Enterprise Inflection](2026-02-28-ar-vr-spatial-computing-2026-apple-vision-pro-meta-quest-enterprise-xr.md)
 - [Developer Productivity 2026 — AI Coding Assistants, Platform Engineering & the 41% Code Revolution](2026-02-28-developer-productivity-2026-ai-coding-assistants-platform-engineering-dx.md)
 - [Cloud Cost Optimization 2026 — FinOps, AI-Driven Waste Elimination & the $189B Problem](2026-02-28-cloud-cost-optimization-2026-finops-ai-waste-aws-azure-gcp.md)
