@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T14:45:03Z",
+  "generated_at": "2026-02-28T14:50:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "0.89 0.99 0.99",
+    "load_avg": "0.87 0.89 0.95",
     "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 1 hour, 5 minutes",
+    "uptime": "1 week, 2 days, 1 hour, 10 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "97e4d6e0",
-      "agent": "maintenance",
-      "message": "heartbeat cleanup - archive workspace-builder-20260228-1307, update HEARTBEAT.md weather (sunny +30°C), commit disk telemetry; active-tasks pruned, daily log updated",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "4ccfe78a",
+      "sha": "b48af516",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "450736d1",
+      "sha": "97e4d6e0",
+      "agent": "maintenance",
+      "message": "heartbeat cleanup - archive workspace-builder-20260228-1307, update HEARTBEAT.md weather (sunny +30°C), commit disk telemetry; active-tasks pruned, daily log updated",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "4ccfe78a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "450736d1",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "52b9aa6f",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "43e08cc6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "670cb3c2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "050cba0c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "c87078b6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "df1827d6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "0153f7ff",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "39 minutes ago"
+      "time": "44 minutes ago"
     },
     {
       "sha": "93635418",
       "agent": "research",
       "message": "AR/VR & Spatial Computing 2026 — $85.56B XR market/33% CAGR, Meta 77% share, Apple Vision Pro enterprise pivot, Ray-Ban Meta glasses +1012% YoY, Samsung Galaxy XR, AI+XR convergence, enterprise use cases; 200 reports milestone!",
-      "time": "39 minutes ago"
+      "time": "44 minutes ago"
     },
     {
       "sha": "92793ad8",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "40ad1bb1",
       "agent": "content",
       "message": "14:00 tech update — Developer Productivity 2026 (84% AI adoption/41% AI-gen code, Cursor/Copilot/Claude Code/Devin stack, platform eng/IDPs/DORA/FinDev, productivity paradox) + 107-script pipefail hardening dev drop",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "e05d6f1d",
       "agent": "dev",
       "message": "harden all 107 scripts/*.sh + 4 agents/*.sh with set -euo pipefail (0 syntax errors); 51→0 missing coverage across entire scripts/ dir",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "fac15f02",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "49 minutes ago"
     }
   ],
   "heartbeat": {
@@ -697,16 +697,6 @@
   "chat": [
     {
       "role": "user",
-      "ts": "2026-02-28T10:27:39.777Z",
-      "text": "Continue"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:27:46.690Z",
-      "text": "NO_REPLY"
-    },
-    {
-      "role": "user",
       "ts": "2026-02-28T10:28:05.783Z",
       "text": "Continue"
     },
@@ -944,6 +934,16 @@
       "role": "assistant",
       "ts": "2026-02-28T13:10:41.902Z",
       "text": "[[reply_to_current]] ugh another logic hole desu~ (ಠ_ಠ)\n\n**root cause:** `prevCount` was counting `.msg.assistant` DOM elements — but since we freeze the DOM while sending, those elements never change, so the watcher never detects a new reply!\n\n**fix:** now uses `chatData` (the last server snapshot) to compare counts — that's the actual source of truth, not the frozen DOM\n\nclear cache → v16 → try again nyaa~ 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T14:45:30.820Z",
+      "text": "[Sat 2026-02-28 14:45 UTC] testing"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T14:45:35.359Z",
+      "text": "[[reply_to_current]] nyaa~ watching for your report! (^^) 🐾"
     }
   ]
 }
