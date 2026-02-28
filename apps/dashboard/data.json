@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T11:10:02Z",
+  "generated_at": "2026-02-28T11:12:10Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.39 1.19 0.97",
-    "mem_used": "3.5Gi",
+    "load_avg": "0.87 1.05 0.95",
+    "mem_used": "3.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 30 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 32 minutes",
     "disk_history": [
       72,
       72,
@@ -87,99 +87,99 @@
   "research": {
     "total": 222,
     "tts_coverage": "96%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "25e97726",
+      "agent": "misc",
+      "message": "fix(clawdash): silent fetch in waitForReply — never renderChat while in-flight; only render when reply arrives; SW v14",
+      "time": "33 seconds ago"
+    },
+    {
+      "sha": "5cbda29d",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "0b39380d",
       "agent": "misc",
       "message": "fix(clawdash): chat optimistic UI — suppress poll re-renders while msg in-flight (chatSending flag); SW v13",
-      "time": "16 seconds ago"
+      "time": "2 minutes ago"
     },
     {
       "sha": "80167a14",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "3 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "fd655f2c",
       "agent": "misc",
       "message": "fix(clawdash): regenerate VAPID keys (was .local domain, FCM rejected); full SW unregister on push setup; SW v12",
-      "time": "4 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "a1b6b091",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "6651112a",
       "agent": "content",
       "message": "11:00 tech update — Satellite Internet 2026 (Starlink 6M/450Tbps, Amazon Leo Ultra 1Gbps/AWS, DTC, SEA angle) + content INDEX sync dev drop",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "8cf0189a",
       "agent": "dev",
       "message": "sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh",
-      "time": "8 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "6bee803a",
       "agent": "misc",
       "message": "fix(clawdash): push subscribe retry (3x backoff) + clearer error msgs for 'push service error'",
-      "time": "10 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "321f269e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "6700193a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "aaa0d5cf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "624a1ff4",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "8b82bad1",
       "agent": "misc",
       "message": "feat(clawdash): r5 — active tasks panel, content stats card, real disk history, chat leak filter (NO_REPLY/HEARTBEAT/Continue), mobile cron col hide, agents 2-col grid",
-      "time": "29 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "cd8cd299",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "7aaf2074",
-      "agent": "misc",
-      "message": "feat(clawdash): r4 — load/mem/uptime in system card, relative output timestamps, HB notes highlight, commit sha+prefix chips, char counter, send spinner, Escape clears input, research latest fix",
       "time": "37 minutes ago"
-    },
-    {
-      "sha": "d20257e5",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "40 minutes ago"
     }
   ],
   "heartbeat": {
@@ -690,31 +690,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-02-28T09:58:03.021Z",
-      "text": "[[reply_to_current]] done desu~ now when you send a message:\n\n- **⠶⠶⠶ dots appear** immediately and stay\n- every 3s it checks if a new reply arrived\n- dots disappear **exactly when my reply shows up** in the chat\n- safety timeout after 3 min if something goes wrong\n\nso you always know mewmew is thinking nyaa~ 🐾✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T09:58:29.300Z",
-      "text": "[Sat 2026-02-28 09:58 UTC] i need quick access to quick commands"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:58:35.551Z",
-      "text": "Bottom sheet with quick commands — tap a button, sheet slides up, one tap to run nyaa~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:59:07.424Z",
-      "text": "[[reply_to_current]] refresh and check the chat tab — there's now a ⚡ button next to Send nyaa~ (^^)\n\ntap it → sheet slides up from the bottom → 2-column grid of all quick commands → tap any to run → output shows right there in the sheet ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T10:00:11.090Z",
-      "text": "[Sat 2026-02-28 10:00 UTC] i did not see it on pwa. how to hard refresh pwa?"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-02-28T10:00:20.136Z",
       "text": "easiest way — clear the SW cache nyaa~\n\n**Option 1 — from inside the PWA:**\n1. Tap the address bar (or three-dot menu) → **Settings**\n2. **Site Settings** → **Storage** → **Clear & Reset**\n3. Reopen the app\n\n**Option 2 — Chrome Android:**\n1. Open `chrome://settings/site-data` in Chrome\n2. Search for `tail2dd22b`\n3. Tap → **Clear & Reset**\n4. Reopen PWA from home screen\n\n**Option 3 (fastest) — I'll bump the SW cache version** so it auto-updates on next open~"
     },
@@ -937,6 +912,31 @@
       "role": "assistant",
       "ts": "2026-02-28T11:09:54.300Z",
       "text": "[[reply_to_current]] found it and fixed it nyaa~ (^^)\n\n**root cause:** the 5s background poll was calling `renderChat()` which does a full `innerHTML` replace — wiping your optimistic message + typing indicator, then rewriting everything fresh from server data (now with timestamp) desu~\n\n**fix:** added `chatSending` flag:\n- set `true` when you hit send\n- background poll **skips** while flag is true\n- dedicated reply-watcher still checks every 3s (temporarily unlocks, fetches, re-locks)\n- unlocks when reply arrives or 3min timeout\n\nclear cache to get v13 — should feel smooth now with no disappearing messages~ ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:10:49.477Z",
+      "text": "[Sat 2026-02-28 11:10 UTC] let's try"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:10:54.163Z",
+      "text": "[[reply_to_current]] go for it nyaa~ 🐾 send something in the chat tab and tell me if the message stays put this time (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:11:17.197Z",
+      "text": "[Sat 2026-02-28 11:11 UTC] the message is still replaced and thinking indicator still disappears"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:11:33.756Z",
+      "text": "The `waitForReply` loop itself calls `refreshChat` after temporarily setting `chatSending = false` — so it wipes things every 3s anyway. My fix had a logic hole desu~ Let me do this properly:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:11:43.613Z",
+      "text": "[[reply_to_current]] sorry about that, my fix had a hole — the reply-watcher itself was still calling `renderChat` nyaa~ (ಠ_ಠ)\n\n**real fix now:** the watcher does a **silent fetch** — checks message count in the background without ever touching the DOM. Only renders once when a new reply actually arrives. The optimistic message + typing indicator stay put the whole time desu~\n\nclear cache → v14 → try again~ 🐾"
     }
   ]
 }
