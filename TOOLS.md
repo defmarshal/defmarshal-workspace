@@ -117,6 +117,7 @@ Common utilities (run `./quick help` for full list):
 - `memory-reindex-check` — Check if reindex is needed
 - `memory-stats` — Detailed memory statistics
 - `daemons` — Show status of persistent background agents
+- `agent-health-report [--json]` — Detailed per-agent health: last update, error count, ✓/⚠/✗ status (2026-02-28)
 - `quiet-hours` — Show quiet hours status
 - `health` — Concise system health summary
 - `holidays` — Upcoming Indonesian holidays

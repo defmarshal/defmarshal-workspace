@@ -85,6 +85,7 @@ Commands:
   tts-play <mp3-file>                      Play a TTS MP3 file (uses aplay/afplay/mpg123)
                   Example: quick tts-play research/2026-02-22-some-report.mp3
   agents-health                            Show health summary of all agents (gateway, logs, cron)
+  agent-health-report [--json]            Detailed per-agent health: last update, error count, status indicator
   agent-runs                              Show recent agent runs from memory logs
   check-hub-sync                          Check if Research Hub public/ is in sync with research/
   disk-usage                              Show workspace disk usage by top directories
@@ -1908,6 +1909,10 @@ EOF
   agents-health)
     # Show health summary of all agents
     "$WORKSPACE/scripts/agents-health.sh"
+    ;;
+  agent-health-report)
+    # Detailed per-agent health report with error counts and status
+    "$WORKSPACE/scripts/agent-health-report.sh" "$@"
     ;;
   check-hub-sync)
     # Check if Research Hub public/ is in sync with research/
