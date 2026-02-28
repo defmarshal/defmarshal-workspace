@@ -773,16 +773,20 @@ async function sendMessage() {
     const sentAt = Date.now();
     const prevCount = document.querySelectorAll('.msg.assistant').length;
     const waitForReply = setInterval(async () => {
-      // temporarily allow one fetch
-      chatSending = false;
-      await refreshChat();
-      chatSending = true;
-      const newCount = document.querySelectorAll('.msg.assistant').length;
-      if (newCount > prevCount || Date.now() - sentAt > 180000) {
-        clearInterval(waitForReply);
-        removeTypingIndicator();
-        chatSending = false; // unlock normal polling
-      }
+      try {
+        // Silent fetch — check count WITHOUT calling renderChat (preserves optimistic UI)
+        const r = await fetch('/api/chat');
+        if (!r.ok) return;
+        const d = await r.json();
+        const msgs = d.chat || [];
+        const newCount = msgs.filter(m => m.role !== 'user').length;
+        if (newCount > prevCount || Date.now() - sentAt > 180000) {
+          clearInterval(waitForReply);
+          chatSending = false; // unlock before final render
+          removeTypingIndicator();
+          renderChat(msgs, true); // now safe to re-render with real data
+        }
+      } catch {}
     }, 3000);
   } catch (e) {
     chatSending = false;
