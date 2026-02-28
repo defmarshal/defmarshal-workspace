@@ -906,30 +906,29 @@ async function setupPush() {
     const { publicKey } = await res.json();
     if (!publicKey) { toast('❌ No VAPID key from server', 'bad'); return; }
 
-    // Unregister any stale SW from a different origin (e.g. HTTP vs HTTPS port mismatch)
+    // Unregister ALL service workers to clear any stale VAPID subscription
     const regs = await navigator.serviceWorker.getRegistrations();
-    for (const r of regs) {
-      if (!r.scope.startsWith(location.origin)) {
-        await r.unregister();
-      }
-    }
+    for (const r of regs) { try { await r.unregister(); } catch {} }
 
-    // Re-register SW for current origin
+    // Re-register fresh SW
     const reg = await navigator.serviceWorker.register('/sw.js');
+    // Wait for SW to fully activate
+    await new Promise((resolve) => {
+      const sw = reg.installing || reg.waiting || reg.active;
+      if (reg.active) { resolve(); return; }
+      const onchange = () => { if (reg.active) { resolve(); } };
+      reg.addEventListener('updatefound', () => {
+        reg.installing.addEventListener('statechange', onchange);
+      });
+      setTimeout(resolve, 3000); // fallback
+    });
     await navigator.serviceWorker.ready;
-
-    // Wait a moment for SW to activate
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => setTimeout(r, 800));
 
     const perm = await Notification.requestPermission();
     if (perm !== 'granted') { toast('❌ Notification permission denied', 'bad'); return; }
 
-    // Force fresh subscription (unsubscribe old if any)
     let sub = null;
-    try {
-      const existing = await reg.pushManager.getSubscription();
-      if (existing) await existing.unsubscribe();
-    } catch {}
 
     // pushManager.subscribe can fail with "Registration failed - push service error"
     // This is usually a temporary FCM/network issue. Retry up to 3x with backoff.
