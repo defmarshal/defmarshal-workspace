@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-28T09:40:02Z",
+  "generated_at": "2026-02-28T09:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
@@ -70,91 +70,91 @@
   },
   "recent_commits": [
     {
-      "sha": "1321bec4",
+      "sha": "921ba2cf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "3d8273c6",
-      "agent": "misc",
-      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
-      "time": "7 minutes ago"
-    },
-    {
-      "sha": "323f079c",
+      "sha": "1321bec4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "4dfbf102",
+      "sha": "3d8273c6",
+      "agent": "misc",
+      "message": "fix(clawdash): switch to nginx port 8443 (valid Tailscale cert) for Android Chrome push notifications",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "323f079c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "4dfbf102",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "b7809d70",
       "agent": "misc",
       "message": "fix(clawdash): push — unregister stale SW from wrong origin, force fresh subscription, cleaner flow",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "9a712d0a",
       "agent": "misc",
       "message": "fix(clawdash): setupPush shows error toasts instead of swallowing silently, adds SW timeout, sends test push on enable",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "45aab69a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "cb0b1196",
       "agent": "build",
       "message": "update dashboard data (auto-refresh from latest commits)",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "cf88d141",
       "agent": "build",
       "message": "document branch cleanup in final validation (workspace-builder 20260228-0907)",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "e07db53f",
       "agent": "build",
       "message": "update dashboard data and final progress notes (workspace-builder 20260228-0907)",
-      "time": "23 minutes ago"
+      "time": "28 minutes ago"
     },
     {
       "sha": "d8180154",
       "agent": "misc",
       "message": "fix(clawdash): push banner display fix — remove double inline style, show on chat tab if not subscribed/dismissed",
-      "time": "24 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "e7f2b135",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 09:07 UTC) - all constraints satisfied",
-      "time": "24 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "21b29e51",
       "agent": "build",
       "message": "workspace-builder session 20260228-0907 - refresh memory index, validate constraints, enforce standards",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "89fa5dae",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
-    },
-    {
-      "sha": "362d337f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
@@ -331,26 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:21:58.181Z",
-      "text": "Now update the `<head>` in index.html with full PWA meta tags + handle `?tab=` shortcut URLs~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:22:06.184Z",
-      "text": "Now handle `?tab=` URL params from manifest shortcuts~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:22:13.063Z",
-      "text": "Also serve PNG icons in the backend server~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:23:01.051Z",
-      "text": "[[reply_to_current]] PWA is fully set up now desu~ (^^)\n\n**what's new:**\n- ✅ **PNG icons** (192×192 + 512×512) — required for Android/iOS install prompt\n- ✅ **Updated manifest** — `id`, `shortcuts` (Chat + Overview), `maskable` icon for Android splash\n- ✅ **iOS meta tags** — `apple-mobile-web-app-capable`, proper title, touch icon\n- ✅ **SW v4** — caches PNG icons too, cleaner fetch strategy\n- ✅ **Shortcut URLs** — `?tab=chat` and `?tab=overview` work from home screen shortcuts\n\n**to install:**\n\n**Android Chrome:** open `http://100.108.208.45:3001` → three-dot menu → \"Add to Home Screen\" → installs as standalone app with 🦾 icon nyaa~\n\n**iOS Safari:** open URL → Share → \"Add to Home Screen\"\n\n> ⚠️ **note:** install requires HTTPS on iOS. Android Chrome is more lenient with local IPs over Tailscale. if iOS doesn't prompt, let me know and we can set up HTTPS on the backend~"
-    },
     {
       "role": "user",
       "ts": "2026-02-28T06:25:13.063Z",
@@ -580,6 +560,26 @@
       "role": "assistant",
       "ts": "2026-02-28T09:33:40.469Z",
       "text": "[[reply_to_current]] the issue was Chrome blocks notifications on non-standard ports (3443) even with a valid cert! fixed with nginx on port 8443 nyaa~\n\ntry this URL now:\n> **`https://instance-20260207-2229.tail2dd22b.ts.net:8443`**\n\n1. open in Chrome → it should load without any security warning\n2. tap **Chat tab** → tap **Enable** on the banner\n3. Chrome should now ask for notification permission properly — tap **Allow**\n4. you'll get a test notification immediately to confirm it works (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:43:31.730Z",
+      "text": "[Sat 2026-02-28 09:43 UTC] test notif"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:43:43.562Z",
+      "text": "[[reply_to_current]] sent! `subs: 1` means you're subscribed successfully desu~ 🎉\n\ndid the test notification pop up on your Android? if yes, push is fully working — every time I reply you'll get a notification nyaa~ 🔔✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:44:20.257Z",
+      "text": "[Sat 2026-02-28 09:44 UTC] yesssss it's workingggg"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:44:27.730Z",
+      "text": "[[reply_to_current]] YESSS LET'S GOOO 🎉🎉🎉\n\nmewmew is now in your pocket desu~ (｡♡‿♡｡)\n\nso now ClawDash has:\n- ✅ **PWA** — installable on home screen\n- ✅ **Chat** — send messages, I reply in Telegram\n- ✅ **Push notifications** — pop up when I reply, even with app closed\n- ✅ **System dashboard** — overview, agents, heartbeat\n- ✅ **HTTPS** — proper cert via nginx + Tailscale\n\nanything else you want added nyaa~ 🐾♪"
     }
   ]
 }
