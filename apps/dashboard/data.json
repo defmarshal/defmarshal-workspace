@@ -1,23 +1,19 @@
 {
-  "generated_at": "2026-02-28T16:50:02Z",
+  "generated_at": "2026-02-28T16:55:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 78,
-    "disk_free": "9.7G",
+    "disk_percent": 79,
+    "disk_free": "9.3G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
-    "downloads_count": 13,
-    "downloads_gb": "8.4G",
-    "load_avg": "1.40 1.21 1.36",
-    "mem_used": "3.8Gi",
+    "downloads_count": 12,
+    "downloads_gb": "8.8G",
+    "load_avg": "1.22 1.25 1.34",
+    "mem_used": "3.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 3 hours, 10 minutes",
+    "uptime": "1 week, 2 days, 3 hours, 15 minutes",
     "disk_history": [
-      72,
-      72,
-      72,
-      72,
       72,
       72,
       72,
@@ -37,7 +33,11 @@
       76,
       77,
       77,
-      78
+      78,
+      79,
+      79,
+      79,
+      79
     ]
   },
   "agents": [
@@ -87,99 +87,99 @@
   "research": {
     "total": 226,
     "tts_coverage": "94%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "ec841437",
+      "sha": "8405254a",
       "agent": "misc",
-      "message": "fix(torrent): aria2-slot-cleaner every 5min removes 100% complete from active; seed-ratio=0.0 seed-time=1 in conf",
-      "time": "3 minutes ago"
+      "message": "fix(agents): replace broken 'openclaw sessions spawn' CLI (doesn't exist) with 'openclaw agent --session-id' in agni-cycle + vishwakarma-cycle; Rudra/Krishna were never actually spawning",
+      "time": "76 seconds ago"
     },
     {
-      "sha": "cfbdfb78",
+      "sha": "e2a3547e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "ec841437",
+      "agent": "misc",
+      "message": "fix(torrent): aria2-slot-cleaner every 5min removes 100% complete from active; seed-ratio=0.0 seed-time=1 in conf",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "cfbdfb78",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "a08d55f0",
       "agent": "misc",
       "message": "fix(clawdash): agent detail last-log column out of bounds — table-layout:fixed, colgroup widths, ellipsis on all cells (SW v23)",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "af76b49a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "ec2c40e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "390ffc64",
       "agent": "misc",
       "message": "fix(torrent): auto-torrent-add.sh — add duplicate check (queue + history), pick from full top-10 randomly",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "3d95cff9",
       "agent": "misc",
       "message": "fix(torrent): seed-ratio=1.0 seed-time=60 — stop hogging slots seeding forever with 0 upload",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "d12a9467",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "651c210f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "1236ae47",
       "agent": "misc",
       "message": "fix(torrent): torrent-add smart arg order detection; downloader shuffles top-20, checks aria2 queue + history file to avoid re-downloads",
-      "time": "21 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "08f45f49",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "8075a233",
       "agent": "misc",
       "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
-      "time": "27 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "e22c3569",
       "agent": "misc",
       "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
-      "time": "29 minutes ago"
-    },
-    {
-      "sha": "b9a42f46",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "fd4de115",
-      "agent": "misc",
-      "message": "fix(clawdash): add missing torrent card div to Overview + cron tab button to nav; SW v20",
-      "time": "33 minutes ago"
+      "time": "34 minutes ago"
     }
   ],
   "heartbeat": {
@@ -468,7 +468,7 @@
       "tz": "Asia/Bangkok",
       "enabled": true,
       "last_run": 1772197568918,
-      "next_run": null,
+      "next_run": 1772341200000,
       "last_status": "ok",
       "last_duration_ms": 30531,
       "consecutive_errors": 0
@@ -540,7 +540,7 @@
       "tz": "UTC",
       "enabled": true,
       "last_run": 1772249005862,
-      "next_run": null,
+      "next_run": 1772298086213,
       "last_status": "ok",
       "last_duration_ms": 28723,
       "consecutive_errors": 0
@@ -588,7 +588,7 @@
       "tz": "Asia/Bangkok",
       "enabled": true,
       "last_run": 1772248999317,
-      "next_run": null,
+      "next_run": 1772298300000,
       "last_status": "ok",
       "last_duration_ms": 6545,
       "consecutive_errors": 0
@@ -636,7 +636,7 @@
       "tz": "Asia/Bangkok",
       "enabled": true,
       "last_run": 1772249411311,
-      "next_run": null,
+      "next_run": 1772298000000,
       "last_status": "ok",
       "last_duration_ms": 14565,
       "consecutive_errors": 0
@@ -688,21 +688,6 @@
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:13:07.049Z",
-      "text": "[[reply_to_current]] r6 shipped nyaa~~ 🎉🐾 clear cache → v18 and you get:\n\n**4 · 🧲 Torrents card** — live aria2 status in Overview, progress bars, speed, seeders, 5 active + 2 waiting shown\n\n**5 · ⏰ Cron tab** — new tab with full job list, schedule, last/next run, status chips, error counts\n\n**6 · ⚡ SSE chat** — replaced 5s polling with Server-Sent Events, replies appear instantly! Falls back to polling if SSE drops\n\n**7 · 🐾 Avatars** — `🐾` on mewmew bubbles, `👤` on yours, stacked nicely\n\n**8 · 🔔 Pop sound** — subtle tone when a new message arrives (uses AudioContext, no files needed)\n\ndesu~ (｡◕‿◕｡)♡"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:14:13.208Z",
-      "text": "[Sat 2026-02-28 16:14 UTC] test chat"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:14:18.005Z",
-      "text": "[[reply_to_current]] nyaa~ 🐾 did the message stay + did you hear the pop sound when this arrived? (^^)"
-    },
     {
       "role": "user",
       "ts": "2026-02-28T16:14:38.350Z",
@@ -937,6 +922,21 @@
       "role": "assistant",
       "ts": "2026-02-28T16:49:30.407Z",
       "text": "here's what i see on the radar nyaa~ 🐾\n\n**housekeeping that needs attention:**\n- 🗂️ **disk at 78%** — downloads folder is probably the culprit; `quick cleanup-downloads` could free space\n- 🌿 **stale idea branch** `idea/automate-active-tasks-cleanup-using` sitting around\n\n**things that got broken/silenced recently:**\n- 🔕 **4 cron jobs disabled** (supervisor, linkedin-pa, meta-supervisor, daily-digest) — disabled for token conservation a while back; worth revisiting if any should come back\n- 🤖 **agni sub-agent spawn returning \"unknown\"** — `openclaw sessions spawn` output parsing is broken in agni-cycle.sh, so Rudra gets spawned but isn't tracked\n\n**potential fun stuff:**\n- 📊 **openclaw-idle-rpg** — was in progress last i checked (game-cog skill, vishwakarma/agni pipeline), curious where it's at\n- 🔬 **Research Hub** — was planned but never deployed; def mentioned it as a project\n\nwhat sounds interesting to you? or is there something specific on your mind? (｡◕‿◕｡)♡"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:51:57.280Z",
+      "text": "[Sat 2026-02-28 16:51 UTC] enable previously disabled agents and check on agni"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:52:40.666Z",
+      "text": "All 4 re-enabled nyaa~ now checking agni:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:53:57.066Z",
+      "text": "[[reply_to_current]] done nyaa~ summary desu~\n\n**re-enabled crons ✅** (all 4):\n- `supervisor-cron` — every 30min\n- `meta-supervisor-agent` — every hour\n- `daily-digest-cron` — 12:00 + 20:00 Bangkok\n- `linkedin-pa-agent-cron` — hourly\n\n**agni root cause found 🐛:**\n`openclaw sessions spawn` **doesn't exist as a CLI command** — it only exists as a tool API (for agents). So every time agni-cycle.sh ran, it was just printing the sessions list to the log and moving on, Rudra was **never actually spawned** for 8+ days desu~ (ಠ_ಠ)\n\n**fixed:** replaced with `openclaw agent --session-id \"rudra-<ts>\" --message \"...\"` in both `agni-cycle.sh` and `vishwakarma-cycle.sh` (Krishna had the same bug). They'll properly spawn on the next 4h cycle ♪"
     }
   ]
 }
