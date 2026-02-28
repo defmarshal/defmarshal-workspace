@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T06:02:58Z",
+  "generated_at": "2026-02-28T06:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
+      "sha": "9dc857f5",
+      "agent": "misc",
+      "message": "feat(clawdash): v4 — dark/light toggle, disk bar+sparkline, agent timeline, relative timestamps, typing indicator, chat autopoll 10s, Cmd+K palette, toasts, error highlighting in logs, tab persistence",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "eefca116",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "3 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "ec44fd0b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "8 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "15c9e2d9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "13 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "d7d38718",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "18 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "3e7b2493",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "23 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "359a6f4a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "28 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "69986a05",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "33 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "dc4fc71b",
       "agent": "build",
       "message": "finalize progress log for workspace-builder 20260228-0510",
-      "time": "36 minutes ago"
+      "time": "38 minutes ago"
     },
     {
       "sha": "4d12a09e",
       "agent": "build",
       "message": "mark workspace-builder session 20260228-0510 validated - all constraints satisfied",
-      "time": "37 minutes ago"
+      "time": "39 minutes ago"
     },
     {
       "sha": "d1be2a2c",
       "agent": "build",
       "message": "archive old active-tasks entry, mark disabled cron jobs in docs, document ClawDash backend",
-      "time": "37 minutes ago"
+      "time": "39 minutes ago"
     },
     {
       "sha": "ba8bfb66",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "38 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "4dcb20ba",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "43 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "c4071c6c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "48 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "cc43e3d3",
       "agent": "research",
       "message": "open source LLM landscape 2026 — DeepSeek MIT, Qwen3 Apache 2.0, Llama 4 10M ctx, Mistral L3, benchmark gap collapse",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "5be2769e",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "53 minutes ago"
+      "time": "52 minutes ago"
     }
   ],
   "heartbeat": {
@@ -209,6 +209,12 @@
     "2026-02-28 03:30:23 UTC - OK"
   ],
   "agent_outputs": [
+    {
+      "file": "INDEX",
+      "ts": "",
+      "title": "Content Archive Index",
+      "size": 51457
+    },
     {
       "file": "2026-02-28-0504-research-spotlight",
       "ts": "2026-02-28-0504",
@@ -294,12 +300,6 @@
       "size": 1527
     },
     {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 49854
-    },
-    {
       "file": "2026-02-27-2202-linkedin-pa-digest",
       "ts": "2026-02-27-2202",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
@@ -331,11 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T02:39:33.159Z",
-      "text": "now let me also trigger a fresh Vercel deploy so the live site picks up the new data right away~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T02:39:51.247Z",
@@ -580,6 +575,11 @@
       "role": "assistant",
       "ts": "2026-02-28T06:02:51.448Z",
       "text": "Got the full picture — I'll build all the Round 1 enhancements directly now in one shot nyaa~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T06:04:39.344Z",
+      "text": "the sub-agent didn't actually run (it spawned but the session tree was restricted) — so I did all the work directly! (^^) here's everything that shipped in **ClawDash v4**:\n\n**just landed:**\n- 🌙/☀️ **Dark/Light mode toggle** — saved in localStorage\n- 📊 **Disk usage bar** — green/yellow/red progress bar under disk %\n- 📈 **Disk sparkline** — tiny SVG trend chart from `disk_history`\n- 🕐 **Relative timestamps** — \"2m ago\", \"1h ago\" everywhere (commits, agents, chat)\n- 📡 **Agent activity timeline** — horizontal bars showing how fresh each agent's last run is\n- ✍️ **Typing indicator** — animated bouncing dots after you send a message, disappears when reply arrives\n- 💬 **Chat auto-poll every 10s** — only when chat tab is active (saves tokens otherwise)\n- ⌨️ **Cmd+K command palette** — fuzzy filter all quick commands, arrow keys + Enter to run\n- 🍞 **Toast notifications** — brief pop-ups for sent messages and quick command results\n- 🔴 **Log error highlighting** — ERROR/FAIL lines in red, WARN in yellow in supervisor log\n- 💾 **Tab persistence** — remembers which tab you were on across reloads\n- 🟢 **Connection dot** — green/yellow/red indicator in header\n\nlive now at both **http://100.108.208.45:3001** and **vercel.app** desu~ nyaa~ ♪"
     }
   ]
 }
