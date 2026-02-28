@@ -450,7 +450,7 @@ if [ "$WORD_COUNT" -lt 300 ]; then
     # Use up to 5 tips, each as bullet point
     echo "$TIPS" | head -5 | while IFS= read -r tip; do
       [ -n "$tip" ] && echo "- $tip"
-    done
+    done || true
   } >> "$POST_FILE"
   log "Appended Key Takeaways section to reach target word count"
   # Recompute word count after append
