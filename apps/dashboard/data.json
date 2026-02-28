@@ -1,23 +1,19 @@
 {
-  "generated_at": "2026-02-28T16:45:02Z",
+  "generated_at": "2026-02-28T16:50:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 76,
-    "disk_free": "11G",
+    "disk_percent": 78,
+    "disk_free": "9.7G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
-    "downloads_count": 11,
-    "downloads_gb": "7.5G",
-    "load_avg": "1.01 1.20 1.42",
-    "mem_used": "3.6Gi",
+    "downloads_count": 13,
+    "downloads_gb": "8.4G",
+    "load_avg": "1.40 1.21 1.36",
+    "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 3 hours, 5 minutes",
+    "uptime": "1 week, 2 days, 3 hours, 10 minutes",
     "disk_history": [
-      72,
-      72,
-      72,
-      72,
       72,
       72,
       72,
@@ -37,7 +33,11 @@
       76,
       76,
       76,
-      76
+      76,
+      76,
+      77,
+      77,
+      78
     ]
   },
   "agents": [
@@ -87,99 +87,99 @@
   "research": {
     "total": 226,
     "tts_coverage": "94%",
-    "latest": "INDEX\nnone",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "ec841437",
+      "agent": "misc",
+      "message": "fix(torrent): aria2-slot-cleaner every 5min removes 100% complete from active; seed-ratio=0.0 seed-time=1 in conf",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "cfbdfb78",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "a08d55f0",
       "agent": "misc",
       "message": "fix(clawdash): agent detail last-log column out of bounds — table-layout:fixed, colgroup widths, ellipsis on all cells (SW v23)",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "af76b49a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "ec2c40e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "390ffc64",
       "agent": "misc",
       "message": "fix(torrent): auto-torrent-add.sh — add duplicate check (queue + history), pick from full top-10 randomly",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "3d95cff9",
       "agent": "misc",
       "message": "fix(torrent): seed-ratio=1.0 seed-time=60 — stop hogging slots seeding forever with 0 upload",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "d12a9467",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "651c210f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "1236ae47",
       "agent": "misc",
       "message": "fix(torrent): torrent-add smart arg order detection; downloader shuffles top-20, checks aria2 queue + history file to avoid re-downloads",
-      "time": "16 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "08f45f49",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "8075a233",
       "agent": "misc",
       "message": "fix(clawdash): cron tab next/last — fmtDuration() for plain durations, no double 'ago'; next shows 'in 7m' (blue), overdue in red; SW v22",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "e22c3569",
       "agent": "misc",
       "message": "fix(clawdash): cron tab last/next timestamps — were ms but timeAgo() multiplied by 1000 again (year 58131); use timeAgoMs directly; SW v21",
-      "time": "24 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "b9a42f46",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "fd4de115",
       "agent": "misc",
       "message": "fix(clawdash): add missing torrent card div to Overview + cron tab button to nav; SW v20",
-      "time": "28 minutes ago"
-    },
-    {
-      "sha": "3e84e287",
-      "agent": "misc",
-      "message": "fix(clawdash): pop sound — reuse unlocked AudioContext, unlock on first click/keydown, only play on new assistant msg; SW v19",
-      "time": "30 minutes ago"
-    },
-    {
-      "sha": "5dbe8996",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "33 minutes ago"
     }
   ],
   "heartbeat": {
@@ -690,41 +690,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-02-28T16:08:37.302Z",
-      "text": "Got aria2 data. Now let me build all 5 features:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:09:21.657Z",
-      "text": "The aria2 functions got lost — the string replacement didn't find the right anchor. Let me fix:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:09:39.828Z",
-      "text": "The aria2/SSE code landed after `http.createServer` — need to move it before. Let me just do the whole server.js cleanly:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:11:42.839Z",
-      "text": "Backend APIs all working. Now implement all the frontend features:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:12:17.451Z",
-      "text": "Now add the torrent card HTML to Overview, SSE in chat, and Cron tab:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:12:35.323Z",
-      "text": "All 5 features wired up. Now add the Cron tab:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:12:57.395Z",
-      "text": "All features confirmed. Bump SW and deploy:"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-02-28T16:13:07.049Z",
       "text": "[[reply_to_current]] r6 shipped nyaa~~ 🎉🐾 clear cache → v18 and you get:\n\n**4 · 🧲 Torrents card** — live aria2 status in Overview, progress bars, speed, seeders, 5 active + 2 waiting shown\n\n**5 · ⏰ Cron tab** — new tab with full job list, schedule, last/next run, status chips, error counts\n\n**6 · ⚡ SSE chat** — replaced 5s polling with Server-Sent Events, replies appear instantly! Falls back to polling if SSE drops\n\n**7 · 🐾 Avatars** — `🐾` on mewmew bubbles, `👤` on yours, stacked nicely\n\n**8 · 🔔 Pop sound** — subtle tone when a new message arrives (uses AudioContext, no files needed)\n\ndesu~ (｡◕‿◕｡)♡"
     },
@@ -937,6 +902,41 @@
       "role": "assistant",
       "ts": "2026-02-28T16:43:07.391Z",
       "text": "so aria2 has three relevant states nyaa~:\n\n- **`active` + 100% completedLength** = done downloading, currently seeding — this is what clogged the queue earlier\n- **`complete`** (in `tellStopped`) = fully finished AND removed from active (seed-ratio/time limit hit, or manually removed)\n- **`error`** (in `tellStopped`) = failed\n\nso \"complete\" for our purposes should be:\n1. **`status=complete` in `tellStopped`** — aria2's official \"done\" state, hash is in `infoHash`\n2. **`status=active` with `completedLength == totalLength`** — downloading done, still seeding\n\nright now `torrent-history.txt` only records when we *add* a torrent, not when it finishes. want me to also track completion — so the history file gets updated with a `completed` timestamp when aria2 moves it to `complete` status? that way future duplicate checks are more reliable desu~ (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:45:48.203Z",
+      "text": "[Sat 2026-02-28 16:45 UTC] i just don't want active downloads get clogged like before"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:47:08.123Z",
+      "text": "[[reply_to_current]] sorted nyaa~ ✅ two-layer fix desu~\n\n**layer 1 — `aria2.conf`**: `seed-time=1` + `seed-ratio=0.0` — new torrents auto-remove from active after ~1 min of seeding (aria2 handles it natively)\n\n**layer 2 — `scripts/aria2-slot-cleaner.sh`** via system cron every 5min — scans active queue, force-removes anything at 100%, no mercy (^^) catches any stragglers `seed-time` misses\n\nslots are clear now — 1 active download at 1.2 MB/s ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:48:31.562Z",
+      "text": "[Sat 2026-02-28 16:48 UTC] nice. i think this web is completed for now. we can move on"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:48:42.221Z",
+      "text": "nice nyaa~ ClawDash has come a long way desu~ (^^) ♪\n\nlet me log it before we move on:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:48:45.798Z",
+      "text": "logged ♪ what's next? (｡◕‿◕｡)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:49:05.214Z",
+      "text": "[Sat 2026-02-28 16:49 UTC] you tell me mewmew"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:49:30.407Z",
+      "text": "here's what i see on the radar nyaa~ 🐾\n\n**housekeeping that needs attention:**\n- 🗂️ **disk at 78%** — downloads folder is probably the culprit; `quick cleanup-downloads` could free space\n- 🌿 **stale idea branch** `idea/automate-active-tasks-cleanup-using` sitting around\n\n**things that got broken/silenced recently:**\n- 🔕 **4 cron jobs disabled** (supervisor, linkedin-pa, meta-supervisor, daily-digest) — disabled for token conservation a while back; worth revisiting if any should come back\n- 🤖 **agni sub-agent spawn returning \"unknown\"** — `openclaw sessions spawn` output parsing is broken in agni-cycle.sh, so Rudra gets spawned but isn't tracked\n\n**potential fun stuff:**\n- 📊 **openclaw-idle-rpg** — was in progress last i checked (game-cog skill, vishwakarma/agni pipeline), curious where it's at\n- 🔬 **Research Hub** — was planned but never deployed; def mentioned it as a project\n\nwhat sounds interesting to you? or is there something specific on your mind? (｡◕‿◕｡)♡"
     }
   ]
 }
