@@ -1,101 +1,77 @@
-# Workspace Builder Plan
+# Workspace Builder Task Plan
 
-**Trigger:** Cron job execution (session: 23dad379-21ad-4f7a-8c68-528f98203a33)
-**Timestamp:** 2026-02-27 21:01 UTC
-**Human:** def
+**Session:** 2026-02-28 01:07 UTC
+**Trigger:** Cron (workspace-builder-cron)
+**Goal:** Maintain workspace health, enforce constraints, and implement meaningful improvements
 
----
+## Current State Analysis
 
-## Goal
+- Git: clean (0 changed tracked files), 3 untracked files
+- active-tasks.md: 1292 bytes (<2KB) ✅
+- MEMORY.md: 29 lines (≤30) ✅
+- Health: green (disk 73%, gateway healthy, memory clean, no updates)
+- Memory reindex: 4.0 days old (fresh) ✅
+- No temp files, no stale branches
+- Daily log (2026-02-28.md): incomplete, early day (01:06 entries only)
 
-Implement meaningful workspace improvements by:
-1. Pushing pending commits to origin (2 commits pending)
-2. Cleaning up stale idea branch
-3. Enforcing MEMORY.md ≤30 lines constraint
-4. Verifying all workspace constraints are satisfied
-5. Updating active-tasks.md with validated session entry
-6. Committing all documentation changes
+## Identified Improvements
 
----
+1. **Track valuable untracked artifacts:**
+   - `research/2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md` (substantive research report)
+   - `scripts/meta-supervisor-restart.sh` (utility script for daemon management)
+2. **Add quick command for meta-supervisor restart** (convenience)
+3. **Update daily log** to document this workspace-builder session (will be updated throughout the day as needed)
+4. **Validate constraints** after changes
+5. **Commit with proper build prefix** and push to origin
 
-## Analysis Summary
+## Execution Plan
 
-**System health:** ✅ Green across all metrics
-- Disk: 73% (healthy)
-- Gateway: healthy
-- Memory: clean, local FTS+, reindex 3.8d old (acceptable)
-- Updates: none pending
+### Phase 1: Review and Stage Artifacts
+- [ ] Verify content of untracked files (research report, restart script)
+- [ ] `git add` these files to track them
+- [ ] Check for any other issues (temp files, stale branches)
 
-**Git status:**
-- Working tree clean
-- Ahead of origin by 2 commits (needs push)
-- No untracked files
-- One stale branch: `idea/integrate-agent-logs-with-telegram`
+### Phase 2: Enhance Tooling (Optional)
+- [ ] Add `restart-meta-supervisor` command to `quick` launcher (if missing)
+- [ ] Test the new command
 
-**Constraints:**
-- active-tasks.md: 1670 bytes (<2KB) ✅
-- MEMORY.md: 31 lines ⚠️ (over limit of 30)
-- No temp files ✅
-- Health green ✅
-- Reindex age acceptable ✅
+### Phase 3: Update Daily Log
+- [ ] Append current workspace-builder run details to `memory/2026-02-28.md`
+- [ ] Keep log entry concise but informative
 
----
+### Phase 4: Validation
+- [ ] Run `./quick health`
+- [ ] Run `./quick validate-constraints`
+- [ ] Verify no temp files, active-tasks size <2KB, MEMORY.md ≤30 lines
+- [ ] Check that added files have appropriate content
 
-## Plan Steps
+### Phase 5: Commit and Push
+- [ ] `git commit -m "build: track research report and meta-supervisor restart script; add quick command"`
+- [ ] `git push origin master`
+- [ ] Update `active-tasks.md` with validated entry and prune if needed
+- [ ] Commit active-tasks update with `build:` prefix and push
 
-### Phase 1: Git Synchronization
-1. Push pending commits to origin/master
-2. Verify push successful
-
-### Phase 2: Repository Hygiene
-1. Delete stale idea branch `idea/integrate-agent-logs-with-telegram`
-2. Verify no remaining idea branches
-
-### Phase 3: Memory Maintenance
-1. Trim MEMORY.md to 30 lines by removing oldest entry (2026-02-21)
-2. Verify line count
-
-### Phase 4: Planning Documentation
-1. Create task_plan.md (this file)
-2. Create findings.md (analysis snapshot)
-3. Create progress.md (tracking template)
-
-### Phase 5: Active Tasks Update
-1. Add running entry for current workspace-builder session
-2. Verify active-tasks.md size remains <2KB
-3. After validation, mark entry as validated with metrics
-4. Prune one oldest completed entry if needed to maintain <2KB
-
-### Phase 6: Validation & Commit
-1. Run `./quick health` - verify green
-2. Run `./quick validate-constraints` - verify all satisfied
-3. Check no temp files, no stale branches
-4. Git status: clean and up-to-date
-5. If all pass, commit changes with prefix `build:`
-6. Push to origin
-7. Final verification
-
----
-
-## Risk Mitigation
-
-- **If push fails:** Check remote branch divergence; use `git push --force-with-lease` if safe
-- **If MEMORY.md trimming removes needed info:** Preserve content in daily log first; only remove oldest entry (least recent learning)
-- **If constraints fail:** Debug immediately; do not proceed until all green
-- **If active-tasks.md exceeds 2KB:** Prune oldest completed entries aggressively
-
----
+### Phase 6: Final Validation
+- [ ] Re-run constraints to confirm green status
+- [ ] Ensure git clean and remote synced
 
 ## Success Criteria
 
-✅ All constraints satisfied (health, active-tasks size, MEMORY.md ≤30, git clean, no temp files, reindex fresh)
-✅ All changes committed and pushed
-✅ active-tasks.md updated with validated session entry
-✅ Documentation complete (task_plan.md, findings.md, progress.md)
-✅ Repository hygiene maintained (no stale branches, no temp files)
+- All constraints satisfied (7/7)
+- Git clean and pushed
+- active-tasks.md <2KB, MEMORY.md ≤30 lines
+- No temp files, no stale branches
+- Research report and restart script tracked
+- Quick command added (if applicable)
+- Daily log updated with workshop-builder session
+
+## Risk Mitigation
+
+- If validation fails, debug immediately before committing
+- Keep commits small and focused
+- Preserve existing documentation style
+- Avoid unnecessary changes
 
 ---
 
-## Notes
-
-This is a routine maintenance cycle. The workspace is already in excellent health; we are enforcing constraints and pushing pending work.
+*Plan created: 2026-02-28 01:07 UTC*
