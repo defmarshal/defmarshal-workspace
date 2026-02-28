@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T10:20:02Z",
+  "generated_at": "2026-02-28T10:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,91 +70,91 @@
   },
   "recent_commits": [
     {
-      "sha": "3c8aee3b",
+      "sha": "ee8968a6",
       "agent": "misc",
-      "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
-      "time": "3 minutes ago"
+      "message": "feat(clawdash): r2 enhancements — agent timestamps, code blocks in chat, 5s poll, timeAgoMs, bigger send btn, skeleton load indicator, more quick cmds",
+      "time": "5 minutes ago"
     },
     {
-      "sha": "6bea6b48",
+      "sha": "e0c27976",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "42e16f1c",
+      "sha": "3c8aee3b",
+      "agent": "misc",
+      "message": "feat(clawdash): review pass — chat layout fix, refresh button, quick sheet output panel, better msg rendering, slim header/tabs, empty state",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "6bea6b48",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ce054294",
-      "agent": "research",
-      "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
-      "time": "14 minutes ago"
-    },
-    {
-      "sha": "23d6deac",
+      "sha": "42e16f1c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "ce054294",
+      "agent": "research",
+      "message": "Satellite Internet 2026 — Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, AST SpaceMobile DTC, OneWeb 60% growth, LEO market dynamics; 196 reports",
+      "time": "19 minutes ago"
+    },
+    {
+      "sha": "23d6deac",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "df194d97",
       "agent": "content",
       "message": "10:00 tech update — Cybersecurity 2026 (agentic AI, NHI, SaaS .85M ransomware, AMTD, ZT2.0) + disk-usage-breakdown dev drop",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "fbd858c1",
       "agent": "dev",
       "message": "add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "d6200918",
       "agent": "misc",
       "message": "chore(clawdash): bump SW cache to v5 to force update",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "6e1a5278",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "dc3b3070",
       "agent": "misc",
       "message": "feat(clawdash): ⚡ quick commands bottom sheet — tap button in chat, slide-up grid, run & view output inline",
-      "time": "21 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "3fb6b828",
       "agent": "misc",
       "message": "feat(clawdash): thinking indicator persists until new reply arrives (polls every 3s, max 3min)",
-      "time": "22 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "9f66b64c",
       "agent": "misc",
       "message": "fix(clawdash): chat layout — height:100% on chat-main, overflow:hidden, input always visible",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "6b5c5617",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
-    },
-    {
-      "sha": "b41d5516",
-      "agent": "misc",
-      "message": "fix(clawdash): chat input pinned to bottom — fix flex chain min-height:0 on active tab panel",
-      "time": "28 minutes ago"
-    },
-    {
-      "sha": "c3b069b3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
@@ -331,11 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:30:43.288Z",
-      "text": "Chrome on Android blocks notifications on non-standard ports (3443). Need port 443 with nginx reverse proxy desu~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T09:30:48.768Z",
@@ -580,6 +575,11 @@
       "role": "assistant",
       "ts": "2026-02-28T10:19:50.704Z",
       "text": "Good — data is healthy. Now let me identify all remaining UX issues and fix them in one pass:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T10:20:13.243Z",
+      "text": "[[reply_to_current]] round 2 done nyaa~ (^^) here's everything that changed:\n\n**Chat**\n- ⏱️ Chat now polls every **5s** (was 10s) — replies appear faster\n- 💬 Code blocks (` ``` `) render as formatted blocks in bubbles\n- ↩️ Proper line breaks in messages\n- 📲 Send button is bigger and bolder on mobile\n- ⬇️ Auto-scrolls to bottom when switching to chat tab\n\n**Agents**\n- 🕐 Agent \"last run\" times now show as **relative** (e.g. \"3m ago\") — works even without a unix timestamp\n\n**Overview**\n- 🕐 Last-updated shows actual **clock time** instead of \"Updated 0s ago\"\n- 🔄 Yellow dot flickers while refreshing so you know it's loading\n\n**Quick Commands**\n- ➕ Added `💡 meta logs` and `🔬 validate` to the sheet\n\nclear cache → reopen PWA desu~ 🐾"
     }
   ]
 }
