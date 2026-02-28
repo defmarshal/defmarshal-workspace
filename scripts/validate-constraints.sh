@@ -43,7 +43,7 @@ fi
 # Get raw git status
 git_status_raw=$(./quick git-status 2>/dev/null || true)
 # Filter out ignored ephemeral files (e.g., disk-history.json)
-git_status_filtered=$(echo "$git_status_raw" | grep -v -E '^( M|\?\?) memory/disk-history.json$')
+git_status_filtered=$(echo "$git_status_raw" | grep -v 'memory/disk-history.json' || true)
 if echo "$git_status_filtered" | grep -q .; then
     echo "❌ Git status: dirty or untracked files"
     echo "$git_status_raw" | sed 's/^/   /'
