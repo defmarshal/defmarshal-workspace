@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T03:06:50Z",
+  "generated_at": "2026-02-28T03:10:01Z",
   "system": {
     "gateway": "up",
     "disk_percent": 73,
@@ -63,6 +63,11 @@
   },
   "recent_commits": [
     {
+      "agent": "fix",
+      "message": "clawdash sw.js icon paths (.png→.svg), bump cache version, register SW in index.html",
+      "time": ""
+    },
+    {
       "agent": "build",
       "message": "update research index with SEA digital banking 2026 report",
       "time": ""
@@ -90,11 +95,6 @@
     {
       "agent": "dev",
       "message": "add apps/dashboard/.gitignore (contains .vercel exclusion)",
-      "time": ""
-    },
-    {
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": ""
     },
     {
