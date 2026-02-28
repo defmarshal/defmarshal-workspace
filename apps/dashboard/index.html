@@ -676,8 +676,13 @@ function renderCronTab(crons) {
       </div>
       <div style="font-size:10px;color:var(--muted);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap">
         <span>🕐 ${esc(c.schedule||'?')}</span>
-        ${c.last_run ? `<span>last: ${timeAgo(c.last_run)}</span>` : ''}
-        ${c.next_run ? `<span>next: ${timeAgo(c.next_run)}</span>` : ''}
+        ${c.last_run ? `<span>last: ${timeAgoMs(Date.now() - c.last_run)}</span>` : ''}
+        ${c.next_run ? (() => {
+          const diff = c.next_run - Date.now();
+          return diff > 0
+            ? `<span style="color:var(--blue)">next in ${timeAgoMs(diff)}</span>`
+            : `<span>next: ${timeAgoMs(-diff)} overdue</span>`;
+        })() : ''}
         ${c.last_duration ? `<span>⚡ ${c.last_duration}</span>` : ''}
       </div>
     </div>`).join('');
