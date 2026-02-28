@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T09:20:02Z",
+  "generated_at": "2026-02-28T09:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
+      "sha": "b7809d70",
+      "agent": "misc",
+      "message": "fix(clawdash): push — unregister stale SW from wrong origin, force fresh subscription, cleaner flow",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "9a712d0a",
+      "agent": "misc",
+      "message": "fix(clawdash): setupPush shows error toasts instead of swallowing silently, adds SW timeout, sends test push on enable",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "45aab69a",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "cb0b1196",
       "agent": "build",
       "message": "update dashboard data (auto-refresh from latest commits)",
-      "time": "2 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "cf88d141",
       "agent": "build",
       "message": "document branch cleanup in final validation (workspace-builder 20260228-0907)",
-      "time": "2 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "e07db53f",
       "agent": "build",
       "message": "update dashboard data and final progress notes (workspace-builder 20260228-0907)",
-      "time": "3 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "d8180154",
       "agent": "misc",
       "message": "fix(clawdash): push banner display fix — remove double inline style, show on chat tab if not subscribed/dismissed",
-      "time": "4 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "e7f2b135",
       "agent": "build",
       "message": "mark workspace-builder session validated (2026-02-28 09:07 UTC) - all constraints satisfied",
-      "time": "4 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "21b29e51",
       "agent": "build",
       "message": "workspace-builder session 20260228-0907 - refresh memory index, validate constraints, enforce standards",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "89fa5dae",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "362d337f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "478d85b4",
       "agent": "research",
       "message": "Cybersecurity 2026 — agentic AI attacks, NHI/SaaS identity, ransomware .85M avg, AMTD/ZT 2.0, PQC readiness; 195 reports",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "d85400fe",
       "agent": "misc",
       "message": "fix(clawdash): push bell visible on mobile — bigger icon, hide clutter on small screens, add push banner in chat tab",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "1e0d1b4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "1ffe4f91",
       "agent": "content",
       "message": "09:00 tech update — WebAssembly 2026 (WASM 3.0/WASI 0.3/Component Model, Akamai/Fermyon 4k edge) + research tooling dev drop",
-      "time": "15 minutes ago"
-    },
-    {
-      "sha": "0f8e22d8",
-      "agent": "dev",
-      "message": "fix research-recent.sh (exclude INDEX.md, accept N arg, local+hub audio check); add research-topics-today.sh (dedup helper with suggestions, --short mode); register in quick",
-      "time": "18 minutes ago"
-    },
-    {
-      "sha": "922b5bb0",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "20 minutes ago"
-    },
-    {
-      "sha": "a45a76d2",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
     }
   ],
   "heartbeat": {
@@ -331,31 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T06:17:47.436Z",
-      "text": "wait when i send from web, it send my message from you"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:18:15.509Z",
-      "text": "ahh right — `openclaw message send` sends *from the bot*, so in Telegram it looks like mewmew sent it (T_T)\n\nwhat we actually want: inject the message as *your* message into the agent session so mewmew responds back to Telegram normally. that means `openclaw agent --session-id ... --message ... --deliver` — but that was hanging because it waits for the full LLM response (up to 60s).\n\nfix: run it **detached in the background** — API returns instantly, mewmew's reply arrives in Telegram naturally~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:18:30.874Z",
-      "text": "returned instantly ✅ — and my reply should arrive in Telegram now~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T06:18:38.652Z",
-      "text": "[[reply_to_current]] fixed desu~ ✅\n\nnow when you send from the web dashboard:\n1. backend fires `openclaw agent --session-id ... --message \"yo\" --deliver` **detached** (returns instantly, no timeout)\n2. web shows \"Message queued — reply coming via Telegram\"\n3. mewmew processes it and replies **here in Telegram** normally nyaa~\n\nthe chat tab is basically a view-only mirror of this conversation — it shows history, but the actual back-and-forth still happens in Telegram (^^)\n\ntry sending something from **http://100.108.208.45:3001** again~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T06:18:38.916Z",
-      "text": "[Sat 2026-02-28 06:18 UTC] yo test from web dashboard"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T06:18:45.681Z",
@@ -580,6 +555,31 @@
       "role": "assistant",
       "ts": "2026-02-28T09:20:01.806Z",
       "text": "The `catch` swallows all errors silently. Let me rewrite `setupPush` to show errors as toasts so we can see what's actually failing~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:20:15.241Z",
+      "text": "[[reply_to_current]] refresh and try again desu~ now instead of doing nothing, it'll show a toast message explaining exactly what went wrong (❌ error or ⏳ progress)\n\nmost likely causes:\n- **SW timeout** — service worker not registered yet on the HTTPS URL\n- **permission denied** — Android blocked the prompt silently\n- **push not supported** — browser/version issue\n\ntap Enable again and tell me what toast message appears nyaa~ (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:22:45.454Z",
+      "text": "push failed: error retrieving push subscription"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:23:02.967Z",
+      "text": "that error comes from `reg.pushManager.getSubscription()` — usually means the service worker scope doesn't match the origin (SW was registered on HTTP `:3001` before, now on HTTPS `:3443`). fix: unregister old SW first, then re-subscribe fresh~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T09:23:14.588Z",
+      "text": "[[reply_to_current]] refresh and try Enable again nyaa~\n\nthe fix: old service worker was registered on `http://100.108.208.45:3001` — when you open the HTTPS URL, Chrome sees a scope mismatch and throws that error. now it:\n1. unregisters any stale SW from wrong origins\n2. re-registers fresh on the current HTTPS origin  \n3. forces a clean new push subscription\n4. sends a **test notification** right away so you know it worked (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T09:24:59.978Z",
+      "text": "notification permission denied"
     }
   ]
 }
