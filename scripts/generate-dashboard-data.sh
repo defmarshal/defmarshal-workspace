@@ -205,22 +205,24 @@ RESEARCH_JSON=$(jq -n \
   }')
 
 # ── Recent commits ────────────────────────────────────────────────────────────
-COMMITS=$(git -C "$WORKSPACE" log --oneline -15 2>/dev/null || true)
+# Use format: sha<TAB>reltime<TAB>message — gives us relative time (e.g. "2 hours ago")
+COMMITS=$(git -C "$WORKSPACE" log --format="%h%x09%ar%x09%s" -15 2>/dev/null || true)
 if [ -n "$COMMITS" ]; then
   COMMITS_JSON=$(echo "$COMMITS" | python3 -c "
 import sys, json, re
 rows = []
 for line in sys.stdin:
-    line = line.strip()
+    line = line.rstrip('\n')
     if not line: continue
-    parts = line.split(' ', 1)
-    sha = parts[0] if parts else ''
-    msg = parts[1] if len(parts) > 1 else ''
+    parts = line.split('\t', 2)
+    sha     = parts[0] if len(parts) > 0 else ''
+    reltime = parts[1] if len(parts) > 1 else ''
+    msg     = parts[2] if len(parts) > 2 else ''
     # extract prefix agent
     m = re.match(r'^(\w[\w-]*):(.+)', msg)
-    agent = m.group(1) if m else 'misc'
+    agent   = m.group(1) if m else 'misc'
     message = m.group(2).strip() if m else msg
-    rows.append({'sha': sha, 'agent': agent, 'message': message, 'time': ''})
+    rows.append({'sha': sha, 'agent': agent, 'message': message, 'time': reltime})
 print(json.dumps(rows))
 " 2>/dev/null || jq -n '[]')
 else
