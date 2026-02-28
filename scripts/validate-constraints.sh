@@ -39,9 +39,14 @@ else
     errors=$((errors+1))
 fi
 
-# 3. Git status clean (git status --short should output nothing when clean)
-if ./quick git-status 2>/dev/null | grep -q .; then
+# 3. Git status clean (ignore ephemeral/system files that change continuously)
+# Get raw git status
+git_status_raw=$(./quick git-status 2>/dev/null || true)
+# Filter out ignored ephemeral files (e.g., disk-history.json)
+git_status_filtered=$(echo "$git_status_raw" | grep -v -E '^( M|\?\?) memory/disk-history.json$')
+if echo "$git_status_filtered" | grep -q .; then
     echo "❌ Git status: dirty or untracked files"
+    echo "$git_status_raw" | sed 's/^/   /'
     errors=$((errors+1))
 else
     echo "✅ Git status: clean"
