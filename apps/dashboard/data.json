@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T17:50:02Z",
+  "generated_at": "2026-02-28T17:55:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "0.71 0.81 0.81",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.79 0.82 0.82",
+    "mem_used": "3.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 4 hours, 10 minutes",
+    "uptime": "1 week, 2 days, 4 hours, 15 minutes",
     "disk_history": [
-      78,
       79,
       79,
       79,
@@ -27,9 +26,10 @@
       79,
       79,
       79,
-      79,
-      79,
-      79,
+      80,
+      80,
+      80,
+      80,
       80,
       80,
       80,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "2bf98fe7",
+      "sha": "3573d162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "d5f9d656",
+      "sha": "2bf98fe7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "7ac9aa37",
+      "sha": "d5f9d656",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "7ac9aa37",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "c62ee743",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "bc1cecec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "32ba6ef0",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "e4d9f7d7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "fcefe9ab",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "ed38d41a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "8c70170c",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.2 — morale system, 20 events, income balance",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "577307b6",
       "agent": "build",
       "message": "enhance anime-studio-tycoon (v1.2): events, morale, merch, sponsors, auto-AI, polished UI",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "4a74145a",
       "agent": "build",
       "message": "update progress.md with finalization details (Phase 4 complete)",
-      "time": "42 minutes ago"
+      "time": "47 minutes ago"
     },
     {
       "sha": "cd539a39",
       "agent": "build",
       "message": "continue agent robustness fixes; capture latest content output",
-      "time": "43 minutes ago"
+      "time": "48 minutes ago"
     },
     {
       "sha": "9948a6f2",
       "agent": "content",
       "message": "LinkedIn PA developer-tips analyst‑report for 2026-02-28 1706 (v10 dynamic)",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "10698b8c",
-      "agent": "build",
-      "message": "commit pending agent outputs (linkedin-pa fix, disk history, new content)",
-      "time": "44 minutes ago"
+      "time": "48 minutes ago"
     }
   ],
   "heartbeat": {
@@ -642,6 +642,18 @@
       "consecutive_errors": 0
     },
     {
+      "id": "e26c12bd-635a-48cf-bc8d-1707bc4ffd59",
+      "name": "telegram-slash-handler",
+      "schedule": "",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": null,
+      "next_run": 1772301390109,
+      "last_status": "—",
+      "last_duration_ms": 0,
+      "consecutive_errors": 0
+    },
+    {
       "id": "6e5621c3-783a-416c-93c7-56ea2cb4e920",
       "name": "vishwakarma-cron",
       "schedule": "0 */4 * * *",
@@ -695,31 +707,6 @@
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:20:34.143Z",
-      "text": "OK so the timestamps are correct milliseconds — but `timeAgo()` in the cron tab is treating them wrong. Let me check:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:20:43.307Z",
-      "text": "Found it — `timeAgo()` does `new Date(ts * 1000)` when ts is a number, but `last_run` and `next_run` are already **milliseconds** (not seconds). So it's multiplying by 1000 again → year 58131 nyaa~ (ಠ_ಠ)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:20:57.979Z",
-      "text": "[[reply_to_current]] classic off-by-1000 bug desu~ (ಠ_ಠ)\n\n`last_run` / `next_run` are already **milliseconds**, but `timeAgo()` was doing `ts × 1000` on top — so it was computing times in year 58131 nyaa~\n\nfixed to use `timeAgoMs()` directly:\n- **last:** `20m ago` ✅  \n- **next:** `in 9m` in blue ✅ (or `Xm overdue` if missed)\n\nclear cache → v21 (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:22:37.672Z",
-      "text": "[Sat 2026-02-28 16:22 UTC] next field is wrong. 8h ago? it should be in the future"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:23:05.232Z",
-      "text": "The `timeAgoMs(diff)` always appends `\" ago\"` — the `.replace(' ago','')` in the overview cron table handles it but the cron tab doesn't, so `\"in 7m ago\"` shows up wrong. Also the negative diff path calls `timeAgoMs(-diff)` which gives a positive \"Xh ago\". Let me fix `timeAgoMs` to accept a raw duration and fix the cron tab rendering:"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T16:23:19.111Z",
@@ -944,6 +931,31 @@
       "role": "assistant",
       "ts": "2026-02-28T17:44:53.085Z",
       "text": "ooh nice combo nyaa~ let me think through all three before diving in (^^)\n\n**1. Telegram slash commands** — straightforward, can start now ✅\n\n**2. Token/cost dashboard** — need to figure out where the data lives (cron run history? session logs?) then add a tab to ClawDash ✅\n\n**3. YouTube digest** — one question first desu~:\n\nYouTube subscriptions are private data, so to fetch your actual sub list we'd need OAuth (YouTube Data API v3). Two options:\n- **OAuth** — I set up a Google Cloud project + OAuth credentials, you authorize once, we store the token → can fetch your real subscription list automatically\n- **Manual channel list** — you give me a list of channels you care about, simpler but you maintain it yourself\n\nalso for video summaries — YouTube has transcripts/captions for most videos, so i can pull those and summarize with AI 🎯\n\nwhich approach for YouTube — OAuth or manual list? and roughly how many channels are we talking? (just so i know if we need batching desu~)\n\nwhile you answer i'll start on slash commands + token dashboard in parallel nyaa~ ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T17:51:20.755Z",
+      "text": "[Sat 2026-02-28 17:51 UTC] oauth. can we know which youtuber is viewed the most by me?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T17:51:58.107Z",
+      "text": "quick heads up on watch history nyaa~ — YouTube Data API v3 **doesn't expose your watch history** (Google locked that down 😤). The only way to get it is via **Google Takeout** → download your data → we parse the `watch-history.json` file locally.\n\nso two sub-features:\n- **Most watched channels** → one-time Google Takeout export (you download, send me the file) → I parse + rank\n- **Subscription digest** → full OAuth, fully automated ✅\n\nlet me start all three features in parallel now desu~ 🐾"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T17:52:42.453Z",
+      "text": "spawned nyaa~ building all 3 in one shot desu~ 🐾\n\nwhile it works — for YouTube OAuth you'll need to **create a Google Cloud project** and get credentials. quick steps when ready:\n\n1. Go to [console.cloud.google.com](https://console.cloud.google.com)\n2. New project → enable **YouTube Data API v3**\n3. Credentials → Create OAuth 2.0 Client ID (Desktop app type)\n4. Download the `client_id` + `client_secret`\n\nthen just run `./scripts/youtube-oauth-setup.sh` once and you're set ♪\n\nfor **watch history** — if you want the most-watched ranking, export from [takeout.google.com](https://takeout.google.com) → select only YouTube data → download → send me the `watch-history.json` file\n\ni'll ping you when the build is done (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T17:52:42.721Z",
+      "text": "[Sat 2026-02-28 17:52 UTC] then do subscription digest only"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T17:52:57.685Z",
+      "text": "steered nyaa~ dropped the watch history part, keeping just subscriptions → new uploads → summary → Telegram daily digest desu~ ♪ will ping when done (^^)"
     }
   ]
 }
