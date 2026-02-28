@@ -931,10 +931,26 @@ async function setupPush() {
       if (existing) await existing.unsubscribe();
     } catch {}
 
-    sub = await reg.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(publicKey),
-    });
+    // pushManager.subscribe can fail with "Registration failed - push service error"
+    // This is usually a temporary FCM/network issue. Retry up to 3x with backoff.
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        sub = await reg.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(publicKey),
+        });
+        break;
+      } catch (subErr) {
+        if (attempt < 3) {
+          toast(`⏳ Push service busy, retrying (${attempt}/3)…`, 'ok', 2000);
+          await new Promise(r => setTimeout(r, 2000 * attempt));
+          // Re-acquire SW registration on retry
+          await navigator.serviceWorker.ready;
+        } else {
+          throw new Error('Push service unavailable after 3 tries. Try clearing browser cache or check Tailscale connection. (' + subErr.message + ')');
+        }
+      }
+    }
 
     const saveRes = await fetch('/api/subscribe', {
       method: 'POST',
@@ -952,7 +968,12 @@ async function setupPush() {
     // Send a test push so user confirms it works
     fetch('/api/notify-test', { method: 'POST' });
   } catch (e) {
-    toast('❌ Push failed: ' + e.message, 'bad', 8000);
+    let msg = e.message || String(e);
+    if (msg.includes('push service')) msg = '❌ Push service error — try again in 30s or clear site data';
+    else if (msg.includes('permission')) msg = '❌ Notification permission denied';
+    else if (msg.includes('network')) msg = '❌ Network error — check Tailscale connection';
+    else msg = '❌ Push failed: ' + msg;
+    toast(msg, 'bad', 10000);
     console.error('Push setup failed:', e);
   }
 }
