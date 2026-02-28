@@ -639,6 +639,7 @@ function renderOutputs(outputs) {
 // ── Chat ──────────────────────────────────────────────────────────────────
 let chatData = [];
 let lastChatLen = 0;
+let chatSending = false; // suppress poll re-renders while message in flight
 
 function renderChat(messages, preserve_scroll = false) {
   chatData = messages || [];
@@ -704,6 +705,7 @@ function stopChatPoll() {
   if (chatPollTimer) { clearInterval(chatPollTimer); chatPollTimer = null; }
 }
 async function refreshChat() {
+  if (chatSending) return; // don't wipe optimistic UI while message is in-flight
   try {
     const res = await fetch('/api/chat');
     if (!res.ok) return;
@@ -745,6 +747,7 @@ async function sendMessage() {
   chatInput.style.height = 'auto';
   sendBtn.disabled = true;
   sendBtn.textContent = '⏳';
+  chatSending = true;
 
   const container = document.getElementById('chat-messages');
   const tempId = 'msg-' + Date.now();
@@ -770,14 +773,19 @@ async function sendMessage() {
     const sentAt = Date.now();
     const prevCount = document.querySelectorAll('.msg.assistant').length;
     const waitForReply = setInterval(async () => {
+      // temporarily allow one fetch
+      chatSending = false;
       await refreshChat();
+      chatSending = true;
       const newCount = document.querySelectorAll('.msg.assistant').length;
       if (newCount > prevCount || Date.now() - sentAt > 180000) {
         clearInterval(waitForReply);
         removeTypingIndicator();
+        chatSending = false; // unlock normal polling
       }
     }, 3000);
   } catch (e) {
+    chatSending = false;
     const el = document.getElementById(tempId);
     if (el) el.querySelector('.msg-bubble').style.borderColor = 'var(--red)';
     sendBtn.textContent = 'Send ↑';
