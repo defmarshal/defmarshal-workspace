@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T11:07:05Z",
+  "generated_at": "2026-02-28T11:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.04 0.88 0.83",
+    "load_avg": "1.39 1.19 0.97",
     "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 1 day, 21 hours, 27 minutes",
+    "uptime": "1 week, 1 day, 21 hours, 30 minutes",
     "disk_history": [
       72,
       72,
@@ -50,8 +50,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 10:06",
-      "last_line": "[2026-02-28T10:06:33Z] [research-agent] Completed Satellite Internet 2026 report (13.4KB, ce054294). 196 total reports. 12 topics today."
+      "last_run": "2026-02-28 11:07",
+      "last_line": "[2026-02-28T11:07:52Z] [research-agent] Completed Fintech 2026 report (16KB, captured in agent-manager build 80167a14). 14 macro-trends: agentic finance, embedded ecosystems, BaaS $5.26B APAC, open finance, RTP, deobanks, CBDC tokenisation, SEA super-app landscape. 197 total reports. 13 topics today."
     },
     {
       "name": "content-agent",
@@ -74,8 +74,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 10:30",
-      "last_line": "2026-02-28 10:30:08 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 11:07",
+      "last_line": "2026-02-28 11:07:28 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -87,99 +87,99 @@
   "research": {
     "total": 222,
     "tts_coverage": "96%",
-    "latest": "2026-02-28-fintech-2026-embedded-finance-baas-api-money-sea",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "0b39380d",
+      "agent": "misc",
+      "message": "fix(clawdash): chat optimistic UI — suppress poll re-renders while msg in-flight (chatSending flag); SW v13",
+      "time": "16 seconds ago"
+    },
+    {
+      "sha": "80167a14",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-02-28)",
+      "time": "3 minutes ago"
+    },
+    {
       "sha": "fd655f2c",
       "agent": "misc",
       "message": "fix(clawdash): regenerate VAPID keys (was .local domain, FCM rejected); full SW unregister on push setup; SW v12",
-      "time": "83 seconds ago"
+      "time": "4 minutes ago"
     },
     {
       "sha": "a1b6b091",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "2 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "6651112a",
       "agent": "content",
       "message": "11:00 tech update — Satellite Internet 2026 (Starlink 6M/450Tbps, Amazon Leo Ultra 1Gbps/AWS, DTC, SEA angle) + content INDEX sync dev drop",
-      "time": "2 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "8cf0189a",
       "agent": "dev",
       "message": "sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh",
-      "time": "5 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "6bee803a",
       "agent": "misc",
       "message": "fix(clawdash): push subscribe retry (3x backoff) + clearer error msgs for 'push service error'",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "321f269e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "6700193a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "12 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "aaa0d5cf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "17 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "624a1ff4",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "22 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "8b82bad1",
       "agent": "misc",
       "message": "feat(clawdash): r5 — active tasks panel, content stats card, real disk history, chat leak filter (NO_REPLY/HEARTBEAT/Continue), mobile cron col hide, agents 2-col grid",
-      "time": "26 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "cd8cd299",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "32 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "7aaf2074",
       "agent": "misc",
       "message": "feat(clawdash): r4 — load/mem/uptime in system card, relative output timestamps, HB notes highlight, commit sha+prefix chips, char counter, send spinner, Escape clears input, research latest fix",
-      "time": "34 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "d20257e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "37 minutes ago"
-    },
-    {
-      "sha": "3c5ef746",
-      "agent": "misc",
-      "message": "feat(clawdash): r3 — cron jobs card (26 jobs, next-run, duration), date separators in chat, swipe-to-close sheet, drag handle, relative HB timestamps, agent ts fix",
-      "time": "37 minutes ago"
-    },
-    {
-      "sha": "56905322",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "42 minutes ago"
+      "time": "40 minutes ago"
     }
   ],
   "heartbeat": {
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772274600007,
-      "next_run": 1772276400000,
+      "last_run": 1772276838995,
+      "next_run": 1772278200000,
       "last_status": "ok",
-      "last_duration_ms": 11686,
+      "last_duration_ms": 14518,
       "consecutive_errors": 0
     },
     {
@@ -443,10 +443,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772272943108,
-      "next_run": 1772276400000,
+      "last_run": 1772276622144,
+      "next_run": 1772280000000,
       "last_status": "ok",
-      "last_duration_ms": 75462,
+      "last_duration_ms": 79807,
       "consecutive_errors": 0
     },
     {
@@ -479,10 +479,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772272800013,
-      "next_run": 1772276400000,
+      "last_run": 1772276400014,
+      "next_run": 1772280000000,
       "last_status": "ok",
-      "last_duration_ms": 143095,
+      "last_duration_ms": 222130,
       "consecutive_errors": 0
     },
     {
@@ -623,10 +623,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772273018570,
-      "next_run": 1772276400000,
+      "last_run": 1772276701951,
+      "next_run": 1772280000000,
       "last_status": "ok",
-      "last_duration_ms": 133407,
+      "last_duration_ms": 137044,
       "consecutive_errors": 0
     },
     {
@@ -688,31 +688,6 @@
     "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:55:14.930Z",
-      "text": "The flex chain isn't reliably constraining on mobile. Let me just use explicit height calculation instead~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:55:25.347Z",
-      "text": "[[reply_to_current]] refresh and try again desu~ simplified the whole flex chain — `chat-main` now has `height: 100%` + `overflow: hidden` so messages scroll internally and input stays pinned at the bottom no matter what nyaa~ (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T09:57:22.787Z",
-      "text": "[Sat 2026-02-28 09:57 UTC] meh, ignore it. i need thinking indicator to make sure you still there"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:57:35.084Z",
-      "text": "typing indicator already exists! the problem is it only shows right after you hit send, then disappears. we need it to **persist** while mewmew is still processing — poll for a new reply and keep the dots until it arrives~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T09:57:50.417Z",
-      "text": "The current logic removes typing indicator after 9s fixed timeout. Need to keep it showing until a **new assistant message actually appears**~"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T09:58:03.021Z",
@@ -937,6 +912,31 @@
       "role": "assistant",
       "ts": "2026-02-28T11:06:46.926Z",
       "text": "[[reply_to_current]] YESSS nyaa~~ 🎉🐾 \n\nfinally!! `.local` domain was the sneaky villain all along (ಠ_ಠ) FCM just silently rejects it with the vaguest error ever, desu~\n\nnow you'll get pinged straight to your phone whenever mewmew replies ♪ no more checking manually~~ (｡◕‿◕｡)♡"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:07:57.805Z",
+      "text": "[Sat 2026-02-28 11:07 UTC] let's talk about the chat flow:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:08:02.338Z",
+      "text": "[[reply_to_current]] yes yes, go ahead nyaa~ 👂 (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T11:09:13.956Z",
+      "text": "[Sat 2026-02-28 11:09 UTC] when i send a message, the message appears, thinking indicator appears, and after that the message disappears, replaced by the same message but with date prefix. thinking indicator disappears. what happened?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:09:41.224Z",
+      "text": "I can see the bug clearly now. When `refreshChat()` runs (every 5s), it calls `renderChat()` which does `container.innerHTML = ...` — this **wipes the optimistic message and typing indicator** and replaces everything with the server data (which now includes the real message with a timestamp). That's exactly what you're seeing desu~\n\nFix: skip re-renders while a message is in-flight:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T11:09:54.300Z",
+      "text": "[[reply_to_current]] found it and fixed it nyaa~ (^^)\n\n**root cause:** the 5s background poll was calling `renderChat()` which does a full `innerHTML` replace — wiping your optimistic message + typing indicator, then rewriting everything fresh from server data (now with timestamp) desu~\n\n**fix:** added `chatSending` flag:\n- set `true` when you hit send\n- background poll **skips** while flag is true\n- dedicated reply-watcher still checks every 3s (temporarily unlocks, fetches, re-locks)\n- unlocks when reply arrives or 3min timeout\n\nclear cache to get v13 — should feel smooth now with no disappearing messages~ ♪"
     }
   ]
 }
