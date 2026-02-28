@@ -230,6 +230,7 @@
   <button class="tab-btn" data-tab="heartbeat">💓 Heartbeat</button>
   <button class="tab-btn" data-tab="agents">🤖 Agents <span class="badge" id="badge-agents">…</span></button>
   <button class="tab-btn" data-tab="chat">💬 Chat <span class="badge" id="badge-chat">…</span></button>
+  <button class="tab-btn" data-tab="cron">⏰ Cron</button>
   <button class="tab-btn" onclick="load();toast('🔄 Refreshing…','ok',1500)" title="Refresh">🔄</button>
 </nav>
 
@@ -244,6 +245,10 @@
     <div class="card"><h2>📝 Recent Commits</h2><table id="commit-table"></table></div>
     <div class="card"><h2>⏰ Cron Jobs</h2><table id="cron-table"></table></div>
     <div class="card"><h2>📰 Content Stats</h2><table id="content-table"></table></div>
+    <div class="card">
+      <div class="card-title">🧲 Downloads</div>
+      <div id="torrent-card"><span style="color:var(--muted);font-size:12px">Loading…</span></div>
+    </div>
   </div>
 </div>
 
