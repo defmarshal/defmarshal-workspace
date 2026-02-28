@@ -1,91 +1,85 @@
 # Workspace Strategic Improvement Plan
-**Session:** workspace-builder-20260228-1107
-**Goal:** Archive completed tasks, commit auto-generated files, enhance validation, maintain constraints
-**Started:** 2026-02-28 11:07 UTC
+**Session:** workspace-builder-20260228-1307
+**Goal:** Archive completed tasks, clean stale branches, enforce constraints
+**Started:** 2026-02-28 13:07 UTC
 
 ---
 
-## Phase 1: Active Tasks Archive Cleanup
-**Why:** The entry `[workspace-builder-20260228-0907]` is validated but still in Running section. It should be archived to today's daily log and removed from active-tasks.md to keep the Running section accurate.
+## Phase 1: Archive Validated Workspace-Builder Entry
+**Why:** The entry `[workspace-builder-20260228-1107]` has status `validated` but remains in active-tasks.md Running section. Completed tasks must be archived to daily logs to keep Running section accurate and active-tasks under 2KB.
 
 **Steps:**
-1. Read today's daily log (memory/2026-02-28.md) to locate "## Archived Completed Tasks" section.
-2. Append the completed entry (with its verification details) to that section, preserving format.
-3. Remove the entry from active-tasks.md.
-4. Verify active-tasks.md size remains <2KB.
-5. Commit active-tasks.md and daily log updates with message: `build: archive completed workspace-builder session 20260228-0907`
+1. Read active-tasks.md to extract the full entry details for `workspace-builder-20260228-1107`.
+2. Read `memory/2026-02-28.md` to locate the "## Archived Completed Tasks" section.
+3. Append the entry (with its verification metrics) to that section, preserving the established format.
+4. Remove the entry from active-tasks.md's Running section.
+5. Verify active-tasks.md size remains <2KB.
+6. Commit both files with message: `build: archive completed workspace-builder session 20260228-1107`
+7. Push to origin/master.
 
-**Success:** active-tasks.md no longer contains the validated entry; daily log includes it.
+**Success:** active-tasks.md no longer contains the validated entry; daily log includes it with proper formatting.
 
 ---
 
-## Phase 2: Commit Auto-Generated Dashboard Files
-**Why:** `apps/dashboard/data.json` and `memory/disk-history.json` are modified by agent runs (supervisor/agent-manager). They should be committed to keep git clean and version dashboard data.
+## Phase 2: Cleanup Stale Idea Branches
+**Why:** Idea branches that are stale (no recent activity, abandoned, or empty) clutter the repository and should be removed to maintain branch hygiene. Previous workspace-builder runs have pruned stale branches successfully.
 
 **Steps:**
-1. Review changes via `git diff` to ensure they are expected (timestamp updates, metrics).
-2. Stage both files.
-3. Commit with message: `build: update dashboard data and disk history (workspace-builder 20260228-1107)`
-4. Push to origin/master.
+1. List all branches matching `idea/*`.
+2. For each branch, check last commit date and merge status.
+3. Identify branches that are:
+   - Empty (no commits) OR
+   - Older than 30 days with no activity OR
+   - Marked as abandoned/experimental without merge
+4. Delete identified stale branches both locally and remotely (`git branch -d`, `git push origin --delete`).
+5. Document deletions in findings.md.
+6. Commit a summary if branches were deleted: `build: prune stale idea branches`
+7. Push to origin.
 
-**Success:** Git clean and up-to-date.
+**Success:** No stale idea branches remain; repository cleaner.
 
 ---
 
-## Phase 3: Enhance Constraint Validation
-**Why:** Proactive script hygiene: ensure all shell scripts have shebangs. This prevents runtime errors when scripts are executed without proper interpreter directive.
+## Phase 3: Final Validation & Documentation
+**Why:** Ensure all constraints remain satisfied and document the session outcome.
 
 **Steps:**
-1. Add a new check to `scripts/validate-constraints.sh`:
-   - Find all `scripts/*.sh` (or scripts/**/*.sh)
-   - Verify each is executable (already true) and has a shebang as first line.
-   - Count missing shebangs; if any, exit with error.
-2. Test the new check by intentionally breaking a test script (dry-run), then revert.
-3. Ensure existing scripts pass.
-
-**Success:** `./quick validate-constraints` includes ✅ "Shebang check: all scripts have #!" line; exit code 0.
-
----
-
-## Phase 4: Final Validation & Documentation
-**Why:** Ensure all constraints satisfied and document session.
-
-**Steps:**
-1. Run `./quick validate-constraints` until all green.
-2. Run `./quick health` to confirm overall health.
-3. Verify git clean and pushed.
-4. Update active-tasks.md: add running entry for this session `[workspace-builder-20260228-1107]` and later mark validated with verification metrics.
+1. Run `./quick validate-constraints` to verify all checks pass.
+2. Run `./quick health` to confirm overall system health.
+3. Verify `git status` clean and up-to-date with origin.
+4. Update active-tasks.md:
+   - Add a new running entry for this session: `[workspace-builder-20260228-1307]`
+   - Include initial status and start time.
 5. If active-tasks.md approaches 2KB, prune oldest completed entries.
-6. Optionally update MEMORY.md (if significant learning emerges) but keep ≤35 lines.
+6. Create/update progress.md with phase completion notes.
 
-**Success:** All constraints green, active-tasks updated, git clean.
+**Success:** All constraints green, active-tasks updated with current session, git clean.
 
 ---
 
-## Phase 5: Close the Loop
+## Phase 4: Close the Loop
 **Steps:**
-1. After validation, update active-tasks.md entry status to validated with detailed verification.
-2. If needed, prune oldest completed entries to keep size <2KB.
-3. Commit active-tasks.md update with message: `build: mark workspace-builder session validated (2026-02-28 11:07 UTC) - all constraints satisfied`
+1. After ensuring all work is done, update active-tasks entry to `status: validated` with detailed verification metrics.
+2. Prune any oldest completed entries if needed to keep size <2KB.
+3. Commit active-tasks.md update: `build: mark workspace-builder session validated (2026-02-28 13:07 UTC) - archive task, prune branches`
 4. Push to origin.
-5. Final sanity: `./quick validate-constraints` one last time.
+5. Perform final validation: `./quick validate-constraints` one last time.
 
-**Success:** Repository fully synchronized; session properly closed.
+**Success:** Repository fully synchronized; session properly closed; all constraints satisfied.
 
 ---
 
 ## Risk Mitigation
-- **Active-tasks edit:** Before removing the entry, copy its full details to daily log to preserve history.
-- **Constraint check:** Ensure new shebang validation does not false-positive on non-shell files; limit to `*.sh` under scripts/.
-- **Git pushes:** Verify remote is origin/master before pushing to avoid mismatches.
-- **Backout:** If any step fails, debug and fix before proceeding; use git revert if needed.
+- **Active-tasks edit:** Before removing any entry, copy its full details (including verification notes) to daily log to preserve history.
+- **Ideas deletion:** Only delete branches that are clearly stale (empty or >30d no activity). Do not delete active/work-in-progress branches.
+- **Git pushes:** Verify remote is `origin/master` before pushing.
+- **Backout:** If any step fails, debug and fix; use `git revert` if needed.
 
 ---
 
 ## Metrics for Success
 - active-tasks.md size < 2KB after archival
-- All 8+ constraints (including new shebang) satisfied
+- No stale idea branches remain
+- All constraints (including shebang) pass
 - Git clean and pushed
-- No temp files
-- SHEBANG check added and passing
-- Daily log updated with archived task details
+- Daily log properly updated with archived entry
