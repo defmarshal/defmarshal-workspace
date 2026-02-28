@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T05:10:02Z",
+  "generated_at": "2026-02-28T05:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -28,8 +28,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-02-28 05:09",
-      "last_line": "[2026-02-28T05:09:25Z] [research-agent] Completed agentic AI multi-agent frameworks 2026 report (17.3KB, e42b63d0). 190 total reports. Heartbeat: disk 72%, meta-supervisor PID 1121739 healthy."
+      "last_run": "2026-02-28 05:12",
+      "last_line": "[2026-02-28T05:12:50Z] [research-agent] Completed open source LLM landscape 2026 report (17.8KB, cc43e3d3). 191 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs."
     },
     {
       "name": "content-agent",
@@ -52,8 +52,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-02-28 04:30",
-      "last_line": "2026-02-28 04:30:09 UTC - Agent Manager stopped"
+      "last_run": "2026-02-28 05:10",
+      "last_line": "2026-02-28 05:10:29 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -63,101 +63,101 @@
     }
   ],
   "research": {
-    "total": 215,
+    "total": 216,
     "tts_coverage": "99%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "e42b63d0",
+      "sha": "cc43e3d3",
       "agent": "research",
-      "message": "agentic AI multi-agent frameworks 2026 — LangGraph CrewAI MCP A2A enterprise adoption stats",
-      "time": "67 seconds ago"
+      "message": "open source LLM landscape 2026 — DeepSeek MIT, Qwen3 Apache 2.0, Llama 4 10M ctx, Mistral L3, benchmark gap collapse",
+      "time": "2 minutes ago"
     },
     {
-      "sha": "34ee2327",
-      "agent": "content",
-      "message": "research spotlight 2026-02-28 05:04 UTC — Spring 2026 anime guide, Agentic AI frameworks, dev fixes summary",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "43bb5d29",
+      "sha": "5be2769e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "007f71e6",
-      "agent": "dev",
-      "message": "fix dashboard commit timestamps; implement archiver-manager weekly script",
+      "sha": "e42b63d0",
+      "agent": "research",
+      "message": "agentic AI multi-agent frameworks 2026 — LangGraph CrewAI MCP A2A enterprise adoption stats",
       "time": "6 minutes ago"
     },
     {
-      "sha": "7e26d43d",
+      "sha": "34ee2327",
+      "agent": "content",
+      "message": "research spotlight 2026-02-28 05:04 UTC — Spring 2026 anime guide, Agentic AI frameworks, dev fixes summary",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "43bb5d29",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "279707ed",
+      "sha": "007f71e6",
+      "agent": "dev",
+      "message": "fix dashboard commit timestamps; implement archiver-manager weekly script",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "7e26d43d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "deade967",
+      "sha": "279707ed",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "eb27c442",
+      "sha": "deade967",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "1d5068ab",
+      "sha": "eb27c442",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "9d06bb29",
+      "sha": "1d5068ab",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "36140ec0",
+      "sha": "9d06bb29",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "02cdac26",
+      "sha": "36140ec0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "655b2bcc",
+      "sha": "02cdac26",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "fa697657",
+      "sha": "655b2bcc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
-    },
-    {
-      "sha": "d1f5941b",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "56 minutes ago"
     }
   ],
   "heartbeat": {
