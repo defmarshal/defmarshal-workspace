@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T06:22:26Z",
+  "generated_at": "2026-02-28T06:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
@@ -21,7 +21,7 @@
   "agents": [
     {
       "name": "linkedin-pa-agent",
-      "active": true,
+      "active": false,
       "last_run": "2026-02-28 03:23",
       "last_line": "2026-02-28 03:23:39 UTC - Cycle completed"
     },
@@ -70,94 +70,94 @@
   },
   "recent_commits": [
     {
+      "sha": "824a646d",
+      "agent": "misc",
+      "message": "feat(clawdash): full PWA — PNG icons, updated manifest (id/shortcuts/maskable), sw.js v4, iOS/Android meta tags, ?tab= URL shortcuts",
+      "time": "3 minutes ago"
+    },
+    {
       "sha": "325600d2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "2 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "a60a551b",
       "agent": "misc",
       "message": "fix(clawdash): send via agent session (detached) so messages come FROM user, reply arrives in Telegram",
-      "time": "4 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "f25f17b6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "fbfb4bc7",
       "agent": "auto",
       "message": "maintenance update 2026-02-28 06:14 UTC",
-      "time": "8 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "4b319cb6",
       "agent": "research",
       "message": "edge AI on-device LLMs 2026 — Qualcomm X2 85 TOPS, Nvidia N1X 180 TOPS, Apple M4, small models, quantization, deployment guide",
-      "time": "10 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "a5abb106",
       "agent": "misc",
       "message": "fix(clawdash): use openclaw message send instead of agent --deliver for instant chat (no LLM turn)",
-      "time": "11 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "bda488ea",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "12 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "6b972f78",
       "agent": "content",
       "message": "06:05 research spotlight — agentic AI, open-source LLMs, spring anime, SEA banking; 6 reports today, 191 total",
-      "time": "14 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "fcd93b73",
       "agent": "dev",
       "message": "add agent-health-report script — per-agent status, error counts, gateway/disk/git; fix content INDEX; prune stale idea branch",
-      "time": "15 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "a0a2dc4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "17 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "9dc857f5",
       "agent": "misc",
       "message": "feat(clawdash): v4 — dark/light toggle, disk bar+sparkline, agent timeline, relative timestamps, typing indicator, chat autopoll 10s, Cmd+K palette, toasts, error highlighting in logs, tab persistence",
-      "time": "19 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "eefca116",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "22 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "ec44fd0b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "27 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "15c9e2d9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "32 minutes ago"
-    },
-    {
-      "sha": "d7d38718",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "37 minutes ago"
+      "time": "35 minutes ago"
     }
   ],
   "heartbeat": {
@@ -331,11 +331,6 @@
     }
   ],
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T03:43:48.441Z",
-      "text": "`openclaw agent --to telegram:952170974 --message \"...\" --deliver` works~ that's our bridge. now I have everything I need. The plan:\n\n**Architecture:** Local Node.js backend server (extending the existing one on port 3001) that:\n- Serves the PWA + proxies `data.json`\n- `POST /api/send` → runs `openclaw agent --to telegram:952170974 --message \"...\" --deliver`\n- `POST /api/quick` → runs `./quick <cmd>`\n- `GET /api/data` → returns latest `data.json`\n\nSince Vercel can't do this (no backend), we serve locally and expose via Tailscale/public URL."
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T03:44:26.117Z",
@@ -580,6 +575,11 @@
       "role": "assistant",
       "ts": "2026-02-28T06:22:13.063Z",
       "text": "Also serve PNG icons in the backend server~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T06:23:01.051Z",
+      "text": "[[reply_to_current]] PWA is fully set up now desu~ (^^)\n\n**what's new:**\n- ✅ **PNG icons** (192×192 + 512×512) — required for Android/iOS install prompt\n- ✅ **Updated manifest** — `id`, `shortcuts` (Chat + Overview), `maskable` icon for Android splash\n- ✅ **iOS meta tags** — `apple-mobile-web-app-capable`, proper title, touch icon\n- ✅ **SW v4** — caches PNG icons too, cleaner fetch strategy\n- ✅ **Shortcut URLs** — `?tab=chat` and `?tab=overview` work from home screen shortcuts\n\n**to install:**\n\n**Android Chrome:** open `http://100.108.208.45:3001` → three-dot menu → \"Add to Home Screen\" → installs as standalone app with 🦾 icon nyaa~\n\n**iOS Safari:** open URL → Share → \"Add to Home Screen\"\n\n> ⚠️ **note:** install requires HTTPS on iOS. Android Chrome is more lenient with local IPs over Tailscale. if iOS doesn't prompt, let me know and we can set up HTTPS on the backend~"
     }
   ]
 }
