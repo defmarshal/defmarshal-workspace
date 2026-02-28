@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-02-28T16:05:02Z",
+  "generated_at": "2026-02-28T16:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 72,
     "disk_free": "13G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 8,
     "downloads_gb": "5.7G",
-    "load_avg": "1.04 1.01 1.09",
-    "mem_used": "3.5Gi",
+    "load_avg": "0.93 1.03 1.08",
+    "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 2 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 2 hours, 30 minutes",
     "disk_history": [
       72,
       72,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "ab28f9e7",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "53f9cfe5",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "66c43037",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "37a71265",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "4d3cc34c",
       "agent": "misc",
       "message": "fix(clawdash): use lastAsstTs timestamp not count to detect new reply — sliding 100-msg window made count-based detection unreliable; SW v17",
-      "time": "12 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "44bec76a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "fcafff4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "10cd2510",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "11df490b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "b8f05427",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-02-28)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "16b85631",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "57a14f97",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "2b41492d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "67d5f223",
       "agent": "build",
       "message": "refine git-status filter to ignore disk-history.json",
-      "time": "47 minutes ago"
+      "time": "52 minutes ago"
     },
     {
       "sha": "82c0e2fe",
       "agent": "build",
       "message": "improve validate-constraints to ignore disk-history.json ephemeral updates",
-      "time": "48 minutes ago"
-    },
-    {
-      "sha": "981b4540",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "53 minutes ago"
     }
   ],
   "heartbeat": {
@@ -689,51 +689,6 @@
   },
   "chat": [
     {
-      "role": "user",
-      "ts": "2026-02-28T10:30:59.230Z",
-      "text": "Continueeee"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:31:06.555Z",
-      "text": "nyaa~ not stopping~ let me audit everything more deeply (^^)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:32:25.406Z",
-      "text": "Good — now I have a full picture. Let me build a big round of improvements:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:33:19.146Z",
-      "text": "r4 shipped nyaa~ (^^) here's what changed:\n\n**Overview — System card**\n- 🖥️ **Load avg** (1-min, 5-min, 15-min)\n- 💾 **RAM** used / total (3.5Gi / 23Gi)\n- ⏱️ **Uptime** (1 week, 1 day…)\n\n**Overview — Commits**\n- `a1b2c3d` sha + `feat`/`fix`/`build` coloured prefix chips\n\n**Agents tab**\n- 📄 Output timestamps now show \"2h ago\" instead of raw `2026-02-28-1000`\n\n**Heartbeat tab**\n- 💚 Notes field highlighted in green banner at top\n- Status values auto-coloured (ok/warn/bad)\n\n**Chat**\n- 🔢 Character counter while typing\n- ⏳ Send button shows spinner, reverts on done\n- ⎋ Escape clears input\n\n**Research**\n- Fixed \"INDEX\\nnone\" garbage in latest field\n\nclear cache + reopen to get v9 desu~ 🐾✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T10:36:10.302Z",
-      "text": "Continueeee"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:36:20.735Z",
-      "text": "nyaa~ let me keep digging (^^)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:37:03.946Z",
-      "text": "Found it — filter needs to be much stronger. Let me fix the server + build real disk history + fix the sparkline + more~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:40:31.716Z",
-      "text": "The issue is `ls -1t` with a wildcard still lists all 495 files which maxes out `ARG_MAX`. The `head -1` never runs because `ls` fails. Let me fix with a safer approach:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T10:40:44.462Z",
-      "text": "All data working now. Restart the backend and commit~"
-    },
-    {
       "role": "assistant",
       "ts": "2026-02-28T10:40:54.466Z",
       "text": "Zero leaks nyaa~ (^^)"
@@ -937,6 +892,51 @@
       "role": "assistant",
       "ts": "2026-02-28T15:53:09.423Z",
       "text": "[[reply_to_current]] found the REAL bug finally nyaa~ (ಠ_ಠ)\n\n**root cause:** the API returns only the last **100 messages**. When you send a message, the window slides — old assistant messages fall off the end, so the assistant count stays at 73 or even drops. The watcher never saw \"more assistant msgs\" because the count never went up!\n\n**fix:** switched to **timestamp comparison** instead of counting — now looks for any assistant message with a timestamp newer than the last one we knew about. Sliding window can't fool timestamps desu~\n\nclear cache → v17 → should finally work properly this time~ 🐾✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:06:25.128Z",
+      "text": "[Sat 2026-02-28 16:06 UTC] it's ok"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:06:30.733Z",
+      "text": "[[reply_to_current]] YESSS finally nyaa~~ 🎉🐾 \n\ntook like 6 attempts but we got there desu~ that sliding window bug was sneaky (ಠ_ಠ) lesson learned — never use counts when you have timestamps! ♪\n\nwhat do you want to work on next? (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:06:55.807Z",
+      "text": "[Sat 2026-02-28 16:06 UTC] give me an idea"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:07:06.916Z",
+      "text": "[[reply_to_current]] ooh let me think~ here are some fun ones nyaa (^^):\n\n**🔧 UX polish**\n1. **Message reactions** — tap a chat bubble to react with emoji (stored locally, just for fun)\n2. **Chat search** — filter messages by keyword, super useful with 100+ msgs\n3. **Swipe to reply** — swipe right on a bubble to quote-reply\n\n**📊 New cards**\n4. **Torrent status card** — live aria2 downloads with progress bars in Overview\n5. **Cron tab** — dedicated tab with full job list, run history, enable/disable toggles\n\n**⚡ Performance**\n6. **Server-sent events (SSE)** — replace 5s polling with real push from server → instant chat updates, no lag\n\n**🎨 Fun**\n7. **mewmew avatar** — cute animated avatar next to assistant bubbles in chat\n8. **Typing sound** — subtle *pop* when a new message arrives\n\n---\n\nmy pick? **#6 SSE** desu~ it'd make chat feel instant and remove all that polling complexity that caused the bugs we just fixed. plus it's cleaner than timers everywhere (｡◕‿◕｡)♡\n\nor **#5 Cron tab** if you want more observability~\n\nwhich vibe? ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-02-28T16:07:55.975Z",
+      "text": "[Sat 2026-02-28 16:07 UTC] 4-8"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:08:05.100Z",
+      "text": "big batch nyaa~ let me plan this properly and ship them all desu (^^)"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:08:37.302Z",
+      "text": "Got aria2 data. Now let me build all 5 features:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:09:21.657Z",
+      "text": "The aria2 functions got lost — the string replacement didn't find the right anchor. Let me fix:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-02-28T16:09:39.828Z",
+      "text": "The aria2/SSE code landed after `http.createServer` — need to move it before. Let me just do the whole server.js cleanly:"
     }
   ]
 }
