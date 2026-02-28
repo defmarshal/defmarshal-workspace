@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T20:05:02Z",
+  "generated_at": "2026-02-28T20:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.8G",
-    "load_avg": "1.11 0.86 0.84",
-    "mem_used": "3.4Gi",
+    "load_avg": "1.75 1.21 0.97",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 6 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 6 hours, 30 minutes",
     "disk_history": [
       80,
       80,
@@ -43,7 +43,7 @@
   "agents": [
     {
       "name": "linkedin-pa-agent",
-      "active": true,
+      "active": false,
       "last_run": "2026-02-28 17:06",
       "last_line": "2026-02-28 17:06:41 UTC - Cycle completed"
     },
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "49fea84c",
+      "sha": "f77caa8e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "2d0dd27b",
+      "sha": "49fea84c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "a0cb404c",
+      "sha": "2d0dd27b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "52763d47",
+      "sha": "a0cb404c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "7f8d18cb",
+      "sha": "52763d47",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "038c6615",
+      "sha": "7f8d18cb",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "74a32f10",
+      "sha": "038c6615",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "d51d11ee",
+      "sha": "74a32f10",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "05013119",
+      "sha": "d51d11ee",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "7ae637f2",
+      "sha": "05013119",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "d34944e2",
+      "sha": "7ae637f2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
+      "sha": "d34944e2",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "60 minutes ago"
+    },
+    {
       "sha": "62e30d59",
       "agent": "build",
       "message": "archive workspace-builder session 20260228-1705 closure to daily log",
-      "time": "59 minutes ago"
+      "time": "64 minutes ago"
     },
     {
       "sha": "205385c0",
       "agent": "build",
       "message": "update disk history (post-closure telemetry)",
-      "time": "59 minutes ago"
+      "time": "64 minutes ago"
     },
     {
       "sha": "69705dea",
       "agent": "build",
       "message": "finalize workspace-builder session closure (20260228-1705)",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "c46ed458",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
+      "time": "65 minutes ago"
     }
   ],
   "heartbeat": {
@@ -587,10 +587,10 @@
       "schedule": "5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772305672969,
-      "next_run": 1772309100000,
+      "last_run": 1772309100012,
+      "next_run": 1772312700000,
       "last_status": "ok",
-      "last_duration_ms": 28167,
+      "last_duration_ms": 143424,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772309024451,
-      "next_run": 1772309144451,
+      "last_run": 1772309363466,
+      "next_run": 1772309483466,
       "last_status": "ok",
-      "last_duration_ms": 27642,
+      "last_duration_ms": 29189,
       "consecutive_errors": 0
     },
     {
