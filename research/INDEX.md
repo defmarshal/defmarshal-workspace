@@ -2,7 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (219 total)
+## 2026 Reports (220 total)
+
+### 2026-03
+- [Biotech & Longevity 2026 — AI Drug Discovery, GLP-1 Dominance, Gene Therapy, CRISPR & the Longevity Startup Race](2026-03-01-biotech-longevity-2026-ai-drug-discovery-glp1-gene-therapy-crispr.md)
 
 ### 2026-02
 - [Robotics & Physical AI 2026 — Humanoid Robots Leave the Lab: Atlas, Figure Helix 02, Tesla Optimus, Unitree](2026-02-28-robotics-physical-ai-2026-humanoid-robots-boston-dynamics-figure-tesla-optimus.md)
