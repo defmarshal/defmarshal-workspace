@@ -1,25 +1,24 @@
 {
-  "generated_at": "2026-03-01T08:00:02Z",
+  "generated_at": "2026-03-01T08:05:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
     "disk_free": "9.7G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 11,
     "downloads_gb": "7.6G",
-    "load_avg": "0.79 0.79 0.85",
-    "mem_used": "4.3Gi",
+    "load_avg": "1.39 1.23 1.03",
+    "mem_used": "2.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 18 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 18 hours, 25 minutes",
     "disk_history": [
       84,
       84,
       84,
       84,
       84,
-      84,
       83,
       83,
       83,
@@ -36,6 +35,7 @@
       78,
       78,
       78,
+      79,
       79,
       79
     ]
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-01 07:16",
-      "last_line": "[2026-03-01 07:16 UTC] research-agent: 2 reports generated: quantum-computing-2026 (256 lines, IonQ $130M, IBM Nighthawk/Kookaburra, Majorana 1, Willow, Quantinuum Qatar JV, PQC) + ai-developer-tools-2026 (293 lines, Cursor $29B, Copilot 4.7M subs, Claude Code 4% GitHub commits, Antigravity Manager view, vibe coding). Total: 233 reports. Pushed 2fec30ac"
+      "last_run": "2026-03-01 08:00",
+      "last_line": "2026-03-01 08:00:18 UTC - Dev-agent cycle completed (exit 0)"
     },
     {
       "name": "supervisor",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "fae22556",
+      "sha": "5f1d0078",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0803)",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "167be621",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "12aafc3f",
+      "sha": "fae22556",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "b06fefa1",
+      "sha": "12aafc3f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "9b9dfcbc",
+      "sha": "b06fefa1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "b8b479da",
+      "sha": "9b9dfcbc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "a5cac29a",
+      "sha": "b8b479da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "3ac15326",
+      "sha": "a5cac29a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "b0410dca",
+      "sha": "3ac15326",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
+      "sha": "b0410dca",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "45 minutes ago"
+    },
+    {
       "sha": "2fec30ac",
       "agent": "research",
       "message": "2 deep-dive reports 2026-03-01 (reports #232-233)",
-      "time": "43 minutes ago"
+      "time": "48 minutes ago"
     },
     {
       "sha": "640afa94",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "765c0baa",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "43b8b36d",
       "agent": "feat",
       "message": "workspace time capsule — weekly sealed letters to future mewmew, unlocks after 30 days",
-      "time": "46 minutes ago"
+      "time": "51 minutes ago"
     },
     {
       "sha": "6f8996ab",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "909078d3",
-      "agent": "content",
-      "message": "green-tech writeup + sunday digest + full coverage (2026-03-01 07:05 UTC)",
-      "time": "51 minutes ago"
-    },
-    {
-      "sha": "f15dd84e",
-      "agent": "dev",
-      "message": "2 content writeups + dashboard fix + digest regen (2026-03-01 07:00 UTC)",
-      "time": "54 minutes ago"
+      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
