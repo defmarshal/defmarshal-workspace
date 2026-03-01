@@ -13,6 +13,7 @@ WORKSPACE="${WORKSPACE:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 CREDS_FILE="$WORKSPACE/config/youtube-credentials.json"
 CONTENT_DIR="$WORKSPACE/content"
 TELEGRAM_SESSION_ID="bcc62cdd-c612-4f74-8f20-559e10b3dad6"
+export TELEGRAM_SESSION_ID
 LOG="$WORKSPACE/memory/youtube-digest.log"
 HOURS=24
 DRY_RUN=0
@@ -339,6 +340,7 @@ mkdir -p "$CONTENT_DIR"
 DATE_STR=$(date -u '+%Y-%m-%d')
 TIME_STR=$(date -u '+%H%M')
 OUTPUT_FILE="$CONTENT_DIR/youtube-digest-${DATE_STR}-${TIME_STR}.md"
+export DATE_STR OUTPUT_FILE
 echo "$DIGEST" > "$OUTPUT_FILE"
 log "Digest saved: $OUTPUT_FILE"
 
@@ -350,32 +352,71 @@ if [ "$DRY_RUN" -eq 1 ]; then
   exit 0
 fi
 
-# Build compact Telegram message (Telegram has 4096 char limit)
+# Build compact Telegram message — short summary + top videos
 TELEGRAM_MSG=$(python3 - <<TMSG
-import sys, os
-digest = """$DIGEST"""
+import sys, os, re
 
-lines = digest.split('\n')
-tg_lines = []
-for line in lines:
-    if line.startswith('**Content preview:**'):
-        # Shorten content preview
-        line = line[:120] + '...' if len(line) > 120 else line
-    tg_lines.append(line)
+digest = open(os.environ['OUTPUT_FILE']).read()
 
-msg = '\n'.join(tg_lines)
-# Truncate to Telegram limit
-if len(msg) > 3800:
-    msg = msg[:3800] + '\n\n…[see content/youtube-digest.md for full digest]'
-print(msg)
+# Extract header line (65 video(s) from 44 channel(s))
+header_m = re.search(r'> (.*video.*channel.*)', digest)
+header = header_m.group(1) if header_m else ''
+
+# Extract each channel + its videos
+sections = re.split(r'\n## 📡 ', digest)
+lines_out = [f"📺 *YouTube Digest — {os.environ.get('DATE_STR','today')}*", f"_{header}_", '']
+
+for sec in sections[1:]:  # skip preamble
+    sec_lines = sec.strip().split('\n')
+    channel = sec_lines[0].strip()
+    videos = re.findall(r'### \[([^\]]+)\]\((https://[^\)]+)\)', sec)
+    if not videos:
+        continue
+    lines_out.append(f"📡 *{channel}*")
+    for title, url in videos[:2]:  # max 2 per channel
+        lines_out.append(f"  • [{title}]({url})")
+    lines_out.append('')
+
+msg = '\n'.join(lines_out)
+# Split into chunks of ~3800 chars at paragraph boundary
+chunks = []
+while len(msg) > 3800:
+    split_at = msg.rfind('\n\n', 0, 3800)
+    if split_at == -1: split_at = 3800
+    chunks.append(msg[:split_at])
+    msg = msg[split_at:].lstrip()
+chunks.append(msg)
+print('\n|||SPLIT|||\n'.join(chunks))
 TMSG
 )
 
 log "Sending digest to Telegram..."
-openclaw agent \
-  --session-id "$TELEGRAM_SESSION_ID" \
-  --message "$TELEGRAM_MSG" \
-  --deliver \
-  2>>"$LOG" && log "Digest delivered to Telegram" || log "WARNING: Telegram delivery failed"
+# Send in chunks (split on |||SPLIT|||)
+IFS='
+' read -r -d '' -a MSG_CHUNKS < <(printf '%s\0' "$TELEGRAM_MSG" | python3 -c "
+import sys
+data = sys.stdin.read()
+chunks = data.split('|||SPLIT|||')
+for c in chunks:
+    print(c.strip())
+    print('---CHUNK---')
+") || true
+
+# Fallback: just send full message split manually
+echo "$TELEGRAM_MSG" | python3 -c "
+import sys, subprocess, os
+data = sys.stdin.read()
+chunks = [c.strip() for c in data.split('|||SPLIT|||') if c.strip()]
+session = os.environ.get('TELEGRAM_SESSION_ID','')
+for i, chunk in enumerate(chunks):
+    result = subprocess.run(
+        ['openclaw', 'agent', '--session-id', session, '--message', chunk, '--deliver'],
+        capture_output=True, text=True, timeout=30
+    )
+    if result.returncode != 0:
+        print(f'Chunk {i+1} failed: {result.stderr[:100]}', file=sys.stderr)
+    else:
+        print(f'Chunk {i+1}/{len(chunks)} sent ({len(chunk)} chars)')
+" 2>>"$LOG" && log "Digest delivered to Telegram" || log "WARNING: Telegram delivery failed"
 
 log "=== YouTube Digest complete ==="
