@@ -337,6 +337,13 @@ tr:hover td {
   color: var(--bg);
 }
 
+/* Mobile: hide mascot to prevent overlap */
+@media (max-width: 768px) {
+  .mascot-sidebar {
+    display: none !important;
+  }
+}
+
 /* Collapsed state */
 .mascot-sidebar.collapsed .mascot-container {
   width: 40px;

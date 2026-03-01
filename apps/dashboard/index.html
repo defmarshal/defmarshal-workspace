@@ -505,6 +505,8 @@ const ON_VERCEL = window.location.hostname.includes('vercel.app');
 let backendAvailable = false;
 let activeTab = localStorage.getItem('clawdash-tab') || 'overview';
 let chatPollTimer = null;
+let chatReplyWatcher = null;  // for sendMessage reply polling
+let projectsAbortController = null;
 let typingMsgId = null;
 
 // ── Theme ─────────────────────────────────────────────────────────────────
@@ -816,16 +818,21 @@ function renderOutputs(outputs) {
 async function loadProjects() {
   const el = document.getElementById('projects-grid');
   if (!el) return;
-  // Show loading state
   el.innerHTML = '<div class="card" style="grid-column:1/-1"><span class="muted">Loading projects...</span></div>';
   
+  if (projectsAbortController) projectsAbortController.abort();
+  projectsAbortController = new AbortController();
+  
   try {
-    const res = await fetch('/api/projects');
+    const res = await fetch('/api/projects', { signal: projectsAbortController.signal });
     const data = await res.json();
     if (!data.ok) throw new Error(data.error || 'Failed to load projects');
     renderProjects(data.projects);
   } catch (e) {
-    el.innerHTML = `<div class="card" style="grid-column:1/-1"><span class="bad">Error loading projects: ${esc(e.message)}</span></div>`;
+    if (e.name === 'AbortError') return;
+    el.innerHTML = `<div class="card" style="grid-column:1/-1"><span class="bad">Error: ${esc(e.message)}</span></div>`;
+  } finally {
+    projectsAbortController = null;
   }
 }
 
@@ -1267,7 +1274,11 @@ async function sendMessage() {
     // Use timestamp of last known assistant msg as baseline (immune to sliding window)
     const asstMsgs = chatData.filter(m => m.role !== 'user');
     const lastAsstTs = asstMsgs.length ? new Date(asstMsgs[asstMsgs.length - 1].ts).getTime() : 0;
-    const waitForReply = setInterval(async () => {
+    
+    // Clear any existing watcher to avoid leaks
+    if (chatReplyWatcher) { clearInterval(chatReplyWatcher); chatReplyWatcher = null; }
+    
+    chatReplyWatcher = setInterval(async () => {
       try {
         const r = await fetch('/api/chat');
         if (!r.ok) return;
@@ -1277,7 +1288,8 @@ async function sendMessage() {
         const newAsst = msgs.filter(m => m.role !== 'user' && new Date(m.ts).getTime() > lastAsstTs);
         const timedOut = Date.now() - sentAt > 180000;
         if (newAsst.length > 0 || timedOut) {
-          clearInterval(waitForReply);
+          clearInterval(chatReplyWatcher);
+          chatReplyWatcher = null;
           chatSending = false;
           removeTypingIndicator();
           renderChat(msgs, true);
@@ -1648,69 +1660,95 @@ async function runQuickSheet(cmd, label) {
 (function() {
   const btn = document.getElementById('theme-btn');
   if (!btn) return;
-  
-  const currentTheme = localStorage.getItem('clawdash-theme') || 'kawaii';
-  document.documentElement.setAttribute('data-theme', currentTheme);
-  btn.textContent = currentTheme === 'kawaii' ? '🌈' : '🌙';
-  
+
+  function getCurrentTheme() {
+    return localStorage.getItem('clawdash-theme') || 'kawaii';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('clawdash-theme', theme);
+    btn.textContent = theme === 'kawaii' ? '🌈' : '🌙';
+  }
+
+  applyTheme(getCurrentTheme());
+
   btn.addEventListener('click', () => {
-    const next = currentTheme === 'kawaii' ? 'pro' : 'kawaii';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('clawdash-theme', next);
-    btn.textContent = next === 'kawaii' ? '🌈' : '🌙';
+    const next = getCurrentTheme() === 'kawaii' ? 'pro' : 'kawaii';
+    applyTheme(next);
     playSound('toggle');
   });
 })();
+})();
 
 // ============ SOUND SYSTEM ============
-const soundCtx = new (window.AudioContext || window.webkitAudioContext)();
+let soundCtx = null;
+let audioInitialized = false;
 const soundEnabled = localStorage.getItem('clawdash-sounds') !== 'false'; // default on
+
+function getSoundCtx() {
+  if (!soundCtx) {
+    soundCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (soundCtx.state === 'suspended') {
+    soundCtx.resume().catch(() => {});
+  }
+  return soundCtx;
+}
+
+function initAudioOnGesture() {
+  if (audioInitialized) return;
+  getSoundCtx();
+  audioInitialized = true;
+}
 
 function playSound(type) {
   if (!soundEnabled) return;
+  // Ensure audio context is created (may need user gesture)
+  const ctx = getSoundCtx();
   
-  // Resume context if suspended (browser policy)
-  if (soundCtx.state === 'suspended') soundCtx.resume();
-  
-  const osc = soundCtx.createOscillator();
-  const gain = soundCtx.createGain();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
   osc.connect(gain);
-  gain.connect(soundCtx.destination);
+  gain.connect(ctx.destination);
   
   switch(type) {
     case 'click':
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(800, soundCtx.currentTime);
-      gain.gain.setValueAtTime(0.1, soundCtx.currentTime);
+      osc.frequency.setValueAtTime(800, ctx.currentTime);
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
       osc.start();
-      osc.stop(soundCtx.currentTime + 0.05);
+      osc.stop(ctx.currentTime + 0.05);
       break;
     case 'success':
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(523, soundCtx.currentTime); // C5
-      osc.frequency.linearRampToValueAtTime(659, soundCtx.currentTime + 0.1); // E5
-      gain.gain.setValueAtTime(0.15, soundCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, soundCtx.currentTime + 0.3);
+      osc.frequency.setValueAtTime(523, ctx.currentTime); // C5
+      osc.frequency.linearRampToValueAtTime(659, ctx.currentTime + 0.1); // E5
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
       osc.start();
-      osc.stop(soundCtx.currentTime + 0.3);
+      osc.stop(ctx.currentTime + 0.3);
       break;
     case 'toggle':
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(440, soundCtx.currentTime);
-      gain.gain.setValueAtTime(0.08, soundCtx.currentTime);
+      osc.frequency.setValueAtTime(440, ctx.currentTime);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
       osc.start();
-      osc.stop(soundCtx.currentTime + 0.08);
+      osc.stop(ctx.currentTime + 0.08);
       break;
   }
 }
 
-// Add click sounds to all buttons
-document.addEventListener('click', (e) => {
-  if (e.target.tagName === 'BUTTON' || e.target.classList.contains('btn')) {
-    playSound('click');
+// Initialize audio on first user interaction (click, keypress)
+function ensureAudioInit() {
+  if (!audioInitialized) {
+    initAudioOnGesture();
+    document.removeEventListener('click', ensureAudioInit);
+    document.removeEventListener('keydown', ensureAudioInit);
   }
-});
-
+}
+document.addEventListener('click', ensureAudioInit, { once: true });
+document.addEventListener('keydown', ensureAudioInit, { once: true });
 // ============ ACHIEVEMENTS SYSTEM ============
 const ACHIEVEMENTS = {
   first_commit: { icon: '🌟', name: 'First Commit', desc: 'Made your first commit' },
@@ -1788,9 +1826,7 @@ if (!localStorage.getItem('clawdash-achievements-initialized')) {
 // ============ INIT ============
 // Load achievements on start
 document.addEventListener('DOMContentLoaded', () => {
-  loadAchievements();
-  
-  // Add achievements panel to header
+  // Add achievements panel to header (must create before loadAchievements)
   const header = document.querySelector('header .header-right');
   if (header) {
     const achBtn = document.createElement('button');
@@ -1816,9 +1852,11 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(achPanel);
   }
+  
+  // Now load achievements (panel exists)
+  loadAchievements();
 });
 
-</script>
 </script>
 </body>
 </html>
