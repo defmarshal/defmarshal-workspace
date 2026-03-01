@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T03:20:02Z",
+  "generated_at": "2026-03-01T03:21:56Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.67 0.84 0.89",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.68 0.82 0.88",
+    "mem_used": "4.0Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 13 hours, 40 minutes",
+    "uptime": "1 week, 2 days, 13 hours, 42 minutes",
     "disk_history": [
       81,
       81,
@@ -87,99 +87,99 @@
   "research": {
     "total": 231,
     "tts_coverage": "92%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "c76b0d76",
+      "agent": "build",
+      "message": "refresh disk history (maintenance)",
+      "time": "89 seconds ago"
+    },
+    {
+      "sha": "8eb8be41",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "02991bb5",
       "agent": "research",
       "message": "AI Hardware & Chips 2026 (#224, 21KB) — Blackwell volume production (208B transistors, 192GB HBM3e, 8TB/s, 20PFLOPS FP4, GB200 NVL72 rack $5M→$75M ROI); NVIDIA Q4 FY2026 earnings ($68B total/$62B data center/$194B annual/73% YoY/13x scale since ChatGPT); Vera Rubin R100 H2-2026 (336B transistors/HBM4/22TB/s/50PFLOPS/10x inference cost reduction); AMD MI350 CDNA4 (288GB HBM3e/8TB/s/20PFLOPS FP4 parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal); Google Ironwood TPU v7 (192GB HBM3e/7.4TB/s/FP8, $185B capex 2026, Gemini 2.0 750M users on own silicon, Anthropic 1M TPU deal); AWS Trainium3 (3nm/2x perf/40% efficiency/Amazon $50B OpenAI deal); TSMC CoWoS 130K wafers/month target/$56B capex (+37% YoY); dual packaging+HBM bottleneck; hyperscaler $435B capex stack; 224 total",
-      "time": "31 seconds ago"
+      "time": "2 minutes ago"
     },
     {
       "sha": "7bc13e80",
       "agent": "misc",
       "message": "fix(clawdash): drop In/Out columns from token tab (6 cols), more room for Job name (v26)",
-      "time": "48 seconds ago"
+      "time": "3 minutes ago"
     },
     {
       "sha": "771f5240",
       "agent": "chore",
       "message": "update clawdash data (post-workspace-builder validation)",
-      "time": "54 seconds ago"
+      "time": "3 minutes ago"
     },
     {
       "sha": "42e60080",
       "agent": "build",
       "message": "routine maintenance — verification, daily log update, active-tasks tracking",
-      "time": "2 minutes ago"
+      "time": "4 minutes ago"
     },
     {
       "sha": "05a6bbd5",
       "agent": "misc",
       "message": "fix(clawdash): reduce token tab font to 10px, padding 4px 6px to prevent truncation (v25)",
-      "time": "3 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "a9b71f74",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "07292af4",
       "agent": "misc",
       "message": "fix(clawdash): remove stray extra } after renderOutputs breaking all JS",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "9a7d3eb6",
       "agent": "content",
       "message": "Fintech 2026 tech writeup (7.7KB) — agentic AI liability vacuum (Reg E gap for agent-initiated payments, Visa/MC verification protocols, Trump EO national standard push), neobank profitability split (Revolut $75B/$3.5B profit target, Monzo 8x/£113.9M, Nubank $1.9B, Chime IPO $9.8B; 5% profitable vs 95% still searching), stablecoin won settlement race ($200B mktcap/$50B daily vs CBDC-in-committee Digital Euro 2029/GENIUS Act), real-time rails (FedNow/SEPA Instant/UPI 500M/Pix; 1.68T→3.54T txns/irrevocable fraud stakes), 5 H1 signals; 5th content piece Mar 1, 223 research total",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "0141147a",
       "agent": "chore",
       "message": "update planning files post-feature build",
-      "time": "6 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "b0f94e5d",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "9 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "66486133",
       "agent": "dev",
       "message": "fix reports/README.md literal \\n→real newlines + expand with file format docs; add research-today.sh (lists today's reports with titles/sizes, accepts YYYY-MM-DD); add prune-gh-branches.sh (safe dry-run pruner for stale gh-pages-* branches); prune 4 stale gh-* branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test all from Feb 27, unreferenced); register research-today + prune-gh-branches in quick",
-      "time": "9 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "c5a55cd5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "597e5cfd",
       "agent": "dev",
       "message": "regenerate 2026-03-01 daily digest (now includes Fintech #223, 4 research+3 content); add today-summary.sh (one-liner production stats: research/content/dev counts + disk + archive total); register youtube-digest, tweet-new-reports, cleanup-archived, today-summary in quick; prune stale idea/add-pagination-to-research-list branch",
-      "time": "12 minutes ago"
-    },
-    {
-      "sha": "07c21d28",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "15 minutes ago"
-    },
-    {
-      "sha": "0d0181ed",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "14 minutes ago"
     }
   ],
   "heartbeat": {
@@ -721,16 +721,6 @@
   "chat": [
     {
       "role": "user",
-      "ts": "2026-02-28T16:45:48.203Z",
-      "text": "[Sat 2026-02-28 16:45 UTC] i just don't want active downloads get clogged like before"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:47:08.123Z",
-      "text": "[[reply_to_current]] sorted nyaa~ ✅ two-layer fix desu~\n\n**layer 1 — `aria2.conf`**: `seed-time=1` + `seed-ratio=0.0` — new torrents auto-remove from active after ~1 min of seeding (aria2 handles it natively)\n\n**layer 2 — `scripts/aria2-slot-cleaner.sh`** via system cron every 5min — scans active queue, force-removes anything at 100%, no mercy (^^) catches any stragglers `seed-time` misses\n\nslots are clear now — 1 active download at 1.2 MB/s ♪"
-    },
-    {
-      "role": "user",
       "ts": "2026-02-28T16:48:31.562Z",
       "text": "[Sat 2026-02-28 16:48 UTC] nice. i think this web is completed for now. we can move on"
     },
@@ -968,6 +958,16 @@
       "role": "assistant",
       "ts": "2026-03-01T03:19:21.337Z",
       "text": "[[reply_to_current]] done nyaa~ dropped **In** and **Out** columns — now 6 cols: Job / Runs / Avg / Total / Share / Last run desu~ hard-refresh to get v26 ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T03:20:57.795Z",
+      "text": "[Sun 2026-03-01 03:20 UTC] youtube digest all good? show the result in this chat"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:21:18.442Z",
+      "text": "[[reply_to_current]] working perfectly nyaa~ 🎉 here's the summary desu~:\n\n**📺 65 videos from 44 channels** in the last 24h ♪\n\nhighlights i spotted:\n- 🎮 **Pekora** — playing Resident Evil Requiem #1 (just dropped!)\n- 🎮 **penguinz0** — 4 videos including RE Requiem too (everyone's on it lol)\n- 📺 **Linus** — OLED monitors finally affordable + 4h WAN show\n- 🎵 **BLACKPINK** — 'GO' highlight clip (1.6M views already omg)\n- 🎌 **Garnt/Gigguk** — ranking Winter 2026 anime OPs\n- 🃏 **Crab Master / Dkayed / MBT** — YuGiOh gang all uploaded\n- 🌸 **hololive** — Matsuri, HIMEHINA, Mori Calli, Kizuna AI all active\n- 🔧 **Hugh Jeffreys / Denki** — tech repair/gadget content\n\ncontent looks legit and well-formatted desu~ daily cron fires at 09:00 Bangkok so you'll get it every morning automatically (^^) ♪"
     }
   ]
 }
