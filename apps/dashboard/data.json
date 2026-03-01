@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T02:10:02Z",
+  "generated_at": "2026-03-01T02:15:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "1.62 1.33 1.04",
+    "load_avg": "0.93 1.06 1.00",
     "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 12 hours, 30 minutes",
+    "uptime": "1 week, 2 days, 12 hours, 35 minutes",
     "disk_history": [
       81,
       81,
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 229,
+    "total": 230,
     "tts_coverage": "93%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "7a870beb",
-      "agent": "content",
-      "message": "Cybersecurity 2026 tech writeup (9.3KB) — ransomware paradox ($820M/-8% payments vs +50% victims, IAB 30-day leading indicator), AI arms race (SentinelLABS forgiving-internet-over, 3x phishing, $12M deepfake wire fraud), PQC migration (FIPS 203/204/205, harvest-now-decrypt-later), agentic AI surface (71% unprepared, MCP RCE, 92% multi-turn jailbreak, SaaS IdP pivot), H1 signals; 4 content pieces Mar 1",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "39500a02",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0207)",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "d2c12b44",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "3 minutes ago"
-    },
-    {
-      "sha": "9c0bdd37",
-      "agent": "dev",
-      "message": "aria2-slot-cleaner set -euo pipefail fix (last script missing it); add trim-memory-logs.sh (line-count based trimmer, --threshold N, --execute); rotate aria2.log (254MB→fresh, saved 232MB+72MB old archive); trim meta-agent/idea-executor/enhancement-bot logs (836-1813 lines pruned); generate 2026-03-01 daily digest; register trim-memory-logs in quick",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "7cec23f4",
+      "sha": "08547cda",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "2be8ac7b",
+      "sha": "7a870beb",
+      "agent": "content",
+      "message": "Cybersecurity 2026 tech writeup (9.3KB) — ransomware paradox ($820M/-8% payments vs +50% victims, IAB 30-day leading indicator), AI arms race (SentinelLABS forgiving-internet-over, 3x phishing, $12M deepfake wire fraud), PQC migration (FIPS 203/204/205, harvest-now-decrypt-later), agentic AI surface (71% unprepared, MCP RCE, 92% multi-turn jailbreak, SaaS IdP pivot), H1 signals; 4 content pieces Mar 1",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "39500a02",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0207)",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "d2c12b44",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "9c0bdd37",
+      "agent": "dev",
+      "message": "aria2-slot-cleaner set -euo pipefail fix (last script missing it); add trim-memory-logs.sh (line-count based trimmer, --threshold N, --execute); rotate aria2.log (254MB→fresh, saved 232MB+72MB old archive); trim meta-agent/idea-executor/enhancement-bot logs (836-1813 lines pruned); generate 2026-03-01 daily digest; register trim-memory-logs in quick",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "7cec23f4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "4275f770",
+      "sha": "2be8ac7b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "3901de41",
+      "sha": "4275f770",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "ff9200ec",
+      "sha": "3901de41",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "aeb8aea3",
+      "sha": "ff9200ec",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "7bcdc1f4",
+      "sha": "aeb8aea3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
+      "sha": "7bcdc1f4",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "40 minutes ago"
+    },
+    {
       "sha": "7bc63fda",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "8f614bdd",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "065a6559",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "8780fc66",
-      "agent": "game",
-      "message": "polish Anime Studio Tycoon v1.1 — new events, fan growth, rebalance",
-      "time": "49 minutes ago"
+      "time": "50 minutes ago"
     }
   ],
   "heartbeat": {
@@ -371,10 +371,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772323348738,
-      "next_run": 1772330536434,
+      "last_run": 1772330863947,
+      "next_run": 1772337736434,
       "last_status": "ok",
-      "last_duration_ms": 36318,
+      "last_duration_ms": 54725,
       "consecutive_errors": 0
     },
     {
@@ -515,10 +515,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772323535604,
-      "next_run": 1772330575341,
+      "last_run": 1772330955330,
+      "next_run": 1772337775341,
       "last_status": "ok",
-      "last_duration_ms": 10392,
+      "last_duration_ms": 17035,
       "consecutive_errors": 0
     },
     {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772328084812,
-      "next_run": 1772330434763,
+      "last_run": 1772330918672,
+      "next_run": 1772334034763,
       "last_status": "ok",
-      "last_duration_ms": 20089,
+      "last_duration_ms": 36658,
       "consecutive_errors": 0
     },
     {
@@ -599,10 +599,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772323619972,
-      "next_run": 1772330639125,
+      "last_run": 1772330972365,
+      "next_run": 1772337839125,
       "last_status": "ok",
-      "last_duration_ms": 11666,
+      "last_duration_ms": 16984,
       "consecutive_errors": 0
     },
     {
@@ -611,10 +611,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772323338194,
-      "next_run": 1772330517835,
+      "last_run": 1772330843334,
+      "next_run": 1772337717835,
       "last_status": "ok",
-      "last_duration_ms": 10543,
+      "last_duration_ms": 20613,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772330385097,
-      "next_run": 1772330505097,
+      "last_run": 1772331229368,
+      "next_run": 1772331349368,
       "last_status": "ok",
-      "last_duration_ms": 6836,
+      "last_duration_ms": 6309,
       "consecutive_errors": 0
     },
     {
