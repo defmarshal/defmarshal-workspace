@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T07:08:47Z",
+  "generated_at": "2026-03-01T07:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 84,
@@ -9,16 +9,14 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.1G",
-    "load_avg": "1.05 1.13 0.94",
-    "mem_used": "4.7Gi",
+    "load_avg": "1.27 1.20 0.98",
+    "mem_used": "4.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 17 hours, 29 minutes",
+    "uptime": "1 week, 2 days, 17 hours, 30 minutes",
     "disk_history": [
       81,
       81,
       81,
-      81,
-      81,
       83,
       83,
       83,
@@ -34,6 +32,8 @@
       83,
       83,
       83,
+      84,
+      84,
       84,
       84,
       84,
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-01 07:06",
-      "last_line": "2026-03-01 07:05 UTC - Dev-agent cycle complete: 2 content writeups (frontier-AI-models + SEA-digital-banking), dashboard research count fix (232→231 excl INDEX.md), log trim (meta-agent 1036→1000, idea-executor 1027→1000), digest regen (9 research + 11 content), all constraints ✅"
+      "last_run": "2026-03-01 07:08",
+      "last_line": "[2026-03-01 07:08 UTC] content-agent: green-tech writeup (7.6KB) + sunday digest (5.7KB); all 9 research reports now have content writeups; 11 total content pieces today; pushed 909078d3"
     },
     {
       "name": "supervisor",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "909078d3",
+      "agent": "content",
+      "message": "green-tech writeup + sunday digest + full coverage (2026-03-01 07:05 UTC)",
+      "time": "75 seconds ago"
+    },
+    {
       "sha": "f15dd84e",
       "agent": "dev",
       "message": "2 content writeups + dashboard fix + digest regen (2026-03-01 07:00 UTC)",
-      "time": "3 minutes ago"
+      "time": "4 minutes ago"
     },
     {
       "sha": "c031aa0a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "4 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "e1273d23",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "9 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "f481bc7d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "14 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "300d4dfe",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "19 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "5bf94f50",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "24 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "979213db",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "29 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "49c69fe9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "34 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "40a79073",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "39 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "3bbbd984",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "39 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "680231cb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "44 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "05f5bce1",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "49 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "c9665a9c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "54 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "e0df2e7f",
       "agent": "auto",
       "message": "maintenance update 2026-03-01 06:14 UTC",
-      "time": "54 minutes ago"
-    },
-    {
-      "sha": "e05f8079",
-      "agent": "research",
-      "message": "update INDEX.md — add reports #230-231 (Frontier AI Models Feb 2026 + SEA Digital Banking & Fintech 2026), update count to 231 entries",
-      "time": "55 minutes ago"
+      "time": "56 minutes ago"
     }
   ],
   "heartbeat": {
