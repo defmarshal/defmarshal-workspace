@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T04:55:02Z",
+  "generated_at": "2026-03-01T05:00:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "1.05 0.91 0.91",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.87 0.89 0.90",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 15 hours, 15 minutes",
+    "uptime": "1 week, 2 days, 15 hours, 20 minutes",
     "disk_history": [
       81,
       81,
@@ -27,13 +27,13 @@
       81,
       81,
       81,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
       81,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
       81,
       81,
       81,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "a014996a",
+      "sha": "97a26437",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "615f83ef",
+      "sha": "a014996a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "b9492b9e",
+      "sha": "615f83ef",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "b4fca71c",
+      "sha": "b9492b9e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
+      "sha": "b4fca71c",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "25 minutes ago"
+    },
+    {
       "sha": "2938881b",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "c9f6863e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "affba27b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "3e0485b5",
       "agent": "misc",
       "message": "fix(clawdash): use numeric index instead of btoa for download row ids (Japanese filenames) (v28)",
-      "time": "32 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "1253d0bf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "a6afbc2c",
       "agent": "misc",
       "message": "fix(clawdash): add Downloads tab (list/download/delete), fix all text truncations; fix agni-cycle direct rudra exec (v27)",
-      "time": "37 minutes ago"
+      "time": "42 minutes ago"
     },
     {
       "sha": "21af984e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "d528eb82",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0411)",
-      "time": "43 minutes ago"
+      "time": "48 minutes ago"
     },
     {
       "sha": "e04531ad",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "44 minutes ago"
+      "time": "49 minutes ago"
     },
     {
       "sha": "77041396",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "d176ede9",
-      "agent": "research",
-      "message": "Spring 2026 Anime Season Preview (#225, 19KB) — Classroom of the Elite S4 (Apr 1 4-ep 90min special, Lerche, OP:Eir Aoi MONSTER); One Piece Elbaph Arc (generational 20yr wait, Toei); Re:Zero S4 (White Fox, Arc 6 Pleiades Watchtower psychological endurance, return-by-death origin revealed); Kaiju No. 8 S2; Blue Lock S3 (Neo Egoist League, Disney+); Tensei Slime S4 (Apr 3, 5 split-cours); Fire Force S3 (David Production, finale arc); Dr. Stone SF Part 3 (TMS finale); Witch Hat Atelier (Bug Films Apr 6, Kamome Shirahama, magic-as-craft; Crunchyroll Anime Nights March 16); Daemons of the Shadow Realm (Bones Film, Hiromu Arakawa Apr 4, 2-cour, dir:Masahiro Ando, music:Kenichiro Suehiro); MHA Vigilantes (Bones Film); Ghost in the Shell Science SARU confirmed July 2026 (Summer); tier list S/A/B; streaming platform summary; 225 total",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772340786485,
-      "next_run": 1772340906485,
+      "last_run": 1772341146540,
+      "next_run": 1772341266540,
       "last_status": "ok",
-      "last_duration_ms": 6234,
+      "last_duration_ms": 6456,
       "consecutive_errors": 0
     },
     {
