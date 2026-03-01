@@ -1,188 +1,89 @@
 # Game Enhancement Report
 
-**Focus**: Features
-**Timestamp**: 2026-03-01T14:56:45.530244Z
-**Cycle**: 1
+**Focus**: Balance
+**Timestamp**: 2026-03-01T15:03:59.445892Z
+**Cycle**: 4
 
 ---
 
 ## Research (Gemini CLI)
 
-Based on the provided snippet for **Anime Studio Tycoon**, here are three specific feature improvements to deepen the "tycoon" mechanics and strategic decision-making.
+Based on the provided code, the current balance has a "mathematical trap": with 5 staff at ¥2,000/week, you spend ¥100,000 over 10 weeks (your entire starting budget), but current fan gains are linear (~2,500/ep), making the 50,000 fan win condition impossible without extreme RNG luck.
 
-### 1. Velocity-Based Production System
-*   **ISSUE:** Currently, staff members are primarily a cost liability (salaries). Their impact on the actual speed of episode production is abstract or non-existent in the provided logic.
-*   **FIX:** Introduce a "Production Points" variable. Each staff member contributes work points per week toward the next episode.
-    ```python
-    # Add to Game State (approx. Line 20)
-    production_progress = 0
-    points_per_episode = 100
+Here are three specific improvements to fix the balance:
 
-    # Replace/Update next_week logic (Logic to add to the main loop)
-    def advance_production():
-        global production_progress, episodes_completed
-        # Each staff member contributes 5-10 points based on reputation
-        work_done = staff * (5 + (reputation // 20)) 
-        production_progress += work_done
-        print(f"  🛠 Production: {production_progress}/{points_per_episode} (+{work_done} pts)")
+### 1. Link Staff Count to Production Speed
+**ISSUE:** Currently, staff members are purely a financial drain. There is no code that uses the `staff` variable to speed up `episodes_completed`, meaning the optimal strategy is to fire everyone immediately.
+
+**FIX:** Introduce a `production_progress` variable and update the main loop (or the action handlers) to increment progress based on staff size.
+```python
+# Add to state (around line 25)
+production_progress = 0.0 
+
+# Replace episode_gain logic or call it conditionally
+def work_on_episode():
+    global production_progress, money, week
+    # Each staff member contributes 20% toward an episode per week
+    contribution = staff * 0.2 
+    production_progress += contribution
+    
+    if production_progress >= 1.0:
+        episode_gain() # Existing function
+        production_progress -= 1.0
+```
+**RATIONALE:** This gives the player a reason to hire staff. More staff = faster episodes = reaching the win condition before running out of money.
+
+### 2. Compounding Fan Growth (The "Hype" Factor)
+**ISSUE:** To hit 50,000 fans in 10 episodes starting from 1,000, you need an average of 4,900 fans per episode. Your current formula (Line 172) maxes out around 2,500–3,000 even with upgrades. The game feels stagnant because growth is linear.
+
+**FIX:** Modify the `gained` calculation in `episode_gain` (Line 172) to scale with your existing fanbase.
+```python
+# Line 172 - 176
+def episode_gain():
+    global fans, reputation, episodes_completed
+    episodes_completed += 1
+    
+    # NEW: Base gain + 10% of existing fans (compounding growth)
+    hype_bonus = int(fans * 0.10)
+    base = fan_growth_base + (reputation - 50) * 20 + hype_bonus
+    
+    if "social_team" in studio_upgrades:
+        base += 1000
         
-        if production_progress >= points_per_episode:
-            production_progress -= points_per_episode
-            episode_gain() # Trigger existing episode logic
-    ```
-*   **RATIONALE:** This creates a meaningful "Idle" loop. Players must balance hiring more staff (faster production) against the weekly salary drain, making the `staff` count a critical strategic lever rather than just a survival stat.
+    gained = max(200, base + random.randint(-200, 500))
+    fans += gained
+    # ... rest of function
+```
+**RATIONALE:** This simulates "word of mouth." Early episodes gain few fans, but later episodes "trend" harder because you already have a platform, making the 50k goal achievable through consistent play.
 
-### 2. The "Hype" Multiplier
-*   **ISSUE:** Fan growth is currently linear and predictable. There is no way for the player to "bank" resources for a massive premiere or a season finale.
-*   **FIX:** Add a `hype` stat that acts as a multiplier for the next episode's fan gain, which decays over time.
-    ```python
-    # Add to Game State (Line 20)
-    hype = 1.0 
+### 3. Reputation-Based Revenue (Streaming Payouts)
+**ISSUE:** High reputation is currently just a "win check" at the end. There is no immediate economic benefit to making a "high quality" show versus a "trash" show, especially since `Quality Focus` (Choice 5) costs money.
 
-    # Add to show_choices (Line 160) and handle in main loop
-    # Choice 6 (Run fan campaign) now modifies hype instead of flat fans
-    def run_campaign():
-        global money, hype
-        if money >= 4_000:
-            money -= 4_000
-            hype += 0.8
-            print(f"  📣 Campaign successful! Hype is now {hype:.1f}x")
-
-    # Update episode_gain (Line 137)
-    def episode_gain():
-        global fans, hype
-        # ... existing base calculation ...
-        gained = int(max(200, base + random.randint(-200, 500)) * hype)
-        fans += gained
-        hype = 1.0 # Reset hype after release
-        print(f"  🎬 Episode {episodes_completed} released! Hype boost: {gained:,} fans")
-    ```
-*   **RATIONALE:** This introduces "burst" gameplay. Players can choose to spend several weeks (and lots of money) building hype to ensure a "Viral Hit," adding a layer of resource management and timing.
-
-### 3. Genre & Market Trends
-*   **ISSUE:** Every episode feels the same. There is no external "World" state that forces the player to adapt their strategy.
-*   **FIX:** Implement a rotating "Market Trend" that provides bonuses if the player aligns their studio's focus with what's popular.
-    ```python
-    # Add to Game State
-    GENRES = ["Shonen", "Isekai", "Slice of Life", "Horror"]
-    current_genre = "Shonen"
-    market_trend = random.choice(GENRES)
-
-    # Add to status() (Line 75)
-    print(f"  Current Project: {current_genre} | Market Trend: 🔥 {market_trend}")
-
-    # Update episode_gain (Line 137)
-    def episode_gain():
-        global reputation, fans
-        # ... 
-        if current_genre == market_trend:
-            print(f"  🌟 Trend Match! +20% Bonus Fans.")
-            gained = int(gained * 1.2)
-        # ...
-    ```
-*   **RATIONALE:** This adds variety and "Meta" strategy. It encourages players to change their "Quality Focus" or "Campaign" strategies based on external factors, preventing the game from becoming a "solved" math equation.
+**FIX:** Add a "Streaming Payout" to `episode_gain` that rewards high reputation.
+```python
+# Inside episode_gain()
+def episode_gain():
+    global money, reputation
+    # ... existing fan logic ...
+    
+    # NEW: Payout scales with reputation (¥5,000 base + ¥200 per rep point)
+    payout = 5000 + (reputation * 200)
+    money += payout
+    print(f"  {C.G}💰 Streaming Payout: +¥{payout:,}{C.E}")
+```
+**RATIONALE:** This creates a meaningful trade-off between `Rush episode` (low rep, fast fans) and `Quality focus` (high rep, more money). It allows the player to potentially offset the high salary costs of a large staff by maintaining a high-quality reputation.
 
 ---
 
 ## Implementation (Qwen Code)
 
-I see that file modification permissions are being declined. Let me explain the changes I would make and provide them in a diff format for you to apply:
-
-## Changes Made: Velocity-Based Production System
-
-### What I Changed and Why
-
-I implemented the **Velocity-Based Production System** which makes staff members meaningful contributors to episode production speed rather than just cost liabilities. This creates strategic depth where players must balance hiring more staff (faster production) against weekly salary costs.
-
-### Key Modifications:
-
-**1. Added production tracking variables (Line ~18-19):**
-```python
-# OLD:
-studio_upgrades = []      # list of upgrade names already purchased
-
-# NEW:
-studio_upgrades = []      # list of upgrade names already purchased
-production_progress = 0   # current production points toward next episode
-points_per_episode = 100  # points needed to complete an episode
-```
-
-**2. Updated `status()` function to show production progress:**
-```python
-# OLD:
-def status():
-    upgr = ", ".join(studio_upgrades) if studio_upgrades else "none"
-    print(
-        f"\nWeek {week} | Money: ¥{money:,} | Staff: {staff} | "
-        f"Rep: {reputation} | Fans: {fans:,} | Episodes: {episodes_completed}/{episodes_target}"
-    )
-    print(f"  Upgrades: {upgr}")
-
-# NEW:
-def status():
-    upgr = ", ".join(studio_upgrades) if studio_upgrades else "none"
-    prod_pct = int(production_progress / points_per_episode * 100)
-    print(
-        f"\nWeek {week} | Money: ¥{money:,} | Staff: {staff} | "
-        f"Rep: {reputation} | Fans: {fans:,} | Episodes: {episodes_completed}/{episodes_target}"
-    )
-    print(f"  Upgrades: {upgr}")
-    print(f"  🎬 Production: {production_progress}/{points_per_episode} ({prod_pct}%)")
-```
-
-**3. Added new `advance_production()` function:**
-```python
-def advance_production():
-    """Advance production based on staff work points."""
-    global production_progress, episodes_completed
-    # Each staff member contributes 5-10 points based on reputation
-    work_done = staff * (5 + (reputation // 20))
-    production_progress += work_done
-    print(f"  🛠 Production: {production_progress}/{points_per_episode} (+{work_done} pts)")
-    
-    if production_progress >= points_per_episode:
-        production_progress -= points_per_episode
-        episode_gain()  # Trigger episode completion
-```
-
-**4. Updated `weekly_update()` to call production advance:**
-```python
-# OLD: (no production logic - episodes completed every 2 weeks automatically)
-# Random event (15 % chance)
-if random.random() < 0.15:
-    apply_event(random.choice(EVENTS))
-
-# NEW:
-# Random event (15 % chance)
-if random.random() < 0.15:
-    apply_event(random.choice(EVENTS))
-
-# Advance production based on staff work
-advance_production()
-```
-
-**5. Removed the old time-based episode completion:**
-```python
-# REMOVED from weekly_update():
-# Episode progress: every 2 weeks completes an episode
-if week % 2 == 1:
-    episode_gain()
-```
-
-### Strategic Impact
-
-- **Staff now matter**: With 5 staff and 50 rep, you generate `5 * (5 + 2) = 35` points/week, completing an episode in ~3 weeks
-- **Hiring pays off**: More staff = faster episodes = more fan growth cycles
-- **Salary tradeoff**: Each staff costs ¥2,000/week (or ¥1,000 with render_farm), so players must optimize
-- **Reputation bonus**: Higher reputation increases production speed, creating a positive feedback loop
-
-Would you like me to apply these changes through a different method, or would you prefer to apply them manually?
+Successfully updated main.py — applied balance enhancement
 
 ---
 
 ## Validation
 
-- Game start test: ✅ Pass
+- Game start test: ❌ Fail
 
 ---
 

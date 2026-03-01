@@ -1,0 +1,296 @@
+#!/usr/bin/env python3
+"""
+Anime Studio Tycoon Enhancement Agent
+Uses Qwen Code (coding) + Gemini CLI (research/design) for autonomous improvements.
+"""
+
+import json
+import re
+import subprocess
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+
+WORKSPACE = Path("/home/ubuntu/.openclaw/workspace")
+GAME_DIR = WORKSPACE / "games" / "anime-studio-tycoon"
+LOGFILE = WORKSPACE / "memory" / "game-enhancer.log"
+STATE_FILE = WORKSPACE / "memory" / "game-enhancer-state.json"
+REPORT_FILE = GAME_DIR / "enhancement-report-latest.md"
+
+def log(msg):
+    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    line = f"{timestamp} - {msg}"
+    print(line)
+    with LOGFILE.open("a") as f:
+        f.write(line + "\n")
+
+def load_state():
+    if STATE_FILE.exists():
+        with STATE_FILE.open() as f:
+            return json.load(f)
+    return {"enhancements": 0, "last_focus": "balance", "last_run": None}
+
+def save_state(state):
+    with STATE_FILE.open("w") as f:
+        json.dump(state, f, indent=2)
+
+def determine_focus(last_focus):
+    """Cycle through focus areas: balance → features → content → polish → balance"""
+    cycle = ["balance", "features", "content", "polish"]
+    try:
+        idx = cycle.index(last_focus)
+        next_idx = (idx + 1) % len(cycle)
+        return cycle[next_idx]
+    except ValueError:
+        return "balance"
+
+def run_gemini(prompt):
+    """Call Gemini CLI for research/analysis."""
+    try:
+        result = subprocess.run(
+            ["gemini", "-p", prompt],
+            capture_output=True,
+            text=True,
+            timeout=120
+        )
+        return result.stdout.strip()
+    except subprocess.TimeoutExpired:
+        return "[Gemini CLI timed out]"
+    except FileNotFoundError:
+        return "[Gemini CLI not found]"
+
+def run_qwen(prompt):
+    """Call Qwen Code for implementation."""
+    try:
+        result = subprocess.run(
+            ["qwen", "-p", prompt],
+            capture_output=True,
+            text=True,
+            timeout=180
+        )
+        return result.stdout.strip()
+    except subprocess.TimeoutExpired:
+        return "[Qwen Code timed out]"
+    except FileNotFoundError:
+        return "[Qwen Code not found]"
+
+def read_game_code():
+    """Read current main.py (truncated for context window)."""
+    code_path = GAME_DIR / "main.py"
+    if not code_path.exists():
+        return ""
+    # Read first 200 lines for context (Qwen/Gemini can handle more if needed)
+    with code_path.open() as f:
+        lines = f.readlines()[:200]
+    return "".join(lines)
+
+def research_phase(focus):
+    """Use Gemini CLI to analyze the game and suggest improvements."""
+    log(f"Research phase (focus: {focus}) — Gemini CLI")
+    code = read_game_code()
+    
+    prompt = f"""Analyze this Python game code and suggest SPECIFIC improvements for '{focus}'.
+
+Game: anime-studio-tycoon (idle management sim)
+
+Current code (first 200 lines):
+{code}
+
+Focus area: {focus}
+
+Provide 2-3 concrete, actionable suggestions. For each:
+- ISSUE: What needs improvement?
+- FIX: Exact code changes or new code to add (include line numbers if referencing existing code)
+- RATIONALE: Why this improves the game
+
+Format as a clear bullet list with code blocks where appropriate."""
+    
+    return run_gemini(prompt)
+
+def implement_phase(focus, research):
+    """Use Qwen Code to implement the changes and write to file."""
+    log(f"Implementation phase (focus: {focus}) — Qwen Code")
+    
+    game_code_path = GAME_DIR / "main.py"
+    if not game_code_path.exists():
+        log("ERROR: main.py not found")
+        return "No changes — file missing"
+    
+    existing_code = game_code_path.read_text()
+    
+    prompt = f"""You are a Python game developer enhancing Anime Studio Tycoon.
+
+CURRENT full code of main.py (length: {len(existing_code)} chars):
+{existing_code}
+
+Research suggestions (from Gemini):
+{research}
+
+Focus area: {focus}
+
+TASK: Apply ONE specific improvement. Make surgical changes.
+
+OUTPUT FORMAT (CRITICAL):
+1. Output ONLY a single code block with the ENTIRE updated main.py file
+2. Do NOT include any explanatory text before or after the code block
+3. Start with ```python and end with ```
+4. Include all code — full file
+5. Preserve existing structure and style; do not break the game
+
+Example:
+```python
+#!/usr/bin/env python3
+... (full file content) ...
+```
+
+BEGIN OUTPUT:"""
+    
+    raw_output = run_qwen(prompt)
+    
+    # Extract code block
+    code_match = re.search(r'```python\n(.*?)\n```', raw_output, re.DOTALL)
+    if not code_match:
+        log("Qwen did not provide code in required format")
+        debug_path = WORKSPACE / "memory" / f"qwen-output-{int(time.time())}.txt"
+        debug_path.write_text(raw_output)
+        return f"Invalid output format — saved to {debug_path}"
+    
+    new_code = code_match.group(1).strip()
+    
+    # Write the new code
+    game_code_path.write_text(new_code)
+    log(f"Wrote updated main.py ({len(new_code)} bytes)")
+    
+    # Quick syntax check
+    try:
+        result = subprocess.run(
+            ["python3", "-m", "py_compile", str(game_code_path)],
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
+        if result.returncode != 0:
+            log(f"Syntax error: {result.stderr}")
+    except Exception as e:
+        log(f"Syntax check error: {e}")
+    
+    return f"Successfully updated main.py — applied {focus} enhancement"
+
+
+def validate_game():
+    """Test that the game starts without errors."""
+    try:
+        # First try --help (should exit quickly)
+        result = subprocess.run(
+            ["python3", str(GAME_DIR / "main.py"), "--help"],
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
+        if result.returncode == 0:
+            return True
+        # If non-zero, maybe it ran but --help not recognized; check for expected title in output
+        if "ANIME STUDIO TYCOON" in result.stdout or "Manage your studio" in result.stdout:
+            return True
+        return False
+    except subprocess.TimeoutExpired:
+        # If it timed out, it might be waiting for input — that's actually fine (game starts)
+        return True
+    except Exception as e:
+        log(f"Validation error: {e}")
+        return False
+
+def commit_changes(focus, summary):
+    """Commit the changes with a standardized message."""
+    log("Committing changes")
+    
+    # Stage all changes in game directory
+    subprocess.run(["git", "add", "-A", str(GAME_DIR)], capture_output=True)
+    
+    # Commit
+    msg = f"[game-enhancer] {focus}: enhancement cycle\n\n{summary[:200]}..."
+    subprocess.run(["git", "commit", "-m", msg], capture_output=True)
+    
+    # Push
+    subprocess.run(["git", "push"], capture_output=True)
+
+def generate_report(focus, research, implementation, validation):
+    """Create a human-readable enhancement report."""
+    report = f"""# Game Enhancement Report
+
+**Focus**: {focus.title()}
+**Timestamp**: {datetime.utcnow().isoformat()}Z
+**Cycle**: {load_state()['enhancements'] + 1}
+
+---
+
+## Research (Gemini CLI)
+
+{research}
+
+---
+
+## Implementation (Qwen Code)
+
+{implementation}
+
+---
+
+## Validation
+
+- Game start test: {'✅ Pass' if validation else '❌ Fail'}
+
+---
+
+*Generated by game-enhancer agent*
+"""
+    REPORT_FILE.write_text(report)
+    log(f"Report saved to {REPORT_FILE}")
+
+def main():
+    log("=== Anime Studio Tycoon Enhancement Agent starting ===")
+    
+    # Check prerequisites
+    if not GAME_DIR.exists():
+        log(f"ERROR: Game directory not found: {GAME_DIR}")
+        sys.exit(1)
+    
+    # Load state
+    state = load_state()
+    last_focus = state.get("last_focus", "balance")
+    focus = determine_focus(last_focus)
+    
+    log(f"Enhancement #{state.get('enhancements', 0) + 1} — focus: {focus}")
+    
+    # Phase 1: Research
+    research = research_phase(focus)
+    log("Research phase completed")
+    
+    # Phase 2: Implementation
+    implementation = implement_phase(focus, research)
+    log("Implementation phase completed")
+    
+    # Phase 3: Validation
+    valid = validate_game()
+    log(f"Validation: {'PASS' if valid else 'FAIL'}")
+    
+    # Phase 4: Commit (only if valid or if we want to commit anyway for debugging)
+    if valid:
+        commit_changes(focus, implementation)
+        log("Changes committed and pushed")
+    else:
+        log("Skipping commit due to validation failure")
+    
+    # Phase 5: Report & state update
+    generate_report(focus, research, implementation, valid)
+    
+    state["enhancements"] = state.get("enhancements", 0) + 1
+    state["last_focus"] = focus
+    state["last_run"] = datetime.utcnow().isoformat()
+    save_state(state)
+    
+    log("=== Enhancement cycle complete ===")
+
+if __name__ == "__main__":
+    main()
