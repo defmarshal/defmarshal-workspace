@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T03:35:02Z",
+  "generated_at": "2026-03-01T03:40:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.6G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.64 0.84 0.90",
-    "mem_used": "3.6Gi",
+    "load_avg": "0.67 0.71 0.82",
+    "mem_used": "4.0Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 13 hours, 55 minutes",
+    "uptime": "1 week, 2 days, 14 hours, 0 minutes",
     "disk_history": [
       81,
       81,
@@ -87,99 +87,99 @@
   "research": {
     "total": 231,
     "tts_coverage": "92%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "a193b941",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "82a5d31d",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "495e3c2c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "5d455164",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "d0a54a76",
       "agent": "misc",
       "message": "fix(youtube-digest): send digest as clean channel+video list to Telegram, split into chunks if >3800 chars",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "4f0d217a",
       "agent": "build",
       "message": "finalize workspace-builder session — progress summary, data refresh",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "c76b0d76",
       "agent": "build",
       "message": "refresh disk history (maintenance)",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "8eb8be41",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "02991bb5",
       "agent": "research",
       "message": "AI Hardware & Chips 2026 (#224, 21KB) — Blackwell volume production (208B transistors, 192GB HBM3e, 8TB/s, 20PFLOPS FP4, GB200 NVL72 rack $5M→$75M ROI); NVIDIA Q4 FY2026 earnings ($68B total/$62B data center/$194B annual/73% YoY/13x scale since ChatGPT); Vera Rubin R100 H2-2026 (336B transistors/HBM4/22TB/s/50PFLOPS/10x inference cost reduction); AMD MI350 CDNA4 (288GB HBM3e/8TB/s/20PFLOPS FP4 parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal); Google Ironwood TPU v7 (192GB HBM3e/7.4TB/s/FP8, $185B capex 2026, Gemini 2.0 750M users on own silicon, Anthropic 1M TPU deal); AWS Trainium3 (3nm/2x perf/40% efficiency/Amazon $50B OpenAI deal); TSMC CoWoS 130K wafers/month target/$56B capex (+37% YoY); dual packaging+HBM bottleneck; hyperscaler $435B capex stack; 224 total",
-      "time": "16 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "7bc13e80",
       "agent": "misc",
       "message": "fix(clawdash): drop In/Out columns from token tab (6 cols), more room for Job name (v26)",
-      "time": "16 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "771f5240",
       "agent": "chore",
       "message": "update clawdash data (post-workspace-builder validation)",
-      "time": "16 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "42e60080",
       "agent": "build",
       "message": "routine maintenance — verification, daily log update, active-tasks tracking",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "05a6bbd5",
       "agent": "misc",
       "message": "fix(clawdash): reduce token tab font to 10px, padding 4px 6px to prevent truncation (v25)",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "a9b71f74",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "07292af4",
       "agent": "misc",
       "message": "fix(clawdash): remove stray extra } after renderOutputs breaking all JS",
-      "time": "20 minutes ago"
-    },
-    {
-      "sha": "9a7d3eb6",
-      "agent": "content",
-      "message": "Fintech 2026 tech writeup (7.7KB) — agentic AI liability vacuum (Reg E gap for agent-initiated payments, Visa/MC verification protocols, Trump EO national standard push), neobank profitability split (Revolut $75B/$3.5B profit target, Monzo 8x/£113.9M, Nubank $1.9B, Chime IPO $9.8B; 5% profitable vs 95% still searching), stablecoin won settlement race ($200B mktcap/$50B daily vs CBDC-in-committee Digital Euro 2029/GENIUS Act), real-time rails (FedNow/SEPA Instant/UPI 500M/Pix; 1.68T→3.54T txns/irrevocable fraud stakes), 5 H1 signals; 5th content piece Mar 1, 223 research total",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772335992159,
-      "next_run": 1772336112159,
+      "last_run": 1772336352192,
+      "next_run": 1772336472192,
       "last_status": "ok",
-      "last_duration_ms": 6928,
+      "last_duration_ms": 6182,
       "consecutive_errors": 0
     },
     {
