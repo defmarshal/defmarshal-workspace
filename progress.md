@@ -28,11 +28,15 @@
 
 **Status:** ✅ Completed
 
-**Action:** Staged and committed `memory/disk-history.json`
-**Commit:** `ab95fc38` — "build: update disk history metrics"
-**Details:** 1 file changed, 1 insertion, 1 deletion (updated latest disk pct entries)
+**Actions:**
+1. Committed disk-history: `ab95fc38` — "build: update disk history metrics"
+2. Committed planning docs: `82e40fbe` — "build: workspace-builder planning docs and session registration"
 
-**Next:** Validation (Phase 3)
+**Details:**
+- Disk-history: 1 file changed, 1 insertion, 1 deletion
+- Planning docs: 4 files changed, 62 insertions, 221 deletions (active-tasks, findings, task_plan, progress)
+
+**Next:** Validation (Phase 3) and then final closure (Phase 5)
 
 ---
 
