@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T01:25:02Z",
+  "generated_at": "2026-03-01T01:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.62 0.73 0.80",
-    "mem_used": "4.5Gi",
+    "load_avg": "0.86 0.75 0.79",
+    "mem_used": "3.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 11 hours, 45 minutes",
+    "uptime": "1 week, 2 days, 11 hours, 50 minutes",
     "disk_history": [
       80,
       80,
@@ -20,7 +20,7 @@
       80,
       80,
       80,
-      80,
+      81,
       81,
       81,
       81,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "8780fc66",
-      "agent": "game",
-      "message": "polish Anime Studio Tycoon v1.1 — new events, fan growth, rebalance",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "7e11c261",
+      "sha": "065a6559",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "5fb298a3",
-      "agent": "build",
-      "message": "track new cybersecurity research report (Mar 1) and update index",
-      "time": "8 minutes ago"
-    },
-    {
-      "sha": "bdd25e04",
-      "agent": "build",
-      "message": "workspace-builder validation close-the-loop",
+      "sha": "8780fc66",
+      "agent": "game",
+      "message": "polish Anime Studio Tycoon v1.1 — new events, fan growth, rebalance",
       "time": "9 minutes ago"
     },
     {
-      "sha": "5c7b484c",
-      "agent": "build",
-      "message": "routine maintenance - planning docs, daily logs, active-tasks update",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "794acdd5",
+      "sha": "7e11c261",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "3a6c48f4",
-      "agent": "content",
-      "message": "research spotlight Mar 1 01:06 UTC — Biotech/Longevity ($176B patent cliff, Insilico Phase 2, orforglipron, Altos Labs) + Green Tech/Climate AI ($70/kWh battery record, BESS +29% YoY, SMR momentum, hydrogen reset, solid-state EV batteries); 221 reports, 3 content pieces Mar 1",
+      "sha": "5fb298a3",
+      "agent": "build",
+      "message": "track new cybersecurity research report (Mar 1) and update index",
       "time": "13 minutes ago"
     },
     {
-      "sha": "2f5afaa9",
+      "sha": "bdd25e04",
       "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
+      "message": "workspace-builder validation close-the-loop",
       "time": "14 minutes ago"
     },
     {
-      "sha": "9e18f28c",
+      "sha": "5c7b484c",
+      "agent": "build",
+      "message": "routine maintenance - planning docs, daily logs, active-tasks update",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "794acdd5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "c3b810eb",
-      "agent": "dev",
-      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "sha": "3a6c48f4",
+      "agent": "content",
+      "message": "research spotlight Mar 1 01:06 UTC — Biotech/Longevity ($176B patent cliff, Insilico Phase 2, orforglipron, Altos Labs) + Green Tech/Climate AI ($70/kWh battery record, BESS +29% YoY, SMR momentum, hydrogen reset, solid-state EV batteries); 221 reports, 3 content pieces Mar 1",
+      "time": "18 minutes ago"
+    },
+    {
+      "sha": "2f5afaa9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
       "time": "19 minutes ago"
     },
     {
-      "sha": "4005a8f0",
+      "sha": "9e18f28c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "72817b4f",
+      "sha": "c3b810eb",
+      "agent": "dev",
+      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "time": "24 minutes ago"
+    },
+    {
+      "sha": "4005a8f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "c38f9050",
+      "sha": "72817b4f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "7bbe6195",
+      "sha": "c38f9050",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "69dfac74",
+      "sha": "7bbe6195",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772328224910,
-      "next_run": 1772328344910,
+      "last_run": 1772328584936,
+      "next_run": 1772328704936,
       "last_status": "ok",
-      "last_duration_ms": 7993,
+      "last_duration_ms": 6283,
       "consecutive_errors": 0
     },
     {
