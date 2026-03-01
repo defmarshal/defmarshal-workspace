@@ -1,230 +1,341 @@
 #!/usr/bin/env python3
-"""Anime Studio Tycoon — v1.1 (polished)
-Manage your anime studio: balance money, staff, reputation, and fans.
-Goal: Complete 10 episodes with >50 000 fans and non-negative reputation.
-"""
+"""Anime Studio Tycoon — polish/balance update 2026-03-01"""
 import random
 import sys
 
-# ── Game state ────────────────────────────────────────────────────────────────
+# ── Game state ──────────────────────────────────────────────────────────────
 money = 100_000
 staff = 5
-reputation = 50      # 0-100 scale
+reputation = 50          # 0‑100
 fans = 1_000
 week = 0
 episodes_target = 10
 episodes_completed = 0
+salary_per_staff = 2_000  # per week
+fan_growth_base = 500     # fans gained each episode (scales with rep)
+merch_level = 0           # 0‑3; passive income tier
+studio_upgrades = []      # list of upgrade names already purchased
 
-# Tuning knobs
-SALARY_PER_STAFF = 1_200   # was 2000 — softer weekly drain
-FAN_MERCH_RATE = 0.005     # each fan earns ¥0.005/week from merch sales
-FAN_GROWTH_BASE = 0.02     # fans grow 2 % per episode aired (cumulative)
-REP_FAN_MULT = 1.5         # reputation amplifies fan growth
-
-# ── Extended event table ──────────────────────────────────────────────────────
-# (description, Δmoney, Δstaff, Δrep, Δfans)
+# ── Expanded event table ─────────────────────────────────────────────────────
+# Format: (label, money_delta, staff_delta, rep_delta, fans_delta, description)
 EVENTS = [
-    # Original events
-    ("Viral clip on social media!",         0,      0,   +5,  +8_000),
-    ("Staff burnout strikes the team.",      0,      0,   -5,   0),
-    ("Budget overrun on key animation.",   -8_000,   0,    0,   0),
-    ("Positive critic review!",             0,      0,  +10,  +3_000),
-    # New events ↓
-    ("A famous voice actor joins on loan!",  0,     +1,  +8,  +5_000),
-    ("Equipment failure in the render farm.", -6_000, 0,  -3,   0),
-    ("Studio featured in an anime magazine!",  0,    0,  +12, +10_000),
-    ("Competitor releases similar show.",    0,      0,   -5,  -2_000),
-    ("Crowdfunding campaign goes viral!",  +15_000,  0,  +5,  +6_000),
-    ("Key animator quits unexpectedly.",     0,     -1,  -4,   0),
-    ("Award nomination announced!",          0,      0,  +15, +12_000),
-    ("Streaming platform adds your library.", 0,     0,   +8, +20_000),
-    ("A character becomes a meme.",           0,     0,  +3,  +15_000),
-    ("Tax audit causes delay.",            -4_000,   0,  -2,   0),
-    ("Fan convention sells out your booth!", +5_000, 0,  +6,  +4_000),
+    ("Viral clip!",         0,      0,   0,  8_000,  "A clip blew up on TubeTube! Fans surge."),
+    ("Streaming deal",  15_000,     0,  +5,    500,  "A streaming service bought broadcast rights!"),
+    ("Staff burnout",        0,     0,  -5,      0,  "Your team is exhausted. Pay overtime or lose staff."),
+    ("Budget overrun",  -12_000,    0,   0,      0,  "Unexpected production costs hit the budget."),
+    ("Positive review",      0,     0, +12,  2_000,  "A famous critic raved about your latest episode!"),
+    ("Plagiarism claim", -8_000,    0, -10,  -1_000, "A rival studio filed a bogus IP complaint."),
+    ("VA scandal",           0,     0, -15, -3_000,  "A voice actor said something controversial online."),
+    ("Award nomination",     0,     0, +10,  5_000,  "Your show got nominated for Best New Anime!"),
+    ("Convention booth",  -3_000,   0,  +5,  4_000,  "You ran a booth at AnimeCon. Worth it!"),
+    ("Talented intern",      0,    +1,  +2,      0,  "A skilled intern joined your team for free!"),
+    ("Equipment failure", -5_000,   0,  -5,      0,  "Your render farm crashed. Repair costs hurt."),
+    ("Investor interest",  20_000,  0,   0,      0,  "An anime fund is impressed and tops up your budget."),
+    ("Rival poaches staff",  0,    -1,   0,      0,  "A rival studio lured away one of your best animators."),
+    ("Crowdfunding surge", 10_000,  0,  +3,  6_000,  "Fans funded a bonus episode on Kickstarter!"),
+    ("Merchandise boom",    8_000,  0,  +2,  3_000,  "Your merch sold out at every retailer!"),
+    ("Delayed episode",   -2_000,   0,  -8, -1_500,  "A missed deadline disappointed the fanbase."),
 ]
 
+# ── Upgrade shop ─────────────────────────────────────────────────────────────
+UPGRADES = {
+    "render_farm":   {"cost": 20_000, "label": "Render Farm",    "desc": "Halves salary cost per staff."},
+    "social_team":   {"cost": 10_000, "label": "Social Team",    "desc": "+1 000 fans per episode completion."},
+    "merch_shop":    {"cost":  8_000, "label": "Merch Shop Lv1", "desc": "Earn ¥3 000/week passive income."},
+    "merch_shop_2":  {"cost": 15_000, "label": "Merch Shop Lv2", "desc": "Upgrade passive income to ¥7 000/week."},
+    "pr_agency":     {"cost": 12_000, "label": "PR Agency",      "desc": "Reduce negative rep events by half."},
+}
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+
+# ── Helpers ──────────────────────────────────────────────────────────────────
+def clamp_rep():
+    global reputation
+    reputation = max(0, min(100, reputation))
+
 
 def status():
+    upgr = ", ".join(studio_upgrades) if studio_upgrades else "none"
     print(
-        f"Week {week:>2} | Money: ¥{money:>9,} | Staff: {staff:>2} | "
-        f"Rep: {reputation:>3} | Fans: {fans:>8,} | Episodes: {episodes_completed}/{episodes_target}"
+        f"\nWeek {week} | Money: ¥{money:,} | Staff: {staff} | "
+        f"Rep: {reputation} | Fans: {fans:,} | Episodes: {episodes_completed}/{episodes_target}"
     )
+    print(f"  Upgrades: {upgr}")
 
 
 def check_end():
     if money < 0:
-        print("\n💸 Bankruptcy! You've run out of money. GAME OVER.")
+        print("\n💸 Bankruptcy! The studio closes. You lose.")
         sys.exit(0)
-    if reputation < 0:
-        print("\n📉 Reputation collapsed! The studio shuts down. GAME OVER.")
+    if reputation <= 0:
+        print("\n💔 Reputation destroyed — sponsors and fans abandoned you. You lose.")
         sys.exit(0)
     if staff <= 0:
-        print("\n😢 Everyone quit! The studio is empty. GAME OVER.")
+        print("\n🚪 No staff left — production halts. You lose.")
         sys.exit(0)
     if episodes_completed >= episodes_target:
-        if fans >= 50_000:
+        if fans >= 50_000 and reputation >= 0:
             print(
-                f"\n🎉 You completed {episodes_target} episodes with {fans:,} fans "
-                f"and {reputation} reputation.\n🏆 CONGRATULATIONS — YOU WIN!"
+                f"\n🎉 Congratulations! You completed {episodes_target} episodes with "
+                f"{fans:,} fans and reputation {reputation}. You win!"
             )
         else:
             print(
-                f"\n📺 You finished {episodes_target} episodes but only have {fans:,} fans "
-                f"(need 50 000). The series was a flop. TRY AGAIN."
+                f"\n📺 Show completed, but only {fans:,} fans (need 50 000) "
+                f"and rep {reputation}. Better luck next season!"
             )
         sys.exit(0)
 
 
-def weekly_update():
-    global money, staff, reputation, fans, week, episodes_completed
+def fire_and_gain():
+    global staff, money
+    if staff > 1:
+        staff -= 1
+        money += 2_000
+        print("  Fired a staff member.")
+    else:
+        print("  Can't fire the only staff member!")
 
-    # ── Revenue & costs ──────────────────────────────────────────────────────
-    merch_income = int(fans * FAN_MERCH_RATE)
-    money += merch_income
-    money -= staff * SALARY_PER_STAFF
 
-    if merch_income > 0:
-        print(f"  Merch income: +¥{merch_income:,}")
+def apply_event(ev):
+    """Apply a random event, handling the burnout special case interactively."""
+    global money, staff, reputation, fans
+    label, m, s, r, f, desc = ev
+    print(f"\n⚡ EVENT: {label}")
+    print(f"   {desc}")
 
-    # ── Fan growth (passive) ─────────────────────────────────────────────────
-    # Fans grow each week proportional to reputation & staff quality
-    growth = int(fans * FAN_GROWTH_BASE * (reputation / 50) * (staff / 5) * REP_FAN_MULT)
-    if growth > 0:
-        fans += growth
+    # PR agency halves negative rep damage
+    if "pr_agency" in studio_upgrades and r < 0:
+        r = r // 2
 
-    # ── Random event (20 % chance) ───────────────────────────────────────────
-    if random.random() < 0.20:
-        ev = random.choice(EVENTS)
-        desc, dm, ds, dr, df = ev
-        print(f"\n  📢 Event: {desc}")
-        money += dm
-        fans = max(0, fans + df)
-        reputation = max(-999, reputation + dr)
-
-        if ds != 0:
-            # Staff-change event — show special message
-            if ds < 0:
-                staff = max(1, staff + ds)
-                print(f"     → Lost {abs(ds)} staff member(s)!")
-            else:
-                staff += ds
-                print(f"     → Gained {ds} staff member(s)!")
-
-        # Special handling: Staff burnout — pay overtime or lose staff
-        if "burnout" in desc:
+    if label == "Staff burnout":
+        # offer to pay overtime
+        try:
+            ans = input("  Pay overtime ¥4 000 to keep morale? (y/n) > ").strip().lower()
+        except (EOFError, KeyboardInterrupt):
+            ans = "y" if money >= 4_000 else "n"
+            print(f"  Auto: {ans}")
+        if ans == "y":
             if money >= 4_000:
                 money -= 4_000
+                print("  Overtime paid — staff happy.")
                 reputation += 2
-                print("     → Paid overtime (¥4 000). Staff morale recovers slightly.")
             else:
-                staff = max(1, staff - 2)
-                reputation -= 3
-                print("     → Couldn't pay overtime. 2 staff quit!")
+                print("  Can't afford overtime! Staff morale crashes.")
+                reputation -= 10
+                staff = max(1, staff - 1)
+        else:
+            reputation -= 8
+            staff = max(1, staff - 1)
+            print("  Morale dropped, one animator quit.")
+    else:
+        money += m
+        staff = max(0, staff + s)
+        reputation += r
+        fans = max(0, fans + f)
 
-    # ── Player choices ───────────────────────────────────────────────────────
+    clamp_rep()
+
+
+def passive_income():
+    """Merch shop passive income."""
+    global money, merch_level
+    if "merch_shop_2" in studio_upgrades:
+        income = 7_000
+    elif "merch_shop" in studio_upgrades:
+        income = 3_000
+    else:
+        income = 0
+    if income:
+        money += income
+        print(f"  🛍 Merch income: +¥{income:,}")
+
+
+def episode_gain():
+    """Fan + rep gain on episode completion."""
+    global fans, reputation, episodes_completed
+    episodes_completed += 1
+    base = fan_growth_base + (reputation - 50) * 20
+    if "social_team" in studio_upgrades:
+        base += 1_000
+    gained = max(200, base + random.randint(-200, 500))
+    fans += gained
+    rep_gain = random.randint(1, 5)
+    reputation = min(100, reputation + rep_gain)
+    print(f"  🎬 Episode {episodes_completed} completed! +{gained:,} fans, +{rep_gain} rep")
+
+
+def show_choices():
     print("\nChoices:")
-    print("  1) Hire animator     (+1 staff, -¥5 000)")
-    print("  2) Fire animator     (+¥2 000, -1 staff)")
-    print("  3) Train junior      (+1 staff, -¥3 000)")
-    print("  4) Rush episode      (faster, but quality risk)")
-    print("  5) Quality focus     (+5 rep, -¥2 000)")
-    print("  6) Marketing push    (+fans, -¥4 000)")
-    print("  7) Next week →")
+    print("  1) Hire animator      (+1 staff, -¥5 000)")
+    print("  2) Fire animator      (-1 staff, +¥2 000)")
+    print("  3) Train junior       (+1 staff, -¥3 000)")
+    print("  4) Rush episode       (fast fans, risk rep)")
+    print("  5) Quality focus      (+5 rep, -¥2 000)")
+    print("  6) Run fan campaign   (+fans, -¥4 000)")
+    print("  7) Upgrade shop       (permanent upgrades)")
+    print("  8) Next week")
+
+
+def upgrade_shop():
+    """Interactive upgrade purchase."""
+    global money
+    print("\n  === Upgrade Shop ===")
+    available = [(k, v) for k, v in UPGRADES.items() if k not in studio_upgrades]
+    # hide merch_shop_2 unless merch_shop is owned
+    if "merch_shop" not in studio_upgrades:
+        available = [(k, v) for k, v in available if k != "merch_shop_2"]
+    if not available:
+        print("  All upgrades purchased!")
+        return
+    for i, (k, v) in enumerate(available, 1):
+        print(f"  {i}) {v['label']} — ¥{v['cost']:,}  ·  {v['desc']}")
+    print("  0) Cancel")
+    try:
+        sel = int(input("  Buy > ").strip())
+    except (ValueError, EOFError, KeyboardInterrupt):
+        sel = 0
+        print("  Auto: cancel")
+    if sel == 0 or sel > len(available):
+        print("  No purchase.")
+        return
+    key, upg = available[sel - 1]
+    if money >= upg["cost"]:
+        money -= upg["cost"]
+        studio_upgrades.append(key)
+        # render_farm: immediately halve salary cost
+        if key == "render_farm":
+            global salary_per_staff
+            salary_per_staff = 1_000
+        print(f"  ✅ Purchased: {upg['label']}")
+    else:
+        print(f"  ❌ Not enough money (need ¥{upg['cost']:,}, have ¥{money:,})")
+
+
+def auto_choice(choice_input: str) -> str:
+    """Heuristic AI for non-interactive / auto mode."""
+    # Try to buy render_farm first (best ROI)
+    if "render_farm" not in studio_upgrades and money >= 20_000:
+        return "7_render_farm"
+    if "merch_shop" not in studio_upgrades and money >= 10_000:
+        return "7_merch_shop"
+    if "merch_shop_2" not in studio_upgrades and "merch_shop" in studio_upgrades and money >= 15_000:
+        return "7_merch_shop_2"
+    if reputation < 40 and money >= 2_000:
+        return "5"
+    # Prioritize fan campaigns heavily when fans are below target
+    if fans < 50_000 and money >= 4_000:
+        return "6"
+    if staff < 4 and money >= 5_000:
+        return "1"
+    if money < 3_000 and staff > 3:
+        return "2"
+    if reputation >= 70 and money >= 5_000 and staff < 7:
+        return "1"
+    return "8"
+
+
+def weekly_update():
+    global money, staff, reputation, fans, week, salary_per_staff
+
+    # Passive income first
+    passive_income()
+
+    # Pay salaries
+    salary = staff * salary_per_staff
+    money -= salary
+    print(f"  💴 Salaries paid: -¥{salary:,}")
+
+    # Random event (15 % chance)
+    if random.random() < 0.15:
+        apply_event(random.choice(EVENTS))
+
+    # Episode progress: every 2 weeks completes an episode
+    if week % 2 == 1:
+        episode_gain()
+
+    status()
+    check_end()
+    show_choices()
 
     try:
         choice = input("> ").strip()
     except (EOFError, KeyboardInterrupt):
-        # ── Smart auto-play heuristic ────────────────────────────────────────
-        if money > 60_000 and staff < 8 and money >= 5_000:
-            choice = "1"   # Grow team when flush
-        elif money < 8_000 and staff > 3:
-            choice = "2"   # Cut costs when tight
-        elif fans < 20_000 and money >= 4_000:
-            choice = "6"   # Marketing when fans low
-        elif reputation < 55 and money >= 2_000:
-            choice = "5"   # Fix rep when it's slipping
-        elif money >= 3_000 and staff < 6:
-            choice = "3"   # Train if affordable
+        choice = auto_choice("")
+        # handle auto upgrade sub-choices
+        if choice.startswith("7_"):
+            upgrade_key = choice.split("_", 1)[1]
+            upg = UPGRADES.get(upgrade_key)
+            if upg and upgrade_key not in studio_upgrades and money >= upg["cost"]:
+                money -= upg["cost"]
+                studio_upgrades.append(upgrade_key)
+                if upgrade_key == "render_farm":
+                    salary_per_staff = 1_000
+                print(f"  Auto-purchased: {upg['label']}")
+            choice = "8"
         else:
-            choice = "7"
-        print(f"Auto: {choice}")
+            print(f"  Auto-choosing: {choice}")
 
-    # ── Apply choice ─────────────────────────────────────────────────────────
     if choice == "1":
         if money >= 5_000:
             money -= 5_000
             staff += 1
-            print("🎨 Hired a new animator.")
+            print("  Hired a new animator.")
         else:
-            print("💰 Not enough money to hire.")
+            print("  Not enough money.")
     elif choice == "2":
-        if staff > 1:
-            staff -= 1
-            money += 2_000
-            print("📋 Fired an animator.")
-        else:
-            print("❌ Can't fire the last staff member!")
+        fire_and_gain()
     elif choice == "3":
-        if money >= 3_000 and staff >= 1:
+        if money >= 3_000:
             money -= 3_000
             staff += 1
-            print("📚 Trained a junior animator — they're now full staff!")
+            print("  Trained a junior — they levelled up!")
         else:
-            print("❌ Not enough money or no staff to train.")
+            print("  Not enough money.")
     elif choice == "4":
+        # Rush episode
         if random.random() < 0.65:
-            bonus_fans = random.randint(500, 3_000)
-            fans += bonus_fans
-            print(f"🚀 Rush succeeded! Gained {bonus_fans:,} fans.")
+            gained = random.randint(1_500, 5_000)
+            fans += gained
+            print(f"  ⚡ Rush succeeded! +{gained:,} fans.")
         else:
-            rep_loss = random.randint(8, 15)
-            reputation -= rep_loss
-            print(f"💥 Rush failed! Quality issues — reputation -{rep_loss}.")
+            reputation -= random.randint(8, 15)
+            fans = max(0, fans - random.randint(500, 1_500))
+            clamp_rep()
+            print("  ⚡ Rush failed! Reputation and fans dropped.")
     elif choice == "5":
         if money >= 2_000:
             money -= 2_000
             reputation = min(100, reputation + 5)
-            print("✨ Quality focus paid off. Reputation +5.")
+            print("  Quality focus paid off. +5 rep.")
         else:
-            print("💰 Not enough money for quality focus.")
+            print("  Not enough money.")
     elif choice == "6":
         if money >= 4_000:
             money -= 4_000
-            boost = int(fans * 0.15) + random.randint(500, 2_000)
-            fans += boost
-            print(f"📣 Marketing push! Fans +{boost:,}.")
+            gained = random.randint(3_000, 8_000)
+            fans += gained
+            print(f"  📣 Fan campaign launched! +{gained:,} fans.")
         else:
-            print("💰 Not enough money for marketing.")
+            print("  Not enough money for a campaign.")
     elif choice == "7":
-        pass   # Advance week
+        upgrade_shop()
+    elif choice == "8":
+        pass
     else:
-        print("⚠️  Invalid choice; skipping.")
-
-    # ── Episode production (every 2 weeks) ───────────────────────────────────
-    if week % 2 == 0 and episodes_completed < episodes_target:
-        episodes_completed += 1
-        ep_fans = int(fans * 0.08 * (reputation / 50))
-        fans += ep_fans
-        reputation = min(100, reputation + 2)
-        print(f"\n📺 Episode {episodes_completed} aired! +{ep_fans:,} fans from new viewers.")
+        print("  Invalid choice; advancing week.")
 
     week += 1
     check_end()
 
 
-# ── Entry point ───────────────────────────────────────────────────────────────
+# ── Main ─────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    print("╔══════════════════════════════════════╗")
-    print("║      ANIME STUDIO TYCOON  v1.1       ║")
-    print("╠══════════════════════════════════════╣")
-    print("║ Manage your studio across 10 episodes║")
-    print("║ Goal: 50 000+ fans, rep ≥ 0, solvent ║")
-    print("╚══════════════════════════════════════╝")
+    print("╔══════════════════════════════════════════╗")
+    print("║       ANIME STUDIO TYCOON  v1.1          ║")
+    print("╚══════════════════════════════════════════╝")
+    print("Manage your studio: balance money, staff, reputation, and fans.")
+    print("Goal: Complete 10 episodes with ≥50 000 fans and positive reputation.\n")
+    print("Tips: Hire staff early, invest in upgrades, and watch your budget!")
     print()
     while True:
-        status()
-        print()
         weekly_update()
-        print()
