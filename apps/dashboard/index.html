@@ -313,7 +313,7 @@
     <span id="conn-dot" title="Connection status"></span>
     <span id="backend-status" class="bad">loading</span>
     <button id="push-btn" title="Enable push notifications" onclick="togglePush()" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:16px;padding:4px 8px;line-height:1;">🔕</button>
-    <button id="theme-btn" title="Toggle light/dark">🌙</button>
+    <button id="theme-btn" class="theme-toggle" title="Toggle theme">🌈</button>
     <span id="last-updated" class="muted">Loading…</span>
   </div>
 </header>
@@ -442,6 +442,41 @@
 
 </div><!-- #tab-panels -->
 
+<!-- Kawaii Mascot Sidebar -->
+<div id="mascot-sidebar" class="mascot-sidebar">
+  <div class="mascot-container" title="Hi! I'm mewmew~">
+    <svg viewBox="0 0 100 120" class="mascot-svg">
+      <!-- Head -->
+      <circle cx="50" cy="60" r="40" fill="#ff79c6" stroke="#ffb86c" stroke-width="3"/>
+      <!-- Ears -->
+      <polygon points="20,35 30,50 10,50" fill="#ff79c6" stroke="#ffb86c" stroke-width="2"/>
+      <polygon points="80,35 70,50 90,50" fill="#ff79c6" stroke="#ffb86c" stroke-width="2"/>
+      <!-- Inner ears -->
+      <polygon points="22,42 28,50 15,50" fill="#ffb86c"/>
+      <polygon points="78,42 72,50 85,50" fill="#ffb86c"/>
+      <!-- Face -->
+      <ellipse cx="38" cy="55" rx="5" ry="7" fill="#0b0e14"/>
+      <ellipse cx="62" cy="55" rx="5" ry="7" fill="#0b0e14"/>
+      <ellipse cx="50" cy="50" rx="6" ry="4" fill="#0b0e14"/>
+      <!-- Blush -->
+      <ellipse cx="30" cy="70" rx="8" ry="5" fill="#ff6b9d" opacity="0.6"/>
+      <ellipse cx="70" cy="70" rx="8" ry="5" fill="#ff6b9d" opacity="0.6"/>
+      <!-- Mouth :3 -->
+      <path d="M 40 75 Q 50 82 60 75" stroke="#0b0e14" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Whiskers -->
+      <line x1="15" y1="60" x2="30" y2="65" stroke="#0b0e14" stroke-width="2"/>
+      <line x1="15" y1="70" x2="30" y2="70" stroke="#0b0e14" stroke-width="2"/>
+      <line x1="85" y1="60" x2="70" y2="65" stroke="#0b0e14" stroke-width="2"/>
+      <line x1="85" y1="70" x2="70" y2="70" stroke="#0b0e14" stroke-width="2"/>
+      <!-- Paw wave (right) -->
+      <g class="wave-hand">
+        <circle cx="85" cy="85" r="8" fill="#ff79c6" stroke="#ffb86c" stroke-width="2"/>
+      </g>
+    </svg>
+    <div class="speech-bubble" id="mascot-bubble">Nya~!</div>
+  </div>
+  <button class="mascot-toggle" id="mascot-toggle" title="Toggle mascot">📦</button>
+</div>
 <!-- Quick commands bottom sheet -->
 <div id="quick-sheet-overlay" onclick="closeQuickSheet()"></div>
 <div id="quick-sheet">
@@ -1608,6 +1643,182 @@ async function runQuickSheet(cmd, label) {
   }
 }
 
+
+// ============ THEME TOGGLE ============
+(function() {
+  const btn = document.getElementById('theme-btn');
+  if (!btn) return;
+  
+  const currentTheme = localStorage.getItem('clawdash-theme') || 'kawaii';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  btn.textContent = currentTheme === 'kawaii' ? '🌈' : '🌙';
+  
+  btn.addEventListener('click', () => {
+    const next = currentTheme === 'kawaii' ? 'pro' : 'kawaii';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('clawdash-theme', next);
+    btn.textContent = next === 'kawaii' ? '🌈' : '🌙';
+    playSound('toggle');
+  });
+})();
+
+// ============ SOUND SYSTEM ============
+const soundCtx = new (window.AudioContext || window.webkitAudioContext)();
+const soundEnabled = localStorage.getItem('clawdash-sounds') !== 'false'; // default on
+
+function playSound(type) {
+  if (!soundEnabled) return;
+  
+  // Resume context if suspended (browser policy)
+  if (soundCtx.state === 'suspended') soundCtx.resume();
+  
+  const osc = soundCtx.createOscillator();
+  const gain = soundCtx.createGain();
+  osc.connect(gain);
+  gain.connect(soundCtx.destination);
+  
+  switch(type) {
+    case 'click':
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, soundCtx.currentTime);
+      gain.gain.setValueAtTime(0.1, soundCtx.currentTime);
+      osc.start();
+      osc.stop(soundCtx.currentTime + 0.05);
+      break;
+    case 'success':
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523, soundCtx.currentTime); // C5
+      osc.frequency.linearRampToValueAtTime(659, soundCtx.currentTime + 0.1); // E5
+      gain.gain.setValueAtTime(0.15, soundCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, soundCtx.currentTime + 0.3);
+      osc.start();
+      osc.stop(soundCtx.currentTime + 0.3);
+      break;
+    case 'toggle':
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(440, soundCtx.currentTime);
+      gain.gain.setValueAtTime(0.08, soundCtx.currentTime);
+      osc.start();
+      osc.stop(soundCtx.currentTime + 0.08);
+      break;
+  }
+}
+
+// Add click sounds to all buttons
+document.addEventListener('click', (e) => {
+  if (e.target.tagName === 'BUTTON' || e.target.classList.contains('btn')) {
+    playSound('click');
+  }
+});
+
+// ============ ACHIEVEMENTS SYSTEM ============
+const ACHIEVEMENTS = {
+  first_commit: { icon: '🌟', name: 'First Commit', desc: 'Made your first commit' },
+  game_enhancer: { icon: '🎮', name: 'Game Enhancer', desc: 'Ran the game enhancer agent' },
+  qwen_coder: { icon: '🤖', name: 'Qwen Coder', desc: 'Used Qwen Code for coding' },
+  gemini_researcher: { icon: '🔍', name: 'Gemini Researcher', desc: 'Used Gemini for research' },
+  projects_tab: { icon: '📂', name: 'Project Manager', desc: 'Opened the Projects tab' },
+  kawaii_mode: { icon: '🎀', name: 'Kawaii Fan', desc: 'Enabled kawaii theme' },
+  thousand_messages: { icon: '💬', name: 'Chatty', desc: 'Sent 1000 messages' },
+  streak_7: { icon: '🔥', name: '7-Day Streak', desc: '7 consecutive days active' },
+};
+
+function loadAchievements() {
+  const earned = JSON.parse(localStorage.getItem('clawdash-achievements') || '[]');
+  const panel = document.getElementById('achievements-panel');
+  if (!panel) return;
+  
+  const grid = panel.querySelector('.achievements-grid');
+  grid.innerHTML = '';
+  
+  Object.entries(ACHIEVEMENTS).forEach(([key, ach]) => {
+    const unlocked = earned.includes(key);
+    const badge = document.createElement('div');
+    badge.className = `achievement-badge ${unlocked ? 'unlocked' : ''}`;
+    badge.innerHTML = `
+      ${ach.icon}
+      <div class="tooltip">${ach.name}: ${ach.desc}</div>
+    `;
+    badge.title = unlocked ? ach.name : '???';
+    grid.appendChild(badge);
+  });
+}
+
+function unlockAchievement(key) {
+  const earned = JSON.parse(localStorage.getItem('clawdash-achievements') || '[]');
+  if (!earned.includes(key)) {
+    earned.push(key);
+    localStorage.setItem('clawdash-achievements', JSON.stringify(earned));
+    playSound('success');
+    loadAchievements();
+    // Could also trigger a toast notification
+  }
+}
+
+// Track some achievements
+if (!localStorage.getItem('clawdash-achievements-initialized')) {
+  unlockAchievement('kawaii_mode'); // for enabling kawaii theme
+  localStorage.setItem('clawdash-achievements-initialized', 'true');
+}
+
+// ============ MASCOT ============
+(function() {
+  const sidebar = document.getElementById('mascot-sidebar');
+  const toggle = document.getElementById('mascot-toggle');
+  const bubble = document.getElementById('mascot-bubble');
+  if (!sidebar || !toggle || !bubble) return;
+  
+  // Random phrases
+  const phrases = [
+    'Nya~!', 'Hello!', 'Ready to help!', 'Kawaii desu!', 'Mew!',
+    'You got this!', 'Anime power!', 'Let\'s go!', 'Yay!', 'Desu!'
+  ];
+  
+  let bubbleTimeout;
+  sidebar.addEventListener('mouseenter', () => {
+    bubble.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+  });
+  
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    playSound('toggle');
+  });
+})();
+
+// ============ INIT ============
+// Load achievements on start
+document.addEventListener('DOMContentLoaded', () => {
+  loadAchievements();
+  
+  // Add achievements panel to header
+  const header = document.querySelector('header .header-right');
+  if (header) {
+    const achBtn = document.createElement('button');
+    achBtn.className = 'theme-toggle';
+    achBtn.title = 'Achievements';
+    achBtn.innerHTML = '🏆';
+    achBtn.onclick = () => {
+      const panel = document.getElementById('achievements-panel');
+      if (panel) panel.classList.toggle('visible');
+      playSound('toggle');
+    };
+    header.appendChild(achBtn);
+    
+    const achPanel = document.createElement('div');
+    achPanel.id = 'achievements-panel';
+    achPanel.className = 'achievements-panel';
+    achPanel.innerHTML = `
+      <div class="achievements-header">
+        <h3>🏆 Achievements</h3>
+        <button onclick="document.getElementById('achievements-panel').classList.remove('visible')" style="background:none;border:none;color:var(--text);cursor:pointer">✕</button>
+      </div>
+      <div class="achievements-grid"></div>
+    `;
+    document.body.appendChild(achPanel);
+  }
+});
+
+</script>
 </script>
 </body>
 </html>
