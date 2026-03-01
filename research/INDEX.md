@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-03-01
 
-## 2026 Reports (222 total)
+## 2026 Reports (223 total)
 
 ### 2026-03
+- [Fintech & Digital Banking 2026 — Agentic AI, Neobank Profitability (Revolut $75B/$3.5B profit, Monzo 8× growth), CBDC Timelines, Stablecoin Settlement Layer & Real-Time Rails](2026-03-01-fintech-digital-banking-2026-agentic-ai-neobank-profitability-cbdc-stablecoin-real-time-payments.md)
 - [Cybersecurity 2026 — AI Arms Race, Ransomware Economy ($820M), Post-Quantum Migration & Agentic Threat Frontier](2026-03-01-cybersecurity-2026-ai-arms-race-ransomware-post-quantum-zero-trust-agentic-threats.md)
 - [Green Tech & Climate AI 2026 — Solar Record Lows, Battery $70/kWh, Nuclear SMR Renaissance & the AI-Energy Nexus](2026-03-01-green-tech-climate-ai-2026-solar-battery-nuclear-smr-ev-energy-nexus.md)
 - [Biotech & Longevity 2026 — AI Drug Discovery, GLP-1 Dominance, Gene Therapy, CRISPR & the Longevity Startup Race](2026-03-01-biotech-longevity-2026-ai-drug-discovery-glp1-gene-therapy-crispr.md)
