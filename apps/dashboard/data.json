@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-03-01T06:00:02Z",
+  "generated_at": "2026-03-01T06:05:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.5G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.63 0.73 0.80",
-    "mem_used": "3.4Gi",
+    "load_avg": "1.19 1.03 0.92",
+    "mem_used": "4.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 16 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 16 hours, 25 minutes",
     "disk_history": [
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
       81,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
       81,
       81,
       81,
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-01 05:06",
-      "last_line": "[2026-03-01T05:06:25Z] [dev-agent] Completed cycle (95138a6e): (1) research/INDEX.md: fixed 15 broken markdown links (unmatched parens in link text via python regex auto-repair); added 2 missing entries (subagent-persistence-investigation-2026-02-14 + cycle-summary-2026-02-15-1116); updated count 225→228; (2) content/INDEX.md: added 3 missing 2026-02-28 content files (1705-linkedin-pa-post, 1706-linkedin-pa-digest, 1706-linkedin-pa-post); index-drift.sh now 0 drift (507 content + 207 research); (3) archive/research-planning-artifacts/: moved findings.md + task_plan.md + test-report.md out of research/ (were planning artifacts not research reports); (4) reports/2026-03-01-daily-digest.md regenerated with all 6 research reports including Spring 2026 Anime season preview (#225). Disk 81% stable. Git clean, pushed."
+      "last_run": "2026-03-01 06:04",
+      "last_line": "2026-03-01 06:04:12 UTC - Dev-agent cycle completed (exit 0)"
     },
     {
       "name": "supervisor",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "bbb60fad",
+      "sha": "3f1b2be4",
+      "agent": "dev",
+      "message": "fix workspace-validate.sh cron range 18-22→22-26 (24 jobs now legitimate; telegram-slash-handler + youtube-digest-daily + vishwakarma-cron + archiver-manager-cron added since original threshold); regen 2026-03-01 daily digest (7 research: +Commercial Space #229 + Spring Anime #225; 6 content total; disk-history.json appended)",
+      "time": "80 seconds ago"
+    },
+    {
+      "sha": "ab16aa6d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "2472f330",
+      "sha": "bbb60fad",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "92c284db",
+      "sha": "2472f330",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "e9a18fd1",
+      "sha": "92c284db",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "ed3ccb7a",
+      "sha": "e9a18fd1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "ed3ccb7a",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "886d5c4f",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "04a30777",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "d8957616",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "05d37b8d",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.1 — 16 events, upgrade shop, fan campaigns, balanced economy",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "f50dec59",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "8c91baa1",
       "agent": "build",
       "message": "workspace-builder session 23dad379 validated; close the loop",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "0c6b73d5",
       "agent": "build",
       "message": "workspace-builder planning docs and session registration",
-      "time": "42 minutes ago"
+      "time": "47 minutes ago"
     },
     {
       "sha": "3d5617e2",
       "agent": "build",
       "message": "update disk history metrics",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "f9e17f7d",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "6fd7eb6b",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "45 minutes ago"
+      "time": "48 minutes ago"
     }
   ],
   "heartbeat": {
