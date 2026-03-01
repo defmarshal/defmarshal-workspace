@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T02:15:03Z",
+  "generated_at": "2026-03-01T02:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.93 1.06 1.00",
-    "mem_used": "3.8Gi",
+    "load_avg": "0.63 0.91 0.97",
+    "mem_used": "4.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 12 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 12 hours, 40 minutes",
     "disk_history": [
       81,
       81,
@@ -92,93 +92,93 @@
   },
   "recent_commits": [
     {
-      "sha": "08547cda",
+      "sha": "75c30d69",
+      "agent": "research",
+      "message": "Fintech & Digital Banking 2026 (#223) — agentic AI ($30B market→$83B/2030, 88% top fintech adoption, 8-min loan approvals, 40% fraud loss reduction, liability gap for agent payments), neobank profitability (Revolut $75B/$9B rev/$3.5B profit target, Monzo 8x profit growth/£113.9M, Nubank $1.9B earnings, Chime IPO $9.8B), CBDC timelines (EU Digital Euro legislation 2026→pilot 2027→issuance 2029; US GENIUS Act stablecoins), stablecoin settlement ($200B+ mktcap, $50B daily volume), real-time rails (FedNow/SEPA Instant, 1.68T→3.54T transactions by 2029), embedded finance evolution, RegTech/DORA, core banking modernization, EM fintech (India 500M UPI, LatAm +35%); 223 total reports",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "1e9fb743",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "7a870beb",
-      "agent": "content",
-      "message": "Cybersecurity 2026 tech writeup (9.3KB) — ransomware paradox ($820M/-8% payments vs +50% victims, IAB 30-day leading indicator), AI arms race (SentinelLABS forgiving-internet-over, 3x phishing, $12M deepfake wire fraud), PQC migration (FIPS 203/204/205, harvest-now-decrypt-later), agentic AI surface (71% unprepared, MCP RCE, 92% multi-turn jailbreak, SaaS IdP pivot), H1 signals; 4 content pieces Mar 1",
-      "time": "7 minutes ago"
-    },
-    {
-      "sha": "39500a02",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0207)",
-      "time": "7 minutes ago"
-    },
-    {
-      "sha": "d2c12b44",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "8 minutes ago"
-    },
-    {
-      "sha": "9c0bdd37",
-      "agent": "dev",
-      "message": "aria2-slot-cleaner set -euo pipefail fix (last script missing it); add trim-memory-logs.sh (line-count based trimmer, --threshold N, --execute); rotate aria2.log (254MB→fresh, saved 232MB+72MB old archive); trim meta-agent/idea-executor/enhancement-bot logs (836-1813 lines pruned); generate 2026-03-01 daily digest; register trim-memory-logs in quick",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "7cec23f4",
+      "sha": "08547cda",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "2be8ac7b",
+      "sha": "7a870beb",
+      "agent": "content",
+      "message": "Cybersecurity 2026 tech writeup (9.3KB) — ransomware paradox ($820M/-8% payments vs +50% victims, IAB 30-day leading indicator), AI arms race (SentinelLABS forgiving-internet-over, 3x phishing, $12M deepfake wire fraud), PQC migration (FIPS 203/204/205, harvest-now-decrypt-later), agentic AI surface (71% unprepared, MCP RCE, 92% multi-turn jailbreak, SaaS IdP pivot), H1 signals; 4 content pieces Mar 1",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "39500a02",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0207)",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "d2c12b44",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
+      "time": "13 minutes ago"
+    },
+    {
+      "sha": "9c0bdd37",
+      "agent": "dev",
+      "message": "aria2-slot-cleaner set -euo pipefail fix (last script missing it); add trim-memory-logs.sh (line-count based trimmer, --threshold N, --execute); rotate aria2.log (254MB→fresh, saved 232MB+72MB old archive); trim meta-agent/idea-executor/enhancement-bot logs (836-1813 lines pruned); generate 2026-03-01 daily digest; register trim-memory-logs in quick",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "7cec23f4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "4275f770",
+      "sha": "2be8ac7b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "3901de41",
+      "sha": "4275f770",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "ff9200ec",
+      "sha": "3901de41",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "aeb8aea3",
+      "sha": "ff9200ec",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "7bcdc1f4",
+      "sha": "aeb8aea3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
+      "sha": "7bcdc1f4",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "45 minutes ago"
+    },
+    {
       "sha": "7bc63fda",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "8f614bdd",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "065a6559",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "50 minutes ago"
     }
   ],
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772331229368,
-      "next_run": 1772331349368,
+      "last_run": 1772331589398,
+      "next_run": 1772331709398,
       "last_status": "ok",
-      "last_duration_ms": 6309,
+      "last_duration_ms": 6157,
       "consecutive_errors": 0
     },
     {
@@ -712,16 +712,6 @@
     "latest_title": "Sunday Morning Digest — March 1, 2026"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:26:21.568Z",
-      "text": "[Sat 2026-02-28 16:26 UTC] please do. also find a way to make sure it avoids any downloaded torrent"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:27:10.536Z",
-      "text": "Found it — `torrent-add` expects args as `$1=secret $2=magnet`, but the script calls `./quick torrent-add \"$MAGNET\"` with magnet as `$1` (no secret), which gets interpreted as the RPC secret, leaving `$2` (INPUT) empty! Also need to build the duplicate detection. Let me fix both:"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T16:28:51.332Z",
@@ -961,6 +951,16 @@
       "role": "assistant",
       "ts": "2026-03-01T02:03:00.633Z",
       "text": "nyaa~ here's the step by step desu~ (^^)\n\n**1. Create a Google Cloud project**\n- Go to [console.cloud.google.com](https://console.cloud.google.com)\n- Click **\"Select a project\"** → **\"New Project\"** → name it anything (e.g. `openclaw-yt`) → Create\n\n**2. Enable YouTube Data API v3**\n- In the project, go to **APIs & Services → Library**\n- Search `YouTube Data API v3` → click it → **Enable**\n\n**3. Create OAuth credentials**\n- Go to **APIs & Services → Credentials**\n- Click **\"+ Create Credentials\"** → **OAuth client ID**\n- If it asks to configure consent screen first:\n  - User type: **External** → Create\n  - App name: anything → your email → Save and Continue (skip through scopes/test users)\n- Back to Create OAuth client ID:\n  - Application type: **Desktop app**\n  - Name: anything → **Create**\n- You'll get a popup with **Client ID** and **Client Secret** — copy both\n\n**4. Run the setup script**\n```bash\ncd /home/ubuntu/.openclaw/workspace\n./scripts/youtube-oauth-setup.sh\n```\npaste the client ID + secret when prompted, then follow the OAuth URL to authorize, paste the code back ♪\n\nthat's it — takes about 5 min desu~ 🐾"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T02:15:53.896Z",
+      "text": "[2026-03-01 02:15:13 UTC] === YouTube Digest starting (hours=24, dry_run=0) ===\nTraceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\nFileNotFoundError: [Errno 2] No such file or directory: ''\n[2026-03-01 02:15:13 UTC] ERROR: Token refresh failed"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T02:17:05.593Z",
+      "text": "Found it — `CREDS_FILE` bash variable isn't exported so Python gets an empty string. Fix:"
     }
   ]
 }
