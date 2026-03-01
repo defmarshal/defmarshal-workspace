@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T03:10:02Z",
+  "generated_at": "2026-03-01T03:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.89 0.91 0.91",
-    "mem_used": "4.4Gi",
+    "load_avg": "0.89 0.95 0.92",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 13 hours, 30 minutes",
+    "uptime": "1 week, 2 days, 13 hours, 35 minutes",
     "disk_history": [
       81,
       81,
@@ -56,14 +56,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-03-01 02:08",
-      "last_line": "[2026-03-01T02:08:41Z] [content-agent] Generated Cybersecurity 2026 tech writeup (9.3KB, 7a870beb). Covered ransomware paradox (Chainalysis: $820M/-8% payments but +50% victims/ATL 28% pay rate, IAB 30-day leading indicator), AI arms race (SentinelLABS 'forgiving internet over', Claude Code 30-target autonomous intrusion, 3x AI phishing, $12M deepfake fraud), PQC migration (FIPS 203/204/205 final, first certs 2026, harvest-now-decrypt-later active, crypto-agility inventory first step), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE, 92% multi-turn jailbreak, SaaS IdP ZT pivot), compliance deadline stack (NIS2/DORA/CMMC 2.0/AI Act), 6 H1 signals. 222 research reports, 4 content pieces Mar 1."
+      "last_run": "2026-03-01 03:15",
+      "last_line": "[2026-03-01T03:15:01Z] [content-agent] Generated Fintech 2026 tech writeup (7.7KB, 9a7d3eb6). Identified gap: Fintech research report #223 had no matching content piece. Covered: agentic AI liability vacuum (Reg E/PSD2 grey zone for agent-initiated payments, Visa/MC building verification protocols, Trump EO Dec 15 2025 national standard push, $7.84B→$52B agent market), neobank profitability split (Revolut $75B/$9B rev/$3.5B profit 2026, Monzo 8x/£113.9M profit, Nubank $1.9B, Chime IPO $9.8B; structural revenue models: lending+subs+BaaS+cross-sell), stablecoin vs CBDC ($200B mktcap/$50B daily settlement vs Digital Euro 2029/US GENIUS Act), real-time rails (FedNow/SEPA Instant mandatory/UPI 500M/Pix; 1.68T→3.54T txns/irrevocable fraud stakes), 5 H1 2026 signals. 223 research reports total. 5 content pieces Mar 1."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-01 03:07",
-      "last_line": "[2026-03-01T03:07:57Z] [dev-agent] Completed cycle (597e5cfd): (1) daily digest 2026-03-01 regenerated — now includes Fintech #223 (was missing, added at 02:14 UTC); now shows 4 research reports + 3 content pieces; (2) today-summary.sh new utility — one-liner production stats (research count/content count/dev commits/disk%/archive total); registered as 'quick today-summary'; (3) registered 3 previously unregistered scripts in quick: youtube-digest.sh, tweet-new-reports.sh, cleanup-archived.sh + help text entries; (4) pruned stale idea/add-pagination-to-research-list branch (1 divergent commit, revert at tip — confirmed stale). Disk at 81%."
+      "last_run": "2026-03-01 03:11",
+      "last_line": "[2026-03-01T03:11:12Z] [dev-agent] Completed cycle (66486133): (1) reports/README.md fixed — literal \\n bytes → proper newlines, expanded with file format documentation; (2) research-today.sh new utility — lists research reports for a given date with titles + sizes, defaults to today UTC, registered as 'quick research-today'; (3) prune-gh-branches.sh new utility — dry-run safe pruner for stale gh-pages-* branches, --execute flag; registered as 'quick prune-gh-branches'; (4) pruned 4 stale local branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test — all Feb 27, 0 references in any script, no active purpose). Disk 81% stable."
     },
     {
       "name": "supervisor",
@@ -74,8 +74,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-03-01 02:30",
-      "last_line": "2026-03-01 02:30:20 UTC - Agent Manager stopped"
+      "last_run": "2026-03-01 03:11",
+      "last_line": "2026-03-01 03:11:33 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "597e5cfd",
-      "agent": "dev",
-      "message": "regenerate 2026-03-01 daily digest (now includes Fintech #223, 4 research+3 content); add today-summary.sh (one-liner production stats: research/content/dev counts + disk + archive total); register youtube-digest, tweet-new-reports, cleanup-archived, today-summary in quick; prune stale idea/add-pagination-to-research-list branch",
-      "time": "2 minutes ago"
+      "sha": "07292af4",
+      "agent": "misc",
+      "message": "fix(clawdash): remove stray extra } after renderOutputs breaking all JS",
+      "time": "7 seconds ago"
     },
     {
-      "sha": "07c21d28",
+      "sha": "9a7d3eb6",
+      "agent": "content",
+      "message": "Fintech 2026 tech writeup (7.7KB) — agentic AI liability vacuum (Reg E gap for agent-initiated payments, Visa/MC verification protocols, Trump EO national standard push), neobank profitability split (Revolut $75B/$3.5B profit target, Monzo 8x/£113.9M, Nubank $1.9B, Chime IPO $9.8B; 5% profitable vs 95% still searching), stablecoin won settlement race ($200B mktcap/$50B daily vs CBDC-in-committee Digital Euro 2029/GENIUS Act), real-time rails (FedNow/SEPA Instant/UPI 500M/Pix; 1.68T→3.54T txns/irrevocable fraud stakes), 5 H1 signals; 5th content piece Mar 1, 223 research total",
+      "time": "11 seconds ago"
+    },
+    {
+      "sha": "0141147a",
+      "agent": "chore",
+      "message": "update planning files post-feature build",
+      "time": "83 seconds ago"
+    },
+    {
+      "sha": "b0f94e5d",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "66486133",
+      "agent": "dev",
+      "message": "fix reports/README.md literal \\n→real newlines + expand with file format docs; add research-today.sh (lists today's reports with titles/sizes, accepts YYYY-MM-DD); add prune-gh-branches.sh (safe dry-run pruner for stale gh-pages-* branches); prune 4 stale gh-* branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test all from Feb 27, unreferenced); register research-today + prune-gh-branches in quick",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "c5a55cd5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "0d0181ed",
+      "sha": "597e5cfd",
+      "agent": "dev",
+      "message": "regenerate 2026-03-01 daily digest (now includes Fintech #223, 4 research+3 content); add today-summary.sh (one-liner production stats: research/content/dev counts + disk + archive total); register youtube-digest, tweet-new-reports, cleanup-archived, today-summary in quick; prune stale idea/add-pagination-to-research-list branch",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "07c21d28",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "baf4f25e",
+      "sha": "0d0181ed",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "94fc413a",
+      "sha": "baf4f25e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "899c83f1",
+      "sha": "94fc413a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "ba9a6aac",
+      "sha": "899c83f1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "44428f6e",
+      "sha": "ba9a6aac",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
+      "sha": "44428f6e",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "40 minutes ago"
+    },
+    {
       "sha": "0afba931",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "48b9c5f4",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "3bd783f2",
-      "agent": "misc",
-      "message": "fix(youtube-digest): export CREDS_FILE/HOURS/WORKSPACE to Python heredocs; pip3 --break-system-packages for transcript api",
-      "time": "42 minutes ago"
-    },
-    {
-      "sha": "c54b024f",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "45 minutes ago"
-    },
-    {
-      "sha": "706521a6",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "75c30d69",
-      "agent": "research",
-      "message": "Fintech & Digital Banking 2026 (#223) — agentic AI ($30B market→$83B/2030, 88% top fintech adoption, 8-min loan approvals, 40% fraud loss reduction, liability gap for agent payments), neobank profitability (Revolut $75B/$9B rev/$3.5B profit target, Monzo 8x profit growth/£113.9M, Nubank $1.9B earnings, Chime IPO $9.8B), CBDC timelines (EU Digital Euro legislation 2026→pilot 2027→issuance 2029; US GENIUS Act stablecoins), stablecoin settlement ($200B+ mktcap, $50B daily volume), real-time rails (FedNow/SEPA Instant, 1.68T→3.54T transactions by 2029), embedded finance evolution, RegTech/DORA, core banking modernization, EM fintech (India 500M UPI, LatAm +35%); 223 total reports",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "1e9fb743",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
@@ -232,16 +232,22 @@
   ],
   "agent_outputs": [
     {
+      "file": "INDEX",
+      "ts": "",
+      "title": "Content Archive Index",
+      "size": 52977
+    },
+    {
+      "file": "2026-03-01-0307-fintech-writeup",
+      "ts": "2026-03-01-0307",
+      "title": "Fintech 2026: The Execution Era Has Arrived",
+      "size": 7954
+    },
+    {
       "file": "youtube-digest-2026-03-01-0220",
       "ts": "",
       "title": "📺 YouTube Digest — 2026-03-01",
       "size": 31066
-    },
-    {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 52756
     },
     {
       "file": "2026-03-01-0202-cybersecurity-writeup",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-0504",
       "title": "Research Spotlight — 2026-02-28 05:04 UTC",
       "size": 4027
-    },
-    {
-      "file": "2026-02-28-morning-digest",
-      "ts": "",
-      "title": "Morning Digest — 2026-02-28 (04:05 UTC)",
-      "size": 4302
     }
   ],
   "cron_jobs": [
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772332209420,
-      "next_run": 1772334000000,
+      "last_run": 1772334683234,
+      "next_run": 1772335800000,
       "last_status": "ok",
-      "last_duration_ms": 22167,
+      "last_duration_ms": 12873,
       "consecutive_errors": 0
     },
     {
@@ -443,10 +443,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772330533742,
-      "next_run": 1772334000000,
+      "last_run": 1772334417239,
+      "next_run": 1772337600000,
       "last_status": "ok",
-      "last_duration_ms": 136986,
+      "last_duration_ms": 134038,
       "consecutive_errors": 0
     },
     {
@@ -479,10 +479,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772330400010,
-      "next_run": 1772334000000,
+      "last_run": 1772334000009,
+      "next_run": 1772337600000,
       "last_status": "ok",
-      "last_duration_ms": 133732,
+      "last_duration_ms": 417230,
       "consecutive_errors": 0
     },
     {
@@ -623,10 +623,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772330670728,
-      "next_run": 1772334000000,
+      "last_run": 1772334551277,
+      "next_run": 1772337600000,
       "last_status": "ok",
-      "last_duration_ms": 135084,
+      "last_duration_ms": 131957,
       "consecutive_errors": 0
     },
     {
@@ -699,6 +699,13 @@
       "status": "running"
     },
     {
+      "session_key": "workspace-builder-20260301-0311",
+      "agent": "workspace-builder",
+      "goal": "Routine maintenance",
+      "started": "2026-03-01 03:11 UTC",
+      "status": "running"
+    },
+    {
       "session_key": "workspace-builder-20260301-0111",
       "agent": "workspace-builder",
       "goal": "Routine maintenance",
@@ -707,36 +714,11 @@
     }
   ],
   "content_stats": {
-    "total": 506,
-    "today": 3,
+    "total": 507,
+    "today": 4,
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:31:38.255Z",
-      "text": "[[reply_to_current]] they're waiting because `max-concurrent-downloads = 5` and there are already **5 active** downloads nyaa~ so the queue is full desu~\n\nbut there's another issue — those 5 \"active\" ones all show `seeders=0` and most have `connections=0`, meaning they're **stalled** — no peers connecting. The ones at 100% from earlier are probably just seeding with no upload limit but not actually transferring anything anymore.\n\nlet me check what's stuck:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:31:46.904Z",
-      "text": "All 5 \"active\" are 100% done but stuck in **seeding mode**, hogging all 5 slots! They need to be removed/stopped to let the waiting ones start:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:32:06.594Z",
-      "text": "Downloading now nyaa~ 🎉 also let me fix aria2 config so completed torrents auto-remove from seeding after they finish:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:32:30.509Z",
-      "text": "[[reply_to_current]] the 5 \"active\" ones were all **100% done but stuck seeding with 0 upload** — blocking all 5 slots so the queue couldn't start nyaa~ (ಠ_ಠ)\n\n**fixed two things:**\n1. 🧹 **Removed the stuck completed torrents** — queue immediately started downloading (up to 21 MB/s now!)\n2. ⚙️ **Fixed `aria2.conf`**: `seed-ratio=1.0` + `seed-time=60` — once a torrent is done, it seeds until it's uploaded as much as it downloaded (or 60 min max), then **auto-removes** from the slot desu~\n\nso from now on completed downloads won't hog slots forever ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:32:48.729Z",
-      "text": "[Sat 2026-02-28 16:32 UTC] nice. can you check any other cron that is failing silently?"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T16:35:00.588Z",
@@ -961,6 +943,31 @@
       "role": "assistant",
       "ts": "2026-03-01T02:27:56.822Z",
       "text": "it's working nyaa~ 65 videos from 44 channels desu~ 🎉 let me commit the fixes and polish things up ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T03:12:31.690Z",
+      "text": "yo"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:12:45.463Z",
+      "text": "yo nyaa~ (^^) we were mid-debug on the token dashboard — `/api/tokens` keeps returning 0 even though the logic works in isolation. lemme figure it out real quick desu~"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:13:35.017Z",
+      "text": "working desu~ 🎉 the `/api/tokens` endpoint is fine — earlier curl test was checking `d.jobs` but it actually returns `d.rows` (my bad nyaa~). commit + push:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:13:49.471Z",
+      "text": "all good nyaa~ ♪ here's the full status of what's live desu~:\n\n**✅ all 3 features working:**\n\n- **📺 YouTube digest** — just ran successfully, found **65 videos from 44 channels** in last 24h, saved to `content/youtube-digest-*.md`; cron runs daily at 09:00 Bangkok time\n- **💰 Tokens tab** — ClawDash has the new tab; **34 cron jobs tracked**, **1.1M tokens this week**, top spender is `workspace-builder` at 373k\n- **⌨️ Slash handler** — `agents/slash-handler.sh` polls every 2min, try `/status`, `/health`, `/disk`, `/cron`, `/downloads`, `/help` in Telegram\n\ncheck the dashboard → Tokens tab at `https://instance-20260207-2229.tail2dd22b.ts.net:8443` (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T03:13:49.874Z",
+      "text": "clawdash is broken after latest update\n\n---\nQueued #2\nConversation info (untrusted metadata):\n```json\n{\n  \"message_id\": \"5951\",\n  \"sender_id\": \"952170974\",\n  \"sender\": \"952170974\"\n}\n```\n\nclawdash is broken after latest update"
     }
   ]
 }
