@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-03-01
 
-## 2026 Reports (224 total)
+## 2026 Reports (225 total)
 
 ### 2026-03
+- [Spring 2026 Anime Season Preview — Classroom of the Elite S4 (Apr 1 90-min event), Witch Hat Atelier (Bug Films Apr 6), Daemons of the Shadow Realm (Bones Film/Arakawa Apr 4), Re:Zero S4 (Arc 6 Pleiades), One Piece Elbaph, Kaiju No. 8 S2, Blue Lock S3, Tensei Slime S4 (5-cour), MHA Vigilantes, Fire Force S3, Dr. Stone finale](2026-03-01-spring-2026-anime-season-preview-classroom-elite-witch-hat-atelier-daemons-rezero-one-piece-elbaph.md)
 - [AI Hardware & Chips 2026 — Blackwell Volume Production, Vera Rubin (10× inference cost), AMD MI350 Duopoly, Google Ironwood, AWS Trainium3 & the CoWoS/HBM4 Chokepoint](2026-03-01-ai-hardware-chips-2026-blackwell-rubin-amd-mi350-google-tpu-ironwood-tsmc-cowos-hbm4.md)
 - [Fintech & Digital Banking 2026 — Agentic AI, Neobank Profitability (Revolut $75B/$3.5B profit, Monzo 8× growth), CBDC Timelines, Stablecoin Settlement Layer & Real-Time Rails](2026-03-01-fintech-digital-banking-2026-agentic-ai-neobank-profitability-cbdc-stablecoin-real-time-payments.md)
 - [Cybersecurity 2026 — AI Arms Race, Ransomware Economy ($820M), Post-Quantum Migration & Agentic Threat Frontier](2026-03-01-cybersecurity-2026-ai-arms-race-ransomware-post-quantum-zero-trust-agentic-threats.md)
