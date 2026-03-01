@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T01:15:02Z",
+  "generated_at": "2026-03-01T01:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.77 0.90 0.84",
-    "mem_used": "3.7Gi",
+    "load_avg": "0.71 0.87 0.85",
+    "mem_used": "4.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 11 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 11 hours, 40 minutes",
     "disk_history": [
       80,
       80,
@@ -22,7 +22,7 @@
       80,
       80,
       80,
-      80,
+      81,
       81,
       81,
       81,
@@ -50,8 +50,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-03-01 00:07",
-      "last_line": "[2026-03-01T00:07:37Z] [research-agent] Completed Green Tech & Climate AI 2026 report (14.5KB, 9b15b128). Battery $70/kWh record low (BNEF), BESS 57GWh/28GW +29% YoY, $2T global clean energy investment, nuclear SMR renaissance (>$1B Q4 2025 rounds, Google Kairos/Microsoft TMI PPAs), AI-energy nexus (39/50 US states power price rise, data center decoupling trend), hydrogen pipeline cleanup, solid-state/sodium-ion/iron-air emerging batteries, EV market table, 6 H1 signals, geopolitics (Brent $59, LNG slump, copper standout). 221 total reports. 2 topics today (Mar 1)."
+      "last_run": "2026-03-01 01:17",
+      "last_line": "[2026-03-01T01:17:35Z] [research-agent] Completed Cybersecurity 2026 report (21.5KB, 5fb298a3). AI arms race (SentinelLABS 'forgiving internet is over', Anthropic 30-target autonomous intrusion, 3x AI phishing, 92% multi-turn jailbreak success), ransomware economy (Chainalysis 2026: $820M/-8% payments but +50% claimed victims/most active year ever, median ransom +368% to $60K, 28% payment rate ATL, IAB 30-day leading indicator, LockBit/Scattered Spider/Lazarus), NIST PQC finalized (FIPS 203 ML-KEM/204 ML-DSA/205 SLH-DSA, first certs 2026, harvest-now-decrypt-later active), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE/supply chain, 29% readiness), Zero Trust/CEM (Gartner 3x breach reduction), $248B market/$13.82T crime by 2028, 6 H1 signals. 222 total reports. 3 topics today (Mar 1)."
     },
     {
       "name": "content-agent",
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 228,
+    "total": 229,
     "tts_coverage": "93%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "3a6c48f4",
-      "agent": "content",
-      "message": "research spotlight Mar 1 01:06 UTC — Biotech/Longevity ($176B patent cliff, Insilico Phase 2, orforglipron, Altos Labs) + Green Tech/Climate AI ($70/kWh battery record, BESS +29% YoY, SMR momentum, hydrogen reset, solid-state EV batteries); 221 reports, 3 content pieces Mar 1",
+      "sha": "5fb298a3",
+      "agent": "build",
+      "message": "track new cybersecurity research report (Mar 1) and update index",
       "time": "3 minutes ago"
     },
     {
-      "sha": "2f5afaa9",
+      "sha": "bdd25e04",
       "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
+      "message": "workspace-builder validation close-the-loop",
       "time": "4 minutes ago"
     },
     {
-      "sha": "9e18f28c",
+      "sha": "5c7b484c",
+      "agent": "build",
+      "message": "routine maintenance - planning docs, daily logs, active-tasks update",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "794acdd5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "c3b810eb",
-      "agent": "dev",
-      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "sha": "3a6c48f4",
+      "agent": "content",
+      "message": "research spotlight Mar 1 01:06 UTC — Biotech/Longevity ($176B patent cliff, Insilico Phase 2, orforglipron, Altos Labs) + Green Tech/Climate AI ($70/kWh battery record, BESS +29% YoY, SMR momentum, hydrogen reset, solid-state EV batteries); 221 reports, 3 content pieces Mar 1",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "2f5afaa9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
       "time": "9 minutes ago"
     },
     {
-      "sha": "4005a8f0",
+      "sha": "9e18f28c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "72817b4f",
+      "sha": "c3b810eb",
+      "agent": "dev",
+      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "4005a8f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "c38f9050",
+      "sha": "72817b4f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "7bbe6195",
+      "sha": "c38f9050",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "69dfac74",
+      "sha": "7bbe6195",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "2ec89956",
+      "sha": "69dfac74",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "7ae10a52",
+      "sha": "2ec89956",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "04f67a26",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "58e327fc",
+      "sha": "7ae10a52",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
-    },
-    {
-      "sha": "1a65208a",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "813d5736",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
@@ -697,6 +697,13 @@
       "goal": "Continuous agent outcome auditor",
       "started": "2026-02-28 02:00 UTC",
       "status": "running"
+    },
+    {
+      "session_key": "workspace-builder-20260301-0111",
+      "agent": "workspace-builder",
+      "goal": "Routine maintenance",
+      "started": "2026-03-01 01:11 UTC",
+      "status": "validated"
     }
   ],
   "content_stats": {
