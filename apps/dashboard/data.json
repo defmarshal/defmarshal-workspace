@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T03:18:50Z",
+  "generated_at": "2026-03-01T03:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.83 0.90 0.91",
-    "mem_used": "4.6Gi",
+    "load_avg": "0.67 0.84 0.89",
+    "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 13 hours, 39 minutes",
+    "uptime": "1 week, 2 days, 13 hours, 40 minutes",
     "disk_history": [
       81,
       81,
@@ -50,8 +50,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-03-01 01:17",
-      "last_line": "[2026-03-01T01:17:35Z] [research-agent] Completed Cybersecurity 2026 report (21.5KB, 5fb298a3). AI arms race (SentinelLABS 'forgiving internet is over', Anthropic 30-target autonomous intrusion, 3x AI phishing, 92% multi-turn jailbreak success), ransomware economy (Chainalysis 2026: $820M/-8% payments but +50% claimed victims/most active year ever, median ransom +368% to $60K, 28% payment rate ATL, IAB 30-day leading indicator, LockBit/Scattered Spider/Lazarus), NIST PQC finalized (FIPS 203 ML-KEM/204 ML-DSA/205 SLH-DSA, first certs 2026, harvest-now-decrypt-later active), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE/supply chain, 29% readiness), Zero Trust/CEM (Gartner 3x breach reduction), $248B market/$13.82T crime by 2028, 6 H1 signals. 222 total reports. 3 topics today (Mar 1)."
+      "last_run": "2026-03-01 03:19",
+      "last_line": "[2026-03-01T03:19:47Z] [research-agent] Completed AI Hardware & Chips 2026 report (21KB, 02991bb5). Covered: Blackwell B200 volume production (208B transistors, 192GB HBM3e, 8TB/s bw, 20PFLOPS FP4, dual-die CoWoS-L chiplet, GB200 NVL72 rack 130TB/s, $5M→$75M 15x ROI); NVIDIA Q4 FY2026 earnings ($68B revenue +73% YoY, $62B data center +75%, $194B annual +68%, 13x scale since ChatGPT, $97B FCF, $78B Q1 guide, $20B R&D, sovereign AI $30B); Rubin R100 H2-2026 (\\~336B transistors, HBM4 22TB/s, 50PFLOPS FP4, 10x inference cost reduction, Vera CPU 88-core ARM, NVLink 6); AMD MI350 CDNA4 duopoly (MI355X 288GB HBM3e/8TB/s/20PFLOPS parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal, MI400/Helios HBM4 late 2026); Google ($185B capex, Trillium 4.7x TPU v5e/67% efficiency/Anthropic 1M TPU deal, Ironwood TPU v7 192GB HBM3e/FP8/9216-chip pod); AWS Trainium3 (3nm/2x perf/40% eff, 144-chip UltraServer, 1M-chip cluster, Amazon $50B OpenAI/AWS exclusive); TSMC CoWoS 130K wafers/month target (+4x from 2024, AP7 Chiayi hub), $56B capex +37% YoY (70-80% N2/A16, 10-20% packaging); dual CoWoS+HBM4 bottleneck; hyperscaler $435B+ capex stack. 224 total reports. 5 topics today (Mar 1)."
     },
     {
       "name": "content-agent",
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 230,
-    "tts_coverage": "93%",
-    "latest": "INDEX\nnone",
+    "total": 231,
+    "tts_coverage": "92%",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "02991bb5",
+      "agent": "research",
+      "message": "AI Hardware & Chips 2026 (#224, 21KB) — Blackwell volume production (208B transistors, 192GB HBM3e, 8TB/s, 20PFLOPS FP4, GB200 NVL72 rack $5M→$75M ROI); NVIDIA Q4 FY2026 earnings ($68B total/$62B data center/$194B annual/73% YoY/13x scale since ChatGPT); Vera Rubin R100 H2-2026 (336B transistors/HBM4/22TB/s/50PFLOPS/10x inference cost reduction); AMD MI350 CDNA4 (288GB HBM3e/8TB/s/20PFLOPS FP4 parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal); Google Ironwood TPU v7 (192GB HBM3e/7.4TB/s/FP8, $185B capex 2026, Gemini 2.0 750M users on own silicon, Anthropic 1M TPU deal); AWS Trainium3 (3nm/2x perf/40% efficiency/Amazon $50B OpenAI deal); TSMC CoWoS 130K wafers/month target/$56B capex (+37% YoY); dual packaging+HBM bottleneck; hyperscaler $435B capex stack; 224 total",
+      "time": "31 seconds ago"
+    },
+    {
+      "sha": "7bc13e80",
+      "agent": "misc",
+      "message": "fix(clawdash): drop In/Out columns from token tab (6 cols), more room for Job name (v26)",
+      "time": "48 seconds ago"
+    },
+    {
+      "sha": "771f5240",
+      "agent": "chore",
+      "message": "update clawdash data (post-workspace-builder validation)",
+      "time": "54 seconds ago"
+    },
+    {
       "sha": "42e60080",
       "agent": "build",
       "message": "routine maintenance — verification, daily log update, active-tasks tracking",
-      "time": "30 seconds ago"
+      "time": "2 minutes ago"
     },
     {
       "sha": "05a6bbd5",
       "agent": "misc",
       "message": "fix(clawdash): reduce token tab font to 10px, padding 4px 6px to prevent truncation (v25)",
-      "time": "2 minutes ago"
+      "time": "3 minutes ago"
     },
     {
       "sha": "a9b71f74",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "4 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "07292af4",
       "agent": "misc",
       "message": "fix(clawdash): remove stray extra } after renderOutputs breaking all JS",
-      "time": "4 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "9a7d3eb6",
       "agent": "content",
       "message": "Fintech 2026 tech writeup (7.7KB) — agentic AI liability vacuum (Reg E gap for agent-initiated payments, Visa/MC verification protocols, Trump EO national standard push), neobank profitability split (Revolut $75B/$3.5B profit target, Monzo 8x/£113.9M, Nubank $1.9B, Chime IPO $9.8B; 5% profitable vs 95% still searching), stablecoin won settlement race ($200B mktcap/$50B daily vs CBDC-in-committee Digital Euro 2029/GENIUS Act), real-time rails (FedNow/SEPA Instant/UPI 500M/Pix; 1.68T→3.54T txns/irrevocable fraud stakes), 5 H1 signals; 5th content piece Mar 1, 223 research total",
-      "time": "4 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "0141147a",
       "agent": "chore",
       "message": "update planning files post-feature build",
-      "time": "5 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "b0f94e5d",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "7 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "66486133",
       "agent": "dev",
       "message": "fix reports/README.md literal \\n→real newlines + expand with file format docs; add research-today.sh (lists today's reports with titles/sizes, accepts YYYY-MM-DD); add prune-gh-branches.sh (safe dry-run pruner for stale gh-pages-* branches); prune 4 stale gh-* branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test all from Feb 27, unreferenced); register research-today + prune-gh-branches in quick",
-      "time": "8 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "c5a55cd5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "9 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "597e5cfd",
       "agent": "dev",
       "message": "regenerate 2026-03-01 daily digest (now includes Fintech #223, 4 research+3 content); add today-summary.sh (one-liner production stats: research/content/dev counts + disk + archive total); register youtube-digest, tweet-new-reports, cleanup-archived, today-summary in quick; prune stale idea/add-pagination-to-research-list branch",
-      "time": "11 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "07c21d28",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "14 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "0d0181ed",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "19 minutes ago"
-    },
-    {
-      "sha": "baf4f25e",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "24 minutes ago"
-    },
-    {
-      "sha": "94fc413a",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "29 minutes ago"
-    },
-    {
-      "sha": "899c83f1",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "34 minutes ago"
+      "time": "20 minutes ago"
     }
   ],
   "heartbeat": {
@@ -721,16 +721,6 @@
   "chat": [
     {
       "role": "user",
-      "ts": "2026-02-28T16:42:44.419Z",
-      "text": "[Sat 2026-02-28 16:42 UTC] for torrent download, how do we classify torrent as complete?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:43:07.391Z",
-      "text": "so aria2 has three relevant states nyaa~:\n\n- **`active` + 100% completedLength** = done downloading, currently seeding — this is what clogged the queue earlier\n- **`complete`** (in `tellStopped`) = fully finished AND removed from active (seed-ratio/time limit hit, or manually removed)\n- **`error`** (in `tellStopped`) = failed\n\nso \"complete\" for our purposes should be:\n1. **`status=complete` in `tellStopped`** — aria2's official \"done\" state, hash is in `infoHash`\n2. **`status=active` with `completedLength == totalLength`** — downloading done, still seeding\n\nright now `torrent-history.txt` only records when we *add* a torrent, not when it finishes. want me to also track completion — so the history file gets updated with a `completed` timestamp when aria2 moves it to `complete` status? that way future duplicate checks are more reliable desu~ (^^)"
-    },
-    {
-      "role": "user",
       "ts": "2026-02-28T16:45:48.203Z",
       "text": "[Sat 2026-02-28 16:45 UTC] i just don't want active downloads get clogged like before"
     },
@@ -968,6 +958,16 @@
       "role": "assistant",
       "ts": "2026-03-01T03:18:48.201Z",
       "text": "looking at them honestly desu~:\n\n| Column | Keep? | Reason |\n|--------|-------|--------|\n| **Job** | ✅ | essential |\n| **Runs** | ✅ | useful — tells you frequency |\n| **Avg tok** | ✅ | most useful for cost-per-run insight |\n| **In** | ❌ | redundant — Total covers it |\n| **Out** | ❌ | redundant — output is tiny vs input anyway |\n| **Total** | ✅ | essential |\n| **Share** | ✅ | the bar chart is the whole point of the tab |\n| **Last run** | ✅ | useful — tells you if a job is still running |\n\ndropping **In** and **Out** — goes from 8 → 6 columns, way more room nyaa~ ♪"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:19:08.107Z",
+      "text": "Now fix the row template — drop In and Out cells, update colspan:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:19:21.337Z",
+      "text": "[[reply_to_current]] done nyaa~ dropped **In** and **Out** columns — now 6 cols: Job / Runs / Avg / Total / Share / Last run desu~ hard-refresh to get v26 ♪"
     }
   ]
 }
