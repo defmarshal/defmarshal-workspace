@@ -39,10 +39,13 @@ if [ ! -f "$CREDS_FILE" ]; then
 fi
 
 # ── Token management (Python) ──────────────────────────────────────────────
+export CREDS_FILE
 python3 - <<'PYEOF' || { log_err "Token refresh failed"; exit 1; }
 import json, urllib.request, urllib.parse, os, sys, time
 
 creds_file = os.environ.get('CREDS_FILE', '')
+if not creds_file:
+    raise RuntimeError("CREDS_FILE env var not set")
 with open(creds_file) as f:
     creds = json.load(f)
 
@@ -74,6 +77,8 @@ except Exception as e:
 PYEOF
 
 export CREDS_FILE
+export HOURS
+export WORKSPACE
 
 # ── Main digest logic (Python) ─────────────────────────────────────────────
 DIGEST=$(python3 - <<PYEOF
@@ -252,7 +257,7 @@ try:
     has_transcript_api = True
 except ImportError:
     try:
-        subprocess.run(['pip3', 'install', 'youtube-transcript-api', '-q'], check=True, timeout=30)
+        subprocess.run(['pip3', 'install', 'youtube-transcript-api', '--break-system-packages', '-q'], check=True, timeout=30)
         has_transcript_api = True
     except:
         has_transcript_api = False
