@@ -1,10 +1,12 @@
 # Research Reports — Index
 
-This index is auto‑generated. Last updated: 2026-03-01 (228 entries)
+This index is auto‑generated. Last updated: 2026-03-01 06:20 UTC (231 entries)
 
-## 2026 Reports (229 total)
+## 2026 Reports (231 total)
 
 ### 2026-03
+- [Frontier AI Models Feb 2026 — Gemini 3.1 Pro (77.1% ARC-AGI-2 2× leap), Claude Sonnet 4.6 (GDPval-AA Elo 1633 leader), Claude Opus 4.6 (80.8% SWE-Bench SOTA), GPT-5.3 Codex (77.3% Terminal-Bench, 2-4× token efficiency), Grok 4.20 (4-agent debate, 65% hallucination reduction), GLM-5 (744B MoE Huawei-trained MIT), Qwen 3.5; benchmark tables, pricing, Llama 4 outlook](2026-03-01-frontier-ai-models-february-2026-gemini-3-1-pro-claude-sonnet-4-6-gpt-5-3-codex-grok-4-20-glm-5-qwen-3-5.md)
+- [SEA Digital Banking & Fintech 2026 — Agentic payments (Mastercard Agent Pay, TenPay Global, HSBC 2-4× fraud detection), profitability pressure (<25% break-even, Malaysia CEO turnover, Revolut $1B net income / $75B val), cross-border rails (PromptPay↔PayNow↔DuitNow↔QRIS↔WeChat/Grab/Shopee), ISO 20022, Sea Group Monee rebrand, Bank Jago embedded finance, Thailand virtual bank licenses, CBDC landscape](2026-03-01-southeast-asia-digital-banking-fintech-2026-agentic-payments-profitability-cross-border-rails-super-apps.md)
 - [Commercial Space 2026 — Artemis II (NLT Apr 1 crewed lunar flyby, 54yr gap, crew: Wiseman/Glover/Koch/Hansen), Starship HLS orbital propellant transfer (June 2026 linchpin), Haven-1 (Vast, May/Jun 2026 first standalone private station), Axiom/Starlab/Orbital Reef ISS succession race, CLD Phase 2 ($1-1.5B), Chang'e 7 south pole recon, DRACO NTP (2027), $613B space economy → $1T by 2032, debris/ASAT geopolitics, 2026-2030 milestone table](2026-03-01-commercial-space-2026-artemis-ii-haven-1-starship-hls-orbital-economy-china-nuclear-propulsion.md)
 - [Spring 2026 Anime Season Preview — Classroom of the Elite S4 (Apr 1 90-min event), Witch Hat Atelier (Bug Films Apr 6), Daemons of the Shadow Realm (Bones Film/Arakawa Apr 4), Re:Zero S4 (Arc 6 Pleiades), One Piece Elbaph, Kaiju No. 8 S2, Blue Lock S3, Tensei Slime S4 (5-cour), MHA Vigilantes, Fire Force S3, Dr. Stone finale](2026-03-01-spring-2026-anime-season-preview-classroom-elite-witch-hat-atelier-daemons-rezero-one-piece-elbaph.md)
 - [AI Hardware & Chips 2026 — Blackwell Volume Production, Vera Rubin (10× inference cost), AMD MI350 Duopoly, Google Ironwood, AWS Trainium3 & the CoWoS/HBM4 Chokepoint](2026-03-01-ai-hardware-chips-2026-blackwell-rubin-amd-mi350-google-tpu-ironwood-tsmc-cowos-hbm4.md)
