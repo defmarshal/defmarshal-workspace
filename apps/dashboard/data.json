@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T01:20:02Z",
+  "generated_at": "2026-03-01T01:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.71 0.87 0.85",
-    "mem_used": "4.2Gi",
+    "load_avg": "0.62 0.73 0.80",
+    "mem_used": "4.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 11 hours, 40 minutes",
+    "uptime": "1 week, 2 days, 11 hours, 45 minutes",
     "disk_history": [
       80,
       80,
@@ -21,7 +21,7 @@
       80,
       80,
       80,
-      80,
+      81,
       81,
       81,
       81,
@@ -80,8 +80,8 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-01 00:03",
-      "last_line": "2026-03-01 00:03:19 UTC - Spawning research-agent"
+      "last_run": "2026-03-01 01:21",
+      "last_line": "2026-03-01 01:21:38 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
     }
   ],
   "research": {
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "5fb298a3",
-      "agent": "build",
-      "message": "track new cybersecurity research report (Mar 1) and update index",
-      "time": "3 minutes ago"
-    },
-    {
-      "sha": "bdd25e04",
-      "agent": "build",
-      "message": "workspace-builder validation close-the-loop",
+      "sha": "8780fc66",
+      "agent": "game",
+      "message": "polish Anime Studio Tycoon v1.1 — new events, fan growth, rebalance",
       "time": "4 minutes ago"
     },
     {
-      "sha": "5c7b484c",
-      "agent": "build",
-      "message": "routine maintenance - planning docs, daily logs, active-tasks update",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "794acdd5",
+      "sha": "7e11c261",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "3a6c48f4",
-      "agent": "content",
-      "message": "research spotlight Mar 1 01:06 UTC — Biotech/Longevity ($176B patent cliff, Insilico Phase 2, orforglipron, Altos Labs) + Green Tech/Climate AI ($70/kWh battery record, BESS +29% YoY, SMR momentum, hydrogen reset, solid-state EV batteries); 221 reports, 3 content pieces Mar 1",
+      "sha": "5fb298a3",
+      "agent": "build",
+      "message": "track new cybersecurity research report (Mar 1) and update index",
       "time": "8 minutes ago"
     },
     {
-      "sha": "2f5afaa9",
+      "sha": "bdd25e04",
       "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
+      "message": "workspace-builder validation close-the-loop",
       "time": "9 minutes ago"
     },
     {
-      "sha": "9e18f28c",
+      "sha": "5c7b484c",
+      "agent": "build",
+      "message": "routine maintenance - planning docs, daily logs, active-tasks update",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "794acdd5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "c3b810eb",
-      "agent": "dev",
-      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "sha": "3a6c48f4",
+      "agent": "content",
+      "message": "research spotlight Mar 1 01:06 UTC — Biotech/Longevity ($176B patent cliff, Insilico Phase 2, orforglipron, Altos Labs) + Green Tech/Climate AI ($70/kWh battery record, BESS +29% YoY, SMR momentum, hydrogen reset, solid-state EV batteries); 221 reports, 3 content pieces Mar 1",
+      "time": "13 minutes ago"
+    },
+    {
+      "sha": "2f5afaa9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
       "time": "14 minutes ago"
     },
     {
-      "sha": "4005a8f0",
+      "sha": "9e18f28c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "72817b4f",
+      "sha": "c3b810eb",
+      "agent": "dev",
+      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "time": "19 minutes ago"
+    },
+    {
+      "sha": "4005a8f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "c38f9050",
+      "sha": "72817b4f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "7bbe6195",
+      "sha": "c38f9050",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "69dfac74",
+      "sha": "7bbe6195",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "2ec89956",
+      "sha": "69dfac74",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
-    },
-    {
-      "sha": "7ae10a52",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
     }
   ],
   "heartbeat": {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772323385056,
-      "next_run": 1772326834763,
+      "last_run": 1772328084812,
+      "next_run": 1772330434763,
       "last_status": "ok",
-      "last_duration_ms": 132883,
+      "last_duration_ms": 20089,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772326769014,
-      "next_run": 1772326889014,
+      "last_run": 1772328224910,
+      "next_run": 1772328344910,
       "last_status": "ok",
-      "last_duration_ms": 36781,
+      "last_duration_ms": 7993,
       "consecutive_errors": 0
     },
     {
@@ -659,10 +659,10 @@
       "schedule": "0 */4 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772313191672,
-      "next_run": 1772327033385,
+      "last_run": 1772327952562,
+      "next_run": 1772341433385,
       "last_status": "ok",
-      "last_duration_ms": 27732,
+      "last_duration_ms": 132250,
       "consecutive_errors": 0
     },
     {
@@ -671,10 +671,10 @@
       "schedule": "0 */2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772319704296,
-      "next_run": 1772326825629,
+      "last_run": 1772327487167,
+      "next_run": 1772334025629,
       "last_status": "ok",
-      "last_duration_ms": 348297,
+      "last_duration_ms": 465395,
       "consecutive_errors": 0
     },
     {
