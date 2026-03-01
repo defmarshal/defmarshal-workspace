@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T04:20:02Z",
+  "generated_at": "2026-03-01T04:25:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 81,
-    "disk_free": "8.6G",
+    "disk_percent": 83,
+    "disk_free": "7.6G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "1.29 1.08 1.02",
-    "mem_used": "4.3Gi",
+    "load_avg": "0.76 0.86 0.94",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 14 hours, 40 minutes",
+    "uptime": "1 week, 2 days, 14 hours, 45 minutes",
     "disk_history": [
       81,
       81,
@@ -37,7 +37,7 @@
       81,
       81,
       81,
-      81
+      83
     ]
   },
   "agents": [
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "a6afbc2c",
+      "sha": "3e0485b5",
       "agent": "misc",
-      "message": "fix(clawdash): add Downloads tab (list/download/delete), fix all text truncations; fix agni-cycle direct rudra exec (v27)",
+      "message": "fix(clawdash): use numeric index instead of btoa for download row ids (Japanese filenames) (v28)",
       "time": "2 minutes ago"
     },
     {
-      "sha": "21af984e",
+      "sha": "1253d0bf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "a6afbc2c",
+      "agent": "misc",
+      "message": "fix(clawdash): add Downloads tab (list/download/delete), fix all text truncations; fix agni-cycle direct rudra exec (v27)",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "21af984e",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "d528eb82",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0411)",
-      "time": "8 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "e04531ad",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "9 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "77041396",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "d176ede9",
       "agent": "research",
       "message": "Spring 2026 Anime Season Preview (#225, 19KB) — Classroom of the Elite S4 (Apr 1 4-ep 90min special, Lerche, OP:Eir Aoi MONSTER); One Piece Elbaph Arc (generational 20yr wait, Toei); Re:Zero S4 (White Fox, Arc 6 Pleiades Watchtower psychological endurance, return-by-death origin revealed); Kaiju No. 8 S2; Blue Lock S3 (Neo Egoist League, Disney+); Tensei Slime S4 (Apr 3, 5 split-cours); Fire Force S3 (David Production, finale arc); Dr. Stone SF Part 3 (TMS finale); Witch Hat Atelier (Bug Films Apr 6, Kamome Shirahama, magic-as-craft; Crunchyroll Anime Nights March 16); Daemons of the Shadow Realm (Bones Film, Hiromu Arakawa Apr 4, 2-cour, dir:Masahiro Ando, music:Kenichiro Suehiro); MHA Vigilantes (Bones Film); Ghost in the Shell Science SARU confirmed July 2026 (Summer); tier list S/A/B; streaming platform summary; 225 total",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "871ed900",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "28023f38",
       "agent": "content",
       "message": "AI Hardware 2026 tech writeup (7.8KB) — 4 things that actually matter: (1) Blackwell economics ($5M rack→$75M token revenue 15x ROI, $194B NVDA annual data center +68%, 13x since ChatGPT, $435B hyperscaler capex stack justified by spreadsheet math); (2) Vera Rubin 10x inference cost drop (H2-2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS, Vera CPU 88-core ARM, agentic AI consumer scale viability); (3) AMD duopoly with catch (MI355X 288GB HBM3e parity, OpenAI 6GW deal, ROCm 7.0 CUDA parity; wins cost-inference, loses frontier training custom kernels); (4) CoWoS as real chokepoint (35K→130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex); $1T semiconductor market 2026; 5th content piece Mar 1; 224 total research",
-      "time": "16 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "70d69f47",
       "agent": "dev",
       "message": "regen daily digest 2026-03-01 (now 5 research + 4 content, AI hardware #224 + fintech writeup); add content-today.sh (parallel to research-today, lists content pieces with titles/sizes, accepts YYYY-MM-DD); register content-today in quick + help text; update TOOLS.md with 8 recent commands missing from docs (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); trim idea-executor.log 1023→1000 lines",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "8e04a074",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "03a4ffa2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "038795d3",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "f6c35a13",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "909d1828",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "40 minutes ago"
-    },
-    {
-      "sha": "a193b941",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772338746315,
-      "next_run": 1772338866315,
+      "last_run": 1772338986347,
+      "next_run": 1772339106347,
       "last_status": "ok",
-      "last_duration_ms": 6722,
+      "last_duration_ms": 6510,
       "consecutive_errors": 0
     },
     {
@@ -719,26 +719,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:52:42.453Z",
-      "text": "spawned nyaa~ building all 3 in one shot desu~ 🐾\n\nwhile it works — for YouTube OAuth you'll need to **create a Google Cloud project** and get credentials. quick steps when ready:\n\n1. Go to [console.cloud.google.com](https://console.cloud.google.com)\n2. New project → enable **YouTube Data API v3**\n3. Credentials → Create OAuth 2.0 Client ID (Desktop app type)\n4. Download the `client_id` + `client_secret`\n\nthen just run `./scripts/youtube-oauth-setup.sh` once and you're set ♪\n\nfor **watch history** — if you want the most-watched ranking, export from [takeout.google.com](https://takeout.google.com) → select only YouTube data → download → send me the `watch-history.json` file\n\ni'll ping you when the build is done (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T17:52:42.721Z",
-      "text": "[Sat 2026-02-28 17:52 UTC] then do subscription digest only"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:52:57.685Z",
-      "text": "steered nyaa~ dropped the watch history part, keeping just subscriptions → new uploads → summary → Telegram daily digest desu~ ♪ will ping when done (^^)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T18:00:07.018Z",
-      "text": "✅ Subagent main finished\n\nAll 3 features are complete. Here's the full summary:\n\n---\n\n## ✅ Done — 3 Features Built & Deployed\n\n### Feature 1: Telegram Slash Commands\n**`agents/slash-handler.sh`** — polls the main Telegram session JSONL for slash commands and responds via `openclaw agent --deliver`. Commands supported:\n- `/status` → `./quick status`\n- `/health` → `./quick health`\n- `/downloads` → aria2 active downloads (formatted)\n- `/cron` → cron job list with schedule + status\n- `/disk` → disk usage summary\n- `/help` → command list\n\nCron job `telegram-slash-handler` runs every **2 minutes** (isolated, no delivery).\n\n---\n\n### Feature 2: 💰 Tokens Tab in ClawDash\n- **`/api/tokens` endpoint** in `server.js` — reads all cron session JSONL files from the last 7 days, groups by job name, returns total_in/out/cache, run counts, avg tokens, last run\n- **Tab panel** with 3 summary cards (week total, jobs tracked, top job) + sortable table with CSS progress bars showing relative share\n- Lazy-loads on first click (no unnecessary API calls)\n- **SW bumped to `clawdash-v24`**\n\n---\n\n### Feature 3: YouTube Subscription Digest\n- **`scripts/youtube-oauth-setup.sh`** — interactive OAuth flow, saves tokens to `config/youtube-credentials.json` (gitignored)\n- **`scripts/youtube-digest.sh`** — fetches all subscriptions (paginated), checks uploads playlist per channel for last 24h, gets video details + transcripts (auto-installs `youtube-transcript-api`), saves Markdown digest to `content/youtube-digest-*.md`, sends to Telegram\n- Cron job `youtube-digest-daily` at **02:00 UTC = 09:00 Bangkok** daily\n\n### ⚠️ Action needed for YouTube:\n```bash\n./scripts/youtube-oauth-setup.sh\n```\nYou'll need a Google Cloud project with **YouTube Data API v3** enabled and an OAuth 2.0 Desktop client ID/secret."
-    },
     {
       "role": "user",
       "ts": "2026-03-01T02:02:50.066Z",
@@ -968,6 +948,26 @@
       "role": "assistant",
       "ts": "2026-03-01T04:17:48.901Z",
       "text": "[[reply_to_current]] all 3 done nyaa~ ♪\n\n**🐛 Agni fixed** — no more broken `openclaw agent --session-id rudra-xxx` nonsense; agni now calls `rudra-executor.sh` directly desu~\n\n**✂️ Truncations fixed** — commit messages, research latest, content latest, token top-job name, torrent names — all now wrap/use CSS ellipsis with hover tooltip instead of hard `.slice()` cuts\n\n**📦 Downloads tab added** — hard-refresh to get v27, then hit the `📦 Downloads` tab:\n- lists all 9.7GB of files sorted by size\n- **⬇ button** = direct download to your local machine via browser\n- **🗑 button** = deletes from server immediately (with confirm prompt)\n- after you download + delete each file, disk will drop from 81% back to ~55% nya~"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T04:22:59.092Z",
+      "text": "[Sun 2026-03-01 04:22 UTC] Error: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range."
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:23:13.868Z",
+      "text": "Japanese filenames — `btoa` chokes on them nyaa~ 😅 Quick fix:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:23:24.078Z",
+      "text": "Now fix `deleteDl` to use index instead of btoa row id:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:23:37.592Z",
+      "text": "[[reply_to_current]] fixed nyaa~ replaced `btoa()` with a plain numeric index (`dl-row-0`, `dl-row-1`…) — no more Latin1 explosions from Japanese filenames desu~ hard-refresh for v28 ♪"
     }
   ]
 }
