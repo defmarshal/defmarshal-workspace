@@ -1,24 +1,23 @@
 {
-  "generated_at": "2026-03-01T08:05:03Z",
+  "generated_at": "2026-03-01T08:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
     "disk_free": "9.7G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 11,
     "downloads_gb": "7.6G",
-    "load_avg": "1.39 1.23 1.03",
-    "mem_used": "2.4Gi",
+    "load_avg": "1.17 1.11 1.02",
+    "mem_used": "2.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 18 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 18 hours, 30 minutes",
     "disk_history": [
       84,
       84,
       84,
       84,
-      84,
       83,
       83,
       83,
@@ -35,6 +34,7 @@
       78,
       78,
       78,
+      79,
       79,
       79,
       79
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "5f1d0078",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0803)",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "167be621",
+      "sha": "d257dbd2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "fae22556",
+      "sha": "5f1d0078",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0803)",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "167be621",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "12aafc3f",
+      "sha": "fae22556",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "b06fefa1",
+      "sha": "12aafc3f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "9b9dfcbc",
+      "sha": "b06fefa1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "b8b479da",
+      "sha": "9b9dfcbc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "a5cac29a",
+      "sha": "b8b479da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "3ac15326",
+      "sha": "a5cac29a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "b0410dca",
+      "sha": "3ac15326",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
+      "sha": "b0410dca",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "50 minutes ago"
+    },
+    {
       "sha": "2fec30ac",
       "agent": "research",
       "message": "2 deep-dive reports 2026-03-01 (reports #232-233)",
-      "time": "48 minutes ago"
+      "time": "53 minutes ago"
     },
     {
       "sha": "640afa94",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "765c0baa",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "43b8b36d",
       "agent": "feat",
       "message": "workspace time capsule — weekly sealed letters to future mewmew, unlocks after 30 days",
-      "time": "51 minutes ago"
-    },
-    {
-      "sha": "6f8996ab",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
+      "time": "56 minutes ago"
     }
   ],
   "heartbeat": {
@@ -725,11 +725,6 @@
   },
   "chat": [
     {
-      "role": "user",
-      "ts": "2026-03-01T03:16:24.521Z",
-      "text": "[Sun 2026-03-01 03:16 UTC] all text on token tab are truncated. reduce the font size"
-    },
-    {
       "role": "assistant",
       "ts": "2026-03-01T03:16:52.653Z",
       "text": "Now fix the row cells in `renderTokens` too:"
@@ -973,6 +968,11 @@
       "role": "user",
       "ts": "2026-03-01T07:43:33.403Z",
       "text": "hey"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T08:07:12.273Z",
+      "text": "Jey"
     }
   ]
 }
