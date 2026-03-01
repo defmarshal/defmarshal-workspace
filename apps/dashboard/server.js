@@ -635,33 +635,59 @@ const handler = async (req, res) => {
       ];
 
       for (const p of projectDirs) {
+        // Validate path pattern to prevent injection
+        if (!/^[a-z0-9\/_-]+$/i.test(p.dir)) {
+          console.warn(`Skipping invalid project dir pattern: ${p.dir}`);
+          continue;
+        }
         const fullPath = path.join(WORKSPACE, p.dir);
-        if (!fs.existsSync(fullPath)) continue;
+        const normalized = path.normalize(fullPath);
+        // Ensure path stays within workspace
+        if (!normalized.startsWith(WORKSPACE)) {
+          console.warn(`Skipping path outside workspace: ${p.dir}`);
+          continue;
+        }
+        if (!fs.existsSync(normalized)) continue;
 
         let lastCommit = null;
         try {
-          const gitLog = execFileSync('git', ['-C', fullPath, 'log', '-1', '--pretty=format:%H|%s|%cI'], { encoding: 'utf8' }).trim();
+          const gitLog = execFileSync('git', ['-C', normalized, 'log', '-1', '--pretty=format:%H|%s|%cI'], 
+            { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }).trim();  // 10MB buffer
           if (gitLog) {
             const [hash, message, date] = gitLog.split('|');
             lastCommit = { hash, message, date };
           }
-        } catch (e) {}
+        } catch (e) {
+          console.warn(`git log failed for ${p.dir}:`, e.message);
+        }
 
         let status = 'idle';
         try {
-          const gitStatus = execFileSync('git', ['-C', fullPath, 'status', '--porcelain'], { encoding: 'utf8' }).trim();
+          const gitStatus = execFileSync('git', ['-C', normalized, 'status', '--porcelain'], 
+            { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }).trim();  // 10MB buffer
           if (gitStatus) status = 'active';
-        } catch (e) {}
+        } catch (e) {
+          console.warn(`git status failed for ${p.dir}:`, e.message);
+        }
 
         let description = '';
         try {
-          const readmePath = path.join(fullPath, 'README.md');
+          const readmePath = path.join(normalized, 'README.md');
           if (fs.existsSync(readmePath)) {
             const readme = fs.readFileSync(readmePath, 'utf8');
             const firstLine = readme.split('\n')[0].trim();
-            description = firstLine.replace(/^#+\s*/, '').trim();
+            // Sanitize: remove HTML tags and escape entities
+            description = firstLine.replace(/^#+\s*/, '')
+                                   .replace(/&/g, '&amp;')
+                                   .replace(/</g, '&lt;')
+                                   .replace(/>/g, '&gt;')
+                                   .replace(/"/g, '&quot;')
+                                   .replace(/'/g, '&#39;')
+                                   .trim();
           }
-        } catch (e) {}
+        } catch (e) {
+          console.warn(`README read failed for ${p.dir}:`, e.message);
+        }
 
         projects.push({
           name: p.name,
