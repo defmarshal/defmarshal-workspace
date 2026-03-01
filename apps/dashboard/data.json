@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T05:00:03Z",
+  "generated_at": "2026-03-01T05:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.87 0.89 0.90",
-    "mem_used": "3.5Gi",
+    "load_avg": "0.62 0.71 0.83",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 15 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 15 hours, 25 minutes",
     "disk_history": [
       81,
       81,
@@ -26,13 +26,13 @@
       81,
       81,
       81,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
       81,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
       81,
       81,
       81,
@@ -43,7 +43,7 @@
   "agents": [
     {
       "name": "linkedin-pa-agent",
-      "active": true,
+      "active": false,
       "last_run": "2026-03-01 02:01",
       "last_line": "2026-02-28 17:06:41 UTC - Cycle completed"
     },
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-01 04:02",
-      "last_line": "[2026-03-01T04:02:18Z] [dev-agent] Completed cycle (70d69f47): (1) daily digest 2026-03-01 regenerated — now complete with 5 research reports (AI hardware #224 + fintech #223 + bio/green/cyber) + 4 content pieces (fintech writeup 03:07 was missing); (2) content-today.sh new utility — parallel to research-today.sh, lists content pieces with titles+sizes for a given date, defaults today UTC, registered as 'quick content-today'; (3) TOOLS.md updated — 8 commands added that were missing from documentation (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); (4) idea-executor.log trimmed 1023→1000 lines (crossed threshold). Disk 81% stable."
+      "last_run": "2026-03-01 05:00",
+      "last_line": "2026-03-01 05:00:04 UTC - Attempt 1/3"
     },
     {
       "name": "supervisor",
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 232,
-    "tts_coverage": "93%",
+    "total": 229,
+    "tts_coverage": "94%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "97a26437",
+      "sha": "ed9692dc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "a014996a",
+      "sha": "97a26437",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "615f83ef",
+      "sha": "a014996a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "b9492b9e",
+      "sha": "615f83ef",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "b4fca71c",
+      "sha": "b9492b9e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "b4fca71c",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "2938881b",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "c9f6863e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "affba27b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "3e0485b5",
       "agent": "misc",
       "message": "fix(clawdash): use numeric index instead of btoa for download row ids (Japanese filenames) (v28)",
-      "time": "37 minutes ago"
+      "time": "42 minutes ago"
     },
     {
       "sha": "1253d0bf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "a6afbc2c",
       "agent": "misc",
       "message": "fix(clawdash): add Downloads tab (list/download/delete), fix all text truncations; fix agni-cycle direct rudra exec (v27)",
-      "time": "42 minutes ago"
+      "time": "47 minutes ago"
     },
     {
       "sha": "21af984e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "d528eb82",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0411)",
-      "time": "48 minutes ago"
+      "time": "53 minutes ago"
     },
     {
       "sha": "e04531ad",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "49 minutes ago"
-    },
-    {
-      "sha": "77041396",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "54 minutes ago"
     }
   ],
   "heartbeat": {
@@ -235,7 +235,7 @@
       "file": "INDEX",
       "ts": "",
       "title": "Content Archive Index",
-      "size": 53213
+      "size": 53596
     },
     {
       "file": "2026-03-01-0402-ai-hardware-writeup",
