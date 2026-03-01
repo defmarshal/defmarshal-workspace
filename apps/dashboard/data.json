@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T02:05:02Z",
+  "generated_at": "2026-03-01T02:05:54Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "1.41 1.20 0.93",
-    "mem_used": "4.4Gi",
+    "load_avg": "0.92 1.10 0.91",
+    "mem_used": "4.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 12 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 12 hours, 26 minutes",
     "disk_history": [
       81,
       81,
@@ -92,93 +92,93 @@
   },
   "recent_commits": [
     {
+      "sha": "7cec23f4",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "52 seconds ago"
+    },
+    {
       "sha": "2be8ac7b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "4275f770",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "3901de41",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "ff9200ec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "aeb8aea3",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "7bcdc1f4",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "7bc63fda",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "35 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "8f614bdd",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "065a6559",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "41 minutes ago"
     },
     {
       "sha": "8780fc66",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.1 — new events, fan growth, rebalance",
-      "time": "44 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "7e11c261",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "5fb298a3",
       "agent": "build",
       "message": "track new cybersecurity research report (Mar 1) and update index",
-      "time": "48 minutes ago"
+      "time": "49 minutes ago"
     },
     {
       "sha": "bdd25e04",
       "agent": "build",
       "message": "workspace-builder validation close-the-loop",
-      "time": "49 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "5c7b484c",
       "agent": "build",
       "message": "routine maintenance - planning docs, daily logs, active-tasks update",
-      "time": "49 minutes ago"
-    },
-    {
-      "sha": "794acdd5",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "50 minutes ago"
     }
   ],
