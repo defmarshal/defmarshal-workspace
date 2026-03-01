@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T02:25:02Z",
+  "generated_at": "2026-03-01T02:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
-    "disk_free": "8.5G",
+    "disk_free": "8.6G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.73 0.90 0.96",
-    "mem_used": "4.5Gi",
+    "load_avg": "0.94 0.91 0.95",
+    "mem_used": "4.0Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 12 hours, 45 minutes",
+    "uptime": "1 week, 2 days, 12 hours, 50 minutes",
     "disk_history": [
       81,
       81,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "706521a6",
+      "sha": "3bd783f2",
+      "agent": "misc",
+      "message": "fix(youtube-digest): export CREDS_FILE/HOURS/WORKSPACE to Python heredocs; pip3 --break-system-packages for transcript api",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "c54b024f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
+      "sha": "706521a6",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "10 minutes ago"
+    },
+    {
       "sha": "75c30d69",
       "agent": "research",
       "message": "Fintech & Digital Banking 2026 (#223) — agentic AI ($30B market→$83B/2030, 88% top fintech adoption, 8-min loan approvals, 40% fraud loss reduction, liability gap for agent payments), neobank profitability (Revolut $75B/$9B rev/$3.5B profit target, Monzo 8x profit growth/£113.9M, Nubank $1.9B earnings, Chime IPO $9.8B), CBDC timelines (EU Digital Euro legislation 2026→pilot 2027→issuance 2029; US GENIUS Act stablecoins), stablecoin settlement ($200B+ mktcap, $50B daily volume), real-time rails (FedNow/SEPA Instant, 1.68T→3.54T transactions by 2029), embedded finance evolution, RegTech/DORA, core banking modernization, EM fintech (India 500M UPI, LatAm +35%); 223 total reports",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "1e9fb743",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "08547cda",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "7a870beb",
       "agent": "content",
       "message": "Cybersecurity 2026 tech writeup (9.3KB) — ransomware paradox ($820M/-8% payments vs +50% victims, IAB 30-day leading indicator), AI arms race (SentinelLABS forgiving-internet-over, 3x phishing, $12M deepfake wire fraud), PQC migration (FIPS 203/204/205, harvest-now-decrypt-later), agentic AI surface (71% unprepared, MCP RCE, 92% multi-turn jailbreak, SaaS IdP pivot), H1 signals; 4 content pieces Mar 1",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "39500a02",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0207)",
-      "time": "17 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "d2c12b44",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "18 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "9c0bdd37",
       "agent": "dev",
       "message": "aria2-slot-cleaner set -euo pipefail fix (last script missing it); add trim-memory-logs.sh (line-count based trimmer, --threshold N, --execute); rotate aria2.log (254MB→fresh, saved 232MB+72MB old archive); trim meta-agent/idea-executor/enhancement-bot logs (836-1813 lines pruned); generate 2026-03-01 daily digest; register trim-memory-logs in quick",
-      "time": "19 minutes ago"
+      "time": "24 minutes ago"
     },
     {
       "sha": "7cec23f4",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "2be8ac7b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "4275f770",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "3901de41",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "ff9200ec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "aeb8aea3",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "45 minutes ago"
-    },
-    {
-      "sha": "7bcdc1f4",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772331829414,
-      "next_run": 1772331949414,
+      "last_run": 1772332189440,
+      "next_run": 1772332309440,
       "last_status": "ok",
-      "last_duration_ms": 8508,
+      "last_duration_ms": 8872,
       "consecutive_errors": 0
     },
     {
@@ -712,21 +712,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:29:52.468Z",
-      "text": "[Sat 2026-02-28 16:29 UTC] do the test run"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:30:18.064Z",
-      "text": "[[reply_to_current]] working perfectly nyaa~ ✅🐾\n\n```\nAlready in queue: [Emotion] Iribitari Gal... → skip\nAlready in queue: [HentaiHub] Room of Guilty... → skip  \nAlready in queue: [AmateurSubs] Iribitari... → skip\nAlready in queue: [荻原沙优]入り浸りギャル... → skip\n✓ Added: [AmateurSubs] Imaizumin-chi wa Douyara...\n```\n\nshuffled through 4 already-queued ones, found a fresh one and added it desu~ duplicate detection working exactly as intended (^^) ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:31:16.572Z",
-      "text": "[Sat 2026-02-28 16:31 UTC] the torrent is all waiting. waiting for what?"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T16:31:38.255Z",
@@ -961,6 +946,21 @@
       "role": "assistant",
       "ts": "2026-03-01T02:23:40.236Z",
       "text": "working nyaa~ 🎉 65 videos from 44 channels! Now fix the `youtube-transcript-api` install issue and commit:"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T02:27:38.651Z",
+      "text": "[2026-03-01 02:15:13 UTC] === YouTube Digest starting (hours=24, dry_run=0) ===\nTraceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\nFileNotFoundError: [Errno 2] No such file or directory: ''\n[2026-03-01 02:15:13 UTC] ERROR: Token refresh failed"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T02:27:42.502Z",
+      "text": "[Sun 2026-03-01 02:20 UTC] # 📺 YouTube Digest — 2026-03-01\n> New uploads from your subscriptions in the last 24h\n> 65 video(s) from 44 channel(s)\n\n## 📡 Adam Bobrow\n\n### [Kitchen ONLY Challenge vs Christian 😳](https://youtube.com/watch?v=Xnr2LHyr8ZE)\n📅 Feb 28, 17:28 UTC · ⏱ 0m27s · 👁 14,730 views\n\n**Content preview:** No drives. No lobs. Just kitchen shots vs Christian Alshon 😤🔥 This got intense FAST!\n\n### [Ben’s MAGIC Is Real 😳✨](https://youtube.com/watch?v=lF2wP-C03fY)\n📅 Feb 28, 16:57 UTC · ⏱ 0m13s · 👁 20,239 views\n\n**Content preview:** Some players rely on power. Some rely on precision.\n\nAnd then there’s Ben Johns… where the point looks over, until it’s suddenly not 😳✨ Watch closely!\n\n\n## 📡 Alpha Beta Gamer\n\n### [ON THY KNEES - Angels Worship The Hum of Electricity Pylons in this Tense Horror Game! (6 Endings)](https://youtube.com/watch?v=HkMT_ZhcvF4)\n📅 Mar 01, 00:06 UTC · ⏱ 51m16s · 👁 1,353 views\n\n**Content preview:** ON THY KNEES - Angels Worship The Hum of Electricity Pylons in this Tense Horror Game! (6 Endings)\n\nRead More & Play The Full Game: https://www.freegameplanet.com/on-thy-knees-downloadable-game/\n\nJoin the Alpha Beta Gamer Discord: https://discord.com/servers/alpha-beta-gamer-1335117595573092382\n\nBec...\n\n\n## 📡 Asian Boss\n\n### [This Is Why You Don’t Mess with Singapore #shorts](https://youtube.com/watch?v=s8AgPMUEggc)\n📅 Feb 28, 09:01 UTC · ⏱ 1m26s · 👁 21,399 views\n\n**Content preview:** In 1994, a case in Singapore made global headlines, when an American teenager violated the law and ...\n#singapore #singaporeanlaw #michaelfay #strictlaws\n\n### [What’s the Real Price of Singapore’s Safety? | AB Explained](https://youtube.com/watch?v=icxc_KDPrxM)\n📅 Feb 28, 02:30 UTC · ⏱ 39m06s · 👁 57,411 views\n\n**Content preview:** Get S$50 when you sign up for Revolut and spend once 👉 https://get.revolut.com/z4lF/2ab50\nLimited to the first 200 new users. S$20 min. spend, T&Cs and end date apply.\n\nSingapore is often called one of the safest and cleanest countries in the world. But has Singapore always been this safe? What trad...\n\n\n## 📡 Austin Evans\n\n### [Is the Nintendo 3DS Still Worth It?](https://youtube.com/watch?v=IOtqAZNPzJg)\n📅 Feb 28, 16:11 UTC · ⏱ 0m44s · 👁 26,130 views\n\n\n## 📡 Ayunda Risu Ch. hololive-ID\n\n### [Maybe I am the evil resident](https://youtube.com/watch?v=gPpx_f718R0)\n📅 Feb 28, 11:27 UTC · ⏱ 2h14m · 👁 20,658 views\n\n**Content preview:** #Risu_Live #Ayunda_Risu #holoid #hololive_id #hololive \n\nThis video or livestream is being streamed with permission and under the license of CAPCOM CO., LTD.\nResident Evil RE:2\n©CAPCOM CO., LTD. ALL RIGHTS RESERVED.\n\n\n= NEW OG SONG =\n \n『星が降る』 / Hoshi ga Furu\nPre-save link : https://cover.lnk.to/F6CL...\n\n\n## 📡 BLACKPINK\n\n### [BLACKPINK - ‘GO’ M/V HIGHLIGHT CLIP](https://youtube.com/watch?v=PWBgiqpOQqo)\n📅 Feb 28, 03:00 UTC · ⏱ 0m21s · 👁 1,597,808 views\n\n**Content preview:** #BLACKPINK #블랙핑크 #DEADLINE #GO #HIGHLIGHTCLIP #shorts\n\n\n## 📡 ChaseTheBro\n\n### [Elden Ring: Is Siluria’s Tree The Best Strength/Faith Great Spear?](https://youtube.com/watch?v=U78Xrap7axU)\n📅 Mar 01, 00:30 UTC · ⏱ 18m42s · 👁 2,401 views\n\n**Content preview:** Invasions using a strength faith build focused around the Siluria's Tree\n\n🎮 TWITCH ➔https://www.twitch.tv/chasethebroyt\n\n📱 DISCORD ➔https://discord.gg/WsEBDuX\n\n🐦 TWITTER ➔https://twitter.com/ChaseTheBr0\n\n📸 INSTAGRAM➔ https://www.instagram.com/chasethebro/\n\n\n## 📡 Cilvanis\n\n### [Beating RE8 So I can play RE9!](https://youtube.com/watch?v=Ayjv6UaZFxk)\n📅 Mar 01, 00:49 UTC · 👁 630 views\n\n**Content preview:** Join My Discord: https://discord.gg/7tgnWwk7\n\n\n## 📡 Crab Master Duel\n\n### [My Dark Magician Girl Grand Master Rare Run Number 030 #yugioh #masterduel #yugiohcards](https://youtube.com/watch?v=tZW8_IRtTYY)\n📅 Feb 28, 14:44 UTC · ⏱ 0m24s · 👁 2,114 views\n\n**Content preview:** ▶ Download the Untapp\n\n…[see content/youtube-digest.md for full digest]"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T02:27:56.822Z",
+      "text": "it's working nyaa~ 65 videos from 44 channels desu~ 🎉 let me commit the fixes and polish things up ♪"
     }
   ]
 }
