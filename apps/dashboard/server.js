@@ -16,7 +16,7 @@ const http  = require('http');
 const https = require('https');
 const fs    = require('fs');
 const path  = require('path');
-const { spawn, execFile } = require('child_process');
+const { spawn, execFile, execFileSync } = require('child_process');
 
 const PORT       = 3001;
 const HTTPS_PORT = 3443;
