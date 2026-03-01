@@ -231,6 +231,7 @@
   <button class="tab-btn" data-tab="agents">🤖 Agents <span class="badge" id="badge-agents">…</span></button>
   <button class="tab-btn" data-tab="chat">💬 Chat <span class="badge" id="badge-chat">…</span></button>
   <button class="tab-btn" data-tab="cron">⏰ Cron</button>
+  <button class="tab-btn" data-tab="projects">📁 Projects <span class="badge" id="badge-projects">…</span></button>
   <button class="tab-btn" data-tab="tokens">💰 Tokens</button>
   <button class="tab-btn" data-tab="downloads">📦 Downloads</button>
   <button class="tab-btn" onclick="load();toast('🔄 Refreshing…','ok',1500)" title="Refresh">🔄</button>
@@ -331,8 +332,25 @@
   <div style="overflow-y:auto;flex:1;padding:10px 14px" id="cron-tab-list"></div>
 </div>
 
-<!-- Tokens tab -->
-<div id="tab-tokens" class="tab-panel">
+<!-- Projects tab -->
+<div id="tab-projects" class="tab-panel">
+  <div class="grid" id="projects-grid"></div>
+</div>
+    </div>
+    <div class="card">
+      <h2>📄 Recent Content</h2>
+      <div id="projects-content-list"></div>
+    </div>
+    <div class="card">
+      <h2>📚 Latest Research</h2>
+      <table id="projects-research-table"></table>
+    </div>
+    <div class="card">
+      <h2>📊 Agent Activity</h2>
+      <div id="projects-activity-list" class="muted" style="font-size:12px">Loading…</div>
+    </div>
+  </div>
+</div>
   <div class="grid">
     <div class="card" style="grid-column:1/-1">
       <h2>💰 Token Usage (last 7 days)</h2>
@@ -441,6 +459,7 @@ function switchTab(tab) {
   } else { stopChatPoll(); }
   if (tab === 'tokens') loadTokens();
   if (tab === 'downloads') loadDownloads();
+  if (tab === 'projects') loadProjects();
 }
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
@@ -703,6 +722,59 @@ function renderOutputs(outputs) {
 }
 
 // ── Tokens tab ────────────────────────────────────────────────────────────
+
+// ── Projects tab ────────────────────────────────────────────────────────────
+async function loadProjects() {
+  try {
+    const res = await fetch('/api/projects');
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'Failed to load projects');
+    renderProjects(data.projects);
+  } catch (e) {
+    const el = document.getElementById('projects-grid');
+    if (el) el.innerHTML = `<div class="card" style="grid-column:1/-1"><span class="bad">Error loading projects: ${esc(e.message)}</span></div>`;
+  }
+}
+
+function renderProjects(projects) {
+  const el = document.getElementById('projects-grid');
+  if (!el) return;
+  
+  el.innerHTML = (projects || []).map(p => {
+    const statusChip = p.status === 'active' ? chip('active', 'ok') : chip('idle', 'muted');
+    const commitInfo = p.lastCommit
+      ? `<div style="font-size:10px;color:var(--muted);margin-top:4px;font-family:monospace">
+           <span>${esc(p.lastCommit.hash.slice(0,7))}</span> ${esc(p.lastCommit.message)}
+         </div>`
+      : '<div class="muted" style="font-size:10px;margin-top:4px">No commits yet</div>';
+    
+    return `<div class="card" style="grid-column:1/-1">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <div style="font-size:32px;flex-shrink:0">${p.icon}</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:8px">
+            <strong style="font-size:14px">${esc(p.name)}</strong>
+            ${statusChip}
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin:4px 0">${esc(p.description)}</div>
+          ${commitInfo}
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a href="https://github.com/defmarshal/defmarshal-workspace/tree/main/${encodeURIComponent(p.path)}" 
+               target="_blank" rel="noopener"
+               style="background:var(--surface);color:var(--text);text-decoration:none;padding:4px 10px;border-radius:6px;font-size:11px;border:1px solid var(--border);transition:background .15s">View Code</a>
+            ${p.status === 'active' ? `<span style="font-size:11px;color:var(--green)">● Active work in progress</span>` : ''}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('') || `<div class="card" style="grid-column:1/-1"><span class="muted">No projects found.</span></div>`;
+  
+  // Update badge
+  const activeCount = (projects || []).filter(p => p.status === 'active').length;
+  const badge = document.getElementById('badge-projects');
+  if (badge) badge.textContent = activeCount > 0 ? `●${activeCount}` : '';
+}
+
 // ── Downloads tab ──────────────────────────────────────────────────────────
 let dlLoaded = false;
 function fmtBytes(b) {

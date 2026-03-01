@@ -545,6 +545,64 @@ const handler = async (req, res) => {
     }
   }
 
+
+  // ── Projects overview ──────────────────────────────────────────────────────
+  if (pathname === '/api/projects' && req.method === 'GET') {
+    try {
+      const projects = [];
+      const projectDirs = [
+        { dir: 'games/anime-studio-tycoon', name: 'Anime Studio Tycoon', icon: '🎮' },
+        { dir: 'research', name: 'Research Hub', icon: '📚' },
+        { dir: 'apps/dashboard', name: 'ClawDash', icon: '📊' },
+        { dir: 'docs', name: 'Documentation', icon: '📝' },
+        { dir: 'skills', name: 'OpenClaw Skills', icon: '🔧' },
+      ];
+
+      for (const p of projectDirs) {
+        const fullPath = path.join(WORKSPACE, p.dir);
+        if (!fs.existsSync(fullPath)) continue;
+
+        let lastCommit = null;
+        try {
+          const gitLog = execFileSync('git', ['-C', fullPath, 'log', '-1', '--pretty=format:%H|%s|%cI'], { encoding: 'utf8' }).trim();
+          if (gitLog) {
+            const [hash, message, date] = gitLog.split('|');
+            lastCommit = { hash, message, date };
+          }
+        } catch (e) {}
+
+        let status = 'idle';
+        try {
+          const gitStatus = execFileSync('git', ['-C', fullPath, 'status', '--porcelain'], { encoding: 'utf8' }).trim();
+          if (gitStatus) status = 'active';
+        } catch (e) {}
+
+        let description = '';
+        try {
+          const readmePath = path.join(fullPath, 'README.md');
+          if (fs.existsSync(readmePath)) {
+            const readme = fs.readFileSync(readmePath, 'utf8');
+            const firstLine = readme.split('\n')[0].trim();
+            description = firstLine.replace(/^#+\s*/, '').trim();
+          }
+        } catch (e) {}
+
+        projects.push({
+          name: p.name,
+          icon: p.icon,
+          description: description || `${p.name} project`,
+          path: p.dir,
+          status,
+          lastCommit,
+        });
+      }
+
+      cors(res);
+      return json(res, 200, { ok: true, projects });
+    } catch (e) {
+      return json(res, 500, { ok: false, error: e.message });
+    }
+  }
   // ── Static files ─────────────────────────────────────────────────────────
   let filePath = pathname === '/' ? '/index.html' : pathname;
   filePath = path.join(DASHBOARD_DIR, filePath.replace(/\.\./g, ''));
