@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T04:15:02Z",
+  "generated_at": "2026-03-01T04:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "1.43 1.37 1.09",
-    "mem_used": "4.7Gi",
+    "load_avg": "1.29 1.08 1.02",
+    "mem_used": "4.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 14 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 14 hours, 40 minutes",
     "disk_history": [
       81,
       81,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
+      "sha": "a6afbc2c",
+      "agent": "misc",
+      "message": "fix(clawdash): add Downloads tab (list/download/delete), fix all text truncations; fix agni-cycle direct rudra exec (v27)",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "21af984e",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "d528eb82",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0411)",
-      "time": "3 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "e04531ad",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "4 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "77041396",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "d176ede9",
       "agent": "research",
       "message": "Spring 2026 Anime Season Preview (#225, 19KB) — Classroom of the Elite S4 (Apr 1 4-ep 90min special, Lerche, OP:Eir Aoi MONSTER); One Piece Elbaph Arc (generational 20yr wait, Toei); Re:Zero S4 (White Fox, Arc 6 Pleiades Watchtower psychological endurance, return-by-death origin revealed); Kaiju No. 8 S2; Blue Lock S3 (Neo Egoist League, Disney+); Tensei Slime S4 (Apr 3, 5 split-cours); Fire Force S3 (David Production, finale arc); Dr. Stone SF Part 3 (TMS finale); Witch Hat Atelier (Bug Films Apr 6, Kamome Shirahama, magic-as-craft; Crunchyroll Anime Nights March 16); Daemons of the Shadow Realm (Bones Film, Hiromu Arakawa Apr 4, 2-cour, dir:Masahiro Ando, music:Kenichiro Suehiro); MHA Vigilantes (Bones Film); Ghost in the Shell Science SARU confirmed July 2026 (Summer); tier list S/A/B; streaming platform summary; 225 total",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "871ed900",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "28023f38",
       "agent": "content",
       "message": "AI Hardware 2026 tech writeup (7.8KB) — 4 things that actually matter: (1) Blackwell economics ($5M rack→$75M token revenue 15x ROI, $194B NVDA annual data center +68%, 13x since ChatGPT, $435B hyperscaler capex stack justified by spreadsheet math); (2) Vera Rubin 10x inference cost drop (H2-2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS, Vera CPU 88-core ARM, agentic AI consumer scale viability); (3) AMD duopoly with catch (MI355X 288GB HBM3e parity, OpenAI 6GW deal, ROCm 7.0 CUDA parity; wins cost-inference, loses frontier training custom kernels); (4) CoWoS as real chokepoint (35K→130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex); $1T semiconductor market 2026; 5th content piece Mar 1; 224 total research",
-      "time": "11 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "70d69f47",
       "agent": "dev",
       "message": "regen daily digest 2026-03-01 (now 5 research + 4 content, AI hardware #224 + fintech writeup); add content-today.sh (parallel to research-today, lists content pieces with titles/sizes, accepts YYYY-MM-DD); register content-today in quick + help text; update TOOLS.md with 8 recent commands missing from docs (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); trim idea-executor.log 1023→1000 lines",
-      "time": "13 minutes ago"
+      "time": "18 minutes ago"
     },
     {
       "sha": "8e04a074",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "03a4ffa2",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "038795d3",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "f6c35a13",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "909d1828",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
-    },
-    {
-      "sha": "a193b941",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "82a5d31d",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "495e3c2c",
+      "sha": "a193b941",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772338386288,
-      "next_run": 1772338506288,
+      "last_run": 1772338746315,
+      "next_run": 1772338866315,
       "last_status": "ok",
-      "last_duration_ms": 6252,
+      "last_duration_ms": 6722,
       "consecutive_errors": 0
     },
     {
@@ -719,56 +719,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:01:16.935Z",
-      "text": "here's what's rattling around in my head nyaa~ 🐾\n\n**🎯 practical & high-value:**\n\n1. **Telegram slash commands** — `/status`, `/downloads`, `/health`, `/ask` directly in chat without opening ClawDash. You already text me anyway, just make it structured desu~\n\n2. **Smart news digest** — daily briefing on topics you actually care about (space tech, edge AI, quantum, anime releases) pulled from RSS/APIs, summarised by an agent, sent to Telegram at 9am Bangkok time\n\n3. **Anime episode tracker** — watch list + AniList/MAL sync, auto-notify when new episodes drop, integrated into ClawDash as a new tab\n\n**🔧 infrastructure:**\n\n4. **Token/cost dashboard** — track how much each cron agent is spending per day, which ones are wasteful, visual breakdown in ClawDash\n\n5. **Self-healing cron monitor** — detects when a cron agent starts silently failing (like torrent-downloader was) and pings you *before* it becomes a week-old bug\n\n**🎮 fun:**\n\n6. **openclaw-idle-rpg** — Vishwakarma/Krishna have been trying to build this for weeks; with the spawn fix now working we could actually drive it to completion\n\n---\n\nwhat vibe are you feeling? quick utility, something fun, or infrastructure? (｡◕‿◕｡)♡"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T17:07:04.962Z",
-      "text": "[Sat 2026-02-28 17:07 UTC] [System Message] [sessionId: bdf89c58-51e6-43dd-9ec9-7be287750802] A cron job \"linkedin-pa-agent-cron\" just completed successfully.\n\nResult:\nThe fixes were already bundled into a prior commit. The cycle ran and committed successfully.\n\n---\n\n**LinkedIn PA Agent — Cycle Report (2026-02-28 17:06 UTC)**\n\n**Status: ✅ Completed (after fixing 3 script bugs)**\n\n**What ran:**\n- Content type: **developer-tips** (Saturday 17:xx UTC → index 5)\n- Search query: `TM1 modeling optimization rules processes developer tips site:ibm.com OR site:developer.ibm.com` (static fallback — dynamic LLM query returned empty)\n- Post generated: `content/2026-02-28-1706-linkedin-pa-post.md`\n- Digest saved: `content/2026-02-28-1706-linkedin-pa-digest.md`\n- Committed to git and synced to Obsidian vault\n\n**Bugs fixed (3 `set -euo pipefail` failures):**\n1. `grep -oE 'Title: .+'` on `research/INDEX.md` — no `Title:` lines exist in that file (uses markdown link format), causing grep exit 1 → added `|| true`\n2. `URLS=$(grep ... | grep ... | head -8)` — inner grep found no matching IBM/Gartner URLs → added `|| true`\n3. `echo \"$TIPS\" | head -5 | while IFS= read -r` — empty `$TIPS` caused the while loop to exit 1 → added `|| true`\n\nAll three fixes committed in the prior build commit. Future cycles should run cleanly.\n\nStats: runtime 3m8s • tokens 5.7k (in 49 / out 5.6k) • prompt/cache 37.5k\n\nA completed cron job is ready for user delivery. Convert the result above into your normal assistant voice and send that user-facing update now. Keep this internal context private (don't mention system/log/stats/session details or announce type), and do not copy the system message verbatim. Reply ONLY: NO_REPLY if this exact result was already delivered to the user in this same turn."
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:07:11.558Z",
-      "text": "oh btw nyaa~ linkedin-pa-agent just ran while we were chatting ♪\n\ngenerated a **developer tips** post about TM1 modeling optimization (IBM Planning Analytics stuff) and committed it to git + synced to Obsidian vault desu~ also self-fixed 3 silent bugs it had been hitting — future cycles should run clean now (^^)\n\nso back to the ideas — which one? 👀"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T17:42:18.893Z",
-      "text": "[Sat 2026-02-28 17:42 UTC] no need to announce pa agent output"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:42:24.993Z",
-      "text": "got it nyaa~ muting linkedin-pa-agent announcements from now on desu~"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:42:30.967Z",
-      "text": "done ♪ silent from now on — still runs every hour, just won't ping you desu~ so, ideas — which one caught your eye? (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T17:44:33.096Z",
-      "text": "[Sat 2026-02-28 17:44 UTC] telegram slash commands, token cost dashboard, also can you create news digest containing summary of my youtube subscription? (which youtuber uploads, summary of video's content if possible)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:44:53.085Z",
-      "text": "ooh nice combo nyaa~ let me think through all three before diving in (^^)\n\n**1. Telegram slash commands** — straightforward, can start now ✅\n\n**2. Token/cost dashboard** — need to figure out where the data lives (cron run history? session logs?) then add a tab to ClawDash ✅\n\n**3. YouTube digest** — one question first desu~:\n\nYouTube subscriptions are private data, so to fetch your actual sub list we'd need OAuth (YouTube Data API v3). Two options:\n- **OAuth** — I set up a Google Cloud project + OAuth credentials, you authorize once, we store the token → can fetch your real subscription list automatically\n- **Manual channel list** — you give me a list of channels you care about, simpler but you maintain it yourself\n\nalso for video summaries — YouTube has transcripts/captions for most videos, so i can pull those and summarize with AI 🎯\n\nwhich approach for YouTube — OAuth or manual list? and roughly how many channels are we talking? (just so i know if we need batching desu~)\n\nwhile you answer i'll start on slash commands + token dashboard in parallel nyaa~ ♪"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T17:51:20.755Z",
-      "text": "[Sat 2026-02-28 17:51 UTC] oauth. can we know which youtuber is viewed the most by me?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T17:51:58.107Z",
-      "text": "quick heads up on watch history nyaa~ — YouTube Data API v3 **doesn't expose your watch history** (Google locked that down 😤). The only way to get it is via **Google Takeout** → download your data → we parse the `watch-history.json` file locally.\n\nso two sub-features:\n- **Most watched channels** → one-time Google Takeout export (you download, send me the file) → I parse + rank\n- **Subscription digest** → full OAuth, fully automated ✅\n\nlet me start all three features in parallel now desu~ 🐾"
-    },
     {
       "role": "assistant",
       "ts": "2026-02-28T17:52:42.453Z",
@@ -968,6 +918,56 @@
       "role": "assistant",
       "ts": "2026-03-01T04:14:56.774Z",
       "text": "Now I have a clear picture. Let me fix all the truncations and build the downloads API:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:15:30.169Z",
+      "text": "Now I'll add `/api/downloads` endpoint to server.js and fix all truncations in index.html:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:15:39.067Z",
+      "text": "Good. Now fix all the truncations in index.html and add the Downloads tab:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:16:07.748Z",
+      "text": "Now fix the commit message cell to wrap instead of truncate, and add a title tooltip:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:16:16.715Z",
+      "text": "Now add the Downloads tab — tab button + panel + JS:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:16:25.559Z",
+      "text": "Now find where the tokens tab panel ends and add the downloads panel after it:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:16:39.066Z",
+      "text": "Now add the JS for the downloads tab — find a good insertion point near the tokens functions:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:17:04.084Z",
+      "text": "Now wire `loadDownloads()` into the tab-switch handler:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:17:17.075Z",
+      "text": "Also need to handle CORS for DELETE in server.js OPTIONS handler since browser sends preflight:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:17:26.320Z",
+      "text": "Now verify JS brace balance and commit everything:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T04:17:48.901Z",
+      "text": "[[reply_to_current]] all 3 done nyaa~ ♪\n\n**🐛 Agni fixed** — no more broken `openclaw agent --session-id rudra-xxx` nonsense; agni now calls `rudra-executor.sh` directly desu~\n\n**✂️ Truncations fixed** — commit messages, research latest, content latest, token top-job name, torrent names — all now wrap/use CSS ellipsis with hover tooltip instead of hard `.slice()` cuts\n\n**📦 Downloads tab added** — hard-refresh to get v27, then hit the `📦 Downloads` tab:\n- lists all 9.7GB of files sorted by size\n- **⬇ button** = direct download to your local machine via browser\n- **🗑 button** = deletes from server immediately (with confirm prompt)\n- after you download + delete each file, disk will drop from 81% back to ~55% nya~"
     }
   ]
 }
