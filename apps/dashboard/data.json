@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T02:06:55Z",
+  "generated_at": "2026-03-01T02:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.6G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.78 1.02 0.90",
-    "mem_used": "4.2Gi",
+    "load_avg": "1.62 1.33 1.04",
+    "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 12 hours, 27 minutes",
+    "uptime": "1 week, 2 days, 12 hours, 30 minutes",
     "disk_history": [
       81,
       81,
@@ -56,8 +56,8 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-03-01 01:12",
-      "last_line": "[2026-03-01T01:12:02Z] [content-agent] Generated research spotlight 2026-03-01 01:06 UTC (5.1KB, 3a6c48f4). Covered both Mar 1 research reports: Biotech/Longevity 2026 (patent cliff framing, Insilico Phase 2, orforglipron Phase 3, Casgevy scale-up, Aktis $318M, Altos/BioAge/NewLimit longevity) + Green Tech/Climate AI 2026 (battery $70/kWh record, BESS 57GWh/+29%, AI-energy paradox, SMR momentum/2029-35 timeline, hydrogen reset, solid-state/sodium-ion/iron-air emerging batteries). 221 research reports, 3 content pieces Mar 1."
+      "last_run": "2026-03-01 02:08",
+      "last_line": "[2026-03-01T02:08:41Z] [content-agent] Generated Cybersecurity 2026 tech writeup (9.3KB, 7a870beb). Covered ransomware paradox (Chainalysis: $820M/-8% payments but +50% victims/ATL 28% pay rate, IAB 30-day leading indicator), AI arms race (SentinelLABS 'forgiving internet over', Claude Code 30-target autonomous intrusion, 3x AI phishing, $12M deepfake fraud), PQC migration (FIPS 203/204/205 final, first certs 2026, harvest-now-decrypt-later active, crypto-agility inventory first step), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE, 92% multi-turn jailbreak, SaaS IdP ZT pivot), compliance deadline stack (NIS2/DORA/CMMC 2.0/AI Act), 6 H1 signals. 222 research reports, 4 content pieces Mar 1."
     },
     {
       "name": "dev-agent",
@@ -75,13 +75,13 @@
       "name": "agent-manager",
       "active": true,
       "last_run": "2026-03-01 02:06",
-      "last_line": "2026-03-01 02:06:53 UTC - Validating cron schedules against CRON_JOBS.md"
+      "last_line": "2026-03-01 02:06:55 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-01 02:04",
-      "last_line": "2026-03-01 01:21:38 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
+      "last_run": "2026-03-01 02:08",
+      "last_line": "2026-03-01 02:08:59 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
     }
   ],
   "research": {
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "7a870beb",
+      "agent": "content",
+      "message": "Cybersecurity 2026 tech writeup (9.3KB) — ransomware paradox ($820M/-8% payments vs +50% victims, IAB 30-day leading indicator), AI arms race (SentinelLABS forgiving-internet-over, 3x phishing, $12M deepfake wire fraud), PQC migration (FIPS 203/204/205, harvest-now-decrypt-later), agentic AI surface (71% unprepared, MCP RCE, 92% multi-turn jailbreak, SaaS IdP pivot), H1 signals; 4 content pieces Mar 1",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "39500a02",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0207)",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "d2c12b44",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "5 seconds ago"
+      "time": "3 minutes ago"
     },
     {
       "sha": "9c0bdd37",
       "agent": "dev",
       "message": "aria2-slot-cleaner set -euo pipefail fix (last script missing it); add trim-memory-logs.sh (line-count based trimmer, --threshold N, --execute); rotate aria2.log (254MB→fresh, saved 232MB+72MB old archive); trim meta-agent/idea-executor/enhancement-bot logs (836-1813 lines pruned); generate 2026-03-01 daily digest; register trim-memory-logs in quick",
-      "time": "42 seconds ago"
+      "time": "4 minutes ago"
     },
     {
       "sha": "7cec23f4",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "2 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "2be8ac7b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "4275f770",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "12 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "3901de41",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "17 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "ff9200ec",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "22 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "aeb8aea3",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "27 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "7bcdc1f4",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "32 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "7bc63fda",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "37 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "8f614bdd",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "37 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "065a6559",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "42 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "8780fc66",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.1 — new events, fan growth, rebalance",
-      "time": "46 minutes ago"
-    },
-    {
-      "sha": "7e11c261",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "47 minutes ago"
-    },
-    {
-      "sha": "5fb298a3",
-      "agent": "build",
-      "message": "track new cybersecurity research report (Mar 1) and update index",
-      "time": "50 minutes ago"
+      "time": "49 minutes ago"
     }
   ],
   "heartbeat": {
@@ -235,7 +235,13 @@
       "file": "INDEX",
       "ts": "",
       "title": "Content Archive Index",
-      "size": 52597
+      "size": 52756
+    },
+    {
+      "file": "2026-03-01-0202-cybersecurity-writeup",
+      "ts": "2026-03-01-0202",
+      "title": "Cybersecurity 2026: What Actually Matters Right Now",
+      "size": 9570
     },
     {
       "file": "2026-03-01-0106-research-spotlight",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-0323",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
       "size": 766
-    },
-    {
-      "file": "2026-02-28-0323-linkedin-pa-post",
-      "ts": "2026-02-28-0323",
-      "title": "🛠️ Implementation Decoder: What It Really Takes to Deploy IBM Planning Analytics",
-      "size": 2272
     }
   ],
   "cron_jobs": [
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772328600008,
-      "next_run": 1772330400000,
+      "last_run": 1772330805812,
+      "next_run": 1772332200000,
       "last_status": "ok",
-      "last_duration_ms": 16430,
+      "last_duration_ms": 15779,
       "consecutive_errors": 0
     },
     {
@@ -383,10 +383,10 @@
       "schedule": "0 2 * * 0",
       "tz": "UTC",
       "enabled": true,
-      "last_run": null,
-      "next_run": 1772330400000,
-      "last_status": "—",
-      "last_duration_ms": 0,
+      "last_run": 1772330821591,
+      "next_run": 1772935200000,
+      "last_status": "ok",
+      "last_duration_ms": 8928,
       "consecutive_errors": 0
     },
     {
@@ -443,10 +443,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772327173750,
-      "next_run": 1772330400000,
+      "last_run": 1772330533742,
+      "next_run": 1772334000000,
       "last_status": "ok",
-      "last_duration_ms": 137499,
+      "last_duration_ms": 136986,
       "consecutive_errors": 0
     },
     {
@@ -479,10 +479,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772326805815,
-      "next_run": 1772330400000,
+      "last_run": 1772330400010,
+      "next_run": 1772334000000,
       "last_status": "ok",
-      "last_duration_ms": 367935,
+      "last_duration_ms": 133732,
       "consecutive_errors": 0
     },
     {
@@ -623,10 +623,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772327311249,
-      "next_run": 1772330400000,
+      "last_run": 1772330670728,
+      "next_run": 1772334000000,
       "last_status": "ok",
-      "last_duration_ms": 136427,
+      "last_duration_ms": 135084,
       "consecutive_errors": 0
     },
     {
@@ -683,10 +683,10 @@
       "schedule": "0 2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": null,
-      "next_run": 1772330400000,
-      "last_status": "—",
-      "last_duration_ms": 0,
+      "last_run": 1772330830519,
+      "next_run": 1772416800000,
+      "last_status": "ok",
+      "last_duration_ms": 12512,
       "consecutive_errors": 0
     }
   ],
@@ -707,8 +707,8 @@
     }
   ],
   "content_stats": {
-    "total": 504,
-    "today": 2,
+    "total": 505,
+    "today": 3,
     "latest_title": "Sunday Morning Digest — March 1, 2026"
   },
   "chat": [
