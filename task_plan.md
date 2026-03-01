@@ -1,134 +1,124 @@
-# Workspace Builder — Task Plan
+# Task Plan: Workspace Builder Session
 
-**Session:** 23dad379-21ad-4f7a-8c68-528f98203a33
-**Goal:** Commit pending changes, validate constraints, close the loop
-**Strategy:** Phased execution with verification checkpoints
+**Session ID:** 23dad379-21ad-4f7a-8c68-528f98203a33
+**Trigger:** cron:workspace-builder-cron (every 2 hours)
+**Start Time:** 2026-03-01 13:02 UTC
+**Goal:** Routine maintenance — enforce constraints, commit state, validate, close loop
 
 ---
 
-## Phase 0 — Pre-flight Checks
+## Phase 1: Analysis & Assessment
 
-**Objective:** Confirm workspace state matches expectations before modifications
+**Objective:** Gather current state snapshot (disk, memory, git, agents, constraints)
 
-**Steps:**
-1. Read active-tasks.md to detect conflicts (done: one entry reset to running)
-2. Check git status for untracked/modified files (confirmed: memory/disk-history.json modified)
-3. Verify disk health via `./quick health` (79% OK)
-4. Confirm memory index is fresh (1.1d OK)
+**Actions:**
+1. Run `./quick health` — get system health summary
+2. Run `git status` — identify modified/untracked files
+3. Check disk usage trend (from disk-history.json)
+4. Check active agents (from active-tasks.md)
+5. Verify constraints with `./quick validate-constraints`
 
 **Success criteria:**
-- Only `memory/disk-history.json` modified (no untracked files)
-- Health green (disk 79% acceptable)
+- Health check completes without errors
+- Git status shows only expected state files (disk-history.json)
+- No constraint violations
 
-**Fallback:** If conflicts detected, investigate before proceeding
-
----
-
-## Phase 1 — Session Registration (Already Done)
-
-**Objective:** Track this builder run in active-tasks.md
-
-**Status:** ✅ Completed (entry reset to running at 11:01 UTC)
-
-**Verification:** active-tasks entry updated; file size ~1.2KB (<2KB)
+**Status:** ✅ Complete — Health green, git dirty (1 file), constraints all satisfied
 
 ---
 
-## Phase 2 — Commit Pending Changes
+## Phase 2: Verification & Planning
 
-**Objective:** Commit `memory/disk-history.json` with proper message
+**Objective:** Confirm workspace integrity, plan minimal but meaningful actions
 
-**Steps:**
-1. Stage `memory/disk-history.json` (ensure no other files staged)
-2. Verify staged diff (`git diff --cached`)
-3. Commit with prefix `build: update disk history metrics`
-4. Verify commit succeeded (`git log -1`)
+**Assessment:**
+- Disk usage: 79% (healthy, below 90% threshold)
+- Downloads: 31 files, 7.6GB (stable, no cleanup needed)
+- Memory index: 29 fragments / 322 chunks, reindex 1.2d ago (fresh)
+- active-tasks.md: 1235 bytes (<2KB) — healthy
+- MEMORY.md: 32 lines (≤35) — healthy
+- No stale idea branches
+- No temp files
+- APT updates: none pending
+- Gateway: healthy
+
+**Planned actions:**
+1. Stage modified file: `memory/disk-history.json`
+2. Create planning docs (task_plan.md, findings.md, progress.md) if not already present
+3. Commit changes with `build:` prefix
+4. Push to origin/master
+5. Validate constraints again
+6. Update active-tasks.md: mark session validated with verification metrics
+7. Prune stale completed entries (maintain <2KB)
 
 **Success criteria:**
-- Commit created with correct message
-- Commit includes only intended file
-- Working tree remains otherwise clean
+- All commits pushed
+- active-tasks.md updated with verification details
+- Constraints remain satisfied
+- No temp files left behind
 
 ---
 
-## Phase 3 — Validation
+## Phase 3: Implementation & Documentation
 
-**Objective:** Run comprehensive constraint checks
+**Objective:** Execute plan, commit, push, document
 
 **Steps:**
-1. Run `./quick validate-constraints` and capture output
-2. Run `./quick health` for system summary
-3. Run `./quick hygiene` for file-system checks
-4. Check `./quick agent-status` for cron health
-5. Verify:
-   - active-tasks.md size (<2KB)
-   - MEMORY.md line count (≤35)
-   - No temp files (`find . -maxdepth 1 -name "*.tmp" -o -name "*.temp"` etc.)
-   - No stale idea branches (`git branch --list "idea/*"`)
+1. `git add memory/disk-history.json`
+2. `git commit -m "build: update disk history metrics"`
+3. If planning docs modified/created: `git add task_plan.md findings.md progress.md` then commit with `build: workspace-builder planning docs and session registration`
+4. `git push origin master`
+5. Run `./quick validate-constraints` to verify
+6. Edit active-tasks.md:
+   - Ensure running entry exists with session key
+   - Add verification notes (sizes, health status, counts)
+   - Change status to `validated`
+7. Prune old completed entries to keep file <2KB
 
-**Success criteria:**
-- All 9 constraints pass
-- No hygiene violations
-- All agents healthy
-
----
-
-## Phase 4 — Push & Verify
-
-**Objective:** Push commits and confirm remote sync
-
-**Steps:**
-1. Run `git push origin master`
-2. Verify push succeeded (`git log origin/master -1` matches local)
-3. Confirm no credentials leaked in commit history
-
-**Success criteria:**
-- Push successful
-- Remote HEAD at latest commit
-- No sensitive data in commit
+**Verification commands to include in active-tasks:**
+- `./quick validate-constraints` output summary
+- active-tasks size: X bytes (<2KB)
+- MEMORY.md lines: Y (≤35)
+- Health: green
+- Git: clean & pushed
+- Memory reindex: Z day(s) fresh
+- No temp files: ✅
+- Shebang check: ✅
+- APT: none pending
+- Branch hygiene: ✅
+- Downloads: N files, X.XGB
 
 ---
 
-## Phase 5 — Close the Loop
+## Phase 4: Validation & Closure
 
-**Objective:** Mark session validated, archive to daily log, update active-tasks
+**Objective:** Confirm everything is clean, push final state, close session
 
-**Steps:**
-1. Update active-tasks.md entry: change `status: running` → `status: validated`
-2. Add verification block with actual outputs
-3. Ensure active-tasks.md remains <2KB (prune older validated entries if needed)
-4. Append summary to `memory/2026-03-01.md` with session outcome
-5. Verify final state: `git status` clean, all constraints green
+**Final validation checklist:**
+- [ ] `./quick health` passes
+- [ ] `./quick validate-constraints` all ✅
+- [ ] `git status` clean (nothing to commit)
+- [ ] No temp files (`find . -type f -name "*.tmp" -o -name "*.temp" -o -name "*~"` empty)
+- [ ] active-tasks.md ≤ 2KB
+- [ ] MEMORY.md ≤ 35 lines
+- [ ] All commits pushed to origin
 
-**Success criteria:**
-- active-tasks entry updated with verification metrics
-- Daily log updated
-- Git clean
-- All constraints satisfied
+**Close the loop:**
+- Append summary to `memory/2026-03-01.md` daily log
+- Update active-tasks.md entry with final verification
+- Mark session `validated`
 
----
-
-## Phase 6 — Final Reporting
-
-**Objective:** Output one-line summary for cron logs
-
-**Format:**
-```
-✅ Workspace builder validated: active-tasks <size>b, MEM <N> lines, health green, git pushed, constraints all satisfied
-```
+**If any check fails:** Debug immediately, fix issue, re-run validation before proceeding.
 
 ---
 
-## Checklist Summary
+## Success Definition
 
-- [x] Phase 0: Pre-flight completed, no conflicts
-- [x] Phase 1: Session registered (reset active-tasks entry)
-- [ ] Phase 2: Changes committed with build: prefix
-- [ ] Phase 3: All validation checks pass
-- [ ] Phase 4: Pushed to origin/master
-- [ ] Phase 5: active-tasks validated, daily log updated
-- [ ] Phase 6: Summary prepared
+✅ All constraints satisfied after commit
+✅ Git clean & pushed
+✅ active-tasks.md updated with verification metrics and pruned to <2KB
+✅ Daily log updated
+✅ No leftover temp files or untracked artifacts
+✅ Session marked validated in active-tasks.md
 
----
-
-**Execution:** Proceed step by step, updating `progress.md` after each phase.
+**Outcome:** Workspace synchronized, verifiably healthy, and fully documented.
