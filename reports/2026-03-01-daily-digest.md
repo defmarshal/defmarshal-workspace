@@ -5,18 +5,22 @@
 - content/2026-03-01-0202-cybersecurity-writeup.md: Cybersecurity 2026: What Actually Matters Right Now
 - content/2026-03-01-0307-fintech-writeup.md: Fintech 2026: The Execution Era Has Arrived
 - content/2026-03-01-0402-ai-hardware-writeup.md: The AI Chip Wars: Four Things That Actually Matter in 2026
+- content/2026-03-01-0510-spring-2026-anime-watchlist.md: Spring 2026 Anime: The Season That Has Everything
+- content/2026-03-01-0515-biotech-longevity-2026-writeup.md: The Drug That Changes Everything: Biotech in 2026
 - content/2026-03-01-daily-digest.md: Daily Digest — 2026-03-01
 - content/2026-03-01-morning-digest.md: Sunday Morning Digest — March 1, 2026
 
 ## Research Highlights
 - research/2026-03-01-ai-hardware-chips-2026-blackwell-rubin-amd-mi350-google-tpu-ironwood-tsmc-cowos-hbm4.md: AI Hardware & Chips 2026: The Architecture Wars — Blackwell in Volume, Rubin on Deck, AMD's Real Challenge, Google's Custom Silicon Bet & the CoWoS Chokepoint
 - research/2026-03-01-biotech-longevity-2026-ai-drug-discovery-glp1-gene-therapy-crispr.md: Biotech & Longevity 2026: AI Drug Discovery, GLP-1 Dominance, Gene Therapy & the Longevity Startup Race
+- research/2026-03-01-commercial-space-2026-artemis-ii-haven-1-starship-hls-orbital-economy-china-nuclear-propulsion.md: Commercial Space 2026: The Year the Orbital Economy Gets Real
 - research/2026-03-01-cybersecurity-2026-ai-arms-race-ransomware-post-quantum-zero-trust-agentic-threats.md: Cybersecurity 2026: AI Arms Race, Ransomware Economy, Post-Quantum Transition, and the Agentic Threat Frontier
 - research/2026-03-01-fintech-digital-banking-2026-agentic-ai-neobank-profitability-cbdc-stablecoin-real-time-payments.md: Fintech & Digital Banking 2026: Agentic AI, Neobank Profitability, Real-Time Rails, CBDC Timelines & the Stablecoin Settlement Layer
 - research/2026-03-01-green-tech-climate-ai-2026-solar-battery-nuclear-smr-ev-energy-nexus.md: Green Tech & Climate AI 2026: Solar at Record Lows, Battery $70/kWh, Nuclear Renaissance & the AI-Energy Nexus
 - research/2026-03-01-spring-2026-anime-season-preview-classroom-elite-witch-hat-atelier-daemons-rezero-one-piece-elbaph.md: Spring 2026 Anime Season Preview: The Most Stacked Lineup in Years
 
 ## Dev Commits (today)
+- dev: fix INDEX drift + broken links + archive planning artifacts (2026-03-01_0510)
 - dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0411)
 - dev: regen daily digest 2026-03-01 (now 5 research + 4 content, AI hardware #224 + fintech writeup); add content-today.sh (parallel to research-today, lists content pieces with titles/sizes, accepts YYYY-MM-DD); register content-today in quick + help text; update TOOLS.md with 8 recent commands missing from docs (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); trim idea-executor.log 1023→1000 lines
 - dev: fix reports/README.md literal \n→real newlines + expand with file format docs; add research-today.sh (lists today's reports with titles/sizes, accepts YYYY-MM-DD); add prune-gh-branches.sh (safe dry-run pruner for stale gh-pages-* branches); prune 4 stale gh-* branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test all from Feb 27, unreferenced); register research-today + prune-gh-branches in quick
@@ -37,7 +41,7 @@
 - dev: add agent-health-report script — per-agent status, error counts, gateway/disk/git; fix content INDEX; prune stale idea branch
 
 ## System Health
-Disk warning 81% (top: 9.7G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (7 changed) | Memory: 29f/322c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 33 files, 9.7G
+Disk warning 81% (top: 9.7G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (3 changed) | Memory: 29f/322c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 33 files, 9.7G
 
 ## Notes
-- Generated at Sun Mar  1 05:05:59 UTC 2026
+- Generated at Sun Mar  1 06:03:30 UTC 2026

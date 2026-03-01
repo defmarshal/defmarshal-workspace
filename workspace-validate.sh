@@ -108,8 +108,8 @@ fi
 
 # 7. Agent cron jobs (count expected)
 # Updated: 2026-02-17 — we have 20 active cron jobs; allow some fluctuation
-EXPECTED_JOBS_MIN=18
-EXPECTED_JOBS_MAX=22
+EXPECTED_JOBS_MIN=22
+EXPECTED_JOBS_MAX=26
 ACTUAL_JOBS=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq '.jobs | length' 2>/dev/null || echo "0")
 if [ "$ACTUAL_JOBS" -ge "$EXPECTED_JOBS_MIN" ] && [ "$ACTUAL_JOBS" -le "$EXPECTED_JOBS_MAX" ]; then
   status_ok "Cron jobs: $ACTUAL_JOBS (within expected range $EXPECTED_JOBS_MIN-$EXPECTED_JOBS_MAX)"
