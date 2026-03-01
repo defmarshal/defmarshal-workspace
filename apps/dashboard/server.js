@@ -502,6 +502,73 @@ const handler = async (req, res) => {
     }
   }
 
+  // ── Projects overview ──────────────────────────────────────────────────────
+  if (pathname === '/api/projects' && req.method === 'GET') {
+    try {
+      const projects = [];
+      const projectDirs = [
+        { dir: 'games/anime-studio-tycoon', name: 'Anime Studio Tycoon', icon: '\uD83C\uDFAE' },
+        { dir: 'research', name: 'Research Hub', icon: '\uD83D\uDCD6' },
+        { dir: 'apps/dashboard', name: 'ClawDash', icon: '\uD83D\uDCCA' },
+        { dir: 'docs', name: 'Documentation', icon: '\uD83D\uDCD4' },
+        { dir: 'skills', name: 'OpenClaw Skills', icon: '\uD83D\uDD27' },
+      ];
+
+      for (const p of projectDirs) {
+        if (!/^[a-z0-9\/_-]+$/i.test(p.dir)) {
+          console.warn(`Skipping invalid project dir pattern: ${p.dir}`);
+          continue;
+        }
+        const fullPath = path.normalize(path.join(WORKSPACE, p.dir));
+        if (!fullPath.startsWith(WORKSPACE)) {
+          console.warn(`Skipping path outside workspace: ${p.dir}`);
+          continue;
+        }
+        if (!fs.existsSync(fullPath)) continue;
+
+        let lastCommit = null;
+        try {
+          const gitLog = execFileSync('git', ['-C', fullPath, 'log', '-1', '--pretty=format:%H|%s|%cI'], { encoding: 'utf8', maxBuffer: 1024 * 1024 }).trim();
+          if (gitLog) {
+            const [hash, message, date] = gitLog.split('|');
+            lastCommit = { hash, message, date };
+          }
+        } catch (e) {}
+
+        let status = 'idle';
+        try {
+          const gitStatus = execFileSync('git', ['-C', fullPath, 'status', '--porcelain'], { encoding: 'utf8', maxBuffer: 1024 * 1024 }).trim();
+          if (gitStatus) status = 'active';
+        } catch (e) {}
+
+        let description = '';
+        try {
+          const readmePath = path.join(fullPath, 'README.md');
+          if (fs.existsSync(readmePath)) {
+            const readme = fs.readFileSync(readmePath, 'utf8');
+            const firstLine = readme.split('\n')[0].trim();
+            description = firstLine.replace(/^#+\s*/, '').replace(/<[^>]*>/g, '').trim();
+          }
+        } catch (e) {}
+
+        projects.push({
+          name: p.name,
+          icon: p.icon,
+          description: description || `${p.name} project`,
+          path: p.dir,
+          status,
+          lastCommit,
+        });
+      }
+
+      cors(res);
+      return json(res, 200, { ok: true, projects });
+    } catch (e) {
+      console.error('Projects API error:, e);
+      return json(res, 500, { ok: false, error: e.message });
+    }
+  }
+
   // ── Download a file ───────────────────────────────────────────────────────
   if (pathname.startsWith('/api/download/') && req.method === 'GET') {
     const rel = decodeURIComponent(pathname.slice('/api/download/'.length));
@@ -546,99 +613,3 @@ const handler = async (req, res) => {
   }
 
 
-  // ── Projects overview ──────────────────────────────────────────────────────
-  if (pathname === '/api/projects' && req.method === 'GET') {
-    try {
-      const projects = [];
-      const projectDirs = [
-        { dir: 'games/anime-studio-tycoon', name: 'Anime Studio Tycoon', icon: '🎮' },
-        { dir: 'research', name: 'Research Hub', icon: '📚' },
-        { dir: 'apps/dashboard', name: 'ClawDash', icon: '📊' },
-        { dir: 'docs', name: 'Documentation', icon: '📝' },
-        { dir: 'skills', name: 'OpenClaw Skills', icon: '🔧' },
-      ];
-
-      for (const p of projectDirs) {
-        const fullPath = path.join(WORKSPACE, p.dir);
-        if (!fs.existsSync(fullPath)) continue;
-
-        let lastCommit = null;
-        try {
-          const gitLog = execFileSync('git', ['-C', fullPath, 'log', '-1', '--pretty=format:%H|%s|%cI'], { encoding: 'utf8' }).trim();
-          if (gitLog) {
-            const [hash, message, date] = gitLog.split('|');
-            lastCommit = { hash, message, date };
-          }
-        } catch (e) {}
-
-        let status = 'idle';
-        try {
-          const gitStatus = execFileSync('git', ['-C', fullPath, 'status', '--porcelain'], { encoding: 'utf8' }).trim();
-          if (gitStatus) status = 'active';
-        } catch (e) {}
-
-        let description = '';
-        try {
-          const readmePath = path.join(fullPath, 'README.md');
-          if (fs.existsSync(readmePath)) {
-            const readme = fs.readFileSync(readmePath, 'utf8');
-            const firstLine = readme.split('\n')[0].trim();
-            description = firstLine.replace(/^#+\s*/, '').trim();
-          }
-        } catch (e) {}
-
-        projects.push({
-          name: p.name,
-          icon: p.icon,
-          description: description || `${p.name} project`,
-          path: p.dir,
-          status,
-          lastCommit,
-        });
-      }
-
-      cors(res);
-      return json(res, 200, { ok: true, projects });
-    } catch (e) {
-      return json(res, 500, { ok: false, error: e.message });
-    }
-  }
-  // ── Static files ─────────────────────────────────────────────────────────
-  let filePath = pathname === '/' ? '/index.html' : pathname;
-  filePath = path.join(DASHBOARD_DIR, filePath.replace(/\.\./g, ''));
-  if (!filePath.startsWith(DASHBOARD_DIR)) { res.writeHead(403); res.end('Forbidden'); return; }
-  const ext = path.extname(filePath);
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      fs.readFile(path.join(DASHBOARD_DIR, 'index.html'), (e2, d2) => {
-        if (e2) { res.writeHead(404); res.end('Not found'); return; }
-        cors(res); res.writeHead(200, { 'Content-Type': 'text/html' }); res.end(d2);
-      });
-      return;
-    }
-    cors(res);
-    res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
-    res.end(data);
-  });
-};
-
-// ── Servers ───────────────────────────────────────────────────────────────
-const server = http.createServer(handler);
-server.listen(PORT, HOST, () => {
-  console.log(`🦾 ClawDash HTTP  → http://localhost:${PORT}`);
-  console.log(`   Tailscale IP   → http://100.108.208.45:${PORT}`);
-});
-
-try {
-  const tlsOpts = { cert: fs.readFileSync(CERT_PATH), key: fs.readFileSync(KEY_PATH) };
-  const httpsServer = https.createServer(tlsOpts, handler);
-  httpsServer.listen(HTTPS_PORT, HOST, () => {
-    console.log(`🔒 ClawDash HTTPS → https://instance-20260207-2229.tail2dd22b.ts.net:${HTTPS_PORT}`);
-  });
-} catch (e) {
-  console.warn('⚠️  HTTPS not available:', e.message);
-}
-
-startChatWatcher();
-console.log('👀 Chat watcher running — push on new reply');
-// ── aria2 torrent status ──────────────────────────────────────────────────
