@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T00:00:02Z",
+  "generated_at": "2026-03-01T00:05:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 80,
-    "disk_free": "9.2G",
+    "disk_percent": 81,
+    "disk_free": "8.6G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
-    "downloads_count": 12,
-    "downloads_gb": "8.8G",
-    "load_avg": "0.56 0.71 0.78",
-    "mem_used": "3.5Gi",
+    "downloads_count": 13,
+    "downloads_gb": "9.7G",
+    "load_avg": "0.84 0.96 0.89",
+    "mem_used": "4.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 10 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 10 hours, 25 minutes",
     "disk_history": [
       80,
       80,
@@ -37,7 +37,7 @@
       80,
       80,
       80,
-      80
+      81
     ]
   },
   "agents": [
@@ -49,15 +49,15 @@
     },
     {
       "name": "research-agent",
-      "active": false,
-      "last_run": "2026-02-28 15:08",
-      "last_line": "[2026-02-28T15:08:50Z] [research-agent] Completed Robotics & Physical AI 2026 report (15.2KB, 33521f46). CES 2026 inflection point (Huang 'ChatGPT moment for physical AI'), Atlas commercial production (Hyundai/DeepMind fleet, 30K/yr capacity, Gemini Robotics), Figure Helix 02 full-body autonomy (4min dishwasher task, 109K C++ lines→single neural net), Tesla Optimus Gen3 ($20-30K target, FSD backbone), Agility Digit Toyota Canada RaaS (Feb 19), Unitree 85-90% global share 10-20K units, pricing table, RaaS model analysis, Nvidia Cosmos/GR00T layer, 6 H2 signals. 219 total reports. 17 topics today."
+      "active": true,
+      "last_run": "2026-03-01 00:04",
+      "last_line": "[2026-03-01T00:04:47Z] [research-agent] Completed Biotech & Longevity 2026 report (16.6KB, 0ba4b42c). $176B patent cliff driving M&A (+15% ING forecast), Isomorphic Labs 2×AlphaFold3 upgrade (Feb 2026), Insilico Medicine Phase2 positive IPF (18mo target-to-phase1), oral GLP-1 race (orforglipron Phase3, Novo/Lilly/Pfizer), 46+ FDA CGT approvals, CRISPR Casgevy $2.2M/patient, in vivo CRISPR frontier (Intellia Phase3), radiopharmaceuticals (Aktis IPO $318M), longevity startups (Altos $3B/Calico/BioAge/NewLimit), epigenetic clocks, personalised medicine, microbiome Rx, 6 H2 signals. 220 total reports. 1 topic today (Mar 1)."
     },
     {
       "name": "content-agent",
-      "active": false,
-      "last_run": "2026-02-28 15:06",
-      "last_line": "[2026-02-28T15:06:09Z] [content-agent] Generated 15:00 tech update (5.7KB, cf8d2a04). Covered: AR/VR & Spatial Computing 2026 ($85.56B XR market, Meta 77% share, Ray-Ban +1012% YoY, Vision Pro enterprise pivot, Galaxy XR/Android XR, Valve Steam Frame +289900%, AI+XR convergence, 6 H2 2026 signals, location-based XR $12B) + dev drop (INDEX 200→218, cron-failures fix, 3 idea branches pruned). 218 research reports, 22 content pieces today."
+      "active": true,
+      "last_run": "2026-03-01 00:01",
+      "last_line": "[2026-03-01T00:01:42Z] [content-agent] Generated Sunday morning digest 2026-03-01 (4.7KB, 60aeb6f0). Recap: 17 research reports + 25 content pieces on Feb 28, 219 INDEX total, dev highlights (pipefail/cron-failures/branch cleanup), system status, week ahead. First content piece of March 2026."
     },
     {
       "name": "dev-agent",
@@ -73,112 +73,112 @@
     },
     {
       "name": "agent-manager",
-      "active": false,
-      "last_run": "2026-02-28 17:30",
-      "last_line": "2026-02-28 17:30:10 UTC - Agent Manager stopped"
+      "active": true,
+      "last_run": "2026-03-01 00:02",
+      "last_line": "2026-03-01 00:02:13 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
-      "active": false,
-      "last_run": "2026-02-28 17:03",
-      "last_line": "2026-02-28 17:03:52 UTC - Meta-Agent one-shot completed; actions: none"
+      "active": true,
+      "last_run": "2026-03-01 00:03",
+      "last_line": "2026-03-01 00:03:19 UTC - Spawning research-agent"
     }
   ],
   "research": {
-    "total": 226,
+    "total": 227,
     "tts_coverage": "94%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "3df3e61b",
+      "sha": "0ba4b42c",
+      "agent": "research",
+      "message": "Biotech & Longevity 2026 — $176B patent cliff M&A wave, Isomorphic Labs 2×AlphaFold3 upgrade, Insilico Phase2 positive (IPF), oral GLP-1 race (orforglipron Phase3), CRISPR Casgevy scale-up, 46+ CGT approvals, radiopharmaceuticals surge, longevity startups (Altos/Calico/BioAge), epigenetic clocks; 220 reports",
+      "time": "26 seconds ago"
+    },
+    {
+      "sha": "c9c9fdee",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0002)",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "60aeb6f0",
+      "agent": "content",
+      "message": "Sunday morning digest 2026-03-01 — Feb 28 recap (17 research reports, 25 content pieces, 219 INDEX total), dev highlights (pipefail hardening, cron-failures fix, branch cleanup), system status, week ahead",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "ce7765c8",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "e7667ec7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "b1941a48",
+      "sha": "3df3e61b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "05091d99",
+      "sha": "b1941a48",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "1483ddb6",
+      "sha": "05091d99",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "df00ad99",
+      "sha": "1483ddb6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "4a0b08ea",
+      "sha": "df00ad99",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "c9797f76",
+      "sha": "4a0b08ea",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "3b0048d9",
+      "sha": "c9797f76",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "ffa92f4a",
+      "sha": "3b0048d9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "86915b26",
+      "sha": "ffa92f4a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "001fca27",
-      "agent": "build",
-      "message": "workspace-builder session 23dad379: add planning docs, prune active-tasks, validate constraints",
-      "time": "53 minutes ago"
-    },
-    {
-      "sha": "687b204c",
-      "agent": "build",
-      "message": "workspace-builder validation close-the-loop; remove completed entry",
-      "time": "53 minutes ago"
-    },
-    {
-      "sha": "7c81d5e8",
-      "agent": "build",
-      "message": "prune active-tasks to <2KB; update disk history telemetry",
-      "time": "54 minutes ago"
-    },
-    {
-      "sha": "f42c44e7",
+      "sha": "86915b26",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "9ab659b3",
-      "agent": "build",
-      "message": "add running entry for current workspace-builder session",
       "time": "55 minutes ago"
     }
   ],
@@ -232,6 +232,18 @@
   ],
   "agent_outputs": [
     {
+      "file": "INDEX",
+      "ts": "",
+      "title": "Content Archive Index",
+      "size": 52452
+    },
+    {
+      "file": "2026-03-01-morning-digest",
+      "ts": "",
+      "title": "Sunday Morning Digest — March 1, 2026",
+      "size": 4815
+    },
+    {
       "file": "2026-02-28-1706-linkedin-pa-digest",
       "ts": "2026-02-28-1706",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
@@ -248,12 +260,6 @@
       "ts": "2026-02-28-1705",
       "title": "🛠️ Developer Tips: Optimizing IBM Planning Analytics Development",
       "size": 1546
-    },
-    {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 52333
     },
     {
       "file": "2026-02-28-1500-tech-update",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-0212",
       "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
       "size": 741
-    },
-    {
-      "file": "2026-02-28-0212-linkedin-pa-post",
-      "ts": "2026-02-28-0212",
-      "title": "⚖️ Comparative Analysis: IBM Planning Analytics vs. Oracle Hyperion",
-      "size": 2642
     }
   ],
   "cron_jobs": [
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772321400009,
-      "next_run": 1772323200000,
+      "last_run": 1772323207451,
+      "next_run": 1772325000000,
       "last_status": "ok",
-      "last_duration_ms": 28553,
+      "last_duration_ms": 130719,
       "consecutive_errors": 0
     },
     {
@@ -407,10 +407,10 @@
       "schedule": "0 7 * * 0",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1771718449694,
-      "next_run": 1772323200000,
+      "last_run": 1772323200007,
+      "next_run": 1772928000000,
       "last_status": "ok",
-      "last_duration_ms": 19350,
+      "last_duration_ms": 7444,
       "consecutive_errors": 0
     },
     {
@@ -700,9 +700,9 @@
     }
   ],
   "content_stats": {
-    "total": 502,
-    "today": 0,
-    "latest_title": "Morning Digest — 2026-02-28 (04:05 UTC)"
+    "total": 503,
+    "today": 1,
+    "latest_title": "Sunday Morning Digest — March 1, 2026"
   },
   "chat": [
     {
