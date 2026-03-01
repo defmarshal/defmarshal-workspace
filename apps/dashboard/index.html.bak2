@@ -336,6 +336,47 @@
 <div id="tab-projects" class="tab-panel">
   <div class="grid" id="projects-grid"></div>
 </div>
+    </div>
+    <div class="card">
+      <h2>📄 Recent Content</h2>
+      <div id="projects-content-list"></div>
+    </div>
+    <div class="card">
+      <h2>📚 Latest Research</h2>
+      <table id="projects-research-table"></table>
+    </div>
+    <div class="card">
+      <h2>📊 Agent Activity</h2>
+      <div id="projects-activity-list" class="muted" style="font-size:12px">Loading…</div>
+    </div>
+  </div>
+</div>
+  <div class="grid">
+    <div class="card" style="grid-column:1/-1">
+      <h2>💰 Token Usage (last 7 days)</h2>
+      <div id="tokens-summary" style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <div id="tokens-table-wrap" style="overflow-x:auto">
+        <table id="tokens-table" style="width:100%;border-collapse:collapse;font-size:10px">
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid var(--border)">
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500">Job</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Runs</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Avg</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Total</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500">Share</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Last run</th>
+            </tr>
+          </thead>
+          <tbody id="tokens-tbody"></tbody>
+        </table>
+      </div>
+      <div id="tokens-empty" style="display:none;text-align:center;padding:20px;color:var(--muted);font-size:12px">
+        No token data found for the last 7 days.
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Downloads tab -->
 <div id="tab-downloads" class="tab-panel">
   <div class="card" style="grid-column:1/-1">
