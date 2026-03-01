@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T07:00:02Z",
+  "generated_at": "2026-03-01T07:05:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "11G",
-    "load_avg": "0.66 0.70 0.73",
-    "mem_used": "4.0Gi",
+    "load_avg": "1.21 0.95 0.83",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 17 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 17 hours, 25 minutes",
     "disk_history": [
       81,
       81,
@@ -25,9 +25,9 @@
       81,
       81,
       81,
-      81,
-      81,
-      81,
+      83,
+      83,
+      83,
       83,
       83,
       83,
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-01 06:04",
-      "last_line": "2026-03-01 06:04:12 UTC - Dev-agent cycle completed (exit 0)"
+      "last_run": "2026-03-01 07:00",
+      "last_line": "2026-03-01 07:00:04 UTC - Attempt 1/3"
     },
     {
       "name": "supervisor",
@@ -80,106 +80,106 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-01 06:12",
+      "last_run": "2026-03-01 07:01",
       "last_line": "2026-03-01 06:12:52 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
     }
   ],
   "research": {
     "total": 232,
     "tts_coverage": "93%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "f481bc7d",
+      "sha": "e1273d23",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "300d4dfe",
+      "sha": "f481bc7d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "5bf94f50",
+      "sha": "300d4dfe",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "979213db",
+      "sha": "5bf94f50",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "49c69fe9",
+      "sha": "979213db",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "49c69fe9",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "40a79073",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "3bbbd984",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "680231cb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "05f5bce1",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "c9665a9c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "e0df2e7f",
       "agent": "auto",
       "message": "maintenance update 2026-03-01 06:14 UTC",
-      "time": "46 minutes ago"
+      "time": "51 minutes ago"
     },
     {
       "sha": "e05f8079",
       "agent": "research",
       "message": "update INDEX.md — add reports #230-231 (Frontier AI Models Feb 2026 + SEA Digital Banking & Fintech 2026), update count to 231 entries",
-      "time": "46 minutes ago"
+      "time": "51 minutes ago"
     },
     {
       "sha": "711395fe",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0612)",
-      "time": "48 minutes ago"
+      "time": "53 minutes ago"
     },
     {
       "sha": "ec0e768a",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "48 minutes ago"
-    },
-    {
-      "sha": "b3164fc0",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "53 minutes ago"
     }
   ],
   "heartbeat": {
@@ -235,7 +235,19 @@
       "file": "INDEX",
       "ts": "",
       "title": "Content Archive Index",
-      "size": 53853
+      "size": 54539
+    },
+    {
+      "file": "2026-03-01-0701-sea-digital-banking-fintech-2026-writeup",
+      "ts": "2026-03-01-0701",
+      "title": "Southeast Asia's Digital Banking Moment: Agentic Payments, the Profitability Reckoning, and Who's Actually Winning",
+      "size": 8661
+    },
+    {
+      "file": "2026-03-01-0700-frontier-ai-models-feb-2026-writeup",
+      "ts": "2026-03-01-0700",
+      "title": "Seven AI Models Dropped in February 2026. Here's What Actually Changed.",
+      "size": 6717
     },
     {
       "file": "2026-03-01-0604-commercial-space-2026-writeup",
@@ -338,18 +350,6 @@
       "ts": "2026-02-28-1200",
       "title": "Tech Update — 12:00 UTC, Feb 28 2026",
       "size": 4830
-    },
-    {
-      "file": "2026-02-28-1100-tech-update",
-      "ts": "2026-02-28-1100",
-      "title": "Tech Update — 11:00 UTC, Feb 28 2026",
-      "size": 5518
-    },
-    {
-      "file": "2026-02-28-1000-tech-update",
-      "ts": "2026-02-28-1000",
-      "title": "Tech Update — 10:00 UTC, Feb 28 2026",
-      "size": 4841
     }
   ],
   "cron_jobs": [
@@ -707,21 +707,11 @@
     }
   ],
   "content_stats": {
-    "total": 512,
-    "today": 9,
+    "total": 514,
+    "today": 11,
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-03-01T02:15:53.896Z",
-      "text": "[2026-03-01 02:15:13 UTC] === YouTube Digest starting (hours=24, dry_run=0) ===\nTraceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\nFileNotFoundError: [Errno 2] No such file or directory: ''\n[2026-03-01 02:15:13 UTC] ERROR: Token refresh failed"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T02:17:05.593Z",
-      "text": "Found it — `CREDS_FILE` bash variable isn't exported so Python gets an empty string. Fix:"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-01T02:23:40.236Z",
@@ -961,6 +951,16 @@
       "role": "assistant",
       "ts": "2026-03-01T04:27:00.926Z",
       "text": "here's the honest braindump nyaa~ (^^) based on what I know about you + what we have running:\n\n---\n\n**🎮 Games / Fun**\n- **OpenClaw Idle RPG** — was scaffolded in `apps/openclaw-idle-rpg/` but never really finished. Agents as units, tokens as currency, crises/boons. Could actually be fun to polish and deploy locally\n- **Anime tracker** — personal watchlist app, pulls from Jikan/MAL, track watch status, ratings, notes. You watch a lot so this could be legit useful\n\n**🛠 Actually Useful Tools**\n- **Torrent manager UI** — right now you use aria2 CLI/Telegram. Could build a proper web UI (search Nyaa, add magnet, track progress, auto-delete after download) — separate from ClawDash\n- **115 transfer tool** — integrate 115 cloud upload into a proper web UI so you can queue transfers with status\n- **Obsidian publish helper** — since research syncs to Obsidian, could build a quick tool to pick reports and format them nicely for publishing/sharing\n- **Personal finance tracker** — simple income/expense tracker, local SQLite, no cloud\n\n**🤖 Agent / Infrastructure**\n- **Better Agni** — right now agni's \"opportunities\" are all false positives (scanning its own logs). Could make it genuinely useful — scan for stale cron jobs, detect agents that haven't run in >48h, auto-fix broken scripts\n- **Telegram bot commands** — `/downloads`, `/disk`, `/digest` already work via slash handler — could add more: `/top` (top token spenders), `/weather`, `/remind 30m do thing`\n\n**🌐 Actually New**\n- **Personal start page** — browser new-tab page, shows weather Bangkok, upcoming calendar, latest YouTube digest, disk status. Fast + local\n- **Manga/doujin catalog** — since you download stuff, a local catalog with cover thumbnails, tags, search. Like Kavita/Komga but custom\n\n---\n\nwhat sounds interesting? or is there something specific you've been wanting but don't have yet? ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T07:03:53.818Z",
+      "text": "[Sun 2026-03-01 07:03 UTC] anything else?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T07:04:12.775Z",
+      "text": "beyond what I listed? a few more that came to mind nyaa~ ♪\n\n---\n\n**💬 Social / Communication**\n- **Telegram digest bot** — morning briefing auto-sent at 9am: weather, disk, what agents did overnight, top YouTube picks, any urgent emails. already have pieces, just wire it together\n- **WhatsApp bridge** — you have WhatsApp configured too, could mirror important alerts there as fallback\n\n**📊 Data / Visibility**\n- **Token cost estimator** — you're at 1.1M tokens/week, could build a simple projector that estimates monthly cost by model, alerts if a rogue agent spikes usage\n- **Agent performance dashboard** — not ClawDash, but a deeper view: which agents actually produce value vs just burn tokens doing nothing (agni/rudra were basically no-ops until today)\n- **Disk timeline** — chart showing disk usage over time from `memory/disk-history.json`, so you can see which day something exploded\n\n**🎌 Anime / Content**\n- **Seasonal anime calendar** — pulls current season from Jikan, shows airing schedule in Bangkok time, marks what you're watching\n- **Auto-subs downloader** — when a new episode airs, auto-search Nyaa for the best sub group and queue it in aria2\n\n**🔧 Infrastructure**\n- **Backup to 115** — auto-compress and push important workspace files (MEMORY.md, skills, scripts) to 115 cloud weekly so nothing is lost if the VPS dies\n- **VPS health watchdog** — monitors CPU/RAM/disk trends, predicts when disk will hit 90% based on growth rate, warns you before it happens\n- **Auto-115 transfer after download** — aria2 finishes → auto-upload to 115 → delete local. you already do this manually\n\n**🧠 AI / Meta**\n- **Conversation summarizer** — weekly digest of our Telegram chat: what did we build, what decisions were made, saved as a tidy note in Obsidian\n- **Prompt library** — personal collection of prompts/templates that actually work for you, searchable, with a quick `/prompt` command\n\n---\n\nhonestly the most **bang-for-buck** right now desu~:\n1. **Auto-115 after download** — fixes the 83% disk problem permanently\n2. **Morning briefing cron** — you'd actually use it every day\n3. **Agent performance audit** — some agents are just token incinerators (ಠ_ಠ)\n\nwhich direction? ♪"
     }
   ]
 }
