@@ -342,9 +342,7 @@
             <tr style="text-align:left;border-bottom:1px solid var(--border)">
               <th style="padding:4px 6px;color:var(--muted);font-weight:500">Job</th>
               <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Runs</th>
-              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Avg tok</th>
-              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">In</th>
-              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Out</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Avg</th>
               <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Total</th>
               <th style="padding:4px 6px;color:var(--muted);font-weight:500">Share</th>
               <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Last run</th>
@@ -703,7 +701,7 @@ async function loadTokens() {
     renderTokens(d);
   } catch (e) {
     const tbody = document.getElementById('tokens-tbody');
-    if (tbody) tbody.innerHTML = `<tr><td colspan="8" style="color:var(--red);padding:8px">Error: ${esc(e.message)}</td></tr>`;
+    if (tbody) tbody.innerHTML = `<tr><td colspan="6" style="color:var(--red);padding:8px">Error: ${esc(e.message)}</td></tr>`;
   }
 }
 function fmtK(n) {
@@ -757,8 +755,6 @@ function renderTokens(d) {
       <td style="padding:4px 6px;font-size:10px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(row.name)}">${esc(row.name)}</td>
       <td style="padding:4px 6px;font-size:10px;text-align:right;color:var(--muted)">${row.runs}</td>
       <td style="padding:4px 6px;font-size:10px;text-align:right">${fmtK(row.avg_tokens)}</td>
-      <td style="padding:4px 6px;font-size:10px;text-align:right;color:var(--muted)">${fmtK(row.total_in)}</td>
-      <td style="padding:4px 6px;font-size:10px;text-align:right;color:var(--muted)">${fmtK(row.total_out)}</td>
       <td style="padding:4px 6px;font-size:10px;text-align:right;font-weight:600">${fmtK(row.total)}</td>
       <td style="padding:4px 6px;font-size:10px;min-width:80px">
         <div style="background:var(--surface2);border-radius:3px;height:6px;position:relative;overflow:hidden">
