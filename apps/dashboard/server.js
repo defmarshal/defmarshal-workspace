@@ -96,7 +96,7 @@ const MIME = {
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 function json(res, code, obj) {
@@ -473,6 +473,76 @@ const handler = async (req, res) => {
   // ── Token usage stats ────────────────────────────────────────────────────
   if (pathname === '/api/tokens' && req.method === 'GET') {
     return json(res, 200, getTokenStats());
+  }
+
+  // ── Downloads list ────────────────────────────────────────────────────────
+  if (pathname === '/api/downloads-list' && req.method === 'GET') {
+    const dlDir = path.join(WORKSPACE, 'downloads');
+    try {
+      const getFiles = (dir, base='') => {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        let files = [];
+        for (const e of entries) {
+          const rel = base ? `${base}/${e.name}` : e.name;
+          const abs = path.join(dir, e.name);
+          if (e.isDirectory()) files = files.concat(getFiles(abs, rel));
+          else {
+            const st = fs.statSync(abs);
+            files.push({ name: e.name, path: rel, size: st.size, mtime: st.mtimeMs });
+          }
+        }
+        return files;
+      };
+      const files = getFiles(dlDir).sort((a,b) => b.size - a.size);
+      const total = files.reduce((s,f) => s+f.size, 0);
+      cors(res);
+      return json(res, 200, { ok: true, files, total });
+    } catch(e) {
+      return json(res, 200, { ok: false, files: [], total: 0, error: e.message });
+    }
+  }
+
+  // ── Download a file ───────────────────────────────────────────────────────
+  if (pathname.startsWith('/api/download/') && req.method === 'GET') {
+    const rel = decodeURIComponent(pathname.slice('/api/download/'.length));
+    if (rel.includes('..')) return json(res, 400, { error: 'invalid path' });
+    const abs = path.join(WORKSPACE, 'downloads', rel);
+    if (!abs.startsWith(path.join(WORKSPACE, 'downloads'))) return json(res, 403, { error: 'forbidden' });
+    try {
+      const st = fs.statSync(abs);
+      const fname = path.basename(abs);
+      cors(res);
+      res.writeHead(200, {
+        'Content-Type': 'application/octet-stream',
+        'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(fname)}`,
+        'Content-Length': st.size,
+      });
+      fs.createReadStream(abs).pipe(res);
+    } catch(e) {
+      return json(res, 404, { error: 'not found' });
+    }
+    return;
+  }
+
+  // ── Delete a download ─────────────────────────────────────────────────────
+  if (pathname.startsWith('/api/download/') && req.method === 'DELETE') {
+    const rel = decodeURIComponent(pathname.slice('/api/download/'.length));
+    if (rel.includes('..')) return json(res, 400, { error: 'invalid path' });
+    const abs = path.join(WORKSPACE, 'downloads', rel);
+    if (!abs.startsWith(path.join(WORKSPACE, 'downloads'))) return json(res, 403, { error: 'forbidden' });
+    try {
+      fs.rmSync(abs, { recursive: true, force: true });
+      // Remove parent dir if empty
+      const parent = path.dirname(abs);
+      if (parent !== path.join(WORKSPACE, 'downloads')) {
+        const remaining = fs.readdirSync(parent);
+        if (remaining.length === 0) fs.rmdirSync(parent);
+      }
+      cors(res);
+      return json(res, 200, { ok: true });
+    } catch(e) {
+      return json(res, 500, { error: e.message });
+    }
   }
 
   // ── Static files ─────────────────────────────────────────────────────────

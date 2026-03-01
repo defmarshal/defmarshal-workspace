@@ -232,6 +232,7 @@
   <button class="tab-btn" data-tab="chat">💬 Chat <span class="badge" id="badge-chat">…</span></button>
   <button class="tab-btn" data-tab="cron">⏰ Cron</button>
   <button class="tab-btn" data-tab="tokens">💰 Tokens</button>
+  <button class="tab-btn" data-tab="downloads">📦 Downloads</button>
   <button class="tab-btn" onclick="load();toast('🔄 Refreshing…','ok',1500)" title="Refresh">🔄</button>
 </nav>
 
@@ -358,6 +359,15 @@
   </div>
 </div>
 
+<!-- Downloads tab -->
+<div id="tab-downloads" class="tab-panel">
+  <div class="card" style="grid-column:1/-1">
+    <h2>📦 Downloads</h2>
+    <div id="dl-summary" style="font-size:11px;color:var(--muted);margin-bottom:10px"></div>
+    <div id="dl-list"></div>
+  </div>
+</div>
+
 </div><!-- #tab-panels -->
 
 <!-- Quick commands bottom sheet -->
@@ -430,6 +440,7 @@ function switchTab(tab) {
     }
   } else { stopChatPoll(); }
   if (tab === 'tokens') loadTokens();
+  if (tab === 'downloads') loadDownloads();
 }
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
@@ -545,7 +556,7 @@ function renderAgentSummary(agents) {
 function renderResearch(r) {
   // Clean up latest — strip "INDEX\nnone" junk
   let latest = (r.latest || 'none').replace(/^INDEX\s*/,'').replace(/^none$/i,'—').trim();
-  if (latest.length > 50) latest = latest.slice(0,47) + '…';
+  // no hard truncation — let CSS handle it
   const covPct = parseInt(r.tts_coverage) || 0;
   const covCol = covPct >= 95 ? 'ok' : covPct >= 80 ? 'warn' : 'bad';
   document.getElementById('research-table').innerHTML = `
@@ -560,11 +571,11 @@ function renderCommits(commits) {
     (commits||[]).map(c=>{
       const prefix = (c.message||'').match(/^(\w[\w-]*(?:\(.+?\))?):/) ?
         c.message.split(':')[0] : (c.agent||'misc');
-      const msg = (c.message||'').replace(/^[^:]+:\s*/,'').slice(0,60);
+      const msg = (c.message||'').replace(/^[^:]+:\s*/,'');
       const chipCls = prefix.startsWith('feat') ? 'ok' : prefix.startsWith('fix') ? 'warn' : prefix.startsWith('build') ? 'ok' : 'muted';
       return `<tr>
         <td><code style="font-size:10px;color:var(--muted)">${esc((c.sha||'').slice(0,7))}</code></td>
-        <td style="font-size:11px">${chip(esc(prefix), chipCls)} ${esc(msg)}</td>
+        <td style="font-size:11px;white-space:normal;word-break:break-word" title="${esc(c.message||'')}">${chip(esc(prefix), chipCls)} ${esc(msg)}</td>
         <td class="muted" style="font-size:10px;white-space:nowrap">${esc(c.time||'')}</td>
       </tr>`;
     }).join('');
@@ -576,7 +587,7 @@ function renderContentStats(cs) {
     <tr><th>Total pieces</th><td><strong>${esc(cs.total||0)}</strong></td></tr>
     <tr><th>Today</th><td><span class="ok">${esc(cs.today||0)}</span></td></tr>
     <tr><th>This week</th><td>${esc(cs.week||0)}</td></tr>
-    <tr><th>Latest</th><td class="muted" style="font-size:10px;word-break:break-word">${esc((cs.latest_title||'—').slice(0,50))}</td></tr>
+    <tr><th>Latest</th><td class="muted" style="font-size:10px;word-break:break-word">${esc(cs.latest_title||'—')}</td></tr>
   `;
 }
 function renderCron(crons) {
@@ -692,6 +703,68 @@ function renderOutputs(outputs) {
 }
 
 // ── Tokens tab ────────────────────────────────────────────────────────────
+// ── Downloads tab ──────────────────────────────────────────────────────────
+let dlLoaded = false;
+function fmtBytes(b) {
+  if (b >= 1073741824) return (b/1073741824).toFixed(1) + ' GB';
+  if (b >= 1048576)    return Math.round(b/1048576) + ' MB';
+  return Math.round(b/1024) + ' KB';
+}
+async function loadDownloads() {
+  if (dlLoaded) return;
+  const list = document.getElementById('dl-list');
+  const sumEl = document.getElementById('dl-summary');
+  list.innerHTML = '<span class="muted">Loading…</span>';
+  try {
+    const d = await fetch('/api/downloads-list').then(r => r.json());
+    if (!d.ok || !d.files.length) {
+      list.innerHTML = '<span class="muted">No downloads found.</span>';
+      return;
+    }
+    dlLoaded = true;
+    sumEl.textContent = `${d.files.length} file(s) · ${fmtBytes(d.total)} total`;
+    list.innerHTML = d.files.map(f => `
+      <div id="dl-row-${btoa(f.path).replace(/[^a-z0-9]/gi,'_')}" style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:12px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(f.path)}">${esc(f.name)}</div>
+          <div style="font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.path.includes('/') ? f.path.split('/').slice(0,-1).join('/') : '')}</div>
+        </div>
+        <span style="font-size:11px;color:var(--muted);flex-shrink:0;min-width:52px;text-align:right">${fmtBytes(f.size)}</span>
+        <a href="/api/download/${encodeURIComponent(f.path)}" download="${esc(f.name)}"
+           style="background:var(--blue);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;text-decoration:none;flex-shrink:0">⬇</a>
+        <button onclick="deleteDl(this,'${esc(f.path)}')"
+           style="background:none;border:1px solid var(--red);color:var(--red);border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;flex-shrink:0">🗑</button>
+      </div>`).join('');
+  } catch(e) {
+    list.innerHTML = `<span class="muted">Error: ${esc(e.message)}</span>`;
+  }
+}
+async function deleteDl(btn, filePath) {
+  if (!confirm(`Delete: ${filePath}?`)) return;
+  btn.disabled = true; btn.textContent = '…';
+  try {
+    const r = await fetch('/api/download/' + encodeURIComponent(filePath), { method: 'DELETE' });
+    const d = await r.json();
+    if (d.ok) {
+      const rowId = 'dl-row-' + btoa(filePath).replace(/[^a-z0-9]/gi,'_');
+      document.getElementById(rowId)?.remove();
+      showToast('🗑 Deleted ' + filePath.split('/').pop());
+      // refresh summary
+      const rows = document.querySelectorAll('#dl-list > div');
+      if (rows.length === 0) {
+        document.getElementById('dl-list').innerHTML = '<span class="muted">No downloads.</span>';
+        document.getElementById('dl-summary').textContent = '';
+      }
+    } else {
+      showToast('❌ ' + (d.error||'delete failed'));
+      btn.disabled = false; btn.textContent = '🗑';
+    }
+  } catch(e) {
+    showToast('❌ ' + e.message);
+    btn.disabled = false; btn.textContent = '🗑';
+  }
+}
+
 let tokensLoaded = false;
 async function loadTokens() {
   if (tokensLoaded) return;
@@ -739,7 +812,7 @@ function renderTokens(d) {
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;min-width:120px">
         <div style="font-size:10px;color:var(--muted);margin-bottom:4px">🔝 TOP JOB</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text)">${esc((d.rows[0]?.name||'—').slice(0,22))}</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(d.rows[0]?.name||'—')}">${esc(d.rows[0]?.name||'—')}</div>
         <div style="font-size:10px;color:var(--muted);margin-top:2px">${fmtK(d.rows[0]?.total||0)} tokens</div>
       </div>`;
   }
@@ -815,7 +888,7 @@ async function loadAndRenderTorrents() {
     card.innerHTML = all.map(t => `
       <div style="padding:6px 0;border-bottom:1px solid var(--border)">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-          <span style="font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1" title="${esc(t.name)}">${esc(t.name.slice(0,48))}${t.name.length>48?'…':''}</span>
+          <span style="font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1" title="${esc(t.name)}">${esc(t.name)}</span>
           <span style="font-size:10px;color:${statusColor(t.status)};flex-shrink:0;font-weight:600">${t.status}</span>
         </div>
         ${bar(t.pct)}
