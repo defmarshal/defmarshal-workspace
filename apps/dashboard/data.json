@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T03:21:56Z",
+  "generated_at": "2026-03-01T03:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.6G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.68 0.82 0.88",
-    "mem_used": "4.0Gi",
+    "load_avg": "1.19 1.03 0.96",
+    "mem_used": "4.3Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 13 hours, 42 minutes",
+    "uptime": "1 week, 2 days, 13 hours, 45 minutes",
     "disk_history": [
       81,
       81,
@@ -80,8 +80,8 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-01 02:08",
-      "last_line": "2026-03-01 02:08:59 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
+      "last_run": "2026-03-01 03:23",
+      "last_line": "2026-03-01 03:23:07 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
     }
   ],
   "research": {
@@ -92,93 +92,93 @@
   },
   "recent_commits": [
     {
+      "sha": "d0a54a76",
+      "agent": "misc",
+      "message": "fix(youtube-digest): send digest as clean channel+video list to Telegram, split into chunks if >3800 chars",
+      "time": "34 seconds ago"
+    },
+    {
+      "sha": "4f0d217a",
+      "agent": "build",
+      "message": "finalize workspace-builder session — progress summary, data refresh",
+      "time": "3 minutes ago"
+    },
+    {
       "sha": "c76b0d76",
       "agent": "build",
       "message": "refresh disk history (maintenance)",
-      "time": "89 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "8eb8be41",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "2 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "02991bb5",
       "agent": "research",
       "message": "AI Hardware & Chips 2026 (#224, 21KB) — Blackwell volume production (208B transistors, 192GB HBM3e, 8TB/s, 20PFLOPS FP4, GB200 NVL72 rack $5M→$75M ROI); NVIDIA Q4 FY2026 earnings ($68B total/$62B data center/$194B annual/73% YoY/13x scale since ChatGPT); Vera Rubin R100 H2-2026 (336B transistors/HBM4/22TB/s/50PFLOPS/10x inference cost reduction); AMD MI350 CDNA4 (288GB HBM3e/8TB/s/20PFLOPS FP4 parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal); Google Ironwood TPU v7 (192GB HBM3e/7.4TB/s/FP8, $185B capex 2026, Gemini 2.0 750M users on own silicon, Anthropic 1M TPU deal); AWS Trainium3 (3nm/2x perf/40% efficiency/Amazon $50B OpenAI deal); TSMC CoWoS 130K wafers/month target/$56B capex (+37% YoY); dual packaging+HBM bottleneck; hyperscaler $435B capex stack; 224 total",
-      "time": "2 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "7bc13e80",
       "agent": "misc",
       "message": "fix(clawdash): drop In/Out columns from token tab (6 cols), more room for Job name (v26)",
-      "time": "3 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "771f5240",
       "agent": "chore",
       "message": "update clawdash data (post-workspace-builder validation)",
-      "time": "3 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "42e60080",
       "agent": "build",
       "message": "routine maintenance — verification, daily log update, active-tasks tracking",
-      "time": "4 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "05a6bbd5",
       "agent": "misc",
       "message": "fix(clawdash): reduce token tab font to 10px, padding 4px 6px to prevent truncation (v25)",
-      "time": "5 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "a9b71f74",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "07292af4",
       "agent": "misc",
       "message": "fix(clawdash): remove stray extra } after renderOutputs breaking all JS",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "9a7d3eb6",
       "agent": "content",
       "message": "Fintech 2026 tech writeup (7.7KB) — agentic AI liability vacuum (Reg E gap for agent-initiated payments, Visa/MC verification protocols, Trump EO national standard push), neobank profitability split (Revolut $75B/$3.5B profit target, Monzo 8x/£113.9M, Nubank $1.9B, Chime IPO $9.8B; 5% profitable vs 95% still searching), stablecoin won settlement race ($200B mktcap/$50B daily vs CBDC-in-committee Digital Euro 2029/GENIUS Act), real-time rails (FedNow/SEPA Instant/UPI 500M/Pix; 1.68T→3.54T txns/irrevocable fraud stakes), 5 H1 signals; 5th content piece Mar 1, 223 research total",
-      "time": "7 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "0141147a",
       "agent": "chore",
       "message": "update planning files post-feature build",
-      "time": "8 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "b0f94e5d",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "10 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "66486133",
       "agent": "dev",
       "message": "fix reports/README.md literal \\n→real newlines + expand with file format docs; add research-today.sh (lists today's reports with titles/sizes, accepts YYYY-MM-DD); add prune-gh-branches.sh (safe dry-run pruner for stale gh-pages-* branches); prune 4 stale gh-* branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test all from Feb 27, unreferenced); register research-today + prune-gh-branches in quick",
-      "time": "11 minutes ago"
-    },
-    {
-      "sha": "c5a55cd5",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "12 minutes ago"
-    },
-    {
-      "sha": "597e5cfd",
-      "agent": "dev",
-      "message": "regenerate 2026-03-01 daily digest (now includes Fintech #223, 4 research+3 content); add today-summary.sh (one-liner production stats: research/content/dev counts + disk + archive total); register youtube-digest, tweet-new-reports, cleanup-archived, today-summary in quick; prune stale idea/add-pagination-to-research-list branch",
       "time": "14 minutes ago"
     }
   ],
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772330918672,
-      "next_run": 1772334034763,
+      "last_run": 1772335371549,
+      "next_run": 1772337634763,
       "last_status": "ok",
-      "last_duration_ms": 36658,
+      "last_duration_ms": 20567,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772333989585,
-      "next_run": 1772334109585,
+      "last_run": 1772335392116,
+      "next_run": 1772335512116,
       "last_status": "ok",
-      "last_duration_ms": 7780,
+      "last_duration_ms": 6436,
       "consecutive_errors": 0
     },
     {
@@ -671,10 +671,10 @@
       "schedule": "0 */2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772327487167,
-      "next_run": 1772334025629,
+      "last_run": 1772334696391,
+      "next_run": 1772341225629,
       "last_status": "ok",
-      "last_duration_ms": 465395,
+      "last_duration_ms": 675158,
       "consecutive_errors": 0
     },
     {
@@ -719,31 +719,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:48:31.562Z",
-      "text": "[Sat 2026-02-28 16:48 UTC] nice. i think this web is completed for now. we can move on"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:48:42.221Z",
-      "text": "nice nyaa~ ClawDash has come a long way desu~ (^^) ♪\n\nlet me log it before we move on:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:48:45.798Z",
-      "text": "logged ♪ what's next? (｡◕‿◕｡)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-02-28T16:49:05.214Z",
-      "text": "[Sat 2026-02-28 16:49 UTC] you tell me mewmew"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-02-28T16:49:30.407Z",
-      "text": "here's what i see on the radar nyaa~ 🐾\n\n**housekeeping that needs attention:**\n- 🗂️ **disk at 78%** — downloads folder is probably the culprit; `quick cleanup-downloads` could free space\n- 🌿 **stale idea branch** `idea/automate-active-tasks-cleanup-using` sitting around\n\n**things that got broken/silenced recently:**\n- 🔕 **4 cron jobs disabled** (supervisor, linkedin-pa, meta-supervisor, daily-digest) — disabled for token conservation a while back; worth revisiting if any should come back\n- 🤖 **agni sub-agent spawn returning \"unknown\"** — `openclaw sessions spawn` output parsing is broken in agni-cycle.sh, so Rudra gets spawned but isn't tracked\n\n**potential fun stuff:**\n- 📊 **openclaw-idle-rpg** — was in progress last i checked (game-cog skill, vishwakarma/agni pipeline), curious where it's at\n- 🔬 **Research Hub** — was planned but never deployed; def mentioned it as a project\n\nwhat sounds interesting to you? or is there something specific on your mind? (｡◕‿◕｡)♡"
-    },
     {
       "role": "user",
       "ts": "2026-02-28T16:51:57.280Z",
@@ -968,6 +943,31 @@
       "role": "assistant",
       "ts": "2026-03-01T03:21:18.442Z",
       "text": "[[reply_to_current]] working perfectly nyaa~ 🎉 here's the summary desu~:\n\n**📺 65 videos from 44 channels** in the last 24h ♪\n\nhighlights i spotted:\n- 🎮 **Pekora** — playing Resident Evil Requiem #1 (just dropped!)\n- 🎮 **penguinz0** — 4 videos including RE Requiem too (everyone's on it lol)\n- 📺 **Linus** — OLED monitors finally affordable + 4h WAN show\n- 🎵 **BLACKPINK** — 'GO' highlight clip (1.6M views already omg)\n- 🎌 **Garnt/Gigguk** — ranking Winter 2026 anime OPs\n- 🃏 **Crab Master / Dkayed / MBT** — YuGiOh gang all uploaded\n- 🌸 **hololive** — Matsuri, HIMEHINA, Mori Calli, Kizuna AI all active\n- 🔧 **Hugh Jeffreys / Denki** — tech repair/gadget content\n\ncontent looks legit and well-formatted desu~ daily cron fires at 09:00 Bangkok so you'll get it every morning automatically (^^) ♪"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-01T03:22:34.470Z",
+      "text": "[Sun 2026-03-01 03:22 UTC] show the digest in the chat in the future"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:23:00.094Z",
+      "text": "The delivery code is there but it truncates to 3800 chars and sends as one big message. Telegram has a 4096 char limit but 65 videos is way too long for one message — better to send it as a file or split it. Let me fix it to send the full digest as a **file attachment** instead:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:23:15.642Z",
+      "text": "The current approach sends it via `openclaw agent --deliver` which routes through the main session — but the actual channel send should use the `message` tool directly. The cleanest fix: send a **short summary** to Telegram + the full digest saved to file (already done). Let me update the script to send a nicely formatted short summary with top highlights instead of the truncated wall of text:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:23:35.098Z",
+      "text": "Now test the message formatting with the existing digest file:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T03:24:39.565Z",
+      "text": "[[reply_to_current]] done nyaa~ from tomorrow the digest will arrive here in Telegram every morning at 09:00 Bangkok desu~ ♪\n\nformat will be like:\n```\n📺 YouTube Digest — 2026-03-02\n_65 video(s) from 44 channel(s)_\n\n📡 Pekora\n  • [RE Requiem #2 ...](link)\n\n📡 Linus Tech Tips\n  • [OLED monitors...](link)\n...\n```\nsplits into 2 messages automatically since you follow 250 channels (^^)"
     }
   ]
 }
