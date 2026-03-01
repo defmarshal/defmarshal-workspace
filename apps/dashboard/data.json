@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T01:10:03Z",
+  "generated_at": "2026-03-01T01:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.5G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.78 0.89 0.81",
-    "mem_used": "4.1Gi",
+    "load_avg": "0.77 0.90 0.84",
+    "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 11 hours, 30 minutes",
+    "uptime": "1 week, 2 days, 11 hours, 35 minutes",
     "disk_history": [
       80,
       80,
@@ -23,7 +23,7 @@
       80,
       80,
       80,
-      80,
+      81,
       81,
       81,
       81,
@@ -56,8 +56,8 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-03-01 00:01",
-      "last_line": "[2026-03-01T00:01:42Z] [content-agent] Generated Sunday morning digest 2026-03-01 (4.7KB, 60aeb6f0). Recap: 17 research reports + 25 content pieces on Feb 28, 219 INDEX total, dev highlights (pipefail/cron-failures/branch cleanup), system status, week ahead. First content piece of March 2026."
+      "last_run": "2026-03-01 01:12",
+      "last_line": "[2026-03-01T01:12:02Z] [content-agent] Generated research spotlight 2026-03-01 01:06 UTC (5.1KB, 3a6c48f4). Covered both Mar 1 research reports: Biotech/Longevity 2026 (patent cliff framing, Insilico Phase 2, orforglipron Phase 3, Casgevy scale-up, Aktis $318M, Altos/BioAge/NewLimit longevity) + Green Tech/Climate AI 2026 (battery $70/kWh record, BESS 57GWh/+29%, AI-energy paradox, SMR momentum/2029-35 timeline, hydrogen reset, solid-state/sodium-ion/iron-air emerging batteries). 221 research reports, 3 content pieces Mar 1."
     },
     {
       "name": "dev-agent",
@@ -74,8 +74,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-03-01 00:30",
-      "last_line": "2026-03-01 00:30:11 UTC - Agent Manager stopped"
+      "last_run": "2026-03-01 01:11",
+      "last_line": "2026-03-01 01:11:15 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "c3b810eb",
-      "agent": "dev",
-      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "sha": "3a6c48f4",
+      "agent": "content",
+      "message": "research spotlight Mar 1 01:06 UTC — Biotech/Longevity ($176B patent cliff, Insilico Phase 2, orforglipron, Altos Labs) + Green Tech/Climate AI ($70/kWh battery record, BESS +29% YoY, SMR momentum, hydrogen reset, solid-state EV batteries); 221 reports, 3 content pieces Mar 1",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "2f5afaa9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
       "time": "4 minutes ago"
     },
     {
-      "sha": "4005a8f0",
+      "sha": "9e18f28c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "72817b4f",
+      "sha": "c3b810eb",
+      "agent": "dev",
+      "message": "tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "4005a8f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "c38f9050",
+      "sha": "72817b4f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "7bbe6195",
+      "sha": "c38f9050",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "69dfac74",
+      "sha": "7bbe6195",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "2ec89956",
+      "sha": "69dfac74",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "7ae10a52",
+      "sha": "2ec89956",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
+      "sha": "7ae10a52",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "40 minutes ago"
+    },
+    {
       "sha": "04f67a26",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "58e327fc",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "1a65208a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "813d5736",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "578138e1",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "55 minutes ago"
-    },
-    {
-      "sha": "ecc7ce6a",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "9b15b128",
-      "agent": "research",
-      "message": "Green Tech & Climate AI 2026 — battery $70/kWh record, BESS 57GWh/+29% YoY, $2T clean energy investment, nuclear SMR renaissance (>$1B rounds, Google/Microsoft PPAs), AI-energy nexus (39 states power price rise), hydrogen reset, solid-state/sodium-ion/iron-air batteries, EV parity; 221 reports",
-      "time": "63 minutes ago"
     }
   ],
   "heartbeat": {
@@ -235,7 +235,13 @@
       "file": "INDEX",
       "ts": "",
       "title": "Content Archive Index",
-      "size": 52452
+      "size": 52597
+    },
+    {
+      "file": "2026-03-01-0106-research-spotlight",
+      "ts": "2026-03-01-0106",
+      "title": "Research Spotlight — March 1, 2026 (01:06 UTC)",
+      "size": 5293
     },
     {
       "file": "2026-03-01-morning-digest",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-0323",
       "title": "🛠️ Implementation Decoder: What It Really Takes to Deploy IBM Planning Analytics",
       "size": 2272
-    },
-    {
-      "file": "2026-02-28-0212-linkedin-pa-digest",
-      "ts": "2026-02-28-0212",
-      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
-      "size": 741
     }
   ],
   "cron_jobs": [
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772325000008,
-      "next_run": 1772326800000,
+      "last_run": 1772327447676,
+      "next_run": 1772328600000,
       "last_status": "ok",
-      "last_duration_ms": 15695,
+      "last_duration_ms": 39241,
       "consecutive_errors": 0
     },
     {
@@ -443,10 +443,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772290942568,
-      "next_run": 1772326800000,
+      "last_run": 1772327173750,
+      "next_run": 1772330400000,
       "last_status": "ok",
-      "last_duration_ms": 141526,
+      "last_duration_ms": 137499,
       "consecutive_errors": 0
     },
     {
@@ -479,10 +479,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772290800012,
-      "next_run": 1772326800000,
+      "last_run": 1772326805815,
+      "next_run": 1772330400000,
       "last_status": "ok",
-      "last_duration_ms": 142556,
+      "last_duration_ms": 367935,
       "consecutive_errors": 0
     },
     {
@@ -623,10 +623,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772291084094,
-      "next_run": 1772326800000,
+      "last_run": 1772327311249,
+      "next_run": 1772330400000,
       "last_status": "ok",
-      "last_duration_ms": 139911,
+      "last_duration_ms": 136427,
       "consecutive_errors": 0
     },
     {
@@ -700,8 +700,8 @@
     }
   ],
   "content_stats": {
-    "total": 503,
-    "today": 1,
+    "total": 504,
+    "today": 2,
     "latest_title": "Sunday Morning Digest — March 1, 2026"
   },
   "chat": [
