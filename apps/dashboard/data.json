@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T04:05:03Z",
+  "generated_at": "2026-03-01T04:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.72 0.76 0.75",
-    "mem_used": "3.9Gi",
+    "load_avg": "1.39 1.01 0.86",
+    "mem_used": "4.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 14 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 14 hours, 30 minutes",
     "disk_history": [
       81,
       81,
@@ -50,8 +50,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-03-01 03:19",
-      "last_line": "[2026-03-01T03:19:47Z] [research-agent] Completed AI Hardware & Chips 2026 report (21KB, 02991bb5). Covered: Blackwell B200 volume production (208B transistors, 192GB HBM3e, 8TB/s bw, 20PFLOPS FP4, dual-die CoWoS-L chiplet, GB200 NVL72 rack 130TB/s, $5M→$75M 15x ROI); NVIDIA Q4 FY2026 earnings ($68B revenue +73% YoY, $62B data center +75%, $194B annual +68%, 13x scale since ChatGPT, $97B FCF, $78B Q1 guide, $20B R&D, sovereign AI $30B); Rubin R100 H2-2026 (\\~336B transistors, HBM4 22TB/s, 50PFLOPS FP4, 10x inference cost reduction, Vera CPU 88-core ARM, NVLink 6); AMD MI350 CDNA4 duopoly (MI355X 288GB HBM3e/8TB/s/20PFLOPS parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal, MI400/Helios HBM4 late 2026); Google ($185B capex, Trillium 4.7x TPU v5e/67% efficiency/Anthropic 1M TPU deal, Ironwood TPU v7 192GB HBM3e/FP8/9216-chip pod); AWS Trainium3 (3nm/2x perf/40% eff, 144-chip UltraServer, 1M-chip cluster, Amazon $50B OpenAI/AWS exclusive); TSMC CoWoS 130K wafers/month target (+4x from 2024, AP7 Chiayi hub), $56B capex +37% YoY (70-80% N2/A16, 10-20% packaging); dual CoWoS+HBM4 bottleneck; hyperscaler $435B+ capex stack. 224 total reports. 5 topics today (Mar 1)."
+      "last_run": "2026-03-01 04:09",
+      "last_line": "[2026-03-01T04:09:45Z] [research-agent] Completed Spring 2026 Anime Season Preview (19KB, d176ede9). Selected anime topic to balance 5 tech reports already completed today. Covered: Tier S (Classroom of the Elite S4 — Lerche, Apr 1, 90-min 4-ep special, Eir Aoi OP; Witch Hat Atelier — Bug Films, Apr 6, Kamome Shirahama magic-as-craft, Crunchyroll Anime Nights March 16 preview; Daemons of the Shadow Realm — Bones Film, Hiromu Arakawa, Apr 4, 2-cour, dir:Masahiro Ando, music:Kenichiro Suehiro; Re:Zero S4 — White Fox, Arc 6 Pleiades Watchtower, return-by-death origin revealed, psychologically darkest arc; One Piece Elbaph — Toei, 20yr fan wait; MHA Vigilantes — Bones Film complete manga); Tier A (Kaiju No. 8 S2; Blue Lock S3 Neo Egoist League Disney+; Tensei Slime S4 Apr 3 five split-cours; Fire Force S3 David Production finale); Tier B (Dr. Stone SF Part 3 TMS finale; Drops of God S2); Ghost in the Shell Science SARU corrected to July 2026 Summer not Spring; Crunchyroll Anime Nights 2026 March 16 theatrical preview (US/Canada); streaming platform breakdown; season context: COVID-era backlog clearing + multiple franchise climax arcs coinciding = densest season since Fall 2023. 225 total reports. 6 reports today Mar 1."
     },
     {
       "name": "content-agent",
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 231,
+    "total": 232,
     "tts_coverage": "92%",
-    "latest": "INDEX\nnone",
+    "latest": "INDEX",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "28023f38",
-      "agent": "content",
-      "message": "AI Hardware 2026 tech writeup (7.8KB) — 4 things that actually matter: (1) Blackwell economics ($5M rack→$75M token revenue 15x ROI, $194B NVDA annual data center +68%, 13x since ChatGPT, $435B hyperscaler capex stack justified by spreadsheet math); (2) Vera Rubin 10x inference cost drop (H2-2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS, Vera CPU 88-core ARM, agentic AI consumer scale viability); (3) AMD duopoly with catch (MI355X 288GB HBM3e parity, OpenAI 6GW deal, ROCm 7.0 CUDA parity; wins cost-inference, loses frontier training custom kernels); (4) CoWoS as real chokepoint (35K→130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex); $1T semiconductor market 2026; 5th content piece Mar 1; 224 total research",
-      "time": "69 seconds ago"
+      "sha": "d176ede9",
+      "agent": "research",
+      "message": "Spring 2026 Anime Season Preview (#225, 19KB) — Classroom of the Elite S4 (Apr 1 4-ep 90min special, Lerche, OP:Eir Aoi MONSTER); One Piece Elbaph Arc (generational 20yr wait, Toei); Re:Zero S4 (White Fox, Arc 6 Pleiades Watchtower psychological endurance, return-by-death origin revealed); Kaiju No. 8 S2; Blue Lock S3 (Neo Egoist League, Disney+); Tensei Slime S4 (Apr 3, 5 split-cours); Fire Force S3 (David Production, finale arc); Dr. Stone SF Part 3 (TMS finale); Witch Hat Atelier (Bug Films Apr 6, Kamome Shirahama, magic-as-craft; Crunchyroll Anime Nights March 16); Daemons of the Shadow Realm (Bones Film, Hiromu Arakawa Apr 4, 2-cour, dir:Masahiro Ando, music:Kenichiro Suehiro); MHA Vigilantes (Bones Film); Ghost in the Shell Science SARU confirmed July 2026 (Summer); tier list S/A/B; streaming platform summary; 225 total",
+      "time": "28 seconds ago"
     },
     {
-      "sha": "70d69f47",
-      "agent": "dev",
-      "message": "regen daily digest 2026-03-01 (now 5 research + 4 content, AI hardware #224 + fintech writeup); add content-today.sh (parallel to research-today, lists content pieces with titles/sizes, accepts YYYY-MM-DD); register content-today in quick + help text; update TOOLS.md with 8 recent commands missing from docs (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); trim idea-executor.log 1023→1000 lines",
-      "time": "3 minutes ago"
-    },
-    {
-      "sha": "8e04a074",
+      "sha": "871ed900",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "03a4ffa2",
+      "sha": "28023f38",
+      "agent": "content",
+      "message": "AI Hardware 2026 tech writeup (7.8KB) — 4 things that actually matter: (1) Blackwell economics ($5M rack→$75M token revenue 15x ROI, $194B NVDA annual data center +68%, 13x since ChatGPT, $435B hyperscaler capex stack justified by spreadsheet math); (2) Vera Rubin 10x inference cost drop (H2-2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS, Vera CPU 88-core ARM, agentic AI consumer scale viability); (3) AMD duopoly with catch (MI355X 288GB HBM3e parity, OpenAI 6GW deal, ROCm 7.0 CUDA parity; wins cost-inference, loses frontier training custom kernels); (4) CoWoS as real chokepoint (35K→130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex); $1T semiconductor market 2026; 5th content piece Mar 1; 224 total research",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "70d69f47",
+      "agent": "dev",
+      "message": "regen daily digest 2026-03-01 (now 5 research + 4 content, AI hardware #224 + fintech writeup); add content-today.sh (parallel to research-today, lists content pieces with titles/sizes, accepts YYYY-MM-DD); register content-today in quick + help text; update TOOLS.md with 8 recent commands missing from docs (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); trim idea-executor.log 1023→1000 lines",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "8e04a074",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "038795d3",
+      "sha": "03a4ffa2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "f6c35a13",
+      "sha": "038795d3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "909d1828",
+      "sha": "f6c35a13",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "a193b941",
+      "sha": "909d1828",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "a193b941",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "82a5d31d",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "495e3c2c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "5d455164",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "d0a54a76",
       "agent": "misc",
       "message": "fix(youtube-digest): send digest as clean channel+video list to Telegram, split into chunks if >3800 chars",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "4f0d217a",
       "agent": "build",
       "message": "finalize workspace-builder session — progress summary, data refresh",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "c76b0d76",
-      "agent": "build",
-      "message": "refresh disk history (maintenance)",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "8eb8be41",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "48 minutes ago"
     }
   ],
   "heartbeat": {
