@@ -520,7 +520,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 // ── Helpers ───────────────────────────────────────────────────────────────
-function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 function chip(l, c) { return `<span class="chip ${c}">${l}</span>`; }
 
 function fmtDuration(ms) {
@@ -779,14 +779,18 @@ function renderOutputs(outputs) {
 
 // ── Projects tab ────────────────────────────────────────────────────────────
 async function loadProjects() {
+  const el = document.getElementById('projects-grid');
+  if (!el) return;
+  // Show loading state
+  el.innerHTML = '<div class="card" style="grid-column:1/-1"><span class="muted">Loading projects...</span></div>';
+  
   try {
     const res = await fetch('/api/projects');
     const data = await res.json();
     if (!data.ok) throw new Error(data.error || 'Failed to load projects');
     renderProjects(data.projects);
   } catch (e) {
-    const el = document.getElementById('projects-grid');
-    if (el) el.innerHTML = `<div class="card" style="grid-column:1/-1"><span class="bad">Error loading projects: ${esc(e.message)}</span></div>`;
+    el.innerHTML = `<div class="card" style="grid-column:1/-1"><span class="bad">Error loading projects: ${esc(e.message)}</span></div>`;
   }
 }
 
@@ -798,7 +802,7 @@ function renderProjects(projects) {
     const statusChip = p.status === 'active' ? chip('active', 'ok') : chip('idle', 'muted');
     const commitInfo = p.lastCommit
       ? `<div style="font-size:10px;color:var(--muted);margin-top:4px;font-family:monospace">
-           <span>${esc((p.lastCommit?.hash?.slice(0,7) || "??????"))}</span> ${esc(p.lastCommit.message)}
+           <span>${esc(p.lastCommit?.hash?.slice(0,7) || "??????")}</span> ${esc(p.lastCommit?.message || 'No message')}
          </div>`
       : '<div class="muted" style="font-size:10px;margin-top:4px">No commits yet</div>';
     
