@@ -1,14 +1,14 @@
 # Task Plan — Strategic Workspace Builder
 
-**Session:** workspace-builder-20260301-0111
-**Time:** 2026-03-01 01:11 UTC
+**Session:** workspace-builder-20260301-0311
+**Time:** 2026-03-01 03:11 UTC
 **Mode:** Routine maintenance with strategic improvements
 
 ---
 
 ## Phase 1: Assessment & Baseline
 
-**Goal:** Capture current state, identify immediate needs.
+**Goal:** Capture current state, verify no urgent issues.
 
 ### Step 1.1 — System Health Snapshot
 - Run `./quick health` — note disk warnings, updates, memory status
@@ -25,7 +25,7 @@
 - Count downloads: `ls downloads/ | wc -l`; size: `du -sh downloads/`
 - Check for untracked files: `git status --porcelain`
 - List idea branches: `git branch -a | grep 'idea/'` for stale branch check
-- Review recent daily logs: `memory/2026-02-28.md` completeness
+- Review recent daily logs: `memory/2026-02-28.md` completeness, `memory/2026-03-01.md` entry status
 
 **Expected:** Clear picture of workspace health and any action items
 
@@ -37,8 +37,8 @@
 
 ### Step 2.1 — Downloads Cleanup (Qualified)
 - If downloads count >25 OR size >10GB:
-  - Run dry‑run: `./quick cleanup-downloads --dry-run --verbose`
-  - Analyze output: if >5 files OR >1GB removable, proceed to execute
+  - Run dry‑run: `./quick cleanup-downloads --verbose`
+  - Analyze output: if >5 files OR >1GB reclaimable, proceed to execute
   - Execute: `./quick cleanup-downloads --execute --verbose`
 - Else: skip, monitor next cycle
 
@@ -77,22 +77,12 @@
 
 **Expected:** Completed daily log for archive
 
-### Step 3.2 — Create Today's Log (Mar 1)
-- Create `memory/2026-03-01.md` with header:
-  ```markdown
-  # 2026-03-01 — Daily Log
+### Step 3.2 — Update Today's Log (Mar 1)
+- Open `memory/2026-03-01.md`
+- Add a new entry for this workspace builder run at 03:11 UTC
+- Include: system snapshot, actions taken, decisions made
 
-  ## Cron & Supervisor Activity
-
-  ## System Status
-
-  ## Active Agents
-
-  ## Notes
-  ```
-- Add initial entry: workspace builder started at 01:11 UTC
-
-**Expected:** Today's log initialized
+**Expected:** Daily log current with latest activity
 
 ### Step 3.3 — MEMORY.md Line Count Check
 - Count lines: `wc -l < MEMORY.md`
@@ -116,24 +106,23 @@
 
 ### Step 4.2 — Commit Build Changes
 - If git dirty (staged or unstaged build-related changes), commit with prefix `build: `
-- Commit message format: `build: <summary>` (e.g., "cleanup downloads, prune branches, initialize daily log")
+- Commit message format: `build: <summary>` (e.g., "routine maintenance, update logs, validate constraints")
 - Push to origin: `git push origin master`
 
 **Expected:** Remote up to date
 
 ### Step 4.3 — active‑tasks Registry Update
-- Find or add entry: `[workspace-builder-20260301-0111]`
-- Status: `running` initially; after completion change to `validated`
-- Add verification block:
+- Add entry (if not present): `[workspace-builder-20260301-0311]` status `running` at start of session
+- After completion: Change to `validated`, add verification block:
   ```
   - Verification: active-tasks <2KB, MEMORY.md ≤30, health green, reindex fresh, git clean & pushed, [specific actions taken]
   ```
-- Stage, commit, push
+- Stage, commit, push (could be separate commit or part of build commit)
 
 **Expected:** Registry reflects current state and verification
 
 ### Step 4.4 — Final Checks
-- Verify no temp files left: `find . -maxdepth 2 -name "*.tmp" -o -name "*~"` should return nothing
+- Temp files: `find . -maxdepth 2 -name "*.tmp" -o -name "*~"` should return nothing
 - Verify markdown validity: quick scan for broken formatting in touched files
 - Ensure all `git push` completed successfully
 
@@ -161,11 +150,11 @@
 
 - [ ] Phase 1: Baseline captured, all metrics recorded
 - [ ] Phase 2: Downloads cleanup (if needed), stale branches pruned, artifacts tracked
-- [ ] Phase 3: Daily logs updated (Feb 28 closed, Mar 1 started), MEMORY.md ≤30 lines
+- [ ] Phase 3: Daily logs updated (Feb 28 closed, Mar 1 updated), MEMORY.md ≤30 lines
 - [ ] Phase 4: All constraints ✅, git clean & pushed, active‑tasks validated
 - [ ] No temp files, no broken markdown, no uncommitted build artifacts
 
 ---
 
-**Plan prepared:** 2026-03-01 01:11 UTC
+**Plan prepared:** 2026-03-01 03:11 UTC
 **Ready for execution:** Yes
