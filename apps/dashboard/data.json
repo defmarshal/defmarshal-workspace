@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T07:05:03Z",
+  "generated_at": "2026-03-01T07:05:33Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
@@ -9,8 +9,8 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "11G",
-    "load_avg": "1.21 0.95 0.83",
-    "mem_used": "3.9Gi",
+    "load_avg": "1.51 1.05 0.86",
+    "mem_used": "4.4Gi",
     "mem_total": "23Gi",
     "uptime": "1 week, 2 days, 17 hours, 25 minutes",
     "disk_history": [
@@ -23,8 +23,8 @@
       81,
       81,
       81,
-      81,
-      81,
+      83,
+      83,
       83,
       83,
       83,
@@ -85,47 +85,53 @@
     }
   ],
   "research": {
-    "total": 232,
+    "total": 231,
     "tts_coverage": "93%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "c031aa0a",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 seconds ago"
+    },
+    {
       "sha": "e1273d23",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "f481bc7d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "300d4dfe",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "16 minutes ago"
     },
     {
       "sha": "5bf94f50",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "979213db",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "49c69fe9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "40a79073",
@@ -137,25 +143,25 @@
       "sha": "3bbbd984",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "680231cb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "41 minutes ago"
     },
     {
       "sha": "05f5bce1",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "c9665a9c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "51 minutes ago"
     },
     {
       "sha": "e0df2e7f",
@@ -167,18 +173,12 @@
       "sha": "e05f8079",
       "agent": "research",
       "message": "update INDEX.md — add reports #230-231 (Frontier AI Models Feb 2026 + SEA Digital Banking & Fintech 2026), update count to 231 entries",
-      "time": "51 minutes ago"
+      "time": "52 minutes ago"
     },
     {
       "sha": "711395fe",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0612)",
-      "time": "53 minutes ago"
-    },
-    {
-      "sha": "ec0e768a",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
       "time": "53 minutes ago"
     }
   ],

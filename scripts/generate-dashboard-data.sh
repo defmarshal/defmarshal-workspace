@@ -216,7 +216,7 @@ PYEOF
 fi
 
 # ── Research library ──────────────────────────────────────────────────────────
-TOTAL_REPORTS=$(ls -1 research/*.md 2>/dev/null | wc -l || echo 0)
+TOTAL_REPORTS=$(ls -1 research/*.md 2>/dev/null | grep -v '/INDEX\.md$' | wc -l || echo 0)
 TOTAL_MP3=$(ls -1 research/*.mp3 2>/dev/null | wc -l || echo 0)
 TTS_COVERAGE=$([ "$TOTAL_REPORTS" -gt 0 ] && echo $(( TOTAL_MP3 * 100 / TOTAL_REPORTS )) || echo 0)
 LATEST_REPORT=$(ls -1t research/*.md 2>/dev/null | head -1 | sed 's|research/||; s|\.md||' || echo "none")
