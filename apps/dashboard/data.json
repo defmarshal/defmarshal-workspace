@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T00:05:02Z",
+  "generated_at": "2026-03-01T00:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.84 0.96 0.89",
-    "mem_used": "4.2Gi",
+    "load_avg": "0.87 0.88 0.88",
+    "mem_used": "4.0Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 10 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 10 hours, 30 minutes",
     "disk_history": [
       80,
       80,
@@ -36,7 +36,7 @@
       80,
       80,
       80,
-      80,
+      81,
       81
     ]
   },
@@ -50,8 +50,8 @@
     {
       "name": "research-agent",
       "active": true,
-      "last_run": "2026-03-01 00:04",
-      "last_line": "[2026-03-01T00:04:47Z] [research-agent] Completed Biotech & Longevity 2026 report (16.6KB, 0ba4b42c). $176B patent cliff driving M&A (+15% ING forecast), Isomorphic Labs 2×AlphaFold3 upgrade (Feb 2026), Insilico Medicine Phase2 positive IPF (18mo target-to-phase1), oral GLP-1 race (orforglipron Phase3, Novo/Lilly/Pfizer), 46+ FDA CGT approvals, CRISPR Casgevy $2.2M/patient, in vivo CRISPR frontier (Intellia Phase3), radiopharmaceuticals (Aktis IPO $318M), longevity startups (Altos $3B/Calico/BioAge/NewLimit), epigenetic clocks, personalised medicine, microbiome Rx, 6 H2 signals. 220 total reports. 1 topic today (Mar 1)."
+      "last_run": "2026-03-01 00:07",
+      "last_line": "[2026-03-01T00:07:37Z] [research-agent] Completed Green Tech & Climate AI 2026 report (14.5KB, 9b15b128). Battery $70/kWh record low (BNEF), BESS 57GWh/28GW +29% YoY, $2T global clean energy investment, nuclear SMR renaissance (>$1B Q4 2025 rounds, Google Kairos/Microsoft TMI PPAs), AI-energy nexus (39/50 US states power price rise, data center decoupling trend), hydrogen pipeline cleanup, solid-state/sodium-ion/iron-air emerging batteries, EV market table, 6 H1 signals, geopolitics (Brent $59, LNG slump, copper standout). 221 total reports. 2 topics today (Mar 1)."
     },
     {
       "name": "content-agent",
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 227,
-    "tts_coverage": "94%",
+    "total": 228,
+    "tts_coverage": "93%",
     "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "9b15b128",
+      "agent": "research",
+      "message": "Green Tech & Climate AI 2026 — battery $70/kWh record, BESS 57GWh/+29% YoY, $2T clean energy investment, nuclear SMR renaissance (>$1B rounds, Google/Microsoft PPAs), AI-energy nexus (39 states power price rise), hydrogen reset, solid-state/sodium-ion/iron-air batteries, EV parity; 221 reports",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "bd6cf3b1",
+      "agent": "auto",
+      "message": "maintenance update 2026-03-01 00:06 UTC",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "0b065d52",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "0ba4b42c",
       "agent": "research",
       "message": "Biotech & Longevity 2026 — $176B patent cliff M&A wave, Isomorphic Labs 2×AlphaFold3 upgrade, Insilico Phase2 positive (IPF), oral GLP-1 race (orforglipron Phase3), CRISPR Casgevy scale-up, 46+ CGT approvals, radiopharmaceuticals surge, longevity startups (Altos/Calico/BioAge), epigenetic clocks; 220 reports",
-      "time": "26 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "c9c9fdee",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0002)",
-      "time": "2 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "60aeb6f0",
       "agent": "content",
       "message": "Sunday morning digest 2026-03-01 — Feb 28 recap (17 research reports, 25 content pieces, 219 INDEX total), dev highlights (pipefail hardening, cron-failures fix, branch cleanup), system status, week ahead",
-      "time": "3 minutes ago"
+      "time": "8 minutes ago"
     },
     {
       "sha": "ce7765c8",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "e7667ec7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "3df3e61b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "b1941a48",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "05091d99",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "1483ddb6",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "df00ad99",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "4a0b08ea",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "c9797f76",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "3b0048d9",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "45 minutes ago"
-    },
-    {
-      "sha": "ffa92f4a",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "86915b26",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
@@ -371,10 +371,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772316177303,
-      "next_run": 1772323336434,
+      "last_run": 1772323348738,
+      "next_run": 1772330536434,
       "last_status": "ok",
-      "last_duration_ms": 28318,
+      "last_duration_ms": 36318,
       "consecutive_errors": 0
     },
     {
@@ -491,10 +491,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772301879340,
-      "next_run": 1772323478568,
+      "last_run": 1772323545996,
+      "next_run": 1772345078568,
       "last_status": "ok",
-      "last_duration_ms": 27883,
+      "last_duration_ms": 66840,
       "consecutive_errors": 0
     },
     {
@@ -503,10 +503,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772301851605,
-      "next_run": 1772323387460,
+      "last_run": 1772323612836,
+      "next_run": 1772344987460,
       "last_status": "ok",
-      "last_duration_ms": 27716,
+      "last_duration_ms": 7136,
       "consecutive_errors": 0
     },
     {
@@ -515,10 +515,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772316205641,
-      "next_run": 1772323375341,
+      "last_run": 1772323535604,
+      "next_run": 1772330575341,
       "last_status": "ok",
-      "last_duration_ms": 28123,
+      "last_duration_ms": 10392,
       "consecutive_errors": 0
     },
     {
@@ -527,10 +527,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772301685022,
-      "next_run": 1772323211600,
+      "last_run": 1772323517939,
+      "next_run": 1772344811600,
       "last_status": "ok",
-      "last_duration_ms": 28092,
+      "last_duration_ms": 10814,
       "consecutive_errors": 0
     },
     {
@@ -575,10 +575,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772320052593,
-      "next_run": 1772323234763,
+      "last_run": 1772323385056,
+      "next_run": 1772326834763,
       "last_status": "ok",
-      "last_duration_ms": 28819,
+      "last_duration_ms": 132883,
       "consecutive_errors": 0
     },
     {
@@ -599,10 +599,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772316239134,
-      "next_run": 1772323439125,
+      "last_run": 1772323619972,
+      "next_run": 1772330639125,
       "last_status": "ok",
-      "last_duration_ms": 28716,
+      "last_duration_ms": 11666,
       "consecutive_errors": 0
     },
     {
@@ -611,10 +611,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772316148390,
-      "next_run": 1772323317835,
+      "last_run": 1772323338194,
+      "next_run": 1772330517835,
       "last_status": "ok",
-      "last_duration_ms": 28913,
+      "last_duration_ms": 10543,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772323108928,
-      "next_run": 1772323228928,
+      "last_run": 1772323768770,
+      "next_run": 1772323888770,
       "last_status": "ok",
-      "last_duration_ms": 28599,
+      "last_duration_ms": 6181,
       "consecutive_errors": 0
     },
     {
