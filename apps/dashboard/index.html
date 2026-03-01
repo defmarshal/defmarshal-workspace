@@ -337,17 +337,17 @@
       <h2>💰 Token Usage (last 7 days)</h2>
       <div id="tokens-summary" style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px"></div>
       <div id="tokens-table-wrap" style="overflow-x:auto">
-        <table id="tokens-table" style="width:100%;border-collapse:collapse;font-size:12px">
+        <table id="tokens-table" style="width:100%;border-collapse:collapse;font-size:10px">
           <thead>
             <tr style="text-align:left;border-bottom:1px solid var(--border)">
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500">Job</th>
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Runs</th>
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Avg tok</th>
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">In</th>
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Out</th>
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Total</th>
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500">Share</th>
-              <th style="padding:6px 8px;color:var(--muted);font-weight:500;text-align:right">Last run</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500">Job</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Runs</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Avg tok</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">In</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Out</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Total</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500">Share</th>
+              <th style="padding:4px 6px;color:var(--muted);font-weight:500;text-align:right">Last run</th>
             </tr>
           </thead>
           <tbody id="tokens-tbody"></tbody>
@@ -754,19 +754,19 @@ function renderTokens(d) {
     const lastAgo = row.last_run_ms ? fmtDuration(now - row.last_run_ms) + ' ago' : '—';
     const barColor = i === 0 ? 'var(--blue)' : i < 3 ? 'var(--green)' : 'var(--muted)';
     return `<tr style="border-bottom:1px solid var(--border)">
-      <td style="padding:7px 8px;font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(row.name)}">${esc(row.name)}</td>
-      <td style="padding:7px 8px;text-align:right;color:var(--muted)">${row.runs}</td>
-      <td style="padding:7px 8px;text-align:right">${fmtK(row.avg_tokens)}</td>
-      <td style="padding:7px 8px;text-align:right;color:var(--muted)">${fmtK(row.total_in)}</td>
-      <td style="padding:7px 8px;text-align:right;color:var(--muted)">${fmtK(row.total_out)}</td>
-      <td style="padding:7px 8px;text-align:right;font-weight:600">${fmtK(row.total)}</td>
-      <td style="padding:7px 8px;min-width:100px">
-        <div style="background:var(--surface2);border-radius:3px;height:8px;position:relative;overflow:hidden">
+      <td style="padding:4px 6px;font-size:10px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(row.name)}">${esc(row.name)}</td>
+      <td style="padding:4px 6px;font-size:10px;text-align:right;color:var(--muted)">${row.runs}</td>
+      <td style="padding:4px 6px;font-size:10px;text-align:right">${fmtK(row.avg_tokens)}</td>
+      <td style="padding:4px 6px;font-size:10px;text-align:right;color:var(--muted)">${fmtK(row.total_in)}</td>
+      <td style="padding:4px 6px;font-size:10px;text-align:right;color:var(--muted)">${fmtK(row.total_out)}</td>
+      <td style="padding:4px 6px;font-size:10px;text-align:right;font-weight:600">${fmtK(row.total)}</td>
+      <td style="padding:4px 6px;font-size:10px;min-width:80px">
+        <div style="background:var(--surface2);border-radius:3px;height:6px;position:relative;overflow:hidden">
           <div style="background:${barColor};height:100%;width:${pct}%;border-radius:3px;transition:width .3s"></div>
         </div>
         <span style="font-size:9px;color:var(--muted)">${pct}%</span>
       </td>
-      <td style="padding:7px 8px;text-align:right;font-size:11px;color:var(--muted);white-space:nowrap">${lastAgo}</td>
+      <td style="padding:4px 6px;font-size:10px;text-align:right;color:var(--muted);white-space:nowrap">${lastAgo}</td>
     </tr>`;
   }).join('');
 }
