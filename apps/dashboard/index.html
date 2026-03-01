@@ -744,7 +744,7 @@ function renderProjects(projects) {
     const statusChip = p.status === 'active' ? chip('active', 'ok') : chip('idle', 'muted');
     const commitInfo = p.lastCommit
       ? `<div style="font-size:10px;color:var(--muted);margin-top:4px;font-family:monospace">
-           <span>${esc(p.lastCommit.hash.slice(0,7))}</span> ${esc(p.lastCommit.message)}
+           <span>${esc((p.lastCommit?.hash?.slice(0,7) || "??????"))}</span> ${esc(p.lastCommit.message)}
          </div>`
       : '<div class="muted" style="font-size:10px;margin-top:4px">No commits yet</div>';
     
