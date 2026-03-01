@@ -93,9 +93,18 @@ def main():
     out_clean = out.rstrip('%')
     disk_pct = int(out_clean) if out_clean.isdigit() else 0
     if disk_pct >= 90:
-        disk_status = f"Disk CRITICAL {disk_pct}%"
+        # Show top disk consumer for actionability
+        top_out, _, _ = run_cmd(
+            f"du -sh {WORKSPACE}/* 2>/dev/null | sort -rh | head -1 | awk '{{print $1, $2}}'"
+        )
+        top_str = f" (top: {top_out})" if top_out else ""
+        disk_status = f"Disk CRITICAL {disk_pct}%{top_str}"
     elif disk_pct >= 80:
-        disk_status = f"Disk warning {disk_pct}%"
+        top_out, _, _ = run_cmd(
+            f"du -sh {WORKSPACE}/* 2>/dev/null | sort -rh | head -1 | awk '{{print $1, $2}}'"
+        )
+        top_str = f" (top: {top_out})" if top_out else ""
+        disk_status = f"Disk warning {disk_pct}%{top_str}"
     else:
         disk_status = f"Disk OK {disk_pct}%"
 

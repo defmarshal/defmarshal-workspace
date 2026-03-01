@@ -1,6 +1,6 @@
 ⏰ UTC+7 time (24/7 operation)
 🌤️ Weather Bangkok: clear, +30°C
-💾 System: disk, updates
+💾 System: disk, updates — ⚠️ Disk at 81% (downloads/ 9.7GB). Alert def if disk ≥85%.
 🎉 Holiday: Nyepi (Mar 18–19) — Day of Silence / Balinese New Year
 🤖 Agents: verify running (from active-tasks.md)
 
@@ -10,7 +10,8 @@
 
 🚨 Proactive alerts:
 - Rain/storms in Bangkok
-- Low disk or pending updates
+- Disk ≥85% → notify def immediately
+- Pending updates
 - Idle >8h since last chat
 
 ⚠️ Note: Quiet hours have been removed system-wide. All agents now run 24/7.

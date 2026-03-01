@@ -198,6 +198,13 @@ validate_idea_execution() {
     return 1
   fi
 
+  # Require minimum meaningful change: at least 10 insertions total
+  local total=$(( ins + del ))
+  if (( total < 10 )); then
+    echo "VALIDATION FAILED: Too few changes (ins=$ins, del=$del, total=$total < 10). Stub/placeholder likely. Rejecting." | tee -a "$log_ref"
+    return 1
+  fi
+
   # Additional heuristic: at least one substantive file (extensions) should be changed
   local substantive_ext_regex='\.(sh|md|ts|js|json|yml|yaml|py|rb|go|rs|c|cpp|h|txt|html|css)$'
   local has_substantive=false
@@ -216,7 +223,27 @@ validate_idea_execution() {
     return 1
   fi
 
-  echo "VALIDATION PASSED: substantive changes detected (ins=$ins, del=$del, files=${#changed_files[@]})" | tee -a "$log_ref"
+  # Anti-stub check: reject if ALL changed .sh files only contain 'echo "Running:' (placeholder pattern)
+  local stub_count=0
+  local sh_count=0
+  for f in "${changed_files[@]}"; do
+    if echo "$f" | grep -q '\.sh$'; then
+      sh_count=$(( sh_count + 1 ))
+      if [[ -f "$WORKSPACE/$f" ]]; then
+        local real_lines
+        real_lines=$(grep -cEv '^\s*(#|set |echo "Running:|$)' "$WORKSPACE/$f" 2>/dev/null || echo "0")
+        if (( real_lines < 2 )); then
+          stub_count=$(( stub_count + 1 ))
+        fi
+      fi
+    fi
+  done
+  if (( sh_count > 0 && stub_count == sh_count )); then
+    echo "VALIDATION FAILED: All changed .sh files are stubs (no real logic). Rejecting." | tee -a "$log_ref"
+    return 1
+  fi
+
+  echo "VALIDATION PASSED: substantive changes detected (ins=$ins, del=$del, total=$total, files=${#changed_files[@]})" | tee -a "$log_ref"
   return 0
 }
 
