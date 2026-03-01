@@ -10,6 +10,8 @@
 - content/2026-03-01-0604-commercial-space-2026-writeup.md: To the Moon and Beyond: What's Actually Happening in Space Right Now
 - content/2026-03-01-0700-frontier-ai-models-feb-2026-writeup.md: Seven AI Models Dropped in February 2026. Here's What Actually Changed.
 - content/2026-03-01-0701-sea-digital-banking-fintech-2026-writeup.md: Southeast Asia's Digital Banking Moment: Agentic Payments, the Profitability Reckoning, and Who's Actually Winning
+- content/2026-03-01-0705-green-tech-climate-ai-2026-writeup.md: Clean Energy's Reality Check: What's Actually Happening in 2026
+- content/2026-03-01-0705-sunday-digest.md: Sunday Digest — March 1, 2026
 - content/2026-03-01-daily-digest.md: Daily Digest — 2026-03-01
 - content/2026-03-01-morning-digest.md: Sunday Morning Digest — March 1, 2026
 
@@ -25,6 +27,7 @@
 - research/2026-03-01-spring-2026-anime-season-preview-classroom-elite-witch-hat-atelier-daemons-rezero-one-piece-elbaph.md: Spring 2026 Anime Season Preview: The Most Stacked Lineup in Years
 
 ## Dev Commits (today)
+- dev: 2 content writeups + dashboard fix + digest regen (2026-03-01 07:00 UTC)
 - dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0612)
 - dev: fix workspace-validate.sh cron range 18-22→22-26 (24 jobs now legitimate; telegram-slash-handler + youtube-digest-daily + vishwakarma-cron + archiver-manager-cron added since original threshold); regen 2026-03-01 daily digest (7 research: +Commercial Space #229 + Spring Anime #225; 6 content total; disk-history.json appended)
 - dev: fix INDEX drift + broken links + archive planning artifacts (2026-03-01_0510)
@@ -44,10 +47,9 @@
 - dev: add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)
 - dev: fix research-recent.sh (exclude INDEX.md, accept N arg, local+hub audio check); add research-topics-today.sh (dedup helper with suggestions, --short mode); register in quick
 - dev: fix research-stats.sh (accurate 193 count, exclude INDEX.md, guard div-by-zero); add workspace-summary.sh (one-page daily status, --json mode); register both in quick
-- dev: add trim-agent-logs.sh utility; lower aria2.log rotate threshold 100MB→50MB; commit web-push dep; trim enhancement-bot+agent-manager logs (1.1MB freed)
 
 ## System Health
-Disk warning 83% (top: 11G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (4 changed) | Memory: 29f/322c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 34 files, 11G
+Disk warning 84% (top: 9.1G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (4 changed) | Memory: 29f/322c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 33 files, 9.1G
 
 ## Notes
-- Generated at Sun Mar  1 07:04:31 UTC 2026
+- Generated at Sun Mar  1 07:08:37 UTC 2026
