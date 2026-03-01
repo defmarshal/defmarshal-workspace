@@ -1,69 +1,44 @@
 # Anime Studio Tycoon
 
-**Version:** 1.2  
-**Type:** Text-based tycoon / strategy  
-**Platform:** Python 3
+A CLI management simulation where you run an anime studio.  
+**v1.1** — polished with new events, fan growth mechanics, and revenue balance.
 
-## Overview
-
-You are the director of a scrappy anime studio. Hire animators, manage budgets, keep morale high, and air 10 episodes — all while growing your fanbase to 50,000 before the money runs out.
-
-## Goal
-
-- Complete **10 episodes**
-- Reach **50,000+ fans**
-- Keep reputation **≥ 0** and money **≥ 0**
-
-## How to Play
-
-```bash
-python3 main.py
+## Run
+```
+python3 games/anime-studio-tycoon/main.py
 ```
 
+## Goal
+Complete 10 episodes while maintaining positive reputation and at least **50 000 fans**.  
+Don't go bankrupt, and don't let your reputation drop below zero!
+
+## Controls
 Each week you choose one action:
 
-| # | Action | Effect |
-|---|--------|--------|
-| 1 | Hire animator | +1 staff, -¥5,000 |
-| 2 | Fire animator | +¥2,000, -1 staff, -morale |
-| 3 | Train junior | +1 staff, -¥3,000, +morale |
-| 4 | Rush production | Fan spike but risk quality (-10 rep) |
-| 5 | Quality focus | +5 rep, -¥2,000, +morale, streak bonus |
-| 6 | Morale event | +20 morale, -¥1,500 |
-| 7 | Merch campaign | Unlock passive weekly income (one-time) |
-| 8 | Seek sponsor | 5-week deal; income based on rep+fans |
-| 9 | Next week | Advance, no action |
+| # | Action | Cost | Effect |
+|---|--------|------|--------|
+| 1 | Hire animator | ¥5 000 | +1 staff |
+| 2 | Fire animator | +¥2 000 | -1 staff |
+| 3 | Train junior | ¥3 000 | +1 staff |
+| 4 | Rush episode | — | +fans (65 % chance) or -rep (35 %) |
+| 5 | Quality focus | ¥2 000 | +5 reputation |
+| 6 | Marketing push | ¥4 000 | +fans (15 % of current + random) |
+| 7 | Next week | — | Advance time |
 
-## Income Sources
+## Economy
+- **Salary**: ¥1 200/staff/week (keep your team lean early)
+- **Merch income**: ¥0.005 per fan per week (grows as fans grow)
+- **Episode aired**: +2 rep, +8 % fan bonus each time
+- **Passive fan growth**: fans grow weekly based on staff size × reputation
 
-- **Advertising revenue** — small passive income based on fans × reputation
-- **Merch campaign** — ~2% of fan count per week (after unlocking)
-- **Sponsor deals** — 5-week income based on reputation and fan count
-- **Episode licensing** — grows with each episode aired
+## Random Events (15 types!)
+> Good: viral clips, award nominations, crowdfunding, streaming deals, fan conventions, magazine features, meme characters…  
+> Bad: budget overruns, equipment failures, key animators quitting, competitor releases, tax audits…
 
-## Random Events (20 types!)
+## Tips
+- Build fan base early with Marketing; merch income snowballs
+- Keep reputation above 60 — it multiplies fan growth
+- Don't overhire early; salary drain will kill you
+- After episode 5, merch income should start covering costs
 
-From viral clips and critic reviews to staff burnout and investor interest — something unexpected can happen each week!
-
-## Key Metrics
-
-- **Morale** — Low morale causes overtime costs; affects episode quality
-- **Reputation** — Determines sponsor value and episode quality multiplier
-- **Streak bonus** — Consecutive quality-focus weeks yield growing fan bonuses
-
-## Changelog
-
-### v1.2 (2026-02-28) — Polish & Expansion
-- Added morale system (0–100) with visual bar
-- Added 16 new random events (20 total)
-- Added merch campaign (passive income)
-- Added sponsor deal system
-- Added fan growth each week (reputation-based)
-- Added ad revenue (passive)
-- Added episode licensing income
-- Added streak bonus for quality focus
-- Balance overhaul: game is now winnable (tested: 61k fans in ~20 weeks)
-- UI overhaul with box-drawing characters and formatted stats
-
-### v1.1
-- Initial release
+Good luck, Studio Head! 🎬✨
