@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T05:15:02Z",
+  "generated_at": "2026-03-01T05:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.5G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.73 0.85 0.88",
-    "mem_used": "4.0Gi",
+    "load_avg": "1.06 1.04 0.98",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 15 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 15 hours, 40 minutes",
     "disk_history": [
       81,
       81,
@@ -23,13 +23,13 @@
       81,
       81,
       81,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
       81,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
       81,
       81,
       81,
@@ -87,99 +87,99 @@
   "research": {
     "total": 230,
     "tts_coverage": "93%",
-    "latest": "INDEX",
+    "latest": "INDEX\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "6fd7eb6b",
+      "sha": "8c91baa1",
       "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "20 seconds ago"
+      "message": "workspace-builder session 23dad379 validated; close the loop",
+      "time": "48 seconds ago"
     },
     {
-      "sha": "c8b48aa5",
-      "agent": "research",
-      "message": "Commercial Space 2026 deep-dive (#229, 22.7KB) — Artemis II NLT Apr 1 2026 (first crewed lunar flyby since 1972; crew Wiseman/Glover/Koch/Hansen; 10-day free-return trajectory; Feb 23 helium delay); Starship HLS OPT demo June 2026 (cryogenic propellant transfer linchpin; 11 integrated flights; OPT→June2026, uncrewed HLS landing→June2027, Artemis III crewed→Sep2028); Haven-1 Vast Space May/Jun 2026 (31,000lb Falcon 9 record payload, ~shipping-container size, 4-crew 10-day, first standalone commercial station in history); Axiom PAM-5 Jan2027 (Ax-4 June2025, Thales Alenia welding primary structures); Starlab Voyager/Airbus full-scale dev 2028 (Starship single-launch delivery); NASA CLD Phase 2 2026 ($1-1.5B awards); Chang'e 7 Long March 5 2026 south pole water-ice recon + mini flying probe; Chang'e 8 ISRU 2028; Tiangong expansion; DRACO/NTP 2027 (BWXT HALEU reactor, Lockheed prime, 700km orbit, 900s Isp = 2x chemical); $613B 2024 space economy (8% growth, $1T by 2032, $1.8T by 2035 WEF); orbital debris 27k+ objects, ClearSpace-1 2027; US-China lunar south pole geopolitical convergence; 2026-2030 milestone table; risk matrix",
-      "time": "40 seconds ago"
+      "sha": "0c6b73d5",
+      "agent": "build",
+      "message": "workspace-builder planning docs and session registration",
+      "time": "2 minutes ago"
     },
     {
-      "sha": "c22efd13",
+      "sha": "3d5617e2",
+      "agent": "build",
+      "message": "update disk history metrics",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "f9e17f7d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "02ade367",
-      "agent": "content",
-      "message": "Spring 2026 anime watchlist (7.7KB) + Biotech 2026 writeup (8.3KB)",
+      "sha": "6fd7eb6b",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "c8b48aa5",
+      "agent": "research",
+      "message": "Commercial Space 2026 deep-dive (#229, 22.7KB) — Artemis II NLT Apr 1 2026 (first crewed lunar flyby since 1972; crew Wiseman/Glover/Koch/Hansen; 10-day free-return trajectory; Feb 23 helium delay); Starship HLS OPT demo June 2026 (cryogenic propellant transfer linchpin; 11 integrated flights; OPT→June2026, uncrewed HLS landing→June2027, Artemis III crewed→Sep2028); Haven-1 Vast Space May/Jun 2026 (31,000lb Falcon 9 record payload, ~shipping-container size, 4-crew 10-day, first standalone commercial station in history); Axiom PAM-5 Jan2027 (Ax-4 June2025, Thales Alenia welding primary structures); Starlab Voyager/Airbus full-scale dev 2028 (Starship single-launch delivery); NASA CLD Phase 2 2026 ($1-1.5B awards); Chang'e 7 Long March 5 2026 south pole water-ice recon + mini flying probe; Chang'e 8 ISRU 2028; Tiangong expansion; DRACO/NTP 2027 (BWXT HALEU reactor, Lockheed prime, 700km orbit, 900s Isp = 2x chemical); $613B 2024 space economy (8% growth, $1T by 2032, $1.8T by 2035 WEF); orbital debris 27k+ objects, ClearSpace-1 2027; US-China lunar south pole geopolitical convergence; 2026-2030 milestone table; risk matrix",
       "time": "6 minutes ago"
     },
     {
-      "sha": "95138a6e",
-      "agent": "dev",
-      "message": "fix INDEX drift + broken links + archive planning artifacts (2026-03-01_0510)",
-      "time": "9 minutes ago"
-    },
-    {
-      "sha": "d0a187a3",
+      "sha": "c22efd13",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ed9692dc",
+      "sha": "02ade367",
+      "agent": "content",
+      "message": "Spring 2026 anime watchlist (7.7KB) + Biotech 2026 writeup (8.3KB)",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "95138a6e",
+      "agent": "dev",
+      "message": "fix INDEX drift + broken links + archive planning artifacts (2026-03-01_0510)",
+      "time": "14 minutes ago"
+    },
+    {
+      "sha": "d0a187a3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "97a26437",
+      "sha": "ed9692dc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "a014996a",
+      "sha": "97a26437",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "615f83ef",
+      "sha": "a014996a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "b9492b9e",
+      "sha": "615f83ef",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "b4fca71c",
+      "sha": "b9492b9e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
-    },
-    {
-      "sha": "2938881b",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "c9f6863e",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "affba27b",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
     }
   ],
   "heartbeat": {
@@ -699,17 +699,10 @@
       "status": "running"
     },
     {
-      "session_key": "workspace-builder-20260301-0311",
+      "session_key": "23dad379-21ad-4f7a-8c68-528f98203a33",
       "agent": "workspace-builder",
       "goal": "Routine maintenance",
-      "started": "2026-03-01 03:11 UTC",
-      "status": "validated"
-    },
-    {
-      "session_key": "workspace-builder-20260301-0111",
-      "agent": "workspace-builder",
-      "goal": "Routine maintenance",
-      "started": "2026-03-01 01:11 UTC",
+      "started": "2026-03-01 05:14 UTC",
       "status": "validated"
     }
   ],
