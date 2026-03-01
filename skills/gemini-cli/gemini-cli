@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Gemini CLI skill wrapper for OpenClaw
+# Usage: gemini-cli "<prompt>"
+
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+  echo "Usage: gemini-cli \"<prompt>\""
+  echo "Example: gemini-cli \"Research quantum computing trends and summarize\""
+  exit 1
+fi
+
+PROMPT="$*"
+
+# Check if gemini is installed
+if ! command -v gemini &> /dev/null; then
+  echo "Error: gemini command not found. Install with: npm install -g @google/gemini-cli"
+  exit 1
+fi
+
+# Run Gemini CLI in headless mode (-p) with the prompt
+gemini -p "$PROMPT" 2>&1

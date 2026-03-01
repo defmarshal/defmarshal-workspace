@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Qwen Code skill wrapper for OpenClaw
+# Usage: qwen-code "<prompt>"
+
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+  echo "Usage: qwen-code \"<coding prompt>\""
+  echo "Example: qwen-code \"Refactor @src/index.js to use ES modules\""
+  exit 1
+fi
+
+PROMPT="$*"
+
+# Check if qwen is installed
+if ! command -v qwen &> /dev/null; then
+  echo "Error: qwen command not found. Install with: npm install -g @qwen-code/qwen-code"
+  exit 1
+fi
+
+# Run Qwen Code in headless mode (-p) with the prompt
+# We pass through any additional flags if needed
+qwen -p "$PROMPT" 2>&1
