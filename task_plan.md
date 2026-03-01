@@ -1,160 +1,152 @@
-# Task Plan — Strategic Workspace Builder
+# Workspace Builder — Task Plan
 
-**Session:** workspace-builder-20260301-0311
-**Time:** 2026-03-01 03:11 UTC
-**Mode:** Routine maintenance with strategic improvements
-
----
-
-## Phase 1: Assessment & Baseline
-
-**Goal:** Capture current state, verify no urgent issues.
-
-### Step 1.1 — System Health Snapshot
-- Run `./quick health` — note disk warnings, updates, memory status
-- Run `./quick validate-constraints` — confirm all green
-- Run `git status` — check for any pending changes
-- Run `./quick agents` — verify no conflicting agents
-
-**Expected:** Baseline captured; constraints green; git clean
-
-### Step 1.2 — Workspace Analysis
-- Check `active-tasks.md` size (`wc -c`) — must be <2KB
-- Check `MEMORY.md` line count (`wc -l`) — must be ≤35
-- Check memory index health: `quick memory-status`
-- Count downloads: `ls downloads/ | wc -l`; size: `du -sh downloads/`
-- Check for untracked files: `git status --porcelain`
-- List idea branches: `git branch -a | grep 'idea/'` for stale branch check
-- Review recent daily logs: `memory/2026-02-28.md` completeness, `memory/2026-03-01.md` entry status
-
-**Expected:** Clear picture of workspace health and any action items
+**Session:** 23dad379-21ad-4f7a-8c68-528f98203a33
+**Goal:** Commit pending changes, validate constraints, close the loop
+**Strategy:** Phased execution with verification checkpoints
 
 ---
 
-## Phase 2: Strategic Cleanup (If Needed)
+## Phase 0 — Pre-flight Checks
 
-**Goal:** Prevent resource issues, maintain hygiene.
+**Objective:** Confirm workspace state matches expectations before modifications
 
-### Step 2.1 — Downloads Cleanup (Qualified)
-- If downloads count >25 OR size >10GB:
-  - Run dry‑run: `./quick cleanup-downloads --verbose`
-  - Analyze output: if >5 files OR >1GB reclaimable, proceed to execute
-  - Execute: `./quick cleanup-downloads --execute --verbose`
-- Else: skip, monitor next cycle
+**Steps:**
+1. Read active-tasks.md to detect conflicts
+2. Check git status for untracked/modified files
+3. Verify disk health via `./quick health`
+4. Confirm memory index is fresh
 
-**Constraint:** Respect retention policy (default 30 days). No manual deletions outside tool.
+**Success criteria:**
+- No other workspace-builder running (only this session)
+- Only `memory/disk-history.json` modified
+- No untracked files
+- Health green (disk 81% acceptable)
 
-**Expected:** Disk pressure relieved; downloads within thresholds
-
-### Step 2.2 — Stale Branch Hygiene
-- For each `idea/*` branch:
-  - Check age: `git log -1 --format=%ct <branch>` (convert to days)
-  - If >30 days old AND fully merged (check with `git branch --merged`), delete:
-    - `git branch -d <branch>`
-    - `git push origin --delete <branch>` (if present)
-- If unmerged or uncertain, skip and note in progress.md
-
-**Expected:** No stale idea branches; branch list clean
-
-### Step 2.3 — Track Valuable Artifacts
-- Scan for untracked files that are not temp/cache (e.g., research reports in `research/`, scripts in `scripts/`, planning docs)
-- If found, stage them: `git add <paths>`
-- Verify with `git status --cached`
-
-**Expected:** All substantive artifacts tracked
+**Fallback:** If conflicts detected, investigate before proceeding
 
 ---
 
-## Phase 3: Documentation & Memory
+## Phase 1 — Session Registration
 
-**Goal:** Keep documentation current and memory healthy.
+**Objective:** Track this builder run in active-tasks.md
 
-### Step 3.1 — Daily Log Finalization (Feb 28)
-- Open `memory/2026-02-28.md`
-- Ensure it has a proper header and chronological entries
-- Add a closing note summarizing the day's health and any notable events (keep concise)
-- Check formatting (valid markdown)
+**Steps:**
+1. Read current active-tasks.md
+2. Append entry for this session:
+   ```
+   - [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Routine maintenance (started: 2026-03-01 05:14 UTC, status: running)
+     - Verification: (pending)
+   ```
+3. Ensure file size stays <2KB (prune older validated entries if needed)
 
-**Expected:** Completed daily log for archive
-
-### Step 3.2 — Update Today's Log (Mar 1)
-- Open `memory/2026-03-01.md`
-- Add a new entry for this workspace builder run at 03:11 UTC
-- Include: system snapshot, actions taken, decisions made
-
-**Expected:** Daily log current with latest activity
-
-### Step 3.3 — MEMORY.md Line Count Check
-- Count lines: `wc -l < MEMORY.md`
-- If >30 lines, review and condense: remove outdated entries, keep index pointers only
-- Ensure MEMORY.md points to detailed files, no raw logs
-
-**Expected:** MEMORY.md ≤30 lines
+**Success criteria:**
+- Entry added with correct session ID and timestamp
+- File size ≤ 2048 bytes
 
 ---
 
-## Phase 4: Validation & Commit
+## Phase 2 — Commit Pending Changes
 
-**Goal:** Ensure all constraints satisfied and push changes.
+**Objective:** Commit `memory/disk-history.json` with proper message
 
-### Step 4.1 — Full Validation Suite
-- Run `./quick validate-constraints` — expect all ✅
-- Run `./quick health` — expect green (disk warning OK if <85%)
-- Run `./quick verify` if available — comprehensive check
+**Steps:**
+1. Stage `memory/disk-history.json`
+2. Verify staged diff looks correct (`git diff --cached`)
+3. Commit with prefix `build: update disk history metrics`
+4. Verify commit succeeded (`git log -1`)
 
-**Expected:** All systems green
-
-### Step 4.2 — Commit Build Changes
-- If git dirty (staged or unstaged build-related changes), commit with prefix `build: `
-- Commit message format: `build: <summary>` (e.g., "routine maintenance, update logs, validate constraints")
-- Push to origin: `git push origin master`
-
-**Expected:** Remote up to date
-
-### Step 4.3 — active‑tasks Registry Update
-- Add entry (if not present): `[workspace-builder-20260301-0311]` status `running` at start of session
-- After completion: Change to `validated`, add verification block:
-  ```
-  - Verification: active-tasks <2KB, MEMORY.md ≤30, health green, reindex fresh, git clean & pushed, [specific actions taken]
-  ```
-- Stage, commit, push (could be separate commit or part of build commit)
-
-**Expected:** Registry reflects current state and verification
-
-### Step 4.4 — Final Checks
-- Temp files: `find . -maxdepth 2 -name "*.tmp" -o -name "*~"` should return nothing
-- Verify markdown validity: quick scan for broken formatting in touched files
-- Ensure all `git push` completed successfully
-
-**Expected:** Clean workspace, all changes deployed
+**Success criteria:**
+- Commit created with correct message
+- Commit includes only intended file
+- Git status shows clean working tree
 
 ---
 
-## Error Handling
+## Phase 3 — Validation
 
-**If validation fails:**
-- Log error in `progress.md`, attempt fix
-- Re‑run validation before committing
-- Do not push incomplete state
+**Objective:** Run comprehensive constraint checks
 
-**If cleanup thresholds not met:**
-- Document decision to skip in `progress.md`
-- Continue with other phases
+**Steps:**
+1. Run `./quick validate-constraints` and capture output
+2. Run `./quick health` for system summary
+3. Run `./quick hygiene` for file-system checks
+4. Check `./quick agent-status` for cron health
+5. Verify:
+   - active-tasks.md size (<2KB)
+   - MEMORY.md line count (≤35)
+   - No temp files (`find . -maxdepth 1 -name "*.tmp" -o -name "*.temp"` etc.)
+   - No stale idea branches (`git branch --list "idea/*"`)
 
-**If branch deletion fails:**
-- Log reason (unmerged, remote only) and continue
-
----
-
-## Success Criteria (Checklist)
-
-- [ ] Phase 1: Baseline captured, all metrics recorded
-- [ ] Phase 2: Downloads cleanup (if needed), stale branches pruned, artifacts tracked
-- [ ] Phase 3: Daily logs updated (Feb 28 closed, Mar 1 updated), MEMORY.md ≤30 lines
-- [ ] Phase 4: All constraints ✅, git clean & pushed, active‑tasks validated
-- [ ] No temp files, no broken markdown, no uncommitted build artifacts
+**Success criteria:**
+- All 9 constraints pass
+- No hygiene violations
+- All agents healthy
 
 ---
 
-**Plan prepared:** 2026-03-01 03:11 UTC
-**Ready for execution:** Yes
+## Phase 4 — Push & Verify
+
+**Objective:** Push commits and confirm remote sync
+
+**Steps:**
+1. Run `git push origin master`
+2. Verify push succeeded (`git remote -v` shows origin; `git log origin/master -1` matches local)
+3. Confirm no credentials leaked in commit history
+
+**Success criteria:**
+- Push successful
+- Remote HEAD at latest commit
+- No sensitive data in commit
+
+---
+
+## Phase 5 — Close the Loop
+
+**Objective:** Mark session validated, archive to daily log, update active-tasks
+
+**Steps:**
+1. Update active-tasks.md entry: change `status: running` → `status: validated`
+2. Add verification block with actual outputs:
+   ```
+     - Verification: active-tasks <size>b (<2KB), MEMORY.md <N> lines (≤35), health ✅ green, reindex fresh, git clean & pushed, planning docs present, daily logs updated, no temp files, branch hygiene ✅, downloads monitored (<25 files, <10GB), constraints all ✅
+   ```
+3. Ensure active-tasks.md remains <2KB (prune if needed)
+4. Append summary to `memory/2026-03-01.md` with session outcome
+5. Verify final state: `git status` clean, all constraints green
+
+**Success criteria:**
+- active-tasks entry updated with verification metrics
+- Daily log updated
+- Git clean
+- All constraints satisfied
+
+---
+
+## Phase 6 — Final Reporting
+
+**Objective:** Output one-line summary for cron logs
+
+**Format:**
+```
+✅ Workspace builder validated: active-tasks <size>b, MEM <N> lines, health green, git pushed, constraints all satisfied
+```
+
+**Notes:**
+- Use `./quick summary` to generate concise stats
+- Include disk %, update status, git cleanliness
+
+---
+
+## Checklist Summary
+
+- [ ] Phase 0: Pre-flight completed, no conflicts
+- [ ] Phase 1: Session registered in active-tasks.md
+- [ ] Phase 2: Changes committed with build: prefix
+- [ ] Phase 3: All validation checks pass
+- [ ] Phase 4: Pushed to origin/master
+- [ ] Phase 5: active-tasks validated, daily log updated
+- [ ] Phase 6: Summary prepared
+
+---
+
+**Execution:** Proceed step by step, updating `progress.md` after each phase. If any step fails, debug before continuing. Do not skip verification.
