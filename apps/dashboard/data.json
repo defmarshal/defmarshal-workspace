@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T04:00:02Z",
+  "generated_at": "2026-03-01T04:05:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.89 0.75 0.74",
-    "mem_used": "3.5Gi",
+    "load_avg": "0.72 0.76 0.75",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 14 hours, 20 minutes",
+    "uptime": "1 week, 2 days, 14 hours, 25 minutes",
     "disk_history": [
       81,
       81,
@@ -56,14 +56,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-03-01 03:15",
-      "last_line": "[2026-03-01T03:15:01Z] [content-agent] Generated Fintech 2026 tech writeup (7.7KB, 9a7d3eb6). Identified gap: Fintech research report #223 had no matching content piece. Covered: agentic AI liability vacuum (Reg E/PSD2 grey zone for agent-initiated payments, Visa/MC building verification protocols, Trump EO Dec 15 2025 national standard push, $7.84B→$52B agent market), neobank profitability split (Revolut $75B/$9B rev/$3.5B profit 2026, Monzo 8x/£113.9M profit, Nubank $1.9B, Chime IPO $9.8B; structural revenue models: lending+subs+BaaS+cross-sell), stablecoin vs CBDC ($200B mktcap/$50B daily settlement vs Digital Euro 2029/US GENIUS Act), real-time rails (FedNow/SEPA Instant mandatory/UPI 500M/Pix; 1.68T→3.54T txns/irrevocable fraud stakes), 5 H1 2026 signals. 223 research reports total. 5 content pieces Mar 1."
+      "last_run": "2026-03-01 04:04",
+      "last_line": "[2026-03-01T04:04:04Z] [content-agent] Generated AI Hardware 2026 tech writeup (7.8KB, 28023f38). Gap identified: research report #224 (AI Hardware/Chips, 24KB) had no content piece. Structured as '4 things that actually matter': (1) Blackwell economics — $5M rack→$75M token revenue (15x ROI), NVDA Q4 $194B annual data center +68%/13x since ChatGPT, $435B hyperscaler capex justified by spreadsheet math, scarcity era over; (2) Vera Rubin 10x inference cost drop — H2 2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS FP4/Vera CPU 88-core ARM, makes agentic multi-step AI economically viable at consumer scale, annual cadence Blackwell→Rubin→Feynman; (3) AMD duopoly with catch — MI355X 288GB HBM3e/8TB/s parity, OpenAI 6GW validation deal, ROCm 7.0 CUDA parity; wins cost-sensitive inference, loses frontier training custom kernels; MI400/Helios HBM4 late-2026; (4) CoWoS as real chokepoint — 35K→130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex, $1T semiconductor market 2026. 224 research reports total. 5 content pieces Mar 1."
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-01 03:11",
-      "last_line": "[2026-03-01T03:11:12Z] [dev-agent] Completed cycle (66486133): (1) reports/README.md fixed — literal \\n bytes → proper newlines, expanded with file format documentation; (2) research-today.sh new utility — lists research reports for a given date with titles + sizes, defaults to today UTC, registered as 'quick research-today'; (3) prune-gh-branches.sh new utility — dry-run safe pruner for stale gh-pages-* branches, --execute flag; registered as 'quick prune-gh-branches'; (4) pruned 4 stale local branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test — all Feb 27, 0 references in any script, no active purpose). Disk 81% stable."
+      "last_run": "2026-03-01 04:02",
+      "last_line": "[2026-03-01T04:02:18Z] [dev-agent] Completed cycle (70d69f47): (1) daily digest 2026-03-01 regenerated — now complete with 5 research reports (AI hardware #224 + fintech #223 + bio/green/cyber) + 4 content pieces (fintech writeup 03:07 was missing); (2) content-today.sh new utility — parallel to research-today.sh, lists content pieces with titles+sizes for a given date, defaults today UTC, registered as 'quick content-today'; (3) TOOLS.md updated — 8 commands added that were missing from documentation (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); (4) idea-executor.log trimmed 1023→1000 lines (crossed threshold). Disk 81% stable."
     },
     {
       "name": "supervisor",
@@ -80,7 +80,7 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-01 03:23",
+      "last_run": "2026-03-01 04:01",
       "last_line": "2026-03-01 03:23:07 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
     }
   ],
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "03a4ffa2",
+      "sha": "28023f38",
+      "agent": "content",
+      "message": "AI Hardware 2026 tech writeup (7.8KB) — 4 things that actually matter: (1) Blackwell economics ($5M rack→$75M token revenue 15x ROI, $194B NVDA annual data center +68%, 13x since ChatGPT, $435B hyperscaler capex stack justified by spreadsheet math); (2) Vera Rubin 10x inference cost drop (H2-2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS, Vera CPU 88-core ARM, agentic AI consumer scale viability); (3) AMD duopoly with catch (MI355X 288GB HBM3e parity, OpenAI 6GW deal, ROCm 7.0 CUDA parity; wins cost-inference, loses frontier training custom kernels); (4) CoWoS as real chokepoint (35K→130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex); $1T semiconductor market 2026; 5th content piece Mar 1; 224 total research",
+      "time": "69 seconds ago"
+    },
+    {
+      "sha": "70d69f47",
+      "agent": "dev",
+      "message": "regen daily digest 2026-03-01 (now 5 research + 4 content, AI hardware #224 + fintech writeup); add content-today.sh (parallel to research-today, lists content pieces with titles/sizes, accepts YYYY-MM-DD); register content-today in quick + help text; update TOOLS.md with 8 recent commands missing from docs (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); trim idea-executor.log 1023→1000 lines",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "8e04a074",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "038795d3",
+      "sha": "03a4ffa2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "f6c35a13",
+      "sha": "038795d3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "909d1828",
+      "sha": "f6c35a13",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "a193b941",
+      "sha": "909d1828",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "a193b941",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "82a5d31d",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "495e3c2c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "5d455164",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "d0a54a76",
       "agent": "misc",
       "message": "fix(youtube-digest): send digest as clean channel+video list to Telegram, split into chunks if >3800 chars",
-      "time": "36 minutes ago"
+      "time": "41 minutes ago"
     },
     {
       "sha": "4f0d217a",
       "agent": "build",
       "message": "finalize workspace-builder session — progress summary, data refresh",
-      "time": "38 minutes ago"
+      "time": "43 minutes ago"
     },
     {
       "sha": "c76b0d76",
       "agent": "build",
       "message": "refresh disk history (maintenance)",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "8eb8be41",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "02991bb5",
-      "agent": "research",
-      "message": "AI Hardware & Chips 2026 (#224, 21KB) — Blackwell volume production (208B transistors, 192GB HBM3e, 8TB/s, 20PFLOPS FP4, GB200 NVL72 rack $5M→$75M ROI); NVIDIA Q4 FY2026 earnings ($68B total/$62B data center/$194B annual/73% YoY/13x scale since ChatGPT); Vera Rubin R100 H2-2026 (336B transistors/HBM4/22TB/s/50PFLOPS/10x inference cost reduction); AMD MI350 CDNA4 (288GB HBM3e/8TB/s/20PFLOPS FP4 parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal); Google Ironwood TPU v7 (192GB HBM3e/7.4TB/s/FP8, $185B capex 2026, Gemini 2.0 750M users on own silicon, Anthropic 1M TPU deal); AWS Trainium3 (3nm/2x perf/40% efficiency/Amazon $50B OpenAI deal); TSMC CoWoS 130K wafers/month target/$56B capex (+37% YoY); dual packaging+HBM bottleneck; hyperscaler $435B capex stack; 224 total",
-      "time": "41 minutes ago"
-    },
-    {
-      "sha": "7bc13e80",
-      "agent": "misc",
-      "message": "fix(clawdash): drop In/Out columns from token tab (6 cols), more room for Job name (v26)",
-      "time": "41 minutes ago"
-    },
-    {
-      "sha": "771f5240",
-      "agent": "chore",
-      "message": "update clawdash data (post-workspace-builder validation)",
-      "time": "41 minutes ago"
+      "time": "45 minutes ago"
     }
   ],
   "heartbeat": {
@@ -235,7 +235,13 @@
       "file": "INDEX",
       "ts": "",
       "title": "Content Archive Index",
-      "size": 52977
+      "size": 53213
+    },
+    {
+      "file": "2026-03-01-0402-ai-hardware-writeup",
+      "ts": "2026-03-01-0402",
+      "title": "The AI Chip Wars: Four Things That Actually Matter in 2026",
+      "size": 8034
     },
     {
       "file": "2026-03-01-0307-fintech-writeup",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-0605",
       "title": "Research Spotlight — 2026-02-28 (06:05 UTC)",
       "size": 4723
-    },
-    {
-      "file": "2026-02-28-0504-research-spotlight",
-      "ts": "2026-02-28-0504",
-      "title": "Research Spotlight — 2026-02-28 05:04 UTC",
-      "size": 4027
     }
   ],
   "cron_jobs": [
@@ -714,8 +714,8 @@
     }
   ],
   "content_stats": {
-    "total": 507,
-    "today": 4,
+    "total": 508,
+    "today": 5,
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
