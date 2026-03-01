@@ -4,6 +4,8 @@
 - content/2026-03-01-0106-research-spotlight.md: Research Spotlight — March 1, 2026 (01:06 UTC)
 - content/2026-03-01-0202-cybersecurity-writeup.md: Cybersecurity 2026: What Actually Matters Right Now
 - content/2026-03-01-0307-fintech-writeup.md: Fintech 2026: The Execution Era Has Arrived
+- content/2026-03-01-0402-ai-hardware-writeup.md: The AI Chip Wars: Four Things That Actually Matter in 2026
+- content/2026-03-01-daily-digest.md: Daily Digest — 2026-03-01
 - content/2026-03-01-morning-digest.md: Sunday Morning Digest — March 1, 2026
 
 ## Research Highlights
@@ -12,8 +14,11 @@
 - research/2026-03-01-cybersecurity-2026-ai-arms-race-ransomware-post-quantum-zero-trust-agentic-threats.md: Cybersecurity 2026: AI Arms Race, Ransomware Economy, Post-Quantum Transition, and the Agentic Threat Frontier
 - research/2026-03-01-fintech-digital-banking-2026-agentic-ai-neobank-profitability-cbdc-stablecoin-real-time-payments.md: Fintech & Digital Banking 2026: Agentic AI, Neobank Profitability, Real-Time Rails, CBDC Timelines & the Stablecoin Settlement Layer
 - research/2026-03-01-green-tech-climate-ai-2026-solar-battery-nuclear-smr-ev-energy-nexus.md: Green Tech & Climate AI 2026: Solar at Record Lows, Battery $70/kWh, Nuclear Renaissance & the AI-Energy Nexus
+- research/2026-03-01-spring-2026-anime-season-preview-classroom-elite-witch-hat-atelier-daemons-rezero-one-piece-elbaph.md: Spring 2026 Anime Season Preview: The Most Stacked Lineup in Years
 
 ## Dev Commits (today)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0411)
+- dev: regen daily digest 2026-03-01 (now 5 research + 4 content, AI hardware #224 + fintech writeup); add content-today.sh (parallel to research-today, lists content pieces with titles/sizes, accepts YYYY-MM-DD); register content-today in quick + help text; update TOOLS.md with 8 recent commands missing from docs (trim-memory-logs, today-summary, research-today, prune-gh-branches, youtube-digest, tweet-new-reports, cleanup-archived, content-today); trim idea-executor.log 1023→1000 lines
 - dev: fix reports/README.md literal \n→real newlines + expand with file format docs; add research-today.sh (lists today's reports with titles/sizes, accepts YYYY-MM-DD); add prune-gh-branches.sh (safe dry-run pruner for stale gh-pages-* branches); prune 4 stale gh-* branches (gh-deploy/gh-pages/gh-pages-deploy/gh-pages-test all from Feb 27, unreferenced); register research-today + prune-gh-branches in quick
 - dev: regenerate 2026-03-01 daily digest (now includes Fintech #223, 4 research+3 content); add today-summary.sh (one-liner production stats: research/content/dev counts + disk + archive total); register youtube-digest, tweet-new-reports, cleanup-archived, today-summary in quick; prune stale idea/add-pagination-to-research-list branch
 - dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0207)
@@ -30,11 +35,9 @@
 - dev: fix research-stats.sh (accurate 193 count, exclude INDEX.md, guard div-by-zero); add workspace-summary.sh (one-page daily status, --json mode); register both in quick
 - dev: add trim-agent-logs.sh utility; lower aria2.log rotate threshold 100MB→50MB; commit web-push dep; trim enhancement-bot+agent-manager logs (1.1MB freed)
 - dev: add agent-health-report script — per-agent status, error counts, gateway/disk/git; fix content INDEX; prune stale idea branch
-- dev: fix dashboard commit timestamps; implement archiver-manager weekly script
-- dev: add find-large-files utility; rotate 675MB aria2.log; prune stub idea branches
 
 ## System Health
-Disk warning 81% (top: 9.7G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (2 changed) | Memory: 29f/322c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 33 files, 9.7G
+Disk warning 81% (top: 9.7G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (7 changed) | Memory: 29f/322c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 33 files, 9.7G
 
 ## Notes
-- Generated at Sun Mar  1 04:00:57 UTC 2026
+- Generated at Sun Mar  1 05:05:59 UTC 2026

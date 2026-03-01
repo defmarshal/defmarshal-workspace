@@ -1,8 +1,8 @@
 # Research Reports — Index
 
-This index is auto‑generated. Last updated: 2026-03-01
+This index is auto‑generated. Last updated: 2026-03-01 (228 entries)
 
-## 2026 Reports (225 total)
+## 2026 Reports (228 total)
 
 ### 2026-03
 - [Spring 2026 Anime Season Preview — Classroom of the Elite S4 (Apr 1 90-min event), Witch Hat Atelier (Bug Films Apr 6), Daemons of the Shadow Realm (Bones Film/Arakawa Apr 4), Re:Zero S4 (Arc 6 Pleiades), One Piece Elbaph, Kaiju No. 8 S2, Blue Lock S3, Tensei Slime S4 (5-cour), MHA Vigilantes, Fire Force S3, Dr. Stone finale](2026-03-01-spring-2026-anime-season-preview-classroom-elite-witch-hat-atelier-daemons-rezero-one-piece-elbaph.md)
@@ -67,12 +67,12 @@ This index is auto‑generated. Last updated: 2026-03-01
 - [Leo Satellite Internet Constellations 2026](2026-02-21-leo-satellite-internet-constellations-2026.md)
 - [Japan–China Anime Co‑Production Shifts: Geopolitical Risk Update 2026](2026-02-21-japan-china-anime-co-production-shifts-2026.md)
 - [Edge Ai Chips Performance Power](2026-02-21-edge-ai-chips-performance-power.md)
-- [CBDC & Stablecoin Reality Check: Scaling and Compliance (2026 Q1](2026-02-21-cbdc-stablecoin-scaling-compliance-2026.md)
+- [CBDC & Stablecoin Reality Check: Scaling and Compliance (2026 Q1)](2026-02-21-cbdc-stablecoin-scaling-compliance-2026.md)
 - [Brownfield Failure Patterns in AI Coding Agents: Real-World Enterprise Codebase Challenges 2026](2026-02-21-brownfield-failure-patterns-ai-coding-agents-2026.md)
-- [Anime Streaming Economics: Revenue Growth & CAC Analysis (2025–2026](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
+- [Anime Streaming Economics: Revenue Growth & CAC Analysis (2025–2026)](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
 - [Ai Data Center Water Constraints](2026-02-21-ai-data-center-water-constraints.md)
 - [Ai Agent Frameworks Orchestration](2026-02-21-ai-agent-frameworks-orchestration.md)
-- [Research Report — Token Optimization for Agent Systems (2026-02-20](2026-02-20-token-optimization-agent-systems.md)
+- [Research Report — Token Optimization for Agent Systems (2026-02-20)](2026-02-20-token-optimization-agent-systems.md)
 - [State of Web & App Development — 2026 Q1 Guide](2026-02-20-state-of-web-app-dev-2026.md)
 - [Technology Research — NVIDIA Blackwell B200 Real-World Performance Analysis](2026-02-20-nvidia-blackwell-b200-real-world-performance.md)
 - [China-Japan Anime Co-Production Shifts — Geopolitical Push vs Regulatory Frost](2026-02-20-china-japan-anime-co-production-shifts.md)
@@ -162,7 +162,7 @@ This index is auto‑generated. Last updated: 2026-03-01
 - [Stablecoin Regulatory Arbitrage: Who's Compliant, Who's Winning, and What's Next](2026-02-16-stablecoin-regulatory-arbitrage.md)
 - [2026-02-16 Research Status Update](2026-02-16-research-status-update.md)
 - [2026-02-16 Research — Permanent Closure](2026-02-16-research-permanent-closure.md)
-- [2026-02-16 Research — Overnight Wrap (Final](2026-02-16-research-overnight-wrap-final.md)
+- [2026-02-16 Research — Overnight Wrap (Final)](2026-02-16-research-overnight-wrap-final.md)
 - [2026-02-16 Research — Overnight Status](2026-02-16-research-overnight-status.md)
 - [2026-02-16 Research Agent — Overnight Monitoring](2026-02-16-research-overnight-monitoring.md)
 - [2026-02-16 Research Monitoring Update](2026-02-16-research-monitoring-update.md)
@@ -185,7 +185,7 @@ This index is auto‑generated. Last updated: 2026-03-01
 - [2026-02-16 February Mid-Month Developments](2026-02-16-february-mid-month-developments.md)
 - [2026-02-16 February LLM Price Dynamics](2026-02-16-february-llm-price-dynamics.md)
 - [Research Brief: Export Controls, Blackwell Performance, and Anime Profit Crisis](2026-02-16-export-controls-blackwell-anime-crisis.md)
-- [EU AI Act Enforcement Priorities & Penalties (2025–2026](2026-02-16-eu-ai-act-enforcement-priorities.md)
+- [EU AI Act Enforcement Priorities & Penalties (2025–2026)](2026-02-16-eu-ai-act-enforcement-priorities.md)
 - [China-Japan Anime Co-Production: Geopolitical Tensions & Market Access](2026-02-16-china-japan-anime-co-production-geopolitics.md)
 - [CBDC Deployment Status Dashboard: Who's Actually Scaling](2026-02-16-cbdc-deployment-status-dashboard.md)
 - [Research Brief: AI Coding Agent Brownfield Failure Patterns](2026-02-16-brownfield-failure-patterns.md)
@@ -196,24 +196,24 @@ This index is auto‑generated. Last updated: 2026-03-01
 - [AI Personal Finance Agents: Adoption Curve & Market Reality](2026-02-16-ai-personal-finance-agents-adoption.md)
 - [AI Export Controls Escalation: 2025–2026 Update](2026-02-16-ai-export-controls-escalation-2025-2026.md)
 - [AI Data Center Power & Water Constraints Deep Dive](2026-02-16-ai-data-center-power-water-constraints.md)
-- [Phase 2 Sprint 1 Progress — Power Constraints Data Gathered (2026-02-15 20:54 UTC+7](2026-02-15-sprint-1-progress-power-constraints-partial.md)
+- [Phase 2 Sprint 1 Progress — Power Constraints Data Gathered (2026-02-15 20:54 UTC+7)](2026-02-15-sprint-1-progress-power-constraints-partial.md)
 - [Phase 2 Sprint 1 — Gaps #2, #3, #4 Completion Report](2026-02-15-sprint-1-completion-report.md)
-- [Research Progress & Immediate Next Steps (2026‑02‑15 12:06 UTC](2026-02-15-research-progress-next-steps.md)
-- [Research Phase 1 Complete — Day 1 Wrap (2026‑02‑15 20:00 UTC+7](2026-02-15-research-phase-1-complete.md)
+- [Research Progress & Immediate Next Steps (2026‑02‑15 12:06 UTC)](2026-02-15-research-progress-next-steps.md)
+- [Research Phase 1 Complete — Day 1 Wrap (2026‑02‑15 20:00 UTC+7)](2026-02-15-research-phase-1-complete.md)
 - [Research Daily Wrap — 2026-02-15](2026-02-15-research-daily-wrap.md)
-- [Research Cycle Update — URL Structure Changes, Need New Leads (2026‑02‑15 12:39 UTC](2026-02-15-research-cycle-url-changes-adjustments.md)
+- [Research Cycle Update — URL Structure Changes, Need New Leads (2026‑02‑15 12:39 UTC)](2026-02-15-research-cycle-url-changes-adjustments.md)
 - [Research Cycle — 2026-02-15 Evening](2026-02-15-research-cycle-sprint-2-kickoff.md)
-- [Research Cycle Update — MLPerf Automotive & Tracker Gaps (2026‑02‑15 12:22 UTC](2026-02-15-research-cycle-mlperf-automotive-cbdc-gap.md)
+- [Research Cycle Update — MLPerf Automotive & Tracker Gaps (2026‑02‑15 12:22 UTC)](2026-02-15-research-cycle-mlperf-automotive-cbdc-gap.md)
 - [AI Production Deployment: ROI Promises vs Integration Realities](2026-02-15-production-deployment-roi-gap.md)
-- [Phase 2 Kickoff: SWE-Bench Failure Taxonomy & Agent Architecture Insights (2026-02-15 13:15 UTC](2026-02-15-phase-2-kickoff-swe-bench-taxonomy.md)
-- [OpenClaw Privacy Policy Assessment (2026-02-15](2026-02-15-openclaw-privacy-policy-assessment.md)
+- [Phase 2 Kickoff: SWE-Bench Failure Taxonomy & Agent Architecture Insights (2026-02-15 13:15 UTC)](2026-02-15-phase-2-kickoff-swe-bench-taxonomy.md)
+- [OpenClaw Privacy Policy Assessment (2026-02-15)](2026-02-15-openclaw-privacy-policy-assessment.md)
 - [AI Landscape Update: Open Model Surge, Fast Mode Premiums, and Reality Checks](2026-02-15-open-models-speed-premiums-reality-check.md)
 - [Mid-February 2026 Research Update: Anime Schedules, Claude 4.6 Enterprise Performance, GitHub Copilot Integration](2026-02-15-midmonth-update.md)
-- [Phase 2 Methodology Constraints & Adaptive Strategy (2026-02-15 13:31 UTC](2026-02-15-methodology-constraints-adaptive-strategy.md)
+- [Phase 2 Methodology Constraints & Adaptive Strategy (2026-02-15 13:31 UTC)](2026-02-15-methodology-constraints-adaptive-strategy.md)
 - [AI Infrastructure Economics & Production Realities: Apple Siri Delays, Kadokawa Profit Crash, Blackwell 10× Cost Cuts](2026-02-15-infrastructure-economics-realities.md)
-- [Research Digest — 2026-02-15 (Chinese New Year](2026-02-15-holiday-digest.md)
+- [Research Digest — 2026-02-15 (Chinese New Year)](2026-02-15-holiday-digest.md)
 - [Continuous Research Update: February 15, 2026](2026-02-15-continuous-research-update.md)
-- [AI Benchmark Gap: SWE-Bench Pro Reveals Brownfield Reality (Feb 15, 2026](2026-02-15-benchmark-gap-brownfield-reality.md)
+- [AI Benchmark Gap: SWE-Bench Pro Reveals Brownfield Reality (Feb 15, 2026)](2026-02-15-benchmark-gap-brownfield-reality.md)
 
 
 ---
@@ -244,7 +244,9 @@ This index is auto‑generated. Last updated: 2026-03-01
 
 ## Cross‑Cutting Special Reports
 
-- [Research Watchlist & Priority Gaps (2026‑02‑15](watchlist-priority-gaps-2026-02-15.md)
+- [Research Watchlist & Priority Gaps (2026‑02‑15)](watchlist-priority-gaps-2026-02-15.md)
+- [OpenClaw Subagent Persistence Investigation (2026-02-14)](subagent-persistence-investigation-2026-02-14.md)
+- [Research Cycle Summary — 2026-02-15 11:16 UTC](cycle-summary-2026-02-15-1116.md)
 
 
 ---
