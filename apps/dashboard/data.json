@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T05:50:02Z",
+  "generated_at": "2026-03-01T05:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,20 +9,20 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.67 0.75 0.84",
-    "mem_used": "3.9Gi",
+    "load_avg": "0.96 0.83 0.85",
+    "mem_used": "3.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 16 hours, 10 minutes",
+    "uptime": "1 week, 2 days, 16 hours, 15 minutes",
     "disk_history": [
       81,
       81,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
       81,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
       81,
       81,
       81,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "92c284db",
+      "sha": "2472f330",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "e9a18fd1",
+      "sha": "92c284db",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ed3ccb7a",
+      "sha": "e9a18fd1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "ed3ccb7a",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "886d5c4f",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "04a30777",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "d8957616",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "05d37b8d",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.1 — 16 events, upgrade shop, fan campaigns, balanced economy",
-      "time": "28 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "f50dec59",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "8c91baa1",
       "agent": "build",
       "message": "workspace-builder session 23dad379 validated; close the loop",
-      "time": "31 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "0c6b73d5",
       "agent": "build",
       "message": "workspace-builder planning docs and session registration",
-      "time": "32 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "3d5617e2",
       "agent": "build",
       "message": "update disk history metrics",
-      "time": "33 minutes ago"
+      "time": "38 minutes ago"
     },
     {
       "sha": "f9e17f7d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "6fd7eb6b",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "c8b48aa5",
       "agent": "research",
       "message": "Commercial Space 2026 deep-dive (#229, 22.7KB) — Artemis II NLT Apr 1 2026 (first crewed lunar flyby since 1972; crew Wiseman/Glover/Koch/Hansen; 10-day free-return trajectory; Feb 23 helium delay); Starship HLS OPT demo June 2026 (cryogenic propellant transfer linchpin; 11 integrated flights; OPT→June2026, uncrewed HLS landing→June2027, Artemis III crewed→Sep2028); Haven-1 Vast Space May/Jun 2026 (31,000lb Falcon 9 record payload, ~shipping-container size, 4-crew 10-day, first standalone commercial station in history); Axiom PAM-5 Jan2027 (Ax-4 June2025, Thales Alenia welding primary structures); Starlab Voyager/Airbus full-scale dev 2028 (Starship single-launch delivery); NASA CLD Phase 2 2026 ($1-1.5B awards); Chang'e 7 Long March 5 2026 south pole water-ice recon + mini flying probe; Chang'e 8 ISRU 2028; Tiangong expansion; DRACO/NTP 2027 (BWXT HALEU reactor, Lockheed prime, 700km orbit, 900s Isp = 2x chemical); $613B 2024 space economy (8% growth, $1T by 2032, $1.8T by 2035 WEF); orbital debris 27k+ objects, ClearSpace-1 2027; US-China lunar south pole geopolitical convergence; 2026-2030 milestone table; risk matrix",
-      "time": "36 minutes ago"
-    },
-    {
-      "sha": "c22efd13",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "41 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772344108848,
-      "next_run": 1772344228848,
+      "last_run": 1772344468872,
+      "next_run": 1772344588872,
       "last_status": "ok",
-      "last_duration_ms": 6373,
+      "last_duration_ms": 6354,
       "consecutive_errors": 0
     },
     {
