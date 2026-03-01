@@ -150,6 +150,8 @@ Commands:
   disk-usage                  Show disk usage by top-level directories in the workspace (monitor growth)
   trim-agent-logs [options]   Trim oversized agent logs in memory/ (default: >500KB → keep last 1000 lines)
                                Options: --size KB, --keep LINES, --dry-run, --dir DIR
+  trim-memory-logs [options]  Trim memory/*.log files exceeding N lines (default: 1000 lines, dry-run)
+                               Options: --threshold N, --execute
   find-large-files [options]  Find large files in the workspace (default: >10MB)
                                Options: --size SIZE (e.g. 5M, 1G), --days N (older than N days), --dir PATH, --top N
                                Example: quick find-large-files --size 50M --days 30
@@ -896,6 +898,10 @@ if not found: print('  (none)')
     ;;
   trim-agent-logs)
     "$WORKSPACE/scripts/trim-agent-logs.sh" "$@"
+    ;;
+
+  trim-memory-logs)
+    "$WORKSPACE/scripts/trim-memory-logs.sh" "$@"
     ;;
 
   updates-check)

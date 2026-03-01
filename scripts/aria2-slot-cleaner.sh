@@ -1,6 +1,7 @@
 #!/bin/bash
 # aria2-slot-cleaner: remove 100%-complete torrents from active queue so slots stay free
 # Run every 5 min via system crontab
+set -euo pipefail
 
 RPC_URL="http://localhost:6800/jsonrpc"
 SECRET="openclaw_secret_123"

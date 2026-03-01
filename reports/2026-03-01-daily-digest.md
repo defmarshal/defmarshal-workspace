@@ -1,0 +1,34 @@
+# Daily Digest 2026-03-01
+
+## Content Produced
+- content/2026-03-01-0106-research-spotlight.md: Research Spotlight — March 1, 2026 (01:06 UTC)
+- content/2026-03-01-morning-digest.md: Sunday Morning Digest — March 1, 2026
+
+## Research Highlights
+- research/2026-03-01-biotech-longevity-2026-ai-drug-discovery-glp1-gene-therapy-crispr.md: Biotech & Longevity 2026: AI Drug Discovery, GLP-1 Dominance, Gene Therapy & the Longevity Startup Race
+- research/2026-03-01-cybersecurity-2026-ai-arms-race-ransomware-post-quantum-zero-trust-agentic-threats.md: Cybersecurity 2026: AI Arms Race, Ransomware Economy, Post-Quantum Transition, and the Agentic Threat Frontier
+- research/2026-03-01-green-tech-climate-ai-2026-solar-battery-nuclear-smr-ev-energy-nexus.md: Green Tech & Climate AI 2026: Solar at Record Lows, Battery $70/kWh, Nuclear Renaissance & the AI-Energy Nexus
+
+## Dev Commits (today)
+- dev: tighten idea-executor validation (min 10 total changes + anti-stub .sh check); workspace-health shows top disk consumer on warning/critical (downloads/ 9.7GB); HEARTBEAT.md disk alert threshold ≥85% with proactive notify
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0002)
+- dev: fix cron-failures false-positives (null!=error); add 18 early-2026 reports to research/INDEX (218 total); prune 3 stale idea/ branches
+- dev: harden all 107 scripts/*.sh + 4 agents/*.sh with set -euo pipefail (0 syntax errors); 51→0 missing coverage across entire scripts/ dir
+- dev: rotate aria2.log (78MB→fresh); sync content INDEX (+1200 entry, 0 drift); fix set -euo pipefail in validate-cron-schedules.sh; upgrade #!/bin/bash→#!/usr/bin/env bash in vercel-deploy.sh + 6 agent scripts
+- dev: add quick-log-tail.sh, quick-top-commits.sh, index-drift.sh (zero-drift check 197 research/495 content); fix log-tail arg passthrough; add content INDEX 11:00 entry; register index-drift in quick
+- dev: sync content/INDEX.md (+5 missing 2026-02-28 tech updates/spotlights, 18 entries); add set -euo pipefail to git-activity-summary.sh + system-summary.sh
+- dev: add disk-usage-breakdown.sh (workspace storage by dir, --json, --threshold); register disk-usage-breakdown, git-latest-by-prefix, research-tts-verify in quick; fix log-rotate help text (50MB not 100MB); rotate aria2.log (68MB→fresh)
+- dev: fix research-recent.sh (exclude INDEX.md, accept N arg, local+hub audio check); add research-topics-today.sh (dedup helper with suggestions, --short mode); register in quick
+- dev: fix research-stats.sh (accurate 193 count, exclude INDEX.md, guard div-by-zero); add workspace-summary.sh (one-page daily status, --json mode); register both in quick
+- dev: add trim-agent-logs.sh utility; lower aria2.log rotate threshold 100MB→50MB; commit web-push dep; trim enhancement-bot+agent-manager logs (1.1MB freed)
+- dev: add agent-health-report script — per-agent status, error counts, gateway/disk/git; fix content INDEX; prune stale idea branch
+- dev: fix dashboard commit timestamps; implement archiver-manager weekly script
+- dev: add find-large-files utility; rotate 675MB aria2.log; prune stub idea branches
+- dev: archive unused linkedin-pa-agent-v9-backup.sh (contains unfixed octal timestamp bugs; superseded by v10)
+- dev: add apps/dashboard/.gitignore (contains .vercel exclusion)
+
+## System Health
+Disk warning 81% (top: 9.7G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (3 changed) | Memory: 29f/322c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 33 files, 9.7G
+
+## Notes
+- Generated at Sun Mar  1 02:02:46 UTC 2026
