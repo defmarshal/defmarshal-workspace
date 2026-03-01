@@ -1,42 +1,42 @@
 {
-  "generated_at": "2026-03-01T06:15:02Z",
+  "generated_at": "2026-03-01T06:20:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
     "disk_free": "7.9G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "11G",
-    "load_avg": "1.41 1.11 0.98",
-    "mem_used": "4.2Gi",
+    "load_avg": "1.45 1.15 1.02",
+    "mem_used": "3.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 16 hours, 35 minutes",
+    "uptime": "1 week, 2 days, 16 hours, 40 minutes",
     "disk_history": [
       83,
       83,
       83,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
       83,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
-      81,
       83
     ]
   },
@@ -92,93 +92,93 @@
   },
   "recent_commits": [
     {
-      "sha": "e0df2e7f",
-      "agent": "auto",
-      "message": "maintenance update 2026-03-01 06:14 UTC",
-      "time": "30 seconds ago"
-    },
-    {
-      "sha": "e05f8079",
-      "agent": "research",
-      "message": "update INDEX.md — add reports #230-231 (Frontier AI Models Feb 2026 + SEA Digital Banking & Fintech 2026), update count to 231 entries",
-      "time": "61 seconds ago"
-    },
-    {
-      "sha": "711395fe",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0612)",
-      "time": "3 minutes ago"
-    },
-    {
-      "sha": "ec0e768a",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "3 minutes ago"
-    },
-    {
-      "sha": "b3164fc0",
+      "sha": "c9665a9c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "cb52cbaa",
-      "agent": "content",
-      "message": "Commercial Space 2026 writeup (6.5KB) — accessible explainer covering Artemis II (NLT Apr 1, free-return lunar flyby, Wiseman/Glover/Koch/Hansen crew, 54yr gap since Apollo 17), Starship OPT June 2026 (cryogenic propellant transfer — the single unsolved gate for Artemis III), Haven-1 Vast Space May/Jun 2026 (first standalone private station), China Chang'e 7 south pole water-ice recon, $613B space economy → $1T 2032; 9th content piece today; all 7 research reports now have matching writeups",
-      "time": "9 minutes ago"
+      "sha": "e0df2e7f",
+      "agent": "auto",
+      "message": "maintenance update 2026-03-01 06:14 UTC",
+      "time": "6 minutes ago"
     },
     {
-      "sha": "fde2533b",
+      "sha": "e05f8079",
+      "agent": "research",
+      "message": "update INDEX.md — add reports #230-231 (Frontier AI Models Feb 2026 + SEA Digital Banking & Fintech 2026), update count to 231 entries",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "711395fe",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0612)",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "ec0e768a",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "b3164fc0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "3f1b2be4",
-      "agent": "dev",
-      "message": "fix workspace-validate.sh cron range 18-22→22-26 (24 jobs now legitimate; telegram-slash-handler + youtube-digest-daily + vishwakarma-cron + archiver-manager-cron added since original threshold); regen 2026-03-01 daily digest (7 research: +Commercial Space #229 + Spring Anime #225; 6 content total; disk-history.json appended)",
-      "time": "11 minutes ago"
+      "sha": "cb52cbaa",
+      "agent": "content",
+      "message": "Commercial Space 2026 writeup (6.5KB) — accessible explainer covering Artemis II (NLT Apr 1, free-return lunar flyby, Wiseman/Glover/Koch/Hansen crew, 54yr gap since Apollo 17), Starship OPT June 2026 (cryogenic propellant transfer — the single unsolved gate for Artemis III), Haven-1 Vast Space May/Jun 2026 (first standalone private station), China Chang'e 7 south pole water-ice recon, $613B space economy → $1T 2032; 9th content piece today; all 7 research reports now have matching writeups",
+      "time": "14 minutes ago"
     },
     {
-      "sha": "ab16aa6d",
+      "sha": "fde2533b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "bbb60fad",
+      "sha": "3f1b2be4",
+      "agent": "dev",
+      "message": "fix workspace-validate.sh cron range 18-22→22-26 (24 jobs now legitimate; telegram-slash-handler + youtube-digest-daily + vishwakarma-cron + archiver-manager-cron added since original threshold); regen 2026-03-01 daily digest (7 research: +Commercial Space #229 + Spring Anime #225; 6 content total; disk-history.json appended)",
+      "time": "16 minutes ago"
+    },
+    {
+      "sha": "ab16aa6d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "2472f330",
+      "sha": "bbb60fad",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "92c284db",
+      "sha": "2472f330",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "e9a18fd1",
+      "sha": "92c284db",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "ed3ccb7a",
+      "sha": "e9a18fd1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "886d5c4f",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-01)",
+      "sha": "ed3ccb7a",
+      "agent": "chore",
+      "message": "update clawdash data",
       "time": "45 minutes ago"
     }
   ],
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772345689522,
-      "next_run": 1772345809522,
+      "last_run": 1772345929543,
+      "next_run": 1772346049543,
       "last_status": "ok",
-      "last_duration_ms": 5941,
+      "last_duration_ms": 6593,
       "consecutive_errors": 0
     },
     {
