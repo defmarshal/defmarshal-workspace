@@ -26,6 +26,7 @@ Commands:
   today           Show files modified today (since midnight UTC)
   today-summary   One-liner production summary: research/content/dev counts + disk + archive total
   research-today [YYYY-MM-DD]  List today's research reports with titles and sizes (default: today UTC)
+  content-today [YYYY-MM-DD]   List today's content pieces with titles and sizes (default: today UTC)
   prune-gh-branches [--execute]  Delete stale gh-pages-* local branches (dry-run by default)
   gateway-info    Show gateway status and remote access setup instructions
   gateway-watchdog		Show gateway watchdog log (last 20 lines)
@@ -1879,6 +1880,9 @@ EOF
     ;;
   research-today)
     bash "$WORKSPACE/scripts/research-today.sh" "${1:-}"
+    ;;
+  content-today)
+    bash "$WORKSPACE/scripts/content-today.sh" "${1:-}"
     ;;
   prune-gh-branches)
     bash "$WORKSPACE/scripts/prune-gh-branches.sh" "$@"

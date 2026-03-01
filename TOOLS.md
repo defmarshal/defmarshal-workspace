@@ -148,6 +148,13 @@ Common utilities (run `./quick help` for full list):
 - `cleanup-backups [options]` — Clean old backup tarballs (default keep 1)
 - `cleanup-build-archive [options]` — Prune old build directories in `builds/` (default dry-run, keep 10)
 - `cleanup-agent-artifacts [options]` — Clean stale agent artifacts (respects quiet hours)
+- `cleanup-archived [options]` — Remove archived files older than 90 days (default: dry-run)
+- `trim-memory-logs [options]` — Trim memory/*.log files exceeding N lines (default 1000, dry-run); Options: `--threshold N`, `--execute`
+- `today-summary` — One-liner production summary: research/content/dev counts + disk % + archive total
+- `research-today [YYYY-MM-DD]` — List today's research reports with full titles and file sizes (default: today UTC)
+- `prune-gh-branches [--execute]` — Delete stale gh-pages-* local branches (dry-run by default)
+- `youtube-digest [options]` — Fetch YouTube subscription new-upload digest (last 24h), send to Telegram; Options: `--hours N`, `--dry-run`
+- `tweet-new-reports [options]` — Auto-tweet new research reports (requires TWITTER_API_* env vars); Options: `--dry-run`, `--since <timestamp_file>`
 - `agent-spawn <agent-id> <task> [--daemon]` — Spawn an agent; add --daemon for persistent 24/7 loop (respects quiet hours)
 - `agent-logs [name]` — Show recent agent logs (dev, content, research, builder; default all)
 - `cron` — List OpenClaw cron jobs (concise)
