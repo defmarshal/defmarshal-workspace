@@ -2,9 +2,10 @@
 
 This index is auto‑generated. Last updated: 2026-02-28
 
-## 2026 Reports (220 total)
+## 2026 Reports (221 total)
 
 ### 2026-03
+- [Green Tech & Climate AI 2026 — Solar Record Lows, Battery $70/kWh, Nuclear SMR Renaissance & the AI-Energy Nexus](2026-03-01-green-tech-climate-ai-2026-solar-battery-nuclear-smr-ev-energy-nexus.md)
 - [Biotech & Longevity 2026 — AI Drug Discovery, GLP-1 Dominance, Gene Therapy, CRISPR & the Longevity Startup Race](2026-03-01-biotech-longevity-2026-ai-drug-discovery-glp1-gene-therapy-crispr.md)
 
 ### 2026-02
