@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T08:30:02Z",
+  "generated_at": "2026-03-01T08:35:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
@@ -9,15 +9,14 @@
     "memory_age_days": 0,
     "downloads_count": 11,
     "downloads_gb": "7.6G",
-    "load_avg": "0.71 0.78 0.85",
-    "mem_used": "3.4Gi",
+    "load_avg": "0.60 0.67 0.79",
+    "mem_used": "2.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 18 hours, 50 minutes",
+    "uptime": "1 week, 2 days, 18 hours, 55 minutes",
     "disk_history": [
       83,
       83,
       83,
-      83,
       81,
       81,
       81,
@@ -30,6 +29,7 @@
       78,
       78,
       78,
+      79,
       79,
       79,
       79,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "57172129",
+      "sha": "b2a2033b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "0b1b3b88",
+      "sha": "57172129",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "e1533291",
+      "sha": "0b1b3b88",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "e43ddf28",
+      "sha": "e1533291",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "d257dbd2",
+      "sha": "e43ddf28",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "5f1d0078",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0803)",
-      "time": "27 minutes ago"
-    },
-    {
-      "sha": "167be621",
+      "sha": "d257dbd2",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "fae22556",
+      "sha": "5f1d0078",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0803)",
+      "time": "32 minutes ago"
+    },
+    {
+      "sha": "167be621",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "12aafc3f",
+      "sha": "fae22556",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "b06fefa1",
+      "sha": "12aafc3f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "9b9dfcbc",
+      "sha": "b06fefa1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "b8b479da",
+      "sha": "9b9dfcbc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "a5cac29a",
+      "sha": "b8b479da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "3ac15326",
+      "sha": "a5cac29a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
     },
     {
-      "sha": "b0410dca",
+      "sha": "3ac15326",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "70 minutes ago"
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772350200010,
-      "next_run": 1772353800000,
+      "last_run": 1772353800009,
+      "next_run": 1772355600000,
       "last_status": "ok",
-      "last_duration_ms": 29160,
+      "last_duration_ms": 34304,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772353730885,
-      "next_run": 1772353850885,
+      "last_run": 1772354090914,
+      "next_run": 1772354210914,
       "last_status": "ok",
-      "last_duration_ms": 6301,
+      "last_duration_ms": 10322,
       "consecutive_errors": 0
     },
     {
