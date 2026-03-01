@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-03-01T06:05:03Z",
+  "generated_at": "2026-03-01T06:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.5G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "1.19 1.03 0.92",
-    "mem_used": "4.1Gi",
+    "load_avg": "0.90 0.89 0.89",
+    "mem_used": "4.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 16 hours, 25 minutes",
+    "uptime": "1 week, 2 days, 16 hours, 30 minutes",
     "disk_history": [
       83,
       83,
       83,
       83,
       83,
-      83,
+      81,
       81,
       81,
       81,
@@ -56,8 +56,8 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-03-01 05:09",
-      "last_line": "[2026-03-01T05:09:13Z] [content-agent] Generated 2 content pieces (02ade367). Gap identification: 3 research reports had no content writeup — Spring 2026 anime (#225), Biotech/Longevity (#226?), Green Tech (#?). Covered 2 of 3. (1) Spring 2026 Anime Watchlist (7.7KB, 0510): accessible watchlist covering Tier-1 picks (Witch Hat Atelier=magic-as-craft/Frieren parallel, Daemons=Arakawa+Bones/Ando/Suehiro, Re:Zero S4=Arc 6 RbD origin), franchise moments (CotE S4 Apr 1 90-min/Eir Aoi OP, One Piece Elbaph 25yr wait since Little Garden 2001, Kaiju 8 S2, Tensei Slime 5-cour), calendar table; (2) Biotech 2026 Writeup (8.3KB, 0515): 4 things framing — AI as infrastructure (AlphaFold Nobel, Isomorphic 2x AF3, Insilico Medicine first AI drug Phase 2 positive), GLP-1 oral race (orforglipron, expanding indications CV/sleep apnoea/AD/addiction), CRISPR to patients (Casgevy $2.2M/patient, 46+ FDA CGT), patent cliff ($176B 2026-2029, +15% M&A). 8 content pieces Mar 1. 228 research reports total."
+      "last_run": "2026-03-01 06:06",
+      "last_line": "[2026-03-01T06:06:29Z] [content-agent] Completed Commercial Space 2026 writeup (cb52cbaa, 6.5KB). Gap identified: research report #229 had no content writeup. Produced accessible explainer 'To the Moon and Beyond' covering: (1) Artemis II NLT Apr 1 2026 — 54-year gap, crew Wiseman/Glover/Koch/Hansen, 10-day free-return trajectory, helium delay resolved; (2) Starship OPT June 2026 — cryogenic propellant transfer never done before, single gate for Artemis III Sep 2028; (3) Haven-1 Vast Space May/Jun 2026 — first standalone commercial station, 31k lb Falcon 9 record, ISS succession race; (4) Chang'e 7 south pole water-ice recon, competing Artemis+ILRS south pole targets; (5) $613B 2024 space economy → $1T 2032. Updated content/INDEX.md. 9 content pieces total today (Mar 1); all 7 research reports now have matching writeups."
     },
     {
       "name": "dev-agent",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "3f1b2be4",
-      "agent": "dev",
-      "message": "fix workspace-validate.sh cron range 18-22→22-26 (24 jobs now legitimate; telegram-slash-handler + youtube-digest-daily + vishwakarma-cron + archiver-manager-cron added since original threshold); regen 2026-03-01 daily digest (7 research: +Commercial Space #229 + Spring Anime #225; 6 content total; disk-history.json appended)",
-      "time": "80 seconds ago"
+      "sha": "cb52cbaa",
+      "agent": "content",
+      "message": "Commercial Space 2026 writeup (6.5KB) — accessible explainer covering Artemis II (NLT Apr 1, free-return lunar flyby, Wiseman/Glover/Koch/Hansen crew, 54yr gap since Apollo 17), Starship OPT June 2026 (cryogenic propellant transfer — the single unsolved gate for Artemis III), Haven-1 Vast Space May/Jun 2026 (first standalone private station), China Chang'e 7 south pole water-ice recon, $613B space economy → $1T 2032; 9th content piece today; all 7 research reports now have matching writeups",
+      "time": "4 minutes ago"
     },
     {
-      "sha": "ab16aa6d",
+      "sha": "fde2533b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "bbb60fad",
+      "sha": "3f1b2be4",
+      "agent": "dev",
+      "message": "fix workspace-validate.sh cron range 18-22→22-26 (24 jobs now legitimate; telegram-slash-handler + youtube-digest-daily + vishwakarma-cron + archiver-manager-cron added since original threshold); regen 2026-03-01 daily digest (7 research: +Commercial Space #229 + Spring Anime #225; 6 content total; disk-history.json appended)",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "ab16aa6d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "2472f330",
+      "sha": "bbb60fad",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "92c284db",
+      "sha": "2472f330",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "e9a18fd1",
+      "sha": "92c284db",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "ed3ccb7a",
+      "sha": "e9a18fd1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "ed3ccb7a",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "886d5c4f",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "04a30777",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "d8957616",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "05d37b8d",
       "agent": "game",
       "message": "polish Anime Studio Tycoon v1.1 — 16 events, upgrade shop, fan campaigns, balanced economy",
-      "time": "43 minutes ago"
+      "time": "48 minutes ago"
     },
     {
       "sha": "f50dec59",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "8c91baa1",
       "agent": "build",
       "message": "workspace-builder session 23dad379 validated; close the loop",
-      "time": "46 minutes ago"
-    },
-    {
-      "sha": "0c6b73d5",
-      "agent": "build",
-      "message": "workspace-builder planning docs and session registration",
-      "time": "47 minutes ago"
-    },
-    {
-      "sha": "3d5617e2",
-      "agent": "build",
-      "message": "update disk history metrics",
-      "time": "48 minutes ago"
+      "time": "51 minutes ago"
     }
   ],
   "heartbeat": {
@@ -232,6 +232,18 @@
   ],
   "agent_outputs": [
     {
+      "file": "INDEX",
+      "ts": "",
+      "title": "Content Archive Index",
+      "size": 53853
+    },
+    {
+      "file": "2026-03-01-0604-commercial-space-2026-writeup",
+      "ts": "2026-03-01-0604",
+      "title": "To the Moon and Beyond: What's Actually Happening in Space Right Now",
+      "size": 6742
+    },
+    {
       "file": "2026-03-01-0515-biotech-longevity-2026-writeup",
       "ts": "2026-03-01-0515",
       "title": "The Drug That Changes Everything: Biotech in 2026",
@@ -248,12 +260,6 @@
       "ts": "",
       "title": "Daily Digest — 2026-03-01",
       "size": 1177
-    },
-    {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 53596
     },
     {
       "file": "2026-03-01-0402-ai-hardware-writeup",
@@ -344,12 +350,6 @@
       "ts": "2026-02-28-1000",
       "title": "Tech Update — 10:00 UTC, Feb 28 2026",
       "size": 4841
-    },
-    {
-      "file": "2026-02-28-0900-tech-update",
-      "ts": "2026-02-28-0900",
-      "title": "Tech Update — 09:00 UTC, Feb 28 2026",
-      "size": 4159
     }
   ],
   "cron_jobs": [
@@ -707,8 +707,8 @@
     }
   ],
   "content_stats": {
-    "total": 511,
-    "today": 8,
+    "total": 512,
+    "today": 9,
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
