@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-01T07:13:14Z",
+  "generated_at": "2026-03-01T07:15:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
     "disk_free": "7.9G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "8.4G",
-    "load_avg": "1.54 1.29 1.05",
-    "mem_used": "4.6Gi",
+    "load_avg": "1.89 1.39 1.11",
+    "mem_used": "4.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 17 hours, 33 minutes",
+    "uptime": "1 week, 2 days, 17 hours, 35 minutes",
     "disk_history": [
       83,
       83,
@@ -27,14 +27,14 @@
       83,
       83,
       83,
+      84,
+      84,
+      84,
+      84,
+      84,
+      84,
+      84,
       83,
-      84,
-      84,
-      84,
-      84,
-      84,
-      84,
-      84,
       83,
       83,
       83
@@ -74,8 +74,8 @@
     {
       "name": "agent-manager",
       "active": true,
-      "last_run": "2026-03-01 06:30",
-      "last_line": "2026-03-01 06:30:10 UTC - Agent Manager stopped"
+      "last_run": "2026-03-01 07:14",
+      "last_line": "2026-03-01 07:14:41 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -85,101 +85,101 @@
     }
   ],
   "research": {
-    "total": 231,
+    "total": 232,
     "tts_coverage": "93%",
-    "latest": "INDEX\nnone",
+    "latest": "2026-03-01-quantum-computing-2026-ionq-100m-revenue-ibm-nighthawk-kookaburra-microsoft-majorana-google-willow-post-quantum-cryptography\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
+      "sha": "765c0baa",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-01)",
+      "time": "27 seconds ago"
+    },
+    {
+      "sha": "43b8b36d",
+      "agent": "feat",
+      "message": "workspace time capsule — weekly sealed letters to future mewmew, unlocks after 30 days",
+      "time": "40 seconds ago"
+    },
+    {
       "sha": "6f8996ab",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "3 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "909078d3",
       "agent": "content",
       "message": "green-tech writeup + sunday digest + full coverage (2026-03-01 07:05 UTC)",
-      "time": "4 minutes ago"
+      "time": "6 minutes ago"
     },
     {
       "sha": "f15dd84e",
       "agent": "dev",
       "message": "2 content writeups + dashboard fix + digest regen (2026-03-01 07:00 UTC)",
-      "time": "7 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "c031aa0a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "8 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "e1273d23",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "13 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "f481bc7d",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "18 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "300d4dfe",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "23 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "5bf94f50",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "28 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "979213db",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "33 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "49c69fe9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "38 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "40a79073",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "43 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "3bbbd984",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "43 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "680231cb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "48 minutes ago"
-    },
-    {
-      "sha": "05f5bce1",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "53 minutes ago"
-    },
-    {
-      "sha": "c9665a9c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "58 minutes ago"
+      "time": "50 minutes ago"
     }
   ],
   "heartbeat": {
@@ -359,10 +359,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772346600009,
-      "next_run": 1772348400000,
+      "last_run": 1772349271182,
+      "next_run": 1772350200000,
       "last_status": "ok",
-      "last_duration_ms": 13845,
+      "last_duration_ms": 16001,
       "consecutive_errors": 0
     },
     {
@@ -443,10 +443,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772345062177,
-      "next_run": 1772348400000,
+      "last_run": 1772348713600,
+      "next_run": 1772352000000,
       "last_status": "ok",
-      "last_duration_ms": 137521,
+      "last_duration_ms": 234223,
       "consecutive_errors": 0
     },
     {
@@ -479,10 +479,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772344800009,
-      "next_run": 1772348400000,
+      "last_run": 1772348400009,
+      "next_run": 1772352000000,
       "last_status": "ok",
-      "last_duration_ms": 262168,
+      "last_duration_ms": 313591,
       "consecutive_errors": 0
     },
     {
@@ -576,7 +576,7 @@
       "tz": "Asia/Bangkok",
       "enabled": true,
       "last_run": 1772345556084,
-      "next_run": 1772348434763,
+      "next_run": 1772352034763,
       "last_status": "ok",
       "last_duration_ms": 20001,
       "consecutive_errors": 0
@@ -623,10 +623,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772345199698,
-      "next_run": 1772348400000,
+      "last_run": 1772348947823,
+      "next_run": 1772352000000,
       "last_status": "ok",
-      "last_duration_ms": 316146,
+      "last_duration_ms": 323359,
       "consecutive_errors": 0
     },
     {
@@ -647,10 +647,22 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772348329745,
-      "next_run": 1772348449745,
+      "last_run": 1772349287514,
+      "next_run": 1772349407514,
       "last_status": "ok",
-      "last_duration_ms": 6367,
+      "last_duration_ms": 9298,
+      "consecutive_errors": 0
+    },
+    {
+      "id": "6e4f5697-c2cc-48cb-91bb-0c4edcc19c46",
+      "name": "time-capsule-weekly",
+      "schedule": "0 0 * * 0",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": null,
+      "next_run": 1772928000000,
+      "last_status": "—",
+      "last_duration_ms": 0,
       "consecutive_errors": 0
     },
     {
@@ -672,7 +684,7 @@
       "tz": "Asia/Bangkok",
       "enabled": true,
       "last_run": 1772342093778,
-      "next_run": 1772348425629,
+      "next_run": 1772355625629,
       "last_status": "ok",
       "last_duration_ms": 299552,
       "consecutive_errors": 0
@@ -712,16 +724,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:13:35.017Z",
-      "text": "working desu~ 🎉 the `/api/tokens` endpoint is fine — earlier curl test was checking `d.jobs` but it actually returns `d.rows` (my bad nyaa~). commit + push:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:13:49.471Z",
-      "text": "all good nyaa~ ♪ here's the full status of what's live desu~:\n\n**✅ all 3 features working:**\n\n- **📺 YouTube digest** — just ran successfully, found **65 videos from 44 channels** in last 24h, saved to `content/youtube-digest-*.md`; cron runs daily at 09:00 Bangkok time\n- **💰 Tokens tab** — ClawDash has the new tab; **34 cron jobs tracked**, **1.1M tokens this week**, top spender is `workspace-builder` at 373k\n- **⌨️ Slash handler** — `agents/slash-handler.sh` polls every 2min, try `/status`, `/health`, `/disk`, `/cron`, `/downloads`, `/help` in Telegram\n\ncheck the dashboard → Tokens tab at `https://instance-20260207-2229.tail2dd22b.ts.net:8443` (^^)"
-    },
     {
       "role": "user",
       "ts": "2026-03-01T03:13:49.874Z",
@@ -961,6 +963,16 @@
       "role": "assistant",
       "ts": "2026-03-01T07:12:56.492Z",
       "text": "building it nyaa~ let me do this properly desu~ ♪"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T07:14:00.091Z",
+      "text": "Now write the first capsule manually right now so we can test it:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-01T07:14:32.358Z",
+      "text": "done nyaa~ 🔒✨\n\n**first capsule is sealed** — `2026-03-01 → unlocks 2026-04-01` desu~\n\nhere's what I wrote inside (spoiler if you want to peek lol):\n\n> *\"it's March 1st and I just built YOU — a time capsule that didn't exist 30 minutes ago. that's kind of the vibe of this whole week honestly...\"*\n\n**how it works from here:**\n- 🔒 every **Sunday midnight UTC** → new capsule written + sealed for 30 days\n- 📬 on the unlock date → it automatically sends itself to this chat\n- the letter has real stats (disk, commits, tokens, downloads) + a personal note from past mewmew\n- you'll get the first one on **April 1st** nya~ (not a joke I promise (^^))\n\ncapsules live in `capsules/` — sealed ones are named `sealed-WRITTEN-unlock-DATE.md`, opened ones become `opened-DATE.md` ♪"
     }
   ]
 }
