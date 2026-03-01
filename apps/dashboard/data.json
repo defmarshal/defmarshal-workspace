@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T03:50:02Z",
+  "generated_at": "2026-03-01T03:55:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "9.7G",
-    "load_avg": "0.55 0.58 0.70",
-    "mem_used": "3.8Gi",
+    "load_avg": "0.66 0.70 0.73",
+    "mem_used": "3.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 14 hours, 10 minutes",
+    "uptime": "1 week, 2 days, 14 hours, 15 minutes",
     "disk_history": [
       81,
       81,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "f6c35a13",
+      "sha": "038795d3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "909d1828",
+      "sha": "f6c35a13",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "a193b941",
+      "sha": "909d1828",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
+      "sha": "a193b941",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "20 minutes ago"
+    },
+    {
       "sha": "82a5d31d",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-01)",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "495e3c2c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "5d455164",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "d0a54a76",
       "agent": "misc",
       "message": "fix(youtube-digest): send digest as clean channel+video list to Telegram, split into chunks if >3800 chars",
-      "time": "26 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "4f0d217a",
       "agent": "build",
       "message": "finalize workspace-builder session — progress summary, data refresh",
-      "time": "28 minutes ago"
+      "time": "33 minutes ago"
     },
     {
       "sha": "c76b0d76",
       "agent": "build",
       "message": "refresh disk history (maintenance)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "8eb8be41",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "02991bb5",
       "agent": "research",
       "message": "AI Hardware & Chips 2026 (#224, 21KB) — Blackwell volume production (208B transistors, 192GB HBM3e, 8TB/s, 20PFLOPS FP4, GB200 NVL72 rack $5M→$75M ROI); NVIDIA Q4 FY2026 earnings ($68B total/$62B data center/$194B annual/73% YoY/13x scale since ChatGPT); Vera Rubin R100 H2-2026 (336B transistors/HBM4/22TB/s/50PFLOPS/10x inference cost reduction); AMD MI350 CDNA4 (288GB HBM3e/8TB/s/20PFLOPS FP4 parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal); Google Ironwood TPU v7 (192GB HBM3e/7.4TB/s/FP8, $185B capex 2026, Gemini 2.0 750M users on own silicon, Anthropic 1M TPU deal); AWS Trainium3 (3nm/2x perf/40% efficiency/Amazon $50B OpenAI deal); TSMC CoWoS 130K wafers/month target/$56B capex (+37% YoY); dual packaging+HBM bottleneck; hyperscaler $435B capex stack; 224 total",
-      "time": "31 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "7bc13e80",
       "agent": "misc",
       "message": "fix(clawdash): drop In/Out columns from token tab (6 cols), more room for Job name (v26)",
-      "time": "31 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "771f5240",
       "agent": "chore",
       "message": "update clawdash data (post-workspace-builder validation)",
-      "time": "31 minutes ago"
+      "time": "36 minutes ago"
     },
     {
       "sha": "42e60080",
       "agent": "build",
       "message": "routine maintenance — verification, daily log update, active-tasks tracking",
-      "time": "32 minutes ago"
-    },
-    {
-      "sha": "05a6bbd5",
-      "agent": "misc",
-      "message": "fix(clawdash): reduce token tab font to 10px, padding 4px 6px to prevent truncation (v25)",
-      "time": "33 minutes ago"
+      "time": "37 minutes ago"
     }
   ],
   "heartbeat": {
@@ -647,10 +647,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772336952235,
-      "next_run": 1772337072235,
+      "last_run": 1772337192252,
+      "next_run": 1772337312252,
       "last_status": "ok",
-      "last_duration_ms": 7829,
+      "last_duration_ms": 7552,
       "consecutive_errors": 0
     },
     {
