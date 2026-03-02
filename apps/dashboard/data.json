@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-02T21:50:03Z",
+  "generated_at": "2026-03-02T21:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
     "disk_free": "9.3G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 2,
     "downloads_count": 12,
     "downloads_gb": "7.7G",
-    "load_avg": "1.15 1.12 1.03",
-    "mem_used": "4.1Gi",
+    "load_avg": "0.87 0.94 0.97",
+    "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 8 hours, 10 minutes",
+    "uptime": "1 week, 4 days, 8 hours, 15 minutes",
     "disk_history": [
       78,
       78,
@@ -35,8 +35,8 @@
       78,
       78,
       78,
-      78,
-      78,
+      79,
+      79,
       79
     ]
   },
@@ -92,28 +92,34 @@
   },
   "recent_commits": [
     {
+      "sha": "98cda91b",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "365decda",
       "agent": "fix",
       "message": "restore dashboard data; add generate-dashboard-data.sh; fix quick command; improve refresh-dashboard-data.py gateway detection",
-      "time": "26 seconds ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "760a0cb8",
       "agent": "build",
       "message": "append workspace-builder session summary to daily log",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "a90472cf",
       "agent": "build",
       "message": "workspace-builder session validation closure",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "bdcc6f1e",
       "agent": "build",
       "message": "fix refresh-dashboard-data.py syntax error; regenerate dashboard data; refresh planning docs",
-      "time": "41 minutes ago"
+      "time": "46 minutes ago"
     },
     {
       "sha": "316157fe",
@@ -143,7 +149,7 @@
       "sha": "518a6237",
       "agent": "build",
       "message": "append workspace-builder session summary to daily log",
-      "time": "6 hours ago"
+      "time": "7 hours ago"
     },
     {
       "sha": "7995bb71",
@@ -174,12 +180,6 @@
       "agent": "chore",
       "message": "update clawdash data",
       "time": "9 hours ago"
-    },
-    {
-      "sha": "a938f376",
-      "agent": "misc",
-      "message": "feat(heartbeat): add initial heartbeat state file",
-      "time": "10 hours ago"
     }
   ],
   "heartbeat": {
@@ -472,10 +472,10 @@
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772487602611,
-      "next_run": 1772487900000,
+      "last_run": 1772487900011,
+      "next_run": 1772488500000,
       "last_status": "ok",
-      "last_duration_ms": 32553,
+      "last_duration_ms": 352597,
       "consecutive_errors": 0
     },
     {
