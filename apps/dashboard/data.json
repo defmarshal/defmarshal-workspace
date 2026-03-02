@@ -1,11 +1,19 @@
 {
-  "generated_at": "2026-03-02T03:52:58",
+  "generated_at": "2026-03-02T04:03:42",
   "system": {
+    "gateway": "down",
     "disk_percent": 78,
-    "load": "1.83 1.70 1.57",
-    "uptime_seconds": 915203,
+    "disk_free": "10G",
+    "load": "1.67 1.57 1.55",
+    "uptime_seconds": 915847,
     "os": "Linux",
-    "arch": "aarch64"
+    "arch": "aarch64",
+    "updates": 0,
+    "git_clean": false,
+    "memory_age_days": 0,
+    "disk_history": [],
+    "downloads_count": 11,
+    "downloads_gb": 0.63
   },
   "agents": [
     {
@@ -132,51 +140,62 @@
   "research": [],
   "recent_commits": [
     {
+      "hash": "5434292e",
+      "message": "fix(dashboard): parseOutputTs handle numeric timestamps (10 minutes ago)"
+    },
+    {
       "hash": "c47056bc",
-      "message": "fix(dashboard): correct agent_outputs data structure (3 minutes ago)"
+      "message": "fix(dashboard): correct agent_outputs data structure (13 minutes ago)"
     },
     {
       "hash": "33ebbc1f",
-      "message": "fix(dashboard): resolve overdue agents and JS error (11 minutes ago)"
+      "message": "fix(dashboard): resolve overdue agents and JS error (22 minutes ago)"
     },
     {
       "hash": "96788b0d",
-      "message": "chore: update clawdash data (18 minutes ago)"
+      "message": "chore: update clawdash data (29 minutes ago)"
     },
     {
       "hash": "568c9b2f",
-      "message": "build: finalize workspace-builder progress log (46 minutes ago)"
+      "message": "build: finalize workspace-builder progress log (57 minutes ago)"
     },
     {
       "hash": "48ce1c3b",
-      "message": "build: update daily log with workspace-builder session (03:02 UTC) (46 minutes ago)"
+      "message": "build: update daily log with workspace-builder session (03:02 UTC) (57 minutes ago)"
     },
     {
       "hash": "78cca5d0",
-      "message": "build: workspace-builder session validation and closure (47 minutes ago)"
+      "message": "build: workspace-builder session validation and closure (58 minutes ago)"
     },
     {
       "hash": "db822b59",
-      "message": "build: workspace-builder planning docs and session registration (49 minutes ago)"
+      "message": "build: workspace-builder planning docs and session registration (59 minutes ago)"
     },
     {
       "hash": "bd8ad94d",
-      "message": "build: update disk history metrics (49 minutes ago)"
+      "message": "build: update disk history metrics (59 minutes ago)"
     },
     {
       "hash": "134341df",
       "message": "build: mark workspace-builder session validated with metrics (3 hours ago)"
-    },
-    {
-      "hash": "f64c7198",
-      "message": "build: daily log for 2026-03-02 (3 hours ago)"
     }
   ],
   "heartbeat": {
-    "state": {},
-    "checks": "\u23f0 UTC+7 time (24/7 operation)\n\ud83c\udf24\ufe0f Weather Bangkok: clear, +30\u00b0C\n\ud83d\udcbe System: disk, updates \u2014 \u26a0\ufe0f Disk at 81% (downloads/ 9.7GB). Alert def if disk \u226585%.\n\ud83c\udf89 Holiday: Nyepi (Mar 18\u201319) \u2014 Day of Silence / Balinese New Year\n\ud83e\udd16 Agents: verify running (from active-tasks.md)\n\n\ud83c\udf19 Night 22:00-06:00 UTC+7 (agents still running):\n- Scan workspace \u2192 commit, push, build utils\n- Record builds in memory + commit msg\n\n\ud83d\udea8 Proactive alerts:\n- Rain/storms in Bangkok\n- Disk \u226585% \u2192 notify def immediately\n- Pending updates\n- Idle >8h since last chat\n\n\u26a0\ufe0f Note: Quiet hours have been removed system-wide. All agents now run 24/7."
+    "state": [],
+    "overall": {},
+    "checks": {}
   },
   "supervisor_log": [
+    "2026-02-27 00:01:04 UTC - OK",
+    "2026-02-27 00:30:32 UTC - OK",
+    "2026-02-27 01:30:50 UTC - OK",
+    "2026-02-27 03:10:23 UTC - OK",
+    "2026-02-27 03:31:06 UTC - OK",
+    "2026-02-27 06:06:25 UTC - OK",
+    "2026-02-27 07:08:47 UTC - OK",
+    "2026-02-27 10:07:53 UTC - OK",
+    "2026-02-27 10:30:52 UTC - OK",
+    "2026-02-27 11:12:28 UTC - OK",
     "2026-02-27 12:09:11 UTC - OK",
     "2026-02-27 12:30:36 UTC - OK",
     "2026-02-27 13:07:36 UTC - OK",
@@ -382,72 +401,22 @@
   ],
   "cron_jobs": [
     {
-      "name": "telegram-slash-handler",
-      "schedule": "every 2m",
-      "tz": "UTC",
-      "enabled": true,
-      "last_run": 1772423492140,
-      "next_run": 1772423612140,
-      "status": "ok",
-      "last_error": ""
-    },
-    {
-      "name": "dashboard-data-updater",
-      "schedule": "*/5 * * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772423403233,
-      "next_run": 1772423700000,
-      "status": "ok",
-      "last_error": ""
-    },
-    {
-      "name": "dev-agent-cron",
-      "schedule": "0 8-22 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772420400007,
-      "next_run": 1772424000000,
-      "status": "ok",
-      "last_error": ""
-    },
-    {
-      "name": "content-agent-cron",
-      "schedule": "0 8-22 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772420430932,
-      "next_run": 1772424000000,
-      "status": "ok",
-      "last_error": ""
-    },
-    {
-      "name": "research-agent-cron",
-      "schedule": "0 8-22 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772420462852,
-      "next_run": 1772424000000,
-      "status": "ok",
-      "last_error": ""
-    },
-    {
-      "name": "agent-manager-cron",
-      "schedule": "0,30 * * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772422200009,
-      "next_run": 1772424000000,
-      "status": "ok",
-      "last_error": ""
-    },
-    {
       "name": "meta-agent-cron",
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
       "last_run": 1772420853302,
       "next_run": 1772424034763,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "telegram-slash-handler",
+      "schedule": "every 2m",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772423973357,
+      "next_run": 1772424093357,
       "status": "ok",
       "last_error": ""
     },
@@ -488,6 +457,56 @@
       "enabled": true,
       "last_run": 1772417106508,
       "next_run": 1772424239125,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "dashboard-data-updater",
+      "schedule": "*/5 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772424125552,
+      "next_run": 1772424300000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "agent-manager-cron",
+      "schedule": "0,30 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772424095826,
+      "next_run": 1772425800000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "dev-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772424004163,
+      "next_run": 1772427600000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "content-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772424035169,
+      "next_run": 1772427600000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "research-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772424065619,
+      "next_run": 1772427600000,
       "status": "ok",
       "last_error": ""
     },
@@ -653,8 +672,20 @@
     }
   ],
   "active_tasks": [
-    "- [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)",
-    "- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Routine maintenance (started: 2026-03-02 03:02 UTC, status: validated)"
+    {
+      "agent": "meta-supervisor",
+      "session_key": "meta-supervisor-daemon",
+      "goal": "Continuous agent outcome auditor",
+      "started": "2026-02-28 02:00 UTC",
+      "status": "running"
+    },
+    {
+      "agent": "workspace-builder",
+      "session_key": "23dad379-21ad-4f7a-8c68-528f98203a33",
+      "goal": "Routine maintenance",
+      "started": "2026-03-02 03:02 UTC",
+      "status": "validated"
+    }
   ],
   "content_stats": {
     "total": 518,

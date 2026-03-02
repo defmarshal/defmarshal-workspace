@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Refresh dashboard data.json with latest info."""
-import json, time, subprocess, os, glob, re
+import json, time, subprocess, os, glob, re, sys
 from datetime import datetime
 
 WORKSPACE = "/home/ubuntu/.openclaw/workspace"
@@ -20,60 +20,131 @@ def write_json(path, data):
         json.dump(data, f, indent=2)
 
 def get_system_stats():
-    # disk_percent from df
-    disk = run("df -h / | tail -1 | awk '{print $5}'").strip('%')
-    load = run("cat /proc/loadavg | awk '{print $1,$2,$3}'")
-    uptime = run("cat /proc/uptime | awk '{print $1}'")
-    return {
-        "disk_percent": int(disk) if disk.isdigit() else 0,
-        "load": load,
-        "uptime_seconds": int(float(uptime)) if uptime else 0,
-        "os": os.uname().sysname,
-        "arch": os.uname().machine
-    }
+    try:
+        disk = run("df -h / | tail -1 | awk '{print $5}'").strip('%')
+        disk_free = run("df -h / | tail -1 | awk '{print $4}'")
+        load = run("cat /proc/loadavg | awk '{print $1,$2,$3}'")
+        uptime = run("cat /proc/uptime | awk '{print $1}'")
+        # Gateway status
+        gw = "down"
+        try:
+            subprocess.check_call(["systemctl","is-active","--quiet","openclaw-gateway"])
+            gw = "up"
+        except:
+            pass
+        # Git clean?
+        git_clean = True
+        try:
+            status = run(f"git -C {WORKSPACE} status --porcelain")
+            git_clean = (status.strip() == "")
+        except:
+            git_clean = False
+        # Updates count (APT)
+        updates = 0
+        try:
+            updates = int(run("apt-get -s upgrade | grep -c ^Inst"))
+        except:
+            pass
+        # Downloads
+        downloads_dir = f"{WORKSPACE}/downloads"
+        downloads_count = 0
+        downloads_gb = 0.0
+        if os.path.exists(downloads_dir):
+            files = glob.glob(f"{downloads_dir}/*")
+            downloads_count = len(files)
+            total_bytes = sum(os.path.getsize(f) for f in files if os.path.isfile(f))
+            downloads_gb = total_bytes / (1024**3)
+        # Memory age days (unused for now)
+        memory_age_days = 0
+        # Disk history (sparkline): we can return an empty string for now
+        disk_history = []
+        return {
+            "gateway": gw,
+            "disk_percent": int(disk) if disk.isdigit() else 0,
+            "disk_free": disk_free,
+            "load": load,
+            "uptime_seconds": int(float(uptime)) if uptime else 0,
+            "os": os.uname().sysname,
+            "arch": os.uname().machine,
+            "updates": updates,
+            "git_clean": git_clean,
+            "memory_age_days": memory_age_days,
+            "disk_history": disk_history,
+            "downloads_count": downloads_count,
+            "downloads_gb": round(downloads_gb, 2)
+        }
+    except Exception as e:
+        print(f"get_system_stats error: {e}", file=sys.stderr)
+        return {}
+
+def parse_active_tasks_lines(lines):
+    """Parse active-tasks.md lines into structured dicts."""
+    tasks = []
+    pattern = r'^- \[([^\]]+)\] (.*?) - (.+?) \(started: ([^,]+), status: ([^)]+)\)$'
+    for line in lines:
+        line = line.strip()
+        if not line.startswith('- ['):
+            continue
+        m = re.match(pattern, line)
+        if m:
+            tasks.append({
+                'agent': m.group(2).strip(),
+                'session_key': m.group(1),
+                'goal': m.group(3).strip(),
+                'started': m.group(4).strip(),
+                'status': m.group(5).strip()
+            })
+        else:
+            tasks.append({
+                'agent': 'Unknown',
+                'session_key': '',
+                'goal': line,
+                'started': '',
+                'status': 'unknown'
+            })
+    return tasks[:20]
 
 def get_active_tasks():
     try:
         with open(f"{WORKSPACE}/active-tasks.md") as f:
-            content = f.read()
-        # Parse simple lines: - [ ] or - [x]
-        tasks = []
-        for line in content.splitlines():
-            if line.startswith('- ['):
-                tasks.append(line)
-        return tasks[:20]
-    except:
+            return parse_active_tasks_lines(f.readlines())
+    except Exception as e:
+        print(f"get_active_tasks error: {e}", file=sys.stderr)
         return []
-
-def get_latest_commits(limit=10):
-    out = run(f"cd {WORKSPACE} && git log --oneline -{limit} --date=relative --pretty=format:'%h %s (%cd)'")
-    commits = []
-    for line in out.splitlines():
-        if line:
-            parts = line.split(' ', 1)
-            if len(parts)>=2:
-                commits.append({"hash": parts[0], "message": parts[1]})
-    return commits
 
 def get_heartbeat():
-    hb = read_json(f"{WORKSPACE}/memory/heartbeat-state.json")
-    with open(f"{WORKSPACE}/HEARTBEAT.md") as f:
-        checks = f.read()
-    return {"state": hb, "checks": checks}
+    hb_path = f"{WORKSPACE}/memory/heartbeat-state.json"
+    try:
+        with open(hb_path) as f:
+            hb = json.load(f)
+    except:
+        hb = {}
+    checks = hb.get('lastChecks', {})
+    items = []
+    for key, val in checks.items():
+        status = val.get('lastStatus', 'ok')
+        level = status if status in ('warn','error') else 'info'
+        title = key.replace('_',' ').title()
+        when_ts = val.get('lastRun')
+        if isinstance(when_ts, (int,float)):
+            when = int(when_ts*1000)
+        else:
+            when = int(time.time()*1000)
+        items.append({'when': when, 'level': level, 'title': title, 'status': status})
+    return {"state": items, "overall": hb.get('overall', {}), "checks": checks}
 
-def get_supervisor_log_tail(lines=20):
+def get_supervisor_log_tail(n=30):
     try:
         with open(f"{WORKSPACE}/memory/supervisor.log") as f:
-            all_lines = f.readlines()
-        # Return last N lines as list, stripped of newlines
-        return [line.rstrip('\n') for line in all_lines[-lines:]]
+            lines = f.readlines()
+        # return last n lines, stripped of newlines
+        return [line.rstrip('\n') for line in lines[-n:]]
     except:
         return []
 
-def get_outputs(limit=30):
-    """Return recent output files (reports, content, research) with timestamps."""
+def get_agent_outputs(limit=30):
+    """Return recent output files (reports, content) with timestamps."""
     outputs = []
-    # Scan reports/
     for root, dirs, files in os.walk(f"{WORKSPACE}/reports"):
         for fn in files:
             if fn.endswith('.md'):
@@ -90,7 +161,6 @@ def get_outputs(limit=30):
                     })
                 except:
                     pass
-    # Scan content/
     for root, dirs, files in os.walk(f"{WORKSPACE}/content"):
         for fn in files:
             if fn.endswith('.md'):
@@ -110,18 +180,22 @@ def get_outputs(limit=30):
     outputs.sort(key=lambda x: x['ts'], reverse=True)
     return outputs[:limit]
 
-def get_agent_outputs():
-    # Backwards compatibility: return outputs array (recent content/reports)
-    return get_outputs()
+def get_latest_commits(limit=10):
+    out = run(f"cd {WORKSPACE} && git log --oneline -{limit} --date=relative --pretty=format:'%h %s (%cd)'")
+    commits = []
+    for line in out.splitlines():
+        if line:
+            parts = line.split(' ', 1)
+            if len(parts)>=2:
+                commits.append({"hash": parts[0], "message": parts[1]})
+    return commits
 
 def get_cron_jobs():
-    # Use openclaw cron list JSON
     try:
         raw = run("openclaw cron list --json")
-        # Strip any non-JSON prefix lines
         start = raw.find('{')
         end = raw.rfind('}') + 1
-        if start >=0 and end > start:
+        if start >= 0 and end > start:
             cron_data = json.loads(raw[start:end])
             jobs = []
             for job in cron_data['jobs']:
@@ -155,22 +229,18 @@ def get_cron_jobs():
                 })
             return jobs
     except Exception as e:
-        print(f"Error getting cron jobs: {e}", file=sys.stderr)
+        print(f"get_cron_jobs error: {e}", file=sys.stderr)
     return []
 
-def get_active_tasks_sessions():
-    # Use openclaw sessions list JSON
+def get_sessions():
     try:
         raw = run("openclaw sessions --json")
-        # Might have warnings; strip
         start = raw.find('{')
         end = raw.rfind('}') + 1
-        if start>=0:
+        if start >= 0:
             sessions = json.loads(raw[start:end])
-            # Sessions list format? It may be array or object with sessions key
             if isinstance(sessions, dict) and 'sessions' in sessions:
                 sessions = sessions['sessions']
-            # Return basic info
             simple = []
             for s in sessions:
                 simple.append({
@@ -181,7 +251,7 @@ def get_active_tasks_sessions():
                 })
             return simple[:20]
     except Exception as e:
-        print(f"Error getting sessions: {e}", file=sys.stderr)
+        print(f"get_sessions error: {e}", file=sys.stderr)
     return []
 
 def get_content_stats():
@@ -192,7 +262,6 @@ def get_content_stats():
     if os.path.exists(content_dir):
         md_files = glob.glob(f"{content_dir}/**/*.md", recursive=True)
         total = len(md_files)
-        # today's date UTC
         today_str = datetime.utcnow().strftime('%Y-%m-%d')
         for fpath in md_files:
             try:
@@ -201,18 +270,15 @@ def get_content_stats():
                     today += 1
             except:
                 pass
-        # latest by mtime
         if md_files:
             latest = max(md_files, key=os.path.getmtime)
-            with open(latest) as f:
+            with open(latest, 'r', encoding='utf-8', errors='ignore') as f:
                 first = f.readline().strip().lstrip('#').strip()
             latest_title = first
     return {"total": total, "today": today, "latest_title": latest_title}
 
 def get_chat_history(limit=50):
-    # Use openclaw chat history? Might be easier to read from sessions file.
     chat_file = f"{WORKSPACE}/memory/chat.json"
-    # If there's no central chat store, we can skip or use empty
     if os.path.exists(chat_file):
         try:
             with open(chat_file) as f:
@@ -221,13 +287,11 @@ def get_chat_history(limit=50):
             return msgs[-limit:]
         except:
             pass
-    # Fallback: use last session's chat from sessions.json
     sess_path = "/home/ubuntu/.openclaw/agents/main/sessions/sessions.json"
     if os.path.exists(sess_path):
         try:
             with open(sess_path) as f:
                 sessions = json.load(f)
-            # Find most recent session with messages
             if sessions:
                 latest = sessions[-1]
                 msgs = latest.get('messages', [])
@@ -241,12 +305,12 @@ def main():
     out = {
         "generated_at": now,
         "system": get_system_stats(),
-        "agents": get_active_tasks_sessions(),
-        "research": [],  # placeholder
+        "agents": get_sessions(),
+        "research": [],  # TODO: populate from research reports
         "recent_commits": get_latest_commits(10),
         "heartbeat": get_heartbeat(),
-        "supervisor_log": get_supervisor_log_tail(20),
-        "agent_outputs": get_agent_outputs(),
+        "supervisor_log": get_supervisor_log_tail(30),
+        "agent_outputs": get_agent_outputs(30),
         "cron_jobs": get_cron_jobs(),
         "active_tasks": get_active_tasks(),
         "content_stats": get_content_stats(),
