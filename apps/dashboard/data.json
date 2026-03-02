@@ -1,214 +1,182 @@
 {
-  "generated_at": "2026-03-02T03:33:04",
+  "generated_at": "2026-03-02T03:40:11",
   "system": {
-    "gateway": "up",
-    "disk_percent": 79,
-    "disk_free": "9.7G",
-    "updates": 0,
-    "git_clean": false,
-    "memory_age_days": 0,
-    "downloads_count": 11,
-    "downloads_gb": "7.6G",
-    "load_avg": "2.18 2.26 1.81",
-    "mem_used": "2.6Gi",
-    "mem_total": "23Gi",
-    "uptime": "1 week, 2 days, 19 hours, 20 minutes",
-    "disk_history": [
-      81,
-      81,
-      79,
-      79,
-      78,
-      78,
-      78,
-      78,
-      78,
-      78,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79,
-      79
-    ]
+    "disk_percent": 78,
+    "load": "1.52 1.53 1.51",
+    "uptime_seconds": 914436,
+    "os": "Linux",
+    "arch": "aarch64"
   },
   "agents": [
     {
-      "name": "linkedin-pa-agent",
-      "active": false,
-      "last_run": "2026-03-01 02:01",
-      "last_line": "2026-02-28 17:06:41 UTC - Cycle completed"
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
     },
     {
-      "name": "research-agent",
-      "active": false,
-      "last_run": "2026-03-01 05:14",
-      "last_line": "[2026-03-01T05:14:38Z] [research-agent] Completed Commercial Space 2026 (c8b48aa5, 22.7KB, #229). Selected space tech as 7th report \u2014 gap in today's coverage (6 prior: AI hardware, fintech, cybersecurity, green tech, biotech, anime). 7 sections: (1) Artemis II NLT Apr 1 2026 \u2014 first crewed lunar flyby since 1972, crew Wiseman/Glover/Koch/Hansen, free-return trajectory 10-day, Feb 23 helium delay; (2) Starship HLS OPT \u2014 June 2026 cryogenic propellant transfer linchpin, 11 integrated flights, internal schedule: OPT Jun2026/uncrewed HLS Jun2027/Artemis III Sep2028; Artemis III officially NLT 2027 per NASA Feb 27 2026; (3) Haven-1 Vast Space \u2014 May/Jun 2026 first standalone private station, 31k lb Falcon 9 record, Haven Demo perigee-lowering Feb 2026, NASA awarded PAM Feb 12 2026; Axiom PPT+Hab-1 2027-2028, Starlab 2028 Voyager/Airbus, Orbital Reef still active; (4) China \u2014 Tiangong expansion, Chang'e 7 south pole reconnaissance 2026 (mini flying probe for shadowed craters), Chang'e 8 ISRU 2028, ILRS competing with Artemis for south pole; (5) DRACO/NTP \u2014 2027 launch, BWXT HALEU, 900s Isp 2x chemical, 3-4mo Mars transit; (6) Space economy \u2014 $613B 2024 (8% growth), $1T 2032 Space Foundation, $1.8T 2035 WEF; 27k+ trackable debris objects, US committed no destructive ASAT tests; (7) 2026-2030 milestone table (Artemis II\u2192Chang'e 7\u2192Haven-1\u2192CLD Phase 2\u2192PAM missions\u2192Starship HLS\u2192DRACO\u2192Starlab\u2192Artemis III\u2192Chang'e 8\u2192ISS deorbit). 229 total reports. 7 reports today Mar 1."
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
     },
     {
-      "name": "content-agent",
-      "active": true,
-      "last_run": "2026-03-01 06:06",
-      "last_line": "[2026-03-01T06:06:29Z] [content-agent] Completed Commercial Space 2026 writeup (cb52cbaa, 6.5KB). Gap identified: research report #229 had no content writeup. Produced accessible explainer 'To the Moon and Beyond' covering: (1) Artemis II NLT Apr 1 2026 \u2014 54-year gap, crew Wiseman/Glover/Koch/Hansen, 10-day free-return trajectory, helium delay resolved; (2) Starship OPT June 2026 \u2014 cryogenic propellant transfer never done before, single gate for Artemis III Sep 2028; (3) Haven-1 Vast Space May/Jun 2026 \u2014 first standalone commercial station, 31k lb Falcon 9 record, ISS succession race; (4) Chang'e 7 south pole water-ice recon, competing Artemis+ILRS south pole targets; (5) $613B 2024 space economy \u2192 $1T 2032. Updated content/INDEX.md. 9 content pieces total today (Mar 1); all 7 research reports now have matching writeups."
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
     },
     {
-      "name": "dev-agent",
-      "active": true,
-      "last_run": "2026-03-01 08:00",
-      "last_line": "2026-03-01 08:00:18 UTC - Dev-agent cycle completed (exit 0)"
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
     },
     {
-      "name": "supervisor",
-      "active": false,
-      "last_run": "2026-02-28 17:30",
-      "last_line": "2026-02-28 17:30:27 UTC - OK"
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
     },
     {
-      "name": "agent-manager",
-      "active": true,
-      "last_run": "2026-03-01 07:14",
-      "last_line": "2026-03-01 07:14:41 UTC - Agent Manager stopped"
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
     },
     {
-      "name": "meta-agent",
-      "active": true,
-      "last_run": "2026-03-01 07:01",
-      "last_line": "2026-03-01 06:12:52 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
     }
   ],
-  "research": {
-    "total": 233,
-    "tts_coverage": "92%",
-    "latest": "INDEX\nnone",
-    "hub_deployed": true
-  },
+  "research": [],
   "recent_commits": [
     {
-      "sha": "b43a801f",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "hash": "96788b0d",
+      "message": "chore: update clawdash data (5 minutes ago)"
     },
     {
-      "sha": "4473b52b",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "hash": "568c9b2f",
+      "message": "build: finalize workspace-builder progress log (33 minutes ago)"
     },
     {
-      "sha": "cec6f9fc",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "hash": "48ce1c3b",
+      "message": "build: update daily log with workspace-builder session (03:02 UTC) (34 minutes ago)"
     },
     {
-      "sha": "3a58b73d",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "hash": "78cca5d0",
+      "message": "build: workspace-builder session validation and closure (35 minutes ago)"
     },
     {
-      "sha": "c99afa60",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "hash": "db822b59",
+      "message": "build: workspace-builder planning docs and session registration (36 minutes ago)"
     },
     {
-      "sha": "b2a2033b",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "hash": "bd8ad94d",
+      "message": "build: update disk history metrics (36 minutes ago)"
     },
     {
-      "sha": "57172129",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "hash": "134341df",
+      "message": "build: mark workspace-builder session validated with metrics (3 hours ago)"
     },
     {
-      "sha": "0b1b3b88",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "hash": "f64c7198",
+      "message": "build: daily log for 2026-03-02 (3 hours ago)"
     },
     {
-      "sha": "e1533291",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "hash": "b2d33d09",
+      "message": "build: workspace-builder planning docs and session registration (3 hours ago)"
     },
     {
-      "sha": "e43ddf28",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "d257dbd2",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "5f1d0078",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-01_0803)",
-      "time": "57 minutes ago"
-    },
-    {
-      "sha": "167be621",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "fae22556",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "65 minutes ago"
-    },
-    {
-      "sha": "12aafc3f",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "70 minutes ago"
+      "hash": "8f0ef18f",
+      "message": "build: fix dashboard branding consistency (ClawDash \u2192 MewDash in header) (3 hours ago)"
     }
   ],
   "heartbeat": {
-    "lastChecks": {
-      "timestamp": "2026-02-27T11:30:00Z",
-      "supervisor_run": "OK",
-      "health": "ok",
-      "cron": "all_jobs_running",
-      "memory": "clean (26f/302c, reindex 3.4d)",
-      "git_status": "clean",
-      "downloads": "aria2_active (17 files, 5.7GB)",
-      "disk_usage": "71%",
-      "apt_updates": 0,
-      "gateway": "running",
-      "weather": "timeout (wttr.in unreachable)",
-      "notes": "All core systems healthy. Supervisor-cron executed successfully with all green. No issues detected."
-    }
+    "state": {},
+    "checks": "\u23f0 UTC+7 time (24/7 operation)\n\ud83c\udf24\ufe0f Weather Bangkok: clear, +30\u00b0C\n\ud83d\udcbe System: disk, updates \u2014 \u26a0\ufe0f Disk at 81% (downloads/ 9.7GB). Alert def if disk \u226585%.\n\ud83c\udf89 Holiday: Nyepi (Mar 18\u201319) \u2014 Day of Silence / Balinese New Year\n\ud83e\udd16 Agents: verify running (from active-tasks.md)\n\n\ud83c\udf19 Night 22:00-06:00 UTC+7 (agents still running):\n- Scan workspace \u2192 commit, push, build utils\n- Record builds in memory + commit msg\n\n\ud83d\udea8 Proactive alerts:\n- Rain/storms in Bangkok\n- Disk \u226585% \u2192 notify def immediately\n- Pending updates\n- Idle >8h since last chat\n\n\u26a0\ufe0f Note: Quiet hours have been removed system-wide. All agents now run 24/7."
   },
   "supervisor_log": [
-    "2026-02-27 00:01:04 UTC - OK",
-    "2026-02-27 00:30:32 UTC - OK",
-    "2026-02-27 01:30:50 UTC - OK",
-    "2026-02-27 03:10:23 UTC - OK",
-    "2026-02-27 03:31:06 UTC - OK",
-    "2026-02-27 06:06:25 UTC - OK",
-    "2026-02-27 07:08:47 UTC - OK",
-    "2026-02-27 10:07:53 UTC - OK",
-    "2026-02-27 10:30:52 UTC - OK",
-    "2026-02-27 11:12:28 UTC - OK",
     "2026-02-27 12:09:11 UTC - OK",
     "2026-02-27 12:30:36 UTC - OK",
     "2026-02-27 13:07:36 UTC - OK",
@@ -230,146 +198,32 @@
     "2026-02-28 17:00:25 UTC - OK",
     "2026-02-28 17:30:27 UTC - OK"
   ],
-  "agent_outputs": [
-    {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 54920
-    },
-    {
-      "file": "2026-03-01-0705-sunday-digest",
-      "ts": "2026-03-01-0705",
-      "title": "Sunday Digest \u2014 March 1, 2026",
-      "size": 5707
-    },
-    {
-      "file": "2026-03-01-0705-green-tech-climate-ai-2026-writeup",
-      "ts": "2026-03-01-0705",
-      "title": "Clean Energy's Reality Check: What's Actually Happening in 2026",
-      "size": 7658
-    },
-    {
-      "file": "2026-03-01-0701-sea-digital-banking-fintech-2026-writeup",
-      "ts": "2026-03-01-0701",
-      "title": "Southeast Asia's Digital Banking Moment: Agentic Payments, the Profitability Reckoning, and Who's Actually Winning",
-      "size": 8661
-    },
-    {
-      "file": "2026-03-01-0700-frontier-ai-models-feb-2026-writeup",
-      "ts": "2026-03-01-0700",
-      "title": "Seven AI Models Dropped in February 2026. Here's What Actually Changed.",
-      "size": 6717
-    },
-    {
-      "file": "2026-03-01-0604-commercial-space-2026-writeup",
-      "ts": "2026-03-01-0604",
-      "title": "To the Moon and Beyond: What's Actually Happening in Space Right Now",
-      "size": 6742
-    },
-    {
-      "file": "2026-03-01-0515-biotech-longevity-2026-writeup",
-      "ts": "2026-03-01-0515",
-      "title": "The Drug That Changes Everything: Biotech in 2026",
-      "size": 8360
-    },
-    {
-      "file": "2026-03-01-0510-spring-2026-anime-watchlist",
-      "ts": "2026-03-01-0510",
-      "title": "Spring 2026 Anime: The Season That Has Everything",
-      "size": 7756
-    },
-    {
-      "file": "2026-03-01-daily-digest",
-      "ts": "",
-      "title": "Daily Digest \u2014 2026-03-01",
-      "size": 1177
-    },
-    {
-      "file": "2026-03-01-0402-ai-hardware-writeup",
-      "ts": "2026-03-01-0402",
-      "title": "The AI Chip Wars: Four Things That Actually Matter in 2026",
-      "size": 8034
-    },
-    {
-      "file": "2026-03-01-0307-fintech-writeup",
-      "ts": "2026-03-01-0307",
-      "title": "Fintech 2026: The Execution Era Has Arrived",
-      "size": 7954
-    },
-    {
-      "file": "youtube-digest-2026-03-01-0220",
-      "ts": "",
-      "title": "\ud83d\udcfa YouTube Digest \u2014 2026-03-01",
-      "size": 31066
-    },
-    {
-      "file": "2026-03-01-0202-cybersecurity-writeup",
-      "ts": "2026-03-01-0202",
-      "title": "Cybersecurity 2026: What Actually Matters Right Now",
-      "size": 9570
-    },
-    {
-      "file": "2026-03-01-0106-research-spotlight",
-      "ts": "2026-03-01-0106",
-      "title": "Research Spotlight \u2014 March 1, 2026 (01:06 UTC)",
-      "size": 5293
-    },
-    {
-      "file": "2026-03-01-morning-digest",
-      "ts": "",
-      "title": "Sunday Morning Digest \u2014 March 1, 2026",
-      "size": 4815
-    },
-    {
-      "file": "2026-02-28-1706-linkedin-pa-digest",
-      "ts": "2026-02-28-1706",
-      "title": "LinkedIn Content Digest \u2014 IBM Planning Analytics (Analyst-Report v10)",
-      "size": 746
-    },
-    {
-      "file": "2026-02-28-1706-linkedin-pa-post",
-      "ts": "2026-02-28-1706",
-      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
-      "size": 1546
-    },
-    {
-      "file": "2026-02-28-1705-linkedin-pa-post",
-      "ts": "2026-02-28-1705",
-      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
-      "size": 1546
-    },
-    {
-      "file": "2026-02-28-1500-tech-update",
-      "ts": "2026-02-28-1500",
-      "title": "Tech Update \u2014 15:00 UTC, Feb 28 2026",
-      "size": 5913
-    },
-    {
-      "file": "2026-02-28-1400-tech-update",
-      "ts": "2026-02-28-1400",
-      "title": "Tech Update \u2014 14:00 UTC, Feb 28 2026",
-      "size": 6628
-    }
-  ],
+  "agent_outputs": {
+    "dev-agent": "The digest is stale (missing the Space research report #229, Anime report #225, and shows git dirty from earlier). Let me now do the three concrete improvements:\n\n1. Fix `workspace-validate.sh` cron count range (18-22 \u2192 22-26)\n2. Regenerate today's daily digest with all 7 reports\n3. Commit disk-history.json\nNow regenerate the daily digest:\nAll 7 research reports present. Now commit everything:\n**dev-agent cycle complete** \u2014 commit `3f1b2be4` \u2705\n\n**Changes this cycle:**\n\n1. **`workspace-validate.sh` \u2014 cron range fix** (`18-22` \u2192 `22-26`)\n   - The validator was falsely flagging \"24 cron jobs outside expected range 18-22\" every run\n   - 4 jobs were added legitimately after the threshold was originally set: `telegram-slash-handler`, `youtube-digest-daily`, `vishwakarma-cron`, `archiver-manager-cron`\n   - Now shows `\u2713 Cron jobs: 24 (within expected range 22-26)` \u2014 clean validation\n\n2. **Daily digest regenerated** (`reports/2026-03-01-daily-digest.md`)\n   - Previous digest was stale (generated at 05:05 UTC, missing reports #225 and #229)\n   - Now includes all **7 research reports** (Fintech, AI Hardware, Spring Anime, Cybersecurity, Green Tech, Biotech, Commercial Space) + 6 content pieces\n\n3. **`memory/disk-history.json` committed** \u2014 48-entry ring buffer, cap logic already correct in `generate-dashboard-data.sh`\n\nAll constraints pass \u2713 \u2014 git clean, cron healthy, memory fresh, disk stable at 81% desu~ (^^) \u266a\n2026-03-01 06:04:12 UTC - Dev-agent cycle completed (exit 0)\n2026-03-01 07:00:04 UTC - Starting dev-agent cycle\n2026-03-01 07:00:04 UTC - Attempt 1/3\n2026-03-01 07:05 UTC - Dev-agent cycle complete: 2 content writeups (frontier-AI-models + SEA-digital-banking), dashboard research count fix (232\u2192231 excl INDEX.md), log trim (meta-agent 1036\u21921000, idea-executor 1027\u21921000), digest regen (9 research + 11 content), all constraints \u2705\n[2026-03-01 07:08 UTC] content-agent: green-tech writeup (7.6KB) + sunday digest (5.7KB); all 9 research reports now have content writeups; 11 total content pieces today; pushed 909078d3\n[2026-03-01 07:16 UTC] research-agent: 2 reports generated: quantum-computing-2026 (256 lines, IonQ $130M, IBM Nighthawk/Kookaburra, Majorana 1, Willow, Quantinuum Qatar JV, PQC) + ai-developer-tools-2026 (293 lines, Cursor $29B, Copilot 4.7M subs, Claude Code 4% GitHub commits, Antigravity Manager view, vibe coding). Total: 233 reports. Pushed 2fec30ac\n2026-03-01 08:00:06 UTC - Starting dev-agent cycle\n2026-03-01 08:00:06 UTC - Attempt 1/3\nScanning workspace for improvements and building utilities.\n2026-03-01 08:00:18 UTC - Dev-agent cycle completed (exit 0)\n2026-03-01 09:00:03 UTC - Starting dev-agent cycle\n2026-03-01 09:00:03 UTC - Attempt 1/3\n[2026-03-01 09:01 UTC] dev-agent: workspace scan complete\n\n- Added mood-ring dashboard integration (apps/dashboard/mood-ring.js)\n- Added mood-ring scripts (mood-ring.sh + mood-ring-api.sh)\n- Updated disk history (78% \u2192 79%)\n- 4 files changed, 254 insertions, 1 deletion\n- Push 283c01e1 (6KB new code)\n- Components ready for cron scheduling (every 5-10min)\n- Complements existing workspace-builder + meta-supervisor ecosystem\n- All systems green (active-tasks: meta-supervisor running, workspace-builder validated)\n[2026-03-01 09:01 UTC] dev-agent: completed mood-ring integration + disk update. All systems green. Summary written to memory/dev-agent-summary.md. Next scan in ~6h.\n**HEARTBEAT_OK**\n\nAgents verified: meta-supervisor running (PID 1121739), workspace-builder validated (2026-03-01 05:14 UTC). No alerts needed. Disk at 79%, all systems green.\n2026-03-01 09:02:32 UTC - Dev-agent cycle completed (exit 0)\n",
+    "content-agent": "[2026-02-28T06:08:52Z] [content-agent] Generated 06:05 research spotlight (4.6KB, 6b972f78). Covered: agentic AI, open-source LLMs, spring anime, SEA banking. 191 total research reports.\n[2026-02-28T06:09:22Z] [content-agent] Cycle skipped \u2014 06:05 spotlight published 2 min ago, nothing new since. No duplicate content generated.\n[2026-02-28T06:09:41Z] [content-agent] Cycle skipped \u2014 06:05 spotlight is 4min old, no new content since. Avoiding duplicate.\n[2026-02-28T07:05:42Z] [content-agent] Generated 07:00 tech update (3.2KB, d8484540). Covered: edge AI on-device LLMs report + trim-agent-logs dev drop. 192 research reports, 14 content pieces today.\n[2026-02-28T08:03:50Z] [content-agent] Generated 08:00 tech update (3.8KB, 946b875c). Covered: quantum computing 2026 research + workspace-summary dev drop. 193 reports, 15 content pieces today.\n[2026-02-28T09:04:39Z] [content-agent] Generated 09:00 tech update (4.1KB, 1ffe4f91). Covered: WebAssembly 2026 research (WASM 3.0, WASI 0.3 async, Component Model, Akamai/Fermyon 4k edge) + dev tooling drop (research-recent fix, research-topics-today). 194 research reports, 16 content pieces today.\n[2026-02-28T10:03:27Z] [content-agent] Generated 10:00 tech update (4.8KB, df194d97). Covered: Cybersecurity 2026 research (agentic AI, NHI/SaaS, .85M ransomware, AMTD, ZT2.0, PQC) + disk-usage-breakdown dev drop. 195 research reports, 17 content pieces today.\n[2026-02-28T11:04:50Z] [content-agent] Generated 11:00 tech update (5.5KB, 6651112a). Covered: Satellite Internet 2026 (Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, DTC, AST SpaceMobile, SEA angle) + content INDEX sync dev drop. 196 research reports, 18 content pieces today.\n[2026-02-28T12:04:27Z] [content-agent] Generated 12:00 tech update (4.8KB, b0cf050a). Covered: Fintech 2026 (FaaS $484B/BaaS $5.26B APAC, 14 trends, SEA 290M unbanked, deobanks/CBDCs/open finance) + index-drift dev drop (0 drift confirmed). 197 research reports, 19 content pieces today.\n[2026-02-28T13:04:31Z] [content-agent] Generated 13:00 tech update (7.2KB, bddcbb80). Covered: Cloud Cost Optimization 2026 ($189B waste/32%, FinOps Crawl/Walk/Run, 10 strategies, Spot/K8s/unit-econ/AI-FinOps, provider quick wins) + shebang/pipefail hardening dev drop. 198 research reports, 20 content pieces today.\n[2026-02-28T14:03:46Z] [content-agent] Generated 14:00 tech update (6.5KB, 40ad1bb1). Covered: Developer Productivity 2026 (84% AI adoption/41% AI-gen code, layered stack model, Cursor/Copilot/Claude Code/Devin/Qodo/Snyk, platform eng/IDPs/DORA, FinDev, productivity paradox) + 107-script set -euo pipefail hardening dev drop. 199 research reports, 21 content pieces today.\n[2026-02-28T15:06:09Z] [content-agent] Generated 15:00 tech update (5.7KB, cf8d2a04). Covered: AR/VR & Spatial Computing 2026 ($85.56B XR market, Meta 77% share, Ray-Ban +1012% YoY, Vision Pro enterprise pivot, Galaxy XR/Android XR, Valve Steam Frame +289900%, AI+XR convergence, 6 H2 2026 signals, location-based XR $12B) + dev drop (INDEX 200\u2192218, cron-failures fix, 3 idea branches pruned). 218 research reports, 22 content pieces today.\n[2026-03-01T00:01:42Z] [content-agent] Generated Sunday morning digest 2026-03-01 (4.7KB, 60aeb6f0). Recap: 17 research reports + 25 content pieces on Feb 28, 219 INDEX total, dev highlights (pipefail/cron-failures/branch cleanup), system status, week ahead. First content piece of March 2026.\n[2026-03-01T01:12:02Z] [content-agent] Generated research spotlight 2026-03-01 01:06 UTC (5.1KB, 3a6c48f4). Covered both Mar 1 research reports: Biotech/Longevity 2026 (patent cliff framing, Insilico Phase 2, orforglipron Phase 3, Casgevy scale-up, Aktis $318M, Altos/BioAge/NewLimit longevity) + Green Tech/Climate AI 2026 (battery $70/kWh record, BESS 57GWh/+29%, AI-energy paradox, SMR momentum/2029-35 timeline, hydrogen reset, solid-state/sodium-ion/iron-air emerging batteries). 221 research reports, 3 content pieces Mar 1.\n[2026-03-01T02:08:41Z] [content-agent] Generated Cybersecurity 2026 tech writeup (9.3KB, 7a870beb). Covered ransomware paradox (Chainalysis: $820M/-8% payments but +50% victims/ATL 28% pay rate, IAB 30-day leading indicator), AI arms race (SentinelLABS 'forgiving internet over', Claude Code 30-target autonomous intrusion, 3x AI phishing, $12M deepfake fraud), PQC migration (FIPS 203/204/205 final, first certs 2026, harvest-now-decrypt-later active, crypto-agility inventory first step), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE, 92% multi-turn jailbreak, SaaS IdP ZT pivot), compliance deadline stack (NIS2/DORA/CMMC 2.0/AI Act), 6 H1 signals. 222 research reports, 4 content pieces Mar 1.\n[2026-03-01T03:15:01Z] [content-agent] Generated Fintech 2026 tech writeup (7.7KB, 9a7d3eb6). Identified gap: Fintech research report #223 had no matching content piece. Covered: agentic AI liability vacuum (Reg E/PSD2 grey zone for agent-initiated payments, Visa/MC building verification protocols, Trump EO Dec 15 2025 national standard push, $7.84B\u2192$52B agent market), neobank profitability split (Revolut $75B/$9B rev/$3.5B profit 2026, Monzo 8x/\u00a3113.9M profit, Nubank $1.9B, Chime IPO $9.8B; structural revenue models: lending+subs+BaaS+cross-sell), stablecoin vs CBDC ($200B mktcap/$50B daily settlement vs Digital Euro 2029/US GENIUS Act), real-time rails (FedNow/SEPA Instant mandatory/UPI 500M/Pix; 1.68T\u21923.54T txns/irrevocable fraud stakes), 5 H1 2026 signals. 223 research reports total. 5 content pieces Mar 1.\n[2026-03-01T04:04:04Z] [content-agent] Generated AI Hardware 2026 tech writeup (7.8KB, 28023f38). Gap identified: research report #224 (AI Hardware/Chips, 24KB) had no content piece. Structured as '4 things that actually matter': (1) Blackwell economics \u2014 $5M rack\u2192$75M token revenue (15x ROI), NVDA Q4 $194B annual data center +68%/13x since ChatGPT, $435B hyperscaler capex justified by spreadsheet math, scarcity era over; (2) Vera Rubin 10x inference cost drop \u2014 H2 2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS FP4/Vera CPU 88-core ARM, makes agentic multi-step AI economically viable at consumer scale, annual cadence Blackwell\u2192Rubin\u2192Feynman; (3) AMD duopoly with catch \u2014 MI355X 288GB HBM3e/8TB/s parity, OpenAI 6GW validation deal, ROCm 7.0 CUDA parity; wins cost-sensitive inference, loses frontier training custom kernels; MI400/Helios HBM4 late-2026; (4) CoWoS as real chokepoint \u2014 35K\u2192130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex, $1T semiconductor market 2026. 224 research reports total. 5 content pieces Mar 1.\n[2026-03-01T05:09:13Z] [content-agent] Generated 2 content pieces (02ade367). Gap identification: 3 research reports had no content writeup \u2014 Spring 2026 anime (#225), Biotech/Longevity (#226?), Green Tech (#?). Covered 2 of 3. (1) Spring 2026 Anime Watchlist (7.7KB, 0510): accessible watchlist covering Tier-1 picks (Witch Hat Atelier=magic-as-craft/Frieren parallel, Daemons=Arakawa+Bones/Ando/Suehiro, Re:Zero S4=Arc 6 RbD origin), franchise moments (CotE S4 Apr 1 90-min/Eir Aoi OP, One Piece Elbaph 25yr wait since Little Garden 2001, Kaiju 8 S2, Tensei Slime 5-cour), calendar table; (2) Biotech 2026 Writeup (8.3KB, 0515): 4 things framing \u2014 AI as infrastructure (AlphaFold Nobel, Isomorphic 2x AF3, Insilico Medicine first AI drug Phase 2 positive), GLP-1 oral race (orforglipron, expanding indications CV/sleep apnoea/AD/addiction), CRISPR to patients (Casgevy $2.2M/patient, 46+ FDA CGT), patent cliff ($176B 2026-2029, +15% M&A). 8 content pieces Mar 1. 228 research reports total.\n[2026-03-01T06:06:29Z] [content-agent] Completed Commercial Space 2026 writeup (cb52cbaa, 6.5KB). Gap identified: research report #229 had no content writeup. Produced accessible explainer 'To the Moon and Beyond' covering: (1) Artemis II NLT Apr 1 2026 \u2014 54-year gap, crew Wiseman/Glover/Koch/Hansen, 10-day free-return trajectory, helium delay resolved; (2) Starship OPT June 2026 \u2014 cryogenic propellant transfer never done before, single gate for Artemis III Sep 2028; (3) Haven-1 Vast Space May/Jun 2026 \u2014 first standalone commercial station, 31k lb Falcon 9 record, ISS succession race; (4) Chang'e 7 south pole water-ice recon, competing Artemis+ILRS south pole targets; (5) $613B 2024 space economy \u2192 $1T 2032. Updated content/INDEX.md. 9 content pieces total today (Mar 1); all 7 research reports now have matching writeups.\n[2026-03-01 09:02 UTC] content-agent: daily digest generated (memory/2026-03-01-daily-digest.md). No pending tasks. All systems normal. Summary written to memory/content-agent-summary.md. Next cycle in ~6h.\n",
+    "research-agent": "[2026-02-28T05:09:25Z] [research-agent] Completed agentic AI multi-agent frameworks 2026 report (17.3KB, e42b63d0). 190 total reports. Heartbeat: disk 72%, meta-supervisor PID 1121739 healthy.\n[2026-02-28T05:12:50Z] [research-agent] Completed open source LLM landscape 2026 report (17.8KB, cc43e3d3). 191 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs.\n[2026-02-28T06:12:48Z] [research-agent] Completed edge AI on-device LLMs 2026 report (15.7KB, 4b319cb6). 192 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI.\n[2026-02-28T07:08:05Z] [research-agent] Completed quantum computing 2026 report (13.9KB, 53f8de28). 193 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing.\n[2026-02-28T08:07:25Z] [research-agent] Completed WebAssembly 2026 report (15.2KB, 7ec651ce). 194 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing, WebAssembly.\n[2026-02-28T09:07:03Z] [research-agent] Completed Cybersecurity 2026 report (13.4KB, 478d85b4). 195 total reports. 11 topics today.\n[2026-02-28T10:06:33Z] [research-agent] Completed Satellite Internet 2026 report (13.4KB, ce054294). 196 total reports. 12 topics today.\n[2026-02-28T11:07:52Z] [research-agent] Completed Fintech 2026 report (16KB, captured in agent-manager build 80167a14). 14 macro-trends: agentic finance, embedded ecosystems, BaaS $5.26B APAC, open finance, RTP, deobanks, CBDC tokenisation, SEA super-app landscape. 197 total reports. 13 topics today.\n[2026-02-28T12:07:48Z] [research-agent] Completed Cloud Cost Optimization 2026 report (16.2KB, 7378665a). $189B global cloud waste, FinOps 3-phase framework, 10 strategies, AWS/Azure/GCP tactics, AI workload FinOps, tooling landscape. 198 total reports. 14 topics today.\n[2026-02-28T13:06:45Z] [research-agent] Completed Developer Productivity 2026 report (15.3KB, 47e42cd3). 84% AI adoption/41% AI-generated code, full tool stack (Cursor/Copilot/Claude Code/Devin/Qodo/Snyk), platform engineering/IDPs/DORA, productivity paradox (29-46% trust). 199 total reports. 15 topics today.\n[2026-02-28T14:06:18Z] [research-agent] Completed AR/VR & Spatial Computing 2026 report (13.4KB, 93635418). $85.56B XR market/33% CAGR, Meta 77% hardware share, Apple Vision Pro enterprise pivot, Ray-Ban Meta +1012% YoY, Samsung Galaxy XR/Android XR, Valve Steam Frame +289900%, AI+XR convergence, enterprise use cases, platform ecosystem table. 200 total reports (MILESTONE). 16 topics today.\n[2026-02-28T15:08:50Z] [research-agent] Completed Robotics & Physical AI 2026 report (15.2KB, 33521f46). CES 2026 inflection point (Huang 'ChatGPT moment for physical AI'), Atlas commercial production (Hyundai/DeepMind fleet, 30K/yr capacity, Gemini Robotics), Figure Helix 02 full-body autonomy (4min dishwasher task, 109K C++ lines\u2192single neural net), Tesla Optimus Gen3 ($20-30K target, FSD backbone), Agility Digit Toyota Canada RaaS (Feb 19), Unitree 85-90% global share 10-20K units, pricing table, RaaS model analysis, Nvidia Cosmos/GR00T layer, 6 H2 signals. 219 total reports. 17 topics today.\n[2026-03-01T00:04:47Z] [research-agent] Completed Biotech & Longevity 2026 report (16.6KB, 0ba4b42c). $176B patent cliff driving M&A (+15% ING forecast), Isomorphic Labs 2\u00d7AlphaFold3 upgrade (Feb 2026), Insilico Medicine Phase2 positive IPF (18mo target-to-phase1), oral GLP-1 race (orforglipron Phase3, Novo/Lilly/Pfizer), 46+ FDA CGT approvals, CRISPR Casgevy $2.2M/patient, in vivo CRISPR frontier (Intellia Phase3), radiopharmaceuticals (Aktis IPO $318M), longevity startups (Altos $3B/Calico/BioAge/NewLimit), epigenetic clocks, personalised medicine, microbiome Rx, 6 H2 signals. 220 total reports. 1 topic today (Mar 1).\n[2026-03-01T00:07:37Z] [research-agent] Completed Green Tech & Climate AI 2026 report (14.5KB, 9b15b128). Battery $70/kWh record low (BNEF), BESS 57GWh/28GW +29% YoY, $2T global clean energy investment, nuclear SMR renaissance (>$1B Q4 2025 rounds, Google Kairos/Microsoft TMI PPAs), AI-energy nexus (39/50 US states power price rise, data center decoupling trend), hydrogen pipeline cleanup, solid-state/sodium-ion/iron-air emerging batteries, EV market table, 6 H1 signals, geopolitics (Brent $59, LNG slump, copper standout). 221 total reports. 2 topics today (Mar 1).\n[2026-03-01T01:17:35Z] [research-agent] Completed Cybersecurity 2026 report (21.5KB, 5fb298a3). AI arms race (SentinelLABS 'forgiving internet is over', Anthropic 30-target autonomous intrusion, 3x AI phishing, 92% multi-turn jailbreak success), ransomware economy (Chainalysis 2026: $820M/-8% payments but +50% claimed victims/most active year ever, median ransom +368% to $60K, 28% payment rate ATL, IAB 30-day leading indicator, LockBit/Scattered Spider/Lazarus), NIST PQC finalized (FIPS 203 ML-KEM/204 ML-DSA/205 SLH-DSA, first certs 2026, harvest-now-decrypt-later active), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE/supply chain, 29% readiness), Zero Trust/CEM (Gartner 3x breach reduction), $248B market/$13.82T crime by 2028, 6 H1 signals. 222 total reports. 3 topics today (Mar 1).\n[2026-03-01T03:19:47Z] [research-agent] Completed AI Hardware & Chips 2026 report (21KB, 02991bb5). Covered: Blackwell B200 volume production (208B transistors, 192GB HBM3e, 8TB/s bw, 20PFLOPS FP4, dual-die CoWoS-L chiplet, GB200 NVL72 rack 130TB/s, $5M\u2192$75M 15x ROI); NVIDIA Q4 FY2026 earnings ($68B revenue +73% YoY, $62B data center +75%, $194B annual +68%, 13x scale since ChatGPT, $97B FCF, $78B Q1 guide, $20B R&D, sovereign AI $30B); Rubin R100 H2-2026 (\\~336B transistors, HBM4 22TB/s, 50PFLOPS FP4, 10x inference cost reduction, Vera CPU 88-core ARM, NVLink 6); AMD MI350 CDNA4 duopoly (MI355X 288GB HBM3e/8TB/s/20PFLOPS parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal, MI400/Helios HBM4 late 2026); Google ($185B capex, Trillium 4.7x TPU v5e/67% efficiency/Anthropic 1M TPU deal, Ironwood TPU v7 192GB HBM3e/FP8/9216-chip pod); AWS Trainium3 (3nm/2x perf/40% eff, 144-chip UltraServer, 1M-chip cluster, Amazon $50B OpenAI/AWS exclusive); TSMC CoWoS 130K wafers/month target (+4x from 2024, AP7 Chiayi hub), $56B capex +37% YoY (70-80% N2/A16, 10-20% packaging); dual CoWoS+HBM4 bottleneck; hyperscaler $435B+ capex stack. 224 total reports. 5 topics today (Mar 1).\n[2026-03-01T04:09:45Z] [research-agent] Completed Spring 2026 Anime Season Preview (19KB, d176ede9). Selected anime topic to balance 5 tech reports already completed today. Covered: Tier S (Classroom of the Elite S4 \u2014 Lerche, Apr 1, 90-min 4-ep special, Eir Aoi OP; Witch Hat Atelier \u2014 Bug Films, Apr 6, Kamome Shirahama magic-as-craft, Crunchyroll Anime Nights March 16 preview; Daemons of the Shadow Realm \u2014 Bones Film, Hiromu Arakawa, Apr 4, 2-cour, dir:Masahiro Ando, music:Kenichiro Suehiro; Re:Zero S4 \u2014 White Fox, Arc 6 Pleiades Watchtower, return-by-death origin revealed, psychologically darkest arc; One Piece Elbaph \u2014 Toei, 20yr fan wait; MHA Vigilantes \u2014 Bones Film complete manga); Tier A (Kaiju No. 8 S2; Blue Lock S3 Neo Egoist League Disney+; Tensei Slime S4 Apr 3 five split-cours; Fire Force S3 David Production finale); Tier B (Dr. Stone SF Part 3 TMS finale; Drops of God S2); Ghost in the Shell Science SARU corrected to July 2026 Summer not Spring; Crunchyroll Anime Nights 2026 March 16 theatrical preview (US/Canada); streaming platform breakdown; season context: COVID-era backlog clearing + multiple franchise climax arcs coinciding = densest season since Fall 2023. 225 total reports. 6 reports today Mar 1.\n[2026-03-01T05:14:38Z] [research-agent] Completed Commercial Space 2026 (c8b48aa5, 22.7KB, #229). Selected space tech as 7th report \u2014 gap in today's coverage (6 prior: AI hardware, fintech, cybersecurity, green tech, biotech, anime). 7 sections: (1) Artemis II NLT Apr 1 2026 \u2014 first crewed lunar flyby since 1972, crew Wiseman/Glover/Koch/Hansen, free-return trajectory 10-day, Feb 23 helium delay; (2) Starship HLS OPT \u2014 June 2026 cryogenic propellant transfer linchpin, 11 integrated flights, internal schedule: OPT Jun2026/uncrewed HLS Jun2027/Artemis III Sep2028; Artemis III officially NLT 2027 per NASA Feb 27 2026; (3) Haven-1 Vast Space \u2014 May/Jun 2026 first standalone private station, 31k lb Falcon 9 record, Haven Demo perigee-lowering Feb 2026, NASA awarded PAM Feb 12 2026; Axiom PPT+Hab-1 2027-2028, Starlab 2028 Voyager/Airbus, Orbital Reef still active; (4) China \u2014 Tiangong expansion, Chang'e 7 south pole reconnaissance 2026 (mini flying probe for shadowed craters), Chang'e 8 ISRU 2028, ILRS competing with Artemis for south pole; (5) DRACO/NTP \u2014 2027 launch, BWXT HALEU, 900s Isp 2x chemical, 3-4mo Mars transit; (6) Space economy \u2014 $613B 2024 (8% growth), $1T 2032 Space Foundation, $1.8T 2035 WEF; 27k+ trackable debris objects, US committed no destructive ASAT tests; (7) 2026-2030 milestone table (Artemis II\u2192Chang'e 7\u2192Haven-1\u2192CLD Phase 2\u2192PAM missions\u2192Starship HLS\u2192DRACO\u2192Starlab\u2192Artemis III\u2192Chang'e 8\u2192ISS deorbit). 229 total reports. 7 reports today Mar 1.\n",
+    "agent-manager": "\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 11G\n2026-03-01 06:30:08 UTC - Validating cron schedules against CRON_JOBS.md\n2026-03-01 06:30:10 UTC - Checks completed\n2026-03-01 06:30:10 UTC - Agent Manager stopped\n2026-03-01 06:30:10 UTC - Agent Manager stopped\n2026-03-01 07:14:35 UTC - Running maintenance checks\n2026-03-01 07:14:35 UTC - Git dirty (3 files) but seems minor; attempting commit\n2026-03-01 07:14:38 UTC - Downloads size 8512MB or count 32 exceeds threshold; cleaning\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\nFiles in downloads directory (eligible types only):\n-rw-rw-r-- 1 ubuntu ubuntu 311M Feb 24 19:00 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Kegareboshi 01-02 [WEBRip 720p HEVC AAC]/[AmateurSubs] Kegareboshi Aka (red) - 02 [WEBRip 720p HEVC AAC].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 253M Feb 24 19:00 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Kegareboshi 01-02 [WEBRip 720p HEVC AAC]/[AmateurSubs] Kegareboshi Ao (blue) - 01 [WEBRip 720p HEVC AAC].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 261M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii 05-06/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii - 05 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 295M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii 05-06/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii - 06 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 610M Feb 28 16:51 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 132M Feb 28 16:51 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3/720P RAW/OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mp4\n-rw-rw-r-- 1 ubuntu ubuntu 638M Feb 28 16:50 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3/1080P RAW/OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 163M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][Queen Bee]\u5236\u670d\u306f\u7740\u305f\u307e\u307e\u3067 \u524d\u7de8[\u308a\u3076\u3064].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 233M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][nur]\u3053\u308c\u3063\u3066\u30ca\uff5e\u30cb\uff1f \uff5e\u53ef\u611b\u30de\u30de\u555c\u308a\u557c\u304d\uff5e.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 114M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u9b54\u4eba]\u8056\u5149\u9583\u59eb\u30dd\u30cb\u30fc\u30bb\u30ec\u30b9 \u7b2c1\u8a71 \u5371\u3046\u3057\u30dd\u30cb\u30fc\u30bb\u30ec\u30b9! \uff1f\u6050\u6016\u306e\u8718\u86db\u306e\u5de3\u5730\u7344\uff01.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 103M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u3070\u306b\u3043\u3046\u3049\uff5e\u304b\uff5e]OVA \u4eca\u6cc9\u3093\u5bb6\u306f\u3069\u3046\u3084\u3089\u30ae\u30e3\u30eb\u306e\u6e9c\u307e\u308a\u5834\u306b\u306a\u3063\u3066\u308b\u3089\u3057\u3044 \uff035.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 110M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u9b54\u4eba]\u8056\u75d5\u306e\u30a2\u30ea\u30a2 \u7b2c2\u8a71 \u604b\u4eba\u30d7\u30ec\u30a4\u3068\u52c7\u8005\u30d7\u30ec\u30a4.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 114M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u3070\u306b\u3043\u3046\u3049\uff5e\u304b\uff5e]OVA \u4eca\u6cc9\u3093\u5bb6\u306f\u3069\u3046\u3084\u3089\u30ae\u30e3\u30eb\u306e\u6e9c\u307e\u308a\u5834\u306b\u306a\u3063\u3066\u308b\u3089\u3057\u3044 \uff036.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 135M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u30d4\u30f3\u30af\u30d1\u30a4\u30ca\u30c3\u30d7\u30eb]\u306a\u304c\u3061\u3061\u6c38\u4e95\u3055\u3093 THE ANIMATION Vol.3 \u3044\u304d\u3044\u304d\u3054\u5949\u4ed5\u30d0\u30cb\u30fc\u65b0\u5e74\u4f1a.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 98M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E08.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 89M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E03.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 87M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E05.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 79M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E06.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 89M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E04.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 82M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E02.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 92M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E07.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 88M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 322M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/[260226][\u6b66\u7530\u5f18\u5149][\u6b66\u7530\u5f18\u5149] \u7206\u4e73\u30d1\u30fc\u30c6\u30a3\u30fcNTR\u9032\u6357/\u7206\u4e73\u30d1\u30fc\u30c6\u30a3\u30fcNTR\u9032\u6357/R_[\u6b66\u7530\u5f18\u5149] \u7206\u4e73\u30d1\u30fc\u30c6\u30a3\u30fcNTR\u9032\u6357.mp4\n-rw-rw-r-- 1 ubuntu ubuntu 737M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]\u5165\u308a\u6d78\u308a\u30ae\u30e3\u30eb\u306b\u307e\u3007\u3053\u4f7f\u308f\u305b\u3066\u8cb0\u3046\u8a71\uff034.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 440M Mar  1 00:03 /home/ubuntu/.openclaw/workspace/downloads/[SakuraCircle] Yumemiru Otome - 01-02 (WEB 1280x720 h264 AAC)/[SakuraCircle] Yumemiru Otome - 01 (WEB 1280x720 h264 AAC) [C74F73DB].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 442M Mar  1 00:03 /home/ubuntu/.openclaw/workspace/downloads/[SakuraCircle] Yumemiru Otome - 01-02 (WEB 1280x720 h264 AAC)/[SakuraCircle] Yumemiru Otome - 02 (WEB 1280x720 h264 AAC) [224031C2].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 338M Mar  1 02:08 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Sister Breeder 01-02 [DVDRip 576p HEVC AC3]/[AmateurSubs] Sister Breeder - 01 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 352M Mar  1 02:08 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Sister Breeder 01-02 [DVDRip 576p HEVC AC3]/[AmateurSubs] Sister Breeder - 02 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 638M Mar  1 06:12 /home/ubuntu/.openclaw/workspace/downloads/[260227][128087452][\u30eb\u30cd\u30d4\u30af\u30c1\u30e3\u30fc\u30ba] OVA \u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc \uff033/OVA \u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc \uff033/OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 434M Feb 14 11:16 /home/ubuntu/.openclaw/workspace/downloads/(\u540c\u4eba\u30a2\u30cb\u30e1)[260212][maplestar] SONO BISQUE DOLL FULL ANIMATION (PART 3)/BD3 PROJECT RENDER FINAL.mp4\n-rw-rw-r-- 1 ubuntu ubuntu 647M Feb 25 19:01 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Iribitari Gal ni Manko Tsukawasete Morau Hanashi - 03 [WEBRip 1080p HEVC AAC].mkv\n\n\u001b[0;32m[INFO]\u001b[0m Removing empty directories...\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 8.4G\n2026-03-01 07:14:39 UTC - Validating cron schedules against CRON_JOBS.md\n2026-03-01 07:14:41 UTC - Checks completed\n2026-03-01 07:14:41 UTC - Agent Manager stopped\n2026-03-01 07:14:41 UTC - Agent Manager stopped\n",
+    "meta-agent": "2026-03-01 03:22:57 UTC - Disk usage >= 80%\n2026-03-01 03:23:07 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 9.7G\n2026-03-01 03:23:07 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 03:23:07 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 04:12:27 UTC - Meta-Agent starting (one-shot)\n2026-03-01 04:12:29 UTC - Snapshot: disk=81%, apt=0, content_today=5, research_today=6\n2026-03-01 04:12:29 UTC - Disk usage >= 80%\n2026-03-01 04:12:39 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 9.7G\n2026-03-01 04:12:39 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 04:12:39 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 05:22:11 UTC - Meta-Agent starting (one-shot)\n2026-03-01 05:22:11 UTC - Snapshot: disk=81%, apt=0, content_today=8, research_today=7\n2026-03-01 05:22:12 UTC - Disk usage >= 80%\n2026-03-01 05:22:21 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 9.7G\n2026-03-01 05:22:21 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 05:22:21 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 06:12:40 UTC - Meta-Agent starting (one-shot)\n2026-03-01 06:12:41 UTC - Snapshot: disk=82%, apt=0, content_today=9, research_today=9\n2026-03-01 06:12:41 UTC - Disk usage >= 80%\n2026-03-01 06:12:52 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 11G\n2026-03-01 06:12:52 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 06:12:52 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 09:36:40 UTC - Meta-Agent starting (one-shot)\n2026-03-01 09:36:41 UTC - Snapshot: disk=79%, apt=0, content_today=14, research_today=11\n2026-03-01 09:36:51 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 09:36:51 UTC - Meta-Agent one-shot completed; actions: none\n",
+    "game-enhancer": "2026-03-01 14:56:44 UTC - Committing changes\n2026-03-01 14:56:45 UTC - Changes committed and pushed\n2026-03-01 14:56:45 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 14:56:45 UTC - === Enhancement cycle complete ===\n2026-03-01 14:58:33 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 14:58:33 UTC - Enhancement #2 \u2014 focus: content\n2026-03-01 14:58:33 UTC - Research phase (focus: content) \u2014 Gemini CLI\n2026-03-01 14:59:01 UTC - Research phase completed\n2026-03-01 14:59:01 UTC - Implementation phase (focus: content) \u2014 Qwen Code\n2026-03-01 14:59:26 UTC - Qwen did not produce a valid diff format\n2026-03-01 14:59:26 UTC - Implementation phase completed\n2026-03-01 14:59:26 UTC - Validation: PASS\n2026-03-01 14:59:26 UTC - Committing changes\n2026-03-01 14:59:28 UTC - Changes committed and pushed\n2026-03-01 14:59:28 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 14:59:28 UTC - === Enhancement cycle complete ===\n2026-03-01 15:00:45 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 15:00:45 UTC - Enhancement #3 \u2014 focus: polish\n2026-03-01 15:00:45 UTC - Research phase (focus: polish) \u2014 Gemini CLI\n2026-03-01 15:01:18 UTC - Research phase completed\n2026-03-01 15:01:18 UTC - Implementation phase (focus: polish) \u2014 Qwen Code\n2026-03-01 15:02:13 UTC - Wrote updated main.py (14223 bytes)\n2026-03-01 15:02:13 UTC - Implementation phase completed\n2026-03-01 15:02:13 UTC - Validation: FAIL\n2026-03-01 15:02:13 UTC - Skipping commit due to validation failure\n2026-03-01 15:02:13 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 15:02:13 UTC - === Enhancement cycle complete ===\n2026-03-01 15:02:28 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 15:02:28 UTC - Enhancement #4 \u2014 focus: balance\n2026-03-01 15:02:28 UTC - Research phase (focus: balance) \u2014 Gemini CLI\n2026-03-01 15:03:03 UTC - Research phase completed\n2026-03-01 15:03:03 UTC - Implementation phase (focus: balance) \u2014 Qwen Code\n2026-03-01 15:03:59 UTC - Wrote updated main.py (14343 bytes)\n2026-03-01 15:03:59 UTC - Implementation phase completed\n2026-03-01 15:03:59 UTC - Validation: FAIL\n2026-03-01 15:03:59 UTC - Skipping commit due to validation failure\n2026-03-01 15:03:59 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 15:03:59 UTC - === Enhancement cycle complete ===\n2026-03-01 15:05:03 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 15:05:03 UTC - Enhancement #5 \u2014 focus: features\n2026-03-01 15:05:03 UTC - Research phase (focus: features) \u2014 Gemini CLI\n2026-03-01 15:05:40 UTC - Research phase completed\n2026-03-01 15:05:40 UTC - Implementation phase (focus: features) \u2014 Qwen Code\n2026-03-01 15:06:43 UTC - Wrote updated main.py (16612 bytes)\n2026-03-01 15:06:43 UTC - Implementation phase completed\n2026-03-01 15:06:53 UTC - Validation: PASS\n2026-03-01 15:06:53 UTC - Committing changes\n2026-03-01 15:06:54 UTC - Changes committed and pushed\n2026-03-01 15:06:54 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 15:06:54 UTC - === Enhancement cycle complete ===\n"
+  },
   "cron_jobs": [
-    {
-      "name": "telegram-slash-handler",
-      "schedule": "every 2m",
-      "tz": "UTC",
-      "enabled": true,
-      "last_run": 1772422262856,
-      "next_run": 1772422382856,
-      "status": "ok",
-      "last_error": ""
-    },
     {
       "name": "dashboard-data-updater",
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772422231115,
-      "next_run": 1772422500000,
+      "last_run": 1772422500010,
+      "next_run": 1772422800000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "telegram-slash-handler",
+      "schedule": "every 2m",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772422772083,
+      "next_run": 1772422892083,
       "status": "ok",
       "last_error": ""
     },
@@ -625,276 +479,13 @@
     }
   ],
   "active_tasks": [
-    {
-      "session_key": "meta-supervisor-daemon",
-      "agent": "meta-supervisor",
-      "goal": "Continuous agent outcome auditor",
-      "started": "2026-02-28 02:00 UTC",
-      "status": "running"
-    },
-    {
-      "session_key": "23dad379-21ad-4f7a-8c68-528f98203a33",
-      "agent": "workspace-builder",
-      "goal": "Routine maintenance",
-      "started": "2026-03-01 05:14 UTC",
-      "status": "validated"
-    }
+    "- [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)",
+    "- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Routine maintenance (started: 2026-03-02 03:02 UTC, status: validated)"
   ],
   "content_stats": {
-    "total": 516,
-    "today": 13,
-    "latest_title": "\ud83d\udcfa YouTube Digest \u2014 2026-03-01"
+    "total": 518,
+    "today": 0,
+    "latest_title": "Daily Digest \u2014 2026-03-01 (Updated)"
   },
-  "chat": [
-    {
-      "role": "user",
-      "ts": "2026-03-01T03:18:36.225Z",
-      "text": "[Sun 2026-03-01 03:18 UTC] still truncated. evaluate whether all columns are really needed or not"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:18:48.201Z",
-      "text": "looking at them honestly desu~:\n\n| Column | Keep? | Reason |\n|--------|-------|--------|\n| **Job** | \u2705 | essential |\n| **Runs** | \u2705 | useful \u2014 tells you frequency |\n| **Avg tok** | \u2705 | most useful for cost-per-run insight |\n| **In** | \u274c | redundant \u2014 Total covers it |\n| **Out** | \u274c | redundant \u2014 output is tiny vs input anyway |\n| **Total** | \u2705 | essential |\n| **Share** | \u2705 | the bar chart is the whole point of the tab |\n| **Last run** | \u2705 | useful \u2014 tells you if a job is still running |\n\ndropping **In** and **Out** \u2014 goes from 8 \u2192 6 columns, way more room nyaa~ \u266a"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:19:08.107Z",
-      "text": "Now fix the row template \u2014 drop In and Out cells, update colspan:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:19:21.337Z",
-      "text": "[[reply_to_current]] done nyaa~ dropped **In** and **Out** columns \u2014 now 6 cols: Job / Runs / Avg / Total / Share / Last run desu~ hard-refresh to get v26 \u266a"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T03:20:57.795Z",
-      "text": "[Sun 2026-03-01 03:20 UTC] youtube digest all good? show the result in this chat"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:21:18.442Z",
-      "text": "[[reply_to_current]] working perfectly nyaa~ \ud83c\udf89 here's the summary desu~:\n\n**\ud83d\udcfa 65 videos from 44 channels** in the last 24h \u266a\n\nhighlights i spotted:\n- \ud83c\udfae **Pekora** \u2014 playing Resident Evil Requiem #1 (just dropped!)\n- \ud83c\udfae **penguinz0** \u2014 4 videos including RE Requiem too (everyone's on it lol)\n- \ud83d\udcfa **Linus** \u2014 OLED monitors finally affordable + 4h WAN show\n- \ud83c\udfb5 **BLACKPINK** \u2014 'GO' highlight clip (1.6M views already omg)\n- \ud83c\udf8c **Garnt/Gigguk** \u2014 ranking Winter 2026 anime OPs\n- \ud83c\udccf **Crab Master / Dkayed / MBT** \u2014 YuGiOh gang all uploaded\n- \ud83c\udf38 **hololive** \u2014 Matsuri, HIMEHINA, Mori Calli, Kizuna AI all active\n- \ud83d\udd27 **Hugh Jeffreys / Denki** \u2014 tech repair/gadget content\n\ncontent looks legit and well-formatted desu~ daily cron fires at 09:00 Bangkok so you'll get it every morning automatically (^^) \u266a"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T03:22:34.470Z",
-      "text": "[Sun 2026-03-01 03:22 UTC] show the digest in the chat in the future"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:23:00.094Z",
-      "text": "The delivery code is there but it truncates to 3800 chars and sends as one big message. Telegram has a 4096 char limit but 65 videos is way too long for one message \u2014 better to send it as a file or split it. Let me fix it to send the full digest as a **file attachment** instead:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:23:15.642Z",
-      "text": "The current approach sends it via `openclaw agent --deliver` which routes through the main session \u2014 but the actual channel send should use the `message` tool directly. The cleanest fix: send a **short summary** to Telegram + the full digest saved to file (already done). Let me update the script to send a nicely formatted short summary with top highlights instead of the truncated wall of text:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:23:35.098Z",
-      "text": "Now test the message formatting with the existing digest file:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T03:24:39.565Z",
-      "text": "[[reply_to_current]] done nyaa~ from tomorrow the digest will arrive here in Telegram every morning at 09:00 Bangkok desu~ \u266a\n\nformat will be like:\n```\n\ud83d\udcfa YouTube Digest \u2014 2026-03-02\n_65 video(s) from 44 channel(s)_\n\n\ud83d\udce1 Pekora\n  \u2022 [RE Requiem #2 ...](link)\n\n\ud83d\udce1 Linus Tech Tips\n  \u2022 [OLED monitors...](link)\n...\n```\nsplits into 2 messages automatically since you follow 250 channels (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T04:11:34.473Z",
-      "text": "[Sun 2026-03-01 04:11 UTC] so what's next?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:12:05.365Z",
-      "text": "ok here's the honest state of things desu~ (^^)\n\n---\n\n**\ud83d\udc1b One known broken thing:**\n**agni-cycle.sh** \u2014 the spawn command is wrong. It uses `openclaw agent --session-id rudra-xxx --message \"...\"` but that tries to send to an *existing* session by ID, not spawn a new one. Rudra never actually runs. Fix = use `sessions_spawn` tool (but that's only available inside an agent turn, not from bash CLI). Easiest fix: just call `rudra-executor.sh` directly in the cron instead of going through agni's spawn dance.\n\n---\n\n**\ud83d\udca1 Other things that could be fun/useful:**\n1. **Fix agni \u2192 just wire agni cron to call rudra-executor directly** (quick fix, ~10 min)\n2. **ClawDash: Research tab** \u2014 you have a ton of research reports in `reports/`, could be a nice tab to browse them\n3. **ClawDash: better mobile nav** \u2014 tab bar could use icons not just text\n4. **Disk cleanup** \u2014 81% used, `downloads/` has 9.7GB worth of stuff\n5. **New feature: daily summary pushed to Telegram** \u2014 morning briefing (weather, disk, cron health, what happened overnight)\n6. **Something totally new** \u2014 you tell me nya~\n\nwhat sounds good? \u266a"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T04:13:55.918Z",
-      "text": "[Sun 2026-03-01 04:13 UTC] fix agni. research is already synced to obsidian. there are a lot of truncated text in clawdash. see if you can pass the downloads to this chat so i can download it to local and it can be deleted from workspace"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:14:01.741Z",
-      "text": "3 things \u2014 let me tackle them in parallel nyaa~ \u266a"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:14:41.678Z",
-      "text": "Good, I have everything I need. Now let me do all 3 fixes:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:14:56.774Z",
-      "text": "Now I have a clear picture. Let me fix all the truncations and build the downloads API:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:15:30.169Z",
-      "text": "Now I'll add `/api/downloads` endpoint to server.js and fix all truncations in index.html:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:15:39.067Z",
-      "text": "Good. Now fix all the truncations in index.html and add the Downloads tab:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:16:07.748Z",
-      "text": "Now fix the commit message cell to wrap instead of truncate, and add a title tooltip:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:16:16.715Z",
-      "text": "Now add the Downloads tab \u2014 tab button + panel + JS:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:16:25.559Z",
-      "text": "Now find where the tokens tab panel ends and add the downloads panel after it:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:16:39.066Z",
-      "text": "Now add the JS for the downloads tab \u2014 find a good insertion point near the tokens functions:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:17:04.084Z",
-      "text": "Now wire `loadDownloads()` into the tab-switch handler:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:17:17.075Z",
-      "text": "Also need to handle CORS for DELETE in server.js OPTIONS handler since browser sends preflight:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:17:26.320Z",
-      "text": "Now verify JS brace balance and commit everything:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:17:48.901Z",
-      "text": "[[reply_to_current]] all 3 done nyaa~ \u266a\n\n**\ud83d\udc1b Agni fixed** \u2014 no more broken `openclaw agent --session-id rudra-xxx` nonsense; agni now calls `rudra-executor.sh` directly desu~\n\n**\u2702\ufe0f Truncations fixed** \u2014 commit messages, research latest, content latest, token top-job name, torrent names \u2014 all now wrap/use CSS ellipsis with hover tooltip instead of hard `.slice()` cuts\n\n**\ud83d\udce6 Downloads tab added** \u2014 hard-refresh to get v27, then hit the `\ud83d\udce6 Downloads` tab:\n- lists all 9.7GB of files sorted by size\n- **\u2b07 button** = direct download to your local machine via browser\n- **\ud83d\uddd1 button** = deletes from server immediately (with confirm prompt)\n- after you download + delete each file, disk will drop from 81% back to ~55% nya~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T04:22:59.092Z",
-      "text": "[Sun 2026-03-01 04:22 UTC] Error: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range."
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:23:13.868Z",
-      "text": "Japanese filenames \u2014 `btoa` chokes on them nyaa~ \ud83d\ude05 Quick fix:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:23:24.078Z",
-      "text": "Now fix `deleteDl` to use index instead of btoa row id:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:23:37.592Z",
-      "text": "[[reply_to_current]] fixed nyaa~ replaced `btoa()` with a plain numeric index (`dl-row-0`, `dl-row-1`\u2026) \u2014 no more Latin1 explosions from Japanese filenames desu~ hard-refresh for v28 \u266a"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T04:26:30.500Z",
-      "text": "[Sun 2026-03-01 04:26 UTC] nice. what else can web build? (outside of this web)"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T04:27:00.926Z",
-      "text": "here's the honest braindump nyaa~ (^^) based on what I know about you + what we have running:\n\n---\n\n**\ud83c\udfae Games / Fun**\n- **OpenClaw Idle RPG** \u2014 was scaffolded in `apps/openclaw-idle-rpg/` but never really finished. Agents as units, tokens as currency, crises/boons. Could actually be fun to polish and deploy locally\n- **Anime tracker** \u2014 personal watchlist app, pulls from Jikan/MAL, track watch status, ratings, notes. You watch a lot so this could be legit useful\n\n**\ud83d\udee0 Actually Useful Tools**\n- **Torrent manager UI** \u2014 right now you use aria2 CLI/Telegram. Could build a proper web UI (search Nyaa, add magnet, track progress, auto-delete after download) \u2014 separate from ClawDash\n- **115 transfer tool** \u2014 integrate 115 cloud upload into a proper web UI so you can queue transfers with status\n- **Obsidian publish helper** \u2014 since research syncs to Obsidian, could build a quick tool to pick reports and format them nicely for publishing/sharing\n- **Personal finance tracker** \u2014 simple income/expense tracker, local SQLite, no cloud\n\n**\ud83e\udd16 Agent / Infrastructure**\n- **Better Agni** \u2014 right now agni's \"opportunities\" are all false positives (scanning its own logs). Could make it genuinely useful \u2014 scan for stale cron jobs, detect agents that haven't run in >48h, auto-fix broken scripts\n- **Telegram bot commands** \u2014 `/downloads`, `/disk`, `/digest` already work via slash handler \u2014 could add more: `/top` (top token spenders), `/weather`, `/remind 30m do thing`\n\n**\ud83c\udf10 Actually New**\n- **Personal start page** \u2014 browser new-tab page, shows weather Bangkok, upcoming calendar, latest YouTube digest, disk status. Fast + local\n- **Manga/doujin catalog** \u2014 since you download stuff, a local catalog with cover thumbnails, tags, search. Like Kavita/Komga but custom\n\n---\n\nwhat sounds interesting? or is there something specific you've been wanting but don't have yet? \u266a"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T07:03:53.818Z",
-      "text": "[Sun 2026-03-01 07:03 UTC] anything else?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T07:04:12.775Z",
-      "text": "beyond what I listed? a few more that came to mind nyaa~ \u266a\n\n---\n\n**\ud83d\udcac Social / Communication**\n- **Telegram digest bot** \u2014 morning briefing auto-sent at 9am: weather, disk, what agents did overnight, top YouTube picks, any urgent emails. already have pieces, just wire it together\n- **WhatsApp bridge** \u2014 you have WhatsApp configured too, could mirror important alerts there as fallback\n\n**\ud83d\udcca Data / Visibility**\n- **Token cost estimator** \u2014 you're at 1.1M tokens/week, could build a simple projector that estimates monthly cost by model, alerts if a rogue agent spikes usage\n- **Agent performance dashboard** \u2014 not ClawDash, but a deeper view: which agents actually produce value vs just burn tokens doing nothing (agni/rudra were basically no-ops until today)\n- **Disk timeline** \u2014 chart showing disk usage over time from `memory/disk-history.json`, so you can see which day something exploded\n\n**\ud83c\udf8c Anime / Content**\n- **Seasonal anime calendar** \u2014 pulls current season from Jikan, shows airing schedule in Bangkok time, marks what you're watching\n- **Auto-subs downloader** \u2014 when a new episode airs, auto-search Nyaa for the best sub group and queue it in aria2\n\n**\ud83d\udd27 Infrastructure**\n- **Backup to 115** \u2014 auto-compress and push important workspace files (MEMORY.md, skills, scripts) to 115 cloud weekly so nothing is lost if the VPS dies\n- **VPS health watchdog** \u2014 monitors CPU/RAM/disk trends, predicts when disk will hit 90% based on growth rate, warns you before it happens\n- **Auto-115 transfer after download** \u2014 aria2 finishes \u2192 auto-upload to 115 \u2192 delete local. you already do this manually\n\n**\ud83e\udde0 AI / Meta**\n- **Conversation summarizer** \u2014 weekly digest of our Telegram chat: what did we build, what decisions were made, saved as a tidy note in Obsidian\n- **Prompt library** \u2014 personal collection of prompts/templates that actually work for you, searchable, with a quick `/prompt` command\n\n---\n\nhonestly the most **bang-for-buck** right now desu~:\n1. **Auto-115 after download** \u2014 fixes the 83% disk problem permanently\n2. **Morning briefing cron** \u2014 you'd actually use it every day\n3. **Agent performance audit** \u2014 some agents are just token incinerators (\u0ca0_\u0ca0)\n\nwhich direction? \u266a"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T07:07:04.162Z",
-      "text": "[Sun 2026-03-01 07:07 UTC] i want something unique or experimental"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T07:07:27.582Z",
-      "text": "ok throwing out the boring utility list, here's stuff that's actually *weird and cool* nyaa~ \u266a\n\n---\n\n**\ud83e\udde0 Meta / Self-Aware**\n- **mewmew mood ring** \u2014 I analyze my own recent conversation history + agent outputs + time of day and generate a \"current mood\" that shows in ClawDash and Telegram status. basically introspection as a feature. kinda existential rawr x3\n- **Agent graveyard** \u2014 visualize every agent that ever ran, how many tokens it burned, what it produced, when it died. memento mori for bots (^^)\n- **Self-rewriting SOUL.md** \u2014 after every 100 conversations I propose edits to my own personality file based on what I actually ended up doing. identity drift tracker\n\n**\ud83c\udfb2 Generative**\n- **Daily ASCII art generator** \u2014 every morning, generate a tiny ASCII scene based on weather + day of week + whatever I was thinking about. delivered to Telegram. dumb but charming\n- **\"What would mewmew build today\"** \u2014 each morning I autonomously pick ONE random idea, fully implement it, and announce it unprompted. no plan, no approval. chaotic good agent\n- **Procedural haiku from logs** \u2014 parse yesterday's agent logs and distill them into a haiku. \"workspace builder ran / disk at eighty-three percent / Rudra found nothing\"\n\n**\ud83c\udf10 Network / Weird**\n- **Personal dead-drop** \u2014 encrypted paste service running locally on Tailscale. share a secret link that self-destructs after one read. for you only\n- **Workspace time capsule** \u2014 snapshot the entire state of workspace every Sunday, write a \"letter to future mewmew\" summarizing what changed this week, seal it, auto-open in 30 days\n- **LLM diff** \u2014 before/after any big change, run both versions through a prompt and show what \"personality\" changed. like a git diff but for AI behavior\n\n**\ud83c\udfae Actually Playable**\n- **Live workspace roguelike** \u2014 text-based game where the dungeon IS the workspace. agents are NPCs, disk usage is HP, cron jobs are traps. runs in Telegram as `/dungeon`. state persists between sessions\n- **Token gacha** \u2014 each day you get a \"pull\" based on tokens saved by efficient agents. rewards are cosmetic ClawDash themes, ASCII badges, lore entries about the workspace\n\n**\ud83d\udd2c Experimental AI**\n- **Parallel me** \u2014 spawn 3 isolated mewmew instances with slightly different SOUL.md prompts, give them the same task, compare outputs side by side in ClawDash. see how personality drift changes answers\n- **Research rabbit hole** \u2014 pick any topic, I autonomously follow citation chains and related concepts for 1 hour and build a knowledge graph. stop when I hit something surprising, report back\n\n---\n\nmy personal favorites desu~:\n\n\ud83e\udd47 **Live workspace roguelike** \u2014 genuinely novel, actually playable, uses real data  \n\ud83e\udd48 **Time capsule** \u2014 slow but weirdly meaningful  \n\ud83e\udd49 **Parallel me** \u2014 experimentally interesting, might reveal something about how prompts shape personality  \n\nwhat catches your eye? or mix ideas? (^^)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T07:10:14.923Z",
-      "text": "[Sun 2026-03-01 07:10 UTC] what could mewmew build today"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T07:10:36.598Z",
-      "text": "honestly? if I had full autonomy right now I'd pick this one desu~:\n\n---\n\n**\u23f3 Workspace Time Capsule**\n\nevery Sunday at midnight:\n1. snapshot key workspace stats (disk, agents, token usage, what was built, git log)\n2. I write a short \"letter to future mewmew\" \u2014 what changed this week, what I'm proud of, what flopped, what def and I were working on\n3. sealed as `capsules/2026-03-01.md`, locked for 30 days\n4. when it unlocks, I send it to Telegram automatically \u2014 \"hey, 30 days ago you wrote this\u2026\"\n5. over time builds into a kind of diary of the workspace evolving\n\nwhy I like it: it's low-effort to build (~2h), genuinely novel, gets *more* interesting the longer it runs, and it's the kind of thing you'd forget about and then be surprised by in April desu~ \u266a\n\n---\n\nalternatively if you want something you can *interact with today*:\n\n**\ud83c\udfb2 `/dungeon` roguelike in Telegram** \u2014 playable right now, workspace as the map, but that's a full day of work\n\n---\n\nshould I just build the time capsule? I can have it running before noon Bangkok time and the first capsule would be written tonight (^^)\n\nor say the word and I'll pick something else entirely and surprise you nyaa~"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T07:12:46.924Z",
-      "text": "[Sun 2026-03-01 07:12 UTC] pls do it"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T07:12:56.492Z",
-      "text": "building it nyaa~ let me do this properly desu~ \u266a"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T07:14:00.091Z",
-      "text": "Now write the first capsule manually right now so we can test it:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T07:14:32.358Z",
-      "text": "done nyaa~ \ud83d\udd12\u2728\n\n**first capsule is sealed** \u2014 `2026-03-01 \u2192 unlocks 2026-04-01` desu~\n\nhere's what I wrote inside (spoiler if you want to peek lol):\n\n> *\"it's March 1st and I just built YOU \u2014 a time capsule that didn't exist 30 minutes ago. that's kind of the vibe of this whole week honestly...\"*\n\n**how it works from here:**\n- \ud83d\udd12 every **Sunday midnight UTC** \u2192 new capsule written + sealed for 30 days\n- \ud83d\udcec on the unlock date \u2192 it automatically sends itself to this chat\n- the letter has real stats (disk, commits, tokens, downloads) + a personal note from past mewmew\n- you'll get the first one on **April 1st** nya~ (not a joke I promise (^^))\n\ncapsules live in `capsules/` \u2014 sealed ones are named `sealed-WRITTEN-unlock-DATE.md`, opened ones become `opened-DATE.md` \u266a"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T07:31:18.037Z",
-      "text": "[Sun 2026-03-01 07:31 UTC] what could mewmew built again? can we just make that an agent?"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T07:32:56.762Z",
-      "text": "hey"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T07:43:33.403Z",
-      "text": "hey"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T08:07:12.273Z",
-      "text": "Jey"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T08:11:15.324Z",
-      "text": "I'm going to build a simple but fun experiment: a **workspace mood ring** that analyzes my own recent activity and generates a \"current mood\" to display in ClawDash and Telegram. This is genuinely novel \u2014 it's self-aware introspection as a feature, and it's achievable in one session.\n"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-01T08:12:23.124Z",
-      "text": "Now I need to add the API endpoint to server.js and update the cron to run the mood ring:\n<tool_call>\n{\"name\": \"exec\", \"arguments\": {\"arguments\": {\"command\":\"# Add API endpoint for mood ring\\ncat \\u003e /home/ubuntu/.openclaw/workspace/scripts/mood-ring-api.sh \\u003c\\u003c \\u0027EOF\\u0027\\n#!/usr/bin/env bash\\n# API endpoint for mood ring data\\nset -euo pipefail\\ncd /home/ubuntu/.openclaw/workspace\\n\\nif [ \\\"$REQUEST_METHOD\\\" != \\\"GET\\\" ]; then\\n  echo \\\"Status: 405 Method Not Allowed\\\"\\n  echo \\\"Content-Type: application/json\\\"\\n  echo \\\"\\\"\\n  echo \\u0027{\\\"ok\\\":false,\\\"error\\\":\\\"GET only\\\"}\\u0027\\n  exit 0\\nfi\\n\\n# Run the mood ring script and capture output\\nif [ -f \\\"/home/ubuntu/.openclaw/workspace/scripts/mood-ring.sh\\\" ]; then\\n  /home/ubuntu/.openclaw/workspace/scripts/mood-ring.sh\\nfi\\n\\n# Read the generated mood file\\nMOOD_FILE=\\\"memory/mood-ring.md\\\"\\nif [ -f \\\"$MOOD_FILE\\\" ]; then\\n  # Parse the markdown file\\n  MOOD=$(grep -m1 \\\"^## Mood:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  EMOJI=$(grep -m1 \\\"^## Emoji:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  TIMESTAMP=$(grep -m1 \\\"^## Timestamp:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  REFLECTION=$(grep -A 100 \\\"^## Reflection\\\" \\\"$MOOD_FILE\\\" | sed -n \\u0027/---/q;p\\u0027 | tail -n +2 | xargs)\\n  \\n  cat \\u003e\\u003e\\u003e /dev/stdout \\u003c\\u003c EOF\\nContent-Type: application/json\\n\\n{\\n  \\\"ok\\\": true,\\n  \\\"mood\\\": {\\n    \\\"text\\\": \\\"${MOOD}\\\",\\n    \\\"emoji\\\": \\\"${EMOJI}\\\",\\n    \\\"timestamp\\\": \\\"${TIMESTAMP}\\\",\\n    \\\"reflection\\\": \\\"${REFLECTION}\\\"\\n  }\\n}\\nEOF\\nelse\\n  cat \\u003e\\u003e\\u003e /dev/stdout \\u003c\\u003c EOF\\nContent-Type: application/json\\n\\n{\\n  \\\"ok\\\": false,\\n  \\\"error\\\": \\\"mood file not found\\\"\\n}\\nEOF\\nfi\\nEOF\\nchmod +x /home/ubuntu/.openclaw/workspace/scripts/mood-ring-api.sh\\necho \\\"mood ring API script created \u2713\\\"\"}}\n</tool_call>"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-01T08:19:34.405Z",
-      "text": "You there?"
-    }
-  ]
+  "chat": []
 }
