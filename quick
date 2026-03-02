@@ -316,7 +316,7 @@ case "$cmd" in
     bash "$WORKSPACE/scripts/quick-today.sh" "${2:-}"
     ;;
 
-  dash|dashboard)
+  dash)
     python3 "$WORKSPACE/dashboard.py"
     ;;
   web)

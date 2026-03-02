@@ -25,11 +25,18 @@ def get_system_stats():
         disk_free = run("df -h / | tail -1 | awk '{print $4}'")
         load = run("cat /proc/loadavg | awk '{print $1,$2,$3}'")
         uptime = run("cat /proc/uptime | awk '{print $1}'")
-        # Gateway status
+        # Gateway status (check via openclaw CLI or process)
         gw = "down"
         try:
-            subprocess.check_call(["systemctl","is-active","--quiet","openclaw-gateway"])
-            gw = "up"
+            # First try openclaw gateway status (works for user services)
+            status = run("openclaw gateway status --brief 2>/dev/null")
+            if "running" in status.lower() or "active" in status.lower():
+                gw = "up"
+            else:
+                # Fallback: check if process exists
+                pid = run("pgrep -f 'openclaw.*gateway'")
+                if pid:
+                    gw = "up"
         except:
             pass
         # Git clean?
