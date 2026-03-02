@@ -302,7 +302,7 @@ def get_content_stats():
             with open(latest, 'r', encoding='utf-8', errors='ignore') as f:
                 first = f.readline().strip().lstrip('#').strip()
             latest_title = first
-    return {"total": total, "today": today, "latest_title": latest_title}
+    return {"total": total, "today": today, "latest": latest_title}
 
 def get_chat_history(limit=50):
     chat_file = f"{WORKSPACE}/memory/chat.json"
