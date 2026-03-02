@@ -1,51 +1,32 @@
-# Workspace Builder Findings — 2026-03-02 05:04 UTC
+# Findings: Need for Systemd Linger Validation
 
-## Executive Summary
+**Workspace Analysis (2026-03-02 07:10 UTC)**
+- Overall health: green
+- Disk: 78% (stable)
+- Git: clean
+- Memory: 29/37 files indexed, reindex 1.9d fresh
+- Cron: all jobs ok
+- active-tasks size: 714 bytes (<2KB)
+- MEMORY.md: 32 lines (≤35)
+- Constraints: all 8 checks passing
 
-System health: **GREEN**. All constraints satisfied. One modified file (`memory/disk-history.json`) pending commit. No urgent actions required. Routine maintenance cycle proceeding normally.
+**Identified Gap**
+The current constraint set does not verify that systemd lingering is enabled for the `ubuntu` user. According to MEMORY.md and lessons learned:
 
-## Current State Assessment
+> "Systemd linger required — Enable with `sudo loginctl enable-linger $USER` so user services survive logout/reboot. Without it, openclaw-gateway.service stops, killing all agents."
 
-### Health & Resources
-- Disk usage: 78% (stable, but monitor trend: 78% → 81% over past day; approaching 85% alert threshold)
-- Gateway: healthy
-- APT updates: none pending
-- Memory index: 29 fragments / 322 chunks; reindex ~1.7 days ago (fresh)
-- Downloads: 31 files, 7.6GB total (within acceptable range <10GB)
-- Shebangs: all 118+ scripts have #! present
+This is a critical reliability factor for 24/7 operation. If lingering is disabled, the gateway and all agents will terminate when the user logs out or the session ends, requiring manual restart until watchdog notices.
 
-### Git Status
-```
-M memory/disk-history.json
-```
-- Only modification: disk-history metrics update (background disk monitor)
-- No untracked files
-- No stale branches (0 idea/* branches)
+**Why Add a Check Now?**
+- The system currently has lingering enabled (`/var/lib/systemd/linger/ubuntu` exists). But there is no automated guard against accidental disabling (e.g., via `loginctl disable-linger` or system reconfiguration).
+- Adding a validation constraint ensures immediate alerting if this setting is ever lost.
+- It aligns with the documented best practice and completes the health envelope.
 
-### Active Tasks Registry
-- Size: updated entry now running (this session)
-- Previous validated entry: `23dad379-21ad-4f7a-8c68-528f98203a33` from 03:02 UTC, all constraints satisfied
+**Impact**
+- Minimal code change: one new conditional block in `scripts/validate-constraints.sh`.
+- Help text update in `quick` for consistency.
+- No performance impact.
+- Maintains all existing passing constraints.
 
-### Constraints Validation (Expected)
-- active-tasks.md ≤ 2KB ✅ (currently ~600 bytes)
-- MEMORY.md ≤ ~30 lines ✅ (currently 32)
-- Health green ✅
-- Git clean after commits ⏳ (pending)
-- Memory reindex fresh ✅ (≤2 days)
-- No temp files ✅
-- All scripts shebang ✅
-- APT none pending ✅
-- Branch hygiene: 0 stale idea branches ✅
-
-### Goals for This Run
-- Commit pending disk-history.json update with prefix `build:`
-- Refresh planning docs (task_plan.md, findings.md, progress.md) for this session
-- Re-validate all constraints
-- Update active-tasks.md: set status `validated` with verification metrics
-- Push to origin
-- Close the loop with summary to daily log
-
-## Risks & Notes
-- **Disk usage trend**: Currently 78%, but HEARTBEAT.md alerts at ≥85%. Monitor closely; consider proactive cleanup if trend continues upward over next cycles. Downloads at 7.6GB still well under 10GB threshold; no immediate cleanup needed.
-- **Planning docs**: Must be committed to avoid untracked artifacts (learned from 2026-03-01 remediation).
-- **Session continuity**: Active-tasks entry updated to running; will mark validated after verification.
+**Conclusion**
+Adding a dedicated check for systemd linger strengthens the workspace's self-monitoring capabilities and supports the 24/7 operational goal.

@@ -143,6 +143,14 @@ else
     echo "✅ Branch hygiene: no stale idea branches"
 fi
 
+# 9. Systemd linger enabled for ubuntu user (required for persistent services)
+if [ -f "/var/lib/systemd/linger/ubuntu" ]; then
+    echo "✅ Systemd linger: enabled"
+else
+    echo "❌ Systemd linger: not enabled (required for persistent services)"
+    errors=$((errors+1))
+fi
+
 # Summary
 echo ""
 if [ "$errors" -eq 0 ]; then

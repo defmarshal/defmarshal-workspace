@@ -1825,6 +1825,7 @@ Workspace constraints validated by 'quick validate-constraints':
   ✅ No temp files in workspace root
   ✅ APT updates none pending
   ✅ Memory reindex age ≤ 3 days (warning 4-7d, error >7d)
+  ✅ Systemd linger enabled (required for persistent services)
 Run 'quick validate-constraints' to execute all checks.
 EOF
     ;;

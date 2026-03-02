@@ -1,62 +1,37 @@
-# Workspace Builder Task Plan — 2026-03-02 05:02 UTC
+# Task Plan: Add Systemd Linger Validation
 
-**Session:** Assigned at runtime (will reuse or create new entry in active-tasks.md)
+**Goal**
+Enhance workspace validation to ensure systemd lingering is enabled for the ubuntu user, guaranteeing that openclaw-gateway and other user services persist across logout/reboot.
 
-**Objective:** Routine maintenance cycle: commit disk history, refresh planning docs, validate constraints, close loop.
+**Motivation**
+- Lessons learned (MEMORY.md) identify systemd linger as required for reliable 24/7 operation.
+- Current validation (`quick validate-constraints`) does not check this critical setting.
+- Proactive detection prevents silent loss of agents after logout or reboot.
 
----
+**Scope**
+- Modify `scripts/validate-constraints.sh` to add a new constraint check for `/var/lib/systemd/linger/ubuntu`.
+- Update the help text in `quick` (show-validation-checks command) to list this new check.
+- Ensure the check passes on current system; treat missing linger as error.
+- No other scripts or systems affected.
 
-## Phase 1: Analysis & Setup
-- [x] Read AGENTS.md, USER.md, active-tasks.md, MEMORY.md
-- [x] Read today's and yesterday's daily logs (memory/2026-03-02.md, memory/2026-03-01.md)
-- [x] Check git status (found: M memory/disk-history.json)
-- [x] Run `quick health` (green: disk 78%, gateway healthy, memory clean)
-- [x] Check disk trends (monitor: 78% → 81%, approaching 85% alert threshold)
-- [x] Validate no critical issues
-- [ ] Register this session in active-tasks.md (status: running, with session ID)
+**Steps**
+1. Update active-tasks.md: register this session as running.
+2. Review existing validation logic and decide where to insert new check.
+3. Implement the new check in `scripts/validate-constraints.sh`.
+4. Update the `show-validation-checks` help text in `quick`.
+5. Run `./quick validate-constraints` to verify all constraints pass (including new check).
+6. If any failure: debug, adjust implementation, repeat step 5.
+7. After passing, commit changes with prefix `build:` and push to origin/master.
+8. Update active-tasks.md: mark this session as validated and add verification notes.
+9. Append summary to daily log `memory/2026-03-02.md`.
+10. Verify no temp files remain; confirm git clean.
 
-**Acceptance:** Current state documented; session registered.
+**Success Criteria**
+- `./quick validate-constraints` exits 0 and displays ✅ for systemd linger check.
+- `quick show-validation-checks` includes the new item.
+- Changes are committed and pushed; active-tasks.md updated correctly.
+- All pre-existing constraints remain satisfied.
 
----
-
-## Phase 2: Implementation
-- [ ] Commit `memory/disk-history.json` with message `build: update disk history metrics`
-- [ ] Create/refresh planning docs (task_plan.md, findings.md, progress.md) to reflect current cycle
-- [ ] Commit planning docs with message `build: workspace-builder planning docs and session registration`
-- [ ] Push all commits to origin
-- [ ] Update active-tasks.md entry to running → validated
-
-**Acceptance:** All changes committed; git clean; active-tasks updated.
-
----
-
-## Phase 3: Validation
-- [ ] Run `quick health` — verify green
-- [ ] Verify active-tasks.md size <2KB
-- [ ] Verify MEMORY.md ≤35 lines
-- [ ] Verify memory reindex ≤2 days old
-- [ ] Check for temp files (none)
-- [ ] Verify all .sh scripts have shebang
-- [ ] Confirm APT updates: none pending
-- [ ] Check branch hygiene: 0 stale idea branches
-- [ ] Verify downloads count/size within thresholds (<25 visible files, <10GB total) — currently 31/7.6GB OK
-
-**Acceptance:** All 9 constraints pass.
-
----
-
-## Phase 4: Close the Loop
-- [ ] Append summary to today's daily log (memory/2026-03-02.md)
-- [ ] Prune stale validated entries from active-tasks.md to keep <2KB
-- [ ] Final git status check (clean & pushed)
-- [ ] Ensure no leftover temp files or uncommitted artifacts
-
-**Acceptance:** Workspace synchronized; session closed.
-
----
-
-## Notes
-- Follow push-pending-first pattern: commit before marking validated.
-- Keep changes minimal but meaningful.
-- Monitor disk usage trend; consider cleanup if approaching 85%.
-- All planning docs must be committed — no untracked artifacts.
+**Error Handling**
+- If the linger file check fails (missing file), the constraint will fail. Investigate whether linger should be enabled; if it is unexpectedly missing, enable it via `sudo loginctl enable-linger ubuntu` as a remediation step.
+- If script modification causes syntax errors, fix immediately and re-test.
