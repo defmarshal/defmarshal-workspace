@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-02T23:10:02Z",
+  "generated_at": "2026-03-02T23:15:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "7.7G",
-    "load_avg": "0.86 0.91 0.96",
+    "load_avg": "1.20 1.01 0.99",
     "mem_used": "4.0Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 9 hours, 30 minutes",
+    "uptime": "1 week, 4 days, 9 hours, 35 minutes",
     "disk_history": [
       79,
       79,
@@ -27,7 +27,7 @@
       79,
       79,
       79,
-      79,
+      80,
       80,
       80,
       80,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "ed5f787a",
+      "sha": "3c8c221e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "1ef5952a",
+      "sha": "ed5f787a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "a95c5f50",
+      "sha": "1ef5952a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "2ad7fcb8",
+      "sha": "a95c5f50",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "557253f3",
+      "sha": "2ad7fcb8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "e6cd0108",
+      "sha": "557253f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "679a9e35",
+      "sha": "e6cd0108",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "1727c3b4",
+      "sha": "679a9e35",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "26cb113f",
-      "agent": "docs",
-      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
-      "time": "42 minutes ago"
-    },
-    {
-      "sha": "a16189b3",
-      "agent": "docs",
-      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "d44b7727",
+      "sha": "1727c3b4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "54055fcc",
+      "sha": "26cb113f",
+      "agent": "docs",
+      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
+      "time": "47 minutes ago"
+    },
+    {
+      "sha": "a16189b3",
+      "agent": "docs",
+      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
+      "time": "48 minutes ago"
+    },
+    {
+      "sha": "d44b7727",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "c335b162",
+      "sha": "54055fcc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "900073fd",
+      "sha": "c335b162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "1b69a6b5",
+      "sha": "900073fd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
@@ -472,10 +472,10 @@
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772492700012,
-      "next_run": 1772493000000,
+      "last_run": 1772493000010,
+      "next_run": 1772493300000,
       "last_status": "ok",
-      "last_duration_ms": 61239,
+      "last_duration_ms": 56055,
       "consecutive_errors": 0
     },
     {
@@ -659,15 +659,27 @@
       "consecutive_errors": 0
     },
     {
+      "id": "7eed0c1e-9141-4107-ac1d-97932bced45e",
+      "name": "supervisor-cron",
+      "schedule": "0,30 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": null,
+      "next_run": 1772494200000,
+      "last_status": "—",
+      "last_duration_ms": 0,
+      "consecutive_errors": 0
+    },
+    {
       "id": "e26c12bd-635a-48cf-bc8d-1707bc4ffd59",
       "name": "telegram-slash-handler",
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772492881343,
-      "next_run": 1772493001343,
+      "last_run": 1772493296385,
+      "next_run": 1772493416385,
       "last_status": "ok",
-      "last_duration_ms": 2340,
+      "last_duration_ms": 2194,
       "consecutive_errors": 0
     },
     {
@@ -741,56 +753,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:44:51.312Z",
-      "text": "Aha! `test123.json` persists. So something is specifically targeting `data.json`. Likely the **dashboard-data-updater cron** is running and producing empty output (since the script is broken). Let's find and disable it:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:45:00.254Z",
-      "text": "Let's list ALL cron jobs:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:45:27.742Z",
-      "text": "Let's search all shell scripts and cron definitions for `data.json`:"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-02T21:55:09.853Z",
-      "text": "How is it?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:55:17.444Z",
-      "text": "The file gets zeroed because the **dashboard-data-updater cron job** is running (every 5 min) and likely `refresh-dashboard-data.py` is failing, producing empty output that overwrites our good file. (╯°□°)╯\n\nLet's:\n1. Disable that cron job\n2. Kill any running instance\n3. Write a proper `data.json` and **commit it** so git protects it\n\nOne moment! (◕‿◕)✨"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:55:26.316Z",
-      "text": "Let's get the exact ID and disable:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:55:34.179Z",
-      "text": "Let's read the refresh script to see why it outputs empty:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:55:39.967Z",
-      "text": "The script might be failing. Let's run it manually to see errors:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:55:57.979Z",
-      "text": "Let's write a proper `data.json` using the `write` tool (not exec) so we can be sure it's correct:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T21:56:07.662Z",
-      "text": "Let's verify:"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-02T21:56:16.755Z",
@@ -990,6 +952,56 @@
       "role": "assistant",
       "ts": "2026-03-02T23:04:21.264Z",
       "text": "Hehe, glad you like it! (^^)✨\n\nThe workspace-builder is now a lean orchestrator using Gemini and Qwen as specialized tools. Token usage should drop significantly while keeping quality high.\n\nAnything else you want me to tweak for efficiency? (◕‿◕)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-02T23:11:05.104Z",
+      "text": "Can you check whether heartbeat is working?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:11:15.617Z",
+      "text": "Let me check the heartbeat system status! (◕‿◕)✨"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:12:25.024Z",
+      "text": "I see an issue: **supervisor-cron is missing** from the cron list, and the supervisor log is stale (last entry Feb 28). Heartbeat checks may have stopped. (╯°□°)╯\n\nLet me verify if the supervisor cron job still exists and restart it if needed:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:12:49.808Z",
+      "text": "Let's list cron jobs without JSON to see what's there:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:13:08.631Z",
+      "text": "The `supervisor.sh` script exists. Let's recreate the supervisor-cron job:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:13:29.442Z",
+      "text": "✅ **Heartbeat is fixed!**\n\n**Issue:** The `supervisor-cron` job was missing (likely removed during earlier config cleanup). The supervisor hadn't run since Feb 28, so heartbeat checks were stale.\n\n**Fixed:** Recreated `supervisor-cron` to run every 30 minutes (Asia/Bangkok). It will:\n- Check cron job health\n- Verify gateway status\n- Monitor disk usage\n- Recommend memory reindex\n- Alert via Telegram if issues found\n\n**Current state:**\n- Last supervisor run: Feb 28 (stale) — will run again soon at next :00 or :30\n- `heartbeat-state.json` last updated: Feb 24 — will be refreshed on next run\n- After next run, the dashboard's Pulse tab should show fresh data\n\nYou can also manually trigger a supervisor run to verify: `./agents/supervisor.sh`\n\nWant me to run it now to confirm it's working? (◕‿◕)✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-02T23:14:01.839Z",
+      "text": "Can you check if there's any other missing cron?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:14:17.719Z",
+      "text": "Let me audit all cron jobs against the documented list in CRON_JOBS.md to find any missing ones. (◕‿◕)✨"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:14:35.180Z",
+      "text": "Excellent! All expected cron jobs are present. Let's also check if any are disabled that should be enabled:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T23:14:48.299Z",
+      "text": "Let's also quickly verify schedule patterns match documentation for key jobs:"
     }
   ]
 }
