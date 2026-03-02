@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-03-02T09:44:00Z",
+  "generated_at": "2025-03-02T09:50:00Z",
   "system": {
     "disk_percent": 81,
     "load": "0.52 0.75 0.80",
@@ -11,23 +11,24 @@
   "active_tasks": [],
   "recent_commits": [
     {"hash": "a664208", "message": "feat(ui): add Projects tab with live git data"},
-    {"hash": "b3e7f2a", "message": "fix(server): add execFileSync import"}
+    {"hash": "b3e7f2a", "message": "fix(server): add execFileSync import"},
+    {"hash": "c5d9e1f", "message": "feat(ui): kawaii redesign, mascot, theme toggle"}
   ],
   "heartbeat": {
     "state": [
-      {"check": "email", "last": 1740910200, "status": "ok", "ago": 2, "msg": "Inbox zero"},
-      {"check": "calendar", "last": 1740910200, "status": "ok", "ago": 2, "msg": "No events"},
-      {"check": "weather", "last": 1740910200, "status": "ok", "ago": 2, "msg": "Clear, 30°C"},
-      {"check": "health", "last": 1740910200, "status": "ok", "ago": 2, "msg": "All green"}
+      {"check": "email", "last": 1740910200, "status": "ok", "ago": 0, "msg": "Inbox zero"},
+      {"check": "calendar", "last": 1740910200, "status": "ok", "ago": 0, "msg": "No upcoming events"},
+      {"check": "weather", "last": 1740910200, "status": "ok", "ago": 0, "msg": "Clear, 30°C Bangkok"},
+      {"check": "health", "last": 1740910200, "status": "ok", "ago": 0, "msg": "All green"}
     ]
   },
   "supervisor_log": [
-    "[INFO] Monitoring started",
-    "[OK] All agents healthy"
+    "[INFO] ClawDash started",
+    "[OK] Gateway connected"
   ],
   "agent_outputs": [
     {"ts": 1740910000000, "title": "Daily Digest - 2026-03-02", "file": "reports/digest-2026-03-02.md", "size": 2048},
-    {"ts": 1740909000000, "title": "Research Report: Quantum Computing", "file": "content/research-qc.md", "size": 1024}
+    {"ts": 1740909000000, "title": "Research: Quantum Computing", "file": "content/research-qc.md", "size": 1024}
   ],
   "cron_jobs": [
     {
@@ -39,8 +40,22 @@
       "next_run": 1740908400000,
       "status": "ok",
       "last_error": ""
+    },
+    {
+      "name": "game-enhancer-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1740892800000,
+      "next_run": 1740914400000,
+      "status": "ok",
+      "last_error": ""
     }
   ],
-  "content_stats": {"total": 3, "today": 1, "latest_title": "Research Report: Quantum Computing"},
+  "content_stats": {
+    "total": 3,
+    "today": 1,
+    "latest": "Research: Quantum Computing"
+  },
   "chat": []
 }
