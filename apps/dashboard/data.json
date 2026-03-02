@@ -220,7 +220,7 @@
   "agent_outputs": [
     {
       "ts": 1772357071609,
-      "title": "Daily Digest \u2014 2026-03-01 (Updated)",
+      "title": "Daily Digest — 2026-03-01 (Updated)",
       "file": "content/2026-03-01-daily-digest-updated.md",
       "size": 2250
     },
@@ -238,7 +238,7 @@
     },
     {
       "ts": 1772348900767,
-      "title": "Sunday Digest \u2014 March 1, 2026",
+      "title": "Sunday Digest — March 1, 2026",
       "file": "content/2026-03-01-0705-sunday-digest.md",
       "size": 5707
     },
@@ -280,7 +280,7 @@
     },
     {
       "ts": 1772341541395,
-      "title": "Daily Digest \u2014 2026-03-01",
+      "title": "Daily Digest — 2026-03-01",
       "file": "content/2026-03-01-daily-digest.md",
       "size": 1177
     },
@@ -304,7 +304,7 @@
     },
     {
       "ts": 1772331637435,
-      "title": "\ud83d\udcfa YouTube Digest \u2014 2026-03-01",
+      "title": "📺 YouTube Digest — 2026-03-01",
       "file": "content/youtube-digest-2026-03-01-0220.md",
       "size": 31066
     },
@@ -316,85 +316,85 @@
     },
     {
       "ts": 1772327469778,
-      "title": "Research Spotlight \u2014 March 1, 2026 (01:06 UTC)",
+      "title": "Research Spotlight — March 1, 2026 (01:06 UTC)",
       "file": "content/2026-03-01-0106-research-spotlight.md",
       "size": 5293
     },
     {
       "ts": 1772323283409,
-      "title": "Sunday Morning Digest \u2014 March 1, 2026",
+      "title": "Sunday Morning Digest — March 1, 2026",
       "file": "content/2026-03-01-morning-digest.md",
       "size": 4815
     },
     {
       "ts": 1772298393433,
-      "title": "LinkedIn Content Digest \u2014 IBM Planning Analytics (Analyst-Report v10)",
+      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
       "file": "content/2026-02-28-1706-linkedin-pa-digest.md",
       "size": 746
     },
     {
       "ts": 1772298393405,
-      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
+      "title": "🛠️ Developer Tips: Optimizing IBM Planning Analytics Development",
       "file": "content/2026-02-28-1706-linkedin-pa-post.md",
       "size": 1546
     },
     {
       "ts": 1772298344247,
-      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
+      "title": "🛠️ Developer Tips: Optimizing IBM Planning Analytics Development",
       "file": "content/2026-02-28-1705-linkedin-pa-post.md",
       "size": 1546
     },
     {
       "ts": 1772291142461,
-      "title": "Tech Update \u2014 15:00 UTC, Feb 28 2026",
+      "title": "Tech Update — 15:00 UTC, Feb 28 2026",
       "file": "content/2026-02-28-1500-tech-update.md",
       "size": 5913
     },
     {
       "ts": 1772287408378,
-      "title": "Tech Update \u2014 14:00 UTC, Feb 28 2026",
+      "title": "Tech Update — 14:00 UTC, Feb 28 2026",
       "file": "content/2026-02-28-1400-tech-update.md",
       "size": 6628
     },
     {
       "ts": 1772283855202,
-      "title": "Tech Update \u2014 13:00 UTC, Feb 28 2026",
+      "title": "Tech Update — 13:00 UTC, Feb 28 2026",
       "file": "content/2026-02-28-1300-tech-update.md",
       "size": 7239
     },
     {
       "ts": 1772280255282,
-      "title": "Tech Update \u2014 12:00 UTC, Feb 28 2026",
+      "title": "Tech Update — 12:00 UTC, Feb 28 2026",
       "file": "content/2026-02-28-1200-tech-update.md",
       "size": 4830
     },
     {
       "ts": 1772276679719,
-      "title": "Tech Update \u2014 11:00 UTC, Feb 28 2026",
+      "title": "Tech Update — 11:00 UTC, Feb 28 2026",
       "file": "content/2026-02-28-1100-tech-update.md",
       "size": 5518
     },
     {
       "ts": 1772272996037,
-      "title": "Tech Update \u2014 10:00 UTC, Feb 28 2026",
+      "title": "Tech Update — 10:00 UTC, Feb 28 2026",
       "file": "content/2026-02-28-1000-tech-update.md",
       "size": 4841
     },
     {
       "ts": 1772269469526,
-      "title": "Tech Update \u2014 09:00 UTC, Feb 28 2026",
+      "title": "Tech Update — 09:00 UTC, Feb 28 2026",
       "file": "content/2026-02-28-0900-tech-update.md",
       "size": 4159
     },
     {
       "ts": 1772265819537,
-      "title": "Tech Update \u2014 2026-02-28 (08:00 UTC)",
+      "title": "Tech Update — 2026-02-28 (08:00 UTC)",
       "file": "content/2026-02-28-0800-tech-update.md",
       "size": 3994
     },
     {
       "ts": 1772262331550,
-      "title": "Tech Update \u2014 2026-02-28 (07:00 UTC)",
+      "title": "Tech Update — 2026-02-28 (07:00 UTC)",
       "file": "content/2026-02-28-0700-tech-update.md",
       "size": 3288
     }
@@ -690,7 +690,8 @@
   "content_stats": {
     "total": 518,
     "today": 0,
-    "latest_title": "Daily Digest \u2014 2026-03-01 (Updated)"
+    "latest_title": "Daily Digest — 2026-03-01 (Updated)"
   },
-  "chat": []
+  "chat": [],
+  "gateway": "running"
 }
