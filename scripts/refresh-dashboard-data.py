@@ -123,22 +123,55 @@ def get_heartbeat():
     items = []
     for key, val in checks.items():
         status = val.get('lastStatus', 'ok')
-        level = status if status in ('warn','error') else 'info'
-        title = key.replace('_',' ').title()
-        when_ts = val.get('lastRun')
-        if isinstance(when_ts, (int,float)):
-            when = int(when_ts*1000)
-        else:
-            when = int(time.time()*1000)
-        items.append({'when': when, 'level': level, 'title': title, 'status': status})
-    return {"state": items, "overall": hb.get('overall', {}), "checks": checks}
-
-def get_supervisor_log_tail(n=30):
+def get_heartbeat():
+    """Return heartbeat data in format expected by renderHeartbeat."""
+    hb_state_path = f"{WORKSPACE}/memory/heartbeat-state.json"
+    hb_checks_path = f"{WORKSPACE}/HEARTBEAT.md"
+    state = {}
     try:
-        with open(f"{WORKSPACE}/memory/supervisor.log") as f:
-            lines = f.readlines()
-        # return last n lines, stripped of newlines
-        return [line.rstrip('\n') for line in lines[-n:]]
+        with open(hb_state_path) as f:
+            state = json.load(f)
+    except:
+        state = {}
+    # Read checks descriptions from HEARTBEAT.md
+    checks_desc = {}
+    try:
+        with open(hb_checks_path) as f:
+            content = f.read()
+        # Parse lines like "- **email**: Check inbox (urgent) -> use email"
+        for line in content.splitlines():
+            if line.startswith('- **'):
+                parts = line.split('**')
+                if len(parts) >= 3:
+                    check_name = parts[1].strip()
+                    desc = parts[2].strip().lstrip(': ')
+                    checks_desc[check_name] = desc
+    except:
+        pass
+
+    # Build array of check objects from lastChecks
+    last_checks = state.get('lastChecks', {})
+    now = int(time.time() * 1000)
+    check_items = []
+    for check_name, last_ts in last_checks.items():
+        last_ms = int(last_ts) * 1000
+        ago_min = (now - last_ms) / 60000
+        status = 'ok' if ago_min < 120 else 'warn'  # >2h = warn
+        check_items.append({
+            'check': check_name,
+            'last': last_ts,  # original seconds
+            'status': status,
+            'msg': checks_desc.get(check_name, ''),
+            'ago': ago_min
+        })
+
+    # Sort by check name for consistent order
+    check_items.sort(key=lambda x: x['check'])
+
+    return {
+        'state': check_items,
+        'checks': checks_desc  # for reference, though frontend may not use
+    }
     except:
         return []
 
