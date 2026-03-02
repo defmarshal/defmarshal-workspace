@@ -1,4 +1,4 @@
 - [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-02-28 02:00 UTC, status: running)
   - Verification: daemon process PID 1121739; log shows cycle started; sleeping until next interval
-- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Observability enhancement (started: 2026-03-02 09:02 UTC, status: validated)
-  - Verification: active-tasks 1.2KB (<2KB), MEM 32 lines (≤35), health green, reindex ~2d fresh, git clean & pushed, no temp files, branch hygiene ✅ (0 idea branches), downloads 31 files 7.6GB, shebang 177/177 ok, APT none pending, constraints 10/10 ✅, 1 commit (build: add idea-health). New: quick idea-health command for pipeline monitoring.
+- [23dad379-21ad-4f7a-8c68-528f98203a33] workspace-builder - Validation filter improvement (started: 2026-03-02 11:02 UTC, status: validated)
+  - Verification: active-tasks 716 bytes (<2KB), MEM 33 lines (≤35), health green, reindex 2d fresh, git clean & pushed, no temp files, branch hygiene ✅ (0 idea branches), downloads 32 files 7.7GB, shebang all ok, APT none pending, constraints 10/10 ✅, 1 commit (build: fix validation filter). New: validate-constraints now ignores torrent-history.txt.
