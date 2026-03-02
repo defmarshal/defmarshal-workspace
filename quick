@@ -103,6 +103,8 @@ Commands:
   workspace-summary [--json]              One-page daily status: system health, research, content, git, agents
   research-stats                          Show research library statistics (reports, TTS %, latest)
   index-drift [--fix]                     Check research/ and content/ INDEX.md for missing file entries
+  idea-health                             Show idea pipeline health: generator/executor last runs, pending ideas, recent errors
+  idea-status                             Alias for idea-health
   research-tags                          Show tag statistics for research reports
   run-agent                              Run an OpenClaw agent with a message (usage: quick run-agent <agent-id> <message>)
   send-digest                             Send daily research digest email (requires DIGEST_TO_EMAIL + MATON_API_KEY)
@@ -1976,6 +1978,10 @@ EOF
     ;;
   index-drift)
     "$WORKSPACE/scripts/index-drift.sh" "$@"
+    ;;
+  idea-health|idea-status)
+    # Show idea pipeline health and status
+    "$WORKSPACE/scripts/idea-health.sh"
     ;;
   tts-say)
     # Generate TTS for given text
