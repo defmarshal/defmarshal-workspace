@@ -71,13 +71,21 @@ Running manually:
   b) Stop tracking it (remove from git, add to .gitignore) and let heartbeat generate it
 - Decision: Investigate usage. For now, no action; monitor.
 
-## Current Run Update (15:13 UTC)
+## Current Run Update (21:07 UTC)
 
-- The untracked script issue has been resolved: `scripts/update-heartbeat-state.py` is now tracked and committed in a separate commit (chore: update clawdash data). It is part of the codebase.
-- Planning docs have been refreshed to reflect current progress.
-- All constraints are expected to pass. Validation will be executed after committing the refreshed planning docs.
-- Next: Commit planning docs changes, run validation, then update active-tasks to validated.
-- System health remains green: Disk 78%, Gateway healthy, Memory clean (29f/322c), reindex 2.2d, Downloads 32 files 7.7GB.
+**Critical fix implemented:**
+- Fixed `scripts/refresh-dashboard-data.py` which had a syntax error (duplicate function definition and missing `get_supervisor_log_tail` function).
+- Added `get_supervisor_log_tail` implementation to read `memory/supervisor.log`.
+- Regenerated `apps/dashboard/data.json` using the fixed script. Data now includes full system, agents, heartbeat, and supervisor log information.
+
+**State:**
+- The script now compiles and runs successfully (only deprecation warnings).
+- Dashboard data.json is comprehensive and up-to-date.
+- Planning docs (findings.md, task_plan.md, progress.md) are being refreshed to reflect this run.
+- active-tasks.md updated to running (21:01 UTC).
+- Next: Run validation, commit changes, push, update active-tasks to validated, append daily log.
+
+**System health:** Green (Disk 79%, Gateway healthy, Memory clean, reindex 2.5d, downloads 32 files 7.7GB).
 
 ---
 

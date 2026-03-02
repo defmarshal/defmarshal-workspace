@@ -33,20 +33,22 @@
 
 | Step | Action | Status |
 |------|--------|--------|
-| 3.1 | Update active-tasks.md to running (refresh start time) | DONE (already committed by wrapper) |
-| 3.2 | Ensure `scripts/update-heartbeat-state.py` is tracked | DONE (already tracked) |
-| 3.3 | Create/refresh planning docs (task_plan.md, findings.md, progress.md) | DONE |
-| 3.4 | Run `./scripts/validate-constraints.sh` | TODO |
-| 3.5 | Commit changes (planning docs refresh) with `build:` prefix | TODO |
-| 3.6 | Push to origin/master | TODO |
-| 3.7 | Update active-tasks.md to validated with verification | TODO |
-| 3.8 | Append summary to daily log memory/2026-03-02.md | TODO |
-| 3.9 | Final health and git clean check | TODO |
+| 3.1 | Update active-tasks.md to running (refresh start time) | DONE (updated to 21:01 UTC) |
+| 3.2 | Check `scripts/update-heartbeat-state.py` tracked | DONE (already tracked) |
+| 3.3 | Fix critical bug in `refresh-dashboard-data.py` (syntax error, missing function) | DONE |
+| 3.4 | Regenerate `apps/dashboard/data.json` with fixed script | DONE |
+| 3.5 | Create/refresh planning docs (task_plan.md, findings.md, progress.md) | DONE |
+| 3.6 | Run `./scripts/validate-constraints.sh` | TODO |
+| 3.7 | Commit all changes (script fix, data.json, planning docs) with `build:` prefix | TODO |
+| 3.8 | Push to origin/master | TODO |
+| 3.9 | Update active-tasks.md to validated with verification | TODO |
+| 3.10| Append summary to daily log memory/2026-03-02.md | TODO |
+| 3.11| Final health and git clean check | TODO |
 
 **Notes:**
-- Already committed active-tasks running status in separate commit (chore: update clawdash data)
-- Planning docs refreshed to reflect current run progress
-- Will validate after committing planning changes
+- The dashboard data generator had a broken duplicate function and missing supervisor log function; now fixed.
+- data.json regenerated successfully; includes full system, agents, heartbeat, supervisor log, and content stats.
+- Planning docs refreshed; awaiting validation and commit.
 
 ---
 

@@ -1,43 +1,560 @@
 {
-  "generated_at": "2025-03-02T09:50:00Z",
+  "generated_at": "2026-03-02T21:07:07",
   "system": {
-    "disk_percent": 81,
-    "load": "0.52 0.75 0.80",
-    "uptime_seconds": 360000,
+    "gateway": "down",
+    "disk_percent": 79,
+    "disk_free": "9.4G",
+    "load": "0.75 0.85 0.89",
+    "uptime_seconds": 977252,
     "os": "Linux",
-    "arch": "x86_64",
-    "gateway": "running"
+    "arch": "aarch64",
+    "updates": 0,
+    "git_clean": false,
+    "memory_age_days": 0,
+    "disk_history": [],
+    "downloads_count": 12,
+    "downloads_gb": 0.72
   },
-  "active_tasks": [],
+  "agents": [
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    },
+    {
+      "sessionKey": "",
+      "kinds": [],
+      "lastMsg": "",
+      "activeSec": 0
+    }
+  ],
+  "research": [],
   "recent_commits": [
-    {"hash": "a664208", "message": "feat(ui): add Projects tab with live git data"},
-    {"hash": "b3e7f2a", "message": "fix(server): add execFileSync import"},
-    {"hash": "c5d9e1f", "message": "feat(ui): kawaii redesign, mascot, theme toggle"}
+    {
+      "hash": "316157fe",
+      "message": "fix(dashboard): provide valid data.json with all required fields (3 hours ago)"
+    },
+    {
+      "hash": "20807e26",
+      "message": "fix(dashboard): provide complete data structure for all tabs (3 hours ago)"
+    },
+    {
+      "hash": "12a9621e",
+      "message": "fix(dashboard): show correct gateway status on Home tab (3 hours ago)"
+    },
+    {
+      "hash": "f5fb97e7",
+      "message": "feat(heartbeat): initialize heartbeat-state.json with recent check timestamps (4 hours ago)"
+    },
+    {
+      "hash": "518a6237",
+      "message": "build: append workspace-builder session summary to daily log (6 hours ago)"
+    },
+    {
+      "hash": "7995bb71",
+      "message": "build: workspace-builder session closure and validation (6 hours ago)"
+    },
+    {
+      "hash": "7ebb7aff",
+      "message": "chore: update clawdash data (6 hours ago)"
+    },
+    {
+      "hash": "92f0c68d",
+      "message": "chore: update clawdash data (6 hours ago)"
+    },
+    {
+      "hash": "648d4240",
+      "message": "chore: update clawdash data (6 hours ago)"
+    },
+    {
+      "hash": "5e28cc8f",
+      "message": "chore: update clawdash data (8 hours ago)"
+    }
   ],
   "heartbeat": {
     "state": [
-      {"check": "email", "last": 1740910200, "status": "ok", "ago": 0, "msg": "Inbox zero"},
-      {"check": "calendar", "last": 1740910200, "status": "ok", "ago": 0, "msg": "No upcoming events"},
-      {"check": "weather", "last": 1740910200, "status": "ok", "ago": 0, "msg": "Clear, 30°C Bangkok"},
-      {"check": "health", "last": 1740910200, "status": "ok", "ago": 0, "msg": "All green"}
-    ]
+      {
+        "check": "calendar",
+        "last": 1740910200,
+        "status": "warn",
+        "msg": "",
+        "ago": 526257.18495
+      },
+      {
+        "check": "email",
+        "last": 1740910200,
+        "status": "warn",
+        "msg": "",
+        "ago": 526257.18495
+      },
+      {
+        "check": "health",
+        "last": 1740910200,
+        "status": "warn",
+        "msg": "",
+        "ago": 526257.18495
+      },
+      {
+        "check": "weather",
+        "last": 1740910200,
+        "status": "warn",
+        "msg": "",
+        "ago": 526257.18495
+      }
+    ],
+    "checks": {}
   },
   "supervisor_log": [
-    "[INFO] ClawDash started",
-    "[OK] Gateway connected"
+    "2026-02-27 00:01:04 UTC - OK",
+    "2026-02-27 00:30:32 UTC - OK",
+    "2026-02-27 01:30:50 UTC - OK",
+    "2026-02-27 03:10:23 UTC - OK",
+    "2026-02-27 03:31:06 UTC - OK",
+    "2026-02-27 06:06:25 UTC - OK",
+    "2026-02-27 07:08:47 UTC - OK",
+    "2026-02-27 10:07:53 UTC - OK",
+    "2026-02-27 10:30:52 UTC - OK",
+    "2026-02-27 11:12:28 UTC - OK",
+    "2026-02-27 12:09:11 UTC - OK",
+    "2026-02-27 12:30:36 UTC - OK",
+    "2026-02-27 13:07:36 UTC - OK",
+    "2026-02-27 15:30:47 UTC - OK",
+    "2026-02-27 16:01:44 UTC - OK",
+    "2026-02-27 17:01:10 UTC - OK",
+    "2026-02-27 19:01:27 UTC - OK",
+    "2026-02-27 21:00:31 UTC - OK",
+    "2026-02-27 22:30:55 UTC - OK",
+    "2026-02-27 22:31:10 UTC - OK",
+    "2026-02-28 00:01:06 UTC - OK",
+    "2026-02-28 00:31:02 UTC - OK",
+    "2026-02-28 01:06:54 UTC - OK",
+    "2026-02-28 01:30:39 UTC - OK",
+    "2026-02-28 02:09:07 UTC - OK",
+    "2026-02-28 02:30:26 UTC - OK",
+    "2026-02-28 03:06:11 UTC - OK",
+    "2026-02-28 03:30:23 UTC - OK",
+    "2026-02-28 17:00:25 UTC - OK",
+    "2026-02-28 17:30:27 UTC - OK"
   ],
   "agent_outputs": [
-    {"ts": 1740910000000, "title": "Daily Digest - 2026-03-02", "file": "reports/digest-2026-03-02.md", "size": 2048},
-    {"ts": 1740909000000, "title": "Research: Quantum Computing", "file": "content/research-qc.md", "size": 1024}
+    {
+      "ts": 1772357071609,
+      "title": "Daily Digest \u2014 2026-03-01 (Updated)",
+      "file": "content/2026-03-01-daily-digest-updated.md",
+      "size": 2250
+    },
+    {
+      "ts": 1772348917723,
+      "title": "Daily Digest 2026-03-01",
+      "file": "reports/2026-03-01-daily-digest.md",
+      "size": 7969
+    },
+    {
+      "ts": 1772348908087,
+      "title": "Content Archive Index",
+      "file": "content/INDEX.md",
+      "size": 54920
+    },
+    {
+      "ts": 1772348900767,
+      "title": "Sunday Digest \u2014 March 1, 2026",
+      "file": "content/2026-03-01-0705-sunday-digest.md",
+      "size": 5707
+    },
+    {
+      "ts": 1772348859183,
+      "title": "Clean Energy's Reality Check: What's Actually Happening in 2026",
+      "file": "content/2026-03-01-0705-green-tech-climate-ai-2026-writeup.md",
+      "size": 7658
+    },
+    {
+      "ts": 1772348645705,
+      "title": "Southeast Asia's Digital Banking Moment: Agentic Payments, the Profitability Rec",
+      "file": "content/2026-03-01-0701-sea-digital-banking-fintech-2026-writeup.md",
+      "size": 8661
+    },
+    {
+      "ts": 1772348595135,
+      "title": "Seven AI Models Dropped in February 2026. Here's What Actually Changed.",
+      "file": "content/2026-03-01-0700-frontier-ai-models-feb-2026-writeup.md",
+      "size": 6717
+    },
+    {
+      "ts": 1772345138538,
+      "title": "To the Moon and Beyond: What's Actually Happening in Space Right Now",
+      "file": "content/2026-03-01-0604-commercial-space-2026-writeup.md",
+      "size": 6742
+    },
+    {
+      "ts": 1772341725578,
+      "title": "The Drug That Changes Everything: Biotech in 2026",
+      "file": "content/2026-03-01-0515-biotech-longevity-2026-writeup.md",
+      "size": 8360
+    },
+    {
+      "ts": 1772341678243,
+      "title": "Spring 2026 Anime: The Season That Has Everything",
+      "file": "content/2026-03-01-0510-spring-2026-anime-watchlist.md",
+      "size": 7756
+    },
+    {
+      "ts": 1772341541395,
+      "title": "Daily Digest \u2014 2026-03-01",
+      "file": "content/2026-03-01-daily-digest.md",
+      "size": 1177
+    },
+    {
+      "ts": 1772337813392,
+      "title": "The AI Chip Wars: Four Things That Actually Matter in 2026",
+      "file": "content/2026-03-01-0402-ai-hardware-writeup.md",
+      "size": 8034
+    },
+    {
+      "ts": 1772334874616,
+      "title": "Fintech 2026: The Execution Era Has Arrived",
+      "file": "content/2026-03-01-0307-fintech-writeup.md",
+      "size": 7954
+    },
+    {
+      "ts": 1772334586053,
+      "title": "Daily Digests",
+      "file": "reports/README.md",
+      "size": 354
+    },
+    {
+      "ts": 1772331637435,
+      "title": "\ud83d\udcfa YouTube Digest \u2014 2026-03-01",
+      "file": "content/youtube-digest-2026-03-01-0220.md",
+      "size": 31066
+    },
+    {
+      "ts": 1772330879249,
+      "title": "Cybersecurity 2026: What Actually Matters Right Now",
+      "file": "content/2026-03-01-0202-cybersecurity-writeup.md",
+      "size": 9570
+    },
+    {
+      "ts": 1772327469778,
+      "title": "Research Spotlight \u2014 March 1, 2026 (01:06 UTC)",
+      "file": "content/2026-03-01-0106-research-spotlight.md",
+      "size": 5293
+    },
+    {
+      "ts": 1772323283409,
+      "title": "Sunday Morning Digest \u2014 March 1, 2026",
+      "file": "content/2026-03-01-morning-digest.md",
+      "size": 4815
+    },
+    {
+      "ts": 1772298393433,
+      "title": "LinkedIn Content Digest \u2014 IBM Planning Analytics (Analyst-Report v10)",
+      "file": "content/2026-02-28-1706-linkedin-pa-digest.md",
+      "size": 746
+    },
+    {
+      "ts": 1772298393405,
+      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
+      "file": "content/2026-02-28-1706-linkedin-pa-post.md",
+      "size": 1546
+    },
+    {
+      "ts": 1772298344247,
+      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
+      "file": "content/2026-02-28-1705-linkedin-pa-post.md",
+      "size": 1546
+    },
+    {
+      "ts": 1772291142461,
+      "title": "Tech Update \u2014 15:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1500-tech-update.md",
+      "size": 5913
+    },
+    {
+      "ts": 1772287408378,
+      "title": "Tech Update \u2014 14:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1400-tech-update.md",
+      "size": 6628
+    },
+    {
+      "ts": 1772283855202,
+      "title": "Tech Update \u2014 13:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1300-tech-update.md",
+      "size": 7239
+    },
+    {
+      "ts": 1772280255282,
+      "title": "Tech Update \u2014 12:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1200-tech-update.md",
+      "size": 4830
+    },
+    {
+      "ts": 1772276679719,
+      "title": "Tech Update \u2014 11:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1100-tech-update.md",
+      "size": 5518
+    },
+    {
+      "ts": 1772272996037,
+      "title": "Tech Update \u2014 10:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1000-tech-update.md",
+      "size": 4841
+    },
+    {
+      "ts": 1772269469526,
+      "title": "Tech Update \u2014 09:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-0900-tech-update.md",
+      "size": 4159
+    },
+    {
+      "ts": 1772265819537,
+      "title": "Tech Update \u2014 2026-02-28 (08:00 UTC)",
+      "file": "content/2026-02-28-0800-tech-update.md",
+      "size": 3994
+    },
+    {
+      "ts": 1772262331550,
+      "title": "Tech Update \u2014 2026-02-28 (07:00 UTC)",
+      "file": "content/2026-02-28-0700-tech-update.md",
+      "size": 3288
+    }
   ],
   "cron_jobs": [
+    {
+      "name": "telegram-slash-handler",
+      "schedule": "every 2m",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772485083749,
+      "next_run": 1772485203749,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "workspace-builder",
+      "schedule": "0 */2 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772478693295,
+      "next_run": 1772485225629,
+      "status": "ok",
+      "last_error": ""
+    },
     {
       "name": "meta-agent-cron",
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1740904800000,
-      "next_run": 1740908400000,
+      "last_run": 1772481697675,
+      "next_run": 1772485234763,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "vishwakarma-cron",
+      "schedule": "0 */4 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772471033393,
+      "next_run": 1772485433385,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "dashboard-data-updater",
+      "schedule": "*/5 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772485230517,
+      "next_run": 1772485500000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "dashboard-data-updater",
+      "schedule": "*/5 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772485260669,
+      "next_run": 1772485500000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "agent-manager-cron",
+      "schedule": "0,30 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772485200009,
+      "next_run": 1772487000000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "random-torrent-downloader",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772481768003,
+      "next_run": 1772488917835,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "agni-cron",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772481800031,
+      "next_run": 1772488936434,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "idea-executor-cron",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772481832945,
+      "next_run": 1772488975341,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "notifier-cron",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772481864638,
+      "next_run": 1772489039125,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "content-index-update-cron",
+      "schedule": "30 5 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772404225381,
+      "next_run": 1772490600000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "idea-generator-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772474528959,
+      "next_run": 1772496011600,
       "status": "ok",
       "last_error": ""
     },
@@ -46,16 +563,172 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1740892800000,
-      "next_run": 1740914400000,
+      "last_run": 1772474591582,
+      "next_run": 1772496017970,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "git-janitor-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772474720817,
+      "next_run": 1772496187460,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "evolver-agent-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772474753097,
+      "next_run": 1772496278568,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "dev-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772463605818,
+      "next_run": 1772499600000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "content-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772463656116,
+      "next_run": 1772499600000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "research-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772463687402,
+      "next_run": 1772499600000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "youtube-digest-daily",
+      "schedule": "0 2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772416922090,
+      "next_run": 1772503200000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "auto-torrent-cron",
+      "schedule": "0 2 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772478000009,
+      "next_run": 1772564400000,
+      "status": "error",
+      "last_error": "cron: job execution timed out"
+    },
+    {
+      "name": "memory-reindex-cron",
+      "schedule": "0 4 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772312400009,
+      "next_run": 1772917200000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "log-rotate-cron",
+      "schedule": "0 5 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772316000009,
+      "next_run": 1772920800000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "cleanup-downloads-cron",
+      "schedule": "0 6 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772319600010,
+      "next_run": 1772924400000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "backup-cleanup-cron",
+      "schedule": "0 7 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772323200007,
+      "next_run": 1772928000000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "time-capsule-weekly",
+      "schedule": "0 0 * * 0",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": null,
+      "next_run": 1772928000000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "archiver-manager-cron",
+      "schedule": "0 2 * * 0",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772330821591,
+      "next_run": 1772935200000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "cleanup-agent-artifacts-cron",
+      "schedule": "30 9 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772332200007,
+      "next_run": 1772937000000,
       "status": "ok",
       "last_error": ""
     }
   ],
+  "active_tasks": [
+    {
+      "agent": "meta-supervisor",
+      "session_key": "meta-supervisor-daemon",
+      "goal": "Continuous agent outcome auditor",
+      "started": "2026-02-28 02:00 UTC",
+      "status": "running"
+    },
+    {
+      "agent": "workspace-builder",
+      "session_key": "23dad379-21ad-4f7a-8c68-528f98203a33",
+      "goal": "Workspace validation and improvements",
+      "started": "2026-03-02 15:04 UTC",
+      "status": "validated"
+    }
+  ],
   "content_stats": {
-    "total": 3,
-    "today": 1,
-    "latest": "Research: Quantum Computing"
+    "total": 518,
+    "today": 0,
+    "latest_title": "Daily Digest \u2014 2026-03-01 (Updated)"
   },
   "chat": []
 }

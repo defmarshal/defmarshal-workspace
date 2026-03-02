@@ -113,17 +113,6 @@ def get_active_tasks():
         return []
 
 def get_heartbeat():
-    hb_path = f"{WORKSPACE}/memory/heartbeat-state.json"
-    try:
-        with open(hb_path) as f:
-            hb = json.load(f)
-    except:
-        hb = {}
-    checks = hb.get('lastChecks', {})
-    items = []
-    for key, val in checks.items():
-        status = val.get('lastStatus', 'ok')
-def get_heartbeat():
     """Return heartbeat data in format expected by renderHeartbeat."""
     hb_state_path = f"{WORKSPACE}/memory/heartbeat-state.json"
     hb_checks_path = f"{WORKSPACE}/HEARTBEAT.md"
@@ -172,8 +161,6 @@ def get_heartbeat():
         'state': check_items,
         'checks': checks_desc  # for reference, though frontend may not use
     }
-    except:
-        return []
 
 def get_agent_outputs(limit=30):
     """Return recent output files (reports, content) with timestamps."""
@@ -332,6 +319,16 @@ def get_chat_history(limit=50):
         except:
             pass
     return []
+
+def get_supervisor_log_tail(limit=30):
+    """Return the last N lines from the supervisor log."""
+    log_path = f"{WORKSPACE}/memory/supervisor.log"
+    try:
+        with open(log_path, 'r', encoding='utf-8', errors='ignore') as f:
+            lines = f.readlines()
+        return [line.rstrip('\n') for line in lines[-limit:]]
+    except:
+        return []
 
 def main():
     now = time.strftime('%Y-%m-%dT%H:%M:%S', time.gmtime())
