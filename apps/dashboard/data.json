@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-02T22:30:02Z",
+  "generated_at": "2026-03-02T22:35:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "7.7G",
-    "load_avg": "1.09 0.97 0.95",
+    "load_avg": "0.65 0.85 0.91",
     "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 8 hours, 50 minutes",
+    "uptime": "1 week, 4 days, 8 hours, 55 minutes",
     "disk_history": [
       78,
       78,
@@ -21,7 +21,6 @@
       78,
       78,
       78,
-      78,
       79,
       79,
       79,
@@ -36,6 +35,7 @@
       79,
       79,
       79,
+      80,
       80,
       80
     ]
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "26cb113f",
-      "agent": "docs",
-      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "a16189b3",
-      "agent": "docs",
-      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
-      "time": "3 minutes ago"
-    },
-    {
-      "sha": "d44b7727",
+      "sha": "1727c3b4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "54055fcc",
+      "sha": "26cb113f",
+      "agent": "docs",
+      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "a16189b3",
+      "agent": "docs",
+      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "d44b7727",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "c335b162",
+      "sha": "54055fcc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "900073fd",
+      "sha": "c335b162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "1b69a6b5",
+      "sha": "900073fd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "1b69a6b5",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "8f9d9579",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-02_2203)",
-      "time": "26 minutes ago"
+      "time": "31 minutes ago"
     },
     {
       "sha": "a082d1f9",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-02)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "00b8fa4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "78044cac",
       "agent": "misc",
       "message": "fix(dashboard): rename latest_title to latest in content_stats",
-      "time": "33 minutes ago"
+      "time": "38 minutes ago"
     },
     {
       "sha": "752d7441",
       "agent": "misc",
       "message": "fix(dashboard): provide complete valid data.json with all required fields",
-      "time": "34 minutes ago"
+      "time": "39 minutes ago"
     },
     {
       "sha": "1acfbbbb",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "98cda91b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
-    },
-    {
-      "sha": "365decda",
-      "agent": "fix",
-      "message": "restore dashboard data; add generate-dashboard-data.sh; fix quick command; improve refresh-dashboard-data.py gateway detection",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     }
   ],
   "heartbeat": {
@@ -225,16 +225,16 @@
   ],
   "agent_outputs": [
     {
+      "file": "INDEX",
+      "ts": "",
+      "title": "Content Archive Index",
+      "size": 54333
+    },
+    {
       "file": "2026-03-01-daily-digest-updated",
       "ts": "",
       "title": "Daily Digest — 2026-03-01 (Updated)",
       "size": 2250
-    },
-    {
-      "file": "INDEX",
-      "ts": "",
-      "title": "Content Archive Index",
-      "size": 54920
     },
     {
       "file": "2026-03-01-0705-sunday-digest",
@@ -352,10 +352,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772488800010,
-      "next_run": 1772490600000,
+      "last_run": 1772490626859,
+      "next_run": 1772492400000,
       "last_status": "ok",
-      "last_duration_ms": 158443,
+      "last_duration_ms": 42255,
       "consecutive_errors": 0
     },
     {
@@ -448,10 +448,10 @@
       "schedule": "30 5 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772404225381,
-      "next_run": 1772490600000,
+      "last_run": 1772490600008,
+      "next_run": 1772577000000,
       "last_status": "ok",
-      "last_duration_ms": 31662,
+      "last_duration_ms": 26851,
       "consecutive_errors": 0
     },
     {
@@ -472,10 +472,10 @@
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772490300008,
-      "next_run": 1772490600000,
+      "last_run": 1772490669114,
+      "next_run": 1772490900000,
       "last_status": "ok",
-      "last_duration_ms": 196864,
+      "last_duration_ms": 34413,
       "consecutive_errors": 0
     },
     {
@@ -664,11 +664,11 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772487271614,
-      "next_run": 1772490872521,
-      "last_status": "error",
-      "last_duration_ms": 907,
-      "consecutive_errors": 5
+      "last_run": 1772490872530,
+      "next_run": 1772490992530,
+      "last_status": "ok",
+      "last_duration_ms": 2661,
+      "consecutive_errors": 0
     },
     {
       "id": "6e4f5697-c2cc-48cb-91bb-0c4edcc19c46",
