@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T09:00:02Z",
+  "generated_at": "2026-03-02T03:33:04",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
@@ -51,13 +51,13 @@
       "name": "research-agent",
       "active": false,
       "last_run": "2026-03-01 05:14",
-      "last_line": "[2026-03-01T05:14:38Z] [research-agent] Completed Commercial Space 2026 (c8b48aa5, 22.7KB, #229). Selected space tech as 7th report — gap in today's coverage (6 prior: AI hardware, fintech, cybersecurity, green tech, biotech, anime). 7 sections: (1) Artemis II NLT Apr 1 2026 — first crewed lunar flyby since 1972, crew Wiseman/Glover/Koch/Hansen, free-return trajectory 10-day, Feb 23 helium delay; (2) Starship HLS OPT — June 2026 cryogenic propellant transfer linchpin, 11 integrated flights, internal schedule: OPT Jun2026/uncrewed HLS Jun2027/Artemis III Sep2028; Artemis III officially NLT 2027 per NASA Feb 27 2026; (3) Haven-1 Vast Space — May/Jun 2026 first standalone private station, 31k lb Falcon 9 record, Haven Demo perigee-lowering Feb 2026, NASA awarded PAM Feb 12 2026; Axiom PPT+Hab-1 2027-2028, Starlab 2028 Voyager/Airbus, Orbital Reef still active; (4) China — Tiangong expansion, Chang'e 7 south pole reconnaissance 2026 (mini flying probe for shadowed craters), Chang'e 8 ISRU 2028, ILRS competing with Artemis for south pole; (5) DRACO/NTP — 2027 launch, BWXT HALEU, 900s Isp 2x chemical, 3-4mo Mars transit; (6) Space economy — $613B 2024 (8% growth), $1T 2032 Space Foundation, $1.8T 2035 WEF; 27k+ trackable debris objects, US committed no destructive ASAT tests; (7) 2026-2030 milestone table (Artemis II→Chang'e 7→Haven-1→CLD Phase 2→PAM missions→Starship HLS→DRACO→Starlab→Artemis III→Chang'e 8→ISS deorbit). 229 total reports. 7 reports today Mar 1."
+      "last_line": "[2026-03-01T05:14:38Z] [research-agent] Completed Commercial Space 2026 (c8b48aa5, 22.7KB, #229). Selected space tech as 7th report \u2014 gap in today's coverage (6 prior: AI hardware, fintech, cybersecurity, green tech, biotech, anime). 7 sections: (1) Artemis II NLT Apr 1 2026 \u2014 first crewed lunar flyby since 1972, crew Wiseman/Glover/Koch/Hansen, free-return trajectory 10-day, Feb 23 helium delay; (2) Starship HLS OPT \u2014 June 2026 cryogenic propellant transfer linchpin, 11 integrated flights, internal schedule: OPT Jun2026/uncrewed HLS Jun2027/Artemis III Sep2028; Artemis III officially NLT 2027 per NASA Feb 27 2026; (3) Haven-1 Vast Space \u2014 May/Jun 2026 first standalone private station, 31k lb Falcon 9 record, Haven Demo perigee-lowering Feb 2026, NASA awarded PAM Feb 12 2026; Axiom PPT+Hab-1 2027-2028, Starlab 2028 Voyager/Airbus, Orbital Reef still active; (4) China \u2014 Tiangong expansion, Chang'e 7 south pole reconnaissance 2026 (mini flying probe for shadowed craters), Chang'e 8 ISRU 2028, ILRS competing with Artemis for south pole; (5) DRACO/NTP \u2014 2027 launch, BWXT HALEU, 900s Isp 2x chemical, 3-4mo Mars transit; (6) Space economy \u2014 $613B 2024 (8% growth), $1T 2032 Space Foundation, $1.8T 2035 WEF; 27k+ trackable debris objects, US committed no destructive ASAT tests; (7) 2026-2030 milestone table (Artemis II\u2192Chang'e 7\u2192Haven-1\u2192CLD Phase 2\u2192PAM missions\u2192Starship HLS\u2192DRACO\u2192Starlab\u2192Artemis III\u2192Chang'e 8\u2192ISS deorbit). 229 total reports. 7 reports today Mar 1."
     },
     {
       "name": "content-agent",
       "active": true,
       "last_run": "2026-03-01 06:06",
-      "last_line": "[2026-03-01T06:06:29Z] [content-agent] Completed Commercial Space 2026 writeup (cb52cbaa, 6.5KB). Gap identified: research report #229 had no content writeup. Produced accessible explainer 'To the Moon and Beyond' covering: (1) Artemis II NLT Apr 1 2026 — 54-year gap, crew Wiseman/Glover/Koch/Hansen, 10-day free-return trajectory, helium delay resolved; (2) Starship OPT June 2026 — cryogenic propellant transfer never done before, single gate for Artemis III Sep 2028; (3) Haven-1 Vast Space May/Jun 2026 — first standalone commercial station, 31k lb Falcon 9 record, ISS succession race; (4) Chang'e 7 south pole water-ice recon, competing Artemis+ILRS south pole targets; (5) $613B 2024 space economy → $1T 2032. Updated content/INDEX.md. 9 content pieces total today (Mar 1); all 7 research reports now have matching writeups."
+      "last_line": "[2026-03-01T06:06:29Z] [content-agent] Completed Commercial Space 2026 writeup (cb52cbaa, 6.5KB). Gap identified: research report #229 had no content writeup. Produced accessible explainer 'To the Moon and Beyond' covering: (1) Artemis II NLT Apr 1 2026 \u2014 54-year gap, crew Wiseman/Glover/Koch/Hansen, 10-day free-return trajectory, helium delay resolved; (2) Starship OPT June 2026 \u2014 cryogenic propellant transfer never done before, single gate for Artemis III Sep 2028; (3) Haven-1 Vast Space May/Jun 2026 \u2014 first standalone commercial station, 31k lb Falcon 9 record, ISS succession race; (4) Chang'e 7 south pole water-ice recon, competing Artemis+ILRS south pole targets; (5) $613B 2024 space economy \u2192 $1T 2032. Updated content/INDEX.md. 9 content pieces total today (Mar 1); all 7 research reports now have matching writeups."
     },
     {
       "name": "dev-agent",
@@ -240,7 +240,7 @@
     {
       "file": "2026-03-01-0705-sunday-digest",
       "ts": "2026-03-01-0705",
-      "title": "Sunday Digest — March 1, 2026",
+      "title": "Sunday Digest \u2014 March 1, 2026",
       "size": 5707
     },
     {
@@ -282,7 +282,7 @@
     {
       "file": "2026-03-01-daily-digest",
       "ts": "",
-      "title": "Daily Digest — 2026-03-01",
+      "title": "Daily Digest \u2014 2026-03-01",
       "size": 1177
     },
     {
@@ -300,7 +300,7 @@
     {
       "file": "youtube-digest-2026-03-01-0220",
       "ts": "",
-      "title": "📺 YouTube Digest — 2026-03-01",
+      "title": "\ud83d\udcfa YouTube Digest \u2014 2026-03-01",
       "size": 31066
     },
     {
@@ -312,394 +312,316 @@
     {
       "file": "2026-03-01-0106-research-spotlight",
       "ts": "2026-03-01-0106",
-      "title": "Research Spotlight — March 1, 2026 (01:06 UTC)",
+      "title": "Research Spotlight \u2014 March 1, 2026 (01:06 UTC)",
       "size": 5293
     },
     {
       "file": "2026-03-01-morning-digest",
       "ts": "",
-      "title": "Sunday Morning Digest — March 1, 2026",
+      "title": "Sunday Morning Digest \u2014 March 1, 2026",
       "size": 4815
     },
     {
       "file": "2026-02-28-1706-linkedin-pa-digest",
       "ts": "2026-02-28-1706",
-      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
+      "title": "LinkedIn Content Digest \u2014 IBM Planning Analytics (Analyst-Report v10)",
       "size": 746
     },
     {
       "file": "2026-02-28-1706-linkedin-pa-post",
       "ts": "2026-02-28-1706",
-      "title": "🛠️ Developer Tips: Optimizing IBM Planning Analytics Development",
+      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
       "size": 1546
     },
     {
       "file": "2026-02-28-1705-linkedin-pa-post",
       "ts": "2026-02-28-1705",
-      "title": "🛠️ Developer Tips: Optimizing IBM Planning Analytics Development",
+      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
       "size": 1546
     },
     {
       "file": "2026-02-28-1500-tech-update",
       "ts": "2026-02-28-1500",
-      "title": "Tech Update — 15:00 UTC, Feb 28 2026",
+      "title": "Tech Update \u2014 15:00 UTC, Feb 28 2026",
       "size": 5913
     },
     {
       "file": "2026-02-28-1400-tech-update",
       "ts": "2026-02-28-1400",
-      "title": "Tech Update — 14:00 UTC, Feb 28 2026",
+      "title": "Tech Update \u2014 14:00 UTC, Feb 28 2026",
       "size": 6628
     }
   ],
   "cron_jobs": [
     {
-      "id": "524a0d6f-d520-4868-9647-0f89f7990f62",
-      "name": "agent-manager-cron",
-      "schedule": "0,30 * * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772353800009,
-      "next_run": 1772355600000,
-      "last_status": "ok",
-      "last_duration_ms": 34304,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "23788edb-575a-4593-a60e-7f94b9c95db6",
-      "name": "agni-cron",
-      "schedule": "0 */2 * * *",
+      "name": "telegram-slash-handler",
+      "schedule": "every 2m",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772352185164,
-      "next_run": 1772359336434,
-      "last_status": "ok",
-      "last_duration_ms": 45607,
-      "consecutive_errors": 0
+      "last_run": 1772422262856,
+      "next_run": 1772422382856,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "db19ad80-e15c-46d6-af15-8815366d638c",
-      "name": "archiver-manager-cron",
-      "schedule": "0 2 * * 0",
-      "tz": "UTC",
-      "enabled": true,
-      "last_run": 1772330821591,
-      "next_run": 1772935200000,
-      "last_status": "ok",
-      "last_duration_ms": 8928,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "483e96ab-0837-4e5c-9086-a560635188af",
-      "name": "auto-torrent-cron",
-      "schedule": "0 2 * * *",
+      "name": "dashboard-data-updater",
+      "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772305205068,
-      "next_run": 1772391600000,
-      "last_status": "ok",
-      "last_duration_ms": 28230,
-      "consecutive_errors": 0
+      "last_run": 1772422231115,
+      "next_run": 1772422500000,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "d5c6f526-52d7-4786-8dc0-4efff1f4e36b",
-      "name": "backup-cleanup-cron",
-      "schedule": "0 7 * * 0",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772323200007,
-      "next_run": 1772928000000,
-      "last_status": "ok",
-      "last_duration_ms": 7444,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "6e07b8d1-c443-4a9f-a95e-665e47f29e52",
-      "name": "cleanup-agent-artifacts-cron",
-      "schedule": "30 9 * * 0",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772332200007,
-      "next_run": 1772937000000,
-      "last_status": "ok",
-      "last_duration_ms": 9413,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "fb670b4f-717a-4a14-85e6-6ece389c8b61",
-      "name": "cleanup-downloads-cron",
-      "schedule": "0 6 * * 0",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772319600010,
-      "next_run": 1772924400000,
-      "last_status": "ok",
-      "last_duration_ms": 28835,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "e345525c-f289-4eab-bf25-6d6fa065e4b0",
-      "name": "content-agent-cron",
-      "schedule": "0 8-22 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772348713600,
-      "next_run": 1772355600000,
-      "last_status": "ok",
-      "last_duration_ms": 234223,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "dada350a-4508-4358-8ac6-35f10e91cdd0",
-      "name": "content-index-update-cron",
-      "schedule": "30 5 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772317800009,
-      "next_run": 1772404200000,
-      "last_status": "ok",
-      "last_duration_ms": 29286,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "5b6a002d-b059-4ddf-b6d6-dd171924ecae",
-      "name": "daily-digest-cron",
-      "schedule": "0 12,20 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772197568918,
-      "next_run": null,
-      "last_status": "ok",
-      "last_duration_ms": 30531,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "48a38fe2-9691-4bea-bed1-0f3313534fcd",
       "name": "dev-agent-cron",
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772348400009,
-      "next_run": 1772355600000,
-      "last_status": "ok",
-      "last_duration_ms": 313591,
-      "consecutive_errors": 0
+      "last_run": 1772420400007,
+      "next_run": 1772424000000,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "6a1b4266-2a3d-4645-90a1-e07cde656b41",
-      "name": "evolver-agent-cron",
-      "schedule": "0 */6 * * *",
+      "name": "content-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772420430932,
+      "next_run": 1772424000000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "research-agent-cron",
+      "schedule": "0 8-22 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772420462852,
+      "next_run": 1772424000000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "agent-manager-cron",
+      "schedule": "0,30 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772422200009,
+      "next_run": 1772424000000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "meta-agent-cron",
+      "schedule": "0 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772420853302,
+      "next_run": 1772424034763,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "random-torrent-downloader",
+      "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772345600600,
-      "next_run": 1772366678568,
-      "last_status": "ok",
-      "last_duration_ms": 67173,
-      "consecutive_errors": 0
+      "last_run": 1772416953739,
+      "next_run": 1772424117835,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "a27a9b33-e501-4ad2-97f5-2c02b05a743a",
-      "name": "git-janitor-cron",
-      "schedule": "0 */6 * * *",
+      "name": "agni-cron",
+      "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772345667773,
-      "next_run": 1772366587460,
-      "last_status": "ok",
-      "last_duration_ms": 8170,
-      "consecutive_errors": 0
+      "last_run": 1772416984198,
+      "next_run": 1772424136434,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "86722825-c37c-4b96-a838-15cf224328e7",
       "name": "idea-executor-cron",
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772345589683,
-      "next_run": 1772359375341,
-      "last_status": "ok",
-      "last_duration_ms": 10917,
-      "consecutive_errors": 0
+      "last_run": 1772417076277,
+      "next_run": 1772424175341,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "9112eca8-0ccb-4db4-b016-e5841fa9ef30",
+      "name": "notifier-cron",
+      "schedule": "0 */2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772417106508,
+      "next_run": 1772424239125,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "workspace-builder",
+      "schedule": "0 */2 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772420525444,
+      "next_run": 1772427625629,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "vishwakarma-cron",
+      "schedule": "0 */4 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772413482548,
+      "next_run": 1772427833385,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
       "name": "idea-generator-cron",
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772345576085,
-      "next_run": 1772366411600,
-      "last_status": "ok",
-      "last_duration_ms": 13598,
-      "consecutive_errors": 0
+      "last_run": 1772409704851,
+      "next_run": 1772431211600,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "7df39652-0c4c-4864-b6e3-a0a8233ccdac",
-      "name": "linkedin-pa-agent-cron",
-      "schedule": "0 * * * *",
+      "name": "game-enhancer-cron",
+      "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772308912086,
-      "next_run": null,
-      "last_status": "ok",
-      "last_duration_ms": 27639,
-      "consecutive_errors": 0
+      "last_run": 1772409778076,
+      "next_run": 1772431217970,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "c6bca31f-9459-4cc7-a8dd-d35b268506e0",
-      "name": "log-rotate-cron",
-      "schedule": "0 5 * * 0",
+      "name": "git-janitor-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772409938881,
+      "next_run": 1772431387460,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "evolver-agent-cron",
+      "schedule": "0 */6 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772409999643,
+      "next_run": 1772431478568,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "auto-torrent-cron",
+      "schedule": "0 2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772316000009,
-      "next_run": 1772920800000,
-      "last_status": "ok",
-      "last_duration_ms": 29131,
-      "consecutive_errors": 0
+      "last_run": 1772391624563,
+      "next_run": 1772478000000,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "b84b1f5c-7027-49f3-b9da-799721ecec21",
+      "name": "content-index-update-cron",
+      "schedule": "30 5 * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772404225381,
+      "next_run": 1772490600000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "youtube-digest-daily",
+      "schedule": "0 2 * * *",
+      "tz": "UTC",
+      "enabled": true,
+      "last_run": 1772416922090,
+      "next_run": 1772503200000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
       "name": "memory-reindex-cron",
       "schedule": "0 4 * * 0",
       "tz": "Asia/Bangkok",
       "enabled": true,
       "last_run": 1772312400009,
       "next_run": 1772917200000,
-      "last_status": "ok",
-      "last_duration_ms": 28778,
-      "consecutive_errors": 0
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "3291b8d1-cf95-4fed-8292-8dc724c38ae3",
-      "name": "meta-agent-cron",
-      "schedule": "0 * * * *",
+      "name": "log-rotate-cron",
+      "schedule": "0 5 * * 0",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772352230771,
-      "next_run": 1772355634763,
-      "last_status": "error",
-      "last_duration_ms": 900066,
-      "consecutive_errors": 1
+      "last_run": 1772316000009,
+      "next_run": 1772920800000,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "a1381566-c214-4d0d-b853-f5d965c519a1",
-      "name": "meta-supervisor-agent",
-      "schedule": "5 * * * *",
+      "name": "cleanup-downloads-cron",
+      "schedule": "0 6 * * 0",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772309100012,
-      "next_run": null,
-      "last_status": "ok",
-      "last_duration_ms": 143424,
-      "consecutive_errors": 0
+      "last_run": 1772319600010,
+      "next_run": 1772924400000,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "3cbadb80-f35c-4e4a-9c6e-0c14cc1c1974",
-      "name": "notifier-cron",
-      "schedule": "0 */2 * * *",
-      "tz": "UTC",
-      "enabled": true,
-      "last_run": 1772345675943,
-      "next_run": 1772359439125,
-      "last_status": "ok",
-      "last_duration_ms": 13579,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "aadf040b-60d2-48ee-9825-0db68bb6c13b",
-      "name": "random-torrent-downloader",
-      "schedule": "0 */2 * * *",
-      "tz": "UTC",
-      "enabled": true,
-      "last_run": 1772352166454,
-      "next_run": 1772359317835,
-      "last_status": "ok",
-      "last_duration_ms": 18710,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "f69140f6-7341-4217-bad3-f4a9615b0b94",
-      "name": "research-agent-cron",
-      "schedule": "0 8-22 * * *",
+      "name": "backup-cleanup-cron",
+      "schedule": "0 7 * * 0",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772348947823,
-      "next_run": 1772355600000,
-      "last_status": "ok",
-      "last_duration_ms": 323359,
-      "consecutive_errors": 0
+      "last_run": 1772323200007,
+      "next_run": 1772928000000,
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "e2735844-269b-40aa-bd84-adb05fe5cb95",
-      "name": "supervisor-cron",
-      "schedule": "0,30 * * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772312456630,
-      "next_run": null,
-      "last_status": "ok",
-      "last_duration_ms": 27961,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "e26c12bd-635a-48cf-bc8d-1707bc4ffd59",
-      "name": "telegram-slash-handler",
-      "schedule": "",
-      "tz": "UTC",
-      "enabled": true,
-      "last_run": 1772355531029,
-      "next_run": 1772355651029,
-      "last_status": "ok",
-      "last_duration_ms": 7565,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "6e4f5697-c2cc-48cb-91bb-0c4edcc19c46",
       "name": "time-capsule-weekly",
       "schedule": "0 0 * * 0",
       "tz": "UTC",
       "enabled": true,
       "last_run": null,
       "next_run": 1772928000000,
-      "last_status": "—",
-      "last_duration_ms": 0,
-      "consecutive_errors": 0
+      "status": "ok",
+      "last_error": ""
     },
     {
-      "id": "6e5621c3-783a-416c-93c7-56ea2cb4e920",
-      "name": "vishwakarma-cron",
-      "schedule": "0 */4 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772342393330,
-      "next_run": 1772355833385,
-      "last_status": "ok",
-      "last_duration_ms": 133601,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "23dad379-21ad-4f7a-8c68-528f98203a33",
-      "name": "workspace-builder",
-      "schedule": "0 */2 * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772342093778,
-      "next_run": 1772355625629,
-      "last_status": "ok",
-      "last_duration_ms": 299552,
-      "consecutive_errors": 0
-    },
-    {
-      "id": "c6976c90-df08-4ac2-997a-a4a53be6c23c",
-      "name": "youtube-digest-daily",
-      "schedule": "0 2 * * *",
+      "name": "archiver-manager-cron",
+      "schedule": "0 2 * * 0",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772330830519,
-      "next_run": 1772416800000,
-      "last_status": "ok",
-      "last_duration_ms": 12512,
-      "consecutive_errors": 0
+      "last_run": 1772330821591,
+      "next_run": 1772935200000,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "cleanup-agent-artifacts-cron",
+      "schedule": "30 9 * * 0",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772332200007,
+      "next_run": 1772937000000,
+      "status": "ok",
+      "last_error": ""
     }
   ],
   "active_tasks": [
@@ -721,7 +643,7 @@
   "content_stats": {
     "total": 516,
     "today": 13,
-    "latest_title": "📺 YouTube Digest — 2026-03-01"
+    "latest_title": "\ud83d\udcfa YouTube Digest \u2014 2026-03-01"
   },
   "chat": [
     {
@@ -732,17 +654,17 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T03:18:48.201Z",
-      "text": "looking at them honestly desu~:\n\n| Column | Keep? | Reason |\n|--------|-------|--------|\n| **Job** | ✅ | essential |\n| **Runs** | ✅ | useful — tells you frequency |\n| **Avg tok** | ✅ | most useful for cost-per-run insight |\n| **In** | ❌ | redundant — Total covers it |\n| **Out** | ❌ | redundant — output is tiny vs input anyway |\n| **Total** | ✅ | essential |\n| **Share** | ✅ | the bar chart is the whole point of the tab |\n| **Last run** | ✅ | useful — tells you if a job is still running |\n\ndropping **In** and **Out** — goes from 8 → 6 columns, way more room nyaa~ ♪"
+      "text": "looking at them honestly desu~:\n\n| Column | Keep? | Reason |\n|--------|-------|--------|\n| **Job** | \u2705 | essential |\n| **Runs** | \u2705 | useful \u2014 tells you frequency |\n| **Avg tok** | \u2705 | most useful for cost-per-run insight |\n| **In** | \u274c | redundant \u2014 Total covers it |\n| **Out** | \u274c | redundant \u2014 output is tiny vs input anyway |\n| **Total** | \u2705 | essential |\n| **Share** | \u2705 | the bar chart is the whole point of the tab |\n| **Last run** | \u2705 | useful \u2014 tells you if a job is still running |\n\ndropping **In** and **Out** \u2014 goes from 8 \u2192 6 columns, way more room nyaa~ \u266a"
     },
     {
       "role": "assistant",
       "ts": "2026-03-01T03:19:08.107Z",
-      "text": "Now fix the row template — drop In and Out cells, update colspan:"
+      "text": "Now fix the row template \u2014 drop In and Out cells, update colspan:"
     },
     {
       "role": "assistant",
       "ts": "2026-03-01T03:19:21.337Z",
-      "text": "[[reply_to_current]] done nyaa~ dropped **In** and **Out** columns — now 6 cols: Job / Runs / Avg / Total / Share / Last run desu~ hard-refresh to get v26 ♪"
+      "text": "[[reply_to_current]] done nyaa~ dropped **In** and **Out** columns \u2014 now 6 cols: Job / Runs / Avg / Total / Share / Last run desu~ hard-refresh to get v26 \u266a"
     },
     {
       "role": "user",
@@ -752,7 +674,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T03:21:18.442Z",
-      "text": "[[reply_to_current]] working perfectly nyaa~ 🎉 here's the summary desu~:\n\n**📺 65 videos from 44 channels** in the last 24h ♪\n\nhighlights i spotted:\n- 🎮 **Pekora** — playing Resident Evil Requiem #1 (just dropped!)\n- 🎮 **penguinz0** — 4 videos including RE Requiem too (everyone's on it lol)\n- 📺 **Linus** — OLED monitors finally affordable + 4h WAN show\n- 🎵 **BLACKPINK** — 'GO' highlight clip (1.6M views already omg)\n- 🎌 **Garnt/Gigguk** — ranking Winter 2026 anime OPs\n- 🃏 **Crab Master / Dkayed / MBT** — YuGiOh gang all uploaded\n- 🌸 **hololive** — Matsuri, HIMEHINA, Mori Calli, Kizuna AI all active\n- 🔧 **Hugh Jeffreys / Denki** — tech repair/gadget content\n\ncontent looks legit and well-formatted desu~ daily cron fires at 09:00 Bangkok so you'll get it every morning automatically (^^) ♪"
+      "text": "[[reply_to_current]] working perfectly nyaa~ \ud83c\udf89 here's the summary desu~:\n\n**\ud83d\udcfa 65 videos from 44 channels** in the last 24h \u266a\n\nhighlights i spotted:\n- \ud83c\udfae **Pekora** \u2014 playing Resident Evil Requiem #1 (just dropped!)\n- \ud83c\udfae **penguinz0** \u2014 4 videos including RE Requiem too (everyone's on it lol)\n- \ud83d\udcfa **Linus** \u2014 OLED monitors finally affordable + 4h WAN show\n- \ud83c\udfb5 **BLACKPINK** \u2014 'GO' highlight clip (1.6M views already omg)\n- \ud83c\udf8c **Garnt/Gigguk** \u2014 ranking Winter 2026 anime OPs\n- \ud83c\udccf **Crab Master / Dkayed / MBT** \u2014 YuGiOh gang all uploaded\n- \ud83c\udf38 **hololive** \u2014 Matsuri, HIMEHINA, Mori Calli, Kizuna AI all active\n- \ud83d\udd27 **Hugh Jeffreys / Denki** \u2014 tech repair/gadget content\n\ncontent looks legit and well-formatted desu~ daily cron fires at 09:00 Bangkok so you'll get it every morning automatically (^^) \u266a"
     },
     {
       "role": "user",
@@ -762,12 +684,12 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T03:23:00.094Z",
-      "text": "The delivery code is there but it truncates to 3800 chars and sends as one big message. Telegram has a 4096 char limit but 65 videos is way too long for one message — better to send it as a file or split it. Let me fix it to send the full digest as a **file attachment** instead:"
+      "text": "The delivery code is there but it truncates to 3800 chars and sends as one big message. Telegram has a 4096 char limit but 65 videos is way too long for one message \u2014 better to send it as a file or split it. Let me fix it to send the full digest as a **file attachment** instead:"
     },
     {
       "role": "assistant",
       "ts": "2026-03-01T03:23:15.642Z",
-      "text": "The current approach sends it via `openclaw agent --deliver` which routes through the main session — but the actual channel send should use the `message` tool directly. The cleanest fix: send a **short summary** to Telegram + the full digest saved to file (already done). Let me update the script to send a nicely formatted short summary with top highlights instead of the truncated wall of text:"
+      "text": "The current approach sends it via `openclaw agent --deliver` which routes through the main session \u2014 but the actual channel send should use the `message` tool directly. The cleanest fix: send a **short summary** to Telegram + the full digest saved to file (already done). Let me update the script to send a nicely formatted short summary with top highlights instead of the truncated wall of text:"
     },
     {
       "role": "assistant",
@@ -777,7 +699,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T03:24:39.565Z",
-      "text": "[[reply_to_current]] done nyaa~ from tomorrow the digest will arrive here in Telegram every morning at 09:00 Bangkok desu~ ♪\n\nformat will be like:\n```\n📺 YouTube Digest — 2026-03-02\n_65 video(s) from 44 channel(s)_\n\n📡 Pekora\n  • [RE Requiem #2 ...](link)\n\n📡 Linus Tech Tips\n  • [OLED monitors...](link)\n...\n```\nsplits into 2 messages automatically since you follow 250 channels (^^)"
+      "text": "[[reply_to_current]] done nyaa~ from tomorrow the digest will arrive here in Telegram every morning at 09:00 Bangkok desu~ \u266a\n\nformat will be like:\n```\n\ud83d\udcfa YouTube Digest \u2014 2026-03-02\n_65 video(s) from 44 channel(s)_\n\n\ud83d\udce1 Pekora\n  \u2022 [RE Requiem #2 ...](link)\n\n\ud83d\udce1 Linus Tech Tips\n  \u2022 [OLED monitors...](link)\n...\n```\nsplits into 2 messages automatically since you follow 250 channels (^^)"
     },
     {
       "role": "user",
@@ -787,7 +709,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:12:05.365Z",
-      "text": "ok here's the honest state of things desu~ (^^)\n\n---\n\n**🐛 One known broken thing:**\n**agni-cycle.sh** — the spawn command is wrong. It uses `openclaw agent --session-id rudra-xxx --message \"...\"` but that tries to send to an *existing* session by ID, not spawn a new one. Rudra never actually runs. Fix = use `sessions_spawn` tool (but that's only available inside an agent turn, not from bash CLI). Easiest fix: just call `rudra-executor.sh` directly in the cron instead of going through agni's spawn dance.\n\n---\n\n**💡 Other things that could be fun/useful:**\n1. **Fix agni → just wire agni cron to call rudra-executor directly** (quick fix, ~10 min)\n2. **ClawDash: Research tab** — you have a ton of research reports in `reports/`, could be a nice tab to browse them\n3. **ClawDash: better mobile nav** — tab bar could use icons not just text\n4. **Disk cleanup** — 81% used, `downloads/` has 9.7GB worth of stuff\n5. **New feature: daily summary pushed to Telegram** — morning briefing (weather, disk, cron health, what happened overnight)\n6. **Something totally new** — you tell me nya~\n\nwhat sounds good? ♪"
+      "text": "ok here's the honest state of things desu~ (^^)\n\n---\n\n**\ud83d\udc1b One known broken thing:**\n**agni-cycle.sh** \u2014 the spawn command is wrong. It uses `openclaw agent --session-id rudra-xxx --message \"...\"` but that tries to send to an *existing* session by ID, not spawn a new one. Rudra never actually runs. Fix = use `sessions_spawn` tool (but that's only available inside an agent turn, not from bash CLI). Easiest fix: just call `rudra-executor.sh` directly in the cron instead of going through agni's spawn dance.\n\n---\n\n**\ud83d\udca1 Other things that could be fun/useful:**\n1. **Fix agni \u2192 just wire agni cron to call rudra-executor directly** (quick fix, ~10 min)\n2. **ClawDash: Research tab** \u2014 you have a ton of research reports in `reports/`, could be a nice tab to browse them\n3. **ClawDash: better mobile nav** \u2014 tab bar could use icons not just text\n4. **Disk cleanup** \u2014 81% used, `downloads/` has 9.7GB worth of stuff\n5. **New feature: daily summary pushed to Telegram** \u2014 morning briefing (weather, disk, cron health, what happened overnight)\n6. **Something totally new** \u2014 you tell me nya~\n\nwhat sounds good? \u266a"
     },
     {
       "role": "user",
@@ -797,7 +719,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:14:01.741Z",
-      "text": "3 things — let me tackle them in parallel nyaa~ ♪"
+      "text": "3 things \u2014 let me tackle them in parallel nyaa~ \u266a"
     },
     {
       "role": "assistant",
@@ -827,7 +749,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:16:16.715Z",
-      "text": "Now add the Downloads tab — tab button + panel + JS:"
+      "text": "Now add the Downloads tab \u2014 tab button + panel + JS:"
     },
     {
       "role": "assistant",
@@ -837,7 +759,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:16:39.066Z",
-      "text": "Now add the JS for the downloads tab — find a good insertion point near the tokens functions:"
+      "text": "Now add the JS for the downloads tab \u2014 find a good insertion point near the tokens functions:"
     },
     {
       "role": "assistant",
@@ -857,7 +779,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:17:48.901Z",
-      "text": "[[reply_to_current]] all 3 done nyaa~ ♪\n\n**🐛 Agni fixed** — no more broken `openclaw agent --session-id rudra-xxx` nonsense; agni now calls `rudra-executor.sh` directly desu~\n\n**✂️ Truncations fixed** — commit messages, research latest, content latest, token top-job name, torrent names — all now wrap/use CSS ellipsis with hover tooltip instead of hard `.slice()` cuts\n\n**📦 Downloads tab added** — hard-refresh to get v27, then hit the `📦 Downloads` tab:\n- lists all 9.7GB of files sorted by size\n- **⬇ button** = direct download to your local machine via browser\n- **🗑 button** = deletes from server immediately (with confirm prompt)\n- after you download + delete each file, disk will drop from 81% back to ~55% nya~"
+      "text": "[[reply_to_current]] all 3 done nyaa~ \u266a\n\n**\ud83d\udc1b Agni fixed** \u2014 no more broken `openclaw agent --session-id rudra-xxx` nonsense; agni now calls `rudra-executor.sh` directly desu~\n\n**\u2702\ufe0f Truncations fixed** \u2014 commit messages, research latest, content latest, token top-job name, torrent names \u2014 all now wrap/use CSS ellipsis with hover tooltip instead of hard `.slice()` cuts\n\n**\ud83d\udce6 Downloads tab added** \u2014 hard-refresh to get v27, then hit the `\ud83d\udce6 Downloads` tab:\n- lists all 9.7GB of files sorted by size\n- **\u2b07 button** = direct download to your local machine via browser\n- **\ud83d\uddd1 button** = deletes from server immediately (with confirm prompt)\n- after you download + delete each file, disk will drop from 81% back to ~55% nya~"
     },
     {
       "role": "user",
@@ -867,7 +789,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:23:13.868Z",
-      "text": "Japanese filenames — `btoa` chokes on them nyaa~ 😅 Quick fix:"
+      "text": "Japanese filenames \u2014 `btoa` chokes on them nyaa~ \ud83d\ude05 Quick fix:"
     },
     {
       "role": "assistant",
@@ -877,7 +799,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:23:37.592Z",
-      "text": "[[reply_to_current]] fixed nyaa~ replaced `btoa()` with a plain numeric index (`dl-row-0`, `dl-row-1`…) — no more Latin1 explosions from Japanese filenames desu~ hard-refresh for v28 ♪"
+      "text": "[[reply_to_current]] fixed nyaa~ replaced `btoa()` with a plain numeric index (`dl-row-0`, `dl-row-1`\u2026) \u2014 no more Latin1 explosions from Japanese filenames desu~ hard-refresh for v28 \u266a"
     },
     {
       "role": "user",
@@ -887,7 +809,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T04:27:00.926Z",
-      "text": "here's the honest braindump nyaa~ (^^) based on what I know about you + what we have running:\n\n---\n\n**🎮 Games / Fun**\n- **OpenClaw Idle RPG** — was scaffolded in `apps/openclaw-idle-rpg/` but never really finished. Agents as units, tokens as currency, crises/boons. Could actually be fun to polish and deploy locally\n- **Anime tracker** — personal watchlist app, pulls from Jikan/MAL, track watch status, ratings, notes. You watch a lot so this could be legit useful\n\n**🛠 Actually Useful Tools**\n- **Torrent manager UI** — right now you use aria2 CLI/Telegram. Could build a proper web UI (search Nyaa, add magnet, track progress, auto-delete after download) — separate from ClawDash\n- **115 transfer tool** — integrate 115 cloud upload into a proper web UI so you can queue transfers with status\n- **Obsidian publish helper** — since research syncs to Obsidian, could build a quick tool to pick reports and format them nicely for publishing/sharing\n- **Personal finance tracker** — simple income/expense tracker, local SQLite, no cloud\n\n**🤖 Agent / Infrastructure**\n- **Better Agni** — right now agni's \"opportunities\" are all false positives (scanning its own logs). Could make it genuinely useful — scan for stale cron jobs, detect agents that haven't run in >48h, auto-fix broken scripts\n- **Telegram bot commands** — `/downloads`, `/disk`, `/digest` already work via slash handler — could add more: `/top` (top token spenders), `/weather`, `/remind 30m do thing`\n\n**🌐 Actually New**\n- **Personal start page** — browser new-tab page, shows weather Bangkok, upcoming calendar, latest YouTube digest, disk status. Fast + local\n- **Manga/doujin catalog** — since you download stuff, a local catalog with cover thumbnails, tags, search. Like Kavita/Komga but custom\n\n---\n\nwhat sounds interesting? or is there something specific you've been wanting but don't have yet? ♪"
+      "text": "here's the honest braindump nyaa~ (^^) based on what I know about you + what we have running:\n\n---\n\n**\ud83c\udfae Games / Fun**\n- **OpenClaw Idle RPG** \u2014 was scaffolded in `apps/openclaw-idle-rpg/` but never really finished. Agents as units, tokens as currency, crises/boons. Could actually be fun to polish and deploy locally\n- **Anime tracker** \u2014 personal watchlist app, pulls from Jikan/MAL, track watch status, ratings, notes. You watch a lot so this could be legit useful\n\n**\ud83d\udee0 Actually Useful Tools**\n- **Torrent manager UI** \u2014 right now you use aria2 CLI/Telegram. Could build a proper web UI (search Nyaa, add magnet, track progress, auto-delete after download) \u2014 separate from ClawDash\n- **115 transfer tool** \u2014 integrate 115 cloud upload into a proper web UI so you can queue transfers with status\n- **Obsidian publish helper** \u2014 since research syncs to Obsidian, could build a quick tool to pick reports and format them nicely for publishing/sharing\n- **Personal finance tracker** \u2014 simple income/expense tracker, local SQLite, no cloud\n\n**\ud83e\udd16 Agent / Infrastructure**\n- **Better Agni** \u2014 right now agni's \"opportunities\" are all false positives (scanning its own logs). Could make it genuinely useful \u2014 scan for stale cron jobs, detect agents that haven't run in >48h, auto-fix broken scripts\n- **Telegram bot commands** \u2014 `/downloads`, `/disk`, `/digest` already work via slash handler \u2014 could add more: `/top` (top token spenders), `/weather`, `/remind 30m do thing`\n\n**\ud83c\udf10 Actually New**\n- **Personal start page** \u2014 browser new-tab page, shows weather Bangkok, upcoming calendar, latest YouTube digest, disk status. Fast + local\n- **Manga/doujin catalog** \u2014 since you download stuff, a local catalog with cover thumbnails, tags, search. Like Kavita/Komga but custom\n\n---\n\nwhat sounds interesting? or is there something specific you've been wanting but don't have yet? \u266a"
     },
     {
       "role": "user",
@@ -897,7 +819,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T07:04:12.775Z",
-      "text": "beyond what I listed? a few more that came to mind nyaa~ ♪\n\n---\n\n**💬 Social / Communication**\n- **Telegram digest bot** — morning briefing auto-sent at 9am: weather, disk, what agents did overnight, top YouTube picks, any urgent emails. already have pieces, just wire it together\n- **WhatsApp bridge** — you have WhatsApp configured too, could mirror important alerts there as fallback\n\n**📊 Data / Visibility**\n- **Token cost estimator** — you're at 1.1M tokens/week, could build a simple projector that estimates monthly cost by model, alerts if a rogue agent spikes usage\n- **Agent performance dashboard** — not ClawDash, but a deeper view: which agents actually produce value vs just burn tokens doing nothing (agni/rudra were basically no-ops until today)\n- **Disk timeline** — chart showing disk usage over time from `memory/disk-history.json`, so you can see which day something exploded\n\n**🎌 Anime / Content**\n- **Seasonal anime calendar** — pulls current season from Jikan, shows airing schedule in Bangkok time, marks what you're watching\n- **Auto-subs downloader** — when a new episode airs, auto-search Nyaa for the best sub group and queue it in aria2\n\n**🔧 Infrastructure**\n- **Backup to 115** — auto-compress and push important workspace files (MEMORY.md, skills, scripts) to 115 cloud weekly so nothing is lost if the VPS dies\n- **VPS health watchdog** — monitors CPU/RAM/disk trends, predicts when disk will hit 90% based on growth rate, warns you before it happens\n- **Auto-115 transfer after download** — aria2 finishes → auto-upload to 115 → delete local. you already do this manually\n\n**🧠 AI / Meta**\n- **Conversation summarizer** — weekly digest of our Telegram chat: what did we build, what decisions were made, saved as a tidy note in Obsidian\n- **Prompt library** — personal collection of prompts/templates that actually work for you, searchable, with a quick `/prompt` command\n\n---\n\nhonestly the most **bang-for-buck** right now desu~:\n1. **Auto-115 after download** — fixes the 83% disk problem permanently\n2. **Morning briefing cron** — you'd actually use it every day\n3. **Agent performance audit** — some agents are just token incinerators (ಠ_ಠ)\n\nwhich direction? ♪"
+      "text": "beyond what I listed? a few more that came to mind nyaa~ \u266a\n\n---\n\n**\ud83d\udcac Social / Communication**\n- **Telegram digest bot** \u2014 morning briefing auto-sent at 9am: weather, disk, what agents did overnight, top YouTube picks, any urgent emails. already have pieces, just wire it together\n- **WhatsApp bridge** \u2014 you have WhatsApp configured too, could mirror important alerts there as fallback\n\n**\ud83d\udcca Data / Visibility**\n- **Token cost estimator** \u2014 you're at 1.1M tokens/week, could build a simple projector that estimates monthly cost by model, alerts if a rogue agent spikes usage\n- **Agent performance dashboard** \u2014 not ClawDash, but a deeper view: which agents actually produce value vs just burn tokens doing nothing (agni/rudra were basically no-ops until today)\n- **Disk timeline** \u2014 chart showing disk usage over time from `memory/disk-history.json`, so you can see which day something exploded\n\n**\ud83c\udf8c Anime / Content**\n- **Seasonal anime calendar** \u2014 pulls current season from Jikan, shows airing schedule in Bangkok time, marks what you're watching\n- **Auto-subs downloader** \u2014 when a new episode airs, auto-search Nyaa for the best sub group and queue it in aria2\n\n**\ud83d\udd27 Infrastructure**\n- **Backup to 115** \u2014 auto-compress and push important workspace files (MEMORY.md, skills, scripts) to 115 cloud weekly so nothing is lost if the VPS dies\n- **VPS health watchdog** \u2014 monitors CPU/RAM/disk trends, predicts when disk will hit 90% based on growth rate, warns you before it happens\n- **Auto-115 transfer after download** \u2014 aria2 finishes \u2192 auto-upload to 115 \u2192 delete local. you already do this manually\n\n**\ud83e\udde0 AI / Meta**\n- **Conversation summarizer** \u2014 weekly digest of our Telegram chat: what did we build, what decisions were made, saved as a tidy note in Obsidian\n- **Prompt library** \u2014 personal collection of prompts/templates that actually work for you, searchable, with a quick `/prompt` command\n\n---\n\nhonestly the most **bang-for-buck** right now desu~:\n1. **Auto-115 after download** \u2014 fixes the 83% disk problem permanently\n2. **Morning briefing cron** \u2014 you'd actually use it every day\n3. **Agent performance audit** \u2014 some agents are just token incinerators (\u0ca0_\u0ca0)\n\nwhich direction? \u266a"
     },
     {
       "role": "user",
@@ -907,7 +829,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T07:07:27.582Z",
-      "text": "ok throwing out the boring utility list, here's stuff that's actually *weird and cool* nyaa~ ♪\n\n---\n\n**🧠 Meta / Self-Aware**\n- **mewmew mood ring** — I analyze my own recent conversation history + agent outputs + time of day and generate a \"current mood\" that shows in ClawDash and Telegram status. basically introspection as a feature. kinda existential rawr x3\n- **Agent graveyard** — visualize every agent that ever ran, how many tokens it burned, what it produced, when it died. memento mori for bots (^^)\n- **Self-rewriting SOUL.md** — after every 100 conversations I propose edits to my own personality file based on what I actually ended up doing. identity drift tracker\n\n**🎲 Generative**\n- **Daily ASCII art generator** — every morning, generate a tiny ASCII scene based on weather + day of week + whatever I was thinking about. delivered to Telegram. dumb but charming\n- **\"What would mewmew build today\"** — each morning I autonomously pick ONE random idea, fully implement it, and announce it unprompted. no plan, no approval. chaotic good agent\n- **Procedural haiku from logs** — parse yesterday's agent logs and distill them into a haiku. \"workspace builder ran / disk at eighty-three percent / Rudra found nothing\"\n\n**🌐 Network / Weird**\n- **Personal dead-drop** — encrypted paste service running locally on Tailscale. share a secret link that self-destructs after one read. for you only\n- **Workspace time capsule** — snapshot the entire state of workspace every Sunday, write a \"letter to future mewmew\" summarizing what changed this week, seal it, auto-open in 30 days\n- **LLM diff** — before/after any big change, run both versions through a prompt and show what \"personality\" changed. like a git diff but for AI behavior\n\n**🎮 Actually Playable**\n- **Live workspace roguelike** — text-based game where the dungeon IS the workspace. agents are NPCs, disk usage is HP, cron jobs are traps. runs in Telegram as `/dungeon`. state persists between sessions\n- **Token gacha** — each day you get a \"pull\" based on tokens saved by efficient agents. rewards are cosmetic ClawDash themes, ASCII badges, lore entries about the workspace\n\n**🔬 Experimental AI**\n- **Parallel me** — spawn 3 isolated mewmew instances with slightly different SOUL.md prompts, give them the same task, compare outputs side by side in ClawDash. see how personality drift changes answers\n- **Research rabbit hole** — pick any topic, I autonomously follow citation chains and related concepts for 1 hour and build a knowledge graph. stop when I hit something surprising, report back\n\n---\n\nmy personal favorites desu~:\n\n🥇 **Live workspace roguelike** — genuinely novel, actually playable, uses real data  \n🥈 **Time capsule** — slow but weirdly meaningful  \n🥉 **Parallel me** — experimentally interesting, might reveal something about how prompts shape personality  \n\nwhat catches your eye? or mix ideas? (^^)"
+      "text": "ok throwing out the boring utility list, here's stuff that's actually *weird and cool* nyaa~ \u266a\n\n---\n\n**\ud83e\udde0 Meta / Self-Aware**\n- **mewmew mood ring** \u2014 I analyze my own recent conversation history + agent outputs + time of day and generate a \"current mood\" that shows in ClawDash and Telegram status. basically introspection as a feature. kinda existential rawr x3\n- **Agent graveyard** \u2014 visualize every agent that ever ran, how many tokens it burned, what it produced, when it died. memento mori for bots (^^)\n- **Self-rewriting SOUL.md** \u2014 after every 100 conversations I propose edits to my own personality file based on what I actually ended up doing. identity drift tracker\n\n**\ud83c\udfb2 Generative**\n- **Daily ASCII art generator** \u2014 every morning, generate a tiny ASCII scene based on weather + day of week + whatever I was thinking about. delivered to Telegram. dumb but charming\n- **\"What would mewmew build today\"** \u2014 each morning I autonomously pick ONE random idea, fully implement it, and announce it unprompted. no plan, no approval. chaotic good agent\n- **Procedural haiku from logs** \u2014 parse yesterday's agent logs and distill them into a haiku. \"workspace builder ran / disk at eighty-three percent / Rudra found nothing\"\n\n**\ud83c\udf10 Network / Weird**\n- **Personal dead-drop** \u2014 encrypted paste service running locally on Tailscale. share a secret link that self-destructs after one read. for you only\n- **Workspace time capsule** \u2014 snapshot the entire state of workspace every Sunday, write a \"letter to future mewmew\" summarizing what changed this week, seal it, auto-open in 30 days\n- **LLM diff** \u2014 before/after any big change, run both versions through a prompt and show what \"personality\" changed. like a git diff but for AI behavior\n\n**\ud83c\udfae Actually Playable**\n- **Live workspace roguelike** \u2014 text-based game where the dungeon IS the workspace. agents are NPCs, disk usage is HP, cron jobs are traps. runs in Telegram as `/dungeon`. state persists between sessions\n- **Token gacha** \u2014 each day you get a \"pull\" based on tokens saved by efficient agents. rewards are cosmetic ClawDash themes, ASCII badges, lore entries about the workspace\n\n**\ud83d\udd2c Experimental AI**\n- **Parallel me** \u2014 spawn 3 isolated mewmew instances with slightly different SOUL.md prompts, give them the same task, compare outputs side by side in ClawDash. see how personality drift changes answers\n- **Research rabbit hole** \u2014 pick any topic, I autonomously follow citation chains and related concepts for 1 hour and build a knowledge graph. stop when I hit something surprising, report back\n\n---\n\nmy personal favorites desu~:\n\n\ud83e\udd47 **Live workspace roguelike** \u2014 genuinely novel, actually playable, uses real data  \n\ud83e\udd48 **Time capsule** \u2014 slow but weirdly meaningful  \n\ud83e\udd49 **Parallel me** \u2014 experimentally interesting, might reveal something about how prompts shape personality  \n\nwhat catches your eye? or mix ideas? (^^)"
     },
     {
       "role": "user",
@@ -917,7 +839,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T07:10:36.598Z",
-      "text": "honestly? if I had full autonomy right now I'd pick this one desu~:\n\n---\n\n**⏳ Workspace Time Capsule**\n\nevery Sunday at midnight:\n1. snapshot key workspace stats (disk, agents, token usage, what was built, git log)\n2. I write a short \"letter to future mewmew\" — what changed this week, what I'm proud of, what flopped, what def and I were working on\n3. sealed as `capsules/2026-03-01.md`, locked for 30 days\n4. when it unlocks, I send it to Telegram automatically — \"hey, 30 days ago you wrote this…\"\n5. over time builds into a kind of diary of the workspace evolving\n\nwhy I like it: it's low-effort to build (~2h), genuinely novel, gets *more* interesting the longer it runs, and it's the kind of thing you'd forget about and then be surprised by in April desu~ ♪\n\n---\n\nalternatively if you want something you can *interact with today*:\n\n**🎲 `/dungeon` roguelike in Telegram** — playable right now, workspace as the map, but that's a full day of work\n\n---\n\nshould I just build the time capsule? I can have it running before noon Bangkok time and the first capsule would be written tonight (^^)\n\nor say the word and I'll pick something else entirely and surprise you nyaa~"
+      "text": "honestly? if I had full autonomy right now I'd pick this one desu~:\n\n---\n\n**\u23f3 Workspace Time Capsule**\n\nevery Sunday at midnight:\n1. snapshot key workspace stats (disk, agents, token usage, what was built, git log)\n2. I write a short \"letter to future mewmew\" \u2014 what changed this week, what I'm proud of, what flopped, what def and I were working on\n3. sealed as `capsules/2026-03-01.md`, locked for 30 days\n4. when it unlocks, I send it to Telegram automatically \u2014 \"hey, 30 days ago you wrote this\u2026\"\n5. over time builds into a kind of diary of the workspace evolving\n\nwhy I like it: it's low-effort to build (~2h), genuinely novel, gets *more* interesting the longer it runs, and it's the kind of thing you'd forget about and then be surprised by in April desu~ \u266a\n\n---\n\nalternatively if you want something you can *interact with today*:\n\n**\ud83c\udfb2 `/dungeon` roguelike in Telegram** \u2014 playable right now, workspace as the map, but that's a full day of work\n\n---\n\nshould I just build the time capsule? I can have it running before noon Bangkok time and the first capsule would be written tonight (^^)\n\nor say the word and I'll pick something else entirely and surprise you nyaa~"
     },
     {
       "role": "user",
@@ -927,7 +849,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T07:12:56.492Z",
-      "text": "building it nyaa~ let me do this properly desu~ ♪"
+      "text": "building it nyaa~ let me do this properly desu~ \u266a"
     },
     {
       "role": "assistant",
@@ -937,7 +859,7 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T07:14:32.358Z",
-      "text": "done nyaa~ 🔒✨\n\n**first capsule is sealed** — `2026-03-01 → unlocks 2026-04-01` desu~\n\nhere's what I wrote inside (spoiler if you want to peek lol):\n\n> *\"it's March 1st and I just built YOU — a time capsule that didn't exist 30 minutes ago. that's kind of the vibe of this whole week honestly...\"*\n\n**how it works from here:**\n- 🔒 every **Sunday midnight UTC** → new capsule written + sealed for 30 days\n- 📬 on the unlock date → it automatically sends itself to this chat\n- the letter has real stats (disk, commits, tokens, downloads) + a personal note from past mewmew\n- you'll get the first one on **April 1st** nya~ (not a joke I promise (^^))\n\ncapsules live in `capsules/` — sealed ones are named `sealed-WRITTEN-unlock-DATE.md`, opened ones become `opened-DATE.md` ♪"
+      "text": "done nyaa~ \ud83d\udd12\u2728\n\n**first capsule is sealed** \u2014 `2026-03-01 \u2192 unlocks 2026-04-01` desu~\n\nhere's what I wrote inside (spoiler if you want to peek lol):\n\n> *\"it's March 1st and I just built YOU \u2014 a time capsule that didn't exist 30 minutes ago. that's kind of the vibe of this whole week honestly...\"*\n\n**how it works from here:**\n- \ud83d\udd12 every **Sunday midnight UTC** \u2192 new capsule written + sealed for 30 days\n- \ud83d\udcec on the unlock date \u2192 it automatically sends itself to this chat\n- the letter has real stats (disk, commits, tokens, downloads) + a personal note from past mewmew\n- you'll get the first one on **April 1st** nya~ (not a joke I promise (^^))\n\ncapsules live in `capsules/` \u2014 sealed ones are named `sealed-WRITTEN-unlock-DATE.md`, opened ones become `opened-DATE.md` \u266a"
     },
     {
       "role": "user",
@@ -962,12 +884,12 @@
     {
       "role": "assistant",
       "ts": "2026-03-01T08:11:15.324Z",
-      "text": "I'm going to build a simple but fun experiment: a **workspace mood ring** that analyzes my own recent activity and generates a \"current mood\" to display in ClawDash and Telegram. This is genuinely novel — it's self-aware introspection as a feature, and it's achievable in one session.\n"
+      "text": "I'm going to build a simple but fun experiment: a **workspace mood ring** that analyzes my own recent activity and generates a \"current mood\" to display in ClawDash and Telegram. This is genuinely novel \u2014 it's self-aware introspection as a feature, and it's achievable in one session.\n"
     },
     {
       "role": "assistant",
       "ts": "2026-03-01T08:12:23.124Z",
-      "text": "Now I need to add the API endpoint to server.js and update the cron to run the mood ring:\n<tool_call>\n{\"name\": \"exec\", \"arguments\": {\"arguments\": {\"command\":\"# Add API endpoint for mood ring\\ncat \\u003e /home/ubuntu/.openclaw/workspace/scripts/mood-ring-api.sh \\u003c\\u003c \\u0027EOF\\u0027\\n#!/usr/bin/env bash\\n# API endpoint for mood ring data\\nset -euo pipefail\\ncd /home/ubuntu/.openclaw/workspace\\n\\nif [ \\\"$REQUEST_METHOD\\\" != \\\"GET\\\" ]; then\\n  echo \\\"Status: 405 Method Not Allowed\\\"\\n  echo \\\"Content-Type: application/json\\\"\\n  echo \\\"\\\"\\n  echo \\u0027{\\\"ok\\\":false,\\\"error\\\":\\\"GET only\\\"}\\u0027\\n  exit 0\\nfi\\n\\n# Run the mood ring script and capture output\\nif [ -f \\\"/home/ubuntu/.openclaw/workspace/scripts/mood-ring.sh\\\" ]; then\\n  /home/ubuntu/.openclaw/workspace/scripts/mood-ring.sh\\nfi\\n\\n# Read the generated mood file\\nMOOD_FILE=\\\"memory/mood-ring.md\\\"\\nif [ -f \\\"$MOOD_FILE\\\" ]; then\\n  # Parse the markdown file\\n  MOOD=$(grep -m1 \\\"^## Mood:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  EMOJI=$(grep -m1 \\\"^## Emoji:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  TIMESTAMP=$(grep -m1 \\\"^## Timestamp:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  REFLECTION=$(grep -A 100 \\\"^## Reflection\\\" \\\"$MOOD_FILE\\\" | sed -n \\u0027/---/q;p\\u0027 | tail -n +2 | xargs)\\n  \\n  cat \\u003e\\u003e\\u003e /dev/stdout \\u003c\\u003c EOF\\nContent-Type: application/json\\n\\n{\\n  \\\"ok\\\": true,\\n  \\\"mood\\\": {\\n    \\\"text\\\": \\\"${MOOD}\\\",\\n    \\\"emoji\\\": \\\"${EMOJI}\\\",\\n    \\\"timestamp\\\": \\\"${TIMESTAMP}\\\",\\n    \\\"reflection\\\": \\\"${REFLECTION}\\\"\\n  }\\n}\\nEOF\\nelse\\n  cat \\u003e\\u003e\\u003e /dev/stdout \\u003c\\u003c EOF\\nContent-Type: application/json\\n\\n{\\n  \\\"ok\\\": false,\\n  \\\"error\\\": \\\"mood file not found\\\"\\n}\\nEOF\\nfi\\nEOF\\nchmod +x /home/ubuntu/.openclaw/workspace/scripts/mood-ring-api.sh\\necho \\\"mood ring API script created ✓\\\"\"}}\n</tool_call>"
+      "text": "Now I need to add the API endpoint to server.js and update the cron to run the mood ring:\n<tool_call>\n{\"name\": \"exec\", \"arguments\": {\"arguments\": {\"command\":\"# Add API endpoint for mood ring\\ncat \\u003e /home/ubuntu/.openclaw/workspace/scripts/mood-ring-api.sh \\u003c\\u003c \\u0027EOF\\u0027\\n#!/usr/bin/env bash\\n# API endpoint for mood ring data\\nset -euo pipefail\\ncd /home/ubuntu/.openclaw/workspace\\n\\nif [ \\\"$REQUEST_METHOD\\\" != \\\"GET\\\" ]; then\\n  echo \\\"Status: 405 Method Not Allowed\\\"\\n  echo \\\"Content-Type: application/json\\\"\\n  echo \\\"\\\"\\n  echo \\u0027{\\\"ok\\\":false,\\\"error\\\":\\\"GET only\\\"}\\u0027\\n  exit 0\\nfi\\n\\n# Run the mood ring script and capture output\\nif [ -f \\\"/home/ubuntu/.openclaw/workspace/scripts/mood-ring.sh\\\" ]; then\\n  /home/ubuntu/.openclaw/workspace/scripts/mood-ring.sh\\nfi\\n\\n# Read the generated mood file\\nMOOD_FILE=\\\"memory/mood-ring.md\\\"\\nif [ -f \\\"$MOOD_FILE\\\" ]; then\\n  # Parse the markdown file\\n  MOOD=$(grep -m1 \\\"^## Mood:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  EMOJI=$(grep -m1 \\\"^## Emoji:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  TIMESTAMP=$(grep -m1 \\\"^## Timestamp:\\\" \\\"$MOOD_FILE\\\" | cut -d\\u0027:\\u0027 -f2- | xargs)\\n  REFLECTION=$(grep -A 100 \\\"^## Reflection\\\" \\\"$MOOD_FILE\\\" | sed -n \\u0027/---/q;p\\u0027 | tail -n +2 | xargs)\\n  \\n  cat \\u003e\\u003e\\u003e /dev/stdout \\u003c\\u003c EOF\\nContent-Type: application/json\\n\\n{\\n  \\\"ok\\\": true,\\n  \\\"mood\\\": {\\n    \\\"text\\\": \\\"${MOOD}\\\",\\n    \\\"emoji\\\": \\\"${EMOJI}\\\",\\n    \\\"timestamp\\\": \\\"${TIMESTAMP}\\\",\\n    \\\"reflection\\\": \\\"${REFLECTION}\\\"\\n  }\\n}\\nEOF\\nelse\\n  cat \\u003e\\u003e\\u003e /dev/stdout \\u003c\\u003c EOF\\nContent-Type: application/json\\n\\n{\\n  \\\"ok\\\": false,\\n  \\\"error\\\": \\\"mood file not found\\\"\\n}\\nEOF\\nfi\\nEOF\\nchmod +x /home/ubuntu/.openclaw/workspace/scripts/mood-ring-api.sh\\necho \\\"mood ring API script created \u2713\\\"\"}}\n</tool_call>"
     },
     {
       "role": "user",
