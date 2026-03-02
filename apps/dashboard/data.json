@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-02T22:00:03Z",
+  "generated_at": "2026-03-02T22:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 79,
     "disk_free": "9.3G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "7.7G",
-    "load_avg": "0.79 0.91 0.97",
-    "mem_used": "3.9Gi",
+    "load_avg": "1.68 1.18 1.06",
+    "mem_used": "4.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 8 hours, 20 minutes",
+    "uptime": "1 week, 4 days, 8 hours, 25 minutes",
     "disk_history": [
       78,
       78,
@@ -31,7 +31,7 @@
       78,
       78,
       78,
-      78,
+      79,
       79,
       79,
       79,
@@ -61,9 +61,9 @@
     },
     {
       "name": "dev-agent",
-      "active": false,
-      "last_run": "2026-03-02 15:03",
-      "last_line": "2026-03-02 15:03:49 UTC - Max retries reached, giving up."
+      "active": true,
+      "last_run": "2026-03-02 22:02",
+      "last_line": "[2026-03-02 22:02:10] research-agent: Generated comprehensive research report - 2026-03-02-ai-fintech-anime-trends.md (AI/tech, banking/fintech, anime trends)"
     },
     {
       "name": "supervisor",
@@ -73,9 +73,9 @@
     },
     {
       "name": "agent-manager",
-      "active": false,
-      "last_run": "2026-03-01 07:14",
-      "last_line": "2026-03-01 07:14:41 UTC - Agent Manager stopped"
+      "active": true,
+      "last_run": "2026-03-02 22:02",
+      "last_line": "2026-03-02 22:02:29 UTC - Agent Manager stopped"
     },
     {
       "name": "meta-agent",
@@ -85,59 +85,77 @@
     }
   ],
   "research": {
-    "total": 233,
+    "total": 234,
     "tts_coverage": "92%",
-    "latest": "INDEX\nnone",
+    "latest": "2026-03-02-ai-fintech-anime-trends\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "78044cac",
-      "agent": "misc",
-      "message": "fix(dashboard): rename latest_title to latest in content_stats",
-      "time": "3 minutes ago"
+      "sha": "8f9d9579",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-02_2203)",
+      "time": "58 seconds ago"
     },
     {
-      "sha": "752d7441",
-      "agent": "misc",
-      "message": "fix(dashboard): provide complete valid data.json with all required fields",
-      "time": "4 minutes ago"
+      "sha": "a082d1f9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-02)",
+      "time": "5 minutes ago"
     },
     {
-      "sha": "1acfbbbb",
+      "sha": "00b8fa4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "98cda91b",
+      "sha": "78044cac",
+      "agent": "misc",
+      "message": "fix(dashboard): rename latest_title to latest in content_stats",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "752d7441",
+      "agent": "misc",
+      "message": "fix(dashboard): provide complete valid data.json with all required fields",
+      "time": "9 minutes ago"
+    },
+    {
+      "sha": "1acfbbbb",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
+      "sha": "98cda91b",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "15 minutes ago"
+    },
+    {
       "sha": "365decda",
       "agent": "fix",
       "message": "restore dashboard data; add generate-dashboard-data.sh; fix quick command; improve refresh-dashboard-data.py gateway detection",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "760a0cb8",
       "agent": "build",
       "message": "append workspace-builder session summary to daily log",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "a90472cf",
       "agent": "build",
       "message": "workspace-builder session validation closure",
-      "time": "51 minutes ago"
+      "time": "56 minutes ago"
     },
     {
       "sha": "bdcc6f1e",
       "agent": "build",
       "message": "fix refresh-dashboard-data.py syntax error; regenerate dashboard data; refresh planning docs",
-      "time": "51 minutes ago"
+      "time": "56 minutes ago"
     },
     {
       "sha": "316157fe",
@@ -161,25 +179,7 @@
       "sha": "f5fb97e7",
       "agent": "misc",
       "message": "feat(heartbeat): initialize heartbeat-state.json with recent check timestamps",
-      "time": "4 hours ago"
-    },
-    {
-      "sha": "518a6237",
-      "agent": "build",
-      "message": "append workspace-builder session summary to daily log",
-      "time": "7 hours ago"
-    },
-    {
-      "sha": "7995bb71",
-      "agent": "build",
-      "message": "workspace-builder session closure and validation",
-      "time": "7 hours ago"
-    },
-    {
-      "sha": "7ebb7aff",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "7 hours ago"
+      "time": "5 hours ago"
     }
   ],
   "heartbeat": {
@@ -352,11 +352,11 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772487000011,
-      "next_run": 1772488800000,
-      "last_status": "error",
-      "last_duration_ms": 1642,
-      "consecutive_errors": 1
+      "last_run": 1772488800010,
+      "next_run": 1772490600000,
+      "last_status": "ok",
+      "last_duration_ms": 158443,
+      "consecutive_errors": 0
     },
     {
       "id": "23788edb-575a-4593-a60e-7f94b9c95db6",
@@ -472,10 +472,10 @@
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772488500009,
-      "next_run": 1772488800000,
+      "last_run": 1772488958453,
+      "next_run": 1772489100000,
       "last_status": "ok",
-      "last_duration_ms": 41983,
+      "last_duration_ms": 46492,
       "consecutive_errors": 0
     },
     {
@@ -743,16 +743,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-03-02T18:25:18.805Z",
-      "text": "Let's try creating a file with some content using dd:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T18:25:41.133Z",
-      "text": "This is very strange. Writes succeed but file size stays zero. Could be the file is on a **tmpfs** that's being cleared? But other files persist.\n\nLet's check if data.json is a **special file** like a character device:"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-03-02T18:25:59.278Z",
       "text": "It's a regular empty file. Something is aggressively resetting it. I suspect the **git janitor** (or some cleanup agent) is resetting the repo state and discarding uncommitted changes. Since `data.json` is tracked in git, if we modify it locally without committing, a `git reset --hard` or `git clean` would wipe it.\n\nLet's check if we've committed the data.json:"
     },
@@ -990,6 +980,16 @@
       "role": "assistant",
       "ts": "2026-03-02T21:57:39.609Z",
       "text": "✅ **Fixed!** \n\nThe error came from a field name mismatch: the Python script wrote `latest_title` but the frontend expected `latest`. I renamed it to `latest` and committed the fix.\n\nNow:\n- `data.json` contains valid `content_stats.latest`\n- Dashboard API (`/api/data`) returns correct structure\n- Cron job will keep data fresh every 5 minutes\n\nPlease refresh your dashboard and the error should be gone! 🎉\n\nLet me know if you see any other console errors (copy the exact text)."
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-02T22:04:55.248Z",
+      "text": "Hey"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-02T22:05:01.030Z",
+      "text": "I need to restore my protocols after the compaction, nya! (◕‿◕)✨\n\nLet me read the required files now:"
     }
   ]
 }
