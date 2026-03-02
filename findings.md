@@ -1,7 +1,7 @@
 # Workspace Builder Findings
 
 **Session:** 23dad379-21ad-4f7a-8c68-528f98203a33  
-**Timestamp:** 2026-03-02 13:03 UTC  
+**Timestamp:** 2026-03-02 15:13 UTC  
 
 ---
 
@@ -70,6 +70,14 @@ Running manually:
   a) Add it to validator's ignore list (like disk-history.json and torrent-history.txt)
   b) Stop tracking it (remove from git, add to .gitignore) and let heartbeat generate it
 - Decision: Investigate usage. For now, no action; monitor.
+
+## Current Run Update (15:13 UTC)
+
+- The untracked script issue has been resolved: `scripts/update-heartbeat-state.py` is now tracked and committed in a separate commit (chore: update clawdash data). It is part of the codebase.
+- Planning docs have been refreshed to reflect current progress.
+- All constraints are expected to pass. Validation will be executed after committing the refreshed planning docs.
+- Next: Commit planning docs changes, run validation, then update active-tasks to validated.
+- System health remains green: Disk 78%, Gateway healthy, Memory clean (29f/322c), reindex 2.2d, Downloads 32 files 7.7GB.
 
 ---
 

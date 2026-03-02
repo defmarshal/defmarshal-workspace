@@ -33,19 +33,20 @@
 
 | Step | Action | Status |
 |------|--------|--------|
-| 3.1 | Update active-tasks.md to running (refresh start time) | TODO |
-| 3.2 | git add scripts/update-heartbeat-state.py | TODO |
-| 3.3 | Create/refresh planning docs (task_plan.md, findings.md, progress.md) | DONE (already from Phase 2) |
+| 3.1 | Update active-tasks.md to running (refresh start time) | DONE (already committed by wrapper) |
+| 3.2 | Ensure `scripts/update-heartbeat-state.py` is tracked | DONE (already tracked) |
+| 3.3 | Create/refresh planning docs (task_plan.md, findings.md, progress.md) | DONE |
 | 3.4 | Run `./scripts/validate-constraints.sh` | TODO |
-| 3.5 | Commit changes with `build:` prefix | TODO |
+| 3.5 | Commit changes (planning docs refresh) with `build:` prefix | TODO |
 | 3.6 | Push to origin/master | TODO |
 | 3.7 | Update active-tasks.md to validated with verification | TODO |
 | 3.8 | Append summary to daily log memory/2026-03-02.md | TODO |
 | 3.9 | Final health and git clean check | TODO |
 
 **Notes:**
-- Need to ensure the validator passes after adding the file
-- The commit message will include both the script addition and planning docs
+- Already committed active-tasks running status in separate commit (chore: update clawdash data)
+- Planning docs refreshed to reflect current run progress
+- Will validate after committing planning changes
 
 ---
 
@@ -66,4 +67,4 @@ None yet.
 
 ---
 
-**Updated:** 2026-03-02 13:05 UTC
+**Updated:** 2026-03-02 15:13 UTC
