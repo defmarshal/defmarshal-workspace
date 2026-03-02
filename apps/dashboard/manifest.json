@@ -1,14 +1,14 @@
 {
   "id": "/",
-  "name": "ClawDash — OpenClaw",
-  "short_name": "ClawDash",
-  "description": "OpenClaw workspace dashboard — system health, agents, chat",
+  "name": "Mewmew's Dashboard",
+  "short_name": "MewDash",
+  "description": "Kawaii cyberpunk system dashboard — powered by mewmew",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#0d1117",
-  "theme_color": "#58a6ff",
+  "background_color": "#0b0e14",
+  "theme_color": "#ff79c6",
   "categories": ["utilities", "productivity"],
   "icons": [
     {
