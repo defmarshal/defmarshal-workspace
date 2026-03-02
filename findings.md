@@ -1,123 +1,117 @@
-# Workspace Builder Findings — 2026-03-02 (Second Run)
+# Workspace Builder Findings
 
-**Session:** 23dad379-21ad-4f7a-8c68-528f98203a33
-
----
-
-## Executive Summary
-
-Workspace health is excellent. The primary issue addressed was a false positive in the validation script: `memory/torrent-history.txt` is an auto-updating tracked file that was not ignored, causing the constraint check to fail. The fix extends the git status filter to exclude this file alongside `memory/disk-history.json`. All constraints now pass.
+**Session:** 23dad379-21ad-4f7a-8c68-528f98203a33  
+**Timestamp:** 2026-03-02 13:03 UTC  
 
 ---
 
-## Detailed Findings
+## Current State Summary
 
-### 1. System Health
-
-All metrics green:
-- Disk usage: 78% (stable)
-- APT updates: None pending
-- Gateway: Healthy
-- Memory index: 29 fragments / 322 chunks, reindex ~2 days fresh
-- Downloads: 32 files, 7.7GB total
-- Systemd linger: Enabled
-
-### 2. Constraints Status
-
-Before fix: ❌ 1/10 failing (Git status dirty due to `memory/torrent-history.txt`).
-After fix and commit: ✅ All 10/10 constraints satisfied.
-
-The failing check:
-```
-❌ Git status: dirty or untracked files
-    M memory/torrent-history.txt
-```
-
-Root cause: `scripts/validate-constraints.sh` filters only `memory/disk-history.json`. The torrent-history file is also auto-updated by the random torrent downloader and must be ignored.
-
-### 3. Active Agents
-
-- meta-supervisor-daemon: running (PID 1121739)
-- No orphaned sessions
-
-### 4. Idea Pipeline
-
-- Status: idle
-- Last generator run: 2026-03-02 00:02:07 UTC
-- Last executor run: 2026-03-02 00:02:07 UTC
-- Pending ideas: 8
-- Stale branches: 0
-- Recent executor errors: past entries from 2026-03-01 (expected validation rejections), no recent errors.
-
-Pipeline health is good.
+- **Health:** Green (Disk 78%, Updates none, Gateway healthy, Memory clean)
+- **Active agents:** meta-supervisor-daemon (running)
+- **Memory index:** 29 fragments / 322 chunks, reindex ~2.2d ago (fresh within 3d)
+- **Downloads:** 32 files, 7.7GB (stable)
+- **Git status:** 1 untracked file: `scripts/update-heartbeat-state.py`
+- **Constraints:** Preliminary manual checks look good (active-tasks 728b, MEMORY 33 lines) but validator may fail due to untracked file
 
 ---
 
-## Decisions
+## Detailed Analysis
 
-- Modified validation filter instead of altering git behavior or ignoring active-tasks changes.
-- Kept change minimal: one-line edit to use extended regex for two excluded files.
-- No other modifications warranted.
+### 1. active-tasks.md
+- Size: 728 bytes (<2KB limit) ✅
+- Contains 2 entries:
+  - meta-supervisor-daemon (running)
+  - workspace-builder (currently marked validated from 11:02 UTC run)
+- Need: Update current builder entry to running and later to validated
 
----
+### 2. MEMORY.md
+- Lines: 33 (≤35 limit) ✅
 
-## Implementation
+### 3. Git Status
+- Untracked: `scripts/update-heartbeat-state.py` (Python utility to reset heartbeat timestamps)
+- All other files tracked and clean (disk-history.json is tracked but filtered by validator)
+- The untracked file is legitimate and should be added to version control
 
-**Modified file:** `scripts/validate-constraints.sh`
+### 4. Health Check (quick health)
+- Disk: 78% (acceptable)
+- Updates: none pending
+- Gateway: healthy
+- Memory: 29f/322c clean, reindex 2.2d (fresh)
+- Downloads: 32 files 7.7G (no cleanup needed, count < 25? Actually 32 > 25 trigger? Check policy: cleanup triggers maybe at >25 files or >10GB. Here count is 32 but size 7.7GB; close to threshold but okay.)
 
-Change:
-```bash
-git_status_filtered=$(echo "$git_status_raw" | grep -v 'memory/disk-history.json' || true)
-```
-to:
-```bash
-git_status_filtered=$(echo "$git_status_raw" | grep -v -E 'memory/(disk-history\.json|torrent-history\.txt)' || true)
-```
-
-**New/updated docs:**
-- task_plan.md
-- findings.md (this file)
-- progress.md
-
----
-
-## Validation Plan
-
-1. Commit implementation (script fix + planning docs).
-2. Run `./quick validate-constraints` → expect 10/10 pass.
-3. Run `./quick health` → green.
-4. Ensure no other uncommitted changes besides ephemeral torrent-history.
-5. Proceed with closure: update active-tasks.md, commit, append daily log, commit, push.
-
----
-
-## Outcome (to be filled after closure)
-
-**Implementation:** Done.
-
-**Validation:** After commit, all constraints passed (10/10). Health green.
-
-**Verification Metrics:**
-- active-tasks.md: 716 bytes (<2KB)
-- MEMORY.md: 33 lines (≤35)
-- Health: green (Disk 78% | Updates: none | Gateway: healthy | Memory: 29f/322c clean)
-- Memory reindex age: 2 days fresh
+### 5. Validator Constraints
+Running manually:
+- active-tasks size OK
+- MEMORY lines OK
+- Git status raw will include untracked file → fails unless we commit or add to ignore
+- Health check passes
 - No temp files
-- Shebang check: all scripts have #!
-- APT: none pending
-- Systemd linger: enabled
+- Shebang: all .sh scripts have #! (need to verify count? It said 177/177 earlier)
+- APT updates: none
+- Memory reindex age: 2.2d → OK (<3d)
+- Systemd linger: enabled (expected on this system)
 - Branch hygiene: 0 stale idea branches
-- Git filtered clean (torrent-history ignored)
 
-**Commits:**
-- `build: fix validation filter for torrent-history.txt; refresh planning docs`
-- `build: workspace-builder session closure and validation`
-- `build: log workspace-builder run 11:02 UTC`
-
-**Close the loop:** active-tasks.md updated, daily log appended, all changes pushed.
+**Conclusion:** Validation currently fails due to untracked file. Fix: commit the file.
 
 ---
 
-## Status
+## Identified Improvements
 
-**All phases:** ✅ Complete
+### 1. Track `scripts/update-heartbeat-state.py`
+- **Why:** It's a new utility script that is part of the codebase; leaving it untracked causes validation failures and is not versioned.
+- **How:** `git add scripts/update-heartbeat-state.py`; no permission changes needed (shebang present but not executable; consistent with other Python scripts like refresh-dashboard-data.py)
+- **Impact:** Resolves validator failure; improves code base completeness.
+
+### 2. Consider Ignoring `heartbeat-state.json` in Validator?
+- Observation: `memory/heartbeat-state.json` is tracked but changes frequently. Currently not ignored. Might cause validation failures in future if modified and not committed.
+- Recommendation: If the file is updated regularly by heartbeat checks, either:
+  a) Add it to validator's ignore list (like disk-history.json and torrent-history.txt)
+  b) Stop tracking it (remove from git, add to .gitignore) and let heartbeat generate it
+- Decision: Investigate usage. For now, no action; monitor.
+
+---
+
+## Risks & Mitigations
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| Untracked file causes validation failures | High | Blocks commit push | Commit the file in this run |
+| Heartbeat-state.json modifications cause future validation failures | Medium | Repeating failures | Add to ignore list if pattern emerges |
+| active-tasks.md exceeds 2KB if not pruned | Low | Validation fail | Prune stale entries after updating current entry |
+| Network/git push failure | Low | Incomplete sync | Retry later, note in verification |
+
+---
+
+## Plan Summary
+
+1. Update active-tasks.md: set current builder entry to running (refresh start time)
+2. `git add scripts/update-heartbeat-state.py`
+3. Create/refresh planning docs (task_plan.md, findings.md, progress.md)
+4. Run validation script; ensure 10/10 pass
+5. Commit all changes with `build:` prefix message
+6. Push to origin/master
+7. Update active-tasks.md to validated with verification metrics; prune if needed
+8. Append summary to daily log memory/2026-03-02.md
+9. Verify health final (quick health) and git clean
+
+---
+
+## Verification Checklist
+
+- [ ] active-tasks.md ≤ 2KB
+- [ ] MEMORY.md ≤ 35 lines
+- [ ] All constraints passed (10/10)
+- [ ] Git clean (no uncommitted changes)
+- [ ] All commits pushed
+- [ ] No temp files in workspace root
+- [ ] All scripts/**.sh have shebang (already satisfied)
+- [ ] APT none pending
+- [ ] Systemd linger enabled
+- [ ] No stale idea branches
+
+---
+
+**Prepared by:** mewmew (workspace builder)  
+**Next update:** After Phase 3 execution
