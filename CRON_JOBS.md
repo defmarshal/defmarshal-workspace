@@ -159,6 +159,13 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/evolver-agent.log`
    - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
 
+27. **dashboard-data-updater**
+   - **Schedule**: Every 5 minutes (`*/5 * * * *`) in Asia/Bangkok
+   - **Payload**: agentTurn executing `python3 /home/ubuntu/.openclaw/workspace/scripts/refresh-dashboard-data.py >> /home/ubuntu/.openclaw/workspace/memory/dashboard-data.log 2>&1`
+   - **Log**: `memory/dashboard-data.log`
+   - **Description**: Refreshes `apps/dashboard/data.json` with latest system stats, agent sessions, recent commits, cron jobs, heartbeat state, and supervisor log tail. Provides real-time data for the web dashboard.
+   - **Status**: Enabled (fixed 2026-03-02 - previously had syntax error)
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

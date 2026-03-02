@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Refresh dashboard data.json with latest info."""
 import json, time, subprocess, os, glob, re, sys
-from datetime import datetime
+from datetime import datetime, UTC
 
 WORKSPACE = "/home/ubuntu/.openclaw/workspace"
 
@@ -289,11 +289,11 @@ def get_content_stats():
     if os.path.exists(content_dir):
         md_files = glob.glob(f"{content_dir}/**/*.md", recursive=True)
         total = len(md_files)
-        today_str = datetime.utcnow().strftime('%Y-%m-%d')
+        today_str = datetime.now(UTC).strftime('%Y-%m-%d')
         for fpath in md_files:
             try:
                 mtime = os.path.getmtime(fpath)
-                if datetime.utcfromtimestamp(mtime).strftime('%Y-%m-%d') == today_str:
+                if datetime.fromtimestamp(mtime, UTC).strftime('%Y-%m-%d') == today_str:
                     today += 1
             except:
                 pass
