@@ -1,17 +1,9 @@
 {
   "lastChecks": {
-    "timestamp": "2026-02-27T11:30:00Z",
-    "supervisor_run": "OK",
-    "health": "ok",
-    "cron": "all_jobs_running",
-    "memory": "clean (26f/302c, reindex 3.4d)",
-    "git_status": "clean",
-    "downloads": "aria2_active (17 files, 5.7GB)",
-    "disk_usage": "71%",
-    "apt_updates": 0,
-    "gateway": "running",
-    "weather": "timeout (wttr.in unreachable)",
-    "notes": "All core systems healthy. Supervisor-cron executed successfully with all green. No issues detected."
-  }
-}[Sun 2026-03-01 08:00 UTC] HEARTBEAT_OK - agents verified (meta-supervisor running, workspace-builder validated), no alerts needed
-HEARTBEAT_OK - agents verified (meta-supervisor PID 1121739, workspace-builder validated 2026-03-01 05:14 UTC), disk 79% (<85%), no alerts needed
+    "email": 1740892800,
+    "calendar": 1740892800,
+    "weather": 1740892800,
+    "health": 1740892800
+  },
+  "updatedAt": 1740892800
+}
