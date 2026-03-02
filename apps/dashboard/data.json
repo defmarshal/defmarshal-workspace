@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-02T22:50:02Z",
+  "generated_at": "2026-03-02T22:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,15 +9,14 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "7.7G",
-    "load_avg": "0.94 0.93 0.93",
+    "load_avg": "0.85 0.96 0.95",
     "mem_used": "3.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 9 hours, 10 minutes",
+    "uptime": "1 week, 4 days, 9 hours, 15 minutes",
     "disk_history": [
       78,
       78,
       78,
-      78,
       79,
       79,
       79,
@@ -32,6 +31,7 @@
       79,
       79,
       79,
+      80,
       80,
       80,
       80,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "557253f3",
+      "sha": "2ad7fcb8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "e6cd0108",
+      "sha": "557253f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "679a9e35",
+      "sha": "e6cd0108",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "1727c3b4",
+      "sha": "679a9e35",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "26cb113f",
-      "agent": "docs",
-      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
-      "time": "22 minutes ago"
-    },
-    {
-      "sha": "a16189b3",
-      "agent": "docs",
-      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
-      "time": "23 minutes ago"
-    },
-    {
-      "sha": "d44b7727",
+      "sha": "1727c3b4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "54055fcc",
+      "sha": "26cb113f",
+      "agent": "docs",
+      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
+      "time": "27 minutes ago"
+    },
+    {
+      "sha": "a16189b3",
+      "agent": "docs",
+      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
+      "time": "28 minutes ago"
+    },
+    {
+      "sha": "d44b7727",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "c335b162",
+      "sha": "54055fcc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "900073fd",
+      "sha": "c335b162",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "1b69a6b5",
+      "sha": "900073fd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "8f9d9579",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-02_2203)",
-      "time": "46 minutes ago"
-    },
-    {
-      "sha": "a082d1f9",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-02)",
-      "time": "50 minutes ago"
-    },
-    {
-      "sha": "00b8fa4c",
+      "sha": "1b69a6b5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "78044cac",
-      "agent": "misc",
-      "message": "fix(dashboard): rename latest_title to latest in content_stats",
-      "time": "53 minutes ago"
+      "sha": "8f9d9579",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-02_2203)",
+      "time": "51 minutes ago"
+    },
+    {
+      "sha": "a082d1f9",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-02)",
+      "time": "55 minutes ago"
+    },
+    {
+      "sha": "00b8fa4c",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
@@ -472,10 +472,10 @@
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772491501363,
-      "next_run": 1772491800000,
+      "last_run": 1772491800009,
+      "next_run": 1772492100000,
       "last_status": "ok",
-      "last_duration_ms": 33196,
+      "last_duration_ms": 66309,
       "consecutive_errors": 0
     },
     {
@@ -664,10 +664,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772491739036,
-      "next_run": 1772491859036,
+      "last_run": 1772491986991,
+      "next_run": 1772492106991,
       "last_status": "ok",
-      "last_duration_ms": 2275,
+      "last_duration_ms": 2208,
       "consecutive_errors": 0
     },
     {
