@@ -249,7 +249,7 @@ tr:hover td {
   left: 24px;
   top: auto;
   transform: none;
-  z-index: 1000;
+  z-index: 10000!
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -354,11 +354,27 @@ tr:hover td {
   color: var(--bg);
 }
 
-/* Mobile: hide mascot to prevent overlap */
-@media (max-width: 768px) {
+
+/* Mobile: hide mascot on very small screens only (<480px) */
+/* PWA standalone mode: always show mascot regardless of width */
+@media (max-width: 480px) and (display-mode: browser) {
   .mascot-sidebar {
     display: none !important;
   }
+}
+
+/* iOS Safari standalone detection (doesn't support display-mode) */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 480px) {
+    .mascot-sidebar {
+      display: none !important;
+    }
+  }
+}
+
+/* Ensure mascot is above PWA UI */
+.mascot-sidebar {
+  z-index: 10000 !important;
 }
 
 /* Collapsed state */
