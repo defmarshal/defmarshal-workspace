@@ -1,8 +1,8 @@
-# Workspace Builder Task Plan — 2026-03-02 03:02 UTC
+# Workspace Builder Task Plan — 2026-03-02 05:02 UTC
 
-**Session:** To be assigned (likely same as previous: `23dad379-21ad-4f7a-8c68-528f98203a33`)
+**Session:** Assigned at runtime (will reuse or create new entry in active-tasks.md)
 
-**Objective:** Complete routine maintenance cycle with full validation and commit.
+**Objective:** Routine maintenance cycle: commit disk history, refresh planning docs, validate constraints, close loop.
 
 ---
 
@@ -10,51 +10,53 @@
 - [x] Read AGENTS.md, USER.md, active-tasks.md, MEMORY.md
 - [x] Read today's and yesterday's daily logs (memory/2026-03-02.md, memory/2026-03-01.md)
 - [x] Check git status (found: M memory/disk-history.json)
-- [x] Run `quick health` (green)
-- [x] Document findings in `findings.md`
-- [ ] Register this session in active-tasks.md (status: running)
+- [x] Run `quick health` (green: disk 78%, gateway healthy, memory clean)
+- [x] Check disk trends (monitor: 78% → 81%, approaching 85% alert threshold)
+- [x] Validate no critical issues
+- [ ] Register this session in active-tasks.md (status: running, with session ID)
 
-**Acceptance:** findings.md populated with current state; active-tasks updated with running entry and session ID.
+**Acceptance:** Current state documented; session registered.
 
 ---
 
 ## Phase 2: Implementation
 - [ ] Commit `memory/disk-history.json` with message `build: update disk history metrics`
-- [ ] Create/refresh `task_plan.md`, `findings.md`, `progress.md` (session docs)
+- [ ] Create/refresh planning docs (task_plan.md, findings.md, progress.md) to reflect current cycle
 - [ ] Commit planning docs with message `build: workspace-builder planning docs and session registration`
 - [ ] Push all commits to origin
+- [ ] Update active-tasks.md entry to running → validated
 
-**Acceptance:** All substantive changes committed; planning docs created; git clean.
+**Acceptance:** All changes committed; git clean; active-tasks updated.
 
 ---
 
 ## Phase 3: Validation
-- [ ] Run `quick health` and verify green status
-- [ ] Check active-tasks.md size (<2KB)
-- [ ] Check MEMORY.md lines (≤35)
-- [ ] Verify memory reindex freshness (≤2 days)
-- [ ] Confirm no temp files
-- [ ] Verify all scripts have shebang
-- [ ] Confirm APT none pending
-- [ ] Check branch hygiene (0 stale idea branches)
-- [ ] Validate downloads count reasonable (<25 visible, <10GB total) — currently 31/7.6GB OK
+- [ ] Run `quick health` — verify green
+- [ ] Verify active-tasks.md size <2KB
+- [ ] Verify MEMORY.md ≤35 lines
+- [ ] Verify memory reindex ≤2 days old
+- [ ] Check for temp files (none)
+- [ ] Verify all .sh scripts have shebang
+- [ ] Confirm APT updates: none pending
+- [ ] Check branch hygiene: 0 stale idea branches
+- [ ] Verify downloads count/size within thresholds (<25 visible files, <10GB total) — currently 31/7.6GB OK
 
 **Acceptance:** All 9 constraints pass.
 
 ---
 
 ## Phase 4: Close the Loop
-- [ ] Update active-tasks.md entry: set status `validated` and add verification metrics bullet list
-- [ ] Prune any stale validated entries to maintain <2KB
 - [ ] Append summary to today's daily log (memory/2026-03-02.md)
-- [ ] Ensure git status clean & pushed
-- [ ] Confirm no leftover temp files
+- [ ] Prune stale validated entries from active-tasks.md to keep <2KB
+- [ ] Final git status check (clean & pushed)
+- [ ] Ensure no leftover temp files or uncommitted artifacts
 
-**Acceptance:** active-tasks validated, daily log updated, workspace synchronized.
+**Acceptance:** Workspace synchronized; session closed.
 
 ---
 
 ## Notes
-- Keep changes small but meaningful.
-- Follow the "push-pending-first" pattern: commit and push before marking validated.
-- Do not proceed to next phase if any constraint fails; debug first.
+- Follow push-pending-first pattern: commit before marking validated.
+- Keep changes minimal but meaningful.
+- Monitor disk usage trend; consider cleanup if approaching 85%.
+- All planning docs must be committed — no untracked artifacts.
