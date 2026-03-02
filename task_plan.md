@@ -1,58 +1,60 @@
-# Workspace Builder Task Plan
+# Workspace Builder Task Plan — 2026-03-02 03:02 UTC
 
-**Session ID:** 23dad379-21ad-4f7a-8c68-528f98203a33  
-**Started:** 2026-03-02 01:02 UTC  
-**Goal:** Strategic workspace improvements and maintenance
+**Session:** To be assigned (likely same as previous: `23dad379-21ad-4f7a-8c68-528f98203a33`)
 
----
-
-## Phase 1: Analysis
-
-### Status Checks
-- [x] Read active-tasks.md - found previous session validated (23:00 UTC Mar 1)
-- [x] Read MEMORY.md - memory index 32 lines, up-to-date
-- [x] Read daily logs - 2026-03-01 log comprehensive
-- [x] Run `./quick health` - green (disk 78%, memory clean, reindex 1.7d)
-- [x] Run `./quick validate` - 2 warnings (git dirty, agent logs stale)
-- [x] Check git status - 2 modified files:
-  - `apps/dashboard/index.html` - branding update (ClawDash→MewDash)
-  - `memory/disk-history.json` - metrics accumulation
-
-### Findings
-1. **Git dirty state** - legitimate changes need committing:
-   - index.html: completes partially-committed rebranding (meta tags already MewDash, h1 now consistent)
-   - disk-history.json: new measurements since last commit
-2. **Gateway RPC** - transient warning; `gateway-status` shows reachable
-3. **Agent logs** - stale warning likely due to recent log rotation, not agent failure
-4. **Constraints** - all satisfied: active-tasks <2KB, MEMORY.md ≤35 lines, etc.
-5. **No immediate cleanup** - downloads 31 files/7.6GB (<25/10GB thresholds)
+**Objective:** Complete routine maintenance cycle with full validation and commit.
 
 ---
 
-## Phase 2: Planning
+## Phase 1: Analysis & Setup
+- [x] Read AGENTS.md, USER.md, active-tasks.md, MEMORY.md
+- [x] Read today's and yesterday's daily logs (memory/2026-03-02.md, memory/2026-03-01.md)
+- [x] Check git status (found: M memory/disk-history.json)
+- [x] Run `quick health` (green)
+- [x] Document findings in `findings.md`
+- [ ] Register this session in active-tasks.md (status: running)
 
-### Tasks (in order)
-
-1. **Create planning docs** (task_plan.md, findings.md, progress.md) - DONE in this file
-2. **Update active-tasks.md** - add running entry for this session
-3. **Commit pending changes** with `build:` prefix:
-   - Commit disk-history.json update
-   - Commit index.html branding fix (consistency)
-   - Commit planning docs + active-tasks update
-4. **Run validation suite** - confirm all constraints pass
-5. **Update active-tasks.md** - mark validated with verification metrics
-6. **Append summary to daily log** - memory/2026-03-02.md (create if needed)
-7. **Push commits** to origin/master
+**Acceptance:** findings.md populated with current state; active-tasks updated with running entry and session ID.
 
 ---
 
-## Phase 3: Contingencies
+## Phase 2: Implementation
+- [ ] Commit `memory/disk-history.json` with message `build: update disk history metrics`
+- [ ] Create/refresh `task_plan.md`, `findings.md`, `progress.md` (session docs)
+- [ ] Commit planning docs with message `build: workspace-builder planning docs and session registration`
+- [ ] Push all commits to origin
 
-- If validation fails: debug specific constraint, fix, re-validate
-- If git push fails: check network/auth, retry
-- If disk usage exceeds 80%: consider cleanup-downloads or cleanup-backups
-- If memory reindex >3d stale: consider manual reindex
+**Acceptance:** All substantive changes committed; planning docs created; git clean.
 
 ---
 
-**Strategy:** Small, meaningful changes. Keep all outputs versioned. Close the loop completely.
+## Phase 3: Validation
+- [ ] Run `quick health` and verify green status
+- [ ] Check active-tasks.md size (<2KB)
+- [ ] Check MEMORY.md lines (≤35)
+- [ ] Verify memory reindex freshness (≤2 days)
+- [ ] Confirm no temp files
+- [ ] Verify all scripts have shebang
+- [ ] Confirm APT none pending
+- [ ] Check branch hygiene (0 stale idea branches)
+- [ ] Validate downloads count reasonable (<25 visible, <10GB total) — currently 31/7.6GB OK
+
+**Acceptance:** All 9 constraints pass.
+
+---
+
+## Phase 4: Close the Loop
+- [ ] Update active-tasks.md entry: set status `validated` and add verification metrics bullet list
+- [ ] Prune any stale validated entries to maintain <2KB
+- [ ] Append summary to today's daily log (memory/2026-03-02.md)
+- [ ] Ensure git status clean & pushed
+- [ ] Confirm no leftover temp files
+
+**Acceptance:** active-tasks validated, daily log updated, workspace synchronized.
+
+---
+
+## Notes
+- Keep changes small but meaningful.
+- Follow the "push-pending-first" pattern: commit and push before marking validated.
+- Do not proceed to next phase if any constraint fails; debug first.
