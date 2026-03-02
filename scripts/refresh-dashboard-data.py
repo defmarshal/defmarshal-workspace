@@ -70,19 +70,49 @@ def get_supervisor_log_tail(lines=20):
     except:
         return []
 
+def get_outputs(limit=30):
+    """Return recent output files (reports, content, research) with timestamps."""
+    outputs = []
+    # Scan reports/
+    for root, dirs, files in os.walk(f"{WORKSPACE}/reports"):
+        for fn in files:
+            if fn.endswith('.md'):
+                p = os.path.join(root, fn)
+                try:
+                    st = os.stat(p)
+                    with open(p, 'r', encoding='utf-8', errors='ignore') as f:
+                        first = f.readline().strip().lstrip('#').strip()[:80]
+                    outputs.append({
+                        'ts': int(st.st_mtime * 1000),
+                        'title': first or fn,
+                        'file': os.path.relpath(p, WORKSPACE),
+                        'size': st.st_size
+                    })
+                except:
+                    pass
+    # Scan content/
+    for root, dirs, files in os.walk(f"{WORKSPACE}/content"):
+        for fn in files:
+            if fn.endswith('.md'):
+                p = os.path.join(root, fn)
+                try:
+                    st = os.stat(p)
+                    with open(p, 'r', encoding='utf-8', errors='ignore') as f:
+                        first = f.readline().strip().lstrip('#').strip()[:80]
+                    outputs.append({
+                        'ts': int(st.st_mtime * 1000),
+                        'title': first or fn,
+                        'file': os.path.relpath(p, WORKSPACE),
+                        'size': st.st_size
+                    })
+                except:
+                    pass
+    outputs.sort(key=lambda x: x['ts'], reverse=True)
+    return outputs[:limit]
+
 def get_agent_outputs():
-    # Return last few lines from key agent logs
-    logs = {}
-    agents = ['dev-agent','content-agent','research-agent','agent-manager','meta-agent','game-enhancer']
-    for name in agents:
-        logfile = f"{WORKSPACE}/memory/{name}.log"
-        if os.path.exists(logfile):
-            with open(logfile) as f:
-                lines = f.readlines()
-            logs[name] = "".join(lines[-50:])
-        else:
-            logs[name] = ""
-    return logs
+    # Backwards compatibility: return outputs array (recent content/reports)
+    return get_outputs()
 
 def get_cron_jobs():
     # Use openclaw cron list JSON

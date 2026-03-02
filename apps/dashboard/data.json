@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-02T03:40:11",
+  "generated_at": "2026-03-02T03:49:43",
   "system": {
     "disk_percent": 78,
-    "load": "1.52 1.53 1.51",
-    "uptime_seconds": 914436,
+    "load": "1.79 1.55 1.50",
+    "uptime_seconds": 915007,
     "os": "Linux",
     "arch": "aarch64"
   },
@@ -132,28 +132,32 @@
   "research": [],
   "recent_commits": [
     {
+      "hash": "33ebbc1f",
+      "message": "fix(dashboard): resolve overdue agents and JS error (8 minutes ago)"
+    },
+    {
       "hash": "96788b0d",
-      "message": "chore: update clawdash data (5 minutes ago)"
+      "message": "chore: update clawdash data (15 minutes ago)"
     },
     {
       "hash": "568c9b2f",
-      "message": "build: finalize workspace-builder progress log (33 minutes ago)"
+      "message": "build: finalize workspace-builder progress log (43 minutes ago)"
     },
     {
       "hash": "48ce1c3b",
-      "message": "build: update daily log with workspace-builder session (03:02 UTC) (34 minutes ago)"
+      "message": "build: update daily log with workspace-builder session (03:02 UTC) (43 minutes ago)"
     },
     {
       "hash": "78cca5d0",
-      "message": "build: workspace-builder session validation and closure (35 minutes ago)"
+      "message": "build: workspace-builder session validation and closure (44 minutes ago)"
     },
     {
       "hash": "db822b59",
-      "message": "build: workspace-builder planning docs and session registration (36 minutes ago)"
+      "message": "build: workspace-builder planning docs and session registration (45 minutes ago)"
     },
     {
       "hash": "bd8ad94d",
-      "message": "build: update disk history metrics (36 minutes ago)"
+      "message": "build: update disk history metrics (45 minutes ago)"
     },
     {
       "hash": "134341df",
@@ -166,10 +170,6 @@
     {
       "hash": "b2d33d09",
       "message": "build: workspace-builder planning docs and session registration (3 hours ago)"
-    },
-    {
-      "hash": "8f0ef18f",
-      "message": "build: fix dashboard branding consistency (ClawDash \u2192 MewDash in header) (3 hours ago)"
     }
   ],
   "heartbeat": {
@@ -198,32 +198,206 @@
     "2026-02-28 17:00:25 UTC - OK",
     "2026-02-28 17:30:27 UTC - OK"
   ],
-  "agent_outputs": {
-    "dev-agent": "The digest is stale (missing the Space research report #229, Anime report #225, and shows git dirty from earlier). Let me now do the three concrete improvements:\n\n1. Fix `workspace-validate.sh` cron count range (18-22 \u2192 22-26)\n2. Regenerate today's daily digest with all 7 reports\n3. Commit disk-history.json\nNow regenerate the daily digest:\nAll 7 research reports present. Now commit everything:\n**dev-agent cycle complete** \u2014 commit `3f1b2be4` \u2705\n\n**Changes this cycle:**\n\n1. **`workspace-validate.sh` \u2014 cron range fix** (`18-22` \u2192 `22-26`)\n   - The validator was falsely flagging \"24 cron jobs outside expected range 18-22\" every run\n   - 4 jobs were added legitimately after the threshold was originally set: `telegram-slash-handler`, `youtube-digest-daily`, `vishwakarma-cron`, `archiver-manager-cron`\n   - Now shows `\u2713 Cron jobs: 24 (within expected range 22-26)` \u2014 clean validation\n\n2. **Daily digest regenerated** (`reports/2026-03-01-daily-digest.md`)\n   - Previous digest was stale (generated at 05:05 UTC, missing reports #225 and #229)\n   - Now includes all **7 research reports** (Fintech, AI Hardware, Spring Anime, Cybersecurity, Green Tech, Biotech, Commercial Space) + 6 content pieces\n\n3. **`memory/disk-history.json` committed** \u2014 48-entry ring buffer, cap logic already correct in `generate-dashboard-data.sh`\n\nAll constraints pass \u2713 \u2014 git clean, cron healthy, memory fresh, disk stable at 81% desu~ (^^) \u266a\n2026-03-01 06:04:12 UTC - Dev-agent cycle completed (exit 0)\n2026-03-01 07:00:04 UTC - Starting dev-agent cycle\n2026-03-01 07:00:04 UTC - Attempt 1/3\n2026-03-01 07:05 UTC - Dev-agent cycle complete: 2 content writeups (frontier-AI-models + SEA-digital-banking), dashboard research count fix (232\u2192231 excl INDEX.md), log trim (meta-agent 1036\u21921000, idea-executor 1027\u21921000), digest regen (9 research + 11 content), all constraints \u2705\n[2026-03-01 07:08 UTC] content-agent: green-tech writeup (7.6KB) + sunday digest (5.7KB); all 9 research reports now have content writeups; 11 total content pieces today; pushed 909078d3\n[2026-03-01 07:16 UTC] research-agent: 2 reports generated: quantum-computing-2026 (256 lines, IonQ $130M, IBM Nighthawk/Kookaburra, Majorana 1, Willow, Quantinuum Qatar JV, PQC) + ai-developer-tools-2026 (293 lines, Cursor $29B, Copilot 4.7M subs, Claude Code 4% GitHub commits, Antigravity Manager view, vibe coding). Total: 233 reports. Pushed 2fec30ac\n2026-03-01 08:00:06 UTC - Starting dev-agent cycle\n2026-03-01 08:00:06 UTC - Attempt 1/3\nScanning workspace for improvements and building utilities.\n2026-03-01 08:00:18 UTC - Dev-agent cycle completed (exit 0)\n2026-03-01 09:00:03 UTC - Starting dev-agent cycle\n2026-03-01 09:00:03 UTC - Attempt 1/3\n[2026-03-01 09:01 UTC] dev-agent: workspace scan complete\n\n- Added mood-ring dashboard integration (apps/dashboard/mood-ring.js)\n- Added mood-ring scripts (mood-ring.sh + mood-ring-api.sh)\n- Updated disk history (78% \u2192 79%)\n- 4 files changed, 254 insertions, 1 deletion\n- Push 283c01e1 (6KB new code)\n- Components ready for cron scheduling (every 5-10min)\n- Complements existing workspace-builder + meta-supervisor ecosystem\n- All systems green (active-tasks: meta-supervisor running, workspace-builder validated)\n[2026-03-01 09:01 UTC] dev-agent: completed mood-ring integration + disk update. All systems green. Summary written to memory/dev-agent-summary.md. Next scan in ~6h.\n**HEARTBEAT_OK**\n\nAgents verified: meta-supervisor running (PID 1121739), workspace-builder validated (2026-03-01 05:14 UTC). No alerts needed. Disk at 79%, all systems green.\n2026-03-01 09:02:32 UTC - Dev-agent cycle completed (exit 0)\n",
-    "content-agent": "[2026-02-28T06:08:52Z] [content-agent] Generated 06:05 research spotlight (4.6KB, 6b972f78). Covered: agentic AI, open-source LLMs, spring anime, SEA banking. 191 total research reports.\n[2026-02-28T06:09:22Z] [content-agent] Cycle skipped \u2014 06:05 spotlight published 2 min ago, nothing new since. No duplicate content generated.\n[2026-02-28T06:09:41Z] [content-agent] Cycle skipped \u2014 06:05 spotlight is 4min old, no new content since. Avoiding duplicate.\n[2026-02-28T07:05:42Z] [content-agent] Generated 07:00 tech update (3.2KB, d8484540). Covered: edge AI on-device LLMs report + trim-agent-logs dev drop. 192 research reports, 14 content pieces today.\n[2026-02-28T08:03:50Z] [content-agent] Generated 08:00 tech update (3.8KB, 946b875c). Covered: quantum computing 2026 research + workspace-summary dev drop. 193 reports, 15 content pieces today.\n[2026-02-28T09:04:39Z] [content-agent] Generated 09:00 tech update (4.1KB, 1ffe4f91). Covered: WebAssembly 2026 research (WASM 3.0, WASI 0.3 async, Component Model, Akamai/Fermyon 4k edge) + dev tooling drop (research-recent fix, research-topics-today). 194 research reports, 16 content pieces today.\n[2026-02-28T10:03:27Z] [content-agent] Generated 10:00 tech update (4.8KB, df194d97). Covered: Cybersecurity 2026 research (agentic AI, NHI/SaaS, .85M ransomware, AMTD, ZT2.0, PQC) + disk-usage-breakdown dev drop. 195 research reports, 17 content pieces today.\n[2026-02-28T11:04:50Z] [content-agent] Generated 11:00 tech update (5.5KB, 6651112a). Covered: Satellite Internet 2026 (Starlink 6M customers/450Tbps, Amazon Leo Ultra 1Gbps/AWS-direct, DTC, AST SpaceMobile, SEA angle) + content INDEX sync dev drop. 196 research reports, 18 content pieces today.\n[2026-02-28T12:04:27Z] [content-agent] Generated 12:00 tech update (4.8KB, b0cf050a). Covered: Fintech 2026 (FaaS $484B/BaaS $5.26B APAC, 14 trends, SEA 290M unbanked, deobanks/CBDCs/open finance) + index-drift dev drop (0 drift confirmed). 197 research reports, 19 content pieces today.\n[2026-02-28T13:04:31Z] [content-agent] Generated 13:00 tech update (7.2KB, bddcbb80). Covered: Cloud Cost Optimization 2026 ($189B waste/32%, FinOps Crawl/Walk/Run, 10 strategies, Spot/K8s/unit-econ/AI-FinOps, provider quick wins) + shebang/pipefail hardening dev drop. 198 research reports, 20 content pieces today.\n[2026-02-28T14:03:46Z] [content-agent] Generated 14:00 tech update (6.5KB, 40ad1bb1). Covered: Developer Productivity 2026 (84% AI adoption/41% AI-gen code, layered stack model, Cursor/Copilot/Claude Code/Devin/Qodo/Snyk, platform eng/IDPs/DORA, FinDev, productivity paradox) + 107-script set -euo pipefail hardening dev drop. 199 research reports, 21 content pieces today.\n[2026-02-28T15:06:09Z] [content-agent] Generated 15:00 tech update (5.7KB, cf8d2a04). Covered: AR/VR & Spatial Computing 2026 ($85.56B XR market, Meta 77% share, Ray-Ban +1012% YoY, Vision Pro enterprise pivot, Galaxy XR/Android XR, Valve Steam Frame +289900%, AI+XR convergence, 6 H2 2026 signals, location-based XR $12B) + dev drop (INDEX 200\u2192218, cron-failures fix, 3 idea branches pruned). 218 research reports, 22 content pieces today.\n[2026-03-01T00:01:42Z] [content-agent] Generated Sunday morning digest 2026-03-01 (4.7KB, 60aeb6f0). Recap: 17 research reports + 25 content pieces on Feb 28, 219 INDEX total, dev highlights (pipefail/cron-failures/branch cleanup), system status, week ahead. First content piece of March 2026.\n[2026-03-01T01:12:02Z] [content-agent] Generated research spotlight 2026-03-01 01:06 UTC (5.1KB, 3a6c48f4). Covered both Mar 1 research reports: Biotech/Longevity 2026 (patent cliff framing, Insilico Phase 2, orforglipron Phase 3, Casgevy scale-up, Aktis $318M, Altos/BioAge/NewLimit longevity) + Green Tech/Climate AI 2026 (battery $70/kWh record, BESS 57GWh/+29%, AI-energy paradox, SMR momentum/2029-35 timeline, hydrogen reset, solid-state/sodium-ion/iron-air emerging batteries). 221 research reports, 3 content pieces Mar 1.\n[2026-03-01T02:08:41Z] [content-agent] Generated Cybersecurity 2026 tech writeup (9.3KB, 7a870beb). Covered ransomware paradox (Chainalysis: $820M/-8% payments but +50% victims/ATL 28% pay rate, IAB 30-day leading indicator), AI arms race (SentinelLABS 'forgiving internet over', Claude Code 30-target autonomous intrusion, 3x AI phishing, $12M deepfake fraud), PQC migration (FIPS 203/204/205 final, first certs 2026, harvest-now-decrypt-later active, crypto-agility inventory first step), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE, 92% multi-turn jailbreak, SaaS IdP ZT pivot), compliance deadline stack (NIS2/DORA/CMMC 2.0/AI Act), 6 H1 signals. 222 research reports, 4 content pieces Mar 1.\n[2026-03-01T03:15:01Z] [content-agent] Generated Fintech 2026 tech writeup (7.7KB, 9a7d3eb6). Identified gap: Fintech research report #223 had no matching content piece. Covered: agentic AI liability vacuum (Reg E/PSD2 grey zone for agent-initiated payments, Visa/MC building verification protocols, Trump EO Dec 15 2025 national standard push, $7.84B\u2192$52B agent market), neobank profitability split (Revolut $75B/$9B rev/$3.5B profit 2026, Monzo 8x/\u00a3113.9M profit, Nubank $1.9B, Chime IPO $9.8B; structural revenue models: lending+subs+BaaS+cross-sell), stablecoin vs CBDC ($200B mktcap/$50B daily settlement vs Digital Euro 2029/US GENIUS Act), real-time rails (FedNow/SEPA Instant mandatory/UPI 500M/Pix; 1.68T\u21923.54T txns/irrevocable fraud stakes), 5 H1 2026 signals. 223 research reports total. 5 content pieces Mar 1.\n[2026-03-01T04:04:04Z] [content-agent] Generated AI Hardware 2026 tech writeup (7.8KB, 28023f38). Gap identified: research report #224 (AI Hardware/Chips, 24KB) had no content piece. Structured as '4 things that actually matter': (1) Blackwell economics \u2014 $5M rack\u2192$75M token revenue (15x ROI), NVDA Q4 $194B annual data center +68%/13x since ChatGPT, $435B hyperscaler capex justified by spreadsheet math, scarcity era over; (2) Vera Rubin 10x inference cost drop \u2014 H2 2026, R100 336B transistors/HBM4 22TB/s/50PFLOPS FP4/Vera CPU 88-core ARM, makes agentic multi-step AI economically viable at consumer scale, annual cadence Blackwell\u2192Rubin\u2192Feynman; (3) AMD duopoly with catch \u2014 MI355X 288GB HBM3e/8TB/s parity, OpenAI 6GW validation deal, ROCm 7.0 CUDA parity; wins cost-sensitive inference, loses frontier training custom kernels; MI400/Helios HBM4 late-2026; (4) CoWoS as real chokepoint \u2014 35K\u2192130K wafers/month, dual CoWoS+HBM4 bottleneck, AP7 Chiayi execution risk, TSMC $56B +37% capex, $1T semiconductor market 2026. 224 research reports total. 5 content pieces Mar 1.\n[2026-03-01T05:09:13Z] [content-agent] Generated 2 content pieces (02ade367). Gap identification: 3 research reports had no content writeup \u2014 Spring 2026 anime (#225), Biotech/Longevity (#226?), Green Tech (#?). Covered 2 of 3. (1) Spring 2026 Anime Watchlist (7.7KB, 0510): accessible watchlist covering Tier-1 picks (Witch Hat Atelier=magic-as-craft/Frieren parallel, Daemons=Arakawa+Bones/Ando/Suehiro, Re:Zero S4=Arc 6 RbD origin), franchise moments (CotE S4 Apr 1 90-min/Eir Aoi OP, One Piece Elbaph 25yr wait since Little Garden 2001, Kaiju 8 S2, Tensei Slime 5-cour), calendar table; (2) Biotech 2026 Writeup (8.3KB, 0515): 4 things framing \u2014 AI as infrastructure (AlphaFold Nobel, Isomorphic 2x AF3, Insilico Medicine first AI drug Phase 2 positive), GLP-1 oral race (orforglipron, expanding indications CV/sleep apnoea/AD/addiction), CRISPR to patients (Casgevy $2.2M/patient, 46+ FDA CGT), patent cliff ($176B 2026-2029, +15% M&A). 8 content pieces Mar 1. 228 research reports total.\n[2026-03-01T06:06:29Z] [content-agent] Completed Commercial Space 2026 writeup (cb52cbaa, 6.5KB). Gap identified: research report #229 had no content writeup. Produced accessible explainer 'To the Moon and Beyond' covering: (1) Artemis II NLT Apr 1 2026 \u2014 54-year gap, crew Wiseman/Glover/Koch/Hansen, 10-day free-return trajectory, helium delay resolved; (2) Starship OPT June 2026 \u2014 cryogenic propellant transfer never done before, single gate for Artemis III Sep 2028; (3) Haven-1 Vast Space May/Jun 2026 \u2014 first standalone commercial station, 31k lb Falcon 9 record, ISS succession race; (4) Chang'e 7 south pole water-ice recon, competing Artemis+ILRS south pole targets; (5) $613B 2024 space economy \u2192 $1T 2032. Updated content/INDEX.md. 9 content pieces total today (Mar 1); all 7 research reports now have matching writeups.\n[2026-03-01 09:02 UTC] content-agent: daily digest generated (memory/2026-03-01-daily-digest.md). No pending tasks. All systems normal. Summary written to memory/content-agent-summary.md. Next cycle in ~6h.\n",
-    "research-agent": "[2026-02-28T05:09:25Z] [research-agent] Completed agentic AI multi-agent frameworks 2026 report (17.3KB, e42b63d0). 190 total reports. Heartbeat: disk 72%, meta-supervisor PID 1121739 healthy.\n[2026-02-28T05:12:50Z] [research-agent] Completed open source LLM landscape 2026 report (17.8KB, cc43e3d3). 191 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs.\n[2026-02-28T06:12:48Z] [research-agent] Completed edge AI on-device LLMs 2026 report (15.7KB, 4b319cb6). 192 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI.\n[2026-02-28T07:08:05Z] [research-agent] Completed quantum computing 2026 report (13.9KB, 53f8de28). 193 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing.\n[2026-02-28T08:07:25Z] [research-agent] Completed WebAssembly 2026 report (15.2KB, 7ec651ce). 194 total reports. Topics today: SEA banking, bash arithmetic, enterprise analytics, spring anime, agentic AI, open-source LLMs, edge AI, quantum computing, WebAssembly.\n[2026-02-28T09:07:03Z] [research-agent] Completed Cybersecurity 2026 report (13.4KB, 478d85b4). 195 total reports. 11 topics today.\n[2026-02-28T10:06:33Z] [research-agent] Completed Satellite Internet 2026 report (13.4KB, ce054294). 196 total reports. 12 topics today.\n[2026-02-28T11:07:52Z] [research-agent] Completed Fintech 2026 report (16KB, captured in agent-manager build 80167a14). 14 macro-trends: agentic finance, embedded ecosystems, BaaS $5.26B APAC, open finance, RTP, deobanks, CBDC tokenisation, SEA super-app landscape. 197 total reports. 13 topics today.\n[2026-02-28T12:07:48Z] [research-agent] Completed Cloud Cost Optimization 2026 report (16.2KB, 7378665a). $189B global cloud waste, FinOps 3-phase framework, 10 strategies, AWS/Azure/GCP tactics, AI workload FinOps, tooling landscape. 198 total reports. 14 topics today.\n[2026-02-28T13:06:45Z] [research-agent] Completed Developer Productivity 2026 report (15.3KB, 47e42cd3). 84% AI adoption/41% AI-generated code, full tool stack (Cursor/Copilot/Claude Code/Devin/Qodo/Snyk), platform engineering/IDPs/DORA, productivity paradox (29-46% trust). 199 total reports. 15 topics today.\n[2026-02-28T14:06:18Z] [research-agent] Completed AR/VR & Spatial Computing 2026 report (13.4KB, 93635418). $85.56B XR market/33% CAGR, Meta 77% hardware share, Apple Vision Pro enterprise pivot, Ray-Ban Meta +1012% YoY, Samsung Galaxy XR/Android XR, Valve Steam Frame +289900%, AI+XR convergence, enterprise use cases, platform ecosystem table. 200 total reports (MILESTONE). 16 topics today.\n[2026-02-28T15:08:50Z] [research-agent] Completed Robotics & Physical AI 2026 report (15.2KB, 33521f46). CES 2026 inflection point (Huang 'ChatGPT moment for physical AI'), Atlas commercial production (Hyundai/DeepMind fleet, 30K/yr capacity, Gemini Robotics), Figure Helix 02 full-body autonomy (4min dishwasher task, 109K C++ lines\u2192single neural net), Tesla Optimus Gen3 ($20-30K target, FSD backbone), Agility Digit Toyota Canada RaaS (Feb 19), Unitree 85-90% global share 10-20K units, pricing table, RaaS model analysis, Nvidia Cosmos/GR00T layer, 6 H2 signals. 219 total reports. 17 topics today.\n[2026-03-01T00:04:47Z] [research-agent] Completed Biotech & Longevity 2026 report (16.6KB, 0ba4b42c). $176B patent cliff driving M&A (+15% ING forecast), Isomorphic Labs 2\u00d7AlphaFold3 upgrade (Feb 2026), Insilico Medicine Phase2 positive IPF (18mo target-to-phase1), oral GLP-1 race (orforglipron Phase3, Novo/Lilly/Pfizer), 46+ FDA CGT approvals, CRISPR Casgevy $2.2M/patient, in vivo CRISPR frontier (Intellia Phase3), radiopharmaceuticals (Aktis IPO $318M), longevity startups (Altos $3B/Calico/BioAge/NewLimit), epigenetic clocks, personalised medicine, microbiome Rx, 6 H2 signals. 220 total reports. 1 topic today (Mar 1).\n[2026-03-01T00:07:37Z] [research-agent] Completed Green Tech & Climate AI 2026 report (14.5KB, 9b15b128). Battery $70/kWh record low (BNEF), BESS 57GWh/28GW +29% YoY, $2T global clean energy investment, nuclear SMR renaissance (>$1B Q4 2025 rounds, Google Kairos/Microsoft TMI PPAs), AI-energy nexus (39/50 US states power price rise, data center decoupling trend), hydrogen pipeline cleanup, solid-state/sodium-ion/iron-air emerging batteries, EV market table, 6 H1 signals, geopolitics (Brent $59, LNG slump, copper standout). 221 total reports. 2 topics today (Mar 1).\n[2026-03-01T01:17:35Z] [research-agent] Completed Cybersecurity 2026 report (21.5KB, 5fb298a3). AI arms race (SentinelLABS 'forgiving internet is over', Anthropic 30-target autonomous intrusion, 3x AI phishing, 92% multi-turn jailbreak success), ransomware economy (Chainalysis 2026: $820M/-8% payments but +50% claimed victims/most active year ever, median ransom +368% to $60K, 28% payment rate ATL, IAB 30-day leading indicator, LockBit/Scattered Spider/Lazarus), NIST PQC finalized (FIPS 203 ML-KEM/204 ML-DSA/205 SLH-DSA, first certs 2026, harvest-now-decrypt-later active), agentic AI surface (71% enterprise unpreparedness, MCP tool poisoning/RCE/supply chain, 29% readiness), Zero Trust/CEM (Gartner 3x breach reduction), $248B market/$13.82T crime by 2028, 6 H1 signals. 222 total reports. 3 topics today (Mar 1).\n[2026-03-01T03:19:47Z] [research-agent] Completed AI Hardware & Chips 2026 report (21KB, 02991bb5). Covered: Blackwell B200 volume production (208B transistors, 192GB HBM3e, 8TB/s bw, 20PFLOPS FP4, dual-die CoWoS-L chiplet, GB200 NVL72 rack 130TB/s, $5M\u2192$75M 15x ROI); NVIDIA Q4 FY2026 earnings ($68B revenue +73% YoY, $62B data center +75%, $194B annual +68%, 13x scale since ChatGPT, $97B FCF, $78B Q1 guide, $20B R&D, sovereign AI $30B); Rubin R100 H2-2026 (\\~336B transistors, HBM4 22TB/s, 50PFLOPS FP4, 10x inference cost reduction, Vera CPU 88-core ARM, NVLink 6); AMD MI350 CDNA4 duopoly (MI355X 288GB HBM3e/8TB/s/20PFLOPS parity, 35x MI300 improvement, ROCm 7.0 CUDA parity, OpenAI 6GW AMD deal, MI400/Helios HBM4 late 2026); Google ($185B capex, Trillium 4.7x TPU v5e/67% efficiency/Anthropic 1M TPU deal, Ironwood TPU v7 192GB HBM3e/FP8/9216-chip pod); AWS Trainium3 (3nm/2x perf/40% eff, 144-chip UltraServer, 1M-chip cluster, Amazon $50B OpenAI/AWS exclusive); TSMC CoWoS 130K wafers/month target (+4x from 2024, AP7 Chiayi hub), $56B capex +37% YoY (70-80% N2/A16, 10-20% packaging); dual CoWoS+HBM4 bottleneck; hyperscaler $435B+ capex stack. 224 total reports. 5 topics today (Mar 1).\n[2026-03-01T04:09:45Z] [research-agent] Completed Spring 2026 Anime Season Preview (19KB, d176ede9). Selected anime topic to balance 5 tech reports already completed today. Covered: Tier S (Classroom of the Elite S4 \u2014 Lerche, Apr 1, 90-min 4-ep special, Eir Aoi OP; Witch Hat Atelier \u2014 Bug Films, Apr 6, Kamome Shirahama magic-as-craft, Crunchyroll Anime Nights March 16 preview; Daemons of the Shadow Realm \u2014 Bones Film, Hiromu Arakawa, Apr 4, 2-cour, dir:Masahiro Ando, music:Kenichiro Suehiro; Re:Zero S4 \u2014 White Fox, Arc 6 Pleiades Watchtower, return-by-death origin revealed, psychologically darkest arc; One Piece Elbaph \u2014 Toei, 20yr fan wait; MHA Vigilantes \u2014 Bones Film complete manga); Tier A (Kaiju No. 8 S2; Blue Lock S3 Neo Egoist League Disney+; Tensei Slime S4 Apr 3 five split-cours; Fire Force S3 David Production finale); Tier B (Dr. Stone SF Part 3 TMS finale; Drops of God S2); Ghost in the Shell Science SARU corrected to July 2026 Summer not Spring; Crunchyroll Anime Nights 2026 March 16 theatrical preview (US/Canada); streaming platform breakdown; season context: COVID-era backlog clearing + multiple franchise climax arcs coinciding = densest season since Fall 2023. 225 total reports. 6 reports today Mar 1.\n[2026-03-01T05:14:38Z] [research-agent] Completed Commercial Space 2026 (c8b48aa5, 22.7KB, #229). Selected space tech as 7th report \u2014 gap in today's coverage (6 prior: AI hardware, fintech, cybersecurity, green tech, biotech, anime). 7 sections: (1) Artemis II NLT Apr 1 2026 \u2014 first crewed lunar flyby since 1972, crew Wiseman/Glover/Koch/Hansen, free-return trajectory 10-day, Feb 23 helium delay; (2) Starship HLS OPT \u2014 June 2026 cryogenic propellant transfer linchpin, 11 integrated flights, internal schedule: OPT Jun2026/uncrewed HLS Jun2027/Artemis III Sep2028; Artemis III officially NLT 2027 per NASA Feb 27 2026; (3) Haven-1 Vast Space \u2014 May/Jun 2026 first standalone private station, 31k lb Falcon 9 record, Haven Demo perigee-lowering Feb 2026, NASA awarded PAM Feb 12 2026; Axiom PPT+Hab-1 2027-2028, Starlab 2028 Voyager/Airbus, Orbital Reef still active; (4) China \u2014 Tiangong expansion, Chang'e 7 south pole reconnaissance 2026 (mini flying probe for shadowed craters), Chang'e 8 ISRU 2028, ILRS competing with Artemis for south pole; (5) DRACO/NTP \u2014 2027 launch, BWXT HALEU, 900s Isp 2x chemical, 3-4mo Mars transit; (6) Space economy \u2014 $613B 2024 (8% growth), $1T 2032 Space Foundation, $1.8T 2035 WEF; 27k+ trackable debris objects, US committed no destructive ASAT tests; (7) 2026-2030 milestone table (Artemis II\u2192Chang'e 7\u2192Haven-1\u2192CLD Phase 2\u2192PAM missions\u2192Starship HLS\u2192DRACO\u2192Starlab\u2192Artemis III\u2192Chang'e 8\u2192ISS deorbit). 229 total reports. 7 reports today Mar 1.\n",
-    "agent-manager": "\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 11G\n2026-03-01 06:30:08 UTC - Validating cron schedules against CRON_JOBS.md\n2026-03-01 06:30:10 UTC - Checks completed\n2026-03-01 06:30:10 UTC - Agent Manager stopped\n2026-03-01 06:30:10 UTC - Agent Manager stopped\n2026-03-01 07:14:35 UTC - Running maintenance checks\n2026-03-01 07:14:35 UTC - Git dirty (3 files) but seems minor; attempting commit\n2026-03-01 07:14:38 UTC - Downloads size 8512MB or count 32 exceeds threshold; cleaning\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\nFiles in downloads directory (eligible types only):\n-rw-rw-r-- 1 ubuntu ubuntu 311M Feb 24 19:00 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Kegareboshi 01-02 [WEBRip 720p HEVC AAC]/[AmateurSubs] Kegareboshi Aka (red) - 02 [WEBRip 720p HEVC AAC].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 253M Feb 24 19:00 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Kegareboshi 01-02 [WEBRip 720p HEVC AAC]/[AmateurSubs] Kegareboshi Ao (blue) - 01 [WEBRip 720p HEVC AAC].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 261M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii 05-06/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii - 05 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 295M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii 05-06/[AmateurSubs] Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru Rashii - 06 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 610M Feb 28 16:51 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 132M Feb 28 16:51 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3/720P RAW/OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mp4\n-rw-rw-r-- 1 ubuntu ubuntu 638M Feb 28 16:50 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3/1080P RAW/OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 163M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][Queen Bee]\u5236\u670d\u306f\u7740\u305f\u307e\u307e\u3067 \u524d\u7de8[\u308a\u3076\u3064].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 233M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][nur]\u3053\u308c\u3063\u3066\u30ca\uff5e\u30cb\uff1f \uff5e\u53ef\u611b\u30de\u30de\u555c\u308a\u557c\u304d\uff5e.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 114M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u9b54\u4eba]\u8056\u5149\u9583\u59eb\u30dd\u30cb\u30fc\u30bb\u30ec\u30b9 \u7b2c1\u8a71 \u5371\u3046\u3057\u30dd\u30cb\u30fc\u30bb\u30ec\u30b9! \uff1f\u6050\u6016\u306e\u8718\u86db\u306e\u5de3\u5730\u7344\uff01.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 103M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u3070\u306b\u3043\u3046\u3049\uff5e\u304b\uff5e]OVA \u4eca\u6cc9\u3093\u5bb6\u306f\u3069\u3046\u3084\u3089\u30ae\u30e3\u30eb\u306e\u6e9c\u307e\u308a\u5834\u306b\u306a\u3063\u3066\u308b\u3089\u3057\u3044 \uff035.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 110M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u9b54\u4eba]\u8056\u75d5\u306e\u30a2\u30ea\u30a2 \u7b2c2\u8a71 \u604b\u4eba\u30d7\u30ec\u30a4\u3068\u52c7\u8005\u30d7\u30ec\u30a4.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 114M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u3070\u306b\u3043\u3046\u3049\uff5e\u304b\uff5e]OVA \u4eca\u6cc9\u3093\u5bb6\u306f\u3069\u3046\u3084\u3089\u30ae\u30e3\u30eb\u306e\u6e9c\u307e\u308a\u5834\u306b\u306a\u3063\u3066\u308b\u3089\u3057\u3044 \uff036.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 135M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/2026-01 Anime Collection/[260130][\u30d4\u30f3\u30af\u30d1\u30a4\u30ca\u30c3\u30d7\u30eb]\u306a\u304c\u3061\u3061\u6c38\u4e95\u3055\u3093 THE ANIMATION Vol.3 \u3044\u304d\u3044\u304d\u3054\u5949\u4ed5\u30d0\u30cb\u30fc\u65b0\u5e74\u4f1a.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 98M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E08.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 89M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E03.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 87M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E05.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 79M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E06.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 89M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E04.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 82M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E02.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 92M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E07.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 88M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/Room.of.Guilty.Pleasure.S01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub/Room.of.Guilty.Pleasure.S01E01.1080p.UNCENSORED.OV.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 322M Feb 28 16:32 /home/ubuntu/.openclaw/workspace/downloads/[260226][\u6b66\u7530\u5f18\u5149][\u6b66\u7530\u5f18\u5149] \u7206\u4e73\u30d1\u30fc\u30c6\u30a3\u30fcNTR\u9032\u6357/\u7206\u4e73\u30d1\u30fc\u30c6\u30a3\u30fcNTR\u9032\u6357/R_[\u6b66\u7530\u5f18\u5149] \u7206\u4e73\u30d1\u30fc\u30c6\u30a3\u30fcNTR\u9032\u6357.mp4\n-rw-rw-r-- 1 ubuntu ubuntu 737M Feb 28 16:34 /home/ubuntu/.openclaw/workspace/downloads/[\u837b\u539f\u6c99\u4f18]\u5165\u308a\u6d78\u308a\u30ae\u30e3\u30eb\u306b\u307e\u3007\u3053\u4f7f\u308f\u305b\u3066\u8cb0\u3046\u8a71\uff034.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 440M Mar  1 00:03 /home/ubuntu/.openclaw/workspace/downloads/[SakuraCircle] Yumemiru Otome - 01-02 (WEB 1280x720 h264 AAC)/[SakuraCircle] Yumemiru Otome - 01 (WEB 1280x720 h264 AAC) [C74F73DB].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 442M Mar  1 00:03 /home/ubuntu/.openclaw/workspace/downloads/[SakuraCircle] Yumemiru Otome - 01-02 (WEB 1280x720 h264 AAC)/[SakuraCircle] Yumemiru Otome - 02 (WEB 1280x720 h264 AAC) [224031C2].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 338M Mar  1 02:08 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Sister Breeder 01-02 [DVDRip 576p HEVC AC3]/[AmateurSubs] Sister Breeder - 01 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 352M Mar  1 02:08 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Sister Breeder 01-02 [DVDRip 576p HEVC AC3]/[AmateurSubs] Sister Breeder - 02 [DVDRip 576p HEVC AC3].mkv\n-rw-rw-r-- 1 ubuntu ubuntu 638M Mar  1 06:12 /home/ubuntu/.openclaw/workspace/downloads/[260227][128087452][\u30eb\u30cd\u30d4\u30af\u30c1\u30e3\u30fc\u30ba] OVA \u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc \uff033/OVA \u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc \uff033/OVA\u30b7\u30b9\u30bf\u30fc\u30d6\u30ea\u30fc\u30c0\u30fc #3.mkv\n-rw-rw-r-- 1 ubuntu ubuntu 434M Feb 14 11:16 /home/ubuntu/.openclaw/workspace/downloads/(\u540c\u4eba\u30a2\u30cb\u30e1)[260212][maplestar] SONO BISQUE DOLL FULL ANIMATION (PART 3)/BD3 PROJECT RENDER FINAL.mp4\n-rw-rw-r-- 1 ubuntu ubuntu 647M Feb 25 19:01 /home/ubuntu/.openclaw/workspace/downloads/[AmateurSubs] Iribitari Gal ni Manko Tsukawasete Morau Hanashi - 03 [WEBRip 1080p HEVC AAC].mkv\n\n\u001b[0;32m[INFO]\u001b[0m Removing empty directories...\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 8.4G\n2026-03-01 07:14:39 UTC - Validating cron schedules against CRON_JOBS.md\n2026-03-01 07:14:41 UTC - Checks completed\n2026-03-01 07:14:41 UTC - Agent Manager stopped\n2026-03-01 07:14:41 UTC - Agent Manager stopped\n",
-    "meta-agent": "2026-03-01 03:22:57 UTC - Disk usage >= 80%\n2026-03-01 03:23:07 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 9.7G\n2026-03-01 03:23:07 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 03:23:07 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 04:12:27 UTC - Meta-Agent starting (one-shot)\n2026-03-01 04:12:29 UTC - Snapshot: disk=81%, apt=0, content_today=5, research_today=6\n2026-03-01 04:12:29 UTC - Disk usage >= 80%\n2026-03-01 04:12:39 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 9.7G\n2026-03-01 04:12:39 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 04:12:39 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 05:22:11 UTC - Meta-Agent starting (one-shot)\n2026-03-01 05:22:11 UTC - Snapshot: disk=81%, apt=0, content_today=8, research_today=7\n2026-03-01 05:22:12 UTC - Disk usage >= 80%\n2026-03-01 05:22:21 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 9.7G\n2026-03-01 05:22:21 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 05:22:21 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 06:12:40 UTC - Meta-Agent starting (one-shot)\n2026-03-01 06:12:41 UTC - Snapshot: disk=82%, apt=0, content_today=9, research_today=9\n2026-03-01 06:12:41 UTC - Disk usage >= 80%\n2026-03-01 06:12:52 UTC - Triggering downloads cleanup (dry-run first)\n\u001b[0;32m[INFO]\u001b[0m Scanning /home/ubuntu/.openclaw/workspace/downloads for files older than 30 days...\n\u001b[0;32m[INFO]\u001b[0m Running in DRY-RUN mode. No files will be deleted.\n\u001b[0;32m[INFO]\u001b[0m Add --execute to perform deletion.\n\u001b[0;32m[INFO]\u001b[0m Scan complete.\n\u001b[0;32m[INFO]\u001b[0m No files older than 30 days found.\n\u001b[0;32m[INFO]\u001b[0m Current downloads directory size: 11G\n2026-03-01 06:12:52 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 06:12:52 UTC - Meta-Agent one-shot completed; actions: disk cleanup\n2026-03-01 09:36:40 UTC - Meta-Agent starting (one-shot)\n2026-03-01 09:36:41 UTC - Snapshot: disk=79%, apt=0, content_today=14, research_today=11\n2026-03-01 09:36:51 UTC - Agent performance learning (disabled in this version - Voyage AI rate limited)\n2026-03-01 09:36:51 UTC - Meta-Agent one-shot completed; actions: none\n",
-    "game-enhancer": "2026-03-01 14:56:44 UTC - Committing changes\n2026-03-01 14:56:45 UTC - Changes committed and pushed\n2026-03-01 14:56:45 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 14:56:45 UTC - === Enhancement cycle complete ===\n2026-03-01 14:58:33 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 14:58:33 UTC - Enhancement #2 \u2014 focus: content\n2026-03-01 14:58:33 UTC - Research phase (focus: content) \u2014 Gemini CLI\n2026-03-01 14:59:01 UTC - Research phase completed\n2026-03-01 14:59:01 UTC - Implementation phase (focus: content) \u2014 Qwen Code\n2026-03-01 14:59:26 UTC - Qwen did not produce a valid diff format\n2026-03-01 14:59:26 UTC - Implementation phase completed\n2026-03-01 14:59:26 UTC - Validation: PASS\n2026-03-01 14:59:26 UTC - Committing changes\n2026-03-01 14:59:28 UTC - Changes committed and pushed\n2026-03-01 14:59:28 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 14:59:28 UTC - === Enhancement cycle complete ===\n2026-03-01 15:00:45 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 15:00:45 UTC - Enhancement #3 \u2014 focus: polish\n2026-03-01 15:00:45 UTC - Research phase (focus: polish) \u2014 Gemini CLI\n2026-03-01 15:01:18 UTC - Research phase completed\n2026-03-01 15:01:18 UTC - Implementation phase (focus: polish) \u2014 Qwen Code\n2026-03-01 15:02:13 UTC - Wrote updated main.py (14223 bytes)\n2026-03-01 15:02:13 UTC - Implementation phase completed\n2026-03-01 15:02:13 UTC - Validation: FAIL\n2026-03-01 15:02:13 UTC - Skipping commit due to validation failure\n2026-03-01 15:02:13 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 15:02:13 UTC - === Enhancement cycle complete ===\n2026-03-01 15:02:28 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 15:02:28 UTC - Enhancement #4 \u2014 focus: balance\n2026-03-01 15:02:28 UTC - Research phase (focus: balance) \u2014 Gemini CLI\n2026-03-01 15:03:03 UTC - Research phase completed\n2026-03-01 15:03:03 UTC - Implementation phase (focus: balance) \u2014 Qwen Code\n2026-03-01 15:03:59 UTC - Wrote updated main.py (14343 bytes)\n2026-03-01 15:03:59 UTC - Implementation phase completed\n2026-03-01 15:03:59 UTC - Validation: FAIL\n2026-03-01 15:03:59 UTC - Skipping commit due to validation failure\n2026-03-01 15:03:59 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 15:03:59 UTC - === Enhancement cycle complete ===\n2026-03-01 15:05:03 UTC - === Anime Studio Tycoon Enhancement Agent starting ===\n2026-03-01 15:05:03 UTC - Enhancement #5 \u2014 focus: features\n2026-03-01 15:05:03 UTC - Research phase (focus: features) \u2014 Gemini CLI\n2026-03-01 15:05:40 UTC - Research phase completed\n2026-03-01 15:05:40 UTC - Implementation phase (focus: features) \u2014 Qwen Code\n2026-03-01 15:06:43 UTC - Wrote updated main.py (16612 bytes)\n2026-03-01 15:06:43 UTC - Implementation phase completed\n2026-03-01 15:06:53 UTC - Validation: PASS\n2026-03-01 15:06:53 UTC - Committing changes\n2026-03-01 15:06:54 UTC - Changes committed and pushed\n2026-03-01 15:06:54 UTC - Report saved to /home/ubuntu/.openclaw/workspace/games/anime-studio-tycoon/enhancement-report-latest.md\n2026-03-01 15:06:54 UTC - === Enhancement cycle complete ===\n"
-  },
-  "cron_jobs": [
+  "agent_outputs": [
     {
-      "name": "dashboard-data-updater",
-      "schedule": "*/5 * * * *",
-      "tz": "Asia/Bangkok",
-      "enabled": true,
-      "last_run": 1772422500010,
-      "next_run": 1772422800000,
-      "status": "ok",
-      "last_error": ""
+      "ts": 1772357071609,
+      "title": "Daily Digest \u2014 2026-03-01 (Updated)",
+      "file": "content/2026-03-01-daily-digest-updated.md",
+      "size": 2250
     },
+    {
+      "ts": 1772348917723,
+      "title": "Daily Digest 2026-03-01",
+      "file": "reports/2026-03-01-daily-digest.md",
+      "size": 7969
+    },
+    {
+      "ts": 1772348908087,
+      "title": "Content Archive Index",
+      "file": "content/INDEX.md",
+      "size": 54920
+    },
+    {
+      "ts": 1772348900767,
+      "title": "Sunday Digest \u2014 March 1, 2026",
+      "file": "content/2026-03-01-0705-sunday-digest.md",
+      "size": 5707
+    },
+    {
+      "ts": 1772348859183,
+      "title": "Clean Energy's Reality Check: What's Actually Happening in 2026",
+      "file": "content/2026-03-01-0705-green-tech-climate-ai-2026-writeup.md",
+      "size": 7658
+    },
+    {
+      "ts": 1772348645705,
+      "title": "Southeast Asia's Digital Banking Moment: Agentic Payments, the Profitability Rec",
+      "file": "content/2026-03-01-0701-sea-digital-banking-fintech-2026-writeup.md",
+      "size": 8661
+    },
+    {
+      "ts": 1772348595135,
+      "title": "Seven AI Models Dropped in February 2026. Here's What Actually Changed.",
+      "file": "content/2026-03-01-0700-frontier-ai-models-feb-2026-writeup.md",
+      "size": 6717
+    },
+    {
+      "ts": 1772345138538,
+      "title": "To the Moon and Beyond: What's Actually Happening in Space Right Now",
+      "file": "content/2026-03-01-0604-commercial-space-2026-writeup.md",
+      "size": 6742
+    },
+    {
+      "ts": 1772341725578,
+      "title": "The Drug That Changes Everything: Biotech in 2026",
+      "file": "content/2026-03-01-0515-biotech-longevity-2026-writeup.md",
+      "size": 8360
+    },
+    {
+      "ts": 1772341678243,
+      "title": "Spring 2026 Anime: The Season That Has Everything",
+      "file": "content/2026-03-01-0510-spring-2026-anime-watchlist.md",
+      "size": 7756
+    },
+    {
+      "ts": 1772341541395,
+      "title": "Daily Digest \u2014 2026-03-01",
+      "file": "content/2026-03-01-daily-digest.md",
+      "size": 1177
+    },
+    {
+      "ts": 1772337813392,
+      "title": "The AI Chip Wars: Four Things That Actually Matter in 2026",
+      "file": "content/2026-03-01-0402-ai-hardware-writeup.md",
+      "size": 8034
+    },
+    {
+      "ts": 1772334874616,
+      "title": "Fintech 2026: The Execution Era Has Arrived",
+      "file": "content/2026-03-01-0307-fintech-writeup.md",
+      "size": 7954
+    },
+    {
+      "ts": 1772334586053,
+      "title": "Daily Digests",
+      "file": "reports/README.md",
+      "size": 354
+    },
+    {
+      "ts": 1772331637435,
+      "title": "\ud83d\udcfa YouTube Digest \u2014 2026-03-01",
+      "file": "content/youtube-digest-2026-03-01-0220.md",
+      "size": 31066
+    },
+    {
+      "ts": 1772330879249,
+      "title": "Cybersecurity 2026: What Actually Matters Right Now",
+      "file": "content/2026-03-01-0202-cybersecurity-writeup.md",
+      "size": 9570
+    },
+    {
+      "ts": 1772327469778,
+      "title": "Research Spotlight \u2014 March 1, 2026 (01:06 UTC)",
+      "file": "content/2026-03-01-0106-research-spotlight.md",
+      "size": 5293
+    },
+    {
+      "ts": 1772323283409,
+      "title": "Sunday Morning Digest \u2014 March 1, 2026",
+      "file": "content/2026-03-01-morning-digest.md",
+      "size": 4815
+    },
+    {
+      "ts": 1772298393433,
+      "title": "LinkedIn Content Digest \u2014 IBM Planning Analytics (Analyst-Report v10)",
+      "file": "content/2026-02-28-1706-linkedin-pa-digest.md",
+      "size": 746
+    },
+    {
+      "ts": 1772298393405,
+      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
+      "file": "content/2026-02-28-1706-linkedin-pa-post.md",
+      "size": 1546
+    },
+    {
+      "ts": 1772298344247,
+      "title": "\ud83d\udee0\ufe0f Developer Tips: Optimizing IBM Planning Analytics Development",
+      "file": "content/2026-02-28-1705-linkedin-pa-post.md",
+      "size": 1546
+    },
+    {
+      "ts": 1772291142461,
+      "title": "Tech Update \u2014 15:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1500-tech-update.md",
+      "size": 5913
+    },
+    {
+      "ts": 1772287408378,
+      "title": "Tech Update \u2014 14:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1400-tech-update.md",
+      "size": 6628
+    },
+    {
+      "ts": 1772283855202,
+      "title": "Tech Update \u2014 13:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1300-tech-update.md",
+      "size": 7239
+    },
+    {
+      "ts": 1772280255282,
+      "title": "Tech Update \u2014 12:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1200-tech-update.md",
+      "size": 4830
+    },
+    {
+      "ts": 1772276679719,
+      "title": "Tech Update \u2014 11:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1100-tech-update.md",
+      "size": 5518
+    },
+    {
+      "ts": 1772272996037,
+      "title": "Tech Update \u2014 10:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-1000-tech-update.md",
+      "size": 4841
+    },
+    {
+      "ts": 1772269469526,
+      "title": "Tech Update \u2014 09:00 UTC, Feb 28 2026",
+      "file": "content/2026-02-28-0900-tech-update.md",
+      "size": 4159
+    },
+    {
+      "ts": 1772265819537,
+      "title": "Tech Update \u2014 2026-02-28 (08:00 UTC)",
+      "file": "content/2026-02-28-0800-tech-update.md",
+      "size": 3994
+    },
+    {
+      "ts": 1772262331550,
+      "title": "Tech Update \u2014 2026-02-28 (07:00 UTC)",
+      "file": "content/2026-02-28-0700-tech-update.md",
+      "size": 3288
+    }
+  ],
+  "cron_jobs": [
     {
       "name": "telegram-slash-handler",
       "schedule": "every 2m",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772422772083,
-      "next_run": 1772422892083,
+      "last_run": 1772423252121,
+      "next_run": 1772423372121,
+      "status": "ok",
+      "last_error": ""
+    },
+    {
+      "name": "dashboard-data-updater",
+      "schedule": "*/5 * * * *",
+      "tz": "Asia/Bangkok",
+      "enabled": true,
+      "last_run": 1772423100014,
+      "next_run": 1772423400000,
       "status": "ok",
       "last_error": ""
     },
