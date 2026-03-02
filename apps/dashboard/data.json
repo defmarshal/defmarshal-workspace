@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-02T23:25:03Z",
+  "generated_at": "2026-03-02T23:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 80,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 12,
     "downloads_gb": "7.7G",
-    "load_avg": "1.49 1.10 1.03",
-    "mem_used": "4.2Gi",
+    "load_avg": "0.64 0.82 0.93",
+    "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 9 hours, 45 minutes",
+    "uptime": "1 week, 4 days, 9 hours, 50 minutes",
     "disk_history": [
       79,
       79,
@@ -24,7 +24,7 @@
       79,
       79,
       79,
-      79,
+      80,
       80,
       80,
       80,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "faf143bf",
+      "sha": "e288943a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "0426d8b7",
+      "sha": "faf143bf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "3c8c221e",
+      "sha": "0426d8b7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "ed5f787a",
+      "sha": "3c8c221e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "1ef5952a",
+      "sha": "ed5f787a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "a95c5f50",
+      "sha": "1ef5952a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "2ad7fcb8",
+      "sha": "a95c5f50",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "557253f3",
+      "sha": "2ad7fcb8",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "e6cd0108",
+      "sha": "557253f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "679a9e35",
+      "sha": "e6cd0108",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "1727c3b4",
+      "sha": "679a9e35",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "26cb113f",
-      "agent": "docs",
-      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
-      "time": "57 minutes ago"
-    },
-    {
-      "sha": "a16189b3",
-      "agent": "docs",
-      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
-      "time": "58 minutes ago"
-    },
-    {
-      "sha": "d44b7727",
+      "sha": "1727c3b4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "54055fcc",
+      "sha": "26cb113f",
+      "agent": "docs",
+      "message": "update MEMORY.md with dashboard-data-updater fix and deprecation resolution",
+      "time": "62 minutes ago"
+    },
+    {
+      "sha": "a16189b3",
+      "agent": "docs",
+      "message": "add dashboard-data-updater to CRON_JOBS.md; fix Python datetime deprecations in refresh script",
+      "time": "63 minutes ago"
+    },
+    {
+      "sha": "d44b7727",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
@@ -484,10 +484,10 @@
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772493600008,
-      "next_run": 1772493900000,
+      "last_run": 1772493900008,
+      "next_run": 1772494200000,
       "last_status": "ok",
-      "last_duration_ms": 33519,
+      "last_duration_ms": 28252,
       "consecutive_errors": 0
     },
     {
@@ -712,10 +712,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772493896561,
-      "next_run": 1772494016561,
+      "last_run": 1772494136582,
+      "next_run": 1772494256582,
       "last_status": "ok",
-      "last_duration_ms": 2683,
+      "last_duration_ms": 2309,
       "consecutive_errors": 0
     },
     {
