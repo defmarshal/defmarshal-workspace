@@ -5,6 +5,9 @@
 set -u
 cd /home/ubuntu/.openclaw/workspace
 
+# Ensure user's npm-global bin is in PATH for openclaw command
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 WORKSPACE=$(pwd)
 REPORT_DIR="$WORKSPACE/agents/meta-supervisor/reports"
 LOG_DIR="$WORKSPACE/agents/meta-supervisor/logs"
@@ -249,7 +252,7 @@ print(f"Report generated: {os.path.basename(report_file)}")
 print("Meta-Supervisor cycle completed")
 sys.exit(0)
 PY
-cycle_exit=$?
+cycle_exit=${PIPESTATUS[0]}
   if [ $cycle_exit -eq 0 ]; then
     log "Cycle completed successfully"
   else

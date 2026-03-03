@@ -78,6 +78,40 @@ async function sendPushToAll(payload) {
   if (dead.length) saveSubs(subs.filter(s => !dead.includes(s.endpoint)));
 }
 
+// ── Helper: read request body ────────────────────────────────────────────
+function readBody(req) {
+  return new Promise((resolve) => {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try { resolve(body ? JSON.parse(body) : {}); } catch (err) { resolve({}); }
+    });
+    req.on('error', () => resolve({}));
+  });
+}
+
+// ── Helper: run a command and capture output ─────────────────────────────
+function run(cmd, args = []) {
+  return new Promise((resolve) => {
+    const proc = spawn(cmd, args, { cwd: WORKSPACE });
+    let stdout = '', stderr = '';
+    proc.stdout.on('data', d => stdout += d);
+    proc.stderr.on('data', d => stderr += d);
+    proc.on('close', code => resolve({ ok: code === 0, stdout, stderr, code }));
+    proc.on('error', err => resolve({ ok: false, stdout: '', stderr: err.message, code: -1 }));
+  });
+}
+
+// ── Helper: regenerate data.json ─────────────────────────────────────────
+async function regenerateData() {
+  try {
+    const result = await run(path.join(WORKSPACE, 'quick'), ['dash']);
+    if (!result.ok) console.warn('regenerateData failed:', result.stderr);
+  } catch (e) {
+    console.warn('regenerateData error:', e.message);
+  }
+}
+
 // ── Allowed quick commands ────────────────────────────────────────────────
 const ALLOWED_QUICK = new Set([
   'health', 'status', 'summary', 'dash', 'agents-summary', 'log-tail',
@@ -103,6 +137,16 @@ function cors(res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
+
+// ── Chat history helper ────────────────────────────────────────────────────
+function getChatHistory() {
+  try {
+    const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
+    const sessionKey = 'agent:main:telegram:direct:952170974';
+    const sessionId = sessions[sessionKey]?.sessionId;
+    if (!sessionId) return [];
+    const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
+    if (!fs.existsSync(sessionFile)) return [];
     const msgs = [];
     for (const line of fs.readFileSync(sessionFile, 'utf8').split('\n')) {
       if (!line.trim()) continue;
@@ -116,65 +160,11 @@ function cors(res) {
         if (Array.isArray(msg.content)) {
           text = msg.content.filter(c => c.type === 'text').map(c => c.text).join(' ');
         } else { text = String(msg.content || ''); }
-  // ── Agent Control ─────────────────────────────────────────────────────────────
-  if (pathname === '/api/cron/run' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', () => {
-      try {
-        const { cronId } = JSON.parse(body);
-        if (!cronId) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          return res.end(JSON.stringify({ error: 'cronId required' }));
-        }
-        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['cron','run', cronId], (err, stdout, stderr) => {
-          if (err) {
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            return res.end(JSON.stringify({ error: err.message, stderr }));
-          }
-          res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ ok: true, output: stdout }));
-        });
-      } catch (e) {
-        res.writeHead(500, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: e.message }));
-      }
-    });
-    return;
-  }
-
-  if (pathname === '/api/session/stop' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', () => {
-      try {
-        const { sessionKey } = JSON.parse(body);
-        if (!sessionKey) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          return res.end(JSON.stringify({ error: 'sessionKey required' }));
-        }
-        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['sessions','stop', sessionKey], (err, stdout, stderr) => {
-          if (err) {
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            return res.end(JSON.stringify({ error: err.message, stderr }));
-          }
-          res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ ok: true, output: stdout }));
-        });
-      } catch (e) {
-        res.writeHead(500, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: e.message }));
-      }
-    });
-    return;
-  }
-
         if (role === 'user' && text.includes('Conversation info')) {
           const end = text.indexOf('```\n\n');
           if (end >= 0) text = text.slice(end + 5).trim();
         }
         if (!text.trim()) continue;
-        // Filter out system/meta messages
         if (text === 'HEARTBEAT_OK') continue;
         if (text.startsWith('[System Message]')) continue;
         if (text.startsWith('Read HEARTBEAT')) continue;
@@ -186,10 +176,10 @@ function cors(res) {
         if (role === 'assistant' && text === 'NO_REPLY') continue;
         if (text.length < 2) continue;
         msgs.push({ role, ts: m.timestamp, text });
-      } catch {}
+      } catch (err) {}
     }
     return msgs.slice(-100);
-  } catch { return []; }
+  } catch (err) { return []; }
 }
 
 // ── Chat watcher — push notification on new assistant message ──────────────
@@ -223,7 +213,7 @@ async function aria2Call(method, params = []) {
     const res = await fetch(ARIA2_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
     const d = await res.json();
     return d.result || [];
-  } catch { return []; }
+  } catch (err) { return []; }
 }
 function fmtBytes(n) {
   n = parseInt(n) || 0;
@@ -317,7 +307,7 @@ function getTokenStats() {
           totalCacheWrite += usage.cacheWrite || 0;
           runCount++;
           if (ts > lastTs) lastTs = ts;
-        } catch {}
+        } catch (err) {}
       }
       if (runCount === 0 && totalIn === 0) continue;
 
@@ -352,7 +342,7 @@ function getTokenStats() {
             if (ts < cutoff) continue;
             runCount++;
             if (ts > lastTs) lastTs = ts;
-          } catch {}
+          } catch (err) {}
         }
         // Use max of both counting methods
         if (runCount > stats[cronId].runs) stats[cronId].runs = runCount;
@@ -460,7 +450,7 @@ const handler = async (req, res) => {
     try {
       const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
       sessionId = sessions['agent:main:telegram:direct:952170974']?.sessionId;
-    } catch {}
+    } catch (err) {}
     if (!sessionId) return json(res, 500, { ok: false, error: 'Could not resolve session ID' });
     const proc = spawn('openclaw', ['agent', '--session-id', sessionId, '--message', message, '--deliver'],
       { detached: true, stdio: 'ignore', cwd: WORKSPACE });
@@ -679,54 +669,9 @@ const handler = async (req, res) => {
         res.end(JSON.stringify({ error: 'zip failed' }));
       }
     });
-
-  // ── Agent Control ─────────────────────────────────────────────────────────────
-  if (pathname === '/api/cron/run' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', () => {
-      try {
-        const { cronId } = JSON.parse(body);
-        if (!cronId) return json(res, 400, { error: 'cronId required' });
-        // Run cron job via openclaw
-        const { execFile } = require('child_process');
-        execFile('openclaw', ['cron', 'run', cronId, '--force'], (err, stdout, stderr) => {
-          if (err) return json(res, 500, { error: err.message, stderr });
-          json(res, 200, { ok: true, output: stdout });
-        });
-      } catch (e) {
-        json(res, 500, { error: e.message });
-      }
-    });
-    return;
-  }
-
-  if (pathname === '/api/session/stop' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', () => {
-      try {
-        const { sessionKey } = JSON.parse(body);
-        if (!sessionKey) return json(res, 400, { error: 'sessionKey required' });
-        const { execFile } = require('child_process');
-        execFile('openclaw', ['sessions', 'stop', sessionKey], (err, stdout, stderr) => {
-          if (err) return json(res, 500, { error: err.message, stderr });
-          json(res, 200, { ok: true, output: stdout });
-        });
-      } catch (e) {
-        json(res, 500, { error: e.message });
-      }
-    });
-    return;
-  }
-
     zip.on('close', code => {
       if (code !== 0) {
         console.error(`zip exited with code ${code}`);
-        if (!res.headersSent) {
-          res.writeHead(500);
-          res.end(JSON.stringify({ error: 'zip failed' }));
-        }
       }
     });
     return;
@@ -771,89 +716,6 @@ const handler = async (req, res) => {
     return;
   }
 
-  // ── Projects overview ──────────────────────────────────────────────────────
-  if (pathname === '/api/projects' && req.method === 'GET') {
-    try {
-      const projects = [];
-      const projectDirs = [
-        { dir: 'games/anime-studio-tycoon', name: 'Anime Studio Tycoon', icon: '🎮' },
-        { dir: 'research', name: 'Research Hub', icon: '📚' },
-        { dir: 'apps/dashboard', name: 'ClawDash', icon: '📊' },
-        { dir: 'docs', name: 'Documentation', icon: '📝' },
-        { dir: 'skills', name: 'OpenClaw Skills', icon: '🔧' },
-      ];
-
-      for (const p of projectDirs) {
-        // Validate path pattern to prevent injection
-        if (!/^[a-z0-9\/_-]+$/i.test(p.dir)) {
-          console.warn(`Skipping invalid project dir pattern: ${p.dir}`);
-          continue;
-        }
-        const fullPath = path.join(WORKSPACE, p.dir);
-        const normalized = path.normalize(fullPath);
-        // Ensure path stays within workspace
-        if (!normalized.startsWith(WORKSPACE)) {
-          console.warn(`Skipping path outside workspace: ${p.dir}`);
-          continue;
-        }
-        if (!fs.existsSync(normalized)) continue;
-
-        let lastCommit = null;
-        try {
-          const gitLog = execFileSync('git', ['-C', normalized, 'log', '-1', '--pretty=format:%H|%s|%cI'], 
-            { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }).trim();  // 10MB buffer
-          if (gitLog) {
-            const [hash, message, date] = gitLog.split('|');
-            lastCommit = { hash, message, date };
-          }
-        } catch (e) {
-          console.warn(`git log failed for ${p.dir}:`, e.message);
-        }
-
-        let status = 'idle';
-        try {
-          const gitStatus = execFileSync('git', ['-C', normalized, 'status', '--porcelain'], 
-            { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }).trim();  // 10MB buffer
-          if (gitStatus) status = 'active';
-        } catch (e) {
-          console.warn(`git status failed for ${p.dir}:`, e.message);
-        }
-
-        let description = '';
-        try {
-          const readmePath = path.join(normalized, 'README.md');
-          if (fs.existsSync(readmePath)) {
-            const readme = fs.readFileSync(readmePath, 'utf8');
-            const firstLine = readme.split('\n')[0].trim();
-            // Sanitize: remove HTML tags and escape entities
-            description = firstLine.replace(/^#+\s*/, '')
-                                   .replace(/&/g, '&amp;')
-                                   .replace(/</g, '&lt;')
-                                   .replace(/>/g, '&gt;')
-                                   .replace(/"/g, '&quot;')
-                                   .replace(/'/g, '&#39;')
-                                   .trim();
-          }
-        } catch (e) {
-          console.warn(`README read failed for ${p.dir}:`, e.message);
-        }
-
-        projects.push({
-          name: p.name,
-          icon: p.icon,
-          description: description || `${p.name} project`,
-          path: p.dir,
-          status,
-          lastCommit,
-        });
-      }
-
-      cors(res);
-      return json(res, 200, { ok: true, projects });
-    } catch (e) {
-      return json(res, 500, { ok: false, error: e.message });
-    }
-  }
   // ── Static files ─────────────────────────────────────────────────────────
   let filePath = pathname === '/' ? '/index.html' : pathname;
   filePath = path.join(DASHBOARD_DIR, filePath.replace(/\.\./g, ''));
