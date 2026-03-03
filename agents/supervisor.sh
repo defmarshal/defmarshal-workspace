@@ -136,16 +136,15 @@ ${HOLIDAY_TEXT}
 
 All clear! (◕‿◕)♡"
 
-# If there are alerts, also log them separately
+# If there are alerts, also log them separately and send notification
 if [ "$STATUS" = "ALERT" ]; then
   printf "%s - ALERT - Reasons:\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$LOGFILE"
   for alert in "${ALERTS[@]}"; do
     printf "  * %s\n" "$alert" >> "$LOGFILE"
   done
+  # Send alert message to Telegram (with timeout to avoid hanging)
+  timeout 10 /home/ubuntu/.npm-global/bin/openclaw message send -t 952170974 --channel telegram -m "$MSG" 2>/dev/null || true
 fi
-
-# Send heartbeat to Telegram (with timeout to avoid hanging)
-timeout 10 /home/ubuntu/.npm-global/bin/openclaw message send -t 952170974 --channel telegram -m "$MSG" 2>/dev/null || true
 
 # Update heartbeat-state.json so MewDash shows fresh data
 HEARTBEAT_STATE_FILE="memory/heartbeat-state.json"

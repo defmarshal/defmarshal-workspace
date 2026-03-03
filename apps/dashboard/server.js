@@ -132,18 +132,123 @@ const MIME = {
   '.webmanifest': 'application/manifest+json',
 };
 
+// ── Sessions cache ─────────────────────────────────────────────────────────
+let sessionsCache = { data: [], timestamp: 0 };
+const SESSIONS_CACHE_TTL = 60000; // 60 seconds
+
+function refreshSessionsCache() {
+  try {
+    const raw = fs.readFileSync(SESSIONS_JSON, 'utf8');
+    const sessions = JSON.parse(raw);
+    const list = [];
+    for (const [key, val] of Object.entries(sessions)) {
+      if (key.includes(':run:')) continue;
+      let label = key;
+      if (key === 'agent:main:main') {
+        label = '💬 Main Session';
+      } else if (key.startsWith('agent:main:telegram:')) {
+        const parts = key.split(':');
+        const type = parts[parts.length-2] || 'unknown';
+        const id = parts[parts.length-1] || '';
+        label = type === 'direct' ? `👤 Direct:${id}` : type === 'group' ? `👥 Group:${id}` : `📱 Telegram:${id}`;
+      } else if (key.startsWith('agent:main:subagent:')) {
+        const parts = key.split(':');
+        const subId = parts[parts.length-1] || '';
+        label = `🤖 Project:${subId.substring(0,8)}`;
+      } else if (key.startsWith('agent:main:cron:')) {
+        const valLabel = val.label || '';
+        if (valLabel.includes('dev-agent')) label = '👨‍💻 Dev Agent';
+        else if (valLabel.includes('content-agent')) label = '📝 Content Agent';
+        else if (valLabel.includes('research-agent')) label = '🔬 Research Agent';
+        else if (valLabel.includes('game-enhancer')) label = '🎮 Game Enhancer';
+        else if (valLabel.includes('vishwakarma')) label = '📐 Vishwakarma';
+        else if (valLabel.includes('agni')) label = '🔥 Agni';
+        else if (valLabel.includes('evolver')) label = '🧬 Evolver';
+        else if (valLabel.startsWith('Cron:')) label = `⏰ ${valLabel.replace(/^Cron: /, '')}`;
+        else label = `⏰ Cron`;
+      } else if (val.label) {
+        label = val.label;
+      }
+      list.push({
+        sessionKey: key,
+        label,
+        updatedAt: val.updatedAt || 0,
+        channel: val.channel || 'unknown',
+        lastHeartbeatText: val.lastHeartbeatText || ''
+      });
+    }
+    list.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+    sessionsCache = { data: list, timestamp: Date.now() };
+  } catch (err) {
+    console.error('refreshSessionsCache error:', err);
+  }
+}
+
+function getAllSessions() {
+  return sessionsCache.data;
+}
+
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 
-// ── Chat history helper ────────────────────────────────────────────────────
-function getChatHistory() {
+// ── Sessions discovery ─────────────────────────────────────────────────────
+function getAllSessions() {
   try {
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
-    const sessionKey = 'agent:main:telegram:direct:952170974';
-    const sessionId = sessions[sessionKey]?.sessionId;
+    const list = [];
+    for (const [key, val] of Object.entries(sessions)) {
+      // Skip ephemeral cron run sessions (keep only persistent agents)
+      if (key.includes(':run:')) continue;
+      // Derive a display label from sessionKey
+      let label = key;
+      if (key === 'agent:main:main') {
+        label = '💬 Main Session';
+      } else if (key.startsWith('agent:main:telegram:')) {
+        const parts = key.split(':');
+        const type = parts[parts.length-2] || 'unknown'; // direct or group
+        const id = parts[parts.length-1] || '';
+        label = type === 'direct' ? `👤 Direct:${id}` : type === 'group' ? `👥 Group:${id}` : `📱 Telegram:${id}`;
+      } else if (key.startsWith('agent:main:subagent:')) {
+        const parts = key.split(':');
+        const subId = parts[parts.length-1] || '';
+        label = `🤖 Project:${subId.substring(0,8)}`;
+      } else if (key.startsWith('agent:main:cron:')) {
+        const valLabel = val.label || '';
+        if (valLabel.includes('dev-agent')) label = '👨‍💻 Dev Agent';
+        else if (valLabel.includes('content-agent')) label = '📝 Content Agent';
+        else if (valLabel.includes('research-agent')) label = '🔬 Research Agent';
+        else if (valLabel.includes('game-enhancer')) label = '🎮 Game Enhancer';
+        else if (valLabel.includes('vishwakarma')) label = '📐 Vishwakarma';
+        else if (valLabel.includes('agni')) label = '🔥 Agni';
+        else if (valLabel.includes('evolver')) label = '🧬 Evolver';
+        else if (valLabel.startsWith('Cron:')) label = `⏰ ${valLabel.replace(/^Cron: /, '')}`;
+        else label = `⏰ Cron`;
+      } else if (val.label) {
+        label = val.label;
+      }
+      list.push({
+        sessionKey: key,
+        label,
+        updatedAt: val.updatedAt || 0,
+        channel: val.channel || 'unknown',
+        lastHeartbeatText: val.lastHeartbeatText || ''
+      });
+    }
+    return list.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  } catch (err) {
+    return [];
+  }
+}
+
+// ── Chat history helper ────────────────────────────────────────────────────
+function getChatHistory(sessionKey) {
+  try {
+    const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
+    // If sessionKey not provided or invalid, return empty
+    const sessionId = sessions?.[sessionKey]?.sessionId;
     if (!sessionId) return [];
     const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
     if (!fs.existsSync(sessionFile)) return [];
@@ -183,23 +288,29 @@ function getChatHistory() {
 }
 
 // ── Chat watcher — push notification on new assistant message ──────────────
-let lastAssistantMsgCount = 0;
 function startChatWatcher() {
   setInterval(() => {
-    const msgs = getChatHistory();
-    const assistantCount = msgs.filter(m => m.role === 'assistant').length;
-    if (lastAssistantMsgCount > 0 && assistantCount > lastAssistantMsgCount) {
-      const latest = msgs.filter(m => m.role === 'assistant').pop();
-      const preview = (latest?.text || '').slice(0, 100).replace(/\n/g, ' ');
-      sendPushToAll({
-        title: '🐾 mewmew replied!',
-        body: preview || 'New message in ClawDash',
-        url: '/?tab=chat',
-        tag: 'clawdash-reply',
-      }).catch(() => {});
+    const sessions = getAllSessions();
+    for (const s of sessions) {
+      const sessionKey = s.sessionKey;
+      const msgs = getChatHistory(sessionKey);
+      const assistantCount = msgs.filter(m => m.role === 'assistant').length;
+      const prevCount = lastAssistantCounts[sessionKey] || 0;
+      if (prevCount > 0 && assistantCount > prevCount) {
+        const latest = msgs.filter(m => m.role === 'assistant').pop();
+        const preview = (latest?.text || '').slice(0, 100).replace(/\n/g, ' ');
+        sendPushToAll({
+          title: '🐾 mewmew replied!',
+          body: preview || 'New message in ClawDash',
+          url: '/?tab=chat',
+          tag: 'clawdash-reply',
+        }).catch(() => {});
+      }
+      if (assistantCount !== prevCount) {
+        broadcastChat(msgs, sessionKey);
+      }
+      lastAssistantCounts[sessionKey] = assistantCount;
     }
-    if (assistantCount !== lastAssistantMsgCount) broadcastChat(msgs);
-    lastAssistantMsgCount = assistantCount;
   }, 5000); // check every 5s
 }
 
@@ -383,12 +494,17 @@ function getTokenStats() {
 }
 
 // ── SSE — chat stream ─────────────────────────────────────────────────────
-const sseClients = new Set();
-function broadcastChat(msgs) {
+const sseClients = new Map(); // sessionKey -> Set(res)
+const lastAssistantCounts = {}; // sessionKey -> assistant message count
+
+function broadcastChat(msgs, sessionKey) {
   const data = 'data: ' + JSON.stringify({ chat: msgs }) + '\n\n';
-  for (const client of sseClients) {
-    try { client.write(data); } catch { sseClients.delete(client); }
+  const clients = sseClients.get(sessionKey);
+  if (!clients) return;
+  for (const client of clients) {
+    try { client.write(data); } catch { clients.delete(client); }
   }
+  if (clients.size === 0) sseClients.delete(sessionKey);
 }
 
 // ── Request handler ───────────────────────────────────────────────────────
@@ -422,6 +538,16 @@ const handler = async (req, res) => {
 
   // SSE chat stream
   if (pathname === '/api/chat-stream') {
+    const sessionKey = url.searchParams.get('sessionKey');
+    if (!sessionKey) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      return res.end(JSON.stringify({ error: 'sessionKey required' }));
+    }
+    // Ensure set exists for this session
+    if (!sseClients.has(sessionKey)) sseClients.set(sessionKey, new Set());
+    const clients = sseClients.get(sessionKey);
+    clients.add(res);
+
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
@@ -429,10 +555,12 @@ const handler = async (req, res) => {
       'Access-Control-Allow-Origin': '*',
     });
     res.write(': connected\n\n');
-    // Send current chat immediately
-    res.write('data: ' + JSON.stringify({ chat: getChatHistory() }) + '\n\n');
-    sseClients.add(res);
-    req.on('close', () => sseClients.delete(res));
+    // Send current chat immediately for this session
+    res.write('data: ' + JSON.stringify({ chat: getChatHistory(sessionKey) }) + '\n\n');
+    req.on('close', () => {
+      clients.delete(res);
+      if (clients.size === 0) sseClients.delete(sessionKey);
+    });
     return;
   }
 
@@ -446,12 +574,13 @@ const handler = async (req, res) => {
     const body = await readBody(req);
     const message = (body.message || '').trim();
     if (!message) return json(res, 400, { error: 'message required' });
+    const sessionKey = body.sessionKey || 'agent:main:telegram:direct:952170974'; // fallback
     let sessionId = null;
     try {
       const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
-      sessionId = sessions['agent:main:telegram:direct:952170974']?.sessionId;
+      sessionId = sessions[sessionKey]?.sessionId;
     } catch (err) {}
-    if (!sessionId) return json(res, 500, { ok: false, error: 'Could not resolve session ID' });
+    if (!sessionId) return json(res, 500, { ok: false, error: 'Could not resolve session ID for key: ' + sessionKey });
     const proc = spawn('openclaw', ['agent', '--session-id', sessionId, '--message', message, '--deliver'],
       { detached: true, stdio: 'ignore', cwd: WORKSPACE });
     proc.unref();
@@ -474,7 +603,8 @@ const handler = async (req, res) => {
     await regenerateData();
     try {
       const data = JSON.parse(fs.readFileSync(DATA_JSON, 'utf8'));
-      data.chat = getChatHistory();
+      const sessionKey = url.searchParams.get('sessionKey');
+      data.chat = sessionKey ? getChatHistory(sessionKey) : [];
       data.push_enabled = webPush !== null;
       return json(res, 200, data);
     } catch (e) { return json(res, 500, { error: e.message }); }
@@ -482,7 +612,18 @@ const handler = async (req, res) => {
 
   // ── Chat only (fast) ────────────────────────────────────────────────────
   if (pathname === '/api/chat' && req.method === 'GET') {
-    return json(res, 200, { chat: getChatHistory() });
+    const sessionKey = url.searchParams.get('sessionKey');
+    if (!sessionKey) return json(res, 400, { error: 'sessionKey required' });
+    return json(res, 200, { chat: getChatHistory(sessionKey) });
+  }
+
+  // ── List Telegram sessions ───────────────────────────────────────────────
+  if (pathname === '/api/sessions' && req.method === 'GET') {
+    const sessions = getAllSessions().map(s => {
+      const label = s.label;
+      return { sessionKey: s.sessionKey, label, updatedAt: s.updatedAt };
+    });
+    return json(res, 200, { sessions });
   }
 
   // ── Token usage stats ────────────────────────────────────────────────────
@@ -754,4 +895,8 @@ try {
 
 startChatWatcher();
 console.log('👀 Chat watcher running — push on new reply');
+// Initialize sessions cache and refresh periodically
+refreshSessionsCache();
+setInterval(refreshSessionsCache, SESSIONS_CACHE_TTL);
+console.log('📦 Sessions cache initialized (refresh every 60s)');
 // ── aria2 torrent status ──────────────────────────────────────────────────
