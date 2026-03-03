@@ -394,6 +394,12 @@
   }
   if (helpBtn) helpBtn.addEventListener('click', showHelp);
   if (helpClose) helpClose.addEventListener('click', hideHelp);
+  // Close modal when clicking on overlay (outside content)
+  if (helpModal) {
+    helpModal.addEventListener('click', e => {
+      if (e.target === helpModal) hideHelp();
+    });
+  }
   // Close modal on Escape
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && helpModal && !helpModal.classList.contains('hidden')) {
