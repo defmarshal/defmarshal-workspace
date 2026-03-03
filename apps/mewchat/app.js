@@ -9,6 +9,7 @@
   let currentSessionKey = localStorage.getItem('mewchat-session') || '';
   let pollTimer = null;
   let lastMessageCount = 0;
+  let lastFailedMessage = null; // for retry
 
   // Dom refs
   const themeBtn = document.getElementById('theme-btn');
@@ -213,10 +214,11 @@
     }
   }
 
-  async function sendMessage() {
-    const text = msgInput.value.trim();
+  async function sendMessage(textOverride = null) {
+    const text = textOverride || msgInput.value.trim();
     if (!text || !currentSessionKey) return;
-    msgInput.value = '';
+    if (!textOverride) msgInput.value = '';
+    const originalBtnText = sendBtn.textContent;
     sendBtn.disabled = true;
     sendBtn.classList.add('loading');
     sendBtn.textContent = 'Sending…';
@@ -232,8 +234,17 @@
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to send');
       renderMessage('user', text, Date.now() / 1000, false);
+      lastFailedMessage = null;
     } catch (e) {
-      showError('Send failed: ' + e.message);
+      lastFailedMessage = text;
+      showError('Send failed: ' + e.message + ' <button class="retry-btn">Retry</button>');
+      // Attach retry handler
+      const retryBtn = errorEl.querySelector('.retry-btn');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', () => {
+          sendMessage(lastFailedMessage);
+        });
+      }
     } finally {
       sendBtn.disabled = false;
       sendBtn.classList.remove('loading');
