@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T03:00:02Z",
+  "generated_at": "2026-03-03T03:05:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 82,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "8.8G",
-    "load_avg": "1.16 0.94 1.12",
-    "mem_used": "5.2Gi",
+    "load_avg": "1.95 1.31 1.21",
+    "mem_used": "7.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 13 hours, 20 minutes",
+    "uptime": "1 week, 4 days, 13 hours, 25 minutes",
     "disk_history": [
       81,
       81,
@@ -27,7 +27,7 @@
       81,
       81,
       81,
-      81,
+      82,
       82,
       82,
       82,
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-03 02:08",
-      "last_line": "[2026-03-03 02:08:38] research-agent: Generated priority-gap report - 2026-03-04-liquidity-gap-calculation-banking-risk.md (20.8KB, covers LCR, NSFR, gap analysis, worked example)"
+      "last_run": "2026-03-03 03:01",
+      "last_line": "2026-03-03 03:01:36 UTC - Dev-agent cycle completed (exit 0)"
     },
     {
       "name": "supervisor",
@@ -87,99 +87,99 @@
   "research": {
     "total": 236,
     "tts_coverage": "101%",
-    "latest": "2026-03-04-liquidity-gap-calculation-banking-risk\nnone",
+    "latest": "2026-03-04-liquidity-gap-calculation-banking-risk",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "f7cb885f",
+      "sha": "a3b0f9d0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "f67193b9",
+      "sha": "f7cb885f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "babbe102",
+      "sha": "f67193b9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "cb8aa1f3",
+      "sha": "babbe102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "1a80b7f4",
+      "sha": "cb8aa1f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "1a80b7f4",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "e505fa8a",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "aad20715",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "756e8535",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "83013c50",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "c1179ff6",
       "agent": "content",
       "message": "LinkedIn PA comparative-analysis analyst‑report for 2026-03-03 0217 (v10 dynamic)",
-      "time": "42 minutes ago"
+      "time": "47 minutes ago"
     },
     {
       "sha": "e5c3c262",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "25122b47",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0211)",
-      "time": "48 minutes ago"
+      "time": "53 minutes ago"
     },
     {
       "sha": "e8e81a4c",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "737f159b",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "51 minutes ago"
-    },
-    {
-      "sha": "7ca76bd9",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
+      "time": "56 minutes ago"
     }
   ],
   "heartbeat": {
