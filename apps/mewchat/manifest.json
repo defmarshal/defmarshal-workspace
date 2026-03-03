@@ -1,0 +1,20 @@
+{
+  "name": "MewChat",
+  "short_name": "MewChat",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#ff79c6",
+  "icons": [
+    {
+      "src": "https://instance-20260207-2229.tail2dd22b.ts.net:3001/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://instance-20260207-2229.tail2dd22b.ts.net:3001/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
