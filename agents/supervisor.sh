@@ -17,7 +17,7 @@ alert() {
 
 # 1. Cron job health (via openclaw cron list)
 if command -v openclaw &>/dev/null; then
-  if CRON_JSON=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p'); then
+  if CRON_JSON=$(timeout 15 openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p'); then
     # jq available? (should be)
     if command -v jq &>/dev/null; then
       PROBLEMS=$(echo "$CRON_JSON" | jq -r '.jobs[] | select((.state.lastStatus // "ok") != "ok" or (.state.consecutiveErrors // 0) > 2) | "- \(.name): \(.state.lastStatus // "no status"), errors \(.state.consecutiveErrors // 0)"')
@@ -35,12 +35,12 @@ else
 fi
 
 # 2. Gateway health
-if ! openclaw gateway status &>/dev/null; then
+if ! timeout 5 openclaw gateway status &>/dev/null; then
   alert "OpenClaw gateway appears down"
 fi
 
 # 3. Memory reindex needed
-if ! ./quick memory-reindex-check &>/dev/null; then
+if ! timeout 10 ./quick memory-reindex-check &>/dev/null; then
   alert "Memory reindex recommended (auto-reindex disabled; run manually via quick memory-reindex)"
 fi
 
@@ -86,8 +86,8 @@ fi
 
 # Agent status (quick check: any running agents?)
 AGENT_TEXT="idle"
-if openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -e '.sessions[] | select(.agentId=="main")' >/dev/null 2>&1; then
-  AGENT_COUNT=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .agentId' | wc -l | tr -d ' ' || echo 0)
+if timeout 5 openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -e '.sessions[] | select(.agentId=="main")' >/dev/null 2>&1; then
+  AGENT_COUNT=$(timeout 5 openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .agentId' | wc -l | tr -d ' ' || echo 0)
   AGENT_TEXT="$AGENT_COUNT active"
 fi
 
@@ -146,6 +146,11 @@ fi
 
 # Send heartbeat to Telegram (with timeout to avoid hanging)
 timeout 10 /home/ubuntu/.npm-global/bin/openclaw message send -t 952170974 --channel telegram -m "$MSG" 2>/dev/null || true
+
+# Update heartbeat-state.json so MewDash shows fresh data
+HEARTBEAT_STATE_FILE="memory/heartbeat-state.json"
+NOW_EPOCH=$(date +%s)
+jq -n --argjson now "$NOW_EPOCH" '{lastChecks: {email: $now, calendar: $now, weather: $now, health: $now}}' > "$HEARTBEAT_STATE_FILE.tmp" && mv "$HEARTBEAT_STATE_FILE.tmp" "$HEARTBEAT_STATE_FILE" 2>/dev/null || true
 
 # Always log run status
 printf "%s - %s\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" "$STATUS" >> "$LOGFILE"
