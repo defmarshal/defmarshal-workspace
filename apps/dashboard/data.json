@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T05:20:03Z",
+  "generated_at": "2026-03-03T05:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "0.80 1.02 1.02",
-    "mem_used": "5.8Gi",
+    "load_avg": "0.88 0.90 0.96",
+    "mem_used": "5.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 15 hours, 40 minutes",
+    "uptime": "1 week, 4 days, 15 hours, 45 minutes",
     "disk_history": [
-      82,
       82,
       82,
       82,
@@ -34,6 +33,7 @@
       84,
       84,
       84,
+      83,
       83,
       83,
       83,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "66364822",
-      "agent": "content",
-      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
-      "time": "4 minutes ago"
-    },
-    {
-      "sha": "0cf8e4d1",
+      "sha": "7c3fb37e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "ec20b4b0",
-      "agent": "game",
-      "message": "Complete Anime Studio Tycoon polish – build, test, report",
-      "time": "6 minutes ago"
+      "sha": "66364822",
+      "agent": "content",
+      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
+      "time": "9 minutes ago"
     },
     {
-      "sha": "27ae0d33",
+      "sha": "0cf8e4d1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "4a91089b",
+      "sha": "ec20b4b0",
+      "agent": "game",
+      "message": "Complete Anime Studio Tycoon polish – build, test, report",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "27ae0d33",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "8f69f6e7",
-      "agent": "dev",
-      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
-      "time": "18 minutes ago"
-    },
-    {
-      "sha": "d1f02b47",
+      "sha": "4a91089b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "b5ee864a",
+      "sha": "8f69f6e7",
+      "agent": "dev",
+      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
+      "time": "23 minutes ago"
+    },
+    {
+      "sha": "d1f02b47",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "6e41b102",
+      "sha": "b5ee864a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "5087c38f",
+      "sha": "6e41b102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "75088df0",
+      "sha": "5087c38f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "94c57fc9",
+      "sha": "75088df0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "f76167c1",
+      "sha": "94c57fc9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "99c8520e",
+      "sha": "f76167c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "26c3b85c",
+      "sha": "99c8520e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772515085384,
-      "next_run": 1772515205384,
+      "last_run": 1772515445411,
+      "next_run": 1772515565411,
       "last_status": "ok",
-      "last_duration_ms": 2187,
+      "last_duration_ms": 2188,
       "consecutive_errors": 0
     },
     {
