@@ -15,6 +15,10 @@
 const http  = require('http');
 const https = require('https');
 const fs    = require('fs');
+const json = (res, status, body) => {
+  res.writeHead(status, { "Content-Type": "application/json" });
+  res.end(JSON.stringify(body));
+};
 const path  = require('path');
 const { spawn, execFile, execFileSync } = require('child_process');
 
@@ -702,6 +706,45 @@ const handler = async (req, res) => {
           res.writeHead(500);
           res.end(JSON.stringify({ error: 'zip failed' }));
         }
+      }
+    });
+    return;
+  }
+
+  // ── Agent Control ─────────────────────────────────────────────────────────────
+  if (pathname === '/api/cron/run' && req.method === 'POST') {
+    console.log('[CRON RUN]', new Date().toISOString());
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const { cronId } = JSON.parse(body);
+        if (!cronId) return json(res, 400, { error: 'cronId required' });
+        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['cron','run', cronId], (err, stdout, stderr) => {
+          if (err) return json(res, 500, { error: err.message, stderr });
+          json(res, 200, { ok: true, output: stdout });
+        });
+      } catch (e) {
+        json(res, 500, { error: e.message });
+      }
+    });
+    return;
+  }
+
+  if (pathname === '/api/session/stop' && req.method === 'POST') {
+    console.log('[SESSION STOP]', new Date().toISOString());
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const { sessionKey } = JSON.parse(body);
+        if (!sessionKey) return json(res, 400, { error: 'sessionKey required' });
+        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['sessions','stop', sessionKey], (err, stdout, stderr) => {
+          if (err) return json(res, 500, { error: err.message, stderr });
+          json(res, 200, { ok: true, output: stdout });
+        });
+      } catch (e) {
+        json(res, 500, { error: e.message });
       }
     });
     return;
