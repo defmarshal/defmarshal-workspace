@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T02:20:02Z",
+  "generated_at": "2026-03-03T02:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 82,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "8.8G",
-    "load_avg": "1.63 3.13 3.07",
-    "mem_used": "5.2Gi",
+    "load_avg": "0.68 1.58 2.40",
+    "mem_used": "5.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 12 hours, 40 minutes",
+    "uptime": "1 week, 4 days, 12 hours, 45 minutes",
     "disk_history": [
       81,
       81,
@@ -35,7 +35,7 @@
       81,
       81,
       81,
-      81,
+      82,
       82,
       82
     ]
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "c1179ff6",
-      "agent": "content",
-      "message": "LinkedIn PA comparative-analysis analyst‑report for 2026-03-03 0217 (v10 dynamic)",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "e5c3c262",
+      "sha": "83013c50",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "25122b47",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0211)",
-      "time": "8 minutes ago"
+      "sha": "c1179ff6",
+      "agent": "content",
+      "message": "LinkedIn PA comparative-analysis analyst‑report for 2026-03-03 0217 (v10 dynamic)",
+      "time": "7 minutes ago"
     },
     {
-      "sha": "e8e81a4c",
+      "sha": "e5c3c262",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "737f159b",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "11 minutes ago"
+      "sha": "25122b47",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0211)",
+      "time": "13 minutes ago"
     },
     {
-      "sha": "7ca76bd9",
+      "sha": "e8e81a4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "db6a4a4a",
-      "agent": "dev",
-      "message": "record disk usage snapshot (81%) from validation check",
-      "time": "17 minutes ago"
+      "sha": "737f159b",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-03)",
+      "time": "16 minutes ago"
     },
     {
-      "sha": "e5b3203a",
+      "sha": "7ca76bd9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "e4d85ae1",
+      "sha": "db6a4a4a",
+      "agent": "dev",
+      "message": "record disk usage snapshot (81%) from validation check",
+      "time": "22 minutes ago"
+    },
+    {
+      "sha": "e5b3203a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "8203d897",
+      "sha": "e4d85ae1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "a3f5c351",
+      "sha": "8203d897",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "8ddaf4b7",
+      "sha": "a3f5c351",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "e9b4d23b",
+      "sha": "8ddaf4b7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "1ecf0c0a",
+      "sha": "e9b4d23b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "823bcc57",
-      "agent": "content",
-      "message": "LinkedIn PA technical-performance analyst‑report for 2026-03-03 0127 (v10 dynamic)",
-      "time": "52 minutes ago"
+      "sha": "1ecf0c0a",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772504286627,
-      "next_run": 1772504406627,
+      "last_run": 1772504646665,
+      "next_run": 1772504766665,
       "last_status": "ok",
-      "last_duration_ms": 2318,
+      "last_duration_ms": 2363,
       "consecutive_errors": 0
     },
     {
