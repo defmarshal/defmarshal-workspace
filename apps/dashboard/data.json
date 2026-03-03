@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T03:10:02Z",
+  "generated_at": "2026-03-03T03:15:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 82,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "8.8G",
-    "load_avg": "1.03 1.08 1.13",
-    "mem_used": "5.0Gi",
+    "load_avg": "0.61 0.92 1.06",
+    "mem_used": "5.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 13 hours, 30 minutes",
+    "uptime": "1 week, 4 days, 13 hours, 35 minutes",
     "disk_history": [
       81,
       81,
@@ -25,7 +25,7 @@
       81,
       81,
       81,
-      81,
+      82,
       82,
       82,
       82,
@@ -44,8 +44,8 @@
     {
       "name": "linkedin-pa-agent",
       "active": true,
-      "last_run": "2026-03-03 02:17",
-      "last_line": "2026-03-03 02:17:47 UTC - Cycle completed"
+      "last_run": "2026-03-03 03:11",
+      "last_line": "2026-03-03 03:11:29 UTC - Cycle completed"
     },
     {
       "name": "research-agent",
@@ -80,8 +80,8 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-03 02:12",
-      "last_line": "2026-03-03 02:12:27 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
+      "last_run": "2026-03-03 03:11",
+      "last_line": "2026-03-03 03:11:00 UTC - Meta-Agent one-shot completed; actions: disk cleanup"
     }
   ],
   "research": {
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "e998b214",
+      "sha": "bc22eb5d",
+      "agent": "content",
+      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "9d6984ca",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "a3b0f9d0",
+      "sha": "e998b214",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "f7cb885f",
+      "sha": "a3b0f9d0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "f67193b9",
+      "sha": "f7cb885f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "babbe102",
+      "sha": "f67193b9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "cb8aa1f3",
+      "sha": "babbe102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "1a80b7f4",
+      "sha": "cb8aa1f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
+      "sha": "1a80b7f4",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "40 minutes ago"
+    },
+    {
       "sha": "e505fa8a",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "aad20715",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "756e8535",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "83013c50",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "c1179ff6",
       "agent": "content",
       "message": "LinkedIn PA comparative-analysis analyst‑report for 2026-03-03 0217 (v10 dynamic)",
-      "time": "52 minutes ago"
+      "time": "57 minutes ago"
     },
     {
       "sha": "e5c3c262",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "25122b47",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0211)",
-      "time": "58 minutes ago"
-    },
-    {
-      "sha": "e8e81a4c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
@@ -224,6 +224,18 @@
     "2026-03-03 02:30:57 UTC - ALERT"
   ],
   "agent_outputs": [
+    {
+      "file": "2026-03-03-0311-linkedin-pa-digest",
+      "ts": "2026-03-03-0311",
+      "title": "LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)",
+      "size": 766
+    },
+    {
+      "file": "2026-03-03-0311-linkedin-pa-post",
+      "ts": "2026-03-03-0311",
+      "title": "🛠️ Implementation Decoder: What It Really Takes to Deploy IBM Planning Analytics",
+      "size": 2504
+    },
     {
       "file": "2026-03-03-0217-linkedin-pa-digest",
       "ts": "2026-03-03-0217",
@@ -331,18 +343,6 @@
       "ts": "2026-03-01-0202",
       "title": "Cybersecurity 2026: What Actually Matters Right Now",
       "size": 9570
-    },
-    {
-      "file": "2026-03-01-0106-research-spotlight",
-      "ts": "2026-03-01-0106",
-      "title": "Research Spotlight — March 1, 2026 (01:06 UTC)",
-      "size": 5293
-    },
-    {
-      "file": "2026-03-01-morning-digest",
-      "ts": "",
-      "title": "Sunday Morning Digest — March 1, 2026",
-      "size": 4815
     }
   ],
   "cron_jobs": [
@@ -352,10 +352,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772505000009,
-      "next_run": 1772506800000,
+      "last_run": 1772507127495,
+      "next_run": 1772508600000,
       "last_status": "ok",
-      "last_duration_ms": 30039,
+      "last_duration_ms": 13800,
       "consecutive_errors": 0
     },
     {
@@ -436,10 +436,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772503219852,
-      "next_run": 1772506800000,
+      "last_run": 1772506876291,
+      "next_run": 1772510400000,
       "last_status": "ok",
-      "last_duration_ms": 204067,
+      "last_duration_ms": 69331,
       "consecutive_errors": 0
     },
     {
@@ -484,10 +484,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772503200011,
-      "next_run": 1772506800000,
+      "last_run": 1772506800034,
+      "next_run": 1772510400000,
       "last_status": "ok",
-      "last_duration_ms": 19841,
+      "last_duration_ms": 76257,
       "consecutive_errors": 0
     },
     {
@@ -568,10 +568,10 @@
       "schedule": "0 * * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772504072372,
-      "next_run": 1772506977723,
+      "last_run": 1772507471127,
+      "next_run": 1772510577723,
       "last_status": "ok",
-      "last_duration_ms": 140072,
+      "last_duration_ms": 14174,
       "consecutive_errors": 0
     },
     {
@@ -604,10 +604,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772503927077,
-      "next_run": 1772506834763,
+      "last_run": 1772507440931,
+      "next_run": 1772510434763,
       "last_status": "ok",
-      "last_duration_ms": 33495,
+      "last_duration_ms": 28036,
       "consecutive_errors": 0
     },
     {
@@ -628,10 +628,10 @@
       "schedule": "5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772504212444,
-      "next_run": 1772507100000,
+      "last_run": 1772507485301,
+      "next_run": 1772510700000,
       "last_status": "ok",
-      "last_duration_ms": 73312,
+      "last_duration_ms": 80406,
       "consecutive_errors": 0
     },
     {
@@ -664,10 +664,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772503423919,
-      "next_run": 1772506800000,
+      "last_run": 1772506945622,
+      "next_run": 1772510400000,
       "last_status": "ok",
-      "last_duration_ms": 300272,
+      "last_duration_ms": 181873,
       "consecutive_errors": 0
     },
     {
@@ -688,10 +688,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772505030048,
-      "next_run": 1772506800000,
+      "last_run": 1772507141295,
+      "next_run": 1772508600000,
       "last_status": "ok",
-      "last_duration_ms": 48084,
+      "last_duration_ms": 267164,
       "consecutive_errors": 0
     },
     {
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772506758361,
-      "next_run": 1772506878361,
+      "last_run": 1772507588980,
+      "next_run": 1772507708980,
       "last_status": "ok",
-      "last_duration_ms": 2190,
+      "last_duration_ms": 2523,
       "consecutive_errors": 0
     },
     {
@@ -736,10 +736,10 @@
       "schedule": "0 */2 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772492469133,
-      "next_run": 1772506825629,
+      "last_run": 1772507409166,
+      "next_run": 1772514025629,
       "last_status": "ok",
-      "last_duration_ms": 36575,
+      "last_duration_ms": 31765,
       "consecutive_errors": 0
     },
     {
@@ -772,8 +772,8 @@
     }
   ],
   "content_stats": {
-    "total": 521,
-    "today": 4,
+    "total": 523,
+    "today": 6,
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
