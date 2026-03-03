@@ -1,20 +1,19 @@
 {
-  "generated_at": "2026-03-03T04:05:02Z",
+  "generated_at": "2026-03-03T04:10:03Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 82,
-    "disk_free": "8.1G",
+    "disk_percent": 83,
+    "disk_free": "7.5G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
-    "downloads_count": 14,
-    "downloads_gb": "8.8G",
-    "load_avg": "1.73 1.15 0.91",
+    "downloads_count": 15,
+    "downloads_gb": "9.3G",
+    "load_avg": "1.03 1.27 1.04",
     "mem_used": "5.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 14 hours, 25 minutes",
+    "uptime": "1 week, 4 days, 14 hours, 30 minutes",
     "disk_history": [
-      81,
       82,
       82,
       82,
@@ -37,7 +36,8 @@
       82,
       82,
       82,
-      82
+      82,
+      83
     ]
   },
   "agents": [
@@ -62,14 +62,14 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-03 04:04",
-      "last_line": "[2026-03-03 04:04:08] research-agent: Generated comprehensive report - 2026-03-03-ai-safety-edge-ai-6g-anime-spring.md (17.0KB) - covers AI safety incidents, edge AI deployment, 6G coalition, and Spring 2026 anime preview"
+      "last_run": "2026-03-03 04:06",
+      "last_line": "[2026-03-03 04:06:54] dev-agent: Cycle completed - fixed false positive cron count warning, adjusted expectations to 28-32, validated all systems green"
     },
     {
       "name": "supervisor",
       "active": true,
-      "last_run": "2026-03-03 03:30",
-      "last_line": "2026-03-03 03:30:24 UTC - ALERT"
+      "last_run": "2026-03-03 04:06",
+      "last_line": "2026-03-03 04:06:03 UTC - ALERT"
     },
     {
       "name": "agent-manager",
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "5c988d53",
-      "agent": "build",
-      "message": "update research hub index timestamp; add research report; record disk metrics",
-      "time": "2 minutes ago"
+      "sha": "c68dfe96",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
+      "time": "3 minutes ago"
     },
     {
-      "sha": "0b6517cd",
+      "sha": "c02ea653",
+      "agent": "dev",
+      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "aea8136c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "e413673f",
+      "sha": "5c988d53",
+      "agent": "build",
+      "message": "update research hub index timestamp; add research report; record disk metrics",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "0b6517cd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "75c16a38",
+      "sha": "e413673f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "f0116948",
+      "sha": "75c16a38",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "ca98f59d",
+      "sha": "f0116948",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "dce494a7",
+      "sha": "ca98f59d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "424ff029",
+      "sha": "dce494a7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "5e00ae91",
+      "sha": "424ff029",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "d0506ce6",
+      "sha": "5e00ae91",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "a5a0290f",
+      "sha": "d0506ce6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "bc22eb5d",
-      "agent": "content",
-      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
-      "time": "54 minutes ago"
-    },
-    {
-      "sha": "9d6984ca",
+      "sha": "a5a0290f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "e998b214",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "a3b0f9d0",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "65 minutes ago"
+      "sha": "bc22eb5d",
+      "agent": "content",
+      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
+      "time": "59 minutes ago"
     }
   ],
   "heartbeat": {
@@ -192,9 +192,6 @@
     "updatedAt": 1740910200
   },
   "supervisor_log": [
-    "2026-02-28 03:30:23 UTC - OK",
-    "2026-02-28 17:00:25 UTC - OK",
-    "2026-02-28 17:30:27 UTC - OK",
     "2026-03-03 00:01:43 UTC - ALERT - Reasons:",
     "  * Cron job issues:\\n- vishwakarma-cron: error, errors 1",
     "- auto-torrent-cron: error, errors 1",
@@ -221,7 +218,10 @@
     "2026-03-03 02:30:57 UTC - ALERT",
     "2026-03-03 03:30:22 UTC - ALERT - Reasons:",
     "  * Cron job issues:\\n- auto-torrent-cron: error, errors 1",
-    "2026-03-03 03:30:24 UTC - ALERT"
+    "2026-03-03 03:30:24 UTC - ALERT",
+    "2026-03-03 04:06:01 UTC - ALERT - Reasons:",
+    "  * Cron job issues:\\n- auto-torrent-cron: error, errors 1",
+    "2026-03-03 04:06:03 UTC - ALERT"
   ],
   "agent_outputs": [
     {
@@ -352,10 +352,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772508600010,
-      "next_run": 1772510400000,
+      "last_run": 1772510674950,
+      "next_run": 1772512200000,
       "last_status": "ok",
-      "last_duration_ms": 8594,
+      "last_duration_ms": 70374,
       "consecutive_errors": 0
     },
     {
@@ -436,10 +436,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772506876291,
-      "next_run": 1772510400000,
+      "last_run": 1772510456955,
+      "next_run": 1772514000000,
       "last_status": "ok",
-      "last_duration_ms": 69331,
+      "last_duration_ms": 143185,
       "consecutive_errors": 0
     },
     {
@@ -484,10 +484,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772506800034,
-      "next_run": 1772510400000,
+      "last_run": 1772510400010,
+      "next_run": 1772514000000,
       "last_status": "ok",
-      "last_duration_ms": 76257,
+      "last_duration_ms": 56945,
       "consecutive_errors": 0
     },
     {
@@ -664,10 +664,10 @@
       "schedule": "0 8-22 * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772506945622,
-      "next_run": 1772510400000,
+      "last_run": 1772510600140,
+      "next_run": 1772514000000,
       "last_status": "ok",
-      "last_duration_ms": 181873,
+      "last_duration_ms": 74810,
       "consecutive_errors": 0
     },
     {
@@ -688,10 +688,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772508608604,
-      "next_run": 1772510400000,
+      "last_run": 1772510745324,
+      "next_run": 1772512200000,
       "last_status": "ok",
-      "last_duration_ms": 24752,
+      "last_duration_ms": 28866,
       "consecutive_errors": 0
     },
     {
