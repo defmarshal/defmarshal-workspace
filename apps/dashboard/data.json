@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T06:40:02Z",
+  "generated_at": "2026-03-03T06:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 86,
@@ -9,17 +9,17 @@
     "memory_age_days": 0,
     "downloads_count": 16,
     "downloads_gb": "11G",
-    "load_avg": "1.22 1.19 1.13",
-    "mem_used": "5.6Gi",
+    "load_avg": "1.49 1.22 1.16",
+    "mem_used": "6.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 17 hours, 0 minutes",
+    "uptime": "1 week, 4 days, 17 hours, 5 minutes",
     "disk_history": [
-      83,
-      84,
-      84,
-      84,
-      84,
-      84,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
       86,
       86,
       86,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "d3ae4ac5",
+      "sha": "8cf7b540",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "db090766",
-      "agent": "misc",
-      "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
-      "time": "6 minutes ago"
-    },
-    {
-      "sha": "f85a6812",
+      "sha": "d3ae4ac5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "1b611e6f",
+      "sha": "db090766",
+      "agent": "misc",
+      "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "f85a6812",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "7f01c84b",
+      "sha": "1b611e6f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "c0bda945",
+      "sha": "7f01c84b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "4780a4f0",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
-      "time": "27 minutes ago"
-    },
-    {
-      "sha": "52c06717",
+      "sha": "c0bda945",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "8f0564c9",
+      "sha": "4780a4f0",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
+      "time": "32 minutes ago"
+    },
+    {
+      "sha": "52c06717",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "8f91f0f0",
+      "sha": "8f0564c9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "96ab566a",
+      "sha": "8f91f0f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "68057bd9",
+      "sha": "96ab566a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "5798ab43",
+      "sha": "68057bd9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "71a3aa97",
+      "sha": "5798ab43",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "437a5abc",
+      "sha": "71a3aa97",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
@@ -184,12 +184,11 @@
   ],
   "heartbeat": {
     "lastChecks": {
-      "email": 1740910200,
-      "calendar": 1740910200,
-      "weather": 1740910200,
-      "health": 1740910200
-    },
-    "updatedAt": 1740910200
+      "email": 1772520294,
+      "calendar": 1772520294,
+      "weather": 1772520294,
+      "health": 1772520294
+    }
   },
   "supervisor_log": [
     "2026-03-03 01:30:42 UTC - ALERT",
@@ -700,10 +699,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772519988277,
-      "next_run": 1772520108277,
+      "last_run": 1772520228295,
+      "next_run": 1772520348295,
       "last_status": "ok",
-      "last_duration_ms": 2526,
+      "last_duration_ms": 2564,
       "consecutive_errors": 0
     },
     {
@@ -770,36 +769,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T05:52:52.653Z",
-      "text": "Let's directly test the sessions command pipeline:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T05:53:23.168Z",
-      "text": "Let's poll the running session to see progress:"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-03T06:21:53.084Z",
-      "text": "Replied message (untrusted, for context):\n```json\n{\n  \"sender_label\": \"mewmew\",\n  \"body\": \"🔴 Heartbeat Check (05:53 UTC, Mar 03, 2026)\\n✅ Gateway running\\n💾 Disk 83 full (7.5G free)\\n✅ Updates: 0 pending\\n✅ Git: 2 changes\\n✅ Agents: idle\\n⚠️ Cron job issues:\\n\\n• auto-torrent-cron: error, errors 1\\n\\n🎉 Holiday: Nyepi (Mar 18–19)\\n\\nAll clear! (◕‿◕)♡\"\n}\n```\n\nwhat's wrong with auto-torrent-cron?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:22:13.808Z",
-      "text": "Let's check the `auto-torrent-cron` error details. It shows \"cron: job execution timed out\". The script likely takes longer than the default timeout (probably 300 seconds). Let's inspect:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:22:30.825Z",
-      "text": "The script itself looks fine but may hang if `./quick nyaa-top` takes too long or aria2 RPC is unreachable. Let's check the cron job's timeout:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:22:44.761Z",
-      "text": "No explicit timeout set, so it uses the default (probably 300s). But it ran for 600s (10 min) before timing out — meaning the script took longer than expected.\n\nLet's test if `./quick nyaa-top` is slow:"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-03T06:23:01.191Z",
@@ -1019,6 +988,36 @@
       "role": "assistant",
       "ts": "2026-03-03T06:39:34.666Z",
       "text": "Now let's test the updated supervisor:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:40:45.385Z",
+      "text": "The script still hangs. Let's add timeouts to all external commands:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:41:06.605Z",
+      "text": "Now test again:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:41:47.317Z",
+      "text": "Let's test commands individually:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:42:00.852Z",
+      "text": "Commands take a few seconds each. The script may just need more time. Let's run without timeout wrapper and wait:"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T06:44:29.371Z",
+      "text": "<media:image>"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:44:48.377Z",
+      "text": "Got it! Let's get that heartbeat state updated and MewDash showing fresh data. I'll manually run the data refresh now:"
     }
   ]
 }
