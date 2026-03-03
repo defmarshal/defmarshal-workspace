@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-03T06:57:59Z",
+  "generated_at": "2026-03-03T06:58:59Z",
   "system": {
     "gateway": "up",
     "disk_percent": 86,
     "disk_free": "6.2G",
     "updates": 0,
-    "git_clean": false,
+    "git_clean": true,
     "memory_age_days": 0,
     "downloads_count": 16,
     "downloads_gb": "11G",
-    "load_avg": "1.54 1.31 1.23",
-    "mem_used": "6.6Gi",
+    "load_avg": "1.62 1.38 1.25",
+    "mem_used": "6.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 17 hours, 18 minutes",
+    "uptime": "1 week, 4 days, 17 hours, 19 minutes",
     "disk_history": [
       86,
       86,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "a4845b88",
+      "agent": "chore",
+      "message": "clean up workspace — remove legacy evolver skill, refresh data, update supervisor and auto-torrent",
+      "time": "20 seconds ago"
+    },
+    {
       "sha": "bd7b302b",
       "agent": "misc",
       "message": "feat(supervisor): add heartbeat Telegram messages, timeouts, and state update; fix(auto-torrent): add per-pick timeout and increase cron timeout; chore(dashboard): refresh data",
-      "time": "27 seconds ago"
+      "time": "87 seconds ago"
     },
     {
       "sha": "52501505",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "3 minutes ago"
+      "time": "4 minutes ago"
     },
     {
       "sha": "fc727393",
       "agent": "misc",
       "message": "fix(dashboard): remove duplicate parseOutputTs function declaration causing syntax error",
-      "time": "3 minutes ago"
+      "time": "4 minutes ago"
     },
     {
       "sha": "a2e0fc9f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "8 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "1aaeeb2f",
       "agent": "misc",
       "message": "update(dashboard): refresh data and heartbeat state for MewDash",
-      "time": "12 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "c2567e5f",
       "agent": "misc",
       "message": "feat(supervisor): add timeouts to all external commands; update heartbeat-state.json for MewDash Pulse",
-      "time": "12 minutes ago"
+      "time": "13 minutes ago"
     },
     {
       "sha": "cd81a1e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "13 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "8cf7b540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "18 minutes ago"
+      "time": "19 minutes ago"
     },
     {
       "sha": "d3ae4ac5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "23 minutes ago"
+      "time": "24 minutes ago"
     },
     {
       "sha": "db090766",
       "agent": "misc",
       "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
-      "time": "24 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "f85a6812",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "28 minutes ago"
+      "time": "29 minutes ago"
     },
     {
       "sha": "1b611e6f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "33 minutes ago"
+      "time": "34 minutes ago"
     },
     {
       "sha": "7f01c84b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "38 minutes ago"
+      "time": "39 minutes ago"
     },
     {
       "sha": "c0bda945",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "4780a4f0",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
-      "time": "45 minutes ago"
+      "time": "44 minutes ago"
     }
   ],
   "heartbeat": {
@@ -771,21 +771,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-03-03T06:32:26.887Z",
-      "text": "Let's see a wider range:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:33:16.869Z",
-      "text": "Let's verify the fix:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:33:33.564Z",
-      "text": "Now let's also guard the original theme code at line 540 to be safe:"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-03-03T06:33:49.657Z",
       "text": "Let's commit the fix:"
     },
@@ -1018,6 +1003,21 @@
       "role": "assistant",
       "ts": "2026-03-03T06:57:47.482Z",
       "text": "Now let's check status again to see remaining dirt:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:58:03.988Z",
+      "text": "Let's also commit the evolver skill cleanup (removing old `skills/evolver/` in favor of `capability-evolver`):"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:58:27.401Z",
+      "text": "The old evolver skill was already deleted from disk but not staged. Let's stage those deletions:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:58:39.359Z",
+      "text": "Let's stage all changes (including deletions) globally:"
     }
   ]
 }
