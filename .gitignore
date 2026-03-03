@@ -105,3 +105,6 @@ apps/dashboard/vapid.json
 apps/dashboard/push-subscriptions.json
 config/youtube-credentials.json
 content/youtube-digest-*.md
+
+apps/dashboard/data.json
+memory/disk-history.json
