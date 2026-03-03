@@ -824,6 +824,7 @@ function renderActiveTasks(tasks) {
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
         ${st} <strong style="font-size:12px">${esc(t.agent||'?')}</strong>
         <span class="muted" style="font-size:10px">${esc(t.session_key||'')}</span>
+        ${t.status === 'running' ? `<button class="stop-task-btn" data-session="${t.session_key}" style="margin-left:auto;font-size:9px;padding:2px 6px;background:var(--red);color:#fff;border:none;border-radius:4px;cursor:pointer">■ Stop</button>` : ''}
       </div>
       <div style="font-size:11px;color:var(--muted)">${esc(t.goal||'')}</div>
       ${t.started ? `<div style="font-size:10px;color:var(--muted);margin-top:2px">Started ${esc(t.started)}</div>` : ''}
@@ -1094,11 +1095,36 @@ function renderCronTab(crons) {
             : `<span style="color:var(--red)">${fmtDuration(-diff)} overdue</span>`;
         })() : ''}
         ${c.last_duration ? `<span>⚡ ${c.last_duration}</span>` : ''}
+      <div style="font-size:10px;margin-top:2px"><button class="run-cron-btn" data-cron-id="${c.id}" style="font-size:9px;padding:2px 6px;background:var(--blue);color:#fff;border:none;border-radius:4px;cursor:pointer">▶ Run now</button></div>
       </div>
     </div>`).join('');
 }
 
 // ── Torrent card ────────────────────────────────────────────────────────────
+document.addEventListener("click", e => {
+  if (e.target.matches(".run-cron-btn")) {
+    const cronId = e.target.dataset.cronId;
+    if (!cronId) return;
+    if (confirm("Run this cron job now?")) {
+      fetch("/api/cron/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ cronId }) })
+        .then(r => r.json())
+        .then(d => { if (d.ok) { alert("Cron job triggered!"); /* optional: refresh cron list */ setTimeout(loadAndRenderCron, 2000); } else { alert("Error: " + (d.error || d.message || unknown)); } })
+        .catch(err => alert("Fetch error: " + err));
+    }
+  }
+});
+document.addEventListener("click", e => {
+  if (e.target.matches(".stop-task-btn")) {
+    const sessionKey = e.target.dataset.session;
+    if (!sessionKey) return;
+    if (confirm("Stop this running task?")) {
+      fetch("/api/session/stop", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sessionKey }) })
+        .then(r => r.json())
+        .then(d => { if (d.ok) { alert("Task stopped."); setTimeout(renderActiveTasks, 2000); } else { alert("Error: " + (d.error||d.message||'unknown')); } })
+        .catch(err => alert("Fetch error: " + err));
+    }
+  }
+});
 async function loadAndRenderTorrents() {
   const card = document.getElementById('torrent-card');
   if (!card || ON_VERCEL) return;

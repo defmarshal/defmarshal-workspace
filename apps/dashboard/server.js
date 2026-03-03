@@ -654,6 +654,47 @@ const handler = async (req, res) => {
         res.end(JSON.stringify({ error: 'zip failed' }));
       }
     });
+
+  // ── Agent Control ─────────────────────────────────────────────────────────────
+  if (pathname === '/api/cron/run' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const { cronId } = JSON.parse(body);
+        if (!cronId) return json(res, 400, { error: 'cronId required' });
+        // Run cron job via openclaw
+        const { execFile } = require('child_process');
+        execFile('openclaw', ['cron', 'run', cronId, '--force'], (err, stdout, stderr) => {
+          if (err) return json(res, 500, { error: err.message, stderr });
+          json(res, 200, { ok: true, output: stdout });
+        });
+      } catch (e) {
+        json(res, 500, { error: e.message });
+      }
+    });
+    return;
+  }
+
+  if (pathname === '/api/session/stop' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const { sessionKey } = JSON.parse(body);
+        if (!sessionKey) return json(res, 400, { error: 'sessionKey required' });
+        const { execFile } = require('child_process');
+        execFile('openclaw', ['sessions', 'stop', sessionKey], (err, stdout, stderr) => {
+          if (err) return json(res, 500, { error: err.message, stderr });
+          json(res, 200, { ok: true, output: stdout });
+        });
+      } catch (e) {
+        json(res, 500, { error: e.message });
+      }
+    });
+    return;
+  }
+
     zip.on('close', code => {
       if (code !== 0) {
         console.error(`zip exited with code ${code}`);
