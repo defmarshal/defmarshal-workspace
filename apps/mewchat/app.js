@@ -386,6 +386,15 @@
         e.preventDefault();
         clearChat();
         break;
+      case '1': case '2': case '3': case '4': case '5':
+      case '6': case '7': case '8': case '9':
+        e.preventDefault();
+        const index = parseInt(e.key) - 1;
+        if (sessionSelect.options.length > index) {
+          sessionSelect.value = sessionSelect.options[index].value;
+          sessionSelect.dispatchEvent(new Event('change'));
+        }
+        break;
     }
   });
 
