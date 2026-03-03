@@ -94,7 +94,7 @@ fi
 # Weather check (Bangkok) - simple
 WEATHER_TEXT=""
 if command -v curl &>/dev/null; then
-  WEATHER_DATA=$(curl -s "wttr.in/Bangkok?format=%C+%t" 2>/dev/null || echo "")
+  WEATHER_DATA=$(timeout 10 curl -s "wttr.in/Bangkok?format=%C+%t" 2>/dev/null || echo "")
   if [ -n "$WEATHER_DATA" ]; then
     if echo "$WEATHER_DATA" | grep -qi "rain\|storm\|snow" >/dev/null 2>&1; then
       WEATHER_TEXT="⚠️ Weather: $WEATHER_DATA"
