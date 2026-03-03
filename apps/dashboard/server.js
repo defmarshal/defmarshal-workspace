@@ -624,6 +624,48 @@ const handler = async (req, res) => {
   }
 
 
+
+  // ── Download all as ZIP ────────────────────────────────────────────────────
+  if (pathname === '/api/downloads-zip' && req.method === 'GET') {
+    const downloadsDir = path.join(WORKSPACE, 'downloads');
+    if (!fs.existsSync(downloadsDir)) {
+      return json(res, 404, { error: 'No downloads' });
+    }
+    try {
+      const files = fs.readdirSync(downloadsDir);
+      if (files.length === 0) {
+        return json(res, 404, { error: 'No downloads to zip' });
+      }
+    } catch(e) {
+      return json(res, 500, { error: e.message });
+    }
+    cors(res);
+    const zipName = `mewdash-downloads-${new Date().toISOString().slice(0,10)}.zip`;
+    res.writeHead(200, {
+      'Content-Type': 'application/zip',
+      'Content-Disposition': `attachment; filename="${zipName}"`,
+    });
+    const zip = spawn('zip', ['-r', '-', '.'], { cwd: downloadsDir, stdio: ['ignore', 'pipe', 'inherit'] });
+    zip.stdout.pipe(res);
+    zip.on('error', err => {
+      console.error('zip spawn error:', err);
+      if (!res.headersSent) {
+        res.writeHead(500);
+        res.end(JSON.stringify({ error: 'zip failed' }));
+      }
+    });
+    zip.on('close', code => {
+      if (code !== 0) {
+        console.error(`zip exited with code ${code}`);
+        if (!res.headersSent) {
+          res.writeHead(500);
+          res.end(JSON.stringify({ error: 'zip failed' }));
+        }
+      }
+    });
+    return;
+  }
+
   // ── Projects overview ──────────────────────────────────────────────────────
   if (pathname === '/api/projects' && req.method === 'GET') {
     try {

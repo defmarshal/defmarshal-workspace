@@ -474,6 +474,7 @@
   <div class="card" style="grid-column:1/-1">
     <h2>📦 Downloads</h2>
     <div id="dl-summary" style="font-size:11px;color:var(--muted);margin-bottom:10px"></div>
+    <button id="dl-zip-btn" style="display:none;margin:8px 0;padding:6px 12px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer" onclick="downloadAllZip()">⬇️ Download All (ZIP)</button>
     <div id="dl-list"></div>
   </div>
 </div>
@@ -933,9 +934,11 @@ async function loadDownloads() {
     const d = await fetch('/api/downloads-list').then(r => r.json());
     if (!d.ok || !d.files.length) {
       list.innerHTML = '<span class="muted">No downloads found.</span>';
+      document.getElementById('dl-zip-btn').style.display = 'none';
       return;
     }
     dlLoaded = true;
+    document.getElementById('dl-zip-btn').style.display = 'inline-block';
     sumEl.textContent = `${d.files.length} file(s) · ${fmtBytes(d.total)} total`;
     list.innerHTML = d.files.map((f,i) => `
       <div id="dl-row-${i}" style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)">
@@ -953,6 +956,16 @@ async function loadDownloads() {
     list.innerHTML = `<span class="muted">Error: ${esc(e.message)}</span>`;
   }
 }
+
+function downloadAllZip() {
+  const a = document.createElement('a');
+  a.href = '/api/downloads-zip';
+  a.download = '';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 async function deleteDl(btn, idx, filePath) {
   if (!confirm(`Delete: ${filePath}?`)) return;
   btn.disabled = true; btn.textContent = '…';
