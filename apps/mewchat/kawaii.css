@@ -96,6 +96,21 @@ h1 { font-size:18px; color: var(--purple); display:flex; align-items:center; gap
 .scroll-bottom:hover { transform: scale(1.1); opacity: 1; }
 .scroll-bottom.hidden { display: none; }
 
+/* Focus styles for accessibility */
+#msg-input:focus-visible,
+#send-btn:focus-visible,
+#clear-btn:focus-visible,
+#theme-btn:focus-visible,
+#session-select:focus-visible,
+.scroll-bottom:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+#session-select:focus-visible {
+  outline: 2px solid var(--blue);
+  box-shadow: 0 0 0 3px rgba(88,166,255,0.3);
+}
+
 .input-wrapper { flex:1; display:flex; flex-direction:column; gap:4px; position:relative; }
 .char-count { position:absolute; right:8px; bottom:6px; font-size:11px; color:var(--muted); opacity:.7; pointer-events:none; }
 
