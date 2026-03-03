@@ -18,6 +18,9 @@
   const chatMessages = document.getElementById('chat-messages');
   const scrollBottomBtn = document.getElementById('scroll-bottom');
   const connectionStatus = document.getElementById('connection-status');
+  const helpBtn = document.getElementById('help-btn');
+  const helpModal = document.getElementById('help-modal');
+  const helpClose = document.getElementById('help-close');
   const msgInput = document.getElementById('msg-input');
   const sendBtn = document.getElementById('send-btn');
   const clearBtn = document.getElementById('clear-btn');
@@ -381,6 +384,29 @@
   if (clearBtn) {
     clearBtn.addEventListener('click', clearChat);
   }
+
+  // Help modal
+  function showHelp() {
+    if (helpModal) helpModal.classList.remove('hidden');
+  }
+  function hideHelp() {
+    if (helpModal) helpModal.classList.add('hidden');
+  }
+  if (helpBtn) helpBtn.addEventListener('click', showHelp);
+  if (helpClose) helpClose.addEventListener('click', hideHelp);
+  // Close modal on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && helpModal && !helpModal.classList.contains('hidden')) {
+      hideHelp();
+    }
+  });
+  // Ctrl+H to toggle help
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'h') {
+      e.preventDefault();
+      if (helpModal && helpModal.classList.contains('hidden')) showHelp(); else hideHelp();
+    }
+  });
 
   // Initialize
   loadSessions().then(() => {

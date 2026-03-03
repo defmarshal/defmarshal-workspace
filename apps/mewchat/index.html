@@ -22,6 +22,7 @@
         </select>
         <button id="theme-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
         <span id="connection-status" class="connection-status" title="Connection status" aria-label="Connection status"></span>
+        <button id="help-btn" title="Keyboard shortcuts (Ctrl+H)">❓</button>
       </div>
     </header>
 
@@ -40,6 +41,23 @@
     </div>
 
     <div id="error" class="error hidden"></div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <div class="modal-content">
+        <h2 id="help-title">Keyboard Shortcuts</h2>
+        <button id="help-close" class="modal-close" aria-label="Close">&times;</button>
+        <ul class="shortcut-list">
+          <li><kbd>Ctrl</kbd>+<kbd>,</kbd> Toggle theme</li>
+          <li><kbd>Ctrl</kbd>+<kbd>/</kbd> Focus message input</li>
+          <li><kbd>Ctrl</kbd>+<kbd>K</kbd> Clear chat</li>
+          <li><kbd>Enter</kbd> Send message (while focused in input)</li>
+          <li><kbd>Shift</kbd>+<kbd>Enter</kbd> New line in input</li>
+          <li><kbd>Ctrl</kbd>+<kbd>H</kbd> Show this help</li>
+        </ul>
+      </div>
+    </div>
+
     <footer>Standalone chat • Powered by OpenClaw</footer>
   </div>
 
