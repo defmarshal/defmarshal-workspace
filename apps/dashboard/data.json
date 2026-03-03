@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-03T06:58:59Z",
+  "generated_at": "2026-03-03T07:00:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 86,
     "disk_free": "6.2G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 16,
     "downloads_gb": "11G",
-    "load_avg": "1.62 1.38 1.25",
-    "mem_used": "6.5Gi",
+    "load_avg": "1.01 1.25 1.22",
+    "mem_used": "6.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 17 hours, 19 minutes",
+    "uptime": "1 week, 4 days, 17 hours, 20 minutes",
     "disk_history": [
       86,
       86,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "9a20d1b4",
+      "agent": "chore",
+      "message": "update dashboard data and disk history",
+      "time": "43 seconds ago"
+    },
+    {
       "sha": "a4845b88",
       "agent": "chore",
       "message": "clean up workspace — remove legacy evolver skill, refresh data, update supervisor and auto-torrent",
-      "time": "20 seconds ago"
+      "time": "83 seconds ago"
     },
     {
       "sha": "bd7b302b",
       "agent": "misc",
       "message": "feat(supervisor): add heartbeat Telegram messages, timeouts, and state update; fix(auto-torrent): add per-pick timeout and increase cron timeout; chore(dashboard): refresh data",
-      "time": "87 seconds ago"
+      "time": "3 minutes ago"
     },
     {
       "sha": "52501505",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "4 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "fc727393",
       "agent": "misc",
       "message": "fix(dashboard): remove duplicate parseOutputTs function declaration causing syntax error",
-      "time": "4 minutes ago"
+      "time": "5 minutes ago"
     },
     {
       "sha": "a2e0fc9f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "9 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "1aaeeb2f",
       "agent": "misc",
       "message": "update(dashboard): refresh data and heartbeat state for MewDash",
-      "time": "13 minutes ago"
+      "time": "14 minutes ago"
     },
     {
       "sha": "c2567e5f",
       "agent": "misc",
       "message": "feat(supervisor): add timeouts to all external commands; update heartbeat-state.json for MewDash Pulse",
-      "time": "13 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "cd81a1e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "14 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "8cf7b540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "19 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "d3ae4ac5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "24 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "db090766",
       "agent": "misc",
       "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
-      "time": "25 minutes ago"
+      "time": "26 minutes ago"
     },
     {
       "sha": "f85a6812",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "29 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "1b611e6f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "34 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "7f01c84b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "39 minutes ago"
-    },
-    {
-      "sha": "c0bda945",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "44 minutes ago"
+      "time": "40 minutes ago"
     }
   ],
   "heartbeat": {
@@ -699,10 +699,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772521070350,
-      "next_run": 1772521190350,
+      "last_run": 1772521190361,
+      "next_run": 1772521310361,
       "last_status": "ok",
-      "last_duration_ms": 2126,
+      "last_duration_ms": 2232,
       "consecutive_errors": 0
     },
     {
@@ -769,26 +769,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:33:49.657Z",
-      "text": "Let's commit the fix:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:34:08.645Z",
-      "text": "✅ **Fixed the MewDash error!**\n\n**Problem:** `btn.addEventListener(...) is not a function` at line 1710. The code had an extra `()` after the `addEventListener` call, causing it to try to invoke `undefined`.\n\n**Fix:** Removed the stray `()`; now it's `btn.addEventListener('click', () => { ... });`\n\nCommit pushed! Refresh the dashboard and the error should be gone. (◕‿◕)✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-03T06:34:51.762Z",
-      "text": "[Tue 2026-03-03 06:34 UTC] yes, the error is gone"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:35:03.092Z",
-      "text": "Yay! Error is gone! 🎉\n\nThe fix is live — just a tiny syntax oops that made everything unhappy. (^^)✨\n\nAll good now? Anything else you want me to check or improve?"
-    },
     {
       "role": "user",
       "ts": "2026-03-03T06:35:42.360Z",
@@ -1018,6 +998,26 @@
       "role": "assistant",
       "ts": "2026-03-03T06:58:39.359Z",
       "text": "Let's stage all changes (including deletions) globally:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:58:59.437Z",
+      "text": "Now let's verify:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:59:19.452Z",
+      "text": "Two files changed after our commit (data.json and disk-history). Let's commit them too for a truly clean state:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:59:38.294Z",
+      "text": "Final status:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:59:53.328Z",
+      "text": "✅ **Git status is clean!**\n\nAll changes committed:\n- Duplicate `parseOutputTs` fixed\n- Supervisor heartbeat with Telegram + state update\n- Auto-torrent timeouts\n- Dashboard data refresh\n- Legacy evolver skill removed\n- Misc evolver state files tracked\n\nMewDash should run without errors. Refresh and enjoy! (◕‿◕)✨"
     }
   ]
 }
