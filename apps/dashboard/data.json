@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T00:25:02Z",
+  "generated_at": "2026-03-03T00:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "8.2G",
-    "load_avg": "1.46 1.38 1.55",
-    "mem_used": "5.4Gi",
+    "load_avg": "1.06 1.23 1.43",
+    "mem_used": "5.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 10 hours, 45 minutes",
+    "uptime": "1 week, 4 days, 10 hours, 50 minutes",
     "disk_history": [
       80,
       80,
@@ -32,7 +32,7 @@
       80,
       80,
       80,
-      80,
+      81,
       81,
       81,
       81,
@@ -68,8 +68,8 @@
     {
       "name": "supervisor",
       "active": true,
-      "last_run": "2026-03-03 00:11",
-      "last_line": "2026-03-03 00:11:20 UTC - ALERT"
+      "last_run": "2026-03-03 00:25",
+      "last_line": "2026-03-03 00:25:10 UTC - ALERT"
     },
     {
       "name": "agent-manager",
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "e7e73c85",
+      "sha": "db7acc5e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "41ad948c",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0019)",
-      "time": "6 minutes ago"
-    },
-    {
-      "sha": "5c017ced",
+      "sha": "e7e73c85",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "19e7ff60",
+      "sha": "41ad948c",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0019)",
+      "time": "11 minutes ago"
+    },
+    {
+      "sha": "5c017ced",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "52e4cf51",
+      "sha": "19e7ff60",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "df9c82c1",
+      "sha": "52e4cf51",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "bc61af8a",
+      "sha": "df9c82c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "e8d7795e",
+      "sha": "bc61af8a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "ac38c586",
+      "sha": "e8d7795e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "75a4eca5",
+      "sha": "ac38c586",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "c0bf8690",
+      "sha": "75a4eca5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
+      "sha": "c0bf8690",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "55 minutes ago"
+    },
+    {
       "sha": "61bcbd99",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-02)",
-      "time": "55 minutes ago"
+      "time": "60 minutes ago"
     },
     {
       "sha": "e76801e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "e288943a",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "faf143bf",
+      "sha": "e288943a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
@@ -192,10 +192,6 @@
     "updatedAt": 1740910200
   },
   "supervisor_log": [
-    "2026-02-27 10:30:52 UTC - OK",
-    "2026-02-27 11:12:28 UTC - OK",
-    "2026-02-27 12:09:11 UTC - OK",
-    "2026-02-27 12:30:36 UTC - OK",
     "2026-02-27 13:07:36 UTC - OK",
     "2026-02-27 15:30:47 UTC - OK",
     "2026-02-27 16:01:44 UTC - OK",
@@ -221,7 +217,11 @@
     "2026-03-03 00:11:18 UTC - ALERT - Reasons:",
     "  * Cron job issues:\\n- vishwakarma-cron: error, errors 1",
     "- auto-torrent-cron: error, errors 1",
-    "2026-03-03 00:11:20 UTC - ALERT"
+    "2026-03-03 00:11:20 UTC - ALERT",
+    "2026-03-03 00:25:08 UTC - ALERT - Reasons:",
+    "  * Cron job issues:\\n- vishwakarma-cron: error, errors 1",
+    "- auto-torrent-cron: error, errors 1",
+    "2026-03-03 00:25:10 UTC - ALERT"
   ],
   "agent_outputs": [
     {
@@ -791,11 +791,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-03-02T22:11:01.588Z",
-      "text": "Let me check the meta-agent which spawns the workspace-builder to see how it's invoked:"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-03-02T22:11:11.969Z",
       "text": "The script above is the **meta-agent**, not the workspace-builder. Let's search for the actual workspace-builder agent logic:"
     },
@@ -1038,6 +1033,11 @@
       "role": "assistant",
       "ts": "2026-03-03T00:24:58.403Z",
       "text": "Let me run the supervisor manually to test heartbeat! (◕‿◕)✨"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T00:25:34.248Z",
+      "text": "✅ **Heartbeat test successful!**\n\nThe supervisor ran manually and completed without errors. The log shows it executed at `00:25:08 UTC` and reported **ALERT** because it detected the failing cron jobs (`vishwakarma-cron` and `auto-torrent-cron`). That's expected — those jobs have past errors.\n\n**Heartbeat system is fully functional:**\n- Supervisor cron is active (runs every 30 min)\n- Checks all system aspects\n- Correctly reports issues via Telegram alerts\n- Logs are updating\n\nThe current alerts are just about those two cron jobs with historical errors; they'll clear once those jobs run successfully on their next schedule.\n\nAll good! 🎉"
     }
   ]
 }
