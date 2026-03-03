@@ -531,7 +531,9 @@ const handler = async (req, res) => {
 
         let lastCommit = null;
         try {
-          const gitLog = execFileSync('git', ['-C', normalized, 'log', '-1', '--pretty=format:%H|%s|%cI'], { encoding: 'utf8', maxBuffer: 1024 * 1024 }).trim();
+          // Get latest commit that affected this specific project directory
+          // Use git -C WORKSPACE log -1 -- <path> to filter by path
+          const gitLog = execFileSync('git', ['-C', WORKSPACE, 'log', '-1', '--pretty=format:%H|%s|%cI', '--', p.dir], { encoding: 'utf8', maxBuffer: 1024 * 1024 }).trim();
           if (gitLog) {
             const [hash, message, date] = gitLog.split('|');
             lastCommit = { hash, message, date };
