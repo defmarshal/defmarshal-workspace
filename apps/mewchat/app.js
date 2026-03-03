@@ -20,12 +20,16 @@
   const typingEl = document.getElementById('typing');
   const errorEl = document.getElementById('error');
   const mascot = document.getElementById('mascot');
+  const charCountEl = document.getElementById('char-count');
+  if (charCountEl) charCountEl.textContent = msgInput.value.length;
 
-  // Auto-resize textarea on input
+  // Auto-resize textarea on input AND update character count
   msgInput.addEventListener('input', function() {
     this.style.height = 'auto';
     const newHeight = Math.min(this.scrollHeight, 150); // max-height: 150px
     this.style.height = newHeight + 'px';
+    // Update character counter
+    if (charCountEl) charCountEl.textContent = this.value.length;
   });
 
   // Theme toggle
