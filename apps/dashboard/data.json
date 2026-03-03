@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T03:30:03Z",
+  "generated_at": "2026-03-03T03:35:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 82,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "8.8G",
-    "load_avg": "1.04 0.85 0.92",
-    "mem_used": "5.6Gi",
+    "load_avg": "0.80 0.87 0.91",
+    "mem_used": "5.1Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 13 hours, 50 minutes",
+    "uptime": "1 week, 4 days, 13 hours, 55 minutes",
     "disk_history": [
       81,
       81,
@@ -21,7 +21,7 @@
       81,
       81,
       81,
-      81,
+      82,
       82,
       82,
       82,
@@ -68,8 +68,8 @@
     {
       "name": "supervisor",
       "active": true,
-      "last_run": "2026-03-03 02:30",
-      "last_line": "2026-03-03 02:30:57 UTC - ALERT"
+      "last_run": "2026-03-03 03:30",
+      "last_line": "2026-03-03 03:30:24 UTC - ALERT"
     },
     {
       "name": "agent-manager",
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "5e00ae91",
+      "sha": "424ff029",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "d0506ce6",
+      "sha": "5e00ae91",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "a5a0290f",
+      "sha": "d0506ce6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "bc22eb5d",
-      "agent": "content",
-      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
-      "time": "19 minutes ago"
-    },
-    {
-      "sha": "9d6984ca",
+      "sha": "a5a0290f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "e998b214",
+      "sha": "bc22eb5d",
+      "agent": "content",
+      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
+      "time": "24 minutes ago"
+    },
+    {
+      "sha": "9d6984ca",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "a3b0f9d0",
+      "sha": "e998b214",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "f7cb885f",
+      "sha": "a3b0f9d0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "f67193b9",
+      "sha": "f7cb885f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "babbe102",
+      "sha": "f67193b9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "cb8aa1f3",
+      "sha": "babbe102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "1a80b7f4",
+      "sha": "cb8aa1f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "e505fa8a",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "aad20715",
+      "sha": "1a80b7f4",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "756e8535",
+      "sha": "e505fa8a",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-03)",
+      "time": "65 minutes ago"
+    },
+    {
+      "sha": "aad20715",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
@@ -192,9 +192,6 @@
     "updatedAt": 1740910200
   },
   "supervisor_log": [
-    "2026-02-28 02:09:07 UTC - OK",
-    "2026-02-28 02:30:26 UTC - OK",
-    "2026-02-28 03:06:11 UTC - OK",
     "2026-02-28 03:30:23 UTC - OK",
     "2026-02-28 17:00:25 UTC - OK",
     "2026-02-28 17:30:27 UTC - OK",
@@ -221,7 +218,10 @@
     "2026-03-03 02:10:15 UTC - ALERT",
     "2026-03-03 02:30:55 UTC - ALERT - Reasons:",
     "  * Cron job issues:\\n- auto-torrent-cron: error, errors 1",
-    "2026-03-03 02:30:57 UTC - ALERT"
+    "2026-03-03 02:30:57 UTC - ALERT",
+    "2026-03-03 03:30:22 UTC - ALERT - Reasons:",
+    "  * Cron job issues:\\n- auto-torrent-cron: error, errors 1",
+    "2026-03-03 03:30:24 UTC - ALERT"
   ],
   "agent_outputs": [
     {
@@ -352,10 +352,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772507127495,
-      "next_run": 1772508600000,
+      "last_run": 1772508600010,
+      "next_run": 1772510400000,
       "last_status": "ok",
-      "last_duration_ms": 13800,
+      "last_duration_ms": 8594,
       "consecutive_errors": 0
     },
     {
@@ -688,10 +688,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772507141295,
-      "next_run": 1772508600000,
+      "last_run": 1772508608604,
+      "next_run": 1772510400000,
       "last_status": "ok",
-      "last_duration_ms": 267164,
+      "last_duration_ms": 24752,
       "consecutive_errors": 0
     },
     {
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772508549078,
-      "next_run": 1772508669078,
+      "last_run": 1772508789099,
+      "next_run": 1772508909099,
       "last_status": "ok",
-      "last_duration_ms": 2498,
+      "last_duration_ms": 2693,
       "consecutive_errors": 0
     },
     {
