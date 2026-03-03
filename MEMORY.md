@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-02*
+*Last updated: 2026-03-03*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech
@@ -23,7 +23,7 @@ Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, 
 ## Notes
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 ## Learnings (latest)
-- 2026-03-03: Removed duplicate system crontab entry for dashboard data updater; OpenClaw cron is now sole source. Eliminates data thrashing and deployment failures. Fixed: Python-based `dashboard-data-updater` (OpenClaw cron) now produces correct data; system crontab violation cleaned up.
+- 2026-03-03: Fixed dashboard cron by switching OpenClaw `dashboard-data-updater` payload to `./scripts/generate-dashboard-data.sh`. This ensures correct data: `disk_history` (24-value sparkline) and agent status (`name`, `active`, `last_run`, `last_line`). The previous Python script produced empty fields and misaligned schema.
 - 2026-03-03: Meta-agent skill installation updated: changed from `openclaw skills install` (removed CLI) to `openclaw plugins install`. Detected weather skill request but weather functionality is provided by `quick weather` (wttr.in), not a plugin. Heuristic to avoid installing non-existent plugins needs refinement. Lesson: verify plugin availability before attempting install; align tool invocation with current CLI version.
 - 2026-03-02: Added observability: quick idea-health command monitors autonomous idea pipeline health (generator/executor status, pending ideas, error tail). Demonstrates incremental monitoring improvements for self-directed systems.
 - 2026-03-02: Dashboard data updater cron job was undocumented and had Python deprecation warnings. Fixed: added to CRON_JOBS.md; replaced datetime.utcnow() with timezone-aware datetime.now(UTC); verified script runs cleanly. Lesson: Regularly audit cron jobs against documentation; proactively fix deprecation warnings to avoid future breakage.
