@@ -1,73 +1,71 @@
-# Workspace Builder Task Plan
+# Workspace Builder Task Plan - 2026-03-03 01:02 UTC
 
-**Session:** 23dad379-21ad-4f7a-8c68-528f98203a33  
-**Trigger:** Cron (every 2h)  
-**Goal:** Validate workspace health, commit pending changes, implement improvements.
+## Overview
+Strategic workspace analysis and improvement implementation focusing on cron system consolidation and dashboard data integrity.
 
----
+## Current State Assessment
+- **Health**: Green (disk 79%, stable)
+- **Active agents**: meta-supervisor running, various cron agents active
+- **Memory**: 33 lines (≤35 limit), reindex ~2.5d fresh
+- **Git**: Clean, all changes pushed to origin
+- **Key issues identified**:
+  1. Duplicate cron systems updating dashboard data
+  2. OpenClaw cron uses broken Python script (corrupts data)
+  3. System crontab uses superior shell script but undocumented
+  4. Data corruption risk due to conflicting updates
 
-## Phase 1: Analysis (0-5 min)
+## Strategic Tasks
 
-- Read active-tasks.md, MEMORY.md, daily logs (today + yesterday)
-- Check git status, health summary, and constraints
-- Identify untracked/modified files that need attention
-- Assess memory index health and other metrics
+### Phase 1: Analysis & Planning
+- [x] Read current workspace context (SOUL.md, USER.md, recent memory)
+- [x] Identify key improvement opportunities (cron duplication, dashboard data)
+- [x] Create planning documents (task_plan.md, findings.md, progress.md)
+- [ ] Verify current constraint validation status
 
-**Status:** Completed
+### Phase 2: Issue Resolution
+- [ ] **CRITICAL**: Fix dashboard data corruption issue
+  - [ ] Migrate superior shell script functionality to OpenClaw cron
+  - [ ] Remove duplicate system crontab entry
+  - [ ] Ensure data structure consistency (disk_history, agent fields)
+  - [ ] Test dashboard functionality after fix
+- [ ] Update CRON_JOBS.md to reflect changes
+- [ ] Verify all cron schedules are properly documented
 
----
+### Phase 3: System Optimization
+- [ ] Review and optimize constraint validation script
+- [ ] Check for any other undocumented system crontab entries
+- [ ] Validate that all OpenClaw cron jobs are functional
+- [ ] Clean up any temporary files or logs
 
-## Phase 2: Findings & Planning (5-10 min)
-
-- Document current state in `findings.md`
-- Identify improvements (e.g., add new scripts to version control, fix filters)
-- Create this task plan with clear phases
-- Initialize `progress.md` tracking
-
-**Status:** In Progress
-
----
-
-## Phase 3: Execution (10-20 min)
-
-- Update active-tasks.md entry to running (if stale)
-- Add/commit legitimate untracked files:
-  - `scripts/update-heartbeat-state.py` (new utility)
-- Create/refresh planning docs (task_plan.md, findings.md, progress.md)
-- Run `./scripts/validate-constraints.sh` and confirm all pass
-- Commit all changes with `build:` prefix
-- Push to origin/master
-- Update active-tasks.md to validated with verification metrics
-
-**Status:** Pending
-
----
-
-## Phase 4: Close the Loop (20-25 min)
-
-- Run `quick health` to confirm green status
-- Verify active-tasks.md <2KB and MEMORY.md ≤35 lines
-- Ensure no temp files left behind
-- Check that git is clean and pushed
-- Append summary to `memory/2026-03-02.md`
-- Prune stale active-tasks entries if needed to stay under limit
-
-**Status:** Pending
-
----
+### Phase 4: Validation & Closure
+- [ ] Run comprehensive validation (health, constraints, git, etc.)
+- [ ] Test all quick commands affected by changes
+- [ ] Commit changes with appropriate build: prefix
+- [ ] Push to origin/master
+- [ ] Update active-tasks.md with verification notes
+- [ ] Perform CLOSE THE LOOP validation
 
 ## Success Criteria
+- Dashboard data corruption eliminated
+- Single source of truth for dashboard updates
+- All cron jobs properly documented in OpenClaw system
+- Constraint validation passes (10/10)
+- No regressions in dashboard functionality
+- Git history clean with descriptive commits
 
-- All constraints 10/10 satisfied
-- Git clean and pushed to origin
-- active-tasks.md updated with validated status and verification details
-- No uncommitted legitimate outputs
-- Planning docs created and versioned
+## Risk Mitigation
+- Backup current dashboard data before making changes
+- Test migration in dry-run mode first
+- Monitor dashboard functionality closely after changes
+- Ensure fallback mechanisms are in place
 
----
+## Timeline
+- Phase 1: Complete (current)
+- Phase 2: High priority (immediate attention needed)
+- Phase 3: Normal priority
+- Phase 4: Final validation
 
-## Contingencies
-
-- If validation fails: debug, fix, re-run until pass
-- If network issues: skip push, note in verification; retry later
-- If disk space low: run cleanup before commit
+## Notes
+- User has indicated preference for clean, centralized cron management
+- Previous workspace builder runs have established good validation patterns
+- Memory system is healthy and should capture this session
