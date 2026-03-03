@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T05:40:02Z",
+  "generated_at": "2026-03-03T05:45:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "1.17 1.23 1.17",
-    "mem_used": "5.7Gi",
+    "load_avg": "1.19 1.08 1.11",
+    "mem_used": "5.5Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 16 hours, 0 minutes",
+    "uptime": "1 week, 4 days, 16 hours, 5 minutes",
     "disk_history": [
-      82,
       82,
       82,
       82,
@@ -30,6 +29,7 @@
       84,
       84,
       84,
+      83,
       83,
       83,
       83,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "437a5abc",
+      "sha": "71a3aa97",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "7b4c8caf",
-      "agent": "chore",
-      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
-      "time": "7 minutes ago"
-    },
-    {
-      "sha": "6a57dae1",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "8 minutes ago"
-    },
-    {
-      "sha": "13aa9b84",
+      "sha": "437a5abc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "49a50443",
+      "sha": "7b4c8caf",
+      "agent": "chore",
+      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
+      "time": "12 minutes ago"
+    },
+    {
+      "sha": "6a57dae1",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-03)",
+      "time": "13 minutes ago"
+    },
+    {
+      "sha": "13aa9b84",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "7c3fb37e",
+      "sha": "49a50443",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "66364822",
-      "agent": "content",
-      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
-      "time": "24 minutes ago"
-    },
-    {
-      "sha": "0cf8e4d1",
+      "sha": "7c3fb37e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "ec20b4b0",
-      "agent": "game",
-      "message": "Complete Anime Studio Tycoon polish – build, test, report",
-      "time": "26 minutes ago"
+      "sha": "66364822",
+      "agent": "content",
+      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
+      "time": "29 minutes ago"
     },
     {
-      "sha": "27ae0d33",
+      "sha": "0cf8e4d1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "4a91089b",
+      "sha": "ec20b4b0",
+      "agent": "game",
+      "message": "Complete Anime Studio Tycoon polish – build, test, report",
+      "time": "31 minutes ago"
+    },
+    {
+      "sha": "27ae0d33",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "8f69f6e7",
-      "agent": "dev",
-      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
-      "time": "38 minutes ago"
-    },
-    {
-      "sha": "d1f02b47",
+      "sha": "4a91089b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "b5ee864a",
+      "sha": "8f69f6e7",
+      "agent": "dev",
+      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
+      "time": "43 minutes ago"
+    },
+    {
+      "sha": "d1f02b47",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "6e41b102",
+      "sha": "b5ee864a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772516389921,
-      "next_run": 1772516509921,
+      "last_run": 1772516629945,
+      "next_run": 1772516749945,
       "last_status": "ok",
-      "last_duration_ms": 2330,
+      "last_duration_ms": 2661,
       "consecutive_errors": 0
     },
     {
@@ -770,26 +770,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-03-03T00:24:47.172Z",
-      "text": "Test heartbeat manually"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T00:24:58.403Z",
-      "text": "Let me run the supervisor manually to test heartbeat! (◕‿◕)✨"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T00:25:34.248Z",
-      "text": "✅ **Heartbeat test successful!**\n\nThe supervisor ran manually and completed without errors. The log shows it executed at `00:25:08 UTC` and reported **ALERT** because it detected the failing cron jobs (`vishwakarma-cron` and `auto-torrent-cron`). That's expected — those jobs have past errors.\n\n**Heartbeat system is fully functional:**\n- Supervisor cron is active (runs every 30 min)\n- Checks all system aspects\n- Correctly reports issues via Telegram alerts\n- Logs are updating\n\nThe current alerts are just about those two cron jobs with historical errors; they'll clear once those jobs run successfully on their next schedule.\n\nAll good! 🎉"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-03T04:26:36.497Z",
-      "text": "Where is half hour heartbeat?"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-03T04:26:50.636Z",
@@ -1019,6 +999,26 @@
       "role": "assistant",
       "ts": "2026-03-03T05:36:18.562Z",
       "text": "Let's test the quick command:"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T05:43:58.341Z",
+      "text": "All good?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:44:12.781Z",
+      "text": "Not quite — the supervisor script is still failing. I'm tracking down the exact cause. (◕‿◕)✨\n\n**Status:**\n- ✅ Dashboard data is valid and fresh\n- ✅ Heartbeat message format is ready\n- ✅ Telegram send works\n- ❌ Supervisor script exits with code 1 due to `set -e` catching a failure\n\nI've fixed the `git status` pipeline to not fail. Now checking the `openclaw sessions list` command — it may return exit code 4 when no sessions exist, which triggers `set -e`. I'll make that non-fatal:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:44:22.618Z",
+      "text": "Now I'll make all external calls non-fatal by appending `|| true` where needed:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:44:31.355Z",
+      "text": "Let's test gateway status:"
     }
   ]
 }
