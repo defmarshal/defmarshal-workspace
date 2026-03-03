@@ -59,20 +59,94 @@ if command -v apt-get &>/dev/null; then
   fi
 fi
 
-# Emit alerts via Telegram only
+# Determine overall status
 if [ ${#ALERTS[@]} -gt 0 ]; then
-  ALERT_TEXT="SUPERVISOR ALERT:\n${ALERTS[*]}"
-  # Log alert details to supervisor log
-  printf "%s - ALERT - Reasons:\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$LOGFILE"
-  for alert in "${ALERTS[@]}"; do
-    printf "  * %s\n" "$alert" >> "$LOGFILE"
-  done
-  # Send Telegram alert using OpenClaw CLI (non-fatal if fails)
-  /home/ubuntu/.npm-global/bin/openclaw message send --to 952170974 --channel telegram --text "$ALERT_TEXT" 2>/dev/null || true
   STATUS="ALERT"
 else
   STATUS="OK"
 fi
+
+# Always send heartbeat message (with alerts if present)
+NOW_UTC="$(date -u '+%H:%M UTC')"
+HEARTBEAT_DATE="$(date -u '+%b %d, %Y')"
+
+# Gather system info
+DISK_USAGE="$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')"
+DISK_FREE="$(df -h . | awk 'NR==2 {print $4}')"
+
+UPDATES_COUNT="$(apt-get -s upgrade 2>/dev/null | grep '^Inst ' | wc -l | tr -d ' ')"
+if [ -z "$UPDATES_COUNT" ] || [ "$UPDATES_COUNT" -lt 0 ] 2>/dev/null; then UPDATES_COUNT=0; fi
+
+GIT_STATUS="$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')"
+if [ "$GIT_STATUS" -eq 0 ]; then
+  GIT_TEXT="clean"
+else
+  GIT_TEXT="$GIT_STATUS changes"
+fi
+
+# Agent status (quick check: any running agents?)
+if openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -e '.sessions[] | select(.agentId=="main")' >/dev/null 2>&1; then
+  AGENT_COUNT=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .agentId' | wc -l | tr -d ' ')
+  AGENT_TEXT="$AGENT_COUNT active"
+else
+  AGENT_TEXT="idle"
+fi
+
+# Weather check (Bangkok) - simple
+WEATHER_TEXT=""
+if command -v curl &>/dev/null; then
+  WEATHER_DATA=$(curl -s "wttr.in/Bangkok?format=%C+%t" 2>/dev/null || echo "")
+  if [ -n "$WEATHER_DATA" ]; then
+    if echo "$WEATHER_DATA" | grep -qi "rain\|storm\|snow" >/dev/null 2>&1; then
+      WEATHER_TEXT="⚠️ Weather: $WEATHER_DATA"
+    else
+      WEATHER_TEXT="🌤️ Weather: $WEATHER_DATA"
+    fi
+  fi
+fi
+
+# Holiday check (Nyepi etc)
+HOLIDAY_TEXT=""
+if [ -f "HEARTBEAT.md" ] && grep -q "Nyepi" "HEARTBEAT.md" 2>/dev/null; then
+  HOLIDAY_TEXT="🎉 Holiday: Nyepi (Mar 18–19)"
+fi
+
+# Build message header based on status
+if [ "$STATUS" = "ALERT" ]; then
+  HEADER="🔴 Heartbeat Check ($NOW_UTC, $HEARTBEAT_DATE)"
+  # Summarize alerts inline
+  ALERT_SUMMARY=""
+  for a in "${ALERTS[@]}"; do
+    # Extract first line or truncate
+    a_one_line=$(echo "$a" | tr '\n' ' ' | sed 's/[[:space:]]*$//')
+    ALERT_SUMMARY="$ALERT_SUMMARY⚠️ $a_one_line\n"
+  done
+else
+  HEADER="🟢 Heartbeat Check ($NOW_UTC, $HEARTBEAT_DATE)"
+  ALERT_SUMMARY=""
+fi
+
+MSG="${HEADER}
+✅ Gateway running
+💾 Disk $DISK_USAGE full ($DISK_FREE free)
+✅ Updates: $UPDATES_COUNT pending
+✅ Git: $GIT_TEXT
+✅ Agents: $AGENT_TEXT
+${ALERT_SUMMARY}${WEATHER_TEXT}
+${HOLIDAY_TEXT}
+
+All clear! (◕‿◕)♡"
+
+# If there are alerts, also log them separately
+if [ "$STATUS" = "ALERT" ]; then
+  printf "%s - ALERT - Reasons:\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> "$LOGFILE"
+  for alert in "${ALERTS[@]}"; do
+    printf "  * %s\n" "$alert" >> "$LOGFILE"
+  done
+fi
+
+# Send heartbeat to Telegram
+/home/ubuntu/.npm-global/bin/openclaw message send -t 952170974 --channel telegram -m "$MSG" 2>/dev/null || true
 
 # Always log run status
 printf "%s - %s\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" "$STATUS" >> "$LOGFILE"
