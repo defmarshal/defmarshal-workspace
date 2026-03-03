@@ -1,0 +1,174 @@
+[2J[H[95m=== Anime Studio Tycoon ===[0m
+Manage your studio: balance money, staff, reputation, fans.
+Goal: Complete 10 episodes while maintaining positive reputation and at least 50,000 fans. Avoid bankruptcy!
+
+[96mYour studio's genre: Shonen[0m
+Current market trend: Sci-Fi (bonus fan growth if matched!)
+
+Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 1 | Money: ¥90000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [##........] [Genre: Shonen] [Trend: Sci-Fi]
+[93mEvent: Licensing opportunity[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 2 | Money: ¥95000 | Staff: 5 | Rep: 55 | Fans: 1500 | Episodes: 0/10 | Progress: [#####.....] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 3 | Money: ¥85000 | Staff: 5 | Rep: 55 | Fans: 1500 | Episodes: 0/10 | Progress: [#######...] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+[96mEpisode 1 completed![0m
+  Reputation +10, Fans +6239
+Week 4 | Money: ¥75000 | Staff: 5 | Rep: 65 | Fans: 7739 | Episodes: 1/10 | Progress: [..........] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 5 | Money: ¥65000 | Staff: 5 | Rep: 65 | Fans: 7739 | Episodes: 1/10 | Progress: [##........] [Genre: Shonen] [Trend: Sci-Fi]
+[93mEvent: Licensing opportunity[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 6 | Money: ¥70000 | Staff: 5 | Rep: 70 | Fans: 8239 | Episodes: 1/10 | Progress: [#####.....] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 7 | Money: ¥60000 | Staff: 5 | Rep: 70 | Fans: 8239 | Episodes: 1/10 | Progress: [#######...] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+[96mEpisode 2 completed![0m
+  Reputation +10, Fans +7002
+Week 8 | Money: ¥50000 | Staff: 5 | Rep: 80 | Fans: 15241 | Episodes: 2/10 | Progress: [..........] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 9 | Money: ¥40000 | Staff: 5 | Rep: 80 | Fans: 15241 | Episodes: 2/10 | Progress: [##........] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 10 | Money: ¥30000 | Staff: 5 | Rep: 80 | Fans: 15241 | Episodes: 2/10 | Progress: [#####.....] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 1
+[92mHired a new animator.[0m
+Week 11 | Money: ¥15000 | Staff: 6 | Rep: 80 | Fans: 15241 | Episodes: 2/10 | Progress: [########..] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 2
+[93mFired a staff member.[0m
+[96mEpisode 3 completed![0m
+  Reputation +10, Fans +7325
+
+[94mNew Season! You can change your studio's genre.[0m
+  1) Shonen (current)
+  2) Isekai
+  3) Slice of Life
+  4) Mecha
+  5) Horror
+  6) Sports
+  7) Romance
+  8) Sci-Fi
+  0) Keep current genre
+> Auto-keeping Shonen.
+Week 12 | Money: ¥5000 | Staff: 5 | Rep: 90 | Fans: 22566 | Episodes: 3/10 | Progress: [..........] [Genre: Shonen] [Trend: Sci-Fi]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 2
+[93mFired a staff member.[0m
+[91mBankruptcy! You lose.[0m
