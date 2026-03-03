@@ -96,12 +96,12 @@ compute_feedback_weights() {
 check_and_install_skill() {
   local skill="$1"
   if ! [ -d "skills/$skill" ] && ! grep -q "\"$skill\"" ".openclaw/openclaw.json" 2>/dev/null; then
-    log "Installing skill: $skill"
-    if openclaw skills install "$skill" >> "$LOGFILE" 2>&1; then
-      log "Skill installed: $skill"
+    log "Installing plugin/skill: $skill"
+    if openclaw plugins install "$skill" >> "$LOGFILE" 2>&1; then
+      log "Plugin/skill installed: $skill"
       return 0
     else
-      log "Failed to install skill: $skill"
+      log "Failed to install plugin/skill: $skill"
       return 1
     fi
   fi

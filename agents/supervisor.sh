@@ -85,11 +85,10 @@ else
 fi
 
 # Agent status (quick check: any running agents?)
+AGENT_TEXT="idle"
 if openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -e '.sessions[] | select(.agentId=="main")' >/dev/null 2>&1; then
   AGENT_COUNT=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .agentId' | wc -l | tr -d ' ')
   AGENT_TEXT="$AGENT_COUNT active"
-else
-  AGENT_TEXT="idle"
 fi
 
 # Weather check (Bangkok) - simple

@@ -1,52 +1,29 @@
-# Daily Digest — March 3, 2026 (UTC)
+# Daily Digest 2026-03-03
 
-## Overview
+## Content Produced
+- content/2026-03-03-0127-linkedin-pa-digest.md: LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)
+- content/2026-03-03-0127-linkedin-pa-post.md: ## ⚙️ Technical Performance: IBM Planning Analytics Engine Deep Dive
+- content/2026-03-03-0217-linkedin-pa-digest.md: LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)
+- content/2026-03-03-0217-linkedin-pa-post.md: ## ⚖️ Comparative Analysis: IBM Planning Analytics vs. Oracle Hyperion
+- content/2026-03-03-0311-linkedin-pa-digest.md: LinkedIn Content Digest — IBM Planning Analytics (Analyst-Report v10)
+- content/2026-03-03-0311-linkedin-pa-post.md: ## 🛠️ Implementation Decoder: What It Really Takes to Deploy IBM Planning Analytics
 
-Light activity during early morning hours. Gateway configuration issue resolved. System health stable. LinkedIn PA content produced.
+## Research Highlights
+- research/2026-03-03-ai-regulation-cbdc-anime-streaming-quantum-space.md: Cross-Domain Insights: Regulatory Realities, Streaming Wars, Quantum & Space
+- research/2026-03-03-ai-safety-edge-ai-6g-anime-spring.md: AI Safety Incidents, Edge AI Surge, 6G Coalition, and Anime Spring 2026
 
-## Highlights
+## Dev Commits (today)
+- dev: enhance supervisor heartbeat with weather, holidays, agent status; update disk history
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)
+- dev: adjust cron count expectations (28-32); refresh research index; record disk metrics
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0211)
+- dev: record disk usage snapshot (81%) from validation check
+- dev: record disk usage snapshot (81%) from validation check
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0019)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-02_2203)
 
-### Gateway Configuration Fix
-- Removed invalid `channels.whatsapp.enabled` key via `openclaw doctor --fix`
-- Restarted gateway service; RPC probe healthy
-- Documentation update: Fixed duplicate function definition in refresh-dashboard-data.py (March 2 fix)
+## System Health
+Disk warning 83% (top: 9.3G /home/ubuntu/.openclaw/workspace/downloads) | Updates: none | Git dirty (2 changed) | Memory: 38f/368c (clean) local FTS+ | Reindex: 2.8d ago | Gateway: healthy | Downloads: 37 files, 9.3G
 
-### Content Production
-- **LinkedIn PA Agent** (01:27 UTC):
-  - Generated daily digest: `content/2026-03-03-0127-linkedin-pa-digest.md`
-  - Created post: `content/2026-03-03-0127-linkedin-pa-post.md`
-
-### Workspace Builder Activity
-- Multiple overnight runs (01:02, 03:02, 05:04, 07:10, 09:02, 11:02, 15:04, 21:01 UTC)
-- All completed successfully with full validation
-- Ongoing maintenance: disk history updates, planning docs refresh, constraint checks
-
-### System Health
-- **Disk**: 81% (stable) — downloads: 32 files, 7.7GB
-- **Gateway**: healthy (RPC 200)
-- **APT**: no pending updates
-- **Memory**: 33 fragments / ~322 chunks, reindex ~2.5 days old
-- **Git**: clean; recent pushes from builder cycles
-- **Cron jobs**: 27 OpenClaw jobs, 2 system cron (gateway watchdog, agent startup)
-- **Constraints**: 10/10 satisfied
-
-### Pending Items
-- No research report for March 3 yet (next research-agent cycle will produce)
-- Daily digest created now (content-agent)
-
-## Notable Commits (March 3, 00:00–02:30 UTC)
-
-- `6bbfaa46` dev: record disk usage snapshot (81%) from validation check
-- `47fafc23` game: polish Anime Studio Tycoon per Vishwakarma plan
-- `9cdb1628` chore: update clawdash data
-- `77257ef9` chore: update clawdash data
-
-## Looking Ahead
-
-- Next workspace-builder run: ~23:00 UTC (every 2 hours)
-- Research-agent cycle will generate new report soon (check research/ for March 3 filename)
-- Disk usage approaching 81%; continue monitoring (threshold 85%)
-
----
-
-*Generated: 2026-03-03 02:31 UTC by content-agent*
+## Notes
+- Generated at Tue Mar  3 05:10:14 UTC 2026
