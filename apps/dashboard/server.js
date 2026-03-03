@@ -16,6 +16,9 @@ const http  = require('http');
 const https = require('https');
 const fs    = require('fs');
 const json = (res, status, body) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.writeHead(status, { "Content-Type": "application/json" });
   res.end(JSON.stringify(body));
 };
