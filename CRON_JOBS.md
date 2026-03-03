@@ -166,6 +166,12 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Description**: Refreshes `apps/dashboard/data.json` with latest system stats, agent sessions, recent commits, cron jobs, heartbeat state, and supervisor log tail. Provides real-time data for the web dashboard.
    - **Status**: Enabled (fixed 2026-03-02 - previously had syntax error)
 
+28. **mewchat-evolver-cron**
+   - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
+   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/mewchat-evolver.sh >> memory/mewchat-evolver.log 2>&1'`
+   - **Log**: `memory/mewchat-evolver.log`
+   - **Description**: Autonomous agent that continuously improves the MewChat web app (UX, performance, features, code quality). Runs every 6 hours; each cycle performs one focused improvement, commits, and logs.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

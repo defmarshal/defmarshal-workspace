@@ -16,6 +16,7 @@
   const chatMessages = document.getElementById('chat-messages');
   const msgInput = document.getElementById('msg-input');
   const sendBtn = document.getElementById('send-btn');
+  const clearBtn = document.getElementById('clear-btn');
   const typingEl = document.getElementById('typing');
   const errorEl = document.getElementById('error');
   const mascot = document.getElementById('mascot');
@@ -105,6 +106,14 @@
 
   function clearError() {
     errorEl.classList.add('hidden');
+  }
+
+  function clearChat() {
+    if (confirm('Clear the current chat history? This cannot be undone.')) {
+      chatMessages.innerHTML = '';
+      lastMessageCount = 0;
+      // Optional: call API to clear on server? For now just local.
+    }
   }
 
   // Data fetching
@@ -231,6 +240,33 @@
     }
   });
   sendBtn.addEventListener('click', sendMessage);
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', e => {
+    // Check for Ctrl/Cmd key combos
+    const isMod = e.ctrlKey || e.metaKey;
+    if (!isMod) return;
+
+    switch (e.key.toLowerCase()) {
+      case ',':
+        e.preventDefault();
+        themeBtn.click();
+        break;
+      case '/':
+        e.preventDefault();
+        msgInput.focus();
+        break;
+      case 'k':
+        e.preventDefault();
+        clearChat();
+        break;
+    }
+  });
+
+  // Clear button
+  if (clearBtn) {
+    clearBtn.addEventListener('click', clearChat);
+  }
 
   // Initialize
   loadSessions().then(() => {
