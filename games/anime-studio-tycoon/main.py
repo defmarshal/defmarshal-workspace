@@ -17,14 +17,14 @@ class C:
     E = '\033[0m'   # End
 
 # Game state
-money = 100000
+money = 130000
 staff = 5
 reputation = 50
 fans = 1000
 week = 0
 episodes_target = 10
 episodes_completed = 0
-salary_per_staff = 2000
+salary_per_staff = 1500
 
 # New: Genre & Trend system
 GENRES = ["Shonen", "Isekai", "Slice of Life", "Mecha", "Horror", "Sports", "Romance", "Sci-Fi"]
@@ -39,10 +39,10 @@ is_crunching = False
 
 # New: Upgrades
 UPGRADES = {
-    "star_director": {"cost": 30000, "label": "Star Director", "desc": "Reputation gain from episodes doubled.", "owned": False},
-    "god_animator": {"cost": 25000, "label": "God Animator", "desc": "Reduces 'Staff burnout' event chance by 50%.", "owned": False},
-    "better_software": {"cost": 15000, "label": "Better Software", "desc": "Weekly salary cost reduced by 20%.", "owned": False},
-    "merch_table": {"cost": 20000, "label": "Merch Table", "desc": "Every 4 weeks: +¥3000 fans (actually +3000 fans).", "owned": False}
+    "star_director": {"cost": 24000, "label": "Star Director", "desc": "Reputation gain from episodes doubled.", "owned": False},
+    "god_animator": {"cost": 20000, "label": "God Animator", "desc": "Reduces 'Staff burnout' event chance by 50%.", "owned": False},
+    "better_software": {"cost": 12000, "label": "Better Software", "desc": "Weekly salary cost reduced by 20%.", "owned": False},
+    "merch_table": {"cost": 16000, "label": "Merch Table", "desc": "Every 4 weeks: +¥2000 revenue and +3000 fans.", "owned": False}
 }
 salary_multiplier = 1.0
 
@@ -54,7 +54,11 @@ events = [
     ("Critic praise", 0, 0, +15, 1000),
     ("Streaming deal", 25000, 0, 0, 0),
     ("Fan convention", 0, 0, 0, 2000),
-    ("Licensing opportunity", 15000, 0, +5, 500)
+    ("Licensing opportunity", 15000, 0, +5, 500),
+    ("Crowdfunding success", 12000, 0, 0, 0),
+    ("Sponsorship deal", 8000, 0, 2, 500),
+    ("Server outage", -6000, 0, -5, 0),
+    ("Animator injury", 0, -1, -5, -200)
 ]
 
 def clear_screen():
@@ -83,7 +87,7 @@ def apply_upgrades():
         salary_multiplier = 0.8
 
 def episode_gain():
-    global reputation, fans, market_trend, player_genre, trend_announced
+    global reputation, fans, money, market_trend, player_genre, trend_announced
     # Base gains
     rep_gain = 10
     fan_gain = random.randint(2000, 8000)
@@ -99,8 +103,13 @@ def episode_gain():
     reputation += rep_gain
     fans += fan_gain
     
+    # Episode revenue
+    episode_revenue = random.randint(15000, 25000)
+    money += episode_revenue
+    
     print(f"{C.OKCYAN}Episode {episodes_completed} completed!{C.E}")
     print(f"  Reputation +{rep_gain}, Fans +{fan_gain}")
+    print(f"  {C.OKGREEN}Episode revenue: +¥{episode_revenue}{C.E}")
     if trend_mult > 1.0 and not trend_announced:
         print(f"  {C.M}🔥 TREND BONUS: {player_genre} is hot right now!{C.E}")
         trend_announced = True
@@ -150,6 +159,22 @@ def weekly_event():
                 if staff < 1:
                     staff = 1
 
+def get_auto_choice():
+    if money < 8000 and staff > 4:
+        return "2"  # Fire if low on money and too many staff
+    elif money >= 5000 and staff < 6:
+        return "1"  # Hire if can afford and staff low
+    elif money >= 3000 and staff < 6:
+        return "3"  # Train if can afford
+    elif reputation < 70 and money >= 2000 and not is_crunching:
+        return "5"  # Quality focus if rep low
+    elif not UPGRADES["star_director"]["owned"] and money >= UPGRADES["star_director"]["cost"]:
+        return "6"  # Buy upgrade if affordable
+    elif production_progress < points_per_episode * 1.5 and money >= 2000 and episodes_completed < episodes_target and not is_crunching:
+        return "4"  # Rush production if behind schedule
+    else:
+        return "7"  # Advance week
+
 def weekly_update():
     global money, staff, reputation, week, episodes_completed, production_progress, is_crunching, market_trend, trend_announced, fans
     
@@ -174,22 +199,11 @@ def weekly_update():
     try:
         choice = input("> ").strip()
     except (EOFError, KeyboardInterrupt):
-        # Auto-mode: choose based on game state (do NOT modify game state here!)
-        if money < 8000 and staff > 4:
-            choice = "2"  # Fire if low on money and too many staff
-        elif money >= 5000 and staff < 6:
-            choice = "1"  # Hire if can afford and staff low
-        elif money >= 3000 and staff < 6:
-            choice = "3"  # Train if can afford
-        elif reputation < 70 and money >= 2000 and not is_crunching:
-            choice = "5"  # Quality focus if rep low
-        elif not UPGRADES["star_director"]["owned"] and money >= UPGRADES["star_director"]["cost"]:
-            choice = "6"  # Buy upgrade if affordable
-        elif production_progress < points_per_episode * 1.5 and money >= 2000 and episodes_completed < episodes_target and not is_crunching:
-            # If behind schedule and can afford crunch (and not already active)
-            choice = "4"
-        else:
-            choice = "7"  # Advance week
+        choice = get_auto_choice()
+        print(f"Auto-choosing: {choice}")
+
+    if not choice:  # empty input (e.g., non-interactive piped newline)
+        choice = get_auto_choice()
         print(f"Auto-choosing: {choice}")
     
     if choice == "1":
@@ -256,8 +270,9 @@ def weekly_update():
             print(f"{C.OKCYAN}Market trend shifted to: {market_trend}{C.E}")
         # Bonus from merch table
         if UPGRADES["merch_table"]["owned"] and week % 4 == 0:
+            money += 2000
             fans += 3000
-            print(f"{C.M}Merch sales added 3000 fans!{C.E}")
+            print(f"{C.M}Merch sales generated ¥2000 and added 3000 fans!{C.E}")
     else:
         print(f"{C.FAIL}Invalid choice; skipping.{C.E}")
     
