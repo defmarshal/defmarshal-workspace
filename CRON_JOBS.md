@@ -161,10 +161,10 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 
 27. **dashboard-data-updater**
    - **Schedule**: Every 5 minutes (`*/5 * * * *`) in Asia/Bangkok
-   - **Payload**: agentTurn executing `python3 /home/ubuntu/.openclaw/workspace/scripts/refresh-dashboard-data.py >> /home/ubuntu/.openclaw/workspace/memory/dashboard-data.log 2>&1`
+   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./scripts/generate-dashboard-data.sh >> memory/dashboard-data.log 2>&1'`
    - **Log**: `memory/dashboard-data.log`
    - **Description**: Refreshes `apps/dashboard/data.json` with latest system stats, agent sessions, recent commits, cron jobs, heartbeat state, and supervisor log tail. Provides real-time data for the web dashboard.
-   - **Status**: Enabled (fixed 2026-03-02 - previously had syntax error)
+   - **Status**: Enabled (switched to bash script 2026-03-02; Python version deprecated)
 
 28. **mewchat-evolver-cron**
    - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
