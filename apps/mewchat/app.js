@@ -21,6 +21,13 @@
   const errorEl = document.getElementById('error');
   const mascot = document.getElementById('mascot');
 
+  // Auto-resize textarea on input
+  msgInput.addEventListener('input', function() {
+    this.style.height = 'auto';
+    const newHeight = Math.min(this.scrollHeight, 150); // max-height: 150px
+    this.style.height = newHeight + 'px';
+  });
+
   // Theme toggle
   function applyTheme() {
     const theme = localStorage.getItem('mewchat-theme') || 'dark';
