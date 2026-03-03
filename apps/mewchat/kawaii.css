@@ -138,6 +138,15 @@ footer { font-size:11px; color:var(--muted); text-align:center; padding:8px; }
   50% { transform: translateY(-2px) scale(1.1); }
 }
 
+/* ── Pulse for send button ──────────────────────────────────────────────────── */
+#send-btn.has-text {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 /* ── Typewriter Effect ─────────────────────────────────────────────────────── */
 .msg-bubble.typewriter {
   overflow: hidden;
