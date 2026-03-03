@@ -74,10 +74,10 @@ HEARTBEAT_DATE="$(date -u '+%b %d, %Y')"
 DISK_USAGE="$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')"
 DISK_FREE="$(df -h . | awk 'NR==2 {print $4}')"
 
-UPDATES_COUNT="$(apt-get -s upgrade 2>/dev/null | grep '^Inst ' | wc -l | tr -d ' ')"
+UPDATES_COUNT="$(apt-get -s upgrade 2>/dev/null | grep '^Inst ' | wc -l | tr -d ' ' || true)"
 if [ -z "$UPDATES_COUNT" ] || [ "$UPDATES_COUNT" -lt 0 ] 2>/dev/null; then UPDATES_COUNT=0; fi
 
-GIT_STATUS="$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')"
+GIT_STATUS="$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ' || echo 0)"
 if [ "$GIT_STATUS" -eq 0 ]; then
   GIT_TEXT="clean"
 else
@@ -87,7 +87,7 @@ fi
 # Agent status (quick check: any running agents?)
 AGENT_TEXT="idle"
 if openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -e '.sessions[] | select(.agentId=="main")' >/dev/null 2>&1; then
-  AGENT_COUNT=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .agentId' | wc -l | tr -d ' ')
+  AGENT_COUNT=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions[] | select(.agentId=="main") | .agentId' | wc -l | tr -d ' ' || echo 0)
   AGENT_TEXT="$AGENT_COUNT active"
 fi
 
@@ -144,8 +144,8 @@ if [ "$STATUS" = "ALERT" ]; then
   done
 fi
 
-# Send heartbeat to Telegram
-/home/ubuntu/.npm-global/bin/openclaw message send -t 952170974 --channel telegram -m "$MSG" 2>/dev/null || true
+# Send heartbeat to Telegram (with timeout to avoid hanging)
+timeout 10 /home/ubuntu/.npm-global/bin/openclaw message send -t 952170974 --channel telegram -m "$MSG" 2>/dev/null || true
 
 # Always log run status
 printf "%s - %s\n" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" "$STATUS" >> "$LOGFILE"
