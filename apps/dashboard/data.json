@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-03T06:15:02Z",
+  "generated_at": "2026-03-03T06:20:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 84,
     "disk_free": "7.5G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "1.29 1.07 0.98",
-    "mem_used": "5.5Gi",
+    "load_avg": "0.82 0.96 0.97",
+    "mem_used": "5.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 16 hours, 35 minutes",
+    "uptime": "1 week, 4 days, 16 hours, 40 minutes",
     "disk_history": [
       84,
       84,
@@ -22,19 +22,19 @@
       84,
       84,
       84,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
+      83,
       84,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
-      83,
       84,
       84,
       84
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "4780a4f0",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
-      "time": "2 minutes ago"
-    },
-    {
-      "sha": "52c06717",
+      "sha": "c0bda945",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "8f0564c9",
+      "sha": "4780a4f0",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
+      "time": "7 minutes ago"
+    },
+    {
+      "sha": "52c06717",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "8f91f0f0",
+      "sha": "8f0564c9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "96ab566a",
+      "sha": "8f91f0f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "68057bd9",
+      "sha": "96ab566a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "5798ab43",
+      "sha": "68057bd9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "71a3aa97",
+      "sha": "5798ab43",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "437a5abc",
+      "sha": "71a3aa97",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "7b4c8caf",
-      "agent": "chore",
-      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
-      "time": "42 minutes ago"
-    },
-    {
-      "sha": "6a57dae1",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "13aa9b84",
+      "sha": "437a5abc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "49a50443",
+      "sha": "7b4c8caf",
+      "agent": "chore",
+      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
+      "time": "47 minutes ago"
+    },
+    {
+      "sha": "6a57dae1",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-03)",
+      "time": "48 minutes ago"
+    },
+    {
+      "sha": "13aa9b84",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "7c3fb37e",
+      "sha": "49a50443",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "66364822",
-      "agent": "content",
-      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
-      "time": "59 minutes ago"
+      "sha": "7c3fb37e",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "60 minutes ago"
     }
   ],
   "heartbeat": {
@@ -364,10 +364,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772510825186,
-      "next_run": 1772517736434,
+      "last_run": 1772518348899,
+      "next_run": 1772524936434,
       "last_status": "ok",
-      "last_duration_ms": 26482,
+      "last_duration_ms": 29357,
       "consecutive_errors": 0
     },
     {
@@ -496,10 +496,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772497185272,
-      "next_run": 1772517878568,
+      "last_run": 1772518447184,
+      "next_run": 1772539478568,
       "last_status": "ok",
-      "last_duration_ms": 33211,
+      "last_duration_ms": 123285,
       "consecutive_errors": 0
     },
     {
@@ -508,10 +508,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772496643550,
-      "next_run": 1772517617970,
+      "last_run": 1772518613612,
+      "next_run": 1772539217970,
       "last_status": "ok",
-      "last_duration_ms": 500662,
+      "last_duration_ms": 42584,
       "consecutive_errors": 0
     },
     {
@@ -520,10 +520,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772497218483,
-      "next_run": 1772517787460,
+      "last_run": 1772518570469,
+      "next_run": 1772539387460,
       "last_status": "ok",
-      "last_duration_ms": 37034,
+      "last_duration_ms": 7670,
       "consecutive_errors": 0
     },
     {
@@ -532,10 +532,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772510894783,
-      "next_run": 1772517775341,
+      "last_run": 1772518422791,
+      "next_run": 1772524975341,
       "last_status": "ok",
-      "last_duration_ms": 30072,
+      "last_duration_ms": 24393,
       "consecutive_errors": 0
     },
     {
@@ -544,10 +544,10 @@
       "schedule": "0 */6 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772496536006,
-      "next_run": 1772517611600,
+      "last_run": 1772518396103,
+      "next_run": 1772539211600,
       "last_status": "ok",
-      "last_duration_ms": 105574,
+      "last_duration_ms": 26688,
       "consecutive_errors": 0
     },
     {
@@ -568,10 +568,10 @@
       "schedule": "0 * * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772514967562,
-      "next_run": 1772517777723,
+      "last_run": 1772518656196,
+      "next_run": 1772521377723,
       "last_status": "ok",
-      "last_duration_ms": 51058,
+      "last_duration_ms": 29285,
       "consecutive_errors": 0
     },
     {
@@ -604,10 +604,10 @@
       "schedule": "0 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772514694544,
-      "next_run": 1772517634763,
+      "last_run": 1772518378256,
+      "next_run": 1772521234763,
       "last_status": "ok",
-      "last_duration_ms": 270831,
+      "last_duration_ms": 17847,
       "consecutive_errors": 0
     },
     {
@@ -628,10 +628,10 @@
       "schedule": "5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772515018620,
-      "next_run": 1772517900000,
+      "last_run": 1772518685481,
+      "next_run": 1772521500000,
       "last_status": "ok",
-      "last_duration_ms": 30634,
+      "last_duration_ms": 20859,
       "consecutive_errors": 0
     },
     {
@@ -640,10 +640,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772510924855,
-      "next_run": 1772517839125,
+      "last_run": 1772518578139,
+      "next_run": 1772525039125,
       "last_status": "ok",
-      "last_duration_ms": 21745,
+      "last_duration_ms": 33380,
       "consecutive_errors": 0
     },
     {
@@ -652,10 +652,10 @@
       "schedule": "0 */2 * * *",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772510774938,
-      "next_run": 1772517717835,
+      "last_run": 1772518319228,
+      "next_run": 1772524917835,
       "last_status": "ok",
-      "last_duration_ms": 50248,
+      "last_duration_ms": 29671,
       "consecutive_errors": 0
     },
     {
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772517590133,
-      "next_run": 1772517710133,
+      "last_run": 1772518731530,
+      "next_run": 1772518851530,
       "last_status": "ok",
-      "last_duration_ms": 2522,
+      "last_duration_ms": 2545,
       "consecutive_errors": 0
     },
     {
