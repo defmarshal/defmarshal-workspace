@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T04:25:02Z",
+  "generated_at": "2026-03-03T04:30:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 84,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "0.60 0.72 0.84",
-    "mem_used": "5.4Gi",
+    "load_avg": "0.70 0.68 0.79",
+    "mem_used": "5.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 14 hours, 45 minutes",
+    "uptime": "1 week, 4 days, 14 hours, 50 minutes",
     "disk_history": [
       82,
       82,
@@ -33,8 +33,8 @@
       82,
       82,
       82,
-      82,
       83,
+      84,
       84,
       84,
       84
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "26c3b85c",
+      "sha": "99c8520e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "be9b48da",
+      "sha": "26c3b85c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "bc7627f3",
+      "sha": "be9b48da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "c68dfe96",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
-      "time": "18 minutes ago"
-    },
-    {
-      "sha": "c02ea653",
-      "agent": "dev",
-      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
-      "time": "19 minutes ago"
-    },
-    {
-      "sha": "aea8136c",
+      "sha": "bc7627f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "5c988d53",
-      "agent": "build",
-      "message": "update research hub index timestamp; add research report; record disk metrics",
-      "time": "22 minutes ago"
+      "sha": "c68dfe96",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
+      "time": "23 minutes ago"
     },
     {
-      "sha": "0b6517cd",
+      "sha": "c02ea653",
+      "agent": "dev",
+      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
+      "time": "24 minutes ago"
+    },
+    {
+      "sha": "aea8136c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "e413673f",
+      "sha": "5c988d53",
+      "agent": "build",
+      "message": "update research hub index timestamp; add research report; record disk metrics",
+      "time": "27 minutes ago"
+    },
+    {
+      "sha": "0b6517cd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "75c16a38",
+      "sha": "e413673f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "f0116948",
+      "sha": "75c16a38",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "ca98f59d",
+      "sha": "f0116948",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "dce494a7",
+      "sha": "ca98f59d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "424ff029",
+      "sha": "dce494a7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "5e00ae91",
+      "sha": "424ff029",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772511786684,
-      "next_run": 1772511906684,
+      "last_run": 1772512146730,
+      "next_run": 1772512266730,
       "last_status": "ok",
-      "last_duration_ms": 2436,
+      "last_duration_ms": 2302,
       "consecutive_errors": 0
     },
     {
@@ -777,26 +777,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:11:11.969Z",
-      "text": "The script above is the **meta-agent**, not the workspace-builder. Let's search for the actual workspace-builder agent logic:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:11:18.095Z",
-      "text": "Let's check the actual token usage by looking at the agent health report:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:11:28.838Z",
-      "text": "Let's check the workspace-builder's actual prompt and configuration to understand its token footprint:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:12:24.290Z",
-      "text": "Found it! The **workspace-builder** is an LLM agent that runs every 2 hours. It uses `openrouter/stepfun/step-3.5-flash:free` with a 1800s timeout and a fairly detailed system prompt that instructs it to:\n\n- Create planning docs (task_plan.md, findings.md, progress.md)\n- Execute changes\n- Validate and commit\n\nToken usage can be high because:\n1. **Large context**: It likely reads many workspace files (MEMORY.md, active-tasks.md, git status, goals) to understand state.\n2. **Multiple tool calls**: Each file read, git command, validation check consumes input tokens and returns output.\n3. **Verbose outputs**: Planning docs and progress updates add output tokens.\n4. **Model choice**: Step-3.5-flash is a decent model but not the smallest; it's using the full context window.\n\nRecent runs have been fixing bugs and implementing features, which are token-intensive activities.\n\n**Suggestions to reduce token usage:**\n- Shorten the system prompt: remove redundant instructions.\n- Reduce file reads: limit the files included in context (e.g., read only summaries, not entire large files).\n- Use a lighter model: switch to `openrouter/unknown` smaller model if available; consider `anthropic/claude-3-haiku` or `google/gemini-2.0-flash` if cheaper.\n- Cache results: reuse previous file reads if unchanged.\n- Reduce output verbosity: make planning docs more concise.\n- Extend interval: run every 4-6 hours instead of every 2 if activity level permits.\n\nI can adjust the payload in the cron job definition to use a smaller model and trim the prompt. Want me to optimize it? (◕‿◕)✨"
-    },
     {
       "role": "user",
       "ts": "2026-03-02T22:13:35.534Z",
@@ -1026,6 +1006,26 @@
       "role": "assistant",
       "ts": "2026-03-03T00:25:34.248Z",
       "text": "✅ **Heartbeat test successful!**\n\nThe supervisor ran manually and completed without errors. The log shows it executed at `00:25:08 UTC` and reported **ALERT** because it detected the failing cron jobs (`vishwakarma-cron` and `auto-torrent-cron`). That's expected — those jobs have past errors.\n\n**Heartbeat system is fully functional:**\n- Supervisor cron is active (runs every 30 min)\n- Checks all system aspects\n- Correctly reports issues via Telegram alerts\n- Logs are updating\n\nThe current alerts are just about those two cron jobs with historical errors; they'll clear once those jobs run successfully on their next schedule.\n\nAll good! 🎉"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T04:26:36.497Z",
+      "text": "Where is half hour heartbeat?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:26:50.636Z",
+      "text": "Good question! The supervisor-cron is set to run every 30 minutes (`0,30 * * * *` Asia/Bangkok). Let's check its next scheduled run:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:27:07.023Z",
+      "text": "It's scheduled for **04:30 UTC** (about 4 hours from now). That seems far — maybe the schedule drifted? Let's check when it last ran successfully:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:27:26.192Z",
+      "text": "The last successful run was **04:05 UTC** (just 20 minutes ago) with status **ok**. So it is running every 30 minutes as expected.\n\n**Why the gaps?** The schedule is `0,30 * * * *` Asia/Bangkok. Bangkok is UTC+7, so:\n- 00:30 Bangkok = 17:30 UTC (previous day)\n- 01:00 Bangkok = 18:00 UTC\n- ...\n- 07:30 Bangkok = 00:30 UTC\n- 08:00 Bangkok = 01:00 UTC\n\nSo runs occur at Bangkok :00 and :30, which correspond to UTC 17:30, 18:00, 18:30, etc. **The next UTC run is at 04:30** (Bangkok 11:30). This matches the 30-minute interval.\n\n**Bottom line:** Half-hour heartbeat is working fine. Last run 04:05 UTC, next at 04:30 UTC. ✅\n\nWould you like me to adjust the schedule to run at different UTC times for easier tracking? (◕‿◕)✨"
     }
   ]
 }
