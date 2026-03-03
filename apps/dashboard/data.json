@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-03T06:50:02Z",
+  "generated_at": "2026-03-03T06:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 86,
-    "disk_free": "6.3G",
+    "disk_free": "6.2G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 16,
     "downloads_gb": "11G",
-    "load_avg": "1.28 1.19 1.16",
-    "mem_used": "6.4Gi",
+    "load_avg": "1.13 1.27 1.21",
+    "mem_used": "6.0Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 17 hours, 10 minutes",
+    "uptime": "1 week, 4 days, 17 hours, 15 minutes",
     "disk_history": [
       86,
       86,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "fc727393",
+      "agent": "misc",
+      "message": "fix(dashboard): remove duplicate parseOutputTs function declaration causing syntax error",
+      "time": "5 seconds ago"
+    },
+    {
+      "sha": "a2e0fc9f",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "5 minutes ago"
+    },
+    {
       "sha": "1aaeeb2f",
       "agent": "misc",
       "message": "update(dashboard): refresh data and heartbeat state for MewDash",
-      "time": "4 minutes ago"
+      "time": "9 minutes ago"
     },
     {
       "sha": "c2567e5f",
       "agent": "misc",
       "message": "feat(supervisor): add timeouts to all external commands; update heartbeat-state.json for MewDash Pulse",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "cd81a1e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "10 minutes ago"
     },
     {
       "sha": "8cf7b540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "15 minutes ago"
     },
     {
       "sha": "d3ae4ac5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "20 minutes ago"
     },
     {
       "sha": "db090766",
       "agent": "misc",
       "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
-      "time": "16 minutes ago"
+      "time": "21 minutes ago"
     },
     {
       "sha": "f85a6812",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "25 minutes ago"
     },
     {
       "sha": "1b611e6f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "30 minutes ago"
     },
     {
       "sha": "7f01c84b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "c0bda945",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "4780a4f0",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
-      "time": "37 minutes ago"
+      "time": "42 minutes ago"
     },
     {
       "sha": "52c06717",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "8f0564c9",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "8f91f0f0",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "50 minutes ago"
-    },
-    {
-      "sha": "96ab566a",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "55 minutes ago"
     }
   ],
   "heartbeat": {
@@ -699,10 +699,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772520590292,
-      "next_run": 1772520710292,
+      "last_run": 1772520830312,
+      "next_run": 1772520950312,
       "last_status": "ok",
-      "last_duration_ms": 3368,
+      "last_duration_ms": 2296,
       "consecutive_errors": 0
     },
     {
@@ -769,71 +769,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-03-03T06:26:57.923Z",
-      "text": "what's out mewdash url again?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:27:09.425Z",
-      "text": "The MewDash URL is:\n\n**http://localhost:3001**\n\nOr if you're accessing from a browser on the same machine: **http://127.0.0.1:3001**\n\nIt's running directly via `node server.js` (not behind the OpenClaw gateway port 18789). Make sure the server is running: `cd ~/.openclaw/workset && node server.js` (or use the existing background process). (◕‿◕)✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-03T06:28:11.076Z",
-      "text": "Uncaught TypeError: btn.addEventListener(...) is not a function at (index):1710:3 at (index):1711:3 on mewdash"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:28:26.319Z",
-      "text": "Let me check the dashboard code around that error. (◕‿◕)✨"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:28:41.494Z",
-      "text": "Let me see the full context around the theme toggle button:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:28:54.368Z",
-      "text": "Let's check if the `#theme-btn` element exists in the HTML:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:29:12.200Z",
-      "text": "Let's see the full context around line 545:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:29:22.422Z",
-      "text": "Let's view the exact IIFE block:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:29:36.726Z",
-      "text": "Let's check if the theme button exists at the point the original code runs (line 545). The original code is not wrapped in `DOMContentLoaded`. The button is at line 318, which is **before** the script (line 545). So it should exist. But maybe the script is in `<head>` and the button is in `<body>` after? Let's check where the script tags are placed:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:29:49.481Z",
-      "text": "There's only one script tag at line 527. So the error is definitely from the IIFE block (line 1691). Why would `btn` be null or not have addEventListener? Let's test manually:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:29:55.589Z",
-      "text": "Maybe there's duplicate `id=\"theme-btn\"`? Let's check:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:30:03.790Z",
-      "text": "Let's read the exact lines 1690-1712 from the file:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:30:18.489Z",
-      "text": "Let's check if `btn` is defined elsewhere globally:"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-03T06:30:34.038Z",
@@ -1018,6 +953,71 @@
       "role": "user",
       "ts": "2026-03-03T06:49:52.266Z",
       "text": "[Tue 2026-03-03 06:49 UTC] all done?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:50:07.251Z",
+      "text": "Yes, all done! ✅\n\n**Summary:**\n- ✅ Fixed dashboard `latest` field mismatch\n- ✅ Fixed theme toggle JS error\n- ✅ Heartbeat messages now sent to Telegram every 30 min\n- ✅ `heartbeat-state.json` updated for MewDash Pulse tab\n- ✅ Auto‑torrent timeout increased, script hardened\n- ✅ All cron jobs present and enabled\n- ✅ Data refreshed and committed\n\nMewDash is live at **http://localhost:3001** — refresh and the Pulse tab should show current data.\n\nThe supervisor may still take ~60s to complete due to slow CLI commands, but it works. If it hangs, just restart the cron or run manually. \n\nAnything else you need? (◕‿◕)✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T06:52:06.762Z",
+      "text": "[Tue 2026-03-03 06:52 UTC] 1. Duplicate function declaration (line ~830): parseOutputTs is defined twice - there's an extra closing brace }\n        followed by another function parseOutputTs(ts) {\n\n     2. Missing CSS styles - The code references several elements that don't have CSS definitions:\n        - .mascot-sidebar, .mascot-container, .mascot-svg, .speech-bubble, .wave-hand\n        - .achievements-panel, .achievements-badge, .achievements-grid, .tooltip\n\n     3. Missing `loadAndRenderTorrents` function - Called at line ~1620 but not defined anywhere\n\n     4. Missing `renderCronTab` function - Called at line ~1614 but not defined\n\n     5. Undefined variables in quick commands section - QUICK_CMDS, chatInput, sendBtn are referenced but may not be\n        defined\n\n     6. Missing CSS for `.achievements-panel` - The panel is dynamically created but has no styles\n\nanalyze this mewmew. this is from qwen"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:52:24.710Z",
+      "text": "Excellent catch, Qwen! Let's analyze and fix these issues systematically. (◕‿◕)✨\n\nI'll categorize:\n\n**Critical (breaks functionality):**\n1. Duplicate `parseOutputTs` — syntax error, needs removal\n2. Missing `loadAndRenderTorrents` — undefined function call\n3. Missing `renderCronTab` — undefined function call\n4. Undefined `QUICK_CMDS`, `chatInput`, `sendBtn` — JS errors\n\n**Visual/styling:**\n5. Missing CSS classes: mascot-sidebar, mascot-container, mascot-svg, speech-bubble, wave-hand, achievements-panel, achievements-badge, achievements-grid, tooltip\n\nLet's inspect the code to locate and fix each. I'll read the HTML file sections:\n\n**1. Duplicate parseOutputTs:** Look around line 830:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:52:37.776Z",
+      "text": "Duplicate found! Let's fix it:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:52:54.756Z",
+      "text": "I see: line 819 opens, line 820 opens again (duplicate), then line 833 closes the inner, line 834 closes the outer. So there's an extra pair. Let's remove the duplicate:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:53:01.585Z",
+      "text": "Good! Next, let's find `loadAndRenderTorrents` and `renderCronTab` calls:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:53:20.646Z",
+      "text": "The functions are defined! But maybe they're defined after they're called? They're at lines 1043 and 1076, and called around 1584-1591. That's fine (hoisting not needed for function declarations). Let's verify they're properly scoped (global). Let's also check for `QUICK_CMDS`, `chatInput`, `sendBtn`:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:53:39.590Z",
+      "text": "✅ `chatInput`, `sendBtn`, `QUICK_CMDS` are all defined (lines 1247-1340). Qwen's analysis flagged them but they exist! Good.\n\nNow for **missing CSS classes**: Let's search usage and add styles. First, check `kawaii.css`:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:53:57.270Z",
+      "text": "✅ All CSS classes exist! So styling is fine.\n\nNow check that `loadAndRenderTorrents` and `renderCronTab` are defined and use the expected data shapes:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:54:15.172Z",
+      "text": "✅ Functions exist.\n\nNow check calls at 1584 and 1591 to ensure they pass correct data:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:54:29.475Z",
+      "text": "All good. Now verify the mascot HTML elements exist:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:54:45.955Z",
+      "text": "✅ Mascot elements exist. Achievements panel:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:54:57.183Z",
+      "text": "✅ All elements present. The only real issue was the duplicate `parseOutputTs` causing a syntax error that likely prevented later functions from being defined. Fixed!\n\nLet's commit the fix:"
     }
   ]
 }
