@@ -293,6 +293,11 @@ tr:hover td {
   transform-origin: 85px 85px;
 }
 
+/* Thumbs-up when healthy */
+.mascot-sidebar.healthy .thumbs-up {
+  transform: rotate(0deg) !important;
+}
+
 @keyframes wave {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(-20deg); }
