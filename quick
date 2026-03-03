@@ -175,6 +175,9 @@ Commands:
   cleanup-downloads [options] Clean up old downloads (default: dry-run, retains 30 days)
                              Options: --days N, --execute, --verbose
                               Example: quick cleanup-downloads --days 60 --execute
+  archive-downloads [options] Archive old download folders to tar.gz to reclaim space (default: dry-run, targets >14 days)
+                             Options: --days N, --execute
+                              Example: quick archive-downloads --days 21 --execute
   cleanup-backups [options]   Clean up old openclaw-backup tarballs in /home/ubuntu (default: dry-run, keep 1)
                              Options: --keep N, --execute, --verbose
                               Example: quick cleanup-backups --keep 3 --execute
@@ -937,6 +940,10 @@ if not found: print('  (none)')
   cleanup-downloads)
     # Clean up old downloads with retention policy
     "$WORKSPACE/scripts/cleanup-downloads.sh" "$@"
+    ;;
+  archive-downloads)
+    # Archive old download folders to tar.gz to save space
+    "$WORKSPACE/scripts/archive-downloads.sh" "$@"
     ;;
   cleanup-backups)
     # Clean up old backup tarballs in /home/ubuntu
