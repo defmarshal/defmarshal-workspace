@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-03T00:20:02Z",
+  "generated_at": "2026-03-03T00:25:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
     "disk_free": "8.7G",
     "updates": 0,
-    "git_clean": true,
+    "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "8.2G",
-    "load_avg": "1.22 1.55 1.67",
+    "load_avg": "1.46 1.38 1.55",
     "mem_used": "5.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 10 hours, 40 minutes",
+    "uptime": "1 week, 4 days, 10 hours, 45 minutes",
     "disk_history": [
       80,
       80,
@@ -33,7 +33,7 @@
       80,
       80,
       80,
-      80,
+      81,
       81,
       81,
       81,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "41ad948c",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0019)",
-      "time": "48 seconds ago"
-    },
-    {
-      "sha": "5c017ced",
+      "sha": "e7e73c85",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "19e7ff60",
+      "sha": "41ad948c",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0019)",
+      "time": "6 minutes ago"
+    },
+    {
+      "sha": "5c017ced",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "52e4cf51",
+      "sha": "19e7ff60",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "df9c82c1",
+      "sha": "52e4cf51",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "bc61af8a",
+      "sha": "df9c82c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "e8d7795e",
+      "sha": "bc61af8a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "ac38c586",
+      "sha": "e8d7795e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "75a4eca5",
+      "sha": "ac38c586",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "c0bf8690",
+      "sha": "75a4eca5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
+      "sha": "c0bf8690",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "50 minutes ago"
+    },
+    {
       "sha": "61bcbd99",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-02)",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "e76801e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "e288943a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
-    },
-    {
-      "sha": "faf143bf",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "0426d8b7",
+      "sha": "faf143bf",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
@@ -791,16 +791,6 @@
   "chat": [
     {
       "role": "assistant",
-      "ts": "2026-03-02T22:10:44.614Z",
-      "text": "Let's check the cron job definition to see what command it executes:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:10:50.011Z",
-      "text": "Now let's locate the actual workspace-builder agent script (it may be in `~/.openclaw/agents/`):"
-    },
-    {
-      "role": "assistant",
       "ts": "2026-03-02T22:11:01.588Z",
       "text": "Let me check the meta-agent which spawns the workspace-builder to see how it's invoked:"
     },
@@ -1038,6 +1028,16 @@
       "role": "assistant",
       "ts": "2026-03-03T00:12:04.888Z",
       "text": "Their next runs are in the future (vishwakarma ~22:30 UTC tonight, auto-torrent ~22:00 UTC). The error status is from an **old failure** that hasn't been reset because they haven't run successfully yet since then. This is normal — once they run successfully, the error count will reset.\n\n**Bottom line:** Heartbeat system is working. The supervisor is running (just triggered manually), and it correctly reports any issues. The alerts are about historical errors that will clear on next successful run.\n\n✅ **Heartbeat status:** FUNCTIONAL (supervisor active, alerts for issues)  \n⚠️ **Non-critical alerts:** vishwakarma-cron and auto-torrent-cron have past errors; they'll clear on next successful execution.\n\nWant me to manually trigger those jobs to clear the alerts now? (◕‿◕)✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T00:24:47.172Z",
+      "text": "Test heartbeat manually"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T00:24:58.403Z",
+      "text": "Let me run the supervisor manually to test heartbeat! (◕‿◕)✨"
     }
   ]
 }
