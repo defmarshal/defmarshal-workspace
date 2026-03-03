@@ -1,20 +1,19 @@
 {
-  "generated_at": "2026-03-03T06:00:02Z",
+  "generated_at": "2026-03-03T06:05:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 83,
+    "disk_percent": 84,
     "disk_free": "7.5G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "0.60 0.85 0.99",
-    "mem_used": "5.8Gi",
+    "load_avg": "0.73 0.85 0.96",
+    "mem_used": "5.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 16 hours, 20 minutes",
+    "uptime": "1 week, 4 days, 16 hours, 25 minutes",
     "disk_history": [
-      82,
       83,
       84,
       84,
@@ -37,7 +36,8 @@
       83,
       83,
       83,
-      83
+      83,
+      84
     ]
   },
   "agents": [
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-03 05:02",
-      "last_line": "2026-03-03 05:02:25 UTC - Dev-agent cycle completed (exit 0)"
+      "last_run": "2026-03-03 06:01",
+      "last_line": "2026-03-03 06:01:14 UTC - Dev-agent cycle completed (exit 0)"
     },
     {
       "name": "supervisor",
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "96ab566a",
+      "sha": "8f91f0f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "68057bd9",
+      "sha": "96ab566a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "5798ab43",
+      "sha": "68057bd9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "71a3aa97",
+      "sha": "5798ab43",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "437a5abc",
+      "sha": "71a3aa97",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "7b4c8caf",
-      "agent": "chore",
-      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
-      "time": "27 minutes ago"
-    },
-    {
-      "sha": "6a57dae1",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "28 minutes ago"
-    },
-    {
-      "sha": "13aa9b84",
+      "sha": "437a5abc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "49a50443",
+      "sha": "7b4c8caf",
+      "agent": "chore",
+      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
+      "time": "32 minutes ago"
+    },
+    {
+      "sha": "6a57dae1",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-03)",
+      "time": "33 minutes ago"
+    },
+    {
+      "sha": "13aa9b84",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "7c3fb37e",
+      "sha": "49a50443",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "66364822",
-      "agent": "content",
-      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "0cf8e4d1",
+      "sha": "7c3fb37e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "ec20b4b0",
-      "agent": "game",
-      "message": "Complete Anime Studio Tycoon polish – build, test, report",
-      "time": "46 minutes ago"
+      "sha": "66364822",
+      "agent": "content",
+      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
+      "time": "49 minutes ago"
     },
     {
-      "sha": "27ae0d33",
+      "sha": "0cf8e4d1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "4a91089b",
+      "sha": "ec20b4b0",
+      "agent": "game",
+      "message": "Complete Anime Studio Tycoon polish – build, test, report",
+      "time": "51 minutes ago"
+    },
+    {
+      "sha": "27ae0d33",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
