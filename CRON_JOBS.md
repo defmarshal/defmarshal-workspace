@@ -172,6 +172,12 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/mewchat-evolver.log`
    - **Description**: Autonomous agent that continuously improves the MewChat web app (UX, performance, features, code quality). Runs every 6 hours; each cycle performs one focused improvement, commits, and logs.
 
+29. **meta-supervisor-agent**
+   - **Schedule:** Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
+   - **Payload:** agentTurn that ensures the meta-supervisor daemon is running. Command: `bash -c 'cd /home/ubuntu/.openclaw/workspace && nohup agents/meta-supervisor/meta-supervisor-daemon.sh > agents/meta-supervisor/meta-supervisor.nohup 2>&1'`
+   - **Description:** Keepalive cron that spawns the meta-supervisor daemon if not running, ensuring continuous auditing of agent outcomes.
+   - **Agent:** default
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
@@ -191,12 +197,6 @@ The following cron jobs are currently **disabled** for token conservation (user 
 - **Original description:** Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Reduced from every 5 min to 30 min (token optimization, 2026-02-19).
 - **Status:** Disabled
 - **Re-enable:** `openclaw cron enable e2735844`
-
-### meta-supervisor-agent
-- **Schedule:** Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
-- **Original description:** Keepalive cron that ensures meta-supervisor daemon is running (spawns if not). Maintains continuous auditing.
-- **Status:** Disabled
-- **Re-enable:** `openclaw cron enable a1381566`
 
 ### linkedin-pa-agent-cron
 - **Schedule:** Hourly (`0 * * * *`) in UTC
