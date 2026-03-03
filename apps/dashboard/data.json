@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T04:00:02Z",
+  "generated_at": "2026-03-03T04:05:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 82,
@@ -9,13 +9,13 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "8.8G",
-    "load_avg": "0.72 0.70 0.73",
-    "mem_used": "3.7Gi",
+    "load_avg": "1.73 1.15 0.91",
+    "mem_used": "5.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 14 hours, 20 minutes",
+    "uptime": "1 week, 4 days, 14 hours, 25 minutes",
     "disk_history": [
       81,
-      81,
+      82,
       82,
       82,
       82,
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-03 03:05",
-      "last_line": "[2026-03-03 03:05:45] research-agent: Generated comprehensive report - 2026-03-03-ai-safety-edge-ai-6g-anime-spring.md (16.5KB, covers AI safety exploits .6M, emergent misalignment, International AI Safety Report 2026, edge AI chip deployment, 6G coalition 2029, anime Spring 2026 preview)"
+      "last_run": "2026-03-03 04:04",
+      "last_line": "[2026-03-03 04:04:08] research-agent: Generated comprehensive report - 2026-03-03-ai-safety-edge-ai-6g-anime-spring.md (17.0KB) - covers AI safety incidents, edge AI deployment, 6G coalition, and Spring 2026 anime preview"
     },
     {
       "name": "supervisor",
@@ -87,99 +87,99 @@
   "research": {
     "total": 237,
     "tts_coverage": "101%",
-    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring",
+    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "e413673f",
+      "sha": "5c988d53",
+      "agent": "build",
+      "message": "update research hub index timestamp; add research report; record disk metrics",
+      "time": "2 minutes ago"
+    },
+    {
+      "sha": "0b6517cd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "75c16a38",
+      "sha": "e413673f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "f0116948",
+      "sha": "75c16a38",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "ca98f59d",
+      "sha": "f0116948",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "dce494a7",
+      "sha": "ca98f59d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "424ff029",
+      "sha": "dce494a7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "5e00ae91",
+      "sha": "424ff029",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "d0506ce6",
+      "sha": "5e00ae91",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "a5a0290f",
+      "sha": "d0506ce6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "bc22eb5d",
-      "agent": "content",
-      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
-      "time": "49 minutes ago"
-    },
-    {
-      "sha": "9d6984ca",
+      "sha": "a5a0290f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "e998b214",
+      "sha": "bc22eb5d",
+      "agent": "content",
+      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
+      "time": "54 minutes ago"
+    },
+    {
+      "sha": "9d6984ca",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "a3b0f9d0",
+      "sha": "e998b214",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "f7cb885f",
+      "sha": "a3b0f9d0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
-    },
-    {
-      "sha": "f67193b9",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "70 minutes ago"
     }
   ],
   "heartbeat": {
