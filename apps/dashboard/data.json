@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T04:50:02Z",
+  "generated_at": "2026-03-03T04:55:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 84,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "0.64 0.77 0.80",
-    "mem_used": "5.5Gi",
+    "load_avg": "0.81 0.84 0.82",
+    "mem_used": "5.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 15 hours, 10 minutes",
+    "uptime": "1 week, 4 days, 15 hours, 15 minutes",
     "disk_history": [
       82,
       82,
@@ -28,8 +28,8 @@
       82,
       82,
       82,
-      82,
       83,
+      84,
       84,
       84,
       84,
@@ -68,8 +68,8 @@
     {
       "name": "supervisor",
       "active": true,
-      "last_run": "2026-03-03 04:31",
-      "last_line": "2026-03-03 04:31:00 UTC - ALERT"
+      "last_run": "2026-03-03 04:51",
+      "last_line": "2026-03-03 04:51:19 UTC - ALERT"
     },
     {
       "name": "agent-manager",
@@ -87,96 +87,96 @@
   "research": {
     "total": 237,
     "tts_coverage": "101%",
-    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring\nnone",
+    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "5087c38f",
+      "sha": "6e41b102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "75088df0",
+      "sha": "5087c38f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "94c57fc9",
+      "sha": "75088df0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "f76167c1",
+      "sha": "94c57fc9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "99c8520e",
+      "sha": "f76167c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "26c3b85c",
+      "sha": "99c8520e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "be9b48da",
+      "sha": "26c3b85c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "bc7627f3",
+      "sha": "be9b48da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "c68dfe96",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
-      "time": "43 minutes ago"
-    },
-    {
-      "sha": "c02ea653",
-      "agent": "dev",
-      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "aea8136c",
+      "sha": "bc7627f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "5c988d53",
-      "agent": "build",
-      "message": "update research hub index timestamp; add research report; record disk metrics",
-      "time": "47 minutes ago"
+      "sha": "c68dfe96",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
+      "time": "48 minutes ago"
     },
     {
-      "sha": "0b6517cd",
+      "sha": "c02ea653",
+      "agent": "dev",
+      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
+      "time": "49 minutes ago"
+    },
+    {
+      "sha": "aea8136c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "e413673f",
+      "sha": "5c988d53",
+      "agent": "build",
+      "message": "update research hub index timestamp; add research report; record disk metrics",
+      "time": "52 minutes ago"
+    },
+    {
+      "sha": "0b6517cd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "75c16a38",
+      "sha": "e413673f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
@@ -192,9 +192,6 @@
     "updatedAt": 1740910200
   },
   "supervisor_log": [
-    "2026-03-03 00:01:45 UTC - ALERT",
-    "2026-03-03 00:11:18 UTC - ALERT - Reasons:",
-    "  * Cron job issues:\\n- vishwakarma-cron: error, errors 1",
     "- auto-torrent-cron: error, errors 1",
     "2026-03-03 00:11:20 UTC - ALERT",
     "2026-03-03 00:25:08 UTC - ALERT - Reasons:",
@@ -221,7 +218,10 @@
     "2026-03-03 04:06:03 UTC - ALERT",
     "2026-03-03 04:30:58 UTC - ALERT - Reasons:",
     "  * Cron job issues:\\n- auto-torrent-cron: error, errors 1",
-    "2026-03-03 04:31:00 UTC - ALERT"
+    "2026-03-03 04:31:00 UTC - ALERT",
+    "2026-03-03 04:51:17 UTC - ALERT - Reasons:",
+    "  * Cron job issues:\\n- auto-torrent-cron: error, errors 1",
+    "2026-03-03 04:51:19 UTC - ALERT"
   ],
   "agent_outputs": [
     {
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772513365219,
-      "next_run": 1772513485219,
+      "last_run": 1772513605255,
+      "next_run": 1772513725255,
       "last_status": "ok",
-      "last_duration_ms": 2323,
+      "last_duration_ms": 2221,
       "consecutive_errors": 0
     },
     {
@@ -777,96 +777,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "user",
-      "ts": "2026-03-02T22:13:35.534Z",
-      "text": "Can you utilize gemini and qwen to reduce token?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:14:12.387Z",
-      "text": "Yes! I can optimize the workspace-builder to use Gemini and Qwen as specialized tools, reducing its own LLM generation load. (◕‿◕)✨\n\n**Plan:**\n- Keep workspace-builder as a lightweight orchestrator\n- Delegate analysis/planning to `gemini-cli` (better for text)\n- Delegate coding tasks to `qwen-code` (specialized for code)\n- The builder only validates, commits, and updates active-tasks\n- Switch to a faster/cheaper model (default `glm-4.5-air`) and reduce timeout\n\nThis should drastically cut token usage while maintaining quality.\n\nLet me update the cron job payload now:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:14:30.593Z",
-      "text": "Now let's update the message to delegate to Gemini and Qwen:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:14:45.637Z",
-      "text": "Let's also reduce the timeout to 900s (15 min) since tool delegation should be faster:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:14:59.623Z",
-      "text": "Let's verify the changes:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:15:19.849Z",
-      "text": "The timeout didn't update. Let's try again explicitly:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:15:28.407Z",
-      "text": "Let's check if the message and model persisted:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T22:15:46.600Z",
-      "text": "Excellent! The workspace-builder cron job is now optimized:\n\n✅ **Model switched** to `openrouter/z-ai/glm-4.5-air:free` (lighter, faster, free)\n✅ **Prompt updated** to delegate analysis to `gemini-cli` and coding to `qwen-code`\n✅ **Timeout remains** 1800s but actual runs should be shorter due to tool efficiency\n\n**How this reduces tokens:**\n- The builder now orchestrates instead of doing all LLM work itself\n- `gemini-cli` handles text analysis/research efficiently\n- `qwen-code` handles code generation precisely\n- The builder's own LLM calls are smaller (just coordination, validation, commits)\n\nNext run (every 2h) will reflect the changes. Want me to also trim the interval to every 4h for extra savings? (◕‿◕)✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-02T23:04:05.811Z",
-      "text": "Nice"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:04:21.264Z",
-      "text": "Hehe, glad you like it! (^^)✨\n\nThe workspace-builder is now a lean orchestrator using Gemini and Qwen as specialized tools. Token usage should drop significantly while keeping quality high.\n\nAnything else you want me to tweak for efficiency? (◕‿◕)"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-02T23:11:05.104Z",
-      "text": "Can you check whether heartbeat is working?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:11:15.617Z",
-      "text": "Let me check the heartbeat system status! (◕‿◕)✨"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:12:25.024Z",
-      "text": "I see an issue: **supervisor-cron is missing** from the cron list, and the supervisor log is stale (last entry Feb 28). Heartbeat checks may have stopped. (╯°□°)╯\n\nLet me verify if the supervisor cron job still exists and restart it if needed:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:12:49.808Z",
-      "text": "Let's list cron jobs without JSON to see what's there:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:13:08.631Z",
-      "text": "The `supervisor.sh` script exists. Let's recreate the supervisor-cron job:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:13:29.442Z",
-      "text": "✅ **Heartbeat is fixed!**\n\n**Issue:** The `supervisor-cron` job was missing (likely removed during earlier config cleanup). The supervisor hadn't run since Feb 28, so heartbeat checks were stale.\n\n**Fixed:** Recreated `supervisor-cron` to run every 30 minutes (Asia/Bangkok). It will:\n- Check cron job health\n- Verify gateway status\n- Monitor disk usage\n- Recommend memory reindex\n- Alert via Telegram if issues found\n\n**Current state:**\n- Last supervisor run: Feb 28 (stale) — will run again soon at next :00 or :30\n- `heartbeat-state.json` last updated: Feb 24 — will be refreshed on next run\n- After next run, the dashboard's Pulse tab should show fresh data\n\nYou can also manually trigger a supervisor run to verify: `./agents/supervisor.sh`\n\nWant me to run it now to confirm it's working? (◕‿◕)✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-02T23:14:01.839Z",
-      "text": "Can you check if there's any other missing cron?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:14:17.719Z",
-      "text": "Let me audit all cron jobs against the documented list in CRON_JOBS.md to find any missing ones. (◕‿◕)✨"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-02T23:14:35.180Z",
@@ -1026,6 +936,96 @@
       "role": "assistant",
       "ts": "2026-03-03T04:27:26.192Z",
       "text": "The last successful run was **04:05 UTC** (just 20 minutes ago) with status **ok**. So it is running every 30 minutes as expected.\n\n**Why the gaps?** The schedule is `0,30 * * * *` Asia/Bangkok. Bangkok is UTC+7, so:\n- 00:30 Bangkok = 17:30 UTC (previous day)\n- 01:00 Bangkok = 18:00 UTC\n- ...\n- 07:30 Bangkok = 00:30 UTC\n- 08:00 Bangkok = 01:00 UTC\n\nSo runs occur at Bangkok :00 and :30, which correspond to UTC 17:30, 18:00, 18:30, etc. **The next UTC run is at 04:30** (Bangkok 11:30). This matches the 30-minute interval.\n\n**Bottom line:** Half-hour heartbeat is working fine. Last run 04:05 UTC, next at 04:30 UTC. ✅\n\nWould you like me to adjust the schedule to run at different UTC times for easier tracking? (◕‿◕)✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T04:50:21.328Z",
+      "text": "The heartbeat should sending chat like this 🟢 Heartbeat Check (15:39 UTC, Feb 25) ✅ Gateway running 💾 Disk 69% (15G free) ✅ Updates: 0 pending ✅ Git: clean (18 LinkedIn posts today committed) ✅ Agents: validated (idle; next research cycle ~16:00) ⚠️ Weather: Rain/storms in Bangkok 🎉 Holiday: Nyepi (Mar 18–19) All clear! (◕‿◕)♡"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:50:33.612Z",
+      "text": "Ah! The current **supervisor** only sends alerts when there are issues. You want it to send **regular heartbeat updates** to the chat even when everything is OK. That's a great idea! (◕‿◕)✨\n\nLet me modify the supervisor script to send a periodic status message to Telegram:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:50:49.840Z",
+      "text": "Now I'll update it to send regular heartbeat messages:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:51:07.868Z",
+      "text": "Let's test the updated supervisor to see the heartbeat message:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:51:35.011Z",
+      "text": "Let's check the latest supervisor log:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:51:50.822Z",
+      "text": "The supervisor is still only sending alerts because it detects `auto-torrent-cron` errors. For a regular heartbeat, we need to **always send a status message**, even when there are errors (but we can still flag them).\n\nLet me update the script to always send a status message:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:52:01.035Z",
+      "text": "Let me read the current file to get exact text:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:52:18.636Z",
+      "text": "It looks like the file already has some heartbeat code! Let me read the entire file to see the current state:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:52:38.822Z",
+      "text": "I see the file already has heartbeat code! But it only sends the heartbeat in the `else` branch (when there are NO alerts). Since we have persistent alerts (auto-torrent-cron errors), it never sends the heartbeat. We need to **always send the heartbeat** regardless of alerts. Let's fix that:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:52:47.310Z",
+      "text": "Now let's test the updated supervisor to see the formatted heartbeat:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:53:12.026Z",
+      "text": "Let's check what error occurred:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:53:36.633Z",
+      "text": "The script is executing! It's building the heartbeat message. Let's see the full output:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:53:47.565Z",
+      "text": "Let's manually test the Telegram send:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:54:00.015Z",
+      "text": "The command syntax needs `-t` or `--target`. Let's fix the script:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:54:12.583Z",
+      "text": "Let's test again:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:54:34.619Z",
+      "text": "Let's check the log:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:54:47.818Z",
+      "text": "Let's test the Telegram command directly with `-t`:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:55:00.940Z",
+      "text": "Let's check correct options:"
     }
   ]
 }
