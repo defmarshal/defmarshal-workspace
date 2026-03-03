@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T05:50:02Z",
+  "generated_at": "2026-03-03T05:55:03Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "1.07 1.11 1.10",
-    "mem_used": "5.4Gi",
+    "load_avg": "1.56 1.19 1.12",
+    "mem_used": "5.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 16 hours, 10 minutes",
+    "uptime": "1 week, 4 days, 16 hours, 15 minutes",
     "disk_history": [
-      82,
       82,
       82,
       83,
@@ -28,6 +27,7 @@
       84,
       84,
       84,
+      83,
       83,
       83,
       83,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "5798ab43",
+      "sha": "68057bd9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "71a3aa97",
+      "sha": "5798ab43",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "437a5abc",
+      "sha": "71a3aa97",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "7b4c8caf",
-      "agent": "chore",
-      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
-      "time": "17 minutes ago"
-    },
-    {
-      "sha": "6a57dae1",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-03)",
-      "time": "18 minutes ago"
-    },
-    {
-      "sha": "13aa9b84",
+      "sha": "437a5abc",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "49a50443",
+      "sha": "7b4c8caf",
+      "agent": "chore",
+      "message": "clean stale workspace-builder active task; agent-manager housekeeping",
+      "time": "22 minutes ago"
+    },
+    {
+      "sha": "6a57dae1",
+      "agent": "build",
+      "message": "auto-commit from agent-manager (2026-03-03)",
+      "time": "23 minutes ago"
+    },
+    {
+      "sha": "13aa9b84",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "7c3fb37e",
+      "sha": "49a50443",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "66364822",
-      "agent": "content",
-      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
-      "time": "34 minutes ago"
-    },
-    {
-      "sha": "0cf8e4d1",
+      "sha": "7c3fb37e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "ec20b4b0",
-      "agent": "game",
-      "message": "Complete Anime Studio Tycoon polish – build, test, report",
-      "time": "36 minutes ago"
+      "sha": "66364822",
+      "agent": "content",
+      "message": "LinkedIn PA developer-tips analyst‑report for 2026-03-03 0516 (v10 dynamic)",
+      "time": "39 minutes ago"
     },
     {
-      "sha": "27ae0d33",
+      "sha": "0cf8e4d1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "4a91089b",
+      "sha": "ec20b4b0",
+      "agent": "game",
+      "message": "Complete Anime Studio Tycoon polish – build, test, report",
+      "time": "41 minutes ago"
+    },
+    {
+      "sha": "27ae0d33",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "8f69f6e7",
-      "agent": "dev",
-      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
-      "time": "48 minutes ago"
-    },
-    {
-      "sha": "d1f02b47",
+      "sha": "4a91089b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
+    },
+    {
+      "sha": "8f69f6e7",
+      "agent": "dev",
+      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
+      "time": "53 minutes ago"
     }
   ],
   "heartbeat": {
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772516990073,
-      "next_run": 1772517110073,
+      "last_run": 1772517230100,
+      "next_run": 1772517350100,
       "last_status": "ok",
-      "last_duration_ms": 2202,
+      "last_duration_ms": 2295,
       "consecutive_errors": 0
     },
     {
@@ -770,26 +770,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T04:52:01.035Z",
-      "text": "Let me read the current file to get exact text:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T04:52:18.636Z",
-      "text": "It looks like the file already has some heartbeat code! Let me read the entire file to see the current state:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T04:52:38.822Z",
-      "text": "I see the file already has heartbeat code! But it only sends the heartbeat in the `else` branch (when there are NO alerts). Since we have persistent alerts (auto-torrent-cron errors), it never sends the heartbeat. We need to **always send the heartbeat** regardless of alerts. Let's fix that:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T04:52:47.310Z",
-      "text": "Now let's test the updated supervisor to see the formatted heartbeat:"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-03T04:53:12.026Z",
@@ -1019,6 +999,26 @@
       "role": "assistant",
       "ts": "2026-03-03T05:49:16.091Z",
       "text": "Now remove the trap and test:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:50:41.878Z",
+      "text": "Let's test Telegram send with a simple message:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:51:03.319Z",
+      "text": "Aha! The Telegram send is timing out (exit 124). That's why the script hangs. Let's add a timeout:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:52:52.653Z",
+      "text": "Let's directly test the sessions command pipeline:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:53:23.168Z",
+      "text": "Let's poll the running session to see progress:"
     }
   ]
 }
