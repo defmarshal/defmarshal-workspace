@@ -10,6 +10,7 @@
   let pollTimer = null;
   let lastMessageCount = 0;
   let lastFailedMessage = null; // for retry
+  let unreadCount = 0; // for title badge when tab hidden
 
   // Dom refs
   const themeBtn = document.getElementById('theme-btn');
@@ -37,6 +38,17 @@
   window.addEventListener('online', updateConnectionStatus);
   window.addEventListener('offline', updateConnectionStatus);
   updateConnectionStatus(); // initial
+
+  // Unread badge: reset title when tab becomes visible
+  function resetTitleBadge() {
+    if (unreadCount > 0) {
+      unreadCount = 0;
+      document.title = 'MewChat — chat with mewmew';
+    }
+  }
+  window.addEventListener('visibilitychange', () => {
+    if (!document.hidden) resetTitleBadge();
+  });
 
   // Restore draft from localStorage (if any)
   const savedDraft = localStorage.getItem('mewchat-draft');
@@ -304,6 +316,12 @@
         const data = await res.json();
         if (data.chat.length > lastMessageCount) {
           // New messages arrived
+          const newMsgCount = data.chat.length - lastMessageCount;
+          // Update unread badge if tab is hidden
+          if (document.hidden) {
+            unreadCount += newMsgCount;
+            document.title = `(${unreadCount}) MewChat — chat with mewmew`;
+          }
           const newMsgs = data.chat.slice(lastMessageCount);
           newMsgs.forEach((m, idx) => {
             const isLatest = idx === newMsgs.length - 1;
