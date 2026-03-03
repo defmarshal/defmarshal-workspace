@@ -76,6 +76,26 @@ h1 { font-size:18px; color: var(--purple); display:flex; align-items:center; gap
 #clear-btn { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px 12px; font-size:16px; cursor:pointer; color:var(--muted); }
 #clear-btn:hover { border-color:var(--red); color:var(--red); }
 
+.scroll-bottom {
+  position: absolute;
+  bottom: 80px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0.9;
+  transition: transform 0.2s, opacity 0.2s;
+  z-index: 10;
+}
+.scroll-bottom:hover { transform: scale(1.1); opacity: 1; }
+.scroll-bottom.hidden { display: none; }
+
 .input-wrapper { flex:1; display:flex; flex-direction:column; gap:4px; position:relative; }
 .char-count { position:absolute; right:8px; bottom:6px; font-size:11px; color:var(--muted); opacity:.7; pointer-events:none; }
 
@@ -129,4 +149,35 @@ footer { font-size:11px; color:var(--muted); text-align:center; padding:8px; }
   .header-right #last-updated { display: none; }
   .header-right #backend-status { display: none; }
   header h1 span.subtitle { display: none; }
+}
+
+/* ── Scroll to bottom button ─────────────────────────────────────────────── */
+.scroll-bottom {
+  position: absolute;
+  bottom: 70px; /* above input area */
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+  transition: opacity .2s, transform .2s;
+  z-index: 10;
+}
+.scroll-bottom:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  transform: translateY(-1px);
+}
+.scroll-bottom.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
 }

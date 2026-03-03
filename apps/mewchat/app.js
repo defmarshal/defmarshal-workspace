@@ -10,10 +10,11 @@
   let pollTimer = null;
   let lastMessageCount = 0;
 
-  // DOM refs
+  // Dom refs
   const themeBtn = document.getElementById('theme-btn');
   const sessionSelect = document.getElementById('session-select');
   const chatMessages = document.getElementById('chat-messages');
+  const scrollBottomBtn = document.getElementById('scroll-bottom');
   const msgInput = document.getElementById('msg-input');
   const sendBtn = document.getElementById('send-btn');
   const clearBtn = document.getElementById('clear-btn');
@@ -23,6 +24,25 @@
   const charCountEl = document.getElementById('char-count');
   if (charCountEl) charCountEl.textContent = msgInput.value.length;
 
+  // Show/hide scroll-to-bottom button based on scroll position
+  function toggleScrollBottomBtn() {
+    if (!scrollBottomBtn) return;
+    const atBottom = chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 10;
+    if (atBottom) {
+      scrollBottomBtn.classList.add('hidden');
+    } else {
+      scrollBottomBtn.classList.remove('hidden');
+    }
+  }
+
+  chatMessages.addEventListener('scroll', toggleScrollBottomBtn);
+
+  if (scrollBottomBtn) {
+    scrollBottomBtn.addEventListener('click', () => {
+      chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+    });
+  }
+
   // Auto-resize textarea on input AND update character count
   msgInput.addEventListener('input', function() {
     this.style.height = 'auto';
@@ -30,6 +50,17 @@
     this.style.height = newHeight + 'px';
     // Update character counter
     if (charCountEl) charCountEl.textContent = this.value.length;
+  });
+
+  // Keyboard shortcuts: Ctrl+Enter to send, Escape to clear
+  msgInput.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      clearChat();
+    }
   });
 
   // Theme toggle
