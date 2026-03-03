@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T04:55:02Z",
+  "generated_at": "2026-03-03T05:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 84,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "0.81 0.84 0.82",
-    "mem_used": "5.4Gi",
+    "load_avg": "0.91 0.92 0.87",
+    "mem_used": "5.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 15 hours, 15 minutes",
+    "uptime": "1 week, 4 days, 15 hours, 20 minutes",
     "disk_history": [
       82,
       82,
@@ -27,8 +27,8 @@
       82,
       82,
       82,
-      82,
       83,
+      84,
       84,
       84,
       84,
@@ -87,96 +87,96 @@
   "research": {
     "total": 237,
     "tts_coverage": "101%",
-    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring",
+    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "6e41b102",
+      "sha": "b5ee864a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "5087c38f",
+      "sha": "6e41b102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "75088df0",
+      "sha": "5087c38f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "94c57fc9",
+      "sha": "75088df0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "f76167c1",
+      "sha": "94c57fc9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "99c8520e",
+      "sha": "f76167c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "26c3b85c",
+      "sha": "99c8520e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "be9b48da",
+      "sha": "26c3b85c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "bc7627f3",
+      "sha": "be9b48da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "c68dfe96",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
-      "time": "48 minutes ago"
-    },
-    {
-      "sha": "c02ea653",
-      "agent": "dev",
-      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
-      "time": "49 minutes ago"
-    },
-    {
-      "sha": "aea8136c",
+      "sha": "bc7627f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "5c988d53",
-      "agent": "build",
-      "message": "update research hub index timestamp; add research report; record disk metrics",
-      "time": "52 minutes ago"
+      "sha": "c68dfe96",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
+      "time": "53 minutes ago"
     },
     {
-      "sha": "0b6517cd",
+      "sha": "c02ea653",
+      "agent": "dev",
+      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
+      "time": "54 minutes ago"
+    },
+    {
+      "sha": "aea8136c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "e413673f",
+      "sha": "5c988d53",
+      "agent": "build",
+      "message": "update research hub index timestamp; add research report; record disk metrics",
+      "time": "57 minutes ago"
+    },
+    {
+      "sha": "0b6517cd",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772513605255,
-      "next_run": 1772513725255,
+      "last_run": 1772513965283,
+      "next_run": 1772514085283,
       "last_status": "ok",
-      "last_duration_ms": 2221,
+      "last_duration_ms": 2285,
       "consecutive_errors": 0
     },
     {
@@ -777,36 +777,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:14:35.180Z",
-      "text": "Excellent! All expected cron jobs are present. Let's also check if any are disabled that should be enabled:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:14:48.299Z",
-      "text": "Let's also quickly verify schedule patterns match documentation for key jobs:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:15:07.082Z",
-      "text": "✅ **All cron jobs are accounted for and correctly configured!**\n\n**Check performed:**\n- ✅ All 23 expected cron jobs present\n- ✅ All vital jobs enabled (no unexpected disabled)\n- ✅ Schedule patterns match documentation\n\n**Specifically confirmed:**\n- `supervisor-cron` now exists (just recreated)\n- `workspace-builder` using optimized model\n- All maintenance agents (agent-manager, git-janitor, notifier, archiver, etc.) present and enabled\n- No schedule drift detected\n\nThe only disabled jobs are the ones documented as disabled in `CRON_JOBS.md` (daily-digest-cron, linkedin-pa-agent-cron, meta-supervisor-agent). Everything's running as intended! 🎉\n\nAnything else you want me to audit? (◕‿◕)✨"
-    },
-    {
-      "role": "user",
-      "ts": "2026-03-02T23:16:11.604Z",
-      "text": "Can you enable the disabled?"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:16:28.487Z",
-      "text": "Sure! Let me enable those disabled cron jobs. (◕‿◕)✨\n\nFirst, let me get their IDs:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:16:43.568Z",
-      "text": "These jobs don't exist in the cron list — they were likely deleted, not just disabled. We need to **recreate** them.\n\nLet me check the meta-agent script to see if it creates them automatically:"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-02T23:16:56.304Z",
@@ -1026,6 +996,36 @@
       "role": "assistant",
       "ts": "2026-03-03T04:55:00.940Z",
       "text": "Let's check correct options:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:55:15.243Z",
+      "text": "The correct flag is `-m` or `--message`. Let's fix:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:55:27.204Z",
+      "text": "Let's test the supervisor again:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:55:46.516Z",
+      "text": "Let's run with full logging:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:56:06.352Z",
+      "text": "Let's just check the log to confirm it ran:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:56:13.545Z",
+      "text": "Let's test Telegram send in a simple way:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T04:56:34.028Z",
+      "text": "✅ **Telegram message sent successfully!** The test message went through.\n\nNow the supervisor script should be working. Let's verify it sends a heartbeat on its next run. Since we just ran it manually, the next scheduled run will be at the next half-hour mark (Asia/Bangkok). That should be in about 30 minutes from now.\n\n**Summary:**\n- ✅ Supervisor script updated to always send heartbeat\n- ✅ Heartbeat includes system status (gateway, disk, updates, git, agents, weather, holidays)\n- ✅ Telegram command syntax fixed (`-m` for message)\n- ✅ Test message delivered\n\nThe next cron-triggered heartbeat will arrive in your Telegram chat as scheduled. Would you like me to also fix the underlying `auto-torrent-cron` error so the heartbeat shows green instead of red? (◕‿◕)✨"
     }
   ]
 }
