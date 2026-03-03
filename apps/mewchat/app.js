@@ -33,6 +33,7 @@
     msgInput.style.height = 'auto';
     msgInput.style.height = Math.min(msgInput.scrollHeight, 150) + 'px';
     if (charCountEl) charCountEl.textContent = savedDraft.length;
+    if (sendBtn && savedDraft.trim().length > 0) sendBtn.classList.add('has-text');
   }
 
   // Show/hide scroll-to-bottom button based on scroll position
@@ -61,6 +62,11 @@
     this.style.height = newHeight + 'px';
     // Update character counter
     if (charCountEl) charCountEl.textContent = this.value.length;
+    // Toggle pulse on send button if it has focus
+    if (sendBtn) {
+      if (this.value.trim().length > 0) sendBtn.classList.add('has-text');
+      else sendBtn.classList.remove('has-text');
+    }
     // Save draft to localStorage
     localStorage.setItem('mewchat-draft', this.value);
   });
@@ -167,7 +173,13 @@
     if (confirm('Clear the current chat history? This cannot be undone.')) {
       chatMessages.innerHTML = '';
       lastMessageCount = 0;
-      // Optional: call API to clear on server? For now just local.
+      // Clear draft as well
+      localStorage.removeItem('mewchat-draft');
+      msgInput.value = '';
+      // Update char count
+      if (charCountEl) charCountEl.textContent = '0';
+      // Reset textarea height
+      msgInput.style.height = 'auto';
     }
   }
 
@@ -247,6 +259,8 @@
       if (!res.ok) throw new Error(data.error || 'Failed to send');
       renderMessage('user', text, Date.now() / 1000, false);
       lastFailedMessage = null;
+      // Clear draft after successful send
+      localStorage.removeItem('mewchat-draft');
     } catch (e) {
       lastFailedMessage = text;
       showError('Send failed: ' + e.message + ' <button class="retry-btn">Retry</button>');
