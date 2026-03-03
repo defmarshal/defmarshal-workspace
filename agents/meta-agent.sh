@@ -433,7 +433,7 @@ case "${1:-}" in
           ;;
         "install skill:"*)
           skill="${act#install skill:}"
-          check_and_install_skill "$skill"
+          check_and_install_skill "$skill" || true
           ;;
       esac
     done
