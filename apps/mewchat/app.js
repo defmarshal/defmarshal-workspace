@@ -16,6 +16,7 @@
   const sessionSelect = document.getElementById('session-select');
   const chatMessages = document.getElementById('chat-messages');
   const scrollBottomBtn = document.getElementById('scroll-bottom');
+  const connectionStatus = document.getElementById('connection-status');
   const msgInput = document.getElementById('msg-input');
   const sendBtn = document.getElementById('send-btn');
   const clearBtn = document.getElementById('clear-btn');
@@ -24,6 +25,18 @@
   const mascot = document.getElementById('mascot');
   const charCountEl = document.getElementById('char-count');
   if (charCountEl) charCountEl.textContent = msgInput.value.length;
+
+  // Connection status indicator
+  function updateConnectionStatus() {
+    const online = navigator.onLine;
+    if (connectionStatus) {
+      connectionStatus.classList.remove('online', 'offline');
+      connectionStatus.classList.add(online ? 'online' : 'offline');
+    }
+  }
+  window.addEventListener('online', updateConnectionStatus);
+  window.addEventListener('offline', updateConnectionStatus);
+  updateConnectionStatus(); // initial
 
   // Restore draft from localStorage (if any)
   const savedDraft = localStorage.getItem('mewchat-draft');
