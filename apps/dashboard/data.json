@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T03:40:03Z",
+  "generated_at": "2026-03-03T03:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 82,
@@ -9,17 +9,17 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "8.8G",
-    "load_avg": "0.80 0.77 0.85",
-    "mem_used": "3.4Gi",
+    "load_avg": "0.56 0.64 0.78",
+    "mem_used": "3.8Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 14 hours, 0 minutes",
+    "uptime": "1 week, 4 days, 14 hours, 5 minutes",
     "disk_history": [
       81,
       81,
       81,
       81,
       81,
-      81,
+      82,
       82,
       82,
       82,
@@ -92,93 +92,93 @@
   },
   "recent_commits": [
     {
-      "sha": "dce494a7",
+      "sha": "ca98f59d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "424ff029",
+      "sha": "dce494a7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "5e00ae91",
+      "sha": "424ff029",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "d0506ce6",
+      "sha": "5e00ae91",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "a5a0290f",
+      "sha": "d0506ce6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "bc22eb5d",
-      "agent": "content",
-      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
-      "time": "29 minutes ago"
-    },
-    {
-      "sha": "9d6984ca",
+      "sha": "a5a0290f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "e998b214",
+      "sha": "bc22eb5d",
+      "agent": "content",
+      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
+      "time": "34 minutes ago"
+    },
+    {
+      "sha": "9d6984ca",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "a3b0f9d0",
+      "sha": "e998b214",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "f7cb885f",
+      "sha": "a3b0f9d0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "f67193b9",
+      "sha": "f7cb885f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "babbe102",
+      "sha": "f67193b9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "cb8aa1f3",
+      "sha": "babbe102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "1a80b7f4",
+      "sha": "cb8aa1f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
     },
     {
-      "sha": "e505fa8a",
-      "agent": "build",
-      "message": "auto-commit from agent-manager (2026-03-03)",
+      "sha": "1a80b7f4",
+      "agent": "chore",
+      "message": "update clawdash data",
       "time": "70 minutes ago"
     }
   ],
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772509149129,
-      "next_run": 1772509269129,
+      "last_run": 1772509389149,
+      "next_run": 1772509509149,
       "last_status": "ok",
-      "last_duration_ms": 2195,
+      "last_duration_ms": 2515,
       "consecutive_errors": 0
     },
     {
