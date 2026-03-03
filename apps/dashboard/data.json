@@ -1,20 +1,19 @@
 {
-  "generated_at": "2026-03-03T05:00:02Z",
+  "generated_at": "2026-03-03T05:05:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 84,
-    "disk_free": "7.5G",
+    "disk_percent": 83,
+    "disk_free": "7.6G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "0.91 0.92 0.87",
-    "mem_used": "5.7Gi",
+    "load_avg": "0.79 0.93 0.91",
+    "mem_used": "5.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 15 hours, 20 minutes",
+    "uptime": "1 week, 4 days, 15 hours, 25 minutes",
     "disk_history": [
-      82,
       82,
       82,
       82,
@@ -37,7 +36,8 @@
       84,
       84,
       84,
-      84
+      84,
+      83
     ]
   },
   "agents": [
@@ -56,14 +56,14 @@
     {
       "name": "content-agent",
       "active": true,
-      "last_run": "2026-03-03 02:03",
-      "last_line": "[2026-03-03 02:03:28] content-agent: Generated daily digest for 2026-03-03 (reports/2026-03-03-daily-digest.md) — covers early morning activity, gateway fix, LinkedIn PA content, builder status"
+      "last_run": "2026-03-03 05:03",
+      "last_line": "[2026-03-03 05:03:04] content-agent: Updated daily digest for 2026-03-03 (final) — added research report details, dev-agent supervisor improvements, system health snapshot"
     },
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-03 04:06",
-      "last_line": "[2026-03-03 04:06:54] dev-agent: Cycle completed - fixed false positive cron count warning, adjusted expectations to 28-32, validated all systems green"
+      "last_run": "2026-03-03 05:02",
+      "last_line": "2026-03-03 05:02:25 UTC - Dev-agent cycle completed (exit 0)"
     },
     {
       "name": "supervisor",
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "b5ee864a",
+      "sha": "8f69f6e7",
+      "agent": "dev",
+      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
+      "time": "3 minutes ago"
+    },
+    {
+      "sha": "d1f02b47",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "6e41b102",
+      "sha": "b5ee864a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "5087c38f",
+      "sha": "6e41b102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "75088df0",
+      "sha": "5087c38f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "94c57fc9",
+      "sha": "75088df0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "f76167c1",
+      "sha": "94c57fc9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "99c8520e",
+      "sha": "f76167c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "26c3b85c",
+      "sha": "99c8520e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "be9b48da",
+      "sha": "26c3b85c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "bc7627f3",
+      "sha": "be9b48da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "c68dfe96",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
-      "time": "53 minutes ago"
-    },
-    {
-      "sha": "c02ea653",
-      "agent": "dev",
-      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
-      "time": "54 minutes ago"
-    },
-    {
-      "sha": "aea8136c",
+      "sha": "bc7627f3",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "5c988d53",
-      "agent": "build",
-      "message": "update research hub index timestamp; add research report; record disk metrics",
-      "time": "57 minutes ago"
+      "sha": "c68dfe96",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
+      "time": "58 minutes ago"
     },
     {
-      "sha": "0b6517cd",
+      "sha": "c02ea653",
+      "agent": "dev",
+      "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
+      "time": "59 minutes ago"
+    },
+    {
+      "sha": "aea8136c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
