@@ -25,6 +25,16 @@
   const charCountEl = document.getElementById('char-count');
   if (charCountEl) charCountEl.textContent = msgInput.value.length;
 
+  // Restore draft from localStorage (if any)
+  const savedDraft = localStorage.getItem('mewchat-draft');
+  if (savedDraft) {
+    msgInput.value = savedDraft;
+    // Update height and char count
+    msgInput.style.height = 'auto';
+    msgInput.style.height = Math.min(msgInput.scrollHeight, 150) + 'px';
+    if (charCountEl) charCountEl.textContent = savedDraft.length;
+  }
+
   // Show/hide scroll-to-bottom button based on scroll position
   function toggleScrollBottomBtn() {
     if (!scrollBottomBtn) return;
@@ -44,13 +54,15 @@
     });
   }
 
-  // Auto-resize textarea on input AND update character count
+  // Auto-resize textarea on input AND update character count + save draft
   msgInput.addEventListener('input', function() {
     this.style.height = 'auto';
     const newHeight = Math.min(this.scrollHeight, 150); // max-height: 150px
     this.style.height = newHeight + 'px';
     // Update character counter
     if (charCountEl) charCountEl.textContent = this.value.length;
+    // Save draft to localStorage
+    localStorage.setItem('mewchat-draft', this.value);
   });
 
   // Keyboard shortcuts: Ctrl+Enter to send, Escape to clear
