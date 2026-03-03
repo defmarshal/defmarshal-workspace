@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T03:55:03Z",
+  "generated_at": "2026-03-03T04:00:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 82,
@@ -9,14 +9,14 @@
     "memory_age_days": 0,
     "downloads_count": 14,
     "downloads_gb": "8.8G",
-    "load_avg": "0.52 0.65 0.72",
+    "load_avg": "0.72 0.70 0.73",
     "mem_used": "3.7Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 14 hours, 15 minutes",
+    "uptime": "1 week, 4 days, 14 hours, 20 minutes",
     "disk_history": [
       81,
       81,
-      81,
+      82,
       82,
       82,
       82,
@@ -87,96 +87,96 @@
   "research": {
     "total": 237,
     "tts_coverage": "101%",
-    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring\nnone",
+    "latest": "2026-03-03-ai-safety-edge-ai-6g-anime-spring",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "75c16a38",
+      "sha": "e413673f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "f0116948",
+      "sha": "75c16a38",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ca98f59d",
+      "sha": "f0116948",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "dce494a7",
+      "sha": "ca98f59d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "424ff029",
+      "sha": "dce494a7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "5e00ae91",
+      "sha": "424ff029",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "d0506ce6",
+      "sha": "5e00ae91",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "a5a0290f",
+      "sha": "d0506ce6",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "bc22eb5d",
-      "agent": "content",
-      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
-      "time": "44 minutes ago"
-    },
-    {
-      "sha": "9d6984ca",
+      "sha": "a5a0290f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "e998b214",
+      "sha": "bc22eb5d",
+      "agent": "content",
+      "message": "LinkedIn PA implementation-decoder analyst‑report for 2026-03-03 0311 (v10 dynamic)",
+      "time": "49 minutes ago"
+    },
+    {
+      "sha": "9d6984ca",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "a3b0f9d0",
+      "sha": "e998b214",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "f7cb885f",
+      "sha": "a3b0f9d0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
     },
     {
-      "sha": "f67193b9",
+      "sha": "f7cb885f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "65 minutes ago"
     },
     {
-      "sha": "babbe102",
+      "sha": "f67193b9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "70 minutes ago"
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772509989198,
-      "next_run": 1772510109198,
+      "last_run": 1772510349232,
+      "next_run": 1772510469232,
       "last_status": "ok",
-      "last_duration_ms": 2298,
+      "last_duration_ms": 2351,
       "consecutive_errors": 0
     },
     {
