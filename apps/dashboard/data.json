@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T05:05:02Z",
+  "generated_at": "2026-03-03T05:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 83,
@@ -9,12 +9,11 @@
     "memory_age_days": 0,
     "downloads_count": 15,
     "downloads_gb": "9.3G",
-    "load_avg": "0.79 0.93 0.91",
-    "mem_used": "5.6Gi",
+    "load_avg": "1.02 0.98 0.93",
+    "mem_used": "5.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 15 hours, 25 minutes",
+    "uptime": "1 week, 4 days, 15 hours, 30 minutes",
     "disk_history": [
-      82,
       82,
       82,
       82,
@@ -37,6 +36,7 @@
       84,
       84,
       84,
+      83,
       83
     ]
   },
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "8f69f6e7",
-      "agent": "dev",
-      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
-      "time": "3 minutes ago"
-    },
-    {
-      "sha": "d1f02b47",
+      "sha": "4a91089b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "b5ee864a",
+      "sha": "8f69f6e7",
+      "agent": "dev",
+      "message": "enhance supervisor heartbeat with weather, holidays, agent status; update disk history",
+      "time": "8 minutes ago"
+    },
+    {
+      "sha": "d1f02b47",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "6e41b102",
+      "sha": "b5ee864a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "5087c38f",
+      "sha": "6e41b102",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "75088df0",
+      "sha": "5087c38f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "94c57fc9",
+      "sha": "75088df0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "f76167c1",
+      "sha": "94c57fc9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "99c8520e",
+      "sha": "f76167c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "26c3b85c",
+      "sha": "99c8520e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "be9b48da",
+      "sha": "26c3b85c",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "bc7627f3",
+      "sha": "be9b48da",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
+      "sha": "bc7627f3",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "60 minutes ago"
+    },
+    {
       "sha": "c68dfe96",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0407)",
-      "time": "58 minutes ago"
+      "time": "63 minutes ago"
     },
     {
       "sha": "c02ea653",
       "agent": "dev",
       "message": "adjust cron count expectations (28-32); refresh research index; record disk metrics",
-      "time": "59 minutes ago"
-    },
-    {
-      "sha": "aea8136c",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
+      "time": "64 minutes ago"
     }
   ],
   "heartbeat": {
@@ -778,21 +778,6 @@
   },
   "chat": [
     {
-      "role": "assistant",
-      "ts": "2026-03-02T23:16:56.304Z",
-      "text": "I see! The meta-agent **only creates** some agents (archive, git-janitor, archiver, notifier). But the three disabled ones (`daily-digest-cron`, `linkedin-pa-agent-cron`, `meta-supervisor-agent`) are **not recreated by meta-agent** — they're just disabled and need manual re-enable or recreation.\n\nLooking at `CRON_JOBS.md`, they have job IDs documented. Let's try to **recreate them** manually with their proper configurations:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:17:27.059Z",
-      "text": "Perfect! All three previously disabled cron jobs have been **recreated and enabled**. ✅\n\n**Enabled:**\n- `daily-digest-cron` — Twice daily at 12:00 and 20:00 Asia/Bangkok\n- `linkedin-pa-agent-cron` — Hourly in UTC (for LinkedIn Planning Analytics content)\n- `meta-supervisor-agent` — Every hour at :05 Asia/Bangkok (keeps meta-supervisor daemon running)\n\nLet's verify all are present:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-02T23:17:41.278Z",
-      "text": "✅ **Done!** All three disabled cron jobs are now active again.\n\nThey'll start running on their next scheduled times:\n- `daily-digest-cron`: next at 12:00 Asia/Bangkok (6 hours)\n- `linkedin-pa-agent-cron`: next in ~45 minutes (hourly)\n- `meta-supervisor-agent`: next in ~48 minutes (5 min past the hour)\n\nYour system is back to full automation! 🎉\n\nWant me to verify anything else? (◕‿◕)✨"
-    },
-    {
       "role": "user",
       "ts": "2026-03-02T23:18:12.801Z",
       "text": "What about meta agent?"
@@ -1026,6 +1011,21 @@
       "role": "assistant",
       "ts": "2026-03-03T04:56:34.028Z",
       "text": "✅ **Telegram message sent successfully!** The test message went through.\n\nNow the supervisor script should be working. Let's verify it sends a heartbeat on its next run. Since we just ran it manually, the next scheduled run will be at the next half-hour mark (Asia/Bangkok). That should be in about 30 minutes from now.\n\n**Summary:**\n- ✅ Supervisor script updated to always send heartbeat\n- ✅ Heartbeat includes system status (gateway, disk, updates, git, agents, weather, holidays)\n- ✅ Telegram command syntax fixed (`-m` for message)\n- ✅ Test message delivered\n\nThe next cron-triggered heartbeat will arrive in your Telegram chat as scheduled. Would you like me to also fix the underlying `auto-torrent-cron` error so the heartbeat shows green instead of red? (◕‿◕)✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T05:08:15.141Z",
+      "text": "Okay. Anything else that is previously working but not right now?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:08:41.821Z",
+      "text": "Let me run a comprehensive health audit to spot any regressions. (◕‿◕)✨"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T05:09:32.294Z",
+      "text": "Found an issue! The `content_stats` has `latest_title` instead of `latest`. That will cause the dashboard error again. Let's fix the refresh script:"
     }
   ]
 }
