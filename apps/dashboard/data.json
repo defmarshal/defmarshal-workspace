@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T00:05:02Z",
+  "generated_at": "2026-03-03T00:10:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,14 +9,13 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "8.2G",
-    "load_avg": "1.13 1.04 1.02",
-    "mem_used": "4.4Gi",
+    "load_avg": "4.62 3.67 2.13",
+    "mem_used": "5.2Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 10 hours, 25 minutes",
+    "uptime": "1 week, 4 days, 10 hours, 30 minutes",
     "disk_history": [
       79,
       79,
-      79,
       80,
       80,
       80,
@@ -37,6 +36,7 @@
       80,
       80,
       80,
+      81,
       81
     ]
   },
@@ -62,8 +62,8 @@
     {
       "name": "dev-agent",
       "active": true,
-      "last_run": "2026-03-02 23:31",
-      "last_line": "[2026-03-02 23:31:26] content-agent: Generated daily digest - 2026-03-02-daily-digest.md (workspace activities, critical fixes, research output)"
+      "last_run": "2026-03-03 00:08",
+      "last_line": "[2026-03-03 00:08:15] research-agent: Generated comprehensive cross-domain report - 2026-03-03-ai-regulation-cbdc-anime-streaming-quantum-space.md (14.0KB, covers AI regulation, CBDC deployment realities, anime streaming wars, quantum breakthroughs, LEO satellite deployment)"
     },
     {
       "name": "supervisor",
@@ -80,103 +80,103 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-03 00:03",
-      "last_line": "2026-03-03 00:03:22 UTC - Spawning content-agent"
+      "last_run": "2026-03-03 00:05",
+      "last_line": "2026-03-03 00:05:01 UTC - Spawning research-agent"
     }
   ],
   "research": {
-    "total": 234,
-    "tts_coverage": "92%",
-    "latest": "2026-03-02-ai-fintech-anime-trends",
+    "total": 235,
+    "tts_coverage": "91%",
+    "latest": "2026-03-03-ai-regulation-cbdc-anime-streaming-quantum-space\nnone",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "df9c82c1",
+      "sha": "52e4cf51",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "bc61af8a",
+      "sha": "df9c82c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "e8d7795e",
+      "sha": "bc61af8a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "ac38c586",
+      "sha": "e8d7795e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "75a4eca5",
+      "sha": "ac38c586",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "c0bf8690",
+      "sha": "75a4eca5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
+      "sha": "c0bf8690",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "35 minutes ago"
+    },
+    {
       "sha": "61bcbd99",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-02)",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "e76801e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "e288943a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "faf143bf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "0426d8b7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "3c8c221e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
+      "time": "60 minutes ago"
     },
     {
       "sha": "ed5f787a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "1ef5952a",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "65 minutes ago"
     },
     {
-      "sha": "a95c5f50",
+      "sha": "1ef5952a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "70 minutes ago"
@@ -790,11 +790,6 @@
   },
   "chat": [
     {
-      "role": "user",
-      "ts": "2026-03-02T22:09:20.172Z",
-      "text": "[Mon 2026-03-02 22:09 UTC] Check why workspace builder is using so much token"
-    },
-    {
       "role": "assistant",
       "ts": "2026-03-02T22:09:26.135Z",
       "text": "Let me check the workspace builder's token usage and recent activity to diagnose why it's consuming so much. (◕‿◕)✨"
@@ -1038,6 +1033,11 @@
       "role": "assistant",
       "ts": "2026-03-02T23:24:32.290Z",
       "text": "Yes! I can scrape images from the web using the browser tool. (◕‿◕)✨\n\n**What I can do:**\n- Navigate to a webpage\n- Find images (by selector, alt text, or just all `<img>` tags)\n- Extract image URLs or download them directly\n- Take screenshots of specific elements or full page\n\n**Typical usage:**\n- Provide the URL\n- Tell me what images you want (e.g., \"all images\", \"the first one\", \"images with class `thumbnail`\")\n- I'll fetch and save them to a local folder\n\n**Example:** I can scrape manga covers from MyAnimeList, product images from Amazon, or illustrations from Pinterest.\n\nDo you have a specific website in mind? Give me the URL and what to grab! (^^)"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T00:10:00.827Z",
+      "text": "Heartbeat good?"
     }
   ]
 }
