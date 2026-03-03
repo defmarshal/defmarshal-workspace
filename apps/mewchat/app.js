@@ -176,6 +176,8 @@
     if (!text || !currentSessionKey) return;
     msgInput.value = '';
     sendBtn.disabled = true;
+    sendBtn.classList.add('loading');
+    sendBtn.textContent = 'Sending…';
     typingEl.classList.remove('hidden');
     if (mascot) mascot.classList.add('talking');
     clearError();
@@ -192,6 +194,8 @@
       showError('Send failed: ' + e.message);
     } finally {
       sendBtn.disabled = false;
+      sendBtn.classList.remove('loading');
+      sendBtn.textContent = 'Send';
       typingEl.classList.add('hidden');
       if (mascot) mascot.classList.remove('talking');
     }
