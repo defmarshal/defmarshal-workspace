@@ -247,21 +247,18 @@ footer { font-size:11px; color:var(--muted); text-align:center; padding:8px; fle
 
 /* ── Typewriter Effect ─────────────────────────────────────────────────────── */
 .msg-bubble.typewriter {
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 2s steps(40, end), blink 0.75s step-end infinite;
+  white-space: pre-wrap;
+  overflow: visible;
+  border-right: 2px solid currentColor;
+  animation: blink-caret 0.75s step-end infinite;
+}
+@keyframes blink-caret {
+  0%, 100% { border-right-color: transparent; }
+  50% { border-right-color: currentColor; }
 }
 .msg-bubble.typewriter.done {
-  white-space: pre-wrap;
+  border-right: none;
   animation: none;
-}
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-@keyframes blink {
-  from, to { border-right-color: transparent; }
-  50% { border-right-color: var(--text); }
 }
 
 /* ── Responsive tweaks ─────────────────────────────────────────────────────── */
