@@ -1,23 +1,22 @@
 {
-  "generated_at": "2026-03-03T00:00:02Z",
+  "generated_at": "2026-03-03T00:05:02Z",
   "system": {
     "gateway": "up",
-    "disk_percent": 80,
-    "disk_free": "9.3G",
+    "disk_percent": 81,
+    "disk_free": "8.7G",
     "updates": 0,
     "git_clean": false,
     "memory_age_days": 0,
-    "downloads_count": 12,
-    "downloads_gb": "7.7G",
-    "load_avg": "0.91 0.86 0.98",
-    "mem_used": "4.3Gi",
+    "downloads_count": 13,
+    "downloads_gb": "8.2G",
+    "load_avg": "1.13 1.04 1.02",
+    "mem_used": "4.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 10 hours, 20 minutes",
+    "uptime": "1 week, 4 days, 10 hours, 25 minutes",
     "disk_history": [
       79,
       79,
       79,
-      79,
       80,
       80,
       80,
@@ -37,7 +36,8 @@
       80,
       80,
       80,
-      80
+      80,
+      81
     ]
   },
   "agents": [
@@ -67,9 +67,9 @@
     },
     {
       "name": "supervisor",
-      "active": false,
-      "last_run": "2026-02-28 17:30",
-      "last_line": "2026-02-28 17:30:27 UTC - OK"
+      "active": true,
+      "last_run": "2026-03-03 00:01",
+      "last_line": "2026-03-03 00:01:45 UTC - ALERT"
     },
     {
       "name": "agent-manager",
@@ -80,103 +80,103 @@
     {
       "name": "meta-agent",
       "active": true,
-      "last_run": "2026-03-02 23:02",
-      "last_line": "2026-03-02 23:02:40 UTC - Meta-Agent one-shot completed; actions: disk cleanup spawn content-agent"
+      "last_run": "2026-03-03 00:03",
+      "last_line": "2026-03-03 00:03:22 UTC - Spawning content-agent"
     }
   ],
   "research": {
     "total": 234,
     "tts_coverage": "92%",
-    "latest": "2026-03-02-ai-fintech-anime-trends\nnone",
+    "latest": "2026-03-02-ai-fintech-anime-trends",
     "hub_deployed": true
   },
   "recent_commits": [
     {
-      "sha": "bc61af8a",
+      "sha": "df9c82c1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "e8d7795e",
+      "sha": "bc61af8a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "ac38c586",
+      "sha": "e8d7795e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "75a4eca5",
+      "sha": "ac38c586",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "c0bf8690",
+      "sha": "75a4eca5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
+      "sha": "c0bf8690",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "30 minutes ago"
+    },
+    {
       "sha": "61bcbd99",
       "agent": "build",
       "message": "auto-commit from agent-manager (2026-03-02)",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "e76801e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "35 minutes ago"
     },
     {
       "sha": "e288943a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "40 minutes ago"
     },
     {
       "sha": "faf143bf",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "45 minutes ago"
     },
     {
       "sha": "0426d8b7",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
+      "time": "50 minutes ago"
     },
     {
       "sha": "3c8c221e",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "55 minutes ago"
     },
     {
       "sha": "ed5f787a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "55 minutes ago"
+      "time": "60 minutes ago"
     },
     {
       "sha": "1ef5952a",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "a95c5f50",
-      "agent": "chore",
-      "message": "update clawdash data",
       "time": "65 minutes ago"
     },
     {
-      "sha": "2ad7fcb8",
+      "sha": "a95c5f50",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "70 minutes ago"
@@ -192,10 +192,6 @@
     "updatedAt": 1740910200
   },
   "supervisor_log": [
-    "2026-02-27 00:01:04 UTC - OK",
-    "2026-02-27 00:30:32 UTC - OK",
-    "2026-02-27 01:30:50 UTC - OK",
-    "2026-02-27 03:10:23 UTC - OK",
     "2026-02-27 03:31:06 UTC - OK",
     "2026-02-27 06:06:25 UTC - OK",
     "2026-02-27 07:08:47 UTC - OK",
@@ -221,7 +217,11 @@
     "2026-02-28 03:06:11 UTC - OK",
     "2026-02-28 03:30:23 UTC - OK",
     "2026-02-28 17:00:25 UTC - OK",
-    "2026-02-28 17:30:27 UTC - OK"
+    "2026-02-28 17:30:27 UTC - OK",
+    "2026-03-03 00:01:43 UTC - ALERT - Reasons:",
+    "  * Cron job issues:\\n- vishwakarma-cron: error, errors 1",
+    "- auto-torrent-cron: error, errors 1",
+    "2026-03-03 00:01:45 UTC - ALERT"
   ],
   "agent_outputs": [
     {
@@ -352,10 +352,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772494200012,
-      "next_run": 1772496000000,
+      "last_run": 1772496000011,
+      "next_run": 1772497800000,
       "last_status": "ok",
-      "last_duration_ms": 187056,
+      "last_duration_ms": 62881,
       "consecutive_errors": 0
     },
     {
@@ -484,10 +484,10 @@
       "schedule": "*/5 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772495700009,
-      "next_run": 1772496000000,
+      "last_run": 1772496062892,
+      "next_run": 1772496300000,
       "last_status": "ok",
-      "last_duration_ms": 57029,
+      "last_duration_ms": 18615,
       "consecutive_errors": 0
     },
     {
@@ -700,10 +700,10 @@
       "schedule": "0,30 * * * *",
       "tz": "Asia/Bangkok",
       "enabled": true,
-      "last_run": 1772494419995,
-      "next_run": 1772496000000,
+      "last_run": 1772496081507,
+      "next_run": 1772497800000,
       "last_status": "ok",
-      "last_duration_ms": 17235,
+      "last_duration_ms": 52820,
       "consecutive_errors": 0
     },
     {
