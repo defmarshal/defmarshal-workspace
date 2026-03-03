@@ -168,6 +168,32 @@ h1 { font-size:18px; color: var(--purple); display:flex; align-items:center; gap
   margin-right: 4px;
 }
 
+/* Confirm dialog buttons */
+.confirm-dialog .confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+.btn-primary, .btn-secondary {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+}
+.btn-secondary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-primary:hover { opacity: 0.9; }
+.btn-secondary:hover { border-color: var(--muted); }
+
 /* Focus styles for accessibility */
 #msg-input:focus-visible,
 #send-btn:focus-visible,

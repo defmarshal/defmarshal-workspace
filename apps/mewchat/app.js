@@ -21,6 +21,9 @@
   const helpBtn = document.getElementById('help-btn');
   const helpModal = document.getElementById('help-modal');
   const helpClose = document.getElementById('help-close');
+  const confirmModal = document.getElementById('confirm-modal');
+  const confirmCancel = document.getElementById('confirm-cancel');
+  const confirmOk = document.getElementById('confirm-ok');
   const msgInput = document.getElementById('msg-input');
   const sendBtn = document.getElementById('send-btn');
   const clearBtn = document.getElementById('clear-btn');
@@ -198,17 +201,23 @@
   }
 
   function clearChat() {
-    if (confirm('Clear the current chat history? This cannot be undone.')) {
-      chatMessages.innerHTML = '';
-      lastMessageCount = 0;
-      // Clear draft as well
-      localStorage.removeItem('mewchat-draft');
-      msgInput.value = '';
-      // Update char count
-      if (charCountEl) charCountEl.textContent = '0';
-      // Reset textarea height
-      msgInput.style.height = 'auto';
-    }
+    showConfirmModal();
+  }
+
+  function showConfirmModal() {
+    if (confirmModal) confirmModal.classList.remove('hidden');
+  }
+  function hideConfirmModal() {
+    if (confirmModal) confirmModal.classList.add('hidden');
+  }
+  function performClear() {
+    chatMessages.innerHTML = '';
+    lastMessageCount = 0;
+    localStorage.removeItem('mewchat-draft');
+    msgInput.value = '';
+    if (charCountEl) charCountEl.textContent = '0';
+    msgInput.style.height = 'auto';
+    hideConfirmModal();
   }
 
   // Data fetching
@@ -411,6 +420,22 @@
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'h') {
       e.preventDefault();
       if (helpModal && helpModal.classList.contains('hidden')) showHelp(); else hideHelp();
+    }
+  });
+
+  // Confirm modal handlers
+  if (confirmCancel) confirmCancel.addEventListener('click', hideConfirmModal);
+  if (confirmOk) confirmOk.addEventListener('click', performClear);
+  if (confirmModal) {
+    confirmModal.addEventListener('click', e => {
+      if (e.target === confirmModal) hideConfirmModal();
+    });
+  }
+  // Also close confirm modal on Escape (global listener already handles help only; need separate check)
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (helpModal && !helpModal.classList.contains('hidden')) hideHelp();
+      if (confirmModal && !confirmModal.classList.contains('hidden')) hideConfirmModal();
     }
   });
 
