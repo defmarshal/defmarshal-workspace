@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T01:40:03Z",
+  "generated_at": "2026-03-03T01:45:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 81,
@@ -9,12 +9,12 @@
     "memory_age_days": 0,
     "downloads_count": 13,
     "downloads_gb": "8.2G",
-    "load_avg": "0.92 1.01 1.03",
-    "mem_used": "4.2Gi",
+    "load_avg": "1.12 1.04 1.02",
+    "mem_used": "4.6Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 12 hours, 0 minutes",
+    "uptime": "1 week, 4 days, 12 hours, 5 minutes",
     "disk_history": [
-      80,
+      81,
       81,
       81,
       81,
@@ -92,91 +92,91 @@
   },
   "recent_commits": [
     {
-      "sha": "e9b4d23b",
+      "sha": "8ddaf4b7",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "1ecf0c0a",
+      "sha": "e9b4d23b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "823bcc57",
-      "agent": "content",
-      "message": "LinkedIn PA technical-performance analyst‑report for 2026-03-03 0127 (v10 dynamic)",
-      "time": "12 minutes ago"
-    },
-    {
-      "sha": "af6e2fe1",
+      "sha": "1ecf0c0a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "6bbfaa46",
-      "agent": "dev",
-      "message": "record disk usage snapshot (81%) from validation check",
-      "time": "18 minutes ago"
+      "sha": "823bcc57",
+      "agent": "content",
+      "message": "LinkedIn PA technical-performance analyst‑report for 2026-03-03 0127 (v10 dynamic)",
+      "time": "17 minutes ago"
     },
     {
-      "sha": "1cffa8ce",
+      "sha": "af6e2fe1",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "47fafc23",
-      "agent": "game",
-      "message": "polish Anime Studio Tycoon per Vishwakarma plan (build script run, tested, report added)",
-      "time": "21 minutes ago"
+      "sha": "6bbfaa46",
+      "agent": "dev",
+      "message": "record disk usage snapshot (81%) from validation check",
+      "time": "23 minutes ago"
     },
     {
-      "sha": "9cdb1628",
+      "sha": "1cffa8ce",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "77257ef9",
+      "sha": "47fafc23",
+      "agent": "game",
+      "message": "polish Anime Studio Tycoon per Vishwakarma plan (build script run, tested, report added)",
+      "time": "26 minutes ago"
+    },
+    {
+      "sha": "9cdb1628",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "10414f3d",
+      "sha": "77257ef9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "07e79d0e",
+      "sha": "10414f3d",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "90888744",
+      "sha": "07e79d0e",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "91283ae0",
+      "sha": "90888744",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "2781b3b9",
+      "sha": "91283ae0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
     },
     {
-      "sha": "29e1db2c",
+      "sha": "2781b3b9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "60 minutes ago"
@@ -700,10 +700,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772501968545,
-      "next_run": 1772502088545,
+      "last_run": 1772502208570,
+      "next_run": 1772502328570,
       "last_status": "ok",
-      "last_duration_ms": 2391,
+      "last_duration_ms": 2254,
       "consecutive_errors": 0
     },
     {
