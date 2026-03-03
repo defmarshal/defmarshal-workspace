@@ -115,10 +115,22 @@
 
   // Theme toggle
   function applyTheme() {
-    const theme = localStorage.getItem('mewchat-theme') || 'dark';
+    let theme = localStorage.getItem('mewchat-theme');
+    if (!theme) {
+      // Match system preference when no explicit choice is stored
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
     document.documentElement.setAttribute('data-theme', theme);
     themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
   }
+
+  // Listen for system theme changes if user hasn't set a preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (!localStorage.getItem('mewchat-theme')) {
+      applyTheme();
+    }
+  });
+
   themeBtn.addEventListener('click', () => {
     const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     localStorage.setItem('mewchat-theme', newTheme);
