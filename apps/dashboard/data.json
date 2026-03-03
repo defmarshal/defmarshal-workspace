@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T06:55:02Z",
+  "generated_at": "2026-03-03T06:56:59Z",
   "system": {
     "gateway": "up",
     "disk_percent": 86,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 16,
     "downloads_gb": "11G",
-    "load_avg": "1.13 1.27 1.21",
-    "mem_used": "6.0Gi",
+    "load_avg": "1.43 1.25 1.20",
+    "mem_used": "6.9Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 17 hours, 15 minutes",
+    "uptime": "1 week, 4 days, 17 hours, 17 minutes",
     "disk_history": [
       86,
       86,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
+      "sha": "52501505",
+      "agent": "chore",
+      "message": "update clawdash data",
+      "time": "2 minutes ago"
+    },
+    {
       "sha": "fc727393",
       "agent": "misc",
       "message": "fix(dashboard): remove duplicate parseOutputTs function declaration causing syntax error",
-      "time": "5 seconds ago"
+      "time": "2 minutes ago"
     },
     {
       "sha": "a2e0fc9f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "5 minutes ago"
+      "time": "7 minutes ago"
     },
     {
       "sha": "1aaeeb2f",
       "agent": "misc",
       "message": "update(dashboard): refresh data and heartbeat state for MewDash",
-      "time": "9 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "c2567e5f",
       "agent": "misc",
       "message": "feat(supervisor): add timeouts to all external commands; update heartbeat-state.json for MewDash Pulse",
-      "time": "10 minutes ago"
+      "time": "11 minutes ago"
     },
     {
       "sha": "cd81a1e5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "10 minutes ago"
+      "time": "12 minutes ago"
     },
     {
       "sha": "8cf7b540",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "15 minutes ago"
+      "time": "17 minutes ago"
     },
     {
       "sha": "d3ae4ac5",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "20 minutes ago"
+      "time": "22 minutes ago"
     },
     {
       "sha": "db090766",
       "agent": "misc",
       "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
-      "time": "21 minutes ago"
+      "time": "23 minutes ago"
     },
     {
       "sha": "f85a6812",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "25 minutes ago"
+      "time": "27 minutes ago"
     },
     {
       "sha": "1b611e6f",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "30 minutes ago"
+      "time": "32 minutes ago"
     },
     {
       "sha": "7f01c84b",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "35 minutes ago"
+      "time": "37 minutes ago"
     },
     {
       "sha": "c0bda945",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "40 minutes ago"
+      "time": "42 minutes ago"
     },
     {
       "sha": "4780a4f0",
       "agent": "dev",
       "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
-      "time": "42 minutes ago"
+      "time": "44 minutes ago"
     },
     {
       "sha": "52c06717",
       "agent": "chore",
       "message": "update clawdash data",
-      "time": "45 minutes ago"
-    },
-    {
-      "sha": "8f0564c9",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "50 minutes ago"
+      "time": "47 minutes ago"
     }
   ],
   "heartbeat": {
@@ -699,10 +699,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772520830312,
-      "next_run": 1772520950312,
+      "last_run": 1772520950323,
+      "next_run": 1772521070323,
       "last_status": "ok",
-      "last_duration_ms": 2296,
+      "last_duration_ms": 2505,
       "consecutive_errors": 0
     },
     {
@@ -769,21 +769,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:30:34.038Z",
-      "text": "Let's check for duplicate script tags:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:30:51.881Z",
-      "text": "Let's get exact line numbers:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:31:07.605Z",
-      "text": "Let's look at line 581:"
-    },
     {
       "role": "assistant",
       "ts": "2026-03-03T06:31:34.328Z",
@@ -1018,6 +1003,21 @@
       "role": "assistant",
       "ts": "2026-03-03T06:54:57.183Z",
       "text": "✅ All elements present. The only real issue was the duplicate `parseOutputTs` causing a syntax error that likely prevented later functions from being defined. Fixed!\n\nLet's commit the fix:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:55:14.721Z",
+      "text": "**Qwen's analysis review:**\n\n1. ✅ **Duplicate parseOutputTs** — Fixed (removed extra declaration)\n2. ⚠️ **Missing CSS** — All referenced classes exist in `kawaii.css` and `index.html`. No action needed.\n3. ⚠️ **Missing loadAndRenderTorrents** — Function exists at line 1076. The earlier syntax error may have prevented its definition. With fix, it's defined.\n4. ⚠️ **Missing renderCronTab** — Function exists at line 1043. Same as above.\n5. ⚠️ **Undefined variables** — `QUICK_CMDS`, `chatInput`, `sendBtn` all defined (lines 1340, 1247-1248).\n6. ⚠️ **Missing achievements-panel CSS** — Exists in `kawaii.css` (line 418).\n\n**Root cause:** The duplicate `parseOutputTs` created a syntax error that halted script parsing, so later functions weren't registered. That single fix resolves all reported \"missing\" items.\n\nCommit pushed! MewDash should now run cleanly. (◕‿◕)✨"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T06:56:33.830Z",
+      "text": "[Tue 2026-03-03 06:56 UTC] git status is dirty. can you check?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:56:47.211Z",
+      "text": "Let me check what's dirty:"
     }
   ]
 }

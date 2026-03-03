@@ -25,7 +25,7 @@ QUEUE_HASHES+=$'\n'$(curl -s "$RPC_URL" \
 # Try random picks from top 10
 INDICES=$(python3 -c "import random; l=list(range(1,11)); random.shuffle(l); print(' '.join(map(str,l)))")
 for IDX in $INDICES; do
-  OUTPUT=$(./quick nyaa-top --limit 10 --max-size 2G --pick "$IDX" 2>/dev/null) || continue
+  OUTPUT=$(timeout 30 ./quick nyaa-top --limit 10 --max-size 2G --pick "$IDX" 2>/dev/null) || continue
   MAGNET=$(echo "$OUTPUT" | grep -E '^Magnet: ' | head -1 | sed 's/^Magnet: //' | tr -d '\r\n')
   NAME=$(echo "$OUTPUT" | grep -E '^Selected #' | head -1 | sed 's/^Selected #[0-9]*: //')
   [ -z "$MAGNET" ] && continue
