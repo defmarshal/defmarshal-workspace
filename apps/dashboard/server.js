@@ -103,38 +103,6 @@ function cors(res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
-function json(res, code, obj) {
-  cors(res);
-  res.writeHead(code, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify(obj));
-}
-function readBody(req) {
-  return new Promise((resolve, reject) => {
-    let body = '';
-    req.on('data', d => { body += d; if (body.length > 65536) reject(new Error('body too large')); });
-    req.on('end', () => { try { resolve(JSON.parse(body)); } catch { resolve({}); } });
-    req.on('error', reject);
-  });
-}
-function run(cmd, args, opts = {}) {
-  return new Promise((resolve) => {
-    execFile(cmd, args, { timeout: 30000, cwd: WORKSPACE, ...opts }, (err, stdout, stderr) => {
-      resolve({ ok: !err, stdout: stdout || '', stderr: stderr || '', code: err?.code || 0 });
-    });
-  });
-}
-
-async function regenerateData() {
-  return run('bash', [path.join(WORKSPACE, 'scripts', 'generate-dashboard-data.sh')]);
-}
-
-function getChatHistory() {
-  try {
-    const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
-    const sessionId = sessions['agent:main:telegram:direct:952170974']?.sessionId;
-    if (!sessionId) return [];
-    const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
-    if (!fs.existsSync(sessionFile)) return [];
     const msgs = [];
     for (const line of fs.readFileSync(sessionFile, 'utf8').split('\n')) {
       if (!line.trim()) continue;
@@ -148,6 +116,59 @@ function getChatHistory() {
         if (Array.isArray(msg.content)) {
           text = msg.content.filter(c => c.type === 'text').map(c => c.text).join(' ');
         } else { text = String(msg.content || ''); }
+  // ── Agent Control ─────────────────────────────────────────────────────────────
+  if (pathname === '/api/cron/run' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const { cronId } = JSON.parse(body);
+        if (!cronId) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          return res.end(JSON.stringify({ error: 'cronId required' }));
+        }
+        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['cron','run', cronId], (err, stdout, stderr) => {
+          if (err) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            return res.end(JSON.stringify({ error: err.message, stderr }));
+          }
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ ok: true, output: stdout }));
+        });
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+    });
+    return;
+  }
+
+  if (pathname === '/api/session/stop' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const { sessionKey } = JSON.parse(body);
+        if (!sessionKey) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          return res.end(JSON.stringify({ error: 'sessionKey required' }));
+        }
+        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['sessions','stop', sessionKey], (err, stdout, stderr) => {
+          if (err) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            return res.end(JSON.stringify({ error: err.message, stderr }));
+          }
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ ok: true, output: stdout }));
+        });
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+    });
+    return;
+  }
+
         if (role === 'user' && text.includes('Conversation info')) {
           const end = text.indexOf('```\n\n');
           if (end >= 0) text = text.slice(end + 5).trim();
