@@ -108,3 +108,5 @@ content/youtube-digest-*.md
 
 apps/dashboard/data.json
 memory/disk-history.json
+memory/heartbeat-state.json
+memory/torrent-history.txt
