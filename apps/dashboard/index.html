@@ -817,7 +817,6 @@ function renderActiveTasks(tasks) {
   }).join('');
 }
 function parseOutputTs(ts) {
-function parseOutputTs(ts) {
   // Accept: number (ms since epoch) or string "YYYY-MM-DD-HHMM"
   if (!ts) return null;
   if (typeof ts === 'number') return new Date(ts);
@@ -827,7 +826,7 @@ function parseOutputTs(ts) {
   }
   return null;
 }
-}
+
 function renderOutputs(outputs) {
   const el = document.getElementById('output-list');
   el.innerHTML = (outputs||[]).length === 0 ? '<span class="muted">No outputs.</span>' :
