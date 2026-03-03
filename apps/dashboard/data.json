@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T06:45:02Z",
+  "generated_at": "2026-03-03T06:50:02Z",
   "system": {
     "gateway": "up",
     "disk_percent": 86,
@@ -9,10 +9,10 @@
     "memory_age_days": 0,
     "downloads_count": 16,
     "downloads_gb": "11G",
-    "load_avg": "1.49 1.22 1.16",
-    "mem_used": "6.2Gi",
+    "load_avg": "1.28 1.19 1.16",
+    "mem_used": "6.4Gi",
     "mem_total": "23Gi",
-    "uptime": "1 week, 4 days, 17 hours, 5 minutes",
+    "uptime": "1 week, 4 days, 17 hours, 10 minutes",
     "disk_history": [
       86,
       86,
@@ -92,94 +92,94 @@
   },
   "recent_commits": [
     {
-      "sha": "8cf7b540",
+      "sha": "1aaeeb2f",
+      "agent": "misc",
+      "message": "update(dashboard): refresh data and heartbeat state for MewDash",
+      "time": "4 minutes ago"
+    },
+    {
+      "sha": "c2567e5f",
+      "agent": "misc",
+      "message": "feat(supervisor): add timeouts to all external commands; update heartbeat-state.json for MewDash Pulse",
+      "time": "5 minutes ago"
+    },
+    {
+      "sha": "cd81a1e5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "5 minutes ago"
     },
     {
-      "sha": "d3ae4ac5",
+      "sha": "8cf7b540",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "10 minutes ago"
     },
     {
-      "sha": "db090766",
-      "agent": "misc",
-      "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
-      "time": "11 minutes ago"
-    },
-    {
-      "sha": "f85a6812",
+      "sha": "d3ae4ac5",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "15 minutes ago"
     },
     {
-      "sha": "1b611e6f",
+      "sha": "db090766",
+      "agent": "misc",
+      "message": "fix(dashboard): correct theme toggle event listener syntax (remove stray \"()\")",
+      "time": "16 minutes ago"
+    },
+    {
+      "sha": "f85a6812",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "20 minutes ago"
     },
     {
-      "sha": "7f01c84b",
+      "sha": "1b611e6f",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "25 minutes ago"
     },
     {
-      "sha": "c0bda945",
+      "sha": "7f01c84b",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "30 minutes ago"
     },
     {
-      "sha": "4780a4f0",
-      "agent": "dev",
-      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
-      "time": "32 minutes ago"
-    },
-    {
-      "sha": "52c06717",
+      "sha": "c0bda945",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "35 minutes ago"
     },
     {
-      "sha": "8f0564c9",
+      "sha": "4780a4f0",
+      "agent": "dev",
+      "message": "Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)",
+      "time": "37 minutes ago"
+    },
+    {
+      "sha": "52c06717",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "40 minutes ago"
     },
     {
-      "sha": "8f91f0f0",
+      "sha": "8f0564c9",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "45 minutes ago"
     },
     {
-      "sha": "96ab566a",
+      "sha": "8f91f0f0",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "50 minutes ago"
     },
     {
-      "sha": "68057bd9",
+      "sha": "96ab566a",
       "agent": "chore",
       "message": "update clawdash data",
       "time": "55 minutes ago"
-    },
-    {
-      "sha": "5798ab43",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "60 minutes ago"
-    },
-    {
-      "sha": "71a3aa97",
-      "agent": "chore",
-      "message": "update clawdash data",
-      "time": "65 minutes ago"
     }
   ],
   "heartbeat": {
@@ -699,10 +699,10 @@
       "schedule": "",
       "tz": "UTC",
       "enabled": true,
-      "last_run": 1772520228295,
-      "next_run": 1772520348295,
+      "last_run": 1772520590292,
+      "next_run": 1772520710292,
       "last_status": "ok",
-      "last_duration_ms": 2564,
+      "last_duration_ms": 3368,
       "consecutive_errors": 0
     },
     {
@@ -769,41 +769,6 @@
     "latest_title": "📺 YouTube Digest — 2026-03-01"
   },
   "chat": [
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:23:01.191Z",
-      "text": "That's fast (1.8s). The 600s hang must be in the aria2 RPC calls. Let's test if aria2 RPC responds:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:23:27.871Z",
-      "text": "✅ **Root cause:** The `auto-torrent-cron` job **times out** after 600 seconds (10 min) because the OpenClaw cron default timeout is 300s, but the actual job ran longer than that. The script may hang if aria2 RPC is slow or if `nyaa-top` pick hits a slow network request.\n\n**Fix options:**\n1. **Increase cron timeout** to allow up to 15 minutes: `openclaw cron edit 483e96ab-0837-4e5c-9086-a560635188af --timeoutSeconds 900`\n2. **Add per-command timeouts** in the script to avoid hanging indefinitely on a single pick.\n3. **Reset the error state** so supervisor stops alerting (once fixed).\n\nI'll apply both (1) and (2) for robustness. Give me a moment! (◕‿◕)✨"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:23:43.461Z",
-      "text": "Let's get exact lines for edit:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:24:21.188Z",
-      "text": "Now increase the cron job timeout to 900 seconds (15 min):"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:24:35.721Z",
-      "text": "Correct flag: `--timeout-seconds`:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:24:45.805Z",
-      "text": "✅ Timeout increased to 15 minutes. Now let's reset the error by manually running the job once successfully:"
-    },
-    {
-      "role": "assistant",
-      "ts": "2026-03-03T06:25:09.437Z",
-      "text": "Perfect! The script works manually. The cron will succeed on its next run (tomorrow 2 AM Asia/Bangkok). To clear the alert sooner, we could manually trigger the cron job, but it's fine to let it resolve automatically.\n\n**Summary of fixes:**\n- ✅ Added `timeout 30` per `nyaa-top` pick to prevent hangs\n- ✅ Increased `auto-torrent-cron` timeout from 300s to 900s\n- ✅ Script manual test succeeded\n- ✅ Error will clear on next successful run (tomorrow 2 AM)\n\nAnything else you want me to check? (◕‿◕)✨"
-    },
     {
       "role": "user",
       "ts": "2026-03-03T06:26:57.923Z",
@@ -1018,6 +983,41 @@
       "role": "assistant",
       "ts": "2026-03-03T06:44:48.377Z",
       "text": "Got it! Let's get that heartbeat state updated and MewDash showing fresh data. I'll manually run the data refresh now:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:45:19.349Z",
+      "text": "✅ **Data refreshed!** Now the `heartbeat.state` has actual timestamps. The \"ago\" values are large because we haven't been updating that state regularly. Once the supervisor runs successfully and writes to `heartbeat-state.json`, the Pulse tab will show accurate \"last checked\" times.\n\nLet's commit these fresh files to keep git happy:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:45:49.672Z",
+      "text": "I see there are many untracked files from recent activity. Let's just commit the critical `data.json` and `heartbeat-state.json` to get MewDash updated:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:46:10.728Z",
+      "text": "✅ **MewDash data is now live** on the server! Refresh your browser at `http://localhost:3001` and the Pulse tab should show current stats.\n\nThe \"365 days ago\" entries will update once the supervisor runs successfully and writes fresh timestamps to `heartbeat-state.json`. I'm fixing the supervisor to not hang — it should complete on its next cron run. (◕‿◕)✨\n\nAnything else you want adjusted?"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:46:12.381Z",
+      "text": "Got it! Let's get that heartbeat state updated and MewDash showing fresh data. I'll manually run the data refresh now:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:46:13.508Z",
+      "text": "✅ **Data refreshed!** Now the `heartbeat.state` has actual timestamps. The \"ago\" values are large because we haven't been updating that state regularly. Once the supervisor runs successfully and writes to `heartbeat-state.json`, the Pulse tab will show accurate \"last checked\" times.\n\nLet's commit these fresh files to keep git happy:"
+    },
+    {
+      "role": "assistant",
+      "ts": "2026-03-03T06:46:14.501Z",
+      "text": "I see there are many untracked files from recent activity. Let's just commit the critical `data.json` and `heartbeat-state.json` to get MewDash updated:"
+    },
+    {
+      "role": "user",
+      "ts": "2026-03-03T06:49:52.266Z",
+      "text": "[Tue 2026-03-03 06:49 UTC] all done?"
     }
   ]
 }
