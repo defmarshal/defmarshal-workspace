@@ -34,6 +34,7 @@ const CERT_PATH     = path.join(DASHBOARD_DIR, 'tls.crt');
 const KEY_PATH      = path.join(DASHBOARD_DIR, 'tls.key');
 const VAPID_PATH    = path.join(DASHBOARD_DIR, 'vapid.json');
 const SUBS_PATH     = path.join(DASHBOARD_DIR, 'push-subscriptions.json');
+const LABEL_OVERRIDES_PATH = path.join(DASHBOARD_DIR, 'session-labels.json');
 const CRON_JOBS_JSON = path.join(process.env.HOME, '.openclaw', 'cron', 'jobs.json');
 const CRON_RUNS_DIR  = path.join(process.env.HOME, '.openclaw', 'cron', 'runs');
 
@@ -140,6 +141,13 @@ function refreshSessionsCache() {
   try {
     const raw = fs.readFileSync(SESSIONS_JSON, 'utf8');
     const sessions = JSON.parse(raw);
+    // Load label overrides
+    let overrides = {};
+    try {
+      overrides = JSON.parse(fs.readFileSync(LABEL_OVERRIDES_PATH, 'utf8'));
+    } catch (err) {
+      // ignore if file missing or invalid
+    }
     const list = [];
     for (const [key, val] of Object.entries(sessions)) {
       if (key.includes(':run:')) continue;
@@ -154,7 +162,7 @@ function refreshSessionsCache() {
       } else if (key.startsWith('agent:main:subagent:')) {
         const parts = key.split(':');
         const subId = parts[parts.length-1] || '';
-        label = `🤖 Project:${subId.substring(0,8)}`;
+        label = `🤖 Sub-agent:${subId.substring(0,8)}`;
       } else if (key.startsWith('agent:main:cron:')) {
         const valLabel = val.label || '';
         if (valLabel.includes('dev-agent')) label = '👨‍💻 Dev Agent';
@@ -168,6 +176,10 @@ function refreshSessionsCache() {
         else label = `⏰ Cron`;
       } else if (val.label) {
         label = val.label;
+      }
+      // Apply override if exists
+      if (overrides[key]) {
+        label = overrides[key];
       }
       list.push({
         sessionKey: key,

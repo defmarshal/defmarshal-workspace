@@ -413,6 +413,10 @@
     </div>
   </div>
   <div class="chat-sidebar">
+    <div class="sidebar-title">💬 Chat Session</div>
+    <select id="session-select" style="width:100%;margin-bottom:8px;padding:4px 8px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;">
+      <option value="">Loading sessions…</option>
+    </select>
     <div class="sidebar-title">⚡ Quick Commands</div>
     <div class="quick-list" id="quick-list"></div>
     <div class="quick-output">
@@ -543,6 +547,7 @@
 const ON_VERCEL = window.location.hostname.includes('vercel.app');
 let backendAvailable = false;
 let activeTab = localStorage.getItem('clawdash-tab') || 'overview';
+let currentSessionKey = localStorage.getItem('clawdash-session-key') || '';
 let chatPollTimer = null;
 let chatReplyWatcher = null;  // for sendMessage reply polling
 let projectsAbortController = null;
@@ -580,7 +585,11 @@ function switchTab(tab) {
   activeTab = tab;
   localStorage.setItem('clawdash-tab', tab);
   if (tab === 'chat') {
-    setTimeout(scrollChat, 50); startChatPoll();
+    // Load sessions then start polling
+    loadSessions().then(() => {
+      startChatPoll();
+      setTimeout(scrollChat, 50);
+    });
     // Show push banner if not subscribed and not dismissed
     const banner = document.getElementById('push-banner');
     if (banner && !pushSubscribed && !ON_VERCEL && !localStorage.getItem('push-dismissed')) {
@@ -1256,10 +1265,11 @@ function removeTypingIndicator() {
 let chatSSE = null;
 function startChatPoll() {
   if (ON_VERCEL) return;
+  if (!currentSessionKey) return;
   // Try SSE first for instant updates
   if (!chatSSE || chatSSE.readyState === EventSource.CLOSED) {
     try {
-      chatSSE = new EventSource('/api/chat-stream');
+      chatSSE = new EventSource('/api/chat-stream?sessionKey=' + encodeURIComponent(currentSessionKey));
       chatSSE.onmessage = (e) => {
         if (chatSending) return;
         try {
@@ -1285,10 +1295,56 @@ function stopChatPoll() {
   if (chatPollTimer) { clearInterval(chatPollTimer); chatPollTimer = null; }
   if (chatSSE) { chatSSE.close(); chatSSE = null; }
 }
-async function refreshChat() {
-  if (chatSending) return;
+function clearChat() {
+  document.getElementById('chat-messages').innerHTML = '';
+}
+
+async function loadSessions() {
   try {
-    const res = await fetch('/api/chat');
+    const res = await fetch('/api/sessions');
+    const data = await res.json();
+    const select = document.getElementById('session-select');
+    if (!select) return;
+    select.innerHTML = '';
+    if (data.sessions && data.sessions.length) {
+      data.sessions.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.sessionKey;
+        opt.textContent = s.label;
+        if (s.updatedAt) opt.title = new Date(s.updatedAt).toLocaleString();
+        select.appendChild(opt);
+      });
+      if (currentSessionKey && data.sessions.some(s => s.sessionKey === currentSessionKey)) {
+        select.value = currentSessionKey;
+      } else {
+        currentSessionKey = data.sessions[0].sessionKey;
+        select.value = currentSessionKey;
+        localStorage.setItem('clawdash-session-key', currentSessionKey);
+      }
+    } else {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'No sessions found';
+      select.disabled = true;
+    }
+  } catch (e) {
+    console.error('Failed to load sessions', e);
+  }
+}
+
+// Session selector change
+document.getElementById('session-select')?.addEventListener('change', (e) => {
+  currentSessionKey = e.target.value;
+  localStorage.setItem('clawdash-session-key', currentSessionKey);
+  stopChatPoll();
+  clearChat();
+  startChatPoll();
+});
+
+async function refreshChat() {
+  if (chatSending || !currentSessionKey) return;
+  try {
+    const res = await fetch('/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
     if (!res.ok) return;
     const data = await res.json();
     renderChat(data.chat, true);
@@ -1340,7 +1396,7 @@ async function sendMessage() {
   scrollChat();
 
   try {
-    const res = await fetch('/api/send', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({message: text}) });
+    const res = await fetch('/api/send', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({message: text, sessionKey: currentSessionKey}) });
     const data = await res.json();
     const el = document.getElementById(tempId);
     if (el) {
@@ -1610,7 +1666,9 @@ async function load() {
     let data;
     if (!ON_VERCEL) {
       try {
-        const res = await fetch('/api/data', { signal: AbortSignal.timeout(8000) });
+        let dataUrl = '/api/data';
+        if (currentSessionKey) dataUrl += '?sessionKey=' + encodeURIComponent(currentSessionKey);
+        const res = await fetch(dataUrl, { signal: AbortSignal.timeout(8000) });
         if (res.ok) {
           data = await res.json();
           backendAvailable = true;
