@@ -170,30 +170,18 @@
       return await resp.json();
     }
 
-    // Autosuggest: fetch suggestions as user types
+    // Autosuggest: fetch suggestions as user types (biased to Indonesia)
     let autosuggestDebounce;
     async function fetchAutosuggest(query, field) {
       if (!query || query.length < 2) { hideSuggestions(field); return; }
-      const url = `https://autosuggest.search.hereapi.com/v1/autosuggest?q=${encodeURIComponent(query)}&apiKey=${API_KEY}&lang=en-US&in=countryCode:IDN&types=place,locality`;
+      const url = `https://autosuggest.search.hereapi.com/v1/autosuggest?q=${encodeURIComponent(query)}&apiKey=${API_KEY}&lang=en-US&in=countryCode:IDN&at=-6.2088,106.8456`;
       console.log(`[autosuggest ${field}] query="${query}" → ${url}`);
       try {
         const resp = await fetch(url);
         if (!resp.ok) { const txt = await resp.text(); console.error('Autosuggest HTTP', resp.status, txt); throw new Error(`Autosuggest HTTP ${resp.status}`); }
         const data = await resp.json();
         console.log(`[autosuggest ${field}] got ${data.items ? data.items.length : 0} items`);
-        // Filter to Indonesian places only (address.countryCode === 'IDN')
-        const indonesianItems = (data.items || []).filter(item => {
-          const cc = item.address && item.address.countryCode;
-          return cc === 'IDN';
-        });
-        console.log(`[autosuggest ${field}] Indonesian items: ${indonesianItems.length}`);
-        if (indonesianItems.length === 0) {
-          const dropdown = document.getElementById(field === 'origin' ? 'originSuggestions' : 'destSuggestions');
-          dropdown.innerHTML = '<div class="suggestion-item" style="cursor:default;">No Indonesian places found. Try "Monas, Jakarta" or "Grand Indonesia"</div>';
-          dropdown.style.display = 'block';
-          return;
-        }
-        showSuggestions(indonesianItems, field);
+        showSuggestions(data.items, field);
       } catch (e) { console.error('Autosuggest error:', e); hideSuggestions(field); }
     }
 
@@ -206,7 +194,7 @@
         const title = document.createElement('div'); title.className = 'suggestion-title'; title.textContent = item.title;
         div.appendChild(title);
         if (item.address && item.address.label) {
-          const addr = document.createElement('div'); addr.className = 'suggestion-address'; addr.textContent = item.address.label + (item.address.countryCode ? ` (${item.address.countryCode})` : '');
+          const addr = document.createElement('div'); addr.className = 'suggestion-address'; addr.textContent = item.address.label;
           div.appendChild(addr);
         }
         div.addEventListener('click', () => selectSuggestion(item, field));
@@ -282,7 +270,8 @@
         const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
         const durMin = Math.round(route.sections[0].summary.duration / 60);
         const item = document.createElement('div'); item.className = 'route-item'; item.id = 'routeLegendItem' + idx;
-        item.innerHTML = `<input type="checkbox" id="routeToggle${idx}" checked onchange="toggleRoute(${idx})"><div class="route-color" style="background:${color}"></div><span>Route ${idx+1} (${distKm} km, ${durMin} min)</span>`;
+        // Use radio buttons for exclusive selection; default check the first route
+        item.innerHTML = `<input type="radio" name="selectedRoute" id="routeToggle${idx}" ${idx===0?'checked':''} onchange="toggleRoute(${idx})"><div class="route-color" style="background:${color}"></div><span>Route ${idx+1} (${distKm} km, ${durMin} min)</span>`;
         legendDiv.appendChild(item);
       });
       updateLegendHighlight();
@@ -295,9 +284,17 @@
     }
 
     window.toggleRoute = function(idx) {
-      if (routeLayers[idx]) {
-        if (document.getElementById(`routeToggle${idx}`).checked) map.addLayer(routeLayers[idx]); else map.removeLayer(routeLayers[idx]);
-      }
+      // Radio button: this route becomes the only visible one
+      selectedRouteIndex = idx;
+      document.getElementById('routeSelect').value = idx;
+      routeLayers.forEach((layer, i) => {
+        if (i === idx) {
+          if (!map.hasLayer(layer)) map.addLayer(layer);
+        } else {
+          if (map.hasLayer(layer)) map.removeLayer(layer);
+        }
+      });
+      updateLegendHighlight();
     };
 
     let segmentPolylines = [];
@@ -432,9 +429,16 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
     document.getElementById('swapBtn').addEventListener('click', () => {
       const originInput = document.getElementById('originInput');
       const destInput = document.getElementById('destInput');
+      const originPlaceEl = document.getElementById('originPlace');
+      const destPlaceEl = document.getElementById('destPlace');
       const originVal = originInput.value.trim();
       const destVal = destInput.value.trim();
+      const originPlaceVal = originPlaceEl.value.trim();
+      const destPlaceVal = destPlaceEl.value.trim();
+      // Swap coordinates
       originInput.value = destVal; destInput.value = originVal;
+      // Swap place names
+      originPlaceEl.value = destPlaceVal; destPlaceEl.value = originPlaceVal;
       const oParts = destVal.split(',').map(Number);
       const dParts = originVal.split(',').map(Number);
       if (oParts.length === 2 && dParts.length === 2 && !oParts.some(isNaN) && !dParts.some(isNaN)) {
@@ -469,6 +473,17 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
 
     document.getElementById('routeSelect').addEventListener('change', (e) => {
       selectedRouteIndex = parseInt(e.target.value);
+      // Hide all except selected
+      routeLayers.forEach((layer, i) => {
+        if (i === selectedRouteIndex) {
+          if (!map.hasLayer(layer)) map.addLayer(layer);
+        } else {
+          if (map.hasLayer(layer)) map.removeLayer(layer);
+        }
+      });
+      // Also update radio buttons
+      document.querySelectorAll('input[name="selectedRoute"]').forEach(r => r.checked = false);
+      document.getElementById('routeToggle' + selectedRouteIndex).checked = true;
       updateLegendHighlight();
     });
 
