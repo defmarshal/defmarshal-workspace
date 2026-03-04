@@ -2,62 +2,10 @@
 Manage your studio: balance money, staff, reputation, fans.
 Goal: Complete 10 episodes while maintaining positive reputation and at least 50,000 fans. Avoid bankruptcy!
 
-[96mYour studio's genre: Mecha[0m
+[96mYour studio's genre: Shonen[0m
 Current market trend: Horror (bonus fan growth if matched!)
 
-Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Mecha] [Trend: Horror]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 1
-[92mHired a new animator.[0m
-Week 1 | Money: ¥85000 | Staff: 6 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [###.......] [Genre: Mecha] [Trend: Horror]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 5
-[92mQuality focus paid off. Reputation +5.[0m
-Week 2 | Money: ¥71000 | Staff: 6 | Rep: 55 | Fans: 1000 | Episodes: 0/10 | Progress: [######....] [Genre: Mecha] [Trend: Horror]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 5
-[92mQuality focus paid off. Reputation +5.[0m
-Week 3 | Money: ¥57000 | Staff: 6 | Rep: 60 | Fans: 1000 | Episodes: 0/10 | Progress: [#########.] [Genre: Mecha] [Trend: Horror]
-[93mEvent: Streaming deal[0m
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 5
-[92mQuality focus paid off. Reputation +5.[0m
-[96mEpisode 1 completed![0m
-  Reputation +10, Fans +7214
-Week 4 | Money: ¥68000 | Staff: 6 | Rep: 75 | Fans: 8214 | Episodes: 1/10 | Progress: [##........] [Genre: Mecha] [Trend: Horror]
-[93mEvent: Investor injection[0m
+Week 0 | Money: ¥500000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/6 | Progress: [..........] [Genre: Shonen] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -78,9 +26,14 @@ Week 4 | Money: ¥68000 | Staff: 6 | Rep: 75 | Fans: 8214 | Episodes: 1/10 | Pro
     Weekly salary cost reduced by 20%.
   Merch Table [96m[BUY][0m
     Every 4 weeks: +¥3000 fans (actually +3000 fans).
-
-Enter upgrade to buy (or press Enter to cancel): [92mPurchased Star Director![0m
-Week 5 | Money: ¥41000 | Staff: 6 | Rep: 75 | Fans: 8214 | Episodes: 1/10 | Progress: [#####.....] [Genre: Mecha] [Trend: Horror]
+  Marketing Dept [96m[BUY][0m
+    Weekly fan gain from advertising (50-200).
+  Advanced Pipeline [96m[BUY][0m
+    Production per staff +2 weekly.
+  Sponsorship Deal [96m[BUY][0m
+    Weekly sponsorship income ¥5000.
+[92mAuto-purchased Star Director![0m
+Week 1 | Money: ¥465000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/6 | Progress: [####......] [Genre: Shonen] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -90,13 +43,116 @@ Week 5 | Money: ¥41000 | Staff: 6 | Rep: 75 | Fans: 8214 | Episodes: 1/10 | Pro
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> Auto-choosing: 4
-[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
-  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [92m[OWNED][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 20%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Dept [96m[BUY][0m
+    Weekly fan gain from advertising (50-200).
+  Advanced Pipeline [96m[BUY][0m
+    Production per staff +2 weekly.
+  Sponsorship Deal [96m[BUY][0m
+    Weekly sponsorship income ¥5000.
+[92mAuto-purchased God Animator![0m
+Week 2 | Money: ¥435000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/6 | Progress: [########..] [Genre: Shonen] [Trend: Horror]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [92m[OWNED][0m
+    Reputation gain from episodes doubled.
+  God Animator [92m[OWNED][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 20%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Dept [96m[BUY][0m
+    Weekly fan gain from advertising (50-200).
+  Advanced Pipeline [96m[BUY][0m
+    Production per staff +2 weekly.
+  Sponsorship Deal [96m[BUY][0m
+    Weekly sponsorship income ¥5000.
+[92mAuto-purchased Better Software![0m
+[96mEpisode 1 completed![0m
+  Reputation +20, Fans +5843
+Week 3 | Money: ¥415000 | Staff: 5 | Rep: 70 | Fans: 6843 | Episodes: 1/6 | Progress: [##........] [Genre: Shonen] [Trend: Horror]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [92m[OWNED][0m
+    Reputation gain from episodes doubled.
+  God Animator [92m[OWNED][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [92m[OWNED][0m
+    Weekly salary cost reduced by 20%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Dept [96m[BUY][0m
+    Weekly fan gain from advertising (50-200).
+  Advanced Pipeline [96m[BUY][0m
+    Production per staff +2 weekly.
+  Sponsorship Deal [96m[BUY][0m
+    Weekly sponsorship income ¥5000.
+[92mAuto-purchased Merch Table![0m
+Week 4 | Money: ¥391000 | Staff: 5 | Rep: 70 | Fans: 6843 | Episodes: 1/6 | Progress: [######....] [Genre: Shonen] [Trend: Horror]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [92m[OWNED][0m
+    Reputation gain from episodes doubled.
+  God Animator [92m[OWNED][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [92m[OWNED][0m
+    Weekly salary cost reduced by 20%.
+  Merch Table [92m[OWNED][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Dept [96m[BUY][0m
+    Weekly fan gain from advertising (50-200).
+  Advanced Pipeline [96m[BUY][0m
+    Production per staff +2 weekly.
+  Sponsorship Deal [96m[BUY][0m
+    Weekly sponsorship income ¥5000.
+[92mAuto-purchased Marketing Dept![0m
 [96mEpisode 2 completed![0m
-  Reputation +20, Fans +2571
-Week 6 | Money: ¥29000 | Staff: 6 | Rep: 93 | Fans: 10785 | Episodes: 2/10 | Progress: [#.........] [Genre: Mecha] [Trend: Horror]
-[93mEvent: Training seminar[0m
+  Reputation +20, Fans +8266
+Week 5 | Money: ¥362000 | Staff: 5 | Rep: 90 | Fans: 15109 | Episodes: 2/6 | Progress: [..........] [Genre: Shonen] [Trend: Horror]
+[96mMarketing brought in 103 new fans![0m
+[93mEvent: Staff burnout[0m
+  Paid overtime (auto). Staff stay.
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -106,9 +162,26 @@ Week 6 | Money: ¥29000 | Staff: 6 | Rep: 93 | Fans: 10785 | Episodes: 2/10 | Pr
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> Auto-choosing: 7
-Week 7 | Money: ¥15000 | Staff: 7 | Rep: 96 | Fans: 10785 | Episodes: 2/10 | Progress: [####......] [Genre: Mecha] [Trend: Horror]
-[93mEvent: Streaming deal[0m
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [92m[OWNED][0m
+    Reputation gain from episodes doubled.
+  God Animator [92m[OWNED][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [92m[OWNED][0m
+    Weekly salary cost reduced by 20%.
+  Merch Table [92m[OWNED][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Dept [92m[OWNED][0m
+    Weekly fan gain from advertising (50-200).
+  Advanced Pipeline [96m[BUY][0m
+    Production per staff +2 weekly.
+  Sponsorship Deal [96m[BUY][0m
+    Weekly sponsorship income ¥5000.
+[92mAuto-purchased Advanced Pipeline![0m
+Week 6 | Money: ¥318000 | Staff: 5 | Rep: 90 | Fans: 15212 | Episodes: 2/6 | Progress: [#####.....] [Genre: Shonen] [Trend: Horror]
+[96mMarketing brought in 88 new fans![0m
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -118,23 +191,73 @@ Week 7 | Money: ¥15000 | Staff: 7 | Rep: 96 | Fans: 10785 | Episodes: 2/10 | Pr
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> Auto-choosing: 4
-[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
-  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [92m[OWNED][0m
+    Reputation gain from episodes doubled.
+  God Animator [92m[OWNED][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [92m[OWNED][0m
+    Weekly salary cost reduced by 20%.
+  Merch Table [92m[OWNED][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Dept [92m[OWNED][0m
+    Weekly fan gain from advertising (50-200).
+  Advanced Pipeline [92m[OWNED][0m
+    Production per staff +2 weekly.
+  Sponsorship Deal [96m[BUY][0m
+    Weekly sponsorship income ¥5000.
+[92mAuto-purchased Sponsorship Deal![0m
 [96mEpisode 3 completed![0m
-  Reputation +20, Fans +5897
+  Reputation +20, Fans +7733
 
 [94mNew Season! You can change your studio's genre.[0m
-  1) Shonen
+  1) Shonen (current)
   2) Isekai
   3) Slice of Life
-  4) Mecha (current)
+  4) Mecha
   5) Horror
   6) Sports
   7) Romance
   8) Sci-Fi
   0) Keep current genre
-> Week 8 | Money: ¥26000 | Staff: 7 | Rep: 114 | Fans: 16682 | Episodes: 3/10 | Progress: [#.........] [Genre: Mecha] [Trend: Horror]
+> Week 7 | Money: ¥274000 | Staff: 5 | Rep: 110 | Fans: 23033 | Episodes: 3/6 | Progress: [..........] [Genre: Shonen] [Trend: Horror]
+[92mSponsorship income: ¥5000[0m
+[96mMarketing brought in 94 new fans![0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 1
+[92mHired a new animator.[0m
+Week 8 | Money: ¥270000 | Staff: 6 | Rep: 110 | Fans: 23127 | Episodes: 3/6 | Progress: [#######...] [Genre: Shonen] [Trend: Horror]
+[92mSponsorship income: ¥5000[0m
+[96mMarketing brought in 184 new fans![0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 4
+[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
+  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 4 completed![0m
+  Reputation +20, Fans +8537
+[96mEpisode 5 completed![0m
+  Reputation +20, Fans +9810
+Week 9 | Money: ¥270200 | Staff: 6 | Rep: 148 | Fans: 41658 | Episodes: 5/6 | Progress: [#.........] [Genre: Shonen] [Trend: Horror]
+[92mSponsorship income: ¥5000[0m
+[96mMarketing brought in 130 new fans![0m
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -145,7 +268,9 @@ Week 7 | Money: ¥15000 | Staff: 7 | Rep: 96 | Fans: 10785 | Episodes: 2/10 | Pr
 6) View upgrades
 7) Next week
 > Auto-choosing: 7
-Week 9 | Money: ¥12000 | Staff: 7 | Rep: 114 | Fans: 16682 | Episodes: 3/10 | Progress: [#####.....] [Genre: Mecha] [Trend: Horror]
+Week 10 | Money: ¥270400 | Staff: 6 | Rep: 148 | Fans: 41788 | Episodes: 5/6 | Progress: [########..] [Genre: Shonen] [Trend: Horror]
+[92mSponsorship income: ¥5000[0m
+[96mMarketing brought in 98 new fans![0m
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -155,20 +280,21 @@ Week 9 | Money: ¥12000 | Staff: 7 | Rep: 114 | Fans: 16682 | Episodes: 3/10 | P
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> Auto-choosing: 2
-[93mFired a staff member.[0m
-Week 10 | Money: ¥0 | Staff: 6 | Rep: 114 | Fans: 16682 | Episodes: 3/10 | Progress: [########..] [Genre: Mecha] [Trend: Horror]
+> Auto-choosing: 4
+[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
+  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 6 completed![0m
+  Reputation +20, Fans +9828
 
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 2
-[93mFired a staff member.[0m
-[96mEpisode 4 completed![0m
-  Reputation +20, Fans +2324
-[91mBankruptcy! You lose.[0m
+[94mNew Season! You can change your studio's genre.[0m
+  1) Shonen (current)
+  2) Isekai
+  3) Slice of Life
+  4) Mecha
+  5) Horror
+  6) Sports
+  7) Romance
+  8) Sci-Fi
+  0) Keep current genre
+> Auto-keeping Shonen.
+[92mCongratulations! You completed 6 episodes with 51714 fans and rep 166. You win![0m
