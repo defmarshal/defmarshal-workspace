@@ -354,9 +354,11 @@ function getChatHistory(sessionKey) {
 // ── Chat watcher — push notification on new assistant message ──────────────
 function startChatWatcher() {
   setInterval(() => {
-    const sessions = getAllSessions();
-    for (const s of sessions) {
-      const sessionKey = s.sessionKey;
+    // Only check sessions with active SSE clients
+    const activeSessions = Array.from(sseClients.keys());
+    if (activeSessions.length === 0) return;
+    
+    for (const sessionKey of activeSessions) {
       const msgs = getChatHistory(sessionKey);
       const assistantCount = msgs.filter(m => m.role === 'assistant').length;
       const prevCount = lastAssistantCounts[sessionKey] || 0;
@@ -375,7 +377,7 @@ function startChatWatcher() {
       }
       lastAssistantCounts[sessionKey] = assistantCount;
     }
-  }, 1000); // check every 5s
+  }, 2000); // check every 2s
 }
 
 // ── aria2 torrent status ──────────────────────────────────────────────────
@@ -891,13 +893,22 @@ const handler = async (req, res) => {
       try {
         const { cronId } = JSON.parse(body);
         if (!cronId) return json(res, 400, { error: 'cronId required' });
-        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['cron','run', cronId], (err, stdout, stderr) => {
-          if (err) return json(res, 500, { error: err.message, stderr });
-          json(res, 200, { ok: true, output: stdout });
+        console.log('[CRON RUN] Executing cron:', cronId);
+        execFile('/home/ubuntu/.npm-global/bin/openclaw', ['cron','run', cronId], { timeout: 120000 }, (err, stdout, stderr) => {
+          if (err) {
+            console.error('[CRON RUN] Error:', err.message, stderr);
+            return json(res, 500, { error: err.message, stderr, stdout });
+          }
+          console.log('[CRON RUN] Success:', stdout.slice(0, 200));
+          json(res, 200, { ok: true, output: stdout, stderr });
         });
       } catch (e) {
+        console.error('[CRON RUN] Parse error:', e.message);
         json(res, 500, { error: e.message });
       }
+    });
+    req.on('error', (e) => {
+      console.error('[CRON RUN] Request error:', e.message);
     });
     return;
   }
