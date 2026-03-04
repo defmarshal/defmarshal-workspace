@@ -46,10 +46,10 @@ else
   MSG+="✅ Agents: idle\n"
 fi
 
-# Holidays (quick check for upcoming Indonesia holidays)
-if command -v quick &>/dev/null; then
-  HOLIDAY=$(quick holidays 2>/dev/null | head -1 | sed 's/^/🎉 /')
-  [ -n "$HOLIDAY" ] && MSG+="$HOLIDAY\n"
+# Nearest holiday
+NEAREST_HOLIDAY=$(quick holidays 2>/dev/null | head -1 | sed 's/^/🎉 /')
+if [ -n "$NEAREST_HOLIDAY" ]; then
+  MSG+="$NEAREST_HOLIDAY\n"
 fi
 
 MSG+="\nAll clear! (◕‿◕)♡"

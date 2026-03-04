@@ -9,7 +9,11 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - `protocols.md` – Delegation workflow (Qwen coding, Gemini research)
 
 ## Projects
-Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, Research Hub, Torrent System, MewChat/MewDash enhancements
+- MewChat / MewDash – Real-time chat UI with SSE, merged history
+- OpenClaw Idle RPG – Conceptual, not yet started
+- Research Hub – Deployed
+- Torrent System – aria2 + 115 integration
+- System Health – Disk cleanup, heartbeat, log rotation
 
 ## Links
 - `active-tasks.md` (current work)
@@ -26,3 +30,4 @@ Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, 
 ## Notes
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
+- Recent: MewDash now uses SSE + merged chat; memory/ compressed; meta-agent Telegram posting disabled.
