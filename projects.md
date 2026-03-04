@@ -24,6 +24,28 @@ Overview of active and completed projects. Used for context and status tracking.
   - Tracked in active-tasks.md as infrastructure tasks; outputs saved to content/, research/, dev/.
   - Status: Running via cron
 
+- **MewChat / MewDash** (2026-02 — present)
+  - Real-time chat UI with SSE, merged history
+  - Part of workspace system improvements
+  - Status: Active development
+
+- **Research Hub** (2026-02 — present)
+  - Deployed research content platform
+  - Status: Deployed, maintained by automation agents
+
+- **Torrent System** (2026-02 — present)
+  - aria2 + 115 integration for managed downloads
+  - Status: Operational
+
+- **OpenClaw Idle RPG** (concept phase)
+  - Conceptual idle RPG game using game-cog skill
+  - Status: Planning / design
+
+- **Anime Studio Tycoon** (2026-03-04 — present)
+  - Dedicated sub-agent for developing anime studio tycoon game
+  - Session: agent:main:subagent:1fe0d7a3-0db6-4222-8b82-a5bc2e5539c4
+  - Status: In development
+
 ## Completed Projects
 
 - **Memory System Overhaul** (2026-02-12)
