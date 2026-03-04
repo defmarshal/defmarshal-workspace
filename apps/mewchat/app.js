@@ -301,7 +301,7 @@
         <div class="msg-avatar">${avatar}</div>
         <div>
           <div class="msg-bubble"></div>
-          ${role === 'assistant' ? '<button class="msg-copy-btn" title="Copy to clipboard">📋</button>' : ''}
+          ${(role === 'assistant' || role === 'user') ? '<button class="msg-copy-btn" title="Copy to clipboard">📋</button>' : ''}
           <div class="msg-meta">${formatTime(time)}</div>
         </div>
       </div>
