@@ -129,6 +129,22 @@ h1 { font-size:18px; color: var(--blue); display:flex; align-items:center; gap:8
   color: var(--text);
 }
 
+/* Retry button in error messages */
+.retry-btn {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 8px;
+  font-weight: 700;
+}
+.retry-btn:hover {
+  opacity: 0.9;
+}
+
 /* Hide timestamps when setting enabled */
 #chat-messages.hide-timestamps .msg-meta {
   display: none;
