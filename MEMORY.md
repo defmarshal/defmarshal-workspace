@@ -30,4 +30,4 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 ## Notes
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
-- Recent: MewDash now uses SSE + merged chat; memory/ compressed; meta-agent Telegram posting disabled.
+- Recent: Dashboard cron stuck-state recovery (disable/enable); linkedin-pa-agent disabled per docs; MewChat evolver timeouts monitored.
