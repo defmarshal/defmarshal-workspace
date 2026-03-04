@@ -294,6 +294,45 @@
     errorEl.classList.remove('hidden');
   }
 
+  // Copy full chat history to clipboard
+  async function copyChatHistory() {
+    const messages = chatMessages.querySelectorAll('.msg');
+    if (messages.length === 0) {
+      showError('Chat is empty — nothing to copy.');
+      setTimeout(() => clearError(), 3000);
+      return;
+    }
+
+    let text = '=== MewChat History ===\n\n';
+    messages.forEach(msg => {
+      const role = msg.classList.contains('user') ? '👤 You' : '🤖 mewmew';
+      const bubble = msg.querySelector('.msg-bubble');
+      const meta = msg.querySelector('.msg-meta');
+      const time = meta ? meta.textContent : '';
+      const content = bubble ? bubble.textContent.trim() : '';
+      text += `[${time}] ${role}:\n${content}\n\n`;
+    });
+
+    try {
+      await navigator.clipboard.writeText(text);
+      showError('✅ Chat history copied to clipboard!');
+      // Change copy button temporarily to indicate success
+      const copyBtn = document.getElementById('copy-chat-btn');
+      if (copyBtn) {
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '✓ Copied';
+        copyBtn.title = 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+          copyBtn.title = 'Copy full chat history to clipboard (Ctrl+Shift+C)';
+        }, 2000);
+      }
+    } catch (err) {
+      showError('Failed to copy: ' + err.message);
+    }
+    setTimeout(() => clearError(), 3000);
+  }
+
   function clearError() {
     errorEl.classList.add('hidden');
   }
@@ -526,6 +565,13 @@
     const isMod = e.ctrlKey || e.metaKey;
     if (!isMod) return;
 
+    // Ctrl+Shift+C: Copy chat history
+    if (e.shiftKey && e.key.toLowerCase() === 'c') {
+      e.preventDefault();
+      copyChatHistory();
+      return;
+    }
+
     switch (e.key.toLowerCase()) {
       case ',':
         e.preventDefault();
@@ -564,6 +610,10 @@
     if (helpModal) helpModal.classList.add('hidden');
   }
   if (helpBtn) helpBtn.addEventListener('click', showHelp);
+
+  // Copy chat history button
+  const copyChatBtn = document.getElementById('copy-chat-btn');
+  if (copyChatBtn) copyChatBtn.addEventListener('click', copyChatHistory);
   if (helpClose) helpClose.addEventListener('click', hideHelp);
   // Close modal when clicking on overlay (outside content)
   if (helpModal) {
