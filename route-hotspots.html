@@ -80,6 +80,22 @@
     </div>
 
     <div class="card">
+      <h1>📈 Gradient Analysis (Time-Space Congestion)</h1>
+      <div>
+        <label>Start: <input type="time" id="gradientStart" value="05:00" style="width:80px"></label>
+        <label>End: <input type="time" id="gradientEnd" value="20:00" style="width:80px"></label>
+        <label>Step (min): <input type="number" id="gradientStep" value="60" min="5" max="120" style="width:60px"></label>
+        <button id="gradientBtn">Generate Gradient</button>
+      </div>
+      <div id="gradient-table-container" style="margin-top:10px; overflow-x:auto;">
+        <table id="gradient-table" style="display:none;">
+          <thead id="gradient-head"></thead>
+          <tbody id="gradient-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
       <h1>📊 Segment Slowdown Table</h1>
       <table id="segments-table">
         <thead>
@@ -298,43 +314,50 @@
     };
 
     let segmentPolylines = [];
-    async function analyzeHotspots(ts) {
-      if (availableRoutes.length === 0) { document.getElementById('loading').textContent = 'Please click "Get Alternatives" first.'; return; }
+
+    // Compute segment data for a given time without drawing/table; returns {segmentData, waypoints, fullCoords}
+    async function calculateSegmentData(ts) {
+      if (availableRoutes.length === 0) throw new Error('No routes available. Please get alternatives first.');
       const dateVal = document.getElementById('datePicker').value;
       const transportVal = document.getElementById('transportSelect').value;
       const segCountWanted = parseInt(document.getElementById('segmentCount').value);
+      const selectedRoute = availableRoutes[selectedRouteIndex];
+      if (!selectedRoute.sections || selectedRoute.sections.length === 0) throw new Error('Selected route has no sections');
+      const fullSection = selectedRoute.sections[0];
+      const fullCoords = decodeHEREPolyline(fullSection.polyline);
+      if (fullCoords.length < 10) throw new Error('Route polyline too short to sample waypoints');
+
+      const waypoints = []; const step = Math.max(1, Math.floor(fullCoords.length / (segCountWanted + 1)));
+      for (let i = step; i < fullCoords.length - step && waypoints.length < segCountWanted; i += step) {
+        const [lat, lng] = fullCoords[i]; waypoints.push(`${lat.toFixed(5)},${lng.toFixed(5)}`);
+      }
+      if (waypoints.length === 0) throw new Error('No waypoints generated');
+
+      const segData = await fetchRoute(dateVal, ts.hour, ts.min, transportVal, waypoints);
+      const sections = segData.routes[0].sections;
+      if (sections.length < 2) throw new Error(`Only ${sections.length} sections returned`);
+
+      const segmentData = [];
+      sections.forEach((sec, idx) => {
+        const coords = decodeHEREPolyline(sec.polyline);
+        const dur = sec.summary.duration, base = sec.summary.baseDuration, length = sec.summary.length;
+        const ratio = dur / base;
+        segmentData.push({ segment: idx+1, length, duration: dur, baseline: base, ratio, coords });
+      });
+
+      return { segmentData, waypoints, fullCoords };
+    }
+
+    async function analyzeHotspots(ts) {
+      if (availableRoutes.length === 0) { document.getElementById('loading').textContent = 'Please click "Get Alternatives" first.'; return; }
       const key = `${String(ts.hour).padStart(2,'0')}:${String(ts.min).padStart(2,'0')}`;
       document.getElementById('loading').textContent = `Analyzing Route ${selectedRouteIndex+1} at ${key}...`;
 
       try {
-        const selectedRoute = availableRoutes[selectedRouteIndex];
-        if (!selectedRoute.sections || selectedRoute.sections.length === 0) throw new Error('Selected route has no sections');
-        const fullSection = selectedRoute.sections[0];
-        const fullCoords = decodeHEREPolyline(fullSection.polyline);
-        console.log(`[${key}] Selected route polyline points: ${fullCoords.length}`);
-        if (fullCoords.length < 10) throw new Error('Route polyline too short to sample waypoints');
+        const { segmentData, fullCoords } = await calculateSegmentData(ts);
+        segmentPolylines = segmentData.map(s => s.coords);
 
-        const waypoints = []; const step = Math.max(1, Math.floor(fullCoords.length / (segCountWanted + 1)));
-        for (let i = step; i < fullCoords.length - step && waypoints.length < segCountWanted; i += step) {
-          const [lat, lng] = fullCoords[i]; waypoints.push(`${lat.toFixed(5)},${lng.toFixed(5)}`);
-        }
-        console.log(`[${key}] Using ${waypoints.length} waypoints from polyline`);
-        if (waypoints.length === 0) throw new Error('No waypoints generated');
-
-        const segData = await fetchRoute(dateVal, ts.hour, ts.min, transportVal, waypoints);
-        const sections = segData.routes[0].sections;
-        console.log(`[${key}] Segmented route sections: ${sections.length}`);
-        if (sections.length < 2) throw new Error(`Only ${sections.length} sections returned`);
-
-        const segmentData = []; segmentPolylines = [];
-        sections.forEach((sec, idx) => {
-          const coords = decodeHEREPolyline(sec.polyline);
-          segmentPolylines.push(coords);
-          const dur = sec.summary.duration, base = sec.summary.baseDuration, length = sec.summary.length;
-          const ratio = dur / base;
-          segmentData.push({ segment: idx+1, length, duration: dur, baseline: base, ratio, coords });
-        });
-
+        // Draw on map
         map.eachLayer(layer => { if (layer instanceof L.Polyline) map.removeLayer(layer); });
         let allPoints = [];
         segmentData.forEach(seg => {
@@ -345,6 +368,7 @@
         updateMarkers(); allPoints.push([origLat, origLng], [destLat, destLng]);
         if (allPoints.length > 0) map.fitBounds(L.latLngBounds(allPoints), { padding: [20,20] });
 
+        // Fill table
         const tbody = document.getElementById('segments-body'); tbody.innerHTML = '';
         segmentData.forEach(seg => {
           const durMin = Math.round(seg.duration / 60), baseMin = Math.round(seg.baseline / 60);
@@ -354,13 +378,14 @@
           row.innerHTML = `<td>${seg.segment}</td><td>${distKm} km</td><td>${durMin} min</td><td>${baseMin} min</td><td style="color:${seg.ratio > 1.2 ? '#f44336' : (seg.ratio > 1.05 ? '#ff9800' : '#4caf50')}">${ratioStr}×</td><td>${congestion}</td>`;
         });
 
+        const dateVal = document.getElementById('datePicker').value;
+        const transportVal = document.getElementById('transportSelect').value;
         document.getElementById('debug-output').textContent =
 `Date: ${dateVal}
 Transport: ${transportVal}
 Time: ${key} (local)
 Route: ${selectedRouteIndex+1} (${availableRoutes.length} total)
-Waypoints: ${waypoints.length}
-Sections: ${sections.length}
+Waypoints: ${fullCoords.length} points sampled → ${segmentData.length} segments
 
 Segment slowdowns:
 ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000).toFixed(1)} km)`).join('\n')}`;
@@ -494,6 +519,96 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
         analyzeHotspots({ hour, min });
       });
     });
+
+    // Gradient analysis (minute-level)
+    let gradientData = { times: [], matrix: [] }; // matrix[timeIdx][segIdx] = ratio
+
+    document.getElementById('gradientBtn').addEventListener('click', async () => {
+      if (availableRoutes.length === 0) { alert('Please get alternative routes first.'); return; }
+      const startStr = document.getElementById('gradientStart').value; // "HH:MM"
+      const endStr = document.getElementById('gradientEnd').value;
+      const step = parseInt(document.getElementById('gradientStep').value);
+      if (!/^\d{2}:\d{2}$/.test(startStr) || !/^\d{2}:\d{2}$/.test(endStr)) {
+        alert('Times must be in HH:MM format'); return;
+      }
+      const toMinutes = s => {
+        const [h, m] = s.split(':').map(Number);
+        return h * 60 + m;
+      };
+      const startMin = toMinutes(startStr);
+      const endMin = toMinutes(endStr);
+      if (startMin > endMin) { alert('Start time must be <= end time'); return; }
+
+      const times = [];
+      for (let t = startMin; t <= endMin; t += step) times.push(t);
+      document.getElementById('loading').textContent = `Generating gradient for ${times.length} time points...`;
+      gradientData = { times, matrix: [] };
+
+      for (let i = 0; i < times.length; i++) {
+        const totalMin = times[i];
+        const hour = Math.floor(totalMin / 60) % 24;
+        const min = totalMin % 60;
+        try {
+          const { segmentData } = await calculateSegmentData({ hour, min });
+          gradientData.matrix[i] = segmentData.map(s => s.ratio);
+          document.getElementById('loading').textContent = `Fetched ${String(hour).padStart(2,'0')}:${String(min).padStart(2,'0')} (${i+1}/${times.length})`;
+          await new Promise(r => setTimeout(r, 350)); // throttle to avoid rate limits
+        } catch (e) {
+          console.error('Gradient error at', hour, ':', min, e);
+          gradientData.matrix[i] = []; // mark failure
+        }
+      }
+      renderGradientTable();
+      document.getElementById('loading').textContent = 'Gradient complete';
+    });
+
+    function renderGradientTable() {
+      const table = document.getElementById('gradient-table');
+      const thead = document.getElementById('gradient-head');
+      const tbody = document.getElementById('gradient-body');
+      if (gradientData.matrix.length === 0 || gradientData.matrix[0].length === 0) {
+        table.style.display = 'none';
+        return;
+      }
+      // Build header: route info + Seg + each time
+      const route = availableRoutes[selectedRouteIndex];
+      const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
+      const durMin = Math.round(route.sections[0].summary.duration / 60);
+      const segCount = gradientData.matrix[0].length;
+      let headerHtml = `<tr><th colspan="2">Route ${selectedRouteIndex+1} (${distKm} km, ${durMin} min)</th>`;
+      gradientData.times.forEach(totalMin => {
+        const h = Math.floor(totalMin / 60) % 24;
+        const m = totalMin % 60;
+        headerHtml += `<th>${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}</th>`;
+      });
+      headerHtml += '</tr><tr><th>Seg</th><th>Route</th>';
+      gradientData.times.forEach(() => { headerHtml += '<th></th>'; });
+      headerHtml += '</tr>';
+      thead.innerHTML = headerHtml;
+
+      // Build rows: one per segment
+      tbody.innerHTML = '';
+      for (let seg = 0; seg < segCount; seg++) {
+        const row = tbody.insertRow();
+        row.insertCell().textContent = seg + 1;
+        row.insertCell().textContent = `R${selectedRouteIndex+1}`;
+        for (let t = 0; t < gradientData.times.length; t++) {
+          const ratio = gradientData.matrix[t][seg];
+          const cell = row.insertCell();
+          if (ratio === undefined || ratio === null) {
+            cell.textContent = '-';
+          } else {
+            const ratioStr = ratio.toFixed(2);
+            cell.textContent = ratioStr;
+            // color: green <1.05, orange 1.05-1.2, red >1.2
+            if (ratio > 1.2) cell.style.color = '#f44336';
+            else if (ratio > 1.05) cell.style.color = '#ff9800';
+            else cell.style.color = '#4caf50';
+          }
+        }
+      }
+      table.style.display = 'table';
+    }
 
     window.addEventListener('load', () => { loadAlternatives(); });
   </script>

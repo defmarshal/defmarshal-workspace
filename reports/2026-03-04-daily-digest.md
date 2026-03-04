@@ -8,6 +8,19 @@
 - research/2026-03-04-liquidity-gap-calculation-banking-risk.md: Liquidity Gap Calculation: Banking Risk Management Fundamentals
 
 ## Dev Commits (today)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_1205)
+- dev: update MEMORY.md with recent notes; append daily log (dashboard cron stuck-state recovery)
+- dev: add traffic forecasting project docs and HERE route hotspot analyzer tool (API key sanitized)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_1004)
+- dev: remove unused HERE demo files (route-viz.html) and stray polyline decoder; revert accidental package.json dependency addition
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0812)
+- dev: update MEMORY.md (project list, recent notes); prune active-tasks (mewchat-evolver completed); append daily log (meta-agent, git-janitor recovery); simplify heartbeat script holiday check
+- dev: simplify HEARTBEAT.md to core protocol; add scripts/heartbeat-def.sh for Telegram check-ins
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0604)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0535)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0529)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0528)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0525)
 - dev: simplify MEMORY.md structure; add protocols.md (delegation workflow); fix generate-dashboard-data.sh stderr logging; remove dashboard chat cache (simplify); document LinkedIn PA cron fix in daily log
 - dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0404)
 - dev: optimize findChatSessions — derive chatId from sessionKey string instead of scanning files
@@ -23,18 +36,9 @@
 - dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_1408)
 - dev: add sample studio manager sprite (32x32 PNG) for anime-studio-tycoon
 - dev: add sprite generation utilities for anime-studio-tycoon (pixel art pipeline)
-- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_1213)
-- dev: improve meta-supervisor daemon (PATH fix, PIPESTATUS); enhance dashboard server (body parser, cmd runner, chat history, endpoint refactor)
-- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_1004)
-- dev: update memory index (2026-03-03) with dashboard cron fix follow-up and daily log corrections
-- dev: add timeout to weather curl in supervisor heartbeat to prevent hangs
-- dev: add archive-downloads utility to compress old download folders; update quick launcher
-- dev: fix missing execute permission on scripts/mood-ring-api.sh
-- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-03_0612)
-- dev: add traffic forecasting project docs (GEMINI_RESEARCH.md, TRAFFIC_PROJECT.md) and HERE route hotspot analyzer tool (route-hotspots.html, sanitized API key)
 
-## System Health (11:00 UTC)
-Disk OK 62% | Updates: none | Git clean | Memory: 40f/411c clean local FTS+ | Reindex: 0d | Gateway: healthy | Downloads: 37 files, 6.5GB
+## System Health
+Disk OK 64% | Updates: 4 | Git dirty (1 changed) | Memory: 40f/412c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 5 files, 896M
 
 ## Notes
-- Generated Wed Mar  4 00:00 UTC; updated 11:02 UTC with latest dev additions (traffic forecasting docs, HERE hotspot analyzer)
+- Generated at Wed Mar  4 13:02:43 UTC 2026
