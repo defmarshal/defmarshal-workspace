@@ -569,14 +569,17 @@
     }
 
     // Calculate delay with exponential backoff (capped at MAX)
-    const delay = Math.min(RECONNECT_BASE * Math.pow(2, reconnectAttempts), RECONNECT_MAX);
+    let delay = Math.min(RECONNECT_BASE * Math.pow(2, reconnectAttempts), RECONNECT_MAX);
+    // Add jitter (±20%) to avoid thundering herd
+    const jitter = 0.8 + Math.random() * 0.4; // 0.8-1.2
+    delay = Math.floor(delay * jitter);
     reconnectAttempts++;
 
     // Show status message in chat
     showReconnectStatus();
 
     reconnectTimeout = setTimeout(() => {
-      console.log(`[MewChat] Reconnection attempt ${reconnectAttempts} in ${delay}ms`);
+      console.log(`[MewChat] Reconnection attempt ${reconnectAttempts} in ${delay}ms (with jitter)`);
       startSSE(sessionKey, true); // true = isReconnect
     }, delay);
   }
