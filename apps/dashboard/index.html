@@ -1117,7 +1117,7 @@ document.addEventListener("click", e => {
     if (confirm("Run this cron job now?")) {
       fetch("/api/cron/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ cronId }) })
         .then(r => r.json())
-        .then(d => { if (d.ok) { alert("Cron job triggered!"); /* optional: refresh cron list */ setTimeout(loadAndRenderCron, 2000); } else { alert("Error: " + (d.error || d.message || unknown)); } })
+        .then(d => { if (d.ok) { alert("Cron job triggered!"); refreshData(); } else { alert("Error: " + (d.error || d.message || "unknown")); } })
         .catch(err => alert("Fetch error: " + err));
     }
   }
