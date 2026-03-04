@@ -25,6 +25,7 @@
   const chatMessages = document.getElementById('chat-messages');
   const scrollBottomBtn = document.getElementById('scroll-bottom');
   const scrollTopBtn = document.getElementById('scroll-top');
+  const clearInputBtn = document.getElementById('clear-input-btn');
   const connectionStatus = document.getElementById('connection-status');
   const lastUpdatedEl = document.getElementById('last-updated');
   const helpBtn = document.getElementById('help-btn');
@@ -116,6 +117,18 @@
     });
   }
 
+  // Clear input button
+  if (clearInputBtn) {
+    clearInputBtn.addEventListener('click', () => {
+      msgInput.value = '';
+      // Trigger input event to update height, char count, and toggle button
+      msgInput.dispatchEvent(new Event('input'));
+      msgInput.focus();
+    });
+    // Initial state
+    clearInputBtn.classList.toggle('hidden', msgInput.value.length === 0);
+  }
+
   // Auto-resize textarea on input AND update character count + save draft
   msgInput.addEventListener('input', function() {
     this.style.height = 'auto';
@@ -127,6 +140,10 @@
     if (sendBtn) {
       if (this.value.trim().length > 0) sendBtn.classList.add('has-text');
       else sendBtn.classList.remove('has-text');
+    }
+    // Toggle clear input button visibility
+    if (clearInputBtn) {
+      clearInputBtn.classList.toggle('hidden', this.value.length === 0);
     }
     // Save draft to localStorage
     localStorage.setItem('mewchat-draft', this.value);
