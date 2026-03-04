@@ -65,7 +65,7 @@
     .tab-panel.active { display: flex; flex-direction: column; flex: 1; min-height: 0; padding: 16px 20px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; overflow-y: auto; }
 
     /* ── Chat tab — full height, no padding ── */
-    #tab-chat.active { padding: 0; max-width: 100%; flex-direction: row; overflow: hidden; height: 100%; }
+    #tab-chat.active { padding: 0 !important; max-width: 100% !important; flex-direction: row !important; overflow: hidden !important; height: 100% !important; overflow-y: hidden !important; }
     .chat-main { flex: 1; display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
     #chat-messages { flex: 1; overflow-y: auto; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; min-height: 0; }
     .chat-sidebar { width: 260px; flex-shrink: 0; background: var(--surface); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
@@ -587,7 +587,13 @@ function switchTab(tab) {
   if (tab === 'chat') {
     // Load sessions then start polling
     loadSessions().then(() => {
+      // Always restart SSE/polling when switching to chat tab
+      stopChatPoll();
       startChatPoll();
+      // Force a fresh chat load to ensure we have latest messages
+      if (currentSessionKey && !chatSending) {
+        refreshChat();
+      }
       setTimeout(scrollChat, 50);
     });
     // Show push banner if not subscribed and not dismissed
@@ -1178,7 +1184,12 @@ function renderChat(messages, preserve_scroll = false) {
   chatData = messages || [];
   document.getElementById('badge-chat').textContent = chatData.length > 99 ? '99+' : chatData.length;
   const container = document.getElementById('chat-messages');
-  const atBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 60;
+
+  // Save scroll position before re-render
+  const scrollHeightBefore = container.scrollHeight;
+  const scrollTopBefore = container.scrollTop;
+  const clientHeightBefore = container.clientHeight;
+  const atBottom = scrollHeightBefore - scrollTopBefore - clientHeightBefore < 60;
 
   if (!chatData.length) { container.innerHTML = '<div style="padding:32px 16px;text-align:center;color:var(--muted);font-size:13px">💬 No messages yet.<br><span style="font-size:11px">Send something below to start chatting with mewmew~</span></div>'; return; }
   let lastDate = null;
@@ -1202,13 +1213,28 @@ function renderChat(messages, preserve_scroll = false) {
     const avatar = role === 'assistant'
       ? `<div class="msg-avatar">🐾</div>`
       : `<div class="msg-avatar">👤</div>`;
-    return sep + `<div class="msg ${role}">
+    return sep + `<div class="msg ${role}" data-ts="${m.ts || ''}">
       <div class="msg-row">${avatar}<div class="msg-bubble">${text}</div></div>
       <div class="msg-meta">${label} · ${fmtTime(m.ts)}</div>
     </div>`;
   }).join('');
 
-  if (atBottom || !preserve_scroll) scrollChat();
+  // Restore scroll position intelligently
+  if (preserve_scroll) {
+    if (atBottom) {
+      // User was at bottom, stay at bottom
+      scrollChat();
+    } else {
+      // User was scrolled up, maintain position relative to content
+      const scrollHeightAfter = container.scrollHeight;
+      const heightDiff = scrollHeightAfter - scrollHeightBefore;
+      container.scrollTop = Math.max(0, scrollTopBefore + heightDiff);
+    }
+  } else {
+    // No preserve requested, scroll to bottom
+    scrollChat();
+  }
+
   const newTotal = chatData.length;
   if (lastChatLen > 0 && newTotal > lastChatLen) {
     // Only play sound if the newest message is from assistant
@@ -1784,6 +1810,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }).catch(e => console.warn('SW failed', e));
   }
+
+  // Refresh chat when tab becomes visible again
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      // Refresh chat data when returning to tab
+      if (activeTab === 'chat' && currentSessionKey && !chatSending) {
+        // Restart SSE/polling to ensure fresh connection
+        stopChatPoll();
+        startChatPoll();
+        // Force a fresh chat load
+        refreshChat();
+      }
+      // Also refresh main data
+      load();
+    }
+  });
 });
 
 // ── Quick sheet ───────────────────────────────────────────────────────────
