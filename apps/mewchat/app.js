@@ -947,5 +947,7 @@
     applyTimestampVisibility();
     applyMascotVisibility();
     applySystemMessagesVisibility();
+    // Focus input for quick start
+    if (msgInput) msgInput.focus();
   });
 })();
