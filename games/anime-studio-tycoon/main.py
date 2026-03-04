@@ -42,9 +42,16 @@ UPGRADES = {
     "star_director": {"cost": 30000, "label": "Star Director", "desc": "Reputation gain from episodes doubled.", "owned": False},
     "god_animator": {"cost": 25000, "label": "God Animator", "desc": "Reduces 'Staff burnout' event chance by 50%.", "owned": False},
     "better_software": {"cost": 15000, "label": "Better Software", "desc": "Weekly salary cost reduced by 20%.", "owned": False},
-    "merch_table": {"cost": 20000, "label": "Merch Table", "desc": "Every 4 weeks: +¥3000 fans (actually +3000 fans).", "owned": False}
+    "merch_table": {"cost": 20000, "label": "Merch Table", "desc": "Every 4 weeks: +3000 fans (actually +3000 fans).", "owned": False}
 }
 salary_multiplier = 1.0
+
+# New: Marketing campaigns
+MARKETING_CAMPAIGNS = [
+    {"name": "Social Media Blitz", "cost": 3000, "fans": (1500, 3000), "rep": (0, 2)},
+    {"name": "TV Advertisement", "cost": 8000, "fans": (4000, 7000), "rep": (2, 5)},
+    {"name": "International Campaign", "cost": 15000, "fans": (8000, 15000), "rep": (5, 10)}
+]
 
 events = [
     ("Viral moment!", 0, 0, 0, 5000),
@@ -174,6 +181,52 @@ def weekly_event():
                 if staff < 1:
                     staff = 1
 
+def run_marketing_campaign():
+    """Display marketing campaigns and allow player to choose one."""
+    global money, fans, reputation
+    
+    print(f"\n{C.HEADER}=== Marketing Campaigns ==={C.E}")
+    affordable_count = 0
+    for i, camp in enumerate(MARKETING_CAMPAIGNS, 1):
+        affordable = money >= camp["cost"]
+        if affordable:
+            affordable_count += 1
+        status_icon = f"{C.OKGREEN}[BUY]{C.E}" if affordable else f"{C.FAIL}[¥{camp['cost']}]{C.E}"
+        fan_range = f"{camp['fans'][0]}-{camp['fans'][1]}"
+        rep_range = f"{camp['rep'][0]}-{camp['rep'][1]}"
+        print(f"  {i}) {camp['name']} {status_icon}")
+        print(f"      Cost: ¥{camp['cost']} | Fans: +{fan_range} | Rep: +{rep_range}")
+    print(f"  0) Cancel")
+    
+    if affordable_count == 0:
+        print(f"  {C.WARNING}No affordable campaigns.{C.E}")
+    
+    try:
+        choice = input("> ").strip()
+        if choice.isdigit():
+            idx = int(choice) - 1
+            if 0 <= idx < len(MARKETING_CAMPAIGNS):
+                camp = MARKETING_CAMPAIGNS[idx]
+                if money >= camp["cost"]:
+                    money -= camp["cost"]
+                    fan_gain = random.randint(camp["fans"][0], camp["fans"][1])
+                    rep_gain = random.randint(camp["rep"][0], camp["rep"][1])
+                    fans += fan_gain
+                    reputation += rep_gain
+                    print(f"{C.OKGREEN}Campaign '{camp['name']}' launched!{C.E}")
+                    print(f"  Fans +{fan_gain}, Reputation +{rep_gain}")
+                    # Trend bonus for marketing
+                    if player_genre == market_trend:
+                        bonus = int(fan_gain * 0.2)
+                        fans += bonus
+                        print(f"  {C.M}🔥 Trend synergy bonus: +{bonus} fans!{C.E}")
+                else:
+                    print(f"{C.FAIL}Not enough money.{C.E}")
+            elif int(choice) == 0:
+                print("Cancelled.")
+    except (EOFError, KeyboardInterrupt):
+        pass
+
 def weekly_update():
     global money, staff, reputation, week, episodes_completed, production_progress, is_crunching, market_trend, trend_announced, fans
     
@@ -192,7 +245,8 @@ def weekly_update():
     print(f"4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)")
     print(f"5) Quality focus (reputation +5, costs ¥2000)")
     print(f"6) View upgrades")
-    print(f"7) Next week")
+    print(f"7) Marketing campaigns")
+    print(f"8) Next week")
     
     # Determine auto-mode (non-interactive or forced)
     auto_mode = False
@@ -218,8 +272,10 @@ def weekly_update():
         elif production_progress < points_per_episode * 1.5 and money >= 2000 and episodes_completed < episodes_target and not is_crunching:
             # If behind schedule and can afford crunch (and not already active)
             choice = "4"
+        elif fans < 5000 and money >= 3000:
+            choice = "7"  # Marketing if fans low
         else:
-            choice = "7"  # Advance week
+            choice = "8"  # Advance week
         print(f"Auto-choosing: {choice}")
     
     if choice == "1":
@@ -276,6 +332,8 @@ def weekly_update():
             except (EOFError, KeyboardInterrupt):
                 pass
     elif choice == "7":
+        run_marketing_campaign()
+    elif choice == "8":
         is_crunching = False
         # Change trend occasionally
         if random.random() < 0.2:  # 20% chance per week when advancing
