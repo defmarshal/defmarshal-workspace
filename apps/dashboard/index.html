@@ -1417,7 +1417,7 @@ async function sendMessage() {
     
     chatReplyWatcher = setInterval(async () => {
       try {
-        const r = await fetch('/api/chat');
+        const r = await fetch('/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
         if (!r.ok) return;
         const d = await r.json();
         const msgs = d.chat || [];
