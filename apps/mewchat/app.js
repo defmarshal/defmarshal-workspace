@@ -594,6 +594,18 @@
           sessionSelect.dispatchEvent(new Event('change'));
         }
         break;
+      case 'tab':
+        e.preventDefault();
+        const direction = e.shiftKey ? -1 : 1;
+        const currentIdx = sessionSelect.selectedIndex;
+        const optionCount = sessionSelect.options.length;
+        if (optionCount <= 1) break;
+        let newIdx = currentIdx + direction;
+        if (newIdx >= optionCount) newIdx = 0;
+        if (newIdx < 0) newIdx = optionCount - 1;
+        sessionSelect.value = sessionSelect.options[newIdx].value;
+        sessionSelect.dispatchEvent(new Event('change'));
+        break;
     }
   });
 
