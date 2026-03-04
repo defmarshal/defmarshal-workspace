@@ -390,8 +390,22 @@ footer { font-size:11px; color:var(--muted); text-align:center; padding:8px; fle
   .chat-sidebar { display: none; }
   .msg { max-width: 92%; }
   .header-right #last-updated { display: none; }
-  .header-right #backend-status { display: none; }
-  header h1 span.subtitle { display: none; }
+/* ── Sidebar floating mascot ────────────────────────────────────────────────── */
+#mascot-sidebar {
+  position: fixed;
+  bottom: 16px; left: 16px; z-index: 100;
+  width: 60px; height: 60px;
+  pointer-events: none;
+  opacity: 0.6;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+  animation: float 4s ease-in-out infinite, spin 10s linear infinite reverse;
+}
+#mascot-sidebar svg {
+  width: 100%; height: 100%; display: block;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ── Scroll to bottom button ─────────────────────────────────────────────── */
