@@ -106,11 +106,16 @@ function run(cmd, args = []) {
   });
 }
 
+// ── Data cache ────────────────────────────────────────────────────────────
+let dataCache = { data: null, timestamp: 0 };
+const DATA_CACHE_TTL = 30000; // 30 seconds
+
 // ── Helper: regenerate data.json ─────────────────────────────────────────
 async function regenerateData() {
   try {
     const result = await run(path.join(WORKSPACE, 'quick'), ['dash']);
     if (!result.ok) console.warn('regenerateData failed:', result.stderr);
+    else dataCache = { data: null, timestamp: Date.now() }; // invalidate cache
   } catch (e) {
     console.warn('regenerateData error:', e.message);
   }
@@ -666,10 +671,22 @@ const handler = async (req, res) => {
 
   // ── Data (live) ─────────────────────────────────────────────────────────
   if (pathname === '/api/data' && req.method === 'GET') {
+    const now = Date.now();
+    const sessionKey = url.searchParams.get('sessionKey');
+    
+    // Return cached data if fresh enough
+    if (dataCache.data && (now - dataCache.timestamp) < DATA_CACHE_TTL) {
+      const data = JSON.parse(JSON.stringify(dataCache.data)); // deep copy
+      data.chat = sessionKey ? getChatHistory(sessionKey) : [];
+      data.push_enabled = webPush !== null;
+      return json(res, 200, data);
+    }
+    
+    // Regenerate if cache is stale or missing
     await regenerateData();
     try {
       const data = JSON.parse(fs.readFileSync(DATA_JSON, 'utf8'));
-      const sessionKey = url.searchParams.get('sessionKey');
+      dataCache.data = JSON.parse(JSON.stringify(data)); // cache a copy
       data.chat = sessionKey ? getChatHistory(sessionKey) : [];
       data.push_enabled = webPush !== null;
       return json(res, 200, data);
@@ -950,6 +967,15 @@ const handler = async (req, res) => {
     res.end(data);
   });
 };
+
+// ── Error handling ───────────────────────────────────────────────────────
+process.on('uncaughtException', (err) => {
+  console.error('[FATAL] Uncaught Exception:', err.message);
+  console.error(err.stack);
+});
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('[FATAL] Unhandled Rejection at:', promise, 'reason:', reason);
+});
 
 // ── Servers ───────────────────────────────────────────────────────────────
 const server = http.createServer(handler);
