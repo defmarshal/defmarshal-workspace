@@ -3,7 +3,7 @@
 (function() {
   'use strict';
 
-  const { API_BASE, POLL_INTERVAL } = window.MewChatConfig;
+  const { API_BASE } = window.MewChatConfig;
 
   // State
   let currentSessionKey = localStorage.getItem('mewchat-session') || '';
@@ -625,6 +625,6 @@
 
   // Initialize
   loadSessions().then(() => {
-    startPolling();
+    startSSE(currentSessionKey);
   });
 })();
