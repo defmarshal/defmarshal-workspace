@@ -332,6 +332,17 @@
     }
   }
 
+  function applySystemMessagesVisibility() {
+    const settings = loadSettings();
+    if (chatMessages) {
+      if (settings.hideSystemMsgs) {
+        chatMessages.classList.add('hide-system');
+      } else {
+        chatMessages.classList.remove('hide-system');
+      }
+    }
+  }
+
   function showError(msg) {
     removeLoadingChat(); // ensure loading indicator is gone
     errorEl.innerHTML = `
@@ -759,7 +770,8 @@
     MASCOT_ANIMATION: 'mewchat-mascot-animation',
     CHAR_LIMIT: 'mewchat-char-limit',
     SHOW_TIMESTAMPS: 'mewchat-show-timestamps',
-    SHOW_MASCOT: 'mewchat-show-mascot'
+    SHOW_MASCOT: 'mewchat-show-mascot',
+    HIDE_SYSTEM_MSGS: 'mewchat-hide-system-msgs'
   };
 
   const DEFAULT_SETTINGS = {
@@ -768,7 +780,8 @@
     mascotAnimation: true,
     charLimit: 0,
     showTimestamps: true,
-    showMascot: true
+    showMascot: true,
+    hideSystemMsgs: false
   };
 
   function loadSettings() {
@@ -778,7 +791,7 @@
       if (value !== null) {
         if (key.includes('SPEED') || key.includes('CHAR_LIMIT')) {
           stored[key] = parseInt(value, 10);
-        } else if (key.includes('ENABLED') || key.includes('ANIMATION') || key.includes('SHOW_')) {
+        } else if (key.includes('ENABLED') || key.includes('ANIMATION') || key.includes('SHOW_') || key.includes('HIDE_')) {
           stored[key] = value === 'true';
         } else {
           stored[key] = value;
@@ -796,6 +809,7 @@
     const charLimitSelect = document.getElementById('setting-charlimit');
     const showTimestampsCheckbox = document.getElementById('setting-timestamps');
     const showMascotCheckbox = document.getElementById('setting-showmascot');
+    const hideSystemMsgsCheckbox = document.getElementById('setting-hidesystem');
 
     if (typewriterCheckbox) typewriterCheckbox.checked = settings.typewriterEnabled;
     for (const radio of speedRadios) {
@@ -805,6 +819,7 @@
     if (charLimitSelect) charLimitSelect.value = settings.charLimit.toString();
     if (showTimestampsCheckbox) showTimestampsCheckbox.checked = settings.showTimestamps;
     if (showMascotCheckbox) showMascotCheckbox.checked = settings.showMascot;
+    if (hideSystemMsgsCheckbox) hideSystemMsgsCheckbox.checked = settings.hideSystemMsgs;
   }
 
   function saveSettings() {
@@ -815,6 +830,7 @@
     const charLimit = parseInt(document.getElementById('setting-charlimit')?.value ?? '0', 10);
     const showTimestamps = document.getElementById('setting-timestamps')?.checked ?? DEFAULT_SETTINGS.showTimestamps;
     const showMascot = document.getElementById('setting-showmascot')?.checked ?? DEFAULT_SETTINGS.showMascot;
+    const hideSystemMsgs = document.getElementById('setting-hidesystem')?.checked ?? DEFAULT_SETTINGS.hideSystemMsgs;
 
     localStorage.setItem(SETTINGS_KEYS.TYPEWRITER_ENABLED, typewriterEnabled);
     localStorage.setItem(SETTINGS_KEYS.TYPEWRITER_SPEED, typewriterSpeed);
@@ -822,8 +838,10 @@
     localStorage.setItem(SETTINGS_KEYS.CHAR_LIMIT, charLimit);
     localStorage.setItem(SETTINGS_KEYS.SHOW_TIMESTAMPS, showTimestamps);
     localStorage.setItem(SETTINGS_KEYS.SHOW_MASCOT, showMascot);
+    localStorage.setItem(SETTINGS_KEYS.HIDE_SYSTEM_MSGS, hideSystemMsgs);
     applyTimestampVisibility();
     applyMascotVisibility();
+    applySystemMessagesVisibility();
     hideSettings();
   }
 
@@ -834,6 +852,7 @@
     loadSettingsToModal();
     applyTimestampVisibility();
     applyMascotVisibility();
+    applySystemMessagesVisibility();
   }
 
   document.getElementById('settings-save')?.addEventListener('click', saveSettings);
@@ -883,5 +902,6 @@
     // Apply initial UI settings
     applyTimestampVisibility();
     applyMascotVisibility();
+    applySystemMessagesVisibility();
   });
 })();
