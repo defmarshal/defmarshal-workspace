@@ -3,20 +3,9 @@ Manage your studio: balance money, staff, reputation, fans.
 Goal: Complete 10 episodes while maintaining positive reputation and at least 50,000 fans. Avoid bankruptcy!
 
 [96mYour studio's genre: Sci-Fi[0m
-Current market trend: Isekai (bonus fan growth if matched!)
+Current market trend: Horror (bonus fan growth if matched!)
 
-Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Sci-Fi] [Trend: Isekai]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 1 | Money: ¥90000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [##........] [Genre: Sci-Fi] [Trend: Isekai]
+Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -27,7 +16,7 @@ Week 1 | Money: ¥90000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pro
 6) View upgrades
 7) Next week
 > [91mInvalid choice; skipping.[0m
-Week 2 | Money: ¥80000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#####.....] [Genre: Sci-Fi] [Trend: Isekai]
+Week 1 | Money: ¥90000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [##........] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -38,7 +27,18 @@ Week 2 | Money: ¥80000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pro
 6) View upgrades
 7) Next week
 > [91mInvalid choice; skipping.[0m
-Week 3 | Money: ¥70000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#######...] [Genre: Sci-Fi] [Trend: Isekai]
+Week 2 | Money: ¥80000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#####.....] [Genre: Sci-Fi] [Trend: Horror]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> [91mInvalid choice; skipping.[0m
+Week 3 | Money: ¥70000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#######...] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -50,8 +50,8 @@ Week 3 | Money: ¥70000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pro
 7) Next week
 > [91mInvalid choice; skipping.[0m
 [96mEpisode 1 completed![0m
-  Reputation +10, Fans +2347
-Week 4 | Money: ¥60000 | Staff: 5 | Rep: 60 | Fans: 3347 | Episodes: 1/10 | Progress: [..........] [Genre: Sci-Fi] [Trend: Isekai]
+  Reputation +10, Fans +6892
+Week 4 | Money: ¥60000 | Staff: 5 | Rep: 60 | Fans: 7892 | Episodes: 1/10 | Progress: [..........] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -62,7 +62,7 @@ Week 4 | Money: ¥60000 | Staff: 5 | Rep: 60 | Fans: 3347 | Episodes: 1/10 | Pro
 6) View upgrades
 7) Next week
 > [91mInvalid choice; skipping.[0m
-Week 5 | Money: ¥50000 | Staff: 5 | Rep: 60 | Fans: 3347 | Episodes: 1/10 | Progress: [##........] [Genre: Sci-Fi] [Trend: Isekai]
+Week 5 | Money: ¥50000 | Staff: 5 | Rep: 60 | Fans: 7892 | Episodes: 1/10 | Progress: [##........] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -73,8 +73,7 @@ Week 5 | Money: ¥50000 | Staff: 5 | Rep: 60 | Fans: 3347 | Episodes: 1/10 | Pro
 6) View upgrades
 7) Next week
 > [91mInvalid choice; skipping.[0m
-Week 6 | Money: ¥40000 | Staff: 5 | Rep: 60 | Fans: 3347 | Episodes: 1/10 | Progress: [#####.....] [Genre: Sci-Fi] [Trend: Isekai]
-[93mEvent: Training seminar[0m
+Week 6 | Money: ¥40000 | Staff: 5 | Rep: 60 | Fans: 7892 | Episodes: 1/10 | Progress: [#####.....] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -85,7 +84,7 @@ Week 6 | Money: ¥40000 | Staff: 5 | Rep: 60 | Fans: 3347 | Episodes: 1/10 | Pro
 6) View upgrades
 7) Next week
 > [91mInvalid choice; skipping.[0m
-Week 7 | Money: ¥28000 | Staff: 6 | Rep: 63 | Fans: 3347 | Episodes: 1/10 | Progress: [########..] [Genre: Sci-Fi] [Trend: Isekai]
+Week 7 | Money: ¥30000 | Staff: 5 | Rep: 60 | Fans: 7892 | Episodes: 1/10 | Progress: [#######...] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -97,8 +96,8 @@ Week 7 | Money: ¥28000 | Staff: 6 | Rep: 63 | Fans: 3347 | Episodes: 1/10 | Pro
 7) Next week
 > [91mInvalid choice; skipping.[0m
 [96mEpisode 2 completed![0m
-  Reputation +10, Fans +4910
-Week 8 | Money: ¥16000 | Staff: 6 | Rep: 73 | Fans: 8257 | Episodes: 2/10 | Progress: [#.........] [Genre: Sci-Fi] [Trend: Isekai]
+  Reputation +10, Fans +5415
+Week 8 | Money: ¥20000 | Staff: 5 | Rep: 70 | Fans: 13307 | Episodes: 2/10 | Progress: [..........] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -109,7 +108,7 @@ Week 8 | Money: ¥16000 | Staff: 6 | Rep: 73 | Fans: 8257 | Episodes: 2/10 | Pro
 6) View upgrades
 7) Next week
 > [91mInvalid choice; skipping.[0m
-Week 9 | Money: ¥4000 | Staff: 6 | Rep: 73 | Fans: 8257 | Episodes: 2/10 | Progress: [####......] [Genre: Sci-Fi] [Trend: Isekai]
+Week 9 | Money: ¥10000 | Staff: 5 | Rep: 70 | Fans: 13307 | Episodes: 2/10 | Progress: [##........] [Genre: Sci-Fi] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -120,4 +119,16 @@ Week 9 | Money: ¥4000 | Staff: 6 | Rep: 73 | Fans: 8257 | Episodes: 2/10 | Prog
 6) View upgrades
 7) Next week
 > [91mInvalid choice; skipping.[0m
+Week 10 | Money: ¥0 | Staff: 5 | Rep: 70 | Fans: 13307 | Episodes: 2/10 | Progress: [#####.....] [Genre: Sci-Fi] [Trend: Horror]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 2
+[93mFired a staff member.[0m
 [91mBankruptcy! You lose.[0m
