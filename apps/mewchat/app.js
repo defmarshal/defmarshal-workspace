@@ -24,6 +24,7 @@
   const sessionSelect = document.getElementById('session-select');
   const chatMessages = document.getElementById('chat-messages');
   const scrollBottomBtn = document.getElementById('scroll-bottom');
+  const scrollTopBtn = document.getElementById('scroll-top');
   const connectionStatus = document.getElementById('connection-status');
   const lastUpdatedEl = document.getElementById('last-updated');
   const helpBtn = document.getElementById('help-btn');
@@ -88,11 +89,30 @@
     }
   }
 
-  chatMessages.addEventListener('scroll', toggleScrollBottomBtn);
+  // Show/hide scroll-to-top button based on scroll position
+  function toggleScrollTopBtn() {
+    if (!scrollTopBtn) return;
+    const atTop = chatMessages.scrollTop <= 10;
+    if (atTop) {
+      scrollTopBtn.classList.add('hidden');
+    } else {
+      scrollTopBtn.classList.remove('hidden');
+    }
+  }
+
+  chatMessages.addEventListener('scroll', () => {
+    toggleScrollBottomBtn();
+    toggleScrollTopBtn();
+  });
 
   if (scrollBottomBtn) {
     scrollBottomBtn.addEventListener('click', () => {
       chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+    });
+  }
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      chatMessages.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
