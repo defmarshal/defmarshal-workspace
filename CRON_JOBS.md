@@ -178,6 +178,12 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Description:** Keepalive cron that spawns the meta-supervisor daemon if not running, ensuring continuous auditing of agent outcomes.
    - **Agent:** default
 
+30. **log-rotate-system-cron** (System Crontab)
+   - **Schedule:** Daily at 02:00 (`0 2 * * *`) in system timezone (UTC)
+   - **Command:** `/home/ubuntu/.openclaw/workspace/scripts/rotate-logs.sh`
+   - **Log:** `memory/rotate-logs.log`
+   - **Description:** Rotates and compresses memory logs. Compresses files >10MB or older than 1 day to `memory/archive/`, keeping last 1000 lines uncompressed. Uses flock to avoid conflicts with writing processes. Safe for live systems.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
