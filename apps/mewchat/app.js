@@ -14,6 +14,7 @@
 
   // Dom refs
   const themeBtn = document.getElementById('theme-btn');
+  const settingsBtn = document.getElementById('settings-btn');
   const sessionSelect = document.getElementById('session-select');
   const chatMessages = document.getElementById('chat-messages');
   const scrollBottomBtn = document.getElementById('scroll-bottom');
@@ -21,6 +22,8 @@
   const helpBtn = document.getElementById('help-btn');
   const helpModal = document.getElementById('help-modal');
   const helpClose = document.getElementById('help-close');
+  const settingsModal = document.getElementById('settings-modal');
+  const settingsClose = document.getElementById('settings-close');
   const confirmModal = document.getElementById('confirm-modal');
   const confirmCancel = document.getElementById('confirm-cancel');
   const confirmOk = document.getElementById('confirm-ok');
@@ -63,7 +66,7 @@
     // Update height and char count
     msgInput.style.height = 'auto';
     msgInput.style.height = Math.min(msgInput.scrollHeight, 150) + 'px';
-    if (charCountEl) charCountEl.textContent = savedDraft.length;
+    updateCharCountAndCheckLimit();
     if (sendBtn && savedDraft.trim().length > 0) sendBtn.classList.add('has-text');
   }
 
@@ -91,8 +94,8 @@
     this.style.height = 'auto';
     const newHeight = Math.min(this.scrollHeight, 150); // max-height: 150px
     this.style.height = newHeight + 'px';
-    // Update character counter
-    if (charCountEl) charCountEl.textContent = this.value.length;
+    // Update character counter with limit warning
+    updateCharCountAndCheckLimit();
     // Toggle pulse on send button if it has focus
     if (sendBtn) {
       if (this.value.trim().length > 0) sendBtn.classList.add('has-text');
@@ -187,13 +190,17 @@
     const bubble = div.querySelector('.msg-bubble');
 
     if (role === 'assistant' && animate) {
-      // Typewriter effect for assistant messages
-      typewriterEffect(bubble, text, 25);
-      // Mascot talking animation
-      if (mascot) {
+      const settings = loadSettings();
+      // Check if typewriter effect is enabled
+      if (settings.typewriterEnabled) {
+        typewriterEffect(bubble, text, settings.typewriterSpeed);
+      } else {
+        bubble.textContent = text;
+      }
+      // Mascot talking animation (only if enabled and typewriter is used)
+      if (settings.mascotAnimation && mascot && settings.typewriterEnabled) {
         mascot.classList.add('talking');
-        // Stop animation after approx duration of text
-        const duration = Math.min(Math.max(text.length * 25, 500), 10000);
+        const duration = Math.min(Math.max(text.length * settings.typewriterSpeed, 500), 10000);
         setTimeout(() => mascot.classList.remove('talking'), duration);
       }
     } else {
@@ -442,6 +449,130 @@
       if (helpModal && helpModal.classList.contains('hidden')) showHelp(); else hideHelp();
     }
   });
+
+  // Settings modal
+  function showSettings() {
+    if (settingsModal) {
+      loadSettingsToModal();
+      settingsModal.classList.remove('hidden');
+    }
+  }
+  function hideSettings() {
+    if (settingsModal) settingsModal.classList.add('hidden');
+  }
+  if (settingsBtn) settingsBtn.addEventListener('click', showSettings);
+  if (settingsClose) settingsClose.addEventListener('click', hideSettings);
+  if (settingsModal) {
+    settingsModal.addEventListener('click', e => {
+      if (e.target === settingsModal) hideSettings();
+    });
+  }
+  // Ctrl+; to open settings
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === ';') {
+      e.preventDefault();
+      showSettings();
+    }
+  });
+  // Escape closes settings modal too
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && settingsModal && !settingsModal.classList.contains('hidden')) {
+      hideSettings();
+    }
+  });
+
+  // Settings management
+  const SETTINGS_KEYS = {
+    TYPEWRITER_ENABLED: 'mewchat-typewriter-enabled',
+    TYPEWRITER_SPEED: 'mewchat-typewriter-speed',
+    MASCOT_ANIMATION: 'mewchat-mascot-animation',
+    CHAR_LIMIT: 'mewchat-char-limit'
+  };
+
+  const DEFAULT_SETTINGS = {
+    typewriterEnabled: true,
+    typewriterSpeed: 25,
+    mascotAnimation: true,
+    charLimit: 0
+  };
+
+  function loadSettings() {
+    const stored = {};
+    for (const [key, storageKey] of Object.entries(SETTINGS_KEYS)) {
+      const value = localStorage.getItem(storageKey);
+      if (value !== null) {
+        if (key.includes('SPEED') || key.includes('CHAR_LIMIT')) {
+          stored[key] = parseInt(value, 10);
+        } else if (key.includes('ENABLED') || key.includes('ANIMATION')) {
+          stored[key] = value === 'true';
+        } else {
+          stored[key] = value;
+        }
+      }
+    }
+    return { ...DEFAULT_SETTINGS, ...stored };
+  }
+
+  function loadSettingsToModal() {
+    const settings = loadSettings();
+    const typewriterCheckbox = document.getElementById('setting-typewriter');
+    const speedRadios = document.querySelectorAll('input[name="typewriter-speed"]');
+    const mascotCheckbox = document.getElementById('setting-mascot');
+    const charLimitSelect = document.getElementById('setting-charlimit');
+
+    if (typewriterCheckbox) typewriterCheckbox.checked = settings.typewriterEnabled;
+    for (const radio of speedRadios) {
+      radio.checked = parseInt(radio.value, 10) === settings.typewriterSpeed;
+    }
+    if (mascotCheckbox) mascotCheckbox.checked = settings.mascotAnimation;
+    if (charLimitSelect) charLimitSelect.value = settings.charLimit.toString();
+  }
+
+  function saveSettings() {
+    const typewriterEnabled = document.getElementById('setting-typewriter')?.checked ?? DEFAULT_SETTINGS.typewriterEnabled;
+    const speedRadio = document.querySelector('input[name="typewriter-speed"]:checked');
+    const typewriterSpeed = speedRadio ? parseInt(speedRadio.value, 10) : DEFAULT_SETTINGS.typewriterSpeed;
+    const mascotAnimation = document.getElementById('setting-mascot')?.checked ?? DEFAULT_SETTINGS.mascotAnimation;
+    const charLimit = parseInt(document.getElementById('setting-charlimit')?.value ?? '0', 10);
+
+    localStorage.setItem(SETTINGS_KEYS.TYPEWRITER_ENABLED, typewriterEnabled);
+    localStorage.setItem(SETTINGS_KEYS.TYPEWRITER_SPEED, typewriterSpeed);
+    localStorage.setItem(SETTINGS_KEYS.MASCOT_ANIMATION, mascotAnimation);
+    localStorage.setItem(SETTINGS_KEYS.CHAR_LIMIT, charLimit);
+    hideSettings();
+  }
+
+  function resetSettings() {
+    for (const [key, storageKey] of Object.entries(SETTINGS_KEYS)) {
+      localStorage.removeItem(storageKey);
+    }
+    loadSettingsToModal();
+  }
+
+  document.getElementById('settings-save')?.addEventListener('click', saveSettings);
+  document.getElementById('settings-reset')?.addEventListener('click', resetSettings);
+
+  // Character limit warning
+  let charLimitWarningShown = false;
+  function updateCharCountAndCheckLimit() {
+    if (!charCountEl) return;
+    const settings = loadSettings();
+    const currentLength = msgInput.value.length;
+    charCountEl.textContent = currentLength;
+
+    if (settings.charLimit > 0 && currentLength >= settings.charLimit) {
+      charCountEl.style.color = 'var(--red)';
+      charCountEl.style.fontWeight = '700';
+      if (!charLimitWarningShown) {
+        charCountEl.textContent += ' (max reached)';
+        charLimitWarningShown = true;
+      }
+    } else {
+      charCountEl.style.color = '';
+      charCountEl.style.fontWeight = '';
+      charLimitWarningShown = false;
+    }
+  }
 
   // Confirm modal handlers
   if (confirmCancel) confirmCancel.addEventListener('click', hideConfirmModal);
