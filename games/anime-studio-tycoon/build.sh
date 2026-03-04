@@ -55,13 +55,26 @@ salary_multiplier = 1.0
 
 events = [
     ("Viral moment!", 0, 0, 0, 5000),
-    ("Staff burnout", -2, 0, 0, 0),
+    ("Staff burnout", 0, 0, 0, 0),  # Fixed money delta; staff loss handled separately
     ("Budget overrun", -10000, 0, 0, 0),
-    ("Positive review", 0, 0, +10, 0),
-    ("Critic praise", 0, 0, +15, 1000),
+    ("Positive review", 0, 0, 10, 0),
+    ("Critic praise", 0, 0, 15, 1000),
     ("Streaming deal", 25000, 0, 0, 0),
     ("Fan convention", 0, 0, 0, 2000),
-    ("Licensing opportunity", 15000, 0, +5, 500)
+    ("Licensing opportunity", 15000, 0, 5, 500),
+    # New events to increase variety and balance
+    ("Merchandise boom", 8000, 0, 0, 3000),
+    ("Award nomination", 0, 0, 8, 2000),
+    ("Investor injection", 15000, 0, 0, 0),
+    ("Fan convention success", 0, 0, 5, 4000),
+    ("Voice actor strike", -1500, -1, 0, 0),
+    ("Copyright lawsuit", -8000, 0, -5, -1000),
+    ("Studio expansion", -10000, 2, 5, 2000),
+    ("International licensing", 20000, 0, 3, 5000),
+    ("Training seminar", -2000, 1, 3, 0),
+    ("Negative press", 0, 0, -8, -2000),
+    ("Streaming hit", 12000, 0, 5, 8000),
+    ("Collaboration", 5000, 0, 5, 3000)
 ]
 
 def clear_screen():
