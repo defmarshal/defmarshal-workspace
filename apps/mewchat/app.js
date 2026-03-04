@@ -308,6 +308,17 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+  function applyTimestampVisibility() {
+    const settings = loadSettings();
+    if (chatMessages) {
+      if (settings.showTimestamps) {
+        chatMessages.classList.remove('hide-timestamps');
+      } else {
+        chatMessages.classList.add('hide-timestamps');
+      }
+    }
+  }
+
   function showError(msg) {
     removeLoadingChat(); // ensure loading indicator is gone
     errorEl.innerHTML = `
@@ -320,6 +331,11 @@
     if (dismissBtn) {
       dismissBtn.addEventListener('click', clearError);
     }
+  }
+
+  function clearError() {
+    errorEl.classList.add('hidden');
+    errorEl.innerHTML = '';
   }
 
   // Copy full chat history to clipboard
@@ -721,14 +737,16 @@
     TYPEWRITER_ENABLED: 'mewchat-typewriter-enabled',
     TYPEWRITER_SPEED: 'mewchat-typewriter-speed',
     MASCOT_ANIMATION: 'mewchat-mascot-animation',
-    CHAR_LIMIT: 'mewchat-char-limit'
+    CHAR_LIMIT: 'mewchat-char-limit',
+    SHOW_TIMESTAMPS: 'mewchat-show-timestamps'
   };
 
   const DEFAULT_SETTINGS = {
     typewriterEnabled: true,
     typewriterSpeed: 25,
     mascotAnimation: true,
-    charLimit: 0
+    charLimit: 0,
+    showTimestamps: true
   };
 
   function loadSettings() {
@@ -738,7 +756,7 @@
       if (value !== null) {
         if (key.includes('SPEED') || key.includes('CHAR_LIMIT')) {
           stored[key] = parseInt(value, 10);
-        } else if (key.includes('ENABLED') || key.includes('ANIMATION')) {
+        } else if (key.includes('ENABLED') || key.includes('ANIMATION') || key.includes('SHOW_TIMESTAMPS')) {
           stored[key] = value === 'true';
         } else {
           stored[key] = value;
@@ -754,6 +772,7 @@
     const speedRadios = document.querySelectorAll('input[name="typewriter-speed"]');
     const mascotCheckbox = document.getElementById('setting-mascot');
     const charLimitSelect = document.getElementById('setting-charlimit');
+    const showTimestampsCheckbox = document.getElementById('setting-timestamps');
 
     if (typewriterCheckbox) typewriterCheckbox.checked = settings.typewriterEnabled;
     for (const radio of speedRadios) {
@@ -761,6 +780,7 @@
     }
     if (mascotCheckbox) mascotCheckbox.checked = settings.mascotAnimation;
     if (charLimitSelect) charLimitSelect.value = settings.charLimit.toString();
+    if (showTimestampsCheckbox) showTimestampsCheckbox.checked = settings.showTimestamps;
   }
 
   function saveSettings() {
@@ -769,11 +789,14 @@
     const typewriterSpeed = speedRadio ? parseInt(speedRadio.value, 10) : DEFAULT_SETTINGS.typewriterSpeed;
     const mascotAnimation = document.getElementById('setting-mascot')?.checked ?? DEFAULT_SETTINGS.mascotAnimation;
     const charLimit = parseInt(document.getElementById('setting-charlimit')?.value ?? '0', 10);
+    const showTimestamps = document.getElementById('setting-timestamps')?.checked ?? DEFAULT_SETTINGS.showTimestamps;
 
     localStorage.setItem(SETTINGS_KEYS.TYPEWRITER_ENABLED, typewriterEnabled);
     localStorage.setItem(SETTINGS_KEYS.TYPEWRITER_SPEED, typewriterSpeed);
     localStorage.setItem(SETTINGS_KEYS.MASCOT_ANIMATION, mascotAnimation);
     localStorage.setItem(SETTINGS_KEYS.CHAR_LIMIT, charLimit);
+    localStorage.setItem(SETTINGS_KEYS.SHOW_TIMESTAMPS, showTimestamps);
+    applyTimestampVisibility();
     hideSettings();
   }
 
@@ -782,6 +805,7 @@
       localStorage.removeItem(storageKey);
     }
     loadSettingsToModal();
+    applyTimestampVisibility();
   }
 
   document.getElementById('settings-save')?.addEventListener('click', saveSettings);
@@ -828,5 +852,7 @@
   // Initialize
   loadSessions().then(() => {
     startSSE(currentSessionKey);
+    // Apply initial timestamp visibility
+    applyTimestampVisibility();
   });
 })();

@@ -709,6 +709,13 @@ const handler = async (req, res) => {
     const clients = sseClients.get(sessionKey);
     clients.add(res);
 
+    // Initialize message counts for this session
+    const initialMsgs = getChatHistory(sessionKey);
+    lastAssistantCounts[sessionKey] = {
+      assistant: initialMsgs.filter(m => m.role === 'assistant').length,
+      total: initialMsgs.length
+    };
+
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
@@ -717,7 +724,7 @@ const handler = async (req, res) => {
     });
     res.write(': connected\n\n');
     // Send current chat immediately for this session
-    res.write('data: ' + JSON.stringify({ chat: getChatHistory(sessionKey) }) + '\n\n');
+    res.write('data: ' + JSON.stringify({ chat: initialMsgs }) + '\n\n');
     req.on('close', () => {
       clients.delete(res);
       if (clients.size === 0) sseClients.delete(sessionKey);
