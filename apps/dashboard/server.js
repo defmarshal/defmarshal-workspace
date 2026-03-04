@@ -139,6 +139,36 @@ const MIME = {
 // ── Sessions cache ─────────────────────────────────────────────────────────
 let sessionsCache = { data: [], timestamp: 0 };
 const SESSIONS_CACHE_TTL = 60000; // 60 seconds
+// ── Chat history cache ─────────────────────────────────────────────────────
+// Cache: sessionId → { msgs, mtime, timestamp }
+const chatCache = new Map();
+const CHAT_CACHE_TTL = 10000; // 10 seconds
+
+function getCachedChat(sessionId, sessionFile) {
+  const cached = chatCache.get(sessionId);
+  if (cached) {
+    const now = Date.now();
+    if (now - cached.timestamp < CHAT_CACHE_TTL) {
+      try {
+        const stat = fs.statSync(sessionFile);
+        if (stat.mtimeMs <= cached.mtime) {
+          return cached.msgs;
+        }
+      } catch (e) {}
+    }
+  }
+  return null;
+}
+
+function setChatCache(sessionId, sessionFile, msgs) {
+  try {
+    const stat = fs.statSync(sessionFile);
+    chatCache.set(sessionId, { msgs, mtime: stat.mtimeMs, timestamp: Date.now() });
+  } catch (e) {
+    chatCache.set(sessionId, { msgs, mtime: 0, timestamp: Date.now() });
+  }
+}
+
 
 function refreshSessionsCache() {
   try {
@@ -259,16 +289,25 @@ function getAllSessions() {
 }
 
 // ── Chat history helper ────────────────────────────────────────────────────
-function getChatHistory(sessionKey) {
+
+function getChatHistory(sessionKey, options = {}) {
   try {
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
-    // If sessionKey not provided or invalid, return empty
     const sessionId = sessions?.[sessionKey]?.sessionId;
     if (!sessionId) return [];
     const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
     if (!fs.existsSync(sessionFile)) return [];
+
+    // Unless forceRefresh, try cache
+    if (!options.forceRefresh) {
+      const cached = getCachedChat(sessionId, sessionFile);
+      if (cached) return cached;
+    }
+
+    // Cache miss or forced refresh: read and parse
     const msgs = [];
-    for (const line of fs.readFileSync(sessionFile, 'utf8').split('\n')) {
+    for (const line of fs.readFileSync(sessionFile, 'utf8').split('
+')) {
       if (!line.trim()) continue;
       try {
         const m = JSON.parse(line);
@@ -281,7 +320,7 @@ function getChatHistory(sessionKey) {
           text = msg.content.filter(c => c.type === 'text').map(c => c.text).join(' ');
         } else { text = String(msg.content || ''); }
         if (role === 'user' && text.includes('Conversation info')) {
-          const end = text.indexOf('```\n\n');
+          const end = text.indexOf('\`\`\`\n\n');
           if (end >= 0) text = text.slice(end + 5).trim();
         }
         if (!text.trim()) continue;
@@ -298,7 +337,9 @@ function getChatHistory(sessionKey) {
         msgs.push({ role, ts: m.timestamp, text });
       } catch (err) {}
     }
-    return msgs.slice(-100);
+    const result = msgs.slice(-100);
+    setChatCache(sessionId, sessionFile, result);
+    return result;
   } catch (err) { return []; }
 }
 
@@ -308,7 +349,7 @@ function startChatWatcher() {
     const sessions = getAllSessions();
     for (const s of sessions) {
       const sessionKey = s.sessionKey;
-      const msgs = getChatHistory(sessionKey);
+      const msgs = getChatHistory(sessionKey, { forceRefresh: true });
       const assistantCount = msgs.filter(m => m.role === 'assistant').length;
       const prevCount = lastAssistantCounts[sessionKey] || 0;
       if (prevCount > 0 && assistantCount > prevCount) {

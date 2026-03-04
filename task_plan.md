@@ -1,71 +1,69 @@
-# Workspace Builder Task Plan - 2026-03-03 01:02 UTC
+# TASK_PLAN.md - Workspace Builder Implementation Plan
+Generated: 2026-03-04 01:06 UTC
 
-## Overview
-Strategic workspace analysis and improvement implementation focusing on cron system consolidation and dashboard data integrity.
+## Phase 1: Workspace Analysis (High Priority)
 
-## Current State Assessment
-- **Health**: Green (disk 79%, stable)
-- **Active agents**: meta-supervisor running, various cron agents active
-- **Memory**: 33 lines (≤35 limit), reindex ~2.5d fresh
-- **Git**: Clean, all changes pushed to origin
-- **Key issues identified**:
-  1. Duplicate cron systems updating dashboard data
-  2. OpenClaw cron uses broken Python script (corrupts data)
-  3. System crontab uses superior shell script but undocumented
-  4. Data corruption risk due to conflicting updates
+### 1.1 System Health Assessment
+- [ ] Run comprehensive health check (`quick health`)
+- [ ] Check disk usage and system resources
+- [ ] Verify gateway status and connectivity
+- [ ] Review cron job status and schedules
 
-## Strategic Tasks
+### 1.2 Memory System Evaluation
+- [ ] Check memory index status (`quick memory-status`)
+- [ ] Identify dirty memory stores needing reindex
+- [ ] Evaluate Voyage AI rate limits and usage
+- [ ] Test memory search functionality
 
-### Phase 1: Analysis & Planning
-- [x] Read current workspace context (SOUL.md, USER.md, recent memory)
-- [x] Identify key improvement opportunities (cron duplication, dashboard data)
-- [x] Create planning documents (task_plan.md, findings.md, progress.md)
-- [ ] Verify current constraint validation status
+### 1.3 Agent Performance Review
+- [ ] Check agent health reports (`quick agent-health-report`)
+- [ ] Review agent logs for errors/warnings
+- [ ] Verify active agent status and performance
+- [ ] Check daemon processes
 
-### Phase 2: Issue Resolution
-- [ ] **CRITICAL**: Fix dashboard data corruption issue
-  - [ ] Migrate superior shell script functionality to OpenClaw cron
-  - [ ] Remove duplicate system crontab entry
-  - [ ] Ensure data structure consistency (disk_history, agent fields)
-  - [ ] Test dashboard functionality after fix
-- [ ] Update CRON_JOBS.md to reflect changes
-- [ ] Verify all cron schedules are properly documented
+## Phase 2: Optimization Implementation (Medium Priority)
 
-### Phase 3: System Optimization
-- [ ] Review and optimize constraint validation script
-- [ ] Check for any other undocumented system crontab entries
-- [ ] Validate that all OpenClaw cron jobs are functional
-- [ ] Clean up any temporary files or logs
+### 2.1 Memory System Improvements
+- [ ] Reindex dirty memory stores if needed
+- [ ] Optimize memory search queries
+- [ ] Clean up old memory files
+- [ ] Update memory configuration if necessary
 
-### Phase 4: Validation & Closure
-- [ ] Run comprehensive validation (health, constraints, git, etc.)
-- [ ] Test all quick commands affected by changes
-- [ ] Commit changes with appropriate build: prefix
-- [ ] Push to origin/master
-- [ ] Update active-tasks.md with verification notes
-- [ ] Perform CLOSE THE LOOP validation
+### 2.2 Agent Health Monitoring
+- [ ] Update agent health check scripts
+- [ ] Implement better error handling
+- [ ] Optimize agent resource usage
+- [ ] Add performance metrics
+
+### 2.3 Workspace Organization
+- [ ] Clean up temporary files
+- [ ] Organize documentation structure
+- [ ] Update outdated references
+- [ ] Standardize file formats
+
+## Phase 3: Documentation & Validation (Low Priority)
+
+### 3.1 Documentation Updates
+- [ ] Update TOOLS.md with current settings
+- [ ] Review and update MEMORY.md
+- [ ] Update AGENTS.md if needed
+- [ ] Create/update relevant skill documentation
+
+### 3.2 System Validation
+- [ ] Test all quick commands
+- [ ] Verify no broken links or references
+- [ ] Check file permissions and access
+- [ ] Validate all scheduled tasks
+
+## Execution Priority
+1. Complete Phase 1 analysis first
+2. Implement Phase 2 optimizations based on findings
+3. Update documentation in Phase 3
+4. Perform final validation
 
 ## Success Criteria
-- Dashboard data corruption eliminated
-- Single source of truth for dashboard updates
-- All cron jobs properly documented in OpenClaw system
-- Constraint validation passes (10/10)
-- No regressions in dashboard functionality
-- Git history clean with descriptive commits
-
-## Risk Mitigation
-- Backup current dashboard data before making changes
-- Test migration in dry-run mode first
-- Monitor dashboard functionality closely after changes
-- Ensure fallback mechanisms are in place
-
-## Timeline
-- Phase 1: Complete (current)
-- Phase 2: High priority (immediate attention needed)
-- Phase 3: Normal priority
-- Phase 4: Final validation
-
-## Notes
-- User has indicated preference for clean, centralized cron management
-- Previous workspace builder runs have established good validation patterns
-- Memory system is healthy and should capture this session
+- All quick commands functional
+- Memory system optimized
+- Agent health improved
+- Workspace documentation current
+- No broken files or references

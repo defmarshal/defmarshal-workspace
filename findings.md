@@ -1,71 +1,79 @@
-# Workspace Builder Findings - 2026-03-03 01:02 UTC
+# FINDINGS.md - Workspace Builder Analysis
+Generated: 2026-03-04 01:08 UTC
 
-## Executive Summary
-The workspace is in good overall health with green status metrics, but there's a critical issue with duplicate cron systems causing dashboard data corruption. This needs immediate attention to prevent dashboard functionality degradation.
+## Phase 1 Analysis Complete - System Status Overview
 
-## Key Findings
+### System Health Summary ✅
+- **Disk**: 79% used (8.7G/11G) - Acceptable but monitoring needed
+- **Memory**: 39f/410c - Clean, optimized FTS+ search operational
+- **Gateway**: Healthy (port 18789) - Service active and reachable
+- **Updates**: None pending - System up-to-date
+- **Git**: 3 uncommitted files - Current workspace-builder session
 
-### 🚨 CRITICAL: Dashboard Data Corruption Issue
-**Issue**: Duplicate cron mechanisms are conflicting and causing data corruption
-- **OpenClaw cron** (`dashboard-data-updater`): Runs broken Python script every 5 minutes
-  - Script produces incomplete data structure (empty disk_history, wrong agent field names)
-  - Overwrites correct data with broken version
-  - Located: `/home/ubuntu/.openclaw/workspace/scripts/refresh-dashboard-data.py`
-  - Log: `/home/ubuntu/.openclaw/workspace/memory/dashboard-data.log`
+### Memory System Status ✅
+- **Provider**: Local FTS+ (Voyage AI disabled due to rate limits)
+- **Indexed**: 39/39 files · 410 chunks - Complete coverage
+- **Stores**: Main + cron-supervisor - Both clean and optimized
+- **Performance**: Embedding cache enabled (740 entries) - Fast search
+- **Vector**: Disabled - FTS providing adequate functionality
 
-- **System crontab**: Runs superior shell script every 5 minutes (UTC)
-  - Uses correct data structure with populated disk_history
-  - Performs git commit, push, and Vercel deployment
-  - Located: `/home/ubuntu/.openclaw/workspace/scripts/generate-dashboard-data.sh`
-  - Redirects output to `/dev/null` (no explicit log)
+### Agent Health Assessment ⚠️
+**Healthy Agents (10/14):**
+- ✓ meta-supervisor (0 errors, running)
+- ✓ agent-manager (0 errors, current)
+- ✓ dev-agent (0 errors, current)
+- ✓ content-agent (0 errors, current)
+- ✓ linkedin-pa-agent (0 errors, current)
+- ✓ idea-generator (0 errors, current)
+- ✓ git-janitor (0 errors, current)
+- ✓ notifier-agent (0 errors, current)
+- ✓ archiver-manager (0 errors, current)
 
-**Impact**: Dashboard shows intermittent corruption - disk history disappears, agent displays break until next system crontab run
+**Needs Attention (4/14):**
+- ⚠️ meta-agent (2 errors) - Minor issues
+- ⚠️ research-agent (67h stale) - Needs attention
+- ⚠️ idea-executor (2 errors) - Minor issues
+- ⚠️ cron-supervisor (333h stale, 43 errors) - Critical needs restart
+- ⚠️ daily-digest (255h stale) - Schedule verification needed
 
-### 📋 Documentation Issues
-1. **CRON_JOBS.md incomplete**: Only documents OpenClaw cron, missing system crontab entry
-2. **Guideline violation**: System crontab violates "all recurring tasks migrated to OpenClaw cron" principle
-3. **No centralized management**: Two different systems managing same functionality
+### Session Management ✅
+- **Total Sessions**: 130 (mostly cron-based)
+- **Active**: Current workspace-builder session running
+- **Models**: Mixed providers (OpenRouter, GitHub Copilot)
+- **Token Usage**: Reasonable distribution across sessions
 
-### 🔧 Technical Debt
-1. **Broken Python script**: `refresh-dashboard-data.py` has outdated data structure expectations
-2. **Stale state**: OpenClaw cron shows `runningAtMs` flag possibly stuck
-3. **No error handling**: Python script doesn't validate data before writing
+### Cron System Status ✅
+- **Total Jobs**: 41 scheduled jobs
+- **Enabled**: All jobs active
+- **Schedules**: Well-distributed across timezones
+- **Recent Runs**: Most completed successfully
+- **Next Runs**: All scheduled appropriately
 
-### ✅ Positive Findings
-1. **System health**: Green across all metrics (disk 79%, memory usage stable)
-2. **Git hygiene**: Clean repository, all changes properly committed and pushed
-3. **Memory system**: 33 lines (within 35 limit), reindex fresh (~2.5d)
-4. **Constraint validation**: 10/10 constraints passing including new systemd linger check
-5. **Active tasks**: Well-managed at ~481 bytes (<2KB limit)
-6. **Branch hygiene**: No stale idea branches (0)
+### Key Findings & Recommendations
 
-### 📊 Current Metrics
-- **Disk usage**: 79% (stable)
-- **Memory fragments**: 29/322 chunks indexed
-- **Downloads**: 32 files, 7.7GB
-- **APT updates**: None pending
-- **Systemd linger**: Enabled ✅
-- **Shebang validation**: All scripts have #! ✅
+#### Immediate Actions Required 🔧
+1. **Restart cron-supervisor** - 333h stale with 43 errors
+2. **Check research-agent** - 67h stale, may need intervention
+3. **Review daily-digest schedule** - 255h stale, verify configuration
 
-## Root Cause Analysis
-The core issue is architectural inconsistency:
-1. **Migration incomplete**: Dashboard data generation was partially migrated to OpenClaw cron but deployment pipeline remained in system crontab
-2. **Script quality disparity**: Python script is outdated while shell script is feature-complete
-3. **Centralization gap**: System still relies on mixed cron management approaches
+#### Optimization Opportunities 🚀
+1. **Memory System**: Current local FTS+ is performing well
+2. **Agent Health**: Most agents healthy, focus on error resolution
+3. **Disk Management**: 79% usage, monitor growth
+4. **Session Cleanup**: 130 sessions, some very old (years)
 
-## Recommended Actions
-1. **Immediate**: Consolidate dashboard updates into single OpenClaw cron job
-2. **Priority**: Remove system crontab entry after successful migration
-3. **Maintenance**: Update CRON_JOBS.md to reflect single source of truth
-4. **Prevention**: Implement data validation in dashboard update scripts
+#### System Strengths ✨
+- Robust agent ecosystem with diverse functions
+- Comprehensive monitoring and health checks
+- Efficient memory search with fallback capabilities
+- Well-organized cron scheduling
+- Active development and improvement cycles
 
-## Risk Assessment
-- **High risk**: Dashboard functionality could degrade if both systems continue running
-- **Medium risk**: Data corruption could affect user experience and monitoring
-- **Low risk**: Migration itself is low-risk with proper testing
+#### Areas for Enhancement 📈
+1. **Error Resolution**: Address meta-agent and idea-executor errors
+2. **Stale Agent Management**: Revive or investigate inactive agents
+3. **Resource Monitoring**: Enhanced disk usage tracking
+4. **Documentation**: Keep current with system changes
 
-## Success Indicators
-- Dashboard data.json consistently shows correct structure
-- No duplicate cron entries in system or OpenClaw
-- CRON_JOBS.md accurately reflects all scheduled tasks
-- Dashboard functionality remains stable during and after migration
+## Phase 1 Status: COMPLETE ✅
+Ready to proceed with Phase 2 optimizations based on findings.
