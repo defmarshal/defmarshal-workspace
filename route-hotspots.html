@@ -10,8 +10,6 @@
     #stats { padding: 20px; background: #f5f5f5; }
     .card { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     h1 { margin: 0 0 10px; font-size: 1.2em; }
-    .value { font-size: 1.5em; font-weight: bold; }
-    .label { color: #666; font-size: 0.9em; }
     table { width: 100%; border-collapse: collapse; margin-top: 10px; }
     th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #ddd; }
     th { color: #333; font-weight: bold; }
@@ -26,6 +24,8 @@
     .suggestion-item:hover { background: #f0f0f0; }
     .suggestion-title { font-weight: bold; }
     .suggestion-address { color: #666; font-size: 12px; }
+    .segment-label { background: transparent; border: none; }
+    .segment-label div { background: white; border: 1px solid #333; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
   </style>
 </head>
 <body>
@@ -80,22 +80,6 @@
     </div>
 
     <div class="card">
-      <h1>📈 Gradient Analysis (Time-Space Congestion)</h1>
-      <div>
-        <label>Start: <input type="time" id="gradientStart" value="05:00" style="width:80px"></label>
-        <label>End: <input type="time" id="gradientEnd" value="20:00" style="width:80px"></label>
-        <label>Step (min): <input type="number" id="gradientStep" value="60" min="5" max="120" style="width:60px"></label>
-        <button id="gradientBtn">Generate Gradient</button>
-      </div>
-      <div id="gradient-table-container" style="margin-top:10px; overflow-x:auto;">
-        <table id="gradient-table" style="display:none;">
-          <thead id="gradient-head"></thead>
-          <tbody id="gradient-body"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
       <h1>📊 Segment Slowdown Table</h1>
       <table id="segments-table">
         <thead>
@@ -116,6 +100,22 @@
       <h1>🔍 Debug</h1>
       <div id="debug-output"></div>
     </div>
+
+    <div class="card">
+      <h1>📈 Gradient Analysis (Time-Space Congestion)</h1>
+      <div>
+        <label>Start: <input type="time" id="gradientStart" value="05:00" style="width:80px"></label>
+        <label>End: <input type="time" id="gradientEnd" value="20:00" style="width:80px"></label>
+        <label>Step (min): <input type="number" id="gradientStep" value="60" min="5" max="120" style="width:60px"></label>
+        <button id="gradientBtn">Generate Gradient</button>
+      </div>
+      <div id="gradient-table-container" style="margin-top:10px; overflow-x:auto;">
+        <table id="gradient-table" style="display:none;">
+          <thead id="gradient-head"></thead>
+          <tbody id="gradient-body"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <div id="map"></div>
@@ -129,6 +129,7 @@
     let origLat = -6.45146, origLng = 106.735359;
     let destLat = -6.241173, destLng = 106.840765;
     let availableRoutes = [], selectedRouteIndex = 0, routePolylines = [];
+    let segmentLabelLayer = null;
 
     const map = L.map('map').setView([-6.35, 106.79], 10);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors', maxZoom: 19 }).addTo(map);
@@ -186,8 +187,6 @@
       return await resp.json();
     }
 
-    // Autosuggest: fetch suggestions as user types (biased to Indonesia)
-    let autosuggestDebounce;
     async function fetchAutosuggest(query, field) {
       if (!query || query.length < 2) { hideSuggestions(field); return; }
       const url = `https://autosuggest.search.hereapi.com/v1/autosuggest?q=${encodeURIComponent(query)}&apiKey=${API_KEY}&lang=en-US&in=countryCode:IDN&at=-6.2088,106.8456`;
@@ -237,7 +236,6 @@
       dropdown.style.display = 'none';
     }
 
-    // Geocoding: place name → lat,lon (fallback)
     async function geocodePlace(query) {
       const url = `https://geocode.search.hereapi.com/v1/geocode?q=${encodeURIComponent(query)}&apiKey=${API_KEY}`;
       console.log(`[geocode] ${url}`);
@@ -286,7 +284,6 @@
         const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
         const durMin = Math.round(route.sections[0].summary.duration / 60);
         const item = document.createElement('div'); item.className = 'route-item'; item.id = 'routeLegendItem' + idx;
-        // Use radio buttons for exclusive selection; default check the first route
         item.innerHTML = `<input type="radio" name="selectedRoute" id="routeToggle${idx}" ${idx===0?'checked':''} onchange="toggleRoute(${idx})"><div class="route-color" style="background:${color}"></div><span>Route ${idx+1} (${distKm} km, ${durMin} min)</span>`;
         legendDiv.appendChild(item);
       });
@@ -300,7 +297,6 @@
     }
 
     window.toggleRoute = function(idx) {
-      // Radio button: this route becomes the only visible one
       selectedRouteIndex = idx;
       document.getElementById('routeSelect').value = idx;
       routeLayers.forEach((layer, i) => {
@@ -315,7 +311,6 @@
 
     let segmentPolylines = [];
 
-    // Compute segment data for a given time without drawing/table; returns {segmentData, waypoints, fullCoords}
     async function calculateSegmentData(ts) {
       if (availableRoutes.length === 0) throw new Error('No routes available. Please get alternatives first.');
       const dateVal = document.getElementById('datePicker').value;
@@ -359,10 +354,25 @@
 
         // Draw on map
         map.eachLayer(layer => { if (layer instanceof L.Polyline) map.removeLayer(layer); });
+        if (segmentLabelLayer) map.removeLayer(segmentLabelLayer);
+        segmentLabelLayer = L.layerGroup().addTo(map);
+
         let allPoints = [];
         segmentData.forEach(seg => {
           const color = seg.ratio > 1.2 ? '#f44336' : (seg.ratio > 1.05 ? '#ff9800' : '#4caf50');
           L.polyline(seg.coords, { color, weight: 6, opacity: 0.8 }).addTo(map);
+          if (seg.coords.length > 0) {
+            const midIdx = Math.floor(seg.coords.length / 2);
+            const mid = seg.coords[midIdx];
+            L.marker(mid, {
+              icon: L.divIcon({
+                className: 'segment-label',
+                html: `<div>${seg.segment}</div>`,
+                iconSize: [22, 22],
+                iconAnchor: [11, 11]
+              })
+            }).addTo(segmentLabelLayer);
+          }
           seg.coords.forEach(coord => { if (coord && isFinite(coord[0]) && isFinite(coord[1])) allPoints.push(coord); });
         });
         updateMarkers(); allPoints.push([origLat, origLng], [destLat, destLng]);
@@ -385,16 +395,21 @@
 Transport: ${transportVal}
 Time: ${key} (local)
 Route: ${selectedRouteIndex+1} (${availableRoutes.length} total)
-Waypoints: ${fullCoords.length} points sampled → ${segmentData.length} segments
+Segments: ${segmentData.length}
 
-Segment slowdowns:
+Slowdowns:
 ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000).toFixed(1)} km)`).join('\n')}`;
 
         document.getElementById('loading').textContent = '';
-      } catch (e) { console.error('Analysis failed:', e); document.getElementById('loading').textContent = `Error: ${e.message}`; }
+      } catch (e) {
+        console.error('Analysis failed:', e);
+        document.getElementById('loading').textContent = `Error: ${e.message}`;
+        alert('Analysis failed: ' + e.message);
+      }
     }
 
     // Autosuggest input handlers
+    let autosuggestDebounce;
     const originPlaceEl = document.getElementById('originPlace');
     const destPlaceEl = document.getElementById('destPlace');
     if (originPlaceEl) {
@@ -425,7 +440,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
       if (!e.target.closest('#destPlace') && !e.target.closest('#destSuggestions')) hideSuggestions('dest');
     });
 
-    // Geocode button handlers (fallback)
     document.getElementById('geocodeOriginBtn').addEventListener('click', async () => {
       const query = document.getElementById('originPlace').value.trim();
       if (!query) { alert('Enter a place name'); return; }
@@ -450,7 +464,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
       } catch (e) { alert('Geocode failed: ' + e.message); }
     });
 
-    // Other UI bindings
     document.getElementById('swapBtn').addEventListener('click', () => {
       const originInput = document.getElementById('originInput');
       const destInput = document.getElementById('destInput');
@@ -460,9 +473,7 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
       const destVal = destInput.value.trim();
       const originPlaceVal = originPlaceEl.value.trim();
       const destPlaceVal = destPlaceEl.value.trim();
-      // Swap coordinates
       originInput.value = destVal; destInput.value = originVal;
-      // Swap place names
       originPlaceEl.value = destPlaceVal; destPlaceEl.value = originPlaceVal;
       const oParts = destVal.split(',').map(Number);
       const dParts = originVal.split(',').map(Number);
@@ -498,7 +509,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
 
     document.getElementById('routeSelect').addEventListener('change', (e) => {
       selectedRouteIndex = parseInt(e.target.value);
-      // Hide all except selected
       routeLayers.forEach((layer, i) => {
         if (i === selectedRouteIndex) {
           if (!map.hasLayer(layer)) map.addLayer(layer);
@@ -506,7 +516,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
           if (map.hasLayer(layer)) map.removeLayer(layer);
         }
       });
-      // Also update radio buttons
       document.querySelectorAll('input[name="selectedRoute"]').forEach(r => r.checked = false);
       document.getElementById('routeToggle' + selectedRouteIndex).checked = true;
       updateLegendHighlight();
@@ -521,20 +530,17 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
     });
 
     // Gradient analysis (minute-level)
-    let gradientData = { times: [], matrix: [] }; // matrix[timeIdx][segIdx] = ratio
+    let gradientData = { times: [], matrix: [] };
 
     document.getElementById('gradientBtn').addEventListener('click', async () => {
       if (availableRoutes.length === 0) { alert('Please get alternative routes first.'); return; }
-      const startStr = document.getElementById('gradientStart').value; // "HH:MM"
+      const startStr = document.getElementById('gradientStart').value;
       const endStr = document.getElementById('gradientEnd').value;
       const step = parseInt(document.getElementById('gradientStep').value);
       if (!/^\d{2}:\d{2}$/.test(startStr) || !/^\d{2}:\d{2}$/.test(endStr)) {
         alert('Times must be in HH:MM format'); return;
       }
-      const toMinutes = s => {
-        const [h, m] = s.split(':').map(Number);
-        return h * 60 + m;
-      };
+      const toMinutes = s => { const [h, m] = s.split(':').map(Number); return h * 60 + m; };
       const startMin = toMinutes(startStr);
       const endMin = toMinutes(endStr);
       if (startMin > endMin) { alert('Start time must be <= end time'); return; }
@@ -552,10 +558,10 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
           const { segmentData } = await calculateSegmentData({ hour, min });
           gradientData.matrix[i] = segmentData.map(s => s.ratio);
           document.getElementById('loading').textContent = `Fetched ${String(hour).padStart(2,'0')}:${String(min).padStart(2,'0')} (${i+1}/${times.length})`;
-          await new Promise(r => setTimeout(r, 350)); // throttle to avoid rate limits
+          await new Promise(r => setTimeout(r, 350));
         } catch (e) {
           console.error('Gradient error at', hour, ':', min, e);
-          gradientData.matrix[i] = []; // mark failure
+          gradientData.matrix[i] = [];
         }
       }
       renderGradientTable();
@@ -570,7 +576,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
         table.style.display = 'none';
         return;
       }
-      // Build header: route info + Seg + each time
       const route = availableRoutes[selectedRouteIndex];
       const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
       const durMin = Math.round(route.sections[0].summary.duration / 60);
@@ -586,7 +591,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
       headerHtml += '</tr>';
       thead.innerHTML = headerHtml;
 
-      // Build rows: one per segment
       tbody.innerHTML = '';
       for (let seg = 0; seg < segCount; seg++) {
         const row = tbody.insertRow();
@@ -600,7 +604,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
           } else {
             const ratioStr = ratio.toFixed(2);
             cell.textContent = ratioStr;
-            // color: green <1.05, orange 1.05-1.2, red >1.2
             if (ratio > 1.2) cell.style.color = '#f44336';
             else if (ratio > 1.05) cell.style.color = '#ff9800';
             else cell.style.color = '#4caf50';
@@ -609,6 +612,11 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio.toFixed(3)}× (${(s.length/1000
       }
       table.style.display = 'table';
     }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#originPlace') && !e.target.closest('#originSuggestions')) hideSuggestions('origin');
+      if (!e.target.closest('#destPlace') && !e.target.closest('#destSuggestions')) hideSuggestions('dest');
+    });
 
     window.addEventListener('load', () => { loadAlternatives(); });
   </script>
