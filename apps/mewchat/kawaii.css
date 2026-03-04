@@ -543,3 +543,44 @@ footer { font-size:11px; color:var(--muted); text-align:center; padding:8px; fle
   pointer-events: none;
   transform: translateY(4px);
 }
+
+/* ── New Messages Banner ───────────────────────────────────────────────────── */
+.new-messages-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border: 1px solid var(--purple);
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: var(--purple);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(188, 140, 255, 0.2);
+  z-index: 50;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: slide-up 0.3s ease-out;
+}
+.new-messages-banner:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(188, 140, 255, 0.3);
+}
+.new-messages-banner .count {
+  background: var(--purple);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+.new-messages-banner.hidden {
+  display: none;
+}
+@keyframes slide-up {
+  from { transform: translate(-50%, 20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}

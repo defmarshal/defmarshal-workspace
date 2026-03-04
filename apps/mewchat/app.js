@@ -11,6 +11,7 @@
   let lastMessageCount = 0;
   let lastFailedMessage = null; // for retry
   let unreadCount = 0; // for title badge when tab hidden
+  let unreadBannerCount = 0; // for new messages banner
   let reconnectAttempts = 0;
   let reconnectTimeout = null;
   let reconnectSystemMessageId = null; // track system message for updates
@@ -43,6 +44,7 @@
   const errorEl = document.getElementById('error');
   const mascot = document.getElementById('mascot');
   const charCountEl = document.getElementById('char-count');
+  const newMessagesBanner = document.getElementById('new-messages-banner');
   if (charCountEl) charCountEl.textContent = msgInput.value.length;
 
   // Connection status indicator
@@ -104,6 +106,11 @@
   chatMessages.addEventListener('scroll', () => {
     toggleScrollBottomBtn();
     toggleScrollTopBtn();
+    // Reset banner when scrolled to bottom
+    if (isAtBottom()) {
+      unreadBannerCount = 0;
+      updateNewMessagesBanner();
+    }
   });
 
   if (scrollBottomBtn) {
@@ -217,6 +224,33 @@
     lastUpdatedEl.textContent = `Updated ${formatRelativeTime(now)}`;
   }
 
+  // New Messages Banner helpers
+  function isAtBottom() {
+    return chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 10;
+  }
+
+  function updateNewMessagesBanner() {
+    if (!newMessagesBanner) return;
+    const countEl = newMessagesBanner.querySelector('.count');
+    if (countEl) countEl.textContent = unreadBannerCount;
+    if (unreadBannerCount > 0) {
+      newMessagesBanner.classList.remove('hidden');
+    } else {
+      newMessagesBanner.classList.add('hidden');
+    }
+  }
+
+  function onBannerClick() {
+    chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+    unreadBannerCount = 0;
+    updateNewMessagesBanner();
+  }
+
+  // Attach click handler for banner
+  if (newMessagesBanner) {
+    newMessagesBanner.addEventListener('click', onBannerClick);
+  }
+
   // Reconnection status messages
   function showReconnectStatus() {
     removeReconnectStatus(); // remove any existing
@@ -292,7 +326,7 @@
     type();
   }
 
-  function renderMessage(role, text, time, animate = false) {
+  function renderMessage(role, text, time, animate = false, autoScroll = true) {
     const div = document.createElement('div');
     div.className = 'msg ' + role;
     const avatar = role === 'assistant' ? `<svg viewBox="0 0 100 100" width="24" height="24" style="vertical-align:middle"><g transform="translate(0,-10)"><circle cx="50" cy="60" r="40" fill="#ff79c6" stroke="#ffb86c" stroke-width="3"/><polygon points="20,35 30,50 10,50" fill="#ff79c6" stroke="#ffb86c" stroke-width="2"/><polygon points="80,35 70,50 90,50" fill="#ff79c6" stroke="#ffb86c" stroke-width="2"/><polygon points="22,42 28,50 15,50" fill="#ffb86c"/><polygon points="78,42 72,50 85,50" fill="#ffb86c"/><ellipse cx="38" cy="55" rx="5" ry="7" fill="#0b0e14"/><ellipse cx="62" cy="55" rx="5" ry="7" fill="#0b0e14"/><ellipse cx="50" cy="50" rx="6" ry="4" fill="#0b0e14"/><ellipse cx="30" cy="70" rx="8" ry="5" fill="#ff6b9d" opacity="0.6"/><ellipse cx="70" cy="70" rx="8" ry="5" fill="#ff6b9d" opacity="0.6"/><path d="M 40 75 Q 50 82 60 75" stroke="#0b0e14" stroke-width="3" fill="none" stroke-linecap="round"/><line x1="15" y1="60" x2="30" y2="65" stroke="#0b0e14" stroke-width="2"/><line x1="15" y1="70" x2="30" y2="70" stroke="#0b0e14" stroke-width="2"/><line x1="85" y1="60" x2="70" y2="65" stroke="#0b0e14" stroke-width="2"/><line x1="85" y1="70" x2="70" y2="70" stroke="#0b0e14" stroke-width="2"/><circle cx="85" cy="85" r="8" fill="#ff79c6" stroke="#ffb86c" stroke-width="2"/></g></svg>` : '👤';
@@ -342,7 +376,9 @@
     } else {
       bubble.textContent = text;
     }
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    if (autoScroll) {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
     return div; // return element for status updates
   }
 
@@ -463,6 +499,8 @@
   function performClear() {
     chatMessages.innerHTML = '';
     lastMessageCount = 0;
+    unreadBannerCount = 0;
+    updateNewMessagesBanner();
     localStorage.removeItem('mewchat-draft');
     msgInput.value = '';
     if (charCountEl) charCountEl.textContent = '0';
@@ -498,6 +536,9 @@
         sessionSelect.value = currentSessionKey;
         localStorage.setItem('mewchat-session', currentSessionKey);
       }
+      // Reset banner count on session load/switch
+      unreadBannerCount = 0;
+      updateNewMessagesBanner();
       startSSE(currentSessionKey);
     } catch (e) {
       showError('Could not load sessions: ' + e.message);
@@ -649,13 +690,25 @@
             unreadCount += newMsgs.length;
             document.title = `(${unreadCount}) MewChat — chat with mewmew`;
           }
+          // Determine if user is at bottom before rendering
+          const wasAtBottom = isAtBottom();
           newMsgs.forEach((m, idx) => {
             const isLatest = idx === newMsgs.length - 1;
-            const animate = m.role === 'assistant' && isLatest;
-            renderMessage(m.role, m.text, m.ts, animate);
+            // Only animate assistant's latest message if we were at bottom
+            const animate = wasAtBottom && m.role === 'assistant' && isLatest;
+            renderMessage(m.role, m.text, m.ts, animate, false); // no auto-scroll
           });
           lastMessageCount = newCount;
           updateLastUpdated();
+          // After rendering, decide to scroll or show banner
+          if (wasAtBottom) {
+            // Ensure we scroll to bottom after all messages rendered
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          } else {
+            // User is scrolled up; accumulate unread count and show banner
+            unreadBannerCount += newMsgs.length;
+            updateNewMessagesBanner();
+          }
         }
       } catch (e) {
         console.error('SSE parse error:', e);
@@ -680,6 +733,8 @@
   sessionSelect.addEventListener('change', () => {
     currentSessionKey = sessionSelect.value;
     localStorage.setItem('mewchat-session', currentSessionKey);
+    unreadBannerCount = 0;
+    updateNewMessagesBanner();
     startSSE(currentSessionKey);
   });
 
