@@ -1,93 +1,20 @@
 # Game Enhancement Report
 
-**Focus**: Features
-**Timestamp**: 2026-03-01T15:06:54.784758Z
-**Cycle**: 5
+**Focus**: Content
+**Timestamp**: 2026-03-04T18:11:32.226120Z
+**Cycle**: 6
 
 ---
 
 ## Research (Gemini CLI)
 
-To provide actionable improvements for **anime-studio-tycoon**, I have analyzed the current resource loops and progression mechanics. The following suggestions focus on adding strategic depth, specialized management, and dynamic replayability.
-
-### 1. Market Trends & Genre System
-*   **ISSUE**: Currently, every "show" is identical. There is no strategic decision-making regarding *what* kind of anime you are making, leading to a repetitive "numbers go up" experience.
-*   **FIX**: Introduce a `genre` for the studio and a rotating `market_trend` that provides bonuses to Fan growth.
-    
-    **Add to State (approx. line 30):**
-    ```python
-    GENRES = ["Shonen", "Isekai", "Slice of Life", "Mecha", "Horror"]
-    player_genre = "Shonen"  # Set during a new "Start Season" function
-    market_trend = random.choice(GENRES)
-    ```
-
-    **Update `episode_gain()` (approx. line 166):**
-    ```python
-    def episode_gain():
-        # ... existing code ...
-        trend_mult = 1.5 if player_genre == market_trend else 1.0
-        gained = int(max(200, base + random.randint(-200, 500)) * trend_mult)
-        if trend_mult > 1.0:
-            print(f"  {C.M}🔥 TREND BONUS: {player_genre} is hot right now!{C.E}")
-        # ... rest of function ...
-    ```
-*   **RATIONALE**: This forces players to adapt their strategy. Investing in "Isekai" might be risky if the trend shifts to "Mecha," creating a meaningful choice between "playing it safe" vs. "chasing the meta."
-
-### 2. Staff Productivity & "Crunch" Mechanic
-*   **ISSUE**: Staff count is currently just a salary drain. There is no representation of the "Crunch Culture" prevalent in the industry, and the "Rush episode" choice (line 184) has no supporting logic in the snippet.
-*   **FIX**: Replace the flat episode increment with a `production_points` system where staff count determines weekly progress. Add a "Crunch" mode that boosts progress at the cost of `reputation` and `morale`.
-
-    **Add to State:**
-    ```python
-    production_progress = 0
-    points_per_episode = 100
-    is_crunching = False
-    ```
-
-    **New logic for the main loop (Integration):**
-    ```python
-    def process_week():
-        global production_progress, episodes_completed, reputation
-        
-        # Calculate weekly progress based on staff
-        weekly_gain = staff * 5
-        if is_crunching:
-            weekly_gain *= 2
-            reputation -= 2
-            print(f"  {C.R}⚠️ CRUNCH ACTIVE: Progress doubled, but staff is miserable.{C.E}")
-            
-        production_progress += weekly_gain
-        
-        if production_progress >= points_per_episode:
-            production_progress -= points_per_episode
-            episode_gain()
-    ```
-*   **RATIONALE**: This transforms staff from a "static cost" into a "production engine." It also gives the "Rush" choice a mechanical trade-off: speed up production to hit a deadline vs. preserving studio reputation.
-
-### 3. Talent Specialization (Lead Roles)
-*   **ISSUE**: Staff are treated as a fungible pool (just a number). There are no "hero" units or specialized hires that change how the studio operates.
-*   **FIX**: Add a "Lead Director" or "Star Animator" upgrade/slot that provides unique global modifiers.
-
-    **Add to `UPGRADES` (approx. line 62):**
-    ```python
-    "star_director": {
-        "cost": 30_000, 
-        "label": "Star Director", 
-        "desc": "Reputation gain from episodes is doubled."
-    },
-    "god_animator": {
-        "cost": 25_000, 
-        "label": "God Animator", 
-        "desc": "Reduces 'Staff burnout' event chance by 50%."
-    }
-    ```
-*   **RATIONALE**: Upgrading from 5 to 6 staff feels incremental; hiring a "Star Director" feels like a milestone. It gives the player long-term "prestige" goals to aim for beyond the basic merch shops.
+[Gemini CLI timed out]
 
 ---
 
 ## Implementation (Qwen Code)
 
-Successfully updated main.py — applied features enhancement
+Successfully updated main.py — applied content enhancement
 
 ---
 

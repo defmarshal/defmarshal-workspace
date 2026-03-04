@@ -15,8 +15,7 @@
     th { color: #333; font-weight: bold; }
     input, select, button { padding: 8px 12px; margin: 5px; }
     #loading { color: #0066cc; font-weight: bold; margin: 10px 0; }
-    #debug-output { font-family: monospace; font-size: 12px; color: #333; background: #fafafa; padding: 10px; border: 1px solid #ddd; max-height: 300px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; }
-    .route-legend { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; }
+    .route-legend { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center; }
     .route-item { display: flex; align-items: center; gap: 6px; }
     .route-color { width: 24px; height: 4px; border-radius: 2px; }
     .suggestions-dropdown { font-family: sans-serif; font-size: 14px; }
@@ -37,6 +36,11 @@
           <label>Origin place: <input type="text" id="originPlace" placeholder="Type a place (e.g., Grand Indonesia, Jakarta)" style="width:300px" autocomplete="off"></label>
           <div id="originSuggestions" class="suggestions-dropdown" style="display:none; position:absolute; z-index:1000; top:100%; left:0; background:white; border:1px solid #ccc; max-height:200px; overflow-y:auto; width:300px;"></div>
         </div>
+        <div style="margin-bottom:8px; position: relative;">
+          <label>Via place (optional): <input type="text" id="viaPlace" placeholder="e.g., Cimahi" style="width:300px" autocomplete="off"></label>
+          <div id="viaSuggestions" class="suggestions-dropdown" style="display:none; position:absolute; z-index:1000; top:100%; left:0; background:white; border:1px solid #ccc; max-height:200px; overflow-y:auto; width:300px;"></div>
+          <button id="clearViaBtn" style="margin-left:5px; font-size:12px;">Clear</button>
+        </div>
         <div style="position: relative;">
           <label>Destination place: <input type="text" id="destPlace" placeholder="Type a place (e.g., Bandung Airport)" style="width:300px" autocomplete="off"></label>
           <div id="destSuggestions" class="suggestions-dropdown" style="display:none; position:absolute; z-index:1000; top:100%; left:0; background:white; border:1px solid #ccc; max-height:200px; overflow-y:auto; width:300px;"></div>
@@ -52,8 +56,6 @@
             <option value="pedestrian">Walk</option>
           </select>
         </label>
-        <label>Alternatives: <input type="number" id="alternativeCount" value="3" min="1" max="5" style="width:60px"></label>
-        <label>Segments: <input type="number" id="segmentCount" value="4" min="2" max="10" style="width:60px"></label>
       </div>
       <div id="routeLegend" class="route-legend"></div>
       <div id="loading"></div>
@@ -83,11 +85,6 @@
     </div>
 
     <div class="card">
-      <h1>🔍 Debug</h1>
-      <div id="debug-output"></div>
-    </div>
-
-    <div class="card">
       <h1>📈 Gradient Analysis (Time-Space Congestion)</h1>
       <div>
         <label>Start: <input type="time" id="gradientStart" value="05:00" style="width:80px"></label>
@@ -103,6 +100,19 @@
         </table>
       </div>
     </div>
+
+    <div class="card">
+      <h1>💾 Manage Saved Routes</h1>
+      <div>
+        <button id="saveRouteBtn">Save current</button>
+        <label>Load: 
+          <select id="savedRoutesSelect">
+            <option value="">-- select saved --</option>
+          </select>
+        </label>
+        <button id="deleteRouteBtn">Delete</button>
+      </div>
+    </div>
   </div>
 
   <div id="map"></div>
@@ -115,8 +125,10 @@
     let destCoord = '-6.241173,106.840765';
     let origLat = -6.45146, origLng = 106.735359;
     let destLat = -6.241173, destLng = 106.840765;
+    let viaCoord = null, viaLat = null, viaLng = null;
     let availableRoutes = [], selectedRouteIndex = 0, routePolylines = [];
     let segmentLabelLayer = null;
+    let lastTs = null;
 
     const map = L.map('map').setView([-6.35, 106.79], 10);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors', maxZoom: 19 }).addTo(map);
@@ -167,7 +179,9 @@
       const dep = buildDepartureTime(dateStr, hour, min);
       let url = `https://router.hereapi.com/v8/routes?transportMode=${transport}&origin=${originCoord}&destination=${destCoord}&departureTime=${dep}&traffic=enabled&return=polyline,summary&apiKey=${API_KEY}&_t=${Date.now()}`;
       if (alternatives > 0) url += `&alternatives=${alternatives}`;
-      if (viaPoints.length) { viaPoints.forEach(vp => { url += `&via=${encodeURIComponent(vp)}`; }); }
+      const pointsToUse = viaPoints.length ? viaPoints : (viaCoord ? [viaCoord] : []);
+      if (pointsToUse.length) { pointsToUse.forEach(vp => { url += `&via=${encodeURIComponent(vp)}`; }); }
+      url += '&avoid=tollRoad&avoid=controlledAccessHighway';
       console.log(`[fetchRoute] ${url}`);
       const resp = await fetch(url);
       if (!resp.ok) { const err = await resp.text(); console.error('HTTP', resp.status, err); throw new Error(`HTTP ${resp.status}: ${err.substring(0,200)}`); }
@@ -188,7 +202,7 @@
     }
 
     function showSuggestions(items, field) {
-      const dropdown = document.getElementById(field === 'origin' ? 'originSuggestions' : 'destSuggestions');
+      const dropdown = document.getElementById(field === 'origin' ? 'originSuggestions' : field === 'via' ? 'viaSuggestions' : 'destSuggestions');
       dropdown.innerHTML = '';
       if (!items || items.length === 0) { dropdown.style.display = 'none'; return; }
       items.slice(0, 8).forEach(item => {
@@ -208,10 +222,13 @@
     function selectSuggestion(item, field) {
       const coords = `${item.position.lat.toFixed(6)},${item.position.lng.toFixed(6)}`;
       if (field === 'origin') {
-        // originInput removed; set coordinates and markers directly
         originCoord = coords;
         origLat = item.position.lat; origLng = item.position.lng;
         document.getElementById('originPlace').value = item.title;
+      } else if (field === 'via') {
+        viaCoord = coords;
+        viaLat = item.position.lat; viaLng = item.position.lng;
+        document.getElementById('viaPlace').value = item.title;
       } else {
         destCoord = coords;
         destLat = item.position.lat; destLng = item.position.lng;
@@ -223,19 +240,8 @@
     }
 
     function hideSuggestions(field) {
-      const dropdown = document.getElementById(field === 'origin' ? 'originSuggestions' : 'destSuggestions');
+      const dropdown = document.getElementById(field === 'origin' ? 'originSuggestions' : field === 'via' ? 'viaSuggestions' : 'destSuggestions');
       dropdown.style.display = 'none';
-    }
-
-    async function geocodePlace(query) {
-      const url = `https://geocode.search.hereapi.com/v1/geocode?q=${encodeURIComponent(query)}&apiKey=${API_KEY}`;
-      console.log(`[geocode] ${url}`);
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error(`Geocode HTTP ${resp.status}`);
-      const data = await resp.json();
-      if (!data.items || data.items.length === 0) throw new Error('No results found');
-      const item = data.items[0];
-      return { lat: item.position.lat, lng: item.position.lng, label: item.title };
     }
 
     let routeLayers = [];
@@ -243,7 +249,7 @@
     async function loadAlternatives() {
       const dateVal = document.getElementById('datePicker').value;
       const transportVal = document.getElementById('transportSelect').value;
-      const altCount = parseInt(document.getElementById('alternativeCount').value);
+      const altCount = 5;
       document.getElementById('loading').textContent = 'Fetching alternative routes...';
       try {
         const data = await fetchRoute(dateVal, 17, 0, transportVal, [], altCount);
@@ -268,6 +274,10 @@
         const polyline = L.polyline(coords, { color, weight: 4, opacity: 0.8 }).addTo(map);
         routeLayers.push(polyline);
       });
+      const masterCb = document.getElementById('showAllRoutes');
+      if (masterCb && !masterCb.checked) {
+        routeLayers.forEach(layer => map.removeLayer(layer));
+      }
       updateMarkers();
       const allPoints = routePolylines.flat();
       if (allPoints.length > 0) map.fitBounds(L.latLngBounds(allPoints), { padding: [20,20] });
@@ -275,41 +285,42 @@
 
     function buildLegend() {
       const legendDiv = document.getElementById('routeLegend'); legendDiv.innerHTML = '';
+      const masterItem = document.createElement('div'); masterItem.className = 'route-item';
+      masterItem.innerHTML = `<label><input type="checkbox" id="showAllRoutes" checked onchange="toggleShowAll(this)"> Show all routes</label>`;
+      legendDiv.appendChild(masterItem);
+
       availableRoutes.forEach((route, idx) => {
         const color = ROUTE_COLORS[idx % ROUTE_COLORS.length];
         const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
         const durMin = Math.round(route.sections[0].summary.duration / 60);
         const item = document.createElement('div'); item.className = 'route-item'; item.id = 'routeLegendItem' + idx;
-        item.innerHTML = `<input type="radio" name="selectedRoute" id="routeToggle${idx}" ${idx===0?'checked':''} onchange="toggleRoute(${idx})"><div class="route-color" style="background:${color}"></div><span>Route ${idx+1} (${distKm} km, ${durMin} min)</span>`;
+        item.innerHTML = `<input type="radio" name="selectedRoute" id="routeRadio${idx}" ${idx===0?'checked':''} onchange="selectRoute(${idx})"><div class="route-color" style="background:${color}"></div><span>Route ${idx+1} (${distKm} km, ${durMin} min)</span>`;
         legendDiv.appendChild(item);
       });
-      updateLegendHighlight();
     }
 
-    function updateLegendHighlight() {
-      document.querySelectorAll('.route-item').forEach(item => { item.style.fontWeight = 'normal'; item.style.backgroundColor = ''; });
-      const selectedItem = document.getElementById('routeLegendItem' + selectedRouteIndex);
-      if (selectedItem) { selectedItem.style.fontWeight = 'bold'; selectedItem.style.backgroundColor = '#e6f7ff'; }
-    }
-
-    window.toggleRoute = function(idx) {
-      selectedRouteIndex = idx;
-      routeLayers.forEach((layer, i) => {
-        if (i === idx) {
+    window.toggleShowAll = function(masterCb) {
+      routeLayers.forEach((layer, idx) => {
+        if (masterCb.checked) {
           if (!map.hasLayer(layer)) map.addLayer(layer);
         } else {
           if (map.hasLayer(layer)) map.removeLayer(layer);
         }
       });
-      updateLegendHighlight();
     };
 
-    // Compute segment data for a given time and optional date override
+    window.selectRoute = function(idx) {
+      selectedRouteIndex = idx;
+      if (lastTs) { analyzeHotspots(lastTs); }
+    };
+
+    let segmentPolylines = [];
+
     async function calculateSegmentData(ts, overrideDate = null) {
       if (availableRoutes.length === 0) throw new Error('No routes available. Please get alternatives first.');
       const dateVal = overrideDate || document.getElementById('datePicker').value;
       const transportVal = document.getElementById('transportSelect').value;
-      const segCountWanted = parseInt(document.getElementById('segmentCount').value);
+      const segCountWanted = 15;
       const selectedRoute = availableRoutes[selectedRouteIndex];
       if (!selectedRoute.sections || selectedRoute.sections.length === 0) throw new Error('Selected route has no sections');
       const fullSection = selectedRoute.sections[0];
@@ -338,7 +349,7 @@
     }
 
     async function analyzeHotspots(ts) {
-      if (availableRoutes.length === 0) { document.getElementById('loading').textContent = 'Please click "Get Alternatives" first.'; return; }
+      if (availableRoutes.length === 0) { document.getElementById('loading').textContent = 'Please select origin and destination places first.'; return; }
       const key = `${String(ts.hour).padStart(2,'0')}:${String(ts.min).padStart(2,'0')}`;
       const use30DayAvg = document.getElementById('use30DayAvg').checked;
       document.getElementById('loading').textContent = `Analyzing Route ${selectedRouteIndex+1} at ${key}${use30DayAvg ? ' (30‑day avg)' : '...'}`;
@@ -346,7 +357,6 @@
       try {
         let segmentData;
         if (use30DayAvg) {
-          // Compute 30‑day average for this time
           const refDateStr = document.getElementById('datePicker').value;
           const refDate = new Date(refDateStr);
           const dates30 = [];
@@ -357,7 +367,7 @@
           }
 
           let sumsRatio = null, sumsDuration = null, sumsBaseline = null, counts = null;
-          let firstSegments = null; // keep full segmentData from first successful fetch (for coords & length)
+          let firstSegments = null;
 
           let done = 0;
           for (const dateStr of dates30) {
@@ -370,9 +380,7 @@
                 sumsBaseline = Array(segCount).fill(0);
                 counts = Array(segCount).fill(0);
               }
-              if (firstSegments === null) {
-                firstSegments = sd; // keep first day's full objects
-              }
+              if (firstSegments === null) { firstSegments = sd; }
               sd.forEach((seg, idx) => {
                 sumsRatio[idx] += seg.ratio;
                 sumsDuration[idx] += seg.duration;
@@ -390,7 +398,6 @@
 
           if (!sumsRatio) throw new Error('No successful fetches in 30‑day window');
 
-          // Build averaged segmentData using first day's geometry (coords, length)
           segmentData = firstSegments.map((firstSeg, idx) => ({
             segment: firstSeg.segment,
             ratio: sumsRatio[idx] / counts[idx],
@@ -406,7 +413,6 @@
 
         drawSegments(segmentData);
         fillSegmentTable(segmentData, key);
-        updateDebug(segmentData, null, key);
         document.getElementById('loading').textContent = '';
       } catch (e) {
         console.error('Analysis failed:', e);
@@ -419,6 +425,17 @@
       map.eachLayer(layer => { if (layer instanceof L.Polyline) map.removeLayer(layer); });
       if (segmentLabelLayer) map.removeLayer(segmentLabelLayer);
       segmentLabelLayer = L.layerGroup().addTo(map);
+
+      // Re-add all route layers based on master checkbox
+      const masterCb = document.getElementById('showAllRoutes');
+      const showAll = masterCb ? masterCb.checked : true;
+      routePolylines.forEach((coords, idx) => {
+        if (coords.length === 0) return;
+        const color = ROUTE_COLORS[idx % ROUTE_COLORS.length];
+        const polyline = L.polyline(coords, { color, weight: 4, opacity: 0.8 });
+        if (showAll) map.addLayer(polyline);
+        routeLayers[idx] = polyline;
+      });
 
       let allPoints = [];
       segmentData.forEach(seg => {
@@ -455,27 +472,136 @@
       });
     }
 
-    function updateDebug(segmentData, fullCoords, key) {
-      const use30DayAvg = document.getElementById('use30DayAvg').checked;
-      const dateVal = document.getElementById('datePicker').value;
-      const transportVal = document.getElementById('transportSelect').value;
-      let txt = `Date: ${use30DayAvg ? '30‑day avg ending ' + dateVal : dateVal}
-Transport: ${transportVal}
-Time: ${key} (local)
-Route: ${selectedRouteIndex+1} (${availableRoutes.length} total)
-Segments: ${segmentData.length}
+    // Autosuggest input handlers
+    let autosuggestDebounce, viaAutosuggestDebounce;
+    const originPlaceEl = document.getElementById('originPlace');
+    const destPlaceEl = document.getElementById('destPlace');
+    const viaPlaceEl = document.getElementById('viaPlace');
 
-Slowdowns:
-${segmentData.map(s => `#${s.segment}: ${s.ratio ? s.ratio.toFixed(3) : '-'}×`).join('\n')}`;
-      document.getElementById('debug-output').textContent = txt;
+    if (originPlaceEl) {
+      originPlaceEl.addEventListener('input', () => {
+        clearTimeout(autosuggestDebounce);
+        autosuggestDebounce = setTimeout(() => {
+          const val = originPlaceEl.value.trim();
+          if (val.length >= 2) fetchAutosuggest(val, 'origin');
+          else hideSuggestions('origin');
+        }, 300);
+      });
+    }
+    if (destPlaceEl) {
+      destPlaceEl.addEventListener('input', () => {
+        clearTimeout(autosuggestDebounce);
+        autosuggestDebounce = setTimeout(() => {
+          const val = destPlaceEl.value.trim();
+          if (val.length >= 2) fetchAutosuggest(val, 'dest');
+          else hideSuggestions('dest');
+        }, 300);
+      });
+    }
+    if (viaPlaceEl) {
+      viaPlaceEl.addEventListener('input', () => {
+        clearTimeout(viaAutosuggestDebounce);
+        viaAutosuggestDebounce = setTimeout(() => {
+          const val = viaPlaceEl.value.trim();
+          if (val.length >= 2) fetchAutosuggest(val, 'via');
+          else hideSuggestions('via');
+        }, 300);
+      });
     }
 
-    function updateDebug(segmentData, fullCoords, key) {
-      // Already updated above; separate function for clarity if needed.
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#originPlace') && !e.target.closest('#originSuggestions')) hideSuggestions('origin');
+      if (!e.target.closest('#destPlace') && !e.target.closest('#destSuggestions')) hideSuggestions('dest');
+      if (!e.target.closest('#viaPlace') && !e.target.closest('#viaSuggestions')) hideSuggestions('via');
+    });
+
+    document.getElementById('clearViaBtn').addEventListener('click', () => {
+      document.getElementById('viaPlace').value = '';
+      viaCoord = null; viaLat = null; viaLng = null;
+    });
+
+    // Save/Load handlers
+    document.getElementById('saveRouteBtn').addEventListener('click', () => {
+      const name = prompt('Enter a name for this saved route:');
+      if (!name) return;
+      const saved = JSON.parse(localStorage.getItem('savedRoutes') || '[]');
+      const route = {
+        name,
+        originCoord,
+        destCoord,
+        viaCoord,
+        date: document.getElementById('datePicker').value,
+        transport: document.getElementById('transportSelect').value
+      };
+      saved.push(route);
+      localStorage.setItem('savedRoutes', JSON.stringify(saved));
+      refreshSavedRoutes();
+      alert('Route saved!');
+    });
+
+    document.getElementById('savedRoutesSelect').addEventListener('change', (e) => {
+      const idx = e.target.value;
+      if (!idx) return;
+      const saved = JSON.parse(localStorage.getItem('savedRoutes') || '[]');
+      const route = saved[parseInt(idx)];
+      if (route) {
+        document.getElementById('originPlace').value = '';
+        document.getElementById('destPlace').value = '';
+        document.getElementById('viaPlace').value = '';
+        // We don't have place names, just coords; set coords and markers
+        originCoord = route.originCoord;
+        destCoord = route.destCoord;
+        if (route.viaCoord) {
+          viaCoord = route.viaCoord;
+          document.getElementById('viaPlace').value = '(via saved)';
+        }
+        const o = route.originCoord.split(',').map(Number);
+        const d = route.destCoord.split(',').map(Number);
+        if (o.length === 2) { origLat = o[0]; origLng = o[1]; }
+        if (d.length === 2) { destLat = d[0]; destLng = d[1]; }
+        document.getElementById('datePicker').value = route.date;
+        document.getElementById('transportSelect').value = route.transport;
+        updateMarkers();
+        alert(`Loaded "${route.name}"`);
+      }
+    });
+
+    document.getElementById('deleteRouteBtn').addEventListener('click', () => {
+      const idx = document.getElementById('savedRoutesSelect').value;
+      if (!idx) return;
+      const saved = JSON.parse(localStorage.getItem('savedRoutes') || '[]');
+      saved.splice(parseInt(idx), 1);
+      localStorage.setItem('savedRoutes', JSON.stringify(saved));
+      refreshSavedRoutes();
+      alert('Deleted');
+    });
+
+    function refreshSavedRoutes() {
+      const select = document.getElementById('savedRoutesSelect');
+      const saved = JSON.parse(localStorage.getItem('savedRoutes') || '[]');
+      select.innerHTML = '<option value="">-- select saved --</option>';
+      saved.forEach((route, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = route.name;
+        select.appendChild(opt);
+      });
     }
 
-    // Gradient analysis (minute-level) with optional 30‑day average
-    let gradientData = { times: [], matrix: [] };
+    // Time buttons: always fetch fresh alternatives then analyze selected route
+    document.querySelectorAll('.time-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const hour = parseInt(btn.dataset.hour);
+        const min = parseInt(btn.dataset.min);
+        lastTs = { hour, min };
+        document.getElementById('loading').textContent = 'Fetching alternatives...';
+        const ok = await loadAlternatives();
+        if (!ok) return;
+        document.getElementById('routeRadio0').checked = true;
+        selectedRouteIndex = 0;
+        analyzeHotspots(lastTs);
+      });
+    });
 
     document.getElementById('gradientBtn').addEventListener('click', async () => {
       if (availableRoutes.length === 0) { alert('Please get alternative routes first.'); return; }
@@ -496,7 +622,6 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio ? s.ratio.toFixed(3) : '-'}×`)
       gradientData = { times, matrix: [] };
 
       if (!use30DayAvg) {
-        // Single-day mode (original)
         document.getElementById('loading').textContent = `Generating gradient for ${times.length} time points...`;
         for (let i = 0; i < times.length; i++) {
           const totalMin = times[i];
@@ -513,8 +638,7 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio ? s.ratio.toFixed(3) : '-'}×`)
           }
         }
       } else {
-        // 30‑day average mode
-        const refDateStr = document.getElementById('datePicker').value; // end date of window
+        const refDateStr = document.getElementById('datePicker').value;
         const refDate = new Date(refDateStr);
         const dates30 = [];
         for (let i = 29; i >= 0; i--) {
@@ -524,8 +648,8 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio ? s.ratio.toFixed(3) : '-'}×`)
         }
         document.getElementById('loading').textContent = `30‑day avg: ${dates30.length} days × ${times.length} times = ${dates30.length*times.length} requests...`;
 
-        // Prepare accumulation arrays; will allocate once we know segment count
-        let sums = null; let counts = null;
+        let sums = null, counts = null;
+        let firstSegments = null;
 
         let totalDone = 0;
         const total = dates30.length * times.length;
@@ -543,23 +667,24 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio ? s.ratio.toFixed(3) : '-'}×`)
                 sums = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
                 counts = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
               }
+              if (firstSegments === null) { firstSegments = segmentData; }
               segmentData.forEach((seg, sIdx) => {
                 sums[tIdx][sIdx] += seg.ratio;
                 counts[tIdx][sIdx] += 1;
               });
             } catch (e) {
               console.warn(`Failed ${dateStr} ${hour}:${min}`, e.message);
-              // leave as missing; will be ignored in average
             }
             totalDone++;
             if (totalDone % 5 === 0 || totalDone === total) {
               document.getElementById('loading').textContent = `30‑day avg: ${totalDone}/${total} requests done...`;
             }
-            await new Promise(r => setTimeout(r, 300)); // throttle
+            await new Promise(r => setTimeout(r, 300));
           }
         }
 
-        // Compute averages
+        if (!sums) throw new Error('No successful fetches in 30‑day window');
+
         gradientData.matrix = sums.map((row, tIdx) => row.map((sum, sIdx) => {
           const cnt = counts[tIdx][sIdx];
           return cnt > 0 ? sum / cnt : null;
@@ -615,57 +740,9 @@ ${segmentData.map(s => `#${s.segment}: ${s.ratio ? s.ratio.toFixed(3) : '-'}×`)
       table.style.display = 'table';
     }
 
-    // Autosuggest input handlers
-    let autosuggestDebounce;
-    const originPlaceEl = document.getElementById('originPlace');
-    const destPlaceEl = document.getElementById('destPlace');
-    if (originPlaceEl) {
-      originPlaceEl.addEventListener('input', () => {
-        clearTimeout(autosuggestDebounce);
-        autosuggestDebounce = setTimeout(() => {
-          const val = originPlaceEl.value.trim();
-          console.log('originPlace input:', val);
-          if (val.length >= 2) fetchAutosuggest(val, 'origin');
-          else hideSuggestions('origin');
-        }, 300);
-      });
-    } else { console.error('originPlace element not found'); }
-    if (destPlaceEl) {
-      destPlaceEl.addEventListener('input', () => {
-        clearTimeout(autosuggestDebounce);
-        autosuggestDebounce = setTimeout(() => {
-          const val = destPlaceEl.value.trim();
-          console.log('destPlace input:', val);
-          if (val.length >= 2) fetchAutosuggest(val, 'dest');
-          else hideSuggestions('dest');
-        }, 300);
-      });
-    } else { console.error('destPlace element not found'); }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#originPlace') && !e.target.closest('#originSuggestions')) hideSuggestions('origin');
-      if (!e.target.closest('#destPlace') && !e.target.closest('#destSuggestions')) hideSuggestions('dest');
+    window.addEventListener('load', () => {
+      refreshSavedRoutes();
     });
-
-    // Clicking a time button will automatically fetch alternatives (if needed) then analyze
-    document.querySelectorAll('.time-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const hour = parseInt(btn.dataset.hour);
-        const min = parseInt(btn.dataset.min);
-        if (availableRoutes.length === 0) {
-          document.getElementById('loading').textContent = 'Fetching alternatives first...';
-          await loadAlternatives();
-          // After load, default to route 0 if nothing selected
-          if (selectedRouteIndex === 0 && routeLayers.length > 0) {
-            // already default in buildLegend; ensure radio is checked
-            document.getElementById('routeToggle0').checked = true;
-          }
-        }
-        analyzeHotspots({ hour, min });
-      });
-    });
-
-    // Legend radio buttons: already bound via onchange="toggleRoute(...)" in HTML
   </script>
 </body>
 </html>
