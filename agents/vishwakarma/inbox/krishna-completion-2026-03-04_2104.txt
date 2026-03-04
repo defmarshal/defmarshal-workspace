@@ -1,0 +1,24 @@
+✅ Anime Studio Tycoon build complete — 2026-03-04 21:04 UTC
+
+**Changes Implemented**:
+- Starting money: ¥500000, salary: ¥1000, episodes target: 6
+- Added 14 new events (talent discovery, streaming deals, crisis averted, etc.)
+- Upgrades: Marketing Dept (weekly fans), Sponsorship Deal (¥5000/week)
+- Auto-mode: fixed blank-input purchase bug, smarter staffing (min 4), better financial buffer
+- Production: points/episode = 60, base production = 6/staff (+2 with pipeline)
+
+**Test Result**:
+- Non-interactive run completed 6 episodes
+- Final: 51,714+ fans, reputation 166, no bankruptcy
+- Exit code: 0
+
+**Files Modified**:
+- `games/anime-studio-tycoon/main.py`
+
+**Commit**:
+- Pushed to origin/master with prefix "game:"
+
+**Report**:
+- agents/krishna/reports/report-2026-03-04_2103.md
+
+—Kṛṣṇa
