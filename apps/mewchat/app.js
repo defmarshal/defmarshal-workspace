@@ -411,6 +411,13 @@
   }
 
   function showConfirmModal() {
+    const count = chatMessages.querySelectorAll('.msg').length;
+    const desc = document.getElementById('confirm-desc');
+    if (desc) {
+      desc.textContent = count > 0
+        ? `This will permanently delete ${count} message(s). This action cannot be undone.`
+        : 'Chat is already empty.';
+    }
     if (confirmModal) confirmModal.classList.remove('hidden');
   }
   function hideConfirmModal() {
