@@ -135,6 +135,18 @@ h1 { font-size:18px; color: var(--blue); display:flex; align-items:center; gap:8
 .connection-status.online { background: var(--green); }
 .connection-status.offline { background: var(--red); }
 
+.last-updated {
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 8px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+.header-right #last-updated:hover {
+  opacity: 1;
+  color: var(--text);
+}
+
 .scroll-bottom {
   position: absolute;
   bottom: 80px;

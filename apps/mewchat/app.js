@@ -19,6 +19,7 @@
   const chatMessages = document.getElementById('chat-messages');
   const scrollBottomBtn = document.getElementById('scroll-bottom');
   const connectionStatus = document.getElementById('connection-status');
+  const lastUpdatedEl = document.getElementById('last-updated');
   const helpBtn = document.getElementById('help-btn');
   const helpModal = document.getElementById('help-modal');
   const helpClose = document.getElementById('help-close');
@@ -151,6 +152,26 @@
   function formatTime(ts) {
     const d = new Date(ts * 1000);
     return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function formatRelativeTime(date) {
+    const now = new Date();
+    const diff = Math.floor((now - date) / 1000); // seconds
+    if (diff < 60) return 'just now';
+    const minutes = Math.floor(diff / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    return `${days}d ago`;
+  }
+
+  let lastUpdateTime = null;
+  function updateLastUpdated() {
+    if (!lastUpdatedEl) return;
+    const now = new Date();
+    lastUpdateTime = now;
+    lastUpdatedEl.textContent = `Updated ${formatRelativeTime(now)}`;
   }
 
   // Typewriter effect: reveal text letter by letter
@@ -299,12 +320,12 @@
       chatMessages.innerHTML = '';
       lastMessageCount = 0;
       data.chat.forEach((m, idx) => {
-        // Only animate the latest assistant message if it's new
         const isLatest = idx === data.chat.length - 1;
         const animate = m.role === 'assistant' && isLatest;
         renderMessage(m.role, m.text, m.ts, animate);
       });
       lastMessageCount = data.chat.length;
+      updateLastUpdated();
     } catch (e) {
       showError('Could not load chat: ' + e.message);
     }
@@ -376,6 +397,7 @@
             renderMessage(m.role, m.text, m.ts, animate);
           });
           lastMessageCount = data.chat.length;
+          updateLastUpdated();
         }
       } catch (e) {
         // Silently ignore poll errors
