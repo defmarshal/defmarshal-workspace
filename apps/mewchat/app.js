@@ -182,22 +182,39 @@
         <div class="msg-avatar">${avatar}</div>
         <div>
           <div class="msg-bubble"></div>
+          ${role === 'assistant' ? '<button class="msg-copy-btn" title="Copy to clipboard">📋</button>' : ''}
           <div class="msg-meta">${formatTime(time)}</div>
         </div>
       </div>
     `;
     chatMessages.appendChild(div);
     const bubble = div.querySelector('.msg-bubble');
+    const copyBtn = div.querySelector('.msg-copy-btn');
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text);
+          copyBtn.classList.add('copied');
+          copyBtn.title = 'Copied!';
+          setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            copyBtn.title = 'Copy to clipboard';
+          }, 1500);
+        } catch (err) {
+          console.error('Copy failed:', err);
+          copyBtn.title = 'Copy failed';
+        }
+      });
+    }
 
     if (role === 'assistant' && animate) {
       const settings = loadSettings();
-      // Check if typewriter effect is enabled
       if (settings.typewriterEnabled) {
         typewriterEffect(bubble, text, settings.typewriterSpeed);
       } else {
         bubble.textContent = text;
       }
-      // Mascot talking animation (only if enabled and typewriter is used)
       if (settings.mascotAnimation && mascot && settings.typewriterEnabled) {
         mascot.classList.add('talking');
         const duration = Math.min(Math.max(text.length * settings.typewriterSpeed, 500), 10000);

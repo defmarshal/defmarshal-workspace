@@ -46,10 +46,57 @@ h1 { font-size:18px; color: var(--blue); display:flex; align-items:center; gap:8
 .msg.user .msg-row { flex-direction:row-reverse; }
 .msg-avatar { font-size:24px; line-height:1; }
 .msg-bubble { padding:10px 14px; border-radius:12px; font-size:14px; line-height:1.5; white-space:pre-wrap; word-break:break-word; }
-.msg.user .msg-bubble { background:#1f3a5a; color:var(--text); border-bottom-right-radius:3px; }
-.msg.assistant .msg-bubble { background:var(--bg); border:1px solid var(--border); color:var(--text); border-bottom-left-radius:3px; }
-[data-theme="light"] .msg.user .msg-bubble { background:#dbeafe; }
-.msg-meta { font-size:10px; color:var(--muted); margin-top:3px; }
+.msg.assistant .msg-bubble {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-bottom-left-radius: 3px;
+  position: relative;
+}
+[data-theme="light"] .msg.user .msg-bubble {
+  background: #dbeafe;
+}
+.msg.user .msg-bubble {
+  background: #1f3a5a;
+  color: var(--text);
+  border-bottom-right-radius: 3px;
+}
+.msg-meta { font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+/* Copy button for assistant messages */
+.msg-copy-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.msg.assistant:hover .msg-copy-btn,
+.msg-copy-btn:focus {
+  opacity: 1;
+}
+.msg-copy-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.msg-copy-btn.copied {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
 
 .typing { font-size:12px; color:var(--muted); padding:8px 12px; }
 .typing-dots span { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--muted); margin:0 2px; animation:bounce 1.2s infinite; }
