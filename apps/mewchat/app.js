@@ -7,7 +7,7 @@
 
   // State
   let currentSessionKey = localStorage.getItem('mewchat-session') || '';
-  let pollTimer = null;
+  let sse = null;
   let lastMessageCount = 0;
   let lastFailedMessage = null; // for retry
   let unreadCount = 0; // for title badge when tab hidden
@@ -304,32 +304,14 @@
         sessionSelect.value = currentSessionKey;
         localStorage.setItem('mewchat-session', currentSessionKey);
       }
-      await fetchChat();
+      startSSE(currentSessionKey);
     } catch (e) {
       showError('Could not load sessions: ' + e.message);
       sessionSelect.innerHTML = '<option value="">(error)</option>';
     }
   }
 
-  async function fetchChat() {
-    if (!currentSessionKey) return;
-    try {
-      const res = await fetch(API_BASE + '/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
-      if (!res.ok) throw new Error('Failed to fetch chat (HTTP ' + res.status + ')');
-      const data = await res.json();
-      chatMessages.innerHTML = '';
-      lastMessageCount = 0;
-      data.chat.forEach((m, idx) => {
-        const isLatest = idx === data.chat.length - 1;
-        const animate = m.role === 'assistant' && isLatest;
-        renderMessage(m.role, m.text, m.ts, animate);
-      });
-      lastMessageCount = data.chat.length;
-      updateLastUpdated();
-    } catch (e) {
-      showError('Could not load chat: ' + e.message);
-    }
-  }
+  // Deprecated: using SSE now
 
   async function sendMessage(textOverride = null) {
     const text = textOverride || msgInput.value.trim();
@@ -374,46 +356,58 @@
   }
 
   // Polling for new replies
-  function startPolling() {
-    stopPolling();
-    pollTimer = setInterval(async () => {
-      if (!currentSessionKey) return;
+  function startSSE(sessionKey) {
+    stopSSE();
+    if (!sessionKey) return;
+    sse = new EventSource(API_BASE + '/api/chat-stream?sessionKey=' + encodeURIComponent(sessionKey));
+    sse.onopen = () => {
+      if (connectionStatus) connectionStatus.classList.remove('offline');
+      // Clear chat for fresh connection/reconnection
+      lastMessageCount = 0;
+      chatMessages.innerHTML = '';
+      unreadCount = 0;
+      document.title = 'MewChat — chat with mewmew';
+    };
+    sse.onerror = () => {
+      if (connectionStatus) connectionStatus.classList.add('offline');
+    };
+    sse.onmessage = (event) => {
       try {
-        const res = await fetch(API_BASE + '/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
-        if (!res.ok) return;
-        const data = await res.json();
-        if (data.chat.length > lastMessageCount) {
-          // New messages arrived
-          const newMsgCount = data.chat.length - lastMessageCount;
-          // Update unread badge if tab is hidden
+        const data = JSON.parse(event.data);
+        if (!data.chat) return;
+        const newCount = data.chat.length;
+        if (newCount > lastMessageCount) {
+          const newMsgs = data.chat.slice(lastMessageCount);
           if (document.hidden) {
-            unreadCount += newMsgCount;
+            unreadCount += newMsgs.length;
             document.title = `(${unreadCount}) MewChat — chat with mewmew`;
           }
-          const newMsgs = data.chat.slice(lastMessageCount);
           newMsgs.forEach((m, idx) => {
             const isLatest = idx === newMsgs.length - 1;
             const animate = m.role === 'assistant' && isLatest;
             renderMessage(m.role, m.text, m.ts, animate);
           });
-          lastMessageCount = data.chat.length;
+          lastMessageCount = newCount;
           updateLastUpdated();
         }
       } catch (e) {
-        // Silently ignore poll errors
+        console.error('SSE parse error:', e);
       }
-    }, POLL_INTERVAL);
+    };
   }
 
-  function stopPolling() {
-    if (pollTimer) clearInterval(pollTimer);
+  function stopSSE() {
+    if (sse) {
+      sse.close();
+      sse = null;
+    }
   }
 
   // Event listeners
   sessionSelect.addEventListener('change', () => {
     currentSessionKey = sessionSelect.value;
     localStorage.setItem('mewchat-session', currentSessionKey);
-    fetchChat();
+    startSSE(currentSessionKey);
   });
 
   msgInput.addEventListener('keydown', e => {
