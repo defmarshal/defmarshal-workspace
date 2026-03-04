@@ -13,6 +13,7 @@
   let unreadCount = 0; // for title badge when tab hidden
   let reconnectAttempts = 0;
   let reconnectTimeout = null;
+  let reconnectSystemMessageId = null; // track system message for updates
   const RECONNECT_BASE = 1000; // 1 second
   const RECONNECT_MAX = 30000; // 30 seconds
   const RECONNECT_MAX_ATTEMPTS = 10; // give up after ~30 mins if no success
@@ -177,6 +178,42 @@
     const now = new Date();
     lastUpdateTime = now;
     lastUpdatedEl.textContent = `Updated ${formatRelativeTime(now)}`;
+  }
+
+  // Reconnection status messages
+  function showReconnectStatus() {
+    removeReconnectStatus(); // remove any existing
+    const msg = `Connection lost. Reconnecting… (attempt ${reconnectAttempts})`;
+    const div = document.createElement('div');
+    div.className = 'msg system';
+    div.id = 'reconnect-status';
+    div.innerHTML = `
+      <div class="msg-bubble" style="text-align:center; color:var(--yellow); font-size:12px;">
+        ⚠️ ${msg}
+      </div>
+    `;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function removeReconnectStatus() {
+    const existing = document.getElementById('reconnect-status');
+    if (existing) existing.remove();
+  }
+
+  function showReconnectSuccess() {
+    removeReconnectStatus();
+    const div = document.createElement('div');
+    div.className = 'msg system';
+    div.innerHTML = `
+      <div class="msg-bubble" style="text-align:center; color:var(--green); font-size:12px;">
+        ✅ Reconnected successfully
+      </div>
+    `;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    // Auto-remove after 3 seconds
+    setTimeout(() => div.remove(), 3000);
   }
 
   // Typewriter effect: reveal text letter by letter
@@ -367,6 +404,7 @@
     // If we've exceeded max attempts, give up and show error
     if (reconnectAttempts >= RECONNECT_MAX_ATTEMPTS) {
       showError('Connection lost. Please reload the page or switch sessions to reconnect.');
+      removeReconnectStatus();
       if (connectionStatus) connectionStatus.classList.add('offline');
       return;
     }
@@ -374,6 +412,9 @@
     // Calculate delay with exponential backoff (capped at MAX)
     const delay = Math.min(RECONNECT_BASE * Math.pow(2, reconnectAttempts), RECONNECT_MAX);
     reconnectAttempts++;
+
+    // Show status message in chat
+    showReconnectStatus();
 
     reconnectTimeout = setTimeout(() => {
       console.log(`[MewChat] Reconnection attempt ${reconnectAttempts} in ${delay}ms`);
@@ -403,8 +444,10 @@
         clearTimeout(reconnectTimeout);
         reconnectTimeout = null;
       }
-      // Log if this was a reconnection
+      // Remove any pending reconnect status and show success if this was a reconnection
+      removeReconnectStatus();
       if (isReconnect) {
+        showReconnectSuccess();
         console.log('[MewChat] Reconnected successfully');
       }
     };
@@ -459,6 +502,7 @@
       sse = null;
     }
     reconnectAttempts = 0;
+    removeReconnectStatus();
   }
 
   // Event listeners
