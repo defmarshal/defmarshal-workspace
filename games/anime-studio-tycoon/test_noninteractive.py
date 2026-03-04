@@ -19,7 +19,7 @@ test_input = "\n".join([
 
 # Run the game and capture output
 result = subprocess.run(
-    ["python3", "games/anime-studio-tycoon/main.py"],
+    ["python3", "main.py"],
     input=test_input,
     capture_output=True,
     text=True,
@@ -33,7 +33,7 @@ print(result.stderr)
 print(f"\nReturn code: {result.returncode}")
 
 # Save log for report
-with open("games/anime-studio-tycoon/test-output.txt", "w") as f:
+with open("test-output.txt", "w") as f:
     f.write(result.stdout)
     f.write(result.stderr)
 

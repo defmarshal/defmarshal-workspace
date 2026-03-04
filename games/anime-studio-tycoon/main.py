@@ -67,7 +67,18 @@ events = [
     ("Training seminar", -2000, 1, 3, 0),
     ("Negative press", 0, 0, -8, -2000),
     ("Streaming hit", 12000, 0, 5, 8000),
-    ("Collaboration", 5000, 0, 5, 3000)
+    ("Collaboration", 5000, 0, 5, 3000),
+    # New polish events (2026-03-04)
+    ("Studio renovation", -8000, 0, 10, 2000),
+    ("Contract dispute", -5000, -1, -5, -1000),
+    ("Merchandise counterfeit", -3000, 0, -3, -2000),
+    ("Fan art contest", 0, 0, 3, 5000),
+    ("Streaming platform partnership", 20000, 0, 5, 3000),
+    ("Key animator quits", 0, -1, -3, -500),
+    ("Crowdfunding campaign", 15000, 0, 5, 10000),
+    ("Licensing deal rejected", -10000, 0, 0, 0),
+    ("Talent scout", 0, 1, 0, 0),
+    ("Season finale hype", 0, 0, 8, 15000)
 ]
 
 def clear_screen():
@@ -183,10 +194,16 @@ def weekly_update():
     print(f"6) View upgrades")
     print(f"7) Next week")
     
-    # Non-interactive auto-choose based on simple heuristics
+    # Determine auto-mode (non-interactive or forced)
+    auto_mode = False
     try:
         choice = input("> ").strip()
+        if not choice and not sys.stdin.isatty():
+            auto_mode = True
     except (EOFError, KeyboardInterrupt):
+        auto_mode = True
+
+    if auto_mode:
         # Auto-mode: choose based on game state (do NOT modify game state here!)
         if money < 8000 and staff > 4:
             choice = "2"  # Fire if low on money and too many staff

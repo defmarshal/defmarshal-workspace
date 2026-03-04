@@ -2,21 +2,10 @@
 Manage your studio: balance money, staff, reputation, fans.
 Goal: Complete 10 episodes while maintaining positive reputation and at least 50,000 fans. Avoid bankruptcy!
 
-[96mYour studio's genre: Horror[0m
-Current market trend: Sports (bonus fan growth if matched!)
+[96mYour studio's genre: Mecha[0m
+Current market trend: Horror (bonus fan growth if matched!)
 
-Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Horror] [Trend: Sports]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 1 | Money: ¥90000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [##........] [Genre: Horror] [Trend: Sports]
+Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Mecha] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -26,9 +15,9 @@ Week 1 | Money: ¥90000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pro
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 2 | Money: ¥80000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#####.....] [Genre: Horror] [Trend: Sports]
-[93mEvent: Negative press[0m
+> Auto-choosing: 1
+[92mHired a new animator.[0m
+Week 1 | Money: ¥85000 | Staff: 6 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [###.......] [Genre: Mecha] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -38,8 +27,9 @@ Week 2 | Money: ¥80000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pro
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 3 | Money: ¥70000 | Staff: 5 | Rep: 42 | Fans: -1000 | Episodes: 0/10 | Progress: [#######...] [Genre: Horror] [Trend: Sports]
+> Auto-choosing: 5
+[92mQuality focus paid off. Reputation +5.[0m
+Week 2 | Money: ¥71000 | Staff: 6 | Rep: 55 | Fans: 1000 | Episodes: 0/10 | Progress: [######....] [Genre: Mecha] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -49,10 +39,25 @@ Week 3 | Money: ¥70000 | Staff: 5 | Rep: 42 | Fans: -1000 | Episodes: 0/10 | Pr
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> [91mInvalid choice; skipping.[0m
+> Auto-choosing: 5
+[92mQuality focus paid off. Reputation +5.[0m
+Week 3 | Money: ¥57000 | Staff: 6 | Rep: 60 | Fans: 1000 | Episodes: 0/10 | Progress: [#########.] [Genre: Mecha] [Trend: Horror]
+[93mEvent: Streaming deal[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 5
+[92mQuality focus paid off. Reputation +5.[0m
 [96mEpisode 1 completed![0m
-  Reputation +10, Fans +4276
-Week 4 | Money: ¥60000 | Staff: 5 | Rep: 52 | Fans: 3276 | Episodes: 1/10 | Progress: [..........] [Genre: Horror] [Trend: Sports]
+  Reputation +10, Fans +7214
+Week 4 | Money: ¥68000 | Staff: 6 | Rep: 75 | Fans: 8214 | Episodes: 1/10 | Progress: [##........] [Genre: Mecha] [Trend: Horror]
+[93mEvent: Investor injection[0m
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -62,8 +67,20 @@ Week 4 | Money: ¥60000 | Staff: 5 | Rep: 52 | Fans: 3276 | Episodes: 1/10 | Pro
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 5 | Money: ¥50000 | Staff: 5 | Rep: 52 | Fans: 3276 | Episodes: 1/10 | Progress: [##........] [Genre: Horror] [Trend: Sports]
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 20%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+
+Enter upgrade to buy (or press Enter to cancel): [92mPurchased Star Director![0m
+Week 5 | Money: ¥41000 | Staff: 6 | Rep: 75 | Fans: 8214 | Episodes: 1/10 | Progress: [#####.....] [Genre: Mecha] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -73,32 +90,13 @@ Week 5 | Money: ¥50000 | Staff: 5 | Rep: 52 | Fans: 3276 | Episodes: 1/10 | Pro
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 6 | Money: ¥40000 | Staff: 5 | Rep: 52 | Fans: 3276 | Episodes: 1/10 | Progress: [#####.....] [Genre: Horror] [Trend: Sports]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 7 | Money: ¥30000 | Staff: 5 | Rep: 52 | Fans: 3276 | Episodes: 1/10 | Progress: [#######...] [Genre: Horror] [Trend: Sports]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> [91mInvalid choice; skipping.[0m
+> Auto-choosing: 4
+[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
+  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
 [96mEpisode 2 completed![0m
-  Reputation +10, Fans +3688
-Week 8 | Money: ¥20000 | Staff: 5 | Rep: 62 | Fans: 6964 | Episodes: 2/10 | Progress: [..........] [Genre: Horror] [Trend: Sports]
+  Reputation +20, Fans +2571
+Week 6 | Money: ¥29000 | Staff: 6 | Rep: 93 | Fans: 10785 | Episodes: 2/10 | Progress: [#.........] [Genre: Mecha] [Trend: Horror]
+[93mEvent: Training seminar[0m
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -108,8 +106,9 @@ Week 8 | Money: ¥20000 | Staff: 5 | Rep: 62 | Fans: 6964 | Episodes: 2/10 | Pro
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 9 | Money: ¥10000 | Staff: 5 | Rep: 62 | Fans: 6964 | Episodes: 2/10 | Progress: [##........] [Genre: Horror] [Trend: Sports]
+> Auto-choosing: 7
+Week 7 | Money: ¥15000 | Staff: 7 | Rep: 96 | Fans: 10785 | Episodes: 2/10 | Progress: [####......] [Genre: Mecha] [Trend: Horror]
+[93mEvent: Streaming deal[0m
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -119,9 +118,34 @@ Week 9 | Money: ¥10000 | Staff: 5 | Rep: 62 | Fans: 6964 | Episodes: 2/10 | Pro
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> [91mInvalid choice; skipping.[0m
-Week 10 | Money: ¥0 | Staff: 5 | Rep: 62 | Fans: 6964 | Episodes: 2/10 | Progress: [#####.....] [Genre: Horror] [Trend: Sports]
-[93mEvent: Award nomination[0m
+> Auto-choosing: 4
+[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
+  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 3 completed![0m
+  Reputation +20, Fans +5897
+
+[94mNew Season! You can change your studio's genre.[0m
+  1) Shonen
+  2) Isekai
+  3) Slice of Life
+  4) Mecha (current)
+  5) Horror
+  6) Sports
+  7) Romance
+  8) Sci-Fi
+  0) Keep current genre
+> Week 8 | Money: ¥26000 | Staff: 7 | Rep: 114 | Fans: 16682 | Episodes: 3/10 | Progress: [#.........] [Genre: Mecha] [Trend: Horror]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 7
+Week 9 | Money: ¥12000 | Staff: 7 | Rep: 114 | Fans: 16682 | Episodes: 3/10 | Progress: [#####.....] [Genre: Mecha] [Trend: Horror]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -133,4 +157,18 @@ Week 10 | Money: ¥0 | Staff: 5 | Rep: 62 | Fans: 6964 | Episodes: 2/10 | Progre
 7) Next week
 > Auto-choosing: 2
 [93mFired a staff member.[0m
+Week 10 | Money: ¥0 | Staff: 6 | Rep: 114 | Fans: 16682 | Episodes: 3/10 | Progress: [########..] [Genre: Mecha] [Trend: Horror]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 2
+[93mFired a staff member.[0m
+[96mEpisode 4 completed![0m
+  Reputation +20, Fans +2324
 [91mBankruptcy! You lose.[0m
