@@ -290,8 +290,16 @@
   }
 
   function showError(msg) {
-    errorEl.textContent = msg;
+    errorEl.innerHTML = `
+      <span>${msg}</span>
+      <button class="error-dismiss" title="Dismiss">×</button>
+    `;
     errorEl.classList.remove('hidden');
+    // Add dismiss handler
+    const dismissBtn = errorEl.querySelector('.error-dismiss');
+    if (dismissBtn) {
+      dismissBtn.addEventListener('click', clearError);
+    }
   }
 
   // Copy full chat history to clipboard
@@ -335,6 +343,7 @@
 
   function clearError() {
     errorEl.classList.add('hidden');
+    errorEl.innerHTML = '';
   }
 
   function clearChat() {

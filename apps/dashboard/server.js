@@ -429,12 +429,16 @@ function startChatWatcher() {
     // Only check sessions with active SSE clients
     const activeSessions = Array.from(sseClients.keys());
     if (activeSessions.length === 0) return;
-    
+
     for (const sessionKey of activeSessions) {
       const msgs = getChatHistory(sessionKey);
       const assistantCount = msgs.filter(m => m.role === 'assistant').length;
-      const prevCount = lastAssistantCounts[sessionKey] || 0;
-      if (prevCount > 0 && assistantCount > prevCount) {
+      const totalCount = msgs.length;
+      const prevAssistantCount = lastAssistantCounts[sessionKey]?.assistant || 0;
+      const prevTotalCount = lastAssistantCounts[sessionKey]?.total || 0;
+      
+      // Push notification only for new assistant messages
+      if (prevAssistantCount > 0 && assistantCount > prevAssistantCount) {
         const latest = msgs.filter(m => m.role === 'assistant').pop();
         const preview = (latest?.text || '').slice(0, 100).replace(/\n/g, ' ');
         sendPushToAll({
@@ -444,10 +448,11 @@ function startChatWatcher() {
           tag: 'clawdash-reply',
         }).catch(() => {});
       }
-      if (assistantCount !== prevCount) {
+      // Broadcast on ANY message change (user or assistant)
+      if (totalCount !== prevTotalCount) {
         broadcastChat(msgs, sessionKey);
       }
-      lastAssistantCounts[sessionKey] = assistantCount;
+      lastAssistantCounts[sessionKey] = { assistant: assistantCount, total: totalCount };
     }
   }, 2000); // check every 2s
 }
