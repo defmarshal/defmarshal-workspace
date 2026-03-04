@@ -11,6 +11,11 @@
   let lastMessageCount = 0;
   let lastFailedMessage = null; // for retry
   let unreadCount = 0; // for title badge when tab hidden
+  let reconnectAttempts = 0;
+  let reconnectTimeout = null;
+  const RECONNECT_BASE = 1000; // 1 second
+  const RECONNECT_MAX = 30000; // 30 seconds
+  const RECONNECT_MAX_ATTEMPTS = 10; // give up after ~30 mins if no success
 
   // Dom refs
   const themeBtn = document.getElementById('theme-btn');
@@ -356,10 +361,32 @@
   }
 
   // Polling for new replies
-  function startSSE(sessionKey) {
+  function scheduleReconnect(sessionKey) {
+    if (reconnectTimeout) clearTimeout(reconnectTimeout);
+
+    // If we've exceeded max attempts, give up and show error
+    if (reconnectAttempts >= RECONNECT_MAX_ATTEMPTS) {
+      showError('Connection lost. Please reload the page or switch sessions to reconnect.');
+      if (connectionStatus) connectionStatus.classList.add('offline');
+      return;
+    }
+
+    // Calculate delay with exponential backoff (capped at MAX)
+    const delay = Math.min(RECONNECT_BASE * Math.pow(2, reconnectAttempts), RECONNECT_MAX);
+    reconnectAttempts++;
+
+    reconnectTimeout = setTimeout(() => {
+      console.log(`[MewChat] Reconnection attempt ${reconnectAttempts} in ${delay}ms`);
+      startSSE(sessionKey, true); // true = isReconnect
+    }, delay);
+  }
+
+  function startSSE(sessionKey, isReconnect = false) {
     stopSSE();
     if (!sessionKey) return;
+
     sse = new EventSource(API_BASE + '/api/chat-stream?sessionKey=' + encodeURIComponent(sessionKey));
+
     sse.onopen = () => {
       if (connectionStatus) {
         connectionStatus.classList.remove('offline');
@@ -370,10 +397,33 @@
       chatMessages.innerHTML = '';
       unreadCount = 0;
       document.title = 'MewChat — chat with mewmew';
+      // Reset reconnection state on successful open
+      reconnectAttempts = 0;
+      if (reconnectTimeout) {
+        clearTimeout(reconnectTimeout);
+        reconnectTimeout = null;
+      }
+      // Log if this was a reconnection
+      if (isReconnect) {
+        console.log('[MewChat] Reconnected successfully');
+      }
     };
+
     sse.onerror = () => {
       if (connectionStatus) connectionStatus.classList.add('offline');
+      console.error('[MewChat] SSE error, scheduling reconnect...');
+      // Schedule reconnection
+      scheduleReconnect(sessionKey);
     };
+
+    sse.onclose = () => {
+      console.log('[MewChat] SSE closed');
+      // If we didn't initiate the close (via stopSSE), attempt reconnect
+      if (reconnectAttempts < RECONNECT_MAX_ATTEMPTS) {
+        scheduleReconnect(sessionKey);
+      }
+    };
+
     sse.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
@@ -400,10 +450,15 @@
   }
 
   function stopSSE() {
+    if (reconnectTimeout) {
+      clearTimeout(reconnectTimeout);
+      reconnectTimeout = null;
+    }
     if (sse) {
       sse.close();
       sse = null;
     }
+    reconnectAttempts = 0;
   }
 
   // Event listeners
