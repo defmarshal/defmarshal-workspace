@@ -63,6 +63,20 @@ h1 { font-size:18px; color: var(--blue); display:flex; align-items:center; gap:8
 }
 .msg-meta { font-size: 10px; color: var(--muted); margin-top: 3px; }
 
+/* Delivered checkmark on user messages */
+.msg.user.sent .msg-meta::after {
+  content: ' ✓';
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.msg.user.sent .msg-meta {
+  color: var(--muted); /* Keep same color but could adjust */
+}
+.msg.user.sent .msg-meta::after {
+  opacity: 1;
+}
+
 /* Copy button for assistant messages */
 .msg-copy-btn {
   position: absolute;

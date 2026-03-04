@@ -306,6 +306,7 @@
       bubble.textContent = text;
     }
     chatMessages.scrollTop = chatMessages.scrollHeight;
+    return div; // return element for status updates
   }
 
   function applyTimestampVisibility() {
@@ -462,7 +463,10 @@
     typingEl.classList.remove('hidden');
     if (mascot) mascot.classList.add('talking');
     clearError();
+    let userMsgEl = null;
     try {
+      // Render user message immediately (optimistic UI)
+      userMsgEl = renderMessage('user', text, Date.now() / 1000, false);
       const res = await fetch(API_BASE + '/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -470,12 +474,16 @@
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to send');
-      renderMessage('user', text, Date.now() / 1000, false);
+      // Mark as delivered if element still exists
+      if (userMsgEl) userMsgEl.classList.add('sent');
       lastFailedMessage = null;
       // Clear draft after successful send
       localStorage.removeItem('mewchat-draft');
     } catch (e) {
       lastFailedMessage = text;
+      // Remove the optimistic message if it failed (optional) or leave it with error state
+      // Could remove: userMsgEl?.remove(); but better to leave and maybe mark as failed
+      // For now, keep the message but show error; could add a 'failed' class later
       showError('Send failed: ' + e.message + ' <button class="retry-btn">Retry</button>');
       // Attach retry handler
       const retryBtn = errorEl.querySelector('.retry-btn');
