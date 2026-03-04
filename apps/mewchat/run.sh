@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # MewChat — standalone chat with mewmew
-# Serves the MewChat PWA on port 3002 (default)
+# Serves the MewChat PWA on port 3005 (default)
 
-PORT=${1:-3002}
+PORT=${1:-3005}
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "🐾 Starting MewChat on http://0.0.0.0:$PORT"
