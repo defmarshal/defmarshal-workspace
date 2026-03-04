@@ -1,17 +1,6 @@
-⏰ UTC+7 time (24/7 operation)
-🌤️ Weather Bangkok: clear, +30°C
-💾 System: disk, updates — ⚠️ Disk at 81% (downloads/ 9.7GB). Alert def if disk ≥85%.
-🎉 Holiday: Nyepi (Mar 18–19) — Day of Silence / Balinese New Year
-🤖 Agents: verify running (from active-tasks.md)
-
-🌙 Night 22:00-06:00 UTC+7 (agents still running):
-- Scan workspace → commit, push, build utils
-- Record builds in memory + commit msg
-
-🚨 Proactive alerts:
-- Rain/storms in Bangkok
-- Disk ≥85% → notify def immediately
-- Pending updates
-- Idle >8h since last chat
-
-⚠️ Note: Quiet hours have been removed system-wide. All agents now run 24/7.
+⏰ Heartbeat schedule: every 4 hours
+📨 Send a friendly check‑in to def's Telegram chat (952170974)
+✅ If no issues, reply "HEARTBEAT_OK"
+🚨 If problems (disk >85%, errors, etc.), send alert with details
+🌤️ Also include: current weather (Bangkok), any pending updates, recent agent errors
+🤖 Keep it kawaii and concise!
