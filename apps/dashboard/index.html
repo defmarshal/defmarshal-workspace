@@ -1271,7 +1271,7 @@ function startChatPoll() {
     try {
       chatSSE = new EventSource('/api/chat-stream?sessionKey=' + encodeURIComponent(currentSessionKey));
       chatSSE.onmessage = (e) => {
-        if (chatSending) return;
+        // Render even while sending – the server chat includes the user's own message
         try {
           const d = JSON.parse(e.data);
           if (d.chat) renderChat(d.chat, true);
@@ -1344,7 +1344,7 @@ document.getElementById('session-select')?.addEventListener('change', (e) => {
 async function refreshChat() {
   if (chatSending || !currentSessionKey) return;
   try {
-    const res = await fetch('/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
+    const res = await fetch('/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey) + '&forceRefresh=1');
     if (!res.ok) return;
     const data = await res.json();
     renderChat(data.chat, true);
@@ -1417,7 +1417,7 @@ async function sendMessage() {
     
     chatReplyWatcher = setInterval(async () => {
       try {
-        const r = await fetch('/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
+        const r = await fetch('/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey) + '&forceRefresh=1');
         if (!r.ok) return;
         const d = await r.json();
         const msgs = d.chat || [];

@@ -361,7 +361,10 @@
     if (!sessionKey) return;
     sse = new EventSource(API_BASE + '/api/chat-stream?sessionKey=' + encodeURIComponent(sessionKey));
     sse.onopen = () => {
-      if (connectionStatus) connectionStatus.classList.remove('offline');
+      if (connectionStatus) {
+        connectionStatus.classList.remove('offline');
+        connectionStatus.classList.add('online');
+      }
       // Clear chat for fresh connection/reconnection
       lastMessageCount = 0;
       chatMessages.innerHTML = '';
