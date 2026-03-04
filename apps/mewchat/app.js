@@ -196,6 +196,25 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+  function showLoadingChat() {
+    removeLoadingChat(); // remove any existing
+    const div = document.createElement('div');
+    div.className = 'msg system';
+    div.id = 'loading-chat';
+    div.innerHTML = `
+      <div class="msg-bubble" style="text-align:center; color:var(--muted); font-size:12px;">
+        <span class="typing-dots"><span></span><span></span><span></span></span> Loading chat…
+      </div>
+    `;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function removeLoadingChat() {
+    const existing = document.getElementById('loading-chat');
+    if (existing) existing.remove();
+  }
+
   function removeReconnectStatus() {
     const existing = document.getElementById('reconnect-status');
     if (existing) existing.remove();
@@ -290,6 +309,7 @@
   }
 
   function showError(msg) {
+    removeLoadingChat(); // ensure loading indicator is gone
     errorEl.innerHTML = `
       <span>${msg}</span>
       <button class="error-dismiss" title="Dismiss">×</button>
@@ -486,6 +506,10 @@
       chatMessages.innerHTML = '';
       unreadCount = 0;
       document.title = 'MewChat — chat with mewmew';
+      // Show loading indicator for initial load (not for reconnects where chat already loaded)
+      if (!isReconnect) {
+        showLoadingChat();
+      }
       // Reset reconnection state on successful open
       reconnectAttempts = 0;
       if (reconnectTimeout) {
@@ -503,6 +527,7 @@
     sse.onerror = () => {
       if (connectionStatus) connectionStatus.classList.add('offline');
       console.error('[MewChat] SSE error, scheduling reconnect...');
+      removeLoadingChat();
       // Schedule reconnection
       scheduleReconnect(sessionKey);
     };
@@ -521,6 +546,10 @@
         if (!data.chat) return;
         const newCount = data.chat.length;
         if (newCount > lastMessageCount) {
+          // Remove loading indicator if this is the first batch
+          if (lastMessageCount === 0) {
+            removeLoadingChat();
+          }
           const newMsgs = data.chat.slice(lastMessageCount);
           if (document.hidden) {
             unreadCount += newMsgs.length;

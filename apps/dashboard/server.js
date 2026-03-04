@@ -638,7 +638,7 @@ function getTokenStats() {
 
 // ── SSE — chat stream ─────────────────────────────────────────────────────
 const sseClients = new Map(); // sessionKey -> Set(res)
-const lastAssistantCounts = {}; // sessionKey -> assistant message count
+const lastAssistantCounts = {}; // sessionKey -> { assistant: number, total: number }
 
 function broadcastChat(msgs, sessionKey) {
   const data = 'data: ' + JSON.stringify({ chat: msgs }) + '\n\n';
