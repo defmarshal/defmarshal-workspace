@@ -1117,8 +1117,15 @@ document.addEventListener("click", e => {
     if (confirm("Run this cron job now?")) {
       fetch("/api/cron/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ cronId }) })
         .then(r => r.json())
-        .then(d => { if (d.ok) { alert("Cron job triggered!"); load(); } else { alert("Error: " + (d.error || d.message || "unknown")); } })
-        .catch(err => alert("Fetch error: " + err));
+        .then(d => {
+          if (d.ok) {
+            toast("✅ Cron job triggered!", "ok", 2000);
+            load();
+          } else {
+            toast("❌ Error: " + (d.error || d.message || "unknown error"), "bad", 4000);
+          }
+        })
+        .catch(err => toast("❌ Fetch error: " + err.message, "bad", 4000));
     }
   }
 });
@@ -1263,28 +1270,54 @@ function removeTypingIndicator() {
 
 // ── Chat SSE (real-time) + polling fallback ─────────────────────────────
 let chatSSE = null;
+let chatSSEReconnectAttempts = 0;
+let chatSSEReconnectTimer = null;
+const MAX_SSE_RECONNECT_ATTEMPTS = 10;
+const SSE_RECONNECT_DELAY = 3000; // 3 seconds
+
 function startChatPoll() {
   if (ON_VERCEL) return;
   if (!currentSessionKey) return;
+  
   // Try SSE first for instant updates
   if (!chatSSE || chatSSE.readyState === EventSource.CLOSED) {
     try {
       chatSSE = new EventSource('/api/chat-stream?sessionKey=' + encodeURIComponent(currentSessionKey));
       chatSSE.onmessage = (e) => {
-        // Render even while sending – the server chat includes the user's own message
+        // Skip SSE updates while sending to avoid flash
+        if (chatSending) return;
         try {
           const d = JSON.parse(e.data);
           if (d.chat) renderChat(d.chat, true);
         } catch {}
       };
       chatSSE.onerror = () => {
-        // SSE failed, fall back to polling
+        // SSE failed, attempt reconnect with exponential backoff
+        console.warn('[SSE] Connection error, attempting reconnect...');
         chatSSE.close();
-        if (!chatPollTimer) chatPollTimer = setInterval(refreshChat, 5000);
+        chatSSE = null;
+        
+        if (chatSSEReconnectAttempts < MAX_SSE_RECONNECT_ATTEMPTS) {
+          chatSSEReconnectAttempts++;
+          const delay = SSE_RECONNECT_DELAY * Math.pow(2, Math.min(chatSSEReconnectAttempts - 1, 5));
+          console.log(`[SSE] Reconnect attempt ${chatSSEReconnectAttempts}/${MAX_SSE_RECONNECT_ATTEMPTS} in ${delay}ms`);
+          
+          if (chatSSEReconnectTimer) clearTimeout(chatSSEReconnectTimer);
+          chatSSEReconnectTimer = setTimeout(() => {
+            startChatPoll(); // Try reconnecting
+          }, delay);
+        } else {
+          // Max attempts reached, fall back to polling
+          console.warn('[SSE] Max reconnect attempts reached, falling back to polling');
+          if (!chatPollTimer) chatPollTimer = setInterval(refreshChat, 5000);
+        }
       };
       chatSSE.onopen = () => {
-        // SSE connected — stop polling if running
+        // SSE connected — reset reconnect counter and stop polling
+        chatSSEReconnectAttempts = 0;
+        if (chatSSEReconnectTimer) clearTimeout(chatSSEReconnectTimer);
         if (chatPollTimer) { clearInterval(chatPollTimer); chatPollTimer = null; }
+        console.log('[SSE] Connected');
       };
     } catch {
       if (!chatPollTimer) chatPollTimer = setInterval(refreshChat, 5000);
@@ -1293,7 +1326,9 @@ function startChatPoll() {
 }
 function stopChatPoll() {
   if (chatPollTimer) { clearInterval(chatPollTimer); chatPollTimer = null; }
+  if (chatSSEReconnectTimer) { clearTimeout(chatSSEReconnectTimer); chatSSEReconnectTimer = null; }
   if (chatSSE) { chatSSE.close(); chatSSE = null; }
+  chatSSEReconnectAttempts = 0;
 }
 function clearChat() {
   document.getElementById('chat-messages').innerHTML = '';
@@ -1336,6 +1371,8 @@ async function loadSessions() {
 document.getElementById('session-select')?.addEventListener('change', (e) => {
   currentSessionKey = e.target.value;
   localStorage.setItem('clawdash-session-key', currentSessionKey);
+  // Clear reply watcher to prevent leaks
+  if (chatReplyWatcher) { clearInterval(chatReplyWatcher); chatReplyWatcher = null; }
   stopChatPoll();
   clearChat();
   startChatPoll();
@@ -2026,11 +2063,44 @@ document.addEventListener('DOMContentLoaded', () => {
   new Starfield();
   initMascotEyes();
   keyboardSound = new KeyboardSound();
-  // Listen for keydown
+  
+  // Global keyboard shortcuts
   document.addEventListener('keydown', (e) => {
     // Ignore modifier-only presses
     if (e.key === 'Shift' || e.key === 'Control' || e.key === 'Alt' || e.key === 'Meta') return;
     keyboardSound?.play(e.key);
+    
+    // Ctrl+K: Focus quick commands input (if exists)
+    if (e.ctrlKey && e.key === 'k') {
+      e.preventDefault();
+      const quickInput = document.getElementById('quick-cmd-input');
+      if (quickInput) {
+        quickInput.focus();
+        quickInput.select();
+      } else {
+        // Fallback: switch to quick commands tab
+        const quickTab = document.querySelector('[data-tab="quick"]');
+        if (quickTab) quickTab.click();
+      }
+    }
+    
+    // Escape: Clear chat input or blur focused element
+    if (e.key === 'Escape') {
+      const chatInput = document.getElementById('chat-input');
+      if (chatInput && document.activeElement === chatInput) {
+        chatInput.blur();
+      } else if (chatInput) {
+        chatInput.value = '';
+        chatInput.style.height = 'auto';
+      }
+    }
+  });
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    if (chatReplyWatcher) { clearInterval(chatReplyWatcher); chatReplyWatcher = null; }
+    stopChatPoll();
+    if (chatSSE) { chatSSE.close(); chatSSE = null; }
   });
 });
 

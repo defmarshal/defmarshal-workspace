@@ -41,6 +41,73 @@ const LABEL_OVERRIDES_PATH = path.join(DASHBOARD_DIR, 'session-labels.json');
 const CRON_JOBS_JSON = path.join(process.env.HOME, '.openclaw', 'cron', 'jobs.json');
 const CRON_RUNS_DIR  = path.join(process.env.HOME, '.openclaw', 'cron', 'runs');
 
+// ── CSRF Protection ────────────────────────────────────────────────────────
+const crypto = require('crypto');
+const csrfTokens = new Map(); // token -> { createdAt, sessionKey }
+const CSRF_TTL = 3600000; // 1 hour
+
+function generateCsrfToken(sessionKey) {
+  const token = crypto.randomBytes(32).toString('hex');
+  csrfTokens.set(token, { createdAt: Date.now(), sessionKey });
+  // Cleanup old tokens
+  if (csrfTokens.size > 1000) {
+    const now = Date.now();
+    for (const [t, data] of csrfTokens.entries()) {
+      if (now - data.createdAt > CSRF_TTL) csrfTokens.delete(t);
+    }
+  }
+  return token;
+}
+
+function validateCsrfToken(token, sessionKey) {
+  const data = csrfTokens.get(token);
+  if (!data) return false;
+  if (Date.now() - data.createdAt > CSRF_TTL) {
+    csrfTokens.delete(token);
+    return false;
+  }
+  // Optional: validate sessionKey matches if provided
+  return true;
+}
+
+// ── Rate limiting ──────────────────────────────────────────────────────────
+const rateLimits = new Map(); // IP -> { count, resetTime }
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+const RATE_LIMIT_MAX = { send: 10, quick: 20, cron: 30 }; // max requests per window
+
+function checkRateLimit(ip, endpoint) {
+  const now = Date.now();
+  const key = `${ip}:${endpoint}`;
+  const limit = RATE_LIMIT_MAX[endpoint] || 100;
+  
+  let record = rateLimits.get(key);
+  if (!record || now > record.resetTime) {
+    record = { count: 0, resetTime: now + RATE_LIMIT_WINDOW };
+    rateLimits.set(key, record);
+  }
+  
+  record.count++;
+  if (record.count > limit) {
+    return { allowed: false, remaining: 0, resetIn: Math.ceil((record.resetTime - now) / 1000) };
+  }
+  return { allowed: true, remaining: limit - record.count, resetIn: Math.ceil((record.resetTime - now) / 1000) };
+}
+
+function getClientIP(req) {
+  return req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+         req.headers['x-real-ip'] ||
+         req.socket?.remoteAddress ||
+         'unknown';
+}
+
+// Cleanup old rate limit entries every 5 minutes
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, record] of rateLimits.entries()) {
+    if (now > record.resetTime) rateLimits.delete(key);
+  }
+}, 300000);
+
 // ── VAPID / web-push setup ─────────────────────────────────────────────────
 let webPush = null;
 let vapid = null;
@@ -590,6 +657,24 @@ const handler = async (req, res) => {
     return json(res, 200, { publicKey: vapid?.publicKey || null });
   }
 
+  // ── Health check ────────────────────────────────────────────────────────
+  if (pathname === '/api/health' && req.method === 'GET') {
+    const health = {
+      status: 'ok',
+      timestamp: Date.now(),
+      uptime: process.uptime(),
+      memory: process.memoryUsage(),
+      version: '1.0.0'
+    };
+    return json(res, 200, health);
+  }
+
+  // ── CSRF token ──────────────────────────────────────────────────────────
+  if (pathname === '/api/csrf-token' && req.method === 'GET') {
+    const sessionKey = url.searchParams.get('sessionKey') || 'default';
+    return json(res, 200, { token: generateCsrfToken(sessionKey) });
+  }
+
   // ── Save push subscription ──────────────────────────────────────────────
   if (pathname === '/api/subscribe' && req.method === 'POST') {
     const body = await readBody(req);
@@ -642,7 +727,25 @@ const handler = async (req, res) => {
 
   // ── Send message ────────────────────────────────────────────────────────
   if (pathname === '/api/send' && req.method === 'POST') {
+    const ip = getClientIP(req);
+    const limit = checkRateLimit(ip, 'send');
+    res.setHeader('X-RateLimit-Remaining', limit.remaining);
+    res.setHeader('X-RateLimit-Reset', limit.resetIn);
+    if (!limit.allowed) {
+      return json(res, 429, { error: 'Too many requests', retryAfter: limit.resetIn });
+    }
+
     const body = await readBody(req);
+    
+    // Optional CSRF check (log warning if missing, don't block for backward compat)
+    const csrfToken = body._csrf;
+    if (csrfToken && !validateCsrfToken(csrfToken, body.sessionKey)) {
+      console.warn('[CSRF] Invalid token for /api/send');
+      return json(res, 403, { error: 'Invalid CSRF token' });
+    } else if (!csrfToken) {
+      console.warn('[CSRF] No token provided for /api/send (consider updating client)');
+    }
+    
     const message = (body.message || '').trim();
     if (!message) return json(res, 400, { error: 'message required' });
     const sessionKey = body.sessionKey || 'agent:main:telegram:direct:952170974'; // fallback
@@ -660,6 +763,13 @@ const handler = async (req, res) => {
 
   // ── Quick command ───────────────────────────────────────────────────────
   if (pathname === '/api/quick' && req.method === 'POST') {
+    const ip = getClientIP(req);
+    const limit = checkRateLimit(ip, 'quick');
+    res.setHeader('X-RateLimit-Remaining', limit.remaining);
+    if (!limit.allowed) {
+      return json(res, 429, { error: 'Too many requests', retryAfter: limit.resetIn });
+    }
+    
     const body = await readBody(req);
     const parts = (body.cmd || '').trim().split(/\s+/);
     const cmd = parts[0], args = parts.slice(1);
@@ -702,10 +812,12 @@ const handler = async (req, res) => {
 
   // ── List Telegram sessions ───────────────────────────────────────────────
   if (pathname === '/api/sessions' && req.method === 'GET') {
-    const sessions = getAllSessions().map(s => {
-      const label = s.label;
-      return { sessionKey: s.sessionKey, label, updatedAt: s.updatedAt };
-    });
+    // Use sessionsCache which is refreshed every 60s
+    const sessions = sessionsCache.data.map(s => ({
+      sessionKey: s.sessionKey,
+      label: s.label,
+      updatedAt: s.updatedAt
+    }));
     return json(res, 200, { sessions });
   }
 
@@ -903,6 +1015,13 @@ const handler = async (req, res) => {
 
   // ── Agent Control ─────────────────────────────────────────────────────────────
   if (pathname === '/api/cron/run' && req.method === 'POST') {
+    const ip = getClientIP(req);
+    const limit = checkRateLimit(ip, 'cron');
+    res.setHeader('X-RateLimit-Remaining', limit.remaining);
+    if (!limit.allowed) {
+      return json(res, 429, { error: 'Too many requests', retryAfter: limit.resetIn });
+    }
+    
     console.log('[CRON RUN]', new Date().toISOString());
     let body = '';
     req.on('data', chunk => body += chunk);
