@@ -199,128 +199,6 @@ function refreshSessionsCache() {
   }
 }
 
-
-// ── Chat history cache ─────────────────────────────────────────────────────
-const chatCache = new Map();
-const CHAT_CACHE_TTL = 10000; // 10 seconds
-
-function getCachedChat(sessionId, sessionFile) {
-  const cached = chatCache.get(sessionId);
-  if (cached) {
-    const now = Date.now();
-    if (now - cached.timestamp < CHAT_CACHE_TTL) {
-      try {
-        const stat = fs.statSync(sessionFile);
-        if (stat.mtimeMs <= cached.mtime) {
-          return cached.msgs;
-        }
-      } catch (e) {}
-    }
-  }
-  return null;
-}
-
-function setChatCache(sessionId, sessionFile, msgs) {
-  try {
-    const stat = fs.statSync(sessionFile);
-    chatCache.set(sessionId, { msgs, mtime: stat.mtimeMs, timestamp: Date.now() });
-  } catch (e) {
-    chatCache.set(sessionId, { msgs, mtime: 0, timestamp: Date.now() });
-  }
-}
-
-// ── Find all session files for the same Telegram chat (direct or group) ─────
-
-function findChatSessions(sessionKey) {
-  try {
-    const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
-    const entry = sessions[sessionKey];
-    if (!entry) return [];
-
-    // Derive chat identifier from the sessionKey itself (fast)
-    // sessionKey format: agent:main:telegram:<type>:<chatId>
-    const parts = sessionKey.split(':');
-    if (parts.length < 5) return [];
-    const chatType = parts[3]; // 'direct' or 'group'
-    const chatId = parts[4];
-
-    // Find all session keys in sessions.json that match the same chatId/type
-    const matchingKeys = Object.keys(sessions).filter(k => {
-      if (k.includes(':run:')) return false;
-      const p = k.split(':');
-      if (p.length < 5) return false;
-      return p[3] === chatType && p[4] === chatId;
-    });
-
-    // Map to session files with mtime
-    const matches = [];
-    for (const key of matchingKeys) {
-      const val = sessions[key];
-      if (!val?.sessionId) continue;
-      const sessionFile = path.join(SESSIONS_DIR, val.sessionId + '.jsonl');
-      try {
-        if (fs.existsSync(sessionFile)) {
-          const stat = fs.statSync(sessionFile);
-          matches.push({ sessionId: val.sessionId, file: sessionFile, mtime: stat.mtimeMs });
-        }
-      } catch (e) {}
-    }
-    return matches;
-  } catch (e) {
-    console.error('findChatSessions error:', e);
-    return [];
-  }
-}
-
-
-// ── Get merged chat history from all sessions of this chat ───────────────────
-function getMergedChatHistory(sessionKey, options = {}) {
-  const chatSessions = findChatSessions(sessionKey);
-  if (chatSessions.length === 0) return getChatHistory(sessionKey, options); // fallback
-
-  const allMsgs = [];
-  for (const cs of chatSessions) {
-    try {
-      const lines = fs.readFileSync(cs.file, 'utf8').split('\n');
-      for (const line of lines) {
-        if (!line.trim()) continue;
-        try {
-          const m = JSON.parse(line);
-          if (m.type !== 'message') continue;
-          const msg = m.message;
-          const role = msg.role;
-          if (!['user', 'assistant'].includes(role)) continue;
-          let text = '';
-          if (Array.isArray(msg.content)) {
-            text = msg.content.filter(c => c.type === 'text').map(c => c.text).join(' ');
-          } else { text = String(msg.content || ''); }
-          // Strip system/metadata
-          if (role === 'user' && text.includes('Conversation info')) {
-            const end = text.indexOf('\`\`\`\n\n');
-            if (end >= 0) text = text.slice(end + 5).trim();
-          }
-          if (!text.trim()) continue;
-          if (text === 'HEARTBEAT_OK') continue;
-          if (text.startsWith('[System Message]')) continue;
-          if (text.startsWith('Read HEARTBEAT')) continue;
-          if (text.startsWith('Pre-compaction memory flush')) continue;
-          if (text.startsWith('NO_REPLY')) continue;
-          if (text.includes('Conversation info (untrusted metadata)')) continue;
-          if (text.startsWith('Continue') && text.length < 20) continue;
-          if (text.startsWith('Continueeee')) continue;
-          if (role === 'assistant' && text === 'NO_REPLY') continue;
-          if (text.length < 2) continue;
-          allMsgs.push({ role, ts: m.timestamp, text });
-        } catch (err) {}
-      }
-    } catch (e) {}
-  }
-  // Sort by timestamp ascending (oldest first)
-  allMsgs.sort((a, b) => new Date(a.ts) - new Date(b.ts));
-  const limit = options.limit || 200;
-  return allMsgs.slice(-limit);
-}
-
 function getAllSessions() {
   return sessionsCache.data;
 }
@@ -381,27 +259,63 @@ function getAllSessions() {
 }
 
 // ── Chat history helper ────────────────────────────────────────────────────
-
-function getChatHistory(sessionKey, options = {}) {
-  try {
-    // For direct Telegram chats, always merge across all sessions to preserve history
-    const shouldMerge = options.merge || (sessionKey.startsWith('agent:main:telegram:direct:'));
-    if (shouldMerge) {
-      return getMergedChatHistory(sessionKey, options);
+function getChatHistory(sessionKey) {
+  // For direct Telegram chats, always merge across all sessions to preserve history
+  if (sessionKey.startsWith('agent:main:telegram:direct:')) {
+    const parts = sessionKey.split(':');
+    const chatType = parts[3];
+    const chatId = parts[4];
+    const allSessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
+    const matchingKeys = Object.keys(allSessions).filter(k => {
+      if (k.includes(':run:')) return false;
+      const p = k.split(':');
+      if (p.length < 5) return false;
+      return p[3] === chatType && p[4] === chatId;
+    });
+    const allMsgs = [];
+    for (const key of matchingKeys) {
+      const val = allSessions[key];
+      if (!val?.sessionId) continue;
+      const sessFile = path.join(SESSIONS_DIR, val.sessionId + '.jsonl');
+      if (!fs.existsSync(sessFile)) continue;
+      const lines = fs.readFileSync(sessFile, 'utf8').split('\n');
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        try {
+          const m = JSON.parse(line);
+          if (m.type !== 'message') continue;
+          const msg = m.message;
+          const role = msg.role;
+          if (!['user', 'assistant'].includes(role)) continue;
+          let text = '';
+          if (Array.isArray(msg.content)) {
+            text = msg.content.filter(c => c.type === 'text').map(c => c.text).join(' ');
+          } else { text = String(msg.content || ''); }
+          if (!text.trim()) continue;
+          if (text === 'HEARTBEAT_OK') continue;
+          if (text.startsWith('[System Message]')) continue;
+          if (text.startsWith('Read HEARTBEAT')) continue;
+          if (text.startsWith('Pre-compaction memory flush')) continue;
+          if (text.startsWith('NO_REPLY')) continue;
+          if (text.includes('Conversation info (untrusted metadata)')) continue;
+          if (text.startsWith('Continue') && text.length < 20) continue;
+          if (text.startsWith('Continueeee')) continue;
+          if (role === 'assistant' && text === 'NO_REPLY') continue;
+          if (text.length < 2) continue;
+          allMsgs.push({ role, ts: m.timestamp, text });
+        } catch (e) {}
+      }
     }
+    allMsgs.sort((a, b) => new Date(a.ts) - new Date(b.ts));
+    return allMsgs.slice(-200);
+  }
+  try {
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
+    // If sessionKey not provided or invalid, return empty
     const sessionId = sessions?.[sessionKey]?.sessionId;
     if (!sessionId) return [];
     const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
     if (!fs.existsSync(sessionFile)) return [];
-
-    // Unless forceRefresh, try cache
-    if (!options.forceRefresh) {
-      const cached = getCachedChat(sessionId, sessionFile);
-      if (cached) return cached;
-    }
-
-    // Cache miss or forced refresh: read and parse
     const msgs = [];
     for (const line of fs.readFileSync(sessionFile, 'utf8').split('\n')) {
       if (!line.trim()) continue;
@@ -416,7 +330,7 @@ function getChatHistory(sessionKey, options = {}) {
           text = msg.content.filter(c => c.type === 'text').map(c => c.text).join(' ');
         } else { text = String(msg.content || ''); }
         if (role === 'user' && text.includes('Conversation info')) {
-          const end = text.indexOf('\`\`\`\n\n');
+          const end = text.indexOf('```\n\n');
           if (end >= 0) text = text.slice(end + 5).trim();
         }
         if (!text.trim()) continue;
@@ -433,12 +347,9 @@ function getChatHistory(sessionKey, options = {}) {
         msgs.push({ role, ts: m.timestamp, text });
       } catch (err) {}
     }
-    const result = msgs.slice(-100);
-    setChatCache(sessionId, sessionFile, result);
-    return result;
+    return msgs.slice(-100);
   } catch (err) { return []; }
 }
-
 
 // ── Chat watcher — push notification on new assistant message ──────────────
 function startChatWatcher() {
@@ -446,7 +357,7 @@ function startChatWatcher() {
     const sessions = getAllSessions();
     for (const s of sessions) {
       const sessionKey = s.sessionKey;
-      const msgs = getChatHistory(sessionKey, { forceRefresh: true });
+      const msgs = getChatHistory(sessionKey);
       const assistantCount = msgs.filter(m => m.role === 'assistant').length;
       const prevCount = lastAssistantCounts[sessionKey] || 0;
       if (prevCount > 0 && assistantCount > prevCount) {
@@ -464,7 +375,7 @@ function startChatWatcher() {
       }
       lastAssistantCounts[sessionKey] = assistantCount;
     }
-  }, 5000); // check every 5s
+  }, 1000); // check every 5s
 }
 
 // ── aria2 torrent status ──────────────────────────────────────────────────

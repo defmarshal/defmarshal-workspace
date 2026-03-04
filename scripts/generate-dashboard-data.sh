@@ -72,7 +72,7 @@ hist.append({'ts':$DISK_HISTORY_TIMESTAMP,'pct':$DISK_PERCENT})
 hist=hist[-48:]
 open(f,'w').write(json.dumps(hist))
 print(json.dumps([h['pct'] for h in hist[-24:]]))
-" 2>/dev/null || echo "[$DISK_PERCENT]")
+" || echo "[$DISK_PERCENT]")
 else
   echo "[{"ts":$DISK_HISTORY_TIMESTAMP,"pct":$DISK_PERCENT}]" > "$DISK_HIST_FILE"
   DISK_HISTORY="[$DISK_PERCENT]"
