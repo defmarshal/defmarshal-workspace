@@ -230,33 +230,38 @@ function setChatCache(sessionId, sessionFile, msgs) {
 }
 
 // ── Find all session files for the same Telegram chat (direct or group) ─────
+
 function findChatSessions(sessionKey) {
   try {
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_JSON, 'utf8'));
     const entry = sessions[sessionKey];
     if (!entry) return [];
-    const sessionId = entry.sessionId;
-    const sessionFile = path.join(SESSIONS_DIR, sessionId + '.jsonl');
-    // Read first line to get origin info
-    const firstLine = fs.readFileSync(sessionFile, 'utf8').split('\n')[0];
-    const header = JSON.parse(firstLine);
-    const origin = header.origin || {};
-    const chatType = origin.chatType || (origin.to ? origin.to.split(':')[1] : 'direct');
-    const chatId = (origin.from ? origin.from.split(':').pop() : '') || (origin.to ? origin.to.split(':').pop() : '');
-    if (!chatId) return [];
-    // Scan sessions directory for matching .jsonl files
-    const files = fs.readdirSync(SESSIONS_DIR).filter(f => f.endsWith('.jsonl') && !f.includes('.reset') && !f.includes('.deleted'));
+
+    // Derive chat identifier from the sessionKey itself (fast)
+    // sessionKey format: agent:main:telegram:<type>:<chatId>
+    const parts = sessionKey.split(':');
+    if (parts.length < 5) return [];
+    const chatType = parts[3]; // 'direct' or 'group'
+    const chatId = parts[4];
+
+    // Find all session keys in sessions.json that match the same chatId/type
+    const matchingKeys = Object.keys(sessions).filter(k => {
+      if (k.includes(':run:')) return false;
+      const p = k.split(':');
+      if (p.length < 5) return false;
+      return p[3] === chatType && p[4] === chatId;
+    });
+
+    // Map to session files with mtime
     const matches = [];
-    for (const f of files) {
+    for (const key of matchingKeys) {
+      const val = sessions[key];
+      if (!val?.sessionId) continue;
+      const sessionFile = path.join(SESSIONS_DIR, val.sessionId + '.jsonl');
       try {
-        const full = path.join(SESSIONS_DIR, f);
-        const line = fs.readFileSync(full, 'utf8').split('\n')[0];
-        const h = JSON.parse(line);
-        const o = h.origin || {};
-        const type = o.chatType || (o.to ? o.to.split(':')[1] : '');
-        const id = (o.from ? o.from.split(':').pop() : '') || (o.to ? o.to.split(':').pop() : '');
-        if (id === chatId && type === chatType) {
-          matches.push({ sessionId: h.id, file: full, mtime: fs.statSync(full).mtimeMs });
+        if (fs.existsSync(sessionFile)) {
+          const stat = fs.statSync(sessionFile);
+          matches.push({ sessionId: val.sessionId, file: sessionFile, mtime: stat.mtimeMs });
         }
       } catch (e) {}
     }
@@ -266,6 +271,7 @@ function findChatSessions(sessionKey) {
     return [];
   }
 }
+
 
 // ── Get merged chat history from all sessions of this chat ───────────────────
 function getMergedChatHistory(sessionKey, options = {}) {
