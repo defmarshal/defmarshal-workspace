@@ -968,12 +968,30 @@
     const currentLength = msgInput.value.length;
     charCountEl.textContent = currentLength;
 
-    if (settings.charLimit > 0 && currentLength >= settings.charLimit) {
-      charCountEl.style.color = 'var(--red)';
-      charCountEl.style.fontWeight = '700';
-      if (!charLimitWarningShown) {
-        charCountEl.textContent += ' (max reached)';
-        charLimitWarningShown = true;
+    if (settings.charLimit > 0) {
+      const percent = currentLength / settings.charLimit;
+      const limitReached = currentLength >= settings.charLimit;
+
+      // Progressive warning colors
+      if (limitReached) {
+        charCountEl.style.color = 'var(--red)';
+        charCountEl.style.fontWeight = '700';
+        if (!charLimitWarningShown) {
+          charCountEl.textContent += ' (max reached)';
+          charLimitWarningShown = true;
+        }
+      } else if (percent >= 0.9) {
+        charCountEl.style.color = '#ffa500'; // orange
+        charCountEl.style.fontWeight = '600';
+        charLimitWarningShown = false;
+      } else if (percent >= 0.8) {
+        charCountEl.style.color = '#d29922'; // yellow
+        charCountEl.style.fontWeight = '500';
+        charLimitWarningShown = false;
+      } else {
+        charCountEl.style.color = '';
+        charCountEl.style.fontWeight = '';
+        charLimitWarningShown = false;
       }
     } else {
       charCountEl.style.color = '';
