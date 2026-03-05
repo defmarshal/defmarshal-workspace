@@ -1,4 +1,5 @@
 // MewChat — main application logic with typewriter effects and mascot animations
+// Enhanced with dashboard chat system features
 
 (function() {
   'use strict';
@@ -18,6 +19,15 @@
   const RECONNECT_BASE = 1000; // 1 second
   const RECONNECT_MAX = 30000; // 30 seconds
   const RECONNECT_MAX_ATTEMPTS = 10; // give up after ~30 mins if no success
+
+  // Chat state (from dashboard)
+  let chatData = []; // store all messages
+  let chatSending = false; // suppress poll re-renders while message in flight
+  let chatReplyWatcher = null; // for sendMessage reply polling
+  let sseReconnectAttempts = 0;
+  let sseReconnectTimer = null;
+  const MAX_SSE_RECONNECT_ATTEMPTS = 10;
+  const SSE_RECONNECT_DELAY = 3000; // 3 seconds
 
   // Dom refs
   const themeBtn = document.getElementById('theme-btn');
@@ -130,8 +140,21 @@
     this.style.height = 'auto';
     const newHeight = Math.min(this.scrollHeight, 150); // max-height: 150px
     this.style.height = newHeight + 'px';
-    // Update character counter with limit warning
-    updateCharCountAndCheckLimit();
+    
+    // Update character counter
+    const len = this.value.length;
+    if (charCountEl) {
+      charCountEl.textContent = len > 0 ? len + ' chars' : '';
+      charCountEl.style.opacity = len > 200 ? '1' : '0.5';
+      if (len > 500) {
+        charCountEl.style.color = 'var(--error)';
+        charCountEl.style.fontWeight = '700';
+      } else {
+        charCountEl.style.color = '';
+        charCountEl.style.fontWeight = '';
+      }
+    }
+    
     // Toggle pulse on send button if it has focus
     if (sendBtn) {
       if (this.value.trim().length > 0) sendBtn.classList.add('has-text');
@@ -145,14 +168,16 @@
     localStorage.setItem(getDraftKey(), this.value);
   });
 
-  // Keyboard shortcuts: Ctrl+Enter to send, Escape to clear
+  // Enhanced keyboard shortcuts from dashboard
   msgInput.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      clearChat();
+    }
+    if (e.key === 'Escape') {
+      msgInput.value = '';
+      msgInput.style.height = 'auto';
+      if (charCountEl) charCountEl.textContent = '0';
     }
   });
 
@@ -192,6 +217,24 @@
     const d = new Date(ts * 1000);
     return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
+
+  function fmtTime(ts) {
+    if (!ts) return '';
+    try { return new Date(ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); } catch { return ''; }
+  }
+
+  function timeAgo(ts) {
+    if (!ts) return '';
+    const d = typeof ts === 'number' ? new Date(ts * 1000) : new Date(ts);
+    if (isNaN(d)) return ts;
+    const s = Math.floor((Date.now() - d) / 1000);
+    if (s < 60) return s + 's ago';
+    if (s < 3600) return Math.floor(s/60) + 'm ago';
+    if (s < 86400) return Math.floor(s/3600) + 'h ago';
+    return Math.floor(s/86400) + 'd ago';
+  }
+
+  function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
   function formatRelativeTime(date) {
     const now = new Date();
@@ -385,6 +428,134 @@
     return div; // return element for status updates
   }
 
+  // ── Enhanced renderChat from dashboard ──────────────────────────────────
+  let lastChatLen = 0;
+
+  function renderChat(messages, preserve_scroll = false) {
+    chatData = messages || [];
+    const container = chatMessages;
+
+    // Save scroll position before re-render
+    const scrollHeightBefore = container.scrollHeight;
+    const scrollTopBefore = container.scrollTop;
+    const clientHeightBefore = container.clientHeight;
+    const atBottom = scrollHeightBefore - scrollTopBefore - clientHeightBefore < 60;
+
+    if (!chatData.length) {
+      container.innerHTML = '<div style="padding:32px 16px;text-align:center;color:var(--muted);font-size:13px">💬 No messages yet.<br><span style="font-size:11px">Send something below to start chatting with mewmew~</span></div>';
+      return;
+    }
+
+    let lastDate = null;
+    container.innerHTML = chatData.map(m => {
+      const role = m.role === 'user' ? 'user' : 'assistant';
+      const label = role === 'user' ? '👤 You' : '🐾 mewmew';
+      let text = esc(m.text || '');
+
+      // code blocks first (multiline)
+      text = text.replace(/```[\s\S]*?```/g, b => {
+        const code = b.slice(3, -3).replace(/^[a-z]+\n/, '');
+        return '<pre style="background:#0a0d11;padding:8px;border-radius:6px;font-size:10px;overflow-x:auto;margin:4px 0;white-space:pre-wrap;color:#8b949e">' + esc(code) + '</pre>';
+      });
+      // bold
+      text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      // inline code
+      text = text.replace(/`([^`\n]+)`/g, '<code style="background:#0a0d11;padding:1px 4px;border-radius:3px;font-size:10px;font-family:monospace">$1</code>');
+      // newlines
+      text = text.replace(/\n/g, '<br>');
+
+      let sep = '';
+      if (m.ts) {
+        const d = new Date(m.ts).toLocaleDateString([], {weekday:'short', month:'short', day:'numeric'});
+        if (d !== lastDate) {
+          lastDate = d;
+          sep = `<div style="text-align:center;font-size:10px;color:var(--muted);padding:8px 0;user-select:none">${d}</div>`;
+        }
+      }
+
+      const avatar = role === 'assistant'
+        ? `<div class="msg-avatar">🐾</div>`
+        : `<div class="msg-avatar">👤</div>`;
+
+      return sep + `<div class="msg ${role}" data-ts="${m.ts || ''}">
+        <div class="msg-row">${avatar}<div class="msg-bubble">${text}</div></div>
+        <div class="msg-meta">${label} · ${fmtTime(m.ts)}</div>
+      </div>`;
+    }).join('');
+
+    // Restore scroll position intelligently
+    if (preserve_scroll) {
+      if (atBottom) {
+        scrollChat();
+      } else {
+        const scrollHeightAfter = container.scrollHeight;
+        const heightDiff = scrollHeightAfter - scrollHeightBefore;
+        container.scrollTop = Math.max(0, scrollTopBefore + heightDiff);
+      }
+    } else {
+      scrollChat();
+    }
+
+    const newTotal = chatData.length;
+    if (lastChatLen > 0 && newTotal > lastChatLen) {
+      const newest = chatData[chatData.length - 1];
+      if (newest && newest.role !== 'user') {
+        removeTypingIndicator();
+        playPopSound();
+      } else {
+        removeTypingIndicator();
+      }
+    }
+    lastChatLen = newTotal;
+  }
+
+  function scrollChat() {
+    if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function showTypingIndicator() {
+    removeTypingIndicator();
+    const div = document.createElement('div');
+    div.className = 'msg assistant typing';
+    div.id = 'typing-indicator';
+    div.innerHTML = `<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div><div class="msg-meta">🐾 mewmew is typing…</div>`;
+    chatMessages.appendChild(div);
+    scrollChat();
+  }
+
+  function removeTypingIndicator() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  // ── Sound effects ───────────────────────────────────────────────────────
+  let _audioCtx = null;
+  function getAudioCtx() {
+    if (!_audioCtx || _audioCtx.state === 'closed') {
+      _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (_audioCtx.state === 'suspended') _audioCtx.resume();
+    return _audioCtx;
+  }
+  document.addEventListener('click', () => { try { getAudioCtx(); } catch {} }, { once: true });
+  document.addEventListener('keydown', () => { try { getAudioCtx(); } catch {} }, { once: true });
+
+  function playPopSound() {
+    try {
+      const ctx = getAudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1200, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.06);
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.12);
+    } catch {}
+  }
+
   function applyTimestampVisibility() {
     const settings = loadSettings();
     if (chatMessages) {
@@ -543,61 +714,113 @@
       unreadBannerCount = 0;
       updateNewMessagesBanner();
       startSSE(currentSessionKey);
-    loadDraftForCurrentSession();
+      loadDraftForCurrentSession();
     } catch (e) {
       showError('Could not load sessions: ' + e.message);
       sessionSelect.innerHTML = '<option value="">(error)</option>';
     }
   }
 
-  // Deprecated: using SSE now
+  // Session change handler
+  sessionSelect.addEventListener('change', () => {
+    currentSessionKey = sessionSelect.value;
+    localStorage.setItem('mewchat-session', currentSessionKey);
+    // Clear reply watcher to prevent leaks
+    if (chatReplyWatcher) { clearInterval(chatReplyWatcher); chatReplyWatcher = null; }
+    stopSSE();
+    chatMessages.innerHTML = '';
+    chatData = [];
+    lastMessageCount = 0;
+    startSSE(currentSessionKey);
+    loadDraftForCurrentSession();
+  });
 
+  // ── Enhanced sendMessage from dashboard ──────────────────────────────────
   async function sendMessage(textOverride = null) {
     const text = textOverride || msgInput.value.trim();
     if (!text || !currentSessionKey) return;
-    if (!textOverride) msgInput.value = '';
-    const originalBtnText = sendBtn.textContent;
+
+    // Clear input
+    if (!textOverride) {
+      msgInput.value = '';
+      msgInput.style.height = 'auto';
+      if (charCountEl) charCountEl.textContent = '0';
+    }
+
     sendBtn.disabled = true;
-    sendBtn.classList.add('loading');
-    sendBtn.textContent = 'Sending…';
-    typingEl.classList.remove('hidden');
-    if (mascot) mascot.classList.add('talking');
+    sendBtn.textContent = '⏳';
+    chatSending = true;
     clearError();
-    let userMsgEl = null;
+
+    // Optimistic UI: add user message immediately
+    const tempId = 'msg-' + Date.now();
+    const div = document.createElement('div');
+    div.className = 'msg user sending';
+    div.id = tempId;
+    div.innerHTML = `<div class="msg-bubble">${esc(text)}</div><div class="msg-meta">👤 You · sending…</div>`;
+    chatMessages.appendChild(div);
+    scrollChat();
+
     try {
-      // Render user message immediately (optimistic UI)
-      userMsgEl = renderMessage('user', text, Date.now() / 1000, false);
       const res = await fetch(API_BASE + '/api/send', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, sessionKey: currentSessionKey })
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({message: text, sessionKey: currentSessionKey})
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to send');
-      // Mark as delivered if element still exists
-      if (userMsgEl) userMsgEl.classList.add('sent');
-      lastFailedMessage = null;
-      // Clear draft after successful send
-      localStorage.removeItem(getDraftKey());
+
+      const el = document.getElementById(tempId);
+      if (el) {
+        el.classList.remove('sending');
+        el.querySelector('.msg-meta').textContent = '👤 You · ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+      }
+
+      showTypingIndicator();
+
+      // Poll until a NEW assistant message appears
+      const sentAt = Date.now();
+      const asstMsgs = chatData.filter(m => m.role !== 'user');
+      const lastAsstTs = asstMsgs.length ? new Date(asstMsgs[asstMsgs.length - 1].ts).getTime() : 0;
+
+      // Clear any existing watcher
+      if (chatReplyWatcher) { clearInterval(chatReplyWatcher); chatReplyWatcher = null; }
+
+      chatReplyWatcher = setInterval(async () => {
+        try {
+          const r = await fetch(API_BASE + '/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
+          if (!r.ok) return;
+          const d = await r.json();
+          const msgs = d.chat || [];
+          const newAsst = msgs.filter(m => m.role !== 'user' && new Date(m.ts).getTime() > lastAsstTs);
+          const timedOut = Date.now() - sentAt > 180000; // 3 min timeout
+
+          if (newAsst.length > 0 || timedOut) {
+            clearInterval(chatReplyWatcher);
+            chatReplyWatcher = null;
+            chatSending = false;
+            removeTypingIndicator();
+            renderChat(msgs, true);
+          }
+        } catch {}
+      }, 3000);
+
     } catch (e) {
-      lastFailedMessage = text;
-      // Remove the optimistic message if it failed (optional) or leave it with error state
-      // Could remove: userMsgEl?.remove(); but better to leave and maybe mark as failed
-      // For now, keep the message but show error; could add a 'failed' class later
+      chatSending = false;
+      const el = document.getElementById(tempId);
+      if (el) el.querySelector('.msg-bubble').style.borderColor = 'var(--error)';
       showError('Send failed: ' + e.message + ' <button class="retry-btn">Retry</button>');
-      // Attach retry handler
       const retryBtn = errorEl.querySelector('.retry-btn');
       if (retryBtn) {
         retryBtn.addEventListener('click', () => {
-          sendMessage(lastFailedMessage);
+          clearError();
+          sendMessage(text);
         });
       }
     } finally {
       sendBtn.disabled = false;
-      sendBtn.classList.remove('loading');
       sendBtn.textContent = 'Send';
-      typingEl.classList.add('hidden');
-      if (mascot) mascot.classList.remove('talking');
+      if (sendBtn.textContent === '⏳') sendBtn.textContent = 'Send';
     }
   }
 
@@ -683,37 +906,13 @@
       try {
         const data = JSON.parse(event.data);
         if (!data.chat) return;
-        const newCount = data.chat.length;
-        if (newCount > lastMessageCount) {
-          // Remove loading indicator if this is the first batch
-          if (lastMessageCount === 0) {
-            removeLoadingChat();
-          }
-          const newMsgs = data.chat.slice(lastMessageCount);
-          if (document.hidden) {
-            unreadCount += newMsgs.length;
-            document.title = `(${unreadCount}) MewChat — chat with mewmew`;
-          }
-          // Determine if user is at bottom before rendering
-          const wasAtBottom = isAtBottom();
-          newMsgs.forEach((m, idx) => {
-            const isLatest = idx === newMsgs.length - 1;
-            // Only animate assistant's latest message if we were at bottom
-            const animate = wasAtBottom && m.role === 'assistant' && isLatest;
-            renderMessage(m.role, m.text, m.ts, animate, false); // no auto-scroll
-          });
-          lastMessageCount = newCount;
-          updateLastUpdated();
-          // After rendering, decide to scroll or show banner
-          if (wasAtBottom) {
-            // Ensure we scroll to bottom after all messages rendered
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-          } else {
-            // User is scrolled up; accumulate unread count and show banner
-            unreadBannerCount += newMsgs.length;
-            updateNewMessagesBanner();
-          }
-        }
+        
+        // Skip SSE updates while sending to avoid flash
+        if (chatSending) return;
+        
+        // Use renderChat for consistent rendering with scroll preservation
+        renderChat(data.chat, true);
+        updateLastUpdated();
       } catch (e) {
         console.error('SSE parse error:', e);
       }
@@ -1032,4 +1231,15 @@
     // Focus input for quick start
     if (msgInput) msgInput.focus();
   });
+
+  // ── Refresh chat on demand ──────────────────────────────────────────────
+  async function refreshChat() {
+    if (chatSending || !currentSessionKey) return;
+    try {
+      const res = await fetch(API_BASE + '/api/chat?sessionKey=' + encodeURIComponent(currentSessionKey));
+      if (!res.ok) return;
+      const data = await res.json();
+      renderChat(data.chat, true);
+    } catch {}
+  }
 })();
