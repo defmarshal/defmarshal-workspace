@@ -32,7 +32,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
 - Recent:
-  - Meta-agent (2026-03-05 03:07 UTC) spawned content-agent and research-agent to produce daily work (both missing for the day)
+  - Meta-agent cycles (2026-03-05 03:07 & 20:01 UTC) confirmed content-agent and research-agent running to produce daily work; system stable
   - Meta-agent (2026-03-05 05:10 UTC) verified agents running; system stable at 59% disk, 2 APT pending
   - Disabled `linkedin-pa-agent-cron` (2026-03-04) to align with docs after drift detection
   - Fixed dashboard cron stuck state via disable/enable reset; Python errors now logged (no more silent failures)
@@ -40,3 +40,4 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - Disk history sparkline rebuilding (12/24 points) after cron state recovery
   - Active projects updated; anime-studio-tycoon sub-agent running
   - Agent-manager stable; auto-commits small changes and validates cron schedules every 30 min
+  - Voyage AI rate limits persist; memory learning temporarily disabled; local FTS active

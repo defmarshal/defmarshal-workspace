@@ -2,6 +2,3 @@
   - Verification: daemon process active; cycle completed, sleeping until next cycle (previous instance died at 01:40 UTC)
 - [content-agent] content-agent - Generates daily digests, anime summaries, tech writeups (spawned 2026-03-05 07:30 UTC by agent-manager, status: running)
 - [research-agent] research-agent - Conducts research cycles, creates detailed reports (spawned 2026-03-05 07:30 UTC by agent-manager, status: running)
-- [evolver-cycle] evolver-cycle - Capability evolver self-evolution cycle (started: 2026-03-05 12:09 UTC by cron, status: running, PID: 1084228)
-  - Trigger: evolver-agent-cron (6h schedule)
-  - Log: memory/evolver-agent.log
