@@ -17,15 +17,14 @@ class C:
     E = '\033[0m'   # End
 
 # Game state
-money = 500000  # Heavily increased for winnability
+money = 100000
 staff = 5
 reputation = 50
 fans = 1000
 week = 0
-episodes_target = 6  # Reduced to 6 for quick completion
+episodes_target = 10
 episodes_completed = 0
-salary_per_staff = 1000  # Lowered salary
-difficulty = "easy"
+salary_per_staff = 2000
 
 # New: Genre & Trend system
 GENRES = ["Shonen", "Isekai", "Slice of Life", "Mecha", "Horror", "Sports", "Romance", "Sci-Fi"]
@@ -35,32 +34,28 @@ trend_announced = False
 
 # New: Production points system
 production_progress = 0
-points_per_episode = 60  # Reduced for very fast completion
+points_per_episode = 100
 is_crunching = False
 
-# New: Upgrades (add two new ones)
+# New: Upgrades
 UPGRADES = {
     "star_director": {"cost": 30000, "label": "Star Director", "desc": "Reputation gain from episodes doubled.", "owned": False},
     "god_animator": {"cost": 25000, "label": "God Animator", "desc": "Reduces 'Staff burnout' event chance by 50%.", "owned": False},
     "better_software": {"cost": 15000, "label": "Better Software", "desc": "Weekly salary cost reduced by 20%.", "owned": False},
-    "merch_table": {"cost": 20000, "label": "Merch Table", "desc": "Every 4 weeks: +¥3000 fans (actually +3000 fans).", "owned": False},
-    # New upgrades
-    "marketing_dept": {"cost": 25000, "label": "Marketing Dept", "desc": "Weekly fan gain from advertising (50-200).", "owned": False},
-    "advanced_pipeline": {"cost": 35000, "label": "Advanced Pipeline", "desc": "Production per staff +2 weekly.", "owned": False},
-    "sponsorship": {"cost": 40000, "label": "Sponsorship Deal", "desc": "Weekly sponsorship income ¥5000.", "owned": False}
+    "merch_table": {"cost": 20000, "label": "Merch Table", "desc": "Every 4 weeks: +¥3000 fans (actually +3000 fans).", "owned": False}
 }
 salary_multiplier = 1.0
 
 events = [
     ("Viral moment!", 0, 0, 0, 5000),
-    ("Staff burnout", 0, 0, 0, 0),
+    ("Staff burnout", 0, 0, 0, 0),  # Fixed money delta; staff loss handled separately
     ("Budget overrun", -10000, 0, 0, 0),
     ("Positive review", 0, 0, 10, 0),
     ("Critic praise", 0, 0, 15, 1000),
     ("Streaming deal", 25000, 0, 0, 0),
     ("Fan convention", 0, 0, 0, 2000),
     ("Licensing opportunity", 15000, 0, 5, 500),
-    # Original events
+    # New events to increase variety and balance
     ("Merchandise boom", 8000, 0, 0, 3000),
     ("Award nomination", 0, 0, 8, 2000),
     ("Investor injection", 15000, 0, 0, 0),
@@ -73,7 +68,7 @@ events = [
     ("Negative press", 0, 0, -8, -2000),
     ("Streaming hit", 12000, 0, 5, 8000),
     ("Collaboration", 5000, 0, 5, 3000),
-    # Polish events (2026-03-04)
+    # New polish events (2026-03-04)
     ("Studio renovation", -8000, 0, 10, 2000),
     ("Contract dispute", -5000, -1, -5, -1000),
     ("Merchandise counterfeit", -3000, 0, -3, -2000),
@@ -83,22 +78,7 @@ events = [
     ("Crowdfunding campaign", 15000, 0, 5, 10000),
     ("Licensing deal rejected", -10000, 0, 0, 0),
     ("Talent scout", 0, 1, 0, 0),
-    ("Season finale hype", 0, 0, 8, 15000),
-    # New balance events
-    ("Talent discovery", 0, 2, 5, 0),  # free staff + rep
-    ("Fan convention mega-success", 0, 0, 0, 12000),
-    ("Streaming partnership renewal", 20000, 0, 0, 0),
-    ("Equipment failure", -5000, 0, -3, 0),
-    ("Positive press tour", 5000, 0, 8, 3000),
-    ("Merchandise line launch", 10000, 0, 3, 5000),
-    ("Voice actor popular", 0, 0, 5, 4000),
-    ("Social media viral", 0, 0, 0, 10000),
-    ("Production efficiency breakthrough", 0, 0, 0, 0),  # handled separately
-    ("Studio relocation", -15000, 0, 10, 5000),
-    ("Crisis averted", 5000, 0, 5, 0),
-    ("Holiday bonus", -3000, 0, 10, 2000),
-    ("Media coverage", 0, 0, 12, 5000),
-    ("New investor", 25000, 0, 0, 0)
+    ("Season finale hype", 0, 0, 8, 15000)
 ]
 
 def clear_screen():
@@ -122,19 +102,15 @@ def check_end():
         sys.exit(0)
 
 def apply_upgrades():
-    global salary_multiplier, weekly_gain_base
-    salary_multiplier = 1.0
-    weekly_gain_base = 5  # base production per staff
+    global salary_multiplier
     if UPGRADES["better_software"]["owned"]:
         salary_multiplier = 0.8
-    if UPGRADES["advanced_pipeline"]["owned"]:
-        weekly_gain_base += 2
 
 def episode_gain():
     global reputation, fans, market_trend, player_genre, trend_announced
     # Base gains
     rep_gain = 10
-    fan_gain = random.randint(4000, 12000)  # Increased from 2000-8000
+    fan_gain = random.randint(2000, 8000)
     
     # Genre-trend multiplier
     trend_mult = 1.5 if player_genre == market_trend else 1.0
@@ -201,25 +177,9 @@ def weekly_event():
 def weekly_update():
     global money, staff, reputation, week, episodes_completed, production_progress, is_crunching, market_trend, trend_announced, fans
     
-    # Initialize weekly gain base (will be adjusted by upgrades)
-    weekly_gain_base = 5
-    if UPGRADES["advanced_pipeline"]["owned"]:
-        weekly_gain_base += 2
-    
     # Salary payment (with upgrade discount)
     actual_salary = staff * salary_per_staff * salary_multiplier
     money -= int(actual_salary)
-    
-    # Passive income from upgrades
-    if UPGRADES["sponsorship"]["owned"]:
-        money += 5000
-        print(f"{C.OKGREEN}Sponsorship income: ¥5000{C.E}")
-    
-    # Marketing department weekly fan bonus
-    if UPGRADES["marketing_dept"]["owned"]:
-        marketing_fans = random.randint(50, 200)
-        fans += marketing_fans
-        print(f"{C.OKCYAN}Marketing brought in {marketing_fans} new fans!{C.E}")
     
     # Random event
     weekly_event()
@@ -244,35 +204,22 @@ def weekly_update():
         auto_mode = True
 
     if auto_mode:
-        # Improved auto-mode logic
-        # Keep minimum cash buffer based on staff salary (relative)
-        min_cash_buffer = staff * salary_per_staff * 2
-        # Avoid firing below 4 staff at all costs (minimum viable team)
-        should_fire = (money < min_cash_buffer and staff > 4) or (money < 0 and staff > 4)
-        should_hire = staff < 6 and money > 20000 and not should_fire
-        should_train = staff < 6 and money > 10000 and not should_fire
-        should_quality = reputation < 60 and money >= 2000 and not is_crunching
-        should_crunch = production_progress < points_per_episode * 1.5 and money >= 2000 and episodes_completed < episodes_target and not is_crunching and staff >= 4
-        should_buy_upgrade = False
-        for key, upg in UPGRADES.items():
-            if not upg["owned"] and money >= upg["cost"]:
-                should_buy_upgrade = True
-                break
-        
-        if should_buy_upgrade:
-            choice = "6"
-        elif should_hire:
-            choice = "1"
-        elif should_train:
-            choice = "3"
-        elif should_quality:
-            choice = "5"
-        elif should_crunch:
+        # Auto-mode: choose based on game state (do NOT modify game state here!)
+        if money < 8000 and staff > 4:
+            choice = "2"  # Fire if low on money and too many staff
+        elif money >= 5000 and staff < 6:
+            choice = "1"  # Hire if can afford and staff low
+        elif money >= 3000 and staff < 6:
+            choice = "3"  # Train if can afford
+        elif reputation < 70 and money >= 2000 and not is_crunching:
+            choice = "5"  # Quality focus if rep low
+        elif not UPGRADES["star_director"]["owned"] and money >= UPGRADES["star_director"]["cost"]:
+            choice = "6"  # Buy upgrade if affordable
+        elif production_progress < points_per_episode * 1.5 and money >= 2000 and episodes_completed < episodes_target and not is_crunching:
+            # If behind schedule and can afford crunch (and not already active)
             choice = "4"
-        elif should_fire:
-            choice = "2"
         else:
-            choice = "7"
+            choice = "7"  # Advance week
         print(f"Auto-choosing: {choice}")
     
     if choice == "1":
@@ -304,41 +251,28 @@ def weekly_update():
             print(f"{C.FAIL}Not enough money.{C.E}")
     elif choice == "6":
         print(f"\n{C.HEADER}Available Upgrades:{C.E}")
-        affordable = []
+        affordable = False
         for key, upg in UPGRADES.items():
             status_icon = f"{C.OKGREEN}[OWNED]{C.E}" if upg["owned"] else f"[¥{upg['cost']}]"
             if not upg["owned"] and money >= upg["cost"]:
                 status_icon = f"{C.OKCYAN}[BUY]{C.E}"
-                affordable.append(key)
+                affordable = True
             print(f"  {upg['label']} {status_icon}")
             print(f"    {upg['desc']}")
         if not affordable:
             print(f"  {C.WARNING}No affordable upgrades.{C.E}")
-        # Auto-mode purchase: buy the first affordable upgrade
-        if auto_mode and affordable:
-            buy_key = affordable[0]
-            for key, upg in UPGRADES.items():
-                if key == buy_key and not upg["owned"] and money >= upg["cost"]:
-                    money -= upg["cost"]
-                    upg["owned"] = True
-                    print(f"{C.OKGREEN}Auto-purchased {upg['label']}!{C.E}")
-                    if key in ("better_software", "advanced_pipeline"):
-                        apply_upgrades()
-                    break
-        elif not auto_mode:
+        # Allow purchase
+        if affordable:
             try:
                 buy = input(f"\nEnter upgrade to buy (or press Enter to cancel): ").strip().lower()
-                if buy:
-                    for key, upg in UPGRADES.items():
-                        if not upg["owned"] and money >= upg["cost"] and buy in key.lower():
-                            money -= upg["cost"]
-                            upg["owned"] = True
-                            print(f"{C.OKGREEN}Purchased {upg['label']}!{C.E}")
-                            if key == "better_software":
-                                apply_upgrades()
-                            elif key == "advanced_pipeline":
-                                apply_upgrades()
-                            break
+                for key, upg in UPGRADES.items():
+                    if not upg["owned"] and money >= upg["cost"] and buy in key.lower():
+                        money -= upg["cost"]
+                        upg["owned"] = True
+                        print(f"{C.OKGREEN}Purchased {upg['label']}!{C.E}")
+                        if key == "better_software":
+                            apply_upgrades()
+                        break
             except (EOFError, KeyboardInterrupt):
                 pass
     elif choice == "7":
@@ -357,8 +291,8 @@ def weekly_update():
     else:
         print(f"{C.FAIL}Invalid choice; skipping.{C.E}")
     
-    # Weekly production based on staff (and crunch, upgrades)
-    weekly_gain = staff * weekly_gain_base
+    # Weekly progress based on staff (and crunch)
+    weekly_gain = staff * 5
     if is_crunching:
         weekly_gain *= 2
         reputation -= 2  # Crunch penalty
