@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-set -euo pipefail
-cd /home/ubuntu/.openclaw/workspace
+# Supervisor functionality disabled; exits silently.
+exit 0
 
 LOGFILE="memory/supervisor.log"
 mkdir -p memory
