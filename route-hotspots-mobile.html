@@ -352,20 +352,15 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
-      position: fixed;
+      position: absolute;
       right: 0;
-      top: calc(env(safe-area-inset-top) + 56px);
-      z-index: 1001;
+      top: 60px;
+      z-index: 1100;
       pointer-events: auto;
       transition: right 0.3s ease;
     }
-    .bottom-right-sidebar.open ~ .sidebar-tabs-collapsed {
-      right: calc(min(85vw, 380px) + 0px);
-    }
-    @media (min-width: 768px) {
-      .bottom-right-sidebar.open ~ .sidebar-tabs-collapsed {
-        right: calc(360px + 12px);
-      }
+    .sidebar-tabs-collapsed.slide-left {
+      right: min(85vw, 380px);
     }
     .collapsed-tab {
       width: 28px;
@@ -466,14 +461,17 @@
     /* Toast notifications */
     #toast-container {
       position: fixed;
-      top: env(safe-area-inset-top);
+      top: 8px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 4000;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding-top: 8px;
+      padding: 8px;
+      max-width: calc(100vw - 16px);
+      box-sizing: border-box;
+      pointer-events: none;
     }
     .toast {
       background: rgba(0,0,0,0.8);
@@ -481,9 +479,14 @@
       padding: 10px 16px;
       border-radius: 8px;
       font-size: 14px;
-      max-width: 90vw;
+      max-width: 100%;
       text-align: center;
       animation: fadeInOut 2.5s ease-in-out forwards;
+      pointer-events: auto;
+      box-sizing: border-box;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
     }
     .toast.error { background: #f44336; }
     .toast.success { background: #4caf50; }
@@ -520,6 +523,11 @@
   <div id="app">
     <div id="map"></div>
     <div class="backdrop" id="backdrop"></div>
+
+    <!-- Collapsed tabs (outside sidebar, always visible when closed) -->
+    <div class="sidebar-tabs-collapsed" id="collapsedTabs">
+      <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Analysis</span></div>
+    </div>
 
     <!-- Top Bar -->
     <div class="top-bar">
@@ -705,11 +713,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Collapsed tabs (outside sidebar, always visible when closed) -->
-  <div class="sidebar-tabs-collapsed" id="collapsedTabs">
-    <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Analysis</span></div>
   </div>
 
   <!-- Settings Modal -->
@@ -1130,7 +1133,7 @@
       // Remove previous segment layers
       if (window.segmentLabelLayer) map.removeLayer(window.segmentLabelLayer);
       if (window.segmentPolylinesLayer) map.removeLayer(window.segmentPolylinesLayer);
-      
+
       window.segmentLabelLayer = L.layerGroup().addTo(map);
       window.segmentPolylinesLayer = L.layerGroup().addTo(map);
 
@@ -1139,11 +1142,12 @@
         L.polyline(seg.coords, { color, weight: 6, opacity: 0.8 }).addTo(window.segmentPolylinesLayer);
         if (seg.coords.length > 0) {
           const midIdx = Math.floor(seg.coords.length / 2);
+          const slowdownText = `S${seg.segment}: ${seg.ratio.toFixed(2)}×`;
           L.marker(seg.coords[midIdx], {
             icon: L.divIcon({
               className: 'segment-label',
-              html: `<div style="background:white;border:1px solid #333;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;box-shadow:0 1px 3px rgba(0,0,0,0.3);">${seg.segment}</div>`,
-              iconSize: [22,22], iconAnchor: [11,11]
+              html: `<div style="background:${color};color:white;border:2px solid white;border-radius:6px;padding:2px 6px;font-size:10px;font-weight:bold;box-shadow:0 1px 4px rgba(0,0,0,0.4);white-space:nowrap;">${slowdownText}</div>`,
+              iconSize: [55,20], iconAnchor: [27,10]
             })
           }).addTo(window.segmentLabelLayer);
         }
@@ -1170,7 +1174,7 @@
       const endHour = parseInt(document.getElementById('sidebar-gradientEnd').value);
       const step = parseInt(document.getElementById('sidebar-gradientStep').value);
       const use30DayAvg = document.getElementById('use30DayAvg').checked;
-      
+
       const startTimeMin = startHour * 60;
       const endTimeMin = endHour * 60;
       if (startTimeMin > endTimeMin) { showToast('Start time must be <= end time', 'error'); return; }
@@ -1178,12 +1182,11 @@
       const times = []; for (let t = startTimeMin; t <= endTimeMin; t += step) times.push(t);
       gradientData = { times, matrix: [] };
 
-      const drawerLoading = document.createElement('div'); drawerLoading.id = 'loading'; drawerLoading.style.cssText = 'color:#0066cc; font-weight:bold; margin:8px 0;';
-      document.querySelector('#drawer .card:first-child').appendChild(drawerLoading);
+      const totalRequests = use30DayAvg ? 30 * times.length : times.length;
+      showToast(`Starting gradient analysis: ${totalRequests} requests...`, 'info');
 
       try {
         if (!use30DayAvg) {
-          drawerLoading.textContent = `Generating gradient for ${times.length} time points...`;
           for (let i = 0; i < times.length; i++) {
             const totalMin = times[i];
             const hour = Math.floor(totalMin / 60) % 24;
@@ -1191,8 +1194,9 @@
             try {
               const { segmentData } = await calculateSegmentData({ hour, min });
               gradientData.matrix[i] = segmentData.map(s => s.ratio);
-              drawerLoading.textContent = `Fetched ${String(hour).padStart(2,'0')}:${String(min).padStart(2,'0')} (${i+1}/${times.length})`;
-              await new Promise(r => setTimeout(r, 350));
+              if ((i + 1) % 5 === 0 || i === times.length - 1) {
+                showToast(`Progress: ${i + 1}/${times.length} time points`, 'info');
+              }
             } catch (e) {
               console.error('Gradient error', e);
               gradientData.matrix[i] = [];
@@ -1212,8 +1216,9 @@
               datesSameWeekday.push(`${y}-${m}-${day}`);
             }
           }
-          drawerLoading.textContent = `30‑day avg (same weekday): ${datesSameWeekday.length} days × ${times.length} times = ${datesSameWeekday.length*times.length} requests...`;
+          showToast(`30-day avg: ${datesSameWeekday.length} days × ${times.length} times`, 'info');
           let sums = null, counts = null;
+          let segCount = null;
           let totalDone = 0, total = datesSameWeekday.length * times.length;
           for (let dIdx = 0; dIdx < datesSameWeekday.length; dIdx++) {
             const dateStr = datesSameWeekday[dIdx];
@@ -1224,7 +1229,7 @@
               try {
                 const { segmentData } = await calculateSegmentData({ hour, min }, dateStr);
                 if (!sums) {
-                  const segCount = segmentData.length;
+                  segCount = segmentData.length;
                   sums = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
                   counts = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
                 }
@@ -1234,10 +1239,16 @@
                 });
               } catch (e) {
                 console.warn(`Failed ${dateStr} ${hour}:${min}`, e.message);
+                // Still increment count for failed requests to keep tracking
+                if (segCount !== null) {
+                  for (let sIdx = 0; sIdx < segCount; sIdx++) {
+                    // Don't add to sums, but we track successful counts only
+                  }
+                }
               }
               totalDone++;
-              if (totalDone % 5 === 0 || totalDone === total) {
-                drawerLoading.textContent = `30‑day avg: ${totalDone}/${total} requests done...`;
+              if (totalDone % 10 === 0 || totalDone === total) {
+                showToast(`Progress: ${totalDone}/${total} requests`, 'info');
               }
               await new Promise(r => setTimeout(r, 300));
             }
@@ -1246,11 +1257,10 @@
           gradientData.matrix = sums.map((row, tIdx) => row.map((sum, sIdx) => (counts[tIdx][sIdx] > 0 ? sum / counts[tIdx][sIdx] : null)));
         }
         renderGradientTable();
-        drawerLoading.remove();
+        showToast('Gradient analysis complete!', 'success');
         openAnalysisSidebar('gradient');
       } catch (e) {
         console.error('Gradient failed:', e);
-        drawerLoading.remove();
         showToast('Gradient failed: ' + e.message, 'error');
       }
     });
@@ -1260,13 +1270,11 @@
       if (!gradientData.matrix.length || !gradientData.matrix[0].length) { table.style.display = 'none'; return; }
       const route = state.availableRoutes[state.selectedRouteIndex];
       const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
-      let th = `<tr><th colspan="2">Route ${state.selectedRouteIndex+1} (${distKm} km)</th>`;
+      let th = `<tr><th colspan="${gradientData.times.length + 1}">Route ${state.selectedRouteIndex+1} (${distKm} km)</th></tr><tr><th>Seg</th>`;
       gradientData.times.forEach(totalMin => {
         const h = Math.floor(totalMin / 60) % 24, m = totalMin % 60;
         th += `<th>${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}</th>`;
       });
-      th += '</tr><tr><th>Seg</th><th>R</th>';
-      gradientData.times.forEach(() => th += '<th></th>');
       th += '</tr>';
       thead.innerHTML = th;
 
@@ -1275,7 +1283,6 @@
       for (let seg = 0; seg < segCount; seg++) {
         const row = tbody.insertRow();
         row.insertCell().textContent = seg+1;
-        row.insertCell().textContent = `R${state.selectedRouteIndex+1}`;
         for (let t = 0; t < gradientData.times.length; t++) {
           const ratio = gradientData.matrix[t][seg];
           const cell = row.insertCell();
@@ -1295,6 +1302,7 @@
     function openAnalysisSidebar(panel) {
       const sidebar = document.getElementById('analysisSidebar');
       const sidebarTitle = document.getElementById('sidebarTitle');
+      const collapsedTabs = document.getElementById('collapsedTabs');
       
       // Update collapsed tabs
       document.querySelectorAll('.collapsed-tab').forEach(tab => {
@@ -1314,11 +1322,14 @@
       
       sidebarTitle.textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
       sidebar.classList.add('open');
+      if (collapsedTabs) collapsedTabs.classList.add('slide-left');
     }
 
     function closeAnalysisSidebar() {
       const sidebar = document.getElementById('analysisSidebar');
+      const collapsedTabs = document.getElementById('collapsedTabs');
       sidebar.classList.remove('open');
+      if (collapsedTabs) collapsedTabs.classList.remove('slide-left');
     }
 
     function toggleAnalysisSidebar(panel) {
