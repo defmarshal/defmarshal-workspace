@@ -70,17 +70,6 @@
     if (!document.hidden) resetTitleBadge();
   });
 
-  // Restore draft from localStorage (if any)
-  const savedDraft = localStorage.getItem('mewchat-draft');
-  if (savedDraft) {
-    msgInput.value = savedDraft;
-    // Update height and char count
-    msgInput.style.height = 'auto';
-    msgInput.style.height = Math.min(msgInput.scrollHeight, 150) + 'px';
-    updateCharCountAndCheckLimit();
-    if (sendBtn && savedDraft.trim().length > 0) sendBtn.classList.add('has-text');
-  }
-
   // Show/hide scroll-to-bottom button based on scroll position
   function toggleScrollBottomBtn() {
     if (!scrollBottomBtn) return;
@@ -153,7 +142,7 @@
       clearInputBtn.classList.toggle('hidden', this.value.length === 0);
     }
     // Save draft to localStorage
-    localStorage.setItem('mewchat-draft', this.value);
+    localStorage.setItem(getDraftKey(), this.value);
   });
 
   // Keyboard shortcuts: Ctrl+Enter to send, Escape to clear
@@ -501,7 +490,7 @@
     lastMessageCount = 0;
     unreadBannerCount = 0;
     updateNewMessagesBanner();
-    localStorage.removeItem('mewchat-draft');
+    localStorage.removeItem(getDraftKey());
     msgInput.value = '';
     if (charCountEl) charCountEl.textContent = '0';
     msgInput.style.height = 'auto';
@@ -540,6 +529,7 @@
       unreadBannerCount = 0;
       updateNewMessagesBanner();
       startSSE(currentSessionKey);
+    loadDraftForCurrentSession();
     } catch (e) {
       showError('Could not load sessions: ' + e.message);
       sessionSelect.innerHTML = '<option value="">(error)</option>';
@@ -574,7 +564,7 @@
       if (userMsgEl) userMsgEl.classList.add('sent');
       lastFailedMessage = null;
       // Clear draft after successful send
-      localStorage.removeItem('mewchat-draft');
+      localStorage.removeItem(getDraftKey());
     } catch (e) {
       lastFailedMessage = text;
       // Remove the optimistic message if it failed (optional) or leave it with error state
@@ -736,6 +726,7 @@
     unreadBannerCount = 0;
     updateNewMessagesBanner();
     startSSE(currentSessionKey);
+    loadDraftForCurrentSession();
   });
 
   msgInput.addEventListener('keydown', e => {
@@ -1019,6 +1010,7 @@
   // Initialize
   loadSessions().then(() => {
     startSSE(currentSessionKey);
+    loadDraftForCurrentSession();
     // Apply initial UI settings
     applyTimestampVisibility();
     applyMascotVisibility();
