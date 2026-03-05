@@ -213,6 +213,20 @@
     lastUpdatedEl.textContent = `Updated ${formatRelativeTime(now)}`;
   }
 
+  // Draft management per session
+  function getDraftKey() {
+    return `mewchat-draft-${currentSessionKey || 'default'}`;
+  }
+
+  function loadDraftForCurrentSession() {
+    const draft = localStorage.getItem(getDraftKey()) || '';
+    if (msgInput) {
+      msgInput.value = draft;
+      // Trigger input event to update height, char count, and toggle button
+      msgInput.dispatchEvent(new Event('input'));
+    }
+  }
+
   // New Messages Banner helpers
   function isAtBottom() {
     return chatMessages.scrollHeight - chatMessages.scrollTop <= chatMessages.clientHeight + 10;
