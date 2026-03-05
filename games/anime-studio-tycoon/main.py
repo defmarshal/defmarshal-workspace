@@ -78,7 +78,11 @@ events = [
     ("Crowdfunding campaign", 15000, 0, 5, 10000),
     ("Licensing deal rejected", -10000, 0, 0, 0),
     ("Talent scout", 0, 1, 0, 0),
-    ("Season finale hype", 0, 0, 8, 15000)
+    ("Season finale hype", 0, 0, 8, 15000),
+    # New events (2026-03-05 polish)
+    ("Server outage", -5000, 0, -2, -1000),
+    ("Fan donation", 2000, 0, 0, 500),
+    ("Award win", 0, 0, 5, 3000)
 ]
 
 def clear_screen():
