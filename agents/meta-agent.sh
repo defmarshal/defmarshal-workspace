@@ -441,6 +441,14 @@ case "${1:-}" in
     # adjust_scheduling  # Disabled to preserve cron schedule integrity (2026-02-18 build)
     perform_memory_learning
     
+    # Commit meta-agent state changes to avoid dirty workspace for idea-executor
+    if git diff-index --quiet HEAD -- memory/meta-agent-state.json 2>/dev/null; then
+      :
+    else
+      git add memory/meta-agent-state.json
+      git commit -m "chore(meta-agent): update state $(date -u '+%Y-%m-%d %H:%M UTC')" || true
+    fi
+    
     log "Meta-Agent one-shot completed; actions: ${ACTIONS[*]:-none}"
     ;;
     
