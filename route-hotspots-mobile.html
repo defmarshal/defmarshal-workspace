@@ -126,23 +126,26 @@
       transition: transform 0.3s ease;
     }
     .drawer.collapsed {
-      transform: translateY(calc(100% - 56px));
+      transform: translateY(calc(100% - 48px));
     }
-    .drawer-handle {
-      height: 24px;
+    .drawer-header {
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
-      border-bottom: 1px solid #eee;
+      flex-shrink: 0;
     }
-    .drawer-handle::after {
-      content: "";
-      width: 36px; height: 4px;
-      background: #ccc;
-      border-radius: 2px;
+    .drawer.collapsed .drawer-header {
+      border-radius: var(--radius) var(--radius) 0 0;
     }
-    .drawer.collapsed .drawer-handle::after { background: #999; }
+    .drawer-handle {
+      display: none;
+    }
     .drawer-content {
       flex: 1;
       overflow-y: auto;
@@ -209,24 +212,6 @@
       border: none;
       border-radius: 4px;
     }
-    .time-btns {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-    .time-btn {
-      flex: 1;
-      min-width: 80px;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background: var(--primary);
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .time-btn:active { transform: translateY(1px); }
     .legend {
       display: flex;
       flex-wrap: wrap;
@@ -308,19 +293,29 @@
     .gradient-controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-    .gradient-controls input[type="time"] {
-      padding: 8px;
-      font-size: 14px;
-      width: 80px;
+    .gradient-controls label {
+      font-size: 11px;
+      color: #555;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      align-items: flex-start;
     }
-    .gradient-controls input[type="number"] {
-      width: 60px;
-      padding: 8px;
-      font-size: 14px;
+    .gradient-controls select {
+      padding: 4px 2px;
+      font-size: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+    }
+    .gradient-controls button {
+      padding: 6px 10px !important;
+      font-size: 12px !important;
+      align-self: flex-end;
     }
 
     /* Backdrop for right drawer */
@@ -362,6 +357,15 @@
       top: calc(env(safe-area-inset-top) + 56px);
       z-index: 1001;
       pointer-events: auto;
+      transition: right 0.3s ease;
+    }
+    .bottom-right-sidebar.open ~ .sidebar-tabs-collapsed {
+      right: calc(min(85vw, 380px) + 0px);
+    }
+    @media (min-width: 768px) {
+      .bottom-right-sidebar.open ~ .sidebar-tabs-collapsed {
+        right: calc(360px + 12px);
+      }
     }
     .collapsed-tab {
       width: 28px;
@@ -405,13 +409,10 @@
       overflow-y: auto;
       padding: 12px;
       background: var(--bg);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
+      display: none;
     }
     .bottom-right-sidebar.open .sidebar-content {
-      opacity: 1;
-      visibility: visible;
+      display: block;
     }
     .sidebar-tabs {
       display: none;
@@ -535,7 +536,7 @@
 
     <!-- Bottom Sheet -->
     <div id="drawer" class="drawer collapsed">
-      <div class="drawer-handle" id="drawerHandle"></div>
+      <div class="drawer-header" id="drawerHeader">Route Options</div>
       <div class="drawer-content">
         <!-- Origin/Via/Dest -->
         <div class="card">
@@ -572,9 +573,17 @@
         <!-- Time Select -->
         <div class="card">
           <h2>Departure Time</h2>
-          <div class="time-btns">
-            <button class="time-btn" data-hour="5" data-min="0">05:00</button>
-            <button class="time-btn" data-hour="17" data-min="0">17:00</button>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <label style="flex:1; font-size:13px;">Hour:
+              <select id="departureHour" style="width:100%; padding:8px; font-size:14px; border:1px solid #ddd; border-radius:8px;">
+                <option value="0">00:00</option><option value="1">01:00</option><option value="2">02:00</option><option value="3">03:00</option><option value="4">04:00</option>
+                <option value="5">05:00</option><option value="6">06:00</option><option value="7">07:00</option><option value="8">08:00</option><option value="9">09:00</option>
+                <option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option>
+                <option value="15">15:00</option><option value="16">16:00</option><option value="17" selected>17:00</option><option value="18">18:00</option><option value="19">19:00</option>
+                <option value="20">20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option>
+              </select>
+            </label>
+            <button id="analyzeBtn" style="flex:1; padding:10px; background:#0066cc; color:white; border:none; border-radius:8px; font-weight:600;">Analyze</button>
           </div>
           <label style="display:flex; align-items:center; gap:6px; margin-top:8px; font-size:13px;">
             <input type="checkbox" id="use30DayAvg">
@@ -586,15 +595,6 @@
         <div class="card">
           <h2>Routes</h2>
           <div class="legend" id="routeLegend"></div>
-        </div>
-
-        <!-- Tables Shortcuts -->
-        <div class="card">
-          <h2>Analysis</h2>
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button id="showSlowdownBtn" style="flex:1; padding:10px; background:#0066cc; color:white; border:none; border-radius:8px;">Slowdown</button>
-            <button id="showGradientBtn" style="flex:1; padding:10px; background:#0066cc; color:white; border:none; border-radius:8px;">Gradient</button>
-          </div>
         </div>
 
         <!-- Save/Load -->
@@ -638,8 +638,8 @@
     </div>
     <div class="right-drawer-content">
       <div class="gradient-controls">
-        <label>Start: <input type="time" id="gradientStart" value="05:00"></label>
-        <label>End: <input type="time" id="gradientEnd" value="20:00"></label>
+        <label>Start: <input type="time" id="gradientStart" value="05:00" lang="en-GB"></label>
+        <label>End: <input type="time" id="gradientEnd" value="20:00" lang="en-GB"></label>
         <label>Step: <input type="number" id="gradientStep" value="60" min="5" max="120"></label>
         <button id="gradientBtn" style="padding:8px 12px; background:#0066cc; color:white; border:none; border-radius:8px;">Generate</button>
       </div>
@@ -653,12 +653,6 @@
   </div>
 
   <!-- Bottom-right expandable sidebar -->
-  <!-- Collapsed tabs (outside sidebar, always visible when closed) -->
-  <div class="sidebar-tabs-collapsed" id="collapsedTabs">
-    <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Analysis</span></div>
-    <!-- <div class="collapsed-tab" data-panel="gradient" id="collapsedGradientTab"><span>Gradient</span></div> -->
-  </div>
-  
   <div class="bottom-right-sidebar" id="analysisSidebar">
     <div class="sidebar-header" id="sidebarHeader">
       <h3 id="sidebarTitle">Analysis</h3>
@@ -678,10 +672,30 @@
       <!-- Gradient panel -->
       <div class="sidebar-panel" id="panel-gradient">
         <div class="gradient-controls">
-          <label>Start: <input type="time" id="sidebar-gradientStart" value="05:00"></label>
-          <label>End: <input type="time" id="sidebar-gradientEnd" value="20:00"></label>
-          <label>Step: <input type="number" id="sidebar-gradientStep" value="60" min="5" max="120"></label>
-          <button id="sidebar-gradientBtn" style="padding:8px 12px; background:#0066cc; color:white; border:none; border-radius:8px;">Generate</button>
+          <label>Start
+            <select id="sidebar-gradientStart" style="width:60px;font-size:12px;padding:4px;">
+              <option value="0">00:00</option><option value="1">01:00</option><option value="2">02:00</option><option value="3">03:00</option><option value="4">04:00</option>
+              <option value="5" selected>05:00</option><option value="6">06:00</option><option value="7">07:00</option><option value="8">08:00</option><option value="9">09:00</option>
+              <option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option>
+              <option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option>
+              <option value="20">20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option>
+            </select>
+          </label>
+          <label>End
+            <select id="sidebar-gradientEnd" style="width:60px;font-size:12px;padding:4px;">
+              <option value="0">00:00</option><option value="1">01:00</option><option value="2">02:00</option><option value="3">03:00</option><option value="4">04:00</option>
+              <option value="5">05:00</option><option value="6">06:00</option><option value="7">07:00</option><option value="8">08:00</option><option value="9">09:00</option>
+              <option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option>
+              <option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option>
+              <option value="20" selected>20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option>
+            </select>
+          </label>
+          <label>Step
+            <select id="sidebar-gradientStep" style="width:55px;font-size:12px;padding:4px;">
+              <option value="15">15</option><option value="30">30</option><option value="60" selected>60</option><option value="90">90</option><option value="120">120</option>
+            </select>
+          </label>
+          <button id="sidebar-gradientBtn">Generate</button>
         </div>
         <div id="sidebar-gradient-table-container">
           <table id="sidebar-gradient-table" style="display:none;">
@@ -691,6 +705,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Collapsed tabs (outside sidebar, always visible when closed) -->
+  <div class="sidebar-tabs-collapsed" id="collapsedTabs">
+    <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Analysis</span></div>
   </div>
 
   <!-- Settings Modal -->
@@ -1142,23 +1161,21 @@
         const row = tbody.insertRow();
         row.innerHTML = `<td>${seg.segment}</td><td>${distKm} km</td><td>${durMin}</td><td>${baseMin}</td><td style="color:${color}">${seg.ratio.toFixed(3)}×</td><td>${seg.ratio > 1.2 ? 'High' : (seg.ratio > 1.05 ? 'Medium' : 'Low')}</td>`;
       });
-      // Auto-open sidebar when slowdown data is ready
-      openAnalysisSidebar('slowdown');
     }
 
     let gradientData = { times: [], matrix: [] };
     document.getElementById('sidebar-gradientBtn').addEventListener('click', async () => {
       if (state.availableRoutes.length === 0) { showToast('Please get alternative routes first.', 'error'); return; }
-      const startStr = document.getElementById('sidebar-gradientStart').value;
-      const endStr = document.getElementById('sidebar-gradientEnd').value;
+      const startHour = parseInt(document.getElementById('sidebar-gradientStart').value);
+      const endHour = parseInt(document.getElementById('sidebar-gradientEnd').value);
       const step = parseInt(document.getElementById('sidebar-gradientStep').value);
       const use30DayAvg = document.getElementById('use30DayAvg').checked;
-      if (!/^\d{2}:\d{2}$/.test(startStr) || !/^\d{2}:\d{2}$/.test(endStr)) { showToast('Times must be HH:MM', 'error'); return; }
-      const toMin = s => { const [h, m] = s.split(':').map(Number); return h*60 + m; };
-      const startMin = toMin(startStr), endMin = toMin(endStr);
-      if (startMin > endMin) { showToast('Start time must be <= end time', 'error'); return; }
+      
+      const startTimeMin = startHour * 60;
+      const endTimeMin = endHour * 60;
+      if (startTimeMin > endTimeMin) { showToast('Start time must be <= end time', 'error'); return; }
 
-      const times = []; for (let t = startMin; t <= endMin; t += step) times.push(t);
+      const times = []; for (let t = startTimeMin; t <= endTimeMin; t += step) times.push(t);
       gradientData = { times, matrix: [] };
 
       const drawerLoading = document.createElement('div'); drawerLoading.id = 'loading'; drawerLoading.style.cssText = 'color:#0066cc; font-weight:bold; margin:8px 0;';
@@ -1306,9 +1323,9 @@
 
     function toggleAnalysisSidebar(panel) {
       const sidebar = document.getElementById('analysisSidebar');
-      if (sidebar.classList.contains('open') && panel) {
-        // If already open and clicking same panel, close it
-        sidebar.classList.remove('open');
+      // If sidebar is already open, close it
+      if (sidebar.classList.contains('open')) {
+        closeAnalysisSidebar();
       } else if (panel) {
         openAnalysisSidebar(panel);
       }
@@ -1344,22 +1361,6 @@
     document.getElementById('sidebarHeader').addEventListener('click', (e) => {
       e.stopPropagation();
       closeAnalysisSidebar();
-    });
-
-    // Click on collapsed tabs area when sidebar is open - close sidebar
-    document.getElementById('collapsedTabs').addEventListener('click', (e) => {
-      const clickedTab = e.target.closest('.collapsed-tab');
-      if (clickedTab) {
-        const panel = clickedTab.dataset.panel;
-        const sidebar = document.getElementById('analysisSidebar');
-        const activeTab = document.querySelector('.collapsed-tab.active');
-        // If clicking the already active tab, close sidebar
-        if (activeTab && activeTab.dataset.panel === panel && sidebar.classList.contains('open')) {
-          closeAnalysisSidebar();
-        } else {
-          openAnalysisSidebar(panel);
-        }
-      }
     });
 
     // Toast notifications
@@ -1464,30 +1465,18 @@
       e.target.value = '';
     });
 
-    document.querySelectorAll('.time-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const hour = parseInt(btn.dataset.hour);
-        const min = parseInt(btn.dataset.min);
-        state.lastTs = { hour, min };
-        await loadAlternatives();
-        document.getElementById('routeRadio0')?.click();
-        selectRoute(0);
-        analyzeHotspots(state.lastTs);
-      });
-    });
-
-    document.getElementById('showSlowdownBtn').addEventListener('click', () => {
-      openAnalysisSidebar('slowdown');
-    });
-    document.getElementById('showGradientBtn').addEventListener('click', () => {
-      // Reset gradient table when opening
-      document.getElementById('sidebar-gradient-table').style.display = 'none';
-      openAnalysisSidebar('gradient');
+    document.getElementById('analyzeBtn').addEventListener('click', async () => {
+      const hour = parseInt(document.getElementById('departureHour').value);
+      state.lastTs = { hour, min: 0 };
+      await loadAlternatives();
+      document.getElementById('routeRadio0')?.click();
+      selectRoute(0);
+      analyzeHotspots(state.lastTs);
     });
 
     const drawer = document.getElementById('drawer');
     document.getElementById('menuBtn').addEventListener('click', () => drawer.classList.toggle('collapsed'));
-    document.getElementById('drawerHandle').addEventListener('click', () => drawer.classList.toggle('collapsed'));
+    document.getElementById('drawerHeader').addEventListener('click', () => drawer.classList.toggle('collapsed'));
 
     document.getElementById('settingsBtn').addEventListener('click', () => {
       document.getElementById('settingsModal').classList.remove('hidden');

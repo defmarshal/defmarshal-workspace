@@ -104,15 +104,25 @@ if command -v curl &>/dev/null; then
   fi
 fi
 
-# Holiday check (Nyepi etc)
+# Holiday check (Indonesian cuti bersama & holidays)
 HOLIDAY_TEXT=""
-if [ -f "HEARTBEAT.md" ] && grep -q "Nyepi" "HEARTBEAT.md" 2>/dev/null; then
-  HOLIDAY_TEXT="🎉 Holiday: Nyepi (Mar 18–19)"
+if command -v ./quick &>/dev/null; then
+  # Use quick holidays if available (returns list of upcoming)
+  UPCOMING_HOLIDAY=$(./quick holidays 2>/dev/null | head -1 | sed 's/^/🎉 /')
+  if [ -n "$UPCOMING_HOLIDAY" ]; then
+    HOLIDAY_TEXT="$UPCOMING_HOLIDAY"
+  fi
+fi
+# Fallback: check HEARTBEAT.md for known mentions
+if [ -z "$HOLIDAY_TEXT" ] && [ -f "HEARTBEAT.md" ] && grep -qi "holiday\|cuti" "HEARTBEAT.md" 2>/dev/null; then
+  # Extract first holiday line (simple)
+  HOLIDAY_LINE=$(grep -m1 -i "holiday\|cuti" "HEARTBEAT.md" | sed 's/^/🎉 /')
+  HOLIDAY_TEXT="$HOLIDAY_LINE"
 fi
 
 # Build message header based on status
 if [ "$STATUS" = "ALERT" ]; then
-  HEADER="🔴 Heartbeat Check ($NOW_UTC, $HEARTBEAT_DATE)"
+  HEADER="🔴 System Check ($NOW_UTC, $HEARTBEAT_DATE)"
   # Summarize alerts inline
   ALERT_SUMMARY=""
   for a in "${ALERTS[@]}"; do
@@ -121,20 +131,25 @@ if [ "$STATUS" = "ALERT" ]; then
     ALERT_SUMMARY="$ALERT_SUMMARY⚠️ $a_one_line\n"
   done
 else
-  HEADER="🟢 Heartbeat Check ($NOW_UTC, $HEARTBEAT_DATE)"
+  HEADER="🟢 System Check ($NOW_UTC, $HEARTBEAT_DATE)"
   ALERT_SUMMARY=""
 fi
 
+# Kawaii status message
 MSG="${HEADER}
-✅ Gateway running
-💾 Disk $DISK_USAGE full ($DISK_FREE free)
-✅ Updates: $UPDATES_COUNT pending
-✅ Git: $GIT_TEXT
-✅ Agents: $AGENT_TEXT
+─────────────
+🖥️  System Overview
+─────────────
+• Gateway: ✅ healthy (RPC 200)
+• Disk: ${DISK_USAGE}% used (${DISK_FREE} free) — ${DISK_STATE}
+• Updates: ${UPDATES_COUNT} pending
+• Git: ${GIT_TEXT}
+• Agents: ${AGENT_TEXT}
 ${ALERT_SUMMARY}${WEATHER_TEXT}
 ${HOLIDAY_TEXT}
 
-All clear! (◕‿◕)♡"
+─────
+All nominal! (◕‿◕)♡"
 
 # If there are alerts, also log them separately and send notification
 if [ "$STATUS" = "ALERT" ]; then

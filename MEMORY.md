@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-04*
+*Last updated: 2026-03-05*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -32,6 +32,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
 - Recent:
+  - Meta-agent (2026-03-05 03:07 UTC) spawned content-agent and research-agent to produce daily work (both missing for the day)
   - Disabled `linkedin-pa-agent-cron` (2026-03-04) to align with docs after drift detection
   - Fixed dashboard cron stuck state via disable/enable reset; Python errors now logged (no more silent failures)
   - MewChat evolver timeout monitored; will restart on next 6h cycle (12:00 UTC)
