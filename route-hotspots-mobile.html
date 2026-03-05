@@ -360,7 +360,8 @@
       position: fixed;
       right: 0;
       top: calc(env(safe-area-inset-top) + 56px);
-      z-index: 1000;
+      z-index: 1001;
+      pointer-events: auto;
     }
     .collapsed-tab {
       width: 28px;
@@ -372,8 +373,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      writing-mode: vertical-rl;
+      /* writing-mode: vertical-rl; */
       text-orientation: mixed;
+      transition: background 0.2s ease;
     }
     .collapsed-tab:hover {
       background: #0077e6;
@@ -653,8 +655,8 @@
   <!-- Bottom-right expandable sidebar -->
   <!-- Collapsed tabs (outside sidebar, always visible when closed) -->
   <div class="sidebar-tabs-collapsed" id="collapsedTabs">
-    <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Slowdown</span></div>
-    <div class="collapsed-tab" data-panel="gradient" id="collapsedGradientTab"><span>Gradient</span></div>
+    <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Analysis</span></div>
+    <!-- <div class="collapsed-tab" data-panel="gradient" id="collapsedGradientTab"><span>Gradient</span></div> -->
   </div>
   
   <div class="bottom-right-sidebar" id="analysisSidebar">
@@ -1276,7 +1278,6 @@
     function openAnalysisSidebar(panel) {
       const sidebar = document.getElementById('analysisSidebar');
       const sidebarTitle = document.getElementById('sidebarTitle');
-      const collapsedTabs = document.getElementById('collapsedTabs');
       
       // Update collapsed tabs
       document.querySelectorAll('.collapsed-tab').forEach(tab => {
@@ -1296,25 +1297,20 @@
       
       sidebarTitle.textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
       sidebar.classList.add('open');
-      if (collapsedTabs) collapsedTabs.style.display = 'none';
     }
 
     function closeAnalysisSidebar() {
       const sidebar = document.getElementById('analysisSidebar');
-      const collapsedTabs = document.getElementById('collapsedTabs');
       sidebar.classList.remove('open');
-      if (collapsedTabs) collapsedTabs.style.display = 'flex';
     }
 
-    function toggleAnalysisSidebar() {
+    function toggleAnalysisSidebar(panel) {
       const sidebar = document.getElementById('analysisSidebar');
-      const collapsedTabs = document.getElementById('collapsedTabs');
-      if (sidebar.classList.contains('open')) {
+      if (sidebar.classList.contains('open') && panel) {
+        // If already open and clicking same panel, close it
         sidebar.classList.remove('open');
-        if (collapsedTabs) collapsedTabs.style.display = 'flex';
-      } else {
-        sidebar.classList.add('open');
-        if (collapsedTabs) collapsedTabs.style.display = 'none';
+      } else if (panel) {
+        openAnalysisSidebar(panel);
       }
     }
 
@@ -1322,7 +1318,7 @@
     document.querySelectorAll('.collapsed-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         const panel = tab.dataset.panel;
-        openAnalysisSidebar(panel);
+        toggleAnalysisSidebar(panel);
       });
     });
 
@@ -1348,6 +1344,22 @@
     document.getElementById('sidebarHeader').addEventListener('click', (e) => {
       e.stopPropagation();
       closeAnalysisSidebar();
+    });
+
+    // Click on collapsed tabs area when sidebar is open - close sidebar
+    document.getElementById('collapsedTabs').addEventListener('click', (e) => {
+      const clickedTab = e.target.closest('.collapsed-tab');
+      if (clickedTab) {
+        const panel = clickedTab.dataset.panel;
+        const sidebar = document.getElementById('analysisSidebar');
+        const activeTab = document.querySelector('.collapsed-tab.active');
+        // If clicking the already active tab, close sidebar
+        if (activeTab && activeTab.dataset.panel === panel && sidebar.classList.contains('open')) {
+          closeAnalysisSidebar();
+        } else {
+          openAnalysisSidebar(panel);
+        }
+      }
     });
 
     // Toast notifications
