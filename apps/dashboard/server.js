@@ -180,7 +180,8 @@ const DATA_CACHE_TTL = 30000; // 30 seconds
 // ── Helper: regenerate data.json ─────────────────────────────────────────
 async function regenerateData() {
   try {
-    const result = await run(path.join(WORKSPACE, 'quick'), ['dash']);
+    const script = path.join(WORKSPACE, 'scripts', 'generate-dashboard-data.sh');
+    const result = await run('bash', [script]);
     if (!result.ok) console.warn('regenerateData failed:', result.stderr);
     else dataCache = { data: null, timestamp: Date.now() }; // invalidate cache
   } catch (e) {
@@ -1078,6 +1079,11 @@ const handler = async (req, res) => {
       }
     });
     return;
+  }
+
+  // ── API catch-all — return JSON error for unknown API routes ────────────
+  if (pathname.startsWith('/api/')) {
+    return json(res, 404, { error: 'API endpoint not found: ' + pathname, method: req.method });
   }
 
   // ── Static files ─────────────────────────────────────────────────────────

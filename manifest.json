@@ -1,0 +1,15 @@
+{
+  "name": "Route Hotspot Analyzer",
+  "short_name": "HotspotAnalyzer",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0066cc",
+  "icons": [
+    {
+      "src": "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

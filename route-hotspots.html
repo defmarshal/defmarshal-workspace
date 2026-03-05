@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HERE Route Hotspot Analyzer</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="manifest" href="manifest.json">
   <style>
     html, body { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
     #map { width: 100%; height: 60vh; }
@@ -58,13 +60,15 @@
         </label>
       </div>
       <div id="routeLegend" class="route-legend"></div>
+      <div style="margin-top:10px;">
+        <h1 style="font-size:1em; margin:0 0 5px;">⏰ Departure Time (Local UTC+7)</h1>
+        <button class="time-btn" data-hour="5" data-min="0">05:00</button>
+        <button class="time-btn" data-hour="17" data-min="0">17:00</button>
+        <label style="margin-left:10px; font-size:0.9em;">
+          <input type="checkbox" id="use30DayAvg"> Use 30‑day average
+        </label>
+      </div>
       <div id="loading"></div>
-    </div>
-
-    <div class="card">
-      <h1>⏰ Departure Time (Local UTC+7)</h1>
-      <button class="time-btn" data-hour="5" data-min="0">05:00</button>
-      <button class="time-btn" data-hour="17" data-min="0">17:00</button>
     </div>
 
     <div class="card">
@@ -90,7 +94,6 @@
         <label>Start: <input type="time" id="gradientStart" value="05:00" style="width:80px"></label>
         <label>End: <input type="time" id="gradientEnd" value="20:00" style="width:80px"></label>
         <label>Step (min): <input type="number" id="gradientStep" value="60" min="5" max="120" style="width:60px"></label>
-        <label><input type="checkbox" id="use30DayAvg"> Use 30‑day average</label>
         <button id="gradientBtn">Generate Gradient</button>
       </div>
       <div id="gradient-table-container" style="margin-top:10px; overflow-x:auto;">
@@ -111,6 +114,11 @@
           </select>
         </label>
         <button id="deleteRouteBtn">Delete</button>
+        <button id="exportRoutesBtn">Export all</button>
+        <label for="importRoutesInput" style="cursor:pointer; display:inline-block; margin-left:10px;">
+          <input type="file" id="importRoutesInput" accept=".json" style="display:none;">
+          <button type="button" onclick="document.getElementById('importRoutesInput').click()">Import</button>
+        </label>
       </div>
     </div>
   </div>
@@ -352,25 +360,29 @@
       if (availableRoutes.length === 0) { document.getElementById('loading').textContent = 'Please select origin and destination places first.'; return; }
       const key = `${String(ts.hour).padStart(2,'0')}:${String(ts.min).padStart(2,'0')}`;
       const use30DayAvg = document.getElementById('use30DayAvg').checked;
-      document.getElementById('loading').textContent = `Analyzing Route ${selectedRouteIndex+1} at ${key}${use30DayAvg ? ' (30‑day avg)' : '...'}`;
+      document.getElementById('loading').textContent = `Analyzing Route ${selectedRouteIndex+1} at ${key}${use30DayAvg ? ' (30‑day avg, same weekday)' : '...'}`;
 
       try {
         let segmentData;
         if (use30DayAvg) {
           const refDateStr = document.getElementById('datePicker').value;
           const refDate = new Date(refDateStr);
-          const dates30 = [];
+          // Collect dates with the same day-of-week over the past 30 days
+          const datesSameWeekday = [];
+          const refDayOfWeek = refDate.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
           for (let i = 29; i >= 0; i--) {
             const d = new Date(refDate);
             d.setDate(refDate.getDate() - i);
-            dates30.push(d.toISOString().split('T')[0]);
+            if (d.getDay() === refDayOfWeek) {
+              datesSameWeekday.push(d.toISOString().split('T')[0]);
+            }
           }
 
           let sumsRatio = null, sumsDuration = null, sumsBaseline = null, counts = null;
           let firstSegments = null;
 
           let done = 0;
-          for (const dateStr of dates30) {
+          for (const dateStr of datesSameWeekday) {
             try {
               const { segmentData: sd } = await calculateSegmentData(ts, dateStr);
               if (!sumsRatio) {
@@ -528,8 +540,11 @@
       const route = {
         name,
         originCoord,
+        originName: document.getElementById('originPlace').value,
         destCoord,
+        destName: document.getElementById('destPlace').value,
         viaCoord,
+        viaName: document.getElementById('viaPlace').value,
         date: document.getElementById('datePicker').value,
         transport: document.getElementById('transportSelect').value
       };
@@ -545,15 +560,20 @@
       const saved = JSON.parse(localStorage.getItem('savedRoutes') || '[]');
       const route = saved[parseInt(idx)];
       if (route) {
-        document.getElementById('originPlace').value = '';
-        document.getElementById('destPlace').value = '';
-        document.getElementById('viaPlace').value = '';
-        // We don't have place names, just coords; set coords and markers
+        console.log('Loading route:', route);
+        // Populate all fields: show stored name, or fall back to coordinates if missing (old format)
+        document.getElementById('originPlace').value = route.originName || route.originCoord || '';
+        document.getElementById('destPlace').value = route.destName || route.destCoord || '';
+        document.getElementById('viaPlace').value = route.viaName || route.viaCoord || '';
+        // Set coordinates
         originCoord = route.originCoord;
         destCoord = route.destCoord;
         if (route.viaCoord) {
           viaCoord = route.viaCoord;
-          document.getElementById('viaPlace').value = '(via saved)';
+          const v = route.viaCoord.split(',').map(Number);
+          if (v.length === 2) { viaLat = v[0]; viaLng = v[1]; }
+        } else {
+          viaCoord = null; viaLat = null; viaLng = null;
         }
         const o = route.originCoord.split(',').map(Number);
         const d = route.destCoord.split(',').map(Number);
@@ -587,6 +607,36 @@
         select.appendChild(opt);
       });
     }
+
+    document.getElementById('exportRoutesBtn').addEventListener('click', () => {
+      const saved = JSON.parse(localStorage.getItem('savedRoutes') || '[]');
+      const blob = new Blob([JSON.stringify(saved, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'saved-routes.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('importRoutesInput').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        try {
+          const imported = JSON.parse(evt.target.result);
+          if (!Array.isArray(imported)) throw new Error('Invalid format');
+          localStorage.setItem('savedRoutes', JSON.stringify(imported));
+          refreshSavedRoutes();
+          alert('Imported successfully');
+        } catch (err) {
+          alert('Import failed: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = '';
+    });
 
     // Time buttons: always fetch fresh alternatives then analyze selected route
     document.querySelectorAll('.time-btn').forEach(btn => {
@@ -640,22 +690,26 @@
       } else {
         const refDateStr = document.getElementById('datePicker').value;
         const refDate = new Date(refDateStr);
-        const dates30 = [];
+        const refDayOfWeek = refDate.getDay();
+        // Collect dates with same day-of-week over past 30 days
+        const datesSameWeekday = [];
         for (let i = 29; i >= 0; i--) {
           const d = new Date(refDate);
           d.setDate(refDate.getDate() - i);
-          dates30.push(d.toISOString().split('T')[0]);
+          if (d.getDay() === refDayOfWeek) {
+            datesSameWeekday.push(d.toISOString().split('T')[0]);
+          }
         }
-        document.getElementById('loading').textContent = `30‑day avg: ${dates30.length} days × ${times.length} times = ${dates30.length*times.length} requests...`;
+        document.getElementById('loading').textContent = `30‑day avg (same weekday): ${datesSameWeekday.length} days × ${times.length} times = ${datesSameWeekday.length*times.length} requests...`;
 
         let sums = null, counts = null;
         let firstSegments = null;
 
         let totalDone = 0;
-        const total = dates30.length * times.length;
+        const total = datesSameWeekday.length * times.length;
 
-        for (let dIdx = 0; dIdx < dates30.length; dIdx++) {
-          const dateStr = dates30[dIdx];
+        for (let dIdx = 0; dIdx < datesSameWeekday.length; dIdx++) {
+          const dateStr = datesSameWeekday[dIdx];
           for (let tIdx = 0; tIdx < times.length; tIdx++) {
             const totalMin = times[tIdx];
             const hour = Math.floor(totalMin / 60) % 24;
@@ -742,6 +796,12 @@
 
     window.addEventListener('load', () => {
       refreshSavedRoutes();
+      // Register service worker for PWA
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('SW registered', reg))
+          .catch(err => console.warn('SW registration failed', err));
+      }
     });
   </script>
 </body>
