@@ -23,73 +23,78 @@ class C:
     R = '\033[31m'  # Red
     E = '\033[0m'   # End
 
-# Game state
-money = 100000
+# Game state - polished balance (2026-03-05)
+money = 200000  # Increased starting money for even better early game
 staff = 5
 reputation = 50
 fans = 1000
 week = 0
 episodes_target = 10
 episodes_completed = 0
-salary_per_staff = 2000
+salary_per_staff = 2000  # Keep original salary, upgrades will reduce
 
-# New: Genre & Trend system
+# Genre & Trend system
 GENRES = ["Shonen", "Isekai", "Slice of Life", "Mecha", "Horror", "Sports", "Romance", "Sci-Fi"]
 player_genre = random.choice(GENRES)
 market_trend = random.choice(GENRES)
 trend_announced = False
 
-# New: Production points system
+# Production points system
 production_progress = 0
 points_per_episode = 100
 is_crunching = False
 
-# New: Upgrades
+# Upgrades - added Marketing Team
 UPGRADES = {
     "star_director": {"cost": 30000, "label": "Star Director", "desc": "Reputation gain from episodes doubled.", "owned": False},
     "god_animator": {"cost": 25000, "label": "God Animator", "desc": "Reduces 'Staff burnout' event chance by 50%.", "owned": False},
-    "better_software": {"cost": 15000, "label": "Better Software", "desc": "Weekly salary cost reduced by 20%.", "owned": False},
-    "merch_table": {"cost": 20000, "label": "Merch Table", "desc": "Every 4 weeks: +¥3000 fans (actually +3000 fans).", "owned": False}
+    "better_software": {"cost": 15000, "label": "Better Software", "desc": "Weekly salary cost reduced by 30%.", "owned": False},
+    "merch_table": {"cost": 20000, "label": "Merch Table", "desc": "Every 4 weeks: +¥3000 fans (actually +3000 fans).", "owned": False},
+    "marketing_team": {"cost": 25000, "label": "Marketing Team", "desc": "Increases fan gain from episodes by 30%.", "owned": False}
 }
 salary_multiplier = 1.0
 
+# Expanded event pool for more variety and better balance
 events = [
-    ("Viral moment!", 0, 0, 0, 5000),
-    ("Staff burnout", 0, 0, 0, 0),  # Fixed money delta; staff loss handled separately
-    ("Budget overrun", -10000, 0, 0, 0),
+    ("Viral moment!", 0, 0, 0, 6000),
+    ("Staff burnout", 0, 0, 0, 0),
+    ("Budget overrun", -8000, 0, 0, 0),
     ("Positive review", 0, 0, 10, 0),
-    ("Critic praise", 0, 0, 15, 1000),
+    ("Critic praise", 0, 0, 15, 1500),
     ("Streaming deal", 25000, 0, 0, 0),
-    ("Fan convention", 0, 0, 0, 2000),
-    ("Licensing opportunity", 15000, 0, 5, 500),
-    # New events to increase variety and balance
-    ("Merchandise boom", 8000, 0, 0, 3000),
-    ("Award nomination", 0, 0, 8, 2000),
-    ("Investor injection", 15000, 0, 0, 0),
-    ("Fan convention success", 0, 0, 5, 4000),
-    ("Voice actor strike", -1500, -1, 0, 0),
-    ("Copyright lawsuit", -8000, 0, -5, -1000),
-    ("Studio expansion", -10000, 2, 5, 2000),
-    ("International licensing", 20000, 0, 3, 5000),
-    ("Training seminar", -2000, 1, 3, 0),
-    ("Negative press", 0, 0, -8, -2000),
-    ("Streaming hit", 12000, 0, 5, 8000),
-    ("Collaboration", 5000, 0, 5, 3000),
-    # New polish events (2026-03-04)
-    ("Studio renovation", -8000, 0, 10, 2000),
-    ("Contract dispute", -5000, -1, -5, -1000),
-    ("Merchandise counterfeit", -3000, 0, -3, -2000),
-    ("Fan art contest", 0, 0, 3, 5000),
-    ("Streaming platform partnership", 20000, 0, 5, 3000),
-    ("Key animator quits", 0, -1, -3, -500),
-    ("Crowdfunding campaign", 15000, 0, 5, 10000),
-    ("Licensing deal rejected", -10000, 0, 0, 0),
+    ("Fan convention", 0, 0, 0, 2500),
+    ("Licensing opportunity", 18000, 0, 5, 800),
+    ("Merchandise boom", 10000, 0, 0, 3500),
+    ("Award nomination", 0, 0, 10, 2500),
+    ("Investor injection", 20000, 0, 0, 0),
+    ("Fan convention success", 0, 0, 6, 5000),
+    ("Voice actor strike", -2000, -1, 0, 0),
+    ("Copyright lawsuit", -10000, 0, -5, -1500),
+    ("Studio expansion", -12000, 2, 8, 3000),
+    ("International licensing", 25000, 0, 5, 6000),
+    ("Training seminar", -1500, 1, 5, 0),
+    ("Negative press", 0, 0, -10, -2500),
+    ("Streaming hit", 15000, 0, 8, 10000),
+    ("Collaboration", 6000, 0, 6, 4000),
+    ("Studio renovation", -10000, 0, 12, 3000),
+    ("Contract dispute", -6000, -1, -6, -1500),
+    ("Merchandise counterfeit", -4000, 0, -4, -2500),
+    ("Fan art contest", 0, 0, 4, 6000),
+    ("Streaming platform partnership", 25000, 0, 6, 4000),
+    ("Key animator quits", 0, -1, -4, -800),
+    ("Crowdfunding campaign", 20000, 0, 6, 12000),
+    ("Licensing deal rejected", -12000, 0, 0, 0),
     ("Talent scout", 0, 1, 0, 0),
-    ("Season finale hype", 0, 0, 8, 15000),
-    # New events (2026-03-05 polish)
-    ("Server outage", -5000, 0, -2, -1000),
-    ("Fan donation", 2000, 0, 0, 500),
-    ("Award win", 0, 0, 5, 3000)
+    ("Season finale hype", 0, 0, 10, 18000),
+    ("Server outage", -6000, 0, -3, -1500),
+    ("Fan donation", 3000, 0, 0, 800),
+    ("Award win", 0, 0, 8, 4000),
+    # New polish events
+    ("Social media backlash", -5000, 0, -6, -2000),
+    ("Merchandise collaboration", 8000, 0, 4, 6000),
+    ("Studio anniversary", 0, 0, 5, 5000),
+    ("Publishing deal", 22000, 0, 7, 3000),
+    ("Voice actor popularity surge", 0, 0, 6, 2000)
 ]
 
 def clear_screen():
@@ -127,11 +132,10 @@ def check_end():
 def apply_upgrades():
     global salary_multiplier
     if UPGRADES["better_software"]["owned"]:
-        salary_multiplier = 0.8
+        salary_multiplier = 0.7  # 30% salary reduction
 
 def episode_gain():
     global reputation, fans, market_trend, player_genre, trend_announced
-    # Base gains
     rep_gain = 10
     fan_gain = random.randint(2000, 8000)
     
@@ -139,9 +143,11 @@ def episode_gain():
     trend_mult = 1.5 if player_genre == market_trend else 1.0
     fan_gain = int(fan_gain * trend_mult)
     
-    # Upgrades effect
+    # Upgrade effects
     if UPGRADES["star_director"]["owned"]:
         rep_gain *= 2
+    if UPGRADES["marketing_team"]["owned"]:
+        fan_gain = int(fan_gain * 1.3)
     
     reputation += rep_gain
     fans += fan_gain
@@ -152,7 +158,6 @@ def episode_gain():
         print(f"  {C.M}🔥 TREND BONUS: {player_genre} is hot right now!{C.E}")
         trend_announced = True
     
-    # Every 3 episodes, player can change genre
     if episodes_completed % 3 == 0 and episodes_completed > 0:
         print(f"\n{C.OKBLUE}New Season! You can change your studio's genre.{C.E}")
         for i, g in enumerate(GENRES, 1):
@@ -173,8 +178,7 @@ def episode_gain():
 
 def weekly_event():
     global money, staff, reputation, fans, is_crunching
-    # God Animator upgrade reduces burnout chance
-    burnout_base_chance = 0.15
+    burnout_base_chance = 0.12  # Slightly reduced for better balance
     if UPGRADES["god_animator"]["owned"]:
         burnout_base_chance *= 0.5
     
@@ -187,12 +191,10 @@ def weekly_event():
         fans += ev[4]
         
         if ev[0] == "Staff burnout":
-            # Crunch increases burnout chance; if in crunch, event is more likely
             burnout_penalty = 2
             if is_crunching:
                 print(f"  {C.R}Crunch makes burnout worse!{C.E}")
                 burnout_penalty = 4
-            # Non-interactive auto-response
             if money >= 5000:
                 money -= 5000
                 print(f"  Paid overtime (auto). Staff stay.")
@@ -232,22 +234,63 @@ def weekly_update():
         auto_mode = True
 
     if auto_mode:
-        # Auto-mode: choose based on game state (do NOT modify game state here!)
-        if money < 8000 and staff > 4:
-            choice = "2"  # Fire if low on money and too many staff
-        elif money >= 5000 and staff < 6:
-            choice = "1"  # Hire if can afford and staff low
-        elif money >= 3000 and staff < 6:
-            choice = "3"  # Train if can afford
-        elif reputation < 70 and money >= 2000 and not is_crunching:
-            choice = "5"  # Quality focus if rep low
-        elif not UPGRADES["star_director"]["owned"] and money >= UPGRADES["star_director"]["cost"]:
-            choice = "6"  # Buy upgrade if affordable
-        elif production_progress < points_per_episode * 1.5 and money >= 2000 and episodes_completed < episodes_target and not is_crunching:
-            # If behind schedule and can afford crunch (and not already active)
-            choice = "4"
+        # Smarter AI with financial health checks and optimal staffing
+        # Financial tiers
+        critical_threshold = 50000   # Below this, be very conservative
+        safe_threshold = 100000     # Above this, can spend more freely
+        
+        # Staff management - optimal range 5-7
+        min_staff = 5
+        max_staff = 7
+        
+        # Priority: avoid bankruptcy first, then progress towards goals
+        
+        if money < critical_threshold:
+            # Emergency mode: cut costs but keep minimum viable staff
+            if staff > min_staff:
+                choice = "2"  # Fire to reduce salary burden
+            elif reputation < 60 and money >= 2000 and not is_crunching:
+                choice = "5"  # Quality focus to boost rep (prevent rep loss)
+            elif production_progress < points_per_episode * 0.8 and money >= 3000 and not is_crunching:
+                choice = "4"  # Use crunch to push episode completion for fan boost
+            else:
+                choice = "7"  # Wait and recover
+        elif money < safe_threshold:
+            # Cautious mode: build stable foundation
+            if not UPGRADES["better_software"]["owned"] and money >= UPGRADES["better_software"]["cost"] + 30000:
+                choice = "6"  # Better Software reduces ongoing costs (high priority)
+            elif reputation < 70 and money >= 2000 and not is_crunching:
+                choice = "5"  # Quality focus
+            elif staff < min_staff and money >= 5000:
+                choice = "1"  # Hire to minimum
+            elif staff > max_staff:
+                choice = "2"  # Reduce overstaffing
+            elif production_progress < points_per_episode * 0.4 and not is_crunching and money > 60000:
+                choice = "4"  # Crunch if behind schedule and stable
+            elif money >= 5000 and staff < 6:
+                choice = "1"  # Hire to 6 staff baseline (good production)
+            else:
+                choice = "7"
         else:
-            choice = "7"  # Advance week
+            # Comfortable mode: can invest in growth
+            if not UPGRADES["better_software"]["owned"] and money >= UPGRADES["better_software"]["cost"] + 30000:
+                choice = "6"
+            elif not UPGRADES["star_director"]["owned"] and money >= UPGRADES["star_director"]["cost"] + 30000:
+                choice = "6"
+            elif not UPGRADES["god_animator"]["owned"] and money >= UPGRADES["god_animator"]["cost"] + 30000:
+                choice = "6"
+            elif not UPGRADES["merch_table"]["owned"] and money >= UPGRADES["merch_table"]["cost"] + 30000:
+                choice = "6"
+            elif not UPGRADES["marketing_team"]["owned"] and money >= UPGRADES["marketing_team"]["cost"] + 30000:
+                choice = "6"
+            elif staff < max_staff and money >= 5000:
+                choice = "1"  # Hire to increase capacity (aim for 7 staff)
+            elif reputation < 80 and money >= 2000 and not is_crunching:
+                choice = "5"
+            elif production_progress < points_per_episode * 0.5 and not is_crunching and money > 40000:
+                choice = "4"
+            else:
+                choice = "7"
         print(f"Auto-choosing: {choice}")
     
     if choice == "1":
