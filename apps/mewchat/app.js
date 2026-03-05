@@ -715,6 +715,11 @@
       updateNewMessagesBanner();
       startSSE(currentSessionKey);
       loadDraftForCurrentSession();
+      // Cache session options for search filtering
+      cacheSessionOptions();
+      // Clear search input to show all sessions after load
+      const sessionSearch = document.getElementById('session-search');
+      if (sessionSearch) sessionSearch.value = '';
     } catch (e) {
       showError('Could not load sessions: ' + e.message);
       sessionSelect.innerHTML = '<option value="">(error)</option>';
@@ -731,9 +736,72 @@
     chatMessages.innerHTML = '';
     chatData = [];
     lastMessageCount = 0;
+    unreadBannerCount = 0;
+    updateNewMessagesBanner();
     startSSE(currentSessionKey);
     loadDraftForCurrentSession();
   });
+
+  // Session search/filter functionality
+  const sessionSearch = document.getElementById('session-search');
+  let allSessionOptions = []; // store all session {key, label} for filtering
+
+  function cacheSessionOptions() {
+    allSessionOptions = Array.from(sessionSelect.options).map(opt => ({
+      value: opt.value,
+      text: opt.textContent
+    }));
+  }
+
+  function filterSessions(query) {
+    if (allSessionOptions.length === 0) return;
+    const normalizedQuery = query.toLowerCase().trim();
+    sessionSelect.innerHTML = '';
+    let visibleCount = 0;
+    allSessionOptions.forEach(opt => {
+      if (!opt.value) return;
+      const matches = !normalizedQuery || 
+        opt.text.toLowerCase().includes(normalizedQuery) || 
+        opt.value.toLowerCase().includes(normalizedQuery);
+      if (matches) {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        sessionSelect.appendChild(option);
+        visibleCount++;
+      }
+    });
+    // Determine which session should be selected
+    let newSessionKey = null;
+    if (currentSessionKey && allSessionOptions.some(opt => opt.value === currentSessionKey)) {
+      const stillVisible = Array.from(sessionSelect.options).some(opt => opt.value === currentSessionKey);
+      if (stillVisible) {
+        newSessionKey = currentSessionKey;
+      } else if (sessionSelect.options.length > 0) {
+        newSessionKey = sessionSelect.options[0].value;
+      }
+    } else if (sessionSelect.options.length > 0) {
+      newSessionKey = sessionSelect.options[0].value;
+    }
+    
+    if (newSessionKey && newSessionKey !== currentSessionKey) {
+      currentSessionKey = newSessionKey;
+      localStorage.setItem('mewchat-session', currentSessionKey);
+      sessionSelect.value = newSessionKey;
+      // Trigger session change handler to switch sessions
+      sessionSelect.dispatchEvent(new Event('change'));
+    } else if (newSessionKey) {
+      sessionSelect.value = newSessionKey;
+    }
+    
+    sessionSelect.disabled = visibleCount === 0;
+  }
+
+  if (sessionSearch) {
+    sessionSearch.addEventListener('input', (e) => {
+      filterSessions(e.target.value);
+    });
+  }
 
   // ── Enhanced sendMessage from dashboard ──────────────────────────────────
   async function sendMessage(textOverride = null) {
@@ -933,15 +1001,6 @@
   }
 
   // Event listeners
-  sessionSelect.addEventListener('change', () => {
-    currentSessionKey = sessionSelect.value;
-    localStorage.setItem('mewchat-session', currentSessionKey);
-    unreadBannerCount = 0;
-    updateNewMessagesBanner();
-    startSSE(currentSessionKey);
-    loadDraftForCurrentSession();
-  });
-
   msgInput.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
