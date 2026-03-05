@@ -2,10 +2,10 @@
 Manage your studio: balance money, staff, reputation, fans.
 Goal: Complete 10 episodes while maintaining positive reputation and at least 50,000 fans. Avoid bankruptcy!
 
-[96mYour studio's genre: Mecha[0m
-Current market trend: Sci-Fi (bonus fan growth if matched!)
+[96mYour studio's genre: Horror[0m
+Current market trend: Mecha (bonus fan growth if matched!)
 
-Week 0 | Money: ¥200000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Mecha] [Trend: Sci-Fi]
+Week 0 | Money: ¥200000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -30,7 +30,7 @@ Week 0 | Money: ¥200000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pr
     Increases fan gain from episodes by 30%.
 
 Enter upgrade to buy (or press Enter to cancel): [92mPurchased Star Director![0m
-Week 1 | Money: ¥160000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [##........] [Genre: Mecha] [Trend: Sci-Fi]
+Week 1 | Money: ¥160000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [##........] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -55,7 +55,7 @@ Week 1 | Money: ¥160000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pr
     Increases fan gain from episodes by 30%.
 
 Enter upgrade to buy (or press Enter to cancel): [92mPurchased God Animator![0m
-Week 2 | Money: ¥125000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#####.....] [Genre: Mecha] [Trend: Sci-Fi]
+Week 2 | Money: ¥125000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#####.....] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -80,8 +80,7 @@ Week 2 | Money: ¥125000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pr
     Increases fan gain from episodes by 30%.
 
 Enter upgrade to buy (or press Enter to cancel): [92mPurchased Better Software![0m
-Week 3 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#######...] [Genre: Mecha] [Trend: Sci-Fi]
-[93mEvent: Merchandise collaboration[0m
+Week 3 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [#######...] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -91,24 +90,11 @@ Week 3 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pr
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> Auto-choosing: 6
-
-[95mAvailable Upgrades:[0m
-  Star Director [92m[OWNED][0m
-    Reputation gain from episodes doubled.
-  God Animator [92m[OWNED][0m
-    Reduces 'Staff burnout' event chance by 50%.
-  Better Software [92m[OWNED][0m
-    Weekly salary cost reduced by 30%.
-  Merch Table [96m[BUY][0m
-    Every 4 weeks: +¥3000 fans (actually +3000 fans).
-  Marketing Team [96m[BUY][0m
-    Increases fan gain from episodes by 30%.
-
-Enter upgrade to buy (or press Enter to cancel): [92mPurchased Merch Table![0m
+> Auto-choosing: 5
+[92mQuality focus paid off. Reputation +5.[0m
 [96mEpisode 1 completed![0m
-  Reputation +20, Fans +3368
-Week 4 | Money: ¥81000 | Staff: 5 | Rep: 74 | Fans: 10368 | Episodes: 1/10 | Progress: [..........] [Genre: Mecha] [Trend: Sci-Fi]
+  Reputation +20, Fans +2494
+Week 4 | Money: ¥91000 | Staff: 5 | Rep: 75 | Fans: 3494 | Episodes: 1/10 | Progress: [..........] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -121,7 +107,7 @@ Week 4 | Money: ¥81000 | Staff: 5 | Rep: 74 | Fans: 10368 | Episodes: 1/10 | Pr
 > Auto-choosing: 4
 [31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
-Week 5 | Money: ¥74000 | Staff: 5 | Rep: 72 | Fans: 10368 | Episodes: 1/10 | Progress: [#####.....] [Genre: Mecha] [Trend: Sci-Fi]
+Week 5 | Money: ¥84000 | Staff: 5 | Rep: 73 | Fans: 3494 | Episodes: 1/10 | Progress: [#####.....] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -135,8 +121,8 @@ Week 5 | Money: ¥74000 | Staff: 5 | Rep: 72 | Fans: 10368 | Episodes: 1/10 | Pr
 [92mHired a new animator.[0m
   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
 [96mEpisode 2 completed![0m
-  Reputation +20, Fans +2549
-Week 6 | Money: ¥62000 | Staff: 6 | Rep: 90 | Fans: 12917 | Episodes: 2/10 | Progress: [#.........] [Genre: Mecha] [Trend: Sci-Fi]
+  Reputation +20, Fans +6376
+Week 6 | Money: ¥72000 | Staff: 6 | Rep: 91 | Fans: 9870 | Episodes: 2/10 | Progress: [#.........] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -147,7 +133,19 @@ Week 6 | Money: ¥62000 | Staff: 6 | Rep: 90 | Fans: 12917 | Episodes: 2/10 | Pr
 6) View upgrades
 7) Next week
 > Auto-choosing: 7
-Week 7 | Money: ¥53600 | Staff: 6 | Rep: 90 | Fans: 12917 | Episodes: 2/10 | Progress: [####......] [Genre: Mecha] [Trend: Sci-Fi]
+Week 7 | Money: ¥63600 | Staff: 6 | Rep: 91 | Fans: 9870 | Episodes: 2/10 | Progress: [####......] [Genre: Horror] [Trend: Mecha]
+[93mEvent: Fan convention success[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 7
+Week 8 | Money: ¥55200 | Staff: 6 | Rep: 97 | Fans: 14870 | Episodes: 2/10 | Progress: [#######...] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -159,8 +157,7 @@ Week 7 | Money: ¥53600 | Staff: 6 | Rep: 90 | Fans: 12917 | Episodes: 2/10 | Pr
 7) Next week
 > Auto-choosing: 2
 [93mFired a staff member.[0m
-Week 8 | Money: ¥47200 | Staff: 5 | Rep: 90 | Fans: 12917 | Episodes: 2/10 | Progress: [######....] [Genre: Mecha] [Trend: Sci-Fi]
-[93mEvent: Copyright lawsuit[0m
+Week 9 | Money: ¥48800 | Staff: 5 | Rep: 97 | Fans: 14870 | Episodes: 2/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -170,36 +167,22 @@ Week 8 | Money: ¥47200 | Staff: 5 | Rep: 90 | Fans: 12917 | Episodes: 2/10 | Pr
 5) Quality focus (reputation +5, costs ¥2000)
 6) View upgrades
 7) Next week
-> Auto-choosing: 4
-[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
-  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+> Auto-choosing: 7
 [96mEpisode 3 completed![0m
-  Reputation +20, Fans +4210
+  Reputation +20, Fans +6823
 
 [94mNew Season! You can change your studio's genre.[0m
   1) Shonen
   2) Isekai
   3) Slice of Life
-  4) Mecha (current)
-  5) Horror
+  4) Mecha
+  5) Horror (current)
   6) Sports
   7) Romance
   8) Sci-Fi
   0) Keep current genre
-> Auto-keeping Mecha.
-Week 9 | Money: ¥30200 | Staff: 5 | Rep: 103 | Fans: 15627 | Episodes: 3/10 | Progress: [#.........] [Genre: Mecha] [Trend: Sci-Fi]
-[93mEvent: Streaming platform partnership[0m
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 7
-Week 10 | Money: ¥48200 | Staff: 5 | Rep: 109 | Fans: 19627 | Episodes: 3/10 | Progress: [####......] [Genre: Mecha] [Trend: Sci-Fi]
+> Auto-keeping Horror.
+Week 10 | Money: ¥41800 | Staff: 5 | Rep: 117 | Fans: 21693 | Episodes: 3/10 | Progress: [##........] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -212,7 +195,7 @@ Week 10 | Money: ¥48200 | Staff: 5 | Rep: 109 | Fans: 19627 | Episodes: 3/10 | 
 > Auto-choosing: 4
 [31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
-Week 11 | Money: ¥41200 | Staff: 5 | Rep: 107 | Fans: 19627 | Episodes: 3/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Mecha] [Trend: Sci-Fi]
+Week 11 | Money: ¥34800 | Staff: 5 | Rep: 115 | Fans: 21693 | Episodes: 3/10 | Progress: [#######...] [Genre: Horror] [Trend: Mecha]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -223,9 +206,21 @@ Week 11 | Money: ¥41200 | Staff: 5 | Rep: 107 | Fans: 19627 | Episodes: 3/10 | 
 6) View upgrades
 7) Next week
 > Auto-choosing: 7
+Week 12 | Money: ¥27800 | Staff: 5 | Rep: 115 | Fans: 21693 | Episodes: 3/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Horror] [Trend: Mecha]
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 7
+[96mMarket trend shifted to: Romance[0m
 [96mEpisode 4 completed![0m
-  Reputation +20, Fans +2745
-Week 12 | Money: ¥34200 | Staff: 5 | Rep: 127 | Fans: 22372 | Episodes: 4/10 | Progress: [#.........] [Genre: Mecha] [Trend: Sci-Fi]
+  Reputation +20, Fans +6684
+Week 13 | Money: ¥20800 | Staff: 5 | Rep: 135 | Fans: 28377 | Episodes: 4/10 | Progress: [##........] [Genre: Horror] [Trend: Romance]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -238,7 +233,7 @@ Week 12 | Money: ¥34200 | Staff: 5 | Rep: 127 | Fans: 22372 | Episodes: 4/10 | 
 > Auto-choosing: 4
 [31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
-Week 13 | Money: ¥27200 | Staff: 5 | Rep: 125 | Fans: 22372 | Episodes: 4/10 | Progress: [######....] [Genre: Mecha] [Trend: Sci-Fi]
+Week 14 | Money: ¥13800 | Staff: 5 | Rep: 133 | Fans: 28377 | Episodes: 4/10 | Progress: [#######...] [Genre: Horror] [Trend: Romance]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -249,7 +244,7 @@ Week 13 | Money: ¥27200 | Staff: 5 | Rep: 125 | Fans: 22372 | Episodes: 4/10 | 
 6) View upgrades
 7) Next week
 > Auto-choosing: 7
-Week 14 | Money: ¥20200 | Staff: 5 | Rep: 125 | Fans: 22372 | Episodes: 4/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Mecha] [Trend: Sci-Fi]
+Week 15 | Money: ¥6800 | Staff: 5 | Rep: 133 | Fans: 28377 | Episodes: 4/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Horror] [Trend: Romance]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -260,31 +255,8 @@ Week 14 | Money: ¥20200 | Staff: 5 | Rep: 125 | Fans: 22372 | Episodes: 4/10 | 
 6) View upgrades
 7) Next week
 > Auto-choosing: 7
+[96mMarket trend shifted to: Horror[0m
 [96mEpisode 5 completed![0m
-  Reputation +20, Fans +6402
-Week 15 | Money: ¥13200 | Staff: 5 | Rep: 145 | Fans: 28774 | Episodes: 5/10 | Progress: [#.........] [Genre: Mecha] [Trend: Sci-Fi]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 4
-[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
-  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
-Week 16 | Money: ¥6200 | Staff: 5 | Rep: 143 | Fans: 28774 | Episodes: 5/10 | Progress: [######....] [Genre: Mecha] [Trend: Sci-Fi]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 7
-[35mMerch sales added 3000 fans![0m
+  Reputation +20, Fans +3768
+  [35m🔥 TREND BONUS: Horror is hot right now![0m
 [91mBankruptcy! You lose.[0m

@@ -16,7 +16,7 @@ class C:
     R = '\033[31m'  # Red
     E = '\033[0m'   # End
 
-# Game state
+# Game state - polished balance (2026-03-05)
 money = 200000  # Increased starting money for even better early game
 staff = 5
 reputation = 50
@@ -26,18 +26,18 @@ episodes_target = 10
 episodes_completed = 0
 salary_per_staff = 2000  # Keep original salary, upgrades will reduce
 
-# New: Genre & Trend system
+# Genre & Trend system
 GENRES = ["Shonen", "Isekai", "Slice of Life", "Mecha", "Horror", "Sports", "Romance", "Sci-Fi"]
 player_genre = random.choice(GENRES)
 market_trend = random.choice(GENRES)
 trend_announced = False
 
-# New: Production points system
+# Production points system
 production_progress = 0
 points_per_episode = 100
 is_crunching = False
 
-# New: Upgrades
+# Upgrades - added Marketing Team
 UPGRADES = {
     "star_director": {"cost": 30000, "label": "Star Director", "desc": "Reputation gain from episodes doubled.", "owned": False},
     "god_animator": {"cost": 25000, "label": "God Animator", "desc": "Reduces 'Staff burnout' event chance by 50%.", "owned": False},
@@ -47,6 +47,7 @@ UPGRADES = {
 }
 salary_multiplier = 1.0
 
+# Expanded event pool for more variety and better balance
 events = [
     ("Viral moment!", 0, 0, 0, 6000),
     ("Staff burnout", 0, 0, 0, 0),
@@ -81,7 +82,7 @@ events = [
     ("Server outage", -6000, 0, -3, -1500),
     ("Fan donation", 3000, 0, 0, 800),
     ("Award win", 0, 0, 8, 4000),
-    # New polish events for variety
+    # New polish events
     ("Social media backlash", -5000, 0, -6, -2000),
     ("Merchandise collaboration", 8000, 0, 4, 6000),
     ("Studio anniversary", 0, 0, 5, 5000),
@@ -96,10 +97,12 @@ def status():
     trend_str = f" [Trend: {market_trend}]" if market_trend else ""
     genre_str = f" [Genre: {player_genre}]"
     
+    # Improved progress bar with clamp to prevent negative dots
     progress_pct = min(production_progress / points_per_episode, 1.0)
     filled = int(progress_pct * 10)
     progress_bar = "[" + "#" * filled + "." * (10 - filled) + "]"
     
+    # Add visual indicator when episode is nearly complete
     near_complete = ""
     if progress_pct >= 0.8 and progress_pct < 1.0:
         near_complete = f" {C.WARNING}⚡ NEARLY DONE!{C.E}"
@@ -168,7 +171,7 @@ def episode_gain():
 
 def weekly_event():
     global money, staff, reputation, fans, is_crunching
-    burnout_base_chance = 0.12  # Slightly reduced
+    burnout_base_chance = 0.12  # Slightly reduced for better balance
     if UPGRADES["god_animator"]["owned"]:
         burnout_base_chance *= 0.5
     
@@ -197,11 +200,14 @@ def weekly_event():
 def weekly_update():
     global money, staff, reputation, week, episodes_completed, production_progress, is_crunching, market_trend, trend_announced, fans
     
+    # Salary payment (with upgrade discount)
     actual_salary = staff * salary_per_staff * salary_multiplier
     money -= int(actual_salary)
     
+    # Random event
     weekly_event()
     
+    # Show choices with auto-mode
     print(f"\n{C.BOLD}Choices:{C.E}")
     print(f"1) Hire (+1 staff, -¥5000)")
     print(f"2) Fire (+¥2000, -1 staff)")
@@ -211,6 +217,7 @@ def weekly_update():
     print(f"6) View upgrades")
     print(f"7) Next week")
     
+    # Determine auto-mode (non-interactive or forced)
     auto_mode = False
     try:
         choice = input("> ").strip()
@@ -318,6 +325,7 @@ def weekly_update():
             print(f"    {upg['desc']}")
         if not affordable:
             print(f"  {C.WARNING}No affordable upgrades.{C.E}")
+        # Allow purchase
         if affordable:
             try:
                 buy = input(f"\nEnter upgrade to buy (or press Enter to cancel): ").strip().lower()
@@ -333,26 +341,30 @@ def weekly_update():
                 pass
     elif choice == "7":
         is_crunching = False
-        if random.random() < 0.2:
+        # Change trend occasionally
+        if random.random() < 0.2:  # 20% chance per week when advancing
             old_trend = market_trend
             while market_trend == old_trend:
                 market_trend = random.choice(GENRES)
             trend_announced = False
             print(f"{C.OKCYAN}Market trend shifted to: {market_trend}{C.E}")
+        # Bonus from merch table
         if UPGRADES["merch_table"]["owned"] and week % 4 == 0:
             fans += 3000
             print(f"{C.M}Merch sales added 3000 fans!{C.E}")
     else:
         print(f"{C.FAIL}Invalid choice; skipping.{C.E}")
     
+    # Weekly progress based on staff (and crunch)
     weekly_gain = staff * 5
     if is_crunching:
         weekly_gain *= 2
-        reputation -= 2
+        reputation -= 2  # Crunch penalty
         print(f"  {C.R}⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...{C.E}")
     
     production_progress += weekly_gain
     
+    # Check episode completion
     while production_progress >= points_per_episode and episodes_completed < episodes_target:
         production_progress -= points_per_episode
         episodes_completed += 1
