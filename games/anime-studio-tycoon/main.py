@@ -87,8 +87,20 @@ def clear_screen():
 def status():
     trend_str = f" [Trend: {market_trend}]" if market_trend else ""
     genre_str = f" [Genre: {player_genre}]"
-    progress_bar = "[" + "#" * (production_progress * 10 // points_per_episode) + "." * (10 - production_progress * 10 // points_per_episode) + "]"
-    print(f"Week {week} | Money: ¥{money} | Staff: {staff} | Rep: {reputation} | Fans: {fans} | Episodes: {episodes_completed}/{episodes_target} | Progress: {progress_bar}{genre_str}{trend_str}")
+    
+    # Improved progress bar with clamp to prevent negative dots
+    progress_pct = min(production_progress / points_per_episode, 1.0)
+    filled = int(progress_pct * 10)
+    progress_bar = "[" + "#" * filled + "." * (10 - filled) + "]"
+    
+    # Add visual indicator when episode is nearly complete
+    near_complete = ""
+    if progress_pct >= 0.8 and progress_pct < 1.0:
+        near_complete = f" {C.WARNING}⚡ NEARLY DONE!{C.E}"
+    elif progress_pct >= 1.0:
+        near_complete = f" {C.OKGREEN}✓ READY!{C.E}"
+    
+    print(f"Week {week} | Money: ¥{money} | Staff: {staff} | Rep: {reputation} | Fans: {fans} | Episodes: {episodes_completed}/{episodes_target} | Progress: {progress_bar}{near_complete}{genre_str}{trend_str}")
 
 def check_end():
     if money < 0:
@@ -150,7 +162,12 @@ def episode_gain():
 
 def weekly_event():
     global money, staff, reputation, fans, is_crunching
-    if random.random() < 0.15:  # 15% chance per week
+    # God Animator upgrade reduces burnout chance
+    burnout_base_chance = 0.15
+    if UPGRADES["god_animator"]["owned"]:
+        burnout_base_chance *= 0.5
+    
+    if random.random() < burnout_base_chance:
         ev = random.choice(events)
         print(f"{C.WARNING}Event: {ev[0]}{C.E}")
         money += ev[1]
