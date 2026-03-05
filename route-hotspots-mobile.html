@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0066cc">
-  <title>Route Hotspot Analyzer</title>
+  <title>Route Hotspot Analyzer — Mobile</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
@@ -28,11 +28,15 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      position: relative;
     }
     #map {
       flex: 1;
       width: 100%;
       background: #e0e0e0;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
     }
     .top-bar {
       position: absolute;
@@ -64,6 +68,51 @@
       justify-content: center;
     }
     .icon-btn:hover { background: rgba(0,0,0,0.05); }
+
+    /* Route selector (floating on map bottom) */
+    .route-selector {
+      position: absolute;
+      bottom: 80px;
+      left: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius);
+      box-shadow: var(--elevation);
+      z-index: 999;
+      padding: 10px;
+      display: none;
+    }
+    .route-selector.visible { display: block; }
+    .route-selector h3 {
+      margin: 0 0 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #555;
+    }
+    .route-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .route-option {
+      flex: 1;
+      min-width: 80px;
+      padding: 8px;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .route-option.selected {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Bottom drawer */
     .drawer {
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -195,8 +244,50 @@
       width: 24px; height: 4px;
       border-radius: 2px;
     }
-    .table-section {
+
+    /* Right side drawers (tables) */
+    .right-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(90vw, 400px);
+      background: var(--card);
+      box-shadow: var(--elevation);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    .right-drawer.open {
+      transform: translateX(0);
+    }
+    .right-drawer-header {
       padding: 12px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .right-drawer-header h2 {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .right-drawer-close {
+      background: none;
+      border: none;
+      font-size: 18px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    .right-drawer-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+    }
+    .table-section {
       background: var(--bg);
       min-height: 100%;
     }
@@ -231,27 +322,123 @@
       padding: 8px;
       font-size: 14px;
     }
-    .overlay-close {
-      position: fixed;
-      top: env(safe-area-inset-top);
-      right: 12px;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      border: none;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      font-size: 18px;
-      z-index: 2000;
-    }
-    .overlay {
-      position: fixed;
+
+    /* Backdrop for right drawer */
+    .backdrop {
+      position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--bg);
-      z-index: 1500;
-      overflow-y: auto;
-      padding-top: 56px;
-      padding-bottom: 20px;
+      background: rgba(0,0,0,0.3);
+      z-index: 1050;
+      display: none;
     }
+    .backdrop.visible { display: block; }
+
+    /* Expandable top-right sidebar (bookmark style) */
+    .bottom-right-sidebar {
+      position: absolute;
+      top: calc(env(safe-area-inset-top) + 56px);
+      right: 0;
+      width: min(85vw, 380px);
+      max-height: 60vh;
+      background: var(--card);
+      box-shadow: var(--elevation);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0 0 0 var(--radius);
+      transform: translateX(calc(100% - 28px));
+      transition: transform 0.3s ease;
+      overflow: hidden;
+    }
+    .bottom-right-sidebar.open {
+      transform: translateX(0);
+    }
+    .sidebar-tabs-collapsed {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+    .bottom-right-sidebar.open .sidebar-tabs-collapsed {
+      display: none;
+    }
+    .collapsed-tab {
+      width: 28px;
+      height: 70px;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      border-radius: 4px 0 0 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+    .collapsed-tab span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transform: rotate(-90deg);
+      white-space: nowrap;
+    }
+    .collapsed-tab.active {
+      background: #0052a3;
+    }
+    .sidebar-header {
+      display: none;
+    }
+    .sidebar-toggle {
+      display: none;
+    }
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+      background: var(--bg);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .bottom-right-sidebar.open .sidebar-content {
+      opacity: 1;
+      visibility: visible;
+    }
+    .sidebar-tabs {
+      display: none;
+      border-bottom: 1px solid #ddd;
+      background: var(--card);
+      flex-shrink: 0;
+    }
+    .bottom-right-sidebar.open .sidebar-tabs {
+      display: flex;
+    }
+    .sidebar-tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+    .sidebar-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .sidebar-panel {
+      display: none;
+    }
+    .sidebar-panel.active {
+      display: block;
+    }
+
     .settings-modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -270,6 +457,36 @@
       margin: 12px;
     }
     .hidden { display: none !important; }
+    /* Toast notifications */
+    #toast-container {
+      position: fixed;
+      top: env(safe-area-inset-top);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 8px;
+    }
+    .toast {
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      max-width: 90vw;
+      text-align: center;
+      animation: fadeInOut 2.5s ease-in-out forwards;
+    }
+    .toast.error { background: #f44336; }
+    .toast.success { background: #4caf50; }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-10px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
     @media (min-width: 768px) {
       .drawer {
         max-width: 420px;
@@ -280,10 +497,15 @@
         border-radius: var(--radius);
         max-height: calc(100dvh - 72px);
       }
-      #map {
-        margin: 12px;
-        border-radius: var(--radius);
-        box-shadow: var(--elevation);
+      .route-selector {
+        bottom: calc(72px + 12px);
+      }
+      .bottom-right-sidebar {
+        top: 60px;
+        right: 12px;
+        width: 360px;
+        max-height: 65vh;
+        border-radius: 0 0 0 var(--radius);
       }
     }
   </style>
@@ -291,12 +513,19 @@
 <body>
   <div id="app">
     <div id="map"></div>
+    <div class="backdrop" id="backdrop"></div>
 
     <!-- Top Bar -->
     <div class="top-bar">
       <button class="icon-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
       <h1>Route Hotspot Analyzer</h1>
       <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+    </div>
+
+    <!-- Route Selector (floating on map) -->
+    <div class="route-selector" id="routeSelector">
+      <h3>Select Route</h3>
+      <div class="route-options" id="routeOptions"></div>
     </div>
 
     <!-- Bottom Sheet -->
@@ -348,7 +577,7 @@
           </label>
         </div>
 
-        <!-- Legend -->
+        <!-- Legend (compact) -->
         <div class="card">
           <h2>Routes</h2>
           <div class="legend" id="routeLegend"></div>
@@ -381,11 +610,14 @@
     </div>
   </div>
 
-  <!-- Overlays -->
-  <div id="slowdownOverlay" class="overlay hidden">
-    <button class="overlay-close" onclick="hideOverlay('slowdownOverlay')">✕</button>
-    <div class="table-section">
-      <h2 style="font-size:16px; margin:0 0 12px;">Segment Slowdown</h2>
+  <!-- Right Drawer: Slowdown -->
+  <div class="backdrop" id="backdrop"></div>
+  <div class="right-drawer" id="slowdownDrawer">
+    <div class="right-drawer-header">
+      <h2>Segment Slowdown</h2>
+      <button class="right-drawer-close" onclick="closeRightDrawer('slowdownDrawer')">✕</button>
+    </div>
+    <div class="right-drawer-content">
       <table id="segments-table">
         <thead><tr><th>Seg</th><th>Length (km)</th><th>w/ Traffic (min)</th><th>Free‑flow (min)</th><th>Slowdown</th><th>Congestion</th></tr></thead>
         <tbody id="segments-body"></tbody>
@@ -393,10 +625,13 @@
     </div>
   </div>
 
-  <div id="gradientOverlay" class="overlay hidden">
-    <button class="overlay-close" onclick="hideOverlay('gradientOverlay')">✕</button>
-    <div class="table-section">
-      <h2 style="font-size:16px; margin:0 0 12px;">Gradient Analysis</h2>
+  <!-- Right Drawer: Gradient -->
+  <div class="right-drawer" id="gradientDrawer">
+    <div class="right-drawer-header">
+      <h2>Gradient Analysis</h2>
+      <button class="right-drawer-close" onclick="closeRightDrawer('gradientDrawer')">✕</button>
+    </div>
+    <div class="right-drawer-content">
       <div class="gradient-controls">
         <label>Start: <input type="time" id="gradientStart" value="05:00"></label>
         <label>End: <input type="time" id="gradientEnd" value="20:00"></label>
@@ -412,6 +647,47 @@
     </div>
   </div>
 
+  <!-- Bottom-right expandable sidebar -->
+  <div class="bottom-right-sidebar" id="analysisSidebar">
+    <!-- Collapsed tabs (visible when sidebar is closed) -->
+    <div class="sidebar-tabs-collapsed">
+      <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Slowdown</span></div>
+      <div class="collapsed-tab" data-panel="gradient" id="collapsedGradientTab"><span>Gradient</span></div>
+    </div>
+    
+    <div class="sidebar-header" id="sidebarHeader">
+      <h3 id="sidebarTitle">Analysis</h3>
+    </div>
+    <div class="sidebar-tabs">
+      <button class="sidebar-tab active" data-panel="slowdown">Slowdown</button>
+      <button class="sidebar-tab" data-panel="gradient">Gradient</button>
+    </div>
+    <div class="sidebar-content">
+      <!-- Slowdown panel -->
+      <div class="sidebar-panel active" id="panel-slowdown">
+        <table id="sidebar-segments-table">
+          <thead><tr><th>Seg</th><th>Length (km)</th><th>Traffic (min)</th><th>Free (min)</th><th>Slowdown</th><th>Congestion</th></tr></thead>
+          <tbody id="sidebar-segments-body"></tbody>
+        </table>
+      </div>
+      <!-- Gradient panel -->
+      <div class="sidebar-panel" id="panel-gradient">
+        <div class="gradient-controls">
+          <label>Start: <input type="time" id="sidebar-gradientStart" value="05:00"></label>
+          <label>End: <input type="time" id="sidebar-gradientEnd" value="20:00"></label>
+          <label>Step: <input type="number" id="sidebar-gradientStep" value="60" min="5" max="120"></label>
+          <button id="sidebar-gradientBtn" style="padding:8px 12px; background:#0066cc; color:white; border:none; border-radius:8px;">Generate</button>
+        </div>
+        <div id="sidebar-gradient-table-container">
+          <table id="sidebar-gradient-table" style="display:none;">
+            <thead id="sidebar-gradient-head"></thead>
+            <tbody id="sidebar-gradient-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Settings Modal -->
   <div id="settingsModal" class="settings-modal hidden">
     <div class="modal-content">
@@ -421,12 +697,14 @@
     </div>
   </div>
 
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    console.log('route-hotspots.js starting...');
+    console.log('route-hotspots-mobile.js starting...');
     const API_KEY = 'f6RwVdTvm9EEdWS8X-HhVyIQ-JpXenG1W_XJ0jVo-2Y';
 
-    // State
     const state = {
       originCoord: '-6.451460,106.735359',
       destCoord: '-6.241173,106.840765',
@@ -438,11 +716,10 @@
       routePolylines: [],
       segmentLabelLayer: null,
       lastTs: null,
-      routeLayers: [],
+      baseRouteLayers: [], // all base route polylines (L.Polyline objects)
       gradientData: { times: [], matrix: [] }
     };
 
-    // Map
     const map = L.map('map', { zoomControl: false }).setView([-6.35, 106.79], 10);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors', maxZoom: 19 }).addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -460,7 +737,6 @@
     }
     updateMarkers();
 
-    // Date helpers
     function buildDepartureTime(dateStr, hour, min) {
       let utcHour = hour - 7;
       let departDate = new Date(dateStr + 'T00:00:00');
@@ -469,7 +745,6 @@
       return `${datePart}T${String(utcHour).padStart(2,'0')}:${String(min).padStart(2,'0')}:00Z`;
     }
 
-    // Polyline decoding
     function decodeHEREPolyline(encoded) {
       const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
       const values = []; let acc = 0, shift = 0;
@@ -494,7 +769,6 @@
 
     const ROUTE_COLORS = ['#0066cc', '#f44336', '#ff9800', '#9c27b0', '#4caf50'];
 
-    // Routing
     async function fetchRoute(dateStr, hour, min, transport, viaPoints = [], alternatives = 0) {
       const dep = buildDepartureTime(dateStr, hour, min);
       let url = `https://router.hereapi.com/v8/routes?transportMode=${transport}&origin=${state.originCoord}&destination=${state.destCoord}&departureTime=${dep}&traffic=enabled&return=polyline,summary&apiKey=${API_KEY}&_t=${Date.now()}`;
@@ -508,7 +782,6 @@
       return await resp.json();
     }
 
-    // Autosuggest
     async function fetchAutosuggest(query, field) {
       if (!query || query.length < 2) { hideSuggestions(field); return; }
       const url = `https://autosuggest.search.hereapi.com/v1/autosuggest?q=${encodeURIComponent(query)}&apiKey=${API_KEY}&lang=en-US&in=countryCode:IDN&at=-6.2088,106.8456`;
@@ -547,7 +820,6 @@
       }
       updateMarkers();
       hideSuggestions(field);
-      document.querySelector('#drawer .card:first-child')?.querySelector('#loading')?.remove();
     }
 
     function hideSuggestions(field) {
@@ -555,7 +827,6 @@
       dropdown.style.display = 'none';
     }
 
-    // Debounced autosuggest
     let originDeb, destDeb, viaDeb;
     document.getElementById('originPlace').addEventListener('input', () => {
       clearTimeout(originDeb);
@@ -583,11 +854,17 @@
       });
     });
 
-    // Load alternatives and route selection
+    // Close drawer when clicking on map (only if drawer is expanded)
+    map.addEventListener('click', () => {
+      const drawer = document.getElementById('drawer');
+      if (!drawer.classList.contains('collapsed')) {
+        drawer.classList.add('collapsed');
+      }
+    });
+
     async function loadAlternatives() {
       const dateVal = document.getElementById('datePicker').value;
       const transportVal = document.getElementById('transportSelect').value;
-      document.getElementById('drawer').querySelector('#loading')?.remove();
       const loading = document.createElement('div'); loading.id = 'loading'; loading.style.cssText = 'color:#0066cc; font-weight:bold; margin:8px 0;';
       loading.textContent = 'Fetching alternatives...';
       document.querySelector('#drawer .card:first-child').appendChild(loading);
@@ -599,8 +876,9 @@
           const sec = route.sections && route.sections[0];
           return sec ? decodeHEREPolyline(sec.polyline) : [];
         });
-        drawAllRoutes(); buildLegend();
+        drawAllRoutes(); buildLegend(); buildRouteSelector();
         loading.textContent = `Found ${state.availableRoutes.length} route(s).`;
+        document.getElementById('routeSelector').classList.add('visible');
       } catch (e) {
         console.error('Alternatives failed:', e);
         loading.textContent = `Error: ${e.message}`;
@@ -608,16 +886,22 @@
     }
 
     function drawAllRoutes() {
-      state.routeLayers.forEach(l => map.removeLayer(l)); state.routeLayers = [];
+      // Remove existing base route layers
+      state.baseRouteLayers.forEach(l => map.removeLayer(l));
+      state.baseRouteLayers = [];
+      // Create polylines for all routes
       state.routePolylines.forEach((coords, idx) => {
         if (coords.length === 0) return;
         const color = ROUTE_COLORS[idx % ROUTE_COLORS.length];
         const polyline = L.polyline(coords, { color, weight: 4, opacity: 0.8 });
-        state.routeLayers[idx] = polyline;
+        state.baseRouteLayers[idx] = polyline;
       });
+      // Apply current "Show all" state
       const masterCb = document.getElementById('showAllRoutes');
       const showAll = masterCb ? masterCb.checked : true;
-      state.routeLayers.forEach(layer => (showAll ? map.addLayer(layer) : null));
+      state.baseRouteLayers.forEach(layer => {
+        if (showAll && layer) map.addLayer(layer);
+      });
       fitMapToRoutes();
     }
 
@@ -644,19 +928,62 @@
       });
     }
 
+    function buildRouteSelector() {
+      const container = document.getElementById('routeOptions');
+      container.innerHTML = '';
+      state.availableRoutes.forEach((route, idx) => {
+        const color = ROUTE_COLORS[idx % ROUTE_COLORS.length];
+        const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
+        const btn = document.createElement('button');
+        btn.className = 'route-option' + (idx === state.selectedRouteIndex ? ' selected' : '');
+        btn.innerHTML = `<div style="display:flex; align-items:center; gap:6px;">
+          <div style="width:16px; height:4px; background:${color}; border-radius:2px;"></div>
+          <span>R${idx+1} (${distKm} km)</span>
+        </div>`;
+        btn.onclick = () => {
+          state.selectedRouteIndex = idx;
+          document.getElementById('routeRadio' + idx).checked = true;
+          buildRouteSelector();
+          if (state.lastTs) analyzeHotspots(state.lastTs);
+        };
+        container.appendChild(btn);
+      });
+    }
+
     window.toggleShowAll = function(master) {
-      state.routeLayers.forEach((layer, idx) => {
-        if (master.checked) { if (!map.hasLayer(layer)) map.addLayer(layer); }
-        else { if (map.hasLayer(layer)) map.removeLayer(layer); }
+      state.baseRouteLayers.forEach(layer => {
+        if (!layer) return;
+        if (master.checked) {
+          if (!map.hasLayer(layer)) map.addLayer(layer);
+        } else {
+          if (map.hasLayer(layer)) map.removeLayer(layer);
+        }
       });
     };
 
     window.selectRoute = function(idx) {
       state.selectedRouteIndex = idx;
+      buildRouteSelector();
+      // Auto uncheck "Show all" and hide all base routes, then show only selected
+      const masterCb = document.getElementById('showAllRoutes');
+      if (masterCb && masterCb.checked) {
+        masterCb.checked = false;
+      }
+      // Hide all base route layers
+      state.baseRouteLayers.forEach(layer => {
+        if (layer && map.hasLayer(layer)) map.removeLayer(layer);
+      });
+      // Show only selected route's base polyline
+      const selectedLayer = state.baseRouteLayers[idx];
+      if (selectedLayer && !map.hasLayer(selectedLayer)) {
+        map.addLayer(selectedLayer);
+      }
+      // Remove segment labels and polylines from previous route analysis
+      if (window.segmentLabelLayer) map.removeLayer(window.segmentLabelLayer);
+      window.segmentLabelLayer = null;
       if (state.lastTs) analyzeHotspots(state.lastTs);
     };
 
-    // Segment analysis
     async function calculateSegmentData(ts, overrideDate = null) {
       if (state.availableRoutes.length === 0) throw new Error('No routes available. Please get alternatives first.');
       const dateVal = overrideDate || document.getElementById('datePicker').value;
@@ -688,12 +1015,11 @@
     }
 
     async function analyzeHotspots(ts) {
-      if (state.availableRoutes.length === 0) { alert('Please get alternatives first.'); return; }
+      if (state.availableRoutes.length === 0) { alert('Please get alternative routes first.'); return; }
       const key = `${String(ts.hour).padStart(2,'0')}:${String(ts.min).padStart(2,'0')}`;
       const use30DayAvg = document.getElementById('use30DayAvg').checked;
       state.lastTs = ts;
 
-      // Show loading in overlay or drawer? Use drawer for now.
       const drawerLoading = document.createElement('div'); drawerLoading.id = 'loading'; drawerLoading.style.cssText = 'color:#0066cc; font-weight:bold; margin:8px 0;';
       drawerLoading.textContent = `Analyzing Route ${state.selectedRouteIndex+1} at ${key}${use30DayAvg ? ' (30‑day avg, same weekday)' : '...'}`;
       document.querySelector('#drawer .card:first-child').appendChild(drawerLoading);
@@ -763,28 +1089,30 @@
       } catch (e) {
         console.error('Analysis failed:', e);
         drawerLoading.remove();
-        alert('Analysis failed: ' + e.message);
+        showToast('Analysis failed: ' + e.message, 'error');
       }
     }
 
     function drawSegments(segmentData) {
-      state.routeLayers.forEach(l => map.removeLayer(l)); state.routeLayers = [];
-      // Re-add all route layers based on master checkbox
-      const showAll = document.getElementById('showAllRoutes')?.checked ?? true;
-      state.routePolylines.forEach((coords, idx) => {
-        if (coords.length === 0) return;
-        const color = ROUTE_COLORS[idx % ROUTE_COLORS.length];
-        const polyline = L.polyline(coords, { color, weight: 4, opacity: 0.8 });
-        if (showAll) map.addLayer(polyline);
-        state.routeLayers[idx] = polyline;
+      // Ensure base routes are shown/hidden according to "Show all"
+      const masterCb = document.getElementById('showAllRoutes');
+      const showAll = masterCb ? masterCb.checked : true;
+      state.baseRouteLayers.forEach(layer => {
+        if (!layer) return;
+        if (showAll && !map.hasLayer(layer)) map.addLayer(layer);
+        else if (!showAll && map.hasLayer(layer)) map.removeLayer(layer);
       });
 
+      // Remove previous segment layers
       if (window.segmentLabelLayer) map.removeLayer(window.segmentLabelLayer);
+      if (window.segmentPolylinesLayer) map.removeLayer(window.segmentPolylinesLayer);
+      
       window.segmentLabelLayer = L.layerGroup().addTo(map);
+      window.segmentPolylinesLayer = L.layerGroup().addTo(map);
 
       segmentData.forEach(seg => {
         const color = seg.ratio > 1.2 ? '#f44336' : (seg.ratio > 1.05 ? '#ff9800' : '#4caf50');
-        L.polyline(seg.coords, { color, weight: 6, opacity: 0.8 }).addTo(map);
+        L.polyline(seg.coords, { color, weight: 6, opacity: 0.8 }).addTo(window.segmentPolylinesLayer);
         if (seg.coords.length > 0) {
           const midIdx = Math.floor(seg.coords.length / 2);
           L.marker(seg.coords[midIdx], {
@@ -800,7 +1128,7 @@
     }
 
     function fillSegmentTable(segmentData, key) {
-      const tbody = document.getElementById('segments-body'); tbody.innerHTML = '';
+      const tbody = document.getElementById('sidebar-segments-body'); tbody.innerHTML = '';
       segmentData.forEach(seg => {
         const distKm = seg.length ? (seg.length/1000).toFixed(1) : '-';
         const durMin = seg.duration ? Math.round(seg.duration / 60) : '-';
@@ -809,20 +1137,21 @@
         const row = tbody.insertRow();
         row.innerHTML = `<td>${seg.segment}</td><td>${distKm} km</td><td>${durMin}</td><td>${baseMin}</td><td style="color:${color}">${seg.ratio.toFixed(3)}×</td><td>${seg.ratio > 1.2 ? 'High' : (seg.ratio > 1.05 ? 'Medium' : 'Low')}</td>`;
       });
+      // Auto-open sidebar when slowdown data is ready
+      openAnalysisSidebar('slowdown');
     }
 
-    // Gradient
     let gradientData = { times: [], matrix: [] };
-    document.getElementById('gradientBtn').addEventListener('click', async () => {
-      if (state.availableRoutes.length === 0) { alert('Please get alternative routes first.'); return; }
-      const startStr = document.getElementById('gradientStart').value;
-      const endStr = document.getElementById('gradientEnd').value;
-      const step = parseInt(document.getElementById('gradientStep').value);
+    document.getElementById('sidebar-gradientBtn').addEventListener('click', async () => {
+      if (state.availableRoutes.length === 0) { showToast('Please get alternative routes first.', 'error'); return; }
+      const startStr = document.getElementById('sidebar-gradientStart').value;
+      const endStr = document.getElementById('sidebar-gradientEnd').value;
+      const step = parseInt(document.getElementById('sidebar-gradientStep').value);
       const use30DayAvg = document.getElementById('use30DayAvg').checked;
-      if (!/^\d{2}:\d{2}$/.test(startStr) || !/^\d{2}:\d{2}$/.test(endStr)) { alert('Times must be HH:MM'); return; }
+      if (!/^\d{2}:\d{2}$/.test(startStr) || !/^\d{2}:\d{2}$/.test(endStr)) { showToast('Times must be HH:MM', 'error'); return; }
       const toMin = s => { const [h, m] = s.split(':').map(Number); return h*60 + m; };
       const startMin = toMin(startStr), endMin = toMin(endStr);
-      if (startMin > endMin) { alert('Start time must be <= end time'); return; }
+      if (startMin > endMin) { showToast('Start time must be <= end time', 'error'); return; }
 
       const times = []; for (let t = startMin; t <= endMin; t += step) times.push(t);
       gradientData = { times, matrix: [] };
@@ -830,76 +1159,82 @@
       const drawerLoading = document.createElement('div'); drawerLoading.id = 'loading'; drawerLoading.style.cssText = 'color:#0066cc; font-weight:bold; margin:8px 0;';
       document.querySelector('#drawer .card:first-child').appendChild(drawerLoading);
 
-      if (!use30DayAvg) {
-        drawerLoading.textContent = `Generating gradient for ${times.length} time points...`;
-        for (let i = 0; i < times.length; i++) {
-          const totalMin = times[i];
-          const hour = Math.floor(totalMin / 60) % 24;
-          const min = totalMin % 60;
-          try {
-            const { segmentData } = await calculateSegmentData({ hour, min });
-            gradientData.matrix[i] = segmentData.map(s => s.ratio);
-            drawerLoading.textContent = `Fetched ${String(hour).padStart(2,'0')}:${String(min).padStart(2,'0')} (${i+1}/${times.length})`;
-            await new Promise(r => setTimeout(r, 350));
-          } catch (e) {
-            console.error('Gradient error', e);
-            gradientData.matrix[i] = [];
-          }
-        }
-      } else {
-        const refDateStr = document.getElementById('datePicker').value;
-        const [ry, rm, rd] = refDateStr.split('-').map(Number);
-        const refDate = new Date(ry, rm-1, rd);
-        const refDayOfWeek = refDate.getDay();
-        const datesSameWeekday = [];
-        for (let i = 29; i >= 0; i--) {
-          const d = new Date(refDate);
-          d.setDate(refDate.getDate() - i);
-          if (d.getDay() === refDayOfWeek) {
-            const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,'0'), day = String(d.getDate()).padStart(2,'0');
-            datesSameWeekday.push(`${y}-${m}-${day}`);
-          }
-        }
-        drawerLoading.textContent = `30‑day avg (same weekday): ${datesSameWeekday.length} days × ${times.length} times = ${datesSameWeekday.length*times.length} requests...`;
-        let sums = null, counts = null;
-        let totalDone = 0, total = datesSameWeekday.length * times.length;
-        for (let dIdx = 0; dIdx < datesSameWeekday.length; dIdx++) {
-          const dateStr = datesSameWeekday[dIdx];
-          for (let tIdx = 0; tIdx < times.length; tIdx++) {
-            const totalMin = times[tIdx];
+      try {
+        if (!use30DayAvg) {
+          drawerLoading.textContent = `Generating gradient for ${times.length} time points...`;
+          for (let i = 0; i < times.length; i++) {
+            const totalMin = times[i];
             const hour = Math.floor(totalMin / 60) % 24;
             const min = totalMin % 60;
             try {
-              const { segmentData } = await calculateSegmentData({ hour, min }, dateStr);
-              if (!sums) {
-                const segCount = segmentData.length;
-                sums = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
-                counts = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
-              }
-              segmentData.forEach((seg, sIdx) => {
-                sums[tIdx][sIdx] += seg.ratio;
-                counts[tIdx][sIdx] += 1;
-              });
+              const { segmentData } = await calculateSegmentData({ hour, min });
+              gradientData.matrix[i] = segmentData.map(s => s.ratio);
+              drawerLoading.textContent = `Fetched ${String(hour).padStart(2,'0')}:${String(min).padStart(2,'0')} (${i+1}/${times.length})`;
+              await new Promise(r => setTimeout(r, 350));
             } catch (e) {
-              console.warn(`Failed ${dateStr} ${hour}:${min}`, e.message);
+              console.error('Gradient error', e);
+              gradientData.matrix[i] = [];
             }
-            totalDone++;
-            if (totalDone % 5 === 0 || totalDone === total) {
-              drawerLoading.textContent = `30‑day avg: ${totalDone}/${total} requests done...`;
-            }
-            await new Promise(r => setTimeout(r, 300));
           }
+        } else {
+          const refDateStr = document.getElementById('datePicker').value;
+          const [ry, rm, rd] = refDateStr.split('-').map(Number);
+          const refDate = new Date(ry, rm-1, rd);
+          const refDayOfWeek = refDate.getDay();
+          const datesSameWeekday = [];
+          for (let i = 29; i >= 0; i--) {
+            const d = new Date(refDate);
+            d.setDate(refDate.getDate() - i);
+            if (d.getDay() === refDayOfWeek) {
+              const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,'0'), day = String(d.getDate()).padStart(2,'0');
+              datesSameWeekday.push(`${y}-${m}-${day}`);
+            }
+          }
+          drawerLoading.textContent = `30‑day avg (same weekday): ${datesSameWeekday.length} days × ${times.length} times = ${datesSameWeekday.length*times.length} requests...`;
+          let sums = null, counts = null;
+          let totalDone = 0, total = datesSameWeekday.length * times.length;
+          for (let dIdx = 0; dIdx < datesSameWeekday.length; dIdx++) {
+            const dateStr = datesSameWeekday[dIdx];
+            for (let tIdx = 0; tIdx < times.length; tIdx++) {
+              const totalMin = times[tIdx];
+              const hour = Math.floor(totalMin / 60) % 24;
+              const min = totalMin % 60;
+              try {
+                const { segmentData } = await calculateSegmentData({ hour, min }, dateStr);
+                if (!sums) {
+                  const segCount = segmentData.length;
+                  sums = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
+                  counts = Array(times.length).fill(null).map(() => Array(segCount).fill(0));
+                }
+                segmentData.forEach((seg, sIdx) => {
+                  sums[tIdx][sIdx] += seg.ratio;
+                  counts[tIdx][sIdx] += 1;
+                });
+              } catch (e) {
+                console.warn(`Failed ${dateStr} ${hour}:${min}`, e.message);
+              }
+              totalDone++;
+              if (totalDone % 5 === 0 || totalDone === total) {
+                drawerLoading.textContent = `30‑day avg: ${totalDone}/${total} requests done...`;
+              }
+              await new Promise(r => setTimeout(r, 300));
+            }
+          }
+          if (!sums) throw new Error('No successful fetches in 30‑day window');
+          gradientData.matrix = sums.map((row, tIdx) => row.map((sum, sIdx) => (counts[tIdx][sIdx] > 0 ? sum / counts[tIdx][sIdx] : null)));
         }
-        if (!sums) throw new Error('No successful fetches in 30‑day window');
-        gradientData.matrix = sums.map((row, tIdx) => row.map((sum, sIdx) => (counts[tIdx][sIdx] > 0 ? sum / counts[tIdx][sIdx] : null)));
+        renderGradientTable();
+        drawerLoading.remove();
+        openAnalysisSidebar('gradient');
+      } catch (e) {
+        console.error('Gradient failed:', e);
+        drawerLoading.remove();
+        showToast('Gradient failed: ' + e.message, 'error');
       }
-      renderGradientTable();
-      drawerLoading.remove();
-      showOverlay('gradientOverlay');
     });
 
     function renderGradientTable() {
-      const table = document.getElementById('gradient-table'), thead = document.getElementById('gradient-head'), tbody = document.getElementById('gradient-body');
+      const table = document.getElementById('sidebar-gradient-table'), thead = document.getElementById('sidebar-gradient-head'), tbody = document.getElementById('sidebar-gradient-body');
       if (!gradientData.matrix.length || !gradientData.matrix[0].length) { table.style.display = 'none'; return; }
       const route = state.availableRoutes[state.selectedRouteIndex];
       const distKm = (route.sections[0].summary.length / 1000).toFixed(1);
@@ -934,8 +1269,68 @@
       table.style.display = 'table';
     }
 
-    function showOverlay(id) { document.getElementById(id).classList.remove('hidden'); }
-    window.hideOverlay = function(id) { document.getElementById(id).classList.add('hidden'); };
+    // Sidebar functions
+    function openAnalysisSidebar(panel) {
+      const sidebar = document.getElementById('analysisSidebar');
+      const sidebarTitle = document.getElementById('sidebarTitle');
+      
+      // Update collapsed tabs
+      document.querySelectorAll('.collapsed-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.panel === panel) tab.classList.add('active');
+      });
+      
+      // Switch tabs in expanded view
+      document.querySelectorAll('.sidebar-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.panel === panel) tab.classList.add('active');
+      });
+      document.querySelectorAll('.sidebar-panel').forEach(p => {
+        p.classList.remove('active');
+        if (p.id === 'panel-' + panel) p.classList.add('active');
+      });
+      
+      sidebarTitle.textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
+      sidebar.classList.add('open');
+    }
+
+    function toggleAnalysisSidebar() {
+      const sidebar = document.getElementById('analysisSidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    // Collapsed tab click handlers
+    document.querySelectorAll('.collapsed-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panel = tab.dataset.panel;
+        openAnalysisSidebar(panel);
+      });
+    });
+
+    // Sidebar tab switching
+    document.querySelectorAll('.sidebar-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panel = tab.dataset.panel;
+        document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.sidebar-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + panel).classList.add('active');
+        document.getElementById('sidebarTitle').textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
+      });
+    });
+
+    // Sidebar header toggle
+    document.getElementById('sidebarHeader').addEventListener('click', toggleAnalysisSidebar);
+
+    // Toast notifications
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast' + (type === 'error' ? ' error' : type === 'success' ? ' success' : '');
+      toast.textContent = message;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 2600);
+    }
 
     // Save/Load
     function refreshSavedRoutes() {
@@ -965,7 +1360,7 @@
       });
       localStorage.setItem('savedRoutes', JSON.stringify(saved));
       refreshSavedRoutes();
-      alert('Route saved!');
+      showToast('Route saved!', 'success');
     });
 
     document.getElementById('savedRoutesSelect').addEventListener('change', (e) => {
@@ -991,7 +1386,7 @@
         document.getElementById('datePicker').value = route.date;
         document.getElementById('transportSelect').value = route.transport;
         updateMarkers();
-        alert(`Loaded "${route.name}"`);
+        showToast(`Loaded "${route.name}"`, 'success');
       }
     });
 
@@ -1002,7 +1397,7 @@
       saved.splice(parseInt(idx), 1);
       localStorage.setItem('savedRoutes', JSON.stringify(saved));
       refreshSavedRoutes();
-      alert('Deleted');
+      showToast('Route deleted', 'success');
     });
 
     document.getElementById('exportRoutesBtn').addEventListener('click', () => {
@@ -1022,14 +1417,13 @@
           if (!Array.isArray(imported)) throw new Error('Invalid format');
           localStorage.setItem('savedRoutes', JSON.stringify(imported));
           refreshSavedRoutes();
-          alert('Imported successfully');
-        } catch (err) { alert('Import failed: ' + err.message); }
+          showToast('Imported successfully', 'success');
+        } catch (err) { showToast('Import failed: ' + err.message, 'error'); }
       };
       reader.readAsText(file);
       e.target.value = '';
     });
 
-    // Time buttons
     document.querySelectorAll('.time-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         const hour = parseInt(btn.dataset.hour);
@@ -1042,27 +1436,29 @@
       });
     });
 
-    // Overlay buttons
-    document.getElementById('showSlowdownBtn').addEventListener('click', () => showOverlay('slowdownOverlay'));
-    document.getElementById('showGradientBtn').addEventListener('click', () => showOverlay('gradientOverlay'));
+    document.getElementById('showSlowdownBtn').addEventListener('click', () => {
+      openAnalysisSidebar('slowdown');
+    });
+    document.getElementById('showGradientBtn').addEventListener('click', () => {
+      // Reset gradient table when opening
+      document.getElementById('sidebar-gradient-table').style.display = 'none';
+      openAnalysisSidebar('gradient');
+    });
 
-    // Toggle bottom sheet
     const drawer = document.getElementById('drawer');
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn.addEventListener('click', () => drawer.classList.toggle('collapsed'));
-
+    document.getElementById('menuBtn').addEventListener('click', () => drawer.classList.toggle('collapsed'));
     document.getElementById('drawerHandle').addEventListener('click', () => drawer.classList.toggle('collapsed'));
 
-    // Settings modal
     document.getElementById('settingsBtn').addEventListener('click', () => {
       document.getElementById('settingsModal').classList.remove('hidden');
     });
 
-    // Initialize
     window.addEventListener('load', () => {
       refreshSavedRoutes();
       document.getElementById('datePicker').valueAsDate = new Date();
       map.invalidateSize();
+      // Expand drawer by default
+      document.getElementById('drawer').classList.remove('collapsed');
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js').catch(() => {});
       }

@@ -13,24 +13,25 @@ Overnight stability. No research report scheduled for today (pipeline focused on
 - No research report for March 5 (pipeline gap; next expected March 6)
 - No content outputs overnight
 
-### System Health (00:00 UTC)
-- **Disk**: 66% (healthy)
+### System Health (01:00 UTC)
+- **Disk**: 58% (healthy)
 - **Gateway**: RPC 200
 - **Memory**: clean, reindex fresh (<24h)
 - **Cron jobs**: 30 (expected 28–32)
 - **APT**: up to date
-- **Git**: clean (last push: `3996e4e7` route-hotspots UI refactor)
+- **Git**: clean (latest push: `87a4b73a` dashboard/PWA improvements)
 
 ### Recent Commits (since March 4)
+- `87a4b73a` dev: improve dashboard API error handling; add PWA support to route-hotspots (manifest + service worker)
 - `3996e4e7` dev: refactor route-hotspots UI — cleanup unused CSS, reorder gradient card, add segment-label styling
 - `c8ac701e` dev: update daily digest with missing Agni plan commits; add gradient analysis feature to route-hotspots.html
 - `d4c0f201` dev: update MEMORY.md with recent notes; append daily log (dashboard cron stuck-state recovery)
 - (plus numerous Agni plan "Address found opportunities" commits)
 
 ### Active Tasks
-- dev-agent: running 24/7 (last cycle 15:00 UTC)
-- content-agent: running 24/7 (last cycle 15:01 UTC)
-- research-agent: running 24/7 (last cycle 15:02 UTC)
+- dev-agent: running 24/7 (last cycle 01:00 UTC — dashboard API fix, route-hotspots PWA)
+- content-agent: running 24/7 (last cycle 00:00 UTC — digest generation)
+- research-agent: running 24/7 (standby; next report March 6)
 - supervisor-daemon: running (PID 1121739)
 
 ## Looking Ahead
@@ -40,4 +41,4 @@ Overnight stability. No research report scheduled for today (pipeline focused on
 
 ---
 
-*Generated: 2026-03-05 00:00 UTC by content-agent*
+*Updated: 2026-03-05 01:02 UTC by content-agent*
