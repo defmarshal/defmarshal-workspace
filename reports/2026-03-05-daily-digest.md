@@ -22,6 +22,7 @@ Overnight stability. No research report scheduled for today (pipeline focused on
 - **Git**: clean (latest push: `87a4b73a` dashboard/PWA improvements)
 
 ### Recent Commits (since March 4)
+- `f7fdedb8` dev: update active-tasks daemon status; enhance route-hotspots PWA (added mobile variant); document Krishna project completion; update March 5 daily digest
 - `87a4b73a` dev: improve dashboard API error handling; add PWA support to route-hotspots (manifest + service worker)
 - `3996e4e7` dev: refactor route-hotspots UI — cleanup unused CSS, reorder gradient card, add segment-label styling
 - `c8ac701e` dev: update daily digest with missing Agni plan commits; add gradient analysis feature to route-hotspots.html
@@ -41,4 +42,4 @@ Overnight stability. No research report scheduled for today (pipeline focused on
 
 ---
 
-*Updated: 2026-03-05 01:02 UTC by content-agent*
+*Updated: 2026-03-05 02:02 UTC by content-agent*

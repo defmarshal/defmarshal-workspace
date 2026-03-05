@@ -357,13 +357,10 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
-      position: absolute;
+      position: fixed;
       right: 0;
-      top: 0;
-      z-index: 1;
-    }
-    .bottom-right-sidebar.open .sidebar-tabs-collapsed {
-      display: none;
+      top: calc(env(safe-area-inset-top) + 56px);
+      z-index: 1000;
     }
     .collapsed-tab {
       width: 28px;
@@ -377,6 +374,12 @@
       justify-content: center;
       writing-mode: vertical-rl;
       text-orientation: mixed;
+    }
+    .collapsed-tab:hover {
+      background: #0077e6;
+    }
+    .collapsed-tab.active {
+      background: #0052a3;
     }
     .collapsed-tab span {
       font-size: 10px;
@@ -648,13 +651,13 @@
   </div>
 
   <!-- Bottom-right expandable sidebar -->
+  <!-- Collapsed tabs (outside sidebar, always visible when closed) -->
+  <div class="sidebar-tabs-collapsed" id="collapsedTabs">
+    <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Slowdown</span></div>
+    <div class="collapsed-tab" data-panel="gradient" id="collapsedGradientTab"><span>Gradient</span></div>
+  </div>
+  
   <div class="bottom-right-sidebar" id="analysisSidebar">
-    <!-- Collapsed tabs (visible when sidebar is closed) -->
-    <div class="sidebar-tabs-collapsed">
-      <div class="collapsed-tab active" data-panel="slowdown" id="collapsedSlowdownTab"><span>Slowdown</span></div>
-      <div class="collapsed-tab" data-panel="gradient" id="collapsedGradientTab"><span>Gradient</span></div>
-    </div>
-    
     <div class="sidebar-header" id="sidebarHeader">
       <h3 id="sidebarTitle">Analysis</h3>
     </div>
@@ -1273,6 +1276,7 @@
     function openAnalysisSidebar(panel) {
       const sidebar = document.getElementById('analysisSidebar');
       const sidebarTitle = document.getElementById('sidebarTitle');
+      const collapsedTabs = document.getElementById('collapsedTabs');
       
       // Update collapsed tabs
       document.querySelectorAll('.collapsed-tab').forEach(tab => {
@@ -1292,11 +1296,26 @@
       
       sidebarTitle.textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
       sidebar.classList.add('open');
+      if (collapsedTabs) collapsedTabs.style.display = 'none';
+    }
+
+    function closeAnalysisSidebar() {
+      const sidebar = document.getElementById('analysisSidebar');
+      const collapsedTabs = document.getElementById('collapsedTabs');
+      sidebar.classList.remove('open');
+      if (collapsedTabs) collapsedTabs.style.display = 'flex';
     }
 
     function toggleAnalysisSidebar() {
       const sidebar = document.getElementById('analysisSidebar');
-      sidebar.classList.toggle('open');
+      const collapsedTabs = document.getElementById('collapsedTabs');
+      if (sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        if (collapsedTabs) collapsedTabs.style.display = 'flex';
+      } else {
+        sidebar.classList.add('open');
+        if (collapsedTabs) collapsedTabs.style.display = 'none';
+      }
     }
 
     // Collapsed tab click handlers
@@ -1307,7 +1326,7 @@
       });
     });
 
-    // Sidebar tab switching
+    // Sidebar tab switching (expanded view)
     document.querySelectorAll('.sidebar-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         const panel = tab.dataset.panel;
@@ -1316,11 +1335,20 @@
         tab.classList.add('active');
         document.getElementById('panel-' + panel).classList.add('active');
         document.getElementById('sidebarTitle').textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
+        
+        // Update collapsed tabs active state
+        document.querySelectorAll('.collapsed-tab').forEach(t => {
+          t.classList.remove('active');
+          if (t.dataset.panel === panel) t.classList.add('active');
+        });
       });
     });
 
-    // Sidebar header toggle
-    document.getElementById('sidebarHeader').addEventListener('click', toggleAnalysisSidebar);
+    // Sidebar header toggle (close when clicked)
+    document.getElementById('sidebarHeader').addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeAnalysisSidebar();
+    });
 
     // Toast notifications
     function showToast(message, type = 'info') {
