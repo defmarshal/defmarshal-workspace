@@ -1,45 +1,39 @@
-# Daily Digest — March 5, 2026 (UTC)
+# Daily Digest 2026-03-05
 
-## Overview
+## Content Produced
+- (none)
 
-Overnight stability. No research report scheduled for today (pipeline focused on March 6+). System health green. All agents running.
+## Research Highlights
+- (none)
 
-## Highlights
+## Dev Commits (today)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_0404)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_0206)
+- dev: update active-tasks daemon status; enhance route-hotspots PWA (added mobile variant); document Krishna project completion; update March 5 daily digest
+- dev: improve dashboard API error handling; add PWA support to route-hotspots (manifest + service worker)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_0006)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_2203)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_2002)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_1812)
+- dev: refactor route-hotspots UI — cleanup unused CSS, reorder gradient card, add segment-label styling
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_1403)
+- dev: update daily digest with missing Agni plan commits; add gradient analysis feature to route-hotspots.html
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_1205)
+- dev: update MEMORY.md with recent notes; append daily log (dashboard cron stuck-state recovery)
+- dev: add traffic forecasting project docs and HERE route hotspot analyzer tool (API key sanitized)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_1004)
+- dev: remove unused HERE demo files (route-viz.html) and stray polyline decoder; revert accidental package.json dependency addition
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0812)
+- dev: update MEMORY.md (project list, recent notes); prune active-tasks (mewchat-evolver completed); append daily log (meta-agent, git-janitor recovery); simplify heartbeat script holiday check
+- dev: simplify HEARTBEAT.md to core protocol; add scripts/heartbeat-def.sh for Telegram check-ins
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0604)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0535)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0529)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0528)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-04_0525)
 
-### Overnight Maintenance
-- **Agent-manager cron** (22:00–22:01 UTC) performed health check and auto-committed pending files. All systems green.
+## System Health
+Disk OK 59% | Updates: 5 | Git dirty (3 changed) | Memory: 41f/410c (clean) local FTS+ | Reindex: today | Gateway: healthy | Downloads: 9 files, 2.0G
 
-### Production Reports
-- No research report for March 5 (pipeline gap; next expected March 6)
-- No content outputs overnight
-
-### System Health (01:00 UTC)
-- **Disk**: 58% (healthy)
-- **Gateway**: RPC 200
-- **Memory**: clean, reindex fresh (<24h)
-- **Cron jobs**: 30 (expected 28–32)
-- **APT**: up to date
-- **Git**: clean (latest push: `87a4b73a` dashboard/PWA improvements)
-
-### Recent Commits (since March 4)
-- `f7fdedb8` dev: update active-tasks daemon status; enhance route-hotspots PWA (added mobile variant); document Krishna project completion; update March 5 daily digest
-- `87a4b73a` dev: improve dashboard API error handling; add PWA support to route-hotspots (manifest + service worker)
-- `3996e4e7` dev: refactor route-hotspots UI — cleanup unused CSS, reorder gradient card, add segment-label styling
-- `c8ac701e` dev: update daily digest with missing Agni plan commits; add gradient analysis feature to route-hotspots.html
-- `d4c0f201` dev: update MEMORY.md with recent notes; append daily log (dashboard cron stuck-state recovery)
-- (plus numerous Agni plan "Address found opportunities" commits)
-
-### Active Tasks
-- dev-agent: running 24/7 (last cycle 01:00 UTC — dashboard API fix, route-hotspots PWA)
-- content-agent: running 24/7 (last cycle 00:00 UTC — digest generation)
-- research-agent: running 24/7 (standby; next report March 6)
-- supervisor-daemon: running (PID 1121739)
-
-## Looking Ahead
-- Workspace-builder runs every 2 hours (next ~01:00 UTC)
-- Research pipeline preparing March 6 report
-- MewChat evolution: char counter, keyboard shortcuts, draft persistence implemented; SSE switch in place
-
----
-
-*Updated: 2026-03-05 02:02 UTC by content-agent*
+## Notes
+- Generated at Thu Mar  5 05:05:01 UTC 2026

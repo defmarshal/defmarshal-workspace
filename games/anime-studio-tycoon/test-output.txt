@@ -2,10 +2,10 @@
 Manage your studio: balance money, staff, reputation, fans.
 Goal: Complete 10 episodes while maintaining positive reputation and at least 50,000 fans. Avoid bankruptcy!
 
-[96mYour studio's genre: Isekai[0m
-Current market trend: Isekai (bonus fan growth if matched!)
+[96mYour studio's genre: Sports[0m
+Current market trend: Slice of Life (bonus fan growth if matched!)
 
-Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Isekai] [Trend: Isekai]
+Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Sports] [Trend: Slice of Life]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -17,7 +17,8 @@ Week 0 | Money: ¥100000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pr
 7) Next week
 > Auto-choosing: 1
 [92mHired a new animator.[0m
-Week 1 | Money: ¥85000 | Staff: 6 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [###.......] [Genre: Isekai] [Trend: Isekai]
+Week 1 | Money: ¥85000 | Staff: 6 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [###.......] [Genre: Sports] [Trend: Slice of Life]
+[93mEvent: Studio renovation[0m
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -29,7 +30,7 @@ Week 1 | Money: ¥85000 | Staff: 6 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Pro
 7) Next week
 > Auto-choosing: 5
 [92mQuality focus paid off. Reputation +5.[0m
-Week 2 | Money: ¥71000 | Staff: 6 | Rep: 55 | Fans: 1000 | Episodes: 0/10 | Progress: [######....] [Genre: Isekai] [Trend: Isekai]
+Week 2 | Money: ¥63000 | Staff: 6 | Rep: 65 | Fans: 3000 | Episodes: 0/10 | Progress: [######....] [Genre: Sports] [Trend: Slice of Life]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -41,22 +42,7 @@ Week 2 | Money: ¥71000 | Staff: 6 | Rep: 55 | Fans: 1000 | Episodes: 0/10 | Pro
 7) Next week
 > Auto-choosing: 5
 [92mQuality focus paid off. Reputation +5.[0m
-Week 3 | Money: ¥57000 | Staff: 6 | Rep: 60 | Fans: 1000 | Episodes: 0/10 | Progress: [#########.] [Genre: Isekai] [Trend: Isekai]
-
-[1mChoices:[0m
-1) Hire (+1 staff, -¥5000)
-2) Fire (+¥2000, -1 staff)
-3) Train (staff +1, -¥3000)
-4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
-5) Quality focus (reputation +5, costs ¥2000)
-6) View upgrades
-7) Next week
-> Auto-choosing: 5
-[92mQuality focus paid off. Reputation +5.[0m
-[96mEpisode 1 completed![0m
-  Reputation +10, Fans +4711
-  [35m🔥 TREND BONUS: Isekai is hot right now![0m
-Week 4 | Money: ¥43000 | Staff: 6 | Rep: 75 | Fans: 5711 | Episodes: 1/10 | Progress: [##........] [Genre: Isekai] [Trend: Isekai]
+Week 3 | Money: ¥49000 | Staff: 6 | Rep: 70 | Fans: 3000 | Episodes: 0/10 | Progress: [#########.] [Genre: Sports] [Trend: Slice of Life]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)
@@ -79,7 +65,9 @@ Week 4 | Money: ¥43000 | Staff: 6 | Rep: 75 | Fans: 5711 | Episodes: 1/10 | Pro
     Every 4 weeks: +¥3000 fans (actually +3000 fans).
 
 Enter upgrade to buy (or press Enter to cancel): [92mPurchased Star Director![0m
-Week 5 | Money: ¥1000 | Staff: 6 | Rep: 75 | Fans: 5711 | Episodes: 1/10 | Progress: [#####.....] [Genre: Isekai] [Trend: Isekai]
+[96mEpisode 1 completed![0m
+  Reputation +20, Fans +5156
+Week 4 | Money: ¥7000 | Staff: 6 | Rep: 90 | Fans: 8156 | Episodes: 1/10 | Progress: [##........] [Genre: Sports] [Trend: Slice of Life]
 
 [1mChoices:[0m
 1) Hire (+1 staff, -¥5000)

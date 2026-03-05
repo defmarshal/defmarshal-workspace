@@ -74,6 +74,15 @@ HEARTBEAT_DATE="$(date -u '+%b %d, %Y')"
 DISK_USAGE="$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')"
 DISK_FREE="$(df -h . | awk 'NR==2 {print $4}')"
 
+# Determine disk state based on usage
+if [ -n "$DISK_USAGE" ] && [ "$DISK_USAGE" -ge 90 ]; then
+  DISK_STATE="🔴 critical"
+elif [ -n "$DISK_USAGE" ] && [ "$DISK_USAGE" -ge 80 ]; then
+  DISK_STATE="🟡 warning"
+else
+  DISK_STATE="✅ healthy"
+fi
+
 UPDATES_COUNT="$(apt-get -s upgrade 2>/dev/null | grep '^Inst ' | wc -l | tr -d ' ' || true)"
 if [ -z "$UPDATES_COUNT" ] || [ "$UPDATES_COUNT" -lt 0 ] 2>/dev/null; then UPDATES_COUNT=0; fi
 

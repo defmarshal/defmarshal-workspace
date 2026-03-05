@@ -1,69 +1,89 @@
-# Workspace Builder Task Plan - March 5, 2026
+# Workspace Builder Task Plan
 
-## Overview
-Analyze current workspace state and implement targeted improvements to enhance efficiency, organization, and functionality.
+## Mission
+Analyze workspace and implement improvements efficiently using strategic planning and targeted improvements.
 
-## Analysis Phase
-1. **Workspace Health Assessment**
-   - Run quick health check to identify current system status
-   - Check disk space, memory usage, and system load
-   - Review recent logs for any recurring issues
-   - Examine git status and recent commits
+## Current State (2026-03-05 05:05 UTC)
+- Workspace: /home/ubuntu/.openclaw/workspace
+- OS: Linux 6.17.0-1007-oracle (arm64)
+- Node: v24.14.0
+- Model: openrouter/z-ai/glm-4.5-air:free
+- Channel: telegram
 
-2. **File Structure Analysis**
-   - Review AGENTS.md for current skill inventory
-   - Check TOOLS.md for environment-specific configurations
-   - Analyze memory files organization
-   - Review project files and documentation
+## Analysis Phases
 
-3. **Agent Status Review**
-   - Check active agents and their health
-   - Review recent agent logs for patterns
-   - Identify any failing or stuck processes
-   - Examine cron job status and schedules
+### Phase 1: Workspace Analysis
+1. **File Structure Analysis**
+   - Review directory structure and organization
+   - Identify large files, duplicates, and organizational issues
+   - Check file naming conventions and consistency
 
-## Planning Phase
-4. **Identify Improvement Opportunities**
-   - Search for TODOs and FIXMEs in the codebase
-   - Look for outdated documentation
-   - Check for duplicate or redundant files
-   - Identify performance bottlenecks
+2. **Configuration Review**
+   - Check AGENTS.md, TOOLS.md, MEMORY.md for completeness
+   - Review cron jobs and scheduling
+   - Validate configuration file syntax and references
 
-5. **Prioritize Improvements**
-   - Categorize findings by impact (high/medium/low)
-   - Estimate implementation effort
-   - Consider dependencies between tasks
-   - Validate against current priorities
+3. **System Health Assessment**
+   - Run quick health to identify issues
+   - Check memory system status
+   - Validate agent health and status
 
-## Implementation Phase
-6. **Execute High-Priority Improvements**
-   - Address critical issues first
-   - Implement one improvement at a time
-   - Update progress.md after each step
-   - Test modifications thoroughly
+### Phase 2: Improvement Identification
+1. **Code Quality Improvements**
+   - Identify redundant or inefficient code patterns
+   - Look for opportunities to consolidate functionality
+   - Check for deprecated or unused files
 
-7. **Validation Phase**
-   - Run quick health after all changes
+2. **Documentation Updates**
+   - Review and update outdated documentation
+   - Add missing information to key files
+   - Improve organization and navigation
+
+3. **Performance Optimization**
+   - Identify bottlenecks in system operations
+   - Look for opportunities to reduce resource usage
+   - Optimize file operations and caching
+
+### Phase 3: Implementation
+1. **High Priority Fixes**
+   - Address critical issues identified in analysis
+   - Fix broken references or configurations
+   - Clean up temporary or outdated files
+
+2. **Structural Improvements**
+   - Reorganize directories if needed
+   - Update file naming conventions
+   - Improve configuration consistency
+
+3. **Documentation Updates**
+   - Update outdated information
+   - Add missing documentation
+   - Improve readability and organization
+
+### Phase 4: Validation
+1. **System Testing**
+   - Run quick health to verify fixes
    - Test modified commands
-   - Verify no temporary files left behind
-   - Check git status for uncommitted changes
+   - Check for regressions
 
-8. **Documentation Update**
-   - Update AGENTS.md if skills changed
-   - Update TOOLS.md if environment changed
-   - Update project documentation as needed
+2. **Code Review**
+   - Review all changes for quality
+   - Ensure no breaking changes
+   - Validate documentation accuracy
+
+3. **Commit and Push**
    - Commit changes with 'build:' prefix
+   - Push to GitHub
+   - Update active-tasks.md
 
-## Final Steps
-9. **Commit and Deploy**
-   - Commit all changes with 'build:' prefix
-   - Push to GitHub repository
-   - Update active-tasks.md with verification notes
-   - Report completion and key findings
+## Tools to Use
+- **planning-with-files**: For structured planning (this file)
+- **gemini-cli**: For analysis, research, and writing tasks
+- **qwen-code**: For code generation and refactoring
 
 ## Success Criteria
+- All critical issues resolved
 - System health improved or maintained
-- No breaking changes to existing functionality
-- Documentation current and accurate
-- Temporary files cleaned up
-- Changes committed and pushed successfully
+- Documentation updated and accurate
+- Code quality enhanced
+- No regressions introduced
