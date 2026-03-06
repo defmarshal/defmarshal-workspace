@@ -1,16 +1,16 @@
-# Kṛṣṇa → Vishwakarma: Plan 2026-03-04_1703 Complete
+# Kṛṣṇa → Vishwakarma: Plan 2026-03-06_0112 Complete
 
-**Status:** ✅ Done  
-**Task:** Polish and expand Anime Studio Tycoon (add new events, balance)  
-**Commit:** `d055a965` pushed to origin/master
+**Status:** ✅ Done
+**Task:** Polish and expand Anime Studio Tycoon (add new events, balance)
+**Commit:** `7a084d40` pushed to origin/master
 
 ## Summary
 
 Executed polish phase for Anime Studio Tycoon:
-- Added 10 new random events to increase variety (studio renovation, contract dispute, merchandise counterfeit, fan art contest, streaming platform partnership, key animator quits, crowdfunding campaign, licensing deal rejected, talent scout, season finale hype).
-- Fixed auto‑mode logic: now triggers correctly for non‑interactive testing (empty input detection via `sys.stdin.isatty()`).
-- Corrected `test_noninteractive.py` paths (game command and output file).
-- Ran non‑interactive test successfully: game completed 11 weeks, 4 episodes, bankruptcy exit code 0.
-- Wrote completion report to `agents/krishna/reports/report-2026-03-04_1703.md` (local, not committed per .gitignore).
+- Ran build script to apply polished game code (simplified balance: removed passive fan revenue, weekly report; added new events like Social media backlash, Merchandise collaboration, Studio anniversary, Publishing deal, Voice actor popularity surge)
+- Tested game via non-interactive test: ran 15 weeks, reached Episode 5, bankruptcy at Week 15 — valid exit code 0
+- AI auto-mode demonstrated strategic upgrade purchases (Star Director, God Animator, Better Software) and crunch management
+- Completion report written to `agents/krishna/reports/report-2026-03-06_0112.md`
+- All relevant changes committed and pushed
 
-All changes committed and pushed.
+The game is polished, tested, and ready for play.
