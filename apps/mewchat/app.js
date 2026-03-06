@@ -52,6 +52,7 @@
   const clearBtn = document.getElementById('clear-btn');
   const typingEl = document.getElementById('typing');
   const errorEl = document.getElementById('error');
+  const notificationEl = document.getElementById('notification');
   const mascot = document.getElementById('mascot');
   const charCountEl = document.getElementById('char-count');
   const newMessagesBanner = document.getElementById('new-messages-banner');
@@ -590,23 +591,47 @@
     }
   }
 
-  function showError(msg) {
+  function showNotification(type, msg, duration = 5000) {
     removeLoadingChat(); // ensure loading indicator is gone
-    errorEl.innerHTML = `
+    if (!notificationEl) return;
+    
+    // Clear any existing notification
+    hideNotification();
+    
+    notificationEl.innerHTML = `
       <span>${msg}</span>
-      <button class="error-dismiss" title="Dismiss">×</button>
+      <button class="notification-dismiss" title="Dismiss">×</button>
     `;
-    errorEl.classList.remove('hidden');
+    notificationEl.className = `notification ${type}`;
+    notificationEl.classList.remove('hidden');
+    
     // Add dismiss handler
-    const dismissBtn = errorEl.querySelector('.error-dismiss');
+    const dismissBtn = notificationEl.querySelector('.notification-dismiss');
     if (dismissBtn) {
-      dismissBtn.addEventListener('click', clearError);
+      dismissBtn.addEventListener('click', hideNotification);
+    }
+    
+    // Auto-dismiss after duration
+    if (duration > 0) {
+      setTimeout(hideNotification, duration);
     }
   }
 
+  function hideNotification() {
+    if (notificationEl) {
+      notificationEl.classList.add('hidden');
+      notificationEl.innerHTML = '';
+      notificationEl.className = 'notification';
+    }
+  }
+
+  // Backwards compatibility - now uses notification system
+  function showError(msg) {
+    showNotification('error', msg, 10000); // errors stay longer (10s)
+  }
+
   function clearError() {
-    errorEl.classList.add('hidden');
-    errorEl.innerHTML = '';
+    hideNotification();
   }
 
   // Copy full chat history to clipboard
@@ -630,7 +655,7 @@
 
     try {
       await navigator.clipboard.writeText(text);
-      showError('✅ Chat history copied to clipboard!');
+      showNotification('success', '✅ Chat history copied to clipboard!');
       // Change copy button temporarily to indicate success
       const copyBtn = document.getElementById('copy-chat-btn');
       if (copyBtn) {
@@ -646,11 +671,6 @@
       showError('Failed to copy: ' + err.message);
     }
     setTimeout(() => clearError(), 3000);
-  }
-
-  function clearError() {
-    errorEl.classList.add('hidden');
-    errorEl.innerHTML = '';
   }
 
   function clearChat() {
@@ -878,10 +898,10 @@
       const el = document.getElementById(tempId);
       if (el) el.querySelector('.msg-bubble').style.borderColor = 'var(--error)';
       showError('Send failed: ' + e.message + ' <button class="retry-btn">Retry</button>');
-      const retryBtn = errorEl.querySelector('.retry-btn');
+      const retryBtn = notificationEl.querySelector('.retry-btn');
       if (retryBtn) {
         retryBtn.addEventListener('click', () => {
-          clearError();
+          hideNotification();
           sendMessage(text);
         });
       }
