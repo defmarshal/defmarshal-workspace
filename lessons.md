@@ -79,3 +79,11 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 3. Not tracking session keys → lost track of running agents, couldn't debug crashes
 4. Using same model for everything → expensive and vulnerable to prompt injection
 5. Relying on mental notes → context lost on restart
+
+## 2026-03-06 — Memory Index Outage
+
+- **Symptom:** Research-agent stopped producing reports since March 1. Manual run exited quickly with no output. Memory-store main index showed 0/43 files indexed.
+- **Root cause:** The main memory store (`~/.openclaw/memory/main.sqlite`) became completely empty (index cleared). Research-agent relies on memory search to gather topics and prior context; failure caused immediate exit without creating reports.
+- **Fix:** Reindexed with `./quick memory-reindex`. Restored 43/43 files, 416 chunks. Manually triggered research-agent; report for March 6 generated successfully.
+- **Prevention:** Add meta-agent health check: if `quick memory-status` shows indexed files < expected count, automatically trigger reindex. Also, monitor memory-store size changes and alert if drops sharply.
+- **Follow-up:** Investigate what cleared the index (possible accidental rotation or Voyage AI interaction). Consider backing up index periodically.
