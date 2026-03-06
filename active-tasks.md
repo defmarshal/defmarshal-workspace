@@ -1,4 +1,3 @@
-- [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-03-05 02:11 UTC, status: running, PID: 856989)
-  - Verification: daemon process active; cycle completed, sleeping until next cycle (previous instance died at 01:40 UTC)
-- [content-agent] content-agent - Generates daily digests, anime summaries, tech writeups (spawned 2026-03-05 07:30 UTC by agent-manager, status: running)
-- [research-agent] research-agent - Conducts research cycles, creates detailed reports (spawned 2026-03-05 07:30 UTC by agent-manager, status: running)
+- [meta-supervisor-daemon] meta-supervisor - Continuous agent outcome auditor (started: 2026-03-05 02:11 UTC, status: running, PID: 856989) - Verification: daemon process active; cycle completed, sleeping until next cycle (previous instance died at 01:40 UTC)
+- [content-agent] content-agent - Generates daily digests, anime summaries, tech writeups (last spawned: 2026-03-06 02:04 UTC by meta-agent, status: running) - Last cycle: 03:02 UTC completed (digest current)
+- [research-agent] research-agent - Conducts research cycles, creates detailed reports (last spawned: 2026-03-06 02:04 UTC by meta-agent, status: running) - Last cycle: 03:03 UTC completed, pipeline gap persists (no March 6 report)
