@@ -17,7 +17,7 @@ class C:
     E = '\033[0m'   # End
 
 # Game state - polished balance (2026-03-05)
-money = 200000  # Increased starting money for even better early game
+money = 75000  # Reduced from 200000 for early-game tension
 staff = 5
 reputation = 50
 fans = 1000
@@ -25,6 +25,7 @@ week = 0
 episodes_target = 10
 episodes_completed = 0
 salary_per_staff = 2000  # Keep original salary, upgrades will reduce
+studio_rent = 5000  # Fixed weekly rent
 
 # Genre & Trend system
 GENRES = ["Shonen", "Isekai", "Slice of Life", "Mecha", "Horror", "Sports", "Romance", "Sci-Fi"]
@@ -128,7 +129,7 @@ def apply_upgrades():
         salary_multiplier = 0.7  # 30% salary reduction
 
 def episode_gain():
-    global reputation, fans, market_trend, player_genre, trend_announced
+    global reputation, fans, market_trend, player_genre, trend_announced, points_per_episode, episodes_completed
     rep_gain = 10
     fan_gain = random.randint(2000, 8000)
     
@@ -150,6 +151,10 @@ def episode_gain():
     if trend_mult > 1.0 and not trend_announced:
         print(f"  {C.M}🔥 TREND BONUS: {player_genre} is hot right now!{C.E}")
         trend_announced = True
+    
+    # Increase difficulty for next episode (25% growth)
+    points_per_episode = int(points_per_episode * 1.25)
+    print(f"  Production complexity increased to {points_per_episode} points for next episode.")
     
     if episodes_completed % 3 == 0 and episodes_completed > 0:
         print(f"\n{C.OKBLUE}New Season! You can change your studio's genre.{C.E}")
@@ -200,9 +205,21 @@ def weekly_event():
 def weekly_update():
     global money, staff, reputation, week, episodes_completed, production_progress, is_crunching, market_trend, trend_announced, fans
     
+    # Passive fan revenue: ¥2 per fan, scaled by reputation (higher rep = more revenue per fan)
+    weekly_revenue = int(fans * 2 * (reputation / 50))
+    money += weekly_revenue
+    
+    # Fixed studio rent
+    money -= studio_rent
+    
     # Salary payment (with upgrade discount)
     actual_salary = staff * salary_per_staff * salary_multiplier
     money -= int(actual_salary)
+    
+    print(f"{C.OKGREEN}Weekly Report:{C.E}")
+    print(f"  Revenue from Fans: +¥{weekly_revenue}")
+    print(f"  Studio Rent: -¥{studio_rent}")
+    print(f"  Staff Salaries: -¥{int(actual_salary)}")
     
     # Random event
     weekly_event()
