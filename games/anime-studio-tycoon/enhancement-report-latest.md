@@ -1,20 +1,71 @@
 # Game Enhancement Report
 
-**Focus**: Polish
-**Timestamp**: 2026-03-05T06:09:28.813143Z
-**Cycle**: 7
+**Focus**: Balance
+**Timestamp**: 2026-03-06T00:02:26.939422Z
+**Cycle**: 8
 
 ---
 
 ## Research (Gemini CLI)
 
-[Gemini CLI timed out]
+Based on the provided code for **Anime Studio Tycoon**, here are three specific improvements to balance the game's economy and progression:
+
+### 1. Implement Passive Fan Revenue
+*   **ISSUE:** Money is currently generated almost entirely through random events (e.g., "Streaming deal" +¥25,000) or starting capital. This makes the "Fans" metric feel like a score counter rather than a functional part of the tycoon loop.
+*   **FIX:** In the `weekly_update()` function (starting around line 198), add a revenue stream based on your current fan count.
+    ```python
+    def weekly_update():
+        global money, fans
+        # Calculate weekly revenue from merchandising and syndication
+        # Base: ¥2 per fan, adjusted by reputation
+        weekly_revenue = int(fans * (reputation / 50))
+        money += weekly_revenue
+        
+        # Apply costs
+        total_salary = int(staff * salary_per_staff * salary_multiplier)
+        money -= total_salary
+        
+        print(f"{C.OKGREEN}Weekly Report:{C.E}")
+        print(f"  Revenue from Fans: +¥{weekly_revenue}")
+        print(f"  Staff Salaries: -¥{total_salary}")
+    ```
+*   **RATIONALE:** This creates a "flywheel" effect. Investing in trends and marketing to get fans now provides the literal capital needed to sustain larger staff counts later.
+
+### 2. Progressive Episode Difficulty
+*   **ISSUE:** `points_per_episode` is hardcoded at `100`. As the player hires more staff or buys upgrades, they will complete the 10-episode goal exponentially faster, making the "End Game" feel trivial and rushed.
+*   **FIX:** Increase the production requirements for each subsequent episode inside `episode_gain()` (line 101).
+    ```python
+    def episode_gain():
+        global points_per_episode, episodes_completed
+        # ... existing logic ...
+        
+        episodes_completed += 1
+        # Increase difficulty for the next project (25% growth)
+        points_per_episode = int(points_per_episode * 1.25) 
+        
+        print(f"Next project complexity increased to {points_per_episode} points.")
+    ```
+*   **RATIONALE:** This simulates the industry reality where a studio moves from "Short Web-Shorts" to "Full Feature Series." It forces the player to actually use their accumulated wealth to expand their studio.
+
+### 3. Tighten the Early-Game "Safety Net"
+*   **ISSUE:** Starting with ¥200,000 and a ¥10,000 weekly burn rate (line 22-29) gives the player 20 weeks of "idle time" where they cannot lose. There is no tension in the first 50% of the game.
+*   **FIX:** Reduce starting capital and introduce a fixed "Studio Rent" to create immediate pressure.
+    ```python
+    # Line 22
+    money = 75000  # Reduced from 200,000
+    
+    # In weekly_update()
+    studio_rent = 5000
+    money -= studio_rent
+    print(f"  Studio Rent: -¥{studio_rent}")
+    ```
+*   **RATIONALE:** Tycoon games are most engaging when the player is making "Survival vs. Growth" trade-offs. Reducing the starting buffer forces the player to care about the Trend bonus (Line 110) immediately to survive.
 
 ---
 
 ## Implementation (Qwen Code)
 
-Successfully updated main.py — applied polish enhancement
+Successfully updated main.py — applied balance enhancement
 
 ---
 
