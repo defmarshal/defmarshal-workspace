@@ -200,9 +200,18 @@ def weekly_event():
 def weekly_update():
     global money, staff, reputation, week, episodes_completed, production_progress, is_crunching, market_trend, trend_announced, fans
     
+    # Passive Fan Revenue - creates flywheel effect
+    weekly_revenue = int(fans * (reputation / 50))
+    money += weekly_revenue
+    
     # Salary payment (with upgrade discount)
     actual_salary = staff * salary_per_staff * salary_multiplier
     money -= int(actual_salary)
+    
+    # Show weekly report
+    print(f"\n{C.OKGREEN}Weekly Report:{C.E}")
+    print(f"  Revenue from Fans: +¥{weekly_revenue}")
+    print(f"  Staff Salaries: -¥{int(actual_salary)}")
     
     # Random event
     weekly_event()
