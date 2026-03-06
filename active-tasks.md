@@ -15,7 +15,7 @@
 - git-janitor-cron (a27a9b33) – every 6h UTC
 
 **Agents Running**:
-- meta-supervisor-daemon (PID 1289187, 1289188) – Continuous auditor
+- meta-supervisor-daemon (PID 1303872) – Continuous auditor (restarted 08:08 UTC)
 
 **System Cron**: Cleared (0 entries) – all workspace tasks now in OpenClaw cron
 
@@ -67,4 +67,5 @@
 - Auto-reenable scheduler cancelled (PID 1278888)
 - Core system running lean; no optional noise
 - To delete optional jobs: `openclaw cron remove <id>`
+- **2026-03-06 fixes**: Cleared stuck meta-agent-cron session (08:04); restarted meta-supervisor daemon (08:08); memory main store reindex in progress (session calm-basil).
 
