@@ -1,0 +1,8 @@
+{
+  "id": "status-holiday",
+  "name": "Heartbeat Holiday Info",
+  "description": "Adds nearest Indonesian holiday to System Status heartbeat messages.",
+  "version": "0.1.0",
+  "pluginType": "core",
+  "hooks": ["message_sending"]
+}

@@ -1,6 +1,20 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-06 08:28 UTC
+**Last updated**: 2026-03-06 11:05 UTC
+
+## 🔄 Currently Running Agents
+
+**Content-Agent** (PID ~1323xxx)
+- Spawned by: meta-agent (11:04 UTC)
+- Goal: Verify daily digest up-to-date, generate any missing content summaries
+- Status: Running (digest already current; will exit after check)
+- Expected: Short lifecycle; completes once no pending tasks
+
+**Meta-Agent** (completed 11:04 UTC)
+- Actions: Spawned content-agent, created notifier-agent cron
+- Result: Success; state committed
+
+---
 
 ## ✅ Core System Active (06:23 UTC)
 
