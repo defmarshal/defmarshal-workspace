@@ -18,14 +18,13 @@ if ! [ -f "$SKILL_DIR/index.js" ]; then
   exit 1
 fi
 
-# Run evolver with repair-only strategy, review mode for safety
-# We use --review so changes are not applied automatically; the agent will report proposed changes.
-# In the future, if we want fully autonomous, we can switch to standard mode (no --review) and set EVOLVE_STRATEGY=balanced
-EVOLVE_STRATEGY=${EVOLVE_STRATEGY:-repair-only}
+# Run evolver in autonomous balanced mode (repair + optimize + innovate)
+# No --review: changes are applied after validation (surprise me!)
+EVOLVE_STRATEGY=${EVOLVE_STRATEGY:-balanced}
 AGENT_NAME=${AGENT_NAME:-main}
 
 cd "$SKILL_DIR"
-output=$(AGENT_NAME="$AGENT_NAME" EVOLVE_STRATEGY="$EVOLVE_STRATEGY" node index.js run --review 2>&1)
+output=$(AGENT_NAME="$AGENT_NAME" EVOLVE_STRATEGY="$EVOLVE_STRATEGY" node index.js run 2>&1)
 exit_code=$?
 
 echo "$output" >> "$LOGFILE"
