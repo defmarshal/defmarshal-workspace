@@ -1,0 +1,2005 @@
+[2J[H[95m=== Anime Studio Tycoon ===[0m
+Manage your studio: balance money, staff, reputation, fans.
+Goal: Complete 10 episodes while maintaining positive reputation and at least 50,000 fans. Avoid bankruptcy!
+
+[96mYour studio's genre: Romance[0m
+Current market trend: Isekai (bonus fan growth if matched!)
+
+Week 0 | Money: ¥75000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥2000
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel): Week 1 | Money: ¥62000 | Staff: 5 | Rep: 50 | Fans: 1000 | Episodes: 0/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥2000
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 5
+[92mQuality focus paid off. Reputation +5.[0m
+Week 2 | Money: ¥47000 | Staff: 5 | Rep: 55 | Fans: 1000 | Episodes: 0/10 | Progress: [#####.....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥2200
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 5
+[92mQuality focus paid off. Reputation +5.[0m
+Week 3 | Money: ¥32200 | Staff: 5 | Rep: 60 | Fans: 1000 | Episodes: 0/10 | Progress: [#######...] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥2400
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Training seminar[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 2
+[93mFired a staff member.[0m
+[96mEpisode 1 completed![0m
+  Reputation +10, Fans +6062
+  Production complexity increased to 125 points for next episode.
+Week 4 | Money: ¥20100 | Staff: 5 | Rep: 75 | Fans: 7062 | Episodes: 1/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥21186
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 4
+[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
+  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 5 | Money: ¥26286 | Staff: 5 | Rep: 73 | Fans: 7062 | Episodes: 1/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥20621
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 7
+Week 6 | Money: ¥31907 | Staff: 5 | Rep: 73 | Fans: 7062 | Episodes: 1/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥20621
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 4
+[31m⚠️ CRUNCH ACTIVATED: Progress doubled, but reputation suffers and burnout risk increases![0m
+  [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 2 completed![0m
+  Reputation +10, Fans +6859
+  Production complexity increased to 156 points for next episode.
+Week 7 | Money: ¥37528 | Staff: 5 | Rep: 81 | Fans: 13921 | Episodes: 2/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥45104
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 8 | Money: ¥67632 | Staff: 5 | Rep: 79 | Fans: 13921 | Episodes: 2/10 | Progress: [###.......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥43990
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 9 | Money: ¥96622 | Staff: 5 | Rep: 77 | Fans: 13921 | Episodes: 2/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥42876
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 10 | Money: ¥124498 | Staff: 5 | Rep: 75 | Fans: 13921 | Episodes: 2/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥41763
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 3 completed![0m
+  Reputation +10, Fans +7199
+  Production complexity increased to 195 points for next episode.
+
+[94mNew Season! You can change your studio's genre.[0m
+  1) Shonen
+  2) Isekai
+  3) Slice of Life
+  4) Mecha
+  5) Horror
+  6) Sports
+  7) Romance (current)
+  8) Sci-Fi
+  0) Keep current genre
+> Auto-keeping Romance.
+Week 11 | Money: ¥151261 | Staff: 5 | Rep: 83 | Fans: 21120 | Episodes: 3/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥70118
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 12 | Money: ¥206379 | Staff: 5 | Rep: 81 | Fans: 21120 | Episodes: 3/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥68428
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 13 | Money: ¥259807 | Staff: 5 | Rep: 79 | Fans: 21120 | Episodes: 3/10 | Progress: [#######...] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥66739
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 14 | Money: ¥311546 | Staff: 5 | Rep: 77 | Fans: 21120 | Episodes: 3/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥65049
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 4 completed![0m
+  Reputation +10, Fans +5966
+  Production complexity increased to 243 points for next episode.
+Week 15 | Money: ¥361595 | Staff: 5 | Rep: 85 | Fans: 27086 | Episodes: 4/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥92092
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 16 | Money: ¥438687 | Staff: 5 | Rep: 83 | Fans: 27086 | Episodes: 4/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥89925
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 17 | Money: ¥513612 | Staff: 5 | Rep: 81 | Fans: 27086 | Episodes: 4/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥87758
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 18 | Money: ¥586370 | Staff: 5 | Rep: 79 | Fans: 27086 | Episodes: 4/10 | Progress: [########..] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥85591
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 5 completed![0m
+  Reputation +10, Fans +5273
+  Production complexity increased to 303 points for next episode.
+Week 19 | Money: ¥656961 | Staff: 5 | Rep: 87 | Fans: 32359 | Episodes: 5/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥112609
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 20 | Money: ¥754570 | Staff: 5 | Rep: 85 | Fans: 32359 | Episodes: 5/10 | Progress: [#.........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥110020
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 21 | Money: ¥849590 | Staff: 5 | Rep: 83 | Fans: 32359 | Episodes: 5/10 | Progress: [###.......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥107431
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 22 | Money: ¥942021 | Staff: 5 | Rep: 81 | Fans: 32359 | Episodes: 5/10 | Progress: [#####.....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥104843
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 23 | Money: ¥1031864 | Staff: 5 | Rep: 79 | Fans: 32359 | Episodes: 5/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥102254
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 24 | Money: ¥1119118 | Staff: 5 | Rep: 77 | Fans: 32359 | Episodes: 5/10 | Progress: [########..] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥99665
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 6 completed![0m
+  Reputation +10, Fans +3250
+  Production complexity increased to 378 points for next episode.
+
+[94mNew Season! You can change your studio's genre.[0m
+  1) Shonen
+  2) Isekai
+  3) Slice of Life
+  4) Mecha
+  5) Horror
+  6) Sports
+  7) Romance (current)
+  8) Sci-Fi
+  0) Keep current genre
+> Auto-keeping Romance.
+Week 25 | Money: ¥1203783 | Staff: 5 | Rep: 85 | Fans: 35609 | Episodes: 6/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥121070
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 26 | Money: ¥1309853 | Staff: 5 | Rep: 83 | Fans: 35609 | Episodes: 6/10 | Progress: [#.........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥118221
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 27 | Money: ¥1413074 | Staff: 5 | Rep: 81 | Fans: 35609 | Episodes: 6/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥115373
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 28 | Money: ¥1513447 | Staff: 5 | Rep: 79 | Fans: 35609 | Episodes: 6/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥112524
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 29 | Money: ¥1610971 | Staff: 5 | Rep: 77 | Fans: 35609 | Episodes: 6/10 | Progress: [#####.....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥109675
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 30 | Money: ¥1705646 | Staff: 5 | Rep: 75 | Fans: 35609 | Episodes: 6/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥106827
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Investor injection[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 31 | Money: ¥1817473 | Staff: 5 | Rep: 73 | Fans: 35609 | Episodes: 6/10 | Progress: [########..] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥103978
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 32 | Money: ¥1906451 | Staff: 5 | Rep: 71 | Fans: 35609 | Episodes: 6/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥101129
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 7 completed![0m
+  Reputation +10, Fans +5075
+  Production complexity increased to 472 points for next episode.
+Week 33 | Money: ¥1992580 | Staff: 5 | Rep: 79 | Fans: 40684 | Episodes: 7/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥128561
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 34 | Money: ¥2106141 | Staff: 5 | Rep: 77 | Fans: 40684 | Episodes: 7/10 | Progress: [#.........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥125306
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 35 | Money: ¥2216447 | Staff: 5 | Rep: 75 | Fans: 40684 | Episodes: 7/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥122052
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 36 | Money: ¥2323499 | Staff: 5 | Rep: 73 | Fans: 40684 | Episodes: 7/10 | Progress: [###.......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥118797
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Copyright lawsuit[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 37 | Money: ¥2417296 | Staff: 5 | Rep: 66 | Fans: 39184 | Episodes: 7/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥103445
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 38 | Money: ¥2505741 | Staff: 5 | Rep: 64 | Fans: 39184 | Episodes: 7/10 | Progress: [#####.....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥100311
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 39 | Money: ¥2591052 | Staff: 5 | Rep: 62 | Fans: 39184 | Episodes: 7/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥97176
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 40 | Money: ¥2673228 | Staff: 5 | Rep: 60 | Fans: 39184 | Episodes: 7/10 | Progress: [#######...] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥94041
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 41 | Money: ¥2752269 | Staff: 5 | Rep: 58 | Fans: 39184 | Episodes: 7/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥90906
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 8 completed![0m
+  Reputation +10, Fans +6109
+  Production complexity increased to 590 points for next episode.
+Week 42 | Money: ¥2828175 | Staff: 5 | Rep: 66 | Fans: 45293 | Episodes: 8/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥119573
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Award nomination[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 43 | Money: ¥2932748 | Staff: 5 | Rep: 74 | Fans: 47793 | Episodes: 8/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥141467
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 44 | Money: ¥3059215 | Staff: 5 | Rep: 72 | Fans: 47793 | Episodes: 8/10 | Progress: [#.........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥137643
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 45 | Money: ¥3181858 | Staff: 5 | Rep: 70 | Fans: 47793 | Episodes: 8/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥133820
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 46 | Money: ¥3300678 | Staff: 5 | Rep: 68 | Fans: 47793 | Episodes: 8/10 | Progress: [###.......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥129996
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 47 | Money: ¥3415674 | Staff: 5 | Rep: 66 | Fans: 47793 | Episodes: 8/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥126173
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 48 | Money: ¥3526847 | Staff: 5 | Rep: 64 | Fans: 47793 | Episodes: 8/10 | Progress: [#####.....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥122350
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 49 | Money: ¥3634197 | Staff: 5 | Rep: 62 | Fans: 47793 | Episodes: 8/10 | Progress: [#####.....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥118526
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 50 | Money: ¥3737723 | Staff: 5 | Rep: 60 | Fans: 47793 | Episodes: 8/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥114703
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Collaboration[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 51 | Money: ¥3843426 | Staff: 5 | Rep: 64 | Fans: 51793 | Episodes: 8/10 | Progress: [#######...] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥132590
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 52 | Money: ¥3961016 | Staff: 5 | Rep: 62 | Fans: 51793 | Episodes: 8/10 | Progress: [########..] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥128446
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Streaming hit[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 53 | Money: ¥4089462 | Staff: 5 | Rep: 68 | Fans: 61793 | Episodes: 8/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥168076
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 9 completed![0m
+  Reputation +10, Fans +3147
+  Production complexity increased to 737 points for next episode.
+
+[94mNew Season! You can change your studio's genre.[0m
+  1) Shonen
+  2) Isekai
+  3) Slice of Life
+  4) Mecha
+  5) Horror
+  6) Sports
+  7) Romance (current)
+  8) Sci-Fi
+  0) Keep current genre
+> Auto-keeping Romance.
+Week 54 | Money: ¥4242538 | Staff: 5 | Rep: 76 | Fans: 64940 | Episodes: 9/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥197417
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 55 | Money: ¥4424955 | Staff: 5 | Rep: 74 | Fans: 64940 | Episodes: 9/10 | Progress: [..........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥192222
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 56 | Money: ¥4602177 | Staff: 5 | Rep: 72 | Fans: 64940 | Episodes: 9/10 | Progress: [#.........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥187027
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 57 | Money: ¥4774204 | Staff: 5 | Rep: 70 | Fans: 64940 | Episodes: 9/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥181832
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 58 | Money: ¥4941036 | Staff: 5 | Rep: 68 | Fans: 64940 | Episodes: 9/10 | Progress: [##........] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥176636
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 59 | Money: ¥5102672 | Staff: 5 | Rep: 66 | Fans: 64940 | Episodes: 9/10 | Progress: [###.......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥171441
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Studio anniversary[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 60 | Money: ¥5259113 | Staff: 5 | Rep: 69 | Fans: 69940 | Episodes: 9/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥193034
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 61 | Money: ¥5437147 | Staff: 5 | Rep: 67 | Fans: 69940 | Episodes: 9/10 | Progress: [####......] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥187439
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 62 | Money: ¥5609586 | Staff: 5 | Rep: 65 | Fans: 69940 | Episodes: 9/10 | Progress: [#####.....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥181844
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 63 | Money: ¥5776430 | Staff: 5 | Rep: 63 | Fans: 69940 | Episodes: 9/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥176248
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 64 | Money: ¥5937678 | Staff: 5 | Rep: 61 | Fans: 69940 | Episodes: 9/10 | Progress: [######....] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥170653
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 65 | Money: ¥6093331 | Staff: 5 | Rep: 59 | Fans: 69940 | Episodes: 9/10 | Progress: [#######...] [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥165058
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 66 | Money: ¥6243389 | Staff: 5 | Rep: 57 | Fans: 69940 | Episodes: 9/10 | Progress: [########..] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥159463
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 67 | Money: ¥6387852 | Staff: 5 | Rep: 55 | Fans: 69940 | Episodes: 9/10 | Progress: [########..] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥153868
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+Week 68 | Money: ¥6526720 | Staff: 5 | Rep: 53 | Fans: 69940 | Episodes: 9/10 | Progress: [#########.] [93m⚡ NEARLY DONE![0m [Genre: Romance] [Trend: Isekai]
+[92mWeekly Report:[0m
+  Revenue from Fans: +¥148272
+  Studio Rent: -¥5000
+  Staff Salaries: -¥10000
+[93mEvent: Studio expansion[0m
+
+[1mChoices:[0m
+1) Hire (+1 staff, -¥5000)
+2) Fire (+¥2000, -1 staff)
+3) Train (staff +1, -¥3000)
+4) Rush production (crunch mode: 2x progress, -2 rep/week, higher burnout)
+5) Quality focus (reputation +5, costs ¥2000)
+6) View upgrades
+7) Next week
+> Auto-choosing: 6
+
+[95mAvailable Upgrades:[0m
+  Star Director [96m[BUY][0m
+    Reputation gain from episodes doubled.
+  God Animator [96m[BUY][0m
+    Reduces 'Staff burnout' event chance by 50%.
+  Better Software [96m[BUY][0m
+    Weekly salary cost reduced by 30%.
+  Merch Table [96m[BUY][0m
+    Every 4 weeks: +¥3000 fans (actually +3000 fans).
+  Marketing Team [96m[BUY][0m
+    Increases fan gain from episodes by 30%.
+
+Enter upgrade to buy (or press Enter to cancel):   [31m⚠️ CRUNCH: Progress doubled but reputation -2, staff morale dropping...[0m
+[96mEpisode 10 completed![0m
+  Reputation +10, Fans +3704
+  Production complexity increased to 921 points for next episode.
+[92mCongratulations! You completed 10 episodes with 76644 fans and rep 69. You win![0m

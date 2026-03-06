@@ -1,0 +1,9 @@
+# Weekly Traffic Report - Monday 5:00 AM Jakarta time (22:00 UTC Sunday)
+0 22 * * 0 /usr/bin/python3 /home/ubuntu/.nanobot/workspace/weekly_traffic_report.py >> /home/ubuntu/.nanobot/workspace/weekly_cron.log 2>&1
+0 5 * * * cd /home/ubuntu/.nanobot/workspace && /usr/bin/python3 /home/ubuntu/.nanobot/workspace/traffic_analysis_script.py >> /home/ubuntu/.nanobot/workspace/traffic_cron.log 2>&1
+# @reboot bash -c "sleep 60 && /home/ubuntu/.openclaw/workspace/start-background-agents.sh"
+# 0 * * * * /home/ubuntu/.openclaw/workspace/scripts/gateway-watchdog.sh
+# */5 * * * * /home/ubuntu/.openclaw/workspace/scripts/aria2-slot-cleaner.sh
+# Log rotation - Daily at 02:00 UTC
+# 0 2 * * * /home/ubuntu/.openclaw/workspace/scripts/rotate-logs.sh >> /home/ubuntu/.openclaw/workspace/memory/rotate-logs.log 2>&1
+# 0 */4 * * * /home/ubuntu/.openclaw/workspace/scripts/heartbeat-def.sh

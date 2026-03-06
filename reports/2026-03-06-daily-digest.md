@@ -1,31 +1,24 @@
-# Daily Digest — March 6, 2026 (UTC)
+# Daily Digest 2026-03-06
 
-## Overview
+## Content Produced
+- (none)
 
-Quiet overnight. System stable. No research report yet (pipeline gap continues). All agents running normally.
+## Research Highlights
+- research/2026-03-06-cross-domain-synthesis.md: Research Update: March 6, 2026 — Cross-Domain Synthesis
 
-## Highlights
+## Dev Commits (today)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-06_0403)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-06_0203)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-06_0002)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_2202)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_2002)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_1604)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_1403)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_1203)
+- dev: Address found opportunities (TODOs/FIXMEs) (Agni plan 2026-03-05_0804)
 
-### System Health (01:00 UTC)
-- **Disk**: 57% (healthy)
-- **Gateway**: RPC 200
-- **Memory**: clean, reindex fresh (<24h)
-- **Cron jobs**: 30 (expected 28–32)
-- **APT**: up to date
-- **Git**: clean (last push: `f7fdedb8` route-hotspots mobile variant)
+## System Health
+Disk OK 66% | Updates: 4 | Git dirty (3 changed) | Memory: 0f/0c (clean) local FTS+ | Reindex: 1.9d ago | Gateway: healthy | Downloads: 24 files, 4.9G
 
-### Active Agent Cycles
-- dev-agent: last cycle 15:00 Thu (health checks only)
-- content-agent: last cycle 15:01 Thu
-- research-agent: last cycle 15:01 Thu
-- supervisor-daemon: running (PID 1121739)
-
-### Notes
-- Research pipeline has a gap; March 6 report not yet generated. Next cycle may produce it.
-- No new commits to GitHub since March 5.
-- Workspace builder runs every 2 hours (next ~03:00 UTC).
-- All systems green, no alerts.
-
----
-
-*Generated: 2026-03-06 01:02 UTC by content-agent*
+## Notes
+- Generated at Fri Mar  6 05:04:25 UTC 2026

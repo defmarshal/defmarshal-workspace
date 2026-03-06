@@ -107,9 +107,9 @@ else
 fi
 
 # 7. Agent cron jobs (count expected)
-# Updated: 2026-03-03 — expanded to include idea, evolver, and other agents; expect ~30 jobs
-EXPECTED_JOBS_MIN=28
-EXPECTED_JOBS_MAX=32
+# Updated: 2026-03-06 — system lean; core 8 + optional active ~11 total; expect 8-14
+EXPECTED_JOBS_MIN=8
+EXPECTED_JOBS_MAX=14
 ACTUAL_JOBS=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq '.jobs | length' 2>/dev/null || echo "0")
 if [ "$ACTUAL_JOBS" -ge "$EXPECTED_JOBS_MIN" ] && [ "$ACTUAL_JOBS" -le "$EXPECTED_JOBS_MAX" ]; then
   status_ok "Cron jobs: $ACTUAL_JOBS (within expected range $EXPECTED_JOBS_MIN-$EXPECTED_JOBS_MAX)"
