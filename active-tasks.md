@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-07 01:05 UTC
+**Last updated**: 2026-03-07 07:05 UTC
 
 ## ✅ Completed Agents (today)
 
@@ -8,6 +8,12 @@
 - Executed: 01:05 UTC
 - Actions: Auto-committed 2 files (33 insertions, 19 deletions), cleaned downloads (7.8G → 4.9G), validated cron schedules, spawned content-agent
 - Result: All checks passed; schedules match CRON_JOBS.md
+- Status: ✅ Completed successfully
+
+**Agent-Manager-Cron** (this run)
+- Executed: 07:03 UTC
+- Actions: Validated cron schedules (all match CRON_JOBS.md), spawned content-agent (unnecessary duplicate due to content check logic)
+- Result: Checks completed; all systems nominal
 - Status: ✅ Completed successfully
 
 **Content-Agent** (spawned 00:00 UTC by agent-manager-cron)
@@ -40,6 +46,11 @@
 - Result: Overnight stability confirmed; system healthy
 - Status: ✅ Completed
 
+**Content-Agent** (spawned 07:03 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Digest already current (reports/2026-03-07-daily-digest.md); no action needed
+- Status: ✅ Completed
+
 **Content-Agent** (earlier, from meta-agent)
 - Spawned: 23:30 UTC Mar 4 by meta-agent-cron
 - Task: Verify daily digest, generate missing content
@@ -54,15 +65,10 @@
 
 ---
 
-## ⏳ Running Agents (01:05 UTC check)
+## ⏳ Running Agents
+*None currently running*
 
-**Content-Agent** (spawned 01:05 UTC by agent-manager-cron)
-- Task: Verify daily digest, generate missing content
-- Status: ⏳ Running (started 01:05 UTC)
-
-**Content-Agent** (spawned 01:06 UTC by meta-agent-cron)
-- Task: Verify daily digest, generate missing content
-- Status: ⏳ Running (started 01:06 UTC)
+All short-lived cron-triggered agents complete within seconds to minutes. If you see stale entries here, they may be stuck — consider manual intervention.
 
 ---
 
@@ -117,7 +123,7 @@ No long-running agents. All background tasks are cron-triggered short-lived sess
 - content-index-update-cron (dada350a) – **marked for delete**
 - log-rotate-cron (c6bca31f) – **marked for delete**
 - memory-reindex-cron (b84b1f5c)
-- cleanup-downloads-cron (fb670b4f) – **marked for delete**
+- cleanup-downloads-cron (fb670b4d) – **marked for delete**
 - backup-cleanup-cron (d5c6f526)
 - archiver-manager-cron (db19ad80)
 - time-capsule-weekly (6e4f5697)
