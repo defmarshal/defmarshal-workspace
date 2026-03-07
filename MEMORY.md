@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-05*
+*Last updated: 2026-03-07*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -33,7 +33,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
 - Recent:
   - **Memory index outage (2026-03-06 04:08 UTC):** main store dropped to 0 indexed files, breaking research-agent. Reindexed manually; research pipeline restored, March 6 report generated and deployed. Index now 43/43.
-  - **Disk usage rising:** 66% → 81% over 2 days (2026-03-05–06). Monitor downloads and consider cleanup. Downloads cleaned 8.4G → 4.9G (agent-manager 19:00 UTC).
+  - **Disk usage spike & recovery (2026-03-05–07):** rose 66% → 81% over 2 days, triggering cleanup. Agent-manager (01:05 UTC) cleaned downloads (7.8G → 4.9G) and meta-summary confirms disk back to 66% by afternoon. System stable.
   - Agent-manager (19:00 UTC) validated all cron schedules; 8 essential cron jobs running. System stable.
   - Meta-agent cycles (2026-03-05 03:07 & 20:01 UTC) confirmed content-agent and research-agent running; system stable at 59% disk.
   - Meta-agent (2026-03-06 11:04 UTC) verified agents; content-agent completed, research-agent produced March 6 report.
