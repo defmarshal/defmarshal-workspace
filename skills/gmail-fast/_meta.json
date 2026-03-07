@@ -1,0 +1,6 @@
+{
+  "ownerId": "main",
+  "slug": "gmail-fast",
+  "version": "0.1.0",
+  "description": "Fast Gmail fetch via Maton API. Lists recent messages with headers."
+}

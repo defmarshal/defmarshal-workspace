@@ -12,5 +12,5 @@ UPDATES=$(apt list --upgradable 2>/dev/null | wc -l)
 # Build message
 MSG="Meta 6h Summary: Disk ${DISK_PCT}% | Agents: ${AGENTS} | Reports today: ${REPORTS} | APT updates: ${UPDATES} pending. All nominal. (◕‿◕)♡"
 
-# Send to Telegram (last chat)
-openclaw message send --to last --text "$MSG" 2>/dev/null || echo "Failed to send summary: $MSG"
+# Send to Telegram
+openclaw message send --channel telegram --target 952170974 --message "$MSG" 2>/dev/null || echo "Failed to send summary: $MSG"
