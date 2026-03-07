@@ -108,7 +108,7 @@ No long-running agents. All background tasks are cron-triggered short-lived sess
 
 ---
 
-## 🗑️ Removed (2026-03-06)
+## 🗑️ Removed (2026-03-06–07)
 
 - meta-supervisor-agent (65f0d1f3) – keepalive cron removed
 - meta-supervisor daemon – killed; backup saved
@@ -116,6 +116,7 @@ No long-running agents. All background tasks are cron-triggered short-lived sess
 - auto-torrent-cron (483e96ab) – redundant
 - idea-generator-cron (9112eca8) – low ROI
 - idea-executor-cron (86722825) – low ROI
+- evolver-agent-cron (6a1b4266) – **removed from OpenClaw cron** (2026-03-07)
 
 ---
 
@@ -135,7 +136,6 @@ No long-running agents. All background tasks are cron-triggered short-lived sess
 - time-capsule-weekly (6e4f5697)
 - agni-cron (23788edb)
 - vishwakarma-cron (6e5621c3)
-- evolver-agent-cron (6a1b4266)
 - random-torrent-downloader (aadf040b) – disabled (not core)
 
 **Marked for delete**: Will be removed to reduce config clutter.
