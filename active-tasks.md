@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-07 07:05 UTC
+**Last updated**: 2026-03-07 11:05 UTC
 
 ## ✅ Completed Agents (today)
 
@@ -14,6 +14,12 @@
 - Executed: 07:03 UTC
 - Actions: Validated cron schedules (all match CRON_JOBS.md), spawned content-agent (unnecessary duplicate due to content check logic)
 - Result: Checks completed; all systems nominal
+- Status: ✅ Completed successfully
+
+**Agent-Manager-Cron** (recovery run)
+- Executed: 11:03 UTC
+- Actions: Validated cron schedules (all match CRON_JOBS.md), checked content/disk/memory/git, spawned content-agent (already current)
+- Result: Maintenance checks passed; system healthy
 - Status: ✅ Completed successfully
 
 **Content-Agent** (spawned 00:00 UTC by agent-manager-cron)
@@ -41,14 +47,14 @@
 - Result: Digest up to date; no pending tasks
 - Status: ✅ Completed
 
-**Content-Agent** (spawned 05:30 UTC by agent-manager-cron)
-- Task: Verify daily digest, generate missing content
-- Result: Overnight stability confirmed; system healthy
-- Status: ✅ Completed
-
 **Content-Agent** (spawned 07:03 UTC by agent-manager-cron)
 - Task: Verify daily digest, generate missing content
 - Result: Digest already current (reports/2026-03-07-daily-digest.md); no action needed
+- Status: ✅ Completed
+
+**Content-Agent** (spawned 11:03 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Digest up to date; no new content tasks
 - Status: ✅ Completed
 
 **Content-Agent** (earlier, from meta-agent)
