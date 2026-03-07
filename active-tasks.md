@@ -1,18 +1,53 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-06 11:05 UTC
+**Last updated**: 2026-03-06 20:30 UTC
 
-## 🔄 Currently Running Agents
+## ✅ Completed Agents (today)
 
-**Content-Agent** (PID ~1323xxx)
-- Spawned by: meta-agent (11:04 UTC)
-- Goal: Verify daily digest up-to-date, generate any missing content summaries
-- Status: Running (digest already current; will exit after check)
-- Expected: Short lifecycle; completes once no pending tasks
+**Content-Agent** (spawned 19:00 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Digest current; no new content needed
+- Status: ✅ Completed
 
-**Meta-Agent** (completed 11:04 UTC)
-- Actions: Spawned content-agent, created notifier-agent cron
+**Agent-Manager-Cron** (5b617517)
+- Executed: 19:00 UTC
+- Actions: Cleaned downloads (8.4G → 4.9G), validated cron schedules, spawned content-agent verification
+- Result: All checks passed; schedules match CRON_JOBS.md
+- Status: ✅ Completed successfully
+
+**Content-Agent** (earlier, from meta-agent)
+- Spawned: 11:04 UTC by meta-agent
+- Task: Verify daily digest, generate missing content
+- Result: Completed successfully; digest already current
+- Status: ✅ Done
+
+**Meta-Agent**
+- Completed: 21:01 UTC
+- Actions: Disk cleanup check (dry-run), spawn content-agent
 - Result: Success; state committed
+- Status: ✅ Done
+
+---
+
+## ⏳ Running Agents (21:05 UTC check)
+
+**Content-Agent** (spawned 21:01 UTC by meta-agent-cron)
+- Task: Verify daily digest, generate missing content
+- Status: ⏳ Running (started 21:01 UTC)
+
+---
+
+## ℹ️ Current System Mode
+
+No long-running agents. All background tasks are cron-triggered short-lived sessions:
+
+- agent-manager-cron (every 30 min)
+- meta-agent-cron (hourly)
+- dev-agent-cron (hourly 8–22 Asia/Bangkok)
+- content-agent-cron (hourly 8–22 Asia/Bangkok)
+- research-agent-cron (hourly 8–22 Asia/Bangkok)
+- git-janitor-cron (every 6h UTC)
+- telegram-slash-handler (every 2 min)
 
 ---
 
@@ -26,8 +61,23 @@
 - content-agent-cron (f69140f6) – hourly 8–22 Asia/Bangkok
 - research-agent-cron (aadf040b) – hourly 8–22 Asia/Bangkok
 - git-janitor-cron (a27a9b33) – every 6h UTC
+- notifier-cron (8035f80d) – every 2h UTC (monitoring)
 
 **Note:** `meta-supervisor-agent` cron removed; daemon stopped.
+
+---
+
+## 📊 System Health Snapshot (20:30 UTC)
+
+- **Disk**: 81% used (36G/45G) — ⚠️ trending up, monitor
+- **Memory**: 20Gi available — ✅ healthy
+- **Downloads**: 4.9G (cleaned 8.4G → 4.9G) — ✅ managed
+- **Memory Index**: 43/43 active — ✅ healthy (recovered from 2026-03-06 04:08 outage)
+- **Research**: 217 reports; March 6 report generated — ✅ current
+- **Daily Digest**: `reports/2026-03-06-daily-digest.md` current (17:34 UTC)
+- **Cron**: All schedules validated against CRON_JOBS.md — ✅ clean
+
+**Next agent-manager run**: 19:30 UTC
 
 ---
 
@@ -37,7 +87,6 @@
 - meta-supervisor daemon – killed; backup saved
 - workspace-builder (23dad379) – redundant
 - auto-torrent-cron (483e96ab) – redundant
-- notifier-cron (3cbadb80) – alerting off
 - idea-generator-cron (9112eca8) – low ROI
 - idea-executor-cron (86722825) – low ROI
 
