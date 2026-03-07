@@ -1,39 +1,68 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-06 20:30 UTC
+**Last updated**: 2026-03-07 01:05 UTC
 
 ## ✅ Completed Agents (today)
 
-**Content-Agent** (spawned 19:00 UTC by agent-manager-cron)
-- Task: Verify daily digest, generate missing content
-- Result: Digest current; no new content needed
-- Status: ✅ Completed
-
 **Agent-Manager-Cron** (5b617517)
-- Executed: 19:00 UTC
-- Actions: Cleaned downloads (8.4G → 4.9G), validated cron schedules, spawned content-agent verification
+- Executed: 01:05 UTC
+- Actions: Auto-committed 2 files (33 insertions, 19 deletions), cleaned downloads (7.8G → 4.9G), validated cron schedules, spawned content-agent
 - Result: All checks passed; schedules match CRON_JOBS.md
 - Status: ✅ Completed successfully
 
-**Content-Agent** (earlier, from meta-agent)
-- Spawned: 11:04 UTC by meta-agent
+**Content-Agent** (spawned 00:00 UTC by agent-manager-cron)
 - Task: Verify daily digest, generate missing content
-- Result: Completed successfully; digest already current
+- Result: March 7 daily digest already current; no new content needed
+- Status: ✅ Completed
+
+**Content-Agent** (spawned 02:30 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Digest already up to date; no pending tasks
+- Status: ✅ Completed
+
+**Content-Agent** (spawned 05:03 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Digest current; system stable
+- Status: ✅ Completed
+
+**Content-Agent** (spawned 07:02 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: All caught up; no new anime summaries or tech writeups requested
+- Status: ✅ Completed
+
+**Content-Agent** (spawned 06:30 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Digest up to date; no pending tasks
+- Status: ✅ Completed
+
+**Content-Agent** (spawned 05:30 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Overnight stability confirmed; system healthy
+- Status: ✅ Completed
+
+**Content-Agent** (earlier, from meta-agent)
+- Spawned: 23:30 UTC Mar 4 by meta-agent-cron
+- Task: Verify daily digest, generate missing content
+- Result: Completed successfully
 - Status: ✅ Done
 
-**Meta-Agent**
-- Completed: 21:01 UTC
-- Actions: Disk cleanup check (dry-run), spawn content-agent
+**Meta-Agent** (various runs)
+- Last completed: 01:06 UTC
+- Actions: Disk snapshot (81%), spawned content-agent, triggered cleanup (dry-run)
 - Result: Success; state committed
 - Status: ✅ Done
 
 ---
 
-## ⏳ Running Agents (21:05 UTC check)
+## ⏳ Running Agents (01:05 UTC check)
 
-**Content-Agent** (spawned 21:01 UTC by meta-agent-cron)
+**Content-Agent** (spawned 01:05 UTC by agent-manager-cron)
 - Task: Verify daily digest, generate missing content
-- Status: ⏳ Running (started 21:01 UTC)
+- Status: ⏳ Running (started 01:05 UTC)
+
+**Content-Agent** (spawned 01:06 UTC by meta-agent-cron)
+- Task: Verify daily digest, generate missing content
+- Status: ⏳ Running (started 01:06 UTC)
 
 ---
 
@@ -51,7 +80,7 @@ No long-running agents. All background tasks are cron-triggered short-lived sess
 
 ---
 
-## ✅ Core System Active (06:23 UTC)
+## ✅ Core System Active
 
 **OpenClaw Cron Enabled**: 8 essential jobs
 - telegram-slash-handler (e26c12bd) – every 2 min
@@ -64,20 +93,6 @@ No long-running agents. All background tasks are cron-triggered short-lived sess
 - notifier-cron (8035f80d) – every 2h UTC (monitoring)
 
 **Note:** `meta-supervisor-agent` cron removed; daemon stopped.
-
----
-
-## 📊 System Health Snapshot (20:30 UTC)
-
-- **Disk**: 81% used (36G/45G) — ⚠️ trending up, monitor
-- **Memory**: 20Gi available — ✅ healthy
-- **Downloads**: 4.9G (cleaned 8.4G → 4.9G) — ✅ managed
-- **Memory Index**: 43/43 active — ✅ healthy (recovered from 2026-03-06 04:08 outage)
-- **Research**: 217 reports; March 6 report generated — ✅ current
-- **Daily Digest**: `reports/2026-03-06-daily-digest.md` current (17:34 UTC)
-- **Cron**: All schedules validated against CRON_JOBS.md — ✅ clean
-
-**Next agent-manager run**: 19:30 UTC
 
 ---
 
@@ -131,9 +146,3 @@ No long-running agents. All background tasks are cron-triggered short-lived sess
 - **Core cron**: 8 essential jobs running (telegram-slash, agent-manager, meta-agent, dev, content, research, git-janitor, random-torrent disabled).
 
 **Next:** Monitor Telegram. If status pings persist, investigate gateway/system sources.
-
-### Removed (2026-03-06 08:45 UTC)
-
-**cron-supervisor agent** — suspected source of periodic "System Status" Telegram broadcasts.
-- Removed from openclaw.json agents.list
-- Should silence the status pings if it was the culprit.

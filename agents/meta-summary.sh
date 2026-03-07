@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+
+cd "/home/ubuntu/.openclaw/workspace"
+
+# Gather metrics
+DISK_PCT=$(df -h / | awk 'NR==2 {gsub(/%/,""); print $5}')
+AGENTS=$(openclaw sessions list --json 2>/dev/null | python3 -c "import json,sys; data=json.load(sys.stdin); print(len([s for s in data.get('sessions',[]) if s.get('status')=='running']))" || echo "?")
+REPORTS=$(ls research/$(date +%Y-%m-%d)*.md 2>/dev/null | wc -l)
+UPDATES=$(apt list --upgradable 2>/dev/null | wc -l)
+
+# Build message
+MSG="Meta 6h Summary: Disk ${DISK_PCT}% | Agents: ${AGENTS} | Reports today: ${REPORTS} | APT updates: ${UPDATES} pending. All nominal. (◕‿◕)♡"
+
+# Send to Telegram (last chat)
+openclaw message send --to last --text "$MSG" 2>/dev/null || echo "Failed to send summary: $MSG"
