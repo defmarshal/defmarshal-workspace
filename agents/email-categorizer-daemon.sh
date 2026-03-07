@@ -10,24 +10,17 @@ BATCH_SIZE=${BATCH_SIZE:-500}
 PAGES_PER_RUN=${PAGES_PER_RUN:-4}
 MAX_PARALLEL=${MAX_PARALLEL:-5}
 
-API_KEY="${MATON_API_KEY:?MATON_API_KEY not required}"
+API_KEY="${MATON_API_KEY:?MATON_API_KEY not set}"
 STATE_FILE="/home/ubuntu/.openclaw/workspace/memory/email-categorizer.state"
 LOG_FILE="/home/ubuntu/.openclaw/workspace/memory/email-categorizer.log"
 
 log() { echo "[$(date -u)] $*" | tee -a "$LOG_FILE"; }
 
-log "MATON_API_KEY length: ${#MATON_API_KEY}"
-
 load_state() {
-  if [ -f "$STATE_FILE" ]; then
-    source "$STATE_FILE" 2>/dev/null || true
-  fi
+  if [ -f "$STATE_FILE" ]; then source "$STATE_FILE" 2>/dev/null || true; fi
   : "${NEXT_PAGE_TOKEN:=}"
 }
-
-save_state() {
-  echo "NEXT_PAGE_TOKEN=$NEXT_PAGE_TOKEN" > "$STATE_FILE"
-}
+save_state() { echo "NEXT_PAGE_TOKEN=$NEXT_PAGE_TOKEN" > "$STATE_FILE"; }
 
 categorize() {
   local from="$1" subj="$2"
@@ -43,99 +36,54 @@ categorize() {
 
 process_batch() {
   local page_token="$1"
-  log "process_batch start; token=${page_token:0:8:-empty}"
+  local token_display="${page_token:-<none>}"
+  log "process_batch start; token=${token_display:0:8}"
   url="https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages?q=is:unread&maxResults=$BATCH_SIZE"
   [ -n "$page_token" ] && url="$url&pageToken=$page_token"
   log "Fetching: $url"
-
   resp=$(curl -s -f -H "Authorization: Bearer $API_KEY" "$url")
-  local curl_rc=$?
-  log "curl exit: $curl_rc, response bytes: ${#resp}"
-  if [ $curl_rc -ne 0 ] || [ -z "$resp" ]; then
-    log "curl failed or empty response"
-    echo "NO_MORE"
-    return
-  fi
-
-  # Use jq to extract IDs and nextPageToken
-  if ! command -v jq &>/dev/null; then
-    msg_ids=$(echo "$resp" | python3 -c "import json,sys; d=json.load(sys.stdin); print(' '.join(m['id'] for m in d.get('messages',[])))" 2>/dev/null || echo "")
-    next_token=$(echo "$resp" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('nextPageToken',''))" 2>/dev/null || echo "")
-  else
+  local curl_rc=$?; log "curl exit: $curl_rc, bytes: ${#resp}"
+  if [ $curl_rc -ne 0 ] || [ -z "$resp" ]; then log "curl failed/empty"; echo "NO_MORE"; return; fi
+  if command -v jq &>/dev/null; then
     msg_ids=$(echo "$resp" | jq -r '.messages[].id' 2>/dev/null | tr '\n' ' ')
     next_token=$(echo "$resp" | jq -r '.nextPageToken // empty' 2>/dev/null)
+  else
+    msg_ids=$(echo "$resp" | python3 -c "import json,sys; d=json.load(sys.stdin); print(' '.join(m['id'] for m in d.get('messages',[])))" 2>/dev/null || echo ""
+    next_token=$(echo "$resp" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('nextPageToken',''))" 2>/dev/null || echo ""
   fi
-  log "Extracted msg_ids count: $(echo "$msg_ids" | wc -w), next_token=${next_token:0:8:-empty}"
-
-  if [ -z "$msg_ids" ]; then
-    echo "NO_MORE"
-    return
-  fi
-
+  local nt_display="${next_token:-<none>}"; log "Extracted IDs: $(echo "$msg_ids" | wc -w), next_token=${nt_display:0:8}"
+  [ -n "$msg_ids" ] || { echo "NO_MORE"; return; }
   TMP=$(mktemp -d)
   for id in $msg_ids; do
-    (
-      curl -s -f -H "Authorization: Bearer $API_KEY" \
-        "https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages/$id?format=full" > "$TMP/$id.json"
-    ) &
-    [ $(jobs -r | wc -l) -ge $MAX_PARALLEL ] && wait -n 2>/dev/null || true
-  done
-  wait 2>/dev/null || true
-
+    ( curl -s -f -H "Authorization: Bearer $API_KEY" "https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages/$id?format=full" > "$TMP/$id.json" ) &
+    if [ $(jobs -r | wc -l) -ge $MAX_PARALLEL ]; then wait -n 2>/dev/null || true; fi
+  done; wait 2>/dev/null || true
   declare -A cnt; declare -A samp; local total=0
   for f in "$TMP"/*.json; do
     [ -f "$f" ] || continue
     id=$(basename "$f" .json)
-    from=$(python3 -c "import json; d=json.load(open('$f')); h=[h for h in d.get('payload',{}).get('headers',[]) if h['name'].lower()=='from']; print(h[0]['value'] if h else '')" 2>/dev/null || echo "")
-    subj=$(python3 -c "import json; d=json.load(open('$f')); h=[h for h in d.get('payload',{}).get('headers',[]) if h['name'].lower()=='subject']; print(h[0]['value'] if h else '')" 2>/dev/null || echo "")
-    cat=$(categorize "$from" "$subj")
-    cnt["$cat"]=$(( ${cnt["$cat"]:-0} + 1 ))
-    [ -z "${samp["$cat"]:-}" ] && samp["$cat"]="$subj|$from"
-    total=$((total+1))
-  done
-  rm -rf "$TMP"
-
-  local line="Batch $total:"
-  for cat in "${!cnt[@]}"; do line="$line $cat=${cnt[$cat]}"; done
-  log "$line"
-
-  if [ -z "$next_token" ]; then
-    echo "DONE"
-  else
-    echo "$next_token"
-  fi
+    from=$(python3 -c "import json; d=json.load(open('$f')); h=[h for h in d.get('payload',{}).get('headers',[]) if h['name'].lower()=='from']; print(h[0]['value'] if h else '')" 2>/dev/null || echo ""
+    subj=$(python3 -c "import json; d=json.load(open('$f')); h=[h for h in d.get('payload',{}).get('headers',[]) if h['name'].lower()=='subject']; print(h[0]['value'] if h else '')" 2>/dev/null || echo ""
+    cat=$(categorize "$from" "$subj"); cnt["$cat"]=$(( ${cnt["$cat"]:-0} + 1 ))
+    [ -z "${samp["$cat"]:-}" ] && samp["$cat"]="$subj|$from"; total=$((total+1))
+  done; rm -rf "$TMP"
+  local line="Batch $total:"; for cat in "${!cnt[@]}"; do line="$line $cat=${cnt[$cat]}"; done; log "$line"
+  [ -z "$next_token" ] && echo "DONE" || echo "$next_token"
 }
 
 run_once() {
   log "Sweeping unread (max $PAGES_PER_RUN pages)..."
-  load_state
-  local pages=0
-  local token="$NEXT_PAGE_TOKEN"
+  load_state; local pages=0 token="${NEXT_PAGE_TOKEN:-}"
   while [ $pages -lt $PAGES_PER_RUN ]; do
-    log "Loop iteration $pages, token=${token:-<empty>}"
-    result=$(process_batch "$token")
-    log "process_batch returned: $result"
-    if [ "$result" = "NO_MORE" ] || [ -z "$result" ]; then
-      log "No more messages."
-      NEXT_PAGE_TOKEN=""
-      break
-    elif [ "$result" = "DONE" ]; then
-      log "Completed all unread."
-      NEXT_PAGE_TOKEN=""
-      break
-    else
-      token="$result"
-      pages=$((pages+1))
-      log "Page $pages done; continuing..."
-    fi
+    local token_disp="${token:-<none>}"; log "Loop iteration $pages, token=${token_disp:0:8}"
+    result=$(process_batch "$token"); log "process_batch returned: $result"
+    if [ "$result" = "NO_MORE" ] || [ -z "$result" ]; then log "No more messages."; NEXT_PAGE_TOKEN=""; break
+    elif [ "$result" = "DONE" ]; then log "Completed all unread."; NEXT_PAGE_TOKEN=""; break
+    else token="$result"; pages=$((pages+1)); log "Page $pages done; continuing..."; fi
   done
-  NEXT_PAGE_TOKEN="${token:-}"
-  save_state
+  NEXT_PAGE_TOKEN="${token:-}"; save_state
   log "Cycle finished. Processed $pages page(s). Next token: ${NEXT_PAGE_TOKEN:-none}"
 }
 
 log "Starting email categorizer daemon (interval ${INTERVAL_SECONDS}s, batch=$BATCH_SIZE, pages=$PAGES_PER_RUN)"
-while true; do
-  run_once
-  sleep "$INTERVAL_SECONDS"
-done
+while true; do run_once; sleep "$INTERVAL_SECONDS"; done
