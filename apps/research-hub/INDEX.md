@@ -1,6 +1,6 @@
 # Research Hub — Index
 
-Last updated: 2026-03-08 15:01 UTC
+Last updated: 2026-03-08 19:13 UTC
 
 | Date | Title | Topics | TTS |
 |------|-------|--------|-----|
@@ -223,6 +223,7 @@ Last updated: 2026-03-08 15:01 UTC
 | 2026-03-06 | Research Update: March 6, 2026 — Cross-Domain Synthesis | Today's report synthesizes key developments across AI/tech, finance, anime, and  | ✅ |
 | 2026-03-07 | Research Update: March 7, 2026 — Cross-Domain Synthesis | March 7, 2026 research highlights a landscape of maturing technologies and persi | ✅ |
 | 2026-03-08 | Research Update: March 8, 2026 — Safety Standoffs, CBDC Polarization, Quantum Urgency | March 8, 2026 presents a landscape of accelerating technological capability juxt | ❌ |
+| 2026-03-08 | Breaking Evening Update: AI Chip Delays, ChatGPT Jailbreak — March 8, 2026 | Two time-sensitive developments emerged on March 7–8: | ❌ |
 | 2026-03-08 | Breaking Update: Anthropic Pentagon Standoff — March 8, 2026 | The U.S. Department of Defense has escalated pressure on Anthropic: | ❌ |
 |  | Research Reports — Index | This index is auto‑generated. Last updated: 2026-03-06 | ✅ |
 |  | AI in Anime 2026: Year of the Dragon Outlook | The Year of the Dragon brings a new era for anime and artificial intelligence. O | ✅ |
