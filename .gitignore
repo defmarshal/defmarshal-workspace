@@ -88,9 +88,8 @@ agents/ideas/*.json
 # OpenClaw lock files (transient runtime state)
 *.lock.json
 
-# End of additions
-.vercel
-skills/kokoro-tts/venv/
+# Agent runtime state files
+*.state
 
 # Dashboard subproject (tracked in its own repo)
 # apps/dashboard/ — re-enabled so data.json can be committed by cron
@@ -113,3 +112,6 @@ memory/disk-history.json
 memory/heartbeat-state.json
 memory/torrent-history.txt
 memory/evolution/
+
+# Additional runtime artifacts
+.vercel/
