@@ -457,7 +457,7 @@ case "${1:-}" in
       source "$SUMMARY_STATE_FILE" 2>/dev/null || true
     fi
     LAST_SENT_MS=${LAST_SENT_MS:-0}
-    NOW_MS=$(date +%s%3N 2>/dev/null || date +%s)
+    NOW_MS=$(date +%s)
     if (( (NOW_MS - LAST_SENT_MS) >= 21600 )); then
       SUMMARY="🔄 Meta-Agent $(date -u '+%H:%M UTC') — All systems nominal. Nyepi 18–24 Mar 2026."
       openclaw message send --channel telegram --to 952170974 --text "$SUMMARY" 2>/dev/null || true

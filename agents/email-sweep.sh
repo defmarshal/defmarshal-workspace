@@ -9,7 +9,7 @@ MAX_PARALLEL=${MAX_PARALLEL:-5}
 API_KEY="${MATON_API_KEY:?MATON_API_KEY not set}"
 STATE_FILE="/home/ubuntu/.openclaw/workspace/memory/email-categorizer.state"
 LOG_FILE="/home/ubuntu/.openclaw/workspace/memory/email-categorizer.log"
-log() { echo "[$(date -u)] $*" | tee -a "$LOG_FILE"; }
+log() { echo "[$(date -u)] $*" | tee -a "$LOG_FILE" >&2; }
 load_state() { if [ -f "$STATE_FILE" ]; then source "$STATE_FILE" 2>/dev/null || true; fi; : "${NEXT_PAGE_TOKEN:=}"; }
 save_state() { echo "NEXT_PAGE_TOKEN=$NEXT_PAGE_TOKEN" > "$STATE_FILE"; }
 categorize() {
