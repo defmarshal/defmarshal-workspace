@@ -2,37 +2,48 @@
 
 ## Overview
 
-Early morning stable. Research report complete and deployed. System lean, green, and self-maintaining.
+Eventful early morning: Anthropic-Pentagon standoff escalates; research supplements generated; memory index anomaly resolved. System stable throughout.
 
 ## Highlights
 
-### System Health (01:00 UTC)
+### System Health (06:30 UTC)
 - **Disk**: 66% (healthy)
 - **Gateway**: RPC 200
-- **Memory**: clean, reindex fresh (<24h)
+- **Memory**: clean, reindex restored (45/45 files, 525 chunks)
 - **Cron jobs**: 12 (validated)
 - **APT**: up to date
-- **Git**: clean (latest: `8291e3cb` maintenance update)
+- **Git**: latest `3013ec3b` (memory maintenance)
+
+### Incident & Recovery (06:30 UTC)
+- Memory index anomaly: briefly showed 0/44 files; self-resolved after downloads directory cleanup
+- Downloads cleanup: reduced from 7.8G → 6.5G (37 files removed)
+- Daily log created: `memory/2026-03-08.md`
+- MEMORY.md updated with incident details
 
 ### Recent Activity
-- **Meta-agent** (00:03 UTC): Updated state; confirmed content-agent and research-agent schedules.
-- **Maintenance commit** (00:08 UTC): `auto: maintenance update` — refreshed active-tasks metadata.
-- **Agent-manager-cron** (07:03 & 11:03 UTC): Validated cron schedules; all match docs.
-- **Content-agent** (01:01 UTC): Refreshed daily digest.
-- **Research-agent** (01:03 UTC): Completed March 8 report — *Safety Standoffs, CBDC Polarization, Quantum Urgency* (9.3 KB). Deployed to Research Hub.
+- **Meta-agent** (00:03 UTC): Updated state; confirmed schedules.
+- **Content-agent** cycles (01:01, 01:06, 02:03, 02:08, 03:14, 04:02, 06:03): All idle; digest kept current.
+- **Research-agent** cycles:
+  - 01:03 UTC: Completed March 8 report — *Safety Standoffs, CBDC Polarization, Quantum Urgency* (9.3 KB)
+  - 07:04 UTC: **Breaking supplement** — *Anthropic Pentagon Standoff Escalates* (deadline Mar 14, App Store #1 surge, industry solidarity)
+- **Dev-agent**:
+  - 03:00 UTC: Email-categorizer cleanup (batch size 1000, syntax fixes)
+  - 04:00 UTC: Pruned active-tasks.md (<2KB), accepted index update
+  - 05:00 UTC: Implemented handoff tasks (email sweep throughput, meta-agent 6h throttling)
+  - 06:00 UTC: Hygiene pass (removed agni.lock, memory updates)
+- **Agent-manager-cron** (07:03 UTC): Validated cron schedules; all match docs.
 
 ### Content Status
-- ✅ Daily digest current
-- ✅ Research Hub updated with March 8 entry
-- ✅ No pending anime summaries or tech writeups requested
+- ✅ Daily digest current (includes breaking Anthropic update)
+- ✅ Research Hub deployed with March 8 report and supplement
+- ✅ No pending anime summaries or tech writeups
 
 ## Notes
-- Meta-supervisor daemon successfully removed; no more audit broadcasts.
-- Core cron stable: 8 essential jobs running.
-- Disk usage stable at 66%; no cleanup triggered.
-- Memory index healthy (43/43 chunks).
-- Status-holiday plugin active: Nyepi 18–24 Mar 2026.
+- Meta-supervisor daemon removed; no more audit broadcasts.
+- Core cron stable: 8 essential jobs + 4 specialized (email-categorizer, meta-summary, notifier, time-capsule, etc.)
+- Memory index healthy (45/45); local FTS+ active.
+- Nyepi holiday (18–24 Mar 2026) noted in meta-agent summary and digests.
 
 ---
 
-*Generated: 2026-03-08 01:06 UTC by content-agent (post-research refresh)*
+*Generated: 2026-03-08 07:06 UTC by content-agent (post-breaking update refresh)*
