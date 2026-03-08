@@ -10,6 +10,7 @@ if not API_KEY:
     sys.exit(1)
 STATE_FILE = '/home/ubuntu/.openclaw/workspace/memory/email-categorizer.state'
 LOG_FILE = '/home/ubuntu/.openclaw/workspace/memory/email-categorizer.log'
+LABEL_MAP_FILE = '/home/ubuntu/.openclaw/workspace/memory/label_mapping.json'
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 
 def log(msg):
@@ -31,7 +32,36 @@ def save_state(token):
     with open(STATE_FILE, 'w') as f:
         f.write(f"NEXT_PAGE_TOKEN={token}\n")
 
+def load_label_mapping():
+    try:
+        with open(LABEL_MAP_FILE) as f:
+            data = json.load(f)
+        return data.get('senders', {}), data.get('categories', {})
+    except Exception:
+        return {}, {}
+
+SENDER_MAP, CATEGORIES = load_label_mapping()
+
+def parse_email_address(addr: str):
+    if '<' in addr and '>' in addr:
+        name_part = addr.split('<')[0].strip()
+        email_part = addr.split('<')[1].split('>')[0].strip()
+    else:
+        name_part = ''
+        email_part = addr.strip()
+    if '@' in email_part:
+        local, domain = email_part.split('@', 1)
+    else:
+        local, domain = email_part, ''
+    return name_part, domain
+
 def categorize(fr, subj):
+    # Try mapping
+    name, domain = parse_email_address(fr)
+    email_key = f"{name} <{domain}>" if name else domain
+    if email_key in SENDER_MAP:
+        return SENDER_MAP[email_key]
+    # Fallback heuristic
     lf = fr.lower()
     ls = subj.lower()
     if any(x in lf for x in ['bca', 'bank', 'transaction', 'statement']):
@@ -55,6 +85,55 @@ def fetch(url):
         return None
     return result.stdout
 
+def get_label_id(category):
+    # Check cache first
+    cache_file = '/home/ubuntu/.openclaw/workspace/memory/email_labels.json'
+    try:
+        with open(cache_file) as f:
+            cache = json.load(f)
+    except Exception:
+        cache = {}
+    if category in cache:
+        return cache[category]
+    # Fetch existing labels
+    labels_url = "https://gateway.maton.ai/google-mail/gmail/v1/users/me/labels"
+    resp = fetch(labels_url)
+    if resp:
+        try:
+            labels = json.loads(resp).get('labels', [])
+            for lbl in labels:
+                if lbl.get('name') == f"Sweep/{category}":
+                    cache[category] = lbl['id']
+                    with open(cache_file, 'w') as f:
+                        json.dump(cache, f, indent=2)
+                    return lbl['id']
+        except Exception:
+            pass
+    # Create label
+    create_url = "https://gateway.maton.ai/google-mail/gmail/v1/users/me/labels"
+    payload = {"name": f"Sweep/{category}", "labelListVisibility": "labelShow", "messageListVisibility": "show"}
+    cmd = ['curl', '-s', '-f', '-X', 'POST', '-H', 'Content-Type: application/json', '-H', f'Authorization: Bearer {API_KEY}', '-d', json.dumps(payload), create_url]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode == 0:
+        try:
+            lbl = json.loads(result.stdout)
+            label_id = lbl.get('id')
+            if label_id:
+                cache[category] = label_id
+                with open(cache_file, 'w') as f:
+                    json.dump(cache, f, indent=2)
+                return label_id
+        except Exception:
+            pass
+    return None
+
+def apply_label(msg_id, label_id):
+    url = f"https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages/{msg_id}/modify"
+    payload = {"addLabelIds": [label_id], "removeLabelIds": ["UNREAD"]}
+    cmd = ['curl', '-s', '-f', '-X', 'POST', '-H', 'Content-Type: application/json', '-H', f'Authorization: Bearer {API_KEY}', '-d', json.dumps(payload), url]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.returncode == 0
+
 def process_batch(page_token):
     url = f"https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages?q=is:unread&maxResults={BATCH_SIZE}"
     if page_token:
@@ -75,7 +154,6 @@ def process_batch(page_token):
         return "NO_MORE", None
     log(f"Fetched {len(msg_ids)} ids")
     counts = {}
-    # Sequential fetch
     for msg_id in msg_ids:
         detail_url = f"https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages/{msg_id}?format=full"
         detail = fetch(detail_url)
@@ -90,6 +168,14 @@ def process_batch(page_token):
             from_hdr = subj_hdr = ''
         cat = categorize(from_hdr, subj_hdr)
         counts[cat] = counts.get(cat, 0) + 1
+        label_id = get_label_id(cat)
+        if label_id:
+            if apply_label(msg_id, label_id):
+                log(f"Labeled {msg_id} as {cat}")
+            else:
+                log(f"Failed to label {msg_id}")
+        else:
+            log(f"No label ID for {cat}")
     total = sum(counts.values())
     for k, v in counts.items():
         log(f"{k}: {v}")
@@ -97,7 +183,6 @@ def process_batch(page_token):
     for k, v in counts.items():
         summary += f"\n  - {k}: {v}"
     print(summary)
-    # Send Telegram
     try:
         subprocess.run([OPENCLAWS, 'message', 'send', '--to', 'last', '--text', summary], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except Exception:

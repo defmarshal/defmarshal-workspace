@@ -1,0 +1,28 @@
+{
+  "categories": {
+    "banking": "Sweep/banking",
+    "alerts": "Sweep/alerts",
+    "work": "Sweep/work",
+    "newsletters": "Sweep/newsletters",
+    "hr": "Sweep/hr",
+    "personal": "Sweep/personal"
+  },
+  "senders": {
+    "Instagram <priority.instagram.com>": "personal",
+    "Martin Winkler via LinkedIn <linkedin.com>": "personal",
+    "Discord <discord.com>": "personal",
+    "Grab Indonesia <grab.com>": "personal",
+    "Deku Deals <dekudeals.com>": "personal",
+    "Bibit <bibit.id>": "personal",
+    "Nina From Indodax <indodax.com>": "personal",
+    "Quora Digest <quora.com>": "personal",
+    "BCA <bca.co.id>": "banking",
+    "klikbca.com": "personal",
+    "Grab <grab.com>": "personal",
+    "Rekomendasi LiNa <e.jobstreet.com>": "personal",
+    "Jago Syariah <jago.com>": "personal",
+    "Medium Daily Digest <medium.com>": "personal",
+    "Medium <medium.com>": "personal",
+    "Google Play <google.com>": "personal"
+  }
+}
