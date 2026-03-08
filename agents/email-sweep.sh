@@ -59,7 +59,9 @@ process_batch() {
   [ -z "$next_token" ] && echo "DONE" || echo "$next_token"
 }
 log "Starting sweep (batch=$BATCH_SIZE, pages=$PAGES_PER_RUN)"
-load_state; local pages=0 token="${NEXT_PAGE_TOKEN:-}"
+load_state
+pages=0
+token="${NEXT_PAGE_TOKEN:-}"
 while [ $pages -lt $PAGES_PER_RUN ]; do
   result=$(process_batch "$token"); log "Result: $result"
   if [ "$result" = "NO_MORE" ] || [ -z "$result" ]; then NEXT_PAGE_TOKEN=""; break
