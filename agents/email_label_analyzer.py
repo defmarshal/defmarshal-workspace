@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import os, sys, json, subprocess, time, re
 from collections import defaultdict
-from typing import Dict, List, Tuple
 
 # Config
 MATON_API_KEY = os.getenv('MATON_API_KEY')
@@ -13,7 +12,7 @@ STATE_FILE = '/home/ubuntu/.openclaw/workspace/memory/email_analyzer.state'
 OUTPUT_FILE = '/home/ubuntu/.openclaw/workspace/memory/label_mapping.json'
 LOG_FILE = '/home/ubuntu/.openclaw/workspace/memory/email_analyzer.log'
 
-MAX_UNREAD = int(os.getenv('MAX_UNREAD', '1000'))  # limit for analysis
+MAX_UNREAD = int(os.getenv('MAX_UNREAD', '1000'))
 
 def log(msg):
     t = time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())
@@ -83,8 +82,7 @@ def get_header(msg, name):
             return h.get('value', '')
     return ''
 
-def parse_email_address(addr: str) -> Tuple[str, str]:
-    # Very simple: "Name <email@domain.com>" or "email@domain.com"
+def parse_email_address(addr: str):
     if '<' in addr and '>' in addr:
         name_part = addr.split('<')[0].strip()
         email_part = addr.split('<')[1].split('>')[0].strip()
@@ -97,44 +95,28 @@ def parse_email_address(addr: str) -> Tuple[str, str]:
         local, domain = email_part, ''
     return name_part, domain
 
-def categorize_sender(name: str, domain: str, subject: str) -> str:
-    # Normalize
-    name_l = name.lower()
-    domain_l = domain.lower()
-    subject_l = subject.lower()
-    # Keywords
-    BANKING_SENDERS = ['bca', 'bank', 'mandiri', 'bni', 'bri', 'seacon', 'cimb', 'danamon', 'permata', 'ocbc', 'uob', 'hsbc', 'citibank', 'standard chartered', 'maybank', 'btn', 'btpn', 'sinarmas', 'mega', 'bukopin', 'panin', 'noci', 'dbs', 'sumitomo', 'mizuho', 'mufg', 'credit card', 'visa', 'mastercard']
-    BANKING_DOMAINS = ['bca.co.id', 'bankmandiri.co.id', 'bni.co.id', 'bri.co.id', 'bankbca.com', 'cimb.com', 'danamon.co.id', 'permata.com', 'ocbc.co.id', 'uob.co.id', 'hsbc.co.id', 'citibank.com', 'maybank.co.id', 'btn.co.id']
-    ALERT_SENDERS = ['alert', 'error', 'monitoring', 'system', 'security', 'aws', 'gcp', 'google cloud', 'azure', 'datadog', 'new relic', 'pagerduty', 'opsgenie', 'grafana', 'prometheus', 'sentry', 'logrocket', 'rollbar', 'bugsnag', 'uptime', 'status', 'incident', 'outage']
-    ALERT_DOMAINS = ['aws.amazon.com', 'console.aws.amazon.com', 'cloud.google.com', 'azure.microsoft.com', 'datadoghq.com', 'newrelic.com', 'pagerduty.com', 'opsgenie.com', 'grafana.com', 'sentry.io']
-    WORK_DOMAINS = ['company.com', 'company.org', 'work.com', 'corp.', 'internal', 'office.', 'enterprise.', 'business.']
-    NEWSLETTER_SUBJECT = ['newsletter', 'digest', 'promo', 'marketing', 'subscribe', 'daily', 'weekly', 'deals', 'offers']
-    HR_SUBJECT = ['hr', 'payroll', 'leave', 'timesheet', 'benefits', 'talent', 'recruitment', 'onboarding', 'offboarding']
-    WORK_SUBJECT = ['meeting', 'sprint', 'planning', 'standup', 'review', 'retro', 'scrum', 'jira', 'confluence', 'slack', 'teams', 'zoom', 'sync', '1:1', 'one-on-one', 'team', 'project', 'deadline', 'deliverable', 'milestone', 'quarterly', 'weekly', 'monthly']
-    # Decision order
-    if any(x in domain_l for x in BANKING_DOMAINS) or any(x in name_l for x in BANKING_SENDERS):
-        return 'banking'
-    if any(x in domain_l for x in ALERT_DOMAINS) or any(x in name_l for x in ALERT_SENDERS) or any(x in subject_l for x in ['alert', 'error', 'warning', 'critical', 'incident', 'outage', 'downtime', 'failure', 'exception', 'timeout', 'threshold', 'breach']):
-        return 'alerts'
-    if any(x in domain_l for x in WORK_DOMAINS) or any(x in subject_l for x in WORK_SUBJECT) or any(x in name_l for x in ['meeting', 'sprint', 'planning', 'standup', 'review', 'retro', 'scrum', 'jira', 'confluence', 'slack', 'teams', 'zoom']):
-        return 'work'
-    if any(x in subject_l for x in NEWSLETTER_SUBJECT):
-        return 'newsletters'
-    if any(x in subject_l for x in HR_SUBJECT) or any(x in name_l for x in ['hr', 'payroll', 'leave', 'timesheet', 'benefits', 'talent']):
-        return 'hr'
-    return 'personal'
+def sanitize_label(name: str) -> str:
+    # Gmail label name restrictions: no control chars, no leading/trailing spaces, max 255
+    # Replace problematic chars with hyphen, collapse spaces
+    name = name.strip()
+    # Remove slashes and quotes
+    name = re.sub(r'[/"]', '-', name)
+    # Replace other problematic chars with hyphen
+    name = re.sub(r'[\\\[\]<>\(\)\.\,\:\;\=\>\<\?\!\@\#\$\%\^\&\*\+\|]', '-', name)
+    # Collapse multiple hyphens/spaces
+    name = re.sub(r'[\s-]+', '-', name)
+    return name[:50] or 'Unknown'
 
 def analyze_emails():
     processed = load_processed()
     ids = fetch_unread_ids(MAX_UNREAD)
-    # Filter already processed
     new_ids = [i for i in ids if i not in processed]
     log(f"Total unread: {len(ids)}; new to analyze: {len(new_ids)}")
     if not new_ids:
         log("Nothing new to analyze")
         return {}
-    # Simple: map sender key -> category
-    sender_to_cat: Dict[str, str] = {}
+    # Build distinct senders map: sender_key (name+email) -> set of domains
+    senders = defaultdict(set)
     for i, msg_id in enumerate(new_ids, 1):
         msg = fetch_message(msg_id)
         if not msg:
@@ -142,40 +124,37 @@ def analyze_emails():
         from_hdr = get_header(msg, 'From')
         subject_hdr = get_header(msg, 'Subject')
         name, domain = parse_email_address(from_hdr)
-        cat = categorize_sender(name, domain, subject_hdr)
-        # Unique key: use email address only (domain or full email)
-        email = f"{name} <{domain}>" if name else domain
-        if email not in sender_to_cat:
-            sender_to_cat[email] = cat
+        # Use combined key: "Name <domain>" if name, else just domain
+        key = f"{name} <{domain}>" if name else domain
+        senders[key].add(domain)
         processed.add(msg_id)
         if i % 10 == 0:
             log(f"Processed {i}/{len(new_ids)}")
-            time.sleep(0.2)  # gentle
-    # Build label mapping
-    categories = {
-        'banking': 'Sweep/banking',
-        'alerts': 'Sweep/alerts',
-        'work': 'Sweep/work',
-        'newsletters': 'Sweep/newsletters',
-        'hr': 'Sweep/hr',
-        'personal': 'Sweep/personal'
-    }
-    label_mapping = {
-        'categories': categories,
-        'senders': sender_to_cat
-    }
+            time.sleep(0.2)
+    # Build label mapping: for each sender, create a Sweep/... label
+    label_mapping = {}
+    for sender_key in senders.keys():
+        # Derive a nice label name from sender. Prefer name part, fallback to domain.
+        if '<' in sender_key:
+            name_part = sender_key.split('<')[0].strip()
+            # Clean name for label
+            label_name = f"Sweep/{sanitize_label(name_part)}"
+        else:
+            # domain only
+            label_name = f"Sweep/{sanitize_label(sender_key)}"
+        label_mapping[sender_key] = label_name
     # Save
     with open(OUTPUT_FILE, 'w') as f:
         json.dump(label_mapping, f, indent=2)
     save_processed(processed)
-    log(f"Analysis complete: {len(processed)} total processed, mapping saved to {OUTPUT_FILE}")
+    log(f"Analysis complete: {len(processed)} total processed, {len(label_mapping)} distinct senders mapped. Saved to {OUTPUT_FILE}")
     # Print summary
-    print("\n=== Label Analysis Summary ===")
-    summary = defaultdict(int)
-    for cat in sender_to_cat.values():
-        summary[cat] += 1
-    for cat in categories.keys():
-        print(f"{cat}: {summary.get(cat, 0)} distinct senders")
+    print("\n=== Label Mapping Summary ===")
+    counts = defaultdict(int)
+    for lbl in label_mapping.values():
+        counts[lbl] += 1
+    for lbl, cnt in sorted(counts.items(), key=lambda x: -x[1]):
+        print(f"{lbl}: {cnt} sender(s)")
     return label_mapping
 
 if __name__ == '__main__':

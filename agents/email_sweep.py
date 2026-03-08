@@ -11,6 +11,7 @@ if not API_KEY:
 STATE_FILE = '/home/ubuntu/.openclaw/workspace/memory/email-categorizer.state'
 LOG_FILE = '/home/ubuntu/.openclaw/workspace/memory/email-categorizer.log'
 LABEL_MAP_FILE = '/home/ubuntu/.openclaw/workspace/memory/label_mapping.json'
+LABEL_CACHE_FILE = '/home/ubuntu/.openclaw/workspace/memory/email_labels.json'
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 
 def log(msg):
@@ -32,15 +33,15 @@ def save_state(token):
     with open(STATE_FILE, 'w') as f:
         f.write(f"NEXT_PAGE_TOKEN={token}\n")
 
-def load_label_mapping():
+def load_sender_mapping():
     try:
         with open(LABEL_MAP_FILE) as f:
             data = json.load(f)
-        return data.get('senders', {}), data.get('categories', {})
+        return data  # dict: "Sender <domain>" -> "Sweep/Name"
     except Exception:
-        return {}, {}
+        return {}
 
-SENDER_MAP, CATEGORIES = load_label_mapping()
+SENDER_MAP = load_sender_mapping()
 
 def parse_email_address(addr: str):
     if '<' in addr and '>' in addr:
@@ -55,28 +56,39 @@ def parse_email_address(addr: str):
         local, domain = email_part, ''
     return name_part, domain
 
-def categorize(fr, subj):
-    # Try mapping
+def get_label_for_sender(fr, subj):
+    # Try mapping by sender key
     name, domain = parse_email_address(fr)
     email_key = f"{name} <{domain}>" if name else domain
     if email_key in SENDER_MAP:
         return SENDER_MAP[email_key]
-    # Fallback heuristic
-    lf = fr.lower()
-    ls = subj.lower()
-    if any(x in lf for x in ['bca', 'bank', 'transaction', 'statement']):
-        return 'banking'
-    if any(x in ls for x in ['alert', 'error', 'cpu', 'disk', 'monitor']):
-        return 'alerts'
-    if any(x in ls for x in ['meeting', 'sprint', 'planning', 'standup', 'review']):
-        return 'work'
-    if any(x in ls for x in ['newsletter', 'digest', 'promo', 'marketing', 'subscribe']):
-        return 'newsletters'
-    if any(x in lf for x in ['@company.com', '@org', '@work']):
-        return 'work'
-    if any(x in ls for x in ['timesheet', 'hr', 'payroll', 'leave']):
-        return 'hr'
-    return 'personal'
+    # Fallback: create a generic Sweep label based on domain or name
+    if name:
+        safe = re.sub(r'[^a-zA-Z0-9\s-]', '', name).strip()[:30] or 'Unknown'
+        return f"Sweep/{safe}"
+    elif domain:
+        safe = domain.replace('.', '-')
+        return f"Sweep/{safe}"
+    else:
+        return "Sweep/Unread"
+
+import re
+def get_label_for_sender(fr, subj):
+    name, domain = parse_email_address(fr)
+    email_key = f"{name} <{domain}>" if name else domain
+    if email_key in SENDER_MAP:
+        return SENDER_MAP[email_key]
+    # Fallback: use domain-derived label
+    if domain:
+        safe = re.sub(r'[^a-zA-Z0-9-]', '-', domain)
+        safe = re.sub(r'-+', '-', safe).strip('-')
+        return f"Sweep/{safe}" if safe else "Sweep/Unknown"
+    elif name:
+        safe = re.sub(r'[^a-zA-Z0-9\s-]', '', name)
+        safe = re.sub(r'\s+', '-', safe).strip('-')
+        return f"Sweep/{safe}" if safe else "Sweep/Unknown"
+    else:
+        return "Sweep/Unknown"
 
 def fetch(url):
     cmd = ['curl', '-s', '-f', '-H', f'Authorization: Bearer {API_KEY}', url]
@@ -85,33 +97,32 @@ def fetch(url):
         return None
     return result.stdout
 
-def get_label_id(category):
-    # Check cache first
-    cache_file = '/home/ubuntu/.openclaw/workspace/memory/email_labels.json'
+def get_label_id(label_name):
+    # Check cache
     try:
-        with open(cache_file) as f:
+        with open(LABEL_CACHE_FILE) as f:
             cache = json.load(f)
     except Exception:
         cache = {}
-    if category in cache:
-        return cache[category]
-    # Fetch existing labels
+    if label_name in cache:
+        return cache[label_name]
+    # Fetch existing labels from Gmail
     labels_url = "https://gateway.maton.ai/google-mail/gmail/v1/users/me/labels"
     resp = fetch(labels_url)
     if resp:
         try:
             labels = json.loads(resp).get('labels', [])
             for lbl in labels:
-                if lbl.get('name') == f"Sweep/{category}":
-                    cache[category] = lbl['id']
-                    with open(cache_file, 'w') as f:
+                if lbl.get('name') == label_name:
+                    cache[label_name] = lbl['id']
+                    with open(LABEL_CACHE_FILE, 'w') as f:
                         json.dump(cache, f, indent=2)
                     return lbl['id']
         except Exception:
             pass
     # Create label
     create_url = "https://gateway.maton.ai/google-mail/gmail/v1/users/me/labels"
-    payload = {"name": f"Sweep/{category}", "labelListVisibility": "labelShow", "messageListVisibility": "show"}
+    payload = {"name": label_name, "labelListVisibility": "labelShow", "messageListVisibility": "show"}
     cmd = ['curl', '-s', '-f', '-X', 'POST', '-H', 'Content-Type: application/json', '-H', f'Authorization: Bearer {API_KEY}', '-d', json.dumps(payload), create_url]
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode == 0:
@@ -119,8 +130,8 @@ def get_label_id(category):
             lbl = json.loads(result.stdout)
             label_id = lbl.get('id')
             if label_id:
-                cache[category] = label_id
-                with open(cache_file, 'w') as f:
+                cache[label_name] = label_id
+                with open(LABEL_CACHE_FILE, 'w') as f:
                     json.dump(cache, f, indent=2)
                 return label_id
         except Exception:
@@ -166,16 +177,16 @@ def process_batch(page_token):
             subj_hdr = next((h['value'] for h in headers if h['name'].lower() == 'subject'), '')
         except Exception:
             from_hdr = subj_hdr = ''
-        cat = categorize(from_hdr, subj_hdr)
-        counts[cat] = counts.get(cat, 0) + 1
-        label_id = get_label_id(cat)
+        label_name = get_label_for_sender(from_hdr, subj_hdr)
+        counts[label_name] = counts.get(label_name, 0) + 1
+        label_id = get_label_id(label_name)
         if label_id:
             if apply_label(msg_id, label_id):
-                log(f"Labeled {msg_id} as {cat}")
+                log(f"Labeled {msg_id} as {label_name}")
             else:
                 log(f"Failed to label {msg_id}")
         else:
-            log(f"No label ID for {cat}")
+            log(f"No label ID for {label_name}")
     total = sum(counts.values())
     for k, v in counts.items():
         log(f"{k}: {v}")
