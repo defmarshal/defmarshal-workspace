@@ -1,8 +1,23 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-07 11:05 UTC
+**Last updated**: 2026-03-08 02:00 UTC
 
 ## ✅ Completed Agents (today)
+
+**Content-Agent** (spawned 01:06 UTC by user message)
+- Task: Verify daily digest, generate missing content
+- Result: Updated daily digest to include March 8 research report; content current
+- Status: ✅ Completed
+
+**Research-Agent** (spawned 01:03 UTC by agent-manager-cron)
+- Task: Conduct continuous research on anime, banking, tech, AI
+- Result: March 8 report "Safety Standoffs, CBDC Polarization, Quantum Urgency" (9.3 KB); deployed to Research Hub
+- Status: ✅ Completed
+
+**Content-Agent** (spawned 01:01 UTC by agent-manager-cron)
+- Task: Verify daily digest, generate missing content
+- Result: Generated fresh March 8 daily digest (1408 bytes); improved system health summary
+- Status: ✅ Completed
 
 **Agent-Manager-Cron** (5b617517)
 - Executed: 01:05 UTC

@@ -22,10 +22,20 @@ for md in research/*.md; do
   filename=$(basename "$md")
   # Extract date from filename: YYYY-MM-DD...
   DATE=$(echo "$filename" | sed -n 's/^\(202[0-9]-[0-9][0-9]-[0-9][0-9]\).*/\1/p')
-  # Extract title: first line starting with '# '
-  TITLE=$(grep -m1 '^# ' "$md" | sed 's/^# //; s/[\r\n]//g')
-  # Extract topics from the first paragraph (heuristic: look for keywords)
-  TOPICS=$(grep -m1 -E '^[A-Za-z]' "$md" | head -1 | sed 's/[\r\n]//g' | cut -c1-80)
+  # Extract title: first line starting with '# ', else fallback to filename
+  TITLE_LINE=$(grep -m1 '^# ' "$md" || true)
+  if [ -n "$TITLE_LINE" ]; then
+    TITLE=$(echo "$TITLE_LINE" | sed 's/^# //; s/[\r\n]//g')
+  else
+    TITLE="$filename"
+  fi
+  # Extract topics from the first non-empty line that starts with a letter (heuristic)
+  TOPICS_LINE=$(grep -m1 -E '^[A-Za-z]' "$md" | head -1 || true)
+  if [ -n "$TOPICS_LINE" ]; then
+    TOPICS=$(echo "$TOPICS_LINE" | sed 's/[\r\n]//g' | cut -c1-80)
+  else
+    TOPICS="-"
+  fi
   # TTS status
   if [ -f "research/${filename%.md}.mp3" ]; then
     TTS="✅"
