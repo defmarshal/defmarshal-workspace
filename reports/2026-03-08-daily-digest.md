@@ -22,15 +22,16 @@ Eventful early morning: Anthropic-Pentagon standoff escalates; research suppleme
 
 ### Recent Activity
 - **Meta-agent** (00:03 UTC): Updated state; confirmed schedules.
-- **Content-agent** cycles (01:01, 01:06, 02:03, 02:08, 03:14, 04:02, 06:03): All idle; digest kept current.
+- **Content-agent** cycles (01:01, 01:06, 02:03, 02:08, 03:14, 04:02, 06:03, 07:06): All idle; digest kept current.
 - **Research-agent** cycles:
   - 01:03 UTC: Completed March 8 report — *Safety Standoffs, CBDC Polarization, Quantum Urgency* (9.3 KB)
   - 07:04 UTC: **Breaking supplement** — *Anthropic Pentagon Standoff Escalates* (deadline Mar 14, App Store #1 surge, industry solidarity)
 - **Dev-agent**:
-  - 03:00 UTC: Email-categorizer cleanup (batch size 1000, syntax fixes)
+  - 03:00 UTC: Email-categorizer cleanup (batch size fix, syntax fixes)
   - 04:00 UTC: Pruned active-tasks.md (<2KB), accepted index update
   - 05:00 UTC: Implemented handoff tasks (email sweep throughput, meta-agent 6h throttling)
   - 06:00 UTC: Hygiene pass (removed agni.lock, memory updates)
+  - 12:00 UTC: **Fixed OpenClaw gateway downtime** (removed broken `status-holiday` plugin, started service; cron operations resumed)
 - **Agent-manager-cron** (07:03 UTC): Validated cron schedules; all match docs.
 
 ### Content Status
