@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-07*
+*Last updated: 2026-03-08*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -33,6 +33,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
 - Recent:
   - **Memory index outage (2026-03-06 04:08 UTC):** main store dropped to 0 indexed files, breaking research-agent. Reindexed manually; research pipeline restored, March 6 report generated and deployed. Index now 43/43.
+  - **Missing downloads directory & index reset (2026-03-08 06:30 UTC):** `downloads/` directory vanished (likely removed by cleanup script after becoming empty). Memory index showed `0/45 files` (false negative corrected by `./quick memory-reindex`). Restored: downloads dir recreated, memory reindexed to 45/45 files (525 chunks). System returned to full health.
   - **Disk usage spike & recovery (2026-03-05–07):** rose 66% → 81% over 2 days, triggering cleanup. Agent-manager (01:05 UTC) cleaned downloads (7.8G → 4.9G) and meta-summary confirms disk back to 66% by afternoon. System stable.
   - Agent-manager (19:00 UTC) validated all cron schedules; 8 essential cron jobs running. System stable.
   - Meta-agent cycles (2026-03-05 03:07 & 20:01 UTC) confirmed content-agent and research-agent running; system stable at 59% disk.
