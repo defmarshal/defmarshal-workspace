@@ -7,6 +7,7 @@ cd /home/ubuntu/.openclaw/workspace
 
 LOGFILE="memory/meta-agent.log"
 STATE_FILE="memory/meta-agent-state.json"
+SUMMARY_STATE_FILE="memory/meta-summary.state"
 REPORT_FILE="meta-report-latest.md"
 mkdir -p memory
 
@@ -450,6 +451,18 @@ case "${1:-}" in
     fi
     
     log "Meta-Agent one-shot completed; actions: ${ACTIONS[*]:-none}"
+
+    # Throttled Telegram summary (every 6 hours)
+    if [ -f "$SUMMARY_STATE_FILE" ]; then
+      source "$SUMMARY_STATE_FILE" 2>/dev/null || true
+    fi
+    LAST_SENT_MS=${LAST_SENT_MS:-0}
+    NOW_MS=$(date +%s%3N 2>/dev/null || date +%s)
+    if (( (NOW_MS - LAST_SENT_MS) >= 21600 )); then
+      SUMMARY="🔄 Meta-Agent $(date -u '+%H:%M UTC') — All systems nominal. Nyepi 18–24 Mar 2026."
+      openclaw message send --channel telegram --to 952170974 --text "$SUMMARY" 2>/dev/null || true
+      echo "LAST_SENT_MS=$NOW_MS" > "$SUMMARY_STATE_FILE"
+    fi
     ;;
     
   --daemon)
