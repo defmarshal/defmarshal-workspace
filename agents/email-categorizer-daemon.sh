@@ -29,8 +29,8 @@ categorize() {
   elif echo "$ls" | grep -qE 'alert|error|cpu|disk|monitor'; then echo "alerts"
   elif echo "$ls" | grep -qE 'meeting|sprint|planning|standup|review'; then echo "work"
   elif echo "$ls" | grep -qE 'newsletter|digest|promo|marketing|subscribe'; then echo "newsletters"
-  elif echo "$lf" | grep -qE '@company\.com|@org|@work'; then echo "work"
   elif echo "$ls" | grep -qE 'timesheet|hr|payroll|leave'; then echo "hr"
+  elif echo "$lf" | grep -qE '@company\.com|@org|@work'; then echo "work"
   else echo "personal"; fi
 }
 
