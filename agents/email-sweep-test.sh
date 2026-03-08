@@ -69,8 +69,8 @@ categorize() {
   elif echo "$ls" | grep -qE 'alert|error|cpu|disk|monitor'; then echo "alerts"
   elif echo "$ls" | grep -qE 'meeting|sprint|planning|standup|review'; then echo "work"
   elif echo "$ls" | grep -qE 'newsletter|digest|promo|marketing|subscribe'; then echo "newsletters"
-  elif echo "$lf" | grep -qE '@company\.com|@org|@work'; then echo "work"
   elif echo "$ls" | grep -qE 'timesheet|hr|payroll|leave'; then echo "hr"
+  elif echo "$lf" | grep -qE '@company\.com|@org|@work'; then echo "work"
   else echo "personal"; fi
 }
 
@@ -78,11 +78,11 @@ cat_pass=0
 cat_fail=0
 
 # Test cases that work correctly
-[ "$(categorize 'noreply@bca.com' 'Transaction')" = "banking" ] && ((cat_pass++)) || ((cat_fail++))
-[ "$(categorize 'alerts@monitor.com' 'CPU Alert')" = "alerts" ] && ((cat_pass++)) || ((cat_fail++))
-[ "$(categorize 'team@company.com' 'Sprint Meeting')" = "work" ] && ((cat_pass++)) || ((cat_fail++))
-[ "$(categorize 'news@digest.com' 'Newsletter')" = "newsletters" ] && ((cat_pass++)) || ((cat_fail++))
-[ "$(categorize 'friend@gmail.com' 'Lunch?')" = "personal" ] && ((cat_pass++)) || ((cat_fail++))
+if [ "$(categorize 'noreply@bca.com' 'Transaction')" = "banking" ]; then ((cat_pass++)); else ((cat_fail++)); fi
+if [ "$(categorize 'alerts@monitor.com' 'CPU Alert')" = "alerts" ]; then ((cat_pass++)); else ((cat_fail++)); fi
+if [ "$(categorize 'team@company.com' 'Sprint Meeting')" = "work" ]; then ((cat_pass++)); else ((cat_fail++)); fi
+if [ "$(categorize 'news@digest.com' 'Newsletter')" = "newsletters" ]; then ((cat_pass++)); else ((cat_fail++)); fi
+if [ "$(categorize 'friend@gmail.com' 'Lunch?')" = "personal" ]; then ((cat_pass++)); else ((cat_fail++)); fi
 
 # Known issue: @company.com check precedes timesheet/hr check
 result=$(categorize 'hr@company.com' 'Timesheet')
