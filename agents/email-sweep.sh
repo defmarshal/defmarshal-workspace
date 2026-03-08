@@ -3,7 +3,7 @@ set -u
 if [ -f "/home/ubuntu/.openclaw/workspace/.env" ]; then
   export $(cat /home/ubuntu/.openclaw/workspace/.env | grep -v '^#' | xargs)
 fi
-BATCH_SIZE=${BATCH_SIZE:-500}
+BATCH_SIZE=${BATCH_SIZE:-100}
 PAGES_PER_RUN=${PAGES_PER_RUN:-4}
 MAX_PARALLEL=${MAX_PARALLEL:-5}
 DRY_RUN=${DRY_RUN:-0}
