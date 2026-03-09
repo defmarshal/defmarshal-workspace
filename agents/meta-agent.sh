@@ -9,6 +9,7 @@ LOGFILE="memory/meta-agent.log"
 STATE_FILE="memory/meta-agent-state.json"
 SUMMARY_STATE_FILE="memory/meta-summary.state"
 REPORT_FILE="meta-report-latest.md"
+DEFAULT_WEATHER_LOC="Bogor,Indonesia"
 mkdir -p memory
 
 # Safety & Containment defaults
@@ -86,6 +87,18 @@ compute_feedback_weights() {
     fi
     ADJUSTMENTS["$agent"]="$MULT"
   done
+}
+
+fetch_weather() {
+  # Use wttr.in for a concise one-line summary
+  local loc="${DEFAULT_WEATHER_LOC}"
+  # Try quick weather via openclaw (if available) else curl
+  if command -v openclaw &>/dev/null; then
+    openclaw weather "$loc" 2>/dev/null | head -1 || true
+  else
+    curl -s "https://wttr.in/${loc}?format=3" 2>/dev/null || echo "Weather: N/A"
+  fi
+}
   
   echo "declare -A FEEDBACK_ADJUST=("
   for agent in "${!ADJUSTMENTS[@]}"; do
@@ -479,6 +492,8 @@ case "${1:-}" in
       fi
       # Agents status (simple check)
       AGENTS_STATUS="nominal"
+      # Fetch weather
+      WEATHER_LINE=$(fetch_weather)
       # Build concise, informative summary
       SUMMARY="🕐 Meta-Agent $(date -u '+%H:%M UTC') — System Status\n"
       SUMMARY+="• Disk: ${DISK_USAGE}%\n"
@@ -486,6 +501,9 @@ case "${1:-}" in
       SUMMARY+="• Gateway: $GATEWAY_STATUS\n"
       SUMMARY+="• Memory: $MEMORY_STATUS\n"
       SUMMARY+="• Content: ${CONTENT_TODAY:-0} | Research: ${RESEARCH_TODAY:-0}\n"
+      if [ -n "$WEATHER_LINE" ]; then
+        SUMMARY+="• Weather: $WEATHER_LINE\n"
+      fi
       if [ ${#ACTIONS[@]} -gt 0 ]; then
         SUMMARY+="• Actions: ${ACTIONS[*]}\n"
       fi
