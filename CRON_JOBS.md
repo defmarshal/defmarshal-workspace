@@ -159,26 +159,33 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/evolver-agent.log`
    - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
 
-27. **dashboard-data-updater**
+27. **email-categorizer-cron**
+   - **Schedule**: Every hour (`0 * * * *`) in UTC (stagger 5m)
+   - **Payload**: agentTurn executing `cd /home/ubuntu/.openclaw/workspace && BATCH_SIZE=50 PAGES_PER_RUN=4 python3 agents/email_sweep.py`
+   - **Log**: `memory/email-categorizer.log`
+   - **Description**: Sweeps unread emails via Maton API, applies labels based on sender mapping, marks as read. Processes up to 50 messages per page for up to 4 pages per run. Maintains state in `memory/email-categorizer.state`. No Telegram notifications (delivery: none).
+   - **Status**: Enabled (running)
+
+28. **dashboard-data-updater**
    - **Schedule**: Every 5 minutes (`*/5 * * * *`) in Asia/Bangkok
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./scripts/generate-dashboard-data.sh >> memory/dashboard-data.log 2>&1'`
    - **Log**: `memory/dashboard-data.log`
    - **Description**: Refreshes `apps/dashboard/data.json` with latest system stats, agent sessions, recent commits, cron jobs, heartbeat state, and supervisor log tail. Provides real-time data for the web dashboard.
    - **Status**: Enabled (switched to bash script 2026-03-02; Python version deprecated)
 
-28. **mewchat-evolver-cron**
+29. **mewchat-evolver-cron**
    - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/mewchat-evolver.sh >> memory/mewchat-evolver.log 2>&1'`
    - **Log**: `memory/mewchat-evolver.log`
    - **Description**: Autonomous agent that continuously improves the MewChat web app (UX, performance, features, code quality). Runs every 6 hours; each cycle performs one focused improvement, commits, and logs.
 
-29. **meta-supervisor-agent**
+30. **meta-supervisor-agent**
    - **Schedule:** Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
    - **Payload:** agentTurn that ensures the meta-supervisor daemon is running. Command: `bash -c 'cd /home/ubuntu/.openclaw/workspace && nohup agents/meta-supervisor/meta-supervisor-daemon.sh > agents/meta-supervisor/meta-supervisor.nohup 2>&1'`
    - **Description:** Keepalive cron that spawns the meta-supervisor daemon if not running, ensuring continuous auditing of agent outcomes.
    - **Agent:** default
 
-30. **log-rotate-system-cron** (System Crontab)
+31. **log-rotate-system-cron** (System Crontab)
    - **Schedule:** Daily at 02:00 (`0 2 * * *`) in system timezone (UTC)
    - **Command:** `/home/ubuntu/.openclaw/workspace/scripts/rotate-logs.sh`
    - **Log:** `memory/rotate-logs.log`
