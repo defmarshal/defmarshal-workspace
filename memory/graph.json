@@ -5424,6 +5424,86 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-rivian__8217_s-r2-gambit.py",
       "type": "app",
       "title": "TechCrunch Mobility: Rivian&#8217;s R2 gambit"
+    },
+    {
+      "id": "9de3aa0f-93bd-4a23-b003-6edf9c7c0cc7",
+      "type": "seed",
+      "title": "A roadmap for AI, if anyone will listen"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/a-roadmap-for-ai_-if-anyone-will-listen-1.py",
+      "type": "app",
+      "title": "A roadmap for AI, if anyone will listen"
+    },
+    {
+      "id": "88144731-6142-4fc0-8bc2-c7a6f0dd87c7",
+      "type": "seed",
+      "title": "Push for $40 smartphones builds momentum, but still faces cost hurdles"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-push-for-$40-smartphones-builds-momentum,-but-stil.md",
+      "type": "output",
+      "title": "Push for $40 smartphones builds momentum, but still faces cost hurdles"
+    },
+    {
+      "id": "0c65b96a-cb6f-4446-967d-db9644122652",
+      "type": "seed",
+      "title": "Google just gave Sundar Pichai a $692M pay package"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-google-just-gave-sundar-pichai-a-$692m-pay-package.md",
+      "type": "content",
+      "title": "Google just gave Sundar Pichai a $692M pay package"
+    },
+    {
+      "id": "36ebef2e-1e3f-4f52-9bdf-68397670a5a7",
+      "type": "seed",
+      "title": "Grammarly\u2019s \u2018expert review\u2019 is just missing the actual experts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-ac.md",
+      "type": "output",
+      "title": "Grammarly\u2019s \u2018expert review\u2019 is just missing the actual experts"
+    },
+    {
+      "id": "d4f1b58c-9d90-443a-ad32-c69abc35dc36",
+      "type": "seed",
+      "title": "OpenAI hardware exec Caitlin Kalinowski quits in response to Pentagon deal"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-openai-hardware-exec-caitlin-kalinowski-quits-in-response-to-pentagon-deal.md",
+      "type": "content",
+      "title": "OpenAI hardware exec Caitlin Kalinowski quits in response to Pentagon deal"
+    },
+    {
+      "id": "01f621d5-acf1-4ebf-9f2d-69a35322759f",
+      "type": "seed",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/robolayout_-differentiable-3d-scene-generation-for.py",
+      "type": "app",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "646c87d0-fabf-4d14-a921-531adbcc18f3",
+      "type": "seed",
+      "title": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/real-time-ai-service-economy_-a-framework-for-agen.py",
+      "type": "app",
+      "title": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum"
+    },
+    {
+      "id": "68b308f0-1c87-45d0-bd0a-d66239a6f0ef",
+      "type": "seed",
+      "title": "Reasoning Models Struggle to Control their Chains of Thought"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-reasoning-models-struggle-to-control-their-chains-.md",
+      "type": "output",
+      "title": "Reasoning Models Struggle to Control their Chains of Thought"
     }
   ],
   "edges": [
@@ -5550,6 +5630,46 @@
     {
       "from": "904c0887-275b-4046-a10c-598bb417aa87",
       "to": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-rivian__8217_s-r2-gambit.py",
+      "type": "produced"
+    },
+    {
+      "from": "9de3aa0f-93bd-4a23-b003-6edf9c7c0cc7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/a-roadmap-for-ai_-if-anyone-will-listen-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "88144731-6142-4fc0-8bc2-c7a6f0dd87c7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-push-for-$40-smartphones-builds-momentum,-but-stil.md",
+      "type": "produced"
+    },
+    {
+      "from": "0c65b96a-cb6f-4446-967d-db9644122652",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-google-just-gave-sundar-pichai-a-$692m-pay-package.md",
+      "type": "produced"
+    },
+    {
+      "from": "36ebef2e-1e3f-4f52-9bdf-68397670a5a7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-ac.md",
+      "type": "produced"
+    },
+    {
+      "from": "d4f1b58c-9d90-443a-ad32-c69abc35dc36",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-openai-hardware-exec-caitlin-kalinowski-quits-in-response-to-pentagon-deal.md",
+      "type": "produced"
+    },
+    {
+      "from": "01f621d5-acf1-4ebf-9f2d-69a35322759f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/robolayout_-differentiable-3d-scene-generation-for.py",
+      "type": "produced"
+    },
+    {
+      "from": "646c87d0-fabf-4d14-a921-531adbcc18f3",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/real-time-ai-service-economy_-a-framework-for-agen.py",
+      "type": "produced"
+    },
+    {
+      "from": "68b308f0-1c87-45d0-bd0a-d66239a6f0ef",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-reasoning-models-struggle-to-control-their-chains-.md",
       "type": "produced"
     }
   ]
