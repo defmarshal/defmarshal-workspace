@@ -5354,6 +5354,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-world-won_t-stay-still_-programmable-evolution.py",
       "type": "app",
       "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks"
+    },
+    {
+      "id": "2b1547dc-ded0-49ec-9364-1c0eb9c38a6d",
+      "type": "seed",
+      "title": "DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-deepfact:-co-evolving-benchmarks-and-agents-for-de.md",
+      "type": "output",
+      "title": "DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality"
+    },
+    {
+      "id": "2a6aaf71-8735-41fa-a994-32bb0515a7e5",
+      "type": "seed",
+      "title": "An Interactive Multi-Agent System for Evaluation of New Product Concepts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/an-interactive-multi-agent-system-for-evaluation-o.py",
+      "type": "app",
+      "title": "An Interactive Multi-Agent System for Evaluation of New Product Concepts"
     }
   ],
   "edges": [
@@ -5445,6 +5465,16 @@
     {
       "from": "bf981fb6-f365-4fef-a33b-7ce3e8881fcc",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-world-won_t-stay-still_-programmable-evolution.py",
+      "type": "produced"
+    },
+    {
+      "from": "2b1547dc-ded0-49ec-9364-1c0eb9c38a6d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-deepfact:-co-evolving-benchmarks-and-agents-for-de.md",
+      "type": "produced"
+    },
+    {
+      "from": "2a6aaf71-8735-41fa-a994-32bb0515a7e5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/an-interactive-multi-agent-system-for-evaluation-o.py",
       "type": "produced"
     }
   ]
