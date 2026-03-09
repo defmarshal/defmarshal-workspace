@@ -9,12 +9,27 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-eigendata:-a-self-evolving-multi-agent-platform-fo.md",
       "type": "output",
       "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    },
+    {
+      "id": "72cb1a57-b581-4a1b-bb67-1615263a944e",
+      "type": "seed",
+      "title": "Tool-Genesis: A Task-Driven Tool Creation Benchmark for Self-Evolving Language Agent"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
+      "type": "content",
+      "title": "Tool-Genesis: A Task-Driven Tool Creation Benchmark for Self-Evolving Language Agent"
     }
   ],
   "edges": [
     {
       "from": "02016207-a525-4c1a-a063-97db2522cbb6",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-eigendata:-a-self-evolving-multi-agent-platform-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "72cb1a57-b581-4a1b-bb67-1615263a944e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
       "type": "produced"
     }
   ]
