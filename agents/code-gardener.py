@@ -13,11 +13,11 @@ if env_file.exists():
 # Paths
 SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
 PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_seeds.jsonl')
-CONTENT_DIR = Path('/home/ubuntu/.openclaw/workspace/content')
+APPS_DIR = Path('/home/ubuntu/.openclaw/workspace/apps')
 GRAPH_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/graph.json')
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 
-CONTENT_DIR.mkdir(parents=True, exist_ok=True)
+APPS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
     print(f"[{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
@@ -61,15 +61,15 @@ def add_graph_edge(seed_id: str, output_path: str, title: str):
     if not any(n.get('id') == seed_id for n in graph['nodes']):
         graph['nodes'].append({"id": seed_id, "type": "seed", "title": title})
     # Add output node
-    graph['nodes'].append({"id": output_path, "type": "content", "title": title})
+    graph['nodes'].append({"id": output_path, "type": "app", "title": title})
     # Add edge
     graph['edges'].append({"from": seed_id, "to": output_path, "type": "produced"})
     save_graph(graph)
 
-def generate_text(prompt: str, system_msg: str = "You are a helpful assistant.") -> str:
+def generate_text(prompt: str, system_msg: str = "You are a coding assistant. Respond with only the Python code. No explanations or markdown fencing.") -> str:
     api_key = os.getenv('OPENROUTER_API_KEY')
     if not api_key:
-        log("OPENROUTER_API_KEY not set")
+        log("OPENROUTER_API_KEY not set; skipping generation")
         return ''
     payload = {
         'model': 'stepfun/step-3.5-flash:free',
@@ -101,26 +101,31 @@ def generate_text(prompt: str, system_msg: str = "You are a helpful assistant.")
         log(f"OpenRouter request failed: {e}")
         return ''
 
-def generate_content(seed) -> str:
-    today = datetime.datetime.utcnow().strftime('%Y-%m-%d')
-    slug = seed['title'].lower().replace(' ', '-')[:80]
-    filename = CONTENT_DIR / f"{today}-{slug}.md"
-    prompt = f"""Write a friendly, insightful blog post titled "{seed['title']}".
-Context:
-{seed['snippet']}
+def generate_app(seed):
+    prompt = f"""Write a small, practical Python script based on this idea:
 
-Make it engaging, with a short intro, key points, and a conclusion. Use markdown. Keep under 500 words."""
-    body = generate_text(prompt, system_msg="You are a tech blogger. Write engaging, human‑written style content with a kawaii touch when appropriate.")
-    if not body:
-        body = f"{seed['snippet']}\n\n*(Auto‑draft placeholder)*"
-    content = f"""# {seed['title']}
+Title: {seed['title']}
+Context: {seed['snippet']}
 
-**Source:** {seed['source']}
-
-{body}
-"""
+The script should be self-contained, include a shebang, and demonstrate the concept. Keep it under 100 lines. Output only the code, no explanations."""
+    code = generate_text(prompt, system_msg="You are a coding assistant. Respond with only the Python code. No explanations or markdown fencing.")
+    if not code or len(code) < 20:
+        code = f"""#!/usr/bin/env python3
+# Auto-generated script
+# Seed: {seed['title']}
+print("Hello from {seed['title']}!")"""
+    # Determine filename
+    safe_title = seed['title'].lower().replace(' ', '-')[:50]
+    safe_title = ''.join(c if c.isalnum() or c in '-_' else '_' for c in safe_title)
+    filename = APPS_DIR / f"{safe_title}.py"
+    # Ensure unique
+    counter = 1
+    orig = filename
+    while filename.exists():
+        filename = APPS_DIR / f"{orig.stem}-{counter}{orig.suffix}"
+        counter += 1
     with open(filename, 'w') as f:
-        f.write(content)
+        f.write(code)
     return str(filename)
 
 def main():
@@ -128,16 +133,16 @@ def main():
     processed = load_processed()
     unprocessed = [s for s in seeds if s['id'] not in processed]
     if not unprocessed:
-        log("No new seeds for content gardening")
+        log("No new seeds for code gardening")
         return
     # Pick most recent seed
     unprocessed.sort(key=lambda s: s['ts'], reverse=True)
     seed = unprocessed[0]
-    log(f"Growing content for seed: {seed['title']}")
-    output_path = generate_content(seed)
+    log(f"Generating app for seed: {seed['title']}")
+    output_path = generate_app(seed)
     add_graph_edge(seed['id'], output_path, seed['title'])
     mark_processed(seed['id'])
-    log(f"Content written to {output_path}")
+    log(f"App written to {output_path}")
 
 if __name__ == '__main__':
     main()

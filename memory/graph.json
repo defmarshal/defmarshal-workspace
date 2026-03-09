@@ -5184,12 +5184,267 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-real-faults-in-model-context-protocol-(mcp)-softwa.md",
       "type": "output",
       "title": "Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy"
+    },
+    {
+      "id": "57ae418a-dc38-4020-a22d-a4ef43a16864",
+      "type": "seed",
+      "title": "Planner suggestion: latest transformer architectures 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-planner-suggestion:-latest-transformer-architectures-2025.md",
+      "type": "content",
+      "title": "Planner suggestion: latest transformer architectures 2025"
+    },
+    {
+      "id": "4cad5d2d-a830-4b6f-a750-7d392519f91c",
+      "type": "seed",
+      "title": "Planner suggestion: starlink v2 launch schedule"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-starlink-v2-launch-schedule.py",
+      "type": "app",
+      "title": "Planner suggestion: starlink v2 launch schedule"
+    },
+    {
+      "id": "0362cb2a-61b8-4c90-b6e8-bf4f2a6c4bc6",
+      "type": "seed",
+      "title": "Ring&#8217;s Jamie Siminoff has been trying to calm privacy fears since the Super Bowl, but his answers may not help"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-ring&#8217;s-jamie-siminoff-has-been-trying-to-cal.md",
+      "type": "output",
+      "title": "Ring&#8217;s Jamie Siminoff has been trying to calm privacy fears since the Super Bowl, but his answers may not help"
+    },
+    {
+      "id": "bd1884f5-1ff5-4b6a-b39e-d452f054bcbf",
+      "type": "seed",
+      "title": "Palmer Luckey\u2019s retro gaming startup ModRetro reportedly seeks funding at $1B valuation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-palmer-luckey\u2019s-retro-gaming-startup-modretro-reportedly-seeks-funding-at-$1b-va.md",
+      "type": "content",
+      "title": "Palmer Luckey\u2019s retro gaming startup ModRetro reportedly seeks funding at $1B valuation"
+    },
+    {
+      "id": "436c7ee8-2140-4bce-940c-09edb9634f7d",
+      "type": "seed",
+      "title": "Will the Pentagon\u2019s Anthropic controversy scare startups away from defense work?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/will-the-pentagon_s-anthropic-controversy-scare-st.py",
+      "type": "app",
+      "title": "Will the Pentagon\u2019s Anthropic controversy scare startups away from defense work?"
+    },
+    {
+      "id": "be9424ee-4411-45b3-bc2c-ecbcbe3e9fd6",
+      "type": "seed",
+      "title": "Owner of ICE detention facility sees big opportunity in AI man camps"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-owner-of-ice-detention-facility-sees-big-opportuni.md",
+      "type": "output",
+      "title": "Owner of ICE detention facility sees big opportunity in AI man camps"
+    },
+    {
+      "id": "91961efc-c63b-4392-a1f6-7cb889c25d27",
+      "type": "seed",
+      "title": "TechCrunch Mobility: Rivian&#8217;s R2 gambit"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-techcrunch-mobility:-rivian&#8217;s-r2-gambit.md",
+      "type": "output",
+      "title": "TechCrunch Mobility: Rivian&#8217;s R2 gambit"
+    },
+    {
+      "id": "5b8c5c84-cd59-4f90-9968-108240a6cc0b",
+      "type": "seed",
+      "title": "A roadmap for AI, if anyone will listen"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/a-roadmap-for-ai_-if-anyone-will-listen.py",
+      "type": "app",
+      "title": "A roadmap for AI, if anyone will listen"
+    },
+    {
+      "id": "1dcf1b77-f765-4d86-bc3a-f0122612119b",
+      "type": "seed",
+      "title": "Push for $40 smartphones builds momentum, but still faces cost hurdles"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-push-for-$40-smartphones-builds-momentum,-but-stil.md",
+      "type": "output",
+      "title": "Push for $40 smartphones builds momentum, but still faces cost hurdles"
+    },
+    {
+      "id": "05a005b8-6486-4aa5-a160-661115e07859",
+      "type": "seed",
+      "title": "Google just gave Sundar Pichai a $692M pay package"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-google-just-gave-sundar-pichai-a-$692m-pay-package.md",
+      "type": "output",
+      "title": "Google just gave Sundar Pichai a $692M pay package"
+    },
+    {
+      "id": "9f967130-d8f9-4e9e-83f8-1e638938b8a8",
+      "type": "seed",
+      "title": "Grammarly\u2019s \u2018expert review\u2019 is just missing the actual experts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-ac.md",
+      "type": "output",
+      "title": "Grammarly\u2019s \u2018expert review\u2019 is just missing the actual experts"
+    },
+    {
+      "id": "7b4a78f8-4300-49b4-9943-1970dd54ac7e",
+      "type": "seed",
+      "title": "OpenAI hardware exec Caitlin Kalinowski quits in response to Pentagon deal"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-openai-hardware-exec-caitlin-kalinowski-quits-in-r.md",
+      "type": "output",
+      "title": "OpenAI hardware exec Caitlin Kalinowski quits in response to Pentagon deal"
+    },
+    {
+      "id": "806182f7-fc4e-458d-a74a-92cd5e96dc9e",
+      "type": "seed",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-robolayout:-differentiable-3d-scene-generation-for.md",
+      "type": "output",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "f205ce4e-9933-4204-9834-d226f5a20596",
+      "type": "seed",
+      "title": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-real-time-ai-service-economy:-a-framework-for-agen.md",
+      "type": "output",
+      "title": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum"
+    },
+    {
+      "id": "8ab6559e-97b5-43a5-a516-60c25a59be5c",
+      "type": "seed",
+      "title": "Reasoning Models Struggle to Control their Chains of Thought"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-reasoning-models-struggle-to-control-their-chains-of-thought.md",
+      "type": "content",
+      "title": "Reasoning Models Struggle to Control their Chains of Thought"
+    },
+    {
+      "id": "256d8df8-8388-42f7-bc21-e8e05a601112",
+      "type": "seed",
+      "title": "Evolving Medical Imaging Agents via Experience-driven Self-skill Discovery"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "content",
+      "title": "Evolving Medical Imaging Agents via Experience-driven Self-skill Discovery"
+    },
+    {
+      "id": "bf981fb6-f365-4fef-a33b-7ce3e8881fcc",
+      "type": "seed",
+      "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-world-won_t-stay-still_-programmable-evolution.py",
+      "type": "app",
+      "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks"
     }
   ],
   "edges": [
     {
       "from": "73e69f7c-63d5-4286-a5e6-0ed8dc8eed85",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-real-faults-in-model-context-protocol-(mcp)-softwa.md",
+      "type": "produced"
+    },
+    {
+      "from": "57ae418a-dc38-4020-a22d-a4ef43a16864",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-planner-suggestion:-latest-transformer-architectures-2025.md",
+      "type": "produced"
+    },
+    {
+      "from": "4cad5d2d-a830-4b6f-a750-7d392519f91c",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-starlink-v2-launch-schedule.py",
+      "type": "produced"
+    },
+    {
+      "from": "0362cb2a-61b8-4c90-b6e8-bf4f2a6c4bc6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-ring&#8217;s-jamie-siminoff-has-been-trying-to-cal.md",
+      "type": "produced"
+    },
+    {
+      "from": "bd1884f5-1ff5-4b6a-b39e-d452f054bcbf",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-palmer-luckey\u2019s-retro-gaming-startup-modretro-reportedly-seeks-funding-at-$1b-va.md",
+      "type": "produced"
+    },
+    {
+      "from": "436c7ee8-2140-4bce-940c-09edb9634f7d",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/will-the-pentagon_s-anthropic-controversy-scare-st.py",
+      "type": "produced"
+    },
+    {
+      "from": "be9424ee-4411-45b3-bc2c-ecbcbe3e9fd6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-owner-of-ice-detention-facility-sees-big-opportuni.md",
+      "type": "produced"
+    },
+    {
+      "from": "91961efc-c63b-4392-a1f6-7cb889c25d27",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-techcrunch-mobility:-rivian&#8217;s-r2-gambit.md",
+      "type": "produced"
+    },
+    {
+      "from": "5b8c5c84-cd59-4f90-9968-108240a6cc0b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/a-roadmap-for-ai_-if-anyone-will-listen.py",
+      "type": "produced"
+    },
+    {
+      "from": "1dcf1b77-f765-4d86-bc3a-f0122612119b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-push-for-$40-smartphones-builds-momentum,-but-stil.md",
+      "type": "produced"
+    },
+    {
+      "from": "05a005b8-6486-4aa5-a160-661115e07859",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-google-just-gave-sundar-pichai-a-$692m-pay-package.md",
+      "type": "produced"
+    },
+    {
+      "from": "9f967130-d8f9-4e9e-83f8-1e638938b8a8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-ac.md",
+      "type": "produced"
+    },
+    {
+      "from": "7b4a78f8-4300-49b4-9943-1970dd54ac7e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-openai-hardware-exec-caitlin-kalinowski-quits-in-r.md",
+      "type": "produced"
+    },
+    {
+      "from": "806182f7-fc4e-458d-a74a-92cd5e96dc9e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-robolayout:-differentiable-3d-scene-generation-for.md",
+      "type": "produced"
+    },
+    {
+      "from": "f205ce4e-9933-4204-9834-d226f5a20596",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-real-time-ai-service-economy:-a-framework-for-agen.md",
+      "type": "produced"
+    },
+    {
+      "from": "8ab6559e-97b5-43a5-a516-60c25a59be5c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-reasoning-models-struggle-to-control-their-chains-of-thought.md",
+      "type": "produced"
+    },
+    {
+      "from": "256d8df8-8388-42f7-bc21-e8e05a601112",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "produced"
+    },
+    {
+      "from": "bf981fb6-f365-4fef-a33b-7ce3e8881fcc",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-world-won_t-stay-still_-programmable-evolution.py",
       "type": "produced"
     }
   ]

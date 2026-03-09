@@ -42,10 +42,10 @@ def find_today_nodes():
             seeds_today.append(seed)
     # Find output nodes created today (by filename date prefix)
     for node in graph.get('nodes', []):
-        if node.get('type') in ('output', 'content'):
+        ntype = node.get('type')
+        if ntype in ('output', 'content', 'app'):  # include all grown artifacts
             node_id = node.get('id', '')
-            # node_id is file path, extract date from filename if possible
-            if isinstance(node_id, str) and node_id.startswith('/home/'):
+            if isinstance(node_id, str):
                 fname = Path(node_id).name
                 if fname.startswith(today):
                     outputs_today.append(node)
