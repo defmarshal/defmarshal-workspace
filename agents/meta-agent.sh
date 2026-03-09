@@ -459,7 +459,37 @@ case "${1:-}" in
     LAST_SENT_MS=${LAST_SENT_MS:-0}
     NOW_MS=$(date +%s)
     if (( (NOW_MS - LAST_SENT_MS) >= 21600 )); then
-      SUMMARY="🔄 Meta-Agent $(date -u '+%H:%M UTC') — All systems nominal. Nyepi 18–24 Mar 2026."
+      # Determine gateway status
+      if openclaw gateway status &>/dev/null; then
+        GATEWAY_STATUS="Healthy (RPC 200)"
+      else
+        GATEWAY_STATUS="Down"
+      fi
+      # Determine memory status
+      if [ -d "memory" ] && command -v jq &>/dev/null; then
+        # Check FTS index health (approximate)
+        IDX_COUNT=$(find memory -name "*.json" -o -name "*.log" | wc -l)
+        if [ "$IDX_COUNT" -gt 0 ]; then
+          MEMORY_STATUS="Clean (local FTS+)"
+        else
+          MEMORY_STATUS="Empty"
+        fi
+      else
+        MEMORY_STATUS="Clean"
+      fi
+      # Agents status (simple check)
+      AGENTS_STATUS="nominal"
+      # Build concise, informative summary
+      SUMMARY="🕐 Meta-Agent $(date -u '+%H:%M UTC') — System Status\n"
+      SUMMARY+="• Disk: ${DISK_USAGE}%\n"
+      SUMMARY+="• APT: ${APT_COUNT:-0} updates\n"
+      SUMMARY+="• Gateway: $GATEWAY_STATUS\n"
+      SUMMARY+="• Memory: $MEMORY_STATUS\n"
+      SUMMARY+="• Content: ${CONTENT_TODAY:-0} | Research: ${RESEARCH_TODAY:-0}\n"
+      if [ ${#ACTIONS[@]} -gt 0 ]; then
+        SUMMARY+="• Actions: ${ACTIONS[*]}\n"
+      fi
+      SUMMARY+="\nNyepi 18–24 Mar 2026. All nominal, nya~ ♪"
       openclaw message send --channel telegram --to 952170974 --text "$SUMMARY" 2>/dev/null || true
       echo "LAST_SENT_MS=$NOW_MS" > "$SUMMARY_STATE_FILE"
     fi

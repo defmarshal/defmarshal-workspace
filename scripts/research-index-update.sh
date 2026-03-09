@@ -1,52 +1,49 @@
 #!/usr/bin/env bash
-# Update Research Hub INDEX.md from all research/*.md files.
-# Generates a markdown index sorted by date descending.
-
 set -euo pipefail
+
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
-cd "$WORKSPACE" || exit 1
+INDEX_FILE="$WORKSPACE/apps/research-hub/INDEX.md"
+RESEARCH_DIR="$WORKSPACE/research"
 
-INDEX_FILE="apps/research-hub/INDEX.md"
-mkdir -p "$(dirname "$INDEX_FILE")"
+# Rebuild index from scratch
+{
+  echo "# Research Hub — All Reports"
+  echo
 
-echo "# Research Hub — Index" > "$INDEX_FILE"
-echo "" >> "$INDEX_FILE"
-echo "Last updated: $(date -u '+%Y-%m-%d %H:%M UTC')" >> "$INDEX_FILE"
-echo "" >> "$INDEX_FILE"
-echo "| Date | Title | Topics | TTS |" >> "$INDEX_FILE"
-echo "|------|-------|--------|-----|" >> "$INDEX_FILE"
+  # Find all markdown files and extract dates
+  declare -A files_by_date
+  for md in "$RESEARCH_DIR"/*.md; do
+    [ -f "$md" ] || continue
+    filename=$(basename "$md")
+    date=$(echo "$filename" | sed -n 's/^\(202[0-9]-[0-9][0-9]-[0-9][0-9]\).*/\1/p')
+    [ -n "$date" ] && files_by_date["$date"]+="$md "
+  done
 
-# Parse each research file for title and topics
-for md in research/*.md; do
-  [ -f "$md" ] || continue
-  filename=$(basename "$md")
-  # Extract date from filename: YYYY-MM-DD...
-  DATE=$(echo "$filename" | sed -n 's/^\(202[0-9]-[0-9][0-9]-[0-9][0-9]\).*/\1/p')
-  # Extract title: first line starting with '# ', else fallback to filename
-  TITLE_LINE=$(grep -m1 '^# ' "$md" || true)
-  if [ -n "$TITLE_LINE" ]; then
-    TITLE=$(echo "$TITLE_LINE" | sed 's/^# //; s/[\r\n]//g')
-  else
-    TITLE="$filename"
-  fi
-  # Extract topics from the first non-empty line that starts with a letter (heuristic)
-  TOPICS_LINE=$(grep -m1 -E '^[A-Za-z]' "$md" | head -1 || true)
-  if [ -n "$TOPICS_LINE" ]; then
-    TOPICS=$(echo "$TOPICS_LINE" | sed 's/[\r\n]//g' | cut -c1-80)
-  else
-    TOPICS="-"
-  fi
-  # TTS status
-  if [ -f "research/${filename%.md}.mp3" ]; then
-    TTS="✅"
-  else
-    TTS="❌"
-  fi
-  # Escape pipes in title/topics
-  TITLE=$(echo "$TITLE" | sed 's/|/\\|/g')
-  TOPICS=$(echo "$TOPICS" | sed 's/|/\\|/g')
-  echo "| $DATE | $TITLE | $TOPICS | $TTS |" >> "$INDEX_FILE"
-done
+  # Sort dates descending
+  for date in $(printf "%s\n" "${!files_by_date[@]}" | sort -r); do
+    echo "## $date"
+    echo
+    for md in ${files_by_date["$date"]}; do
+      filename=$(basename "$md")
+      # Title: first line that starts with '# '
+      title_line=$(grep -m1 '^# ' "$md" || true)
+      if [ -n "$title_line" ]; then
+        title=$(echo "$title_line" | sed 's/^# //; s/[\r\n]//g')
+      else
+        title="$filename"
+      fi
+      # Topics: first non-empty line that starts with a letter (after title, but we'll approximate)
+      topics_line=$(grep -m1 -E '^[A-Za-z]' "$md" | head -1 || true)
+      if [ -n "$topics_line" ]; then
+        topics=$(echo "$topics_line" | sed 's/[\r\n]//g' | cut -c1-80)
+      else
+        topics="-"
+      fi
+      echo "- [${title}](research/${filename}) — ${topics}"
+    done
+    echo
+  done
 
-echo "✅ Research Hub index updated: $INDEX_FILE"
-echo "💡 Deploy with: quick deploy-research-hub"
+} > "$INDEX_FILE"
+
+echo "INDEX.md updated with ${#files_by_date[@]} dates"
