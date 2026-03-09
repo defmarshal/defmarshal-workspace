@@ -89,9 +89,9 @@ def send_telegram_summary(seeds, outputs):
         for o in outputs[:5]:
             title = o.get('title', o.get('id'))
             summary += f"  - {title}\n"
-    # Send via openclaw (use explicit target)
+    # Send via openclaw message (uses last chat)
     try:
-        subprocess.run([OPENCLAWS, 'message', 'send', '--channel', 'telegram', '--to', '952170974', '--text', summary], timeout=30)
+        subprocess.run([OPENCLAWS, 'message', 'send', '--to', 'last', '--text', summary], timeout=30)
     except Exception as e:
         log(f"Telegram send failed: {e}")
 
