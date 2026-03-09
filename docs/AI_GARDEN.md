@@ -12,19 +12,37 @@
   - Cron: `seed-gatherer-cron` every 6 hours
   - First run: 50 seeds collected
 
+- **Research Gardener** (`agents/research-gardener.py`):
+  - Consumes seeds, performs web search (via Tavily/openclaw), generates markdown reports
+  - Outputs to `research/`; updates `memory/graph.json` with seed→output edges
+  - Cron: `research-gardener-cron` hourly
+  - First report: `research/2026-03-09-eigendata-a-self-evolving-multi-agent-platform-fo.md`
+
+- **Content Gardener** (`agents/content-gardener.py`):
+  - Consumes seeds, generates blog posts via `openclaw agent ask`
+  - Outputs to `content/`; updates graph; shares processed seeds tracking
+  - Cron: `content-gardener-cron` hourly
+  - First post: `content/2026-03-09-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md`
+
+- **Harvester** (`agents/harvester.py`):
+  - Daily (06:00 UTC) creates `reports/daily-harvest-YYYY-MM-DD.md` summarizing seeds gathered and outputs produced
+  - Also sends Telegram summary (CLI flag tweak pending)
+  - Cron: `harvest-cron` daily
+
+- **Knowledge Graph** (`memory/graph.json`) initialized with seed→output edges.
+
 ### In Progress 🛠️
 
-- Gardener agents assignment (next step)
+- Telegram delivery from harvester (CLI args)
+- Possibly refine gardener selection (prioritization)
 
 ### Planned (Roadmap)
 
-1. **Gardener Agents** – consume seeds and produce outputs:
-   - `research-gardener`: literature review → markdown report in `research/`
-   - `content-gardener`: blog post/tutorial → markdown in `content/`
-   - `code-gardener`: prototype/script → runnable code in `apps/`
-2. **Knowledge Graph** – links seeds → outputs → tags in `memory/graph.json`
-3. **Harvester** – daily Telegram summary + `reports/daily-harvest-YYYY-MM-DD.md`
-4. **Planner** – weekly analysis, proposes new seeds, adjusts scoring
+1. **Planner** – weekly analysis, proposes new seeds, adjusts scoring
+2. **Code Gardener** – generate small scripts/apps from seeds
+3. **Refine prioritization** – better seed scoring (freshness, relevance, diversity)
+4. **Full harvest Telegram** – fixed delivery
+
 
 ## Architecture
 
