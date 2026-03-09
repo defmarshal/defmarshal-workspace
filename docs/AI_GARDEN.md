@@ -1,0 +1,88 @@
+# AI Garden — Self‑Extending Research & Content Farm
+
+**Vision:** A workspace that autonomously discovers ideas, grows them into reports/code, and delivers daily harvests — an intelligent garden that tends itself.
+
+## Current State (2026-03-09)
+
+### Completed ✅
+
+- **Seed Gatherer** (`agents/seed-gatherer.py`):
+  - Pulls unread emails (Maton) + RSS feeds (arXiv cs.AI, cs.CL, cs.LG, cs.SE, TechCrunch, The Verge)
+  - Writes seeds to `memory/seeds.jsonl` (JSON Lines)
+  - Cron: `seed-gatherer-cron` every 6 hours
+  - First run: 50 seeds collected
+
+### In Progress 🛠️
+
+- Gardener agents assignment (next step)
+
+### Planned (Roadmap)
+
+1. **Gardener Agents** – consume seeds and produce outputs:
+   - `research-gardener`: literature review → markdown report in `research/`
+   - `content-gardener`: blog post/tutorial → markdown in `content/`
+   - `code-gardener`: prototype/script → runnable code in `apps/`
+2. **Knowledge Graph** – links seeds → outputs → tags in `memory/graph.json`
+3. **Harvester** – daily Telegram summary + `reports/daily-harvest-YYYY-MM-DD.md`
+4. **Planner** – weekly analysis, proposes new seeds, adjusts scoring
+
+## Architecture
+
+```
+[Sources] → Seed Gatherer → seeds.jsonl
+   ↓
+[Queue] → Gardener Agents → outputs (research/, content/, apps/)
+   ↓
+[Knowledge Graph] ← links seeds/outputs/tags
+   ↓
+Harvester → daily Telegram summary
+Planner → weekly adjustments
+```
+
+## Seeds Format
+
+```json
+{
+  "id": "uuid",
+  "title": "Short title",
+  "snippet": "Brief excerpt",
+  "source": "email:someone@example.com | rss:https://...",
+  "tags": ["ai", "research", "email"],
+  "ts": "2026-03-09 08:52:00 UTC"
+}
+```
+
+## Cron Jobs
+
+| Name                  | Schedule | Task |
+|-----------------------|----------|------|
+| `seed-gatherer-cron`  | every 6h | run `agents/seed-gatherer.py` |
+| *(gardener cron TBD)* | TBD      | dispatch gardener workers |
+| `harvest-cron`        | daily 06:00 UTC | generate daily-harvest report |
+| `planner-cron`        | weekly Sun 02:00 UTC | adjust priorities |
+
+## How to Run Manually
+
+```bash
+cd /home/ubuntu/.openclaw/workspace
+python3 agents/seed-gatherer.py
+```
+
+View seeds:
+
+```bash
+tail -5 memory/seeds.jsonl
+```
+
+## Next Immediate Tasks
+
+- [ ] Design gardener agent loop (how to select seeds, produce outputs)
+- [ ] Implement basic research-gardener using existing research-agent pattern
+- [ ] Add output metadata linking back to seed ID
+- [ ] Create `memory/graph.json` with seed→output edges
+- [ ] Add gardener cron (runs hourly?)
+- [ ] Build harvester script to produce daily summary and Telegram blast
+
+---
+
+*Document will be updated after each milestone.*
