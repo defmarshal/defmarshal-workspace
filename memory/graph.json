@@ -5404,6 +5404,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/will-the-pentagon_s-anthropic-controversy-scare-st-1.py",
       "type": "app",
       "title": "Will the Pentagon\u2019s Anthropic controversy scare startups away from defense work?"
+    },
+    {
+      "id": "b311cb48-9cfa-481d-882e-f7426812f2fc",
+      "type": "seed",
+      "title": "Owner of ICE detention facility sees big opportunity in AI man camps"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-owner-of-ice-detention-facility-sees-big-opportuni.md",
+      "type": "output",
+      "title": "Owner of ICE detention facility sees big opportunity in AI man camps"
+    },
+    {
+      "id": "904c0887-275b-4046-a10c-598bb417aa87",
+      "type": "seed",
+      "title": "TechCrunch Mobility: Rivian&#8217;s R2 gambit"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-rivian__8217_s-r2-gambit.py",
+      "type": "app",
+      "title": "TechCrunch Mobility: Rivian&#8217;s R2 gambit"
     }
   ],
   "edges": [
@@ -5520,6 +5540,16 @@
     {
       "from": "541cd275-a505-4469-853d-1d8bc877c65a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/will-the-pentagon_s-anthropic-controversy-scare-st-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "b311cb48-9cfa-481d-882e-f7426812f2fc",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-owner-of-ice-detention-facility-sees-big-opportuni.md",
+      "type": "produced"
+    },
+    {
+      "from": "904c0887-275b-4046-a10c-598bb417aa87",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-rivian__8217_s-r2-gambit.py",
       "type": "produced"
     }
   ]
