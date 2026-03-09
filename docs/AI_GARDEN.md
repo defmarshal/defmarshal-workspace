@@ -36,12 +36,18 @@
 - Telegram delivery from harvester (CLI args)
 - Possibly refine gardener selection (prioritization)
 
+### Completed ✅
+
+- **Planner** (`agents/planner.py`):
+  - Weekly analysis of tag profile; suggests new seeds for under‑represented categories
+  - Cron: `planner-cron` Sundays 02:00 UTC
+  - Initial suggestions: 6 seeds added (ai, space, quantum, web, infra, tech)
+
 ### Planned (Roadmap)
 
-1. **Planner** – weekly analysis, proposes new seeds, adjusts scoring
-2. **Code Gardener** – generate small scripts/apps from seeds
-3. **Refine prioritization** – better seed scoring (freshness, relevance, diversity)
-4. **Full harvest Telegram** – fixed delivery
+1. **Code Gardener** – generate small scripts/apps from seeds
+2. **Refine prioritization** – better seed scoring (freshness, relevance, diversity)
+3. **Full harvest Telegram** – fixed delivery (CLI flag tweak pending)
 
 
 ## Architecture
