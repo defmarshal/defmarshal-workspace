@@ -43,11 +43,17 @@
   - Cron: `planner-cron` Sundays 02:00 UTC
   - Initial suggestions: 6 seeds added (ai, space, quantum, web, infra, tech)
 
-### Planned (Roadmap)
+### Completed ✅
 
-1. **Code Gardener** – generate small scripts/apps from seeds
-2. **Refine prioritization** – better seed scoring (freshness, relevance, diversity)
-3. **Full harvest Telegram** – fixed delivery (CLI flag tweak pending)
+- **Code Gardener** (`agents/code-gardener.py`):
+  - Generates small Python scripts from seeds via openclaw agent ask
+  - Outputs to `apps/`; updates graph
+  - Cron: `code-gardener-cron` hourly
+
+### Optional Enhancements
+
+1. **Refine prioritization** – better seed scoring (freshness, relevance, diversity)
+2. **Full harvest Telegram** – ensure daily summary reliably delivered (CLI flag tweak if needed) (CLI flag tweak pending)
 
 
 ## Architecture
