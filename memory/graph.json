@@ -1,0 +1,21 @@
+{
+  "nodes": [
+    {
+      "id": "02016207-a525-4c1a-a063-97db2522cbb6",
+      "type": "seed",
+      "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-eigendata:-a-self-evolving-multi-agent-platform-fo.md",
+      "type": "output",
+      "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    }
+  ],
+  "edges": [
+    {
+      "from": "02016207-a525-4c1a-a063-97db2522cbb6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-eigendata:-a-self-evolving-multi-agent-platform-fo.md",
+      "type": "produced"
+    }
+  ]
+}
