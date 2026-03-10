@@ -12,7 +12,7 @@ if env_file.exists():
 
 # Paths
 SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
-PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_seeds.jsonl')
+PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_content.jsonl')
 CONTENT_DIR = Path('/home/ubuntu/.openclaw/workspace/content')
 GRAPH_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/graph.json')
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'

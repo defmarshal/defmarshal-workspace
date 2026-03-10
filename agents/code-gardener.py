@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os, sys, json, uuid, datetime, subprocess
 from pathlib import Path
+from datetime import datetime, timezone
 
 # Load workspace .env if present
 env_file = Path(__file__).parent.parent / '.env'
@@ -12,7 +13,7 @@ if env_file.exists():
 
 # Paths
 SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
-PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_seeds.jsonl')
+PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_code.jsonl')
 APPS_DIR = Path('/home/ubuntu/.openclaw/workspace/apps')
 GRAPH_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/graph.json')
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
@@ -20,7 +21,7 @@ OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 APPS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def load_seeds():
     seeds = []
@@ -43,7 +44,7 @@ def load_processed():
 
 def mark_processed(seed_id: str):
     with open(PROCESSED_FILE, 'a') as f:
-        f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
+        f.write(json.dumps({"id": seed_id, "processed_at": datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
 
 def load_graph():
     if GRAPH_FILE.exists():
@@ -96,7 +97,16 @@ def generate_text(prompt: str, system_msg: str = "You are a coding assistant. Re
         if 'error' in data:
             log(f"OpenRouter error: {data['error'].get('message', 'unknown')}")
             return ''
-        return data['choices'][0]['message']['content'].strip()
+        message = data.get('choices', [{}])[0].get('message', {})
+        content = message.get('content')
+        refusal = message.get('refusal')
+        if refusal:
+            log(f"OpenRouter refusal: {refusal[:200]}")
+            return ''
+        if not content:
+            log(f"OpenRouter returned empty content (null or missing)")
+            return ''
+        return content.strip()
     except Exception as e:
         log(f"OpenRouter request failed: {e}")
         return ''
