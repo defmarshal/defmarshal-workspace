@@ -337,7 +337,24 @@ case "$cmd" in
         echo "  start  - launch garden dashboard server (detaches)"
         echo "  stop   - stop garden dashboard server"
         echo "  status - check if running"
-        echo "  open   - open browser to garden dashboard (default http://localhost:3001/garden-dashboard.html)"
+        echo "  open   - open browser to garden dashboard (default http://localhost:3002/garden-dashboard.html)"
+        exit 1
+        ;;
+    esac
+    ;;
+  organism)
+    # Organism Dashboard: start|stop|status|open [url]
+    subcmd="${2:-status}"
+    case "$subcmd" in
+      start|stop|status|open)
+        python3 "$WORKSPACE/garden-server.py" "$subcmd" "${3:-}"
+        ;;
+      *)
+        echo "Usage: quick organism {start|stop|status|open [url]}"
+        echo "  start  - launch organism dashboard (same server as garden)"
+        echo "  stop   - stop organism dashboard"
+        echo "  status - check if running"
+        echo "  open   - open browser to organism dashboard (default http://localhost:3002/organism-dashboard.html)"
         exit 1
         ;;
     esac

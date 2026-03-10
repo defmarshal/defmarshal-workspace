@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Organism 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FFF9FB 0%, #FFE4EC 100%);
+            min-height: 100vh;
+            color: #5D4037;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #5D4037;
+            text-shadow: 0 2px 10px rgba(255, 177, 193, 0.5);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #8B6B5B;
+            font-size: 1rem;
+        }
+
+        .organism-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            aspect-ratio: 16/9;
+        }
+
+        #organismCanvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .stats-panel {
+            max-width: 800px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(189, 147, 164, 0.15);
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #8B6B5B;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #5D4037;
+        }
+
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            animation: float 3s ease-in-out infinite;
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        .mood-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+        }
+
+        .heartbeat {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.2rem;
+            color: #FF6B6B;
+        }
+
+        .agent-count {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .refresh-info {
+            text-align: center;
+            margin-top: 10px;
+            color: #8B6B5B;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8rem; }
+            .organism-container { aspect-ratio: 4/3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌸 System Organism 🌸</h1>
+        <div class="subtitle">Your server, alive and kawaii! (๑•̀ㅂ•́)و✧</div>
+    </div>
+
+    <div class="organism-container">
+        <canvas id="organismCanvas"></canvas>
+        <div class="mood-indicator" id="mood">😊</div>
+        <div class="heartbeat" id="heartbeat">💓</div>
+        <div class="agent-count" id="agentCount">🫧 0 agents</div>
+    </div>
+
+    <div class="stats-panel">
+        <div class="stat-card">
+            <div class="stat-label">Disk Usage</div>
+            <div class="stat-value" id="diskUsage">--%</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">CPU Usage</div>
+            <div class="stat-value" id="cpuUsage">--%</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Gateway</div>
+            <div class="stat-value" id="gatewayStatus">--</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Uptime</div>
+            <div class="stat-value" id="uptime">--</div>
+        </div>
+    </div>
+
+    <div class="refresh-info">
+        Auto-refresh every 5s | Last updated: <span id="lastUpdated">--</span>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('organismCanvas');
+        const ctx = canvas.getContext('2d');
+        let animationId;
+
+        // System state
+        let state = {
+            disk: 0,
+            cpu: 0,
+            gateway: false,
+            uptime: 0,
+            activeAgents: 0,
+            errors: 0
+        };
+
+        // Colors based on health
+        function healthColor(ratio) {
+            if (ratio < 0.5) return { r: 178, g: 247, b: 187 }; // light green
+            if (ratio < 0.75) return { r: 255, g: 213, b: 79 }; // yellow
+            return { r: 255, g: 107, b: 107 }; // red
+        }
+
+        // Mood emoji based on overall health
+        function getMood() {
+            const health = (state.disk + state.cpu) / 2;
+            if (health < 0.6 && state.gateway) return '😊';
+            if (health < 0.8) return '😐';
+            return '😫';
+        }
+
+        // Resize canvas
+        function resize() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth * window.devicePixelRatio;
+            canvas.height = container.clientHeight * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        // Draw the organism (a blobby round creature)
+        function drawOrganism(time) {
+            const width = canvas.width / window.devicePixelRatio;
+            const height = canvas.height / window.devicePixelRatio;
+            ctx.clearRect(0, 0, width, height);
+
+            // Base size from disk usage (50% -> 100px, 100% -> 200px)
+            const baseRadius = 80 + (state.disk * 80);
+            const cx = width / 2;
+            const cy = height / 2;
+
+            // Breathing effect (slow)
+            const breathe = Math.sin(time / 2000) * 5;
+
+            // Health-based color
+            const color = healthColor((state.disk + state.cpu) / 2);
+
+            // Draw body (blob with slight wobble)
+            ctx.beginPath();
+            const wobble = Math.sin(time / 500) * 3;
+            for (let angle = 0; angle < Math.PI * 2; angle += 0.1) {
+                const r = baseRadius + breathe + Math.sin(angle * 3 + time / 300) * 5;
+                const x = cx + Math.cos(angle) * r;
+                const y = cy + Math.sin(angle) * r;
+                if (angle === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.9)`;
+            ctx.fill();
+            ctx.strokeStyle = `rgba(${color.r-20}, ${color.g-20}, ${color.b-20}, 0.8)`;
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            // Draw face
+            ctx.fillStyle = '#5D4037';
+            ctx.textAlign = 'center';
+            ctx.font = '40px Quicksand';
+
+            // Eyes (look around slightly)
+            const lookX = Math.sin(time / 1000) * 5;
+            const leftEye = { x: cx - 20 + lookX, y: cy - 10 };
+            const rightEye = { x: cx + 20 + lookX, y: cy - 10 };
+            ctx.fillText('ಆ', leftEye.x, leftEye.y);
+            ctx.fillText('ಆ', rightEye.x, rightEye.y);
+
+            // Blush
+            ctx.fillStyle = 'rgba(255, 150, 150, 0.6)';
+            ctx.beginPath();
+            ctx.ellipse(cx - 35, cy + 5, 6, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(cx + 35, cy + 5, 6, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Smile (changes with mood)
+            ctx.font = '30px Quicksand';
+            const mood = getMood();
+            let smile = '‿';
+            if (mood === '😫') smile = '﹏';
+            else if (mood === '😐') smile = '─';
+            ctx.fillText(smile, cx, cy + 30);
+
+            // Draw floating agent friends as tiny bubbles
+            const agentCount = Math.min(state.activeAgents, 10);
+            for (let i = 0; i < agentCount; i++) {
+                const angle = (time / 3000 + i * (Math.PI * 2 / agentCount)) % (Math.PI * 2);
+                const orbitRadius = baseRadius + 30;
+                const ax = cx + Math.cos(angle) * orbitRadius;
+                const ay = cy + Math.sin(angle) * orbitRadius;
+                ctx.beginPath();
+                ctx.arc(ax, ay, 6, 0, Math.PI * 2);
+                ctx.fillStyle = '#D0BFFF';
+                ctx.fill();
+                ctx.strokeStyle = '#B2F2BB';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            // Sweat drops if errors high
+            if (state.errors > 5) {
+                ctx.fillStyle = '#87CEEB';
+                for (let i = 0; i < 3; i++) {
+                    const dropX = cx - 25 - i * 10;
+                    const dropY = cy - 30 + Math.sin(time / 500 + i) * 3;
+                    ctx.beginPath();
+                    ctx.ellipse(dropX, dropY, 3, 5, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Heartbeat animation (when CPU high)
+            if (state.cpu > 0.7) {
+                const hbScale = 1 + Math.sin(time / 200) * 0.3;
+                ctx.save();
+                ctx.translate(20, 20);
+                ctx.scale(hbScale, hbScale);
+                ctx.font = '24px Quicksand';
+                ctx.fillStyle = '#FF6B6B';
+                ctx.fillText('💓', 0, 0);
+                ctx.restore();
+            }
+
+            // Sparkles when healthy
+            if (state.disk < 0.5 && state.cpu < 0.5 && state.gateway) {
+                for (let i = 0; i < 5; i++) {
+                    const sx = cx + Math.cos(time / 1000 + i * 1.5) * (baseRadius + 15);
+                    const sy = cy + Math.sin(time / 1000 + i * 1.5) * (baseRadius + 15);
+                    ctx.font = '12px Quicksand';
+                    ctx.fillText('✦', sx, sy);
+                }
+            }
+        }
+
+        // Animation loop
+        let lastTime = 0;
+        function animate(time) {
+            drawOrganism(time);
+            animationId = requestAnimationFrame(animate);
+        }
+
+        // Fetch data from server
+        async function fetchStats() {
+            try {
+                const res = await fetch('/api/stats');
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                state = data;
+                updateUI();
+            } catch (e) {
+                console.error('Failed to fetch stats:', e);
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('diskUsage').textContent = Math.round(state.disk * 100) + '%';
+            document.getElementById('cpuUsage').textContent = Math.round(state.cpu * 100) + '%';
+            document.getElementById('gatewayStatus').textContent = state.gateway ? '✅ Healthy' : '❌ Down';
+            document.getElementById('uptime').textContent = formatUptime(state.uptime);
+            document.getElementById('agentCount').textContent = state.activeAgents + ' agents active';
+            document.getElementById('mood').textContent = getMood();
+            document.getElementById('lastUpdated').textContent = new Date().toISOString().slice(11, 19) + ' UTC';
+        }
+
+        function formatUptime(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            if (hrs > 0) return `${hrs}h ${mins}m`;
+            if (mins > 0) return `${mins}m ${secs}s`;
+            return `${secs}s`;
+        }
+
+        // Init
+        window.addEventListener('resize', resize);
+        resize();
+        animate(0);
+        fetchStats();
+        setInterval(fetchStats, 5000);
+    </script>
+</body>
+</html>
