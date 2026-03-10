@@ -5504,6 +5504,86 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-reasoning-models-struggle-to-control-their-chains-.md",
       "type": "output",
       "title": "Reasoning Models Struggle to Control their Chains of Thought"
+    },
+    {
+      "id": "5a444e1f-9473-40d9-a5de-bf1440bf6ee8",
+      "type": "seed",
+      "title": "Evolving Medical Imaging Agents via Experience-driven Self-skill Discovery"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "content",
+      "title": "Evolving Medical Imaging Agents via Experience-driven Self-skill Discovery"
+    },
+    {
+      "id": "7a7dc1ee-be73-4384-ae8b-76060388df0a",
+      "type": "seed",
+      "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-the-world-won't-stay-still:-programmable-evolution.md",
+      "type": "output",
+      "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks"
+    },
+    {
+      "id": "bc1bec5e-ea31-4375-a793-8303d810f36a",
+      "type": "seed",
+      "title": "DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-deepfact:-co-evolving-benchmarks-and-agents-for-deep-research-factuality.md",
+      "type": "content",
+      "title": "DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality"
+    },
+    {
+      "id": "4e3a3494-203d-4309-9b85-ca55769b069c",
+      "type": "seed",
+      "title": "An Interactive Multi-Agent System for Evaluation of New Product Concepts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/an-interactive-multi-agent-system-for-evaluation-o-1.py",
+      "type": "app",
+      "title": "An Interactive Multi-Agent System for Evaluation of New Product Concepts"
+    },
+    {
+      "id": "ce9a458b-43aa-478c-aff4-cf339271447f",
+      "type": "seed",
+      "title": "Agentic LLM Planning via Step-Wise PDDL Simulation: An Empirical Characterisation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
+      "type": "content",
+      "title": "Agentic LLM Planning via Step-Wise PDDL Simulation: An Empirical Characterisation"
+    },
+    {
+      "id": "7bc59aed-07c6-4c0a-9dc8-923f63fc4515",
+      "type": "seed",
+      "title": "Aggregative Semantics for Quantitative Bipolar Argumentation Frameworks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/aggregative-semantics-for-quantitative-bipolar-arg.py",
+      "type": "app",
+      "title": "Aggregative Semantics for Quantitative Bipolar Argumentation Frameworks"
+    },
+    {
+      "id": "8967e649-4666-47ca-bf5f-46013aac68ec",
+      "type": "seed",
+      "title": "Offline Materials Optimization with CliqueFlowmer"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/offline-materials-optimization-with-cliqueflowmer.py",
+      "type": "app",
+      "title": "Offline Materials Optimization with CliqueFlowmer"
+    },
+    {
+      "id": "d148766f-86c1-46da-bf39-0e1aea3166aa",
+      "type": "seed",
+      "title": "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-10-verify-as-you-go:-an-llm-powered-browser-extension.md",
+      "type": "output",
+      "title": "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection"
     }
   ],
   "edges": [
@@ -5670,6 +5750,46 @@
     {
       "from": "68b308f0-1c87-45d0-bd0a-d66239a6f0ef",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-reasoning-models-struggle-to-control-their-chains-.md",
+      "type": "produced"
+    },
+    {
+      "from": "5a444e1f-9473-40d9-a5de-bf1440bf6ee8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "produced"
+    },
+    {
+      "from": "7a7dc1ee-be73-4384-ae8b-76060388df0a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-09-the-world-won't-stay-still:-programmable-evolution.md",
+      "type": "produced"
+    },
+    {
+      "from": "bc1bec5e-ea31-4375-a793-8303d810f36a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-deepfact:-co-evolving-benchmarks-and-agents-for-deep-research-factuality.md",
+      "type": "produced"
+    },
+    {
+      "from": "4e3a3494-203d-4309-9b85-ca55769b069c",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/an-interactive-multi-agent-system-for-evaluation-o-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "ce9a458b-43aa-478c-aff4-cf339271447f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-09-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
+      "type": "produced"
+    },
+    {
+      "from": "7bc59aed-07c6-4c0a-9dc8-923f63fc4515",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/aggregative-semantics-for-quantitative-bipolar-arg.py",
+      "type": "produced"
+    },
+    {
+      "from": "8967e649-4666-47ca-bf5f-46013aac68ec",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/offline-materials-optimization-with-cliqueflowmer.py",
+      "type": "produced"
+    },
+    {
+      "from": "d148766f-86c1-46da-bf39-0e1aea3166aa",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-10-verify-as-you-go:-an-llm-powered-browser-extension.md",
       "type": "produced"
     }
   ]
