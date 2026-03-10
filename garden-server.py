@@ -154,17 +154,30 @@ def status():
     else:
         print("Garden Dashboard is NOT running")
 
+def open_browser(page='garden'):
+    url = f"http://localhost:{PORT}/{page}.html"
+    if os.system(f"which xdg-open >/dev/null 2>&1") == 0:
+        os.system(f"xdg-open '{url}'")
+    elif os.system(f"which open >/dev/null 2>&1") == 0:
+        os.system(f"open '{url}'")
+    else:
+        print(f"Please open manually: {url}")
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: garden-server.py {start|stop|status}")
+        print("Usage: garden-server.py {start|stop|status|open [garden|organism]}")
         sys.exit(1)
     cmd = sys.argv[1]
+    page = sys.argv[2] if len(sys.argv) > 2 else 'garden'
     if cmd == "start":
         start()
     elif cmd == "stop":
         stop()
     elif cmd == "status":
         status()
+    elif cmd == "open":
+        open_browser(page)
     else:
         print(f"Unknown command: {cmd}")
+        sys.exit(1)
         sys.exit(1)
