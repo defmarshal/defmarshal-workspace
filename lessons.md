@@ -2,6 +2,11 @@
 
 Recurring patterns, mistakes, and best practices. Load on demand via `memory_search` or direct read when context requires.
 
+## OpenRouter API Issues
+
+- **NoneType strip errors in code-gardener** → Error: `'NoneType' object has no attribute 'strip'` when processing OpenRouter responses. Happens when API returns None or malformed JSON. The code-gardener catches the exception and continues, but generated apps may have missing/incomplete content. Need to add response validation before accessing `.strip()`.
+- **Empty content from OpenRouter** → Some responses return `null` or missing content fields. The code-gardener writes apps anyway, resulting in likely-empty or placeholder apps. Should add explicit check for non-empty content and retry logic with exponential backoff.
+
 ## Memory & Context
 
 - **Voyage rate limits** (3 RPM) → fallback to grep-based search (`./msearch`) for reliability

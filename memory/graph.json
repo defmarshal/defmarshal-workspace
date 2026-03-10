@@ -5584,6 +5584,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-10-verify-as-you-go:-an-llm-powered-browser-extension.md",
       "type": "output",
       "title": "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection"
+    },
+    {
+      "id": "b6a09af5-5e7c-4beb-8884-a6f7085e5b80",
+      "type": "seed",
+      "title": "Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decoding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-10-attention-meets-reachability:-structural-equivalen.md",
+      "type": "output",
+      "title": "Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decoding"
+    },
+    {
+      "id": "500587ec-01da-4318-aa63-ba6845843256",
+      "type": "seed",
+      "title": "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-10-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "content",
+      "title": "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
+    },
+    {
+      "id": "2f4c06c1-5483-4892-9e61-bb7cc32cb79f",
+      "type": "seed",
+      "title": "Safer Reasoning Traces: Measuring and Mitigating Chain-of-Thought Leakage in LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/safer-reasoning-traces_-measuring-and-mitigating-c.py",
+      "type": "app",
+      "title": "Safer Reasoning Traces: Measuring and Mitigating Chain-of-Thought Leakage in LLMs"
     }
   ],
   "edges": [
@@ -5790,6 +5820,21 @@
     {
       "from": "d148766f-86c1-46da-bf39-0e1aea3166aa",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-10-verify-as-you-go:-an-llm-powered-browser-extension.md",
+      "type": "produced"
+    },
+    {
+      "from": "b6a09af5-5e7c-4beb-8884-a6f7085e5b80",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-10-attention-meets-reachability:-structural-equivalen.md",
+      "type": "produced"
+    },
+    {
+      "from": "500587ec-01da-4318-aa63-ba6845843256",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-10-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "produced"
+    },
+    {
+      "from": "2f4c06c1-5483-4892-9e61-bb7cc32cb79f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/safer-reasoning-traces_-measuring-and-mitigating-c.py",
       "type": "produced"
     }
   ]

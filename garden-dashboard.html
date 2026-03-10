@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Garden Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Varela+Round&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', 'Varela Round', 'Inter', sans-serif;
+            background: linear-gradient(135deg, #FFF9FB 0%, #FFE4EC 100%);
+            min-height: 100vh;
+            color: #5D4037;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5D4037;
+            text-shadow: 0 2px 10px rgba(255, 177, 193, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            color: #8B6B5B;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(189, 147, 164, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(189, 147, 164, 0.25);
+        }
+
+        .card.active {
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #FFE4EC;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 6px rgba(255, 177, 193, 0.6));
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #5D4037;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #B2F2BB 0%, #D0BFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #FFE4EC;
+        }
+
+        .stat-detail {
+            text-align: center;
+        }
+
+        .stat-detail-label {
+            font-size: 0.85rem;
+            color: #8B6B5B;
+            margin-bottom: 5px;
+        }
+
+        .stat-detail-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #5D4037;
+        }
+
+        .list-container {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .list-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #FFF9FB 0%, #FFE4EC 100%);
+            border-radius: 12px;
+            border-left: 4px solid #B2F2BB;
+        }
+
+        .list-item.error-item {
+            border-left-color: #FF6B6B;
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE0E0 100%);
+        }
+
+        .list-item-name {
+            font-weight: 600;
+            color: #5D4037;
+            margin-bottom: 4px;
+        }
+
+        .list-item-time {
+            font-size: 0.85rem;
+            color: #8B6B5B;
+        }
+
+        .list-item-error {
+            font-size: 0.85rem;
+            color: #C62828;
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            color: #8B6B5B;
+            font-style: italic;
+        }
+
+        .unavailable {
+            text-align: center;
+            padding: 20px;
+            color: #C62828;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #8B6B5B;
+        }
+
+        .loading::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .refresh-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(189, 147, 164, 0.3);
+            font-size: 0.85rem;
+            color: #8B6B5B;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .refresh-indicator.spinning::before {
+            content: '🔄';
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FFF9FB;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D0BFFF;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B2F2BB;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .stat-value {
+                font-size: 2.5rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>🌸 AI Garden Dashboard 🌸</h1>
+        <div class="last-updated" id="lastUpdated">Last updated: --</div>
+    </header>
+
+    <main class="dashboard-grid">
+        <div class="card active" id="seedsCard">
+            <div class="card-header">
+                <span class="card-icon">🌱</span>
+                <h2 class="card-title">Seeds Gathered Today</h2>
+            </div>
+            <div id="seedsContent">
+                <div class="loading">Loading</div>
+            </div>
+        </div>
+
+        <div class="card active" id="outputsCard">
+            <div class="card-header">
+                <span class="card-icon">🌸</span>
+                <h2 class="card-title">Outputs Produced Today</h2>
+            </div>
+            <div id="outputsContent">
+                <div class="loading">Loading</div>
+            </div>
+        </div>
+
+        <div class="card active" id="graphCard">
+            <div class="card-header">
+                <span class="card-icon">🔗</span>
+                <h2 class="card-title">Graph Statistics</h2>
+            </div>
+            <div id="graphContent">
+                <div class="loading">Loading</div>
+            </div>
+        </div>
+
+        <div class="card" id="cronCard">
+            <div class="card-header">
+                <span class="card-icon">⏰</span>
+                <h2 class="card-title">Upcoming Cron Jobs</h2>
+            </div>
+            <div class="list-container" id="cronContent">
+                <div class="loading">Loading</div>
+            </div>
+        </div>
+
+        <div class="card" id="errorsCard">
+            <div class="card-header">
+                <span class="card-icon">⚠️</span>
+                <h2 class="card-title">Recent Errors</h2>
+            </div>
+            <div class="list-container" id="errorsContent">
+                <div class="loading">Loading</div>
+            </div>
+        </div>
+    </main>
+
+    <div class="refresh-indicator" id="refreshIndicator">
+        Next refresh in <span id="countdown">30</span>s
+    </div>
+
+    <script>
+        const REFRESH_INTERVAL = 30;
+        let countdown = REFRESH_INTERVAL;
+        let graphData = null;
+
+        function getTodayUTC() {
+            const now = new Date();
+            const year = now.getUTCFullYear();
+            const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+            const day = String(now.getUTCDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function formatUTCTime(date) {
+            return date.toLocaleString('en-US', {
+                timeZone: 'UTC',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            }) + ' UTC';
+        }
+
+        function updateLastUpdated() {
+            document.getElementById('lastUpdated').textContent = `Last updated: ${formatUTCTime(new Date())}`;
+        }
+
+        async function fetchText(url) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return await response.text();
+        }
+
+        async function fetchJSON(url) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return await response.json();
+        }
+
+        function renderUnavailable(elementId) {
+            document.getElementById(elementId).innerHTML = '<div class="unavailable">unavailable</div>';
+        }
+
+        function renderLoading(elementId) {
+            document.getElementById(elementId).innerHTML = '<div class="loading">Loading</div>';
+        }
+
+        // Seeds count from seeds.jsonl
+        async function loadSeeds() {
+            const contentEl = document.getElementById('seedsContent');
+            renderLoading('seedsContent');
+            const today = getTodayUTC();
+
+            try {
+                const text = await fetchText('./memory/seeds.jsonl');
+                const lines = text.trim().split('\n').filter(line => line.trim());
+                const todayCount = lines.filter(line => {
+                    try {
+                        const obj = JSON.parse(line);
+                        return obj.ts && obj.ts.includes(today);
+                    } catch {
+                        return false;
+                    }
+                }).length;
+
+                contentEl.innerHTML = `
+                    <div class="stat-value">${todayCount}</div>
+                    <div class="stat-details">
+                        <div class="stat-detail">
+                            <div class="stat-detail-label">Total Records</div>
+                            <div class="stat-detail-value">${lines.length}</div>
+                        </div>
+                    </div>
+                `;
+            } catch (e) {
+                renderUnavailable('seedsContent');
+            }
+        }
+
+        // Outputs count from research/ and content/ directories
+        async function loadOutputs() {
+            const contentEl = document.getElementById('outputsContent');
+            renderLoading('outputsContent');
+            const today = getTodayUTC();
+
+            try {
+                // Try to list directories - this may not work directly, so we'll use a manifest approach
+                // For now, we'll try common patterns
+                let count = 0;
+
+                // Try fetching directory listings or manifest files
+                try {
+                    const researchList = await fetchJSON('./research/.dirlist.json');
+                    count += researchList.filter(f => f.startsWith(today)).length;
+                } catch {
+                    // Try alternative: fetch a generated manifest
+                    try {
+                        const manifest = await fetchJSON('./outputs-manifest.json');
+                        count += manifest.filter(f => 
+                            (f.startsWith('research/') || f.startsWith('content/')) && 
+                            f.split('/').pop().startsWith(today)
+                        ).length;
+                    } catch {
+                        // Fallback: try individual common files
+                        const commonPrefixes = ['report', 'summary', 'analysis', 'notes', 'draft'];
+                        for (const prefix of commonPrefixes) {
+                            try {
+                                await fetchText(`./research/${today}-${prefix}.md`);
+                                count++;
+                            } catch {}
+                            try {
+                                await fetchText(`./content/${today}-${prefix}.md`);
+                                count++;
+                            } catch {}
+                        }
+                    }
+                }
+
+                contentEl.innerHTML = `
+                    <div class="stat-value">${count}</div>
+                    <div class="stat-details">
+                        <div class="stat-detail">
+                            <div class="stat-detail-label">Date</div>
+                            <div class="stat-detail-value">${today}</div>
+                        </div>
+                    </div>
+                `;
+            } catch (e) {
+                renderUnavailable('outputsContent');
+            }
+        }
+
+        // Graph stats from graph.json
+        async function loadGraph() {
+            const contentEl = document.getElementById('graphContent');
+            renderLoading('graphContent');
+
+            try {
+                const graph = await fetchJSON('./memory/graph.json');
+                const nodes = graph.nodes ? graph.nodes.length : (graph.node_count || 0);
+                const edges = graph.edges ? graph.edges.length : (graph.edge_count || 0);
+
+                contentEl.innerHTML = `
+                    <div class="stat-value">${nodes + edges}</div>
+                    <div class="stat-details">
+                        <div class="stat-detail">
+                            <div class="stat-detail-label">Nodes</div>
+                            <div class="stat-detail-value">${nodes}</div>
+                        </div>
+                        <div class="stat-detail">
+                            <div class="stat-detail-label">Edges</div>
+                            <div class="stat-detail-value">${edges}</div>
+                        </div>
+                    </div>
+                `;
+            } catch (e) {
+                renderUnavailable('graphContent');
+            }
+        }
+
+        // Parse cron schedule and compute next run
+        function parseCronSchedule(schedule) {
+            const now = new Date();
+            const sched = schedule.toLowerCase().trim();
+
+            // every Xh pattern
+            const everyMatch = sched.match(/every\s+(\d+)h/);
+            if (everyMatch) {
+                const hours = parseInt(everyMatch[1]);
+                const next = new Date(now.getTime() + hours * 60 * 60 * 1000);
+                return next;
+            }
+
+            // hourly
+            if (sched === 'hourly') {
+                const next = new Date(now);
+                next.setUTCMinutes(0, 0, 0);
+                next.setUTCHours(next.getUTCHours() + 1);
+                return next;
+            }
+
+            // daily HH:MM UTC
+            const dailyMatch = sched.match(/daily\s+(\d{1,2}):(\d{2})\s*(utc)?/);
+            if (dailyMatch) {
+                const hour = parseInt(dailyMatch[1]);
+                const minute = parseInt(dailyMatch[2]);
+                const next = new Date(now);
+                next.setUTCHours(hour, minute, 0, 0);
+                if (next <= now) {
+                    next.setUTCDate(next.getUTCDate() + 1);
+                }
+                return next;
+            }
+
+            // weekly Day HH:MM UTC
+            const weeklyMatch = sched.match(/weekly\s+(\w+)\s+(\d{1,2}):(\d{2})\s*(utc)?/);
+            if (weeklyMatch) {
+                const dayName = weeklyMatch[1].toLowerCase();
+                const hour = parseInt(weeklyMatch[2]);
+                const minute = parseInt(weeklyMatch[3]);
+                const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+                const targetDay = days.indexOf(dayName.slice(0, 3));
+                
+                const next = new Date(now);
+                next.setUTCHours(hour, minute, 0, 0);
+                
+                const currentDay = next.getUTCDay();
+                let daysUntil = targetDay - currentDay;
+                if (daysUntil <= 0 || (daysUntil === 0 && next <= now)) {
+                    daysUntil += 7;
+                }
+                next.setUTCDate(next.getUTCDate() + daysUntil);
+                return next;
+            }
+
+            // manual or unrecognized
+            return null;
+        }
+
+        function formatNextRun(date) {
+            if (!date) return 'manual';
+            return date.toLocaleString('en-US', {
+                timeZone: 'UTC',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            }) + ' UTC';
+        }
+
+        async function loadCronJobs() {
+            const contentEl = document.getElementById('cronContent');
+            renderLoading('cronContent');
+
+            try {
+                const text = await fetchText('./CRON_JOBS.md');
+                const lines = text.split('\n');
+                const jobs = [];
+
+                for (const line of lines) {
+                    // Match patterns like: `job-name` - every 6h
+                    const match = line.match(/`([^`]+)`\s*[-–]\s*(.+)/);
+                    if (match) {
+                        const name = match[1].trim();
+                        const schedule = match[2].trim();
+                        const nextRun = parseCronSchedule(schedule);
+                        jobs.push({ name, schedule, nextRun });
+                    }
+                }
+
+                if (jobs.length === 0) {
+                    contentEl.innerHTML = '<div class="empty-state">No cron jobs found</div>';
+                    return;
+                }
+
+                // Sort by next run time (manual at end)
+                jobs.sort((a, b) => {
+                    if (!a.nextRun && !b.nextRun) return 0;
+                    if (!a.nextRun) return 1;
+                    if (!b.nextRun) return -1;
+                    return a.nextRun - b.nextRun;
+                });
+
+                contentEl.innerHTML = jobs.map(job => `
+                    <div class="list-item">
+                        <div class="list-item-name">${job.name}</div>
+                        <div class="list-item-time">Next: ${formatNextRun(job.nextRun)}</div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                renderUnavailable('cronContent');
+            }
+        }
+
+        async function loadErrors() {
+            const contentEl = document.getElementById('errorsContent');
+            renderLoading('errorsContent');
+
+            try {
+                // Try to fetch log files - we'll try common patterns
+                const logFiles = [
+                    './agents/main.log',
+                    './agents/agent.log',
+                    './agents/error.log'
+                ];
+
+                let allErrors = [];
+
+                for (const logFile of logFiles) {
+                    try {
+                        const text = await fetchText(logFile);
+                        const lines = text.split('\n').slice(-50);
+                        const errors = lines.filter(line => 
+                            /error|failed/i.test(line) && line.trim()
+                        );
+                        allErrors = allErrors.concat(errors.map(e => ({ file: logFile, line: e })));
+                    } catch {
+                        // File doesn't exist, skip
+                    }
+                }
+
+                // Also try a combined errors endpoint
+                if (allErrors.length === 0) {
+                    try {
+                        const text = await fetchText('./agents/errors.log');
+                        const lines = text.split('\n').slice(-50);
+                        const errors = lines.filter(line => 
+                            /error|failed/i.test(line) && line.trim()
+                        );
+                        allErrors = errors.map(e => ({ file: './agents/errors.log', line: e }));
+                    } catch {}
+                }
+
+                if (allErrors.length === 0) {
+                    contentEl.innerHTML = '<div class="empty-state">No recent errors</div>';
+                    return;
+                }
+
+                // Take last 5 and reverse to show newest first
+                const recent = allErrors.slice(-5).reverse();
+
+                contentEl.innerHTML = recent.map(err => {
+                    // Try to extract timestamp
+                    const tsMatch = err.line.match(/(\d{4}-\d{2}-\d{2}[T\s]\d{2}:\d{2}:\d{2})/);
+                    const timestamp = tsMatch ? tsMatch[1] : 'unknown';
+                    return `
+                        <div class="list-item error-item">
+                            <div class="list-item-time">${timestamp}</div>
+                            <div class="list-item-error">${err.line}</div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (e) {
+                renderUnavailable('errorsContent');
+            }
+        }
+
+        async function loadAll() {
+            document.getElementById('refreshIndicator').classList.add('spinning');
+            await Promise.all([
+                loadSeeds(),
+                loadOutputs(),
+                loadGraph(),
+                loadCronJobs(),
+                loadErrors()
+            ]);
+            updateLastUpdated();
+            document.getElementById('refreshIndicator').classList.remove('spinning');
+        }
+
+        function startCountdown() {
+            const countdownEl = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                countdown--;
+                countdownEl.textContent = countdown;
+                if (countdown <= 0) {
+                    countdown = REFRESH_INTERVAL;
+                    loadAll();
+                }
+            }, 1000);
+        }
+
+        // Initial load
+        loadAll();
+        startCountdown();
+    </script>
+</body>
+</html>

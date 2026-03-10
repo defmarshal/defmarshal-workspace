@@ -29,10 +29,10 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 
 ### Current OpenClaw Cron Jobs
 
-1. **workspace-builder**
+2. **workspace-builder**
    - **Schedule**: Every 2 hours (`0 */2 * * *`) in Asia/Bangkok
    - **Payload**: agentTurn with strategic builder prompt
-   - **Model**: `openrouter/stepfun/step-3.5-flash:free`
+   - **Model**: `stepfun/step-3.5-flash:free`
    - **Timeout**: 600 seconds
    - **Description**: Analyzes workspace, implements improvements, validates, commits with `build:` prefix. Runs 24/7.
 
@@ -71,16 +71,19 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 8. **dev-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/dev-cycle.sh >> dev-agent.log 2>&1'`
+   - **Model**: `qwen/qwen3-coder:free`
    - **Description**: Performs one dev-agent cycle (scan workspace, implement utilities, commit with 'dev:' prefix). Includes retry logic for transient OpenRouter rate limits. Reduced from every 20 min to hourly (token optimization, 2026-02-19).
 
 9. **content-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/content-cycle.sh >> content-agent.log 2>&1'`
+   - **Model**: `meta-llama/llama-3.3-70b-instruct:free`
    - **Description**: Performs one content-agent cycle (create anime summaries, tech writeups, digests). Includes retry logic for transient OpenRouter rate limits. Reduced from every 10 min to hourly (token optimization, 2026-02-19).
 
 10. **research-agent-cron**
    - **Schedule**: Hourly between 08:00-22:00 Asia/Bangkok (`0 8-22 * * *`)
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/research-cycle.sh >> research-agent.log 2>&1'`
+   - **Model**: `qwen/qwen3-coder:free`
    - **Description**: Performs one research-agent cycle (conduct research on anime, banking, tech, AI). Includes retry logic for transient OpenRouter rate limits. Reduced from every 15 min to hourly (token optimization, 2026-02-19).
 
 11. **cleanup-downloads-cron**
@@ -191,6 +194,13 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log:** `memory/rotate-logs.log`
    - **Description:** Rotates and compresses memory logs. Compresses files >10MB or older than 1 day to `memory/archive/`, keeping last 1000 lines uncompressed. Uses flock to avoid conflicts with writing processes. Safe for live systems.
 
+32. **linkedin-pa-agent-cron**
+   - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
+   - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/linkedin-pa-agent.sh >> memory/linkedin-pa-agent.log 2>&1'`
+   - **Model:** `qwen/qwen3-coder:free`
+   - **Log:** `memory/linkedin-pa-agent.log`
+   - **Description:** Generates research‑oriented LinkedIn content about IBM Planning Analytics. Produces hourly posts with unique timestamps; rotates through 6 content types (market-positioning, technical-performance, comparative-analysis, implementation-decoder, roadmap-brief, developer-tips). Outputs committed to Git and synced to Obsidian vault. Non‑promotional, focused on knowledge sharing. Uses direct OpenRouter API to avoid cron hangs.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.
@@ -211,11 +221,7 @@ The following cron jobs are currently **disabled** for token conservation (user 
 - **Status:** Disabled
 - **Re-enable:** `openclaw cron enable e2735844`
 
-### linkedin-pa-agent-cron
-- **Schedule:** Hourly (`0 * * * *`) in UTC
-- **Original description:** Generates research‑oriented LinkedIn content about IBM Planning Analytics. Produces hourly posts with unique timestamps; rotates through 5 content types (technical analysis, trends, benchmarks, architecture, industry perspective). Outputs committed to Git and synced to Obsidian vault. Non‑promotional, focused on knowledge sharing.
-- **Status:** Disabled
-- **Re-enable:** `openclaw cron enable 7df39652`
+
 
 ## Maintenance Commands
 

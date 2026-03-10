@@ -53,7 +53,18 @@ STATIC_QUERIES=(
 
 # Dynamic query generation via LLM (preferred) — using direct OpenRouter API
 log "Generating dynamic search query for: $SELECTED_TYPE"
-PROMPT="Generate a concise web search query (max 150 chars) to find authoritative sources (ibm.com, developer.ibm.com, gartner.com, forrester.com) for a LinkedIn post about IBM Planning Analytics: $SELECTED_TYPE. Focus on 2025-2026. Include site: filters. Return ONLY the query string."
+PROMPT="You are a search query generator for IBM Planning Analytics. Your response MUST follow this exact format:
+
+QUERY: <the search query>
+
+Where <the search query> is a Google-style query (20-150 chars) for: $SELECTED_TYPE.
+
+Requirements:
+- Include 'IBM Planning Analytics' or 'TM1'
+- Add site: filters: ibm.com OR developer.ibm.com OR gartner.com OR forrester.com
+- Include year 2025 or 2026
+
+Important: Output ONLY the line starting with 'QUERY: '. No other text."
 
 # Call OpenRouter directly to avoid cron hang
 if [ -z "${OPENROUTER_API_KEY:-}" ]; then
@@ -62,10 +73,11 @@ if [ -z "${OPENROUTER_API_KEY:-}" ]; then
 else
   RESPONSE=$(curl -s -H "Authorization: Bearer $OPENROUTER_API_KEY" \
     -H "Content-Type: application/json" \
-    -d '{"model":"openrouter/stepfun/step-3.5-flash:free","messages":[{"role":"system","content":"You are an analyst-report writer for IBM Planning Analytics."},{"role":"user","content":"'"$PROMPT"'"}],"max_tokens":64}' \
+    -d '{"model":"stepfun/step-3.5-flash:free","messages":[{"role":"system","content":"You are an analyst-report writer for IBM Planning Analytics. Output only the query, no commentary."},{"role":"user","content":"'"$PROMPT"'"},{"role":"assistant","content":"Query:"}],"max_tokens":1024,"temperature":0.3}' \
     "https://openrouter.ai/api/v1/chat/completions")
   DYNAMIC_QUERY=$(echo "$RESPONSE" | jq -r '.choices[0].message.content // empty' 2>/dev/null || echo "")
 fi
+
 # Clean up
 DYNAMIC_QUERY=$(echo "$DYNAMIC_QUERY" | tr -d '\"' | tr -d '\n' | xargs)
 
