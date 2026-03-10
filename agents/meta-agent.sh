@@ -448,35 +448,50 @@ case "${1:-}" in
       ACTIONS+=("create archiver-manager")
     fi
     
-    # Execute actions
-    for act in "${ACTIONS[@]}"; do
-      case "$act" in
-        "disk cleanup")
-          log "Triggering downloads cleanup (dry-run first)"
-          ./quick cleanup-downloads --days 30 >> "$LOGFILE" 2>&1 || true
-          ;;
-        "spawn content-agent")
-          log "Spawning content-agent"
-          openclaw agent --agent main --message "You are the content-agent. Create anime summaries, tech writeups, or daily digests. Check for pending tasks. If none, generate a short daily digest." --thinking low --timeout 600000 >> "$LOGFILE" 2>&1 || true
-          # Update debounce state
-          NOW_EPOCH=$(date +%s)
-          if [ -f "$STATE_FILE" ]; then
-            jq ".content_agent_last_spawn = $NOW_EPOCH" "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE" 2>/dev/null || true
-          else
-            echo "{\"content_agent_last_spawn\": $NOW_EPOCH}" > "$STATE_FILE"
-          fi
-          ;;
-        "spawn research-agent")
-          log "Spawning research-agent"
-          openclaw agent --agent main --message "You are the research-agent. Conduct continuous research on anime, banking, tech, AI. Use web_search, web_fetch, memory tools. Create detailed reports in research/." --thinking low --timeout 600000 >> "$LOGFILE" 2>&1 || true
-          # Update debounce state
-          NOW_EPOCH=$(date +%s)
-          if [ -f "$STATE_FILE" ]; then
-            jq ".research_agent_last_spawn = $NOW_EPOCH" "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE" 2>/dev/null || true
-          else
-            echo "{\"research_agent_last_spawn\": $NOW_EPOCH}" > "$STATE_FILE"
-          fi
-          ;;
+spawn_agent_safe() {
+  local agent_type="$1"
+  local prompt="$2"
+  local log_msg="$3"
+  
+  log "$log_msg"
+  
+  # Check for recent rate limit hits to avoid hammering
+  local RATE_LOCK_FILE="memory/.meta-agent-rate-lock"
+  if [ -f "$RATE_LOCK_FILE" ]; then
+    local lock_age=$(( $(date +%s) - $(stat -c %Y "$RATE_LOCK_FILE") ))
+    if [ $lock_age -lt 1800 ]; then  # 30 minute cooldown after rate limit
+      log "⏸️  Skipping $agent_type spawn — rate limit cooldown active (${lock_age}s old)"
+      return 0
+    else
+      rm -f "$RATE_LOCK_FILE"  # Cooldown expired
+    fi
+  fi
+  
+  # Try to spawn with retry logic
+  local max_retries=2
+  local attempt=1
+  while [ $attempt -le $max_retries ]; do
+    if openclaw agent --agent main --message "$prompt" --thinking low --timeout 600000 >> "$LOGFILE" 2>&1; then
+      log "✅ Spawned $agent_type (attempt $attempt)"
+      return 0
+    else
+      local exit_code=$?
+      # Check if we hit a rate limit (look for 429 in output)
+      if grep -q "rate limit\|429" "$LOGFILE" 2>/dev/null; then
+        log "⚠️  Rate limit detected while spawning $agent_type (attempt $attempt)"
+        touch "$RATE_LOCK_FILE"
+        return 1
+      fi
+      if [ $attempt -eq $max_retries ]; then
+        log "❌ Failed to spawn $agent_type after $max_retries attempts (exit $exit_code)"
+        return 1
+      fi
+      log "↻ Retrying $agent_type in 30s... (attempt $attempt/$max_retries)"
+      sleep 30
+      attempt=$((attempt + 1))
+    fi
+  done
+}
         "create archive-agent")
           create_archive_agent
           ;;
@@ -488,6 +503,26 @@ case "${1:-}" in
           ;;
         "create archiver-manager")
           create_archiver_manager
+          ;;
+        "spawn content-agent")
+          spawn_agent_safe "content-agent" "You are the content-agent. Create anime summaries, tech writeups, or daily digests. Check for pending tasks. If none, generate a short daily digest." "Spawning content-agent"
+          # Update debounce state
+          NOW_EPOCH=$(date +%s)
+          if [ -f "$STATE_FILE" ]; then
+            jq ".content_agent_last_spawn = $NOW_EPOCH" "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE" 2>/dev/null || true
+          else
+            echo "{\"content_agent_last_spawn\": $NOW_EPOCH}" > "$STATE_FILE"
+          fi
+          ;;
+        "spawn research-agent")
+          spawn_agent_safe "research-agent" "You are the research-agent. Conduct continuous research on anime, banking, tech, AI. Use web_search, web_fetch, memory tools. Create detailed reports in research/." "Spawning research-agent"
+          # Update debounce state
+          NOW_EPOCH=$(date +%s)
+          if [ -f "$STATE_FILE" ]; then
+            jq ".research_agent_last_spawn = $NOW_EPOCH" "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE" 2>/dev/null || true
+          else
+            echo "{\"research_agent_last_spawn\": $NOW_EPOCH}" > "$STATE_FILE"
+          fi
           ;;
         "install skill:"*)
           skill="${act#install skill:}"
