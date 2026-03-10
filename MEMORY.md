@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-08*
+*Last updated: 2026-03-10*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -48,4 +48,6 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - Active projects updated; anime-studio-tycoon sub-agent running.
   - Voyage AI rate limits persist; memory learning disabled; local FTS active.
   - Meta-supervisor daemon removed (2026-03-06 08:27); cron-supervisor agent removed (08:45). No more periodic "System Status" broadcasts.
-  - **Elevated Exec Autonomy (2026-03-10):** `mewmew` agent granted full exec permissions (`tools.elevated.enabled: true`, excluded from `approvals.exec.agentFilter`). Enables autonomous system operations without manual approval. Trust-based delegation active.
+  - **Elevated Exec Autonomy (2026-03-10):** `mewmew` agent granted full exec permissions (`tools.elevated.enabled: true`, excluded from `approvals.exec.agentFilter`). Enables autonomous system operations without manual approval.
+  - **Meta-Agent Rate Limit Fix (2026-03-10):** Spawn retry logic + 30m cooldown lock; cron frequency reduced to every 2 hours. Prevents OpenRouter throttling.
+  - **Garden Dashboard Completion (2026-03-10):** Finished integration of `garden-dashboard.html` via `outputs-manifest.json`, `garden-server.py` (port 3002), and `quick garden` commands. Beautiful at-a-glance system overview now live. Tailscale accessible: http://100.108.208.45:3002/garden-dashboard.html.
