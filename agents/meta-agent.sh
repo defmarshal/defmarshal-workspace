@@ -99,6 +99,51 @@ fetch_weather() {
     curl -s "https://wttr.in/${loc}?format=3" 2>/dev/null || echo "Weather: N/A"
   fi
 }
+
+fetch_next_holiday() {
+  # Return next Indonesian holiday in UTC+7
+  # Using memory and known 2026 dates
+  local today="$(date -u -d '+7 hours' '+%Y-%m-%d')"
+  local month="$(date -u -d '+7 hours' '+%m')"
+  local day="$(date -u -d '+7 hours' '+%d')"
+  
+  # Known 2026 holidays (format: YYYY-MM-DD|Name)
+  declare -A HOLIDAYS=(
+    ["2026-03-18"]="Joint Holiday for Bali's Day of Silence (Nyepi)"
+    ["2026-03-19"]="Bali's Day of Silence and Hindu New Year (Nyepi)"
+    ["2026-03-20"]="Idul Fitri Joint Holiday"
+    ["2026-03-21"]="Idul Fitri (Tentative Date)"
+    ["2026-03-22"]="Idul Fitri Holiday"
+    ["2026-03-23"]="Idul Fitri Joint Holiday"
+    ["2026-03-24"]="Idul Fitri Joint Holiday"
+    ["2026-04-03"]="Good Friday"
+    ["2026-04-05"]="Easter Sunday"
+    ["2026-05-01"]="International Labor Day"
+    ["2026-05-14"]="Ascension Day of Jesus Christ"
+    ["2026-05-15"]="Joint Holiday after Ascension Day"
+    ["2026-05-27"]="Idul Adha (Tentative Date)"
+    ["2026-05-28"]="Joint Holiday for Idul Adha"
+    ["2026-05-31"]="Waisak Day (Buddha's Anniversary)"
+    ["2026-08-17"]="Indonesian Independence Day"
+  )
+  
+  # Find next holiday
+  for (( days=0; days<365; days++ )); do
+    check="$(date -u -d "+7 hours $days days" '+%Y-%m-%d')"
+    if [[ -n "${HOLIDAYS[$check]}" ]]; then
+      # If today, show today; else show date
+      if [ "$days" -eq 0 ]; then
+        echo "${HOLIDAYS[$check]} (today)"
+      else
+        echo "${HOLIDAYS[$check]} ($(date -u -d "+7 hours $days days" '+%d %b %Y'))"
+      fi
+      return 0
+    fi
+  done
+  
+  echo "No upcoming holidays known"
+}
+
   
   echo "declare -A FEEDBACK_ADJUST=("
   for agent in "${!ADJUSTMENTS[@]}"; do
@@ -493,8 +538,9 @@ case "${1:-}" in
       AGENTS_STATUS="nominal"
       # Fetch weather
       WEATHER_LINE=$(fetch_weather)
+  HOLIDAY_LINE=$(fetch_next_holiday)
       # Build concise, informative summary
-      SUMMARY="🕐 Meta-Agent $(date -u '+%H:%M UTC') — System Status\n"
+      SUMMARY="🕐 Meta-Agent $(date -d "+7 hours" '+%H:%M UTC') — System Status\n"
       SUMMARY+="• Disk: ${DISK_USAGE}%\n"
       SUMMARY+="• APT: ${APT_COUNT:-0} updates\n"
       SUMMARY+="• Gateway: $GATEWAY_STATUS\n"
@@ -502,6 +548,9 @@ case "${1:-}" in
       SUMMARY+="• Content: ${CONTENT_TODAY:-0} | Research: ${RESEARCH_TODAY:-0}\n"
       if [ -n "$WEATHER_LINE" ]; then
         SUMMARY+="• Weather: $WEATHER_LINE\n"
+      fi
+      if [ -n "$HOLIDAY_LINE" ]; then
+        SUMMARY+="• Holiday: $HOLIDAY_LINE\n"
       fi
       if [ ${#ACTIONS[@]} -gt 0 ]; then
         SUMMARY+="• Actions: ${ACTIONS[*]}\n"
