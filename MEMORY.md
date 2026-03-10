@@ -48,3 +48,4 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - Active projects updated; anime-studio-tycoon sub-agent running.
   - Voyage AI rate limits persist; memory learning disabled; local FTS active.
   - Meta-supervisor daemon removed (2026-03-06 08:27); cron-supervisor agent removed (08:45). No more periodic "System Status" broadcasts.
+  - **Elevated Exec Autonomy (2026-03-10):** `mewmew` agent granted full exec permissions (`tools.elevated.enabled: true`, excluded from `approvals.exec.agentFilter`). Enables autonomous system operations without manual approval. Trust-based delegation active.
