@@ -138,11 +138,12 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Description**: Monitors cron failures, disk usage, gateway status; sends Telegram alerts when thresholds exceeded. Focused on alerting only.
 
 22. **meta-agent-cron**
-    - **Schedule**: Every hour (`0 * * * *`) in Asia/Bangkok
-    - **Payload**: agentTurn executing `./agents/meta-agent.sh --once`
+    - **Schedule**: Every 2 hours (`0 */2 * * *`) in UTC
+    - **Implementation**: System crontab (`crontab -l`) running `./agents/meta-agent.sh --once`
     - **Log**: `memory/meta-agent.log`
-    - **Delivery**: `announce` (summary of actions taken)
+    - **Delivery**: None (previously Telegram announcements; suppressed to avoid OpenRouter rate limits)
     - **Description**: Autonomous planner that observes system health, decides on maintenance/improvement actions, spawns sub‑agents to execute them, validates outcomes, and commits changes with `meta:` prefix. Core of the self‑extending system.
+    - **Notes**: Migrated from `agentTurn` to system cron on 2026-03-10 to eliminate unnecessary OpenRouter API usage. Child agent spawns use `openclaw agent` with rate limit backoff (`spawn_agent_safe`).
 
 24. **idea-generator-cron**
     - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
