@@ -325,6 +325,23 @@ case "$cmd" in
   web)
     python3 "$WORKSPACE/web-dashboard.py"
     ;;
+  garden)
+    # Garden Dashboard: start|stop|status|open [url]
+    subcmd="${2:-status}"
+    case "$subcmd" in
+      start|stop|status|open)
+        python3 "$WORKSPACE/garden-server.py" "$subcmd" "${3:-}"
+        ;;
+      *)
+        echo "Usage: quick garden {start|stop|status|open [url]}"
+        echo "  start  - launch garden dashboard server (detaches)"
+        echo "  stop   - stop garden dashboard server"
+        echo "  status - check if running"
+        echo "  open   - open browser to garden dashboard (default http://localhost:3001/garden-dashboard.html)"
+        exit 1
+        ;;
+    esac
+    ;;
   mem|memory)
     # Human-friendly output when in terminal, JSON when piped
     if [ -t 1 ]; then
