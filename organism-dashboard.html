@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Organism 🌸</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>✧ System Neko-chan ✧</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,37 +13,61 @@
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(135deg, #FFF9FB 0%, #FFE4EC 100%);
+            font-family: 'Quicksand', 'Varela Round', sans-serif;
+            background: linear-gradient(180deg, #FFF9FB 0%, #FFE4EC 50%, #FFF0F5 100%);
             min-height: 100vh;
             color: #5D4037;
             padding: 20px;
             overflow-x: hidden;
         }
 
+        /* Floating clouds background */
+        .cloud {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(255, 182, 193, 0.4);
+            pointer-events: none;
+            z-index: 0;
+            animation: drift 60s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .cloud:nth-child(1) { top: 10%; left: -100px; width: 80px; height: 30px; opacity: 0.6; }
+        .cloud:nth-child(2) { top: 30%; left: -150px; width: 120px; height: 40px; opacity: 0.4; animation-duration: 80s; }
+        .cloud:nth-child(3) { top: 60%; left: -80px; width: 60px; height: 20px; opacity: 0.5; animation-duration: 100s; }
+
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            color: #5D4037;
-            text-shadow: 0 2px 10px rgba(255, 177, 193, 0.5);
+            font-size: 2.2rem;
+            color: #E91E63;
+            text-shadow: 0 2px 12px rgba(233, 30, 99, 0.25);
             margin-bottom: 5px;
         }
 
         .subtitle {
-            color: #8B6B5B;
+            color: #9C6595;
             font-size: 1rem;
+            font-weight: 500;
         }
 
         .organism-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             position: relative;
-            aspect-ratio: 16/9;
+            aspect-ratio: 1/1;
+            z-index: 1;
         }
 
         #organismCanvas {
@@ -52,129 +76,128 @@
         }
 
         .stats-panel {
-            max-width: 800px;
+            max-width: 700px;
             margin: 20px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            position: relative;
+            z-index: 1;
         }
 
         .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(189, 147, 164, 0.15);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 15px 10px;
+            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.15);
             text-align: center;
+            border: 2px solid rgba(255, 182, 193, 0.5);
         }
 
         .stat-label {
-            font-size: 0.85rem;
-            color: #8B6B5B;
-            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #9C6595;
+            margin-bottom: 6px;
         }
 
         .stat-value {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #5D4037;
+            color: #E91E63;
         }
 
-        .sparkle {
+        .heart-particle {
             position: absolute;
             pointer-events: none;
-            animation: float 3s ease-in-out infinite;
-            font-size: 1.5rem;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(10deg); }
-        }
-
-        .mood-indicator {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5rem;
-        }
-
-        .heartbeat {
-            position: absolute;
-            top: 20px;
-            left: 20px;
             font-size: 1.2rem;
-            color: #FF6B6B;
+            animation: floatUp 2s ease-out forwards;
+            z-index: 10;
         }
 
-        .agent-count {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.8);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-50px) scale(0); opacity: 0; }
         }
 
         .refresh-info {
             text-align: center;
-            margin-top: 10px;
-            color: #8B6B5B;
+            margin-top: 15px;
+            color: #9C6595;
             font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Responsive */
+        .tooltip {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            border: 2px solid #FFB6C1;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            color: #5D4037;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
         @media (max-width: 600px) {
             .header h1 { font-size: 1.8rem; }
-            .organism-container { aspect-ratio: 4/3; }
+            .organism-container { aspect-ratio: 4/4; }
         }
     </style>
 </head>
 <body>
+    <!-- Background clouds -->
+    <div class="cloud" style="animation-delay: 0s;"></div>
+    <div class="cloud" style="animation-delay: -20s;"></div>
+    <div class="cloud" style="animation-delay: -40s;"></div>
+
     <div class="header">
-        <h1>🌸 System Organism 🌸</h1>
-        <div class="subtitle">Your server, alive and kawaii! (๑•̀ㅂ•́)و✧</div>
+        <h1>(◕‿◕)♡ System Neko-chan</h1>
+        <div class="subtitle">Your server is alive and full of sparkles! ✧</div>
     </div>
 
-    <div class="organism-container">
+    <div class="organism-container" id="organismContainer">
         <canvas id="organismCanvas"></canvas>
-        <div class="mood-indicator" id="mood">😊</div>
-        <div class="heartbeat" id="heartbeat">💓</div>
-        <div class="agent-count" id="agentCount">🫧 0 agents</div>
     </div>
 
     <div class="stats-panel">
         <div class="stat-card">
-            <div class="stat-label">Disk Usage</div>
+            <div class="stat-label">💾 Disk</div>
             <div class="stat-value" id="diskUsage">--%</div>
         </div>
         <div class="stat-card">
-            <div class="stat-label">CPU Usage</div>
+            <div class="stat-label">🧠 CPU</div>
             <div class="stat-value" id="cpuUsage">--%</div>
         </div>
         <div class="stat-card">
-            <div class="stat-label">Gateway</div>
+            <div class="stat-label">🌐 Gateway</div>
             <div class="stat-value" id="gatewayStatus">--</div>
         </div>
         <div class="stat-card">
-            <div class="stat-label">Uptime</div>
+            <div class="stat-label">⏰ Uptime</div>
             <div class="stat-value" id="uptime">--</div>
         </div>
     </div>
 
     <div class="refresh-info">
-        Auto-refresh every 5s | Last updated: <span id="lastUpdated">--</span>
+        Refreshing every 5s... Last: <span id="lastUpdated">--</span>
     </div>
+
+    <div class="tooltip" id="tooltip"></div>
 
     <script>
         const canvas = document.getElementById('organismCanvas');
         const ctx = canvas.getContext('2d');
+        const container = document.getElementById('organismContainer');
+        const tooltip = document.getElementById('tooltip');
         let animationId;
 
-        // System state
+        // State
         let state = {
             disk: 0,
             cpu: 0,
@@ -184,151 +207,261 @@
             errors: 0
         };
 
-        // Colors based on health
-        function healthColor(ratio) {
-            if (ratio < 0.5) return { r: 178, g: 247, b: 187 }; // light green
-            if (ratio < 0.75) return { r: 255, g: 213, b: 79 }; // yellow
-            return { r: 255, g: 107, b: 107 }; // red
-        }
+        // Kawaii color palettes
+        const PASTEL_PALETTE = [
+            { r: 255, g: 183, b: 178 }, // pink
+            { r: 255, g: 218, b: 185 }, // peach
+            { r: 221, g: 240, b: 255 }, // light blue
+            { r: 255, g: 242, b: 204 }, // cream
+            { r: 230, g: 230, b: 250 }, // lavender
+        ];
 
-        // Mood emoji based on overall health
-        function getMood() {
-            const health = (state.disk + state.cpu) / 2;
-            if (health < 0.6 && state.gateway) return '😊';
-            if (health < 0.8) return '😐';
-            return '😫';
-        }
+        const MOOD_FACES = {
+            happy: { eyes: '^ω^', mouth: '‿', blush: true },
+            neutral: { eyes: '◕‿◕', mouth: '─', blush: false },
+            stressed: { eyes: '⊙﹏⊙', mouth: '﹏', blush: false }
+        };
 
         // Resize canvas
         function resize() {
-            const container = canvas.parentElement;
-            canvas.width = container.clientWidth * window.devicePixelRatio;
-            canvas.height = container.clientHeight * window.devicePixelRatio;
-            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            const dpr = window.devicePixelRatio || 1;
+            const rect = container.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
         }
 
-        // Draw the organism (a blobby round creature)
-        function drawOrganism(time) {
-            const width = canvas.width / window.devicePixelRatio;
-            const height = canvas.height / window.devicePixelRatio;
-            ctx.clearRect(0, 0, width, height);
-
-            // Base size from disk usage (50% -> 100px, 100% -> 200px)
-            const baseRadius = 80 + (state.disk * 80);
+        // Draw fluffy gradient body
+        function drawBody(time, health) {
+            const width = canvas.width / (window.devicePixelRatio || 1);
+            const height = canvas.height / (window.devicePixelRatio || 1);
             const cx = width / 2;
-            const cy = height / 2;
+            const cy = height * 0.55;
 
-            // Breathing effect (slow)
-            const breathe = Math.sin(time / 2000) * 5;
+            // Base size from disk usage (0.4 → 0.8 relative)
+            const baseRadius = width * (0.25 + state.disk * 0.25);
 
-            // Health-based color
-            const color = healthColor((state.disk + state.cpu) / 2);
+            // Breathing animation
+            const breathe = Math.sin(time / 1500) * 3;
 
-            // Draw body (blob with slight wobble)
+            // Choose two pastel colors for gradient
+            const color1 = PASTEL_PALETTE[0];
+            const color2 = PASTEL_PALETTE[2];
+
+            // Draw fluffy body with gradient
+            ctx.save();
+            ctx.translate(cx, cy);
+
+            // Outer glow when healthy
+            if (state.disk < 0.5 && state.cpu < 0.5 && state.gateway) {
+                const glowRadius = baseRadius + 15 + Math.sin(time / 500) * 3;
+                const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, glowRadius);
+                grad.addColorStop(0, 'rgba(255, 182, 193, 0.4)');
+                grad.addColorStop(1, 'rgba(255, 182, 193, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(0, 0, glowRadius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Main body (blobby shape)
             ctx.beginPath();
-            const wobble = Math.sin(time / 500) * 3;
-            for (let angle = 0; angle < Math.PI * 2; angle += 0.1) {
-                const r = baseRadius + breathe + Math.sin(angle * 3 + time / 300) * 5;
-                const x = cx + Math.cos(angle) * r;
-                const y = cy + Math.sin(angle) * r;
+            for (let angle = 0; angle < Math.PI * 2; angle += 0.08) {
+                const wobble = Math.sin(angle * 4 + time / 400) * 4;
+                const r = baseRadius + breathe + wobble;
+                const x = Math.cos(angle) * r;
+                const y = Math.sin(angle) * r * 0.9; // slightly squished vertically
                 if (angle === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
             }
             ctx.closePath();
-            ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.9)`;
+
+            const bodyGrad = ctx.createRadialGradient(-baseRadius*0.3, -baseRadius*0.3, 0, 0, 0, baseRadius);
+            bodyGrad.addColorStop(0, `rgb(${color1.r}, ${color1.g}, ${color1.b})`);
+            bodyGrad.addColorStop(1, `rgb(${color2.r}, ${color2.g}, ${color2.b})`);
+
+            ctx.fillStyle = bodyGrad;
             ctx.fill();
-            ctx.strokeStyle = `rgba(${color.r-20}, ${color.g-20}, ${color.b-20}, 0.8)`;
+            ctx.strokeStyle = 'rgba(233, 30, 99, 0.4)';
             ctx.lineWidth = 3;
             ctx.stroke();
 
-            // Draw face
+            ctx.restore();
+
+            return { cx, cy, baseRadius, breathe };
+        }
+
+        // Draw cute face
+        function drawFace(cx, cy, baseRadius, time) {
+            ctx.save();
+            ctx.translate(cx, cy);
+
+            // Eye whites (large circles)
+            ctx.fillStyle = 'white';
+            const eyeSize = baseRadius * 0.18;
+            const eyeY = -baseRadius * 0.15;
+
+            // Blink occasionally
+            const blink = Math.sin(time / 2000) > 0.95 ? 0.1 : 1;
+
+            // Left eye
+            ctx.beginPath();
+            ctx.ellipse(-baseRadius * 0.2, eyeY, eyeSize, eyeSize * blink, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#5D4037';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Right eye
+            ctx.beginPath();
+            ctx.ellipse(baseRadius * 0.2, eyeY, eyeSize, eyeSize * blink, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Pupils (look around)
+            const lookX = Math.sin(time / 3000) * 3;
+            const lookY = Math.cos(time / 2500) * 2;
             ctx.fillStyle = '#5D4037';
-            ctx.textAlign = 'center';
-            ctx.font = '40px Quicksand';
-
-            // Eyes (look around slightly)
-            const lookX = Math.sin(time / 1000) * 5;
-            const leftEye = { x: cx - 20 + lookX, y: cy - 10 };
-            const rightEye = { x: cx + 20 + lookX, y: cy - 10 };
-            ctx.fillText('ಆ', leftEye.x, leftEye.y);
-            ctx.fillText('ಆ', rightEye.x, rightEye.y);
-
-            // Blush
-            ctx.fillStyle = 'rgba(255, 150, 150, 0.6)';
             ctx.beginPath();
-            ctx.ellipse(cx - 35, cy + 5, 6, 4, 0, 0, Math.PI * 2);
+            ctx.arc(-baseRadius * 0.2 + lookX, eyeY + lookY, eyeSize * 0.5, 0, Math.PI * 2);
             ctx.fill();
             ctx.beginPath();
-            ctx.ellipse(cx + 35, cy + 5, 6, 4, 0, 0, Math.PI * 2);
+            ctx.arc(baseRadius * 0.2 + lookX, eyeY + lookY, eyeSize * 0.5, 0, Math.PI * 2);
             ctx.fill();
 
-            // Smile (changes with mood)
-            ctx.font = '30px Quicksand';
-            const mood = getMood();
-            let smile = '‿';
-            if (mood === '😫') smile = '﹏';
-            else if (mood === '😐') smile = '─';
-            ctx.fillText(smile, cx, cy + 30);
+            // Eye shine (kawaii sparkle)
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(-baseRadius * 0.2 + lookX + 2, eyeY + lookY - 2, eyeSize * 0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(baseRadius * 0.2 + lookX + 2, eyeY + lookY - 2, eyeSize * 0.2, 0, Math.PI * 2);
+            ctx.fill();
 
-            // Draw floating agent friends as tiny bubbles
-            const agentCount = Math.min(state.activeAgents, 10);
-            for (let i = 0; i < agentCount; i++) {
-                const angle = (time / 3000 + i * (Math.PI * 2 / agentCount)) % (Math.PI * 2);
-                const orbitRadius = baseRadius + 30;
-                const ax = cx + Math.cos(angle) * orbitRadius;
-                const ay = cy + Math.sin(angle) * orbitRadius;
+            // Rosy cheeks
+            if (state.disk < 0.7) {
+                ctx.fillStyle = 'rgba(255, 150, 180, 0.5)';
                 ctx.beginPath();
-                ctx.arc(ax, ay, 6, 0, Math.PI * 2);
-                ctx.fillStyle = '#D0BFFF';
+                ctx.ellipse(-baseRadius * 0.35, baseRadius * 0.05, 6, 4, 0, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.strokeStyle = '#B2F2BB';
-                ctx.lineWidth = 2;
-                ctx.stroke();
+                ctx.beginPath();
+                ctx.ellipse(baseRadius * 0.35, baseRadius * 0.05, 6, 4, 0, 0, Math.PI * 2);
+                ctx.fill();
             }
 
-            // Sweat drops if errors high
-            if (state.errors > 5) {
+            // Smiling mouth
+            ctx.font = `${baseRadius * 0.35}px "Varela Round"`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            const mood = getMood();
+            let mouth = '‿';
+            if (mood === 'stressed') mouth = '﹏';
+            else if (mood === 'neutral') mouth = '─';
+            ctx.fillStyle = '#5D4037';
+            ctx.fillText(mouth, 0, baseRadius * 0.25);
+
+            // Antenna with star
+            const antennaWiggle = Math.sin(time / 800) * 0.1;
+            ctx.save();
+            ctx.translate(0, -baseRadius * 0.85);
+            ctx.rotate(antennaWiggle);
+            ctx.strokeStyle = '#5D4037';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, -baseRadius * 0.3);
+            ctx.stroke();
+            // Star on top
+            ctx.fillStyle = '#FFD700';
+            ctx.font = `${baseRadius * 0.2}px Arial`;
+            ctx.fillText('★', 0, -baseRadius * 0.32);
+            ctx.restore();
+
+            ctx.restore();
+        }
+
+        // Draw floating agent bubbles
+        function drawAgents(cx, cy, baseRadius, time) {
+            const count = Math.min(state.activeAgents, 8);
+            for (let i = 0; i < count; i++) {
+                const angle = (time / 4000 + i * (Math.PI * 2 / count)) % (Math.PI * 2);
+                const orbitRadius = baseRadius + 20 + Math.sin(time / 1000 + i) * 5;
+                const ax = cx + Math.cos(angle) * orbitRadius;
+                const ay = cy + Math.sin(angle) * orbitRadius;
+                const size = 4 + Math.sin(time / 500 + i) * 1;
+
+                ctx.beginPath();
+                ctx.arc(ax, ay, size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 182, 193, 0.7)';
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(233, 30, 99, 0.5)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        }
+
+        // Draw hearts when happy
+        function drawHearts(cx, cy, baseRadius, time) {
+            if (state.disk < 0.5 && state.cpu < 0.5 && state.gateway) {
+                for (let i = 0; i < 5; i++) {
+                    const angle = (time / 3000 + i * 1.5) % (Math.PI * 2);
+                    const distance = baseRadius + 30 + Math.sin(time / 2000 + i) * 5;
+                    const hx = cx + Math.cos(angle) * distance;
+                    const hy = cy + Math.sin(angle) * distance;
+                    const size = 8 + Math.sin(time / 800 + i) * 2;
+
+                    ctx.save();
+                    ctx.translate(hx, hy);
+                    ctx.rotate(time / 2000 + i);
+                    ctx.font = `${size}px Arial`;
+                    ctx.fillStyle = '#FF69B4';
+                    ctx.fillText('❤', 0, 0);
+                    ctx.restore();
+                }
+            }
+        }
+
+        // Draw sweat drops if stressed
+        function drawStress(cx, cy, baseRadius, time) {
+            if (state.errors > 3 || (state.disk > 0.8 || state.cpu > 0.9)) {
                 ctx.fillStyle = '#87CEEB';
                 for (let i = 0; i < 3; i++) {
-                    const dropX = cx - 25 - i * 10;
-                    const dropY = cy - 30 + Math.sin(time / 500 + i) * 3;
+                    const dropX = cx - 25 - i * 12;
+                    const dropY = cy - baseRadius * 0.5 + Math.sin(time / 500 + i) * 3;
                     ctx.beginPath();
-                    ctx.ellipse(dropX, dropY, 3, 5, 0, 0, Math.PI * 2);
+                    ctx.ellipse(dropX, dropY, 3, 6, 0, 0, Math.PI * 2);
                     ctx.fill();
                 }
             }
-
-            // Heartbeat animation (when CPU high)
-            if (state.cpu > 0.7) {
-                const hbScale = 1 + Math.sin(time / 200) * 0.3;
-                ctx.save();
-                ctx.translate(20, 20);
-                ctx.scale(hbScale, hbScale);
-                ctx.font = '24px Quicksand';
-                ctx.fillStyle = '#FF6B6B';
-                ctx.fillText('💓', 0, 0);
-                ctx.restore();
-            }
-
-            // Sparkles when healthy
-            if (state.disk < 0.5 && state.cpu < 0.5 && state.gateway) {
-                for (let i = 0; i < 5; i++) {
-                    const sx = cx + Math.cos(time / 1000 + i * 1.5) * (baseRadius + 15);
-                    const sy = cy + Math.sin(time / 1000 + i * 1.5) * (baseRadius + 15);
-                    ctx.font = '12px Quicksand';
-                    ctx.fillText('✦', sx, sy);
-                }
-            }
         }
 
-        // Animation loop
-        let lastTime = 0;
-        function animate(time) {
-            drawOrganism(time);
-            animationId = requestAnimationFrame(animate);
+        function getMood() {
+            const health = (state.disk + state.cpu) / 2;
+            if (health < 0.6 && state.gateway) return 'happy';
+            if (health < 0.8) return 'neutral';
+            return 'stressed';
         }
 
-        // Fetch data from server
+        function draw(time) {
+            const width = canvas.width / (window.devicePixelRatio || 1);
+            const height = canvas.height / (window.devicePixelRatio || 1);
+            ctx.clearRect(0, 0, width, height);
+
+            const cx = width / 2;
+            const cy = height / 2;
+
+            const body = drawBody(time, (state.disk + state.cpu) / 2);
+            const { baseRadius, breathe, cx: bodyX, cy: bodyY } = body;
+
+            drawAgents(bodyX, bodyY, baseRadius, time);
+            drawHearts(bodyX, bodyY, baseRadius, time);
+            drawFace(bodyX, bodyY, baseRadius, time);
+            drawStress(bodyX, bodyY, baseRadius, time);
+
+            animationId = requestAnimationFrame(draw);
+        }
+
+        // Fetch stats
         async function fetchStats() {
             try {
                 const res = await fetch('/api/stats');
@@ -337,33 +470,74 @@
                 state = data;
                 updateUI();
             } catch (e) {
-                console.error('Failed to fetch stats:', e);
+                console.error('Stats fetch failed:', e);
             }
         }
 
         function updateUI() {
             document.getElementById('diskUsage').textContent = Math.round(state.disk * 100) + '%';
             document.getElementById('cpuUsage').textContent = Math.round(state.cpu * 100) + '%';
-            document.getElementById('gatewayStatus').textContent = state.gateway ? '✅ Healthy' : '❌ Down';
+            document.getElementById('gatewayStatus').textContent = state.gateway ? '💚 Healthy' : '💔 Down';
             document.getElementById('uptime').textContent = formatUptime(state.uptime);
-            document.getElementById('agentCount').textContent = state.activeAgents + ' agents active';
-            document.getElementById('mood').textContent = getMood();
-            document.getElementById('lastUpdated').textContent = new Date().toISOString().slice(11, 19) + ' UTC';
+            document.getElementById('agentCount').textContent = state.activeAgents + ' agent friends';
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+            // Spawn heart particles on click if happy
+            if (state.disk < 0.5 && state.cpu < 0.5 && state.gateway) {
+                maybeSpawnHeart();
+            }
         }
 
         function formatUptime(seconds) {
             const hrs = Math.floor(seconds / 3600);
             const mins = Math.floor((seconds % 3600) / 60);
-            const secs = seconds % 60;
             if (hrs > 0) return `${hrs}h ${mins}m`;
-            if (mins > 0) return `${mins}m ${secs}s`;
-            return `${secs}s`;
+            return `${mins}m`;
         }
+
+        let lastHeartTime = 0;
+        function maybeSpawnHeart() {
+            const now = Date.now();
+            if (now - lastHeartTime < 500) return;
+            if (Math.random() < 0.3) {
+                spawnHeart();
+                lastHeartTime = now;
+            }
+        }
+
+        function spawnHeart() {
+            const rect = container.getBoundingClientRect();
+            const x = rect.left + rect.width * 0.2 + Math.random() * rect.width * 0.6;
+            const y = rect.top + rect.height * 0.3 + Math.random() * rect.height * 0.4;
+            const heart = document.createElement('div');
+            heart.className = 'heart-particle';
+            heart.textContent = '❤';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 2000);
+        }
+
+        // Click to spawn extra hearts
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX;
+            const y = e.clientY;
+            for (let i = 0; i < 5; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-particle';
+                heart.textContent = ['❤', '✨', '💖', '🌸'][Math.floor(Math.random() * 4)];
+                heart.style.left = (x + Math.random() * 40 - 20) + 'px';
+                heart.style.top = (y + Math.random() * 40 - 20) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        });
 
         // Init
         window.addEventListener('resize', resize);
         resize();
-        animate(0);
+        draw(0);
         fetchStats();
         setInterval(fetchStats, 5000);
     </script>
