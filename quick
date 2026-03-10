@@ -343,18 +343,21 @@ case "$cmd" in
     esac
     ;;
   organism)
-    # Organism Dashboard: start|stop|status|open [url]
+    # Organism Dashboard: start|stop|status|open
     subcmd="${2:-status}"
     case "$subcmd" in
-      start|stop|status|open)
-        python3 "$WORKSPACE/garden-server.py" "$subcmd" "${3:-}"
+      start|stop|status)
+        python3 "$WORKSPACE/garden-server.py" "$subcmd"
+        ;;
+      open)
+        python3 "$WORKSPACE/garden-server.py" "open" "organism"
         ;;
       *)
-        echo "Usage: quick organism {start|stop|status|open [url]}"
+        echo "Usage: quick organism {start|stop|status|open}"
         echo "  start  - launch organism dashboard (same server as garden)"
         echo "  stop   - stop organism dashboard"
         echo "  status - check if running"
-        echo "  open   - open browser to organism dashboard (default http://localhost:3002/organism-dashboard.html)"
+        echo "  open   - open browser to organism dashboard"
         exit 1
         ;;
     esac
