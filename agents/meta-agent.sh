@@ -3,6 +3,9 @@
 # Modes: --once (one-shot), --daemon (loop hourly), --status (show last report)
 
 set -euo pipefail
+
+# Ensure OpenClaw CLI is in PATH
+export PATH="$HOME/.npm-global/bin:$PATH"
 cd /home/ubuntu/.openclaw/workspace
 
 LOGFILE="memory/meta-agent.log"

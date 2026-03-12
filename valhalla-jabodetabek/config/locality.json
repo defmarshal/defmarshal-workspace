@@ -1,0 +1,9 @@
+{
+  "localities": [
+    {
+      "name": "ID",
+      "drive_on_right": false,
+      "internal": false
+    }
+  ]
+}

@@ -1,10 +1,28 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-09 22:00 UTC
+**Last updated**: 2026-03-12 11:48 UTC
+
+## 🔄 Currently Running Agents
+
+**Research Gardener** (02:06 UTC — in progress)
+- Triggered by cron: `research-gardener-cron`
+- Processing next unprocessed seed from queue
+- Log: `memory/research-gardener.log`
+
+**Content Gardener** (03:04 UTC — in progress)
+- Triggered by cron: `content-gardener-cron`
+- Processing seeds from queue to generate content
+- Log: `memory/content-gardener.log`
 
 ## ✅ Completed Agents (today)
 
-**Research Gardener** (09:04–20:01 UTC)
+**Research Gardener** (00:00–01:06 UTC)
+- Generated 2 research reports:
+  - Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection
+  - Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decoding
+- All reports deployed to `research/` directory.
+
+**Research Gardener** (09:04–20:01 UTC, Mar 9)
 - Generated 6 research reports:
   - Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy
   - DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality
@@ -13,6 +31,11 @@
   - Reasoning Models Struggle to Control their Chains of Thought
   - The World Won't Stay Still: Programmable Evolution for Agent Benchmarks
 - All reports deployed to `research/` directory.
+
+**Code Gardener** (11:48 UTC)
+- Processed seed: "Push for $40 smartphones builds momentum, but still faces cost hurdles"
+- Generated app: `apps/push-for-_40-smartphones-builds-momentum_-but-stil.py` (217 bytes)
+- Graph updated with seed→app edge in `memory/graph.json`
 
 **Content-Agent** (01:06 UTC)
 - Updated daily digest with March 9 research; content current.

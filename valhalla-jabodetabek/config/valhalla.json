@@ -1,0 +1,19 @@
+{
+  "mjolnir": {
+    "tile_dir": "/home/ubuntu/.openclaw/workspace/valhalla-jabodetabek/data/tiles",
+    "admin_filename": "/home/ubuntu/.openclaw/workspace/valhalla-jabodetabek/data/tiles/admins.bin",
+    "time_zone_filename": "/home/ubuntu/.openclaw/workspace/valhalla-jabodetabek/data/tiles/time_zones.bin",
+    "use_elevation": false
+  },
+  "locality": {
+    "locale_file": "/home/ubuntu/.openclaw/workspace/valhalla-jabodetabek/config/locality.json"
+  },
+  "http_service": {
+    "listening_port": 8002,
+    "address": "0.0.0.0"
+  },
+  "logging": {
+    "type": "info",
+    "file_name": "/home/ubuntu/.openclaw/workspace/valhalla-jabodetabek/data/valhalla.log"
+  }
+}

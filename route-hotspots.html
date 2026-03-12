@@ -608,16 +608,29 @@
     }
 
     function drawAllRoutes() {
-      state.routeLayers.forEach(l => map.removeLayer(l)); state.routeLayers = [];
+      // Clear existing route layers
+      state.routeLayers.forEach(l => map.removeLayer(l));
+      state.routeLayers = [];
+      
+      const masterCb = document.getElementById('showAllRoutes');
+      const showAll = masterCb ? masterCb.checked : true;
+      
       state.routePolylines.forEach((coords, idx) => {
         if (coords.length === 0) return;
         const color = ROUTE_COLORS[idx % ROUTE_COLORS.length];
-        const polyline = L.polyline(coords, { color, weight: 4, opacity: 0.8 });
+        // Use smoother rendering with slightly lower weight for cleaner look
+        const polyline = L.polyline(coords, { 
+          color, 
+          weight: idx === state.selectedRouteIndex ? 6 : 4,  // Highlight selected
+          opacity: idx === state.selectedRouteIndex ? 1 : 0.7,
+          lineCap: 'round',
+          lineJoin: 'round'
+        });
         state.routeLayers[idx] = polyline;
+        if (showAll || idx === state.selectedRouteIndex) {
+          map.addLayer(polyline);
+        }
       });
-      const masterCb = document.getElementById('showAllRoutes');
-      const showAll = masterCb ? masterCb.checked : true;
-      state.routeLayers.forEach(layer => (showAll ? map.addLayer(layer) : null));
       fitMapToRoutes();
     }
 
@@ -653,6 +666,10 @@
 
     window.selectRoute = function(idx) {
       state.selectedRouteIndex = idx;
+      // Clear segment labels and segment analysis layers
+      if (window.segmentLabelLayer) map.removeLayer(window.segmentLabelLayer);
+      // Redraw routes to highlight selected one
+      drawAllRoutes();
       if (state.lastTs) analyzeHotspots(state.lastTs);
     };
 
@@ -767,24 +784,106 @@
       }
     }
 
+    // Simplify polyline using iterative Douglas-Peucker algorithm to reduce unnecessary points
+    // Enhanced with angle preservation to prevent U-turn artifacts
+    function simplifyPolyline(coords, tolerance = 0.0001) {
+      if (coords.length <= 2) return coords;
+
+      function perpendicularDistance(point, lineStart, lineEnd) {
+        const [px, py] = point, [ax, ay] = lineStart, [bx, by] = lineEnd;
+        const dx = bx - ax, dy = by - ay;
+        if (dx === 0 && dy === 0) return Math.hypot(px - ax, py - ay);
+        const t = ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy);
+        const nx = ax + Math.max(0, Math.min(1, t)) * dx;
+        const ny = ay + Math.max(0, Math.min(1, t)) * dy;
+        return Math.hypot(px - nx, py - ny);
+      }
+
+      // Calculate bearing between two points (in degrees)
+      function bearing(from, to) {
+        const [lat1, lon1] = from.map(x => x * Math.PI / 180);
+        const [lat2, lon2] = to.map(x => x * Math.PI / 180);
+        const dLon = lon2 - lon1;
+        const y = Math.sin(dLon) * Math.cos(lat2);
+        const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+        return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+      }
+
+      // Calculate angle change at a point (0-180 degrees)
+      function angleChange(prev, curr, next) {
+        const b1 = bearing(prev, curr);
+        const b2 = bearing(curr, next);
+        let diff = Math.abs(b2 - b1);
+        if (diff > 180) diff = 360 - diff;
+        return diff;
+      }
+
+      // Mark critical points that define significant turns
+      const minTurnAngle = 25;
+      const isCritical = new Array(coords.length).fill(false);
+      for (let i = 1; i < coords.length - 1; i++) {
+        const angle = angleChange(coords[i-1], coords[i], coords[i+1]);
+        if (angle > minTurnAngle) isCritical[i] = true;
+      }
+
+      // Iterative Douglas-Peucker using explicit stack
+      const keep = new Array(coords.length).fill(false);
+      keep[0] = true;
+      keep[coords.length - 1] = true;
+      
+      const stack = [[0, coords.length - 1]];
+      
+      while (stack.length > 0) {
+        const [start, end] = stack.pop();
+        if (end <= start + 1) continue;
+        
+        let maxDist = 0, maxIdx = 0;
+        for (let i = start + 1; i < end; i++) {
+          const dist = perpendicularDistance(coords[i], coords[start], coords[end]);
+          if (dist > maxDist) { maxDist = dist; maxIdx = i; }
+        }
+        
+        if (maxDist > tolerance || isCritical[maxIdx]) {
+          keep[maxIdx] = true;
+          stack.push([start, maxIdx], [maxIdx, end]);
+        }
+      }
+      
+      return coords.filter((_, i) => keep[i]);
+    }
+
     function drawSegments(segmentData) {
-      state.routeLayers.forEach(l => map.removeLayer(l)); state.routeLayers = [];
-      // Re-add all route layers based on master checkbox
+      // Clear existing layers
+      state.routeLayers.forEach(l => map.removeLayer(l));
+      state.routeLayers = [];
+      if (window.segmentLabelLayer) map.removeLayer(window.segmentLabelLayer);
+      
       const showAll = document.getElementById('showAllRoutes')?.checked ?? true;
+      
+      // Draw simplified route polylines
       state.routePolylines.forEach((coords, idx) => {
         if (coords.length === 0) return;
         const color = ROUTE_COLORS[idx % ROUTE_COLORS.length];
-        const polyline = L.polyline(coords, { color, weight: 4, opacity: 0.8 });
-        if (showAll) map.addLayer(polyline);
+        const simplified = simplifyPolyline(coords, 0.00015);
+        const polyline = L.polyline(simplified, { 
+          color, 
+          weight: idx === state.selectedRouteIndex ? 6 : 4,
+          opacity: idx === state.selectedRouteIndex ? 1 : 0.7,
+          lineCap: 'round',
+          lineJoin: 'round'
+        });
         state.routeLayers[idx] = polyline;
+        if (showAll || idx === state.selectedRouteIndex) {
+          map.addLayer(polyline);
+        }
       });
 
-      if (window.segmentLabelLayer) map.removeLayer(window.segmentLabelLayer);
       window.segmentLabelLayer = L.layerGroup().addTo(map);
 
       segmentData.forEach(seg => {
         const color = seg.ratio > 1.2 ? '#f44336' : (seg.ratio > 1.05 ? '#ff9800' : '#4caf50');
-        L.polyline(seg.coords, { color, weight: 6, opacity: 0.8 }).addTo(map);
+        const simplified = simplifyPolyline(seg.coords, 0.0001);
+        L.polyline(simplified, { color, weight: 6, opacity: 0.9, lineCap: 'round', lineJoin: 'round' }).addTo(map);
         if (seg.coords.length > 0) {
           const midIdx = Math.floor(seg.coords.length / 2);
           L.marker(seg.coords[midIdx], {

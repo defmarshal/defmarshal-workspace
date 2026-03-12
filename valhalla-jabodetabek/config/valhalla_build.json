@@ -1,0 +1,17 @@
+{
+  "mjolnir": {
+    "tile_dir": "/data/tiles/tiles",
+    "planet_file": "/data/jabodetabek.osm.pbf",
+    "use_hierarchy": false,
+    "exclude_unpaved": false
+  },
+  "locality": {
+    "locale_file": "/data/locale/locality.json"
+  },
+  "time_zone": {
+    "time_zone_file": "/data/timezone/time_zones.json"
+  },
+  "elevation": {
+    "elevation_data_dir": "/data/elevation"
+  }
+}

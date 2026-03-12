@@ -19,7 +19,7 @@ while [ $attempt -le $MAX_RETRIES ]; do
 
   # Run the agent and capture output
   output=$(openclaw agent \
-    --agent main \
+    --agent qwen \
     --message "You are the research-agent. Conduct continuous research on anime, banking, tech, AI. Use web_search, web_fetch, memory tools. Create detailed reports in /home/ubuntu/.openclaw/workspace/research/. After completing, output a brief summary." \
     --thinking low \
     --timeout 900000 2>&1)

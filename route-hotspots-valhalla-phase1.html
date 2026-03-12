@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0066cc">
-  <title>Route Hotspot Analyzer — Mobile</title>
+  <title>Route Hotspot Analyzer — Mobile (Valhalla Phase 1)</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
@@ -728,8 +728,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    console.log('route-hotspots-mobile.js starting...');
+    console.log('route-hotspots-valhalla-phase1.js starting...');
     const API_KEY = 'f6RwVdTvm9EEdWS8X-HhVyIQ-JpXenG1W_XJ0jVo-2Y';
+    // Valhalla server (public demo instance - for production, use self-hosted or Mapbox)
+    const VALHALLA_SERVER = 'https://valhalla1.openstreetmap.de';
 
     const state = {
       originCoord: '-6.451460,106.735359',
@@ -772,41 +774,181 @@
       return `${datePart}T${String(utcHour).padStart(2,'0')}:${String(min).padStart(2,'0')}:00Z`;
     }
 
-    function decodeHEREPolyline(encoded) {
-      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-      const values = []; let acc = 0, shift = 0;
-      for (let i = 0; i < encoded.length; i++) {
-        const v = alphabet.indexOf(encoded[i]);
-        if (v === -1) throw new Error('Invalid char');
-        acc |= (v & 0x1F) << shift;
-        if ((v & 0x20) === 0) { values.push(acc); acc = 0; shift = 0; } else { shift += 5; }
+    // ============================================================
+    // VALHALLA PHASE 1: Standard Google polyline decoder
+    // Replaces: decodeHEREPolyline()
+    // Valhalla uses 6 decimal precision (1e6)
+    // ============================================================
+    function decodePolyline(encoded) {
+      // Standard Google polyline decoding algorithm
+      // Valhalla uses 6 digits of precision
+      const points = [];
+      let index = 0, lat = 0, lng = 0;
+      const len = encoded.length;
+
+      while (index < len) {
+        let b, shift = 0, result = 0;
+        do {
+          b = encoded.charCodeAt(index++) - 63;
+          result |= (b & 0x1f) << shift;
+          shift += 5;
+        } while (b >= 0x20 && index < len);
+
+        const dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
+        lat += dlat;
+
+        shift = 0;
+        result = 0;
+        do {
+          b = encoded.charCodeAt(index++) - 63;
+          result |= (b & 0x1f) << shift;
+          shift += 5;
+        } while (b >= 0x20 && index < len);
+
+        const dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
+        lng += dlng;
+
+        // Valhalla uses 1e6 precision (6 decimal places)
+        points.push([lat / 1e6, lng / 1e6]);
       }
-      if (shift > 0) throw new Error('Truncated');
-      if (values.length < 2) throw new Error('Too short');
-      const version = values[0]; if (version !== 1) throw new Error('Unsupported version');
-      const precision = values[1] & 0xF; const factor = Math.pow(10, precision);
-      const coords = []; let lat = 0, lng = 0;
-      for (let i = 2; i + 1 < values.length; i += 2) {
-        const dLat = toSigned(values[i]) / factor; const dLng = toSigned(values[i+1]) / factor;
-        lat += dLat; lng += dLng; coords.push([lat, lng]);
-      }
-      return coords;
+
+      return points;
     }
-    function toSigned(val) { const magnitude = val >>> 1; return (val & 1) ? -magnitude : magnitude; }
 
     const ROUTE_COLORS = ['#0066cc', '#f44336', '#ff9800', '#9c27b0', '#4caf50'];
 
-    async function fetchRoute(dateStr, hour, min, transport, viaPoints = [], alternatives = 0) {
-      const dep = buildDepartureTime(dateStr, hour, min);
-      let url = `https://router.hereapi.com/v8/routes?transportMode=${transport}&origin=${state.originCoord}&destination=${state.destCoord}&departureTime=${dep}&traffic=enabled&return=polyline,summary&apiKey=${API_KEY}&_t=${Date.now()}`;
-      if (alternatives > 0) url += `&alternatives=${alternatives}`;
-      const pointsToUse = viaPoints.length ? viaPoints : (state.viaCoord ? [state.viaCoord] : []);
-      pointsToUse.forEach(vp => { url += `&via=${encodeURIComponent(vp)}`; });
-      url += '&avoid=tollRoad&avoid=controlledAccessHighway';
-      console.log(`[fetchRoute] ${url}`);
-      const resp = await fetch(url);
-      if (!resp.ok) { const err = await resp.text(); console.error('HTTP', resp.status, err); throw new Error(`HTTP ${resp.status}: ${err.substring(0,200)}`); }
-      return await resp.json();
+    // ============================================================
+    // VALHALLA PHASE 1: Replaced fetchRoute() to use Valhalla API
+    // ============================================================
+    async function fetchRoute(dateStr, hour, min, transport, viaPoints = [], alternatives = 0, skipUserVia = false) {
+      const locations = [{lat: state.origLat, lon: state.origLng}];
+      // Only add user's via point if skipUserVia is false (for segment analysis, we don't want it)
+      if (!skipUserVia && state.viaLat && state.viaLng) {
+        locations.push({lat: state.viaLat, lon: state.viaLng});
+      }
+      // Add any additional via points (segmentation waypoints)
+      viaPoints.forEach(vp => {
+        const [lat, lon] = vp.split(',').map(Number);
+        locations.push({lat, lon});
+      });
+      locations.push({lat: state.destLat, lon: state.destLng});
+      
+      // Map transport mode to Valhalla costing
+      const costingMap = {
+        car: 'auto',
+        scooter: 'motor_scooter',
+        bicycle: 'bicycle',
+        pedestrian: 'pedestrian'
+      };
+      
+      const costing = costingMap[transport] || 'auto';
+      
+      // Costing options: match current behavior (avoid tolls, highways, ferries)
+      const costingOptions = {
+        [costing]: {
+          use_tolls: 0,
+          use_highways: 0,
+          use_ferry: 0
+        }
+      };
+      
+      // Scooter-specific: prefer smaller roads (already avoiding highways)
+      if (costing === 'motor_scooter') {
+        costingOptions[costing].use_highways = 0;
+      }
+      
+      // Bicycle-specific options
+      if (costing === 'bicycle') {
+        costingOptions[costing].use_hills = 0.5;
+        costingOptions[costing].use_roads = 0.5;
+      }
+      
+      // Pedestrian-specific options
+      if (costing === 'pedestrian') {
+        costingOptions[costing].use_ferry = 1;
+      }
+      
+      const body = {
+        locations,
+        costing,
+        costing_options: costingOptions,
+        date_time: {
+          type: 0,  // 0 = departure time
+          value: `${dateStr}T${String(hour).padStart(2,'0')}:${String(min).padStart(2,'0')}`
+        }
+      };
+      
+      if (alternatives > 0) {
+        body.alternatives = alternatives;
+      }
+      
+      const url = `${VALHALLA_SERVER}/route`;
+      console.log(`[fetchRoute] Valhalla POST ${url}`);
+      console.log(`[fetchRoute] Body:`, JSON.stringify(body, null, 2));
+      
+      const resp = await fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+      });
+      
+      if (!resp.ok) {
+        const err = await resp.text();
+        console.error('Valhalla error', resp.status, err);
+        throw new Error(`Valhalla ${resp.status}: ${err.substring(0,200)}`);
+      }
+      
+      const data = await resp.json();
+      console.log(`[fetchRoute] Valhalla response keys:`, Object.keys(data));
+      console.log(`[fetchRoute] Valhalla full response:`, JSON.stringify(data, null, 2));
+      
+      // Valhalla can return different structures:
+      // - {trips: [...]} for alternatives
+      // - {trip: {...}} for single route
+      // - {error: {...}} for errors
+      
+      if (data.error) {
+        throw new Error(`Valhalla error: ${data.error}`);
+      }
+      
+      // Handle both {trips: [...]} and {trip: {...}} formats
+      const trips = data.trips || (data.trip ? [data.trip] : []);
+      
+      if (!trips || trips.length === 0) {
+        throw new Error('No routes found in Valhalla response');
+      }
+
+      // Map Valhalla response to existing structure
+      // Valhalla returns: {trips: [{legs: [{shape, summary: {length, time, ...}}], summary: {length, time, bbox}}]}
+      return {
+        routes: trips.map(trip => {
+          // Handle case where legs might be missing or empty
+          const legs = trip.legs || [];
+          if (legs.length === 0) {
+            return null;
+          }
+          
+          return {
+            sections: legs.map(leg => ({
+              polyline: leg.shape,  // Google encoded polyline
+              summary: {
+                length: leg.summary?.length || 0,      // meters
+                duration: leg.summary?.time || 0,      // seconds
+                baseDuration: leg.summary?.time || 0,  // Valhalla doesn't separate traffic (Phase 2 will add HERE traffic)
+                min_lat: leg.summary?.min_lat || 0,
+                min_lon: leg.summary?.min_lon || 0,
+                max_lat: leg.summary?.max_lat || 0,
+                max_lon: leg.summary?.max_lon || 0
+              }
+            })),
+            summary: {
+              length: trip.summary?.length || 0,
+              duration: trip.summary?.time || 0
+            },
+            bbox: trip.summary?.bbox || null  // [minLon, minLat, maxLon, maxLat]
+          };
+        }).filter(r => r !== null)  // Remove any null routes
+      };
     }
 
     async function fetchAutosuggest(query, field) {
@@ -901,7 +1043,7 @@
         state.availableRoutes = data.routes;
         state.routePolylines = state.availableRoutes.map(route => {
           const sec = route.sections && route.sections[0];
-          return sec ? decodeHEREPolyline(sec.polyline) : [];
+          return sec ? decodePolyline(sec.polyline) : [];
         });
         drawAllRoutes(); buildLegend(); buildRouteSelector();
         loading.textContent = `Found ${state.availableRoutes.length} route(s).`;
@@ -1017,26 +1159,55 @@
       if (state.availableRoutes.length === 0) throw new Error('No routes available. Please get alternatives first.');
       const dateVal = overrideDate || document.getElementById('datePicker').value;
       const transportVal = document.getElementById('transportSelect').value;
-      const segCountWanted = 15;
       const selectedRoute = state.availableRoutes[state.selectedRouteIndex];
       if (!selectedRoute.sections || selectedRoute.sections.length === 0) throw new Error('Selected route has no sections');
       const fullSection = selectedRoute.sections[0];
-      const fullCoords = decodeHEREPolyline(fullSection.polyline);
-      if (fullCoords.length < 10) throw new Error('Route polyline too short');
-
-      const waypoints = []; const step = Math.max(1, Math.floor(fullCoords.length / (segCountWanted + 1)));
-      for (let i = step; i < fullCoords.length - step && waypoints.length < segCountWanted; i += step) {
-        const [lat, lng] = fullCoords[i]; waypoints.push(`${lat.toFixed(5)},${lng.toFixed(5)}`);
+      
+      console.log(`[calculateSegmentData] Raw polyline from Valhalla:`, fullSection.polyline?.substring(0, 100));
+      const fullCoords = decodePolyline(fullSection.polyline);
+      
+      console.log(`[calculateSegmentData] Decoded route has ${fullCoords.length} coordinate points`);
+      console.log(`[calculateSegmentData] First few points:`, fullCoords.slice(0, 3));
+      
+      if (fullCoords.length < 6) {
+        console.error('Route polyline too short for segmentation');
+        throw new Error('Route polyline too short for segmentation');
       }
+
+      // Adaptive segmentation: fewer segments for shorter routes
+      const maxSegments = fullCoords.length < 20 ? 2 : (fullCoords.length < 50 ? 3 : 5);
+      const waypoints = [];
+      const step = Math.max(1, Math.floor(fullCoords.length / (maxSegments + 1)));
+      
+      console.log(`[calculateSegmentData] Will generate up to ${maxSegments} segments, step=${step}`);
+      console.log(`[calculateSegmentData] Loop range: i=${step} to i<${fullCoords.length - step}`);
+      
+      let loopCount = 0;
+      for (let i = step; i < fullCoords.length - step && waypoints.length < maxSegments; i += step) {
+        loopCount++;
+        if (loopCount <= 10) {  // Log first 10 iterations
+          const [lat, lng] = fullCoords[i];
+          console.log(`[calculateSegmentData] Loop ${loopCount}: i=${i}, lat=${lat}, lng=${lng}, valid=${lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180}`);
+        }
+        const [lat, lng] = fullCoords[i];
+        // Ensure coordinates are valid (lat: -90 to 90, lng: -180 to 180)
+        if (lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
+          waypoints.push(`${lat.toFixed(5)},${lng.toFixed(5)}`);
+        } else {
+          console.warn(`[calculateSegmentData] Skipping invalid coordinate: ${lat}, ${lng}`);
+        }
+      }
+      
+      console.log(`[calculateSegmentData] Loop ran ${loopCount} times, generated ${waypoints.length} waypoints:`, waypoints);
       if (waypoints.length === 0) throw new Error('No waypoints generated');
 
-      const segData = await fetchRoute(dateVal, ts.hour, ts.min, transportVal, waypoints);
+      const segData = await fetchRoute(dateVal, ts.hour, ts.min, transportVal, waypoints, 0, true);  // skipUserVia=true for segment analysis
       const sections = segData.routes[0].sections;
       if (sections.length < 2) throw new Error(`Only ${sections.length} sections returned`);
 
       const segmentData = [];
       sections.forEach((sec, idx) => {
-        const coords = decodeHEREPolyline(sec.polyline);
+        const coords = decodePolyline(sec.polyline);
         const dur = sec.summary.duration, base = sec.summary.baseDuration, length = sec.summary.length;
         segmentData.push({ segment: idx+1, length, duration: dur, baseline: base, ratio: dur/base, coords });
       });
@@ -1154,6 +1325,7 @@
           }).addTo(state.segmentLabelLayer);
         }
       });
+
       fitMapToRoutes();
     }
 
@@ -1304,13 +1476,13 @@
       const sidebar = document.getElementById('analysisSidebar');
       const sidebarTitle = document.getElementById('sidebarTitle');
       const collapsedTabs = document.getElementById('collapsedTabs');
-      
+
       // Update collapsed tabs
       document.querySelectorAll('.collapsed-tab').forEach(tab => {
         tab.classList.remove('active');
         if (tab.dataset.panel === panel) tab.classList.add('active');
       });
-      
+
       // Switch tabs in expanded view
       document.querySelectorAll('.sidebar-tab').forEach(tab => {
         tab.classList.remove('active');
@@ -1320,7 +1492,7 @@
         p.classList.remove('active');
         if (p.id === 'panel-' + panel) p.classList.add('active');
       });
-      
+
       sidebarTitle.textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
       sidebar.classList.add('open');
       if (collapsedTabs) collapsedTabs.classList.add('slide-left');
@@ -1360,7 +1532,7 @@
         tab.classList.add('active');
         document.getElementById('panel-' + panel).classList.add('active');
         document.getElementById('sidebarTitle').textContent = panel === 'slowdown' ? 'Segment Slowdown' : 'Gradient Analysis';
-        
+
         // Update collapsed tabs active state
         document.querySelectorAll('.collapsed-tab').forEach(t => {
           t.classList.remove('active');
