@@ -5904,6 +5904,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/verbalizing-llm_s-higher-order-uncertainty-via-imp.py",
       "type": "app",
       "title": "Verbalizing LLM's Higher-order Uncertainty via Imprecise Probabilities"
+    },
+    {
+      "id": "90a64dec-78b7-4c53-a0d9-ede5e8f46577",
+      "type": "seed",
+      "title": "Resource-constrained Amazons chess decision framework integrating large language models and graph attention"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-resource-constrained-amazons-chess-decision-framew.md",
+      "type": "output",
+      "title": "Resource-constrained Amazons chess decision framework integrating large language models and graph attention"
+    },
+    {
+      "id": "6ec1a416-f52e-4154-bc94-f089ff5e66d4",
+      "type": "seed",
+      "title": "IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-ih-challenge:-a-training-dataset-to-improve-instruction-hierarchy-on-frontier-ll.md",
+      "type": "content",
+      "title": "IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs"
+    },
+    {
+      "id": "6b9deaed-a2d1-42ec-8a14-2a388c03a98a",
+      "type": "seed",
+      "title": "Adaptive RAN Slicing Control via Reward-Free Self-Finetuning Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/adaptive-ran-slicing-control-via-reward-free-self-.py",
+      "type": "app",
+      "title": "Adaptive RAN Slicing Control via Reward-Free Self-Finetuning Agents"
     }
   ],
   "edges": [
@@ -6335,6 +6365,21 @@
     {
       "from": "efa8f221-008f-40ec-97c8-519e21159ff2",
       "to": "/home/ubuntu/.openclaw/workspace/apps/verbalizing-llm_s-higher-order-uncertainty-via-imp.py",
+      "type": "produced"
+    },
+    {
+      "from": "90a64dec-78b7-4c53-a0d9-ede5e8f46577",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-resource-constrained-amazons-chess-decision-framew.md",
+      "type": "produced"
+    },
+    {
+      "from": "6ec1a416-f52e-4154-bc94-f089ff5e66d4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-ih-challenge:-a-training-dataset-to-improve-instruction-hierarchy-on-frontier-ll.md",
+      "type": "produced"
+    },
+    {
+      "from": "6b9deaed-a2d1-42ec-8a14-2a388c03a98a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/adaptive-ran-slicing-control-via-reward-free-self-.py",
       "type": "produced"
     }
   ]
