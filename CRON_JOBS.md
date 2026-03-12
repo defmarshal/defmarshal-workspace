@@ -246,3 +246,12 @@ Weekly automation:
 - **Job ID:** c6976c90-df08-4ac2-997a-a4a53be6c23c
 - **Description:** Fetches YouTube subscriptions via OAuth, checks for new uploads in the last 24h, generates a markdown digest with content previews/transcripts, and sends it to Telegram. Script: `scripts/youtube-digest.sh`. Credentials: `config/youtube-credentials.json` (gitignored). Run `scripts/youtube-oauth-setup.sh` to configure OAuth.
 - **Status:** Enabled (will skip gracefully if credentials not yet set up)
+
+---
+
+## Recent Changes
+
+**2026-03-12 21:38 UTC** — meta-summary-cron interval:
+- Changed from every 6 hours (`0 */6 * * *`) to hourly (`0 * * * *` UTC)
+- Updated via `openclaw cron edit e4bd1eb6-68dd-43d1-8f62-72c96abc6319 --cron "0 * * * *"`
+- Next run in ~23 minutes

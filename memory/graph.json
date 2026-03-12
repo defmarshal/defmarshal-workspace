@@ -5729,6 +5729,131 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-ac.md",
       "type": "output",
       "title": "Grammarly\u2019s \u2018expert review\u2019 is just missing the actual experts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/robolayout_-differentiable-3d-scene-generation-for-1.py",
+      "type": "app",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-real-time-ai-service-economy:-a-framework-for-agentic-computing-across-the-conti.md",
+      "type": "content",
+      "title": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-real-time-ai-service-economy:-a-framework-for-agen.md",
+      "type": "output",
+      "title": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum"
+    },
+    {
+      "id": "317694d5-7a5c-4861-bdbc-c13085d393cd",
+      "type": "seed",
+      "title": "Explainable LLM Unlearning Through Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-explainable-llm-unlearning-through-reasoning.md",
+      "type": "output",
+      "title": "Explainable LLM Unlearning Through Reasoning"
+    },
+    {
+      "id": "2a098efe-5b91-4f98-800d-fb6e0726c101",
+      "type": "seed",
+      "title": "MoE-SpAc: Efficient MoE Inference Based on Speculative Activation Utility in Heterogeneous Edge Scenarios"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-moe-spac:-efficient-moe-inference-based-on-specula.md",
+      "type": "output",
+      "title": "MoE-SpAc: Efficient MoE Inference Based on Speculative Activation Utility in Heterogeneous Edge Scenarios"
+    },
+    {
+      "id": "2b8bc9f1-e4b1-4d3b-aecd-80e3e92aabc2",
+      "type": "seed",
+      "title": "Personalized Group Relative Policy Optimization for Heterogenous Preference Alignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-personalized-group-relative-policy-optimization-fo.md",
+      "type": "output",
+      "title": "Personalized Group Relative Policy Optimization for Heterogenous Preference Alignment"
+    },
+    {
+      "id": "d59e89e0-5625-46de-b744-6f1cdf6c3793",
+      "type": "seed",
+      "title": "LWM-Temporal: Sparse Spatio-Temporal Attention for Wireless Channel Representation Learning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-lwm-temporal:-sparse-spatio-temporal-attention-for-wireless-channel-representati.md",
+      "type": "content",
+      "title": "LWM-Temporal: Sparse Spatio-Temporal Attention for Wireless Channel Representation Learning"
+    },
+    {
+      "id": "48a06acf-7181-451b-a36a-9e3137bb7764",
+      "type": "seed",
+      "title": "Gated Adaptation for Continual Learning in Human Activity Recognition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/gated-adaptation-for-continual-learning-in-human-a.py",
+      "type": "app",
+      "title": "Gated Adaptation for Continual Learning in Human Activity Recognition"
+    },
+    {
+      "id": "bdc2b72e-a585-42a1-a0e1-af7f5211bda1",
+      "type": "seed",
+      "title": "Planner suggestion: latest transformer architectures 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-latest-transformer-architectur.py",
+      "type": "app",
+      "title": "Planner suggestion: latest transformer architectures 2025"
+    },
+    {
+      "id": "7a3299d4-74f4-4e8a-84f5-251065dd4ae7",
+      "type": "seed",
+      "title": "Planner suggestion: starlink v2 launch schedule"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-starlink-v2-launch-schedule.md",
+      "type": "output",
+      "title": "Planner suggestion: starlink v2 launch schedule"
+    },
+    {
+      "id": "606becbd-3630-46c7-bc9c-6dcf8ad6e970",
+      "type": "seed",
+      "title": "Planner suggestion: quantum error correction breakthroughs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-quantum-error-correction-break.py",
+      "type": "app",
+      "title": "Planner suggestion: quantum error correction breakthroughs"
+    },
+    {
+      "id": "55d5ab8c-0e47-4531-91f6-cd3f5849c2ca",
+      "type": "seed",
+      "title": "Planner suggestion: react server components vs traditional rendering"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-react-server-components-vs-tra.md",
+      "type": "output",
+      "title": "Planner suggestion: react server components vs traditional rendering"
+    },
+    {
+      "id": "38ca595c-0ea7-4460-ad56-c997e7e6d011",
+      "type": "seed",
+      "title": "Planner suggestion: kubernetes autoscaling best practices 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-planner-suggestion:-kubernetes-autoscaling-best-practices-2025.md",
+      "type": "content",
+      "title": "Planner suggestion: kubernetes autoscaling best practices 2025"
+    },
+    {
+      "id": "abb1506e-4a92-45b3-8068-3d5dffe93a59",
+      "type": "seed",
+      "title": "Planner suggestion: AI startup funding trends Q1 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-ai-startup-funding-trends-q1-2.md",
+      "type": "output",
+      "title": "Planner suggestion: AI startup funding trends Q1 2025"
     }
   ],
   "edges": [
@@ -6065,6 +6190,76 @@
     {
       "from": "36ebef2e-1e3f-4f52-9bdf-68397670a5a7",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-ac.md",
+      "type": "produced"
+    },
+    {
+      "from": "01f621d5-acf1-4ebf-9f2d-69a35322759f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/robolayout_-differentiable-3d-scene-generation-for-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "646c87d0-fabf-4d14-a921-531adbcc18f3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-real-time-ai-service-economy:-a-framework-for-agentic-computing-across-the-conti.md",
+      "type": "produced"
+    },
+    {
+      "from": "646c87d0-fabf-4d14-a921-531adbcc18f3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-real-time-ai-service-economy:-a-framework-for-agen.md",
+      "type": "produced"
+    },
+    {
+      "from": "317694d5-7a5c-4861-bdbc-c13085d393cd",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-explainable-llm-unlearning-through-reasoning.md",
+      "type": "produced"
+    },
+    {
+      "from": "2a098efe-5b91-4f98-800d-fb6e0726c101",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-moe-spac:-efficient-moe-inference-based-on-specula.md",
+      "type": "produced"
+    },
+    {
+      "from": "2b8bc9f1-e4b1-4d3b-aecd-80e3e92aabc2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-personalized-group-relative-policy-optimization-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "d59e89e0-5625-46de-b744-6f1cdf6c3793",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-lwm-temporal:-sparse-spatio-temporal-attention-for-wireless-channel-representati.md",
+      "type": "produced"
+    },
+    {
+      "from": "48a06acf-7181-451b-a36a-9e3137bb7764",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/gated-adaptation-for-continual-learning-in-human-a.py",
+      "type": "produced"
+    },
+    {
+      "from": "bdc2b72e-a585-42a1-a0e1-af7f5211bda1",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-latest-transformer-architectur.py",
+      "type": "produced"
+    },
+    {
+      "from": "7a3299d4-74f4-4e8a-84f5-251065dd4ae7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-starlink-v2-launch-schedule.md",
+      "type": "produced"
+    },
+    {
+      "from": "606becbd-3630-46c7-bc9c-6dcf8ad6e970",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-quantum-error-correction-break.py",
+      "type": "produced"
+    },
+    {
+      "from": "55d5ab8c-0e47-4531-91f6-cd3f5849c2ca",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-react-server-components-vs-tra.md",
+      "type": "produced"
+    },
+    {
+      "from": "38ca595c-0ea7-4460-ad56-c997e7e6d011",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-planner-suggestion:-kubernetes-autoscaling-best-practices-2025.md",
+      "type": "produced"
+    },
+    {
+      "from": "abb1506e-4a92-45b3-8068-3d5dffe93a59",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-ai-startup-funding-trends-q1-2.md",
       "type": "produced"
     }
   ]

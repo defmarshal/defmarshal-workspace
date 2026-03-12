@@ -4,10 +4,11 @@
 
 ## 🔄 Currently Running Agents
 
-**Research Gardener** (02:06 UTC — in progress)
-- Triggered by cron: `research-gardener-cron`
+**Research Gardener** (16:00 UTC — in progress)
+- Triggered by manual exec (cron:gardener-1773046574)
 - Processing next unprocessed seed from queue
 - Log: `memory/research-gardener.log`
+- PID: 2696939
 
 **Content Gardener** (03:04 UTC — in progress)
 - Triggered by cron: `content-gardener-cron`
