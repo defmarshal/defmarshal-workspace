@@ -8,7 +8,7 @@ import signal
 import sys
 import json
 import subprocess
-from datetime import datetime
+from datetime import datetime, timezone
 
 WORKSPACE = "/home/ubuntu/.openclaw/workspace"
 PORT = 3002
@@ -93,7 +93,7 @@ def get_system_stats():
         "uptime": get_uptime(),
         "activeAgents": get_active_agents(),
         "errors": get_error_count(),
-        "timestamp": datetime.utcnow().isoformat() + 'Z'
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
 
 def start():

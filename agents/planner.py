@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, uuid, datetime, subprocess
+import os, sys, json, uuid, datetime, subprocess, timezone
 from pathlib import Path
 from collections import Counter
 
@@ -9,7 +9,7 @@ SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
 PLANNER_OUT = Path('/home/ubuntu/.openclaw/workspace/memory/planner_suggestions.jsonl')
 
 def log(msg):
-    print(f"[{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def load_graph():
     if GRAPH_FILE.exists():
@@ -70,7 +70,7 @@ def suggest_new_seeds(tag_counts):
                 "snippet": f"Under‑represented category '{cat}'. Query: {query}",
                 "source": "planner",
                 "tags": ["planner", cat],
-                "ts": datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+                "ts": datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
             })
     return suggestions
 

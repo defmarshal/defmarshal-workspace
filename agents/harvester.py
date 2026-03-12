@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, datetime, subprocess
+import os, sys, json, datetime, subprocess, timezone
 from pathlib import Path
 from collections import defaultdict
 
@@ -12,7 +12,7 @@ OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def load_graph():
     if GRAPH_FILE.exists():
@@ -31,7 +31,7 @@ def load_seeds():
     return seeds
 
 def find_today_nodes():
-    today = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+    today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
     graph = load_graph()
     seeds_today = []
     outputs_today = []
@@ -52,7 +52,7 @@ def find_today_nodes():
     return seeds_today, outputs_today
 
 def generate_harvest_report(seeds, outputs):
-    today = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+    today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
     report_path = REPORTS_DIR / f"daily-harvest-{today}.md"
     lines = [
         f"# Daily Harvest — {today}",
@@ -81,7 +81,7 @@ def generate_harvest_report(seeds, outputs):
     return report_path
 
 def send_telegram_summary(seeds, outputs):
-    summary = f"🌱 Daily Harvest — {datetime.datetime.utcnow().strftime('%Y-%m-%d')}\n"
+    summary = f"🌱 Daily Harvest — {datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')}\n"
     summary += f"• Seeds: {len(seeds)}\n"
     summary += f"• Outputs: {len(outputs)}\n"
     if outputs:

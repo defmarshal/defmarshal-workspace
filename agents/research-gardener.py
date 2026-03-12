@@ -1,19 +1,11 @@
 #!/usr/bin/env python3
-import os, sys, json, uuid, datetime, subprocess
+import os, sys, json, uuid, datetime, subprocess, timezone
 from pathlib import Path
 from typing import Dict, Any
 
-# Load workspace .env if present
-env_file = Path(__file__).parent.parent / '.env'
-if env_file.exists():
-    for line in env_file.read_text().splitlines():
-        if '=' in line and not line.strip().startswith('#'):
-            k, v = line.strip().split('=', 1)
-            os.environ.setdefault(k, v)
-
 # Paths
 SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
-PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_research.jsonl')
+PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_seeds.jsonl')
 RESEARCH_DIR = Path('/home/ubuntu/.openclaw/workspace/research')
 GRAPH_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/graph.json')
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
@@ -21,7 +13,7 @@ OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 RESEARCH_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def load_seeds():
     seeds = []
@@ -44,7 +36,7 @@ def load_processed():
 
 def mark_processed(seed_id: str):
     with open(PROCESSED_FILE, 'a') as f:
-        f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
+        f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
 
 def load_graph():
     if GRAPH_FILE.exists():
@@ -67,101 +59,68 @@ def add_graph_edge(seed_id: str, output_path: str, title: str):
     graph['edges'].append({"from": seed_id, "to": output_path, "type": "produced"})
     save_graph(graph)
 
-def generate_text(prompt: str, system_msg: str = "You are a helpful research assistant. Output concise, factual markdown.") -> str:
-    api_key = os.getenv('OPENROUTER_API_KEY')
-    if not api_key:
-        log("OPENROUTER_API_KEY not set; skipping generation")
-        return ''
-    payload = {
-        'model': 'stepfun/step-3.5-flash:free',
-        'messages': [
-            {'role': 'system', 'content': system_msg},
-            {'role': 'user', 'content': prompt}
-        ],
-        'max_tokens': 1024,
-        'temperature': 0.7
-    }
-    cmd = [
-        'curl',
-        '-H', f'Authorization: Bearer {api_key}',
-        '-H', 'Content-Type: application/json',
-        '-d', json.dumps(payload),
-        'https://openrouter.ai/api/v1/chat/completions'
-    ]
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-        if result.returncode != 0:
-            log(f"Curl error {result.returncode}: {result.stderr[:200]}")
-            return ''
-        data = json.loads(result.stdout)
-        if 'error' in data:
-            log(f"OpenRouter error: {data['error'].get('message', 'unknown')}")
-            return ''
-        return data['choices'][0]['message']['content'].strip()
-    except Exception as e:
-        log(f"OpenRouter request failed: {e}")
-        return ''
-
-def call_tavily(query: str) -> str:
-    # For initial research step, we'll do a quick web search via openrouter itself
-    # Use a simpler prompt to get recent info; we can still use Tavily if key exists
-    TAVILY_API_KEY = os.getenv('TAVILY_API_KEY')
-    if TAVILY_API_KEY:
-        import requests
-        resp = requests.post('https://api.tavily.com/search', json={
-            'api_key': TAVILY_API_KEY,
-            'query': query,
-            'max_results': 10,
-            'include_raw_content': False
-        }, timeout=30)
-        if resp.status_code == 200:
-            data = resp.json()
-            snippets = []
-            for r in data.get('results', [])[:5]:
-                snippets.append(f"- {r.get('title')}: {r.get('snippet')}")
-            return '\n'.join(snippets) if snippets else 'No results'
-        else:
-            log(f"Tavily error {resp.status_code}")
-            return ''
-    else:
-        # Fallback: simple web summary via OpenRouter
-        prompt = f"Provide a brief summary of recent developments regarding: {query}"
-        return generate_text(prompt, system_msg="You are a research analyst. Provide a concise summary with key points.")
-
 def generate_report(seed: Dict[str, Any]) -> str:
-    today = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+    # Perform a quick literature review using openclaw web search (Tavily)
+    query = seed['title']
+    log(f"Searching for: {query}")
+    # Use openclaw web search via subprocess (leveraging Tavily skill if configured)
+    try:
+        search_cmd = [OPENCLAWS, 'web', 'search', query, '--count', '10']
+        result = subprocess.run(search_cmd, capture_output=True, text=True, timeout=30)
+        search_results = result.stdout.strip() or result.stderr.strip() or ''
+    except Exception as e:
+        log(f"Web search failed: {e}")
+        search_results = ''
+
+    # Build a draft report
+    today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
     slug = seed['title'].lower().replace(' ', '-')[:50]
     filename = RESEARCH_DIR / f"{today}-{slug}.md"
-    # Try to expand findings via LLM or search
-    summary = seed['snippet']
-    findings = '_No additional findings available._'
-    # If Tavily key exists, try search
-    search_results = call_tavily(seed['title'])
-    if search_results:
-        findings = search_results
-    else:
-        # Try generating a short analysis
-        analysis = generate_text(f"Write a 3-bullet analysis of: {seed['title']}. Context: {seed['snippet']}", system_msg="You are a research assistant. Provide concise insights.")
-        if analysis:
-            findings = analysis
-    content = f"""# {seed['title']}
+    draft = f"""# {seed['title']}
 
 **Seed ID:** {seed['id']}  
 **Source:** {seed['source']}  
-**Generated:** {datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
+**Generated:** {datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}
 
 ## Summary
 
-{summary}
+{seed['snippet']}
 
-## Findings
+## Preliminary Findings
 
-{findings}
+{search_results if search_results else '_No search results available yet._'}
 
-## References
+## Next Steps
 
-- Seed: {seed['id']}
+- Expand on key points
+- Add references and citations
+- Cross-check with additional sources
 """
+    # Now use openclaw agent to enhance the report (add structure, insights, references)
+    prompt = f"""You are a research analyst. Improve this draft report by:
+- Filling in gaps with background knowledge
+- Adding clear section headings and bullet points
+- Including inline citations where possible (e.g., [来源], [1])
+- Keeping tone客观 and informative
+
+Return the full markdown with improvements. Do not include meta-commentary.
+
+DRAFT:
+
+{draft}
+"""
+    try:
+        enhance_cmd = [OPENCLAWS, 'agent', 'ask', '--prompt', prompt]
+        result = subprocess.run(enhance_cmd, capture_output=True, text=True, timeout=120)
+        enhanced = result.stdout.strip()
+        if enhanced and len(enhanced) > len(draft):
+            content = enhanced
+        else:
+            content = draft
+    except Exception as e:
+        log(f"Agent enhancement failed: {e}")
+        content = draft
+
     with open(filename, 'w') as f:
         f.write(content)
     return str(filename)

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-import os, sys, json, uuid, datetime, subprocess
+import os, sys, json, uuid, datetime, subprocess, timezone
 from pathlib import Path
-from datetime import datetime, timezone
 
 # Load workspace .env if present
 env_file = Path(__file__).parent.parent / '.env'
@@ -13,7 +12,7 @@ if env_file.exists():
 
 # Paths
 SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
-PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_code.jsonl')
+PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_seeds.jsonl')
 APPS_DIR = Path('/home/ubuntu/.openclaw/workspace/apps')
 GRAPH_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/graph.json')
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
@@ -21,7 +20,7 @@ OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 APPS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def load_seeds():
     seeds = []
@@ -44,7 +43,7 @@ def load_processed():
 
 def mark_processed(seed_id: str):
     with open(PROCESSED_FILE, 'a') as f:
-        f.write(json.dumps({"id": seed_id, "processed_at": datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
+        f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
 
 def load_graph():
     if GRAPH_FILE.exists():
@@ -67,48 +66,14 @@ def add_graph_edge(seed_id: str, output_path: str, title: str):
     graph['edges'].append({"from": seed_id, "to": output_path, "type": "produced"})
     save_graph(graph)
 
-def generate_text(prompt: str, system_msg: str = "You are a coding assistant. Respond with only the Python code. No explanations or markdown fencing.") -> str:
-    api_key = os.getenv('OPENROUTER_API_KEY')
-    if not api_key:
-        log("OPENROUTER_API_KEY not set; skipping generation")
-        return ''
-    payload = {
-        'model': 'stepfun/step-3.5-flash:free',
-        'messages': [
-            {'role': 'system', 'content': system_msg},
-            {'role': 'user', 'content': prompt}
-        ],
-        'max_tokens': 1024,
-        'temperature': 0.7
-    }
-    cmd = [
-        'curl',
-        '-H', f'Authorization: Bearer {api_key}',
-        '-H', 'Content-Type: application/json',
-        '-d', json.dumps(payload),
-        'https://openrouter.ai/api/v1/chat/completions'
-    ]
+def generate_code_via_agent(prompt: str, system_msg: str = "You are a coding assistant. Respond with only the Python code. No explanations or markdown fencing.") -> str:
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-        if result.returncode != 0:
-            log(f"Curl error {result.returncode}: {result.stderr[:200]}")
-            return ''
-        data = json.loads(result.stdout)
-        if 'error' in data:
-            log(f"OpenRouter error: {data['error'].get('message', 'unknown')}")
-            return ''
-        message = data.get('choices', [{}])[0].get('message', {})
-        content = message.get('content')
-        refusal = message.get('refusal')
-        if refusal:
-            log(f"OpenRouter refusal: {refusal[:200]}")
-            return ''
-        if not content:
-            log(f"OpenRouter returned empty content (null or missing)")
-            return ''
-        return content.strip()
+        full_prompt = f"{system_msg}\n\n{prompt}"
+        result = subprocess.run([OPENCLAWS, 'agent', 'ask', '--prompt', full_prompt], capture_output=True, text=True, timeout=60)
+        output = result.stdout.strip()
+        return output
     except Exception as e:
-        log(f"OpenRouter request failed: {e}")
+        log(f"OpenClaw agent call failed: {e}")
         return ''
 
 def generate_app(seed):
@@ -118,7 +83,7 @@ Title: {seed['title']}
 Context: {seed['snippet']}
 
 The script should be self-contained, include a shebang, and demonstrate the concept. Keep it under 100 lines. Output only the code, no explanations."""
-    code = generate_text(prompt, system_msg="You are a coding assistant. Respond with only the Python code. No explanations or markdown fencing.")
+    code = generate_code_via_agent(prompt)
     if not code or len(code) < 20:
         code = f"""#!/usr/bin/env python3
 # Auto-generated script

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, subprocess, time, uuid, datetime
+import os, sys, json, subprocess, time, uuid, datetime, timezone
 from typing import List, Dict
 
 # Config
@@ -20,7 +20,7 @@ RSS_FEEDS = [
 MAX_EMAILS = 50  # per run
 
 def log(msg):
-    print(f"[{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def fetch_url(url):
     cmd = ['curl', '-s', '-f', url]
@@ -82,7 +82,7 @@ def extract_seed_from_email(msg):
         "snippet": snippet,
         "source": f"email:{from_hdr}",
         "tags": ["email"],
-        "ts": datetime.datetime.utcfromtimestamp(int(ts)/1000).strftime('%Y-%m-%d %H:%M:%S') if ts else datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        "ts": datetime.datetime.utcfromtimestamp(int(ts)/1000).strftime('%Y-%m-%d %H:%M:%S') if ts else datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
     }
     return seed
 
@@ -109,7 +109,7 @@ def fetch_rss(url):
                     "snippet": desc[:200],
                     "source": f"rss:{url}",
                     "tags": ["rss"],
-                    "ts": datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+                    "ts": datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
                 })
     except Exception as e:
         log(f"RSS parse error for {url}: {e}")

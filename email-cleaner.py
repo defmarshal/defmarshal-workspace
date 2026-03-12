@@ -196,7 +196,7 @@ def main():
         if labeled:
             print(f"  Labeled: {labeled}")
         # Log summary
-        log_entry = f"[{datetime.datetime.utcnow().isoformat()}] Cleaned: archived={archived}, labeled={labeled}, examined={len(ids)}"
+        log_entry = f"[{datetime.datetime.now(datetime.timezone.utc).isoformat()}] Cleaned: archived={archived}, labeled={labeled}, examined={len(ids)}"
         with open("memory/email-cleaner.log", "a") as f:
             f.write(log_entry + "\n")
     elif args.execute:
