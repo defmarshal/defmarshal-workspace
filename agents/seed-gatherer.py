@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, subprocess, time, uuid, datetime, timezone
+import os, sys, json, subprocess, time, uuid, datetime
 from typing import List, Dict
 
 # Config

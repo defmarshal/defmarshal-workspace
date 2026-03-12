@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, uuid, datetime, subprocess, timezone
+import os, sys, json, uuid, datetime, subprocess
 from pathlib import Path
 
 # Load workspace .env if present

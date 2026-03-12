@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, datetime, subprocess, timezone
+import os, sys, json, datetime, subprocess
 from pathlib import Path
 from collections import defaultdict
 
