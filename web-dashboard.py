@@ -28,7 +28,7 @@ def get_bangkok_time():
         out, _, rc = run_cmd("TZ='Asia/Bangkok' date '+%Y-%m-%d %H:%M:%S %Z'")
         if rc == 0:
             return out
-    except:
+    except Exception:
         pass
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -43,7 +43,7 @@ def parse_holidays():
         return None
     try:
         lines = HOLIDAYS_FILE.read_text().splitlines()
-    except:
+    except Exception:
         return None
 
     today = datetime.now().date()
@@ -67,7 +67,7 @@ def parse_holidays():
                             "holiday_en": parts[5],
                             "days": days_away
                         }
-                except:
+                except Exception:
                     continue
     return nearest
 
@@ -118,7 +118,7 @@ def get_memory_usage():
         try:
             pct = int(used) * 100 // int(total)
             return {"used_mb": int(used), "total_mb": int(total), "pct": pct}
-        except:
+        except Exception:
             return {"error": "parse error"}
     return {"error": "unavailable"}
 
@@ -127,7 +127,7 @@ def get_updates():
     try:
         count = int(out.strip())
         return {"available": count}
-    except:
+    except Exception:
         return {"available": 0}
 
 def get_memory_stats():

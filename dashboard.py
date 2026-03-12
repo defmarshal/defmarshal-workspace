@@ -28,7 +28,7 @@ def get_bangkok_time():
         out, err, rc = run_cmd("TZ='Asia/Bangkok' date '+%Y-%m-%d %H:%M:%S %Z'")
         if rc == 0:
             return out
-    except:
+    except Exception:
         pass
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -43,7 +43,7 @@ def parse_holidays():
         return None
     try:
         lines = HOLIDAYS_FILE.read_text().splitlines()
-    except:
+    except Exception:
         return None
 
     today = datetime.now().date()
@@ -63,7 +63,7 @@ def parse_holidays():
                     if 0 <= days_away < nearest_days:
                         nearest_days = days_away
                         nearest = (parts[3], parts[4], parts[5], date_str)
-                except:
+                except Exception:
                     continue
     return nearest, nearest_days
 
@@ -115,7 +115,7 @@ def get_disk_usage():
     use_percent_str = parts[4].rstrip('%')
     try:
         use_pct = int(use_percent_str)
-    except:
+    except Exception:
         return f"Disk: {use_percent_str}%"
     if use_pct >= 90:
         return f"Disk: {use_pct}% (CRITICAL)"
@@ -145,7 +145,7 @@ def get_memory_usage():
             pct = int(out.split('(')[1].split('%')[0])
             if pct >= 90:
                 return f"Memory: \033[31m{pct}%\033[0m (high)"
-        except:
+        except Exception:
             pass
         return out
     return "Memory: unavailable"
@@ -157,7 +157,7 @@ def get_upgradable_count():
     try:
         count = int(out.strip())
         return count
-    except:
+    except Exception:
         return 0
 
 def get_memory_system_stats():

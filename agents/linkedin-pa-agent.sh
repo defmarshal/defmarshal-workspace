@@ -77,42 +77,24 @@ fi
 log "Final query: $SELECTED_QUERY"
 log "Content type: $SELECTED_TYPE"
 
-# Phase 1: Research
-RESEARCH_DB="/tmp/pa-analyst-db-$(date +%s).json"
-cat > "$RESEARCH_DB" << 'EOF'
-{
-  "metrics": [],
-  "benchmarks": [],
-  "technical_specs": [],
-  "case_studies": [],
-  "roadmap_items": [],
-  "tips_tricks": [],
-  "sources": []
-}
-EOF
+# Phase 1: Research via agent
+log "Starting research via agent (tools: web_search, web_fetch)"
+RESEARCH_PROMPT="You are a research assistant. Using the web_search and web_fetch tools, gather authoritative information about IBM Planning Analytics with focus on: $SELECTED_TYPE. Use search query: \"$SELECTED_QUERY\". Perform web_search with count=12. From results, select up to 8 URLs from ibm.com, developer.ibm.com, gartner.com, forrester.com. Fetch each with web_fetch (extractMode=text, maxChars=6000). Extract: metrics (numeric percentages, ratios, measurements), benchmarks (performance numbers ending with % or x), technical_specs (features, architecture, capabilities), case_studies (customer implementations with results), roadmap_items (upcoming versions/features), tips_tricks (best practices, optimization advice). Also collect source URLs. Return a JSON object with keys: metrics (array), benchmarks (array), technical_specs (array), case_studies (array), roadmap_items (array), tips_tricks (array), sources (array). Output ONLY raw JSON, no other text, no emojis, no kaomoji, no markdown."
 
-web_search --count 12 "$SELECTED_QUERY" > /tmp/pa-search.txt 2>&1 || true
+RESEARCH_JSON=$(openclaw agent --agent main --message "$RESEARCH_PROMPT" --json 2>/dev/null | jq -r '.response.content' 2>/dev/null || echo "{}")
+# Ensure valid JSON; if empty or invalid, use empty object
+if ! echo "$RESEARCH_JSON" | jq -e . >/dev/null 2>&1; then
+  log "Agent research JSON invalid; using empty datasets"
+  RESEARCH_JSON="{}"
+fi
 
-URLS=$(grep -o 'https://[^"]*' /tmp/pa-search.txt | grep -iE 'ibm\.com|gartner\.com|forrester\.com|whitepaper|case-study|developer\.ibm\.com|github\.com' | head -8 || true)
-
-for url in $URLS; do
-  log "Fetching: $url"
-  CONTENT=$(web_fetch --extractMode text --maxChars 6000 "$url" 2>&1 || echo "")
-  if [ -n "$CONTENT" ]; then
-    echo "$CONTENT" | grep -oE '[0-9]+%[^0-9]|[0-9]+\.[0-9]+x|[0-9]{4}|[0-9]+\.[0-9]+\.[0-9]+' | sort -u >> /tmp/metrics.txt 2>/dev/null || true
-    echo "$CONTENT" | grep -iE 'TM1|in-memory|OLAP|cube|dimension|hierarchy|calculation|allocation|rule|process|chore|REST API|MCP|cluster|scalability|throughput|latency' | sort -u >> /tmp/tech.txt 2>/dev/null || true
-    echo "$CONTENT" | grep -iE 'case study|customer|deployed|implementation|result|improved|reduced|increased|ROI|payback' | sort -u >> /tmp/cases.txt 2>/dev/null || true
-    echo "$CONTENT" | grep -iE 'version [0-9]+\.[0-9]+|release|Q[1-4] [0-9]{4}|roadmap|upcoming|planned' >> /tmp/roadmap.txt 2>/dev/null || true
-    echo "$CONTENT" | grep -iE 'tip|trick|hack|best practice|pro tip|optimization|performance tuning|configuration|avoid|watch out|gotcha' | sort -u >> /tmp/tips.txt 2>/dev/null || true
-  fi
-done
-
-METRICS=$(sort -u /tmp/metrics.txt 2>/dev/null | head -12 || echo "")
-BENCHMARKS=$(echo "$METRICS" | grep -E '%$|x$' || echo "")
-TECH_SPECS=$(sort -u /tmp/tech.txt 2>/dev/null | head -12 || echo "")
-CASES=$(sort -u /tmp/cases.txt 2>/dev/null | head -8 || echo "")
-ROADMAP=$(sort -u /tmp/roadmap.txt 2>/dev/null | head -6 || echo "")
-TIPS=$(sort -u /tmp/tips.txt 2>/dev/null | head -10 || echo "")
+METRICS=$(echo "$RESEARCH_JSON" | jq -r '.metrics // [] | .[]?' 2>/dev/null | sort -u | head -12 || true)
+BENCHMARKS=$(echo "$METRICS" | grep -E '%$|x$' || true)
+TECH_SPECS=$(echo "$RESEARCH_JSON" | jq -r '.technical_specs // [] | .[]?' 2>/dev/null | sort -u | head -12 || true)
+CASES=$(echo "$RESEARCH_JSON" | jq -r '.case_studies // [] | .[]?' 2>/dev/null | sort -u | head -8 || true)
+ROADMAP=$(echo "$RESEARCH_JSON" | jq -r '.roadmap_items // [] | .[]?' 2>/dev/null | sort -u | head -6 || true)
+TIPS=$(echo "$RESEARCH_JSON" | jq -r '.tips_tricks // [] | .[]?' 2>/dev/null | sort -u | head -10 || true)
+SOURCES=$(echo "$RESEARCH_JSON" | jq -r '.sources // [] | .[]?' 2>/dev/null | sort -u || true)
 
 log "Data compiled: METRICS=$(echo "$METRICS" | wc -l), BENCH=$(echo "$BENCHMARKS" | wc -l), TECH=$(echo "$TECH_SPECS" | wc -l), CASES=$(echo "$CASES" | wc -l), ROADMAP=$(echo "$ROADMAP" | wc -l), TIPS=$(echo "$TIPS" | wc -l)"
 
@@ -487,7 +469,7 @@ cat > "$DIGEST_FILE" << EOF
 - Tips & tricks: $(echo "$TIPS" | wc -l)
 
 ## Sources Consulted
-$(echo "$URLS" | sed 's/^/- /')
+$(printf '%s\n' "$SOURCES" | sed 's/^/- /')
 
 ## Content Goal
 Produce substantive, data‑rich analysis suitable for professionals evaluating or using IBM Planning Analytics. Include quantitative metrics, comparative insights, and explicit source citations. Avoid superficial or promotional language.

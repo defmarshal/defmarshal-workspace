@@ -41,7 +41,7 @@ def get_disk_usage():
         pct = out.rstrip('%')
         try:
             return float(pct) / 100.0
-        except:
+        except Exception:
             return 0.68  # fallback
     return 0.68
 
@@ -50,7 +50,7 @@ def get_cpu_usage():
     if rc == 0:
         try:
             return float(out) / 100.0
-        except:
+        except Exception:
             return 0.1
     return 0.1
 
@@ -63,7 +63,7 @@ def get_uptime():
     if rc == 0:
         try:
             return int(float(out))
-        except:
+        except Exception:
             return 0
     return 0
 
@@ -73,7 +73,7 @@ def get_active_agents():
     if rc == 0:
         try:
             return int(out.strip())
-        except:
+        except Exception:
             return 0
     return 0
 
@@ -82,7 +82,7 @@ def get_error_count():
     out, _, rc = run_cmd("tail -100 memory/*.log 2>/dev/null | grep -ci 'ERROR\\|error\\|Rate limit' || echo 0")
     try:
         return int(out.strip())
-    except:
+    except Exception:
         return 0
 
 def get_system_stats():
