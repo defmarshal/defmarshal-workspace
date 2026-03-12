@@ -49,7 +49,7 @@ log "Generating dynamic search query for: $SELECTED_TYPE"
 PROMPT="Generate a concise web search query (max 150 chars) to find authoritative sources (ibm.com, developer.ibm.com, gartner.com, forrester.com) for a LinkedIn post about IBM Planning Analytics: $SELECTED_TYPE. Focus on 2025-2026. Include site: filters. Return ONLY the query string."
 
 # Call main agent to generate query
-DYNAMIC_QUERY=$(openclaw agent --agent main --json <<<"{\"messages\":[{\"role\":\"user\",\"content\":\"$PROMPT\"}]}" 2>/dev/null | jq -r '.response.content' 2>/dev/null || echo "")
+DYNAMIC_QUERY=$(openclaw agent --agent main --message "$PROMPT" --json 2>/dev/null | jq -r '.response.content' 2>/dev/null || echo "")
 DYNAMIC_QUERY=$(echo "$DYNAMIC_QUERY" | tr -d '\"' | tr -d '\n' | xargs)
 
 # Validate
