@@ -5854,6 +5854,56 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-ai-startup-funding-trends-q1-2.md",
       "type": "output",
       "title": "Planner suggestion: AI startup funding trends Q1 2025"
+    },
+    {
+      "id": "00987ead-5f6e-47d2-9b31-d7fd797fabdf",
+      "type": "seed",
+      "title": "Agentic Control Center for Data Product Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/agentic-control-center-for-data-product-optimizati.py",
+      "type": "app",
+      "title": "Agentic Control Center for Data Product Optimization"
+    },
+    {
+      "id": "9d9fa92a-fe73-4a39-bc64-84716f42989d",
+      "type": "seed",
+      "title": "Hybrid Self-evolving Structured Memory for GUI Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/hybrid-self-evolving-structured-memory-for-gui-age.py",
+      "type": "app",
+      "title": "Hybrid Self-evolving Structured Memory for GUI Agents"
+    },
+    {
+      "id": "964240dc-2858-4124-b1d8-2132d28e4788",
+      "type": "seed",
+      "title": "HEAL: Hindsight Entropy-Assisted Learning for Reasoning Distillation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-heal:-hindsight-entropy-assisted-learning-for-reas.md",
+      "type": "output",
+      "title": "HEAL: Hindsight Entropy-Assisted Learning for Reasoning Distillation"
+    },
+    {
+      "id": "5a7ce194-7ee1-4322-a57a-ef5c9a034b65",
+      "type": "seed",
+      "title": "Beyond Scalars: Evaluating and Understanding LLM Reasoning via Geometric Progress and Stability"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-beyond-scalars:-evaluating-and-understanding-llm-reasoning-via-geometric-progres.md",
+      "type": "content",
+      "title": "Beyond Scalars: Evaluating and Understanding LLM Reasoning via Geometric Progress and Stability"
+    },
+    {
+      "id": "efa8f221-008f-40ec-97c8-519e21159ff2",
+      "type": "seed",
+      "title": "Verbalizing LLM's Higher-order Uncertainty via Imprecise Probabilities"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/verbalizing-llm_s-higher-order-uncertainty-via-imp.py",
+      "type": "app",
+      "title": "Verbalizing LLM's Higher-order Uncertainty via Imprecise Probabilities"
     }
   ],
   "edges": [
@@ -6260,6 +6310,31 @@
     {
       "from": "abb1506e-4a92-45b3-8068-3d5dffe93a59",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-planner-suggestion:-ai-startup-funding-trends-q1-2.md",
+      "type": "produced"
+    },
+    {
+      "from": "00987ead-5f6e-47d2-9b31-d7fd797fabdf",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/agentic-control-center-for-data-product-optimizati.py",
+      "type": "produced"
+    },
+    {
+      "from": "9d9fa92a-fe73-4a39-bc64-84716f42989d",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/hybrid-self-evolving-structured-memory-for-gui-age.py",
+      "type": "produced"
+    },
+    {
+      "from": "964240dc-2858-4124-b1d8-2132d28e4788",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-heal:-hindsight-entropy-assisted-learning-for-reas.md",
+      "type": "produced"
+    },
+    {
+      "from": "5a7ce194-7ee1-4322-a57a-ef5c9a034b65",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-beyond-scalars:-evaluating-and-understanding-llm-reasoning-via-geometric-progres.md",
+      "type": "produced"
+    },
+    {
+      "from": "efa8f221-008f-40ec-97c8-519e21159ff2",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/verbalizing-llm_s-higher-order-uncertainty-via-imp.py",
       "type": "produced"
     }
   ]

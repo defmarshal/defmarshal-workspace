@@ -10,10 +10,6 @@
 - Log: `memory/research-gardener.log`
 - PID: 2696939
 
-**Content Gardener** (03:04 UTC — in progress)
-- Triggered by cron: `content-gardener-cron`
-- Processing seeds from queue to generate content
-- Log: `memory/content-gardener.log`
 
 ## ✅ Completed Agents (today)
 
