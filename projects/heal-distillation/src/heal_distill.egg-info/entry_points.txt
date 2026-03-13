@@ -1,0 +1,5 @@
+[console_scripts]
+heal-evaluate = heal.scripts.evaluate:main
+heal-filter = heal.scripts.filter:main
+heal-generate = heal.scripts.generate:main
+heal-train = heal.scripts.train:main

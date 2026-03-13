@@ -6174,6 +6174,81 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-the-system-hallucination-scale-(shs):-a-minimal-yet-effective-human-centered-ins.md",
       "type": "content",
       "title": "The System Hallucination Scale (SHS): A Minimal yet Effective Human-Centered Instrument for Evaluating Hallucination-Related Behavior in Large Language Models"
+    },
+    {
+      "id": "8ac3fcd6-7476-4896-9284-4dff2f3877be",
+      "type": "seed",
+      "title": "A Two-Stage Architecture for NDA Analysis: LLM-based Segmentation and Transformer-based Clause Classification"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-a-two-stage-architecture-for-nda-analysis:-llm-bas.md",
+      "type": "output",
+      "title": "A Two-Stage Architecture for NDA Analysis: LLM-based Segmentation and Transformer-based Clause Classification"
+    },
+    {
+      "id": "eb405a52-84d4-4db5-8435-3ef8bdd31cca",
+      "type": "seed",
+      "title": "Explainable LLM Unlearning Through Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-explainable-llm-unlearning-through-reasoning.md",
+      "type": "output",
+      "title": "Explainable LLM Unlearning Through Reasoning"
+    },
+    {
+      "id": "dbb97ca2-a4ef-4490-b5c6-8faebdc66664",
+      "type": "seed",
+      "title": "MoE-SpAc: Efficient MoE Inference Based on Speculative Activation Utility in Heterogeneous Edge Scenarios"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/moe-spac_-efficient-moe-inference-based-on-specula.py",
+      "type": "app",
+      "title": "MoE-SpAc: Efficient MoE Inference Based on Speculative Activation Utility in Heterogeneous Edge Scenarios"
+    },
+    {
+      "id": "509e8b76-30b0-4ec3-b50d-434ba07a773b",
+      "type": "seed",
+      "title": "Personalized Group Relative Policy Optimization for Heterogenous Preference Alignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-personalized-group-relative-policy-optimization-fo.md",
+      "type": "output",
+      "title": "Personalized Group Relative Policy Optimization for Heterogenous Preference Alignment"
+    },
+    {
+      "id": "8904818f-5dd7-4c55-92a6-450aa7d34f13",
+      "type": "seed",
+      "title": "LWM-Temporal: Sparse Spatio-Temporal Attention for Wireless Channel Representation Learning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-lwm-temporal:-sparse-spatio-temporal-attention-for.md",
+      "type": "output",
+      "title": "LWM-Temporal: Sparse Spatio-Temporal Attention for Wireless Channel Representation Learning"
+    },
+    {
+      "id": "9cc5119f-5a9b-4988-8584-6c870b51b37e",
+      "type": "seed",
+      "title": "Gated Adaptation for Continual Learning in Human Activity Recognition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-gated-adaptation-for-continual-learning-in-human-activity-recognition.md",
+      "type": "content",
+      "title": "Gated Adaptation for Continual Learning in Human Activity Recognition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-gated-adaptation-for-continual-learning-in-human-activity-recognition.md",
+      "type": "content",
+      "title": "Gated Adaptation for Continual Learning in Human Activity Recognition"
+    },
+    {
+      "id": "ff5dea40-b1fb-473a-857c-13fbf186d6ea",
+      "type": "seed",
+      "title": "Revisiting Sharpness-Aware Minimization: A More Faithful and Effective Implementation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/revisiting-sharpness-aware-minimization_-a-more-fa.py",
+      "type": "app",
+      "title": "Revisiting Sharpness-Aware Minimization: A More Faithful and Effective Implementation"
     }
   ],
   "edges": [
@@ -6740,6 +6815,46 @@
     {
       "from": "b3b7e3e7-2c52-412f-ab2b-96fcccd0f460",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-the-system-hallucination-scale-(shs):-a-minimal-yet-effective-human-centered-ins.md",
+      "type": "produced"
+    },
+    {
+      "from": "8ac3fcd6-7476-4896-9284-4dff2f3877be",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-a-two-stage-architecture-for-nda-analysis:-llm-bas.md",
+      "type": "produced"
+    },
+    {
+      "from": "eb405a52-84d4-4db5-8435-3ef8bdd31cca",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-explainable-llm-unlearning-through-reasoning.md",
+      "type": "produced"
+    },
+    {
+      "from": "dbb97ca2-a4ef-4490-b5c6-8faebdc66664",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/moe-spac_-efficient-moe-inference-based-on-specula.py",
+      "type": "produced"
+    },
+    {
+      "from": "509e8b76-30b0-4ec3-b50d-434ba07a773b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-personalized-group-relative-policy-optimization-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "8904818f-5dd7-4c55-92a6-450aa7d34f13",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-lwm-temporal:-sparse-spatio-temporal-attention-for.md",
+      "type": "produced"
+    },
+    {
+      "from": "9cc5119f-5a9b-4988-8584-6c870b51b37e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-gated-adaptation-for-continual-learning-in-human-activity-recognition.md",
+      "type": "produced"
+    },
+    {
+      "from": "9cc5119f-5a9b-4988-8584-6c870b51b37e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-gated-adaptation-for-continual-learning-in-human-activity-recognition.md",
+      "type": "produced"
+    },
+    {
+      "from": "ff5dea40-b1fb-473a-857c-13fbf186d6ea",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/revisiting-sharpness-aware-minimization_-a-more-fa.py",
       "type": "produced"
     }
   ]

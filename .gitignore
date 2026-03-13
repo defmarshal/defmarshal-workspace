@@ -119,3 +119,8 @@ memory/evolution/
 # Valhalla routing data (large, not for Git)
 valhalla-jabodetabek/data/
 valhalla-jabodetabek/data/*.pbf
+
+# Python virtual environments
+venv/
+**/venv/
+.env/

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heal-distill"
+version = "0.1.0"
+description = "HEAL: Hindsight Entropy-Assisted Learning for Reasoning Distillation"
+authors = [{name = "mewmew", email = "assistant@openclaw.ai"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0",
+    "transformers>=4.40",
+    "peft>=0.10",
+    "datasets>=2.14",
+    "accelerate>=0.30",
+    "openai>=1.0",  # for OpenRouter Step API
+    "numpy>=1.24",
+    "tqdm>=4.66",
+    "hydra-core>=1.3",
+    "rich>=13.0",
+]
+
+[project.scripts]
+heal-generate = "heal.scripts.generate:main"
+heal-filter = "heal.scripts.filter:main"
+heal-train = "heal.scripts.train:main"
+heal-evaluate = "heal.scripts.evaluate:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
