@@ -1,6 +1,0 @@
-{
-  "generate": true,
-  "filter": false,
-  "train": false,
-  "evaluate": false
-}

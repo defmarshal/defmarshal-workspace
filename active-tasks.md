@@ -1,14 +1,24 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-13 12:25 UTC (recovery completed)
+**Last updated**: 2026-03-13 17:04 UTC (code-gardener cron started)
 
 ## 🔄 Currently Running Agents
 
-*(none)*
+**Code Gardener** (17:04–?? UTC)
+- Process: `python3 agents/code-gardener.py` (PID 2998486)
+- Status: Running, processing pending seeds from `memory/seeds.jsonl`
+- Graph: `memory/graph.json` updated incrementally after each seed
+- Log: `memory/code-gardener.log` (tail for progress)
+
+**Research Gardener** (15:25–15:25 UTC)
+- Processed seed: "One Model, Many Skills: Parameter-Efficient Fine-Tuning for Multitask Code Analysis"
+- Generated report: `research/2026-03-13-one-model,-many-skills:-parameter-efficient-fine-t.md`
+- ⚠️ TAVILY_API_KEY not set; web search skipped.
+- Seed marked processed; graph updated.
 
 ## ✅ Completed Agents (today)
 
-**Code Gardener** (03:22–03:22 UTC)
+**Research Gardener** (00:00–01:06 UTC)
 - Processed seed: "An Efficient Hybrid Deep Learning Approach for Detecting Online Abusive Language"
 - Generated app: `apps/an-efficient-hybrid-deep-learning-approach-for-det.py`
 - Graph updated with seed→app edge in `memory/graph.json`.

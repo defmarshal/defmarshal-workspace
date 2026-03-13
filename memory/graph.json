@@ -6279,6 +6279,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-training-language-models-via-neural-cellular-automata.md",
       "type": "content",
       "title": "Training Language Models via Neural Cellular Automata"
+    },
+    {
+      "id": "9a3be96a-b5ea-4e99-9970-6f1fa5fe471e",
+      "type": "seed",
+      "title": "HTMuon: Improving Muon via Heavy-Tailed Spectral Correction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-htmuon:-improving-muon-via-heavy-tailed-spectral-c.md",
+      "type": "output",
+      "title": "HTMuon: Improving Muon via Heavy-Tailed Spectral Correction"
+    },
+    {
+      "id": "56dd4b27-8acc-406b-b278-7acda5ee5864",
+      "type": "seed",
+      "title": "One Model, Many Skills: Parameter-Efficient Fine-Tuning for Multitask Code Analysis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-one-model,-many-skills:-parameter-efficient-fine-t.md",
+      "type": "output",
+      "title": "One Model, Many Skills: Parameter-Efficient Fine-Tuning for Multitask Code Analysis"
+    },
+    {
+      "id": "3da399f1-77fa-403b-86d3-7001f1d4fd78",
+      "type": "seed",
+      "title": "Safety Under Scaffolding: How Evaluation Conditions Shape Measured Safety"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-safety-under-scaffolding:-how-evaluation-conditions-shape-measured-safety.md",
+      "type": "content",
+      "title": "Safety Under Scaffolding: How Evaluation Conditions Shape Measured Safety"
+    },
+    {
+      "id": "2b7f1663-fd9c-4c89-8f53-3e1faba8f886",
+      "type": "seed",
+      "title": "Toward Epistemic Stability: Engineering Consistent Procedures for Industrial LLM Hallucination Reduction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/toward-epistemic-stability_-engineering-consistent.py",
+      "type": "app",
+      "title": "Toward Epistemic Stability: Engineering Consistent Procedures for Industrial LLM Hallucination Reduction"
+    },
+    {
+      "id": "8db72ca6-8bdf-4f50-956c-09886c7a3dd9",
+      "type": "seed",
+      "title": "DUCTILE: Agentic LLM Orchestration of Engineering Analysis in Product Development Practice"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-ductile:-agentic-llm-orchestration-of-engineering-.md",
+      "type": "output",
+      "title": "DUCTILE: Agentic LLM Orchestration of Engineering Analysis in Product Development Practice"
+    },
+    {
+      "id": "72f18961-67a3-448f-a23c-ebd2cc73f00c",
+      "type": "seed",
+      "title": "MALTA: Maintenance-Aware Technical Lag, Estimation to Address Software Abandonment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-malta:-maintenance-aware-technical-lag,-estimation.md",
+      "type": "output",
+      "title": "MALTA: Maintenance-Aware Technical Lag, Estimation to Address Software Abandonment"
     }
   ],
   "edges": [
@@ -6900,6 +6960,36 @@
     {
       "from": "a13d9402-4c32-4b93-9d64-395149f424b3",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-training-language-models-via-neural-cellular-automata.md",
+      "type": "produced"
+    },
+    {
+      "from": "9a3be96a-b5ea-4e99-9970-6f1fa5fe471e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-htmuon:-improving-muon-via-heavy-tailed-spectral-c.md",
+      "type": "produced"
+    },
+    {
+      "from": "56dd4b27-8acc-406b-b278-7acda5ee5864",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-one-model,-many-skills:-parameter-efficient-fine-t.md",
+      "type": "produced"
+    },
+    {
+      "from": "3da399f1-77fa-403b-86d3-7001f1d4fd78",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-safety-under-scaffolding:-how-evaluation-conditions-shape-measured-safety.md",
+      "type": "produced"
+    },
+    {
+      "from": "2b7f1663-fd9c-4c89-8f53-3e1faba8f886",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/toward-epistemic-stability_-engineering-consistent.py",
+      "type": "produced"
+    },
+    {
+      "from": "8db72ca6-8bdf-4f50-956c-09886c7a3dd9",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-ductile:-agentic-llm-orchestration-of-engineering-.md",
+      "type": "produced"
+    },
+    {
+      "from": "72f18961-67a3-448f-a23c-ebd2cc73f00c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-malta:-maintenance-aware-technical-lag,-estimation.md",
       "type": "produced"
     }
   ]
