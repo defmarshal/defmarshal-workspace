@@ -1,15 +1,10 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-12 11:48 UTC
+**Last updated**: 2026-03-12 23:01 UTC
 
 ## 🔄 Currently Running Agents
 
-**Research Gardener** (16:00 UTC — in progress)
-- Triggered by manual exec (cron:gardener-1773046574)
-- Processing next unprocessed seed from queue
-- Log: `memory/research-gardener.log`
-- PID: 2696939
-
+*(none)*
 
 ## ✅ Completed Agents (today)
 
@@ -29,10 +24,16 @@
   - The World Won't Stay Still: Programmable Evolution for Agent Benchmarks
 - All reports deployed to `research/` directory.
 
+**Research Gardener** (23:01 UTC)
+- Processed seed: "CUAAudit: Meta-Evaluation of Vision-Language Models as Auditors of Autonomous Computer-Use Agents"
+- Generated report: `research/2026-03-12-cuaaudit:-meta-evaluation-of-vision-language-model.md`
+- ⚠️ Report incomplete: web search command failed (`unknown command 'web'`)
+- Seed marked processed; graph updated.
+
 **Code Gardener** (11:48 UTC)
 - Processed seed: "Push for $40 smartphones builds momentum, but still faces cost hurdles"
 - Generated app: `apps/push-for-_40-smartphones-builds-momentum_-but-stil.py` (217 bytes)
-- Graph updated with seed→app edge in `memory/graph.json`
+- Graph updated with seed→app edge in `memory/graph.json`.
 
 **Content-Agent** (01:06 UTC)
 - Updated daily digest with March 9 research; content current.

@@ -5934,6 +5934,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/adaptive-ran-slicing-control-via-reward-free-self-.py",
       "type": "app",
       "title": "Adaptive RAN Slicing Control via Reward-Free Self-Finetuning Agents"
+    },
+    {
+      "id": "ee5d83b5-ea6f-4afd-82f9-c1f20809e2e4",
+      "type": "seed",
+      "title": "CUAAudit: Meta-Evaluation of Vision-Language Models as Auditors of Autonomous Computer-Use Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-cuaaudit:-meta-evaluation-of-vision-language-model.md",
+      "type": "output",
+      "title": "CUAAudit: Meta-Evaluation of Vision-Language Models as Auditors of Autonomous Computer-Use Agents"
+    },
+    {
+      "id": "7bb73058-f4bf-470a-8cca-c79a186bb31a",
+      "type": "seed",
+      "title": "Does LLM Alignment Really Need Diversity? An Empirical Study of Adapting RLVR Methods for Moral Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-does-llm-alignment-really-need-diversity?-an-empirical-study-of-adapting-rlvr-me.md",
+      "type": "content",
+      "title": "Does LLM Alignment Really Need Diversity? An Empirical Study of Adapting RLVR Methods for Moral Reasoning"
+    },
+    {
+      "id": "e58e53c6-9588-4187-9a76-1626f5786063",
+      "type": "seed",
+      "title": "GhazalBench: Usage-Grounded Evaluation of LLMs on Persian Ghazals"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/ghazalbench_-usage-grounded-evaluation-of-llms-on-.py",
+      "type": "app",
+      "title": "GhazalBench: Usage-Grounded Evaluation of LLMs on Persian Ghazals"
     }
   ],
   "edges": [
@@ -6380,6 +6410,21 @@
     {
       "from": "6b9deaed-a2d1-42ec-8a14-2a388c03a98a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/adaptive-ran-slicing-control-via-reward-free-self-.py",
+      "type": "produced"
+    },
+    {
+      "from": "ee5d83b5-ea6f-4afd-82f9-c1f20809e2e4",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-12-cuaaudit:-meta-evaluation-of-vision-language-model.md",
+      "type": "produced"
+    },
+    {
+      "from": "7bb73058-f4bf-470a-8cca-c79a186bb31a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-12-does-llm-alignment-really-need-diversity?-an-empirical-study-of-adapting-rlvr-me.md",
+      "type": "produced"
+    },
+    {
+      "from": "e58e53c6-9588-4187-9a76-1626f5786063",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/ghazalbench_-usage-grounded-evaluation-of-llms-on-.py",
       "type": "produced"
     }
   ]
