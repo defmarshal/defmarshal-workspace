@@ -115,3 +115,7 @@ memory/evolution/
 
 # Additional runtime artifacts
 .vercel/
+
+# Valhalla routing data (large, not for Git)
+valhalla-jabodetabek/data/
+valhalla-jabodetabek/data/*.pbf
