@@ -92,3 +92,23 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
 - **Fix:** Reindexed with `./quick memory-reindex`. Restored 43/43 files, 416 chunks. Manually triggered research-agent; report for March 6 generated successfully.
 - **Prevention:** Add meta-agent health check: if `quick memory-status` shows indexed files < expected count, automatically trigger reindex. Also, monitor memory-store size changes and alert if drops sharply.
 - **Follow-up:** Investigate what cleared the index (possible accidental rotation or Voyage AI interaction). Consider backing up index periodically.
+
+## 2026-03-13 — Agent-Manager Stale Lock & Large File Git Push Blocker
+
+- **Symptom:** Cron-triggered agent-manager (04:12 UTC) stalled, leaving a stale `.lock` file. Log showed only "Git dirty (3 files) but seems minor; attempting commit" with no completion. Two new agent outputs remained untracked (content and research files). Additionally, `git push` failed repeatedly with "File valhalla-jabodetabek/data/jabodetabek.osm.pbf is 1627.44 MB; exceeds GitHub's file size limit".
+- **Root causes:**
+  1. Agent-manager process likely crashed or was killed after spawning content/research agents but before cleanup, leaving lock file.
+  2. Large OSM data file (1.6GB) was tracked in Git and part of local commit history, causing all push attempts to be rejected by GitHub (100MB limit).
+- **Actions taken:**
+  - Removed stale lock file.
+  - Verified content and research agents completed successfully (created valid outputs).
+  - Committed the untracked outputs manually.
+  - Added `valhalla-jabodetabek/data/` to `.gitignore` to prevent future adds.
+  - Used `git filter-branch` (sequential index-filter) to rewrite local history and purge the large file from all commits (2840 commits rewritten).
+  - Forced push after history rewrite will be required (once filter-branch finishes).
+- **Prevention:**
+  - Add agent-manager watchdog: check for stale lock files older than expected runtime (e.g., >15 min) and alert/cleanup.
+  - Add pre-push hook that scans for files >50MB and aborts push with clear message.
+  - Periodic `git lfs ls-files` audit to ensure no large binaries are tracked.
+  - Consider migrating valhalla data directory to a separate data repository or using Git LFS for large datasets.
+- **Follow-up:** After filter-branch completes, force-push cleaned history. Monitor subsequent agent-manager runs for lock file anomalies.
