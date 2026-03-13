@@ -10,8 +10,8 @@ TODAY=$(date +%Y-%m-%d)
 REPORTS=$(ls research/${TODAY}*.md 2>/dev/null | wc -l || echo 0)
 UPDATES=$(apt list --upgradable 2>/dev/null | wc -l)
 
-# Weather (Bogor)
-WEATHER=$(curl -s 'wttr.in/Bogor?format=%c+%t' || echo "N/A")
+# Weather (Bogor) - using Open-Meteo API
+WEATHER=$(curl -s 'https://api.open-meteo.com/v1/forecast?latitude=-6.5963&longitude=106.7972&current_weather=true&temperature_unit=celsius' | python3 -c "import json,sys; d=json.load(sys.stdin); cw=d.get('current_weather',{}); print(f\"{cw.get('weathercode', 'N/A')} {cw.get('temperature', 'N/A')}°C\")" 2>/dev/null || echo "N/A")
 
 # Holiday definitions (date -> label)
 declare -A HOLIDAYS=(
