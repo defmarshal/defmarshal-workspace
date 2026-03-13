@@ -6389,6 +6389,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/esg-reporting-lifecycle-management-with-large-lang.py",
       "type": "app",
       "title": "ESG Reporting Lifecycle Management with Large Language Models and AI Agents"
+    },
+    {
+      "id": "23e16dd2-38a7-4d18-90e7-0478f3ef2a6f",
+      "type": "seed",
+      "title": "How to watch Jensen Huang\u2019s Nvidia GTC 2026 keynote"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-how-to-watch-jensen-huang\u2019s-nvidia-gtc-2026-keynot.md",
+      "type": "output",
+      "title": "How to watch Jensen Huang\u2019s Nvidia GTC 2026 keynote"
+    },
+    {
+      "id": "2c7684d2-daff-4dbc-9dd3-6284ddc1112b",
+      "type": "seed",
+      "title": "Channel Surfer lets you watch YouTube like it&#8217;s old-school cable TV"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/channel-surfer-lets-you-watch-youtube-like-it__821.py",
+      "type": "app",
+      "title": "Channel Surfer lets you watch YouTube like it&#8217;s old-school cable TV"
     }
   ],
   "edges": [
@@ -7065,6 +7085,16 @@
     {
       "from": "0c32fd33-0a22-4821-9eb2-11239adffab0",
       "to": "/home/ubuntu/.openclaw/workspace/apps/esg-reporting-lifecycle-management-with-large-lang.py",
+      "type": "produced"
+    },
+    {
+      "from": "23e16dd2-38a7-4d18-90e7-0478f3ef2a6f",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-how-to-watch-jensen-huang\u2019s-nvidia-gtc-2026-keynot.md",
+      "type": "produced"
+    },
+    {
+      "from": "2c7684d2-daff-4dbc-9dd3-6284ddc1112b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/channel-surfer-lets-you-watch-youtube-like-it__821.py",
       "type": "produced"
     }
   ]
