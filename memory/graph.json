@@ -6124,6 +6124,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/an-efficient-hybrid-deep-learning-approach-for-det.py",
       "type": "app",
       "title": "An Efficient Hybrid Deep Learning Approach for Detecting Online Abusive Language"
+    },
+    {
+      "id": "c3a9eb18-2856-46cf-89ba-7e1c9948b755",
+      "type": "seed",
+      "title": "The Dunning-Kruger Effect in Large Language Models: An Empirical Study of Confidence Calibration"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-dunning-kruger-effect-in-large-language-models.py",
+      "type": "app",
+      "title": "The Dunning-Kruger Effect in Large Language Models: An Empirical Study of Confidence Calibration"
     }
   ],
   "edges": [
@@ -6665,6 +6675,11 @@
     {
       "from": "40719c15-f07a-4c90-8693-6f738e315bb4",
       "to": "/home/ubuntu/.openclaw/workspace/apps/an-efficient-hybrid-deep-learning-approach-for-det.py",
+      "type": "produced"
+    },
+    {
+      "from": "c3a9eb18-2856-46cf-89ba-7e1c9948b755",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-dunning-kruger-effect-in-large-language-models.py",
       "type": "produced"
     }
   ]
