@@ -6164,6 +6164,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/causally-grounded-mechanistic-interpretability-for.py",
       "type": "app",
       "title": "Causally Grounded Mechanistic Interpretability for LLMs with Faithful Natural-Language Explanations"
+    },
+    {
+      "id": "b3b7e3e7-2c52-412f-ab2b-96fcccd0f460",
+      "type": "seed",
+      "title": "The System Hallucination Scale (SHS): A Minimal yet Effective Human-Centered Instrument for Evaluating Hallucination-Related Behavior in Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-the-system-hallucination-scale-(shs):-a-minimal-yet-effective-human-centered-ins.md",
+      "type": "content",
+      "title": "The System Hallucination Scale (SHS): A Minimal yet Effective Human-Centered Instrument for Evaluating Hallucination-Related Behavior in Large Language Models"
     }
   ],
   "edges": [
@@ -6725,6 +6735,11 @@
     {
       "from": "3427280f-637c-43b0-b109-32bd0eb6608b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/causally-grounded-mechanistic-interpretability-for.py",
+      "type": "produced"
+    },
+    {
+      "from": "b3b7e3e7-2c52-412f-ab2b-96fcccd0f460",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-the-system-hallucination-scale-(shs):-a-minimal-yet-effective-human-centered-ins.md",
       "type": "produced"
     }
   ]
