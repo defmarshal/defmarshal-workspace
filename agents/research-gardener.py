@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, uuid, datetime, subprocess
+import os, sys, json, uuid, datetime, subprocess, urllib.request, urllib.error, ssl
 from pathlib import Path
 from typing import Dict, Any
 
@@ -59,18 +59,75 @@ def add_graph_edge(seed_id: str, output_path: str, title: str):
     graph['edges'].append({"from": seed_id, "to": output_path, "type": "produced"})
     save_graph(graph)
 
+def tavily_search(query: str, api_key: str, max_results: int = 10) -> str:
+    """Perform a web search via Tavily API and return a formatted string of results."""
+    url = "https://api.tavily.com/search"
+    payload = {
+        "query": query,
+        "search_depth": "basic",
+        "topic": "general",
+        "max_results": max_results,
+        "include_answer": True,
+        "include_raw_content": False,
+        "include_images": False
+    }
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}"
+    }
+    try:
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode('utf-8'),
+            headers=headers,
+            method='POST'
+        )
+        # Use default SSL context
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            if resp.status != 200:
+                return f"_Search error: HTTP {resp.status}_"
+            resp_data = json.loads(resp.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        if e.code == 401:
+            return "_Search error: Invalid Tavily API key_"
+        elif e.code == 429:
+            return "_Search error: Rate limit exceeded_"
+        else:
+            return f"_Search error: HTTP {e.code}_"
+    except urllib.error.URLError as e:
+        return f"_Search error: Connection failed ({e.reason})_"
+    except Exception as e:
+        return f"_Search error: {str(e)}_"
+
+    # Format results
+    parts = []
+    if resp_data.get("answer"):
+        parts.append("**AI Answer:**\n" + resp_data["answer"] + "\n")
+    results = resp_data.get("results", [])
+    if results:
+        parts.append("**Top Results:**")
+        for i, item in enumerate(results, 1):
+            title = item.get('title', 'No title')
+            url = item.get('url', '')
+            content = item.get('content', '').strip()
+            line = f"{i}. [{title}]({url})"
+            if content:
+                # Shorten snippet
+                snippet = content[:300] + ("..." if len(content) > 300 else "")
+                line += f"\n   {snippet}"
+            parts.append(line)
+    return "\n\n".join(parts) if parts else "_No results found_"
+
 def generate_report(seed: Dict[str, Any]) -> str:
-    # Perform a quick literature review using openclaw web search (Tavily)
     query = seed['title']
     log(f"Searching for: {query}")
-    # Use openclaw web search via subprocess (leveraging Tavily skill if configured)
-    try:
-        search_cmd = [OPENCLAWS, 'web', 'search', query, '--count', '10']
-        result = subprocess.run(search_cmd, capture_output=True, text=True, timeout=30)
-        search_results = result.stdout.strip() or result.stderr.strip() or ''
-    except Exception as e:
-        log(f"Web search failed: {e}")
-        search_results = ''
+    # Attempt Tavily search if API key is available
+    api_key = os.getenv('TAVILY_API_KEY')
+    if api_key:
+        search_results = tavily_search(query, api_key, max_results=10)
+    else:
+        log("TAVILY_API_KEY not set; skipping web search")
+        search_results = '_Web search skipped (no API key configured)._'
 
     # Build a draft report
     today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
@@ -88,7 +145,7 @@ def generate_report(seed: Dict[str, Any]) -> str:
 
 ## Preliminary Findings
 
-{search_results if search_results else '_No search results available yet._'}
+{search_results}
 
 ## Next Steps
 

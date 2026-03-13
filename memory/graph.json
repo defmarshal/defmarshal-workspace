@@ -5964,6 +5964,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/ghazalbench_-usage-grounded-evaluation-of-llms-on-.py",
       "type": "app",
       "title": "GhazalBench: Usage-Grounded Evaluation of LLMs on Persian Ghazals"
+    },
+    {
+      "id": "617def0a-5146-4209-b738-c15511e76f21",
+      "type": "seed",
+      "title": "Large Language Models and Book Summarization: Reading or Remembering, Which Is Better?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-large-language-models-and-book-summarization:-read.md",
+      "type": "output",
+      "title": "Large Language Models and Book Summarization: Reading or Remembering, Which Is Better?"
+    },
+    {
+      "id": "3b87245c-58b9-4a19-9dcd-f1d56e00eea5",
+      "type": "seed",
+      "title": "AraModernBERT: Transtokenized Initialization and Long-Context Encoder Modeling for Arabic"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-aramodernbert:-transtokenized-initialization-and-l.md",
+      "type": "output",
+      "title": "AraModernBERT: Transtokenized Initialization and Long-Context Encoder Modeling for Arabic"
     }
   ],
   "edges": [
@@ -6425,6 +6445,16 @@
     {
       "from": "e58e53c6-9588-4187-9a76-1626f5786063",
       "to": "/home/ubuntu/.openclaw/workspace/apps/ghazalbench_-usage-grounded-evaluation-of-llms-on-.py",
+      "type": "produced"
+    },
+    {
+      "from": "617def0a-5146-4209-b738-c15511e76f21",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-large-language-models-and-book-summarization:-read.md",
+      "type": "produced"
+    },
+    {
+      "from": "3b87245c-58b9-4a19-9dcd-f1d56e00eea5",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-aramodernbert:-transtokenized-initialization-and-l.md",
       "type": "produced"
     }
   ]
