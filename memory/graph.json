@@ -6249,6 +6249,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/revisiting-sharpness-aware-minimization_-a-more-fa.py",
       "type": "app",
       "title": "Revisiting Sharpness-Aware Minimization: A More Faithful and Effective Implementation"
+    },
+    {
+      "id": "9d641683-f8ef-4db3-bd3a-2b066d013d21",
+      "type": "seed",
+      "title": "InFusionLayer: a CFA-based ensemble tool to generate new classifiers for learning and modeling"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-infusionlayer:-a-cfa-based-ensemble-tool-to-genera.md",
+      "type": "output",
+      "title": "InFusionLayer: a CFA-based ensemble tool to generate new classifiers for learning and modeling"
     }
   ],
   "edges": [
@@ -6855,6 +6865,11 @@
     {
       "from": "ff5dea40-b1fb-473a-857c-13fbf186d6ea",
       "to": "/home/ubuntu/.openclaw/workspace/apps/revisiting-sharpness-aware-minimization_-a-more-fa.py",
+      "type": "produced"
+    },
+    {
+      "from": "9d641683-f8ef-4db3-bd3a-2b066d013d21",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-infusionlayer:-a-cfa-based-ensemble-tool-to-genera.md",
       "type": "produced"
     }
   ]
