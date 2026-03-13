@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-import os, sys, json, subprocess, time
+import os, sys, json, subprocess, time, re
+
+# Load .env file if present
+env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.env')
+if os.path.exists(env_path):
+    with open(env_path) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                key, _, value = line.partition('=')
+                os.environ[key.strip()] = value.strip()
 
 # Config
 BATCH_SIZE = int(os.getenv('BATCH_SIZE', '1000'))

@@ -6339,6 +6339,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-malta:-maintenance-aware-technical-lag,-estimation.md",
       "type": "output",
       "title": "MALTA: Maintenance-Aware Technical Lag, Estimation to Address Software Abandonment"
+    },
+    {
+      "id": "0625847b-56d0-4fcf-a3e9-689b4d78f46a",
+      "type": "seed",
+      "title": "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/specops_-a-fully-automated-ai-agent-testing-framew.py",
+      "type": "app",
+      "title": "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
     }
   ],
   "edges": [
@@ -6990,6 +7000,11 @@
     {
       "from": "72f18961-67a3-448f-a23c-ebd2cc73f00c",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-malta:-maintenance-aware-technical-lag,-estimation.md",
+      "type": "produced"
+    },
+    {
+      "from": "0625847b-56d0-4fcf-a3e9-689b4d78f46a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/specops_-a-fully-automated-ai-agent-testing-framew.py",
       "type": "produced"
     }
   ]
