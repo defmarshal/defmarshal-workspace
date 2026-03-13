@@ -202,6 +202,24 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log:** `memory/linkedin-pa-agent.log`
    - **Description:** Generates research‑oriented LinkedIn content about IBM Planning Analytics. Produces hourly posts with unique timestamps; rotates through 6 content types (market-positioning, technical-performance, comparative-analysis, implementation-decoder, roadmap-brief, developer-tips). Outputs committed to Git and synced to Obsidian vault. Non‑promotional, focused on knowledge sharing. Uses direct OpenRouter API to avoid cron hangs.
 
+33. **research-gardener-cron**
+   - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
+   - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/research-gardener.py >> memory/research-gardener.log 2>&1'`
+   - **Log:** `memory/research-gardener.log`
+   - **Description:** Processes RSS seeds to generate research reports in the research/ directory. Uses Tavily API for web search (if TAVILY_API_KEY is set) and enhances reports via OpenClaw agent. Shares seed pool with content-gardener and code-gardener to distribute work across research, content, and code domains. Seeds are marked processed in shared memory/processed_seeds.jsonl. Updates memory/graph.json with seed→output edges.
+
+34. **content-gardener-cron**
+   - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
+   - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/content-gardener.py >> memory/content-gardener.log 2>&1'`
+   - **Log:** `memory/content-gardener.log`
+   - **Description:** Converts seeds into blog-style content posts in content/ directory. Produces markdown articles with engaging intros, key points, and conclusions. Cooperatively competes for seeds from the shared pool; marks processed seeds to avoid duplicate work.
+
+35. **code-gardener-cron**
+   - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
+   - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/code-gardener.py >> memory/code-gardener.log 2>&1'`
+   - **Log:** `memory/code-gardener.log`
+   - **Description:** Transforms seeds into functional Python code snippets and small applications. Outputs stored as .py files in apps/ directory. Shares seed pool with research and content gardeners; coordination via shared processed_seeds.jsonl and graph edges.
+
 ---
 
 **Note**: To modify any job, use `openclaw cron` commands (`list`, `update`, `remove`) or edit the gateway configuration. System cron should not be edited for workspace tasks anymore.

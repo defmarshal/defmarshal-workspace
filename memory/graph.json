@@ -6024,6 +6024,106 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-beyond-scalars:-evaluating-and-understanding-llm-reasoning-via-geometric-progres.md",
       "type": "content",
       "title": "Beyond Scalars: Evaluating and Understanding LLM Reasoning via Geometric Progress and Stability"
+    },
+    {
+      "id": "830d27e6-9e30-4c87-8ced-f5d5b97be8d2",
+      "type": "seed",
+      "title": "Verbalizing LLM's Higher-order Uncertainty via Imprecise Probabilities"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-verbalizing-llm's-higher-order-uncertainty-via-imprecise-probabilities.md",
+      "type": "content",
+      "title": "Verbalizing LLM's Higher-order Uncertainty via Imprecise Probabilities"
+    },
+    {
+      "id": "949180c9-e0d0-453a-ac45-6355632bfa85",
+      "type": "seed",
+      "title": "Resource-constrained Amazons chess decision framework integrating large language models and graph attention"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-resource-constrained-amazons-chess-decision-framework-integrating-large-language.md",
+      "type": "content",
+      "title": "Resource-constrained Amazons chess decision framework integrating large language models and graph attention"
+    },
+    {
+      "id": "b9cca266-0b01-41f2-9826-1f9699fc4abb",
+      "type": "seed",
+      "title": "IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-ih-challenge:-a-training-dataset-to-improve-instruction-hierarchy-on-frontier-ll.md",
+      "type": "content",
+      "title": "IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs"
+    },
+    {
+      "id": "164b6432-4ca3-4b54-8965-c7f4fbb69ed0",
+      "type": "seed",
+      "title": "Adaptive RAN Slicing Control via Reward-Free Self-Finetuning Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-adaptive-ran-slicing-control-via-reward-free-self-finetuning-agents.md",
+      "type": "content",
+      "title": "Adaptive RAN Slicing Control via Reward-Free Self-Finetuning Agents"
+    },
+    {
+      "id": "1b9995da-d904-4c63-8be6-ba00f31db6c4",
+      "type": "seed",
+      "title": "CUAAudit: Meta-Evaluation of Vision-Language Models as Auditors of Autonomous Computer-Use Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-cuaaudit:-meta-evaluation-of-vision-language-models-as-auditors-of-autonomous-co.md",
+      "type": "content",
+      "title": "CUAAudit: Meta-Evaluation of Vision-Language Models as Auditors of Autonomous Computer-Use Agents"
+    },
+    {
+      "id": "272d9b71-bd04-4169-9d7e-a2bfa4998e22",
+      "type": "seed",
+      "title": "Does LLM Alignment Really Need Diversity? An Empirical Study of Adapting RLVR Methods for Moral Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-does-llm-alignment-really-need-diversity?-an-empirical-study-of-adapting-rlvr-me.md",
+      "type": "content",
+      "title": "Does LLM Alignment Really Need Diversity? An Empirical Study of Adapting RLVR Methods for Moral Reasoning"
+    },
+    {
+      "id": "f47e1ee3-70f9-4913-97ca-0ede90a58118",
+      "type": "seed",
+      "title": "GhazalBench: Usage-Grounded Evaluation of LLMs on Persian Ghazals"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/ghazalbench_-usage-grounded-evaluation-of-llms-on--1.py",
+      "type": "app",
+      "title": "GhazalBench: Usage-Grounded Evaluation of LLMs on Persian Ghazals"
+    },
+    {
+      "id": "9456125a-30f4-47f4-ab37-1d6ca11b59df",
+      "type": "seed",
+      "title": "Large Language Models and Book Summarization: Reading or Remembering, Which Is Better?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-large-language-models-and-book-summarization:-read.md",
+      "type": "output",
+      "title": "Large Language Models and Book Summarization: Reading or Remembering, Which Is Better?"
+    },
+    {
+      "id": "67e1f512-b492-4516-9143-2522aca996b7",
+      "type": "seed",
+      "title": "AraModernBERT: Transtokenized Initialization and Long-Context Encoder Modeling for Arabic"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/aramodernbert_-transtokenized-initialization-and-l.py",
+      "type": "app",
+      "title": "AraModernBERT: Transtokenized Initialization and Long-Context Encoder Modeling for Arabic"
+    },
+    {
+      "id": "40719c15-f07a-4c90-8693-6f738e315bb4",
+      "type": "seed",
+      "title": "An Efficient Hybrid Deep Learning Approach for Detecting Online Abusive Language"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/an-efficient-hybrid-deep-learning-approach-for-det.py",
+      "type": "app",
+      "title": "An Efficient Hybrid Deep Learning Approach for Detecting Online Abusive Language"
     }
   ],
   "edges": [
@@ -6515,6 +6615,56 @@
     {
       "from": "2bde85d5-1ba3-4897-915d-7c1cc3976584",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-beyond-scalars:-evaluating-and-understanding-llm-reasoning-via-geometric-progres.md",
+      "type": "produced"
+    },
+    {
+      "from": "830d27e6-9e30-4c87-8ced-f5d5b97be8d2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-verbalizing-llm's-higher-order-uncertainty-via-imprecise-probabilities.md",
+      "type": "produced"
+    },
+    {
+      "from": "949180c9-e0d0-453a-ac45-6355632bfa85",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-resource-constrained-amazons-chess-decision-framework-integrating-large-language.md",
+      "type": "produced"
+    },
+    {
+      "from": "b9cca266-0b01-41f2-9826-1f9699fc4abb",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-ih-challenge:-a-training-dataset-to-improve-instruction-hierarchy-on-frontier-ll.md",
+      "type": "produced"
+    },
+    {
+      "from": "164b6432-4ca3-4b54-8965-c7f4fbb69ed0",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-adaptive-ran-slicing-control-via-reward-free-self-finetuning-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "1b9995da-d904-4c63-8be6-ba00f31db6c4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-cuaaudit:-meta-evaluation-of-vision-language-models-as-auditors-of-autonomous-co.md",
+      "type": "produced"
+    },
+    {
+      "from": "272d9b71-bd04-4169-9d7e-a2bfa4998e22",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-does-llm-alignment-really-need-diversity?-an-empirical-study-of-adapting-rlvr-me.md",
+      "type": "produced"
+    },
+    {
+      "from": "f47e1ee3-70f9-4913-97ca-0ede90a58118",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/ghazalbench_-usage-grounded-evaluation-of-llms-on--1.py",
+      "type": "produced"
+    },
+    {
+      "from": "9456125a-30f4-47f4-ab37-1d6ca11b59df",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-large-language-models-and-book-summarization:-read.md",
+      "type": "produced"
+    },
+    {
+      "from": "67e1f512-b492-4516-9143-2522aca996b7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/aramodernbert_-transtokenized-initialization-and-l.py",
+      "type": "produced"
+    },
+    {
+      "from": "40719c15-f07a-4c90-8693-6f738e315bb4",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/an-efficient-hybrid-deep-learning-approach-for-det.py",
       "type": "produced"
     }
   ]

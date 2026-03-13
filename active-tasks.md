@@ -1,12 +1,22 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-12 23:01 UTC
+**Last updated**: 2026-03-13 02:27 UTC
 
 ## 🔄 Currently Running Agents
 
 *(none)*
 
 ## ✅ Completed Agents (today)
+
+**Code Gardener** (03:22–03:22 UTC)
+- Processed seed: "An Efficient Hybrid Deep Learning Approach for Detecting Online Abusive Language"
+- Generated app: `apps/an-efficient-hybrid-deep-learning-approach-for-det.py`
+- Graph updated with seed→app edge in `memory/graph.json`.
+
+**Code Gardener** (02:27–02:27 UTC)
+- Processed seed: "GhazalBench: Usage-Grounded Evaluation of LLMs on Persian Ghazals"
+- Generated app: `apps/ghazalbench_-usage-grounded-evaluation-of-llms-on--1.py`
+- Graph updated with seed→app edge in `memory/graph.json`.
 
 **Research Gardener** (00:00–01:06 UTC)
 - Generated 2 research reports:

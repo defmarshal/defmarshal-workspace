@@ -1,8 +1,8 @@
 # Large Language Models and Book Summarization: Reading or Remembering, Which Is Better?
 
-**Seed ID:** 617def0a-5146-4209-b738-c15511e76f21  
+**Seed ID:** 9456125a-30f4-47f4-ab37-1d6ca11b59df  
 **Source:** rss:https://rss.arxiv.org/rss/cs.CL  
-**Generated:** 2026-03-13 00:04:37 UTC
+**Generated:** 2026-03-13 03:18:29 UTC
 
 ## Summary
 

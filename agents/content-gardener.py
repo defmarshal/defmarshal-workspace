@@ -65,15 +65,22 @@ def generate_content(seed) -> str:
     today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
     slug = seed['title'].lower().replace(' ', '-')[:80]
     filename = CONTENT_DIR / f"{today}-{slug}.md"
-    # Call an LLM to write a blog post — we can route through meta-agent or use a direct model call.
-    # For simplicity, use openclaw with a one-shot agent: we'll spawn an ephemeral agent via `openclaw agent ask`.
-    prompt = f"""Write a friendly, insightful blog post titled "{seed['title']}".
-Context:
+    # Call an LLM to write a blog post — use a no-nonsense agent turn
+    prompt = f"""Write a blog post titled "{seed['title']}".
+
+Context from source:
 {seed['snippet']}
 
-Make it engaging, with a short intro, key points, and a conclusion. Use markdown."""
+Requirements:
+- Friendly yet insightful tone
+- Engaging intro paragraph
+- 3-5 key points as subheadings or bullets
+- Short conclusion
+- Use markdown formatting
+
+IMPORTANT: Output ONLY the raw markdown content. No extra commentary, no "Here's your blog post", no confirmations. Just the markdown."""
     try:
-        result = subprocess.run([OPENCLAWS, 'agent', 'ask', '--prompt', prompt], capture_output=True, text=True, timeout=60)
+        result = subprocess.run([OPENCLAWS, 'agent', '--local', '--agent', 'main', '--message', prompt], capture_output=True, text=True, timeout=60)
         content = result.stdout.strip()
         if not content:
             # Fallback: simple draft
