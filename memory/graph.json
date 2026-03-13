@@ -6349,6 +6349,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/specops_-a-fully-automated-ai-agent-testing-framew.py",
       "type": "app",
       "title": "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
+    },
+    {
+      "id": "f3f829d1-2540-4d89-b77f-f71847f1c1dc",
+      "type": "seed",
+      "title": "From Verification to Herding: Exploiting Software's Sparsity of Influence"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-from-verification-to-herding:-exploiting-software'.md",
+      "type": "output",
+      "title": "From Verification to Herding: Exploiting Software's Sparsity of Influence"
+    },
+    {
+      "id": "e523e04d-2471-406b-9107-ced72d9ec6c0",
+      "type": "seed",
+      "title": "FP-Predictor - False Positive Prediction for Static Analysis Reports"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-fp-predictor---false-positive-prediction-for-static-analysis-reports.md",
+      "type": "content",
+      "title": "FP-Predictor - False Positive Prediction for Static Analysis Reports"
+    },
+    {
+      "id": "b9c8acf8-391c-4267-80be-ecf917cdab8a",
+      "type": "seed",
+      "title": "QuantumX: an experience for the consolidation of Quantum Computing and Quantum Software Engineering as an emerging discipline"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/quantumx_-an-experience-for-the-consolidation-of-q.py",
+      "type": "app",
+      "title": "QuantumX: an experience for the consolidation of Quantum Computing and Quantum Software Engineering as an emerging discipline"
+    },
+    {
+      "id": "0c32fd33-0a22-4821-9eb2-11239adffab0",
+      "type": "seed",
+      "title": "ESG Reporting Lifecycle Management with Large Language Models and AI Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/esg-reporting-lifecycle-management-with-large-lang.py",
+      "type": "app",
+      "title": "ESG Reporting Lifecycle Management with Large Language Models and AI Agents"
     }
   ],
   "edges": [
@@ -7005,6 +7045,26 @@
     {
       "from": "0625847b-56d0-4fcf-a3e9-689b4d78f46a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/specops_-a-fully-automated-ai-agent-testing-framew.py",
+      "type": "produced"
+    },
+    {
+      "from": "f3f829d1-2540-4d89-b77f-f71847f1c1dc",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-from-verification-to-herding:-exploiting-software'.md",
+      "type": "produced"
+    },
+    {
+      "from": "e523e04d-2471-406b-9107-ced72d9ec6c0",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-fp-predictor---false-positive-prediction-for-static-analysis-reports.md",
+      "type": "produced"
+    },
+    {
+      "from": "b9c8acf8-391c-4267-80be-ecf917cdab8a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/quantumx_-an-experience-for-the-consolidation-of-q.py",
+      "type": "produced"
+    },
+    {
+      "from": "0c32fd33-0a22-4821-9eb2-11239adffab0",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/esg-reporting-lifecycle-management-with-large-lang.py",
       "type": "produced"
     }
   ]
