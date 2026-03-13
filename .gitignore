@@ -124,3 +124,10 @@ valhalla-jabodetabek/data/*.pbf
 venv/
 **/venv/
 .env/
+
+# Archive large files (temporary backups, not for Git)
+archive/
+**/archive/
+*.tar.gz
+*.tar
+*.zip

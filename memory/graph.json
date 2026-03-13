@@ -6259,6 +6259,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-infusionlayer:-a-cfa-based-ensemble-tool-to-genera.md",
       "type": "output",
       "title": "InFusionLayer: a CFA-based ensemble tool to generate new classifiers for learning and modeling"
+    },
+    {
+      "id": "d0281abd-4295-4e04-947a-50c8c94c53df",
+      "type": "seed",
+      "title": "Cluster-Aware Attention-Based Deep Reinforcement Learning for Pickup and Delivery Problems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-cluster-aware-attention-based-deep-reinforcement-l.md",
+      "type": "output",
+      "title": "Cluster-Aware Attention-Based Deep Reinforcement Learning for Pickup and Delivery Problems"
+    },
+    {
+      "id": "a13d9402-4c32-4b93-9d64-395149f424b3",
+      "type": "seed",
+      "title": "Training Language Models via Neural Cellular Automata"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-training-language-models-via-neural-cellular-automata.md",
+      "type": "content",
+      "title": "Training Language Models via Neural Cellular Automata"
     }
   ],
   "edges": [
@@ -6870,6 +6890,16 @@
     {
       "from": "9d641683-f8ef-4db3-bd3a-2b066d013d21",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-infusionlayer:-a-cfa-based-ensemble-tool-to-genera.md",
+      "type": "produced"
+    },
+    {
+      "from": "d0281abd-4295-4e04-947a-50c8c94c53df",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-cluster-aware-attention-based-deep-reinforcement-l.md",
+      "type": "produced"
+    },
+    {
+      "from": "a13d9402-4c32-4b93-9d64-395149f424b3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-training-language-models-via-neural-cellular-automata.md",
       "type": "produced"
     }
   ]
