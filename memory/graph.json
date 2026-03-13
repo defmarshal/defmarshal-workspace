@@ -6134,6 +6134,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-dunning-kruger-effect-in-large-language-models.py",
       "type": "app",
       "title": "The Dunning-Kruger Effect in Large Language Models: An Empirical Study of Confidence Calibration"
+    },
+    {
+      "id": "f76e4529-bac1-4c0f-8a4c-b8a59731f2a7",
+      "type": "seed",
+      "title": "Quantifying Hallucinations in Language Language Models on Medical Textbooks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-quantifying-hallucinations-in-language-language-models-on-medical-textbooks.md",
+      "type": "content",
+      "title": "Quantifying Hallucinations in Language Language Models on Medical Textbooks"
+    },
+    {
+      "id": "065c2ef6-634f-4ac3-839a-2505ccda3c55",
+      "type": "seed",
+      "title": "Evolving Demonstration Optimization for Chain-of-Thought Feature Transformation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/evolving-demonstration-optimization-for-chain-of-t.py",
+      "type": "app",
+      "title": "Evolving Demonstration Optimization for Chain-of-Thought Feature Transformation"
+    },
+    {
+      "id": "3427280f-637c-43b0-b109-32bd0eb6608b",
+      "type": "seed",
+      "title": "Causally Grounded Mechanistic Interpretability for LLMs with Faithful Natural-Language Explanations"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/causally-grounded-mechanistic-interpretability-for.py",
+      "type": "app",
+      "title": "Causally Grounded Mechanistic Interpretability for LLMs with Faithful Natural-Language Explanations"
     }
   ],
   "edges": [
@@ -6680,6 +6710,21 @@
     {
       "from": "c3a9eb18-2856-46cf-89ba-7e1c9948b755",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-dunning-kruger-effect-in-large-language-models.py",
+      "type": "produced"
+    },
+    {
+      "from": "f76e4529-bac1-4c0f-8a4c-b8a59731f2a7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-quantifying-hallucinations-in-language-language-models-on-medical-textbooks.md",
+      "type": "produced"
+    },
+    {
+      "from": "065c2ef6-634f-4ac3-839a-2505ccda3c55",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/evolving-demonstration-optimization-for-chain-of-t.py",
+      "type": "produced"
+    },
+    {
+      "from": "3427280f-637c-43b0-b109-32bd0eb6608b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/causally-grounded-mechanistic-interpretability-for.py",
       "type": "produced"
     }
   ]
