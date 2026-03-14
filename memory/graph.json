@@ -6644,6 +6644,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-threadmed-qa:-a-multi-turn-medical-dialogue-benchm.md",
       "type": "output",
       "title": "ThReadMed-QA: A Multi-Turn Medical Dialogue Benchmark from Real Patient Questions"
+    },
+    {
+      "id": "cdd51623-c811-4e9c-8494-7fc947c67acd",
+      "type": "seed",
+      "title": "Temporal Text Classification with Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-temporal-text-classification-with-large-language-m.md",
+      "type": "output",
+      "title": "Temporal Text Classification with Large Language Models"
+    },
+    {
+      "id": "75320185-404f-40f9-82db-98c6371e4361",
+      "type": "seed",
+      "title": "Evaluating Explainable AI Attribution Methods in Neural Machine Translation via Attention-Guided Knowledge Distillation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/evaluating-explainable-ai-attribution-methods-in-n.py",
+      "type": "app",
+      "title": "Evaluating Explainable AI Attribution Methods in Neural Machine Translation via Attention-Guided Knowledge Distillation"
     }
   ],
   "edges": [
@@ -7450,6 +7470,16 @@
     {
       "from": "bfc53e96-73cb-4ca8-a01e-a05212a662c8",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-threadmed-qa:-a-multi-turn-medical-dialogue-benchm.md",
+      "type": "produced"
+    },
+    {
+      "from": "cdd51623-c811-4e9c-8494-7fc947c67acd",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-temporal-text-classification-with-large-language-m.md",
+      "type": "produced"
+    },
+    {
+      "from": "75320185-404f-40f9-82db-98c6371e4361",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/evaluating-explainable-ai-attribution-methods-in-n.py",
       "type": "produced"
     }
   ]
