@@ -6604,6 +6604,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-dereason:-a-difficulty-aware-curriculum-improves-decoupled-sft-then-rl-training-.md",
       "type": "content",
       "title": "DeReason: A Difficulty-Aware Curriculum Improves Decoupled SFT-then-RL Training for General Reasoning"
+    },
+    {
+      "id": "27747073-15ea-4fda-afc8-e233ab6502a9",
+      "type": "seed",
+      "title": "MDER-DR: Multi-Hop Question Answering with Entity-Centric Summaries"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-mder-dr:-multi-hop-question-answering-with-entity-.md",
+      "type": "output",
+      "title": "MDER-DR: Multi-Hop Question Answering with Entity-Centric Summaries"
+    },
+    {
+      "id": "8576ada7-9c99-4eb0-8cae-264b1b6137f9",
+      "type": "seed",
+      "title": "Markovian Generation Chains in Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-markovian-generation-chains-in-large-language-models.md",
+      "type": "content",
+      "title": "Markovian Generation Chains in Large Language Models"
     }
   ],
   "edges": [
@@ -7390,6 +7410,16 @@
     {
       "from": "f1577fdd-ef83-4f2c-ac26-f8346854e1b5",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-dereason:-a-difficulty-aware-curriculum-improves-decoupled-sft-then-rl-training-.md",
+      "type": "produced"
+    },
+    {
+      "from": "27747073-15ea-4fda-afc8-e233ab6502a9",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-mder-dr:-multi-hop-question-answering-with-entity-.md",
+      "type": "produced"
+    },
+    {
+      "from": "8576ada7-9c99-4eb0-8cae-264b1b6137f9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-markovian-generation-chains-in-large-language-models.md",
       "type": "produced"
     }
   ]
