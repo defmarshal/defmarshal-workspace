@@ -111,9 +111,18 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
     - **Schedule**: Every 30 minutes (`*/30 * * * *`) in Asia/Bangkok
     - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/agent-manager.sh --once'`
     - **Log**: `memory/agent-manager.log`
-    - **Description**: Monitors and manages other background agents (prevents duplicate runs, cleans stale locks, maintains agent health).
+    - **Description**: Validates cron schedules against this document, runs cleanup tasks (downloads, git janitor), and auto‑commits state. Prevents schedule drift and maintains workspace hygiene.
+    - **Status**: Enabled
 
-17. **git-janitor-cron**
+17. **cron-supervisor-cron**
+    - **Schedule**: Every 30 minutes (`*/30 * * * *`) in Asia/Bangkok (stagger 5m)
+    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/supervisor.sh'`
+    - **Log**: `memory/supervisor.log` (if any alerts)
+    - **Description**: Lightweight watchdog that checks cron job health, gateway status, memory reindex need, disk usage, and APT updates. Sends Telegram alerts when thresholds exceeded or failures detected. Runs in the background; does not perform repairs (only monitoring).
+    - **Status**: Enabled (created 2026-03-14)
+    - **Notes**: Companion to `agent-manager-cron`; provides alerting while agent‑manager handles repairs.
+
+18. **git-janitor-cron**
     - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
     - **Payload**: agentTurn executing `./agents/git-janitor-cycle.sh >> memory/git-janitor.log 2>&1'`
     - **Log**: `memory/git-janitor.log`
@@ -241,13 +250,6 @@ The following cron jobs are currently **disabled** for token conservation (user 
 - **Original description:** Aggregates daily activity into a concise markdown report and sends it to Telegram. Outputs also saved in `reports/` for persistence. Stderr (errors) logged to `memory/daily-digest.log`. Simplified on 2026-02-21 to reduce LLM usage and avoid rate limits (direct exec instead of verbose agent prompt).
 - **Status:** Disabled
 - **Re-enable:** `openclaw cron enable 5b6a002d`
-
-### supervisor-cron
-- **Schedule:** Every 30 minutes (`0,30 * * * *`) in Asia/Bangkok
-- **Original description:** Monitors cron job health, gateway status, memory index, disk usage, and APT updates. Sends Telegram alerts when issues detected. Reduced from every 5 min to 30 min (token optimization, 2026-02-19).
-- **Status:** Disabled
-- **Re-enable:** `openclaw cron enable e2735844`
-
 
 
 ## Maintenance Commands

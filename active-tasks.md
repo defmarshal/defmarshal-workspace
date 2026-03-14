@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-13 18:07 UTC (code-gardener cron completed)
+**Last updated**: 2026-03-14 06:28 UTC (research-gardener cron completed)
 
 ## 🔄 Currently Running Agents
 
@@ -12,6 +12,12 @@
 - Processed seed: "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
 - Generated app: `apps/specops_-a-fully-automated-ai-agent-testing-framew.py`
 - Graph updated with seed→app edge in `memory/graph.json`.
+
+**Research Gardener** (06:28–06:28 UTC, today)
+- Processed seed: "Speculative Decoding Scaling Laws (SDSL): Throughput Optimization Made Simple"
+- Generated report: `research/2026-03-14-speculative-decoding-scaling-laws-(sdsl):-throughp.md`
+- ⚠️ TAVILY_API_KEY not set; web search skipped.
+- Seed marked processed; graph updated.
 
 **Research Gardener** (15:25–15:25 UTC)
 - Processed seed: "One Model, Many Skills: Parameter-Efficient Fine-Tuning for Multitask Code Analysis"

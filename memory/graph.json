@@ -6569,6 +6569,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/counterweights-and-complementarities_-the-converge.py",
       "type": "app",
       "title": "Counterweights and Complementarities: The Convergence of AI and Blockchain Powering a Decentralized Future"
+    },
+    {
+      "id": "aea58251-4f62-494d-9f0d-d517fc5257d5",
+      "type": "seed",
+      "title": "Speculative Decoding Scaling Laws (SDSL): Throughput Optimization Made Simple"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-speculative-decoding-scaling-laws-(sdsl):-throughp.md",
+      "type": "output",
+      "title": "Speculative Decoding Scaling Laws (SDSL): Throughput Optimization Made Simple"
+    },
+    {
+      "id": "9a74481a-7441-41b6-96fd-25de88d531ee",
+      "type": "seed",
+      "title": "Summarize Before You Speak with ARACH: A Training-Free Inference-Time Plug-In for Enhancing LLMs via Global Attention Reallocation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-summarize-before-you-speak-with-arach:-a-training-free-inference-time-plug-in-fo.md",
+      "type": "content",
+      "title": "Summarize Before You Speak with ARACH: A Training-Free Inference-Time Plug-In for Enhancing LLMs via Global Attention Reallocation"
     }
   ],
   "edges": [
@@ -7335,6 +7355,16 @@
     {
       "from": "bd7eab32-217d-4272-98e5-7d70f9a2ee19",
       "to": "/home/ubuntu/.openclaw/workspace/apps/counterweights-and-complementarities_-the-converge.py",
+      "type": "produced"
+    },
+    {
+      "from": "aea58251-4f62-494d-9f0d-d517fc5257d5",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-speculative-decoding-scaling-laws-(sdsl):-throughp.md",
+      "type": "produced"
+    },
+    {
+      "from": "9a74481a-7441-41b6-96fd-25de88d531ee",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-summarize-before-you-speak-with-arach:-a-training-free-inference-time-plug-in-fo.md",
       "type": "produced"
     }
   ]
