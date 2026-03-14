@@ -6634,6 +6634,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-artificial-intelligence-for-sentiment-analysis-of-persian-poetry.md",
       "type": "content",
       "title": "Artificial Intelligence for Sentiment Analysis of Persian Poetry"
+    },
+    {
+      "id": "bfc53e96-73cb-4ca8-a01e-a05212a662c8",
+      "type": "seed",
+      "title": "ThReadMed-QA: A Multi-Turn Medical Dialogue Benchmark from Real Patient Questions"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-threadmed-qa:-a-multi-turn-medical-dialogue-benchm.md",
+      "type": "output",
+      "title": "ThReadMed-QA: A Multi-Turn Medical Dialogue Benchmark from Real Patient Questions"
     }
   ],
   "edges": [
@@ -7435,6 +7445,11 @@
     {
       "from": "ff36479b-865e-4722-96be-3b1518c6b471",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-artificial-intelligence-for-sentiment-analysis-of-persian-poetry.md",
+      "type": "produced"
+    },
+    {
+      "from": "bfc53e96-73cb-4ca8-a01e-a05212a662c8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-threadmed-qa:-a-multi-turn-medical-dialogue-benchm.md",
       "type": "produced"
     }
   ]
