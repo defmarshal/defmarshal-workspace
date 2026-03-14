@@ -182,10 +182,11 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
 
 28. **email-categorizer-cron**
    - **Schedule**: Every hour (`0 * * * *`) in UTC (stagger 5m)
-   - **Payload**: agentTurn executing `cd /home/ubuntu/.openclaw/workspace && BATCH_SIZE=50 PAGES_PER_RUN=4 python3 agents/email_sweep.py`
+   - **Payload**: agentTurn executing `cd /home/ubuntu/.openclaw/workspace && BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
    - **Log**: `memory/email-categorizer.log`
-   - **Description**: Sweeps unread emails via Maton API, applies labels based on sender mapping, marks as read. Processes up to 50 messages per page for up to 4 pages per run. Maintains state in `memory/email-categorizer.state`. No Telegram notifications (delivery: none).
+   - **Description**: Sweeps unread emails via Maton API, applies labels based on sender mapping, marks as read. Processes up to 100 messages per page for 1 page per run (current configuration; adjust if backlog builds). Maintains state in `memory/email-categorizer.state`. No Telegram notifications (delivery: none).
    - **Status**: Enabled (running)
+   - **Last verified**: 2026-03-14 — configuration updated to BATCH_SIZE=100, PAGES_PER_RUN=1 for faster backlog clearing. Label mapping has 156+ senders.
 
 28. **dashboard-data-updater**
    - **Schedule**: Every 5 minutes (`*/5 * * * *`) in Asia/Bangkok
