@@ -6489,6 +6489,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/a-survey-of-reasoning-in-autonomous-driving-system.py",
       "type": "app",
       "title": "A Survey of Reasoning in Autonomous Driving Systems: Open Challenges and Emerging Paradigms"
+    },
+    {
+      "id": "cc988a72-8d01-4c5c-9eb4-e1c38c280032",
+      "type": "seed",
+      "title": "PACED: Distillation at the Frontier of Student Competence"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-paced:-distillation-at-the-frontier-of-student-com.md",
+      "type": "output",
+      "title": "PACED: Distillation at the Frontier of Student Competence"
+    },
+    {
+      "id": "70b62a46-dcb4-4d2c-861d-d1fdea40f4e3",
+      "type": "seed",
+      "title": "Measuring AI Agents' Progress on Multi-Step Cyber Attack Scenarios"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-measuring-ai-agents'-progress-on-multi-step-cyber-.md",
+      "type": "output",
+      "title": "Measuring AI Agents' Progress on Multi-Step Cyber Attack Scenarios"
+    },
+    {
+      "id": "987bb3ee-e71f-4cdd-aed0-98933e23bc41",
+      "type": "seed",
+      "title": "Reversible Lifelong Model Editing via Semantic Routing-Based LoRA"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-reversible-lifelong-model-editing-via-semantic-rou.md",
+      "type": "output",
+      "title": "Reversible Lifelong Model Editing via Semantic Routing-Based LoRA"
     }
   ],
   "edges": [
@@ -7215,6 +7245,21 @@
     {
       "from": "3b71d969-66f0-4d8e-87e8-708faf270d57",
       "to": "/home/ubuntu/.openclaw/workspace/apps/a-survey-of-reasoning-in-autonomous-driving-system.py",
+      "type": "produced"
+    },
+    {
+      "from": "cc988a72-8d01-4c5c-9eb4-e1c38c280032",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-paced:-distillation-at-the-frontier-of-student-com.md",
+      "type": "produced"
+    },
+    {
+      "from": "70b62a46-dcb4-4d2c-861d-d1fdea40f4e3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-measuring-ai-agents'-progress-on-multi-step-cyber-.md",
+      "type": "produced"
+    },
+    {
+      "from": "987bb3ee-e71f-4cdd-aed0-98933e23bc41",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-reversible-lifelong-model-editing-via-semantic-rou.md",
       "type": "produced"
     }
   ]
