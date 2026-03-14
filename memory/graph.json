@@ -6664,6 +6664,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/evaluating-explainable-ai-attribution-methods-in-n.py",
       "type": "app",
       "title": "Evaluating Explainable AI Attribution Methods in Neural Machine Translation via Attention-Guided Knowledge Distillation"
+    },
+    {
+      "id": "cfd3755a-da30-4245-b48e-2adef8b5bb83",
+      "type": "seed",
+      "title": "Stop Listening to Me! How Multi-turn Conversations Can Degrade Diagnostic Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-stop-listening-to-me!-how-multi-turn-conversations-can-degrade-diagnostic-reason.md",
+      "type": "content",
+      "title": "Stop Listening to Me! How Multi-turn Conversations Can Degrade Diagnostic Reasoning"
+    },
+    {
+      "id": "d0f5c066-e548-45f1-91d6-81e03dc679c6",
+      "type": "seed",
+      "title": "Comparison of Outlier Detection Algorithms on String Data"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-comparison-of-outlier-detection-algorithms-on-stri.md",
+      "type": "output",
+      "title": "Comparison of Outlier Detection Algorithms on String Data"
+    },
+    {
+      "id": "312bd664-eff3-4715-b2e7-de0b181bfed3",
+      "type": "seed",
+      "title": "Structure-Aware Epistemic Uncertainty Quantification for Neural Operator PDE Surrogates"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-structure-aware-epistemic-uncertainty-quantificati.md",
+      "type": "output",
+      "title": "Structure-Aware Epistemic Uncertainty Quantification for Neural Operator PDE Surrogates"
+    },
+    {
+      "id": "4433daf5-9cb5-46e0-a417-24b5777af8d9",
+      "type": "seed",
+      "title": "Interventional Time Series Priors for Causal Foundation Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/interventional-time-series-priors-for-causal-found.py",
+      "type": "app",
+      "title": "Interventional Time Series Priors for Causal Foundation Models"
+    },
+    {
+      "id": "2df4308e-c519-429e-849d-1b1dd6ad794d",
+      "type": "seed",
+      "title": "Fingerprinting Concepts in Data Streams with Supervised and Unsupervised Meta-Information"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-fingerprinting-concepts-in-data-streams-with-super.md",
+      "type": "output",
+      "title": "Fingerprinting Concepts in Data Streams with Supervised and Unsupervised Meta-Information"
+    },
+    {
+      "id": "6f74ea59-93e4-47f6-833e-446401db705a",
+      "type": "seed",
+      "title": "Graph Tokenization for Bridging Graphs and Transformers"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-graph-tokenization-for-bridging-graphs-and-transformers.md",
+      "type": "content",
+      "title": "Graph Tokenization for Bridging Graphs and Transformers"
     }
   ],
   "edges": [
@@ -7480,6 +7540,36 @@
     {
       "from": "75320185-404f-40f9-82db-98c6371e4361",
       "to": "/home/ubuntu/.openclaw/workspace/apps/evaluating-explainable-ai-attribution-methods-in-n.py",
+      "type": "produced"
+    },
+    {
+      "from": "cfd3755a-da30-4245-b48e-2adef8b5bb83",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-stop-listening-to-me!-how-multi-turn-conversations-can-degrade-diagnostic-reason.md",
+      "type": "produced"
+    },
+    {
+      "from": "d0f5c066-e548-45f1-91d6-81e03dc679c6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-comparison-of-outlier-detection-algorithms-on-stri.md",
+      "type": "produced"
+    },
+    {
+      "from": "312bd664-eff3-4715-b2e7-de0b181bfed3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-structure-aware-epistemic-uncertainty-quantificati.md",
+      "type": "produced"
+    },
+    {
+      "from": "4433daf5-9cb5-46e0-a417-24b5777af8d9",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/interventional-time-series-priors-for-causal-found.py",
+      "type": "produced"
+    },
+    {
+      "from": "2df4308e-c519-429e-849d-1b1dd6ad794d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-fingerprinting-concepts-in-data-streams-with-super.md",
+      "type": "produced"
+    },
+    {
+      "from": "6f74ea59-93e4-47f6-833e-446401db705a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-graph-tokenization-for-bridging-graphs-and-transformers.md",
       "type": "produced"
     }
   ]
