@@ -6724,6 +6724,76 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-graph-tokenization-for-bridging-graphs-and-transformers.md",
       "type": "content",
       "title": "Graph Tokenization for Bridging Graphs and Transformers"
+    },
+    {
+      "id": "474f1d27-28ab-4d90-bda6-2ea299819476",
+      "type": "seed",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-competing-in-the-future.md",
+      "type": "content",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "16427610-cfe2-4a46-add5-ed775eec51b6",
+      "type": "seed",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/meta-reportedly-considering-layoffs-that-could-aff.py",
+      "type": "app",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
+    },
+    {
+      "id": "33863a11-3af4-45d7-a91a-c43ce3d1be89",
+      "type": "seed",
+      "title": "As people look for ways to make new friends, here are the apps promising to help"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-as-people-look-for-ways-to-make-new-friends,-here-are-the-apps-promising-to-help.md",
+      "type": "content",
+      "title": "As people look for ways to make new friends, here are the apps promising to help"
+    },
+    {
+      "id": "f8ce099a-c81d-4d29-80d4-6780a8c52e01",
+      "type": "seed",
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-how-to-use-the-new-chatgpt-app-integrations,-including-doordash,-spotify,-uber,-.md",
+      "type": "content",
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
+    },
+    {
+      "id": "bd2e781c-aa49-4d65-b604-04454281ea14",
+      "type": "seed",
+      "title": "&#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-&#8216;not-built-right-the-first-time&#8217;-&#8212;-musk&#8217;s-xai-is-startin.md",
+      "type": "content",
+      "title": "&#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again"
+    },
+    {
+      "id": "25b76914-c4f4-4499-9485-ebec42adbc69",
+      "type": "seed",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/lawyer-behind-ai-psychosis-cases-warns-of-mass-cas.py",
+      "type": "app",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "217690f6-6cec-42bd-bf0e-64bbc319cb22",
+      "type": "seed",
+      "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company-.py",
+      "type": "app",
+      "title": "Digg lays off staff and shuts down app as company retools"
     }
   ],
   "edges": [
@@ -7570,6 +7640,41 @@
     {
       "from": "6f74ea59-93e4-47f6-833e-446401db705a",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-graph-tokenization-for-bridging-graphs-and-transformers.md",
+      "type": "produced"
+    },
+    {
+      "from": "474f1d27-28ab-4d90-bda6-2ea299819476",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-competing-in-the-future.md",
+      "type": "produced"
+    },
+    {
+      "from": "16427610-cfe2-4a46-add5-ed775eec51b6",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/meta-reportedly-considering-layoffs-that-could-aff.py",
+      "type": "produced"
+    },
+    {
+      "from": "33863a11-3af4-45d7-a91a-c43ce3d1be89",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-as-people-look-for-ways-to-make-new-friends,-here-are-the-apps-promising-to-help.md",
+      "type": "produced"
+    },
+    {
+      "from": "f8ce099a-c81d-4d29-80d4-6780a8c52e01",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-how-to-use-the-new-chatgpt-app-integrations,-including-doordash,-spotify,-uber,-.md",
+      "type": "produced"
+    },
+    {
+      "from": "bd2e781c-aa49-4d65-b604-04454281ea14",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-&#8216;not-built-right-the-first-time&#8217;-&#8212;-musk&#8217;s-xai-is-startin.md",
+      "type": "produced"
+    },
+    {
+      "from": "25b76914-c4f4-4499-9485-ebec42adbc69",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/lawyer-behind-ai-psychosis-cases-warns-of-mass-cas.py",
+      "type": "produced"
+    },
+    {
+      "from": "217690f6-6cec-42bd-bf0e-64bbc319cb22",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company-.py",
       "type": "produced"
     }
   ]

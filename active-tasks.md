@@ -1,12 +1,17 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-14 06:28 UTC (research-gardener cron completed)
+**Last updated**: 2026-03-14 15:17 UTC (code-gardener cron completed)
 
 ## 🔄 Currently Running Agents
 
 *(none)*
 
 ## ✅ Completed Agents (today)
+
+**Code Gardener** (15:15–15:15 UTC)
+- Processed seed: "DeReason: A Difficulty-Aware Curriculum Improves Decoupled SFT-then-RL Training for General Reasoning"
+- Generated app: `apps/dereason_-a-difficulty-aware-curriculum-improves-d.py`
+- Graph updated with seed→app edge in `memory/graph.json`.
 
 **Code Gardener** (18:07–18:07 UTC)
 - Processed seed: "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
