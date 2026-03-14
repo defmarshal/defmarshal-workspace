@@ -6624,6 +6624,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-markovian-generation-chains-in-large-language-models.md",
       "type": "content",
       "title": "Markovian Generation Chains in Large Language Models"
+    },
+    {
+      "id": "ff36479b-865e-4722-96be-3b1518c6b471",
+      "type": "seed",
+      "title": "Artificial Intelligence for Sentiment Analysis of Persian Poetry"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-artificial-intelligence-for-sentiment-analysis-of-persian-poetry.md",
+      "type": "content",
+      "title": "Artificial Intelligence for Sentiment Analysis of Persian Poetry"
     }
   ],
   "edges": [
@@ -7420,6 +7430,11 @@
     {
       "from": "8576ada7-9c99-4eb0-8cae-264b1b6137f9",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-markovian-generation-chains-in-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "ff36479b-865e-4722-96be-3b1518c6b471",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-artificial-intelligence-for-sentiment-analysis-of-persian-poetry.md",
       "type": "produced"
     }
   ]
