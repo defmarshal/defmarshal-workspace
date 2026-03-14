@@ -6519,6 +6519,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-reversible-lifelong-model-editing-via-semantic-rou.md",
       "type": "output",
       "title": "Reversible Lifelong Model Editing via Semantic Routing-Based LoRA"
+    },
+    {
+      "id": "20862217-6656-432d-a34b-d2436f80bd06",
+      "type": "seed",
+      "title": "Mind the Sim2Real Gap in User Simulation for Agentic Tasks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/mind-the-sim2real-gap-in-user-simulation-for-agent.py",
+      "type": "app",
+      "title": "Mind the Sim2Real Gap in User Simulation for Agentic Tasks"
     }
   ],
   "edges": [
@@ -7260,6 +7270,11 @@
     {
       "from": "987bb3ee-e71f-4cdd-aed0-98933e23bc41",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-reversible-lifelong-model-editing-via-semantic-rou.md",
+      "type": "produced"
+    },
+    {
+      "from": "20862217-6656-432d-a34b-d2436f80bd06",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/mind-the-sim2real-gap-in-user-simulation-for-agent.py",
       "type": "produced"
     }
   ]
