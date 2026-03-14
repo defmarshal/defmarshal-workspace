@@ -6449,6 +6449,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-atlassian-follows-block\u2019s-footsteps-and-cuts-staff-in-the-name-of-ai.md",
       "type": "content",
       "title": "Atlassian follows Block\u2019s footsteps and cuts staff in the name of AI"
+    },
+    {
+      "id": "6336eab7-883f-425c-8da5-88333be8535f",
+      "type": "seed",
+      "title": "Lucid Motors shows off robotaxi concept called &#8216;Lunar&#8217;"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-lucid-motors-shows-off-robotaxi-concept-called-&#8216;lunar&#8217;.md",
+      "type": "content",
+      "title": "Lucid Motors shows off robotaxi concept called &#8216;Lunar&#8217;"
+    },
+    {
+      "id": "cf18ddb4-3cf0-48d5-a0ca-5331b5952b11",
+      "type": "seed",
+      "title": "Humanoid robotics maker Sunday reaches $1.15B valuation to build household robots"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-humanoid-robotics-maker-sunday-reaches-$1.15b-valuation-to-build-household-robot.md",
+      "type": "content",
+      "title": "Humanoid robotics maker Sunday reaches $1.15B valuation to build household robots"
     }
   ],
   "edges": [
@@ -7155,6 +7175,16 @@
     {
       "from": "cc7da055-087d-4895-8390-06acf030a02f",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-atlassian-follows-block\u2019s-footsteps-and-cuts-staff-in-the-name-of-ai.md",
+      "type": "produced"
+    },
+    {
+      "from": "6336eab7-883f-425c-8da5-88333be8535f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-lucid-motors-shows-off-robotaxi-concept-called-&#8216;lunar&#8217;.md",
+      "type": "produced"
+    },
+    {
+      "from": "cf18ddb4-3cf0-48d5-a0ca-5331b5952b11",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-humanoid-robotics-maker-sunday-reaches-$1.15b-valuation-to-build-household-robot.md",
       "type": "produced"
     }
   ]
