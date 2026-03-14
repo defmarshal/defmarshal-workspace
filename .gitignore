@@ -23,6 +23,7 @@ tts_output/
 
 # Cron logs
 memory/*.log
+memory/*.out
 
 # Agent runtime state (do not commit)
 **/state.json
