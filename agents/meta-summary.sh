@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+# Ensure openclaw CLI is available in cron environment
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 cd "/home/ubuntu/.openclaw/workspace"
 
 # Gather metrics
