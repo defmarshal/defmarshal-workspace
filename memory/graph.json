@@ -6589,6 +6589,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-summarize-before-you-speak-with-arach:-a-training-free-inference-time-plug-in-fo.md",
       "type": "content",
       "title": "Summarize Before You Speak with ARACH: A Training-Free Inference-Time Plug-In for Enhancing LLMs via Global Attention Reallocation"
+    },
+    {
+      "id": "f1577fdd-ef83-4f2c-ac26-f8346854e1b5",
+      "type": "seed",
+      "title": "DeReason: A Difficulty-Aware Curriculum Improves Decoupled SFT-then-RL Training for General Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/dereason_-a-difficulty-aware-curriculum-improves-d.py",
+      "type": "app",
+      "title": "DeReason: A Difficulty-Aware Curriculum Improves Decoupled SFT-then-RL Training for General Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-dereason:-a-difficulty-aware-curriculum-improves-decoupled-sft-then-rl-training-.md",
+      "type": "content",
+      "title": "DeReason: A Difficulty-Aware Curriculum Improves Decoupled SFT-then-RL Training for General Reasoning"
     }
   ],
   "edges": [
@@ -7365,6 +7380,16 @@
     {
       "from": "9a74481a-7441-41b6-96fd-25de88d531ee",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-summarize-before-you-speak-with-arach:-a-training-free-inference-time-plug-in-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "f1577fdd-ef83-4f2c-ac26-f8346854e1b5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/dereason_-a-difficulty-aware-curriculum-improves-d.py",
+      "type": "produced"
+    },
+    {
+      "from": "f1577fdd-ef83-4f2c-ac26-f8346854e1b5",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-dereason:-a-difficulty-aware-curriculum-improves-decoupled-sft-then-rl-training-.md",
       "type": "produced"
     }
   ]
