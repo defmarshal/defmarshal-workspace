@@ -163,7 +163,15 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/evolver-agent.log`
    - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
 
-27. **email-categorizer-cron**
+27. **meta-summary-cron**
+   - **Schedule**: Hourly (`0 * * * *`) in UTC
+   - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/meta-summary.sh'`
+   - **Timeout**: 300 seconds
+   - **Description**: Sends hourly system summary to Telegram (via `openclaw message`) with disk usage, running agents count, today's research reports, APT updates, Bogor weather, upcoming holidays, and leave days. Provides lightweight heartbeat without LLM calls.
+   - **Status**: Enabled
+   - **Last updated**: 2026-03-12 (interval changed from every 6h to hourly)
+
+28. **email-categorizer-cron**
    - **Schedule**: Every hour (`0 * * * *`) in UTC (stagger 5m)
    - **Payload**: agentTurn executing `cd /home/ubuntu/.openclaw/workspace && BATCH_SIZE=50 PAGES_PER_RUN=4 python3 agents/email_sweep.py`
    - **Log**: `memory/email-categorizer.log`
