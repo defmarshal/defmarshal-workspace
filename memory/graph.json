@@ -6469,6 +6469,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-humanoid-robotics-maker-sunday-reaches-$1.15b-valuation-to-build-household-robot.md",
       "type": "content",
       "title": "Humanoid robotics maker Sunday reaches $1.15B valuation to build household robots"
+    },
+    {
+      "id": "8dc1b34a-5ad7-4373-a53f-7614f7e25308",
+      "type": "seed",
+      "title": "DIVE: Scaling Diversity in Agentic Task Synthesis for Generalizable Tool Use"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-dive:-scaling-diversity-in-agentic-task-synthesis-for-generalizable-tool-use.md",
+      "type": "content",
+      "title": "DIVE: Scaling Diversity in Agentic Task Synthesis for Generalizable Tool Use"
+    },
+    {
+      "id": "3b71d969-66f0-4d8e-87e8-708faf270d57",
+      "type": "seed",
+      "title": "A Survey of Reasoning in Autonomous Driving Systems: Open Challenges and Emerging Paradigms"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/a-survey-of-reasoning-in-autonomous-driving-system.py",
+      "type": "app",
+      "title": "A Survey of Reasoning in Autonomous Driving Systems: Open Challenges and Emerging Paradigms"
     }
   ],
   "edges": [
@@ -7185,6 +7205,16 @@
     {
       "from": "cf18ddb4-3cf0-48d5-a0ca-5331b5952b11",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-humanoid-robotics-maker-sunday-reaches-$1.15b-valuation-to-build-household-robot.md",
+      "type": "produced"
+    },
+    {
+      "from": "8dc1b34a-5ad7-4373-a53f-7614f7e25308",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-dive:-scaling-diversity-in-agentic-task-synthesis-for-generalizable-tool-use.md",
+      "type": "produced"
+    },
+    {
+      "from": "3b71d969-66f0-4d8e-87e8-708faf270d57",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/a-survey-of-reasoning-in-autonomous-driving-system.py",
       "type": "produced"
     }
   ]
