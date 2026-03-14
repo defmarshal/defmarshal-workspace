@@ -6539,6 +6539,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-unlearning-mirage_-a-dynamic-framework-for-eva.py",
       "type": "app",
       "title": "The Unlearning Mirage: A Dynamic Framework for Evaluating LLM Unlearning"
+    },
+    {
+      "id": "eae9cb18-aeea-40ca-a4dc-4153c739d60e",
+      "type": "seed",
+      "title": "COMPASS: The explainable agentic framework for Sovereignty, Sustainability, Compliance, and Ethics"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-compass:-the-explainable-agentic-framework-for-sov.md",
+      "type": "output",
+      "title": "COMPASS: The explainable agentic framework for Sovereignty, Sustainability, Compliance, and Ethics"
+    },
+    {
+      "id": "23853aaa-c863-4c13-89fa-be943f9f44ca",
+      "type": "seed",
+      "title": "AI Psychometrics: Evaluating the Psychological Reasoning of Large Language Models with Psychometric Validities"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-ai-psychometrics:-evaluating-the-psychological-reasoning-of-large-language-model.md",
+      "type": "content",
+      "title": "AI Psychometrics: Evaluating the Psychological Reasoning of Large Language Models with Psychometric Validities"
+    },
+    {
+      "id": "bd7eab32-217d-4272-98e5-7d70f9a2ee19",
+      "type": "seed",
+      "title": "Counterweights and Complementarities: The Convergence of AI and Blockchain Powering a Decentralized Future"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/counterweights-and-complementarities_-the-converge.py",
+      "type": "app",
+      "title": "Counterweights and Complementarities: The Convergence of AI and Blockchain Powering a Decentralized Future"
     }
   ],
   "edges": [
@@ -7290,6 +7320,21 @@
     {
       "from": "f9a9bf24-4ee9-474f-b62b-d063168b83e4",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-unlearning-mirage_-a-dynamic-framework-for-eva.py",
+      "type": "produced"
+    },
+    {
+      "from": "eae9cb18-aeea-40ca-a4dc-4153c739d60e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-14-compass:-the-explainable-agentic-framework-for-sov.md",
+      "type": "produced"
+    },
+    {
+      "from": "23853aaa-c863-4c13-89fa-be943f9f44ca",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-ai-psychometrics:-evaluating-the-psychological-reasoning-of-large-language-model.md",
+      "type": "produced"
+    },
+    {
+      "from": "bd7eab32-217d-4272-98e5-7d70f9a2ee19",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/counterweights-and-complementarities_-the-converge.py",
       "type": "produced"
     }
   ]
