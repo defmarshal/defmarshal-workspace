@@ -6409,6 +6409,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/channel-surfer-lets-you-watch-youtube-like-it__821.py",
       "type": "app",
       "title": "Channel Surfer lets you watch YouTube like it&#8217;s old-school cable TV"
+    },
+    {
+      "id": "8082d0ef-9e47-4316-ad9f-1acd12cdbdd5",
+      "type": "seed",
+      "title": "Why Rivian is holding the $45,000 base model R2 until &#8216;late 2027&#8217;"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-why-rivian-is-holding-the-$45,000-base-model-r2-un.md",
+      "type": "output",
+      "title": "Why Rivian is holding the $45,000 base model R2 until &#8216;late 2027&#8217;"
+    },
+    {
+      "id": "9cfbf794-4e3c-4d6f-b522-6dcae69aa9dc",
+      "type": "seed",
+      "title": "Substack launches a built-in recording studio"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-substack-launches-a-built-in-recording-studio.md",
+      "type": "content",
+      "title": "Substack launches a built-in recording studio"
+    },
+    {
+      "id": "d9966fe0-baae-4f76-9b14-f435878b78cc",
+      "type": "seed",
+      "title": "Tinder tries to lure people back to online dating with IRL events, virtual speed dating"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-tinder-tries-to-lure-people-back-to-online-dating-.md",
+      "type": "output",
+      "title": "Tinder tries to lure people back to online dating with IRL events, virtual speed dating"
+    },
+    {
+      "id": "cc7da055-087d-4895-8390-06acf030a02f",
+      "type": "seed",
+      "title": "Atlassian follows Block\u2019s footsteps and cuts staff in the name of AI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-atlassian-follows-block\u2019s-footsteps-and-cuts-staff-in-the-name-of-ai.md",
+      "type": "content",
+      "title": "Atlassian follows Block\u2019s footsteps and cuts staff in the name of AI"
     }
   ],
   "edges": [
@@ -7095,6 +7135,26 @@
     {
       "from": "2c7684d2-daff-4dbc-9dd3-6284ddc1112b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/channel-surfer-lets-you-watch-youtube-like-it__821.py",
+      "type": "produced"
+    },
+    {
+      "from": "8082d0ef-9e47-4316-ad9f-1acd12cdbdd5",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-why-rivian-is-holding-the-$45,000-base-model-r2-un.md",
+      "type": "produced"
+    },
+    {
+      "from": "9cfbf794-4e3c-4d6f-b522-6dcae69aa9dc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-substack-launches-a-built-in-recording-studio.md",
+      "type": "produced"
+    },
+    {
+      "from": "d9966fe0-baae-4f76-9b14-f435878b78cc",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-13-tinder-tries-to-lure-people-back-to-online-dating-.md",
+      "type": "produced"
+    },
+    {
+      "from": "cc7da055-087d-4895-8390-06acf030a02f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-13-atlassian-follows-block\u2019s-footsteps-and-cuts-staff-in-the-name-of-ai.md",
       "type": "produced"
     }
   ]
