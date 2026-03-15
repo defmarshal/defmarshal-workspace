@@ -6924,6 +6924,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/type-safe-monitoring-of-parameterized-streams.py",
       "type": "app",
       "title": "Type-safe Monitoring of Parameterized Streams"
+    },
+    {
+      "id": "cfc75681-4697-4c75-9a0c-d0da0b6f4f3f",
+      "type": "seed",
+      "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
+      "type": "content",
+      "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
     }
   ],
   "edges": [
@@ -7870,6 +7880,11 @@
     {
       "from": "23338bba-bdff-48e3-b56d-613add580b27",
       "to": "/home/ubuntu/.openclaw/workspace/apps/type-safe-monitoring-of-parameterized-streams.py",
+      "type": "produced"
+    },
+    {
+      "from": "cfc75681-4697-4c75-9a0c-d0da0b6f4f3f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
       "type": "produced"
     }
   ]
