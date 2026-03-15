@@ -7039,6 +7039,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/as-people-look-for-ways-to-make-new-friends_-here-.py",
       "type": "app",
       "title": "As people look for ways to make new friends, here are the apps promising to help"
+    },
+    {
+      "id": "8568631a-9db7-48ed-b3c1-7836fc4541f7",
+      "type": "seed",
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu-1.py",
+      "type": "app",
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
     }
   ],
   "edges": [
@@ -8045,6 +8055,11 @@
     {
       "from": "4fc1b530-a2dc-45db-88e2-1fccb78a40ff",
       "to": "/home/ubuntu/.openclaw/workspace/apps/as-people-look-for-ways-to-make-new-friends_-here-.py",
+      "type": "produced"
+    },
+    {
+      "from": "8568631a-9db7-48ed-b3c1-7836fc4541f7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu-1.py",
       "type": "produced"
     }
   ]

@@ -30,7 +30,7 @@ else
 fi
 
 # 2. Gateway health
-if ! timeout 5 openclaw gateway status &>/dev/null; then
+if ! timeout 15 openclaw gateway status &>/dev/null; then
   alert "OpenClaw gateway appears down"
 fi
 

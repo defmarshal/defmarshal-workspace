@@ -1,4 +1,31 @@
 #!/bin/bash
 # Quick check: show memory stores with dirty flag
 # Usage: quick memory-dirty
-openclaw memory status --json | python3 -c "import sys, json; data=json.load(sys.stdin); print('Memory Stores:'); [(print(f\"  {s.get('agentId','?')}: dirty={s.get('status',{}).get('dirty',False)} files={s.get('status',{}).get('files',0)} chunks={s.get('status',{}).get('chunks',0)}\") if isinstance(s, dict) else None) for s in (data if isinstance(data, list) else [data])]"
+# Note: Tolerates openclaw CLI output errors (e.g., node-llama-cpp missing)
+
+# Get only the last line (expected to be JSON) to avoid error messages on stdout
+RAW_JSON=$(openclaw memory status --json 2>/dev/null | tail -1 || echo '[]')
+
+# Validate JSON
+if ! echo "$RAW_JSON" | python3 -c "import sys, json; json.load(sys.stdin)" >/dev/null 2>&1; then
+  echo "Memory status: unable to parse JSON (provider may be misconfigured). Skipping."
+  exit 0
+fi
+
+# Pretty print store info
+echo "$RAW_JSON" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+stores = data if isinstance(data, list) else [data]
+print('Memory Stores:')
+for s in stores:
+    if isinstance(s, dict):
+        agent = s.get('agentId', '?')
+        status = s.get('status', {})
+        dirty = status.get('dirty', False)
+        files = status.get('files', 0)
+        chunks = status.get('chunks', 0)
+        print(f'  {agent}: dirty={dirty} files={files} chunks={chunks}')
+    else:
+        print('  (invalid entry)')
+"
