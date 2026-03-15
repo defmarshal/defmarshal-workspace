@@ -7119,6 +7119,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--2.py",
       "type": "app",
       "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "880ada05-1a2d-46bf-980a-4533a5dbc29f",
+      "type": "seed",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-nyne,-founded-by-a-father-son-duo,-gives-ai-agents.md",
+      "type": "output",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
+    },
+    {
+      "id": "0c57d93a-7388-4d12-80ea-095305706444",
+      "type": "seed",
+      "title": "Bridging Behavioral Biometrics and Source Code Stylometry: A Survey of Programmer Attribution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/bridging-behavioral-biometrics-and-source-code-sty.py",
+      "type": "app",
+      "title": "Bridging Behavioral Biometrics and Source Code Stylometry: A Survey of Programmer Attribution"
     }
   ],
   "edges": [
@@ -8165,6 +8185,16 @@
     {
       "from": "d7a307ff-cffa-4c41-bac7-83de3843dbf1",
       "to": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--2.py",
+      "type": "produced"
+    },
+    {
+      "from": "880ada05-1a2d-46bf-980a-4533a5dbc29f",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-nyne,-founded-by-a-father-son-duo,-gives-ai-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "0c57d93a-7388-4d12-80ea-095305706444",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/bridging-behavioral-biometrics-and-source-code-sty.py",
       "type": "produced"
     }
   ]
