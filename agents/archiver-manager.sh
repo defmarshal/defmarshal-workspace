@@ -16,7 +16,7 @@ ARCHIVE_DIR="$WORKSPACE/archives"
 mkdir -p "$ARCHIVE_DIR"
 
 ts() { date -u '+%Y-%m-%d %H:%M:%S UTC'; }
-log() { echo "[$(ts)] $*" | tee -a "$LOG"; }
+log() { echo "[$(ts)] $*"; }
 
 log "=== archiver-manager cycle START ==="
 
