@@ -6884,6 +6884,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/context-before-code_-an-experience-report-on-vibe-.py",
       "type": "app",
       "title": "Context Before Code: An Experience Report on Vibe Coding in Practice"
+    },
+    {
+      "id": "414cdaef-58b0-41c4-acfe-989f2ecd10f3",
+      "type": "seed",
+      "title": "CR-Bench: Evaluating the Real-World Utility of AI Code Review Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-cr-bench:-evaluating-the-real-world-utility-of-ai-.md",
+      "type": "output",
+      "title": "CR-Bench: Evaluating the Real-World Utility of AI Code Review Agents"
+    },
+    {
+      "id": "986f8f11-4276-4afa-bf13-a0a4646b4841",
+      "type": "seed",
+      "title": "Quality-Driven Agentic Reasoning for LLM-Assisted Software Design: Questions-of-Thoughts (QoT) as a Time-Series Self-QA Chain"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/quality-driven-agentic-reasoning-for-llm-assisted-.py",
+      "type": "app",
+      "title": "Quality-Driven Agentic Reasoning for LLM-Assisted Software Design: Questions-of-Thoughts (QoT) as a Time-Series Self-QA Chain"
+    },
+    {
+      "id": "b8a98717-865f-4092-ba91-27a471105376",
+      "type": "seed",
+      "title": "Understanding by Reconstruction: Reversing the Software Development Process for LLM Pretraining"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/understanding-by-reconstruction_-reversing-the-sof.py",
+      "type": "app",
+      "title": "Understanding by Reconstruction: Reversing the Software Development Process for LLM Pretraining"
+    },
+    {
+      "id": "23338bba-bdff-48e3-b56d-613add580b27",
+      "type": "seed",
+      "title": "Type-safe Monitoring of Parameterized Streams"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/type-safe-monitoring-of-parameterized-streams.py",
+      "type": "app",
+      "title": "Type-safe Monitoring of Parameterized Streams"
     }
   ],
   "edges": [
@@ -7810,6 +7850,26 @@
     {
       "from": "4196e983-14df-41e5-8f0b-93874d0c0c93",
       "to": "/home/ubuntu/.openclaw/workspace/apps/context-before-code_-an-experience-report-on-vibe-.py",
+      "type": "produced"
+    },
+    {
+      "from": "414cdaef-58b0-41c4-acfe-989f2ecd10f3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-cr-bench:-evaluating-the-real-world-utility-of-ai-.md",
+      "type": "produced"
+    },
+    {
+      "from": "986f8f11-4276-4afa-bf13-a0a4646b4841",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/quality-driven-agentic-reasoning-for-llm-assisted-.py",
+      "type": "produced"
+    },
+    {
+      "from": "b8a98717-865f-4092-ba91-27a471105376",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/understanding-by-reconstruction_-reversing-the-sof.py",
+      "type": "produced"
+    },
+    {
+      "from": "23338bba-bdff-48e3-b56d-613add580b27",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/type-safe-monitoring-of-parameterized-streams.py",
       "type": "produced"
     }
   ]

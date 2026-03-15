@@ -1,12 +1,18 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-15 03:20 UTC (code-gardener cron active)
+**Last updated**: 2026-03-15 05:22 UTC (research-gardener cron completed)
 
 ## 🔄 Currently Running Agents
 
 *(none)*
 
 ## ✅ Completed Agents (today)
+
+**Research Gardener** (05:20–05:22 UTC, cron session `gardener-1773046574`)
+- Processed seed: "CR-Bench: Evaluating the Real-World Utility of AI Code Review Agents"
+- Generated report: `research/2026-03-15-cr-bench:-evaluating-the-real-world-utility-of-ai-.md`
+- ⚠️ TAVILY_API_KEY not set; web search skipped.
+- Seed marked processed; graph updated.
 
 **Code Gardener** (15:15–15:15 UTC)
 - Processed seed: "DeReason: A Difficulty-Aware Curriculum Improves Decoupled SFT-then-RL Training for General Reasoning"
