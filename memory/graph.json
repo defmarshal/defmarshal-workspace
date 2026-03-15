@@ -6824,6 +6824,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-steven-spielberg-says-he&#8217;s-&#8216;never-used-ai&#8217;-in-any-of-his-films.md",
       "type": "content",
       "title": "Steven Spielberg says he&#8217;s &#8216;never used AI&#8217; in any of his films"
+    },
+    {
+      "id": "eaeeac68-4fe5-4419-b41b-198258b207b2",
+      "type": "seed",
+      "title": "Task-Conditioned Routing Signatures in Sparse Mixture-of-Experts Transformers"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-task-conditioned-routing-signatures-in-sparse-mixt.md",
+      "type": "output",
+      "title": "Task-Conditioned Routing Signatures in Sparse Mixture-of-Experts Transformers"
+    },
+    {
+      "id": "69129e35-79d7-4926-9e50-6a41fedf8ea8",
+      "type": "seed",
+      "title": "Learning Tree-Based Models with Gradient Descent"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/learning-tree-based-models-with-gradient-descent.py",
+      "type": "app",
+      "title": "Learning Tree-Based Models with Gradient Descent"
     }
   ],
   "edges": [
@@ -7720,6 +7740,16 @@
     {
       "from": "4a84fd65-b568-4313-9f5c-f1519c61ea2c",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-steven-spielberg-says-he&#8217;s-&#8216;never-used-ai&#8217;-in-any-of-his-films.md",
+      "type": "produced"
+    },
+    {
+      "from": "eaeeac68-4fe5-4419-b41b-198258b207b2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-task-conditioned-routing-signatures-in-sparse-mixt.md",
+      "type": "produced"
+    },
+    {
+      "from": "69129e35-79d7-4926-9e50-6a41fedf8ea8",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/learning-tree-based-models-with-gradient-descent.py",
       "type": "produced"
     }
   ]
