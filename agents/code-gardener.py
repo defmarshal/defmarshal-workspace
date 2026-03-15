@@ -21,7 +21,7 @@ OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 APPS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def load_seeds():
     seeds = []
@@ -44,7 +44,8 @@ def load_processed():
 
 def mark_processed(seed_id: str):
     with open(PROCESSED_FILE, 'a') as f:
-        f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
+        with open(PROCESSED_FILE, 'a') as f:
+            f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
 
 def load_graph():
     if GRAPH_FILE.exists():

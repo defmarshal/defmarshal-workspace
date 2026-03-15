@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Supervisor functionality disabled; exits silently.
-exit 0
+# Supervisor functionality enabled; monitors system health.
 
 LOGFILE="memory/supervisor.log"
 mkdir -p memory

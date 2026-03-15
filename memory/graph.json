@@ -6794,6 +6794,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company-.py",
       "type": "app",
       "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "d7516824-afa4-450e-8c07-1ce6e4472ad3",
+      "type": "seed",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-nyne,-founded-by-a-father-son-duo,-gives-ai-agents-the-human-context-they\u2019re-mis.md",
+      "type": "content",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
+    },
+    {
+      "id": "14cf5e1b-2e7c-41d9-9cc6-d877e22fb469",
+      "type": "seed",
+      "title": "Facebook makes it easier for creators to report impersonators"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-facebook-makes-it-easier-for-creators-to-report-im.md",
+      "type": "output",
+      "title": "Facebook makes it easier for creators to report impersonators"
+    },
+    {
+      "id": "4a84fd65-b568-4313-9f5c-f1519c61ea2c",
+      "type": "seed",
+      "title": "Steven Spielberg says he&#8217;s &#8216;never used AI&#8217; in any of his films"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-steven-spielberg-says-he&#8217;s-&#8216;never-used-ai&#8217;-in-any-of-his-films.md",
+      "type": "content",
+      "title": "Steven Spielberg says he&#8217;s &#8216;never used AI&#8217; in any of his films"
     }
   ],
   "edges": [
@@ -7675,6 +7705,21 @@
     {
       "from": "217690f6-6cec-42bd-bf0e-64bbc319cb22",
       "to": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company-.py",
+      "type": "produced"
+    },
+    {
+      "from": "d7516824-afa4-450e-8c07-1ce6e4472ad3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-14-nyne,-founded-by-a-father-son-duo,-gives-ai-agents-the-human-context-they\u2019re-mis.md",
+      "type": "produced"
+    },
+    {
+      "from": "14cf5e1b-2e7c-41d9-9cc6-d877e22fb469",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-facebook-makes-it-easier-for-creators-to-report-im.md",
+      "type": "produced"
+    },
+    {
+      "from": "4a84fd65-b568-4313-9f5c-f1519c61ea2c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-steven-spielberg-says-he&#8217;s-&#8216;never-used-ai&#8217;-in-any-of-his-films.md",
       "type": "produced"
     }
   ]

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, json, uuid, datetime, subprocess
+import os, sys, json, uuid, datetime, subprocess, signal
 from pathlib import Path
 
 # Paths
@@ -12,7 +12,7 @@ OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 CONTENT_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}", flush=True)
 
 def load_seeds():
     seeds = []
@@ -60,8 +60,7 @@ def add_graph_edge(seed_id: str, output_path: str, title: str):
 
 def generate_content(seed) -> str:
     # Use openclaw content generation via a simple agent turn
-    # In practice, we can call `openclaw agent generate` but let's mimic via a custom agent turn payload.
-    # For now, write a simple markdown draft based on seed.
+    # Use Popen with process group to ensure we can kill hung subprocesses
     today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
     slug = seed['title'].lower().replace(' ', '-')[:80]
     filename = CONTENT_DIR / f"{today}-{slug}.md"
@@ -80,24 +79,52 @@ Requirements:
 
 IMPORTANT: Output ONLY the raw markdown content. No extra commentary, no "Here's your blog post", no confirmations. Just the markdown."""
     try:
-        result = subprocess.run([OPENCLAWS, 'agent', '--local', '--agent', 'main', '--message', prompt], capture_output=True, text=True, timeout=60)
-        content = result.stdout.strip()
-        if not content:
-            # Fallback: simple draft
-            content = f"""# {seed['title']}
+        # Start subprocess in its own process group so we can kill the whole group
+        proc = subprocess.Popen([OPENCLAWS, 'agent', '--local', '--agent', 'main', '--message', prompt],
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE,
+                                text=True,
+                                preexec_fn=os.setsid)
+        try:
+            stdout, stderr = proc.communicate(timeout=60)
+            content = stdout.strip()
+            if not content:
+                # Fallback: simple draft
+                content = f"""# {seed['title']}
 
 **Source:** {seed['source']}
 
 {seed['snippet']}
 
 *This article will be fleshed out by the content-gardener.*"""
+        except subprocess.TimeoutExpired:
+            # Kill the entire process group
+            try:
+                os.killpg(os.getpgid(proc.pid), signal.SIGTERM)
+            except Exception:
+                pass
+            # Wait a bit and force kill if still alive
+            try:
+                proc.wait(timeout=5)
+            except Exception:
+                try:
+                    os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
+                except Exception:
+                    pass
+            log(f"Agent generation timed out after 60 seconds for seed: {seed['title']}")
+            content = f"""# {seed['title']}
+
+{seed['snippet']}
+
+*(Auto-draft placeholder due to timeout)*"""
     except Exception as e:
         log(f"Agent generation failed: {e}")
         content = f"""# {seed['title']}
 
 {seed['snippet']}
 
-*(Auto-draft placeholder)*"""
+*(Auto-draft placeholder due to error)*"""
+    # Write content to file
     with open(filename, 'w') as f:
         f.write(content)
     return str(filename)
