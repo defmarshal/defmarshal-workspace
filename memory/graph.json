@@ -6844,6 +6844,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/learning-tree-based-models-with-gradient-descent.py",
       "type": "app",
       "title": "Learning Tree-Based Models with Gradient Descent"
+    },
+    {
+      "id": "04a9fac9-9add-4959-bf1d-5615de1c3d00",
+      "type": "seed",
+      "title": "A Learning-Based Superposition Operator for Non-Renewal Arrival Processes in Queueing Networks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-a-learning-based-superposition-operator-for-non-renewal-arrival-processes-in-que.md",
+      "type": "content",
+      "title": "A Learning-Based Superposition Operator for Non-Renewal Arrival Processes in Queueing Networks"
+    },
+    {
+      "id": "9bca1bd9-d66b-4e50-b488-254235b58c6a",
+      "type": "seed",
+      "title": "Group Resonance Network: Learnable Prototypes and Multi-Subject Resonance for EEG Emotion Recognition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/group-resonance-network_-learnable-prototypes-and-.py",
+      "type": "app",
+      "title": "Group Resonance Network: Learnable Prototypes and Multi-Subject Resonance for EEG Emotion Recognition"
     }
   ],
   "edges": [
@@ -7750,6 +7770,16 @@
     {
       "from": "69129e35-79d7-4926-9e50-6a41fedf8ea8",
       "to": "/home/ubuntu/.openclaw/workspace/apps/learning-tree-based-models-with-gradient-descent.py",
+      "type": "produced"
+    },
+    {
+      "from": "04a9fac9-9add-4959-bf1d-5615de1c3d00",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-a-learning-based-superposition-operator-for-non-renewal-arrival-processes-in-que.md",
+      "type": "produced"
+    },
+    {
+      "from": "9bca1bd9-d66b-4e50-b488-254235b58c6a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/group-resonance-network_-learnable-prototypes-and-.py",
       "type": "produced"
     }
   ]
