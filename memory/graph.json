@@ -6984,6 +6984,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu.py",
       "type": "app",
       "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
+    },
+    {
+      "id": "9c28bc76-38ff-441c-9bcb-70a1ed929639",
+      "type": "seed",
+      "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
+      "type": "content",
+      "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
     }
   ],
   "edges": [
@@ -7960,6 +7970,11 @@
     {
       "from": "eae40265-01cf-496b-888b-c60d6ac0aee4",
       "to": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu.py",
+      "type": "produced"
+    },
+    {
+      "from": "9c28bc76-38ff-441c-9bcb-70a1ed929639",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
       "type": "produced"
     }
   ]
