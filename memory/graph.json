@@ -6954,6 +6954,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/honda-is-killing-its-evs-__and-any-chance-of-compe.py",
       "type": "app",
       "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "b066ee2b-971e-44fb-8621-c76199a134f2",
+      "type": "seed",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-meta-reportedly-considering-layoffs-that-could-affect-20%-of-the-company.md",
+      "type": "content",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
     }
   ],
   "edges": [
@@ -7915,6 +7925,11 @@
     {
       "from": "a31fc18b-4380-4a63-8050-981662125ad4",
       "to": "/home/ubuntu/.openclaw/workspace/apps/honda-is-killing-its-evs-__and-any-chance-of-compe.py",
+      "type": "produced"
+    },
+    {
+      "from": "b066ee2b-971e-44fb-8621-c76199a134f2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-meta-reportedly-considering-layoffs-that-could-affect-20%-of-the-company.md",
       "type": "produced"
     }
   ]
