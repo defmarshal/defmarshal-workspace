@@ -6944,6 +6944,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t.py",
       "type": "app",
       "title": "US Army announces contract with Anduril worth up to $20B"
+    },
+    {
+      "id": "a31fc18b-4380-4a63-8050-981662125ad4",
+      "type": "seed",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/honda-is-killing-its-evs-__and-any-chance-of-compe.py",
+      "type": "app",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
     }
   ],
   "edges": [
@@ -7900,6 +7910,11 @@
     {
       "from": "9c0c0a67-db81-4072-a6f4-2f37ee28db41",
       "to": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t.py",
+      "type": "produced"
+    },
+    {
+      "from": "a31fc18b-4380-4a63-8050-981662125ad4",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/honda-is-killing-its-evs-__and-any-chance-of-compe.py",
       "type": "produced"
     }
   ]
