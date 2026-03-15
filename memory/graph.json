@@ -7049,6 +7049,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu-1.py",
       "type": "app",
       "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
+    },
+    {
+      "id": "414c88c5-6785-440a-8d87-5dffacad07da",
+      "type": "seed",
+      "title": "&#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-&#8216;not-built-right-the-first-time&#8217;-&#821.md",
+      "type": "output",
+      "title": "&#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again"
+    },
+    {
+      "id": "27ef48ac-468e-4617-a4a0-a3f9cc48244d",
+      "type": "seed",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks.md",
+      "type": "content",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "daec6255-8b2c-4ae6-ad7c-dade49e6b1bc",
+      "type": "seed",
+      "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--1.py",
+      "type": "app",
+      "title": "Digg lays off staff and shuts down app as company retools"
     }
   ],
   "edges": [
@@ -8060,6 +8090,21 @@
     {
       "from": "8568631a-9db7-48ed-b3c1-7836fc4541f7",
       "to": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "414c88c5-6785-440a-8d87-5dffacad07da",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-&#8216;not-built-right-the-first-time&#8217;-&#821.md",
+      "type": "produced"
+    },
+    {
+      "from": "27ef48ac-468e-4617-a4a0-a3f9cc48244d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks.md",
+      "type": "produced"
+    },
+    {
+      "from": "daec6255-8b2c-4ae6-ad7c-dade49e6b1bc",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--1.py",
       "type": "produced"
     }
   ]
