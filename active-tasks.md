@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-14 15:17 UTC (code-gardener cron completed)
+**Last updated**: 2026-03-15 03:20 UTC (code-gardener cron active)
 
 ## 🔄 Currently Running Agents
 
@@ -16,6 +16,16 @@
 **Code Gardener** (18:07–18:07 UTC)
 - Processed seed: "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
 - Generated app: `apps/specops_-a-fully-automated-ai-agent-testing-framew.py`
+- Graph updated with seed→app edge in `memory/graph.json`.
+
+**Code Gardener** (01:18–01:18 UTC)
+- Processed seed: "Learning Tree-Based Models with Gradient Descent"
+- Generated app: `apps/learning-tree-based-models-with-gradient-descent.py`
+- Graph updated with seed→app edge in `memory/graph.json`.
+
+**Code Gardener** (02:08–02:08 UTC)
+- Processed seed: "Group Resonance Network: Learnable Prototypes and Multi-Subject Resonance for EEG Emotion Recognition"
+- Generated app: `apps/group-resonance-network_-learnable-prototypes-and-.py`
 - Graph updated with seed→app edge in `memory/graph.json`.
 
 **Research Gardener** (06:28–06:28 UTC, today)

@@ -6864,6 +6864,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/group-resonance-network_-learnable-prototypes-and-.py",
       "type": "app",
       "title": "Group Resonance Network: Learnable Prototypes and Multi-Subject Resonance for EEG Emotion Recognition"
+    },
+    {
+      "id": "f2784c24-41b1-42e8-8bdb-ca5b384f9909",
+      "type": "seed",
+      "title": "High-resolution weather-guided surrogate modeling for data-efficient cross-location building energy prediction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/high-resolution-weather-guided-surrogate-modeling-.py",
+      "type": "app",
+      "title": "High-resolution weather-guided surrogate modeling for data-efficient cross-location building energy prediction"
     }
   ],
   "edges": [
@@ -7780,6 +7790,11 @@
     {
       "from": "9bca1bd9-d66b-4e50-b488-254235b58c6a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/group-resonance-network_-learnable-prototypes-and-.py",
+      "type": "produced"
+    },
+    {
+      "from": "f2784c24-41b1-42e8-8bdb-ca5b384f9909",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/high-resolution-weather-guided-surrogate-modeling-.py",
       "type": "produced"
     }
   ]
