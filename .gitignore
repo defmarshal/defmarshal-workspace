@@ -132,3 +132,9 @@ archive/
 *.tar.gz
 *.tar
 *.zip
+
+# Garden dashboard PID (runtime)
+garden-dashboard.pid
+
+# Temporary HTML files (route hotspot fixes)
+route-hotspots-mobile-fix*.html

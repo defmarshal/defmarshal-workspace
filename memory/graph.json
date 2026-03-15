@@ -6994,6 +6994,41 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
       "type": "content",
       "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
+    },
+    {
+      "id": "059430a2-c571-473c-9848-3507d233cfe1",
+      "type": "seed",
+      "title": "US Army announces contract with Anduril worth up to $20B"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t-1.py",
+      "type": "app",
+      "title": "US Army announces contract with Anduril worth up to $20B"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-us-army-announces-contract-with-anduril-worth-up-to-$20b.md",
+      "type": "content",
+      "title": "US Army announces contract with Anduril worth up to $20B"
+    },
+    {
+      "id": "ed020015-ec0f-497c-ae55-6c51118dd961",
+      "type": "seed",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-compe.md",
+      "type": "output",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "a103b1e1-1f17-46fe-9a3a-d3e1e8878b88",
+      "type": "seed",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-meta-reportedly-considering-layoffs-that-could-affect-20%-of-the-company.md",
+      "type": "content",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
     }
   ],
   "edges": [
@@ -7975,6 +8010,26 @@
     {
       "from": "9c28bc76-38ff-441c-9bcb-70a1ed929639",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
+      "type": "produced"
+    },
+    {
+      "from": "059430a2-c571-473c-9848-3507d233cfe1",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "059430a2-c571-473c-9848-3507d233cfe1",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-us-army-announces-contract-with-anduril-worth-up-to-$20b.md",
+      "type": "produced"
+    },
+    {
+      "from": "ed020015-ec0f-497c-ae55-6c51118dd961",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-compe.md",
+      "type": "produced"
+    },
+    {
+      "from": "a103b1e1-1f17-46fe-9a3a-d3e1e8878b88",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-meta-reportedly-considering-layoffs-that-could-affect-20%-of-the-company.md",
       "type": "produced"
     }
   ]
