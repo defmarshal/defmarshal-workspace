@@ -6964,6 +6964,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-meta-reportedly-considering-layoffs-that-could-affect-20%-of-the-company.md",
       "type": "content",
       "title": "Meta reportedly considering layoffs that could affect 20% of the company"
+    },
+    {
+      "id": "acdf698c-7b2b-42b0-bf3b-0ddfb59064f0",
+      "type": "seed",
+      "title": "As people look for ways to make new friends, here are the apps promising to help"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-as-people-look-for-ways-to-make-new-friends,-here-.md",
+      "type": "output",
+      "title": "As people look for ways to make new friends, here are the apps promising to help"
+    },
+    {
+      "id": "eae40265-01cf-496b-888b-c60d6ac0aee4",
+      "type": "seed",
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu.py",
+      "type": "app",
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others"
     }
   ],
   "edges": [
@@ -7930,6 +7950,16 @@
     {
       "from": "b066ee2b-971e-44fb-8621-c76199a134f2",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-meta-reportedly-considering-layoffs-that-could-affect-20%-of-the-company.md",
+      "type": "produced"
+    },
+    {
+      "from": "acdf698c-7b2b-42b0-bf3b-0ddfb59064f0",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-as-people-look-for-ways-to-make-new-friends,-here-.md",
+      "type": "produced"
+    },
+    {
+      "from": "eae40265-01cf-496b-888b-c60d6ac0aee4",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/how-to-use-the-new-chatgpt-app-integrations_-inclu.py",
       "type": "produced"
     }
   ]
