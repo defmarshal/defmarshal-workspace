@@ -7139,6 +7139,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/bridging-behavioral-biometrics-and-source-code-sty.py",
       "type": "app",
       "title": "Bridging Behavioral Biometrics and Source Code Stylometry: A Survey of Programmer Attribution"
+    },
+    {
+      "id": "45933fea-d03e-45ce-ad08-c65a012d3303",
+      "type": "seed",
+      "title": "ExecVerify: White-Box RL with Verifiable Stepwise Rewards for Code Execution Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-execverify:-white-box-rl-with-verifiable-stepwise-.md",
+      "type": "output",
+      "title": "ExecVerify: White-Box RL with Verifiable Stepwise Rewards for Code Execution Reasoning"
+    },
+    {
+      "id": "1871c84b-0236-4a5d-89e0-1eb685404b8e",
+      "type": "seed",
+      "title": "Unveiling Practical Shortcomings of Patch Overfitting Detection Techniques"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-unveiling-practical-shortcomings-of-patch-overfitting-detection-techniques.md",
+      "type": "content",
+      "title": "Unveiling Practical Shortcomings of Patch Overfitting Detection Techniques"
+    },
+    {
+      "id": "4d06120b-c388-4f11-9476-a62611f6c363",
+      "type": "seed",
+      "title": "Resolving Java Code Repository Issues with iSWE Agent"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/resolving-java-code-repository-issues-with-iswe-ag.py",
+      "type": "app",
+      "title": "Resolving Java Code Repository Issues with iSWE Agent"
+    },
+    {
+      "id": "c30e1450-c58d-4943-93a0-23544438fc41",
+      "type": "seed",
+      "title": "Enhancing Requirements Traceability Link Recovery: A Novel Approach with T-SimCSE"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/enhancing-requirements-traceability-link-recovery_.py",
+      "type": "app",
+      "title": "Enhancing Requirements Traceability Link Recovery: A Novel Approach with T-SimCSE"
     }
   ],
   "edges": [
@@ -8195,6 +8235,26 @@
     {
       "from": "0c57d93a-7388-4d12-80ea-095305706444",
       "to": "/home/ubuntu/.openclaw/workspace/apps/bridging-behavioral-biometrics-and-source-code-sty.py",
+      "type": "produced"
+    },
+    {
+      "from": "45933fea-d03e-45ce-ad08-c65a012d3303",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-execverify:-white-box-rl-with-verifiable-stepwise-.md",
+      "type": "produced"
+    },
+    {
+      "from": "1871c84b-0236-4a5d-89e0-1eb685404b8e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-unveiling-practical-shortcomings-of-patch-overfitting-detection-techniques.md",
+      "type": "produced"
+    },
+    {
+      "from": "4d06120b-c388-4f11-9476-a62611f6c363",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/resolving-java-code-repository-issues-with-iswe-ag.py",
+      "type": "produced"
+    },
+    {
+      "from": "c30e1450-c58d-4943-93a0-23544438fc41",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/enhancing-requirements-traceability-link-recovery_.py",
       "type": "produced"
     }
   ]
