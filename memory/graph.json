@@ -6874,6 +6874,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/high-resolution-weather-guided-surrogate-modeling-.py",
       "type": "app",
       "title": "High-resolution weather-guided surrogate modeling for data-efficient cross-location building energy prediction"
+    },
+    {
+      "id": "4196e983-14df-41e5-8f0b-93874d0c0c93",
+      "type": "seed",
+      "title": "Context Before Code: An Experience Report on Vibe Coding in Practice"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/context-before-code_-an-experience-report-on-vibe-.py",
+      "type": "app",
+      "title": "Context Before Code: An Experience Report on Vibe Coding in Practice"
     }
   ],
   "edges": [
@@ -7795,6 +7805,11 @@
     {
       "from": "f2784c24-41b1-42e8-8bdb-ca5b384f9909",
       "to": "/home/ubuntu/.openclaw/workspace/apps/high-resolution-weather-guided-surrogate-modeling-.py",
+      "type": "produced"
+    },
+    {
+      "from": "4196e983-14df-41e5-8f0b-93874d0c0c93",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/context-before-code_-an-experience-report-on-vibe-.py",
       "type": "produced"
     }
   ]
