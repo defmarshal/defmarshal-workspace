@@ -126,6 +126,9 @@ venv/
 **/venv/
 .env/
 
+# Embedded git repositories (accidental adds)
+llmfit/
+
 # Archive large files (temporary backups, not for Git)
 archive/
 **/archive/
