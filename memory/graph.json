@@ -7079,6 +7079,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--1.py",
       "type": "app",
       "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "b03ddf8d-e673-4d3b-87ab-3d724a1daffd",
+      "type": "seed",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-nyne,-founded-by-a-father-son-duo,-gives-ai-agents.md",
+      "type": "output",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
+    },
+    {
+      "id": "957d92b5-1d7b-4b98-868a-5f34a3ea3e39",
+      "type": "seed",
+      "title": "&#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/__8216_not-built-right-the-first-time__8217_-__821.py",
+      "type": "app",
+      "title": "&#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again"
+    },
+    {
+      "id": "3ce1c404-83be-4006-9ffd-d03717fe9770",
+      "type": "seed",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/lawyer-behind-ai-psychosis-cases-warns-of-mass-cas-1.py",
+      "type": "app",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "d7a307ff-cffa-4c41-bac7-83de3843dbf1",
+      "type": "seed",
+      "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--2.py",
+      "type": "app",
+      "title": "Digg lays off staff and shuts down app as company retools"
     }
   ],
   "edges": [
@@ -8105,6 +8145,26 @@
     {
       "from": "daec6255-8b2c-4ae6-ad7c-dade49e6b1bc",
       "to": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--1.py",
+      "type": "produced"
+    },
+    {
+      "from": "b03ddf8d-e673-4d3b-87ab-3d724a1daffd",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-nyne,-founded-by-a-father-son-duo,-gives-ai-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "957d92b5-1d7b-4b98-868a-5f34a3ea3e39",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/__8216_not-built-right-the-first-time__8217_-__821.py",
+      "type": "produced"
+    },
+    {
+      "from": "3ce1c404-83be-4006-9ffd-d03717fe9770",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/lawyer-behind-ai-psychosis-cases-warns-of-mass-cas-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "d7a307ff-cffa-4c41-bac7-83de3843dbf1",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/digg-lays-off-staff-and-shuts-down-app-as-company--2.py",
       "type": "produced"
     }
   ]
