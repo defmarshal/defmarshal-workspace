@@ -14,6 +14,12 @@
 - ⚠️ TAVILY_API_KEY not set; web search skipped.
 - Seed marked processed; graph updated.
 
+**Research Gardener** (22:02–22:02 UTC, cron session `gardener-1773046574`)
+- Processed seed: "Digg lays off staff and shuts down app as company retools"
+- Generated report: `research/2026-03-15-digg-lays-off-staff-and-shuts-down-app-as-company-.md`
+- ⚠️ TAVILY_API_KEY not set; web search skipped.
+- Seed marked processed; graph updated.
+
 **Code Gardener** (15:15–15:15 UTC)
 - Processed seed: "DeReason: A Difficulty-Aware Curriculum Improves Decoupled SFT-then-RL Training for General Reasoning"
 - Generated app: `apps/dereason_-a-difficulty-aware-curriculum-improves-d.py`

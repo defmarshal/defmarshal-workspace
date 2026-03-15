@@ -7179,6 +7179,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/enhancing-requirements-traceability-link-recovery_.py",
       "type": "app",
       "title": "Enhancing Requirements Traceability Link Recovery: A Novel Approach with T-SimCSE"
+    },
+    {
+      "id": "57cd6f0f-f507-48f4-8399-7afb3cfc7f5e",
+      "type": "seed",
+      "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-digg-lays-off-staff-and-shuts-down-app-as-company-.md",
+      "type": "output",
+      "title": "Digg lays off staff and shuts down app as company retools"
+    },
+    {
+      "id": "dce07f01-8aaa-4b16-9cc0-8ad5c860364e",
+      "type": "seed",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-nyne,-founded-by-a-father-son-duo,-gives-ai-agents-the-human-context-they\u2019re-mis.md",
+      "type": "content",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they\u2019re missing"
     }
   ],
   "edges": [
@@ -8255,6 +8275,16 @@
     {
       "from": "c30e1450-c58d-4943-93a0-23544438fc41",
       "to": "/home/ubuntu/.openclaw/workspace/apps/enhancing-requirements-traceability-link-recovery_.py",
+      "type": "produced"
+    },
+    {
+      "from": "57cd6f0f-f507-48f4-8399-7afb3cfc7f5e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-15-digg-lays-off-staff-and-shuts-down-app-as-company-.md",
+      "type": "produced"
+    },
+    {
+      "from": "dce07f01-8aaa-4b16-9cc0-8ad5c860364e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-nyne,-founded-by-a-father-son-duo,-gives-ai-agents-the-human-context-they\u2019re-mis.md",
       "type": "produced"
     }
   ]
