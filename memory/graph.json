@@ -6934,6 +6934,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
       "type": "content",
       "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
+    },
+    {
+      "id": "9c0c0a67-db81-4072-a6f4-2f37ee28db41",
+      "type": "seed",
+      "title": "US Army announces contract with Anduril worth up to $20B"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t.py",
+      "type": "app",
+      "title": "US Army announces contract with Anduril worth up to $20B"
     }
   ],
   "edges": [
@@ -7885,6 +7895,11 @@
     {
       "from": "cfc75681-4697-4c75-9a0c-d0da0b6f4f3f",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-the-macbook-neo-is-\u2018the-most-repairable-macbook\u2019-in-years,-according-to-ifixit.md",
+      "type": "produced"
+    },
+    {
+      "from": "9c0c0a67-db81-4072-a6f4-2f37ee28db41",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t.py",
       "type": "produced"
     }
   ]
