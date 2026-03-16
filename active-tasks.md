@@ -1,12 +1,15 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-15 23:09 UTC (code-gardener cron started)
-
-**Code Gardener** (23:09 UTC, cron session `code-1773047374`)
-- Executing: `python3 agents/code-gardener.py`
-- Status: Running (PID 3505183)
+**Last updated**: 2026-03-16 02:21 UTC (code-gardener cron completed)
 
 ## ✅ Completed Agents (today)
+
+**Code Gardener** (23:09–01:22 UTC, cron session `code-1773047374`)
+- Executed: `python3 agents/code-gardener.py`
+- Processed seeds: 1 (last: "Unacademy to be acquired by upGrad in India's edtech consolidation")
+- Generated app: `apps/unacademy-to-be-acquired-by-upgrad-in-share-swap-d.py`
+- Graph updated; seed marked processed.
+- Status: Completed successfully.
 
 **Agent Manager** (01:16–01:19 UTC, cron)
 - Routine maintenance: git auto-commit, spawned content-agent & research-agent, cron validation
@@ -15,9 +18,7 @@
 
 **Email Sweep Agent** (23:09 UTC, cron session `email-categorizer-1790492789`)
 - Executing: `BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
-- Status: Running
-
-## ✅ Completed Agents (today)
+- Status: Running (check separately if needed)
 
 **Content Gardener** (23:05–23:05 UTC, cron session `content-1773046735`)
 - Processed seed: "Steven Spielberg says he's 'never used AI' in any of his films"
@@ -143,3 +144,10 @@ Core cron jobs (8):
 - notifier-cron (every 2h UTC)
 
 Cleaned: 2026-03-09 22:00 UTC (research-gardener logs reviewed)
+
+---
+
+**Notes**:
+- Code gardener cron trigger received at 02:21 UTC; run completed successfully (generated "Unacademy..." app).
+- Manual test run at 02:23 UTC generated additional app "Wiz investor unpacks Google's $32B acquisition" - confirms script functional.
+- Active tasks list is now cleaned of stale PID entries.

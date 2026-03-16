@@ -7249,6 +7249,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/unacademy-to-be-acquired-by-upgrad-in-share-swap-d.py",
       "type": "app",
       "title": "Unacademy to be acquired by upGrad in share-swap deal as India\u2019s edtech sector consolidates"
+    },
+    {
+      "id": "a1f3487c-08b3-48e5-ab1a-04e28bb3ccc5",
+      "type": "seed",
+      "title": "TechCrunch Mobility: Travis Kalanick&#8217;s return proves it really is 2016 again"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-techcrunch-mobility:-travis-kalanick&#8217;s-retur.md",
+      "type": "output",
+      "title": "TechCrunch Mobility: Travis Kalanick&#8217;s return proves it really is 2016 again"
+    },
+    {
+      "id": "55e9f154-e068-4284-84fe-21eb6febc75a",
+      "type": "seed",
+      "title": "Wiz investor unpacks Google\u2019s $32B acquisition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/wiz-investor-unpacks-google_s-_32b-acquisition.py",
+      "type": "app",
+      "title": "Wiz investor unpacks Google\u2019s $32B acquisition"
     }
   ],
   "edges": [
@@ -8360,6 +8380,16 @@
     {
       "from": "9727f1e8-0196-4b24-b3e3-eb7221e53f6b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/unacademy-to-be-acquired-by-upgrad-in-share-swap-d.py",
+      "type": "produced"
+    },
+    {
+      "from": "a1f3487c-08b3-48e5-ab1a-04e28bb3ccc5",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-techcrunch-mobility:-travis-kalanick&#8217;s-retur.md",
+      "type": "produced"
+    },
+    {
+      "from": "55e9f154-e068-4284-84fe-21eb6febc75a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/wiz-investor-unpacks-google_s-_32b-acquisition.py",
       "type": "produced"
     }
   ]
