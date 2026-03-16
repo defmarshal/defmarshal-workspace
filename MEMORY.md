@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-10*
+*Last updated: 2026-03-16*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -54,6 +54,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - Meta-supervisor daemon removed (2026-03-06 08:27); cron-supervisor agent removed (08:45). No more periodic "System Status" broadcasts.
   - **Elevated Exec Autonomy (2026-03-10):** `mewmew` agent granted full exec permissions (`tools.elevated.enabled: true`, excluded from `approvals.exec.agentFilter`). Enables autonomous system operations without manual approval.
   - **Cron Delivery Recovery (2026-03-14):** Fixed `cron-supervisor-cron` delivery error (multiple channels) by setting explicit `channel: telegram`. Cleared stale `runningAtMs` on `notifier-cron`. All cron jobs now healthy and monitoring active.
+  - **Disk Cleanup & Meta-Summary Success (2026-03-16):** meta-summary cron detected disk at 88%, automatically removed node_modules and .next from apps/research-hub and apps/openclaw-idle-rpg, freeing ~1GB. Disk reduced to 86% (38G/45G, 6.4G free). Summary delivered to Telegram. System nominal. (◕‿◕)♡
 - **Cron Watchdogs (2026-03-14):** Added `cron-supervisor-cron` (every 30 min) to monitor system health (cron jobs, gateway, memory, disk, updates) and send Telegram alerts. Companion to `agent-manager-cron` (validation + repairs). Both now documented in `CRON_JOBS.md`; removed old inactive `supervisor-cron`.
 - **LinkedIn PA Agent Fix (2026-03-12):** Completely rewrote research phase to use agent tool calls (`openclaw agent` with `web_search`/`web_fetch`) instead of broken CLI commands. Also fixed dynamic query generation syntax. Posts now reach 300+ words with rich, sourced data. Media quality restored.
   - **Meta-Agent Rate Limit Fix (2026-03-10):** Spawn retry logic + 30m cooldown lock; cron frequency reduced to every 2 hours. Prevents OpenRouter throttling.

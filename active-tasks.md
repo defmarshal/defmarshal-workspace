@@ -1,12 +1,27 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-15 09:22 UTC (code-gardener cron completed)
+**Last updated**: 2026-03-15 23:09 UTC (code-gardener cron started)
+
+**Code Gardener** (23:09 UTC, cron session `code-1773047374`)
+- Executing: `python3 agents/code-gardener.py`
+- Status: Running (PID 3505183)
 
 ## 🔄 Currently Running Agents
 
-*(none)*
+**Email Sweep Agent** (23:09 UTC, cron session `email-categorizer-1790492789`)
+- Executing: `BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
+- Status: Running
+
+**Code Gardener** (23:09 UTC, cron session `code-1773047374`)
+- Executing: `python3 agents/code-gardener.py`
+- Status: Running (PID 3505183)
 
 ## ✅ Completed Agents (today)
+
+**Content Gardener** (23:05–23:05 UTC, cron session `content-1773046735`)
+- Processed seed: "Steven Spielberg says he's 'never used AI' in any of his films"
+- Generated content: `content/2026-03-15-steven-spielberg-says-he&#8217;s-&#8216;never-used-ai&#8217;—in-any-of-his-films.md`
+- Graph updated with seed→content edge.
 
 **Research Gardener** (05:20–05:22 UTC, cron session `gardener-1773046574`)
 - Processed seed: "CR-Bench: Evaluating the Real-World Utility of AI Code Review Agents"

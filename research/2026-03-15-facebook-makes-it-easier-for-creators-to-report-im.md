@@ -1,8 +1,8 @@
 # Facebook makes it easier for creators to report impersonators
 
-**Seed ID:** 14cf5e1b-2e7c-41d9-9cc6-d877e22fb469  
+**Seed ID:** 4fd59e4b-7385-4613-a499-f0a842bac5fe  
 **Source:** rss:https://techcrunch.com/feed/  
-**Generated:** 2026-03-15 00:09:33 UTC
+**Generated:** 2026-03-15 23:02:55 UTC
 
 ## Summary
 
