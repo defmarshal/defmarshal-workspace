@@ -7289,6 +7289,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-macbook-neo-is-_the-most-repairable-macbook_-i.py",
       "type": "app",
       "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
+    },
+    {
+      "id": "6c2883d3-c2ff-4699-9a9b-130afc623ddd",
+      "type": "seed",
+      "title": "US Army announces contract with Anduril worth up to $20B"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t-2.py",
+      "type": "app",
+      "title": "US Army announces contract with Anduril worth up to $20B"
+    },
+    {
+      "id": "120b58bc-9071-49e9-89f1-9af7234c68b8",
+      "type": "seed",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-compe.md",
+      "type": "output",
+      "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
     }
   ],
   "edges": [
@@ -8420,6 +8440,16 @@
     {
       "from": "4c9a5fc4-c57f-46e3-b7da-4cf41772cb9a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-macbook-neo-is-_the-most-repairable-macbook_-i.py",
+      "type": "produced"
+    },
+    {
+      "from": "6c2883d3-c2ff-4699-9a9b-130afc623ddd",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/us-army-announces-contract-with-anduril-worth-up-t-2.py",
+      "type": "produced"
+    },
+    {
+      "from": "120b58bc-9071-49e9-89f1-9af7234c68b8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-compe.md",
       "type": "produced"
     }
   ]
