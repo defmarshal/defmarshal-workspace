@@ -2,6 +2,12 @@
 
 **Last updated**: 2026-03-16 03:34 UTC (content-gardener cron completed)
 
+**Harvester** (06:07–06:07 UTC, cron session `harvest-1773046808`)
+- Generated daily harvest report: `reports/daily-harvest-2026-03-16.md`
+- Seeds: 10, Outputs: 5
+- Telegram summary sent (with minor error)
+- Status: Completed successfully.
+
 ## ✅ Completed Agents (today)
 
 **Content Gardener** (03:32–03:32 UTC, cron session `content-1773046735`)
