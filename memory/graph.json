@@ -7229,6 +7229,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-bytedance-reportedly-pauses-global-launch-of-its-seedance-2.0-video-generator.md",
       "type": "content",
       "title": "ByteDance reportedly pauses global launch of its Seedance 2.0 video generator"
+    },
+    {
+      "id": "2ecdf979-2820-4704-9ae8-bdc3044de86c",
+      "type": "seed",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-lawyer-behind-ai-psychosis-cases-warns-of-mass-cas.md",
+      "type": "output",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks"
+    },
+    {
+      "id": "9727f1e8-0196-4b24-b3e3-eb7221e53f6b",
+      "type": "seed",
+      "title": "Unacademy to be acquired by upGrad in share-swap deal as India\u2019s edtech sector consolidates"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/unacademy-to-be-acquired-by-upgrad-in-share-swap-d.py",
+      "type": "app",
+      "title": "Unacademy to be acquired by upGrad in share-swap deal as India\u2019s edtech sector consolidates"
     }
   ],
   "edges": [
@@ -8330,6 +8350,16 @@
     {
       "from": "3de97f76-1ca6-4492-8dcd-add2626381d6",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-bytedance-reportedly-pauses-global-launch-of-its-seedance-2.0-video-generator.md",
+      "type": "produced"
+    },
+    {
+      "from": "2ecdf979-2820-4704-9ae8-bdc3044de86c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-lawyer-behind-ai-psychosis-cases-warns-of-mass-cas.md",
+      "type": "produced"
+    },
+    {
+      "from": "9727f1e8-0196-4b24-b3e3-eb7221e53f6b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/unacademy-to-be-acquired-by-upgrad-in-share-swap-d.py",
       "type": "produced"
     }
   ]

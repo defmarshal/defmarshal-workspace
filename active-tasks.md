@@ -6,15 +6,16 @@
 - Executing: `python3 agents/code-gardener.py`
 - Status: Running (PID 3505183)
 
-## 🔄 Currently Running Agents
+## ✅ Completed Agents (today)
+
+**Agent Manager** (01:16–01:19 UTC, cron)
+- Routine maintenance: git auto-commit, spawned content-agent & research-agent, cron validation
+- Git commit: `build: auto-commit from agent-manager (2026-03-16)` (8 files, 102+/37-)
+- Research report generated: AI agent safety benchmarks & evaluation frameworks (8.9 KB)
 
 **Email Sweep Agent** (23:09 UTC, cron session `email-categorizer-1790492789`)
 - Executing: `BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
 - Status: Running
-
-**Code Gardener** (23:09 UTC, cron session `code-1773047374`)
-- Executing: `python3 agents/code-gardener.py`
-- Status: Running (PID 3505183)
 
 ## ✅ Completed Agents (today)
 
