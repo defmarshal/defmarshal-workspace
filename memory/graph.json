@@ -7309,6 +7309,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-compe.md",
       "type": "output",
       "title": "Honda is killing its EVs \u2014\u00a0and any chance of competing in the future"
+    },
+    {
+      "id": "25b1058f-2f9b-473e-ba33-5fdee11ed402",
+      "type": "seed",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-meta-reportedly-considering-layoffs-that-could-aff.md",
+      "type": "output",
+      "title": "Meta reportedly considering layoffs that could affect 20% of the company"
+    },
+    {
+      "id": "c768dbe4-a9aa-46a1-9b58-592ce63574d2",
+      "type": "seed",
+      "title": "The biggest AI stories of the year (so far)"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-biggest-ai-stories-of-the-year-_so-far_.py",
+      "type": "app",
+      "title": "The biggest AI stories of the year (so far)"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-the-biggest-ai-stories-of-the-year-(so-far).md",
+      "type": "content",
+      "title": "The biggest AI stories of the year (so far)"
     }
   ],
   "edges": [
@@ -8450,6 +8475,21 @@
     {
       "from": "120b58bc-9071-49e9-89f1-9af7234c68b8",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-honda-is-killing-its-evs-\u2014\u00a0and-any-chance-of-compe.md",
+      "type": "produced"
+    },
+    {
+      "from": "25b1058f-2f9b-473e-ba33-5fdee11ed402",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-16-meta-reportedly-considering-layoffs-that-could-aff.md",
+      "type": "produced"
+    },
+    {
+      "from": "c768dbe4-a9aa-46a1-9b58-592ce63574d2",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-biggest-ai-stories-of-the-year-_so-far_.py",
+      "type": "produced"
+    },
+    {
+      "from": "c768dbe4-a9aa-46a1-9b58-592ce63574d2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-the-biggest-ai-stories-of-the-year-(so-far).md",
       "type": "produced"
     }
   ]
