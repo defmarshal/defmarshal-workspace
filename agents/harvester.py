@@ -91,7 +91,7 @@ def send_telegram_summary(seeds, outputs):
             summary += f"  - {title}\n"
     # Send via openclaw message (uses last chat)
     try:
-        subprocess.run([OPENCLAWS, 'message', 'send', '--to', 'last', '--text', summary], timeout=30)
+        subprocess.run([OPENCLAWS, 'message', 'send', '--target', 'last', '--text', summary], timeout=30)
     except Exception as e:
         log(f"Telegram send failed: {e}")
 
