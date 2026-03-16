@@ -7219,6 +7219,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-steven-spielberg-says-he&#8217;s-&#8216;never-used-ai&#8217;-in-any-of-his-films.md",
       "type": "content",
       "title": "Steven Spielberg says he&#8217;s &#8216;never used AI&#8217; in any of his films"
+    },
+    {
+      "id": "3de97f76-1ca6-4492-8dcd-add2626381d6",
+      "type": "seed",
+      "title": "ByteDance reportedly pauses global launch of its Seedance 2.0 video generator"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-bytedance-reportedly-pauses-global-launch-of-its-seedance-2.0-video-generator.md",
+      "type": "content",
+      "title": "ByteDance reportedly pauses global launch of its Seedance 2.0 video generator"
     }
   ],
   "edges": [
@@ -8315,6 +8325,11 @@
     {
       "from": "161901be-8794-4ae0-9b95-0bd490230370",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-15-steven-spielberg-says-he&#8217;s-&#8216;never-used-ai&#8217;-in-any-of-his-films.md",
+      "type": "produced"
+    },
+    {
+      "from": "3de97f76-1ca6-4492-8dcd-add2626381d6",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-bytedance-reportedly-pauses-global-launch-of-its-seedance-2.0-video-generator.md",
       "type": "produced"
     }
   ]
