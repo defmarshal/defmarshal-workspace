@@ -7269,6 +7269,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/wiz-investor-unpacks-google_s-_32b-acquisition.py",
       "type": "app",
       "title": "Wiz investor unpacks Google\u2019s $32B acquisition"
+    },
+    {
+      "id": "96ef7789-c8b8-48d4-ac6a-842d3356a419",
+      "type": "seed",
+      "title": "Rivian&#8217;s RJ Scaringe thinks we&#8217;re doing robots all wrong"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-rivian&#8217;s-rj-scaringe-thinks-we&#8217;re-doing-robots-all-wrong.md",
+      "type": "content",
+      "title": "Rivian&#8217;s RJ Scaringe thinks we&#8217;re doing robots all wrong"
+    },
+    {
+      "id": "4c9a5fc4-c57f-46e3-b7da-4cf41772cb9a",
+      "type": "seed",
+      "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-macbook-neo-is-_the-most-repairable-macbook_-i.py",
+      "type": "app",
+      "title": "The MacBook Neo is \u2018the most repairable MacBook\u2019 in years, according to iFixit"
     }
   ],
   "edges": [
@@ -8390,6 +8410,16 @@
     {
       "from": "55e9f154-e068-4284-84fe-21eb6febc75a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/wiz-investor-unpacks-google_s-_32b-acquisition.py",
+      "type": "produced"
+    },
+    {
+      "from": "96ef7789-c8b8-48d4-ac6a-842d3356a419",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-16-rivian&#8217;s-rj-scaringe-thinks-we&#8217;re-doing-robots-all-wrong.md",
+      "type": "produced"
+    },
+    {
+      "from": "4c9a5fc4-c57f-46e3-b7da-4cf41772cb9a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-macbook-neo-is-_the-most-repairable-macbook_-i.py",
       "type": "produced"
     }
   ]
