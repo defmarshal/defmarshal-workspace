@@ -7704,6 +7704,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-no-more-delulu:-physics-inspired-kernel-networks-for-geometrically-grounded-neur.md",
       "type": "content",
       "title": "No More DeLuLu: Physics-Inspired Kernel Networks for Geometrically-Grounded Neural Computation"
+    },
+    {
+      "id": "f1c6ae95-adc8-4d49-8b55-fcc3086ddb28",
+      "type": "seed",
+      "title": "From Garbage to Gold: A Data-Architectural Theory of Predictive Robustness"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-from-garbage-to-gold:-a-data-architectural-theory-of-predictive-robustness.md",
+      "type": "content",
+      "title": "From Garbage to Gold: A Data-Architectural Theory of Predictive Robustness"
     }
   ],
   "edges": [
@@ -9050,6 +9060,11 @@
     {
       "from": "6140c80d-0b01-4923-95a0-4144e27fc701",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-no-more-delulu:-physics-inspired-kernel-networks-for-geometrically-grounded-neur.md",
+      "type": "produced"
+    },
+    {
+      "from": "f1c6ae95-adc8-4d49-8b55-fcc3086ddb28",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-from-garbage-to-gold:-a-data-architectural-theory-of-predictive-robustness.md",
       "type": "produced"
     }
   ]
