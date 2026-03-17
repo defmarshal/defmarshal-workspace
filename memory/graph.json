@@ -7714,6 +7714,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-from-garbage-to-gold:-a-data-architectural-theory-of-predictive-robustness.md",
       "type": "content",
       "title": "From Garbage to Gold: A Data-Architectural Theory of Predictive Robustness"
+    },
+    {
+      "id": "c2e72076-911b-427b-aebf-2f9fb284e127",
+      "type": "seed",
+      "title": "Multi-objective Genetic Programming with Multi-view Multi-level Feature for Enhanced Protein Secondary Structure Prediction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-multi-objective-genetic-programming-with-multi-view-multi-level-feature-for-enha.md",
+      "type": "content",
+      "title": "Multi-objective Genetic Programming with Multi-view Multi-level Feature for Enhanced Protein Secondary Structure Prediction"
+    },
+    {
+      "id": "921c1708-8913-4f02-8dd1-5ba485f57677",
+      "type": "seed",
+      "title": "Synthetic Data Generation for Brain-Computer Interfaces: Overview, Benchmarking, and Future Directions"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-synthetic-data-generation-for-brain-computer-interfaces:-overview,-benchmarking,.md",
+      "type": "content",
+      "title": "Synthetic Data Generation for Brain-Computer Interfaces: Overview, Benchmarking, and Future Directions"
     }
   ],
   "edges": [
@@ -9065,6 +9085,16 @@
     {
       "from": "f1c6ae95-adc8-4d49-8b55-fcc3086ddb28",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-from-garbage-to-gold:-a-data-architectural-theory-of-predictive-robustness.md",
+      "type": "produced"
+    },
+    {
+      "from": "c2e72076-911b-427b-aebf-2f9fb284e127",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-multi-objective-genetic-programming-with-multi-view-multi-level-feature-for-enha.md",
+      "type": "produced"
+    },
+    {
+      "from": "921c1708-8913-4f02-8dd1-5ba485f57677",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-synthetic-data-generation-for-brain-computer-interfaces:-overview,-benchmarking,.md",
       "type": "produced"
     }
   ]
