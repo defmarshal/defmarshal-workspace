@@ -53,11 +53,12 @@
 - Git commit: `build: auto-commit from agent-manager (2026-03-16)` (8 files, 102+/37-)
 - Research report generated: AI agent safety benchmarks & evaluation frameworks (8.9 KB)
 
-**Email Sweep Agent** (23:09–15:21 UTC, cron session `email-categorizer-1790492789`)
+**Email Sweep Agent** (00:09–00:14 UTC, cron session `email-categorizer-cron`)
 - Executed: `BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
-- Processed: 1 page, generated continuation token
-- Applied: 272 labels across inbox
-- Status: Completed successfully.
+- Fetched: 100 unread emails
+- Applied: 57 labels across various Sweep categories (Decathlon, LinkedIn, Reddit, etc.)
+- Processed 1 page; continuation token generated
+- Status: Completed successfully ✓
 
 **Content Gardener** (23:05–23:05 UTC, cron session `content-1773046735`)
 - Processed seed: "Steven Spielberg says he's 'never used AI' in any of his films"
