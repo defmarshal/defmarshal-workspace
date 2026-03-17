@@ -7744,6 +7744,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/global-evolutionary-steering_-refining-activation-.py",
       "type": "app",
       "title": "Global Evolutionary Steering: Refining Activation Steering Control via Cross-Layer Consistency"
+    },
+    {
+      "id": "30ed96b5-7b47-4a80-8fcc-9a695ee2dcaa",
+      "type": "seed",
+      "title": "A Geometrically-Grounded Drive for MDL-Based Optimization in Deep Learning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-a-geometrically-grounded-drive-for-mdl-based-optim.md",
+      "type": "output",
+      "title": "A Geometrically-Grounded Drive for MDL-Based Optimization in Deep Learning"
+    },
+    {
+      "id": "15ba04e2-98ea-4aac-b9c8-bf9c31a89905",
+      "type": "seed",
+      "title": "HCP-DCNet: A Hierarchical Causal Primitive Dynamic Composition Network for Self-Improving Causal Understanding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-hcp-dcnet:-a-hierarchical-causal-primitive-dynamic-composition-network-for-self-.md",
+      "type": "content",
+      "title": "HCP-DCNet: A Hierarchical Causal Primitive Dynamic Composition Network for Self-Improving Causal Understanding"
+    },
+    {
+      "id": "34a034e3-a07d-47bf-9223-4ebe907c1362",
+      "type": "seed",
+      "title": "Thermodynamics of Reinforcement Learning Curricula"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-thermodynamics-of-reinforcement-learning-curricula.md",
+      "type": "content",
+      "title": "Thermodynamics of Reinforcement Learning Curricula"
     }
   ],
   "edges": [
@@ -9110,6 +9140,21 @@
     {
       "from": "808e51a1-6aef-4253-a6a9-4d8141bebce3",
       "to": "/home/ubuntu/.openclaw/workspace/apps/global-evolutionary-steering_-refining-activation-.py",
+      "type": "produced"
+    },
+    {
+      "from": "30ed96b5-7b47-4a80-8fcc-9a695ee2dcaa",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-a-geometrically-grounded-drive-for-mdl-based-optim.md",
+      "type": "produced"
+    },
+    {
+      "from": "15ba04e2-98ea-4aac-b9c8-bf9c31a89905",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-hcp-dcnet:-a-hierarchical-causal-primitive-dynamic-composition-network-for-self-.md",
+      "type": "produced"
+    },
+    {
+      "from": "34a034e3-a07d-47bf-9223-4ebe907c1362",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-thermodynamics-of-reinforcement-learning-curricula.md",
       "type": "produced"
     }
   ]
