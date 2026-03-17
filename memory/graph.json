@@ -7734,6 +7734,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-synthetic-data-generation-for-brain-computer-interfaces:-overview,-benchmarking,.md",
       "type": "content",
       "title": "Synthetic Data Generation for Brain-Computer Interfaces: Overview, Benchmarking, and Future Directions"
+    },
+    {
+      "id": "808e51a1-6aef-4253-a6a9-4d8141bebce3",
+      "type": "seed",
+      "title": "Global Evolutionary Steering: Refining Activation Steering Control via Cross-Layer Consistency"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/global-evolutionary-steering_-refining-activation-.py",
+      "type": "app",
+      "title": "Global Evolutionary Steering: Refining Activation Steering Control via Cross-Layer Consistency"
     }
   ],
   "edges": [
@@ -9095,6 +9105,11 @@
     {
       "from": "921c1708-8913-4f02-8dd1-5ba485f57677",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-synthetic-data-generation-for-brain-computer-interfaces:-overview,-benchmarking,.md",
+      "type": "produced"
+    },
+    {
+      "from": "808e51a1-6aef-4253-a6a9-4d8141bebce3",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/global-evolutionary-steering_-refining-activation-.py",
       "type": "produced"
     }
   ]
