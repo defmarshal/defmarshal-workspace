@@ -7664,6 +7664,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-llm-augmented-therapy-normalization-and-aspect-based-sentiment-analysis-for-trea.md",
       "type": "content",
       "title": "LLM-Augmented Therapy Normalization and Aspect-Based Sentiment Analysis for Treatment-Resistant Depression on Reddit"
+    },
+    {
+      "id": "13ef12bb-ad65-47b2-8afa-6d2c39784f43",
+      "type": "seed",
+      "title": "TASTE-Streaming: Towards Streamable Text-Aligned Speech Tokenization and Embedding for Spoken Language Modeling"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-taste-streaming:-towards-streamable-text-aligned-speech-tokenization-and-embeddi.md",
+      "type": "content",
+      "title": "TASTE-Streaming: Towards Streamable Text-Aligned Speech Tokenization and Embedding for Spoken Language Modeling"
+    },
+    {
+      "id": "4c3d6a30-1ddf-46a1-b72f-dbcebd9c6b7f",
+      "type": "seed",
+      "title": "Not Just the Destination, But the Journey: Reasoning Traces Causally Shape Generalization Behaviors"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/not-just-the-destination_-but-the-journey_-reasoni.py",
+      "type": "app",
+      "title": "Not Just the Destination, But the Journey: Reasoning Traces Causally Shape Generalization Behaviors"
     }
   ],
   "edges": [
@@ -8990,6 +9010,16 @@
     {
       "from": "380b4dbb-a5c1-4afb-87e8-988b16ade63f",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-llm-augmented-therapy-normalization-and-aspect-based-sentiment-analysis-for-trea.md",
+      "type": "produced"
+    },
+    {
+      "from": "13ef12bb-ad65-47b2-8afa-6d2c39784f43",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-taste-streaming:-towards-streamable-text-aligned-speech-tokenization-and-embeddi.md",
+      "type": "produced"
+    },
+    {
+      "from": "4c3d6a30-1ddf-46a1-b72f-dbcebd9c6b7f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/not-just-the-destination_-but-the-journey_-reasoni.py",
       "type": "produced"
     }
   ]
