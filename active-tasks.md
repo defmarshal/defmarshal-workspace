@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Last updated**: 2026-03-16 03:34 UTC (content-gardener cron completed)
+**Last updated**: 2026-03-16 18:07 UTC (content-gardener cron completed)
 
 **Harvester** (06:07–06:07 UTC, cron session `harvest-1773046808`)
 - Generated daily harvest report: `reports/daily-harvest-2026-03-16.md`
@@ -8,12 +8,31 @@
 - Telegram summary sent (with minor error)
 - Status: Completed successfully.
 
+**Code Gardener** (07:19–07:19 UTC, cron session `code-1773047374`)
+- Processed seed: "Spotify will let you edit your Taste Profile to control your recommendations"
+- Generated app: `apps/spotify-will-let-you-edit-your-taste-profile-to-co.py`
+- Graph updated; seed marked processed.
+- Status: Completed successfully.
+
+**Research Gardener** (11:25–11:25 UTC, cron session `gardener-1773046574`)
+- Processed seed: "Causally Grounded Mechanistic Interpretability for LLMs with Faithful Natural-Language Explanations"
+- Generated report: `research/2026-03-16-causally-grounded-mechanistic-interpretability-for.md`
+- ⚠️ TAVILY_API_KEY not set; web search skipped.
+- Seed marked processed; graph updated.
+- Status: Completed successfully.
+
 ## ✅ Completed Agents (today)
 
-**Content Gardener** (03:32–03:32 UTC, cron session `content-1773046735`)
-- Processed seed: "Rivian's RJ Scaringe thinks we're doing robots all wrong"
-- Generated content: `content/2026-03-16-rivian&#8217;s-rj-scaringe-thinks-we&#8217;re-doing-robots-all-wrong.md`
+**Content Gardener** (18:06–18:07 UTC, cron session `content-1773046735`)
+- Processed seed: "Context-Enriched Natural Language Descriptions of Vessel Trajectories"
+- Generated content: `content/2026-03-16-context-enriched-natural-language-descriptions-of-vessel-trajectories.md`
 - Graph updated with seed→content edge.
+- Status: Completed successfully.
+
+**Code Gardener** (07:19–07:19 UTC, cron session `code-1773047374`)
+- Processed seed: "Spotify will let you edit your Taste Profile to control your recommendations"
+- Generated app: `apps/spotify-will-let-you-edit-your-taste-profile-to-co.py`
+- Graph updated; seed marked processed.
 - Status: Completed successfully.
 
 **Code Gardener** (23:09–01:22 UTC, cron session `code-1773047374`)
@@ -28,9 +47,11 @@
 - Git commit: `build: auto-commit from agent-manager (2026-03-16)` (8 files, 102+/37-)
 - Research report generated: AI agent safety benchmarks & evaluation frameworks (8.9 KB)
 
-**Email Sweep Agent** (23:09 UTC, cron session `email-categorizer-1790492789`)
-- Executing: `BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
-- Status: Running (check separately if needed)
+**Email Sweep Agent** (23:09–15:21 UTC, cron session `email-categorizer-1790492789`)
+- Executed: `BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
+- Processed: 1 page, generated continuation token
+- Applied: 272 labels across inbox
+- Status: Completed successfully.
 
 **Content Gardener** (23:05–23:05 UTC, cron session `content-1773046735`)
 - Processed seed: "Steven Spielberg says he's 'never used AI' in any of his films"
