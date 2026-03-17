@@ -7639,6 +7639,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/gone_-structural-knowledge-unlearning-via-neighbor.py",
       "type": "app",
       "title": "GONE: Structural Knowledge Unlearning via Neighborhood-Expanded Distribution Shaping"
+    },
+    {
+      "id": "65b75844-0f33-48ff-9801-4364b55ce15b",
+      "type": "seed",
+      "title": "Prompt Injection as Role Confusion"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-prompt-injection-as-role-confusion.md",
+      "type": "content",
+      "title": "Prompt Injection as Role Confusion"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-prompt-injection-as-role-confusion.md",
+      "type": "content",
+      "title": "Prompt Injection as Role Confusion"
+    },
+    {
+      "id": "380b4dbb-a5c1-4afb-87e8-988b16ade63f",
+      "type": "seed",
+      "title": "LLM-Augmented Therapy Normalization and Aspect-Based Sentiment Analysis for Treatment-Resistant Depression on Reddit"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-llm-augmented-therapy-normalization-and-aspect-based-sentiment-analysis-for-trea.md",
+      "type": "content",
+      "title": "LLM-Augmented Therapy Normalization and Aspect-Based Sentiment Analysis for Treatment-Resistant Depression on Reddit"
     }
   ],
   "edges": [
@@ -8950,6 +8975,21 @@
     {
       "from": "ecdfda87-da3b-4ff1-8d3f-65d2e0fbed10",
       "to": "/home/ubuntu/.openclaw/workspace/apps/gone_-structural-knowledge-unlearning-via-neighbor.py",
+      "type": "produced"
+    },
+    {
+      "from": "65b75844-0f33-48ff-9801-4364b55ce15b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-prompt-injection-as-role-confusion.md",
+      "type": "produced"
+    },
+    {
+      "from": "65b75844-0f33-48ff-9801-4364b55ce15b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-prompt-injection-as-role-confusion.md",
+      "type": "produced"
+    },
+    {
+      "from": "380b4dbb-a5c1-4afb-87e8-988b16ade63f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-llm-augmented-therapy-normalization-and-aspect-based-sentiment-analysis-for-trea.md",
       "type": "produced"
     }
   ]
