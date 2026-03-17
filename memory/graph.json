@@ -7684,6 +7684,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/not-just-the-destination_-but-the-journey_-reasoni.py",
       "type": "app",
       "title": "Not Just the Destination, But the Journey: Reasoning Traces Causally Shape Generalization Behaviors"
+    },
+    {
+      "id": "3c9614be-f75d-4b4b-a978-a60e2f6b3d01",
+      "type": "seed",
+      "title": "Interpreting Negation in GPT-2: Layer- and Head-Level Causal Analysis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-interpreting-negation-in-gpt-2:-layer--and-head-le.md",
+      "type": "output",
+      "title": "Interpreting Negation in GPT-2: Layer- and Head-Level Causal Analysis"
+    },
+    {
+      "id": "6140c80d-0b01-4923-95a0-4144e27fc701",
+      "type": "seed",
+      "title": "No More DeLuLu: Physics-Inspired Kernel Networks for Geometrically-Grounded Neural Computation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-no-more-delulu:-physics-inspired-kernel-networks-for-geometrically-grounded-neur.md",
+      "type": "content",
+      "title": "No More DeLuLu: Physics-Inspired Kernel Networks for Geometrically-Grounded Neural Computation"
     }
   ],
   "edges": [
@@ -9020,6 +9040,16 @@
     {
       "from": "4c3d6a30-1ddf-46a1-b72f-dbcebd9c6b7f",
       "to": "/home/ubuntu/.openclaw/workspace/apps/not-just-the-destination_-but-the-journey_-reasoni.py",
+      "type": "produced"
+    },
+    {
+      "from": "3c9614be-f75d-4b4b-a978-a60e2f6b3d01",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-interpreting-negation-in-gpt-2:-layer--and-head-le.md",
+      "type": "produced"
+    },
+    {
+      "from": "6140c80d-0b01-4923-95a0-4144e27fc701",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-no-more-delulu:-physics-inspired-kernel-networks-for-geometrically-grounded-neur.md",
       "type": "produced"
     }
   ]
