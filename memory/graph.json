@@ -7904,6 +7904,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-dual-path-generative-framework-for-zero-day-fraud-detection-in-banking-systems.md",
       "type": "content",
       "title": "A Dual-Path Generative Framework for Zero-Day Fraud Detection in Banking Systems"
+    },
+    {
+      "id": "7a3f9de4-9e5d-4060-a7e9-77f98ec0e7fc",
+      "type": "seed",
+      "title": "Benchmarking Zero-Shot Reasoning Approaches for Error Detection in Solidity Smart Contracts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/benchmarking-zero-shot-reasoning-approaches-for-er.py",
+      "type": "app",
+      "title": "Benchmarking Zero-Shot Reasoning Approaches for Error Detection in Solidity Smart Contracts"
     }
   ],
   "edges": [
@@ -9350,6 +9360,11 @@
     {
       "from": "c840cfb3-1e7b-47a9-bb4c-f141cfd6eb59",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-dual-path-generative-framework-for-zero-day-fraud-detection-in-banking-systems.md",
+      "type": "produced"
+    },
+    {
+      "from": "7a3f9de4-9e5d-4060-a7e9-77f98ec0e7fc",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/benchmarking-zero-shot-reasoning-approaches-for-er.py",
       "type": "produced"
     }
   ]
