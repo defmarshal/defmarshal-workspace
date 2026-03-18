@@ -8084,6 +8084,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-preconditioned-test-time-adaptation-for-out-of-distribution-debiasing-in-narrati.md",
       "type": "content",
       "title": "Preconditioned Test-Time Adaptation for Out-of-Distribution Debiasing in Narrative Generation"
+    },
+    {
+      "id": "17f86ee4-19bf-4a7f-9e68-f0f8b17f753a",
+      "type": "seed",
+      "title": "Tokenization Tradeoffs in Structured EHR Foundation Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/tokenization-tradeoffs-in-structured-ehr-foundatio.py",
+      "type": "app",
+      "title": "Tokenization Tradeoffs in Structured EHR Foundation Models"
     }
   ],
   "edges": [
@@ -9620,6 +9630,11 @@
     {
       "from": "539db3be-7816-4b85-9bc5-cf5fa38f58f4",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-preconditioned-test-time-adaptation-for-out-of-distribution-debiasing-in-narrati.md",
+      "type": "produced"
+    },
+    {
+      "from": "17f86ee4-19bf-4a7f-9e68-f0f8b17f753a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/tokenization-tradeoffs-in-structured-ehr-foundatio.py",
       "type": "produced"
     }
   ]
