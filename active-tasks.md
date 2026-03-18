@@ -14,3 +14,4 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 - **Git status**: Clean (just committed meta-summary tracking + content status).
 - **Disk cleanup**: At 82% (threshold 85%). Monitor; old downloads/backups may need pruning if >85%.
 - **Supervisor cron** (completed 09:30 UTC): Ran `./agents/supervisor.sh` successfully. All health checks passed. ✓
+- **Research gardener** (started 19:09 UTC via cron): Processing research seeds from memory/seeds.jsonl. One-shot per invocation; cron will re-schedule. Currently: 276 processed / 652 total. PID: 4082426.

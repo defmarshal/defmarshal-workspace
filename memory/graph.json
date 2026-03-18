@@ -8204,6 +8204,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/loosely-structured-software_-engineering-context_-.py",
       "type": "app",
       "title": "Loosely-Structured Software: Engineering Context, Structure, and Evolution Entropy in Runtime-Rewired Multi-Agent Systems"
+    },
+    {
+      "id": "90e99d72-f85a-43de-91cf-eb0571ff62ef",
+      "type": "seed",
+      "title": "VibeContract: The Missing Quality Assurance Piece in Vibe Coding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-vibecontract:-the-missing-quality-assurance-piece-.md",
+      "type": "output",
+      "title": "VibeContract: The Missing Quality Assurance Piece in Vibe Coding"
+    },
+    {
+      "id": "8a15eb99-14d5-4d31-b43c-9e98cbb19196",
+      "type": "seed",
+      "title": "SEMAG: Self-Evolutionary Multi-Agent Code Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-semag:-self-evolutionary-multi-agent-code-generation.md",
+      "type": "content",
+      "title": "SEMAG: Self-Evolutionary Multi-Agent Code Generation"
+    },
+    {
+      "id": "abdb6cc5-0615-4baf-9c30-f954fbb7297f",
+      "type": "seed",
+      "title": "A Framework and Prototype for a Navigable Map of Datasets in Engineering Design and Systems Engineering"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-framework-and-prototype-for-a-navigable-map-of-datasets-in-engineering-design-.md",
+      "type": "content",
+      "title": "A Framework and Prototype for a Navigable Map of Datasets in Engineering Design and Systems Engineering"
     }
   ],
   "edges": [
@@ -9800,6 +9830,21 @@
     {
       "from": "6b588317-14ce-4931-bc3b-a7535655f103",
       "to": "/home/ubuntu/.openclaw/workspace/apps/loosely-structured-software_-engineering-context_-.py",
+      "type": "produced"
+    },
+    {
+      "from": "90e99d72-f85a-43de-91cf-eb0571ff62ef",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-vibecontract:-the-missing-quality-assurance-piece-.md",
+      "type": "produced"
+    },
+    {
+      "from": "8a15eb99-14d5-4d31-b43c-9e98cbb19196",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-semag:-self-evolutionary-multi-agent-code-generation.md",
+      "type": "produced"
+    },
+    {
+      "from": "abdb6cc5-0615-4baf-9c30-f954fbb7297f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-framework-and-prototype-for-a-navigable-map-of-datasets-in-engineering-design-.md",
       "type": "produced"
     }
   ]
