@@ -8064,6 +8064,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-benchmarking-large-language-models-on-reference-extraction-and-parsing-in-the-so.md",
       "type": "content",
       "title": "Benchmarking Large Language Models on Reference Extraction and Parsing in the Social Sciences and Humanities"
+    },
+    {
+      "id": "cd52ed62-138d-4c9f-8526-084ec087da57",
+      "type": "seed",
+      "title": "Privacy Preserving Topic-wise Sentiment Analysis of the Iran Israel USA Conflict Using Federated Transformer Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-privacy-preserving-topic-wise-sentiment-analysis-o.md",
+      "type": "output",
+      "title": "Privacy Preserving Topic-wise Sentiment Analysis of the Iran Israel USA Conflict Using Federated Transformer Models"
     }
   ],
   "edges": [
@@ -9590,6 +9600,11 @@
     {
       "from": "e1de75e0-fbf2-4424-afed-afe9f734ef87",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-benchmarking-large-language-models-on-reference-extraction-and-parsing-in-the-so.md",
+      "type": "produced"
+    },
+    {
+      "from": "cd52ed62-138d-4c9f-8526-084ec087da57",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-privacy-preserving-topic-wise-sentiment-analysis-o.md",
       "type": "produced"
     }
   ]
