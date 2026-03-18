@@ -7934,6 +7934,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-automating-document-intelligence-in-statutory-city-planning.md",
       "type": "content",
       "title": "Automating Document Intelligence in Statutory City Planning"
+    },
+    {
+      "id": "819b9002-c59e-4457-80f2-93e6112894cc",
+      "type": "seed",
+      "title": "Multi-Axis Trust Modeling for Interpretable Account Hijacking Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-multi-axis-trust-modeling-for-interpretable-account-hijacking-detection.md",
+      "type": "content",
+      "title": "Multi-Axis Trust Modeling for Interpretable Account Hijacking Detection"
     }
   ],
   "edges": [
@@ -9395,6 +9405,11 @@
     {
       "from": "820551a7-d484-4782-99dc-d7ef6a3fd7fe",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-automating-document-intelligence-in-statutory-city-planning.md",
+      "type": "produced"
+    },
+    {
+      "from": "819b9002-c59e-4457-80f2-93e6112894cc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-multi-axis-trust-modeling-for-interpretable-account-hijacking-detection.md",
       "type": "produced"
     }
   ]
