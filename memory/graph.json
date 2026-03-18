@@ -8134,6 +8134,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/how-to-achieve-prototypical-birth-and-death-for-oo.py",
       "type": "app",
       "title": "How to Achieve Prototypical Birth and Death for OOD Detection?"
+    },
+    {
+      "id": "ac2361ee-9b18-4673-a77c-198823dcbe17",
+      "type": "seed",
+      "title": "A federated learning framework with knowledge graph and temporal transformer for early sepsis prediction in multi-center ICUs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-a-federated-learning-framework-with-knowledge-grap.md",
+      "type": "output",
+      "title": "A federated learning framework with knowledge graph and temporal transformer for early sepsis prediction in multi-center ICUs"
     }
   ],
   "edges": [
@@ -9695,6 +9705,11 @@
     {
       "from": "c680bddb-d45b-4522-9e15-85449e1d78f5",
       "to": "/home/ubuntu/.openclaw/workspace/apps/how-to-achieve-prototypical-birth-and-death-for-oo.py",
+      "type": "produced"
+    },
+    {
+      "from": "ac2361ee-9b18-4673-a77c-198823dcbe17",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-a-federated-learning-framework-with-knowledge-grap.md",
       "type": "produced"
     }
   ]
