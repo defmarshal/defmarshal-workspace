@@ -7914,6 +7914,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/benchmarking-zero-shot-reasoning-approaches-for-er.py",
       "type": "app",
       "title": "Benchmarking Zero-Shot Reasoning Approaches for Error Detection in Solidity Smart Contracts"
+    },
+    {
+      "id": "aea95335-213f-4075-8808-fce588d5fde0",
+      "type": "seed",
+      "title": "Think First, Diffuse Fast: Improving Diffusion Language Model Reasoning via Autoregressive Plan Conditioning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-think-first,-diffuse-fast:-improving-diffusion-lan.md",
+      "type": "output",
+      "title": "Think First, Diffuse Fast: Improving Diffusion Language Model Reasoning via Autoregressive Plan Conditioning"
+    },
+    {
+      "id": "820551a7-d484-4782-99dc-d7ef6a3fd7fe",
+      "type": "seed",
+      "title": "Automating Document Intelligence in Statutory City Planning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-automating-document-intelligence-in-statutory-city-planning.md",
+      "type": "content",
+      "title": "Automating Document Intelligence in Statutory City Planning"
     }
   ],
   "edges": [
@@ -9365,6 +9385,16 @@
     {
       "from": "7a3f9de4-9e5d-4060-a7e9-77f98ec0e7fc",
       "to": "/home/ubuntu/.openclaw/workspace/apps/benchmarking-zero-shot-reasoning-approaches-for-er.py",
+      "type": "produced"
+    },
+    {
+      "from": "aea95335-213f-4075-8808-fce588d5fde0",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-think-first,-diffuse-fast:-improving-diffusion-lan.md",
+      "type": "produced"
+    },
+    {
+      "from": "820551a7-d484-4782-99dc-d7ef6a3fd7fe",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-automating-document-intelligence-in-statutory-city-planning.md",
       "type": "produced"
     }
   ]
