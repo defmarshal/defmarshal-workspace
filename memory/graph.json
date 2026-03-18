@@ -8234,6 +8234,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-framework-and-prototype-for-a-navigable-map-of-datasets-in-engineering-design-.md",
       "type": "content",
       "title": "A Framework and Prototype for a Navigable Map of Datasets in Engineering Design and Systems Engineering"
+    },
+    {
+      "id": "0777f70e-9c0d-4406-9e36-a7c4c54adcb1",
+      "type": "seed",
+      "title": "A Comparative Analysis of Backbone Algorithms for Configurable Software Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-a-comparative-analysis-of-backbone-algorithms-for-.md",
+      "type": "output",
+      "title": "A Comparative Analysis of Backbone Algorithms for Configurable Software Systems"
+    },
+    {
+      "id": "7a67cc17-1158-44e6-8c4f-3a67c1d634f7",
+      "type": "seed",
+      "title": "Self-Admitted Technical Debt in Scientific Software: Prioritization, Sentiment, and Propagation Across Artifacts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/self-admitted-technical-debt-in-scientific-softwar.py",
+      "type": "app",
+      "title": "Self-Admitted Technical Debt in Scientific Software: Prioritization, Sentiment, and Propagation Across Artifacts"
+    },
+    {
+      "id": "efe08d63-5120-4a4f-832a-835302d73862",
+      "type": "seed",
+      "title": "Human-AI Synergy in Agentic Code Review"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/human-ai-synergy-in-agentic-code-review.py",
+      "type": "app",
+      "title": "Human-AI Synergy in Agentic Code Review"
     }
   ],
   "edges": [
@@ -9845,6 +9875,21 @@
     {
       "from": "abdb6cc5-0615-4baf-9c30-f954fbb7297f",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-framework-and-prototype-for-a-navigable-map-of-datasets-in-engineering-design-.md",
+      "type": "produced"
+    },
+    {
+      "from": "0777f70e-9c0d-4406-9e36-a7c4c54adcb1",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-a-comparative-analysis-of-backbone-algorithms-for-.md",
+      "type": "produced"
+    },
+    {
+      "from": "7a67cc17-1158-44e6-8c4f-3a67c1d634f7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/self-admitted-technical-debt-in-scientific-softwar.py",
+      "type": "produced"
+    },
+    {
+      "from": "efe08d63-5120-4a4f-832a-835302d73862",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/human-ai-synergy-in-agentic-code-review.py",
       "type": "produced"
     }
   ]
