@@ -7984,6 +7984,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-distilling-deep-reinforcement-learning-into-interpretable-fuzzy-rules:-an-explai.md",
       "type": "content",
       "title": "Distilling Deep Reinforcement Learning into Interpretable Fuzzy Rules: An Explainable AI Framework"
+    },
+    {
+      "id": "f3772a13-4e66-4a3d-8268-a00fe20327ad",
+      "type": "seed",
+      "title": "Slang Context-based Inference Enhancement via Greedy Search-Guided Chain-of-Thought Prompting"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-slang-context-based-inference-enhancement-via-gree.md",
+      "type": "output",
+      "title": "Slang Context-based Inference Enhancement via Greedy Search-Guided Chain-of-Thought Prompting"
+    },
+    {
+      "id": "cfa60d91-d002-4518-9c21-8b274b1eb374",
+      "type": "seed",
+      "title": "Steering at the Source: Style Modulation Heads for Robust Persona Control"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/steering-at-the-source_-style-modulation-heads-for.py",
+      "type": "app",
+      "title": "Steering at the Source: Style Modulation Heads for Robust Persona Control"
     }
   ],
   "edges": [
@@ -9470,6 +9490,16 @@
     {
       "from": "a50cc286-df19-43e4-b2cf-df5ffe43c3dc",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-distilling-deep-reinforcement-learning-into-interpretable-fuzzy-rules:-an-explai.md",
+      "type": "produced"
+    },
+    {
+      "from": "f3772a13-4e66-4a3d-8268-a00fe20327ad",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-slang-context-based-inference-enhancement-via-gree.md",
+      "type": "produced"
+    },
+    {
+      "from": "cfa60d91-d002-4518-9c21-8b274b1eb374",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/steering-at-the-source_-style-modulation-heads-for.py",
       "type": "produced"
     }
   ]
