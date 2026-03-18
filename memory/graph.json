@@ -8044,6 +8044,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-design-and-evaluation-of-an-agentic-workflow-for-crisis-related-synthetic-tweet-.md",
       "type": "content",
       "title": "Design and evaluation of an agentic workflow for crisis-related synthetic tweet datasets"
+    },
+    {
+      "id": "b2a16e99-c263-49e7-b0f1-6d1aaaa36f5e",
+      "type": "seed",
+      "title": "Widespread Gender and Pronoun Bias in Moral Judgments Across LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-widespread-gender-and-pronoun-bias-in-moral-judgme.md",
+      "type": "output",
+      "title": "Widespread Gender and Pronoun Bias in Moral Judgments Across LLMs"
+    },
+    {
+      "id": "e1de75e0-fbf2-4424-afed-afe9f734ef87",
+      "type": "seed",
+      "title": "Benchmarking Large Language Models on Reference Extraction and Parsing in the Social Sciences and Humanities"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-benchmarking-large-language-models-on-reference-extraction-and-parsing-in-the-so.md",
+      "type": "content",
+      "title": "Benchmarking Large Language Models on Reference Extraction and Parsing in the Social Sciences and Humanities"
     }
   ],
   "edges": [
@@ -9560,6 +9580,16 @@
     {
       "from": "d2363979-2b73-449e-b5ed-96e151c902c3",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-design-and-evaluation-of-an-agentic-workflow-for-crisis-related-synthetic-tweet-.md",
+      "type": "produced"
+    },
+    {
+      "from": "b2a16e99-c263-49e7-b0f1-6d1aaaa36f5e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-widespread-gender-and-pronoun-bias-in-moral-judgme.md",
+      "type": "produced"
+    },
+    {
+      "from": "e1de75e0-fbf2-4424-afed-afe9f734ef87",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-benchmarking-large-language-models-on-reference-extraction-and-parsing-in-the-so.md",
       "type": "produced"
     }
   ]
