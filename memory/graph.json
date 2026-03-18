@@ -8034,6 +8034,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-explain-in-your-own-words:-improving-reasoning-via-token-selective-dual-knowledg.md",
       "type": "content",
       "title": "Explain in Your Own Words: Improving Reasoning via Token-Selective Dual Knowledge Distillation"
+    },
+    {
+      "id": "d2363979-2b73-449e-b5ed-96e151c902c3",
+      "type": "seed",
+      "title": "Design and evaluation of an agentic workflow for crisis-related synthetic tweet datasets"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-design-and-evaluation-of-an-agentic-workflow-for-crisis-related-synthetic-tweet-.md",
+      "type": "content",
+      "title": "Design and evaluation of an agentic workflow for crisis-related synthetic tweet datasets"
     }
   ],
   "edges": [
@@ -9545,6 +9555,11 @@
     {
       "from": "f4f76c26-8e7d-450f-a735-a5870fd6dda2",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-explain-in-your-own-words:-improving-reasoning-via-token-selective-dual-knowledg.md",
+      "type": "produced"
+    },
+    {
+      "from": "d2363979-2b73-449e-b5ed-96e151c902c3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-design-and-evaluation-of-an-agentic-workflow-for-crisis-related-synthetic-tweet-.md",
       "type": "produced"
     }
   ]
