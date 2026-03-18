@@ -8194,6 +8194,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/automated-self-testing-as-a-quality-gate_-evidence.py",
       "type": "app",
       "title": "Automated Self-Testing as a Quality Gate: Evidence-Driven Release Management for LLM Applications"
+    },
+    {
+      "id": "6b588317-14ce-4931-bc3b-a7535655f103",
+      "type": "seed",
+      "title": "Loosely-Structured Software: Engineering Context, Structure, and Evolution Entropy in Runtime-Rewired Multi-Agent Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/loosely-structured-software_-engineering-context_-.py",
+      "type": "app",
+      "title": "Loosely-Structured Software: Engineering Context, Structure, and Evolution Entropy in Runtime-Rewired Multi-Agent Systems"
     }
   ],
   "edges": [
@@ -9785,6 +9795,11 @@
     {
       "from": "610ac36b-1e38-40db-9c70-59c1171693de",
       "to": "/home/ubuntu/.openclaw/workspace/apps/automated-self-testing-as-a-quality-gate_-evidence.py",
+      "type": "produced"
+    },
+    {
+      "from": "6b588317-14ce-4931-bc3b-a7535655f103",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/loosely-structured-software_-engineering-context_-.py",
       "type": "produced"
     }
   ]
