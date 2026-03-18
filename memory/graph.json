@@ -7884,6 +7884,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/moekd_-mixture-of-experts-knowledge-distillation-f.py",
       "type": "app",
       "title": "MoEKD: Mixture-of-Experts Knowledge Distillation for Robust and High-Performing Compressed Code Models"
+    },
+    {
+      "id": "251997c2-7d31-47fc-aff6-4a0cd76f2d11",
+      "type": "seed",
+      "title": "Human Attribution of Causality to AI Across Agency, Misuse, and Misalignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-human-attribution-of-causality-to-ai-across-agency.md",
+      "type": "output",
+      "title": "Human Attribution of Causality to AI Across Agency, Misuse, and Misalignment"
+    },
+    {
+      "id": "c840cfb3-1e7b-47a9-bb4c-f141cfd6eb59",
+      "type": "seed",
+      "title": "A Dual-Path Generative Framework for Zero-Day Fraud Detection in Banking Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-dual-path-generative-framework-for-zero-day-fraud-detection-in-banking-systems.md",
+      "type": "content",
+      "title": "A Dual-Path Generative Framework for Zero-Day Fraud Detection in Banking Systems"
     }
   ],
   "edges": [
@@ -9320,6 +9340,16 @@
     {
       "from": "eb295276-2441-47e1-9c99-082e0342334a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/moekd_-mixture-of-experts-knowledge-distillation-f.py",
+      "type": "produced"
+    },
+    {
+      "from": "251997c2-7d31-47fc-aff6-4a0cd76f2d11",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-human-attribution-of-causality-to-ai-across-agency.md",
+      "type": "produced"
+    },
+    {
+      "from": "c840cfb3-1e7b-47a9-bb4c-f141cfd6eb59",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-a-dual-path-generative-framework-for-zero-day-fraud-detection-in-banking-systems.md",
       "type": "produced"
     }
   ]

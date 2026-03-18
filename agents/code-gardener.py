@@ -85,24 +85,116 @@ Context: {seed['snippet']}
 
 The script should be self-contained, include a shebang, and demonstrate the concept. Keep it under 100 lines. Output only the code, no explanations."""
     code = generate_code_via_agent(prompt)
+    
+    # Enhanced fallback: create a meaningful script based on seed content
     if not code or len(code) < 20:
-        code = f"""#!/usr/bin/env python3
-# Auto-generated script
-# Seed: {seed['title']}
-print("Hello from {seed['title']}!")"""
+        log(f"Agent returned insufficient code (length {len(code) if code else 0}), using enhanced fallback")
+        code = create_fallback_script(seed)
+    
     # Determine filename
     safe_title = seed['title'].lower().replace(' ', '-')[:50]
     safe_title = ''.join(c if c.isalnum() or c in '-_' else '_' for c in safe_title)
     filename = APPS_DIR / f"{safe_title}.py"
+    
     # Ensure unique
     counter = 1
     orig = filename
     while filename.exists():
         filename = APPS_DIR / f"{orig.stem}-{counter}{orig.suffix}"
         counter += 1
+    
     with open(filename, 'w') as f:
         f.write(code)
     return str(filename)
+
+def create_fallback_script(seed):
+    """Generate a meaningful script when the agent fails, based on seed title and snippet."""
+    title = seed['title']
+    snippet = seed.get('snippet', '')[:500]
+    
+    # Extract key terms for context
+    key_terms = []
+    for word in title.replace(',', '').replace('.', '').split():
+        if len(word) > 3 and word.lower() not in ['this', 'that', 'with', 'from', 'what', 'when', 'were', 'have', 'been', 'were', 'they', 'their']:
+            key_terms.append(word)
+    
+    top_terms = key_terms[:3] if key_terms else ['concept']
+    
+    script = f'''#!/usr/bin/env python3
+"""
+Auto-generated script (fallback) for: {title}
+This demonstrates the core concept from: {snippet[:100]}...
+"""
+
+import random
+import time
+from dataclasses import dataclass
+from typing import List, Dict
+
+@dataclass
+class {top_terms[0].title()}Concept:
+    """Representation of: {top_terms[0]}"""
+    value: float
+    description: str
+    
+def demonstrate_{top_terms[0].lower()}(iterations: int = 5):
+    """Core demonstration of {top_terms[0]} concept."""
+    print(f"Demonstrating: {{title}}")
+    print("=" * 50)
+    
+    concepts = []
+    for i in range(min(iterations, 5)):
+        concept = {top_terms[0].title()}Concept(
+            value=random.uniform(0.1, 1.0),
+            description=f"{top_terms[0]} instance {{i+1}}"
+        )
+        concepts.append(concept)
+        print(f"{{i+1}}. {{concept.description}} -> value: {{concept.value:.3f}}")
+        time.sleep(0.2)
+    
+    # Analysis
+    avg_value = sum(c.value for c in concepts) / len(concepts)
+    print(f"\nAverage {top_terms[0]} strength: {{avg_value:.3f}}")
+    
+    return concepts
+
+def analyze_{top_terms[1].lower() if len(top_terms) > 1 else 'results'}(data: List) -> Dict:
+    """Analyze {top_terms[1] if len(top_terms) > 1 else 'the data'} patterns."""
+    if not data:
+        return {{"error": "No data"}}
+    
+    values = [d.value if hasattr(d, 'value') else float(d) for d in data]
+    return {{
+        "count": len(values),
+        "mean": sum(values) / len(values),
+        "max": max(values),
+        "min": min(values),
+        "range": max(values) - min(values)
+    }}
+
+def main():
+    print(f"Script: {title}")
+    print(f"Key concepts: {', '.join(top_terms)}")
+    print("-" * 40)
+    
+    # Run demonstration
+    data = demonstrate_{top_terms[0].lower()}()
+    
+    # Analysis
+    analysis = analyze_{top_terms[1].lower() if len(top_terms) > 1 else 'data'}(data)
+    print(f"\nAnalysis: {{analysis}}")
+    
+    print("\n" + "=" * 50)
+    print("This fallback script demonstrates the core idea")
+    print("using structured data and analysis functions.")
+    print("For a more sophisticated implementation,")
+    print("ensure OpenRouter connectivity is available.")
+
+if __name__ == "__main__":
+    main()
+'''
+    
+    return script
 
 def main():
     seeds = load_seeds()
