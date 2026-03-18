@@ -8264,6 +8264,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/human-ai-synergy-in-agentic-code-review.py",
       "type": "app",
       "title": "Human-AI Synergy in Agentic Code Review"
+    },
+    {
+      "id": "06c255af-81a9-41fe-a6e2-49629d35ec58",
+      "type": "seed",
+      "title": "VIBEPASS: Can Vibe Coders Really Pass the Vibe Check?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/vibepass_-can-vibe-coders-really-pass-the-vibe-che.py",
+      "type": "app",
+      "title": "VIBEPASS: Can Vibe Coders Really Pass the Vibe Check?"
     }
   ],
   "edges": [
@@ -9890,6 +9900,11 @@
     {
       "from": "efe08d63-5120-4a4f-832a-835302d73862",
       "to": "/home/ubuntu/.openclaw/workspace/apps/human-ai-synergy-in-agentic-code-review.py",
+      "type": "produced"
+    },
+    {
+      "from": "06c255af-81a9-41fe-a6e2-49629d35ec58",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/vibepass_-can-vibe-coders-really-pass-the-vibe-che.py",
       "type": "produced"
     }
   ]
