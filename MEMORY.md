@@ -12,9 +12,9 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - MewChat / MewDash – Real-time chat UI with SSE, merged history
 - OpenClaw Idle RPG – Conceptual, not yet started
 - Anime Studio Tycoon – Dedicated sub-agent active (2026-03-04)
-- Research Hub – Deployed
+- Research Hub – Deployed, operating under Nyepi throttling (Mar 18–24)
 - Torrent System – aria2 + 115 integration
-- System Health – Disk cleanup, heartbeat, log rotation
+- System Health – Disk cleanup, heartbeat, log rotation, memory reindex (rate-limited)
 
 ## Links
 - `active-tasks.md` (current work)
@@ -29,14 +29,19 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - GitHub: defmarshal/defmarshal-workspace
 
 ## Notes
-- Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
+- Gateway: port 18789; Memory: local FTS+ only (Voyage disabled due to 3 RPM limits); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
 - **Cron health monitoring:** Three layers:
   - `agent-manager-cron` (every 30 min) validates schedules against `CRON_JOBS.md` and auto‑commits corrections.
   - `cron-supervisor-cron` (every 30 min, staggered) watches for failures, disk issues, gateway down, memory reindex needs; sends Telegram alerts.
   - `notifier-cron` (every 2h) escalates persistent failures and disk threshold warnings.
-- **Status‑holiday plugin:** Enabled; adds Nyepi (18–24 Mar 2026) to System Status broadcasts.
+- **Status‑holiday plugin:** Enabled; adds Nyepi (18–24 Mar 2026) to System Status broadcasts. throttles agent activity but monitoring remains active.
 - **Email Sweep & Intelligent Labeling:** Analyzer (`email_label_analyzer.py`) scans senders and builds `memory/label_mapping.json` (155+ distinct senders). Sweep (`email_sweep.py`) runs hourly (`BATCH_SIZE=100, PAGES_PER_RUN=1`), applies precise `Sweep/<Sender>` labels, marks emails as read, and sends Telegram summaries. Backlog clearing steadily.
+- **Memory reindex staleness (2026-03-18):** Voyage AI rate limits (3 RPM free tier) prevent automatic reindex; main store shows 0/63 indexed files. Manual `quick memory-reindex` attempts batched with delays; automatic retry continues. Local FTS fallback functional for simple searches.
+- **Recent:**
+  - Meta-summary cron (14:08 UTC) confirmed system health: disk 82%, 19 APT updates, memory reindex pending, content-agent produced afternoon status noting security domain gap. ✓
+  - Git janitor cleaned yesterday's agent outputs (9 files, 258 insertions) on 2026-03-18 00:30 UTC.
+  - Disk usage stabilized at 82% after earlier cleanup; threshold 85% watch ongoing.
 - Recent:
   - **Agent-Manager Stale Lock & Large File Push Blocker (2026-03-13):** Cron-triggered agent-manager stalled, leaving stale lock; discovery: `valhalla-jabodetabek/data/jabodetabek.osm.pbf` (1.6GB) tracked in Git, causing push rejections (GitHub 100MB limit). Recovered by removing lock, manually committing today's agent outputs, adding file to `.gitignore`, rewriting history with `git filter-branch`, and force-pushing. Large file purged from all 2799+ commits; repository clean. Added prevention: pre-push hook plan, Git LFS audit. Follow-up: monitor agent-manager stability.
   - **Memory index outage (2026-03-06 04:08 UTC):** main store dropped to 0 indexed files, breaking research-agent. Reindexed manually; research pipeline restored, March 6 report generated and deployed. Index now 43/43.
