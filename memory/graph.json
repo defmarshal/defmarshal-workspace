@@ -7774,6 +7774,116 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-thermodynamics-of-reinforcement-learning-curricula.md",
       "type": "content",
       "title": "Thermodynamics of Reinforcement Learning Curricula"
+    },
+    {
+      "id": "9d6e26fc-48e9-4222-87a3-a9063e674c35",
+      "type": "seed",
+      "title": "Maximum Entropy Exploration Without the Rollouts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/maximum-entropy-exploration-without-the-rollouts.py",
+      "type": "app",
+      "title": "Maximum Entropy Exploration Without the Rollouts"
+    },
+    {
+      "id": "a0833346-d7ff-46ac-b59f-90663617bcaf",
+      "type": "seed",
+      "title": "Generalist Large Language Models for Molecular Property Prediction: Distilling Knowledge from Specialist Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-generalist-large-language-models-for-molecular-pro.md",
+      "type": "output",
+      "title": "Generalist Large Language Models for Molecular Property Prediction: Distilling Knowledge from Specialist Models"
+    },
+    {
+      "id": "a6bc205b-4a47-4f26-aafd-cb79d9074538",
+      "type": "seed",
+      "title": "Team Diversity Promotes Software Fairness: An Experiment on Fairness-Aware Requirements Prioritization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-team-diversity-promotes-software-fairness:-an-experiment-on-fairness-aware-requi.md",
+      "type": "content",
+      "title": "Team Diversity Promotes Software Fairness: An Experiment on Fairness-Aware Requirements Prioritization"
+    },
+    {
+      "id": "da707318-6378-408d-8493-c460c6c3bac1",
+      "type": "seed",
+      "title": "The Perfection Paradox: From Architect to Curator in AI-Assisted API Design"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-perfection-paradox_-from-architect-to-curator-.py",
+      "type": "app",
+      "title": "The Perfection Paradox: From Architect to Curator in AI-Assisted API Design"
+    },
+    {
+      "id": "b47b7c5b-4f6c-4589-ac6b-0e628719bad5",
+      "type": "seed",
+      "title": "How Fair is Software Fairness Testing?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-how-fair-is-software-fairness-testing?.md",
+      "type": "content",
+      "title": "How Fair is Software Fairness Testing?"
+    },
+    {
+      "id": "a3ceaa21-244f-44cc-8105-420895eb575b",
+      "type": "seed",
+      "title": "Linguistic Similarity Within Centralized FLOSS Development"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/linguistic-similarity-within-centralized-floss-dev.py",
+      "type": "app",
+      "title": "Linguistic Similarity Within Centralized FLOSS Development"
+    },
+    {
+      "id": "0e2556bc-a6bd-4036-ae31-430b379853df",
+      "type": "seed",
+      "title": "ChainFuzzer: Greybox Fuzzing for Workflow-Level Multi-Tool Vulnerabilities in LLM Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-chainfuzzer:-greybox-fuzzing-for-workflow-level-mu.md",
+      "type": "output",
+      "title": "ChainFuzzer: Greybox Fuzzing for Workflow-Level Multi-Tool Vulnerabilities in LLM Agents"
+    },
+    {
+      "id": "b39b2465-d103-4aff-82df-91ff66ed8959",
+      "type": "seed",
+      "title": "Design-Specification Tiling for ICL-based CAD Code Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-design-specification-tiling-for-icl-based-cad-code-generation.md",
+      "type": "content",
+      "title": "Design-Specification Tiling for ICL-based CAD Code Generation"
+    },
+    {
+      "id": "fcaa0bba-6be4-4442-90a5-f1b3078d968a",
+      "type": "seed",
+      "title": "Teaching Agile Requirements Engineering: A Stakeholder Simulation with Generative AI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/teaching-agile-requirements-engineering_-a-stakeho.py",
+      "type": "app",
+      "title": "Teaching Agile Requirements Engineering: A Stakeholder Simulation with Generative AI"
+    },
+    {
+      "id": "56314dcd-b217-42c9-b5b6-b5cde20e1b96",
+      "type": "seed",
+      "title": "daVinci-Env: Open SWE Environment Synthesis at Scale"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-davinci-env:-open-swe-environment-synthesis-at-sca.md",
+      "type": "output",
+      "title": "daVinci-Env: Open SWE Environment Synthesis at Scale"
+    },
+    {
+      "id": "eb295276-2441-47e1-9c99-082e0342334a",
+      "type": "seed",
+      "title": "MoEKD: Mixture-of-Experts Knowledge Distillation for Robust and High-Performing Compressed Code Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/moekd_-mixture-of-experts-knowledge-distillation-f.py",
+      "type": "app",
+      "title": "MoEKD: Mixture-of-Experts Knowledge Distillation for Robust and High-Performing Compressed Code Models"
     }
   ],
   "edges": [
@@ -9155,6 +9265,61 @@
     {
       "from": "34a034e3-a07d-47bf-9223-4ebe907c1362",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-thermodynamics-of-reinforcement-learning-curricula.md",
+      "type": "produced"
+    },
+    {
+      "from": "9d6e26fc-48e9-4222-87a3-a9063e674c35",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/maximum-entropy-exploration-without-the-rollouts.py",
+      "type": "produced"
+    },
+    {
+      "from": "a0833346-d7ff-46ac-b59f-90663617bcaf",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-generalist-large-language-models-for-molecular-pro.md",
+      "type": "produced"
+    },
+    {
+      "from": "a6bc205b-4a47-4f26-aafd-cb79d9074538",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-team-diversity-promotes-software-fairness:-an-experiment-on-fairness-aware-requi.md",
+      "type": "produced"
+    },
+    {
+      "from": "da707318-6378-408d-8493-c460c6c3bac1",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-perfection-paradox_-from-architect-to-curator-.py",
+      "type": "produced"
+    },
+    {
+      "from": "b47b7c5b-4f6c-4589-ac6b-0e628719bad5",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-how-fair-is-software-fairness-testing?.md",
+      "type": "produced"
+    },
+    {
+      "from": "a3ceaa21-244f-44cc-8105-420895eb575b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/linguistic-similarity-within-centralized-floss-dev.py",
+      "type": "produced"
+    },
+    {
+      "from": "0e2556bc-a6bd-4036-ae31-430b379853df",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-chainfuzzer:-greybox-fuzzing-for-workflow-level-mu.md",
+      "type": "produced"
+    },
+    {
+      "from": "b39b2465-d103-4aff-82df-91ff66ed8959",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-17-design-specification-tiling-for-icl-based-cad-code-generation.md",
+      "type": "produced"
+    },
+    {
+      "from": "fcaa0bba-6be4-4442-90a5-f1b3078d968a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/teaching-agile-requirements-engineering_-a-stakeho.py",
+      "type": "produced"
+    },
+    {
+      "from": "56314dcd-b217-42c9-b5b6-b5cde20e1b96",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-17-davinci-env:-open-swe-environment-synthesis-at-sca.md",
+      "type": "produced"
+    },
+    {
+      "from": "eb295276-2441-47e1-9c99-082e0342334a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/moekd_-mixture-of-experts-knowledge-distillation-f.py",
       "type": "produced"
     }
   ]

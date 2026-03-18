@@ -19,7 +19,7 @@ while [ $attempt -le $MAX_RETRIES ]; do
     --agent qwen \
     --message "You are the content-agent. Create anime summaries, tech writeups, or daily digests. Check for pending tasks. If none, generate a short daily digest. Log outputs to /home/ubuntu/.openclaw/workspace/content/. After completing, output a brief summary." \
     --thinking low \
-    --timeout 600000 2>&1)
+    --timeout 600 2>&1)
   
   exit_code=$?
   echo "$output" >> "$LOGFILE"
