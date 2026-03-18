@@ -8024,6 +8024,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-how-transformers-reject-wrong-answers:-rotational-dynamics-of-factual-constraint.md",
       "type": "content",
       "title": "How Transformers Reject Wrong Answers: Rotational Dynamics of Factual Constraint Processing"
+    },
+    {
+      "id": "f4f76c26-8e7d-450f-a735-a5870fd6dda2",
+      "type": "seed",
+      "title": "Explain in Your Own Words: Improving Reasoning via Token-Selective Dual Knowledge Distillation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-explain-in-your-own-words:-improving-reasoning-via-token-selective-dual-knowledg.md",
+      "type": "content",
+      "title": "Explain in Your Own Words: Improving Reasoning via Token-Selective Dual Knowledge Distillation"
     }
   ],
   "edges": [
@@ -9530,6 +9540,11 @@
     {
       "from": "494fb9b1-bd33-4d85-bb90-6cd15032a1ca",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-how-transformers-reject-wrong-answers:-rotational-dynamics-of-factual-constraint.md",
+      "type": "produced"
+    },
+    {
+      "from": "f4f76c26-8e7d-450f-a735-a5870fd6dda2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-explain-in-your-own-words:-improving-reasoning-via-token-selective-dual-knowledg.md",
       "type": "produced"
     }
   ]
