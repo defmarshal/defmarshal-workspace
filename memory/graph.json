@@ -7964,6 +7964,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/manibench_-a-benchmark-for-testing-visual-logic-dr.py",
       "type": "app",
       "title": "ManiBench: A Benchmark for Testing Visual-Logic Drift and Syntactic Hallucinations in Manim Code Generation"
+    },
+    {
+      "id": "a1144b35-cfd3-44cf-97d3-c1a24863955c",
+      "type": "seed",
+      "title": "When Alpha Breaks: Two-Level Uncertainty for Safe Deployment of Cross-Sectional Stock Rankers"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-when-alpha-breaks:-two-level-uncertainty-for-safe-.md",
+      "type": "output",
+      "title": "When Alpha Breaks: Two-Level Uncertainty for Safe Deployment of Cross-Sectional Stock Rankers"
+    },
+    {
+      "id": "a50cc286-df19-43e4-b2cf-df5ffe43c3dc",
+      "type": "seed",
+      "title": "Distilling Deep Reinforcement Learning into Interpretable Fuzzy Rules: An Explainable AI Framework"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-distilling-deep-reinforcement-learning-into-interpretable-fuzzy-rules:-an-explai.md",
+      "type": "content",
+      "title": "Distilling Deep Reinforcement Learning into Interpretable Fuzzy Rules: An Explainable AI Framework"
     }
   ],
   "edges": [
@@ -9440,6 +9460,16 @@
     {
       "from": "5b21d0fb-de5e-484e-a9f0-cf8c5d2dd138",
       "to": "/home/ubuntu/.openclaw/workspace/apps/manibench_-a-benchmark-for-testing-visual-logic-dr.py",
+      "type": "produced"
+    },
+    {
+      "from": "a1144b35-cfd3-44cf-97d3-c1a24863955c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-when-alpha-breaks:-two-level-uncertainty-for-safe-.md",
+      "type": "produced"
+    },
+    {
+      "from": "a50cc286-df19-43e4-b2cf-df5ffe43c3dc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-distilling-deep-reinforcement-learning-into-interpretable-fuzzy-rules:-an-explai.md",
       "type": "produced"
     }
   ]
