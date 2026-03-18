@@ -8074,6 +8074,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-privacy-preserving-topic-wise-sentiment-analysis-o.md",
       "type": "output",
       "title": "Privacy Preserving Topic-wise Sentiment Analysis of the Iran Israel USA Conflict Using Federated Transformer Models"
+    },
+    {
+      "id": "539db3be-7816-4b85-9bc5-cf5fa38f58f4",
+      "type": "seed",
+      "title": "Preconditioned Test-Time Adaptation for Out-of-Distribution Debiasing in Narrative Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-preconditioned-test-time-adaptation-for-out-of-distribution-debiasing-in-narrati.md",
+      "type": "content",
+      "title": "Preconditioned Test-Time Adaptation for Out-of-Distribution Debiasing in Narrative Generation"
     }
   ],
   "edges": [
@@ -9605,6 +9615,11 @@
     {
       "from": "cd52ed62-138d-4c9f-8526-084ec087da57",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-privacy-preserving-topic-wise-sentiment-analysis-o.md",
+      "type": "produced"
+    },
+    {
+      "from": "539db3be-7816-4b85-9bc5-cf5fa38f58f4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-preconditioned-test-time-adaptation-for-out-of-distribution-debiasing-in-narrati.md",
       "type": "produced"
     }
   ]
