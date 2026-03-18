@@ -14,6 +14,7 @@ Meta-summary: Hourly cron active; latest report sent 02:03 Bangkok (19:03 UTC).
 
 ## Ongoing Background Operations
 
+- **Email Sweep** (started 04:10 UTC): Categorizing Gmail inbox with BATCH_SIZE=100, PAGES_PER_RUN=1 (conservative during Nyepi). PID 3971911. Will auto-archive promotional emails and apply sender-based labels.
 - **Memory reindex** (started 02:44 UTC): Rate-limited (Voyage 3 RPM free tier). Will retry automatically. Source files: 63 memory files need indexing.
 - **APTU updates check** (completed 02:45 UTC): 18 packages upgradable (security/network mostly). Pending: file-roller, network-manager, openvpn, nftables, linux-base, etc.
 - **Git status**: Clean (just committed 9 files from yesterday's agent runs). Next git janitor run will continue routine cleanup.

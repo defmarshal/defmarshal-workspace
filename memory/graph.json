@@ -7944,6 +7944,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-multi-axis-trust-modeling-for-interpretable-account-hijacking-detection.md",
       "type": "content",
       "title": "Multi-Axis Trust Modeling for Interpretable Account Hijacking Detection"
+    },
+    {
+      "id": "d2109d4f-4a20-4918-8931-2e3587ddde56",
+      "type": "seed",
+      "title": "ILION: Deterministic Pre-Execution Safety Gates for Agentic AI Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/ilion_-deterministic-pre-execution-safety-gates-fo.py",
+      "type": "app",
+      "title": "ILION: Deterministic Pre-Execution Safety Gates for Agentic AI Systems"
+    },
+    {
+      "id": "5b21d0fb-de5e-484e-a9f0-cf8c5d2dd138",
+      "type": "seed",
+      "title": "ManiBench: A Benchmark for Testing Visual-Logic Drift and Syntactic Hallucinations in Manim Code Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/manibench_-a-benchmark-for-testing-visual-logic-dr.py",
+      "type": "app",
+      "title": "ManiBench: A Benchmark for Testing Visual-Logic Drift and Syntactic Hallucinations in Manim Code Generation"
     }
   ],
   "edges": [
@@ -9410,6 +9430,16 @@
     {
       "from": "819b9002-c59e-4457-80f2-93e6112894cc",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-multi-axis-trust-modeling-for-interpretable-account-hijacking-detection.md",
+      "type": "produced"
+    },
+    {
+      "from": "d2109d4f-4a20-4918-8931-2e3587ddde56",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/ilion_-deterministic-pre-execution-safety-gates-fo.py",
+      "type": "produced"
+    },
+    {
+      "from": "5b21d0fb-de5e-484e-a9f0-cf8c5d2dd138",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/manibench_-a-benchmark-for-testing-visual-logic-dr.py",
       "type": "produced"
     }
   ]
