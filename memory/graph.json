@@ -8114,6 +8114,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/alternating-reinforcement-learning-with-contextual.py",
       "type": "app",
       "title": "Alternating Reinforcement Learning with Contextual Rubric Rewards"
+    },
+    {
+      "id": "3dd39b81-eb0c-4f30-bfca-b929eca9f928",
+      "type": "seed",
+      "title": "Steering Frozen LLMs: Adaptive Social Alignment via Online Prompt Routing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-steering-frozen-llms:-adaptive-social-alignment-vi.md",
+      "type": "output",
+      "title": "Steering Frozen LLMs: Adaptive Social Alignment via Online Prompt Routing"
+    },
+    {
+      "id": "c680bddb-d45b-4522-9e15-85449e1d78f5",
+      "type": "seed",
+      "title": "How to Achieve Prototypical Birth and Death for OOD Detection?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/how-to-achieve-prototypical-birth-and-death-for-oo.py",
+      "type": "app",
+      "title": "How to Achieve Prototypical Birth and Death for OOD Detection?"
     }
   ],
   "edges": [
@@ -9665,6 +9685,16 @@
     {
       "from": "0f7bbbcd-ad61-4c9f-978a-8da3d6cea281",
       "to": "/home/ubuntu/.openclaw/workspace/apps/alternating-reinforcement-learning-with-contextual.py",
+      "type": "produced"
+    },
+    {
+      "from": "3dd39b81-eb0c-4f30-bfca-b929eca9f928",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-steering-frozen-llms:-adaptive-social-alignment-vi.md",
+      "type": "produced"
+    },
+    {
+      "from": "c680bddb-d45b-4522-9e15-85449e1d78f5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/how-to-achieve-prototypical-birth-and-death-for-oo.py",
       "type": "produced"
     }
   ]
