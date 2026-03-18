@@ -8144,6 +8144,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-a-federated-learning-framework-with-knowledge-grap.md",
       "type": "output",
       "title": "A federated learning framework with knowledge graph and temporal transformer for early sepsis prediction in multi-center ICUs"
+    },
+    {
+      "id": "9f3f4e99-5cac-4781-a0f9-9ecd7d31a426",
+      "type": "seed",
+      "title": "Discovering the Hidden Role of Gini Index In Prompt-based Classification"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-discovering-the-hidden-role-of-gini-index-in-promp.md",
+      "type": "output",
+      "title": "Discovering the Hidden Role of Gini Index In Prompt-based Classification"
+    },
+    {
+      "id": "9338ecf8-cf0d-413d-9dcc-df616ab6bed6",
+      "type": "seed",
+      "title": "Beyond Reward Suppression: Reshaping Steganographic Communication Protocols in MARL via Dynamic Representational Circuit Breaking"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/beyond-reward-suppression_-reshaping-steganographi.py",
+      "type": "app",
+      "title": "Beyond Reward Suppression: Reshaping Steganographic Communication Protocols in MARL via Dynamic Representational Circuit Breaking"
     }
   ],
   "edges": [
@@ -9710,6 +9730,16 @@
     {
       "from": "ac2361ee-9b18-4673-a77c-198823dcbe17",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-a-federated-learning-framework-with-knowledge-grap.md",
+      "type": "produced"
+    },
+    {
+      "from": "9f3f4e99-5cac-4781-a0f9-9ecd7d31a426",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-discovering-the-hidden-role-of-gini-index-in-promp.md",
+      "type": "produced"
+    },
+    {
+      "from": "9338ecf8-cf0d-413d-9dcc-df616ab6bed6",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/beyond-reward-suppression_-reshaping-steganographi.py",
       "type": "produced"
     }
   ]
