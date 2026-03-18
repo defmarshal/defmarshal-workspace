@@ -8164,6 +8164,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/beyond-reward-suppression_-reshaping-steganographi.py",
       "type": "app",
       "title": "Beyond Reward Suppression: Reshaping Steganographic Communication Protocols in MARL via Dynamic Representational Circuit Breaking"
+    },
+    {
+      "id": "3823ef6d-98dd-4573-95e7-097bc5ad7e3c",
+      "type": "seed",
+      "title": "Attribution-Guided Model Rectification of Unreliable Neural Network Behaviors"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-attribution-guided-model-rectification-of-unreliable-neural-network-behaviors.md",
+      "type": "content",
+      "title": "Attribution-Guided Model Rectification of Unreliable Neural Network Behaviors"
+    },
+    {
+      "id": "d5a2b512-0b52-46c5-a1f1-68113008cc03",
+      "type": "seed",
+      "title": "Spectral Edge Dynamics of Training Trajectories: Signal--Noise Geometry Across Scales"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/spectral-edge-dynamics-of-training-trajectories_-s.py",
+      "type": "app",
+      "title": "Spectral Edge Dynamics of Training Trajectories: Signal--Noise Geometry Across Scales"
+    },
+    {
+      "id": "610ac36b-1e38-40db-9c70-59c1171693de",
+      "type": "seed",
+      "title": "Automated Self-Testing as a Quality Gate: Evidence-Driven Release Management for LLM Applications"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/automated-self-testing-as-a-quality-gate_-evidence.py",
+      "type": "app",
+      "title": "Automated Self-Testing as a Quality Gate: Evidence-Driven Release Management for LLM Applications"
     }
   ],
   "edges": [
@@ -9740,6 +9770,21 @@
     {
       "from": "9338ecf8-cf0d-413d-9dcc-df616ab6bed6",
       "to": "/home/ubuntu/.openclaw/workspace/apps/beyond-reward-suppression_-reshaping-steganographi.py",
+      "type": "produced"
+    },
+    {
+      "from": "3823ef6d-98dd-4573-95e7-097bc5ad7e3c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-attribution-guided-model-rectification-of-unreliable-neural-network-behaviors.md",
+      "type": "produced"
+    },
+    {
+      "from": "d5a2b512-0b52-46c5-a1f1-68113008cc03",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/spectral-edge-dynamics-of-training-trajectories_-s.py",
+      "type": "produced"
+    },
+    {
+      "from": "610ac36b-1e38-40db-9c70-59c1171693de",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/automated-self-testing-as-a-quality-gate_-evidence.py",
       "type": "produced"
     }
   ]
