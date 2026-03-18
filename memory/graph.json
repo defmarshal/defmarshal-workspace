@@ -8004,6 +8004,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/steering-at-the-source_-style-modulation-heads-for.py",
       "type": "app",
       "title": "Steering at the Source: Style Modulation Heads for Robust Persona Control"
+    },
+    {
+      "id": "ddbf8be7-c569-497e-9b2b-83db546790d1",
+      "type": "seed",
+      "title": "Training-Free Agentic AI: Probabilistic Control and Coordination in Multi-Agent LLM Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-training-free-agentic-ai:-probabilistic-control-an.md",
+      "type": "output",
+      "title": "Training-Free Agentic AI: Probabilistic Control and Coordination in Multi-Agent LLM Systems"
+    },
+    {
+      "id": "494fb9b1-bd33-4d85-bb90-6cd15032a1ca",
+      "type": "seed",
+      "title": "How Transformers Reject Wrong Answers: Rotational Dynamics of Factual Constraint Processing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-how-transformers-reject-wrong-answers:-rotational-dynamics-of-factual-constraint.md",
+      "type": "content",
+      "title": "How Transformers Reject Wrong Answers: Rotational Dynamics of Factual Constraint Processing"
     }
   ],
   "edges": [
@@ -9500,6 +9520,16 @@
     {
       "from": "cfa60d91-d002-4518-9c21-8b274b1eb374",
       "to": "/home/ubuntu/.openclaw/workspace/apps/steering-at-the-source_-style-modulation-heads-for.py",
+      "type": "produced"
+    },
+    {
+      "from": "ddbf8be7-c569-497e-9b2b-83db546790d1",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-18-training-free-agentic-ai:-probabilistic-control-an.md",
+      "type": "produced"
+    },
+    {
+      "from": "494fb9b1-bd33-4d85-bb90-6cd15032a1ca",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-18-how-transformers-reject-wrong-answers:-rotational-dynamics-of-factual-constraint.md",
       "type": "produced"
     }
   ]
