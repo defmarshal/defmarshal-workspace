@@ -8414,6 +8414,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/did-you-check-the-right-pocket_-cost-sensitive-sto.py",
       "type": "app",
       "title": "Did You Check the Right Pocket? Cost-Sensitive Store Routing for Memory-Augmented Agents"
+    },
+    {
+      "id": "7e059550-0c8f-4c8c-9d45-e5d18ca549ae",
+      "type": "seed",
+      "title": "Neural-Symbolic Logic Query Answering in Non-Euclidean Space"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-neural-symbolic-logic-query-answering-in-non-eucli.md",
+      "type": "output",
+      "title": "Neural-Symbolic Logic Query Answering in Non-Euclidean Space"
+    },
+    {
+      "id": "c8c40bf4-ddef-40eb-8a0b-dd0225d5f5e1",
+      "type": "seed",
+      "title": "NextMem: Towards Latent Factual Memory for LLM-based Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-nextmem:-towards-latent-factual-memory-for-llm-based-agents.md",
+      "type": "content",
+      "title": "NextMem: Towards Latent Factual Memory for LLM-based Agents"
+    },
+    {
+      "id": "900f6435-9578-4a49-b1c6-753bf6051868",
+      "type": "seed",
+      "title": "AIDABench: AI Data Analytics Benchmark"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/aidabench_-ai-data-analytics-benchmark.py",
+      "type": "app",
+      "title": "AIDABench: AI Data Analytics Benchmark"
     }
   ],
   "edges": [
@@ -10115,6 +10145,21 @@
     {
       "from": "5f3ad1be-fd3a-421a-b7b6-cd3db6500908",
       "to": "/home/ubuntu/.openclaw/workspace/apps/did-you-check-the-right-pocket_-cost-sensitive-sto.py",
+      "type": "produced"
+    },
+    {
+      "from": "7e059550-0c8f-4c8c-9d45-e5d18ca549ae",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-neural-symbolic-logic-query-answering-in-non-eucli.md",
+      "type": "produced"
+    },
+    {
+      "from": "c8c40bf4-ddef-40eb-8a0b-dd0225d5f5e1",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-nextmem:-towards-latent-factual-memory-for-llm-based-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "900f6435-9578-4a49-b1c6-753bf6051868",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/aidabench_-ai-data-analytics-benchmark.py",
       "type": "produced"
     }
   ]
