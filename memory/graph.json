@@ -8454,6 +8454,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes-1.py",
       "type": "app",
       "title": "The Comprehension-Gated Agent Economy: A Robustness-First Architecture for AI Economic Agency"
+    },
+    {
+      "id": "068dce7a-62e1-40bc-9dd3-36f69235ba6e",
+      "type": "seed",
+      "title": "Form Follows Function: Recursive Stem Model"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-form-follows-function:-recursive-stem-model.md",
+      "type": "output",
+      "title": "Form Follows Function: Recursive Stem Model"
     }
   ],
   "edges": [
@@ -10175,6 +10185,11 @@
     {
       "from": "b6da62ac-084a-4def-b9c9-875e36770d7b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "068dce7a-62e1-40bc-9dd3-36f69235ba6e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-form-follows-function:-recursive-stem-model.md",
       "type": "produced"
     }
   ]
