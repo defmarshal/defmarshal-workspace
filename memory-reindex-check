@@ -7,8 +7,8 @@ set -euo pipefail
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 cd "$WORKSPACE"
 
-# Get memory status via openclaw, filter to last line (JSON) to avoid error spam
-RAW_JSON=$(openclaw memory status --json 2>/dev/null | tail -1 || echo '[]')
+# Get memory status via openclaw
+RAW_JSON=$(openclaw memory status --json 2>/dev/null || echo '[]')
 
 # Validate JSON
 if ! echo "$RAW_JSON" | python3 -c "import sys, json; json.load(sys.stdin)" >/dev/null 2>&1; then
