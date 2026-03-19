@@ -8394,6 +8394,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
       "type": "content",
       "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "662394e0-41fa-4220-8fd1-0910898d5361",
+      "type": "seed",
+      "title": "GSI Agent: Domain Knowledge Enhancement for Large Language Models in Green Stormwater Infrastructure"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-gsi-agent:-domain-knowledge-enhancement-for-large-language-models-in-green-storm.md",
+      "type": "content",
+      "title": "GSI Agent: Domain Knowledge Enhancement for Large Language Models in Green Stormwater Infrastructure"
+    },
+    {
+      "id": "5f3ad1be-fd3a-421a-b7b6-cd3db6500908",
+      "type": "seed",
+      "title": "Did You Check the Right Pocket? Cost-Sensitive Store Routing for Memory-Augmented Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/did-you-check-the-right-pocket_-cost-sensitive-sto.py",
+      "type": "app",
+      "title": "Did You Check the Right Pocket? Cost-Sensitive Store Routing for Memory-Augmented Agents"
     }
   ],
   "edges": [
@@ -10085,6 +10105,16 @@
     {
       "from": "a34e77fa-fedc-4c52-830a-b383c62a21c9",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "produced"
+    },
+    {
+      "from": "662394e0-41fa-4220-8fd1-0910898d5361",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-gsi-agent:-domain-knowledge-enhancement-for-large-language-models-in-green-storm.md",
+      "type": "produced"
+    },
+    {
+      "from": "5f3ad1be-fd3a-421a-b7b6-cd3db6500908",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/did-you-check-the-right-pocket_-cost-sensitive-sto.py",
       "type": "produced"
     }
   ]
