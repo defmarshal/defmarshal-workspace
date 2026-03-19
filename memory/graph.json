@@ -8324,6 +8324,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-apple-rolls-out-first-&#8216;background-security&#8217;-update-for-iphones,-ipad.md",
       "type": "content",
       "title": "Apple rolls out first &#8216;background security&#8217; update for iPhones, iPads, and Macs to fix Safari bug"
+    },
+    {
+      "id": "f5238a8f-5e72-4be4-9fdf-bc4959e5fe3c",
+      "type": "seed",
+      "title": "Kagi brings its &#8216;small web&#8217; of a human-only internet to mobile devices"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/kagi-brings-its-__8216_small-web__8217_-of-a-human.py",
+      "type": "app",
+      "title": "Kagi brings its &#8216;small web&#8217; of a human-only internet to mobile devices"
     }
   ],
   "edges": [
@@ -9980,6 +9990,11 @@
     {
       "from": "39d6d2de-7fa1-412b-b446-e240eff70996",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-apple-rolls-out-first-&#8216;background-security&#8217;-update-for-iphones,-ipad.md",
+      "type": "produced"
+    },
+    {
+      "from": "f5238a8f-5e72-4be4-9fdf-bc4959e5fe3c",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/kagi-brings-its-__8216_small-web__8217_-of-a-human.py",
       "type": "produced"
     }
   ]
