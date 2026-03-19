@@ -8274,6 +8274,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/vibepass_-can-vibe-coders-really-pass-the-vibe-che.py",
       "type": "app",
       "title": "VIBEPASS: Can Vibe Coders Really Pass the Vibe Check?"
+    },
+    {
+      "id": "dc090983-7807-4a00-af8c-832427eddbb0",
+      "type": "seed",
+      "title": "Test Code Review in the Era of GitHub Actions: A Replication Study"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-test-code-review-in-the-era-of-github-actions:-a-r.md",
+      "type": "output",
+      "title": "Test Code Review in the Era of GitHub Actions: A Replication Study"
     }
   ],
   "edges": [
@@ -9905,6 +9915,11 @@
     {
       "from": "06c255af-81a9-41fe-a6e2-49629d35ec58",
       "to": "/home/ubuntu/.openclaw/workspace/apps/vibepass_-can-vibe-coders-really-pass-the-vibe-che.py",
+      "type": "produced"
+    },
+    {
+      "from": "dc090983-7807-4a00-af8c-832427eddbb0",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-test-code-review-in-the-era-of-github-actions:-a-r.md",
       "type": "produced"
     }
   ]

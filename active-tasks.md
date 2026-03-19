@@ -6,6 +6,7 @@ System status: Stable. Disk usage ~82%. Nyepi holiday period active (Mar 18–24
 
 Agent Manager: Running normally via cron. Maintenance checks remain active.
 
+- **Code gardener** (last run: 18 Mar 23:05 UTC): Hourly cron that converts research seeds into Python app scripts in `/apps`. Total apps: 109. ⚠️ Agent frequently fails (OpenRouter errors, empty content), relying on fallback generator. Output quality adequate but reduced. Investigate OpenRouter connectivity/rate limits.
 - **Content gardener** (started 14:05 UTC): Processing seeds into blog posts (content/). Running in isolated agent session (cron). ~652 seeds total, ~267 processed so far.
 - **Memory reindex** (started 02:44 UTC): Rate-limited (Voyage 3 RPM free tier). Will retry automatically. Source files: 63 memory files need indexing.
 - **APTU updates check** (completed 02:45 UTC): 18 packages upgradable (security/network mostly). Pending: file-roller, network-manager, openvpn, nftables, linux-base, etc.
