@@ -8484,6 +8484,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/gsi-agent_-domain-knowledge-enhancement-for-large-.py",
       "type": "app",
       "title": "GSI Agent: Domain Knowledge Enhancement for Large Language Models in Green Stormwater Infrastructure"
+    },
+    {
+      "id": "3d32ccb4-0732-434c-8c20-309cb8e38b5c",
+      "type": "seed",
+      "title": "Did You Check the Right Pocket? Cost-Sensitive Store Routing for Memory-Augmented Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-did-you-check-the-right-pocket?-cost-sensitive-sto.md",
+      "type": "output",
+      "title": "Did You Check the Right Pocket? Cost-Sensitive Store Routing for Memory-Augmented Agents"
     }
   ],
   "edges": [
@@ -10220,6 +10230,11 @@
     {
       "from": "003032e9-b87d-4e4b-ac5e-f4f7c37469ce",
       "to": "/home/ubuntu/.openclaw/workspace/apps/gsi-agent_-domain-knowledge-enhancement-for-large-.py",
+      "type": "produced"
+    },
+    {
+      "from": "3d32ccb4-0732-434c-8c20-309cb8e38b5c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-did-you-check-the-right-pocket?-cost-sensitive-sto.md",
       "type": "produced"
     }
   ]
