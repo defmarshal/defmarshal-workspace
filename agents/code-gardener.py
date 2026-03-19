@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os, sys, json, uuid, datetime, subprocess
+from datetime import UTC
 from pathlib import Path
-from datetime import timezone
 
 # Load workspace .env if present
 env_file = Path(__file__).parent.parent / '.env'
@@ -21,7 +21,7 @@ OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 APPS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    print(f"[{datetime.datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
 
 def load_seeds():
     seeds = []
@@ -44,7 +44,7 @@ def load_processed():
 
 def mark_processed(seed_id: str):
     with open(PROCESSED_FILE, 'a') as f:
-        f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
+        f.write(json.dumps({"id": seed_id, "processed_at": datetime.datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S UTC')}) + '\n')
 
 def load_graph():
     if GRAPH_FILE.exists():
@@ -77,6 +77,116 @@ def generate_code_via_agent(prompt: str, system_msg: str = "You are a coding ass
         log(f"OpenClaw agent call failed: {e}")
         return ''
 
+def sanitize_identifier(name: str) -> str:
+    """Make a valid Python identifier: remove colons, punctuation, spaces."""
+    name = name.replace(':', '').replace(',', '').replace('.', '').replace(' ', '_').replace('-', '_')
+    name = ''.join(c if c.isalnum() or c == '_' else '' for c in name)
+    if not name:
+        return 'concept'
+    if name[0].isdigit():
+        name = '_' + name
+    return name.lower()
+
+def create_fallback_script(seed):
+    """Generate a meaningful script when the agent fails, based on seed title and snippet."""
+    title = seed['title']
+    snippet = seed.get('snippet', '')[:500]
+    
+    # Extract key terms for context
+    key_terms = []
+    for word in title.replace(',', '').replace('.', '').split():
+        if len(word) > 3 and word.lower() not in ['this', 'that', 'with', 'from', 'what', 'when', 'were', 'have', 'been', 'were', 'they', 'their']:
+            key_terms.append(word)
+    
+    top_terms = key_terms[:3] if key_terms else ['concept']
+    
+    # Prepare sanitized identifiers and literals
+    term0 = top_terms[0]
+    term1 = top_terms[1] if len(top_terms) > 1 else 'data'
+    class_name = sanitize_identifier(term0.title()) + "Concept"
+    func_demonstrate = "demonstrate_" + sanitize_identifier(term0)
+    func_analyze = "analyze_" + sanitize_identifier(term1)
+    
+    script = f'''#!/usr/bin/env python3
+"""
+Auto-generated script (fallback) for: {title}
+This demonstrates the core concept from: {snippet[:100]}...
+"""
+
+import random
+import time
+from dataclasses import dataclass
+from typing import List, Dict
+
+SCRIPT_TITLE = {title!r}
+TERM_0 = {term0!r}
+TERM_1 = {term1!r}
+
+@dataclass
+class {class_name}:
+    """Representation of: {term0}"""
+    value: float
+    description: str
+    
+def {func_demonstrate}(iterations: int = 5):
+    """Core demonstration of {term0} concept."""
+    print(f"Demonstrating: {{SCRIPT_TITLE}}")
+    print("=" * 50)
+    
+    concepts = []
+    for i in range(min(iterations, 5)):
+        concept = {class_name}(
+            value=random.uniform(0.1, 1.0),
+            description=f"{{TERM_0}} instance {{i+1}}"
+        )
+        concepts.append(concept)
+        print(f"{{i+1}}. {{concept.description}} -> value: {{concept.value:.3f}}")
+        time.sleep(0.2)
+    
+    # Analysis
+    avg_value = sum(c.value for c in concepts) / len(concepts)
+    print(f"\\nAverage {{TERM_0}} strength: {{avg_value:.3f}}")
+    
+    return concepts
+
+def {func_analyze}(data: List) -> Dict:
+    """Analyze {{TERM_1}} patterns."""
+    if not data:
+        return {{"error": "No data"}}
+    
+    values = [d.value if hasattr(d, 'value') else float(d) for d in data]
+    return {{
+        "count": len(values),
+        "mean": sum(values) / len(values),
+        "max": max(values),
+        "min": min(values),
+        "range": max(values) - min(values)
+    }}
+
+def main():
+    print(f"Script: {{SCRIPT_TITLE}}")
+    print(f"Key concepts: {', '.join(top_terms)}")
+    print("-" * 40)
+    
+    # Run demonstration
+    data = {func_demonstrate}()
+    
+    # Analysis
+    analysis = {func_analyze}(data)
+    print(f"\\nAnalysis: {{analysis}}")
+    
+    print("\\n" + "=" * 50)
+    print("This fallback script demonstrates the core idea")
+    print("using structured data and analysis functions.")
+    print("For a more sophisticated implementation,")
+    print("ensure OpenRouter connectivity is available.")
+
+if __name__ == "__main__":
+    main()
+'''
+    
+    return script
+
 def generate_app(seed):
     prompt = f"""Write a small, practical Python script based on this idea:
 
@@ -106,95 +216,6 @@ The script should be self-contained, include a shebang, and demonstrate the conc
     with open(filename, 'w') as f:
         f.write(code)
     return str(filename)
-
-def create_fallback_script(seed):
-    """Generate a meaningful script when the agent fails, based on seed title and snippet."""
-    title = seed['title']
-    snippet = seed.get('snippet', '')[:500]
-    
-    # Extract key terms for context
-    key_terms = []
-    for word in title.replace(',', '').replace('.', '').split():
-        if len(word) > 3 and word.lower() not in ['this', 'that', 'with', 'from', 'what', 'when', 'were', 'have', 'been', 'were', 'they', 'their']:
-            key_terms.append(word)
-    
-    top_terms = key_terms[:3] if key_terms else ['concept']
-    
-    script = f'''#!/usr/bin/env python3
-"""
-Auto-generated script (fallback) for: {title}
-This demonstrates the core concept from: {snippet[:100]}...
-"""
-
-import random
-import time
-from dataclasses import dataclass
-from typing import List, Dict
-
-@dataclass
-class {top_terms[0].title()}Concept:
-    """Representation of: {top_terms[0]}"""
-    value: float
-    description: str
-    
-def demonstrate_{top_terms[0].lower()}(iterations: int = 5):
-    """Core demonstration of {top_terms[0]} concept."""
-    print(f"Demonstrating: {{title}}")
-    print("=" * 50)
-    
-    concepts = []
-    for i in range(min(iterations, 5)):
-        concept = {top_terms[0].title()}Concept(
-            value=random.uniform(0.1, 1.0),
-            description=f"{top_terms[0]} instance {{i+1}}"
-        )
-        concepts.append(concept)
-        print(f"{{i+1}}. {{concept.description}} -> value: {{concept.value:.3f}}")
-        time.sleep(0.2)
-    
-    # Analysis
-    avg_value = sum(c.value for c in concepts) / len(concepts)
-    print(f"\nAverage {top_terms[0]} strength: {{avg_value:.3f}}")
-    
-    return concepts
-
-def analyze_{top_terms[1].lower() if len(top_terms) > 1 else 'results'}(data: List) -> Dict:
-    """Analyze {top_terms[1] if len(top_terms) > 1 else 'the data'} patterns."""
-    if not data:
-        return {{"error": "No data"}}
-    
-    values = [d.value if hasattr(d, 'value') else float(d) for d in data]
-    return {{
-        "count": len(values),
-        "mean": sum(values) / len(values),
-        "max": max(values),
-        "min": min(values),
-        "range": max(values) - min(values)
-    }}
-
-def main():
-    print(f"Script: {title}")
-    print(f"Key concepts: {', '.join(top_terms)}")
-    print("-" * 40)
-    
-    # Run demonstration
-    data = demonstrate_{top_terms[0].lower()}()
-    
-    # Analysis
-    analysis = analyze_{top_terms[1].lower() if len(top_terms) > 1 else 'data'}(data)
-    print(f"\nAnalysis: {{analysis}}")
-    
-    print("\n" + "=" * 50)
-    print("This fallback script demonstrates the core idea")
-    print("using structured data and analysis functions.")
-    print("For a more sophisticated implementation,")
-    print("ensure OpenRouter connectivity is available.")
-
-if __name__ == "__main__":
-    main()
-'''
-    
-    return script
 
 def main():
     seeds = load_seeds()

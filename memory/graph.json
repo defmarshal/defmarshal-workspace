@@ -8444,6 +8444,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/aidabench_-ai-data-analytics-benchmark.py",
       "type": "app",
       "title": "AIDABench: AI Data Analytics Benchmark"
+    },
+    {
+      "id": "b6da62ac-084a-4def-b9c9-875e36770d7b",
+      "type": "seed",
+      "title": "The Comprehension-Gated Agent Economy: A Robustness-First Architecture for AI Economic Agency"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes-1.py",
+      "type": "app",
+      "title": "The Comprehension-Gated Agent Economy: A Robustness-First Architecture for AI Economic Agency"
     }
   ],
   "edges": [
@@ -10160,6 +10170,11 @@
     {
       "from": "900f6435-9578-4a49-b1c6-753bf6051868",
       "to": "/home/ubuntu/.openclaw/workspace/apps/aidabench_-ai-data-analytics-benchmark.py",
+      "type": "produced"
+    },
+    {
+      "from": "b6da62ac-084a-4def-b9c9-875e36770d7b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes-1.py",
       "type": "produced"
     }
   ]
