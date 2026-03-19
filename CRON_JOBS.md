@@ -172,7 +172,15 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/evolver-agent.log`
    - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
 
-27. **meta-summary-cron**
+27. **seed-gatherer-cron**
+   - **Schedule:** Every 6 hours (`0 */6 * * *`) in UTC (stagger 5m)
+   - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/seed-gatherer.py >> memory/seed-gatherer.log 2>&1'`
+   - **Log:** `memory/seed-gatherer.log`
+   - **Description:** Collects seed ideas from unread emails (via Maton Gmail API) and RSS feeds (TechCrunch, The Verge, arXiv CS categories). Seeds are stored in `memory/seeds.jsonl` for downstream consumption by research, content, and code gardeners. Requires `MATON_API_KEY` in `.env`.
+   - **Status:** Enabled (fixed 2026-03-20 to load `.env` for API key)
+   - **Last updated:** 2026-03-20 — added `.env` loading to fix missing environment variable in isolated cron sessions.
+
+28. **meta-summary-cron**
    - **Schedule**: Hourly (`0 * * * *`) in UTC
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/meta-summary.sh'`
    - **Timeout**: 300 seconds
@@ -180,7 +188,7 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Status**: Enabled
    - **Last updated**: 2026-03-12 (interval changed from every 6h to hourly)
 
-28. **email-categorizer-cron**
+29. **email-categorizer-cron**
    - **Schedule**: Every hour (`0 * * * *`) in UTC (stagger 5m)
    - **Payload**: agentTurn executing `cd /home/ubuntu/.openclaw/workspace && BATCH_SIZE=100 PAGES_PER_RUN=1 python3 agents/email_sweep.py`
    - **Log**: `memory/email-categorizer.log`
@@ -188,51 +196,51 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Status**: Enabled (running)
    - **Last verified**: 2026-03-14 — configuration updated to BATCH_SIZE=100, PAGES_PER_RUN=1 for faster backlog clearing. Label mapping has 156+ senders.
 
-28. **dashboard-data-updater**
+29. **dashboard-data-updater**
    - **Schedule**: Every 5 minutes (`*/5 * * * *`) in Asia/Bangkok
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./scripts/generate-dashboard-data.sh >> memory/dashboard-data.log 2>&1'`
    - **Log**: `memory/dashboard-data.log`
    - **Description**: Refreshes `apps/dashboard/data.json` with latest system stats, agent sessions, recent commits, cron jobs, heartbeat state, and supervisor log tail. Provides real-time data for the web dashboard.
    - **Status**: Enabled (switched to bash script 2026-03-02; Python version deprecated)
 
-29. **mewchat-evolver-cron**
+30. **mewchat-evolver-cron**
    - **Schedule**: Every 6 hours (`0 */6 * * *`) in UTC
    - **Payload**: agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/mewchat-evolver.sh >> memory/mewchat-evolver.log 2>&1'`
    - **Log**: `memory/mewchat-evolver.log`
    - **Description**: Autonomous agent that continuously improves the MewChat web app (UX, performance, features, code quality). Runs every 6 hours; each cycle performs one focused improvement, commits, and logs.
 
-30. **meta-supervisor-agent**
+31. **meta-supervisor-agent**
    - **Schedule:** Every hour at minute 5 (`5 * * * *`) in Asia/Bangkok
    - **Payload:** agentTurn that ensures the meta-supervisor daemon is running. Command: `bash -c 'cd /home/ubuntu/.openclaw/workspace && nohup agents/meta-supervisor/meta-supervisor-daemon.sh > agents/meta-supervisor/meta-supervisor.nohup 2>&1'`
    - **Description:** Keepalive cron that spawns the meta-supervisor daemon if not running, ensuring continuous auditing of agent outcomes.
    - **Agent:** default
 
-31. **log-rotate-system-cron** (System Crontab)
+32. **log-rotate-system-cron** (System Crontab)
    - **Schedule:** Daily at 02:00 (`0 2 * * *`) in system timezone (UTC)
    - **Command:** `/home/ubuntu/.openclaw/workspace/scripts/rotate-logs.sh`
    - **Log:** `memory/rotate-logs.log`
    - **Description:** Rotates and compresses memory logs. Compresses files >10MB or older than 1 day to `memory/archive/`, keeping last 1000 lines uncompressed. Uses flock to avoid conflicts with writing processes. Safe for live systems.
 
-32. **linkedin-pa-agent-cron**
+33. **linkedin-pa-agent-cron**
    - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
    - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && ./agents/linkedin-pa-agent.sh >> memory/linkedin-pa-agent.log 2>&1'`
    - **Model:** `qwen/qwen3-coder:free`
    - **Log:** `memory/linkedin-pa-agent.log`
    - **Description:** Generates research‑oriented LinkedIn content about IBM Planning Analytics. Produces hourly posts with unique timestamps; rotates through 6 content types (market-positioning, technical-performance, comparative-analysis, implementation-decoder, roadmap-brief, developer-tips). Outputs committed to Git and synced to Obsidian vault. Non‑promotional, focused on knowledge sharing. Uses direct OpenRouter API to avoid cron hangs.
 
-33. **research-gardener-cron**
+34. **research-gardener-cron**
    - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
    - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/research-gardener.py >> memory/research-gardener.log 2>&1'`
    - **Log:** `memory/research-gardener.log`
    - **Description:** Processes RSS seeds to generate research reports in the research/ directory. Uses Tavily API for web search (if TAVILY_API_KEY is set) and enhances reports via OpenClaw agent. Shares seed pool with content-gardener and code-gardener to distribute work across research, content, and code domains. Seeds are marked processed in shared memory/processed_seeds.jsonl. Updates memory/graph.json with seed→output edges.
 
-34. **content-gardener-cron**
+35. **content-gardener-cron**
    - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
    - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/content-gardener.py >> memory/content-gardener.log 2>&1'`
    - **Log:** `memory/content-gardener.log`
    - **Description:** Converts seeds into blog-style content posts in content/ directory. Produces markdown articles with engaging intros, key points, and conclusions. Cooperatively competes for seeds from the shared pool; marks processed seeds to avoid duplicate work.
 
-35. **code-gardener-cron**
+36. **code-gardener-cron**
    - **Schedule:** Hourly (`0 * * * *`) in UTC (stagger 5m)
    - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/code-gardener.py >> memory/code-gardener.log 2>&1'`
    - **Log:** `memory/code-gardener.log`

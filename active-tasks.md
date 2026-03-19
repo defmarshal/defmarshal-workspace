@@ -8,7 +8,7 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 
 - **Supervisor cron** (completed 13:31 UTC): Ran `./agents/supervisor.sh`. Detected alert: `code-gardener-cron` error (consecutiveErrors=1). ✓
 - **Code gardener** (last run: 19 Mar 13:29–13:33 UTC, **error**): Hourly cron that converts research seeds into Python app scripts in `/apps`. Total apps: 111. Seeds processed: 300/752. ⚠️ Latest run failed: attempted self-edit of `agents/code-gardener.py` (edit operation failed). Investigate.
-- **Content gardener** (started 14:05 UTC): Processing seeds into blog posts (content/). Running in isolated agent session (cron). ~752 seeds total, ~267 processed so far.
+- **Content gardener** (completed 19 Mar 18:02 UTC): Latest cron run finished successfully. Processed multiple seeds into blog posts (content/). ~752 seeds total, ongoing processing across runs.
 - **Memory reindex** (started 02:44 UTC): Rate-limited (Voyage 3 RPM free tier). Will retry automatically. Source files: 63 memory files need indexing.
 - **APTU updates check** (completed 02:45 UTC): 18 packages upgradable (security/network mostly). Pending: file-roller, network-manager, openvpn, nftables, linux-base, etc.
 - **Meta-summary cron** (completed 09:07 UTC): Hourly system summary generated and sent to Telegram successfully. ✓

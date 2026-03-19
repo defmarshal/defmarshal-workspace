@@ -8524,6 +8524,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/recursive-language-models-meet-uncertainty_-the-su.py",
       "type": "app",
       "title": "Recursive Language Models Meet Uncertainty: The Surprising Effectiveness of Self-Reflective Program Search for Long Context"
+    },
+    {
+      "id": "4ac61765-fd59-4d73-81c9-e44aca1826bf",
+      "type": "seed",
+      "title": "MedArena: Comparing LLMs for Medicine-in-the-Wild Clinician Preferences"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-medarena:-comparing-llms-for-medicine-in-the-wild-clinician-preferences.md",
+      "type": "content",
+      "title": "MedArena: Comparing LLMs for Medicine-in-the-Wild Clinician Preferences"
     }
   ],
   "edges": [
@@ -10280,6 +10290,11 @@
     {
       "from": "785d9802-53f3-4851-bdc1-87fd9bb199a6",
       "to": "/home/ubuntu/.openclaw/workspace/apps/recursive-language-models-meet-uncertainty_-the-su.py",
+      "type": "produced"
+    },
+    {
+      "from": "4ac61765-fd59-4d73-81c9-e44aca1826bf",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-medarena:-comparing-llms-for-medicine-in-the-wild-clinician-preferences.md",
       "type": "produced"
     }
   ]

@@ -2,6 +2,16 @@
 import os, sys, json, subprocess, time, uuid, datetime
 from typing import List, Dict
 
+# Load .env file if present
+env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.env')
+if os.path.exists(env_path):
+    with open(env_path) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                key, _, value = line.partition('=')
+                os.environ[key.strip()] = value.strip()
+
 # Config
 MATON_API_KEY = os.getenv('MATON_API_KEY')
 if not MATON_API_KEY:
@@ -82,7 +92,7 @@ def extract_seed_from_email(msg):
         "snippet": snippet,
         "source": f"email:{from_hdr}",
         "tags": ["email"],
-        "ts": datetime.datetime.utcfromtimestamp(int(ts)/1000).strftime('%Y-%m-%d %H:%M:%S') if ts else datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+        "ts": datetime.datetime.fromtimestamp(int(ts)/1000, tz=datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S') if ts else datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
     }
     return seed
 
