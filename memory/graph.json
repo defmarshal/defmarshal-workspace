@@ -8304,6 +8304,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/mistral-bets-on-_build-your-own-ai_-as-it-takes-on.py",
       "type": "app",
       "title": "Mistral bets on \u2018build-your-own AI\u2019 as it takes on OpenAI, Anthropic in the enterprise"
+    },
+    {
+      "id": "c6984f28-971e-4c63-b335-11984691fcb7",
+      "type": "seed",
+      "title": "Why Garry Tan&#8217;s Claude Code setup has gotten so much love, and hate"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-why-garry-tan&#8217;s-claude-code-setup-has-gotten.md",
+      "type": "output",
+      "title": "Why Garry Tan&#8217;s Claude Code setup has gotten so much love, and hate"
+    },
+    {
+      "id": "39d6d2de-7fa1-412b-b446-e240eff70996",
+      "type": "seed",
+      "title": "Apple rolls out first &#8216;background security&#8217; update for iPhones, iPads, and Macs to fix Safari bug"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-apple-rolls-out-first-&#8216;background-security&#8217;-update-for-iphones,-ipad.md",
+      "type": "content",
+      "title": "Apple rolls out first &#8216;background security&#8217; update for iPhones, iPads, and Macs to fix Safari bug"
     }
   ],
   "edges": [
@@ -9950,6 +9970,16 @@
     {
       "from": "dc74b7b5-33c9-42ed-8161-bc1d6ee18c7b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/mistral-bets-on-_build-your-own-ai_-as-it-takes-on.py",
+      "type": "produced"
+    },
+    {
+      "from": "c6984f28-971e-4c63-b335-11984691fcb7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-why-garry-tan&#8217;s-claude-code-setup-has-gotten.md",
+      "type": "produced"
+    },
+    {
+      "from": "39d6d2de-7fa1-412b-b446-e240eff70996",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-apple-rolls-out-first-&#8216;background-security&#8217;-update-for-iphones,-ipad.md",
       "type": "produced"
     }
   ]
