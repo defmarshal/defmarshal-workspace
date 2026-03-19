@@ -8374,6 +8374,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes.py",
       "type": "app",
       "title": "The Comprehension-Gated Agent Economy: A Robustness-First Architecture for AI Economic Agency"
+    },
+    {
+      "id": "c04d432a-94b3-4379-b09d-962c4618ed5d",
+      "type": "seed",
+      "title": "Form Follows Function: Recursive Stem Model"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-form-follows-function:-recursive-stem-model.md",
+      "type": "output",
+      "title": "Form Follows Function: Recursive Stem Model"
+    },
+    {
+      "id": "a34e77fa-fedc-4c52-830a-b383c62a21c9",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "content",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
     }
   ],
   "edges": [
@@ -10055,6 +10075,16 @@
     {
       "from": "239dc8e6-60fe-4e69-a22b-3b9fa61bd841",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes.py",
+      "type": "produced"
+    },
+    {
+      "from": "c04d432a-94b3-4379-b09d-962c4618ed5d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-form-follows-function:-recursive-stem-model.md",
+      "type": "produced"
+    },
+    {
+      "from": "a34e77fa-fedc-4c52-830a-b383c62a21c9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
       "type": "produced"
     }
   ]
