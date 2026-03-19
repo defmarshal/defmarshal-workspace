@@ -8354,6 +8354,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/nextmem_-towards-latent-factual-memory-for-llm-bas.py",
       "type": "app",
       "title": "NextMem: Towards Latent Factual Memory for LLM-based Agents"
+    },
+    {
+      "id": "c6322136-47e6-4ff5-8fa4-33ba27dd8b03",
+      "type": "seed",
+      "title": "AIDABench: AI Data Analytics Benchmark"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-aidabench:-ai-data-analytics-benchmark.md",
+      "type": "output",
+      "title": "AIDABench: AI Data Analytics Benchmark"
+    },
+    {
+      "id": "239dc8e6-60fe-4e69-a22b-3b9fa61bd841",
+      "type": "seed",
+      "title": "The Comprehension-Gated Agent Economy: A Robustness-First Architecture for AI Economic Agency"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes.py",
+      "type": "app",
+      "title": "The Comprehension-Gated Agent Economy: A Robustness-First Architecture for AI Economic Agency"
     }
   ],
   "edges": [
@@ -10025,6 +10045,16 @@
     {
       "from": "fb3b599e-19a3-40d3-bbb0-10a745b6e5d5",
       "to": "/home/ubuntu/.openclaw/workspace/apps/nextmem_-towards-latent-factual-memory-for-llm-bas.py",
+      "type": "produced"
+    },
+    {
+      "from": "c6322136-47e6-4ff5-8fa4-33ba27dd8b03",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-aidabench:-ai-data-analytics-benchmark.md",
+      "type": "produced"
+    },
+    {
+      "from": "239dc8e6-60fe-4e69-a22b-3b9fa61bd841",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-comprehension-gated-agent-economy_-a-robustnes.py",
       "type": "produced"
     }
   ]
