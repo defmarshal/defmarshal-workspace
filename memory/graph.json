@@ -8464,6 +8464,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-form-follows-function:-recursive-stem-model.md",
       "type": "output",
       "title": "Form Follows Function: Recursive Stem Model"
+    },
+    {
+      "id": "33667c20-52d1-4169-a448-25b0307ae06d",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-cranimem:-cranial-inspired-gated-and-bounded-memor.md",
+      "type": "output",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "003032e9-b87d-4e4b-ac5e-f4f7c37469ce",
+      "type": "seed",
+      "title": "GSI Agent: Domain Knowledge Enhancement for Large Language Models in Green Stormwater Infrastructure"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/gsi-agent_-domain-knowledge-enhancement-for-large-.py",
+      "type": "app",
+      "title": "GSI Agent: Domain Knowledge Enhancement for Large Language Models in Green Stormwater Infrastructure"
     }
   ],
   "edges": [
@@ -10190,6 +10210,16 @@
     {
       "from": "068dce7a-62e1-40bc-9dd3-36f69235ba6e",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-form-follows-function:-recursive-stem-model.md",
+      "type": "produced"
+    },
+    {
+      "from": "33667c20-52d1-4169-a448-25b0307ae06d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-cranimem:-cranial-inspired-gated-and-bounded-memor.md",
+      "type": "produced"
+    },
+    {
+      "from": "003032e9-b87d-4e4b-ac5e-f4f7c37469ce",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/gsi-agent_-domain-knowledge-enhancement-for-large-.py",
       "type": "produced"
     }
   ]
