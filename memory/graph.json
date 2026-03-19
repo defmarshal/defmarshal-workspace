@@ -8334,6 +8334,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/kagi-brings-its-__8216_small-web__8217_-of-a-human.py",
       "type": "app",
       "title": "Kagi brings its &#8216;small web&#8217; of a human-only internet to mobile devices"
+    },
+    {
+      "id": "7ebd61c3-d962-4453-97de-59e724e6d35f",
+      "type": "seed",
+      "title": "Neural-Symbolic Logic Query Answering in Non-Euclidean Space"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-neural-symbolic-logic-query-answering-in-non-euclidean-space.md",
+      "type": "content",
+      "title": "Neural-Symbolic Logic Query Answering in Non-Euclidean Space"
+    },
+    {
+      "id": "fb3b599e-19a3-40d3-bbb0-10a745b6e5d5",
+      "type": "seed",
+      "title": "NextMem: Towards Latent Factual Memory for LLM-based Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/nextmem_-towards-latent-factual-memory-for-llm-bas.py",
+      "type": "app",
+      "title": "NextMem: Towards Latent Factual Memory for LLM-based Agents"
     }
   ],
   "edges": [
@@ -9995,6 +10015,16 @@
     {
       "from": "f5238a8f-5e72-4be4-9fdf-bc4959e5fe3c",
       "to": "/home/ubuntu/.openclaw/workspace/apps/kagi-brings-its-__8216_small-web__8217_-of-a-human.py",
+      "type": "produced"
+    },
+    {
+      "from": "7ebd61c3-d962-4453-97de-59e724e6d35f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-neural-symbolic-logic-query-answering-in-non-euclidean-space.md",
+      "type": "produced"
+    },
+    {
+      "from": "fb3b599e-19a3-40d3-bbb0-10a745b6e5d5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/nextmem_-towards-latent-factual-memory-for-llm-bas.py",
       "type": "produced"
     }
   ]
