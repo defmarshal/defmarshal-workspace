@@ -8294,6 +8294,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-kalshi&#8217;s-legal-troubles-pile-up,-as-arizona-files-first-ever-criminal-char.md",
       "type": "content",
       "title": "Kalshi&#8217;s legal troubles pile up, as Arizona files first ever criminal charges over &#8216;illegal gambling business&#8217;"
+    },
+    {
+      "id": "dc74b7b5-33c9-42ed-8161-bc1d6ee18c7b",
+      "type": "seed",
+      "title": "Mistral bets on \u2018build-your-own AI\u2019 as it takes on OpenAI, Anthropic in the enterprise"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/mistral-bets-on-_build-your-own-ai_-as-it-takes-on.py",
+      "type": "app",
+      "title": "Mistral bets on \u2018build-your-own AI\u2019 as it takes on OpenAI, Anthropic in the enterprise"
     }
   ],
   "edges": [
@@ -9935,6 +9945,11 @@
     {
       "from": "3d75e65f-4382-4132-92ac-2fb466ff3629",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-kalshi&#8217;s-legal-troubles-pile-up,-as-arizona-files-first-ever-criminal-char.md",
+      "type": "produced"
+    },
+    {
+      "from": "dc74b7b5-33c9-42ed-8161-bc1d6ee18c7b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/mistral-bets-on-_build-your-own-ai_-as-it-takes-on.py",
       "type": "produced"
     }
   ]
