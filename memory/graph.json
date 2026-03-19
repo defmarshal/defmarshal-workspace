@@ -8494,6 +8494,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-did-you-check-the-right-pocket?-cost-sensitive-sto.md",
       "type": "output",
       "title": "Did You Check the Right Pocket? Cost-Sensitive Store Routing for Memory-Augmented Agents"
+    },
+    {
+      "id": "6a95a528-0ce0-46c9-a595-a28efa9a58b3",
+      "type": "seed",
+      "title": "DynaTrust: Defending Multi-Agent Systems Against Sleeper Agents via Dynamic Trust Graphs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-dynatrust:-defending-multi-agent-systems-against-s.md",
+      "type": "output",
+      "title": "DynaTrust: Defending Multi-Agent Systems Against Sleeper Agents via Dynamic Trust Graphs"
+    },
+    {
+      "id": "8f7da9d3-59de-44c4-8be5-deda8c858cfd",
+      "type": "seed",
+      "title": "QV May Be Enough: Toward the Essence of Attention in LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-qv-may-be-enough:-toward-the-essence-of-attention-in-llms.md",
+      "type": "content",
+      "title": "QV May Be Enough: Toward the Essence of Attention in LLMs"
+    },
+    {
+      "id": "785d9802-53f3-4851-bdc1-87fd9bb199a6",
+      "type": "seed",
+      "title": "Recursive Language Models Meet Uncertainty: The Surprising Effectiveness of Self-Reflective Program Search for Long Context"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/recursive-language-models-meet-uncertainty_-the-su.py",
+      "type": "app",
+      "title": "Recursive Language Models Meet Uncertainty: The Surprising Effectiveness of Self-Reflective Program Search for Long Context"
     }
   ],
   "edges": [
@@ -10235,6 +10265,21 @@
     {
       "from": "3d32ccb4-0732-434c-8c20-309cb8e38b5c",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-did-you-check-the-right-pocket?-cost-sensitive-sto.md",
+      "type": "produced"
+    },
+    {
+      "from": "6a95a528-0ce0-46c9-a595-a28efa9a58b3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-19-dynatrust:-defending-multi-agent-systems-against-s.md",
+      "type": "produced"
+    },
+    {
+      "from": "8f7da9d3-59de-44c4-8be5-deda8c858cfd",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-19-qv-may-be-enough:-toward-the-essence-of-attention-in-llms.md",
+      "type": "produced"
+    },
+    {
+      "from": "785d9802-53f3-4851-bdc1-87fd9bb199a6",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/recursive-language-models-meet-uncertainty_-the-su.py",
       "type": "produced"
     }
   ]
