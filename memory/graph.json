@@ -8874,6 +8874,126 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-agentic-framework-for-political-biography-extracti.md",
       "type": "output",
       "title": "Agentic Framework for Political Biography Extraction"
+    },
+    {
+      "id": "3f18f083-f084-4ba3-9293-23b7bb6e7cc3",
+      "type": "seed",
+      "title": "Controllable Evidence Selection in Retrieval-Augmented Question Answering via Deterministic Utility Gating"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-controllable-evidence-selection-in-retrieval-augme.md",
+      "type": "output",
+      "title": "Controllable Evidence Selection in Retrieval-Augmented Question Answering via Deterministic Utility Gating"
+    },
+    {
+      "id": "6ca60757-2393-4704-8e56-fe58c09b35aa",
+      "type": "seed",
+      "title": "DynaRAG: Bridging Static and Dynamic Knowledge in Retrieval-Augmented Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-dynarag:-bridging-static-and-dynamic-knowledge-in-retrieval-augmented-generation.md",
+      "type": "content",
+      "title": "DynaRAG: Bridging Static and Dynamic Knowledge in Retrieval-Augmented Generation"
+    },
+    {
+      "id": "dc5d4e19-86b7-4a42-bf57-98f6c790b7fb",
+      "type": "seed",
+      "title": "Learned but Not Expressed: Capability-Expression Dissociation in Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/learned-but-not-expressed_-capability-expression-d.py",
+      "type": "app",
+      "title": "Learned but Not Expressed: Capability-Expression Dissociation in Large Language Models"
+    },
+    {
+      "id": "7743d51f-243a-4830-bb7b-b7421a933e13",
+      "type": "seed",
+      "title": "Real-Time Trustworthiness Scoring for LLM Structured Outputs and Data Extraction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-real-time-trustworthiness-scoring-for-llm-structur.md",
+      "type": "output",
+      "title": "Real-Time Trustworthiness Scoring for LLM Structured Outputs and Data Extraction"
+    },
+    {
+      "id": "764d3629-aee2-4087-8fc7-3f390cb50446",
+      "type": "seed",
+      "title": "Beyond Accuracy: An Explainability-Driven Analysis of Harmful Content Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-beyond-accuracy:-an-explainability-driven-analysis-of-harmful-content-detection.md",
+      "type": "content",
+      "title": "Beyond Accuracy: An Explainability-Driven Analysis of Harmful Content Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/beyond-accuracy_-an-explainability-driven-analysis.py",
+      "type": "app",
+      "title": "Beyond Accuracy: An Explainability-Driven Analysis of Harmful Content Detection"
+    },
+    {
+      "id": "6a80f160-d4c3-49c9-83c9-ce4f4ee8d1cd",
+      "type": "seed",
+      "title": "MineDraft: A Framework for Batch Parallel Speculative Decoding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-minedraft:-a-framework-for-batch-parallel-speculative-decoding.md",
+      "type": "content",
+      "title": "MineDraft: A Framework for Batch Parallel Speculative Decoding"
+    },
+    {
+      "id": "3dc816ce-1615-49a6-92ad-e5788ecea1e2",
+      "type": "seed",
+      "title": "Frayed RoPE and Long Inputs: A Geometric Perspective"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-frayed-rope-and-long-inputs:-a-geometric-perspective.md",
+      "type": "content",
+      "title": "Frayed RoPE and Long Inputs: A Geometric Perspective"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/frayed-rope-and-long-inputs_-a-geometric-perspecti.py",
+      "type": "app",
+      "title": "Frayed RoPE and Long Inputs: A Geometric Perspective"
+    },
+    {
+      "id": "4eb359e0-6ff2-4c31-b8ca-528f0af69ef2",
+      "type": "seed",
+      "title": "Engineering Verifiable Modularity in Transformers via Per-Layer Supervision"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-engineering-verifiable-modularity-in-transformers-.md",
+      "type": "output",
+      "title": "Engineering Verifiable Modularity in Transformers via Per-Layer Supervision"
+    },
+    {
+      "id": "60d63b66-a556-4ff2-91f8-7d647e1a6c65",
+      "type": "seed",
+      "title": "InfoMamba: An Attention-Free Hybrid Mamba-Transformer Model"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/infomamba_-an-attention-free-hybrid-mamba-transfor.py",
+      "type": "app",
+      "title": "InfoMamba: An Attention-Free Hybrid Mamba-Transformer Model"
+    },
+    {
+      "id": "ac2450c5-7a0a-41e6-878b-0e73ab351acc",
+      "type": "seed",
+      "title": "Towards Differentiating Between Failures and Domain Shifts in Industrial Data Streams"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-towards-differentiating-between-failures-and-domai.md",
+      "type": "output",
+      "title": "Towards Differentiating Between Failures and Domain Shifts in Industrial Data Streams"
+    },
+    {
+      "id": "ecc257e8-8a0a-4604-854f-0628058bd099",
+      "type": "seed",
+      "title": "Taming Epilepsy: Mean Field Control of Whole-Brain Dynamics"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-taming-epilepsy:-mean-field-control-of-whole-brain.md",
+      "type": "output",
+      "title": "Taming Epilepsy: Mean Field Control of Whole-Brain Dynamics"
     }
   ],
   "edges": [
@@ -10805,6 +10925,71 @@
     {
       "from": "d2f14f2e-ddec-455f-8504-7e73498e71ba",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-agentic-framework-for-political-biography-extracti.md",
+      "type": "produced"
+    },
+    {
+      "from": "3f18f083-f084-4ba3-9293-23b7bb6e7cc3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-controllable-evidence-selection-in-retrieval-augme.md",
+      "type": "produced"
+    },
+    {
+      "from": "6ca60757-2393-4704-8e56-fe58c09b35aa",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-dynarag:-bridging-static-and-dynamic-knowledge-in-retrieval-augmented-generation.md",
+      "type": "produced"
+    },
+    {
+      "from": "dc5d4e19-86b7-4a42-bf57-98f6c790b7fb",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/learned-but-not-expressed_-capability-expression-d.py",
+      "type": "produced"
+    },
+    {
+      "from": "7743d51f-243a-4830-bb7b-b7421a933e13",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-real-time-trustworthiness-scoring-for-llm-structur.md",
+      "type": "produced"
+    },
+    {
+      "from": "764d3629-aee2-4087-8fc7-3f390cb50446",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-beyond-accuracy:-an-explainability-driven-analysis-of-harmful-content-detection.md",
+      "type": "produced"
+    },
+    {
+      "from": "764d3629-aee2-4087-8fc7-3f390cb50446",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/beyond-accuracy_-an-explainability-driven-analysis.py",
+      "type": "produced"
+    },
+    {
+      "from": "6a80f160-d4c3-49c9-83c9-ce4f4ee8d1cd",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-minedraft:-a-framework-for-batch-parallel-speculative-decoding.md",
+      "type": "produced"
+    },
+    {
+      "from": "3dc816ce-1615-49a6-92ad-e5788ecea1e2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-frayed-rope-and-long-inputs:-a-geometric-perspective.md",
+      "type": "produced"
+    },
+    {
+      "from": "3dc816ce-1615-49a6-92ad-e5788ecea1e2",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/frayed-rope-and-long-inputs_-a-geometric-perspecti.py",
+      "type": "produced"
+    },
+    {
+      "from": "4eb359e0-6ff2-4c31-b8ca-528f0af69ef2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-engineering-verifiable-modularity-in-transformers-.md",
+      "type": "produced"
+    },
+    {
+      "from": "60d63b66-a556-4ff2-91f8-7d647e1a6c65",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/infomamba_-an-attention-free-hybrid-mamba-transfor.py",
+      "type": "produced"
+    },
+    {
+      "from": "ac2450c5-7a0a-41e6-878b-0e73ab351acc",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-towards-differentiating-between-failures-and-domai.md",
+      "type": "produced"
+    },
+    {
+      "from": "ecc257e8-8a0a-4604-854f-0628058bd099",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-taming-epilepsy:-mean-field-control-of-whole-brain.md",
       "type": "produced"
     }
   ]
