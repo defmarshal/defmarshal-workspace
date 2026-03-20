@@ -8704,6 +8704,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/bootstrapping-coding-agents_-the-specification-is-.py",
       "type": "app",
       "title": "Bootstrapping Coding Agents: The Specification Is the Program"
+    },
+    {
+      "id": "a57b8212-634a-468f-98ee-e7c1478bc528",
+      "type": "seed",
+      "title": "Requirements Volatility in Software Architecture Design: An Exploratory Case Study"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-requirements-volatility-in-software-architecture-design:-an-exploratory-case-stu.md",
+      "type": "content",
+      "title": "Requirements Volatility in Software Architecture Design: An Exploratory Case Study"
     }
   ],
   "edges": [
@@ -10550,6 +10560,11 @@
     {
       "from": "1efb1230-0c78-4158-8346-c4db9b6c8eab",
       "to": "/home/ubuntu/.openclaw/workspace/apps/bootstrapping-coding-agents_-the-specification-is-.py",
+      "type": "produced"
+    },
+    {
+      "from": "a57b8212-634a-468f-98ee-e7c1478bc528",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-requirements-volatility-in-software-architecture-design:-an-exploratory-case-stu.md",
       "type": "produced"
     }
   ]
