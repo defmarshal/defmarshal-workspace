@@ -8,7 +8,7 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 
 - **Research gardener** (cron gardener-1773046574, started 20 Mar 07:04 UTC): Currently processing seeds into research reports. Output logging to `memory/research-gardener.log`.
 - **Memory reindex** (started 02:44 UTC): Rate-limited (Voyage 3 RPM free tier). Will retry automatically. Source files: 63 memory files need indexing.
-- **Code gardener** (started 19 Mar 20:11 UTC): Completed. Generated app: `apps/doordash-launches-a-new-__8216_tasks__8217_-app-th.py` (fallback method; agent returned insufficient code). 491 seeds remaining.
+- **Code gardener** (cron code-gardener-1773047374, started 19 Mar 20:11 UTC): Running. Recent output: app generated at 11:17 UTC (`deaf_-a-benchmark...`). Issues: 491 seeds remaining; many OpenRouter failures; deprecation warnings detected.
 
 **Recently completed:**
 - **Content gardener** (cron 1773046735, 19 Mar 20:02 UTC): Finished ~20:03 UTC. Processed 29 seeds into content posts (Mar 17–19). All content written successfully. No errors.

@@ -8834,6 +8834,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/deaf_-a-benchmark-for-diagnostic-evaluation-of-aco.py",
       "type": "app",
       "title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models"
+    },
+    {
+      "id": "0ff2eead-a75d-4ff9-9ddc-cf888521a09f",
+      "type": "seed",
+      "title": "Do Large Language Models Possess a Theory of Mind? A Comparative Evaluation Using the Strange Stories Paradigm"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-do-large-language-models-possess-a-theory-of-mind?-a-comparative-evaluation-usin.md",
+      "type": "content",
+      "title": "Do Large Language Models Possess a Theory of Mind? A Comparative Evaluation Using the Strange Stories Paradigm"
     }
   ],
   "edges": [
@@ -10745,6 +10755,11 @@
     {
       "from": "9757ec7c-f75f-42a6-abef-9a36b40c6655",
       "to": "/home/ubuntu/.openclaw/workspace/apps/deaf_-a-benchmark-for-diagnostic-evaluation-of-aco.py",
+      "type": "produced"
+    },
+    {
+      "from": "0ff2eead-a75d-4ff9-9ddc-cf888521a09f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-do-large-language-models-possess-a-theory-of-mind?-a-comparative-evaluation-usin.md",
       "type": "produced"
     }
   ]
