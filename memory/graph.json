@@ -8744,6 +8744,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos-reportedly-wants-_100-billion-to-buy-an.py",
       "type": "app",
       "title": "Jeff Bezos reportedly wants $100 billion to buy and transform old manufacturing firms with AI"
+    },
+    {
+      "id": "18751732-0218-4aca-a240-d3e1186d71ab",
+      "type": "seed",
+      "title": "Employees had to restrain a dancing humanoid robot after it went wild at a California restaurant"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-employees-had-to-restrain-a-dancing-humanoid-robot-after-it-went-wild-at-a-calif.md",
+      "type": "content",
+      "title": "Employees had to restrain a dancing humanoid robot after it went wild at a California restaurant"
+    },
+    {
+      "id": "7c9279e6-deb0-411c-8147-132a73fe778a",
+      "type": "seed",
+      "title": "Polymarket continues its partnership spree with a Major League Baseball deal"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/polymarket-continues-its-partnership-spree-with-a-.py",
+      "type": "app",
+      "title": "Polymarket continues its partnership spree with a Major League Baseball deal"
     }
   ],
   "edges": [
@@ -10610,6 +10630,16 @@
     {
       "from": "bae6a744-7f20-453b-a726-ec79e4620012",
       "to": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos-reportedly-wants-_100-billion-to-buy-an.py",
+      "type": "produced"
+    },
+    {
+      "from": "18751732-0218-4aca-a240-d3e1186d71ab",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-employees-had-to-restrain-a-dancing-humanoid-robot-after-it-went-wild-at-a-calif.md",
+      "type": "produced"
+    },
+    {
+      "from": "7c9279e6-deb0-411c-8147-132a73fe778a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/polymarket-continues-its-partnership-spree-with-a-.py",
       "type": "produced"
     }
   ]
