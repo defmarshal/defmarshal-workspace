@@ -8764,6 +8764,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/polymarket-continues-its-partnership-spree-with-a-.py",
       "type": "app",
       "title": "Polymarket continues its partnership spree with a Major League Baseball deal"
+    },
+    {
+      "id": "480d632c-a9f5-4fd2-85a7-eaa8d5411242",
+      "type": "seed",
+      "title": "Online bot traffic will exceed human traffic by 2027, Cloudflare CEO says"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-online-bot-traffic-will-exceed-human-traffic-by-2027,-cloudflare-ceo-says.md",
+      "type": "content",
+      "title": "Online bot traffic will exceed human traffic by 2027, Cloudflare CEO says"
+    },
+    {
+      "id": "6a4fe737-055f-4e43-8703-e1e639d57040",
+      "type": "seed",
+      "title": "Bluesky announces $100M Series B after CEO transition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/bluesky-announces-_100m-series-b-after-ceo-transit.py",
+      "type": "app",
+      "title": "Bluesky announces $100M Series B after CEO transition"
+    },
+    {
+      "id": "439ef674-66a8-43d6-9e1d-174e62400666",
+      "type": "seed",
+      "title": "Geothermal startup Fervo catapults itself over the \u2018valley of death\u2019"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/geothermal-startup-fervo-catapults-itself-over-the.py",
+      "type": "app",
+      "title": "Geothermal startup Fervo catapults itself over the \u2018valley of death\u2019"
     }
   ],
   "edges": [
@@ -10640,6 +10670,21 @@
     {
       "from": "7c9279e6-deb0-411c-8147-132a73fe778a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/polymarket-continues-its-partnership-spree-with-a-.py",
+      "type": "produced"
+    },
+    {
+      "from": "480d632c-a9f5-4fd2-85a7-eaa8d5411242",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-online-bot-traffic-will-exceed-human-traffic-by-2027,-cloudflare-ceo-says.md",
+      "type": "produced"
+    },
+    {
+      "from": "6a4fe737-055f-4e43-8703-e1e639d57040",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/bluesky-announces-_100m-series-b-after-ceo-transit.py",
+      "type": "produced"
+    },
+    {
+      "from": "439ef674-66a8-43d6-9e1d-174e62400666",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/geothermal-startup-fervo-catapults-itself-over-the.py",
       "type": "produced"
     }
   ]
