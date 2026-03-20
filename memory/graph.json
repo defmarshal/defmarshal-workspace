@@ -8714,6 +8714,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-requirements-volatility-in-software-architecture-design:-an-exploratory-case-stu.md",
       "type": "content",
       "title": "Requirements Volatility in Software Architecture Design: An Exploratory Case Study"
+    },
+    {
+      "id": "b0126e0b-903f-4eaf-89dc-45935678b13b",
+      "type": "seed",
+      "title": "Amazon acquires Rivr, maker of a stair-climbing delivery robot"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-amazon-acquires-rivr,-maker-of-a-stair-climbing-de.md",
+      "type": "output",
+      "title": "Amazon acquires Rivr, maker of a stair-climbing delivery robot"
+    },
+    {
+      "id": "8dfde89e-7b63-4c5b-bcf1-73a9bfa46d9e",
+      "type": "seed",
+      "title": "Amazon acquires Rivr, maker of a stair-climbing delivery robot"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-amazon-acquires-rivr,-maker-of-a-stair-climbing-delivery-robot.md",
+      "type": "content",
+      "title": "Amazon acquires Rivr, maker of a stair-climbing delivery robot"
+    },
+    {
+      "id": "bae6a744-7f20-453b-a726-ec79e4620012",
+      "type": "seed",
+      "title": "Jeff Bezos reportedly wants $100 billion to buy and transform old manufacturing firms with AI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos-reportedly-wants-_100-billion-to-buy-an.py",
+      "type": "app",
+      "title": "Jeff Bezos reportedly wants $100 billion to buy and transform old manufacturing firms with AI"
     }
   ],
   "edges": [
@@ -10565,6 +10595,21 @@
     {
       "from": "a57b8212-634a-468f-98ee-e7c1478bc528",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-requirements-volatility-in-software-architecture-design:-an-exploratory-case-stu.md",
+      "type": "produced"
+    },
+    {
+      "from": "b0126e0b-903f-4eaf-89dc-45935678b13b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-amazon-acquires-rivr,-maker-of-a-stair-climbing-de.md",
+      "type": "produced"
+    },
+    {
+      "from": "8dfde89e-7b63-4c5b-bcf1-73a9bfa46d9e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-amazon-acquires-rivr,-maker-of-a-stair-climbing-delivery-robot.md",
+      "type": "produced"
+    },
+    {
+      "from": "bae6a744-7f20-453b-a726-ec79e4620012",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos-reportedly-wants-_100-billion-to-buy-an.py",
       "type": "produced"
     }
   ]
