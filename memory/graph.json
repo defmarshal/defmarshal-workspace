@@ -8844,6 +8844,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-do-large-language-models-possess-a-theory-of-mind?-a-comparative-evaluation-usin.md",
       "type": "content",
       "title": "Do Large Language Models Possess a Theory of Mind? A Comparative Evaluation Using the Strange Stories Paradigm"
+    },
+    {
+      "id": "f2199326-335c-4064-8261-d8256262180c",
+      "type": "seed",
+      "title": "TherapyGym: Evaluating and Aligning Clinical Fidelity and Safety in Therapy Chatbots"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-therapygym:-evaluating-and-aligning-clinical-fidel.md",
+      "type": "output",
+      "title": "TherapyGym: Evaluating and Aligning Clinical Fidelity and Safety in Therapy Chatbots"
     }
   ],
   "edges": [
@@ -10760,6 +10770,11 @@
     {
       "from": "0ff2eead-a75d-4ff9-9ddc-cf888521a09f",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-do-large-language-models-possess-a-theory-of-mind?-a-comparative-evaluation-usin.md",
+      "type": "produced"
+    },
+    {
+      "from": "f2199326-335c-4064-8261-d8256262180c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-therapygym:-evaluating-and-aligning-clinical-fidel.md",
       "type": "produced"
     }
   ]
