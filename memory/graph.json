@@ -8814,6 +8814,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-google-introduces-a-new-way-for-users-to-sideload-android-apps-that-still-protec.md",
       "type": "content",
       "title": "Google introduces a new way for users to sideload Android apps that still protects against scams"
+    },
+    {
+      "id": "0918eed3-d1b5-46df-8107-453e0a281c69",
+      "type": "seed",
+      "title": "DoorDash launches a new &#8216;Tasks&#8217; app that pays couriers to submit videos to train AI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-doordash-launches-a-new-&#8216;tasks&#8217;-app-th.md",
+      "type": "output",
+      "title": "DoorDash launches a new &#8216;Tasks&#8217; app that pays couriers to submit videos to train AI"
     }
   ],
   "edges": [
@@ -10715,6 +10725,11 @@
     {
       "from": "78c3c46f-d729-4c52-abbd-94e84f2297f9",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-google-introduces-a-new-way-for-users-to-sideload-android-apps-that-still-protec.md",
+      "type": "produced"
+    },
+    {
+      "from": "0918eed3-d1b5-46df-8107-453e0a281c69",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-doordash-launches-a-new-&#8216;tasks&#8217;-app-th.md",
       "type": "produced"
     }
   ]
