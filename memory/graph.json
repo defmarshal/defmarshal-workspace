@@ -8634,6 +8634,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/when-the-specification-emerges_-benchmarking-faith.py",
       "type": "app",
       "title": "When the Specification Emerges: Benchmarking Faithfulness Loss in Long-Horizon Coding Agents"
+    },
+    {
+      "id": "c23a26f7-3a2e-4df5-9200-3231391fba8e",
+      "type": "seed",
+      "title": "A Longitudinal Study of Usability in Identity-Based Software Signing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-a-longitudinal-study-of-usability-in-identity-base.md",
+      "type": "output",
+      "title": "A Longitudinal Study of Usability in Identity-Based Software Signing"
+    },
+    {
+      "id": "93247ee1-8bac-472e-a063-c43028c5ca3a",
+      "type": "seed",
+      "title": "Intent Formalization: A Grand Challenge for Reliable Coding in the Age of AI Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-intent-formalization:-a-grand-challenge-for-reliable-coding-in-the-age-of-ai-age.md",
+      "type": "content",
+      "title": "Intent Formalization: A Grand Challenge for Reliable Coding in the Age of AI Agents"
+    },
+    {
+      "id": "01024e3b-33f8-4523-b9e6-91fd161d7dc9",
+      "type": "seed",
+      "title": "Energy Flow Graph: Modeling Software Energy Consumption"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/energy-flow-graph_-modeling-software-energy-consum.py",
+      "type": "app",
+      "title": "Energy Flow Graph: Modeling Software Energy Consumption"
     }
   ],
   "edges": [
@@ -10445,6 +10475,21 @@
     {
       "from": "cb20dfc5-0171-4f70-89de-0c19420b36aa",
       "to": "/home/ubuntu/.openclaw/workspace/apps/when-the-specification-emerges_-benchmarking-faith.py",
+      "type": "produced"
+    },
+    {
+      "from": "c23a26f7-3a2e-4df5-9200-3231391fba8e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-a-longitudinal-study-of-usability-in-identity-base.md",
+      "type": "produced"
+    },
+    {
+      "from": "93247ee1-8bac-472e-a063-c43028c5ca3a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-intent-formalization:-a-grand-challenge-for-reliable-coding-in-the-age-of-ai-age.md",
+      "type": "produced"
+    },
+    {
+      "from": "01024e3b-33f8-4523-b9e6-91fd161d7dc9",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/energy-flow-graph_-modeling-software-energy-consum.py",
       "type": "produced"
     }
   ]
