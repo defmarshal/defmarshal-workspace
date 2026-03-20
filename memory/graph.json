@@ -8824,6 +8824,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-doordash-launches-a-new-&#8216;tasks&#8217;-app-th.md",
       "type": "output",
       "title": "DoorDash launches a new &#8216;Tasks&#8217; app that pays couriers to submit videos to train AI"
+    },
+    {
+      "id": "9757ec7c-f75f-42a6-abef-9a36b40c6655",
+      "type": "seed",
+      "title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/deaf_-a-benchmark-for-diagnostic-evaluation-of-aco.py",
+      "type": "app",
+      "title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models"
     }
   ],
   "edges": [
@@ -10730,6 +10740,11 @@
     {
       "from": "0918eed3-d1b5-46df-8107-453e0a281c69",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-doordash-launches-a-new-&#8216;tasks&#8217;-app-th.md",
+      "type": "produced"
+    },
+    {
+      "from": "9757ec7c-f75f-42a6-abef-9a36b40c6655",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/deaf_-a-benchmark-for-diagnostic-evaluation-of-aco.py",
       "type": "produced"
     }
   ]
