@@ -16,12 +16,25 @@ SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
 PROCESSED_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/processed_seeds.jsonl')
 APPS_DIR = Path('/home/ubuntu/.openclaw/workspace/apps')
 GRAPH_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/graph.json')
+LOG_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/code-gardener.log')
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 
 APPS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
-    print(f"[{datetime.datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S UTC')}] {msg}")
+    timestamp = datetime.datetime.now(UTC).strftime('%Y-%m-%d %H:%M:%S UTC')
+    line = f"[{timestamp}] {msg}\n"
+    # Always write to stdout for visibility
+    sys.stdout.write(line)
+    sys.stdout.flush()
+    # Also append to dedicated log file to avoid redirection issues
+    try:
+        with open(LOG_FILE, 'a') as logf:
+            logf.write(line)
+            logf.flush()
+            os.fsync(logf.fileno())
+    except Exception:
+        pass  # Don't let logging failures break the script
 
 def load_seeds():
     seeds = []
@@ -195,26 +208,34 @@ Context: {seed['snippet']}
 
 The script should be self-contained, include a shebang, and demonstrate the concept. Keep it under 100 lines. Output only the code, no explanations."""
     code = generate_code_via_agent(prompt)
-    
+
     # Enhanced fallback: create a meaningful script based on seed content
     if not code or len(code) < 20:
         log(f"Agent returned insufficient code (length {len(code) if code else 0}), using enhanced fallback")
         code = create_fallback_script(seed)
-    
+
     # Determine filename
     safe_title = seed['title'].lower().replace(' ', '-')[:50]
     safe_title = ''.join(c if c.isalnum() or c in '-_' else '_' for c in safe_title)
     filename = APPS_DIR / f"{safe_title}.py"
-    
+
     # Ensure unique
     counter = 1
     orig = filename
     while filename.exists():
         filename = APPS_DIR / f"{orig.stem}-{counter}{orig.suffix}"
         counter += 1
-    
+
+    # Write with explicit flush and fsync
     with open(filename, 'w') as f:
         f.write(code)
+        f.flush()
+        os.fsync(f.fileno())
+
+    # Double-check file exists and has content
+    if not filename.exists() or filename.stat().st_size == 0:
+        raise IOError(f"Failed to write app file {filename}")
+
     return str(filename)
 
 def main():

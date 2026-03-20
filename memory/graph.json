@@ -8614,6 +8614,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-aidabench:-ai-data-analytics-benchmark.md",
       "type": "content",
       "title": "AIDABench: AI Data Analytics Benchmark"
+    },
+    {
+      "id": "3919da9b-3dad-41aa-a1ef-6ea3f8798ec0",
+      "type": "seed",
+      "title": "The State of Generative AI in Software Development: Insights from Literature and a Developer Survey"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-state-of-generative-ai-in-software-development.py",
+      "type": "app",
+      "title": "The State of Generative AI in Software Development: Insights from Literature and a Developer Survey"
+    },
+    {
+      "id": "cb20dfc5-0171-4f70-89de-0c19420b36aa",
+      "type": "seed",
+      "title": "When the Specification Emerges: Benchmarking Faithfulness Loss in Long-Horizon Coding Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/when-the-specification-emerges_-benchmarking-faith.py",
+      "type": "app",
+      "title": "When the Specification Emerges: Benchmarking Faithfulness Loss in Long-Horizon Coding Agents"
     }
   ],
   "edges": [
@@ -10415,6 +10435,16 @@
     {
       "from": "716fd8cf-19a9-410f-b493-16143b2a75c0",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-aidabench:-ai-data-analytics-benchmark.md",
+      "type": "produced"
+    },
+    {
+      "from": "3919da9b-3dad-41aa-a1ef-6ea3f8798ec0",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-state-of-generative-ai-in-software-development.py",
+      "type": "produced"
+    },
+    {
+      "from": "cb20dfc5-0171-4f70-89de-0c19420b36aa",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/when-the-specification-emerges_-benchmarking-faith.py",
       "type": "produced"
     }
   ]
