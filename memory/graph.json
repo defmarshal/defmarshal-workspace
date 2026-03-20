@@ -8864,6 +8864,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-how-confident-is-the-first-token?-an-uncertainty-calibrated-prompt-optimization-.md",
       "type": "content",
       "title": "How Confident Is the First Token? An Uncertainty-Calibrated Prompt Optimization Framework for Large Language Model Classification and Understanding"
+    },
+    {
+      "id": "d2f14f2e-ddec-455f-8504-7e73498e71ba",
+      "type": "seed",
+      "title": "Agentic Framework for Political Biography Extraction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-agentic-framework-for-political-biography-extracti.md",
+      "type": "output",
+      "title": "Agentic Framework for Political Biography Extraction"
     }
   ],
   "edges": [
@@ -10790,6 +10800,11 @@
     {
       "from": "18051a67-5687-4512-b416-3e34d9198290",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-how-confident-is-the-first-token?-an-uncertainty-calibrated-prompt-optimization-.md",
+      "type": "produced"
+    },
+    {
+      "from": "d2f14f2e-ddec-455f-8504-7e73498e71ba",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-agentic-framework-for-political-biography-extracti.md",
       "type": "produced"
     }
   ]
