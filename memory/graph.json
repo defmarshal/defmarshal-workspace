@@ -8794,6 +8794,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/geothermal-startup-fervo-catapults-itself-over-the.py",
       "type": "app",
       "title": "Geothermal startup Fervo catapults itself over the \u2018valley of death\u2019"
+    },
+    {
+      "id": "4136def0-3e5e-4e7f-a9ce-19c5d3c29ea7",
+      "type": "seed",
+      "title": "Meta rolls out new AI content enforcement systems while reducing reliance on third-party vendors"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-meta-rolls-out-new-ai-content-enforcement-systems-.md",
+      "type": "output",
+      "title": "Meta rolls out new AI content enforcement systems while reducing reliance on third-party vendors"
+    },
+    {
+      "id": "78c3c46f-d729-4c52-abbd-94e84f2297f9",
+      "type": "seed",
+      "title": "Google introduces a new way for users to sideload Android apps that still protects against scams"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-google-introduces-a-new-way-for-users-to-sideload-android-apps-that-still-protec.md",
+      "type": "content",
+      "title": "Google introduces a new way for users to sideload Android apps that still protects against scams"
     }
   ],
   "edges": [
@@ -10685,6 +10705,16 @@
     {
       "from": "439ef674-66a8-43d6-9e1d-174e62400666",
       "to": "/home/ubuntu/.openclaw/workspace/apps/geothermal-startup-fervo-catapults-itself-over-the.py",
+      "type": "produced"
+    },
+    {
+      "from": "4136def0-3e5e-4e7f-a9ce-19c5d3c29ea7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-meta-rolls-out-new-ai-content-enforcement-systems-.md",
+      "type": "produced"
+    },
+    {
+      "from": "78c3c46f-d729-4c52-abbd-94e84f2297f9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-google-introduces-a-new-way-for-users-to-sideload-android-apps-that-still-protec.md",
       "type": "produced"
     }
   ]
