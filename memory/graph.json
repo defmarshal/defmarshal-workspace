@@ -8664,6 +8664,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/energy-flow-graph_-modeling-software-energy-consum.py",
       "type": "app",
       "title": "Energy Flow Graph: Modeling Software Energy Consumption"
+    },
+    {
+      "id": "58f96979-3a11-4235-894f-ffddd4e796ad",
+      "type": "seed",
+      "title": "Talk is Cheap, Logic is Hard: Benchmarking LLMs on Post-Condition Formalization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-talk-is-cheap,-logic-is-hard:-benchmarking-llms-on-post-condition-formalization.md",
+      "type": "content",
+      "title": "Talk is Cheap, Logic is Hard: Benchmarking LLMs on Post-Condition Formalization"
     }
   ],
   "edges": [
@@ -10490,6 +10500,11 @@
     {
       "from": "01024e3b-33f8-4523-b9e6-91fd161d7dc9",
       "to": "/home/ubuntu/.openclaw/workspace/apps/energy-flow-graph_-modeling-software-energy-consum.py",
+      "type": "produced"
+    },
+    {
+      "from": "58f96979-3a11-4235-894f-ffddd4e796ad",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-talk-is-cheap,-logic-is-hard:-benchmarking-llms-on-post-condition-formalization.md",
       "type": "produced"
     }
   ]
