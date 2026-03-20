@@ -8674,6 +8674,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-talk-is-cheap,-logic-is-hard:-benchmarking-llms-on-post-condition-formalization.md",
       "type": "content",
       "title": "Talk is Cheap, Logic is Hard: Benchmarking LLMs on Post-Condition Formalization"
+    },
+    {
+      "id": "646aa17c-f58a-49f6-8419-bd5be517bf30",
+      "type": "seed",
+      "title": "Revisiting Vulnerability Patch Identification on Data in the Wild"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-revisiting-vulnerability-patch-identification-on-d.md",
+      "type": "output",
+      "title": "Revisiting Vulnerability Patch Identification on Data in the Wild"
+    },
+    {
+      "id": "46e19b84-45b9-4c2b-aff4-ffec3146e0d4",
+      "type": "seed",
+      "title": "MLmisFinder: A Specification and Detection Approach of Machine Learning Service Misuses"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-mlmisfinder:-a-specification-and-detection-approach-of-machine-learning-service-.md",
+      "type": "content",
+      "title": "MLmisFinder: A Specification and Detection Approach of Machine Learning Service Misuses"
+    },
+    {
+      "id": "1efb1230-0c78-4158-8346-c4db9b6c8eab",
+      "type": "seed",
+      "title": "Bootstrapping Coding Agents: The Specification Is the Program"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/bootstrapping-coding-agents_-the-specification-is-.py",
+      "type": "app",
+      "title": "Bootstrapping Coding Agents: The Specification Is the Program"
     }
   ],
   "edges": [
@@ -10505,6 +10535,21 @@
     {
       "from": "58f96979-3a11-4235-894f-ffddd4e796ad",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-talk-is-cheap,-logic-is-hard:-benchmarking-llms-on-post-condition-formalization.md",
+      "type": "produced"
+    },
+    {
+      "from": "646aa17c-f58a-49f6-8419-bd5be517bf30",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-revisiting-vulnerability-patch-identification-on-d.md",
+      "type": "produced"
+    },
+    {
+      "from": "46e19b84-45b9-4c2b-aff4-ffec3146e0d4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-mlmisfinder:-a-specification-and-detection-approach-of-machine-learning-service-.md",
+      "type": "produced"
+    },
+    {
+      "from": "1efb1230-0c78-4158-8346-c4db9b6c8eab",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/bootstrapping-coding-agents_-the-specification-is-.py",
       "type": "produced"
     }
   ]
