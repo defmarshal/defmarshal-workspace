@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-import os, sys, json, uuid, datetime, subprocess, urllib.request, urllib.error, ssl
+import os, sys, json, uuid, datetime, subprocess, urllib.request, urllib.error
 from pathlib import Path
 from typing import Dict, Any
+from datetime import timezone
 
 # Paths
 SEEDS_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/seeds.jsonl')
