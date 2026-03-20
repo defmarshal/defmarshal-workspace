@@ -8854,6 +8854,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-therapygym:-evaluating-and-aligning-clinical-fidel.md",
       "type": "output",
       "title": "TherapyGym: Evaluating and Aligning Clinical Fidelity and Safety in Therapy Chatbots"
+    },
+    {
+      "id": "18051a67-5687-4512-b416-3e34d9198290",
+      "type": "seed",
+      "title": "How Confident Is the First Token? An Uncertainty-Calibrated Prompt Optimization Framework for Large Language Model Classification and Understanding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-how-confident-is-the-first-token?-an-uncertainty-calibrated-prompt-optimization-.md",
+      "type": "content",
+      "title": "How Confident Is the First Token? An Uncertainty-Calibrated Prompt Optimization Framework for Large Language Model Classification and Understanding"
     }
   ],
   "edges": [
@@ -10775,6 +10785,11 @@
     {
       "from": "f2199326-335c-4064-8261-d8256262180c",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-therapygym:-evaluating-and-aligning-clinical-fidel.md",
+      "type": "produced"
+    },
+    {
+      "from": "18051a67-5687-4512-b416-3e34d9198290",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-20-how-confident-is-the-first-token?-an-uncertainty-calibrated-prompt-optimization-.md",
       "type": "produced"
     }
   ]
