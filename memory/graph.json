@@ -9109,6 +9109,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-retrieval-augmented-llm-agents:-learning-to-learn-from-experience.md",
       "type": "content",
       "title": "Retrieval-Augmented LLM Agents: Learning to Learn from Experience"
+    },
+    {
+      "id": "fa0eec77-291d-45f4-9d90-3a0c1bd99323",
+      "type": "seed",
+      "title": "Do Large Language Models Possess a Theory of Mind? A Comparative Evaluation Using the Strange Stories Paradigm"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-do-large-language-models-possess-a-theory-of-mind?.md",
+      "type": "output",
+      "title": "Do Large Language Models Possess a Theory of Mind? A Comparative Evaluation Using the Strange Stories Paradigm"
     }
   ],
   "edges": [
@@ -11165,6 +11175,11 @@
     {
       "from": "9e90ee58-0140-4e2c-bfe5-15c32f34a977",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-retrieval-augmented-llm-agents:-learning-to-learn-from-experience.md",
+      "type": "produced"
+    },
+    {
+      "from": "fa0eec77-291d-45f4-9d90-3a0c1bd99323",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-do-large-language-models-possess-a-theory-of-mind?.md",
       "type": "produced"
     }
   ]

@@ -42,26 +42,31 @@ declare -A INTENDED_EXPR
 declare -A INTENDED_TZ
 
 while IFS= read -r line; do
-  # Match bold job name: **job-name**
-  if [[ "$line" =~ \*\*([^\*]+)\*\* ]]; then
+  # Match bold job name in numbered list: **job-name**
+  if [[ "$line" =~ ^[[:space:]]*[0-9]*[.][[:space:]]*\*\*([^*]+)\*\* ]]; then
     job="${BASH_REMATCH[1]}"
-    # Read ahead to get schedule line and possibly tz line
-    schedule_line=""
-    tz=""
-    read -r schedule_line
+    # Read the next line which should be the schedule line
+    if ! read -r schedule_line; then
+      log "ERROR: Unexpected end of file after job $job"
+      break
+    fi
+    # Extract cron expression from backticks
     if [[ "$schedule_line" =~ \`([^\`]+)\` ]]; then
       INTENDED_EXPR["$job"]="${BASH_REMATCH[1]}"
+    else
+      log "WARN: No cron expression found in schedule line for $job: $schedule_line"
+      INTENDED_EXPR["$job"]=""
     fi
-    read -r tz_line
-    if [[ "$tz_line" =~ Asia/([A-Za-z_]+) ]]; then
-      INTENDED_TZ["$job"]="Asia/${BASH_REMATCH[1]}"
-    elif [[ "$tz_line" =~ UTC ]]; then
+    # Determine timezone from schedule line (if present)
+    if [[ "$schedule_line" =~ UTC ]]; then
       INTENDED_TZ["$job"]="UTC"
+    elif [[ "$schedule_line" =~ Asia/([A-Za-z_]+) ]]; then
+      INTENDED_TZ["$job"]="Asia/${BASH_REMATCH[1]}"
     else
       INTENDED_TZ["$job"]="Asia/Bangkok"  # default
     fi
   fi
-done < <(grep -n '^\s*[0-9]*\.\s*\*\*' /home/ubuntu/.openclaw/workspace/CRON_JOBS.md | cut -d: -f2-)
+done < /home/ubuntu/.openclaw/workspace/CRON_JOBS.md
 
 MISMATCHES=0
 CORRECTED=0
