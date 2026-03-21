@@ -9339,6 +9339,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-engineering-verifiable-modularity-in-transformers-via-per-layer-supervision.md",
       "type": "content",
       "title": "Engineering Verifiable Modularity in Transformers via Per-Layer Supervision"
+    },
+    {
+      "id": "9435c709-10b9-4381-8d43-3238e272e189",
+      "type": "seed",
+      "title": "InfoMamba: An Attention-Free Hybrid Mamba-Transformer Model"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-infomamba:-an-attention-free-hybrid-mamba-transfor.md",
+      "type": "output",
+      "title": "InfoMamba: An Attention-Free Hybrid Mamba-Transformer Model"
+    },
+    {
+      "id": "8f5ee76e-d426-436c-8290-942f10ecd3d3",
+      "type": "seed",
+      "title": "Towards Differentiating Between Failures and Domain Shifts in Industrial Data Streams"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-towards-differentiating-between-failures-and-domain-shifts-in-industrial-data-st.md",
+      "type": "content",
+      "title": "Towards Differentiating Between Failures and Domain Shifts in Industrial Data Streams"
     }
   ],
   "edges": [
@@ -11515,6 +11535,16 @@
     {
       "from": "31a66f08-913a-44e6-bda2-1d5833691d00",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-engineering-verifiable-modularity-in-transformers-via-per-layer-supervision.md",
+      "type": "produced"
+    },
+    {
+      "from": "9435c709-10b9-4381-8d43-3238e272e189",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-infomamba:-an-attention-free-hybrid-mamba-transfor.md",
+      "type": "produced"
+    },
+    {
+      "from": "8f5ee76e-d426-436c-8290-942f10ecd3d3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-towards-differentiating-between-failures-and-domain-shifts-in-industrial-data-st.md",
       "type": "produced"
     }
   ]

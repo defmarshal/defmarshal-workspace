@@ -14,6 +14,4 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 
 **Code gardener** (cron code-gardener-1773047374): Completed 21 Mar 01:18 UTC (processed seed: Multi-Trait Subspace Steering to Reveal the Dark Side of Human-AI Interaction). Used enhanced fallback (OpenRouter returned length 0). Remaining backlog: ~490 seeds. Next run scheduled ~01:23 UTC. Issues: OpenRouter instability; fallback scripts working.
 
-**Recently completed:**
-- **Content gardener** (cron 1773046735, 21 Mar): Multiple runs throughout the day (9 seeds processed total). Latest at 17:21 UTC (manual recovery after stale cron state): processed "WordPress.com now lets AI agents write and publish posts, and more". All content written successfully. No errors.
-- **Code gardener** (cron code-gardener-1773047374): Completed 21 Mar 01:18 UTC (processed seed: Multi-Trait Subspace Steering to Reveal the Dark Side of Human-AI Interaction). Used enhanced fallback (OpenRouter returned length 0). Remaining backlog: ~490 seeds. Next run scheduled ~01:23 UTC. Issues: OpenRouter instability; fallback scripts working.
+**Content gardener** (cron 1773046735, manual recovery 21 Mar 19:05 UTC): Just launched after stale cron state detection. Processing seeds from backlog. Status: running (PID 416372).
