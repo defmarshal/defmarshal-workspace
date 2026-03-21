@@ -9209,6 +9209,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-beyond-accuracy:-an-explainability-driven-analysis.md",
       "type": "output",
       "title": "Beyond Accuracy: An Explainability-Driven Analysis of Harmful Content Detection"
+    },
+    {
+      "id": "06f477e8-de9b-48cd-85f7-22c45261d923",
+      "type": "seed",
+      "title": "MineDraft: A Framework for Batch Parallel Speculative Decoding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/minedraft_-a-framework-for-batch-parallel-speculat.py",
+      "type": "app",
+      "title": "MineDraft: A Framework for Batch Parallel Speculative Decoding"
     }
   ],
   "edges": [
@@ -11320,6 +11330,11 @@
     {
       "from": "b265dab3-6e02-41dc-88dc-7aa820e5abcc",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-beyond-accuracy:-an-explainability-driven-analysis.md",
+      "type": "produced"
+    },
+    {
+      "from": "06f477e8-de9b-48cd-85f7-22c45261d923",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/minedraft_-a-framework-for-batch-parallel-speculat.py",
       "type": "produced"
     }
   ]

@@ -365,5 +365,7 @@
   "Sweep/txn-email03-playstation-com": "Label_372",
   "Sweep/email02-account-sony-com": "Label_373",
   "Sweep/higo-id": "Label_374",
-  "Sweep/stripe-com": "Label_375"
+  "Sweep/stripe-com": "Label_375",
+  "Sweep/karir-com": "Label_376",
+  "Sweep/studiolab-sagemaker-aws": "Label_377"
 }
