@@ -47,10 +47,35 @@ PYEOF
 get_last_user_message() {
   local session_file="$1"
   python3 - "$session_file" <<'PYEOF'
-import json, sys
+import json, sys, re
 fname = sys.argv[1]
 last_msg = None
 last_ts = None
+def iso_to_ts(s):
+    # Convert ISO 8601 to float timestamp; return 0 if invalid
+    try:
+        # Handle both string and numeric timestamps
+        if isinstance(s, (int, float)):
+            return float(s)
+        if not s:
+            return 0.0
+        # Parse ISO string like "2026-03-15T14:41:19.877Z"
+        # Remove Z and split
+        s = s.replace('Z', '')
+        if 'T' in s:
+            date_part, time_part = s.split('T', 1)
+            y, m, d = date_part.split('-')
+            h, mi, sec = time_part.split(':', 2)
+            s_val = float(sec) if '.' not in sec else float(sec)
+            # Build timestamp (rough but consistent)
+            import datetime
+            dt = datetime.datetime(int(y), int(m), int(d), int(h), int(mi), int(sec.split('.')[0]), 
+                                  int(sec.split('.')[1].ljust(6, '0')[:6]) if '.' in sec else 0)
+            return dt.timestamp()
+    except:
+        return 0.0
+    return 0.0
+
 try:
     with open(fname) as f:
         for line in f:
@@ -62,7 +87,8 @@ try:
             except:
                 continue
             if obj.get('type') == 'message' and obj.get('message', {}).get('role') == 'user':
-                ts = obj.get('timestamp', 0)
+                raw_ts = obj.get('timestamp', 0)
+                ts = iso_to_ts(raw_ts)
                 if last_ts is None or ts > last_ts:
                     last_ts = ts
                     content = obj['message'].get('content', '')

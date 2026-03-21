@@ -9289,6 +9289,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/why-scientists-can__8217_t-get-a-laugh.py",
       "type": "app",
       "title": "Why scientists can&#8217;t get a laugh"
+    },
+    {
+      "id": "11d750a2-0efa-449a-ac3b-2af4d718b7ce",
+      "type": "seed",
+      "title": "A French Navy officer accidentally leaked the location of an aircraft carrier by logging his run on Strava"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
+      "type": "content",
+      "title": "A French Navy officer accidentally leaked the location of an aircraft carrier by logging his run on Strava"
     }
   ],
   "edges": [
@@ -11440,6 +11450,11 @@
     {
       "from": "41c52f52-3eda-4a0f-a902-78b79f91c5b4",
       "to": "/home/ubuntu/.openclaw/workspace/apps/why-scientists-can__8217_t-get-a-laugh.py",
+      "type": "produced"
+    },
+    {
+      "from": "11d750a2-0efa-449a-ac3b-2af4d718b7ce",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
       "type": "produced"
     }
   ]
