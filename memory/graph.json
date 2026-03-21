@@ -9269,6 +9269,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/amid-legal-turmoil_-kalshi-is-temporarily-banned-i.py",
       "type": "app",
       "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
+    },
+    {
+      "id": "a7eeef6e-c58e-44b4-ae2d-ff57d9a0dd4a",
+      "type": "seed",
+      "title": "Pinterest CEO calls on governments to ban social media for users under 16"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-pinterest-ceo-calls-on-governments-to-ban-social-m.md",
+      "type": "output",
+      "title": "Pinterest CEO calls on governments to ban social media for users under 16"
+    },
+    {
+      "id": "41c52f52-3eda-4a0f-a902-78b79f91c5b4",
+      "type": "seed",
+      "title": "Why scientists can&#8217;t get a laugh"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/why-scientists-can__8217_t-get-a-laugh.py",
+      "type": "app",
+      "title": "Why scientists can&#8217;t get a laugh"
     }
   ],
   "edges": [
@@ -11410,6 +11430,16 @@
     {
       "from": "03ac5c45-5543-4031-ae49-96554b700c91",
       "to": "/home/ubuntu/.openclaw/workspace/apps/amid-legal-turmoil_-kalshi-is-temporarily-banned-i.py",
+      "type": "produced"
+    },
+    {
+      "from": "a7eeef6e-c58e-44b4-ae2d-ff57d9a0dd4a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-pinterest-ceo-calls-on-governments-to-ban-social-m.md",
+      "type": "produced"
+    },
+    {
+      "from": "41c52f52-3eda-4a0f-a902-78b79f91c5b4",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/why-scientists-can__8217_t-get-a-laugh.py",
       "type": "produced"
     }
   ]
