@@ -9154,6 +9154,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-agentic-framework-for-political-biography-extraction.md",
       "type": "content",
       "title": "Agentic Framework for Political Biography Extraction"
+    },
+    {
+      "id": "a749224d-46dd-4f2b-8b35-9ec5cba502ac",
+      "type": "seed",
+      "title": "Controllable Evidence Selection in Retrieval-Augmented Question Answering via Deterministic Utility Gating"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-controllable-evidence-selection-in-retrieval-augme.md",
+      "type": "output",
+      "title": "Controllable Evidence Selection in Retrieval-Augmented Question Answering via Deterministic Utility Gating"
+    },
+    {
+      "id": "ebd40df1-3440-4fc2-af98-a3513bff12f7",
+      "type": "seed",
+      "title": "DynaRAG: Bridging Static and Dynamic Knowledge in Retrieval-Augmented Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/dynarag_-bridging-static-and-dynamic-knowledge-in-.py",
+      "type": "app",
+      "title": "DynaRAG: Bridging Static and Dynamic Knowledge in Retrieval-Augmented Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-dynarag:-bridging-static-and-dynamic-knowledge-in-retrieval-augmented-generation.md",
+      "type": "content",
+      "title": "DynaRAG: Bridging Static and Dynamic Knowledge in Retrieval-Augmented Generation"
     }
   ],
   "edges": [
@@ -11235,6 +11260,21 @@
     {
       "from": "de349769-150a-428b-8868-a1fdd4ffec61",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-agentic-framework-for-political-biography-extraction.md",
+      "type": "produced"
+    },
+    {
+      "from": "a749224d-46dd-4f2b-8b35-9ec5cba502ac",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-controllable-evidence-selection-in-retrieval-augme.md",
+      "type": "produced"
+    },
+    {
+      "from": "ebd40df1-3440-4fc2-af98-a3513bff12f7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/dynarag_-bridging-static-and-dynamic-knowledge-in-.py",
+      "type": "produced"
+    },
+    {
+      "from": "ebd40df1-3440-4fc2-af98-a3513bff12f7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-dynarag:-bridging-static-and-dynamic-knowledge-in-retrieval-augmented-generation.md",
       "type": "produced"
     }
   ]
