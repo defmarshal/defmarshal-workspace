@@ -9084,6 +9084,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-access-controlled-website-interaction-for-agentic-.md",
       "type": "output",
       "title": "Access Controlled Website Interaction for Agentic AI with Delegated Critical Tasks"
+    },
+    {
+      "id": "7d7250a3-3e78-426b-9341-70751d29b852",
+      "type": "seed",
+      "title": "A Computationally Efficient Learning of Artificial Intelligence System Reliability Considering Error Propagation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-a-computationally-efficient-learning-of-artificial.md",
+      "type": "output",
+      "title": "A Computationally Efficient Learning of Artificial Intelligence System Reliability Considering Error Propagation"
+    },
+    {
+      "id": "9e90ee58-0140-4e2c-bfe5-15c32f34a977",
+      "type": "seed",
+      "title": "Retrieval-Augmented LLM Agents: Learning to Learn from Experience"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/retrieval-augmented-llm-agents_-learning-to-learn-.py",
+      "type": "app",
+      "title": "Retrieval-Augmented LLM Agents: Learning to Learn from Experience"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-retrieval-augmented-llm-agents:-learning-to-learn-from-experience.md",
+      "type": "content",
+      "title": "Retrieval-Augmented LLM Agents: Learning to Learn from Experience"
     }
   ],
   "edges": [
@@ -11125,6 +11150,21 @@
     {
       "from": "d0bb3a08-29f1-4976-8c97-a00cad9b92c1",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-access-controlled-website-interaction-for-agentic-.md",
+      "type": "produced"
+    },
+    {
+      "from": "7d7250a3-3e78-426b-9341-70751d29b852",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-a-computationally-efficient-learning-of-artificial.md",
+      "type": "produced"
+    },
+    {
+      "from": "9e90ee58-0140-4e2c-bfe5-15c32f34a977",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/retrieval-augmented-llm-agents_-learning-to-learn-.py",
+      "type": "produced"
+    },
+    {
+      "from": "9e90ee58-0140-4e2c-bfe5-15c32f34a977",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-retrieval-augmented-llm-agents:-learning-to-learn-from-experience.md",
       "type": "produced"
     }
   ]
