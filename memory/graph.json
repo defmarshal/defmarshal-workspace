@@ -9299,6 +9299,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
       "type": "content",
       "title": "A French Navy officer accidentally leaked the location of an aircraft carrier by logging his run on Strava"
+    },
+    {
+      "id": "4587b36b-2fa9-4c7c-8c21-5cf51af995e7",
+      "type": "seed",
+      "title": "WordPress.com now lets AI agents write and publish posts, and more"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-wordpress.com-now-lets-ai-agents-write-and-publish-posts,-and-more.md",
+      "type": "content",
+      "title": "WordPress.com now lets AI agents write and publish posts, and more"
+    },
+    {
+      "id": "97c05207-e57c-4393-92bf-d8e8c2155dae",
+      "type": "seed",
+      "title": "Jeff Bezos&#8217; Blue Origin enters the space data center game"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos__8217_-blue-origin-enters-the-space-dat.py",
+      "type": "app",
+      "title": "Jeff Bezos&#8217; Blue Origin enters the space data center game"
     }
   ],
   "edges": [
@@ -11455,6 +11475,16 @@
     {
       "from": "11d750a2-0efa-449a-ac3b-2af4d718b7ce",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
+      "type": "produced"
+    },
+    {
+      "from": "4587b36b-2fa9-4c7c-8c21-5cf51af995e7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-wordpress.com-now-lets-ai-agents-write-and-publish-posts,-and-more.md",
+      "type": "produced"
+    },
+    {
+      "from": "97c05207-e57c-4393-92bf-d8e8c2155dae",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos__8217_-blue-origin-enters-the-space-dat.py",
       "type": "produced"
     }
   ]
