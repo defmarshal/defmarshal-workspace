@@ -9359,6 +9359,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-towards-differentiating-between-failures-and-domain-shifts-in-industrial-data-st.md",
       "type": "content",
       "title": "Towards Differentiating Between Failures and Domain Shifts in Industrial Data Streams"
+    },
+    {
+      "id": "2cc8bfb7-a80a-4473-b502-38fbaa670459",
+      "type": "seed",
+      "title": "Taming Epilepsy: Mean Field Control of Whole-Brain Dynamics"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/taming-epilepsy_-mean-field-control-of-whole-brain.py",
+      "type": "app",
+      "title": "Taming Epilepsy: Mean Field Control of Whole-Brain Dynamics"
     }
   ],
   "edges": [
@@ -11545,6 +11555,11 @@
     {
       "from": "8f5ee76e-d426-436c-8290-942f10ecd3d3",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-towards-differentiating-between-failures-and-domain-shifts-in-industrial-data-st.md",
+      "type": "produced"
+    },
+    {
+      "from": "2cc8bfb7-a80a-4473-b502-38fbaa670459",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/taming-epilepsy_-mean-field-control-of-whole-brain.py",
       "type": "produced"
     }
   ]
