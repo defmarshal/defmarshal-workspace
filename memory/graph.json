@@ -9319,6 +9319,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos__8217_-blue-origin-enters-the-space-dat.py",
       "type": "app",
       "title": "Jeff Bezos&#8217; Blue Origin enters the space data center game"
+    },
+    {
+      "id": "de5d73b3-afcb-4ac0-8a37-6ea4dd686a11",
+      "type": "seed",
+      "title": "Frayed RoPE and Long Inputs: A Geometric Perspective"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-frayed-rope-and-long-inputs:-a-geometric-perspecti.md",
+      "type": "output",
+      "title": "Frayed RoPE and Long Inputs: A Geometric Perspective"
+    },
+    {
+      "id": "31a66f08-913a-44e6-bda2-1d5833691d00",
+      "type": "seed",
+      "title": "Engineering Verifiable Modularity in Transformers via Per-Layer Supervision"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-engineering-verifiable-modularity-in-transformers-via-per-layer-supervision.md",
+      "type": "content",
+      "title": "Engineering Verifiable Modularity in Transformers via Per-Layer Supervision"
     }
   ],
   "edges": [
@@ -11485,6 +11505,16 @@
     {
       "from": "97c05207-e57c-4393-92bf-d8e8c2155dae",
       "to": "/home/ubuntu/.openclaw/workspace/apps/jeff-bezos__8217_-blue-origin-enters-the-space-dat.py",
+      "type": "produced"
+    },
+    {
+      "from": "de5d73b3-afcb-4ac0-8a37-6ea4dd686a11",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-frayed-rope-and-long-inputs:-a-geometric-perspecti.md",
+      "type": "produced"
+    },
+    {
+      "from": "31a66f08-913a-44e6-bda2-1d5833691d00",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-engineering-verifiable-modularity-in-transformers-via-per-layer-supervision.md",
       "type": "produced"
     }
   ]
