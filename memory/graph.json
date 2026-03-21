@@ -9199,6 +9199,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/real-time-trustworthiness-scoring-for-llm-structur.py",
       "type": "app",
       "title": "Real-Time Trustworthiness Scoring for LLM Structured Outputs and Data Extraction"
+    },
+    {
+      "id": "b265dab3-6e02-41dc-88dc-7aa820e5abcc",
+      "type": "seed",
+      "title": "Beyond Accuracy: An Explainability-Driven Analysis of Harmful Content Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-beyond-accuracy:-an-explainability-driven-analysis.md",
+      "type": "output",
+      "title": "Beyond Accuracy: An Explainability-Driven Analysis of Harmful Content Detection"
     }
   ],
   "edges": [
@@ -11305,6 +11315,11 @@
     {
       "from": "c05fcf0d-93a7-4a2f-9119-8537c75bc89a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/real-time-trustworthiness-scoring-for-llm-structur.py",
+      "type": "produced"
+    },
+    {
+      "from": "b265dab3-6e02-41dc-88dc-7aa820e5abcc",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-beyond-accuracy:-an-explainability-driven-analysis.md",
       "type": "produced"
     }
   ]
