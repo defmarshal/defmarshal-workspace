@@ -9004,6 +9004,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-mst-direct:-matching-via-sinkhorn-transport-for-mu.md",
       "type": "output",
       "title": "MST-Direct: Matching via Sinkhorn Transport for Multivariate Geostatistical Simulation with Complex Non-Linear Dependencies"
+    },
+    {
+      "id": "0b51db2a-ecc1-49ed-85d1-dccda2592543",
+      "type": "seed",
+      "title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-deaf:-a-benchmark-for-diagnostic-evaluation-of-acoustic-faithfulness-in-audio-la.md",
+      "type": "content",
+      "title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models"
     }
   ],
   "edges": [
@@ -11005,6 +11015,11 @@
     {
       "from": "865dd4dd-e5d4-4a12-9d01-41665cdfccd3",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-mst-direct:-matching-via-sinkhorn-transport-for-mu.md",
+      "type": "produced"
+    },
+    {
+      "from": "0b51db2a-ecc1-49ed-85d1-dccda2592543",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-deaf:-a-benchmark-for-diagnostic-evaluation-of-acoustic-faithfulness-in-audio-la.md",
       "type": "produced"
     }
   ]
