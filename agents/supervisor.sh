@@ -34,10 +34,10 @@ if ! timeout 15 openclaw gateway status &>/dev/null; then
   alert "OpenClaw gateway appears down"
 fi
 
-# 3. Memory reindex needed
-if ! timeout 10 ./quick memory-reindex-check &>/dev/null; then
-  alert "Memory reindex recommended (auto-reindex disabled; run manually via quick memory-reindex)"
-fi
+# 3. Memory reindex needed (disabled - using FTS-only mode)
+# if ! timeout 10 ./quick memory-reindex-check &>/dev/null; then
+#   alert "Memory reindex recommended (auto-reindex disabled; run manually via quick memory-reindex)"
+# fi
 
 # 4. Disk usage (threshold 90%)
 USAGE=$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')

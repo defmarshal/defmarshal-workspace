@@ -9074,6 +9074,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/teachingcoach_-a-fine-tuned-scaffolding-chatbot-fo.py",
       "type": "app",
       "title": "TeachingCoach: A Fine-Tuned Scaffolding Chatbot for Instructional Guidance to Instructors"
+    },
+    {
+      "id": "d0bb3a08-29f1-4976-8c97-a00cad9b92c1",
+      "type": "seed",
+      "title": "Access Controlled Website Interaction for Agentic AI with Delegated Critical Tasks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-access-controlled-website-interaction-for-agentic-.md",
+      "type": "output",
+      "title": "Access Controlled Website Interaction for Agentic AI with Delegated Critical Tasks"
     }
   ],
   "edges": [
@@ -11110,6 +11120,11 @@
     {
       "from": "f947456d-fff1-46b9-8e36-c2a4a9cf95ad",
       "to": "/home/ubuntu/.openclaw/workspace/apps/teachingcoach_-a-fine-tuned-scaffolding-chatbot-fo.py",
+      "type": "produced"
+    },
+    {
+      "from": "d0bb3a08-29f1-4976-8c97-a00cad9b92c1",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-access-controlled-website-interaction-for-agentic-.md",
       "type": "produced"
     }
   ]
