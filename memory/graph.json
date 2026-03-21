@@ -9179,6 +9179,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-dynarag:-bridging-static-and-dynamic-knowledge-in-retrieval-augmented-generation.md",
       "type": "content",
       "title": "DynaRAG: Bridging Static and Dynamic Knowledge in Retrieval-Augmented Generation"
+    },
+    {
+      "id": "62ef1408-2bc6-4058-b67b-b0fa6369e1a1",
+      "type": "seed",
+      "title": "Learned but Not Expressed: Capability-Expression Dissociation in Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-learned-but-not-expressed:-capability-expression-d.md",
+      "type": "output",
+      "title": "Learned but Not Expressed: Capability-Expression Dissociation in Large Language Models"
+    },
+    {
+      "id": "c05fcf0d-93a7-4a2f-9119-8537c75bc89a",
+      "type": "seed",
+      "title": "Real-Time Trustworthiness Scoring for LLM Structured Outputs and Data Extraction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/real-time-trustworthiness-scoring-for-llm-structur.py",
+      "type": "app",
+      "title": "Real-Time Trustworthiness Scoring for LLM Structured Outputs and Data Extraction"
     }
   ],
   "edges": [
@@ -11275,6 +11295,16 @@
     {
       "from": "ebd40df1-3440-4fc2-af98-a3513bff12f7",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-dynarag:-bridging-static-and-dynamic-knowledge-in-retrieval-augmented-generation.md",
+      "type": "produced"
+    },
+    {
+      "from": "62ef1408-2bc6-4058-b67b-b0fa6369e1a1",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-learned-but-not-expressed:-capability-expression-d.md",
+      "type": "produced"
+    },
+    {
+      "from": "c05fcf0d-93a7-4a2f-9119-8537c75bc89a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/real-time-trustworthiness-scoring-for-llm-structur.py",
       "type": "produced"
     }
   ]
