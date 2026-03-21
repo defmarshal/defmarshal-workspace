@@ -9239,6 +9239,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-elon-musk-misled-twitter-investors-while-trying-to-get-out-of-acquisition,-jury-.md",
       "type": "content",
       "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
+    },
+    {
+      "id": "c81ea8e1-a887-4e7b-b668-35862db9a477",
+      "type": "seed",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-microsoft-rolls-back-some-of-its-copilot-ai-bloat-.md",
+      "type": "output",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "24a30149-b1c4-4ccf-9382-6bc6f09c41f5",
+      "type": "seed",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,-and-a\u00a0$1-trillion\u00a0bet.md",
+      "type": "content",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
+    },
+    {
+      "id": "03ac5c45-5543-4031-ae49-96554b700c91",
+      "type": "seed",
+      "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/amid-legal-turmoil_-kalshi-is-temporarily-banned-i.py",
+      "type": "app",
+      "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
     }
   ],
   "edges": [
@@ -11365,6 +11395,21 @@
     {
       "from": "c0c1bb45-056c-406c-81e9-f37c77706424",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-elon-musk-misled-twitter-investors-while-trying-to-get-out-of-acquisition,-jury-.md",
+      "type": "produced"
+    },
+    {
+      "from": "c81ea8e1-a887-4e7b-b668-35862db9a477",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-microsoft-rolls-back-some-of-its-copilot-ai-bloat-.md",
+      "type": "produced"
+    },
+    {
+      "from": "24a30149-b1c4-4ccf-9382-6bc6f09c41f5",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,-and-a\u00a0$1-trillion\u00a0bet.md",
+      "type": "produced"
+    },
+    {
+      "from": "03ac5c45-5543-4031-ae49-96554b700c91",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/amid-legal-turmoil_-kalshi-is-temporarily-banned-i.py",
       "type": "produced"
     }
   ]

@@ -6,7 +6,7 @@ System status: Stable. Disk usage ~82%. Nyepi holiday period active (Mar 18–24
 
 Agent Manager: Running normally via cron. Maintenance checks remain active.
 
-**Email Sweep**: Another hang incident (Mar 21 01:15–01:17 UTC). Process labeled ~100+ emails then stopped without "Finished". Process died; OpenClaw session remains stale. Root cause: unresponsive curl calls (no timeouts). **FIXED**: Added curl timeouts (`--connect-timeout 10`, `--max-time 60`) and subprocess timeout (70s) with error handling. Also added similar protections to label creation and apply_label. Monitor next run (02:09 UTC cron) for stability. Concurrency guard still recommended.
+**Email Sweep**: ✅ Fix confirmed working! Mar 21 12:14 UTC run completed successfully with no hangs. Processed 1 page, labeling ~100+ emails across 42+ Sweep categories. The timeout changes (curl 10s connect / 60s max, 70s subprocess) resolved the instability. Monitoring continues but stability looks good.
 
 **Backlog:** 810 unprocessed seeds remaining in `memory/seeds.jsonl` (1152 total, 342 processed). At 1 seed per run, clearing backlog would take ~33 days at hourly frequency. Consider increasing frequency or batch processing.
 
