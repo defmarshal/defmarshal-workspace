@@ -9054,6 +9054,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/don_t-vibe-code_-do-skele-code_-interactive-no-cod.py",
       "type": "app",
       "title": "Don't Vibe Code, Do Skele-Code: Interactive No-Code Notebooks for Subject Matter Experts to Build Lower-Cost Agentic Workflows"
+    },
+    {
+      "id": "7c5bf8a7-e6d6-4b0d-a3cc-d3a7e7d7ab53",
+      "type": "seed",
+      "title": "Efficient Dense Crowd Trajectory Prediction Via Dynamic Clustering"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-efficient-dense-crowd-trajectory-prediction-via-dy.md",
+      "type": "output",
+      "title": "Efficient Dense Crowd Trajectory Prediction Via Dynamic Clustering"
+    },
+    {
+      "id": "f947456d-fff1-46b9-8e36-c2a4a9cf95ad",
+      "type": "seed",
+      "title": "TeachingCoach: A Fine-Tuned Scaffolding Chatbot for Instructional Guidance to Instructors"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/teachingcoach_-a-fine-tuned-scaffolding-chatbot-fo.py",
+      "type": "app",
+      "title": "TeachingCoach: A Fine-Tuned Scaffolding Chatbot for Instructional Guidance to Instructors"
     }
   ],
   "edges": [
@@ -11080,6 +11100,16 @@
     {
       "from": "ed5631f1-c2e9-4861-8490-8b76d5975b83",
       "to": "/home/ubuntu/.openclaw/workspace/apps/don_t-vibe-code_-do-skele-code_-interactive-no-cod.py",
+      "type": "produced"
+    },
+    {
+      "from": "7c5bf8a7-e6d6-4b0d-a3cc-d3a7e7d7ab53",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-efficient-dense-crowd-trajectory-prediction-via-dy.md",
+      "type": "produced"
+    },
+    {
+      "from": "f947456d-fff1-46b9-8e36-c2a4a9cf95ad",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/teachingcoach_-a-fine-tuned-scaffolding-chatbot-fo.py",
       "type": "produced"
     }
   ]
