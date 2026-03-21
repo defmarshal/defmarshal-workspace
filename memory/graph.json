@@ -8994,6 +8994,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-taming-epilepsy:-mean-field-control-of-whole-brain.md",
       "type": "output",
       "title": "Taming Epilepsy: Mean Field Control of Whole-Brain Dynamics"
+    },
+    {
+      "id": "865dd4dd-e5d4-4a12-9d01-41665cdfccd3",
+      "type": "seed",
+      "title": "MST-Direct: Matching via Sinkhorn Transport for Multivariate Geostatistical Simulation with Complex Non-Linear Dependencies"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-mst-direct:-matching-via-sinkhorn-transport-for-mu.md",
+      "type": "output",
+      "title": "MST-Direct: Matching via Sinkhorn Transport for Multivariate Geostatistical Simulation with Complex Non-Linear Dependencies"
     }
   ],
   "edges": [
@@ -10990,6 +11000,11 @@
     {
       "from": "ecc257e8-8a0a-4604-854f-0628058bd099",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-20-taming-epilepsy:-mean-field-control-of-whole-brain.md",
+      "type": "produced"
+    },
+    {
+      "from": "865dd4dd-e5d4-4a12-9d01-41665cdfccd3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-mst-direct:-matching-via-sinkhorn-transport-for-mu.md",
       "type": "produced"
     }
   ]
