@@ -12,7 +12,7 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically. 63 memory files need indexing.
 
-**Code gardener** (cron code-gardener-1773047374): Not running (stale state). Last completed: 20 Mar 17:04 UTC (processed seed: Beyond Accuracy: An Explainability-Driven Analysis of Harmful Content Detection). Cron state `runningAtMs` remains set, blocking new runs. Agent-manager should clear it on next check (~30 min). Issues: 491 seeds remaining; many OpenRouter failures; fallback scripts used.
+**Code gardener** (cron code-gardener-1773047374): Completed 21 Mar 01:18 UTC (processed seed: Multi-Trait Subspace Steering to Reveal the Dark Side of Human-AI Interaction). Used enhanced fallback (OpenRouter returned length 0). Remaining backlog: ~490 seeds. Next run scheduled ~01:23 UTC. Issues: OpenRouter instability; fallback scripts working.
 
 **Recently completed:**
 - **Content gardener** (cron 1773046735, 19 Mar 20:02 UTC): Finished ~20:03 UTC. Processed 29 seeds into content posts (Mar 17–19). All content written successfully. No errors.

@@ -9014,6 +9014,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-deaf:-a-benchmark-for-diagnostic-evaluation-of-acoustic-faithfulness-in-audio-la.md",
       "type": "content",
       "title": "DEAF: A Benchmark for Diagnostic Evaluation of Acoustic Faithfulness in Audio Language Models"
+    },
+    {
+      "id": "92bc92d5-8b53-4fc4-af46-bd540b08f0e8",
+      "type": "seed",
+      "title": "Continually self-improving AI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-continually-self-improving-ai.md",
+      "type": "output",
+      "title": "Continually self-improving AI"
+    },
+    {
+      "id": "ccaed637-ea5d-4225-b529-1c592721d523",
+      "type": "seed",
+      "title": "Multi-Trait Subspace Steering to Reveal the Dark Side of Human-AI Interaction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/multi-trait-subspace-steering-to-reveal-the-dark-s.py",
+      "type": "app",
+      "title": "Multi-Trait Subspace Steering to Reveal the Dark Side of Human-AI Interaction"
     }
   ],
   "edges": [
@@ -11020,6 +11040,16 @@
     {
       "from": "0b51db2a-ecc1-49ed-85d1-dccda2592543",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-deaf:-a-benchmark-for-diagnostic-evaluation-of-acoustic-faithfulness-in-audio-la.md",
+      "type": "produced"
+    },
+    {
+      "from": "92bc92d5-8b53-4fc4-af46-bd540b08f0e8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-continually-self-improving-ai.md",
+      "type": "produced"
+    },
+    {
+      "from": "ccaed637-ea5d-4225-b529-1c592721d523",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/multi-trait-subspace-steering-to-reveal-the-dark-s.py",
       "type": "produced"
     }
   ]
