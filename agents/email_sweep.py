@@ -101,11 +101,18 @@ def get_label_for_sender(fr, subj):
         return "Sweep/Unknown"
 
 def fetch(url):
-    cmd = ['curl', '-s', '-f', '-H', f'Authorization: Bearer {API_KEY}', url]
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    if result.returncode != 0:
+    cmd = ['curl', '-s', '-f', '--connect-timeout', '10', '--max-time', '60', '-H', f'Authorization: Bearer {API_KEY}', url]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
+        if result.returncode != 0:
+            return None
+        return result.stdout
+    except subprocess.TimeoutExpired:
+        log(f"curl timeout: {url}")
         return None
-    return result.stdout
+    except Exception as e:
+        log(f"curl error: {e}")
+        return None
 
 def get_label_id(label_name):
     # Check cache
@@ -133,27 +140,39 @@ def get_label_id(label_name):
     # Create label
     create_url = "https://gateway.maton.ai/google-mail/gmail/v1/users/me/labels"
     payload = {"name": label_name, "labelListVisibility": "labelShow", "messageListVisibility": "show"}
-    cmd = ['curl', '-s', '-f', '-X', 'POST', '-H', 'Content-Type: application/json', '-H', f'Authorization: Bearer {API_KEY}', '-d', json.dumps(payload), create_url]
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    if result.returncode == 0:
-        try:
-            lbl = json.loads(result.stdout)
-            label_id = lbl.get('id')
-            if label_id:
-                cache[label_name] = label_id
-                with open(LABEL_CACHE_FILE, 'w') as f:
-                    json.dump(cache, f, indent=2)
-                return label_id
-        except Exception:
-            pass
+    cmd = ['curl', '-s', '-f', '--connect-timeout', '10', '--max-time', '60', '-X', 'POST', '-H', 'Content-Type: application/json', '-H', f'Authorization: Bearer {API_KEY}', '-d', json.dumps(payload), create_url]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
+        if result.returncode == 0:
+            try:
+                lbl = json.loads(result.stdout)
+                label_id = lbl.get('id')
+                if label_id:
+                    cache[label_name] = label_id
+                    with open(LABEL_CACHE_FILE, 'w') as f:
+                        json.dump(cache, f, indent=2)
+                    return label_id
+            except Exception:
+                pass
+    except subprocess.TimeoutExpired:
+        log(f"curl timeout creating label {label_name}")
+    except Exception as e:
+        log(f"curl exception creating label {label_name}: {e}")
     return None
 
 def apply_label(msg_id, label_id):
     url = f"https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages/{msg_id}/modify"
     payload = {"addLabelIds": [label_id], "removeLabelIds": ["UNREAD"]}
-    cmd = ['curl', '-s', '-f', '-X', 'POST', '-H', 'Content-Type: application/json', '-H', f'Authorization: Bearer {API_KEY}', '-d', json.dumps(payload), url]
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    return result.returncode == 0
+    cmd = ['curl', '-s', '-f', '--connect-timeout', '10', '--max-time', '60', '-X', 'POST', '-H', 'Content-Type: application/json', '-H', f'Authorization: Bearer {API_KEY}', '-d', json.dumps(payload), url]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
+        return result.returncode == 0
+    except subprocess.TimeoutExpired:
+        log(f"curl timeout applying label to {msg_id}")
+        return False
+    except Exception as e:
+        log(f"curl exception applying label to {msg_id}: {e}")
+        return False
 
 def process_batch(page_token):
     url = f"https://gateway.maton.ai/google-mail/gmail/v1/users/me/messages?q=is:unread&maxResults={BATCH_SIZE}"
