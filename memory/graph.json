@@ -9129,6 +9129,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/therapygym_-evaluating-and-aligning-clinical-fidel.py",
       "type": "app",
       "title": "TherapyGym: Evaluating and Aligning Clinical Fidelity and Safety in Therapy Chatbots"
+    },
+    {
+      "id": "0410e36c-dbaa-44a2-a01a-85bbb943009e",
+      "type": "seed",
+      "title": "How Confident Is the First Token? An Uncertainty-Calibrated Prompt Optimization Framework for Large Language Model Classification and Understanding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-how-confident-is-the-first-token?-an-uncertainty-c.md",
+      "type": "output",
+      "title": "How Confident Is the First Token? An Uncertainty-Calibrated Prompt Optimization Framework for Large Language Model Classification and Understanding"
+    },
+    {
+      "id": "de349769-150a-428b-8868-a1fdd4ffec61",
+      "type": "seed",
+      "title": "Agentic Framework for Political Biography Extraction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/agentic-framework-for-political-biography-extracti.py",
+      "type": "app",
+      "title": "Agentic Framework for Political Biography Extraction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-agentic-framework-for-political-biography-extraction.md",
+      "type": "content",
+      "title": "Agentic Framework for Political Biography Extraction"
     }
   ],
   "edges": [
@@ -11195,6 +11220,21 @@
     {
       "from": "567bb0b6-51ae-4f1d-a62b-706e85e0dc09",
       "to": "/home/ubuntu/.openclaw/workspace/apps/therapygym_-evaluating-and-aligning-clinical-fidel.py",
+      "type": "produced"
+    },
+    {
+      "from": "0410e36c-dbaa-44a2-a01a-85bbb943009e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-how-confident-is-the-first-token?-an-uncertainty-c.md",
+      "type": "produced"
+    },
+    {
+      "from": "de349769-150a-428b-8868-a1fdd4ffec61",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/agentic-framework-for-political-biography-extracti.py",
+      "type": "produced"
+    },
+    {
+      "from": "de349769-150a-428b-8868-a1fdd4ffec61",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-agentic-framework-for-political-biography-extraction.md",
       "type": "produced"
     }
   ]
