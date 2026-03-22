@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-21 02:15 UTC**
+**Current active tasks - UPDATED 2026-03-22 08:15 UTC**
 
 System status: Stable. Disk usage ~82%. Nyepi holiday period active (Mar 18–24) — reduced agent activity expected.
 
@@ -8,10 +8,17 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 
 **Email Sweep**: ✅ Fix confirmed working! Mar 21 12:14 UTC run completed successfully with no hangs. Processed 1 page, labeling ~100+ emails across 42+ Sweep categories. The timeout changes (curl 10s connect / 60s max, 70s subprocess) resolved the instability. Monitoring continues but stability looks good.
 
-**Backlog:** 810 unprocessed seeds remaining in `memory/seeds.jsonl` (1152 total, 342 processed). At 1 seed per run, clearing backlog would take ~33 days at hourly frequency. Consider increasing frequency or batch processing.
+**Shared Seed Pool** (used by Research, Content, and Code Gardeners):
+- Total seeds: 1222
+- Processed seeds: 398
+- Remaining: 824
+At current hourly frequency per gardener, backlog will clear in ~35 days. Consider batch increases during Nyepi if throughput needs to accelerate.
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically. 63 memory files need indexing.
 
-**Code gardener** (cron code-gardener-1773047374): Running continuously throughout Mar 21 UTC. Current run started at 22:06 UTC. Processed seeds using enhanced fallback (OpenRouter returning length 0). Status: 395 seeds processed, 1607 apps generated. Remaining backlog: ~817 seeds (1212 total seeds - 395 processed). Process PID 438081 active. Enhanced fallback scripts working reliably despite OpenRouter instability.
+**Gardeners Status:**
+- **Research Gardener** (cron research-gardener-1773046574): Last run 00:15 UTC (processed "It's been 20 years since the first tweet"). Tavily API not set; using local synthesis. Reports: 456 total.
+- **Content Gardener** (cron content-gardener-XXXXX): Last seen Mar 21 23:02 UTC. Producing blog-style content with OpenRouter fallback. Content output: 779+ files.
+- **Code Gardener** (cron code-gardener-1773047374): Last seen Mar 21 19:08 UTC. Generating Python apps via enhanced fallback (OpenRouter instability). Apps count: ~1600+.
 
-**Content gardener** (cron 1773046735, manual recovery 21 Mar 19:05 UTC): Completed run - processed seed "Towards Differentiating Between Failures and Domain Shifts in Industrial Data Streams". Output written successfully. Cleared stale cron runningAtMs state.
+All gardeners operate on shared seed pool with cooperative allocation; no duplicate work (tracked in `memory/processed_seeds.jsonl`).

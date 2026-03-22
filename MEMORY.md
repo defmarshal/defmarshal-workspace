@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-16*
+*Last updated: 2026-03-22*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -44,6 +44,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - Meta-summary cron (14:08 UTC) confirmed system health: disk 82%, 19 APT updates, memory reindex pending, content-agent produced afternoon status noting security domain gap. ✓
   - Git janitor cleaned yesterday's agent outputs (9 files, 258 insertions) on 2026-03-18 00:30 UTC.
   - Disk usage stabilized at 82% after earlier cleanup; threshold 85% watch ongoing.
+  - **Gardeners System Status (2026-03-22):** Research Gardener ran at 00:15 UTC, processing "It's been 20 years since the first tweet" (Tavily API unavailable, local synthesis). Total processed seeds: 398/1222 across shared pool. Content Gardener last seen Mar 21 23:02 UTC; Code Gardener last seen Mar 21 19:08 UTC. All operating under Nyepi throttling. Report counts: research 456, content 779+, apps ~1600+.
 - Recent:
   - **Agent-Manager Stale Lock & Large File Push Blocker (2026-03-13):** Cron-triggered agent-manager stalled, leaving stale lock; discovery: `valhalla-jabodetabek/data/jabodetabek.osm.pbf` (1.6GB) tracked in Git, causing push rejections (GitHub 100MB limit). Recovered by removing lock, manually committing today's agent outputs, adding file to `.gitignore`, rewriting history with `git filter-branch`, and force-pushing. Large file purged from all 2799+ commits; repository clean. Added prevention: pre-push hook plan, Git LFS audit. Follow-up: monitor agent-manager stability.
   - **Memory index outage (2026-03-06 04:08 UTC):** main store dropped to 0 indexed files, breaking research-agent. Reindexed manually; research pipeline restored, March 6 report generated and deployed. Index now 43/43.
