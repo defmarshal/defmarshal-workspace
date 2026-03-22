@@ -9614,6 +9614,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-how-fusion-power-works-and-the-startups-pursuing-i.md",
       "type": "output",
       "title": "How fusion power works and the startups pursuing it"
+    },
+    {
+      "id": "0d989594-cf39-48a1-b314-959a8bc596bd",
+      "type": "seed",
+      "title": "An exclusive tour of Amazon&#8217;s Trainium lab, the chip that&#8217;s won over Anthropic, OpenAI, even Apple"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/an-exclusive-tour-of-amazon__8217_s-trainium-lab_-.py",
+      "type": "app",
+      "title": "An exclusive tour of Amazon&#8217;s Trainium lab, the chip that&#8217;s won over Anthropic, OpenAI, even Apple"
     }
   ],
   "edges": [
@@ -11930,6 +11940,11 @@
     {
       "from": "d4365f36-03fe-4ea6-abf8-0d0dc7167a2c",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-how-fusion-power-works-and-the-startups-pursuing-i.md",
+      "type": "produced"
+    },
+    {
+      "from": "0d989594-cf39-48a1-b314-959a8bc596bd",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/an-exclusive-tour-of-amazon__8217_s-trainium-lab_-.py",
       "type": "produced"
     }
   ]
