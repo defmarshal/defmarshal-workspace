@@ -9764,6 +9764,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-amid-legal-turmoil,-kalshi-is-temporarily-banned-in-nevada.md",
       "type": "content",
       "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
+    },
+    {
+      "id": "1ac0e787-c1fd-4fdc-804a-e277e1eb68d9",
+      "type": "seed",
+      "title": "Elon Musk unveils chip manufacturing plans for SpaceX and Tesla"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-unveils-chip-manufacturing-plans-for-spa.md",
+      "type": "output",
+      "title": "Elon Musk unveils chip manufacturing plans for SpaceX and Tesla"
+    },
+    {
+      "id": "546054b0-78b7-47db-b779-eb29ee7ce5df",
+      "type": "seed",
+      "title": "TechCrunch Mobility: Uber everywhere, all at once"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-uber-everywhere_-all-at-once.py",
+      "type": "app",
+      "title": "TechCrunch Mobility: Uber everywhere, all at once"
     }
   ],
   "edges": [
@@ -12155,6 +12175,16 @@
     {
       "from": "1a3ba46e-8439-4d9d-9092-520017385e0e",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-amid-legal-turmoil,-kalshi-is-temporarily-banned-in-nevada.md",
+      "type": "produced"
+    },
+    {
+      "from": "1ac0e787-c1fd-4fdc-804a-e277e1eb68d9",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-unveils-chip-manufacturing-plans-for-spa.md",
+      "type": "produced"
+    },
+    {
+      "from": "546054b0-78b7-47db-b779-eb29ee7ce5df",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-uber-everywhere_-all-at-once.py",
       "type": "produced"
     }
   ]
