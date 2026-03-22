@@ -9584,6 +9584,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/amid-legal-turmoil_-kalshi-is-temporarily-banned-i-1.py",
       "type": "app",
       "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
+    },
+    {
+      "id": "4712d058-cfd4-459e-8a05-c388e86e6806",
+      "type": "seed",
+      "title": "Delve accused of misleading customers with \u2018fake compliance\u2019"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-delve-accused-of-misleading-customers-with-\u2018fake-c.md",
+      "type": "output",
+      "title": "Delve accused of misleading customers with \u2018fake compliance\u2019"
     }
   ],
   "edges": [
@@ -11885,6 +11895,11 @@
     {
       "from": "9c8d9e25-b45b-4273-bc16-d08b7fecd434",
       "to": "/home/ubuntu/.openclaw/workspace/apps/amid-legal-turmoil_-kalshi-is-temporarily-banned-i-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "4712d058-cfd4-459e-8a05-c388e86e6806",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-delve-accused-of-misleading-customers-with-\u2018fake-c.md",
       "type": "produced"
     }
   ]
