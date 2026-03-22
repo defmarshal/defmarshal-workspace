@@ -32,10 +32,17 @@ for sealed in "$CAPSULE_DIR"/sealed-*.md; do
 
     # Send to Telegram
     content=$(cat "$opened")
+    # Extract letter part safely; avoid SIGPIPE from head
+    letter_part=$(echo "$content" | grep -A 9999 '## 💌 Letter' 2>/dev/null | head -60)
+    if [ -z "$letter_part" ]; then
+      letter_part="(Could not extract letter section — showing full capsule)^_^"
+      # Fallback: show entire content up to 60 lines
+      letter_part=$(echo "$content" | head -60)
+    fi
     msg="⏳ *Time Capsule Unlocked!*
 _Written ${written_date} — opened today, ${NOW}_
 
-$(echo "$content" | grep -A 9999 '## 💌 Letter' | head -60)"
+$letter_part"
 
     openclaw agent \
       --session-id "$TELEGRAM_SESSION_ID" \
@@ -51,7 +58,7 @@ log "Writing new capsule for $NOW..."
 DISK=$(df -h / | awk 'NR==2{print $3"/"$4" ("$5")"}')
 DISK_PCT=$(df / | awk 'NR==2{print $5}' | tr -d '%')
 GIT_COMMITS=$(git log --since="7 days ago" --oneline 2>/dev/null | wc -l | tr -d ' ')
-GIT_TOP=$(git log --since="7 days ago" --oneline 2>/dev/null | head -5)
+GIT_TOP=$(git log -n 5 --since="7 days ago" --oneline 2>/dev/null || echo "No commits this week")
 AGENTS_COUNT=$(openclaw cron list 2>/dev/null | grep -c '"enabled":true' || echo "?")
 TOKENS_WEEK=$(python3 -c "
 import os, json, glob, re
