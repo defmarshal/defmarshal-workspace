@@ -9734,6 +9734,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to.md",
       "type": "output",
       "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
+    },
+    {
+      "id": "8405619d-6fd7-4e01-be4e-d9c543f9df4c",
+      "type": "seed",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/microsoft-rolls-back-some-of-its-copilot-ai-bloat--1.py",
+      "type": "app",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
     }
   ],
   "edges": [
@@ -12110,6 +12120,11 @@
     {
       "from": "57050bea-c743-4f2d-bb3c-f47c4365cb35",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to.md",
+      "type": "produced"
+    },
+    {
+      "from": "8405619d-6fd7-4e01-be4e-d9c543f9df4c",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/microsoft-rolls-back-some-of-its-copilot-ai-bloat--1.py",
       "type": "produced"
     }
   ]
