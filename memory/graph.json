@@ -9754,6 +9754,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,.md",
       "type": "output",
       "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
+    },
+    {
+      "id": "1a3ba46e-8439-4d9d-9092-520017385e0e",
+      "type": "seed",
+      "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-amid-legal-turmoil,-kalshi-is-temporarily-banned-in-nevada.md",
+      "type": "content",
+      "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
     }
   ],
   "edges": [
@@ -12140,6 +12150,11 @@
     {
       "from": "022c7021-0151-4502-b5ec-053b84875831",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,.md",
+      "type": "produced"
+    },
+    {
+      "from": "1a3ba46e-8439-4d9d-9092-520017385e0e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-amid-legal-turmoil,-kalshi-is-temporarily-banned-in-nevada.md",
       "type": "produced"
     }
   ]
