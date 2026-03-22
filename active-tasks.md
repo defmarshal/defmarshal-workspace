@@ -6,7 +6,7 @@ System status: Stable. Disk usage ~82%. Nyepi holiday period active (Mar 18–24
 
 Agent Manager: Running normally via cron. Maintenance checks remain active.
 
-**Email Sweep**: ✅ Fix confirmed working! Mar 21 12:14 UTC run completed successfully with no hangs. Processed 1 page, labeling ~100+ emails across 42+ Sweep categories. The timeout changes (curl 10s connect / 60s max, 70s subprocess) resolved the instability. Monitoring continues but stability looks good.
+**Email Sweep**: ✅ Fix confirmed working! Mar 21 12:14 UTC run completed successfully. Currently running (cron-triggered 2026-03-22 21:06 UTC, BATCH_SIZE=100, PAGES_PER_RUN=1). Processed 1 page, labeling ~100+ emails across 42+ Sweep categories. The timeout changes (curl 10s connect / 60s max, 70s subprocess) resolved the instability. Stability looks good.
 
 **Shared Seed Pool** (used by Research, Content, and Code Gardeners):
 - Total seeds: 1222

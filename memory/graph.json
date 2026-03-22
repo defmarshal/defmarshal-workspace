@@ -9804,6 +9804,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-an-exclusive-tour-of-amazon&#8217;s-trainium-lab,-the-chip-that&#8217;s-won-over.md",
       "type": "content",
       "title": "An exclusive tour of Amazon&#8217;s Trainium lab, the chip that&#8217;s won over Anthropic, OpenAI, even Apple"
+    },
+    {
+      "id": "7aff05a0-0df7-49c0-811c-d2820da591de",
+      "type": "seed",
+      "title": "Are AI tokens the new signing bonus or just a cost of doing business?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-are-ai-tokens-the-new-signing-bonus-or-just-a-cost.md",
+      "type": "output",
+      "title": "Are AI tokens the new signing bonus or just a cost of doing business?"
+    },
+    {
+      "id": "b74ecd4e-97ea-414c-9d57-931bada33b24",
+      "type": "seed",
+      "title": "It\u2019s been 20 years since the first tweet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/it_s-been-20-years-since-the-first-tweet-1.py",
+      "type": "app",
+      "title": "It\u2019s been 20 years since the first tweet"
     }
   ],
   "edges": [
@@ -12215,6 +12235,16 @@
     {
       "from": "6a5a055f-e7d0-499e-a903-7c11eb417067",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-an-exclusive-tour-of-amazon&#8217;s-trainium-lab,-the-chip-that&#8217;s-won-over.md",
+      "type": "produced"
+    },
+    {
+      "from": "7aff05a0-0df7-49c0-811c-d2820da591de",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-are-ai-tokens-the-new-signing-bonus-or-just-a-cost.md",
+      "type": "produced"
+    },
+    {
+      "from": "b74ecd4e-97ea-414c-9d57-931bada33b24",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/it_s-been-20-years-since-the-first-tweet-1.py",
       "type": "produced"
     }
   ]

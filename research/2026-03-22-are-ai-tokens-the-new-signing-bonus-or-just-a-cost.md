@@ -1,8 +1,8 @@
 # Are AI tokens the new signing bonus or just a cost of doing business?
 
-**Seed ID:** 904dfac9-1934-4a8b-9bbe-25931ca3bd88  
+**Seed ID:** 7aff05a0-0df7-49c0-811c-d2820da591de  
 **Source:** rss:https://techcrunch.com/feed/  
-**Generated:** 2026-03-22 13:01:07 UTC
+**Generated:** 2026-03-22 21:02:39 UTC
 
 ## Summary
 
