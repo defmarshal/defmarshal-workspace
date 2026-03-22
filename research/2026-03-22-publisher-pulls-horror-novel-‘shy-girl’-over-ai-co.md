@@ -1,8 +1,8 @@
 # Publisher pulls horror novel ‘Shy Girl’ over AI concerns
 
-**Seed ID:** e45ea131-fc7d-4265-b622-f24a0dc6c993  
+**Seed ID:** 73ca5c68-e0bd-45ee-8255-290bfa54a73a  
 **Source:** rss:https://techcrunch.com/feed/  
-**Generated:** 2026-03-22 07:08:12 UTC
+**Generated:** 2026-03-22 13:05:53 UTC
 
 ## Summary
 

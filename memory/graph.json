@@ -9644,6 +9644,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-it\u2019s-been-20-years-since-the-first-tweet.md",
       "type": "output",
       "title": "It\u2019s been 20 years since the first tweet"
+    },
+    {
+      "id": "73ca5c68-e0bd-45ee-8255-290bfa54a73a",
+      "type": "seed",
+      "title": "Publisher pulls horror novel \u2018Shy Girl\u2019 over AI concerns"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-publisher-pulls-horror-novel-\u2018shy-girl\u2019-over-ai-co.md",
+      "type": "output",
+      "title": "Publisher pulls horror novel \u2018Shy Girl\u2019 over AI concerns"
+    },
+    {
+      "id": "46a1b2b0-24d5-4a90-972e-115600cd4420",
+      "type": "seed",
+      "title": "Delve accused of misleading customers with \u2018fake compliance\u2019"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-delve-accused-of-misleading-customers-with-\u2018fake-c.md",
+      "type": "output",
+      "title": "Delve accused of misleading customers with \u2018fake compliance\u2019"
     }
   ],
   "edges": [
@@ -11975,6 +11995,16 @@
     {
       "from": "211cf1aa-68a6-4214-bea7-89e6112f901a",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-it\u2019s-been-20-years-since-the-first-tweet.md",
+      "type": "produced"
+    },
+    {
+      "from": "73ca5c68-e0bd-45ee-8255-290bfa54a73a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-publisher-pulls-horror-novel-\u2018shy-girl\u2019-over-ai-co.md",
+      "type": "produced"
+    },
+    {
+      "from": "46a1b2b0-24d5-4a90-972e-115600cd4420",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-delve-accused-of-misleading-customers-with-\u2018fake-c.md",
       "type": "produced"
     }
   ]

@@ -1,8 +1,8 @@
 # Delve accused of misleading customers with ‘fake compliance’
 
-**Seed ID:** 4712d058-cfd4-459e-8a05-c388e86e6806  
+**Seed ID:** 46a1b2b0-24d5-4a90-972e-115600cd4420  
 **Source:** rss:https://techcrunch.com/feed/  
-**Generated:** 2026-03-22 12:02:22 UTC
+**Generated:** 2026-03-22 13:06:21 UTC
 
 ## Summary
 
