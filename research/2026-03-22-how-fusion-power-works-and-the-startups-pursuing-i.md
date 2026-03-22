@@ -1,8 +1,8 @@
 # How fusion power works and the startups pursuing it
 
-**Seed ID:** 28d9b860-a800-4757-870e-e6e3da583cca  
+**Seed ID:** d4365f36-03fe-4ea6-abf8-0d0dc7167a2c  
 **Source:** rss:https://techcrunch.com/feed/  
-**Generated:** 2026-03-22 08:03:41 UTC
+**Generated:** 2026-03-22 12:07:00 UTC
 
 ## Summary
 

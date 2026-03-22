@@ -9604,6 +9604,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-why-wall-street-wasn&#8217;t-won-over-by-nvidia&#8.md",
       "type": "output",
       "title": "Why Wall Street wasn&#8217;t won over by Nvidia&#8217;s big conference"
+    },
+    {
+      "id": "d4365f36-03fe-4ea6-abf8-0d0dc7167a2c",
+      "type": "seed",
+      "title": "How fusion power works and the startups pursuing it"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-how-fusion-power-works-and-the-startups-pursuing-i.md",
+      "type": "output",
+      "title": "How fusion power works and the startups pursuing it"
     }
   ],
   "edges": [
@@ -11915,6 +11925,11 @@
     {
       "from": "b394ea77-61dc-4295-bc6f-6815ed77feef",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-why-wall-street-wasn&#8217;t-won-over-by-nvidia&#8.md",
+      "type": "produced"
+    },
+    {
+      "from": "d4365f36-03fe-4ea6-abf8-0d0dc7167a2c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-how-fusion-power-works-and-the-startups-pursuing-i.md",
       "type": "produced"
     }
   ]
