@@ -9784,6 +9784,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-uber-everywhere_-all-at-once.py",
       "type": "app",
       "title": "TechCrunch Mobility: Uber everywhere, all at once"
+    },
+    {
+      "id": "ba69840c-0e03-4bbd-8591-37df5ec8a72b",
+      "type": "seed",
+      "title": "Delve accused of misleading customers with \u2018fake compliance\u2019"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/delve-accused-of-misleading-customers-with-_fake-c.py",
+      "type": "app",
+      "title": "Delve accused of misleading customers with \u2018fake compliance\u2019"
     }
   ],
   "edges": [
@@ -12185,6 +12195,11 @@
     {
       "from": "546054b0-78b7-47db-b779-eb29ee7ce5df",
       "to": "/home/ubuntu/.openclaw/workspace/apps/techcrunch-mobility_-uber-everywhere_-all-at-once.py",
+      "type": "produced"
+    },
+    {
+      "from": "ba69840c-0e03-4bbd-8591-37df5ec8a72b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/delve-accused-of-misleading-customers-with-_fake-c.py",
       "type": "produced"
     }
   ]
