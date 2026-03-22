@@ -9479,6 +9479,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-publisher-pulls-horror-novel-\u2018shy-girl\u2019-over-ai-concerns.md",
       "type": "content",
       "title": "Publisher pulls horror novel \u2018Shy Girl\u2019 over AI concerns"
+    },
+    {
+      "id": "62d5cf4f-d10b-4a38-b56a-340d90077a8f",
+      "type": "seed",
+      "title": "It\u2019s been 20 years since the first tweet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/it_s-been-20-years-since-the-first-tweet.py",
+      "type": "app",
+      "title": "It\u2019s been 20 years since the first tweet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-it\u2019s-been-20-years-since-the-first-tweet.md",
+      "type": "content",
+      "title": "It\u2019s been 20 years since the first tweet"
     }
   ],
   "edges": [
@@ -11725,6 +11740,16 @@
     {
       "from": "689f8fa3-0e86-496e-a986-831e72355bc9",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-publisher-pulls-horror-novel-\u2018shy-girl\u2019-over-ai-concerns.md",
+      "type": "produced"
+    },
+    {
+      "from": "62d5cf4f-d10b-4a38-b56a-340d90077a8f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/it_s-been-20-years-since-the-first-tweet.py",
+      "type": "produced"
+    },
+    {
+      "from": "62d5cf4f-d10b-4a38-b56a-340d90077a8f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-it\u2019s-been-20-years-since-the-first-tweet.md",
       "type": "produced"
     }
   ]
