@@ -17,8 +17,8 @@ At current hourly frequency per gardener, backlog will clear in ~33 days. Consid
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically. 63 memory files need indexing.
 
 **Gardeners Status:**
-- **Research Gardener** (cron research-gardener-1773046574): Last run 22 Mar 16:25 UTC (processed "What happened at Nvidia GTC: NemoClaw, Robot Olaf, and a $1 trillion bet"). Tavily API not set; using local synthesis. Reports: 456+ total. Backlog: 824/1222 seeds remaining (~35 days at current rate).
-- **Content Gardener** (cron content-gardener-1773046735): Last run 22 Mar 21:19 UTC (processed "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned"). Producing blog-style content with OpenRouter fallback. Content output: 783+ files (20 new today). Running normally during Nyepi period.
-- **Code Gardener** (cron code-gardener-1773047374): Last seen Mar 21 19:08 UTC. Generating Python apps via enhanced fallback (OpenRouter instability). Apps count: ~1600+.
+- **Research Gardener** (cron research-gardener-1773046574): Last run 22 Mar 23:03 UTC (processed "Publisher pulls horror novel ‘Shy Girl’ over AI concerns"). Tavily API not set; using local synthesis. Reports: 456+ total. Backlog: 789/1222 seeds remaining (~33 days at current rate).
+- **Content Gardener** (cron content-gardener-1773046735): Last successful run 22 Mar 20:09 UTC (content written). **Cron at 23:03 UTC failed** — API rate limit reached. No content produced in ~3 hours. Needs attention: OpenRouter quota or rate limit mitigation.
+- **Code Gardener** (cron code-gardener-1773047374): Last seen Mar 21 21:08 UTC. Generating Python apps via enhanced fallback (OpenRouter instability). Apps count: ~1600+.
 
 All gardeners operate on shared seed pool with cooperative allocation; no duplicate work (tracked in `memory/processed_seeds.jsonl`).
