@@ -9794,6 +9794,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/delve-accused-of-misleading-customers-with-_fake-c.py",
       "type": "app",
       "title": "Delve accused of misleading customers with \u2018fake compliance\u2019"
+    },
+    {
+      "id": "6a5a055f-e7d0-499e-a903-7c11eb417067",
+      "type": "seed",
+      "title": "An exclusive tour of Amazon&#8217;s Trainium lab, the chip that&#8217;s won over Anthropic, OpenAI, even Apple"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-an-exclusive-tour-of-amazon&#8217;s-trainium-lab,-the-chip-that&#8217;s-won-over.md",
+      "type": "content",
+      "title": "An exclusive tour of Amazon&#8217;s Trainium lab, the chip that&#8217;s won over Anthropic, OpenAI, even Apple"
     }
   ],
   "edges": [
@@ -12200,6 +12210,11 @@
     {
       "from": "ba69840c-0e03-4bbd-8591-37df5ec8a72b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/delve-accused-of-misleading-customers-with-_fake-c.py",
+      "type": "produced"
+    },
+    {
+      "from": "6a5a055f-e7d0-499e-a903-7c11eb417067",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-an-exclusive-tour-of-amazon&#8217;s-trainium-lab,-the-chip-that&#8217;s-won-over.md",
       "type": "produced"
     }
   ]
