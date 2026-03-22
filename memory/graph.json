@@ -9704,6 +9704,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to.md",
       "type": "output",
       "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
+    },
+    {
+      "id": "9cc5e5fe-7f0f-4c19-9349-2645f0b5b902",
+      "type": "seed",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-microsoft-rolls-back-some-of-its-copilot-ai-bloat-.md",
+      "type": "output",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "f9a452e2-e5b2-4cda-9993-6555ffcad9e7",
+      "type": "seed",
+      "title": "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned \u2014 a week after Trump declared the relationship kaput"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-new-court-filing-reveals-pentagon-told-anthropic-the-two-sides-were-nearly-align.md",
+      "type": "content",
+      "title": "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned \u2014 a week after Trump declared the relationship kaput"
     }
   ],
   "edges": [
@@ -12065,6 +12085,16 @@
     {
       "from": "fc0a1d82-1a0b-4639-970c-d7c2defb6d4a",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to.md",
+      "type": "produced"
+    },
+    {
+      "from": "9cc5e5fe-7f0f-4c19-9349-2645f0b5b902",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-microsoft-rolls-back-some-of-its-copilot-ai-bloat-.md",
+      "type": "produced"
+    },
+    {
+      "from": "f9a452e2-e5b2-4cda-9993-6555ffcad9e7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-new-court-filing-reveals-pentagon-told-anthropic-the-two-sides-were-nearly-align.md",
       "type": "produced"
     }
   ]
