@@ -9554,6 +9554,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to-get-out-of-acquisition,-jury-.md",
       "type": "content",
       "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
+    },
+    {
+      "id": "29971393-01de-4470-b3ad-bb49207180b5",
+      "type": "seed",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/microsoft-rolls-back-some-of-its-copilot-ai-bloat-.py",
+      "type": "app",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "6e8a70c7-333c-4f08-8fb4-66017e9a0cb4",
+      "type": "seed",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,.md",
+      "type": "output",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
     }
   ],
   "edges": [
@@ -11840,6 +11860,16 @@
     {
       "from": "67d33d7d-5de8-4881-8b69-32568fd7e354",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to-get-out-of-acquisition,-jury-.md",
+      "type": "produced"
+    },
+    {
+      "from": "29971393-01de-4470-b3ad-bb49207180b5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/microsoft-rolls-back-some-of-its-copilot-ai-bloat-.py",
+      "type": "produced"
+    },
+    {
+      "from": "6e8a70c7-333c-4f08-8fb4-66017e9a0cb4",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,.md",
       "type": "produced"
     }
   ]
