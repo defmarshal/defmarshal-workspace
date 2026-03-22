@@ -9694,6 +9694,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-new-court-filing-reveals-pentagon-told-anthropic-t.md",
       "type": "output",
       "title": "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned \u2014 a week after Trump declared the relationship kaput"
+    },
+    {
+      "id": "fc0a1d82-1a0b-4639-970c-d7c2defb6d4a",
+      "type": "seed",
+      "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to.md",
+      "type": "output",
+      "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
     }
   ],
   "edges": [
@@ -12050,6 +12060,11 @@
     {
       "from": "a61caed6-b1ad-4466-a809-3fcfc12ce466",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-new-court-filing-reveals-pentagon-told-anthropic-t.md",
+      "type": "produced"
+    },
+    {
+      "from": "fc0a1d82-1a0b-4639-970c-d7c2defb6d4a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-elon-musk-misled-twitter-investors-while-trying-to.md",
       "type": "produced"
     }
   ]
