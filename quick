@@ -417,6 +417,17 @@ case "$cmd" in
     ;;
   memory-index|memory-reindex)
     # Reindex memory files (gentle sequential mode to avoid API rate limits)
+    # Check for Voyage rate lock (6-hour cooldown) to prevent hammering
+    if [ -f "memory/.voyage-rate-lock" ]; then
+      LOCK_AGE_HOURS=$(( ( $(date +%s) - $(stat -c %Y "memory/.voyage-rate-lock") ) / 3600 ))
+      if [ $LOCK_AGE_HOURS -lt 6 ]; then
+        echo "⏸️  Voyage rate-lock active (${LOCK_AGE_HOURS}h old). Skipping memory reindex."
+        exit 0
+      else
+        rm -f "memory/.voyage-rate-lock"
+      fi
+    fi
+
     echo "Reindexing memory (gentle sequential mode)..."
     # Get agent IDs from OpenClaw config
     CONFIG_PATH="${HOME}/.openclaw/openclaw.json"
@@ -431,11 +442,18 @@ case "$cmd" in
     fi
     for agent in $agents; do
       echo "  Reindexing agent: $agent"
-      if /home/ubuntu/.npm-global/bin/openclaw memory index --agent "$agent"; then
+      # Capture output to detect rate limiting
+      TMP_LOG=$(mktemp)
+      if /home/ubuntu/.npm-global/bin/openclaw memory index --agent "$agent" 2>&1 | tee "$TMP_LOG"; then
         echo "    ✓ $agent reindexed"
       else
         echo "    ✗ $agent reindex failed (perhaps rate limited; will retry later)"
+        if grep -qiE '429|rate limited' "$TMP_LOG"; then
+          touch memory/.voyage-rate-lock
+          echo "    ⚠️  Rate limit detected; Voyage lock set"
+        fi
       fi
+      rm -f "$TMP_LOG"
       # Wait between agents to respect Voyage AI rate limits (3 RPM free tier); increased for free tier
       echo "    Waiting 120s before next agent..."
       sleep 120

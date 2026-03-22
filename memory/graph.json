@@ -9744,6 +9744,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/microsoft-rolls-back-some-of-its-copilot-ai-bloat--1.py",
       "type": "app",
       "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "022c7021-0151-4502-b5ec-053b84875831",
+      "type": "seed",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,.md",
+      "type": "output",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
     }
   ],
   "edges": [
@@ -12125,6 +12135,11 @@
     {
       "from": "8405619d-6fd7-4e01-be4e-d9c543f9df4c",
       "to": "/home/ubuntu/.openclaw/workspace/apps/microsoft-rolls-back-some-of-its-copilot-ai-bloat--1.py",
+      "type": "produced"
+    },
+    {
+      "from": "022c7021-0151-4502-b5ec-053b84875831",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,.md",
       "type": "produced"
     }
   ]

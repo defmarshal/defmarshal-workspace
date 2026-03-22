@@ -10,15 +10,15 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 
 **Shared Seed Pool** (used by Research, Content, and Code Gardeners):
 - Total seeds: 1222
-- Processed seeds: 398
-- Remaining: 824
-At current hourly frequency per gardener, backlog will clear in ~35 days. Consider batch increases during Nyepi if throughput needs to accelerate.
+- Processed seeds: 433 (35.4%)
+- Remaining: 789
+At current hourly frequency per gardener, backlog will clear in ~33 days. Consider batch increases during Nyepi if throughput needs to accelerate.
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically. 63 memory files need indexing.
 
 **Gardeners Status:**
-- **Research Gardener** (cron research-gardener-1773046574): Last run 00:15 UTC (processed "It's been 20 years since the first tweet"). Tavily API not set; using local synthesis. Reports: 456 total.
-- **Content Gardener** (cron content-gardener-XXXXX): Last seen Mar 22 02:15 UTC (processed "Planner suggestion: starlink v2 launch schedule"). Producing blog-style content with OpenRouter fallback. Content output: 783+ files (4 new today). Running normally during Nyepi period.
+- **Research Gardener** (cron research-gardener-1773046574): Last run 22 Mar 16:25 UTC (processed "What happened at Nvidia GTC: NemoClaw, Robot Olaf, and a $1 trillion bet"). Tavily API not set; using local synthesis. Reports: 456+ total. Backlog: 824/1222 seeds remaining (~35 days at current rate).
+- **Content Gardener** (cron content-gardener-1773046735): Last run 22 Mar 21:19 UTC (processed "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned"). Producing blog-style content with OpenRouter fallback. Content output: 783+ files (20 new today). Running normally during Nyepi period.
 - **Code Gardener** (cron code-gardener-1773047374): Last seen Mar 21 19:08 UTC. Generating Python apps via enhanced fallback (OpenRouter instability). Apps count: ~1600+.
 
 All gardeners operate on shared seed pool with cooperative allocation; no duplicate work (tracked in `memory/processed_seeds.jsonl`).

@@ -50,9 +50,30 @@ run_checks() {
   # 2. Memory index health
   # memory-reindex-check exits 0 when OK (no reindex needed), 1 when recommended, 2 on error
   # Trigger reindex only when exit code is non-zero (needed or error)
-  if ! ./quick memory-reindex-check >/dev/null 2>&1; then
-    log "Memory reindex needed; triggering"
-    ./quick memory-index >> "$LOGFILE" 2>&1 || true
+  # Check if Voyage rate lock is active (6-hour backoff)
+  SKIP_DUE_TO_LOCK=0
+  if [ -f "memory/.voyage-rate-lock" ]; then
+    LOCK_AGE_HOURS=$(( ( $(date +%s) - $(stat -c %Y "memory/.voyage-rate-lock") ) / 3600 ))
+    if [ $LOCK_AGE_HOURS -lt 6 ]; then
+      log "Voyage rate-lock active (${LOCK_AGE_HOURS}h old); skipping memory reindex"
+      SKIP_DUE_TO_LOCK=1
+    else
+      rm -f "memory/.voyage-rate-lock"
+    fi
+  fi
+
+  if [ $SKIP_DUE_TO_LOCK -eq 0 ]; then
+    if ! ./quick memory-reindex-check >/dev/null 2>&1; then
+      log "Memory reindex needed; triggering"
+      TMP_REINDEX_LOG=$(mktemp)
+      if ! ./quick memory-index 2>&1 | tee -a "$LOGFILE" | tee "$TMP_REINDEX_LOG"; then
+        if grep -qiE '429|rate limited' "$TMP_REINDEX_LOG"; then
+          touch memory/.voyage-rate-lock
+          log "Voyage rate limit detected; rate lock set"
+        fi
+      fi
+      rm -f "$TMP_REINDEX_LOG"
+    fi
   fi
 
   # 3. Downloads cleanup
