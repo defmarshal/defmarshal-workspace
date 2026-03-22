@@ -9369,6 +9369,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/taming-epilepsy_-mean-field-control-of-whole-brain.py",
       "type": "app",
       "title": "Taming Epilepsy: Mean Field Control of Whole-Brain Dynamics"
+    },
+    {
+      "id": "3cd6fdca-2999-4570-9e9c-909506d32a65",
+      "type": "seed",
+      "title": "MST-Direct: Matching via Sinkhorn Transport for Multivariate Geostatistical Simulation with Complex Non-Linear Dependencies"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-mst-direct:-matching-via-sinkhorn-transport-for-mu.md",
+      "type": "output",
+      "title": "MST-Direct: Matching via Sinkhorn Transport for Multivariate Geostatistical Simulation with Complex Non-Linear Dependencies"
+    },
+    {
+      "id": "479d8c39-3a2a-4ec6-ac37-1ce0d9e08e86",
+      "type": "seed",
+      "title": "Adapting Methods for Domain-Specific Japanese Small LMs: Scale, Architecture, and Quantization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-adapting-methods-for-domain-specific-japanese-smal.md",
+      "type": "output",
+      "title": "Adapting Methods for Domain-Specific Japanese Small LMs: Scale, Architecture, and Quantization"
+    },
+    {
+      "id": "1cc566a1-b0ef-40be-910f-4a2a2ad6d5db",
+      "type": "seed",
+      "title": "Quotient Geometry and Persistence-Stable Metrics for Swarm Configurations"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-quotient-geometry-and-persistence-stable-metrics-for-swarm-configurations.md",
+      "type": "content",
+      "title": "Quotient Geometry and Persistence-Stable Metrics for Swarm Configurations"
     }
   ],
   "edges": [
@@ -11560,6 +11590,21 @@
     {
       "from": "2cc8bfb7-a80a-4473-b502-38fbaa670459",
       "to": "/home/ubuntu/.openclaw/workspace/apps/taming-epilepsy_-mean-field-control-of-whole-brain.py",
+      "type": "produced"
+    },
+    {
+      "from": "3cd6fdca-2999-4570-9e9c-909506d32a65",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-mst-direct:-matching-via-sinkhorn-transport-for-mu.md",
+      "type": "produced"
+    },
+    {
+      "from": "479d8c39-3a2a-4ec6-ac37-1ce0d9e08e86",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-21-adapting-methods-for-domain-specific-japanese-smal.md",
+      "type": "produced"
+    },
+    {
+      "from": "1cc566a1-b0ef-40be-910f-4a2a2ad6d5db",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-21-quotient-geometry-and-persistence-stable-metrics-for-swarm-configurations.md",
       "type": "produced"
     }
   ]
