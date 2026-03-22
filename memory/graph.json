@@ -9439,6 +9439,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-quantum-error-correction-break-1.py",
       "type": "app",
       "title": "Planner suggestion: quantum error correction breakthroughs"
+    },
+    {
+      "id": "1a8d5e69-240e-4958-b5f9-aef9cb181e35",
+      "type": "seed",
+      "title": "Planner suggestion: react server components vs traditional rendering"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-planner-suggestion:-react-server-components-vs-tra.md",
+      "type": "output",
+      "title": "Planner suggestion: react server components vs traditional rendering"
+    },
+    {
+      "id": "347ee059-a9d8-4f46-a83a-6129be987fe2",
+      "type": "seed",
+      "title": "Planner suggestion: kubernetes autoscaling best practices 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-planner-suggestion:-kubernetes-autoscaling-best-practices-2025.md",
+      "type": "content",
+      "title": "Planner suggestion: kubernetes autoscaling best practices 2025"
     }
   ],
   "edges": [
@@ -11665,6 +11685,16 @@
     {
       "from": "c1c176f9-4d6d-4c9d-abe2-0cd929e3913d",
       "to": "/home/ubuntu/.openclaw/workspace/apps/planner-suggestion_-quantum-error-correction-break-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "1a8d5e69-240e-4958-b5f9-aef9cb181e35",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-22-planner-suggestion:-react-server-components-vs-tra.md",
+      "type": "produced"
+    },
+    {
+      "from": "347ee059-a9d8-4f46-a83a-6129be987fe2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-22-planner-suggestion:-kubernetes-autoscaling-best-practices-2025.md",
       "type": "produced"
     }
   ]
