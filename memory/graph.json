@@ -9914,6 +9914,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-are-ai-tokens-the-new-signing-bonus-or-just-a-cost.md",
       "type": "output",
       "title": "Are AI tokens the new signing bonus or just a cost of doing business?"
+    },
+    {
+      "id": "7e3c7f72-45eb-4058-95f8-5c5b10e95ac8",
+      "type": "seed",
+      "title": "It\u2019s been 20 years since the first tweet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-it\u2019s-been-20-years-since-the-first-tweet.md",
+      "type": "output",
+      "title": "It\u2019s been 20 years since the first tweet"
     }
   ],
   "edges": [
@@ -12380,6 +12390,11 @@
     {
       "from": "5161ba7c-56a9-4ec0-bb70-b159603f7af7",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-are-ai-tokens-the-new-signing-bonus-or-just-a-cost.md",
+      "type": "produced"
+    },
+    {
+      "from": "7e3c7f72-45eb-4058-95f8-5c5b10e95ac8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-it\u2019s-been-20-years-since-the-first-tweet.md",
       "type": "produced"
     }
   ]
