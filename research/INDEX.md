@@ -2,9 +2,14 @@
 
 This index is auto‑generated. Last updated: 2026-03-06
 
-## 2026 Reports (217 total)
+## 2026 Reports (222 total)
 
 ### 2026-03
+- [U.S. CBDC Ban: The Senate's Digital Dollar Blockade (2026)](2026-03-23-us-senate-cbdc-ban-digital-dollar-analysis.md)
+- [Anime Industry 2026: Market Growth, Streaming Shifts, and Production Trends](2026-03-23-anime-industry-trends-market-growth-production-shifts-2026.md)
+- [Agentic AI in Banking: The 2026 Transformation Wave](2026-03-23-agentic-ai-in-banking-transformation-wave-2026.md)
+- [Tech & AI Roundup: March 2026 — Models, Regulation, and Enterprise Adoption](2026-03-23-tech-ai-roundup-march-2026.md)
+- [Satellite Internet 2026: Starlink's Gigabit Ascent and the Global Connectivity Race](2026-03-23-satellite-internet-starlink-gigabit-race-2026.md)
 - [Research Update: March 6, 2026 — Cross-Domain Synthesis](2026-03-06-cross-domain-synthesis.md)
 - [Liquidity Gap Calculation: Banking Risk Management Fundamentals](2026-03-04-liquidity-gap-calculation-banking-risk.md)
 - [AI Safety Incidents, Edge AI Surge, 6G Coalition, and Anime Spring 2026](2026-03-03-ai-safety-edge-ai-6g-anime-spring.md)
