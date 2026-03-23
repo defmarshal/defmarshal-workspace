@@ -9954,6 +9954,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-how-fusion-power-works-and-the-startups-pursuing-i.md",
       "type": "output",
       "title": "How fusion power works and the startups pursuing it"
+    },
+    {
+      "id": "93c15cb6-7027-499c-88ac-be3dfc29910f",
+      "type": "seed",
+      "title": "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned \u2014 a week after Trump declared the relationship kaput"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-new-court-filing-reveals-pentagon-told-anthropic-t.md",
+      "type": "output",
+      "title": "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned \u2014 a week after Trump declared the relationship kaput"
     }
   ],
   "edges": [
@@ -12440,6 +12450,11 @@
     {
       "from": "c06971d3-27d3-4d10-b43d-ef94bb104c35",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-how-fusion-power-works-and-the-startups-pursuing-i.md",
+      "type": "produced"
+    },
+    {
+      "from": "93c15cb6-7027-499c-88ac-be3dfc29910f",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-new-court-filing-reveals-pentagon-told-anthropic-t.md",
       "type": "produced"
     }
   ]
