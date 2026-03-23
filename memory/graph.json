@@ -9874,6 +9874,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elon-musk-unveils-chip-manufacturing-plans-for-spa.md",
       "type": "output",
       "title": "Elon Musk unveils chip manufacturing plans for SpaceX and Tesla"
+    },
+    {
+      "id": "fd0a44bd-5f56-40c5-8ce8-8b5303529a4c",
+      "type": "seed",
+      "title": "TechCrunch Mobility: Uber everywhere, all at once"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-techcrunch-mobility:-uber-everywhere,-all-at-once.md",
+      "type": "output",
+      "title": "TechCrunch Mobility: Uber everywhere, all at once"
     }
   ],
   "edges": [
@@ -12320,6 +12330,11 @@
     {
       "from": "f8c0aeb6-b430-4cfe-9080-09ed76df4c97",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elon-musk-unveils-chip-manufacturing-plans-for-spa.md",
+      "type": "produced"
+    },
+    {
+      "from": "fd0a44bd-5f56-40c5-8ce8-8b5303529a4c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-techcrunch-mobility:-uber-everywhere,-all-at-once.md",
       "type": "produced"
     }
   ]
