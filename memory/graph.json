@@ -10474,6 +10474,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/startup-gimlet-labs-is-solving-the-ai-inference-bo.py",
       "type": "app",
       "title": "Startup Gimlet Labs is solving the AI inference bottleneck in a surprisingly elegant way"
+    },
+    {
+      "id": "21159f73-4415-4b15-8961-dbecbcdd2a54",
+      "type": "seed",
+      "title": "Littlebird raises $11M for its AI-assisted \u2018recall\u2019 tool that reads your computer screen"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-littlebird-raises-$11m-for-its-ai-assisted-\u2018recall.md",
+      "type": "output",
+      "title": "Littlebird raises $11M for its AI-assisted \u2018recall\u2019 tool that reads your computer screen"
     }
   ],
   "edges": [
@@ -13225,6 +13235,11 @@
     {
       "from": "c7315084-3bfa-4c52-ad3e-0e94a7d250e4",
       "to": "/home/ubuntu/.openclaw/workspace/apps/startup-gimlet-labs-is-solving-the-ai-inference-bo.py",
+      "type": "produced"
+    },
+    {
+      "from": "21159f73-4415-4b15-8961-dbecbcdd2a54",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-littlebird-raises-$11m-for-its-ai-assisted-\u2018recall.md",
       "type": "produced"
     }
   ]
