@@ -9864,6 +9864,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-cursor-admits-its-new-coding-model-was-built-on-to.md",
       "type": "output",
       "title": "Cursor admits its new coding model was built on top of Moonshot AI\u2019s Kimi"
+    },
+    {
+      "id": "f8c0aeb6-b430-4cfe-9080-09ed76df4c97",
+      "type": "seed",
+      "title": "Elon Musk unveils chip manufacturing plans for SpaceX and Tesla"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elon-musk-unveils-chip-manufacturing-plans-for-spa.md",
+      "type": "output",
+      "title": "Elon Musk unveils chip manufacturing plans for SpaceX and Tesla"
     }
   ],
   "edges": [
@@ -12305,6 +12315,11 @@
     {
       "from": "80f8bd6b-5fc3-4cbd-9c56-c96f84079fc7",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-cursor-admits-its-new-coding-model-was-built-on-to.md",
+      "type": "produced"
+    },
+    {
+      "from": "f8c0aeb6-b430-4cfe-9080-09ed76df4c97",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elon-musk-unveils-chip-manufacturing-plans-for-spa.md",
       "type": "produced"
     }
   ]
