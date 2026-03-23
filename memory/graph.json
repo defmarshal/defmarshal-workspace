@@ -10429,6 +10429,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/meta-rolls-out-new-ai-content-enforcement-systems-.py",
       "type": "app",
       "title": "Meta rolls out new AI content enforcement systems while reducing reliance on third-party vendors"
+    },
+    {
+      "id": "27aca139-295c-41a1-a34b-862b07ae11ea",
+      "type": "seed",
+      "title": "Apple sets June date for WWDC 2026, teasing &#8220;AI advancements&#8221;"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-apple-sets-june-date-for-wwdc-2026,-teasing-&#8220.md",
+      "type": "output",
+      "title": "Apple sets June date for WWDC 2026, teasing &#8220;AI advancements&#8221;"
+    },
+    {
+      "id": "3cfc67b5-0066-4885-8510-189a4ed2f6da",
+      "type": "seed",
+      "title": "DoorDash introduces relief payments for drivers as the Iran-US war drives up gas prices"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-doordash-introduces-relief-payments-for-drivers-as-the-iran-us-war-drives-up-gas.md",
+      "type": "content",
+      "title": "DoorDash introduces relief payments for drivers as the Iran-US war drives up gas prices"
+    },
+    {
+      "id": "2bd6e041-ad13-414e-b9c2-ffc60f0c37bc",
+      "type": "seed",
+      "title": "Leonid Radvinsky, the owner of  OnlyFans, has passed away"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-leonid-radvinsky,-the-owner-of--onlyfans,-has-passed-away.md",
+      "type": "content",
+      "title": "Leonid Radvinsky, the owner of  OnlyFans, has passed away"
     }
   ],
   "edges": [
@@ -13155,6 +13185,21 @@
     {
       "from": "0219927e-136b-4cdc-a091-cf2853fe925f",
       "to": "/home/ubuntu/.openclaw/workspace/apps/meta-rolls-out-new-ai-content-enforcement-systems-.py",
+      "type": "produced"
+    },
+    {
+      "from": "27aca139-295c-41a1-a34b-862b07ae11ea",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-apple-sets-june-date-for-wwdc-2026,-teasing-&#8220.md",
+      "type": "produced"
+    },
+    {
+      "from": "3cfc67b5-0066-4885-8510-189a4ed2f6da",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-doordash-introduces-relief-payments-for-drivers-as-the-iran-us-war-drives-up-gas.md",
+      "type": "produced"
+    },
+    {
+      "from": "2bd6e041-ad13-414e-b9c2-ffc60f0c37bc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-leonid-radvinsky,-the-owner-of--onlyfans,-has-passed-away.md",
       "type": "produced"
     }
   ]
