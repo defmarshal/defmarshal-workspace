@@ -9844,6 +9844,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-the-sec-drops-its-four-year-old-investigation-into-ev-startup-faraday-future.md",
       "type": "content",
       "title": "The SEC drops its four-year-old investigation into EV startup Faraday Future"
+    },
+    {
+      "id": "5a12b8c5-0043-4351-844f-34c3ece98af8",
+      "type": "seed",
+      "title": "Do you want to build a robot snowman?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-do-you-want-to-build-a-robot-snowman?.md",
+      "type": "output",
+      "title": "Do you want to build a robot snowman?"
+    },
+    {
+      "id": "80f8bd6b-5fc3-4cbd-9c56-c96f84079fc7",
+      "type": "seed",
+      "title": "Cursor admits its new coding model was built on top of Moonshot AI\u2019s Kimi"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-cursor-admits-its-new-coding-model-was-built-on-to.md",
+      "type": "output",
+      "title": "Cursor admits its new coding model was built on top of Moonshot AI\u2019s Kimi"
     }
   ],
   "edges": [
@@ -12275,6 +12295,16 @@
     {
       "from": "9dcd9a09-606a-478a-bb13-57b32ceec90b",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-the-sec-drops-its-four-year-old-investigation-into-ev-startup-faraday-future.md",
+      "type": "produced"
+    },
+    {
+      "from": "5a12b8c5-0043-4351-844f-34c3ece98af8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-do-you-want-to-build-a-robot-snowman?.md",
+      "type": "produced"
+    },
+    {
+      "from": "80f8bd6b-5fc3-4cbd-9c56-c96f84079fc7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-cursor-admits-its-new-coding-model-was-built-on-to.md",
       "type": "produced"
     }
   ]
