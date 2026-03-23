@@ -10484,6 +10484,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-littlebird-raises-$11m-for-its-ai-assisted-\u2018recall.md",
       "type": "output",
       "title": "Littlebird raises $11M for its AI-assisted \u2018recall\u2019 tool that reads your computer screen"
+    },
+    {
+      "id": "ef49d9be-6733-413c-9bb2-2900f730b83d",
+      "type": "seed",
+      "title": "Grab to buy Foodpanda Taiwan from Delivery Hero for $600 million"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-grab-to-buy-foodpanda-taiwan-from-delivery-hero-fo.md",
+      "type": "output",
+      "title": "Grab to buy Foodpanda Taiwan from Delivery Hero for $600 million"
+    },
+    {
+      "id": "718f1505-3944-4b52-83c4-e307af787a11",
+      "type": "seed",
+      "title": "Elizabeth Warren calls Pentagon&#8217;s decision to bar Anthropic &#8216;retaliation&#8217;"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elizabeth-warren-calls-pentagon&#8217;s-decision-t.md",
+      "type": "output",
+      "title": "Elizabeth Warren calls Pentagon&#8217;s decision to bar Anthropic &#8216;retaliation&#8217;"
     }
   ],
   "edges": [
@@ -13240,6 +13260,16 @@
     {
       "from": "21159f73-4415-4b15-8961-dbecbcdd2a54",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-littlebird-raises-$11m-for-its-ai-assisted-\u2018recall.md",
+      "type": "produced"
+    },
+    {
+      "from": "ef49d9be-6733-413c-9bb2-2900f730b83d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-grab-to-buy-foodpanda-taiwan-from-delivery-hero-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "718f1505-3944-4b52-83c4-e307af787a11",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elizabeth-warren-calls-pentagon&#8217;s-decision-t.md",
       "type": "produced"
     }
   ]
