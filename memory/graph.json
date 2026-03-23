@@ -9924,6 +9924,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-it\u2019s-been-20-years-since-the-first-tweet.md",
       "type": "output",
       "title": "It\u2019s been 20 years since the first tweet"
+    },
+    {
+      "id": "2acb21e2-4120-4227-9e13-6fe54d54511f",
+      "type": "seed",
+      "title": "Publisher pulls horror novel \u2018Shy Girl\u2019 over AI concerns"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-publisher-pulls-horror-novel-\u2018shy-girl\u2019-over-ai-concerns.md",
+      "type": "content",
+      "title": "Publisher pulls horror novel \u2018Shy Girl\u2019 over AI concerns"
+    },
+    {
+      "id": "093cc21b-4264-436e-96ac-0fb103e80982",
+      "type": "seed",
+      "title": "Why Wall Street wasn&#8217;t won over by Nvidia&#8217;s big conference"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/why-wall-street-wasn__8217_t-won-over-by-nvidia__8-1.py",
+      "type": "app",
+      "title": "Why Wall Street wasn&#8217;t won over by Nvidia&#8217;s big conference"
     }
   ],
   "edges": [
@@ -12395,6 +12415,16 @@
     {
       "from": "7e3c7f72-45eb-4058-95f8-5c5b10e95ac8",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-it\u2019s-been-20-years-since-the-first-tweet.md",
+      "type": "produced"
+    },
+    {
+      "from": "2acb21e2-4120-4227-9e13-6fe54d54511f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-publisher-pulls-horror-novel-\u2018shy-girl\u2019-over-ai-concerns.md",
+      "type": "produced"
+    },
+    {
+      "from": "093cc21b-4264-436e-96ac-0fb103e80982",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/why-wall-street-wasn__8217_t-won-over-by-nvidia__8-1.py",
       "type": "produced"
     }
   ]

@@ -1,8 +1,8 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-22 08:15 UTC**
+**Current active tasks - UPDATED 2026-03-23 10:14 UTC**
 
-System status: Stable. Disk usage ~82%. Nyepi holiday period active (Mar 18–24) — reduced agent activity expected.
+System status: Stable. Disk usage ~83%. Nyepi holiday period active (Mar 18–24) — reduced agent activity expected.
 
 Agent Manager: Running normally via cron. Maintenance checks remain active.
 
@@ -10,14 +10,14 @@ Agent Manager: Running normally via cron. Maintenance checks remain active.
 
 **Shared Seed Pool** (used by Research, Content, and Code Gardeners):
 - Total seeds: 1222
-- Processed seeds: 433 (35.4%)
-- Remaining: 789
-At current hourly frequency per gardener, backlog will clear in ~33 days. Consider batch increases during Nyepi if throughput needs to accelerate.
+- Processed seeds: 450 (36.8%)
+- Remaining: 772
+At current hourly frequency per gardener, backlog will clear in ~32 days. Consider batch increases during Nyepi if throughput needs to accelerate.
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically. 63 memory files need indexing.
 
 **Gardeners Status:**
-- **Research Gardener** (cron research-gardener-1773046574): Last run 22 Mar 23:03 UTC (processed "Publisher pulls horror novel ‘Shy Girl’ over AI concerns"). Tavily API not set; using local synthesis. Reports: 456+ total. Backlog: 789/1222 seeds remaining (~33 days at current rate).
+- **Research Gardener** (cron research-gardener-1773046574): ✅ Active and producing. Last log entry: 22 Mar 23:03 UTC; Today (23 Mar) already produced 14 research reports (timestamps from 07:23–10:02 UTC). Tavily API not set; using local synthesis. Total reports: 484+. Backlog: 772/1222 seeds remaining (~32 days at current rate).
 - **Content Gardener** (cron content-gardener-1773046735): Last successful run 22 Mar 20:09 UTC (content written). **Cron at 23:03 UTC failed** — API rate limit reached. No content produced in ~3 hours. Needs attention: OpenRouter quota or rate limit mitigation.
 - **Code Gardener** (cron code-gardener-1773047374): Last seen Mar 21 21:08 UTC. Generating Python apps via enhanced fallback (OpenRouter instability). Apps count: ~1600+.
 
