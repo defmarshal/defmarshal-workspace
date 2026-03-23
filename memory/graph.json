@@ -10459,6 +10459,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-leonid-radvinsky,-the-owner-of--onlyfans,-has-passed-away.md",
       "type": "content",
       "title": "Leonid Radvinsky, the owner of  OnlyFans, has passed away"
+    },
+    {
+      "id": "c7315084-3bfa-4c52-ad3e-0e94a7d250e4",
+      "type": "seed",
+      "title": "Startup Gimlet Labs is solving the AI inference bottleneck in a surprisingly elegant way"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-startup-gimlet-labs-is-solving-the-ai-inference-bottleneck-in-a-surprisingly-ele.md",
+      "type": "content",
+      "title": "Startup Gimlet Labs is solving the AI inference bottleneck in a surprisingly elegant way"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/startup-gimlet-labs-is-solving-the-ai-inference-bo.py",
+      "type": "app",
+      "title": "Startup Gimlet Labs is solving the AI inference bottleneck in a surprisingly elegant way"
     }
   ],
   "edges": [
@@ -13200,6 +13215,16 @@
     {
       "from": "2bd6e041-ad13-414e-b9c2-ffc60f0c37bc",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-leonid-radvinsky,-the-owner-of--onlyfans,-has-passed-away.md",
+      "type": "produced"
+    },
+    {
+      "from": "c7315084-3bfa-4c52-ad3e-0e94a7d250e4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-startup-gimlet-labs-is-solving-the-ai-inference-bottleneck-in-a-surprisingly-ele.md",
+      "type": "produced"
+    },
+    {
+      "from": "c7315084-3bfa-4c52-ad3e-0e94a7d250e4",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/startup-gimlet-labs-is-solving-the-ai-inference-bo.py",
       "type": "produced"
     }
   ]
