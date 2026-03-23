@@ -83,7 +83,8 @@ def add_graph_edge(seed_id: str, output_path: str, title: str):
 def generate_code_via_agent(prompt: str, system_msg: str = "You are a coding assistant. Respond with only the Python code. No explanations or markdown fencing.") -> str:
     try:
         full_prompt = f"{system_msg}\n\n{prompt}"
-        result = subprocess.run([OPENCLAWS, 'agent', 'ask', '--prompt', full_prompt], capture_output=True, text=True, timeout=60)
+        # Use correct CLI flags: --agent to select agent, --message for the prompt, --local for cron isolation
+        result = subprocess.run([OPENCLAWS, 'agent', '--agent', 'main', '--message', full_prompt, '--local'], capture_output=True, text=True, timeout=60)
         output = result.stdout.strip()
         return output
     except Exception as e:

@@ -10024,6 +10024,106 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-sql-commenter:-aligning-large-language-models-for-sql-comment-generation-with-di.md",
       "type": "content",
       "title": "SQL-Commenter: Aligning Large Language Models for SQL Comment Generation with Direct Preference Optimization"
+    },
+    {
+      "id": "9034b3b5-355b-468b-a377-a7cd43efb5fe",
+      "type": "seed",
+      "title": "Green Architectural Tactics in ML-enabled Systems: An LLM-based Repository Mining Study"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-green-architectural-tactics-in-ml-enabled-systems:.md",
+      "type": "output",
+      "title": "Green Architectural Tactics in ML-enabled Systems: An LLM-based Repository Mining Study"
+    },
+    {
+      "id": "f50e3206-bf68-4589-86a4-601ade7b9dc3",
+      "type": "seed",
+      "title": "SpaceTime Programming: Live and Omniscient Exploration of Code and Execution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-spacetime-programming:-live-and-omniscient-explora.md",
+      "type": "output",
+      "title": "SpaceTime Programming: Live and Omniscient Exploration of Code and Execution"
+    },
+    {
+      "id": "3d787616-0d64-4efc-bbab-df3490f3c856",
+      "type": "seed",
+      "title": "Measuring and Exploiting Confirmation Bias in LLM-Assisted Security Code Review"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-measuring-and-exploiting-confirmation-bias-in-llm-.md",
+      "type": "output",
+      "title": "Measuring and Exploiting Confirmation Bias in LLM-Assisted Security Code Review"
+    },
+    {
+      "id": "472e5d59-2605-4b44-a0a3-f102d14a6aeb",
+      "type": "seed",
+      "title": "BenchBrowser -- Collecting Evidence for Evaluating Benchmark Validity"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-benchbrowser----collecting-evidence-for-evaluating.md",
+      "type": "output",
+      "title": "BenchBrowser -- Collecting Evidence for Evaluating Benchmark Validity"
+    },
+    {
+      "id": "a937a63b-4c7a-487d-bcb7-835e97face46",
+      "type": "seed",
+      "title": "Quine: Realizing LLM Agents as Native POSIX Processes"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-quine:-realizing-llm-agents-as-native-posix-proces.md",
+      "type": "output",
+      "title": "Quine: Realizing LLM Agents as Native POSIX Processes"
+    },
+    {
+      "id": "19d72407-61f9-4902-b44b-da5464e33e70",
+      "type": "seed",
+      "title": "Conditional Execution of Transpiler Passes Based on Per-Script Feature Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-conditional-execution-of-transpiler-passes-based-on-per-script-feature-detection.md",
+      "type": "content",
+      "title": "Conditional Execution of Transpiler Passes Based on Per-Script Feature Detection"
+    },
+    {
+      "id": "94960002-fe1a-42b4-9ea9-fb2eea1c479e",
+      "type": "seed",
+      "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/elon-musk-misled-twitter-investors-while-trying-to.py",
+      "type": "app",
+      "title": "Elon Musk misled Twitter investors while trying to get out of acquisition, jury says"
+    },
+    {
+      "id": "4cc74c44-3a96-4c82-9eaa-17738b6ce367",
+      "type": "seed",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-microsoft-rolls-back-some-of-its-copilot-ai-bloat-.md",
+      "type": "output",
+      "title": "Microsoft rolls back some of its Copilot AI bloat on Windows"
+    },
+    {
+      "id": "968d67f9-4da7-45c3-94c2-d1f8af7bb8b3",
+      "type": "seed",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,-and-a\u00a0$1-trillion\u00a0bet.md",
+      "type": "content",
+      "title": "What happened at Nvidia GTC:\u00a0NemoClaw, Robot Olaf, and a\u00a0$1 trillion\u00a0bet"
+    },
+    {
+      "id": "cb2b93e8-b8e5-4e98-b346-02a6f7121f04",
+      "type": "seed",
+      "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-amid-legal-turmoil,-kalshi-is-temporarily-banned-i.md",
+      "type": "output",
+      "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
     }
   ],
   "edges": [
@@ -12545,6 +12645,56 @@
     {
       "from": "208c9666-c7f3-4e98-a80a-48abbffb7e27",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-sql-commenter:-aligning-large-language-models-for-sql-comment-generation-with-di.md",
+      "type": "produced"
+    },
+    {
+      "from": "9034b3b5-355b-468b-a377-a7cd43efb5fe",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-green-architectural-tactics-in-ml-enabled-systems:.md",
+      "type": "produced"
+    },
+    {
+      "from": "f50e3206-bf68-4589-86a4-601ade7b9dc3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-spacetime-programming:-live-and-omniscient-explora.md",
+      "type": "produced"
+    },
+    {
+      "from": "3d787616-0d64-4efc-bbab-df3490f3c856",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-measuring-and-exploiting-confirmation-bias-in-llm-.md",
+      "type": "produced"
+    },
+    {
+      "from": "472e5d59-2605-4b44-a0a3-f102d14a6aeb",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-benchbrowser----collecting-evidence-for-evaluating.md",
+      "type": "produced"
+    },
+    {
+      "from": "a937a63b-4c7a-487d-bcb7-835e97face46",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-quine:-realizing-llm-agents-as-native-posix-proces.md",
+      "type": "produced"
+    },
+    {
+      "from": "19d72407-61f9-4902-b44b-da5464e33e70",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-conditional-execution-of-transpiler-passes-based-on-per-script-feature-detection.md",
+      "type": "produced"
+    },
+    {
+      "from": "94960002-fe1a-42b4-9ea9-fb2eea1c479e",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/elon-musk-misled-twitter-investors-while-trying-to.py",
+      "type": "produced"
+    },
+    {
+      "from": "4cc74c44-3a96-4c82-9eaa-17738b6ce367",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-microsoft-rolls-back-some-of-its-copilot-ai-bloat-.md",
+      "type": "produced"
+    },
+    {
+      "from": "968d67f9-4da7-45c3-94c2-d1f8af7bb8b3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-what-happened-at-nvidia-gtc:\u00a0nemoclaw,-robot-olaf,-and-a\u00a0$1-trillion\u00a0bet.md",
+      "type": "produced"
+    },
+    {
+      "from": "cb2b93e8-b8e5-4e98-b346-02a6f7121f04",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-amid-legal-turmoil,-kalshi-is-temporarily-banned-i.md",
       "type": "produced"
     }
   ]
