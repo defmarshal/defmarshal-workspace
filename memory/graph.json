@@ -9974,6 +9974,56 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-nanozk:-layerwise-zero-knowledge-proofs-for-verifi.md",
       "type": "output",
       "title": "NANOZK: Layerwise Zero-Knowledge Proofs for Verifiable Large Language Model Inference"
+    },
+    {
+      "id": "f53927ab-102c-4685-93ad-135812352afe",
+      "type": "seed",
+      "title": "Fundamental Limits of Neural Network Sparsification: Evidence from Catastrophic Interpretability Collapse"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-fundamental-limits-of-neural-network-sparsificatio.md",
+      "type": "output",
+      "title": "Fundamental Limits of Neural Network Sparsification: Evidence from Catastrophic Interpretability Collapse"
+    },
+    {
+      "id": "4fdac4ab-679a-4599-af65-8ac8b395daf8",
+      "type": "seed",
+      "title": "Who Tests the Testers? Systematic Enumeration and Coverage Audit of LLM Agent Tool Call Safety"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-who-tests-the-testers?-systematic-enumeration-and-.md",
+      "type": "output",
+      "title": "Who Tests the Testers? Systematic Enumeration and Coverage Audit of LLM Agent Tool Call Safety"
+    },
+    {
+      "id": "c79650f8-f328-4037-8763-83893bd4e76a",
+      "type": "seed",
+      "title": "Can LLMs Reason Like Automated Theorem Provers for Rust Verification? VCoT-Bench: Evaluating via Verification Chain of Thought"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-can-llms-reason-like-automated-theorem-provers-for.md",
+      "type": "output",
+      "title": "Can LLMs Reason Like Automated Theorem Provers for Rust Verification? VCoT-Bench: Evaluating via Verification Chain of Thought"
+    },
+    {
+      "id": "09ec9156-69ef-4f50-96bb-a1403c83cfba",
+      "type": "seed",
+      "title": "Where are the Hidden Gems? Applying Transformer Models for Design Discussion Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-where-are-the-hidden-gems?-applying-transformer-mo.md",
+      "type": "output",
+      "title": "Where are the Hidden Gems? Applying Transformer Models for Design Discussion Detection"
+    },
+    {
+      "id": "208c9666-c7f3-4e98-a80a-48abbffb7e27",
+      "type": "seed",
+      "title": "SQL-Commenter: Aligning Large Language Models for SQL Comment Generation with Direct Preference Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-sql-commenter:-aligning-large-language-models-for-sql-comment-generation-with-di.md",
+      "type": "content",
+      "title": "SQL-Commenter: Aligning Large Language Models for SQL Comment Generation with Direct Preference Optimization"
     }
   ],
   "edges": [
@@ -12470,6 +12520,31 @@
     {
       "from": "57e8c3d3-9198-4dea-94e9-1e0493915343",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-nanozk:-layerwise-zero-knowledge-proofs-for-verifi.md",
+      "type": "produced"
+    },
+    {
+      "from": "f53927ab-102c-4685-93ad-135812352afe",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-fundamental-limits-of-neural-network-sparsificatio.md",
+      "type": "produced"
+    },
+    {
+      "from": "4fdac4ab-679a-4599-af65-8ac8b395daf8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-who-tests-the-testers?-systematic-enumeration-and-.md",
+      "type": "produced"
+    },
+    {
+      "from": "c79650f8-f328-4037-8763-83893bd4e76a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-can-llms-reason-like-automated-theorem-provers-for.md",
+      "type": "produced"
+    },
+    {
+      "from": "09ec9156-69ef-4f50-96bb-a1403c83cfba",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-where-are-the-hidden-gems?-applying-transformer-mo.md",
+      "type": "produced"
+    },
+    {
+      "from": "208c9666-c7f3-4e98-a80a-48abbffb7e27",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-sql-commenter:-aligning-large-language-models-for-sql-comment-generation-with-di.md",
       "type": "produced"
     }
   ]
