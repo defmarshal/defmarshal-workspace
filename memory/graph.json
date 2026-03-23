@@ -9964,6 +9964,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-new-court-filing-reveals-pentagon-told-anthropic-t.md",
       "type": "output",
       "title": "New court filing reveals Pentagon told Anthropic the two sides were nearly aligned \u2014 a week after Trump declared the relationship kaput"
+    },
+    {
+      "id": "57e8c3d3-9198-4dea-94e9-1e0493915343",
+      "type": "seed",
+      "title": "NANOZK: Layerwise Zero-Knowledge Proofs for Verifiable Large Language Model Inference"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-nanozk:-layerwise-zero-knowledge-proofs-for-verifi.md",
+      "type": "output",
+      "title": "NANOZK: Layerwise Zero-Knowledge Proofs for Verifiable Large Language Model Inference"
     }
   ],
   "edges": [
@@ -12455,6 +12465,11 @@
     {
       "from": "93c15cb6-7027-499c-88ac-be3dfc29910f",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-new-court-filing-reveals-pentagon-told-anthropic-t.md",
+      "type": "produced"
+    },
+    {
+      "from": "57e8c3d3-9198-4dea-94e9-1e0493915343",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-nanozk:-layerwise-zero-knowledge-proofs-for-verifi.md",
       "type": "produced"
     }
   ]
