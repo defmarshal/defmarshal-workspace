@@ -10154,6 +10154,116 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
       "type": "content",
       "title": "A French Navy officer accidentally leaked the location of an aircraft carrier by logging his run on Strava"
+    },
+    {
+      "id": "e6c6fc65-4854-4b08-bf96-6d2f611a985d",
+      "type": "seed",
+      "title": "WordPress.com now lets AI agents write and publish posts, and more"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-wordpress.com-now-lets-ai-agents-write-and-publish.md",
+      "type": "output",
+      "title": "WordPress.com now lets AI agents write and publish posts, and more"
+    },
+    {
+      "id": "92385f2f-e508-4538-a565-872fabab60d6",
+      "type": "seed",
+      "title": "Jeff Bezos&#8217; Blue Origin enters the space data center game"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-jeff-bezos&#8217;-blue-origin-enters-the-space-dat.md",
+      "type": "output",
+      "title": "Jeff Bezos&#8217; Blue Origin enters the space data center game"
+    },
+    {
+      "id": "9e186721-ec6a-4ebb-a682-f55a545d7510",
+      "type": "seed",
+      "title": "US accuses Iran&#8217;s government of operating hacktivist group that hacked Stryker"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-us-accuses-iran&#8217;s-government-of-operating-ha.md",
+      "type": "output",
+      "title": "US accuses Iran&#8217;s government of operating hacktivist group that hacked Stryker"
+    },
+    {
+      "id": "f9947726-b15d-4297-ab66-5fa00818c0a7",
+      "type": "seed",
+      "title": "Adapting Methods for Domain-Specific Japanese Small LMs: Scale, Architecture, and Quantization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/adapting-methods-for-domain-specific-japanese-smal.py",
+      "type": "app",
+      "title": "Adapting Methods for Domain-Specific Japanese Small LMs: Scale, Architecture, and Quantization"
+    },
+    {
+      "id": "7a525d65-a8de-4e8e-9272-57c335f735e5",
+      "type": "seed",
+      "title": "Quotient Geometry and Persistence-Stable Metrics for Swarm Configurations"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-quotient-geometry-and-persistence-stable-metrics-f.md",
+      "type": "output",
+      "title": "Quotient Geometry and Persistence-Stable Metrics for Swarm Configurations"
+    },
+    {
+      "id": "bb802f39-9f09-49a4-a4cf-21261ada8612",
+      "type": "seed",
+      "title": "NANOZK: Layerwise Zero-Knowledge Proofs for Verifiable Large Language Model Inference"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-nanozk:-layerwise-zero-knowledge-proofs-for-verifi.md",
+      "type": "output",
+      "title": "NANOZK: Layerwise Zero-Knowledge Proofs for Verifiable Large Language Model Inference"
+    },
+    {
+      "id": "34d7b313-4624-4f84-afa9-df8abc3347f6",
+      "type": "seed",
+      "title": "Fundamental Limits of Neural Network Sparsification: Evidence from Catastrophic Interpretability Collapse"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-fundamental-limits-of-neural-network-sparsificatio.md",
+      "type": "output",
+      "title": "Fundamental Limits of Neural Network Sparsification: Evidence from Catastrophic Interpretability Collapse"
+    },
+    {
+      "id": "a1c015a8-d5cb-4b66-80ac-ad695dd94fc7",
+      "type": "seed",
+      "title": "Who Tests the Testers? Systematic Enumeration and Coverage Audit of LLM Agent Tool Call Safety"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-who-tests-the-testers?-systematic-enumeration-and-.md",
+      "type": "output",
+      "title": "Who Tests the Testers? Systematic Enumeration and Coverage Audit of LLM Agent Tool Call Safety"
+    },
+    {
+      "id": "52a2b891-1e8a-41ac-b243-b024eb13ae7d",
+      "type": "seed",
+      "title": "Can LLMs Reason Like Automated Theorem Provers for Rust Verification? VCoT-Bench: Evaluating via Verification Chain of Thought"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-can-llms-reason-like-automated-theorem-provers-for.md",
+      "type": "output",
+      "title": "Can LLMs Reason Like Automated Theorem Provers for Rust Verification? VCoT-Bench: Evaluating via Verification Chain of Thought"
+    },
+    {
+      "id": "f14127cf-1b80-464b-9e5f-eac6a2bce957",
+      "type": "seed",
+      "title": "Where are the Hidden Gems? Applying Transformer Models for Design Discussion Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-where-are-the-hidden-gems?-applying-transformer-mo.md",
+      "type": "output",
+      "title": "Where are the Hidden Gems? Applying Transformer Models for Design Discussion Detection"
+    },
+    {
+      "id": "618f815c-1e65-4997-a311-d5a5bd69204d",
+      "type": "seed",
+      "title": "SQL-Commenter: Aligning Large Language Models for SQL Comment Generation with Direct Preference Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-sql-commenter:-aligning-large-language-models-for-.md",
+      "type": "output",
+      "title": "SQL-Commenter: Aligning Large Language Models for SQL Comment Generation with Direct Preference Optimization"
     }
   ],
   "edges": [
@@ -12740,6 +12850,61 @@
     {
       "from": "a75d28dc-eebc-44f8-89e2-221658df53bd",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
+      "type": "produced"
+    },
+    {
+      "from": "e6c6fc65-4854-4b08-bf96-6d2f611a985d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-wordpress.com-now-lets-ai-agents-write-and-publish.md",
+      "type": "produced"
+    },
+    {
+      "from": "92385f2f-e508-4538-a565-872fabab60d6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-jeff-bezos&#8217;-blue-origin-enters-the-space-dat.md",
+      "type": "produced"
+    },
+    {
+      "from": "9e186721-ec6a-4ebb-a682-f55a545d7510",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-us-accuses-iran&#8217;s-government-of-operating-ha.md",
+      "type": "produced"
+    },
+    {
+      "from": "f9947726-b15d-4297-ab66-5fa00818c0a7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/adapting-methods-for-domain-specific-japanese-smal.py",
+      "type": "produced"
+    },
+    {
+      "from": "7a525d65-a8de-4e8e-9272-57c335f735e5",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-quotient-geometry-and-persistence-stable-metrics-f.md",
+      "type": "produced"
+    },
+    {
+      "from": "bb802f39-9f09-49a4-a4cf-21261ada8612",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-nanozk:-layerwise-zero-knowledge-proofs-for-verifi.md",
+      "type": "produced"
+    },
+    {
+      "from": "34d7b313-4624-4f84-afa9-df8abc3347f6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-fundamental-limits-of-neural-network-sparsificatio.md",
+      "type": "produced"
+    },
+    {
+      "from": "a1c015a8-d5cb-4b66-80ac-ad695dd94fc7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-who-tests-the-testers?-systematic-enumeration-and-.md",
+      "type": "produced"
+    },
+    {
+      "from": "52a2b891-1e8a-41ac-b243-b024eb13ae7d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-can-llms-reason-like-automated-theorem-provers-for.md",
+      "type": "produced"
+    },
+    {
+      "from": "f14127cf-1b80-464b-9e5f-eac6a2bce957",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-where-are-the-hidden-gems?-applying-transformer-mo.md",
+      "type": "produced"
+    },
+    {
+      "from": "618f815c-1e65-4997-a311-d5a5bd69204d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-sql-commenter:-aligning-large-language-models-for-.md",
       "type": "produced"
     }
   ]

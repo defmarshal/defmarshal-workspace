@@ -1,8 +1,8 @@
 # Fundamental Limits of Neural Network Sparsification: Evidence from Catastrophic Interpretability Collapse
 
-**Seed ID:** f53927ab-102c-4685-93ad-135812352afe  
+**Seed ID:** 34d7b313-4624-4f84-afa9-df8abc3347f6  
 **Source:** rss:https://rss.arxiv.org/rss/cs.LG  
-**Generated:** 2026-03-23 04:13:27 UTC
+**Generated:** 2026-03-23 11:03:35 UTC
 
 ## Summary
 

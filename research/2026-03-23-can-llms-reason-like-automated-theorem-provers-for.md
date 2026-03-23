@@ -1,8 +1,8 @@
 # Can LLMs Reason Like Automated Theorem Provers for Rust Verification? VCoT-Bench: Evaluating via Verification Chain of Thought
 
-**Seed ID:** c79650f8-f328-4037-8763-83893bd4e76a  
+**Seed ID:** 52a2b891-1e8a-41ac-b243-b024eb13ae7d  
 **Source:** rss:https://rss.arxiv.org/rss/cs.SE  
-**Generated:** 2026-03-23 05:02:01 UTC
+**Generated:** 2026-03-23 12:00:43 UTC
 
 ## Summary
 
