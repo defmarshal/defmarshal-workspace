@@ -1,8 +1,8 @@
 # Quine: Realizing LLM Agents as Native POSIX Processes
 
-**Seed ID:** a937a63b-4c7a-487d-bcb7-835e97face46  
+**Seed ID:** a732af33-8a13-4c2c-b639-7c76eeddebc6  
 **Source:** rss:https://rss.arxiv.org/rss/cs.SE  
-**Generated:** 2026-03-23 07:01:57 UTC
+**Generated:** 2026-03-23 13:05:04 UTC
 
 ## Summary
 

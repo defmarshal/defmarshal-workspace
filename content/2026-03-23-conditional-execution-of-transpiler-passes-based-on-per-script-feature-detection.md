@@ -1,67 +1,64 @@
 # Conditional Execution of Transpiler Passes Based on Per-Script Feature Detection
 
-## The JavaScript Compatibility Puzzle — Solved?
+## Saying Goodbye to Bloat: Smarter JavaScript Transpilation
 
-If you've ever wondered why your modern JavaScript code still runs on older browsers, you've got transpilers to thank. But here's the kicker: most transpilers apply the same set of transformations to every script, even when they're not needed. That's like carrying an umbrella on a sunny day—wasteful and inefficient. A new research paper introduces a clever system that detects which language features a script actually uses and only runs the necessary transpiler passes. It's a simple idea with profound implications for build times, bundle sizes, and developer experience.
+Let's be honest: JavaScript build tools can be a bit... overzealous. They take our modern, elegant ES2023 code and transform it into a version that runs everywhere—often adding helpers, polyfills, and transformations we never actually needed. It's like translating a haiku into a paragraph and claiming it's the same poem. A new approach called per-script feature detection flips this paradigm: instead of blindly applying every transpiler pass to every file, why not only transform the features that actually need it? The result? Faster builds, smaller bundles, and code that looks more like what you wrote.
 
-## The Problem: One-Size-Fits-All Transpilation
+## The Problem: One Size Does Not Fit All
 
-Traditional JavaScript transpilers (like Babel or TypeScript) operate in a blanket manner: if your project targets ES5, every file gets transformed with the full suite of downleveling passes, regardless of whether it uses arrow functions, async/await, or optional chaining. This leads to:
+Traditional transpilers work in a blanket fashion. If your target is "ES5", every single JavaScript file in your bundle gets processed through the full gauntlet: arrow functions become regular functions, optional chaining turns into nested checks, and classes get de-sugared into prototypes. This happens even for files that only use syntax supported by all your target browsers. The costs add up:
 
-- **Unnecessary code bloat** — transforms for features you never used
-- **Slower build pipelines** — wasted CPU cycles on redundant passes
-- **Harder debugging** — source maps become more complex than needed
-- **Missed optimization opportunities** — couldn't preserve modern syntax for capable browsers
+- **Unnecessary bundle bloat** – transpilation helpers increase size
+- **Longer build times** – wasted CPU cycles
+- **Obfuscated source maps** – debugging becomes harder
+- **Lost performance** – modern engines can optimize native syntax better than transpiled output
 
-The core issue? Transpilers lack per-script awareness. They treat all code as equally "old," even when a particular file only uses ES2015+ features that modern browsers already support.
+What if your build system could be *intelligent* about what each file actually needs?
 
-## The Innovation: Feature-Aware Conditional Passes
+## The Solution: Feature-Aware Conditional Passes
 
-The proposed system works in two phases:
+The core idea, from arXiv:2603.18049v1, is elegantly simple:
 
-### 1. Static Feature Detection
+1. **Analyze each script** (without transforming it) to determine exactly which ECMAScript features it uses
+2. **Map features to required transpiler passes** – e.g., arrow functions need one transformation, optional chaining needs another
+3. **Conditionally execute only those passes**, skipping the rest
 
-Before transpilation, a lightweight analyzer parses each script (without full transformation) to identify exactly which ECMAScript features it contains. Think of it as a syntax audit: "Does this file use `class`? `async` functions? Optional chaining? Nullish coalescing?"
+This turns your transpiler from a blunt instrument into a precision tool.
 
-The detector can identify:
-- Syntax features (arrow functions, destructuring, template literals)
-- Built-in APIs (Promise, Map/Set, typed arrays)
-- Language proposals at various stages (TC39 proposals)
+## Benefits That Matter
 
-### 2. Dynamic Pass Selection
+### Smaller, Faster Bundles
 
-Instead of running all transpiler passes, the system consults a feature-to-pass mapping. Only the passes required to transform the detected features are executed. For a script that only uses ES6+ features deployable to modern browsers, many passes are skipped entirely.
-
-This mapping is configurable per target environment. If you need to support IE11, the system knows which features need downleveling. If your audience uses Chrome 120+, almost nothing gets transformed.
-
-## Benefits That Add Up
+When you preserve native syntax for modern browsers, you can serve differential bundles—modern ES modules to Chrome/Edge/Safari, and transpiled fallbacks to older browsers. The net result is often an 8–15% reduction in transferred JavaScript.
 
 ### Faster Builds
 
-By eliminating unnecessary passes, compile times shrink dramatically—especially in large codebases where many utility files are already "modern." Real-world tests showed **30–50% reduction** in transpilation time for typical React/Vue projects.
+By eliminating redundant passes, compilation time drops 30–50% in typical projects. That's real minutes saved in development loops and CI/CD pipelines.
 
-### Smaller Bundles
+### Cleaner Debugging
 
-Less transformation means less code churn and fewer helper functions injected. More importantly, the system can **preserve modern syntax** for capable browsers, enabling differential serving (serve modern ES modules to Chrome, transpiled bundles to Safari). Bundle sizes dropped by 8–15% on average when combined with proper target configuration.
+Source maps become a direct, one-to-one mapping to your original code because fewer transforms mean less indirection. That stack trace you're staring at? It actually matches what you wrote.
 
-### Smarter Source Maps
+### Future-Proof Architecture
 
-With fewer passes, source maps remain cleaner and more accurate. Debugging in the browser feels more like writing the original code—no mysterious "helper" functions or hoisted variables that never existed in your source.
+As new ECMAScript features land, you just add detection rules and corresponding transpiler passes. The core conditional engine stays the same. No need to rethink the whole pipeline.
 
-### Future-Proofing
+## Implementation: Not as Hard as You'd Think
 
-As new ECMAScript features land, you only need to add detection rules and transpiler passes for those features—no changes to the core conditional engine. This makes the system naturally extensible.
+The paper proposes a hybrid detector: fast syntax scanning for common patterns, falling back to partial parsing when needed. It also handles dependencies—if module A uses optional chaining and imports module B, B might need transforms too, depending on your target environment.
 
-## Implementation Challenges
-
-Feature detection must be both fast and precise. The paper proposes a hybrid approach: early syntax scanning (no full AST) for common patterns, falling back to partial parsing for ambiguous cases. There's also the question of cross-file dependencies—if one module uses a feature, its dependents might need transforms too. The solution: a dependency graph that propagates feature requirements.
-
-Another nuance: some transpiler passes interact. Skipping one pass might make another pass's output invalid. The system must understand pass dependencies and ensure a valid transformation sequence.
+But the real win is the **pass dependency graph**. Some transpiler passes rely on others having already run. The system ensures a valid transformation order while still pruning unnecessary work.
 
 ## The Bigger Vision
 
-This research points toward a more intelligent tooling ecosystem where compilers understand *what* code does, not just *how* to transform it. Imagine a bundler that knows exactly which polyfills are needed for your user base, or a linter that only warns about features you're actually using. Per-script feature detection could be the foundation for a new generation of precision JavaScript tools.
+This isn't just about Babel or TypeScript. Imagine a world where:
+
+- Bundlers automatically include only the polyfills you actually use
+- Linters warn only about features that will break your supported browsers
+- Deploys serve perfectly tailored bundles to each client
+
+Per-script feature detection could be the foundation for a new generation of precise, adaptive tooling—where the build system truly understands your code instead of just processing it.
 
 ---
 
-*Research inspired by arXiv:2603.18049v1 — "Conditional Execution of Transpiler Passes Based on Per-Script Feature Detection"*
+*Inspired by arXiv:2603.18049v1 — "Conditional Execution of Transpiler Passes Based on Per-Script Feature Detection"*

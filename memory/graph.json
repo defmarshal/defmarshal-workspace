@@ -10264,6 +10264,171 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-sql-commenter:-aligning-large-language-models-for-.md",
       "type": "output",
       "title": "SQL-Commenter: Aligning Large Language Models for SQL Comment Generation with Direct Preference Optimization"
+    },
+    {
+      "id": "f0d1c325-03a2-4354-af07-ab44ce4be4a6",
+      "type": "seed",
+      "title": "Green Architectural Tactics in ML-enabled Systems: An LLM-based Repository Mining Study"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-green-architectural-tactics-in-ml-enabled-systems:-an-llm-based-repository-minin.md",
+      "type": "content",
+      "title": "Green Architectural Tactics in ML-enabled Systems: An LLM-based Repository Mining Study"
+    },
+    {
+      "id": "b56a99aa-f7f6-49a6-bc6b-7970283138d5",
+      "type": "seed",
+      "title": "SpaceTime Programming: Live and Omniscient Exploration of Code and Execution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/spacetime-programming_-live-and-omniscient-explora.py",
+      "type": "app",
+      "title": "SpaceTime Programming: Live and Omniscient Exploration of Code and Execution"
+    },
+    {
+      "id": "4e202bd8-b86e-4b4b-bf32-9e89188955f4",
+      "type": "seed",
+      "title": "Measuring and Exploiting Confirmation Bias in LLM-Assisted Security Code Review"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-measuring-and-exploiting-confirmation-bias-in-llm-.md",
+      "type": "output",
+      "title": "Measuring and Exploiting Confirmation Bias in LLM-Assisted Security Code Review"
+    },
+    {
+      "id": "b315216c-df1b-4d2d-be9a-8c8b69e9b181",
+      "type": "seed",
+      "title": "BenchBrowser -- Collecting Evidence for Evaluating Benchmark Validity"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-benchbrowser----collecting-evidence-for-evaluating.md",
+      "type": "output",
+      "title": "BenchBrowser -- Collecting Evidence for Evaluating Benchmark Validity"
+    },
+    {
+      "id": "a732af33-8a13-4c2c-b639-7c76eeddebc6",
+      "type": "seed",
+      "title": "Quine: Realizing LLM Agents as Native POSIX Processes"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-quine:-realizing-llm-agents-as-native-posix-proces.md",
+      "type": "output",
+      "title": "Quine: Realizing LLM Agents as Native POSIX Processes"
+    },
+    {
+      "id": "12286445-24b0-46e5-8c2e-682a4ba5867c",
+      "type": "seed",
+      "title": "Conditional Execution of Transpiler Passes Based on Per-Script Feature Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-conditional-execution-of-transpiler-passes-based-on-per-script-feature-detection.md",
+      "type": "content",
+      "title": "Conditional Execution of Transpiler Passes Based on Per-Script Feature Detection"
+    },
+    {
+      "id": "bb86592c-7252-4696-b255-fefe51900852",
+      "type": "seed",
+      "title": "The best AI investment might be in energy tech"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-best-ai-investment-might-be-in-energy-tech.py",
+      "type": "app",
+      "title": "The best AI investment might be in energy tech"
+    },
+    {
+      "id": "9e37aa6d-2d8c-4fca-ad93-cf5376960f68",
+      "type": "seed",
+      "title": "These AI notetaking devices can help you record and transcribe your meetings"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/these-ai-notetaking-devices-can-help-you-record-an.py",
+      "type": "app",
+      "title": "These AI notetaking devices can help you record and transcribe your meetings"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/these-ai-notetaking-devices-can-help-you-record-an-1.py",
+      "type": "app",
+      "title": "These AI notetaking devices can help you record and transcribe your meetings"
+    },
+    {
+      "id": "55dfcc45-f95c-4f84-805d-15134a5db01b",
+      "type": "seed",
+      "title": "Amazon acquires Rivr, maker of a stair-climbing delivery robot"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-amazon-acquires-rivr,-maker-of-a-stair-climbing-de.md",
+      "type": "output",
+      "title": "Amazon acquires Rivr, maker of a stair-climbing delivery robot"
+    },
+    {
+      "id": "e26fb2fd-b3de-4000-b321-3a25e5d25878",
+      "type": "seed",
+      "title": "Jeff Bezos reportedly wants $100 billion to buy and transform old manufacturing firms with AI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-jeff-bezos-reportedly-wants-$100-billion-to-buy-an.md",
+      "type": "output",
+      "title": "Jeff Bezos reportedly wants $100 billion to buy and transform old manufacturing firms with AI"
+    },
+    {
+      "id": "c847ee12-c166-4f82-8695-88bcb9587019",
+      "type": "seed",
+      "title": "Employees had to restrain a dancing humanoid robot after it went wild at a California restaurant"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-employees-had-to-restrain-a-dancing-humanoid-robot.md",
+      "type": "output",
+      "title": "Employees had to restrain a dancing humanoid robot after it went wild at a California restaurant"
+    },
+    {
+      "id": "612984ba-33a0-473b-bf54-f2d6eee0251f",
+      "type": "seed",
+      "title": "Polymarket continues its partnership spree with a Major League Baseball deal"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-polymarket-continues-its-partnership-spree-with-a-major-league-baseball-deal.md",
+      "type": "content",
+      "title": "Polymarket continues its partnership spree with a Major League Baseball deal"
+    },
+    {
+      "id": "6291c1d5-483a-4517-92aa-a2b1c7dae36d",
+      "type": "seed",
+      "title": "Online bot traffic will exceed human traffic by 2027, Cloudflare CEO says"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/online-bot-traffic-will-exceed-human-traffic-by-20.py",
+      "type": "app",
+      "title": "Online bot traffic will exceed human traffic by 2027, Cloudflare CEO says"
+    },
+    {
+      "id": "00a57e8d-d8d2-44c3-a66a-1d00af293839",
+      "type": "seed",
+      "title": "Bluesky announces $100M Series B after CEO transition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-bluesky-announces-$100m-series-b-after-ceo-transit.md",
+      "type": "output",
+      "title": "Bluesky announces $100M Series B after CEO transition"
+    },
+    {
+      "id": "71f78c3b-fd6a-44e7-b760-5dc04f93c7c8",
+      "type": "seed",
+      "title": "Geothermal startup Fervo catapults itself over the \u2018valley of death\u2019"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-geothermal-startup-fervo-catapults-itself-over-the-\u2018valley-of-death\u2019.md",
+      "type": "content",
+      "title": "Geothermal startup Fervo catapults itself over the \u2018valley of death\u2019"
+    },
+    {
+      "id": "0219927e-136b-4cdc-a091-cf2853fe925f",
+      "type": "seed",
+      "title": "Meta rolls out new AI content enforcement systems while reducing reliance on third-party vendors"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/meta-rolls-out-new-ai-content-enforcement-systems-.py",
+      "type": "app",
+      "title": "Meta rolls out new AI content enforcement systems while reducing reliance on third-party vendors"
     }
   ],
   "edges": [
@@ -12905,6 +13070,91 @@
     {
       "from": "618f815c-1e65-4997-a311-d5a5bd69204d",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-sql-commenter:-aligning-large-language-models-for-.md",
+      "type": "produced"
+    },
+    {
+      "from": "f0d1c325-03a2-4354-af07-ab44ce4be4a6",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-green-architectural-tactics-in-ml-enabled-systems:-an-llm-based-repository-minin.md",
+      "type": "produced"
+    },
+    {
+      "from": "b56a99aa-f7f6-49a6-bc6b-7970283138d5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/spacetime-programming_-live-and-omniscient-explora.py",
+      "type": "produced"
+    },
+    {
+      "from": "4e202bd8-b86e-4b4b-bf32-9e89188955f4",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-measuring-and-exploiting-confirmation-bias-in-llm-.md",
+      "type": "produced"
+    },
+    {
+      "from": "b315216c-df1b-4d2d-be9a-8c8b69e9b181",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-benchbrowser----collecting-evidence-for-evaluating.md",
+      "type": "produced"
+    },
+    {
+      "from": "a732af33-8a13-4c2c-b639-7c76eeddebc6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-quine:-realizing-llm-agents-as-native-posix-proces.md",
+      "type": "produced"
+    },
+    {
+      "from": "12286445-24b0-46e5-8c2e-682a4ba5867c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-conditional-execution-of-transpiler-passes-based-on-per-script-feature-detection.md",
+      "type": "produced"
+    },
+    {
+      "from": "bb86592c-7252-4696-b255-fefe51900852",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-best-ai-investment-might-be-in-energy-tech.py",
+      "type": "produced"
+    },
+    {
+      "from": "9e37aa6d-2d8c-4fca-ad93-cf5376960f68",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/these-ai-notetaking-devices-can-help-you-record-an.py",
+      "type": "produced"
+    },
+    {
+      "from": "9e37aa6d-2d8c-4fca-ad93-cf5376960f68",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/these-ai-notetaking-devices-can-help-you-record-an-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "55dfcc45-f95c-4f84-805d-15134a5db01b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-amazon-acquires-rivr,-maker-of-a-stair-climbing-de.md",
+      "type": "produced"
+    },
+    {
+      "from": "e26fb2fd-b3de-4000-b321-3a25e5d25878",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-jeff-bezos-reportedly-wants-$100-billion-to-buy-an.md",
+      "type": "produced"
+    },
+    {
+      "from": "c847ee12-c166-4f82-8695-88bcb9587019",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-employees-had-to-restrain-a-dancing-humanoid-robot.md",
+      "type": "produced"
+    },
+    {
+      "from": "612984ba-33a0-473b-bf54-f2d6eee0251f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-polymarket-continues-its-partnership-spree-with-a-major-league-baseball-deal.md",
+      "type": "produced"
+    },
+    {
+      "from": "6291c1d5-483a-4517-92aa-a2b1c7dae36d",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/online-bot-traffic-will-exceed-human-traffic-by-20.py",
+      "type": "produced"
+    },
+    {
+      "from": "00a57e8d-d8d2-44c3-a66a-1d00af293839",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-bluesky-announces-$100m-series-b-after-ceo-transit.md",
+      "type": "produced"
+    },
+    {
+      "from": "71f78c3b-fd6a-44e7-b760-5dc04f93c7c8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-geothermal-startup-fervo-catapults-itself-over-the-\u2018valley-of-death\u2019.md",
+      "type": "produced"
+    },
+    {
+      "from": "0219927e-136b-4cdc-a091-cf2853fe925f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/meta-rolls-out-new-ai-content-enforcement-systems-.py",
       "type": "produced"
     }
   ]

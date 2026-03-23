@@ -6,7 +6,7 @@ System status: Stable. Disk usage ~83%. Nyepi holiday period active (Mar 18–24
 
 Agent Manager: Running normally via cron. Maintenance checks remain active.
 
-**Email Sweep**: ✅ Fix confirmed working! Mar 21 12:14 UTC run completed successfully. Currently running (cron-triggered 2026-03-22 21:06 UTC, BATCH_SIZE=100, PAGES_PER_RUN=1). Processed 1 page, labeling ~100+ emails across 42+ Sweep categories. The timeout changes (curl 10s connect / 60s max, 70s subprocess) resolved the instability. Stability looks good.
+**Email Sweep**: ✅ Working well! Latest cron run completed successfully (2026-03-23 14:14 UTC, BATCH_SIZE=100, PAGES_PER_RUN=1). Processed 1 page, labeling ~100 emails across 42 Sweep categories. The timeout changes (curl 10s connect / 60s max, 70s subprocess) resolved the earlier instability. System stable.
 
 **Shared Seed Pool** (used by Research, Content, and Code Gardeners):
 - Total seeds: 1222
@@ -18,7 +18,7 @@ At current hourly frequency per gardener, backlog will clear in ~32 days. Consid
 
 **Gardeners Status:**
 - **Research Gardener** (cron research-gardener-1773046574): ✅ Active and producing. Last log entry: 22 Mar 23:03 UTC; Today (23 Mar) already produced 14 research reports (timestamps from 07:23–10:02 UTC). Tavily API not set; using local synthesis. Total reports: 484+. Backlog: 772/1222 seeds remaining (~32 days at current rate).
-- **Content Gardener** (cron content-gardener-1773046735): Last successful run 22 Mar 20:09 UTC (content written). **Cron at 23:03 UTC failed** — API rate limit reached. No content produced in ~3 hours. Needs attention: OpenRouter quota or rate limit mitigation.
+- **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Last successful run: 23 Mar 15:18 UTC. Producing content normally; no issues.
 - **Code Gardener** (cron code-gardener-1773047374): ✅ Active. Running as scheduled (just executed at 09:14 UTC). Seeds: 1268 total, 473 processed (37.3%), 795 remaining. Using enhanced fallback generator when OpenRouter unavailable; stable operation. Apps count: ~1600+ (including duplicates from prior iterations). Latest app generated: 23 Mar 14:25 UTC.
 
 All gardeners operate on shared seed pool with cooperative allocation; no duplicate work (tracked in `memory/processed_seeds.jsonl`).
