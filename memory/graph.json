@@ -10124,6 +10124,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-amid-legal-turmoil,-kalshi-is-temporarily-banned-i.md",
       "type": "output",
       "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada"
+    },
+    {
+      "id": "13b8662e-91bf-487d-969c-0828b1620c87",
+      "type": "seed",
+      "title": "Pinterest CEO calls on governments to ban social media for users under 16"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-pinterest-ceo-calls-on-governments-to-ban-social-m.md",
+      "type": "output",
+      "title": "Pinterest CEO calls on governments to ban social media for users under 16"
+    },
+    {
+      "id": "563784ab-ae45-4bed-a0ef-173f31b21359",
+      "type": "seed",
+      "title": "Why scientists can&#8217;t get a laugh"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-why-scientists-can&#8217;t-get-a-laugh.md",
+      "type": "output",
+      "title": "Why scientists can&#8217;t get a laugh"
+    },
+    {
+      "id": "a75d28dc-eebc-44f8-89e2-221658df53bd",
+      "type": "seed",
+      "title": "A French Navy officer accidentally leaked the location of an aircraft carrier by logging his run on Strava"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
+      "type": "content",
+      "title": "A French Navy officer accidentally leaked the location of an aircraft carrier by logging his run on Strava"
     }
   ],
   "edges": [
@@ -12695,6 +12725,21 @@
     {
       "from": "cb2b93e8-b8e5-4e98-b346-02a6f7121f04",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-amid-legal-turmoil,-kalshi-is-temporarily-banned-i.md",
+      "type": "produced"
+    },
+    {
+      "from": "13b8662e-91bf-487d-969c-0828b1620c87",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-pinterest-ceo-calls-on-governments-to-ban-social-m.md",
+      "type": "produced"
+    },
+    {
+      "from": "563784ab-ae45-4bed-a0ef-173f31b21359",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-why-scientists-can&#8217;t-get-a-laugh.md",
+      "type": "produced"
+    },
+    {
+      "from": "a75d28dc-eebc-44f8-89e2-221658df53bd",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-23-a-french-navy-officer-accidentally-leaked-the-location-of-an-aircraft-carrier-by.md",
       "type": "produced"
     }
   ]
