@@ -10879,6 +10879,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/coordinating-stakeholders-in-the-consideration-of-.py",
       "type": "app",
       "title": "Coordinating Stakeholders in the Consideration of Performance Indicators and Respective Interface Requirements for Automated Vehicles"
+    },
+    {
+      "id": "2236affa-cc2f-4f54-98f9-6ef60eee287e",
+      "type": "seed",
+      "title": "Skilled AI Agents for Embedded and IoT Systems Development"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-skilled-ai-agents-for-embedded-and-iot-systems-dev.md",
+      "type": "output",
+      "title": "Skilled AI Agents for Embedded and IoT Systems Development"
     }
   ],
   "edges": [
@@ -13855,6 +13865,11 @@
     {
       "from": "4817cc27-ee14-4bf0-9c40-1b23d9188416",
       "to": "/home/ubuntu/.openclaw/workspace/apps/coordinating-stakeholders-in-the-consideration-of-.py",
+      "type": "produced"
+    },
+    {
+      "from": "2236affa-cc2f-4f54-98f9-6ef60eee287e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-skilled-ai-agents-for-embedded-and-iot-systems-dev.md",
       "type": "produced"
     }
   ]
