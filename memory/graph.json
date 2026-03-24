@@ -10889,6 +10889,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-skilled-ai-agents-for-embedded-and-iot-systems-dev.md",
       "type": "output",
       "title": "Skilled AI Agents for Embedded and IoT Systems Development"
+    },
+    {
+      "id": "56c44183-b129-4299-861e-06eb83441e78",
+      "type": "seed",
+      "title": "GazePrinter: Visualizing Expert Gaze to Guide Novices in a New Codebase"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-gazeprinter:-visualizing-expert-gaze-to-guide-novi.md",
+      "type": "output",
+      "title": "GazePrinter: Visualizing Expert Gaze to Guide Novices in a New Codebase"
     }
   ],
   "edges": [
@@ -13870,6 +13880,11 @@
     {
       "from": "2236affa-cc2f-4f54-98f9-6ef60eee287e",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-skilled-ai-agents-for-embedded-and-iot-systems-dev.md",
+      "type": "produced"
+    },
+    {
+      "from": "56c44183-b129-4299-861e-06eb83441e78",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-gazeprinter:-visualizing-expert-gaze-to-guide-novi.md",
       "type": "produced"
     }
   ]
