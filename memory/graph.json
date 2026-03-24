@@ -10834,6 +10834,11 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-parameter-efficient-token-embedding-editing-for-clinical-class-level-unlearning.md",
       "type": "content",
       "title": "Parameter-Efficient Token Embedding Editing for Clinical Class-Level Unlearning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-parameter-efficient-token-embedding-editing-for-cl.md",
+      "type": "output",
+      "title": "Parameter-Efficient Token Embedding Editing for Clinical Class-Level Unlearning"
     }
   ],
   "edges": [
@@ -13785,6 +13790,11 @@
     {
       "from": "3aac7aaa-6c55-4259-a3d3-42a79b0868f9",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-parameter-efficient-token-embedding-editing-for-clinical-class-level-unlearning.md",
+      "type": "produced"
+    },
+    {
+      "from": "3aac7aaa-6c55-4259-a3d3-42a79b0868f9",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-parameter-efficient-token-embedding-editing-for-cl.md",
       "type": "produced"
     }
   ]
