@@ -10794,6 +10794,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-clare-ty-amid-chaos:-quantifying-representational-entanglement-to-predict-ripple.md",
       "type": "content",
       "title": "CLaRE-ty Amid Chaos: Quantifying Representational Entanglement to Predict Ripple Effects in LLM Editing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-clare-ty-amid-chaos:-quantifying-representational-.md",
+      "type": "output",
+      "title": "CLaRE-ty Amid Chaos: Quantifying Representational Entanglement to Predict Ripple Effects in LLM Editing"
+    },
+    {
+      "id": "46dda58d-3ebb-427a-bfbd-546621700a76",
+      "type": "seed",
+      "title": "A Dynamic Bayesian and Machine Learning Framework for Quantitative Evaluation and Prediction of Operator Situation Awareness in Nuclear Power Plants"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/a-dynamic-bayesian-and-machine-learning-framework-.py",
+      "type": "app",
+      "title": "A Dynamic Bayesian and Machine Learning Framework for Quantitative Evaluation and Prediction of Operator Situation Awareness in Nuclear Power Plants"
+    },
+    {
+      "id": "dd08e74b-c311-421b-9bef-c50ef915cbaa",
+      "type": "seed",
+      "title": "PRIME-CVD: A Parametrically Rendered Informatics Medical Environment for Education in Cardiovascular Risk Modelling"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-prime-cvd:-a-parametrically-rendered-informatics-m.md",
+      "type": "output",
+      "title": "PRIME-CVD: A Parametrically Rendered Informatics Medical Environment for Education in Cardiovascular Risk Modelling"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-prime-cvd:-a-parametrically-rendered-informatics-medical-environment-for-educati.md",
+      "type": "content",
+      "title": "PRIME-CVD: A Parametrically Rendered Informatics Medical Environment for Education in Cardiovascular Risk Modelling"
+    },
+    {
+      "id": "3aac7aaa-6c55-4259-a3d3-42a79b0868f9",
+      "type": "seed",
+      "title": "Parameter-Efficient Token Embedding Editing for Clinical Class-Level Unlearning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-parameter-efficient-token-embedding-editing-for-clinical-class-level-unlearning.md",
+      "type": "content",
+      "title": "Parameter-Efficient Token Embedding Editing for Clinical Class-Level Unlearning"
     }
   ],
   "edges": [
@@ -13720,6 +13760,31 @@
     {
       "from": "a97815ad-3108-4cdf-80a5-d4b8db53301a",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-clare-ty-amid-chaos:-quantifying-representational-entanglement-to-predict-ripple.md",
+      "type": "produced"
+    },
+    {
+      "from": "a97815ad-3108-4cdf-80a5-d4b8db53301a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-clare-ty-amid-chaos:-quantifying-representational-.md",
+      "type": "produced"
+    },
+    {
+      "from": "46dda58d-3ebb-427a-bfbd-546621700a76",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/a-dynamic-bayesian-and-machine-learning-framework-.py",
+      "type": "produced"
+    },
+    {
+      "from": "dd08e74b-c311-421b-9bef-c50ef915cbaa",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-prime-cvd:-a-parametrically-rendered-informatics-m.md",
+      "type": "produced"
+    },
+    {
+      "from": "dd08e74b-c311-421b-9bef-c50ef915cbaa",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-prime-cvd:-a-parametrically-rendered-informatics-medical-environment-for-educati.md",
+      "type": "produced"
+    },
+    {
+      "from": "3aac7aaa-6c55-4259-a3d3-42a79b0868f9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-parameter-efficient-token-embedding-editing-for-clinical-class-level-unlearning.md",
       "type": "produced"
     }
   ]
