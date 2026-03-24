@@ -10734,6 +10734,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-speculating-experts-accelerates-inference-for-mixt.md",
       "type": "output",
       "title": "Speculating Experts Accelerates Inference for Mixture-of-Experts"
+    },
+    {
+      "id": "1d76a2ef-663e-4316-8c1a-fbbdbbd3f8cb",
+      "type": "seed",
+      "title": "A Visualization for Comparative Analysis of Regression Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-a-visualization-for-comparative-analysis-of-regression-models.md",
+      "type": "content",
+      "title": "A Visualization for Comparative Analysis of Regression Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-a-visualization-for-comparative-analysis-of-regres.md",
+      "type": "output",
+      "title": "A Visualization for Comparative Analysis of Regression Models"
+    },
+    {
+      "id": "8846d1fc-1bb3-436b-8e15-a49fd43f21cd",
+      "type": "seed",
+      "title": "Maximizing mutual information between user-contexts and responses improve LLM personalization with no additional data"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-maximizing-mutual-information-between-user-context.md",
+      "type": "output",
+      "title": "Maximizing mutual information between user-contexts and responses improve LLM personalization with no additional data"
     }
   ],
   "edges": [
@@ -13625,6 +13650,21 @@
     {
       "from": "2d018167-faa1-42f0-8474-7599c7dd7f88",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-speculating-experts-accelerates-inference-for-mixt.md",
+      "type": "produced"
+    },
+    {
+      "from": "1d76a2ef-663e-4316-8c1a-fbbdbbd3f8cb",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-a-visualization-for-comparative-analysis-of-regression-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "1d76a2ef-663e-4316-8c1a-fbbdbbd3f8cb",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-a-visualization-for-comparative-analysis-of-regres.md",
+      "type": "produced"
+    },
+    {
+      "from": "8846d1fc-1bb3-436b-8e15-a49fd43f21cd",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-maximizing-mutual-information-between-user-context.md",
       "type": "produced"
     }
   ]
