@@ -10724,6 +10724,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/shobdosetu_-a-data-centric-framework-for-bengali-l.py",
       "type": "app",
       "title": "ShobdoSetu: A Data-Centric Framework for Bengali Long-Form Speech Recognition and Speaker Diarization"
+    },
+    {
+      "id": "2d018167-faa1-42f0-8474-7599c7dd7f88",
+      "type": "seed",
+      "title": "Speculating Experts Accelerates Inference for Mixture-of-Experts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-speculating-experts-accelerates-inference-for-mixt.md",
+      "type": "output",
+      "title": "Speculating Experts Accelerates Inference for Mixture-of-Experts"
     }
   ],
   "edges": [
@@ -13610,6 +13620,11 @@
     {
       "from": "b3a81694-c7f7-4350-a9e3-75e25e14fed0",
       "to": "/home/ubuntu/.openclaw/workspace/apps/shobdosetu_-a-data-centric-framework-for-bengali-l.py",
+      "type": "produced"
+    },
+    {
+      "from": "2d018167-faa1-42f0-8474-7599c7dd7f88",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-speculating-experts-accelerates-inference-for-mixt.md",
       "type": "produced"
     }
   ]
