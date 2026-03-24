@@ -215,12 +215,23 @@ def main():
     # If missing domains, try to pick a seed from those domains
     seed = None
     if missing_domains:
-        # Find candidate seeds whose title contains any missing domain keyword
+        # Find candidate seeds whose title contains any keyword for a missing domain
         candidates = []
+        DOMAIN_KEYWORDS = {
+            'anime': ['anime', 'manga', 'animation'],
+            'banking': ['bank', 'finance', 'fintech', 'payment'],
+            'tech': ['tech', 'hardware', 'chip', 'processor', 'cloud'],
+            'ai': ['ai', 'ml', 'llm', 'agent', 'gpt'],
+            'security': ['security', 'cyber', 'privacy', 'encrypt', 'vulnerab']
+        }
         for s in unprocessed:
             title = s['title'].lower()
-            if any(dom in title for dom in missing_domains):
-                candidates.append(s)
+            # Check if title matches any keyword of any missing domain
+            for dom in missing_domains:
+                keywords = DOMAIN_KEYWORDS.get(dom, [])
+                if any(kw in title for kw in keywords):
+                    candidates.append(s)
+                    break  # no need to check other domains for this seed
         if candidates:
             # Pick the most recent candidate
             candidates.sort(key=lambda s: s['ts'], reverse=True)
