@@ -10974,6 +10974,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-fcc-bans-import-of-new-consumer-routers-made-overs.md",
       "type": "output",
       "title": "FCC bans import of new consumer routers made overseas, citing security risks"
+    },
+    {
+      "id": "e6dcd827-17fa-4f08-b2ef-b724972c68cf",
+      "type": "seed",
+      "title": "HCAG: Hierarchical Abstraction and Retrieval-Augmented Generation on Theoretical Repositories with LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-hcag:-hierarchical-abstraction-and-retrieval-augmented-generation-on-theoretical.md",
+      "type": "content",
+      "title": "HCAG: Hierarchical Abstraction and Retrieval-Augmented Generation on Theoretical Repositories with LLMs"
+    },
+    {
+      "id": "55c48e93-9986-48cd-a421-f4580acf45ff",
+      "type": "seed",
+      "title": "Leveraging Natural Language Processing and Machine Learning for Evidence-Based Food Security Policy Decision-Making in Data-Scarce Making"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-leveraging-natural-language-processing-and-machine.md",
+      "type": "output",
+      "title": "Leveraging Natural Language Processing and Machine Learning for Evidence-Based Food Security Policy Decision-Making in Data-Scarce Making"
+    },
+    {
+      "id": "ddec5237-4519-4e87-a289-7f957536d893",
+      "type": "seed",
+      "title": "From Human Interfaces to Agent Interfaces: Rethinking Software Design in the Age of AI-Native Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/from-human-interfaces-to-agent-interfaces_-rethink.py",
+      "type": "app",
+      "title": "From Human Interfaces to Agent Interfaces: Rethinking Software Design in the Age of AI-Native Systems"
     }
   ],
   "edges": [
@@ -14000,6 +14030,21 @@
     {
       "from": "dcb162a6-6362-4878-a22f-bbc8ce4c1992",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-fcc-bans-import-of-new-consumer-routers-made-overs.md",
+      "type": "produced"
+    },
+    {
+      "from": "e6dcd827-17fa-4f08-b2ef-b724972c68cf",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-hcag:-hierarchical-abstraction-and-retrieval-augmented-generation-on-theoretical.md",
+      "type": "produced"
+    },
+    {
+      "from": "55c48e93-9986-48cd-a421-f4580acf45ff",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-leveraging-natural-language-processing-and-machine.md",
+      "type": "produced"
+    },
+    {
+      "from": "ddec5237-4519-4e87-a289-7f957536d893",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/from-human-interfaces-to-agent-interfaces_-rethink.py",
       "type": "produced"
     }
   ]
