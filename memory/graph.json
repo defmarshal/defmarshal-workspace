@@ -10939,6 +10939,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-leveraging-natural-language-processing-and-machine.md",
       "type": "output",
       "title": "Leveraging Natural Language Processing and Machine Learning for Evidence-Based Food Security Policy Decision-Making in Data-Scarce Making"
+    },
+    {
+      "id": "e489bf02-ca39-4b4e-83e7-2aedfad738c4",
+      "type": "seed",
+      "title": "AgenticGEO: A Self-Evolving Agentic System for Generative Engine Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-agenticgeo:-a-self-evolving-agentic-system-for-generative-engine-optimization.md",
+      "type": "content",
+      "title": "AgenticGEO: A Self-Evolving Agentic System for Generative Engine Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen.py",
+      "type": "app",
+      "title": "AgenticGEO: A Self-Evolving Agentic System for Generative Engine Optimization"
     }
   ],
   "edges": [
@@ -13945,6 +13960,16 @@
     {
       "from": "ac3a3ddd-eaa2-4d97-8fd2-8e9e82606959",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-leveraging-natural-language-processing-and-machine.md",
+      "type": "produced"
+    },
+    {
+      "from": "e489bf02-ca39-4b4e-83e7-2aedfad738c4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-agenticgeo:-a-self-evolving-agentic-system-for-generative-engine-optimization.md",
+      "type": "produced"
+    },
+    {
+      "from": "e489bf02-ca39-4b4e-83e7-2aedfad738c4",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen.py",
       "type": "produced"
     }
   ]
