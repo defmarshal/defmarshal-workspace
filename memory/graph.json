@@ -10759,6 +10759,41 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-maximizing-mutual-information-between-user-context.md",
       "type": "output",
       "title": "Maximizing mutual information between user-contexts and responses improve LLM personalization with no additional data"
+    },
+    {
+      "id": "89d5a37e-5511-44a0-82ae-9554772f0cb2",
+      "type": "seed",
+      "title": "BrainSCL: Subtype-Guided Contrastive Learning for Brain Disorder Diagnosis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-brainscl:-subtype-guided-contrastive-learning-for-brain-disorder-diagnosis.md",
+      "type": "content",
+      "title": "BrainSCL: Subtype-Guided Contrastive Learning for Brain Disorder Diagnosis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-brainscl:-subtype-guided-contrastive-learning-for-.md",
+      "type": "output",
+      "title": "BrainSCL: Subtype-Guided Contrastive Learning for Brain Disorder Diagnosis"
+    },
+    {
+      "id": "4411af56-251d-4a77-95c2-2244a40fd2f8",
+      "type": "seed",
+      "title": "TTQ: Activation-Aware Test-Time Quantization to Accelerate LLM Inference On The Fly"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/ttq_-activation-aware-test-time-quantization-to-ac.py",
+      "type": "app",
+      "title": "TTQ: Activation-Aware Test-Time Quantization to Accelerate LLM Inference On The Fly"
+    },
+    {
+      "id": "a97815ad-3108-4cdf-80a5-d4b8db53301a",
+      "type": "seed",
+      "title": "CLaRE-ty Amid Chaos: Quantifying Representational Entanglement to Predict Ripple Effects in LLM Editing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-clare-ty-amid-chaos:-quantifying-representational-entanglement-to-predict-ripple.md",
+      "type": "content",
+      "title": "CLaRE-ty Amid Chaos: Quantifying Representational Entanglement to Predict Ripple Effects in LLM Editing"
     }
   ],
   "edges": [
@@ -13665,6 +13700,26 @@
     {
       "from": "8846d1fc-1bb3-436b-8e15-a49fd43f21cd",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-maximizing-mutual-information-between-user-context.md",
+      "type": "produced"
+    },
+    {
+      "from": "89d5a37e-5511-44a0-82ae-9554772f0cb2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-brainscl:-subtype-guided-contrastive-learning-for-brain-disorder-diagnosis.md",
+      "type": "produced"
+    },
+    {
+      "from": "89d5a37e-5511-44a0-82ae-9554772f0cb2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-brainscl:-subtype-guided-contrastive-learning-for-.md",
+      "type": "produced"
+    },
+    {
+      "from": "4411af56-251d-4a77-95c2-2244a40fd2f8",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/ttq_-activation-aware-test-time-quantization-to-ac.py",
+      "type": "produced"
+    },
+    {
+      "from": "a97815ad-3108-4cdf-80a5-d4b8db53301a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-clare-ty-amid-chaos:-quantifying-representational-entanglement-to-predict-ripple.md",
       "type": "produced"
     }
   ]
