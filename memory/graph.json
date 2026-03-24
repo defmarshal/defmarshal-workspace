@@ -10964,6 +10964,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-the-nature-of-technical-debt-in-research-software.md",
       "type": "output",
       "title": "The Nature of Technical Debt in Research Software"
+    },
+    {
+      "id": "dcb162a6-6362-4878-a22f-bbc8ce4c1992",
+      "type": "seed",
+      "title": "FCC bans import of new consumer routers made overseas, citing security risks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-fcc-bans-import-of-new-consumer-routers-made-overs.md",
+      "type": "output",
+      "title": "FCC bans import of new consumer routers made overseas, citing security risks"
     }
   ],
   "edges": [
@@ -13985,6 +13995,11 @@
     {
       "from": "410e0e4a-f4ab-440b-be8b-38a343476285",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-the-nature-of-technical-debt-in-research-software.md",
+      "type": "produced"
+    },
+    {
+      "from": "dcb162a6-6362-4878-a22f-bbc8ce4c1992",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-fcc-bans-import-of-new-consumer-routers-made-overs.md",
       "type": "produced"
     }
   ]
