@@ -10849,6 +10849,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-exploring-subnetwork-interactions-in-heterogeneous.md",
       "type": "output",
       "title": "Exploring Subnetwork Interactions in Heterogeneous Brain Network via Prior-Informed Graph Learning"
+    },
+    {
+      "id": "66e24645-7014-4455-a32e-e35ecce0e142",
+      "type": "seed",
+      "title": "Goedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/goedel-code-prover_-hierarchical-proof-search-for-.py",
+      "type": "app",
+      "title": "Goedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification"
+    },
+    {
+      "id": "6a937c05-55e2-4cf9-b704-7a12274a1df0",
+      "type": "seed",
+      "title": "DePro: Understanding the Role of LLMs in Debugging Competitive Programming Code"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-depro:-understanding-the-role-of-llms-in-debugging.md",
+      "type": "output",
+      "title": "DePro: Understanding the Role of LLMs in Debugging Competitive Programming Code"
+    },
+    {
+      "id": "4817cc27-ee14-4bf0-9c40-1b23d9188416",
+      "type": "seed",
+      "title": "Coordinating Stakeholders in the Consideration of Performance Indicators and Respective Interface Requirements for Automated Vehicles"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/coordinating-stakeholders-in-the-consideration-of-.py",
+      "type": "app",
+      "title": "Coordinating Stakeholders in the Consideration of Performance Indicators and Respective Interface Requirements for Automated Vehicles"
     }
   ],
   "edges": [
@@ -13810,6 +13840,21 @@
     {
       "from": "958a76d5-c5dd-4032-af20-32804819675a",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-exploring-subnetwork-interactions-in-heterogeneous.md",
+      "type": "produced"
+    },
+    {
+      "from": "66e24645-7014-4455-a32e-e35ecce0e142",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/goedel-code-prover_-hierarchical-proof-search-for-.py",
+      "type": "produced"
+    },
+    {
+      "from": "6a937c05-55e2-4cf9-b704-7a12274a1df0",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-depro:-understanding-the-role-of-llms-in-debugging.md",
+      "type": "produced"
+    },
+    {
+      "from": "4817cc27-ee14-4bf0-9c40-1b23d9188416",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/coordinating-stakeholders-in-the-consideration-of-.py",
       "type": "produced"
     }
   ]

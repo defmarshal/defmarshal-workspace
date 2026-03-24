@@ -113,3 +113,16 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
   - Periodic `git lfs ls-files` audit to ensure no large binaries are tracked.
   - Consider migrating valhalla data directory to a separate data repository or using Git LFS for large datasets.
 - **Follow-up:** After filter-branch completes, force-push cleaned history. Monitor subsequent agent-manager runs for lock file anomalies.
+
+## 2026-03-24 — Git Janitor Cron Silent Failure (Recurring)
+
+- **Symptom:** The `git-janitor-cron` job (scheduled daily at 06:12 UTC) executed but finished without logging any output and without committing pending changes. The agent-manager later detected uncommitted gardener outputs (5 files). Manual run of the script completed successfully and committed the files.
+- **Root cause:** Unknown — possible transient environment issue (PATH, OpenRouter API), or script error that didn't propagate exit code. No error logs from the cron run; likely the script hung or exited silently before the git operations.
+- **Impact:** Delayed commit of gardener outputs by ~7 hours. No data loss, but reduces freshness of deployed content and may cause accumulation of untracked files.
+- **Actions taken:** Manually ran the git-janitor script to commit pending changes. Verified all gardener outputs were valid.
+- **Prevention:**
+  - Add explicit logging at each stage of git-janitor.sh (start, fetch, status, commit, push) with timestamps to `/tmp/git-janitor-$(date +%Y%m%d).log`.
+  - Ensure cron environment has correct PATH and required utilities; source user profile or use absolute paths.
+  - Add post-commit verification: after commit, check that working tree is clean; if not, send alert.
+  - Consider wrapping the cron job in a supervisor (agent-manager) check: if janitor hasn't run successfully in >24h, trigger manual run and alert.
+- **Follow-up:** Monitor next 3 days of git-janitor runs to see if issue recurs. If it does, investigate cron environment differences and script dependencies. Add more robust error handling and alerts on failure.
