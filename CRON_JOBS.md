@@ -37,7 +37,7 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Description**: Analyzes workspace, implements improvements, validates, commits with `build:` prefix. Runs 24/7.
 
 2. **auto-torrent-cron**
-   - **Schedule**: Daily at 02:00 Asia/Bangkok
+   - **Schedule**: Daily at 02:00 Asia/Bangkok (`0 2 * * *`)
    - **Payload**: agentTurn running `./quick nyaa-top --limit 10 --max-size 2G --add`
    - **Log**: `memory/auto-torrent.log`
    - **Description**: Fetches top 10 anime torrents from Sukebei.Nyaa.si under 2GB and adds them to aria2 automatically.
@@ -49,7 +49,7 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Description**: Picks a random torrent from top 20 (max 1GB) and adds if not already present. Also checks disk thresholds to avoid overfilling.
 
 4. **content-index-update-cron**
-   - **Schedule**: Daily at 05:30 Asia/Bangkok
+   - **Schedule**: Daily at 05:30 Asia/Bangkok (`30 5 * * *`)
    - **Payload**: agentTurn running `./quick content-index-update` and appending to `memory/content-index-cron.log`
    - **Description**: Regenerates `content/INDEX.md` to reflect new content files.
 
