@@ -10909,6 +10909,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/revealing-domain-spatiality-patterns-for-configura.py",
       "type": "app",
       "title": "Revealing Domain-Spatiality Patterns for Configuration Tuning: Domain Knowledge Meets Fitness Landscapes"
+    },
+    {
+      "id": "fc3d8f77-8206-4e37-ba61-0736e24056f0",
+      "type": "seed",
+      "title": "Teaching Practically Relevant Research Problem Formulation in Software Engineering with Lean Research Inception"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-teaching-practically-relevant-research-problem-formulation-in-software-engineeri.md",
+      "type": "content",
+      "title": "Teaching Practically Relevant Research Problem Formulation in Software Engineering with Lean Research Inception"
+    },
+    {
+      "id": "8e710e94-b9ac-4def-8791-23721f45d6bd",
+      "type": "seed",
+      "title": "Orchestrating Human-AI Software Delivery: A Retrospective Longitudinal Field Study of Three Software Modernization Programs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/orchestrating-human-ai-software-delivery_-a-retros.py",
+      "type": "app",
+      "title": "Orchestrating Human-AI Software Delivery: A Retrospective Longitudinal Field Study of Three Software Modernization Programs"
     }
   ],
   "edges": [
@@ -13900,6 +13920,16 @@
     {
       "from": "dbc1bd84-f556-4c4e-a418-2ef078111724",
       "to": "/home/ubuntu/.openclaw/workspace/apps/revealing-domain-spatiality-patterns-for-configura.py",
+      "type": "produced"
+    },
+    {
+      "from": "fc3d8f77-8206-4e37-ba61-0736e24056f0",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-teaching-practically-relevant-research-problem-formulation-in-software-engineeri.md",
+      "type": "produced"
+    },
+    {
+      "from": "8e710e94-b9ac-4def-8791-23721f45d6bd",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/orchestrating-human-ai-software-delivery_-a-retros.py",
       "type": "produced"
     }
   ]
