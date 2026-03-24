@@ -191,10 +191,48 @@ def main():
     if not unprocessed:
         log("No new seeds to research")
         return
-    # Pick the most recent seed (highest timestamp)
-    unprocessed.sort(key=lambda s: s['ts'], reverse=True)
-    seed = unprocessed[0]
-    log(f"Researching seed: {seed['title']}")
+
+    # Domain-balancing: check which domains are still missing for today's reports
+    today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
+    existing_titles = [f for f in os.listdir(RESEARCH_DIR) if f.startswith(today) and f.endswith('.md')]
+    # Simple domain detection from filenames
+    covered = set()
+    for f in existing_titles:
+        title = f.lower()
+        if 'anime' in title or 'manga' in title or 'animation' in title:
+            covered.add('anime')
+        if 'bank' in title or 'finance' in title or 'fintech' in title or 'payment' in title:
+            covered.add('banking')
+        if 'tech' in title or 'hardware' in title or 'chip' in title or 'processor' in title or 'cloud' in title:
+            covered.add('tech')
+        if 'ai' in title or 'ml' in title or 'llm' in title or 'agent' in title or 'gpt' in title:
+            covered.add('ai')
+        if 'security' in title or 'cyber' in title or 'privacy' in title or 'encrypt' in title or 'vulnerab' in title:
+            covered.add('security')
+    all_domains = {'anime', 'banking', 'tech', 'ai', 'security'}
+    missing_domains = all_domains - covered
+
+    # If missing domains, try to pick a seed from those domains
+    seed = None
+    if missing_domains:
+        # Find candidate seeds whose title contains any missing domain keyword
+        candidates = []
+        for s in unprocessed:
+            title = s['title'].lower()
+            if any(dom in title for dom in missing_domains):
+                candidates.append(s)
+        if candidates:
+            # Pick the most recent candidate
+            candidates.sort(key=lambda s: s['ts'], reverse=True)
+            seed = candidates[0]
+            log(f"Domain-balancing: selected seed from missing domain(s): {seed['title']}")
+        else:
+            log(f"No seeds available for missing domains {missing_domains}; falling back to most recent")
+    if seed is None:
+        # Default: pick the most recent seed
+        unprocessed.sort(key=lambda s: s['ts'], reverse=True)
+        seed = unprocessed[0]
+        log(f"Researching seed: {seed['title']}")
     output_path = generate_report(seed)
     add_graph_edge(seed['id'], output_path, seed['title'])
     mark_processed(seed['id'])
