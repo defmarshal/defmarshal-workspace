@@ -10634,6 +10634,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-spelling-correction-in-healthcare-query-answer-sys.md",
       "type": "output",
       "title": "Spelling Correction in Healthcare Query-Answer Systems: Methods, Retrieval Impact, and Empirical Evaluation"
+    },
+    {
+      "id": "c954b2eb-6061-48a4-8656-6aa92c89ea7f",
+      "type": "seed",
+      "title": "Can Structural Cues Save LLMs? Evaluating Language Models in Massive Document Streams"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-can-structural-cues-save-llms?-evaluating-language.md",
+      "type": "output",
+      "title": "Can Structural Cues Save LLMs? Evaluating Language Models in Massive Document Streams"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-can-structural-cues-save-llms?-evaluating-language-models-in-massive-document-st.md",
+      "type": "content",
+      "title": "Can Structural Cues Save LLMs? Evaluating Language Models in Massive Document Streams"
+    },
+    {
+      "id": "cf4169b3-1fce-4382-87b3-e086973df329",
+      "type": "seed",
+      "title": "Enhancing Legal LLMs through Metadata-Enriched RAG Pipelines and Direct Preference Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/enhancing-legal-llms-through-metadata-enriched-rag.py",
+      "type": "app",
+      "title": "Enhancing Legal LLMs through Metadata-Enriched RAG Pipelines and Direct Preference Optimization"
     }
   ],
   "edges": [
@@ -13465,6 +13490,21 @@
     {
       "from": "83b5b9a9-0d67-47c5-940c-7cec2d9a64b8",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-spelling-correction-in-healthcare-query-answer-sys.md",
+      "type": "produced"
+    },
+    {
+      "from": "c954b2eb-6061-48a4-8656-6aa92c89ea7f",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-can-structural-cues-save-llms?-evaluating-language.md",
+      "type": "produced"
+    },
+    {
+      "from": "c954b2eb-6061-48a4-8656-6aa92c89ea7f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-can-structural-cues-save-llms?-evaluating-language-models-in-massive-document-st.md",
+      "type": "produced"
+    },
+    {
+      "from": "cf4169b3-1fce-4382-87b3-e086973df329",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/enhancing-legal-llms-through-metadata-enriched-rag.py",
       "type": "produced"
     }
   ]
