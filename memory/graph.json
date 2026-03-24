@@ -10659,6 +10659,41 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/enhancing-legal-llms-through-metadata-enriched-rag.py",
       "type": "app",
       "title": "Enhancing Legal LLMs through Metadata-Enriched RAG Pipelines and Direct Preference Optimization"
+    },
+    {
+      "id": "fd6711f4-13d1-48ce-80a3-7e97b6bb6c37",
+      "type": "seed",
+      "title": "GeoChallenge: A Multi-Answer Multiple-Choice Benchmark for Geometric Reasoning with Diagrams"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-geochallenge:-a-multi-answer-multiple-choice-bench.md",
+      "type": "output",
+      "title": "GeoChallenge: A Multi-Answer Multiple-Choice Benchmark for Geometric Reasoning with Diagrams"
+    },
+    {
+      "id": "d000d766-b2ca-4413-b290-e1664c3e30c2",
+      "type": "seed",
+      "title": "A comprehensive study of LLM-based argument classification: from Llama through DeepSeek to GPT-5.2"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-a-comprehensive-study-of-llm-based-argument-classification:-from-llama-through-d.md",
+      "type": "content",
+      "title": "A comprehensive study of LLM-based argument classification: from Llama through DeepSeek to GPT-5.2"
+    },
+    {
+      "id": "7f542d75-6d27-41dc-9c06-63df1895bd68",
+      "type": "seed",
+      "title": "From Comprehension to Reasoning: A Hierarchical Benchmark for Automated Financial Research Reporting"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-from-comprehension-to-reasoning:-a-hierarchical-benchmark-for-automated-financia.md",
+      "type": "content",
+      "title": "From Comprehension to Reasoning: A Hierarchical Benchmark for Automated Financial Research Reporting"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/from-comprehension-to-reasoning_-a-hierarchical-be.py",
+      "type": "app",
+      "title": "From Comprehension to Reasoning: A Hierarchical Benchmark for Automated Financial Research Reporting"
     }
   ],
   "edges": [
@@ -13505,6 +13540,26 @@
     {
       "from": "cf4169b3-1fce-4382-87b3-e086973df329",
       "to": "/home/ubuntu/.openclaw/workspace/apps/enhancing-legal-llms-through-metadata-enriched-rag.py",
+      "type": "produced"
+    },
+    {
+      "from": "fd6711f4-13d1-48ce-80a3-7e97b6bb6c37",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-geochallenge:-a-multi-answer-multiple-choice-bench.md",
+      "type": "produced"
+    },
+    {
+      "from": "d000d766-b2ca-4413-b290-e1664c3e30c2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-a-comprehensive-study-of-llm-based-argument-classification:-from-llama-through-d.md",
+      "type": "produced"
+    },
+    {
+      "from": "7f542d75-6d27-41dc-9c06-63df1895bd68",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-from-comprehension-to-reasoning:-a-hierarchical-benchmark-for-automated-financia.md",
+      "type": "produced"
+    },
+    {
+      "from": "7f542d75-6d27-41dc-9c06-63df1895bd68",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/from-comprehension-to-reasoning_-a-hierarchical-be.py",
       "type": "produced"
     }
   ]
