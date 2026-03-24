@@ -10694,6 +10694,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/from-comprehension-to-reasoning_-a-hierarchical-be.py",
       "type": "app",
       "title": "From Comprehension to Reasoning: A Hierarchical Benchmark for Automated Financial Research Reporting"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-from-comprehension-to-reasoning:-a-hierarchical-be.md",
+      "type": "output",
+      "title": "From Comprehension to Reasoning: A Hierarchical Benchmark for Automated Financial Research Reporting"
+    },
+    {
+      "id": "369b49df-abf6-42e4-a3c5-ed03edcc01ae",
+      "type": "seed",
+      "title": "LARFT: Closing the Cognition-Action Gap for Length Instruction Following in Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-larft:-closing-the-cognition-action-gap-for-length-instruction-following-in-larg.md",
+      "type": "content",
+      "title": "LARFT: Closing the Cognition-Action Gap for Length Instruction Following in Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-larft:-closing-the-cognition-action-gap-for-length.md",
+      "type": "output",
+      "title": "LARFT: Closing the Cognition-Action Gap for Length Instruction Following in Large Language Models"
+    },
+    {
+      "id": "b3a81694-c7f7-4350-a9e3-75e25e14fed0",
+      "type": "seed",
+      "title": "ShobdoSetu: A Data-Centric Framework for Bengali Long-Form Speech Recognition and Speaker Diarization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/shobdosetu_-a-data-centric-framework-for-bengali-l.py",
+      "type": "app",
+      "title": "ShobdoSetu: A Data-Centric Framework for Bengali Long-Form Speech Recognition and Speaker Diarization"
     }
   ],
   "edges": [
@@ -13560,6 +13590,26 @@
     {
       "from": "7f542d75-6d27-41dc-9c06-63df1895bd68",
       "to": "/home/ubuntu/.openclaw/workspace/apps/from-comprehension-to-reasoning_-a-hierarchical-be.py",
+      "type": "produced"
+    },
+    {
+      "from": "7f542d75-6d27-41dc-9c06-63df1895bd68",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-from-comprehension-to-reasoning:-a-hierarchical-be.md",
+      "type": "produced"
+    },
+    {
+      "from": "369b49df-abf6-42e4-a3c5-ed03edcc01ae",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-larft:-closing-the-cognition-action-gap-for-length-instruction-following-in-larg.md",
+      "type": "produced"
+    },
+    {
+      "from": "369b49df-abf6-42e4-a3c5-ed03edcc01ae",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-larft:-closing-the-cognition-action-gap-for-length.md",
+      "type": "produced"
+    },
+    {
+      "from": "b3a81694-c7f7-4350-a9e3-75e25e14fed0",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/shobdosetu_-a-data-centric-framework-for-bengali-l.py",
       "type": "produced"
     }
   ]
