@@ -10954,6 +10954,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen.py",
       "type": "app",
       "title": "AgenticGEO: A Self-Evolving Agentic System for Generative Engine Optimization"
+    },
+    {
+      "id": "410e0e4a-f4ab-440b-be8b-38a343476285",
+      "type": "seed",
+      "title": "The Nature of Technical Debt in Research Software"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-the-nature-of-technical-debt-in-research-software.md",
+      "type": "output",
+      "title": "The Nature of Technical Debt in Research Software"
     }
   ],
   "edges": [
@@ -13970,6 +13980,11 @@
     {
       "from": "e489bf02-ca39-4b4e-83e7-2aedfad738c4",
       "to": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen.py",
+      "type": "produced"
+    },
+    {
+      "from": "410e0e4a-f4ab-440b-be8b-38a343476285",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-the-nature-of-technical-debt-in-research-software.md",
       "type": "produced"
     }
   ]
