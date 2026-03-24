@@ -11004,6 +11004,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/from-human-interfaces-to-agent-interfaces_-rethink.py",
       "type": "app",
       "title": "From Human Interfaces to Agent Interfaces: Rethinking Software Design in the Age of AI-Native Systems"
+    },
+    {
+      "id": "d552b2fb-1423-421f-91bc-6c4632cf7d74",
+      "type": "seed",
+      "title": "Federal immigration agents filmed making airport arrests as Trump calls in ICE to ease security line delays"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-federal-immigration-agents-filmed-making-airport-a.md",
+      "type": "output",
+      "title": "Federal immigration agents filmed making airport arrests as Trump calls in ICE to ease security line delays"
+    },
+    {
+      "id": "3a220770-0f64-4cf6-b47e-cce8670f0dae",
+      "type": "seed",
+      "title": "kRAIG: A Natural Language-Driven Agent for Automated DataOps Pipeline Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-kraig:-a-natural-language-driven-agent-for-automated-dataops-pipeline-generation.md",
+      "type": "content",
+      "title": "kRAIG: A Natural Language-Driven Agent for Automated DataOps Pipeline Generation"
     }
   ],
   "edges": [
@@ -14045,6 +14065,16 @@
     {
       "from": "ddec5237-4519-4e87-a289-7f957536d893",
       "to": "/home/ubuntu/.openclaw/workspace/apps/from-human-interfaces-to-agent-interfaces_-rethink.py",
+      "type": "produced"
+    },
+    {
+      "from": "d552b2fb-1423-421f-91bc-6c4632cf7d74",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-federal-immigration-agents-filmed-making-airport-a.md",
+      "type": "produced"
+    },
+    {
+      "from": "3a220770-0f64-4cf6-b47e-cce8670f0dae",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-kraig:-a-natural-language-driven-agent-for-automated-dataops-pipeline-generation.md",
       "type": "produced"
     }
   ]
