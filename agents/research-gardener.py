@@ -168,7 +168,8 @@ DRAFT:
 {draft}
 """
     try:
-        enhance_cmd = [OPENCLAWS, 'agent', 'ask', '--prompt', prompt]
+        # Use correct CLI flags: --agent to select agent, --message for the prompt, --local for cron isolation
+        enhance_cmd = [OPENCLAWS, 'agent', '--agent', 'main', '--message', prompt, '--local']
         result = subprocess.run(enhance_cmd, capture_output=True, text=True, timeout=120)
         enhanced = result.stdout.strip()
         if enhanced and len(enhanced) > len(draft):

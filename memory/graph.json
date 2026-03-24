@@ -10504,6 +10504,136 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elizabeth-warren-calls-pentagon&#8217;s-decision-t.md",
       "type": "output",
       "title": "Elizabeth Warren calls Pentagon&#8217;s decision to bar Anthropic &#8216;retaliation&#8217;"
+    },
+    {
+      "id": "7843652d-742e-4a8f-b0c3-4e1032c2a9d2",
+      "type": "seed",
+      "title": "When both Grounding and not Grounding are Bad -- A Partially Grounded Encoding of Planning into SAT (Extended Version)"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-when-both-grounding-and-not-grounding-are-bad----a.md",
+      "type": "output",
+      "title": "When both Grounding and not Grounding are Bad -- A Partially Grounded Encoding of Planning into SAT (Extended Version)"
+    },
+    {
+      "id": "f7b61df7-810e-470f-9f87-178786d1deba",
+      "type": "seed",
+      "title": "Hyperagents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-hyperagents.md",
+      "type": "content",
+      "title": "Hyperagents"
+    },
+    {
+      "id": "1098a7d9-784d-4421-93d2-5ef1a8d12f4d",
+      "type": "seed",
+      "title": "Teaching an Agent to Sketch One Part at a Time"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-teaching-an-agent-to-sketch-one-part-at-a-time.md",
+      "type": "output",
+      "title": "Teaching an Agent to Sketch One Part at a Time"
+    },
+    {
+      "id": "5fd81f64-8393-41e5-9396-18489df03b95",
+      "type": "seed",
+      "title": "Learning to Disprove: Formal Counterexample Generation with Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-learning-to-disprove:-formal-counterexample-genera.md",
+      "type": "output",
+      "title": "Learning to Disprove: Formal Counterexample Generation with Large Language Models"
+    },
+    {
+      "id": "9f676b8a-bf86-44b8-acce-976d4c1aac46",
+      "type": "seed",
+      "title": "ItinBench: Benchmarking Planning Across Multiple Cognitive Dimensions with Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-itinbench:-benchmarking-planning-across-multiple-c.md",
+      "type": "output",
+      "title": "ItinBench: Benchmarking Planning Across Multiple Cognitive Dimensions with Large Language Models"
+    },
+    {
+      "id": "b246041c-b8dd-4121-bb26-e86b28006a19",
+      "type": "seed",
+      "title": "PA2D-MORL: Pareto Ascent Directional Decomposition based Multi-Objective Reinforcement Learning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-pa2d-morl:-pareto-ascent-directional-decomposition.md",
+      "type": "output",
+      "title": "PA2D-MORL: Pareto Ascent Directional Decomposition based Multi-Objective Reinforcement Learning"
+    },
+    {
+      "id": "44ad2848-919c-4b50-8fda-b51e19f9f114",
+      "type": "seed",
+      "title": "PowerLens: Taming LLM Agents for Safe and Personalized Mobile Power Management"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-powerlens:-taming-llm-agents-for-safe-and-personalized-mobile-power-management.md",
+      "type": "content",
+      "title": "PowerLens: Taming LLM Agents for Safe and Personalized Mobile Power Management"
+    },
+    {
+      "id": "f820617a-e2cc-47a7-8246-13b73ed78627",
+      "type": "seed",
+      "title": "HyEvo: Self-Evolving Hybrid Agentic Workflows for Efficient Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-hyevo:-self-evolving-hybrid-agentic-workflows-for-.md",
+      "type": "output",
+      "title": "HyEvo: Self-Evolving Hybrid Agentic Workflows for Efficient Reasoning"
+    },
+    {
+      "id": "a4a21dca-9117-41da-accf-f4ef6bbc0719",
+      "type": "seed",
+      "title": "A Subgoal-driven Framework for Improving Long-Horizon LLM Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-a-subgoal-driven-framework-for-improving-long-hori.md",
+      "type": "output",
+      "title": "A Subgoal-driven Framework for Improving Long-Horizon LLM Agents"
+    },
+    {
+      "id": "e8537cf5-3536-47f2-8f3e-e3e54379d8ee",
+      "type": "seed",
+      "title": "Stepwise: Neuro-Symbolic Proof Search for Automated Systems Verification"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-stepwise:-neuro-symbolic-proof-search-for-automate.md",
+      "type": "output",
+      "title": "Stepwise: Neuro-Symbolic Proof Search for Automated Systems Verification"
+    },
+    {
+      "id": "0e36251f-b475-4598-bf05-cb63c917783f",
+      "type": "seed",
+      "title": "When Prompt Optimization Becomes Jailbreaking: Adaptive Red-Teaming of Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-when-prompt-optimization-becomes-jailbreaking:-ada.md",
+      "type": "output",
+      "title": "When Prompt Optimization Becomes Jailbreaking: Adaptive Red-Teaming of Large Language Models"
+    },
+    {
+      "id": "f921a19c-49ed-426f-83eb-1848eb6b6a65",
+      "type": "seed",
+      "title": "DuCCAE: A Hybrid Engine for Immersive Conversation via Collaboration, Augmentation, and Evolution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-duccae:-a-hybrid-engine-for-immersive-conversation.md",
+      "type": "output",
+      "title": "DuCCAE: A Hybrid Engine for Immersive Conversation via Collaboration, Augmentation, and Evolution"
+    },
+    {
+      "id": "83b5b9a9-0d67-47c5-940c-7cec2d9a64b8",
+      "type": "seed",
+      "title": "Spelling Correction in Healthcare Query-Answer Systems: Methods, Retrieval Impact, and Empirical Evaluation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-spelling-correction-in-healthcare-query-answer-sys.md",
+      "type": "output",
+      "title": "Spelling Correction in Healthcare Query-Answer Systems: Methods, Retrieval Impact, and Empirical Evaluation"
     }
   ],
   "edges": [
@@ -13270,6 +13400,71 @@
     {
       "from": "718f1505-3944-4b52-83c4-e307af787a11",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-23-elizabeth-warren-calls-pentagon&#8217;s-decision-t.md",
+      "type": "produced"
+    },
+    {
+      "from": "7843652d-742e-4a8f-b0c3-4e1032c2a9d2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-when-both-grounding-and-not-grounding-are-bad----a.md",
+      "type": "produced"
+    },
+    {
+      "from": "f7b61df7-810e-470f-9f87-178786d1deba",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-hyperagents.md",
+      "type": "produced"
+    },
+    {
+      "from": "1098a7d9-784d-4421-93d2-5ef1a8d12f4d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-teaching-an-agent-to-sketch-one-part-at-a-time.md",
+      "type": "produced"
+    },
+    {
+      "from": "5fd81f64-8393-41e5-9396-18489df03b95",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-learning-to-disprove:-formal-counterexample-genera.md",
+      "type": "produced"
+    },
+    {
+      "from": "9f676b8a-bf86-44b8-acce-976d4c1aac46",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-itinbench:-benchmarking-planning-across-multiple-c.md",
+      "type": "produced"
+    },
+    {
+      "from": "b246041c-b8dd-4121-bb26-e86b28006a19",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-pa2d-morl:-pareto-ascent-directional-decomposition.md",
+      "type": "produced"
+    },
+    {
+      "from": "44ad2848-919c-4b50-8fda-b51e19f9f114",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-powerlens:-taming-llm-agents-for-safe-and-personalized-mobile-power-management.md",
+      "type": "produced"
+    },
+    {
+      "from": "f820617a-e2cc-47a7-8246-13b73ed78627",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-hyevo:-self-evolving-hybrid-agentic-workflows-for-.md",
+      "type": "produced"
+    },
+    {
+      "from": "a4a21dca-9117-41da-accf-f4ef6bbc0719",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-a-subgoal-driven-framework-for-improving-long-hori.md",
+      "type": "produced"
+    },
+    {
+      "from": "e8537cf5-3536-47f2-8f3e-e3e54379d8ee",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-stepwise:-neuro-symbolic-proof-search-for-automate.md",
+      "type": "produced"
+    },
+    {
+      "from": "0e36251f-b475-4598-bf05-cb63c917783f",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-when-prompt-optimization-becomes-jailbreaking:-ada.md",
+      "type": "produced"
+    },
+    {
+      "from": "f921a19c-49ed-426f-83eb-1848eb6b6a65",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-duccae:-a-hybrid-engine-for-immersive-conversation.md",
+      "type": "produced"
+    },
+    {
+      "from": "83b5b9a9-0d67-47c5-940c-7cec2d9a64b8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-spelling-correction-in-healthcare-query-answer-sys.md",
       "type": "produced"
     }
   ]
