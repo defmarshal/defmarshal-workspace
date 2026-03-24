@@ -10839,6 +10839,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-parameter-efficient-token-embedding-editing-for-cl.md",
       "type": "output",
       "title": "Parameter-Efficient Token Embedding Editing for Clinical Class-Level Unlearning"
+    },
+    {
+      "id": "958a76d5-c5dd-4032-af20-32804819675a",
+      "type": "seed",
+      "title": "Exploring Subnetwork Interactions in Heterogeneous Brain Network via Prior-Informed Graph Learning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-exploring-subnetwork-interactions-in-heterogeneous.md",
+      "type": "output",
+      "title": "Exploring Subnetwork Interactions in Heterogeneous Brain Network via Prior-Informed Graph Learning"
     }
   ],
   "edges": [
@@ -13795,6 +13805,11 @@
     {
       "from": "3aac7aaa-6c55-4259-a3d3-42a79b0868f9",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-parameter-efficient-token-embedding-editing-for-cl.md",
+      "type": "produced"
+    },
+    {
+      "from": "958a76d5-c5dd-4032-af20-32804819675a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-exploring-subnetwork-interactions-in-heterogeneous.md",
       "type": "produced"
     }
   ]
