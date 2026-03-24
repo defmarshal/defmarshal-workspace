@@ -10929,6 +10929,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/orchestrating-human-ai-software-delivery_-a-retros.py",
       "type": "app",
       "title": "Orchestrating Human-AI Software Delivery: A Retrospective Longitudinal Field Study of Three Software Modernization Programs"
+    },
+    {
+      "id": "ac3a3ddd-eaa2-4d97-8fd2-8e9e82606959",
+      "type": "seed",
+      "title": "Leveraging Natural Language Processing and Machine Learning for Evidence-Based Food Security Policy Decision-Making in Data-Scarce Making"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-leveraging-natural-language-processing-and-machine.md",
+      "type": "output",
+      "title": "Leveraging Natural Language Processing and Machine Learning for Evidence-Based Food Security Policy Decision-Making in Data-Scarce Making"
     }
   ],
   "edges": [
@@ -13930,6 +13940,11 @@
     {
       "from": "8e710e94-b9ac-4def-8791-23721f45d6bd",
       "to": "/home/ubuntu/.openclaw/workspace/apps/orchestrating-human-ai-software-delivery_-a-retros.py",
+      "type": "produced"
+    },
+    {
+      "from": "ac3a3ddd-eaa2-4d97-8fd2-8e9e82606959",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-leveraging-natural-language-processing-and-machine.md",
       "type": "produced"
     }
   ]
