@@ -132,7 +132,7 @@ def generate_report(seed: Dict[str, Any]) -> str:
 
     # Build a draft report
     today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
-    slug = seed['title'].lower().replace(' ', '-')[:50]
+    slug = seed['title'].lower().replace(' ', '-')[:120]
     filename = RESEARCH_DIR / f"{today}-{slug}.md"
     draft = f"""# {seed['title']}
 
