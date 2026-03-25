@@ -11314,6 +11314,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/crusoe-makes-big-battery-buys-for-its-data-centers.py",
       "type": "app",
       "title": "Crusoe makes big battery buys for its data centers"
+    },
+    {
+      "id": "1dba60c7-6e35-48d1-812f-dcb0c6e89a33",
+      "type": "seed",
+      "title": "Arm is releasing the\u00a0first in-house chip in its 35-year history"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-arm-is-releasing-the\u00a0first-in-house-chip-in-its-35-year-history.md",
+      "type": "content",
+      "title": "Arm is releasing the\u00a0first in-house chip in its 35-year history"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-arm-is-releasing-the\u00a0first-in-house-chip-in-its-35-year-history.md",
+      "type": "output",
+      "title": "Arm is releasing the\u00a0first in-house chip in its 35-year history"
     }
   ],
   "edges": [
@@ -14515,6 +14530,16 @@
     {
       "from": "5b805e95-2383-4746-9ad2-cfed60919622",
       "to": "/home/ubuntu/.openclaw/workspace/apps/crusoe-makes-big-battery-buys-for-its-data-centers.py",
+      "type": "produced"
+    },
+    {
+      "from": "1dba60c7-6e35-48d1-812f-dcb0c6e89a33",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-arm-is-releasing-the\u00a0first-in-house-chip-in-its-35-year-history.md",
+      "type": "produced"
+    },
+    {
+      "from": "1dba60c7-6e35-48d1-812f-dcb0c6e89a33",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-arm-is-releasing-the\u00a0first-in-house-chip-in-its-35-year-history.md",
       "type": "produced"
     }
   ]
