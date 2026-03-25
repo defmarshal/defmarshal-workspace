@@ -11189,6 +11189,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-procedural-refinement-by-llm-driven-algorithmic-debugging-for-arc-agi-2.md",
       "type": "content",
       "title": "Procedural Refinement by LLM-driven Algorithmic Debugging for ARC-AGI-2"
+    },
+    {
+      "id": "920621d8-6bfb-4ee7-aed0-55a19565bb19",
+      "type": "seed",
+      "title": "ContractSkill: Repairable Contract-Based Skills for Multimodal Web Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/contractskill_-repairable-contract-based-skills-fo-1.py",
+      "type": "app",
+      "title": "ContractSkill: Repairable Contract-Based Skills for Multimodal Web Agents"
     }
   ],
   "edges": [
@@ -14325,6 +14335,11 @@
     {
       "from": "4418f62d-94de-495d-9559-4a215acbcc76",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-procedural-refinement-by-llm-driven-algorithmic-debugging-for-arc-agi-2.md",
+      "type": "produced"
+    },
+    {
+      "from": "920621d8-6bfb-4ee7-aed0-55a19565bb19",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/contractskill_-repairable-contract-based-skills-fo-1.py",
       "type": "produced"
     }
   ]
