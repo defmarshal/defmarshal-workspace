@@ -11139,6 +11139,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-from-human-interfaces-to-agent-interfaces:-rethink.md",
       "type": "output",
       "title": "From Human Interfaces to Agent Interfaces: Rethinking Software Design in the Age of AI-Native Systems"
+    },
+    {
+      "id": "918e0354-f914-4a72-9770-cd41073cb074",
+      "type": "seed",
+      "title": "Semantic Tool Discovery for Large Language Models: A Vector-Based Approach to MCP Tool Selection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-semantic-tool-discovery-for-large-language-models:-a-vector-based-approach-to-mc.md",
+      "type": "content",
+      "title": "Semantic Tool Discovery for Large Language Models: A Vector-Based Approach to MCP Tool Selection"
+    },
+    {
+      "id": "56866b86-0a68-4d7c-8adb-4b18d498bf84",
+      "type": "seed",
+      "title": "The Causal Impact of Tool Affordance on Safety Alignment in LLM Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-the-causal-impact-of-tool-affordance-on-safety-alignment-in-llm-agents.md",
+      "type": "content",
+      "title": "The Causal Impact of Tool Affordance on Safety Alignment in LLM Agents"
+    },
+    {
+      "id": "07bd65fd-c8bc-41da-af7c-c8115b6a3d61",
+      "type": "seed",
+      "title": "The Nature of Technical Debt in Research Software"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-the-nature-of-technical-debt-in-research-software.md",
+      "type": "output",
+      "title": "The Nature of Technical Debt in Research Software"
     }
   ],
   "edges": [
@@ -14250,6 +14280,21 @@
     {
       "from": "53c0cedb-8ed2-449f-b7fc-24b99176d015",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-from-human-interfaces-to-agent-interfaces:-rethink.md",
+      "type": "produced"
+    },
+    {
+      "from": "918e0354-f914-4a72-9770-cd41073cb074",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-semantic-tool-discovery-for-large-language-models:-a-vector-based-approach-to-mc.md",
+      "type": "produced"
+    },
+    {
+      "from": "56866b86-0a68-4d7c-8adb-4b18d498bf84",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-the-causal-impact-of-tool-affordance-on-safety-alignment-in-llm-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "07bd65fd-c8bc-41da-af7c-c8115b6a3d61",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-the-nature-of-technical-debt-in-research-software.md",
       "type": "produced"
     }
   ]
