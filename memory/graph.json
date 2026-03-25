@@ -11329,6 +11329,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-arm-is-releasing-the\u00a0first-in-house-chip-in-its-35-year-history.md",
       "type": "output",
       "title": "Arm is releasing the\u00a0first in-house chip in its 35-year history"
+    },
+    {
+      "id": "f219ec65-5962-4ec7-8afa-3aa5d2240140",
+      "type": "seed",
+      "title": "OpenAI&#8217;s plans to make ChatGPT more like Amazon aren&#8217;t going so well"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-openai&#8217;s-plans-to-make-chatgpt-more-like-amazon-aren&#8217;t-going-so-well.md",
+      "type": "output",
+      "title": "OpenAI&#8217;s plans to make ChatGPT more like Amazon aren&#8217;t going so well"
+    },
+    {
+      "id": "2cf3dad3-b980-403a-9f59-6d295cf2e998",
+      "type": "seed",
+      "title": "AgenticGEO: A Self-Evolving Agentic System for Generative Engine Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen-1.py",
+      "type": "app",
+      "title": "AgenticGEO: A Self-Evolving Agentic System for Generative Engine Optimization"
     }
   ],
   "edges": [
@@ -14540,6 +14560,16 @@
     {
       "from": "1dba60c7-6e35-48d1-812f-dcb0c6e89a33",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-arm-is-releasing-the\u00a0first-in-house-chip-in-its-35-year-history.md",
+      "type": "produced"
+    },
+    {
+      "from": "f219ec65-5962-4ec7-8afa-3aa5d2240140",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-openai&#8217;s-plans-to-make-chatgpt-more-like-amazon-aren&#8217;t-going-so-well.md",
+      "type": "produced"
+    },
+    {
+      "from": "2cf3dad3-b980-403a-9f59-6d295cf2e998",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen-1.py",
       "type": "produced"
     }
   ]
