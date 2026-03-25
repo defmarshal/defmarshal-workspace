@@ -11284,6 +11284,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/kentucky-woman-rejects-_26m-offer-to-turn-her-farm.py",
       "type": "app",
       "title": "Kentucky woman rejects $26M offer to turn her farm into a data center"
+    },
+    {
+      "id": "6f6e1ee2-5921-4554-b2c3-e17b66b03270",
+      "type": "seed",
+      "title": "Anthropic hands Claude Code more control, but keeps it on a leash"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic-hands-claude-code-more-control_-but-keep.py",
+      "type": "app",
+      "title": "Anthropic hands Claude Code more control, but keeps it on a leash"
     }
   ],
   "edges": [
@@ -14470,6 +14480,11 @@
     {
       "from": "94d2eb77-7320-40d3-963d-e107e949970a",
       "to": "/home/ubuntu/.openclaw/workspace/apps/kentucky-woman-rejects-_26m-offer-to-turn-her-farm.py",
+      "type": "produced"
+    },
+    {
+      "from": "6f6e1ee2-5921-4554-b2c3-e17b66b03270",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic-hands-claude-code-more-control_-but-keep.py",
       "type": "produced"
     }
   ]
