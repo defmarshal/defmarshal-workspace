@@ -11169,6 +11169,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-the-nature-of-technical-debt-in-research-software.md",
       "type": "output",
       "title": "The Nature of Technical Debt in Research Software"
+    },
+    {
+      "id": "f34951e4-fa72-4b64-8f04-e965efe06705",
+      "type": "seed",
+      "title": "Databricks bought two startups to underpin its new AI security product"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-databricks-bought-two-startups-to-underpin-its-new.md",
+      "type": "output",
+      "title": "Databricks bought two startups to underpin its new AI security product"
+    },
+    {
+      "id": "4418f62d-94de-495d-9559-4a215acbcc76",
+      "type": "seed",
+      "title": "Procedural Refinement by LLM-driven Algorithmic Debugging for ARC-AGI-2"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-procedural-refinement-by-llm-driven-algorithmic-debugging-for-arc-agi-2.md",
+      "type": "content",
+      "title": "Procedural Refinement by LLM-driven Algorithmic Debugging for ARC-AGI-2"
     }
   ],
   "edges": [
@@ -14295,6 +14315,16 @@
     {
       "from": "07bd65fd-c8bc-41da-af7c-c8115b6a3d61",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-the-nature-of-technical-debt-in-research-software.md",
+      "type": "produced"
+    },
+    {
+      "from": "f34951e4-fa72-4b64-8f04-e965efe06705",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-databricks-bought-two-startups-to-underpin-its-new.md",
+      "type": "produced"
+    },
+    {
+      "from": "4418f62d-94de-495d-9559-4a215acbcc76",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-procedural-refinement-by-llm-driven-algorithmic-debugging-for-arc-agi-2.md",
       "type": "produced"
     }
   ]
