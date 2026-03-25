@@ -11219,6 +11219,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-beyond-llm-based-test-automation:-a-zero-cost-self-healing-approach-using-dom-ac.md",
       "type": "content",
       "title": "Beyond LLM-based test automation: A Zero-Cost Self-Healing Approach Using DOM Accessibility Tree Extraction"
+    },
+    {
+      "id": "4566a744-2fb6-4e9e-bee9-2bfc3fdfaffd",
+      "type": "seed",
+      "title": "Revisiting Vulnerability Patch Identification on Data in the Wild"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-revisiting-vulnerability-patch-identification-on-data-in-the-wild.md",
+      "type": "output",
+      "title": "Revisiting Vulnerability Patch Identification on Data in the Wild"
     }
   ],
   "edges": [
@@ -14370,6 +14380,11 @@
     {
       "from": "8177656e-a67a-4436-8780-85b6b9e67c12",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-beyond-llm-based-test-automation:-a-zero-cost-self-healing-approach-using-dom-ac.md",
+      "type": "produced"
+    },
+    {
+      "from": "4566a744-2fb6-4e9e-bee9-2bfc3fdfaffd",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-revisiting-vulnerability-patch-identification-on-data-in-the-wild.md",
       "type": "produced"
     }
   ]
