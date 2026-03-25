@@ -11199,6 +11199,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/contractskill_-repairable-contract-based-skills-fo-1.py",
       "type": "app",
       "title": "ContractSkill: Repairable Contract-Based Skills for Multimodal Web Agents"
+    },
+    {
+      "id": "745b8c5a-f500-4628-a666-eeb4e749d0cd",
+      "type": "seed",
+      "title": "Leveraging Natural Language Processing and Machine Learning for Evidence-Based Food Security Policy Decision-Making in Data-Scarce Making"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-leveraging-natural-language-processing-and-machine.md",
+      "type": "output",
+      "title": "Leveraging Natural Language Processing and Machine Learning for Evidence-Based Food Security Policy Decision-Making in Data-Scarce Making"
+    },
+    {
+      "id": "8177656e-a67a-4436-8780-85b6b9e67c12",
+      "type": "seed",
+      "title": "Beyond LLM-based test automation: A Zero-Cost Self-Healing Approach Using DOM Accessibility Tree Extraction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-beyond-llm-based-test-automation:-a-zero-cost-self-healing-approach-using-dom-ac.md",
+      "type": "content",
+      "title": "Beyond LLM-based test automation: A Zero-Cost Self-Healing Approach Using DOM Accessibility Tree Extraction"
     }
   ],
   "edges": [
@@ -14340,6 +14360,16 @@
     {
       "from": "920621d8-6bfb-4ee7-aed0-55a19565bb19",
       "to": "/home/ubuntu/.openclaw/workspace/apps/contractskill_-repairable-contract-based-skills-fo-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "745b8c5a-f500-4628-a666-eeb4e749d0cd",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-leveraging-natural-language-processing-and-machine.md",
+      "type": "produced"
+    },
+    {
+      "from": "8177656e-a67a-4436-8780-85b6b9e67c12",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-beyond-llm-based-test-automation:-a-zero-cost-self-healing-approach-using-dom-ac.md",
       "type": "produced"
     }
   ]
