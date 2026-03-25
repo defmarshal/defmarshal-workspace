@@ -11429,6 +11429,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/bernie-sanders-and-aoc-propose-a-ban-on-data-cente.py",
       "type": "app",
       "title": "Bernie Sanders and AOC propose a ban on data center construction"
+    },
+    {
+      "id": "18632ac5-b915-40bd-9fd3-36365b311c39",
+      "type": "seed",
+      "title": "DeleteMe acquires social media security tool Block Party"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-deleteme-acquires-social-media-security-tool-block-party.md",
+      "type": "output",
+      "title": "DeleteMe acquires social media security tool Block Party"
+    },
+    {
+      "id": "a006569e-169e-47f5-9a37-7498f6c51dea",
+      "type": "seed",
+      "title": "Google launches Lyria 3 Pro music generation model"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/google-launches-lyria-3-pro-music-generation-model.py",
+      "type": "app",
+      "title": "Google launches Lyria 3 Pro music generation model"
+    },
+    {
+      "id": "b679c956-aabf-47ac-b2ed-2b0cf0685588",
+      "type": "seed",
+      "title": "Russia arrests alleged owner of cybercrime forum LeakBase, report says"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-russia-arrests-alleged-owner-of-cybercrime-forum-leakbase,-report-says.md",
+      "type": "content",
+      "title": "Russia arrests alleged owner of cybercrime forum LeakBase, report says"
     }
   ],
   "edges": [
@@ -14690,6 +14720,21 @@
     {
       "from": "6838621a-e463-4917-a310-7b345cf2416c",
       "to": "/home/ubuntu/.openclaw/workspace/apps/bernie-sanders-and-aoc-propose-a-ban-on-data-cente.py",
+      "type": "produced"
+    },
+    {
+      "from": "18632ac5-b915-40bd-9fd3-36365b311c39",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-deleteme-acquires-social-media-security-tool-block-party.md",
+      "type": "produced"
+    },
+    {
+      "from": "a006569e-169e-47f5-9a37-7498f6c51dea",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/google-launches-lyria-3-pro-music-generation-model.py",
+      "type": "produced"
+    },
+    {
+      "from": "b679c956-aabf-47ac-b2ed-2b0cf0685588",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-russia-arrests-alleged-owner-of-cybercrime-forum-leakbase,-report-says.md",
       "type": "produced"
     }
   ]
