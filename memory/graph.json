@@ -11229,6 +11229,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-revisiting-vulnerability-patch-identification-on-data-in-the-wild.md",
       "type": "output",
       "title": "Revisiting Vulnerability Patch Identification on Data in the Wild"
+    },
+    {
+      "id": "3f4223e0-2428-4af8-87d6-cd0f6d995e14",
+      "type": "seed",
+      "title": "yProv4DV: Reproducible Data Visualization Scripts Out of the Box"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/yprov4dv_-reproducible-data-visualization-scripts-.py",
+      "type": "app",
+      "title": "yProv4DV: Reproducible Data Visualization Scripts Out of the Box"
     }
   ],
   "edges": [
@@ -14385,6 +14395,11 @@
     {
       "from": "4566a744-2fb6-4e9e-bee9-2bfc3fdfaffd",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-revisiting-vulnerability-patch-identification-on-data-in-the-wild.md",
+      "type": "produced"
+    },
+    {
+      "from": "3f4223e0-2428-4af8-87d6-cd0f6d995e14",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/yprov4dv_-reproducible-data-visualization-scripts-.py",
       "type": "produced"
     }
   ]
