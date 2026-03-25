@@ -11294,6 +11294,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic-hands-claude-code-more-control_-but-keep.py",
       "type": "app",
       "title": "Anthropic hands Claude Code more control, but keeps it on a leash"
+    },
+    {
+      "id": "2d1179ae-8396-4eef-a14c-61d0073a3638",
+      "type": "seed",
+      "title": "Spotify tests new tool to stop AI slop from being attributed to real artists"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-spotify-tests-new-tool-to-stop-ai-slop-from-being-attributed-to-real-artists.md",
+      "type": "output",
+      "title": "Spotify tests new tool to stop AI slop from being attributed to real artists"
+    },
+    {
+      "id": "5b805e95-2383-4746-9ad2-cfed60919622",
+      "type": "seed",
+      "title": "Crusoe makes big battery buys for its data centers"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/crusoe-makes-big-battery-buys-for-its-data-centers.py",
+      "type": "app",
+      "title": "Crusoe makes big battery buys for its data centers"
     }
   ],
   "edges": [
@@ -14485,6 +14505,16 @@
     {
       "from": "6f6e1ee2-5921-4554-b2c3-e17b66b03270",
       "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic-hands-claude-code-more-control_-but-keep.py",
+      "type": "produced"
+    },
+    {
+      "from": "2d1179ae-8396-4eef-a14c-61d0073a3638",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-spotify-tests-new-tool-to-stop-ai-slop-from-being-attributed-to-real-artists.md",
+      "type": "produced"
+    },
+    {
+      "from": "5b805e95-2383-4746-9ad2-cfed60919622",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/crusoe-makes-big-battery-buys-for-its-data-centers.py",
       "type": "produced"
     }
   ]
