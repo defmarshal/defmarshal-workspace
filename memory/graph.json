@@ -11349,6 +11349,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen-1.py",
       "type": "app",
       "title": "AgenticGEO: A Self-Evolving Agentic System for Generative Engine Optimization"
+    },
+    {
+      "id": "bdac5433-221b-4797-84e7-f8773d68d8af",
+      "type": "seed",
+      "title": "ProMAS: Proactive Error Forecasting for Multi-Agent Systems Using Markov Transition Dynamics"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-promas:-proactive-error-forecasting-for-multi-agent-systems-using-markov-transit.md",
+      "type": "content",
+      "title": "ProMAS: Proactive Error Forecasting for Multi-Agent Systems Using Markov Transition Dynamics"
+    },
+    {
+      "id": "70623f15-84a7-4dd5-81b9-893a64abb43b",
+      "type": "seed",
+      "title": "Domain-Specialized Tree of Thought through Plug-and-Play Predictors"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-domain-specialized-tree-of-thought-through-plug-and-play-predictors.md",
+      "type": "content",
+      "title": "Domain-Specialized Tree of Thought through Plug-and-Play Predictors"
+    },
+    {
+      "id": "7f29b6c3-4cfc-4e35-8ed3-a12711d0ee15",
+      "type": "seed",
+      "title": "FactorSmith: Agentic Simulation Generation via Markov Decision Process Decomposition with Planner-Designer-Critic Refinement"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/factorsmith_-agentic-simulation-generation-via-mar.py",
+      "type": "app",
+      "title": "FactorSmith: Agentic Simulation Generation via Markov Decision Process Decomposition with Planner-Designer-Critic Refinement"
+    },
+    {
+      "id": "dcad6235-b11e-4250-93f8-789368367619",
+      "type": "seed",
+      "title": "Me, Myself, and $\\pi$ : Evaluating and Explaining LLM Introspection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-me,-myself,-and-$\\pi$-:-evaluating-and-explaining-llm-introspection.md",
+      "type": "output",
+      "title": "Me, Myself, and $\\pi$ : Evaluating and Explaining LLM Introspection"
     }
   ],
   "edges": [
@@ -14570,6 +14610,26 @@
     {
       "from": "2cf3dad3-b980-403a-9f59-6d295cf2e998",
       "to": "/home/ubuntu/.openclaw/workspace/apps/agenticgeo_-a-self-evolving-agentic-system-for-gen-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "bdac5433-221b-4797-84e7-f8773d68d8af",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-promas:-proactive-error-forecasting-for-multi-agent-systems-using-markov-transit.md",
+      "type": "produced"
+    },
+    {
+      "from": "70623f15-84a7-4dd5-81b9-893a64abb43b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-domain-specialized-tree-of-thought-through-plug-and-play-predictors.md",
+      "type": "produced"
+    },
+    {
+      "from": "7f29b6c3-4cfc-4e35-8ed3-a12711d0ee15",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/factorsmith_-agentic-simulation-generation-via-mar.py",
+      "type": "produced"
+    },
+    {
+      "from": "dcad6235-b11e-4250-93f8-789368367619",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-me,-myself,-and-$\\pi$-:-evaluating-and-explaining-llm-introspection.md",
       "type": "produced"
     }
   ]
