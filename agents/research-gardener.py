@@ -169,13 +169,19 @@ DRAFT:
 """
     try:
         # Use correct CLI flags: --agent to select agent, --message for the prompt, --local for cron isolation
+        # Increased timeout to 600 seconds (10 min) to allow thorough enhancement
         enhance_cmd = [OPENCLAWS, 'agent', '--agent', 'main', '--message', prompt, '--local']
-        result = subprocess.run(enhance_cmd, capture_output=True, text=True, timeout=120)
+        result = subprocess.run(enhance_cmd, capture_output=True, text=True, timeout=600)
         enhanced = result.stdout.strip()
         if enhanced and len(enhanced) > len(draft):
             content = enhanced
+            log("Agent enhancement succeeded")
         else:
+            log("Agent enhancement returned output but not longer than draft; using draft")
             content = draft
+    except subprocess.TimeoutExpired:
+        log("Agent enhancement timed out after 600 seconds; using draft")
+        content = draft
     except Exception as e:
         log(f"Agent enhancement failed: {e}")
         content = draft
@@ -192,58 +198,55 @@ def main():
         log("No new seeds to research")
         return
 
-    # Domain-balancing: check which domains are still missing for today's reports
+    # Domain-balancing: ensure all 5 domains are covered for today
     today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
     existing_titles = [f for f in os.listdir(RESEARCH_DIR) if f.startswith(today) and f.endswith('.md')]
-    # Simple domain detection from filenames
     covered = set()
     for f in existing_titles:
         title = f.lower()
-        if 'anime' in title or 'manga' in title or 'animation' in title:
+        if any(kw in title for kw in ['anime', 'manga', 'animation']):
             covered.add('anime')
-        if 'bank' in title or 'finance' in title or 'fintech' in title or 'payment' in title:
+        if any(kw in title for kw in ['bank', 'finance', 'fintech', 'payment']):
             covered.add('banking')
-        if 'tech' in title or 'hardware' in title or 'chip' in title or 'processor' in title or 'cloud' in title:
+        if any(kw in title for kw in ['tech', 'hardware', 'chip', 'processor', 'cloud']):
             covered.add('tech')
-        if 'ai' in title or 'ml' in title or 'llm' in title or 'agent' in title or 'gpt' in title:
+        if any(kw in title for kw in ['ai', 'ml', 'llm', 'agent', 'gpt']):
             covered.add('ai')
-        if 'security' in title or 'cyber' in title or 'privacy' in title or 'encrypt' in title or 'vulnerab' in title:
+        if any(kw in title for kw in ['security', 'cyber', 'privacy', 'encrypt', 'vulnerab']):
             covered.add('security')
     all_domains = {'anime', 'banking', 'tech', 'ai', 'security'}
     missing_domains = all_domains - covered
 
-    # If missing domains, try to pick a seed from those domains
+    # Define keyword lists for candidate selection
+    DOMAIN_KEYWORDS = {
+        'anime': ['anime', 'manga', 'animation'],
+        'banking': ['bank', 'finance', 'fintech', 'payment'],
+        'tech': ['tech', 'hardware', 'chip', 'processor', 'cloud'],
+        'ai': ['ai', 'ml', 'llm', 'agent', 'gpt'],
+        'security': ['security', 'cyber', 'privacy', 'encrypt', 'vulnerab']
+    }
+
     seed = None
     if missing_domains:
-        # Find candidate seeds whose title contains any keyword for a missing domain
+        # Find candidates whose title contains any keyword of a missing domain
         candidates = []
-        DOMAIN_KEYWORDS = {
-            'anime': ['anime', 'manga', 'animation'],
-            'banking': ['bank', 'finance', 'fintech', 'payment'],
-            'tech': ['tech', 'hardware', 'chip', 'processor', 'cloud'],
-            'ai': ['ai', 'ml', 'llm', 'agent', 'gpt'],
-            'security': ['security', 'cyber', 'privacy', 'encrypt', 'vulnerab']
-        }
         for s in unprocessed:
             title = s['title'].lower()
-            # Check if title matches any keyword of any missing domain
             for dom in missing_domains:
                 keywords = DOMAIN_KEYWORDS.get(dom, [])
                 if any(kw in title for kw in keywords):
                     candidates.append(s)
-                    break  # no need to check other domains for this seed
+                    break
         if candidates:
-            # Pick the most recent candidate
             candidates.sort(key=lambda s: s['ts'], reverse=True)
             seed = candidates[0]
-            log(f"Domain-balancing: selected seed from missing domain(s): {seed['title']}")
+            log(f"DOMAIN_BALANCING: missing={missing_domains}, selected='{seed['title']}'")
         else:
-            log(f"No seeds available for missing domains {missing_domains}; falling back to most recent")
+            log(f"DOMAIN_BALANCING: no seeds for missing={missing_domains}, falling back to most recent")
     if seed is None:
-        # Default: pick the most recent seed
         unprocessed.sort(key=lambda s: s['ts'], reverse=True)
         seed = unprocessed[0]
-        log(f"Researching seed: {seed['title']}")
+        log(f"DEFAULT_SELECTION: '{seed['title']}'")
     output_path = generate_report(seed)
     add_graph_edge(seed['id'], output_path, seed['title'])
     mark_processed(seed['id'])
