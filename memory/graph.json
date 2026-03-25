@@ -11239,6 +11239,51 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/yprov4dv_-reproducible-data-visualization-scripts-.py",
       "type": "app",
       "title": "yProv4DV: Reproducible Data Visualization Scripts Out of the Box"
+    },
+    {
+      "id": "c4148e22-34f3-4b3a-ae7c-dc60796378de",
+      "type": "seed",
+      "title": "Lululemon bets Epoch Biodesign can eat its shorts, literally"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-lululemon-bets-epoch-biodesign-can-eat-its-shorts,-literally.md",
+      "type": "output",
+      "title": "Lululemon bets Epoch Biodesign can eat its shorts, literally"
+    },
+    {
+      "id": "7f13475e-1092-45fa-a7d6-6e1ec8abaa04",
+      "type": "seed",
+      "title": "OpenAI\u2019s Sora was the creepiest app on your phone &#8212; now it&#8217;s shutting down"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-openai\u2019s-sora-was-the-creepiest-app-on-your-phone-&#8212;-now-it&#8217;s-shuttin.md",
+      "type": "content",
+      "title": "OpenAI\u2019s Sora was the creepiest app on your phone &#8212; now it&#8217;s shutting down"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/openai_s-sora-was-the-creepiest-app-on-your-phone-.py",
+      "type": "app",
+      "title": "OpenAI\u2019s Sora was the creepiest app on your phone &#8212; now it&#8217;s shutting down"
+    },
+    {
+      "id": "13cabe6d-86ae-436e-9061-7a3e4ec2f34b",
+      "type": "seed",
+      "title": "Accel, Prosus pick six &#8216;off-the-map&#8217; startups for inaugural India cohort"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-accel,-prosus-pick-six-&#8216;off-the-map&#8217;-startups-for-inaugural-india-cohort.md",
+      "type": "output",
+      "title": "Accel, Prosus pick six &#8216;off-the-map&#8217; startups for inaugural India cohort"
+    },
+    {
+      "id": "94d2eb77-7320-40d3-963d-e107e949970a",
+      "type": "seed",
+      "title": "Kentucky woman rejects $26M offer to turn her farm into a data center"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/kentucky-woman-rejects-_26m-offer-to-turn-her-farm.py",
+      "type": "app",
+      "title": "Kentucky woman rejects $26M offer to turn her farm into a data center"
     }
   ],
   "edges": [
@@ -14400,6 +14445,31 @@
     {
       "from": "3f4223e0-2428-4af8-87d6-cd0f6d995e14",
       "to": "/home/ubuntu/.openclaw/workspace/apps/yprov4dv_-reproducible-data-visualization-scripts-.py",
+      "type": "produced"
+    },
+    {
+      "from": "c4148e22-34f3-4b3a-ae7c-dc60796378de",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-lululemon-bets-epoch-biodesign-can-eat-its-shorts,-literally.md",
+      "type": "produced"
+    },
+    {
+      "from": "7f13475e-1092-45fa-a7d6-6e1ec8abaa04",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-openai\u2019s-sora-was-the-creepiest-app-on-your-phone-&#8212;-now-it&#8217;s-shuttin.md",
+      "type": "produced"
+    },
+    {
+      "from": "7f13475e-1092-45fa-a7d6-6e1ec8abaa04",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/openai_s-sora-was-the-creepiest-app-on-your-phone-.py",
+      "type": "produced"
+    },
+    {
+      "from": "13cabe6d-86ae-436e-9061-7a3e4ec2f34b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-accel,-prosus-pick-six-&#8216;off-the-map&#8217;-startups-for-inaugural-india-cohort.md",
+      "type": "produced"
+    },
+    {
+      "from": "94d2eb77-7320-40d3-963d-e107e949970a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/kentucky-woman-rejects-_26m-offer-to-turn-her-farm.py",
       "type": "produced"
     }
   ]
