@@ -11024,6 +11024,96 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-kraig:-a-natural-language-driven-agent-for-automated-dataops-pipeline-generation.md",
       "type": "content",
       "title": "kRAIG: A Natural Language-Driven Agent for Automated DataOps Pipeline Generation"
+    },
+    {
+      "id": "141bf3d2-3bbf-4e58-bf21-02ca31d17de8",
+      "type": "seed",
+      "title": "Measuring and Exploiting Confirmation Bias in LLM-Assisted Security Code Review"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-measuring-and-exploiting-confirmation-bias-in-llm-.md",
+      "type": "output",
+      "title": "Measuring and Exploiting Confirmation Bias in LLM-Assisted Security Code Review"
+    },
+    {
+      "id": "b2b1eae2-988f-44f2-83b3-f94121478ed0",
+      "type": "seed",
+      "title": "Semantic Tool Discovery for Large Language Models: A Vector-Based Approach to MCP Tool Selection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-semantic-tool-discovery-for-large-language-models:-a-vector-based-approach-to-mc.md",
+      "type": "content",
+      "title": "Semantic Tool Discovery for Large Language Models: A Vector-Based Approach to MCP Tool Selection"
+    },
+    {
+      "id": "f4cd0963-e6de-497c-ba5b-ce3552397cf9",
+      "type": "seed",
+      "title": "Roku's $3 Howdy subscription service launches on Prime Video"
+    },
+    {
+      "id": "apps/roku-howdy-subscription-service-launches-on-pr.py",
+      "type": "app",
+      "title": "Roku's $3 Howdy subscription service launches on Prime Video"
+    },
+    {
+      "id": "63c44986-64af-410a-8cf3-1ee46b3ac1ba",
+      "type": "seed",
+      "title": "The Causal Impact of Tool Affordance on Safety Alignment in LLM Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-the-causal-impact-of-tool-affordance-on-safety-alignment-in-llm-agents.md",
+      "type": "content",
+      "title": "The Causal Impact of Tool Affordance on Safety Alignment in LLM Agents"
+    },
+    {
+      "id": "06ab2dd7-9d84-4b2c-bd04-2a152182781e",
+      "type": "seed",
+      "title": "Procedural Refinement by LLM-driven Algorithmic Debugging for ARC-AGI-2"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-procedural-refinement-by-llm-driven-algorithmic-debugging-for-arc-agi-2.md",
+      "type": "content",
+      "title": "Procedural Refinement by LLM-driven Algorithmic Debugging for ARC-AGI-2"
+    },
+    {
+      "id": "d43e93dd-0be2-4e0b-b207-b320118fc93a",
+      "type": "seed",
+      "title": "ContractSkill: Repairable Contract-Based Skills for Multimodal Web Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/contractskill_-repairable-contract-based-skills-fo.py",
+      "type": "app",
+      "title": "ContractSkill: Repairable Contract-Based Skills for Multimodal Web Agents"
+    },
+    {
+      "id": "885fecb8-c693-4e1a-867b-92a1950d5cc7",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-cranimem:-cranial-inspired-gated-and-bounded-memor.md",
+      "type": "output",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "0e4d4977-9cd0-4b3e-b05a-9892b1c525e5",
+      "type": "seed",
+      "title": "Beyond LLM-based test automation: A Zero-Cost Self-Healing Approach Using DOM Accessibility Tree Extraction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/beyond-llm-based-test-automation_-a-zero-cost-self.py",
+      "type": "app",
+      "title": "Beyond LLM-based test automation: A Zero-Cost Self-Healing Approach Using DOM Accessibility Tree Extraction"
+    },
+    {
+      "id": "e9ed2950-7514-4228-a01b-122a533fb5af",
+      "type": "seed",
+      "title": "HCAG: Hierarchical Abstraction and Retrieval-Augmented Generation on Theoretical Repositories with LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-hcag:-hierarchical-abstraction-and-retrieval-augmented-generation-on-theoretical.md",
+      "type": "content",
+      "title": "HCAG: Hierarchical Abstraction and Retrieval-Augmented Generation on Theoretical Repositories with LLMs"
     }
   ],
   "edges": [
@@ -14075,6 +14165,51 @@
     {
       "from": "3a220770-0f64-4cf6-b47e-cce8670f0dae",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-kraig:-a-natural-language-driven-agent-for-automated-dataops-pipeline-generation.md",
+      "type": "produced"
+    },
+    {
+      "from": "141bf3d2-3bbf-4e58-bf21-02ca31d17de8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-measuring-and-exploiting-confirmation-bias-in-llm-.md",
+      "type": "produced"
+    },
+    {
+      "from": "b2b1eae2-988f-44f2-83b3-f94121478ed0",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-semantic-tool-discovery-for-large-language-models:-a-vector-based-approach-to-mc.md",
+      "type": "produced"
+    },
+    {
+      "from": "f4cd0963-e6de-497c-ba5b-ce3552397cf9",
+      "to": "apps/roku-howdy-subscription-service-launches-on-pr.py",
+      "type": "produced"
+    },
+    {
+      "from": "63c44986-64af-410a-8cf3-1ee46b3ac1ba",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-the-causal-impact-of-tool-affordance-on-safety-alignment-in-llm-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "06ab2dd7-9d84-4b2c-bd04-2a152182781e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-24-procedural-refinement-by-llm-driven-algorithmic-debugging-for-arc-agi-2.md",
+      "type": "produced"
+    },
+    {
+      "from": "d43e93dd-0be2-4e0b-b207-b320118fc93a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/contractskill_-repairable-contract-based-skills-fo.py",
+      "type": "produced"
+    },
+    {
+      "from": "885fecb8-c693-4e1a-867b-92a1950d5cc7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-24-cranimem:-cranial-inspired-gated-and-bounded-memor.md",
+      "type": "produced"
+    },
+    {
+      "from": "0e4d4977-9cd0-4b3e-b05a-9892b1c525e5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/beyond-llm-based-test-automation_-a-zero-cost-self.py",
+      "type": "produced"
+    },
+    {
+      "from": "e9ed2950-7514-4228-a01b-122a533fb5af",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-hcag:-hierarchical-abstraction-and-retrieval-augmented-generation-on-theoretical.md",
       "type": "produced"
     }
   ]

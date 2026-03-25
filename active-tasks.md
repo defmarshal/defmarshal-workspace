@@ -1,33 +1,18 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-24 13:25 UTC**
+**Current active tasks - UPDATED 2026-03-25 04:10 UTC (Bangkok) / 2026-03-24 21:10 UTC**
 
-System status: Stable. Disk usage ~83%. Git janitor cron executed but died silently; manual recovery performed (see details below).
+System status: Stable. Disk usage ~83%. All cron jobs running normally.
 
-**Meta-Summary Cron**: ✅ Completed (2026-03-24 15:10 UTC) — system metrics collected and Telegram summary sent successfully (Msg ID: 13100).
+**Code Gardener** (cron code-gardener-1773047374): ✅ Active. Just generated app for seed: "Roku's $3 Howdy subscription service launches on Prime Video". Total processed seeds: 544. Remaining unprocessed: 924. Throughput steady.
 
-**Agent Manager**: ✅ Completed (2026-03-24 20:30 UTC) — Maintenance checks passed. Auto-committed 6 pending files (gardener reports). Cron validation: all schedules match CRON_JOBS.md documentation. Voyage rate-lock active (1h), memory reindex skipped.
+**Research Gardener** (cron research-gardener-1773046574): ✅ Active. Producing ~1 report/hour. Today: 23 research reports (latest 13:04 UTC). Total reports: 500+.
 
-**Email Sweep**: ✅ Working well! Latest cron run completed successfully (2026-03-24 00:08 UTC, BATCH_SIZE=100, PAGES_PER_RUN=1). Processed 1 page, labeling emails across 42+ Sweep categories. System stable.
+**Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 13:01 UTC).
 
-**Seed Gatherer**: ✅ Completed (2026-03-24 12:20 UTC) — Added 50 new seeds from RSS feeds (0 unread emails).
+**Shared Seed Pool**:
+- Total seeds: 1468
+- Processed seeds: 544 (37.0%)
+- Remaining: 924
 
-**Shared Seed Pool** (used by Research, Content, and Code Gardeners):
-- Total seeds: 1418
-- Processed seeds: 556 (39.2%)
-- Remaining: 862
-At current **1 seed per run** frequency (hourly), backlog will clear in ~11 days. **Throughput bottleneck identified: gardeners process only one seed per execution.** To accelerate, we will either increase batch size or cron frequency.
-
-**Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically. 63 memory files need indexing.
-
-**Gardeners Status (2026-03-24):**
-- **Research Gardener** (cron research-gardener-1773046574): ✅ Active. Producing ~1 report/hour. Today so far: 23 research reports (latest 13:04 UTC). Tavily API not set; using local synthesis. Total reports: 500+.
-- **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today so far: 11 content reports (latest 13:01 UTC). No issues.
-- **Code Gardener** (cron code-gardener-1773047374): ✅ Active but **slow**. Agent calls often time out (60s) -> uses enhanced fallback. Today so far: at least 6 apps generated (latest 13:18 UTC). No crashes observed; running normally now.
-
-**Issues & Actions:**
-- **Git janitor cron (06:12 UTC) died without logging.** Manual run completed successfully, committing pending gardener changes (5 files). Root cause unknown (possible transient lock or env). Will monitor.
-- **Gardeners throughput**: Single-seed-per-run limits output. Plan: **increase batch size to 5 seeds/run** (with file locking) or **increase cron frequency to every 15 min**. Will implement batch-processing with `fcntl` lock on `memory/gardeners.lock` to avoid race conditions and safely boost throughput 5×.
-- **Code gardener agent timeout** may be reduced to 30s to cut worst-case latency.
-
-All gardeners operate on shared seed pool with cooperative allocation; processed seeds tracked in `memory/processed_seeds.jsonl`. No duplicate work observed.
+**Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically.
