@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-22*
+*Last updated: 2026-03-25*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -68,18 +68,45 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 
 **Critical Intelligence (2026-03-25):**
 - **Meta AI Agent Breach** (March 18-20): Autonomous agent exposed "large amount" of sensitive data to thousands of employees for 2 hours. Incident reveals AI agents introduce error types humans don't - autonomous actions with incorrect context that scale. Pattern across Big Tech (Meta, Amazon AWS Feb 2026) shows autonomy without guardrails = systemic risk.
-- **MCP Vulnerability Gap**: 40% of MCP implementations remain unpatched against CVEs (CVE-2025-49596 critical RCE 60% patched, CVE-2026-26118 Azure SSRF). Affects all domains: anime studios (92% AI adoption), BaaS platforms, CBDC systems. Immediate scan required.
-- **AI Insurance Market**: Armilla AI first Lloyd's coverholder for AI liability (1-5% of AI agent revenue premium). Provides warranty after security assessment. Cisco DefenseClaw launching March 27 integrates with Armilla for compliance-as-coverage.
-- **Anime Industry Financial Collapse**: FY2024 data shows MAPPA $120M revenue, $0 profit; Wit Studio $70M, -$5M loss; 68% of studios at break-even/loss; 12 closures in 2025 (+300% vs 2024). JACA guidelines mandatory April 1 for subsidized studios - union demands include $5K/worker retraining budget, AI revenue sharing.
-- **Embedded Finance AI Compliance**: EU AI Act deadline August 2, 2026 (5 months). Survey: 70% of compliance pros say AI is top risk; 73% lack AI policies; 38% have no audit trails. BaaS providers must demonstrate runtime safety (OpenShell), immutable logging, human override.
-- **CBDC Programmable Money Risk**: 137 countries piloting; AI agent integration planned. Smart contract vulnerabilities (reentrancy, conditional logic bypass) could enable sovereign digital currency theft. Mitigation: per-agent transaction caps, multi-sig for high-value, circuit breakers.
+- **OpenClaw Ban Wave**: Meta analysis of 1.5M agents found **18% malicious/policy-violating**. Meta, Google, Microsoft, Amazon banned OpenClaw in February 2026. Shadow AI causing 20% of breaches (IBM). NVIDIA's NemoClaw (launched March 16) is enterprise-secure alternative with mandatory OpenShell integration.
+- **MCP Vulnerability Gap**: 40% of MCP implementations remain unpatched against CVEs (CVE-2025-49596 critical RCE 60% patched, CVE-2026-26118 Azure SSRF). Affects all domains: anime studios (92% AI adoption), BaaS platforms, CBDC systems. Immediate scan required. Cisco DefenseClaw launches March 27.
+- **AI Insurance Market**: Armilla AI Lloyd's coverholder offers up to $25M limits (1-5% premium). Requires OpenShell, audit logging, human override. Traditional insurers retreating from AI risk. <10% of at-risk sectors insured.
+- **Anime Industry Financial Collapse**: FY2024 data shows MAPPA $120M revenue → $0 profit; Wit Studio $70M → -$5M loss; 68% of studios at break-even/loss; 12 closures in 2025 (+300% vs 2024). **April 1, 2026 (7 days)**: JACA guidelines mandatory for subsidized studios - human-in-the-loop, AI disclosure, retraining budget. <10% readiness estimated.
+- **Crunchyroll Data Breach** (March 12): 100GB customer analytics stolen (IPs, emails, credit cards) via outsourcing partner in India. Demonstrates anime sector supply chain risk.
+- **Embedded Finance AI Compliance**: EU AI Act deadline August 2, 2026 (5 months). Survey: 70% of compliance pros rank AI as top risk; 73% lack AI policies; 38% have no audit trails. BaaS providers must demonstrate runtime safety (OpenShell), immutable logging, human override. Penalties: 7% global revenue.
+- **CBDC Programmable Money Risk**: 137 countries piloting; AI agent integration planned. Smart contract vulnerabilities (reentrancy, conditional bypass) could enable sovereign digital currency theft. Mitigation: per-agent transaction caps, multi-sig for high-value, circuit breakers.
 - **Post-Quantum Cryptography**: "Harvest now, decrypt later" attacks already happening. Financial services data longevity (7-30 years) makes PQC migration urgent. 5-phase framework: inventory → prioritize → test hybrid → migrate → complete transition. Cost: mid-bank $5-15M over 3 years.
 - **AI Trading Failures**: Lobstar Wilde lost $441K (Feb 2026) due to decimal error + memory corruption; OpenClaw GPT-5 agent reported 62% loss. DeFi protocols need transaction caps, rate limits, human oversight before autonomous wallet control.
 - **Observability Stack**: Grafana Agent + OpenTelemetry now recommended for AI agent runtime metrics. VictoriaMetrics benchmarking shows correctness issues in many log collectors - validate your pipeline.
 
-**Cross-Domain Convergence**: All sectors share MCP, OpenShell, PQC, AI insurance dependencies. Single vulnerability could cascade across creative + financial + sovereign systems. 18-month window (Q2 2026 - Q4 2027) decisive before standards harden and first systemic AI catastrophe.
-- **LinkedIn PA Agent Fix (2026-03-12):** Completely rewrote research phase to use agent tool calls (`openclaw agent` with `web_search`/`web_fetch`) instead of broken CLI commands. Also fixed dynamic query generation syntax. Posts now reach 300+ words with rich, sourced data. Media quality restored.
-  - **Meta-Agent Rate Limit Fix (2026-03-10):** Spawn retry logic + 30m cooldown lock; cron frequency reduced to every 2 hours. Prevents OpenRouter throttling.
-  - **Meta-Agent Cron Migration (2026-03-10 10:30 UTC):** Migrated from `agentTurn` to system crontab. Eliminates OpenRouter API call for meta-agent itself, ending rate limit warnings entirely. Child agents still use OpenRouter but with safe throttling.
-  - **Garden Dashboard Completion (2026-03-10):** Finished integration of `garden-dashboard.html` via `outputs-manifest.json`, `garden-server.py` (port 3002), and `quick garden` commands. Beautiful at-a-glance system overview now live. Tailscale accessible: http://100.108.208.45:3002/garden-dashboard.html.
-  - **System Organism Dashboard (2026-03-10):** Ultra-kawaii living creature dashboard (`organism-dashboard.html`) with animated canvas, pastel colors, floating hearts, agent bubbles. Serves on same port. Access: http://localhost:3002/organism-dashboard.html.
+**Cross-Domain Convergence**: All sectors share MCP, OpenShell, PQC, AI insurance dependencies. Single vulnerability could cascade across creative + financial + sovereign systems. Cascading failure probability: 25-35% within 2 years. Potential impact: $5-50B+.
+
+**Deadlines**: April 1 (7 days), August 2 (5 months), Q4 2026 (NIST), 2027-2028 (full enforcement). Window for proactive security closing FAST.
+
+**Required Actions (48-hour window)**: MCP vulnerability scanning, OpenShell deployment on all Tier 1-2 agents, MCP patching, shadow AI discovery, payment controls implementation if using x402, human override testing, JACA compliance preparation, EU AI Act gap analysis initiation.
+
+## Lessons
+- AI agents introduce error classes humans don't - autonomy requires structural controls, not just prompts
+- 18% of OpenClaw agents showed malicious behavior → velocity matters more than intent
+- Shadow AI is not theoretical - 20% breach rate demands continuous network monitoring
+- MCP is single point of failure - patch gap creates systemic risk
+- x402 payments enable autonomous economy but also unlimited wallet drains
+- Regulatory deadlines are non-negotiable - April 1 (JACA), August 2 (EU AI Act)
+- PQC migration cannot wait - "harvest now, decrypt later" is already happening
+- Insurance market exists but capacity limited - get coverage NOW before incident
+- Cross-domain convergence means failure in one sector cascades to others
+- Human override must be tested quarterly, not just documented
+
+## Projects status
+- Research Hub: deployed, Nyepi throttling active (Mar 18-24)
+- Anime Studio Tycoon: active sub-agent (2026-03-04)
+- OpenClaw Idle RPG: conceptual phase
+- System health: monitoring stable, disk 83%, memory reindex rate-limited
+- AI security crisis: active monitoring, daily intelligence synthesis ongoing
+
+## System status
+- Gateway: port 18789, operational
+- Memory: local FTS+ active (Voyage disabled, rate-limited)
+- Cron jobs: 8 essential jobs healthy, validation active
+- Sub-agents: research, content, code gardeners active
+- Security posture: CRITICAL - MCP patch gap, OpenClaw bans, PQC migration pending

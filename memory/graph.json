@@ -11114,6 +11114,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-hcag:-hierarchical-abstraction-and-retrieval-augmented-generation-on-theoretical.md",
       "type": "content",
       "title": "HCAG: Hierarchical Abstraction and Retrieval-Augmented Generation on Theoretical Repositories with LLMs"
+    },
+    {
+      "id": "53c0cedb-8ed2-449f-b7fc-24b99176d015",
+      "type": "seed",
+      "title": "From Human Interfaces to Agent Interfaces: Rethinking Software Design in the Age of AI-Native Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-from-human-interfaces-to-agent-interfaces:-rethinking-software-design-in-the-age.md",
+      "type": "content",
+      "title": "From Human Interfaces to Agent Interfaces: Rethinking Software Design in the Age of AI-Native Systems"
+    },
+    {
+      "id": "d6410979-0a03-49f2-903d-aecc0e392c96",
+      "type": "seed",
+      "title": "kRAIG: A Natural Language-Driven Agent for Automated DataOps Pipeline Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/kraig_-a-natural-language-driven-agent-for-automat.py",
+      "type": "app",
+      "title": "kRAIG: A Natural Language-Driven Agent for Automated DataOps Pipeline Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-from-human-interfaces-to-agent-interfaces:-rethink.md",
+      "type": "output",
+      "title": "From Human Interfaces to Agent Interfaces: Rethinking Software Design in the Age of AI-Native Systems"
     }
   ],
   "edges": [
@@ -14210,6 +14235,21 @@
     {
       "from": "e9ed2950-7514-4228-a01b-122a533fb5af",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-hcag:-hierarchical-abstraction-and-retrieval-augmented-generation-on-theoretical.md",
+      "type": "produced"
+    },
+    {
+      "from": "53c0cedb-8ed2-449f-b7fc-24b99176d015",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-from-human-interfaces-to-agent-interfaces:-rethinking-software-design-in-the-age.md",
+      "type": "produced"
+    },
+    {
+      "from": "d6410979-0a03-49f2-903d-aecc0e392c96",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/kraig_-a-natural-language-driven-agent-for-automat.py",
+      "type": "produced"
+    },
+    {
+      "from": "53c0cedb-8ed2-449f-b7fc-24b99176d015",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-from-human-interfaces-to-agent-interfaces:-rethink.md",
       "type": "produced"
     }
   ]
