@@ -11459,6 +11459,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-russia-arrests-alleged-owner-of-cybercrime-forum-leakbase,-report-says.md",
       "type": "content",
       "title": "Russia arrests alleged owner of cybercrime forum LeakBase, report says"
+    },
+    {
+      "id": "0d47cb0f-47dd-4acf-a4ce-cfc4f14c3fa3",
+      "type": "seed",
+      "title": "Waymo relies on firefighters and police to bail out stuck robotaxis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-waymo-relies-on-firefighters-and-police-to-bail-out-stuck-robotaxis.md",
+      "type": "output",
+      "title": "Waymo relies on firefighters and police to bail out stuck robotaxis"
+    },
+    {
+      "id": "1f4c1076-0482-46e0-b812-3e01d9cc38af",
+      "type": "seed",
+      "title": "Reddit takes on the bots with new &#8216;human verification&#8217; requirements for fishy behavior"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-reddit-takes-on-the-bots-with-new-&#8216;human-verification&#8217;-requirements-.md",
+      "type": "content",
+      "title": "Reddit takes on the bots with new &#8216;human verification&#8217; requirements for fishy behavior"
+    },
+    {
+      "id": "8cffa5db-e88f-40cd-8223-4e31e73c925a",
+      "type": "seed",
+      "title": "How\u00a0soap opera-TikTok hybrids\u00a0became a billion-dollar business"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/how_soap-opera-tiktok-hybrids_became-a-billion-dol.py",
+      "type": "app",
+      "title": "How\u00a0soap opera-TikTok hybrids\u00a0became a billion-dollar business"
     }
   ],
   "edges": [
@@ -14735,6 +14765,21 @@
     {
       "from": "b679c956-aabf-47ac-b2ed-2b0cf0685588",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-russia-arrests-alleged-owner-of-cybercrime-forum-leakbase,-report-says.md",
+      "type": "produced"
+    },
+    {
+      "from": "0d47cb0f-47dd-4acf-a4ce-cfc4f14c3fa3",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-25-waymo-relies-on-firefighters-and-police-to-bail-out-stuck-robotaxis.md",
+      "type": "produced"
+    },
+    {
+      "from": "1f4c1076-0482-46e0-b812-3e01d9cc38af",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-25-reddit-takes-on-the-bots-with-new-&#8216;human-verification&#8217;-requirements-.md",
+      "type": "produced"
+    },
+    {
+      "from": "8cffa5db-e88f-40cd-8223-4e31e73c925a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/how_soap-opera-tiktok-hybrids_became-a-billion-dol.py",
       "type": "produced"
     }
   ]
