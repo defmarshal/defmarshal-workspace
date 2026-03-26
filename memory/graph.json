@@ -11569,6 +11569,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/riding-the-glp-1-boom_-vitl-lands-_7_5m-to-overhau.py",
       "type": "app",
       "title": "Riding the GLP-1 boom, VITL lands $7.5M to overhaul cash-pay clinic prescribing"
+    },
+    {
+      "id": "30f6d540-7afb-44b5-8f01-f7e9d43ad640",
+      "type": "seed",
+      "title": "Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/memory-bear-ai-memory-science-engine-for-multimoda.py",
+      "type": "app",
+      "title": "Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report"
     }
   ],
   "edges": [
@@ -14900,6 +14910,11 @@
     {
       "from": "48eef54e-934d-4859-9c99-c514e25f4f4e",
       "to": "/home/ubuntu/.openclaw/workspace/apps/riding-the-glp-1-boom_-vitl-lands-_7_5m-to-overhau.py",
+      "type": "produced"
+    },
+    {
+      "from": "30f6d540-7afb-44b5-8f01-f7e9d43ad640",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/memory-bear-ai-memory-science-engine-for-multimoda.py",
       "type": "produced"
     }
   ]
