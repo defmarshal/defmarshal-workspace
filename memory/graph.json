@@ -11599,6 +11599,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-the-efficiency-attenuation-phenomenon:-a-computational-challenge-to-the-language.md",
       "type": "content",
       "title": "The Efficiency Attenuation Phenomenon: A Computational Challenge to the Language of Thought Hypothesis"
+    },
+    {
+      "id": "399ca3c2-bb4c-4c89-a137-5468c0d6a13b",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "output",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
     }
   ],
   "edges": [
@@ -14945,6 +14955,11 @@
     {
       "from": "05c5e51d-4761-4ec4-9bad-adec6a880b8b",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-the-efficiency-attenuation-phenomenon:-a-computational-challenge-to-the-language.md",
+      "type": "produced"
+    },
+    {
+      "from": "399ca3c2-bb4c-4c89-a137-5468c0d6a13b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
       "type": "produced"
     }
   ]
