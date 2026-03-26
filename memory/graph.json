@@ -11689,6 +11689,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/ai-mental-models_-learned-intuition-and-deliberati.py",
       "type": "app",
       "title": "AI Mental Models: Learned Intuition and Deliberation in a Bounded Neural Architecture"
+    },
+    {
+      "id": "f18e59ef-1312-4dcb-afab-f3aa41fceb8d",
+      "type": "seed",
+      "title": "Leveraging Computerized Adaptive Testing for Cost-effective Evaluation of Large Language Models in Medical Benchmarking"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/leveraging-computerized-adaptive-testing-for-cost-.py",
+      "type": "app",
+      "title": "Leveraging Computerized Adaptive Testing for Cost-effective Evaluation of Large Language Models in Medical Benchmarking"
     }
   ],
   "edges": [
@@ -15080,6 +15090,11 @@
     {
       "from": "5848fbcb-6dba-435c-91ee-b02a434dd302",
       "to": "/home/ubuntu/.openclaw/workspace/apps/ai-mental-models_-learned-intuition-and-deliberati.py",
+      "type": "produced"
+    },
+    {
+      "from": "f18e59ef-1312-4dcb-afab-f3aa41fceb8d",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/leveraging-computerized-adaptive-testing-for-cost-.py",
       "type": "produced"
     }
   ]
