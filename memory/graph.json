@@ -11559,6 +11559,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/melania-trump-wants-a-robot-to-homeschool-your-chi.py",
       "type": "app",
       "title": "Melania Trump wants a robot to homeschool your child"
+    },
+    {
+      "id": "48eef54e-934d-4859-9c99-c514e25f4f4e",
+      "type": "seed",
+      "title": "Riding the GLP-1 boom, VITL lands $7.5M to overhaul cash-pay clinic prescribing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/riding-the-glp-1-boom_-vitl-lands-_7_5m-to-overhau.py",
+      "type": "app",
+      "title": "Riding the GLP-1 boom, VITL lands $7.5M to overhaul cash-pay clinic prescribing"
     }
   ],
   "edges": [
@@ -14885,6 +14895,11 @@
     {
       "from": "9c4f4100-95e6-47a8-b9cb-c7775b59d7e9",
       "to": "/home/ubuntu/.openclaw/workspace/apps/melania-trump-wants-a-robot-to-homeschool-your-chi.py",
+      "type": "produced"
+    },
+    {
+      "from": "48eef54e-934d-4859-9c99-c514e25f4f4e",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/riding-the-glp-1-boom_-vitl-lands-_7_5m-to-overhau.py",
       "type": "produced"
     }
   ]
