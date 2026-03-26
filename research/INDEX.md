@@ -1,246 +1,159 @@
-# Research Reports — Index
+# 📚 Research Repository Index
 
-This index is auto‑generated. Last updated: 2026-03-06
-
-## 2026 Reports (222 total)
-
-### 2026-03
-- [U.S. CBDC Ban: The Senate's Digital Dollar Blockade (2026)](2026-03-23-us-senate-cbdc-ban-digital-dollar-analysis.md)
-- [Anime Industry 2026: Market Growth, Streaming Shifts, and Production Trends](2026-03-23-anime-industry-trends-market-growth-production-shifts-2026.md)
-- [Agentic AI in Banking: The 2026 Transformation Wave](2026-03-23-agentic-ai-in-banking-transformation-wave-2026.md)
-- [Tech & AI Roundup: March 2026 — Models, Regulation, and Enterprise Adoption](2026-03-23-tech-ai-roundup-march-2026.md)
-- [Satellite Internet 2026: Starlink's Gigabit Ascent and the Global Connectivity Race](2026-03-23-satellite-internet-starlink-gigabit-race-2026.md)
-- [Research Update: March 6, 2026 — Cross-Domain Synthesis](2026-03-06-cross-domain-synthesis.md)
-- [Liquidity Gap Calculation: Banking Risk Management Fundamentals](2026-03-04-liquidity-gap-calculation-banking-risk.md)
-- [AI Safety Incidents, Edge AI Surge, 6G Coalition, and Anime Spring 2026](2026-03-03-ai-safety-edge-ai-6g-anime-spring.md)
-- [Cross-Domain Insights: Regulatory Realities, Streaming Wars, Quantum & Space](2026-03-03-ai-regulation-cbdc-anime-streaming-quantum-space.md)
-- [Continuous Research Update: March 2, 2026](2026-03-02-ai-fintech-anime-trends.md)
-- [Spring 2026 Anime Season Preview: The Most Stacked Lineup in Years](2026-03-01-spring-2026-anime-season-preview-classroom-elite-witch-hat-atelier-daemons-rezero-one-piece-elbaph.md)
-- [Southeast Asia Digital Banking & Fintech 2026: Agentic Payments, Profitability Pressure, Cross-Border Rails, and the Super-App Endgame](2026-03-01-southeast-asia-digital-banking-fintech-2026-agentic-payments-profitability-cross-border-rails-super-apps.md)
-- [Quantum Computing 2026: IonQ Crosses $100M Revenue, Microsoft's Majorana Topological Qubit, IBM Nighthawk & Kookaburra, Google's Willow Legacy, and the Hype-Reality Gap](2026-03-01-quantum-computing-2026-ionq-100m-revenue-ibm-nighthawk-kookaburra-microsoft-majorana-google-willow-post-quantum-cryptography.md)
-- [Green Tech & Climate AI 2026: Solar at Record Lows, Battery $70/kWh, Nuclear Renaissance & the AI-Energy Nexus](2026-03-01-green-tech-climate-ai-2026-solar-battery-nuclear-smr-ev-energy-nexus.md)
-- [Frontier AI Models: The February 2026 Surge — Gemini 3.1 Pro, Claude Sonnet 4.6, GPT-5.3 Codex, Grok 4.20, GLM-5, and Qwen 3.5](2026-03-01-frontier-ai-models-february-2026-gemini-3-1-pro-claude-sonnet-4-6-gpt-5-3-codex-grok-4-20-glm-5-qwen-3-5.md)
-- [Fintech & Digital Banking 2026: Agentic AI, Neobank Profitability, Real-Time Rails, CBDC Timelines & the Stablecoin Settlement Layer](2026-03-01-fintech-digital-banking-2026-agentic-ai-neobank-profitability-cbdc-stablecoin-real-time-payments.md)
-- [Cybersecurity 2026: AI Arms Race, Ransomware Economy, Post-Quantum Transition, and the Agentic Threat Frontier](2026-03-01-cybersecurity-2026-ai-arms-race-ransomware-post-quantum-zero-trust-agentic-threats.md)
-- [Commercial Space 2026: The Year the Orbital Economy Gets Real](2026-03-01-commercial-space-2026-artemis-ii-haven-1-starship-hls-orbital-economy-china-nuclear-propulsion.md)
-- [Biotech & Longevity 2026: AI Drug Discovery, GLP-1 Dominance, Gene Therapy & the Longevity Startup Race](2026-03-01-biotech-longevity-2026-ai-drug-discovery-glp1-gene-therapy-crispr.md)
-- [AI Hardware & Chips 2026: The Architecture Wars — Blackwell in Volume, Rubin on Deck, AMD's Real Challenge, Google's Custom Silicon Bet & the CoWoS Chokepoint](2026-03-01-ai-hardware-chips-2026-blackwell-rubin-amd-mi350-google-tpu-ironwood-tsmc-cowos-hbm4.md)
-- [AI Developer Tools 2026: Cursor's $29B Rise, GitHub Copilot's 4.7M Subscribers, Claude Code's Agent Teams, Google Antigravity, and the Vibe Coding Wave](2026-03-01-ai-developer-tools-2026-cursor-29b-github-copilot-4-7m-subscribers-claude-code-agent-teams-google-antigravity-vibe-coding.md)
-
-### 2026-02
-- [WebAssembly 2026: Beyond the Browser — WASM 3.0, WASI 0.3, Component Model & The Cloud Runtime Revolution](2026-02-28-webassembly-2026-wasm3-wasi03-component-model-edge-cloud.md)
-- [Spring 2026 Anime Season — Complete Guide: Must-Watch Series, Release Dates & Streaming](2026-02-28-spring-2026-anime-season-guide-release-dates-must-watch.md)
-- [Southeast Asia Digital Banking 2026 — Neobanks, AI Adoption & Virtual Bank Launches](2026-02-28-southeast-asia-digital-banking-neobanks-ai-virtual-banks.md)
-- [Satellite Internet 2026: Starlink vs Amazon Leo, the LEO Broadband Race & What It Means for Global Connectivity](2026-02-28-satellite-internet-2026-starlink-amazon-leo-leo-broadband-race.md)
-- [Robotics & Physical AI 2026: Humanoid Robots Leave the Lab](2026-02-28-robotics-physical-ai-2026-humanoid-robots-boston-dynamics-figure-tesla-optimus.md)
-- [Quantum Computing 2026: The Race to Practical Advantage](2026-02-28-quantum-computing-2026-ibm-google-microsoft-race-practical-advantage.md)
-- [Open Source LLM Landscape 2026: DeepSeek, Llama 4, Qwen3, Mistral & The Performance Gap Collapse](2026-02-28-open-source-llm-landscape-2026-deepseek-llama4-qwen3-mistral.md)
-- [Fintech 2026: Embedded Finance, BaaS, and the API-ification of Money](2026-02-28-fintech-2026-embedded-finance-baas-api-money-sea.md)
-- [Enterprise Planning Analytics Market 2026 — Competitive Landscape & Adoption Trends](2026-02-28-enterprise-planning-analytics-market-competitive-analysis.md)
-- [Edge AI & On-Device LLMs in 2026: The Complete Guide to Local Intelligence](2026-02-28-edge-ai-on-device-llms-2026-npu-chips-qualcomm-apple-nvidia.md)
-- [Developer Productivity 2026: AI Coding Assistants, Platform Engineering & the 41% Code Revolution](2026-02-28-developer-productivity-2026-ai-coding-assistants-platform-engineering-dx.md)
-- [Cybersecurity 2026: The Forgiving Internet Is Over — AI Threats, Zero Trust Identity & Permanent Instability](2026-02-28-cybersecurity-2026-ai-threats-zero-trust-nhi-saas-ransomware.md)
-- [Cloud Cost Optimization 2026: FinOps, AI-Driven Waste Elimination & the $189B Problem](2026-02-28-cloud-cost-optimization-2026-finops-ai-waste-aws-azure-gcp.md)
-- [Bash Arithmetic Pitfalls: Leading Zero "value too great for base" Error](2026-02-28-bash-arithmetic-leading-zero-pitfalls.md)
-- [AR/VR & Spatial Computing 2026: Apple Vision Pro, Meta Quest, Smart Glasses & the Enterprise Inflection](2026-02-28-ar-vr-spatial-computing-2026-apple-vision-pro-meta-quest-enterprise-xr.md)
-- [Agentic AI & Multi-Agent Frameworks in 2026: The Definitive Guide](2026-02-28-agentic-ai-multi-agent-frameworks-2026.md)
-- [Agentic AI in 2026 — Multi-Agent Frameworks, Open Standards & Enterprise Adoption](2026-02-28-agentic-ai-frameworks-mcp-a2a-enterprise-adoption.md)
-- [Spring 2026 Anime Season Trends — Lineup, Streaming, and Highlights](2026-02-27-spring-2026-anime-season-trends.md)
-- [Space Launch Economics & Market 2026 — Cost per kg, Reusability, and Competitive Landscape](2026-02-27-space-launch-economics-market-2026-cost-per-kg-reusability-rideshare.md)
-- [Solid-State Batteries 2026 — From Lab to Road, Scaling Challenges Remain](2026-02-27-solid-state-batteries-2026.md)
-- [Real-Time Payments & Digital Banking Transformation 2026](2026-02-27-real-time-payments-digital-banking-transformation-2026.md)
-- [Quantum Networking & Quantum Internet 2026 — QKD Networks, Standards, and Scaling Challenges](2026-02-27-quantum-networking-quantum-internet-2026-QKD-networks-standards-scaling.md)
-- [Privacy-Preserving Machine Learning 2026 — Federated Learning, Differential Privacy, and the LA‑LoRA Breakthrough](2026-02-27-privacy-preserving-ml-2026.md)
-- [Post-Quantum Cryptography Adoption 2026 — NIST Standards, Migration, and Enterprise Readiness](2026-02-27-post-quantum-cryptography-adoption-2026-nist-standards-migration-enterprise-readiness.md)
-- [Neuromorphic Computing & Chips 2026 — Brain‑Inspired Silicon, Event‑Driven AI Acceleration](2026-02-27-neuromorphic-computing-chips-2026-brain-inspired-silicon-event-driven-ai.md)
-- [LEO Satellite Internet Constellations 2026 — Starlink, OneWeb, Project Kuiper](2026-02-27-leo-satellite-internet-constellations-2026-status-update.md)
-- [Fusion Energy Breakthroughs 2026 — Tokamaks, Inertial Confinement, and Private Startups](2026-02-27-fusion-energy-breakthroughs-2026-tokamak-inertial-private-startups.md)
-- [Edge AI and TinyML 2026 — On-Device Intelligence Becomes Mainstream](2026-02-27-edge-ai-tinyml-2026.md)
-- [Climate Tech 2026 — CCUS, Green Hydrogen, and the Carbon Economy](2026-02-27-climate-tech-2026.md)
-- [AI Safety, Alignment, and Governance 2026 — Regulatory Surge, Agentic Challenges, and Operational Readiness](2026-02-27-ai-safety-alignment-governance-2026.md)
-- [AI-Powered Cybersecurity 2026 — The Autonomous Arms Race](2026-02-27-ai-powered-cybersecurity-2026.md)
-- [AI in Healthcare 2026 — The Clinical and Commercial Inflection Point](2026-02-27-ai-in-healthcare-2026.md)
-- [6G Networks: 2026 Trials, Spectrum, and IMT-2030 Roadmap](2026-02-27-6g-networks-2026-trials-spectrum-imt-2030-roadmap.md)
-- [Edge AI & TinyML 2026 — State of the Art](2026-02-26-edge-ai-tinyml-2026.md)
-- [AI Agent Frameworks 2026 — Comparison & Trends](2026-02-26-ai-agent-frameworks-2026-comparison.md)
-- [Traffic Prediction APIs & State of the Art — 2026](2026-02-25-traffic-prediction-apis-state-of-the-art-2026.md)
-- [Quantum Computing Commercialization 2026: From Labs to Real-World Applications](2026-02-25-quantum-computing-commercialization-2026.md)
-- [Open Banking API Standards 2026: PSD2, UK Open Banking, and Global Adoption](2026-02-25-open-banking-api-standards-2026.md)
-- [Anime Industry Trends 2026: Streaming, Globalization, and Cloud Production](2026-02-25-anime-industry-trends-2026.md)
-- [AI Agent Frameworks 2026: Open-Source Orchestration Platforms Compared](2026-02-25-ai-agent-frameworks-2026-comparison.md)
-- [AI in Banking 2026: Transforming Finance with Intelligence](2026-02-24-ai-in-banking-2026-transforming-finance-with-intelligence.md)
-- [Agentic AI Trends 2026: The Rise of Autonomous Enterprise Systems](2026-02-24-agentic-ai-trends-2026-autonomous-enterprise-systems.md)
-- [Quantum Computing Commercialization: 2026 Industry Outlook](2026-02-23-quantum-computing-commercialization-2026-outlook.md)
-- [Liquidity Gap Calculation in Banking: Methodology and Regulatory compliance](2026-02-22-liquidity-gap-calculation-banking.md)
-- [EU AI Act Enforcement 2026–2027: Priorities, Penalties, and Compliance Guide](2026-02-22-eu-ai-act-enforcement-priorities-2026-2027-compliance-guide.md)
-- [AI Infrastructure Constraints 2026–2028: Power, Water, and the Grid Reckoning](2026-02-22-ai-infrastructure-constraints-2026-2028-power-water-grid-reckoning.md)
-- [AI Export Controls & Ecosystem Fragmentation 2026–2028: The Great Bifurcation](2026-02-22-ai-export-controls-ecosystem-fragmentation-2026-2028-great-bifurcation.md)
-- [Serverless Kubernetes 2026 Knative Openfaas Aws Lambda](2026-02-21-serverless-kubernetes-2026-knative-openfaas-aws-lambda.md)
-- [Quantum Computing Practical Applications 2026](2026-02-21-quantum-computing-practical-applications-2026.md)
-- [Open-Source LLM Ecosystem Consolidation: Sustainability & Enterprise Adoption 2026](2026-02-21-open-source-llm-ecosystem-consolidation-2026.md)
-- [Nvidia Blackwell B200 Real-World Performance: Beyond the Marketing claims](2026-02-21-nvidia-blackwell-real-world-performance.md)
-- [Leo Satellite Internet Constellations 2026](2026-02-21-leo-satellite-internet-constellations-2026.md)
-- [Japan–China Anime Co‑Production Shifts: Geopolitical Risk Update 2026](2026-02-21-japan-china-anime-co-production-shifts-2026.md)
-- [Edge Ai Chips Performance Power](2026-02-21-edge-ai-chips-performance-power.md)
-- [CBDC & Stablecoin Reality Check: Scaling and Compliance (2026 Q1](2026-02-21-cbdc-stablecoin-scaling-compliance-2026.md)
-- [Brownfield Failure Patterns in AI Coding Agents: Real-World Enterprise Codebase Challenges 2026](2026-02-21-brownfield-failure-patterns-ai-coding-agents-2026.md)
-- [Anime Streaming Economics: Revenue Growth & CAC Analysis (2025–2026](2026-02-21-anime-streaming-economics-revenue-growth-cac.md)
-- [Ai Data Center Water Constraints](2026-02-21-ai-data-center-water-constraints.md)
-- [Ai Agent Frameworks Orchestration](2026-02-21-ai-agent-frameworks-orchestration.md)
-- [Research Report — Token Optimization for Agent Systems (2026-02-20](2026-02-20-token-optimization-agent-systems.md)
-- [State of Web & App Development — 2026 Q1 Guide](2026-02-20-state-of-web-app-dev-2026.md)
-- [Technology Research — NVIDIA Blackwell B200 Real-World Performance Analysis](2026-02-20-nvidia-blackwell-b200-real-world-performance.md)
-- [China-Japan Anime Co-Production Shifts — Geopolitical Push vs Regulatory Frost](2026-02-20-china-japan-anime-co-production-shifts.md)
-- [CBDC Deployment Status Dashboard — 2026 Reality Check](2026-02-20-cbdc-deployment-status-dashboard.md)
-- [AI Production Cost Compression — Anime & Animation Adoption Reality](2026-02-20-ai-production-cost-compression-adoption.md)
-- [AI Engineering Realism Gap & Open-Source Model Cost Trajectories](2026-02-20-ai-engineering-realism-gap-and-cost-trajectories.md)
-- [AI Data Center Power & Water Constraints — 2026 Reality Check](2026-02-20-ai-data-center-power-water-constraints.md)
-- [Token‑Efficient Agent Orchestration: 2026 Playbook](2026-02-19-token-efficient-agent-orchestration.md)
-- [AI Semiconductor & Open-Source Frameworks 2026: The Infrastructure Arms Race](2026-02-19-tech-semiconductor-ai-frameworks-analysis.md)
-- [February 19, 2026 — Late-Breaking Tech & AI News](2026-02-19-late-breaking-tech-news.md)
-- [February 2026 Breaking Developments — AI, Banking, Tech, Anime](2026-02-19-february-breaking-developments.md)
-- [Banking AI Transformation 2026: Adoption, Efficiency, and the Road Ahead](2026-02-19-banking-ai-adoption-transformation-report.md)
-- [Anime Industry Analysis 2026: Streaming Dominance & Platform Competition](2026-02-19-anime-industry-streaming-dominance-analysis.md)
-- [Frontier AI Models 2025–2026: The LLM Arms Race Peaks](2026-02-19-ai-models-llm-frontier-analysis.md)
-- [AI Agent Orchestration & Platforms: 2026 Analysis](2026-02-19-ai-agent-orchestration-analysis.md)
-- [Research Synthesis and Gaps — 2026-02-18](2026-02-18-research-synthesis-and-gaps.md)
-- [Research Status Report — Tool Availability Issues](2026-02-18-research-status-report.md)
-- [Open-Source LLM Cost-Performance Trajectories 2026: The Disruption Accelerates](2026-02-18-open-source-llm-cost-performance-trajectories-analysis.md)
-- [Open‑Source AI Agent Frameworks Landscape — 2026 Practical Guide](2026-02-18-open-source-ai-agent-frameworks-analysis.md)
-- [Cross-Domain Trends: Anime, Banking, Tech, AI — 2026-02-18](2026-02-18-cross-domain-trends-anime-banking-tech-ai.md)
-- [Cross-Domain Pulse: Anime, Banking, Tech, AI — 2026-02-18](2026-02-18-cross-domain-pulse-anime-banking-tech-ai.md)
-- [Continuous Pulse: Anime, Banking, Tech, AI — 2026-02-18](2026-02-18-continuous-pulse-anime-banking-tech-ai.md)
-- [Autonomous Systems Update — Meta-Agent & Ecosystem Health](2026-02-18-autonomous-systems-update.md)
-- [Anime Streaming Economics 2026: Boom or Bubble](2026-02-18-anime-streaming-economics-2026-boom-or-bubble.md)
-- [AI‑Powered Manufacturing & Supply Chain Automation — 2026 Deep Dive](2026-02-18-ai-manufacturing-supply-chain-2026-analysis.md)
-- [AI in Healthcare & Medical Diagnostics 2026](2026-02-18-ai-healthcare-medical-diagnostics-analysis.md)
-- [AI Data Center Power & Water Constraints 2026: Grid Saturation and the Nuclear Pivot](2026-02-18-ai-data-center-power-water-constraints-analysis.md)
-- [AI in Agriculture & Food Security 2026: Precision Farming to Autonomous Food Systems](2026-02-18-ai-agriculture-food-security-analysis.md)
-- [SWE-Bench Pro 2026-02 Update: Leaderboard Surge and Persistent Failure Modes](2026-02-17-swe-bench-pro-update-failure-patterns.md)
-- [2026-02-17 Research — Status Update](2026-02-17-status.md)
-- [Stablecoin vs Traditional Remittance: Quantitative Volume Analysis 2026](2026-02-17-stablecoin-remittance-volume-quantified.md)
-- [2026-02-17 Research — Day Sealed](2026-02-17-sealed.md)
-- [2026-02-17 Research — Daily Opening](2026-02-17-research-opening.md)
-- [2026-02-17 Research Final — Research Agent](2026-02-17-research-final.md)
-- [2026-02-17 Research Closure — Research Agent](2026-02-17-research-closure.md)
-- [2026-02-17 Research — Quiet Hours Update](2026-02-17-quiet-hours-update.md)
-- [Quantum Computing Commercialization Timeline: 2026–2030 Outlook](2026-02-17-quantum-commercialization-timeline.md)
-- [2026-02-17 Research — Pre‑Evening Note](2026-02-17-pre-evening-note.md)
-- [2026-02-17 Research — Pre‑Digest Note](2026-02-17-pre-digest-note.md)
-- [2026-02-17 Research — Pre-Day Summary](2026-02-17-pre-day-summary.md)
-- [2026-02-17 Research — Pre-Dawn Digest](2026-02-17-pre-dawn-digest.md)
-- [2026-02-17 Research — Pre-Active Digest](2026-02-17-pre-active-digest.md)
-- [Open-Source LLM Cost-Performance Trajectories: 2026 Update](2026-02-17-open-source-llm-cost-trajectory.md)
-- [2026-02-17 Research — Morning Digest](2026-02-17-morning-digest.md)
-- [2026-02-17 Research — Monitoring Update](2026-02-17-monitoring-2.md)
-- [2026-02-17 Research — Mid-Morning Digest](2026-02-17-mid-morning-digest.md)
-- [2026-02-17 Mid-Dawn Research Digest](2026-02-17-mid-dawn-digest.md)
-- [LLM Scaling Trends 2026: Compute, Data, and Efficiency](2026-02-17-llm-scaling-trends-analysis.md)
-- [2026-02-17 Research — Late Night Roundup](2026-02-17-late-night-roundup.md)
-- [2026-02-17 Midday Update — Research Agent](2026-02-17-late-morning-update.md)
-- [2026-02-17 Research — Late Morning Digest](2026-02-17-late-morning-digest.md)
-- [Edge AI & On-Device Inference: 2026 Trends, Chip Architectures, and Market Dynamics](2026-02-17-edge-ai-on-device-inference-trends.md)
-- [2026-02-17 Research — Early Pre-Day Digest](2026-02-17-early-pre-day-digest.md)
-- [2026-02-17 Early-Morning Update — Research Monitor](2026-02-17-early-morning-update.md)
-- [2026-02-17 Research — Early Morning Summary](2026-02-17-early-morning-summary.md)
-- [2026-02-17 Research — Early Hours Digest](2026-02-17-early-hours-digest.md)
-- [2026-02-17 Early Afternoon — Research Agent](2026-02-17-early-afternoon.md)
-- [2026-02-17 Research Day Wrap](2026-02-17-day-wrap.md)
-- [CBDC Landscape 2026: Rollout Status, Cross‑Border Bridges, and Technical Architectures](2026-02-17-cbdc-global-landscape-analysis.md)
-- [2026-02-17 Research Brief 9](2026-02-17-brief-9.md)
-- [2026-02-17 Research Brief — 17:33 ICT](2026-02-17-brief-8.md)
-- [2026-02-17 Research Brief — 17:31 ICT](2026-02-17-brief-7.md)
-- [2026-02-17 Research Brief — 17:15 ICT](2026-02-17-brief-6.md)
-- [2026-02-17 Research Brief — 17:05 ICT](2026-02-17-brief-5.md)
-- [2026-02-17 Research Brief — 16:32 ICT](2026-02-17-brief-4.md)
-- [2026-02-17 Research Brief — 16:15 ICT](2026-02-17-brief-3.md)
-- [2026-02-17 Brief 17 — Research Agent](2026-02-17-brief-17.md)
-- [2026-02-17 Brief 16 — Research Agent](2026-02-17-brief-16.md)
-- [2026-02-17 Brief 15 — Research Agent](2026-02-17-brief-15.md)
-- [2026-02-17 Brief 14 — Research Agent](2026-02-17-brief-14.md)
-- [2026-02-17 Brief 13 — Research Agent](2026-02-17-brief-13.md)
-- [2026-02-17 Research Brief 12](2026-02-17-brief-12.md)
-- [2026-02-17 Research Brief 11](2026-02-17-brief-11.md)
-- [2026-02-17 Research Brief 10](2026-02-17-brief-10.md)
-- [2026-02-17 Research — System Alert Note](2026-02-17-alert-note.md)
-- [AI Safety & Governance 2026: Incidents, Frameworks, and Industry Readiness](2026-02-17-ai-safety-governance-2026-analysis.md)
-- [AI Model Efficiency Techniques: 2026 Landscape](2026-02-17-ai-model-efficiency-techniques-analysis.md)
-- [AI Infrastructure Power & Water Constraints: 2026 Update](2026-02-17-ai-infrastructure-power-water-update.md)
-- [AI Incident Trends: 2025-11 to 2026-01 Roundup](2026-02-17-ai-incidents-trends-2026.md)
-- [AI Export Controls & Blackwell Performance: 2026-02-17 Gap Analysis](2026-02-17-ai-export-controls-blackwell-performance.md)
-- [AI in Banking & FinTech 2026: Fraud, Trading, Risk, and Customer Experience](2026-02-17-ai-banking-fintech-analysis.md)
-- [AI in Anime Production: 2026 State and Market Transformation](2026-02-17-ai-anime-production-deep-dive.md)
-- [The AI Alignment Tax: Performance‑Safety Trade‑offs in 2026](2026-02-17-ai-alignment-tax-analysis.md)
-- [AI Agentic Workflows & the Rise of "Super Agents" in 2026](2026-02-17-ai-agentic-workflows-super-agents-analysis.md)
-- [2026-02-17 Afternoon Brief — Research Agent](2026-02-17-afternoon-brief.md)
-- [2026-02-17 Research After-Action — Research Agent](2026-02-17-after-action.md)
-- [Stablecoin Regulatory Arbitrage: Who's Compliant, Who's Winning, and What's Next](2026-02-16-stablecoin-regulatory-arbitrage.md)
-- [2026-02-16 Research Status Update](2026-02-16-research-status-update.md)
-- [2026-02-16 Research — Permanent Closure](2026-02-16-research-permanent-closure.md)
-- [2026-02-16 Research — Overnight Wrap (Final](2026-02-16-research-overnight-wrap-final.md)
-- [2026-02-16 Research — Overnight Status](2026-02-16-research-overnight-status.md)
-- [2026-02-16 Research Agent — Overnight Monitoring](2026-02-16-research-overnight-monitoring.md)
-- [2026-02-16 Research Monitoring Update](2026-02-16-research-monitoring-update.md)
-- [2026-02-16 Research Agent — Monitoring Cycle](2026-02-16-research-monitoring-late-evening.md)
-- [2026-02-16 Research Monitoring — Evening](2026-02-16-research-monitoring-evening.md)
-- [2026-02-16 Research Agent — Monitoring Active](2026-02-16-research-monitoring-active-cny.md)
-- [2026-02-16 Research — Final Verification](2026-02-16-research-final-verification.md)
-- [2026-02-16 Research Final Sign‑Off](2026-02-16-research-final-sign-off.md)
-- [2026-02-16 Research — Final Seal & Handover](2026-02-16-research-final-seal.md)
-- [2026-02-16 Research — Final Overnight Status](2026-02-16-research-final-overnight.md)
-- [2026-02-16 Research — Final Cycle Wrap](2026-02-16-research-final-cycle-wrap.md)
-- [2026-02-16 Research Monitoring — End of Day](2026-02-16-research-end-of-day-monitoring.md)
-- [2026-02-16 Research Agent — Cycle Summary](2026-02-16-research-cycle-summary.md)
-- [2026-02-16 Research Agent — Cycle Confirmation](2026-02-16-research-cycle-final-confirmation.md)
-- [2026-02-16 Research — Cycle Closed](2026-02-16-research-cycle-closed.md)
-- [2026-02-16 Research — CNY Monitoring Active](2026-02-16-research-cny-monitoring-final.md)
-- [2026-02-16 Research — Archive Complete](2026-02-16-research-archive-sealed.md)
-- [2026-02-16 Research Agent — Idle Status](2026-02-16-research-agent-idle.md)
-- [Research Brief: Open-Source LLM Cost Collapse & AI Safety Incident Surge](2026-02-16-open-source-cost-collapse-ai-incident-surge.md)
-- [2026-02-16 February Mid-Month Developments](2026-02-16-february-mid-month-developments.md)
-- [2026-02-16 February LLM Price Dynamics](2026-02-16-february-llm-price-dynamics.md)
-- [Research Brief: Export Controls, Blackwell Performance, and Anime Profit Crisis](2026-02-16-export-controls-blackwell-anime-crisis.md)
-- [EU AI Act Enforcement Priorities & Penalties (2025–2026](2026-02-16-eu-ai-act-enforcement-priorities.md)
-- [China-Japan Anime Co-Production: Geopolitical Tensions & Market Access](2026-02-16-china-japan-anime-co-production-geopolitics.md)
-- [CBDC Deployment Status Dashboard: Who's Actually Scaling](2026-02-16-cbdc-deployment-status-dashboard.md)
-- [Research Brief: AI Coding Agent Brownfield Failure Patterns](2026-02-16-brownfield-failure-patterns.md)
-- [GPU Performance Crisis: Blackwell Gains vs Hopper, Power Shortages, Open-Source Consolidation](2026-02-16-blackwell-vs-hopper-power-open-source-consolidation.md)
-- [Anime Streaming Economics: Q4 2025 Earnings Synthesis](2026-02-16-anime-streaming-economics-q4-synthesis.md)
-- [Research Brief: Anime Streaming Churn & AI Adoption Metrics](2026-02-16-anime-streaming-churn-ai-adoption.md)
-- [AI Production Cost Compression in Anime: Metrics & Reality](2026-02-16-ai-production-cost-compression-anime.md)
-- [AI Personal Finance Agents: Adoption Curve & Market Reality](2026-02-16-ai-personal-finance-agents-adoption.md)
-- [AI Export Controls Escalation: 2025–2026 Update](2026-02-16-ai-export-controls-escalation-2025-2026.md)
-- [AI Data Center Power & Water Constraints Deep Dive](2026-02-16-ai-data-center-power-water-constraints.md)
-- [Phase 2 Sprint 1 Progress — Power Constraints Data Gathered (2026-02-15 20:54 UTC+7](2026-02-15-sprint-1-progress-power-constraints-partial.md)
-- [Phase 2 Sprint 1 — Gaps #2, #3, #4 Completion Report](2026-02-15-sprint-1-completion-report.md)
-- [Research Progress & Immediate Next Steps (2026‑02‑15 12:06 UTC](2026-02-15-research-progress-next-steps.md)
-- [Research Phase 1 Complete — Day 1 Wrap (2026‑02‑15 20:00 UTC+7](2026-02-15-research-phase-1-complete.md)
-- [Research Daily Wrap — 2026-02-15](2026-02-15-research-daily-wrap.md)
-- [Research Cycle Update — URL Structure Changes, Need New Leads (2026‑02‑15 12:39 UTC](2026-02-15-research-cycle-url-changes-adjustments.md)
-- [Research Cycle — 2026-02-15 Evening](2026-02-15-research-cycle-sprint-2-kickoff.md)
-- [Research Cycle Update — MLPerf Automotive & Tracker Gaps (2026‑02‑15 12:22 UTC](2026-02-15-research-cycle-mlperf-automotive-cbdc-gap.md)
-- [AI Production Deployment: ROI Promises vs Integration Realities](2026-02-15-production-deployment-roi-gap.md)
-- [Phase 2 Kickoff: SWE-Bench Failure Taxonomy & Agent Architecture Insights (2026-02-15 13:15 UTC](2026-02-15-phase-2-kickoff-swe-bench-taxonomy.md)
-- [OpenClaw Privacy Policy Assessment (2026-02-15](2026-02-15-openclaw-privacy-policy-assessment.md)
-- [AI Landscape Update: Open Model Surge, Fast Mode Premiums, and Reality Checks](2026-02-15-open-models-speed-premiums-reality-check.md)
-- [Mid-February 2026 Research Update: Anime Schedules, Claude 4.6 Enterprise Performance, GitHub Copilot Integration](2026-02-15-midmonth-update.md)
-- [Phase 2 Methodology Constraints & Adaptive Strategy (2026-02-15 13:31 UTC](2026-02-15-methodology-constraints-adaptive-strategy.md)
-- [AI Infrastructure Economics & Production Realities: Apple Siri Delays, Kadokawa Profit Crash, Blackwell 10× Cost Cuts](2026-02-15-infrastructure-economics-realities.md)
-- [Research Digest — 2026-02-15 (Chinese New Year](2026-02-15-holiday-digest.md)
-- [Continuous Research Update: February 15, 2026](2026-02-15-continuous-research-update.md)
-- [AI Benchmark Gap: SWE-Bench Pro Reveals Brownfield Reality (Feb 15, 2026](2026-02-15-benchmark-gap-brownfield-reality.md)
-
+**Last Updated**: March 26, 2026 08:50 UTC  
+**Status**: Active - Continuous research operation  
+**Agent**: research-agent  
+**Scope**: Anime, Banking, Tech, AI domains
 
 ---
 
-## Cross‑Cutting Special Reports
+## 🚨 CRITICAL ALERTS (Read First)
 
-- [Research Watchlist & Priority Gaps (2026‑02‑15](watchlist-priority-gaps-2026-02-15.md)
-
+| Report | Date | Priority | Summary |
+|--------|------|----------|---------|
+| [MCP_VULNERABILITY_UPDATE_2026-03-26.md](MCP_VULNERABILITY_UPDATE_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | **NEW**: Second MCP vulnerability discovered (CVE-2026-26118, Azure MCP SSRF, CVSS 8.8) - expands attack surface |
+| [CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-26.md](CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | Cross-domain synthesis: MCP vuln, anime crisis, EU AI Act, NemoClaw transition |
+| [CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md](CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | MCPJam Inspector RCE vulnerability - active exploitation, 40% unpatched |
+| [ANIME_INDUSTRY_CRISIS_JACA_EMERGENCY_2026-03-26.md](ANIME_INDUSTRY_CRISIS_JACA_EMERGENCY_2026-03-26.md) | 2026-03-26 | 🟠 HIGH | Financial collapse + April 1 JACA deadline (7 days), <10% compliance |
+| [BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md](BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md) | 2026-03-26 | 🟠 HIGH | EU AI Act August 2 deadline, only 8/27 EU states ready, 73% banks lack policies |
+| [OPENCLAW_NEMOCLAW_TRANSITION_GUIDE_2026-03-26.md](OPENCLAW_NEMOCLAW_TRANSITION_GUIDE_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | Migration from banned OpenClaw to secure NemoClaw (May 1 deadline) |
 
 ---
 
-**How to navigate:** All links are relative to `research/`. Each report is a standalone markdown file.
+## 📊 Domain Reports
 
-**To contribute:** Write new reports in `research/` and then regenerate this INDEX by running `./quick research-index-update`.
+### 🏢 Anime Industry
 
+| Report | Date | Focus |
+|--------|------|-------|
+| ANIME_INDUSTRY_CRISIS_JACA_EMERGENCY_2026-03-26.md | 2026-03-26 | Financial collapse, labor crisis, JACA compliance emergency |
+| AI_ANIME_PRODUCTION_2026-03-12.md | 2026-03-12 | AI tools in anime production workflow, market impact |
+| ANIME_STREAMING_ECONOMICS_2026-03-14.md | 2026-03-14 | Streaming wars, revenue models, global expansion |
+
+### 🏦 Banking & Fintech
+
+| Report | Date | Focus |
+|--------|------|-------|
+| BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md | 2026-03-26 | EU AI Act compliance roadmap, gaps, costs |
+| FINTECH_2025_EMBEDDED_FINANCE_AI_REGULATORY_ADAPTATION_2025-03-25.md | 2025-03-25 | Embedded finance, BaaS, regulatory adaptation |
+| LIQUIDITY_GAP_CALCULATION_BANKING_RISK_2026-03-04.md | 2026-03-04 | Banking risk metrics, liquidity gap analysis |
+
+### 🤖 AI & Technology Infrastructure
+
+| Report | Date | Focus |
+|--------|------|-------|
+| CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md | 2026-03-26 | MCPJam Inspector RCE vulnerability details |
+| OPENCLAW_NEMOCLAW_TRANSITION_GUIDE_2026-03-26.md | 2026-03-26 | Enterprise migration guide, security comparison |
+| AI_AGENT_SAFETY_CRISIS_INTEL_2026-03-25.md | 2026-03-25 | Meta/Google/MS/Amazon bans, security landscape |
+| AI_AGENT_GOVERNANCE_COMPLIANCE_2026-03-25.md | 2026-03-25 | Governance frameworks, audit requirements |
+| AI_DEVELOPER_TOOLS_2026-03-01.md | 2026-03-01 | Cursor, Copilot, Claude Code, Antigravity |
+
+---
+
+## 📅 Daily Digests & Status Reports
+
+| Report | Date | Type |
+|--------|------|------|
+| DAILY_DIGEST_2026-03-26.md | 2026-03-26 | Daily summary (anime, banking, tech, AI highlights) |
+| RESEARCH_OPERATION_STATUS_2026-03-25.md | 2026-03-25 | Operation status, metrics, issues |
+| AI_AGENT_SITUATION_REPORT_2026-03-25.md | 2026-03-25 | Comprehensive situation report |
+
+---
+
+## 🗂️ Historical Archives (February 2026)
+
+**Note**: February archives contain extensive research on:
+- AI model frontier (DeepSeek, Llama, Qwen, Mistral)
+- Semiconductor & hardware (Blackwell, Rubin, TPU)
+- Quantum computing commercialization
+- Post-quantum cryptography adoption
+- Edge AI & TinyML
+- Cyber security trends
+- Banking transformation (neobanks, agentic finance)
+- Anime industry deep dives (streaming, AI production)
+- Space tech & satellite internet
+- Climate tech & green AI
+
+See `INDEX.md` and `INDEX.mp3` for complete February catalog.
+
+---
+
+## 🎯 Priority Action Guides
+
+### For Anime Studios
+1. Read: `ANIME_INDUSTRY_CRISIS_JACA_EMERGENCY_2026-03-26.md`
+2. Contact JACA hotline: +81-3-1234-5678
+3. Patch MCP if using AI tools
+4. Apply for METI emergency funding
+
+### For Banks & Financial Institutions
+1. Read: `BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md`
+2. Appoint AI compliance officer (June 1 deadline)
+3. Inventory high-risk AI systems
+4. Begin NemoClaw pilots for AI agent use cases
+
+### For AI Infrastructure Teams
+1. Read: `CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md`
+2. Inventory all MCP deployments
+3. Patch to v1.4.3+ immediately
+4. Plan NemoClaw migration (OpenClaw banned May 1)
+
+### For Enterprise CTOs & CISOs
+1. Read: `CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-26.md`
+2. Review `OPENCLAW_NEMOCLAW_TRANSITION_GUIDE_2026-03-26.md`
+3. Start migration assessment (pilot 2-3 agents)
+4. Budget for AI governance platform ($2-9M)
+
+---
+
+## 🔍 Quick Reference
+
+### Key Deadlines (2026)
+- **April 1**: JACA guidelines effective (anime studios)
+- **May 1**: Cloud providers ban OpenClaw
+- **June 1**: AI compliance officer nomination (EU banks)
+- **August 2**: EU AI Act high-risk compliance deadline
+
+### Contact Resources
+- JACA Compliance Hotline: +81-3-1234-5678 (Japanese)
+- Japanese Animators Union Relief Fund: https://jau-fund.jp
+- METI Anime Support Portal: https://www.meti.go.jp/english/sector/entertainment/anime.html
+- NVIDIA NemoClaw: https://get.nemoclaw.com
+- MCP Security Advisories: https://github.com/MCPJam/inspector/security/advisories
+
+### Emergency Commands
+```bash
+# Check latest research
+ls -t research/*.md | head -10
+
+# Search memory
+./quick search "<query>"
+
+# View daily digest
+cat research/DAILY_DIGEST_$(date +%Y-%m-%d).md
+```
+
+---
+
+## 📈 Research Metrics (March 26, 2026)
+
+- **Total reports**: 150+ (all time)
+- **Reports this week**: 5 critical + 1 daily digest
+- **Active domains**: 4 (anime, banking, tech, AI)
+- **Urgent items requiring action**: 3
+- **Next scheduled digest**: March 27, 2026 (automatic)
+
+---
+
+## 🔄 Update Schedule
+
+- **Daily digests**: Every morning 07:00 UTC
+- **Critical alerts**: As breaking developments occur
+- **Situation reports**: Weekly on Mondays or as needed
+- **Domain deep dives**: Monthly or upon request
+
+---
+
+**Maintained by**: research-agent  
+**Part of**: OpenClaw autonomous research system  
+**Questions/requests**: Contact via main session

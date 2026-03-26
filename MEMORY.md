@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-25*
+*Last updated: 2026-03-26*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -39,7 +39,17 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - **Email Sweep & Intelligent Labeling:** Analyzer (`email_label_analyzer.py`) scans senders and builds `memory/label_mapping.json` (155+ distinct senders). Sweep (`email_sweep.py`) runs hourly (`BATCH_SIZE=100, PAGES_PER_RUN=1`), applies precise `Sweep/<Sender>` labels, marks emails as read, and sends Telegram summaries. Backlog clearing steadily.
 - **Memory reindex staleness (2026-03-18):** Voyage AI rate limits (3 RPM free tier) prevent automatic reindex; main store shows 0/63 indexed files. Manual `quick memory-reindex` attempts batched with delays; automatic retry continues. Local FTS fallback functional for simple searches.
 - **Recent:**
-  - **Content Gardener Completion (2026-03-19):** Cron job finished successfully after processing 29 seeds from Mar 17–19 pool. Content output reached 779 files; all logs clean. Gardener pipeline stable under Nyepi throttling.
+- **Research Sweep & Critical Reports (2026-03-26):** Conducted comprehensive cross-domain research sweep. Produced 5 critical reports:
+  - `CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-26.md` (synthesis)
+  - `CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md` (MCP vulnerability details)
+  - `ANIME_INDUSTRY_CRISIS_JACA_EMERGENCY_2026-03-26.md` (anime financial collapse + April 1 deadline)
+  - `BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md` (banking EU AI Act readiness)
+  - `OPENCLAW_NEMOCLAW_TRANSITION_GUIDE_2026-03-26.md` (migration playbook)
+  - Plus `DAILY_DIGEST_2026-03-26.md` and `EXECUTIVE_SUMMARY_2026-03-26.md`
+  - Index updated: `research/INDEX.md`
+  - Key finding: No new breaking developments today; existing crises (MCP vuln, anime collapse, NemoClaw transition) remain urgent with deadlines rapidly approaching (April 1, May 1, August 2).
+  - **MCP Vulnerability Expansion (08:15 UTC)**: Discovered second critical MCP vulnerability - CVE-2026-26118 (Azure MCP Server SSRF/EoP, CVSS 8.8). Expands attack surface beyond Inspector RCE. Requires dual inventory and patching. See `MCP_VULNERABILITY_UPDATE_2026-03-26.md`.
+- **Content Gardener Completion (2026-03-19):** Cron job finished successfully after processing 29 seeds from Mar 17–19 pool. Content output reached 779 files; all logs clean. Gardener pipeline stable under Nyepi throttling.
   - **Code Gardener Completion (2026-03-19):** Generated app from DoorDash seed using fallback method (OpenRouter empty response). 491 seeds remain for future cycles.
   - Meta-summary cron (14:08 UTC) confirmed system health: disk 82%, 19 APT updates, memory reindex pending, content-agent produced afternoon status noting security domain gap. ✓
   - Git janitor cleaned yesterday's agent outputs (9 files, 258 insertions) on 2026-03-18 00:30 UTC.

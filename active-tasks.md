@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-25 04:10 UTC (Bangkok) / 2026-03-24 21:10 UTC**
+**Current active tasks - UPDATED 2026-03-26 08:45 UTC (Bangkok) / 2026-03-26 07:45 UTC**
 
 System status: Stable. Disk usage ~83%. All cron jobs running normally.
 
@@ -14,5 +14,11 @@ System status: Stable. Disk usage ~83%. All cron jobs running normally.
 - Total seeds: 1468
 - Processed seeds: 544 (37.0%)
 - Remaining: 924
+
+**Research Monitoring** (research-agent): 🔄 Active monitoring mode
+- Comprehensive sweep completed 07:00-09:00 UTC
+- Generated 7 critical reports on MCP vuln, anime crisis, EU AI Act, NemoClaw transition
+- No new breaking developments as of 07:45 UTC
+- Standing by for user requests or escalation triggers
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically.
