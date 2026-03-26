@@ -11589,6 +11589,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-training-a-large-language-model-for-medical-coding-using-privacy-preserving-synthetic-clinical-data.md",
       "type": "output",
       "title": "Training a Large Language Model for Medical Coding Using Privacy-Preserving Synthetic Clinical Data"
+    },
+    {
+      "id": "05c5e51d-4761-4ec4-9bad-adec6a880b8b",
+      "type": "seed",
+      "title": "The Efficiency Attenuation Phenomenon: A Computational Challenge to the Language of Thought Hypothesis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-the-efficiency-attenuation-phenomenon:-a-computational-challenge-to-the-language.md",
+      "type": "content",
+      "title": "The Efficiency Attenuation Phenomenon: A Computational Challenge to the Language of Thought Hypothesis"
     }
   ],
   "edges": [
@@ -14930,6 +14940,11 @@
     {
       "from": "4a044fbb-e730-4c11-87c6-cbb1ba8b6bbe",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-training-a-large-language-model-for-medical-coding-using-privacy-preserving-synthetic-clinical-data.md",
+      "type": "produced"
+    },
+    {
+      "from": "05c5e51d-4761-4ec4-9bad-adec6a880b8b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-the-efficiency-attenuation-phenomenon:-a-computational-challenge-to-the-language.md",
       "type": "produced"
     }
   ]
