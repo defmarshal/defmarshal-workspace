@@ -19,7 +19,7 @@ STATE_FILE = WORKSPACE / "memory" / "game-enhancer-state.json"
 REPORT_FILE = GAME_DIR / "enhancement-report-latest.md"
 
 def log(msg):
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     line = f"{timestamp} - {msg}"
     print(line)
     with LOGFILE.open("a") as f:
@@ -220,7 +220,7 @@ def generate_report(focus, research, implementation, validation):
     report = f"""# Game Enhancement Report
 
 **Focus**: {focus.title()}
-**Timestamp**: {datetime.utcnow().isoformat()}Z
+**Timestamp**: {datetime.datetime.now(datetime.timezone.utc).isoformat()}Z
 **Cycle**: {load_state()['enhancements'] + 1}
 
 ---
@@ -287,7 +287,7 @@ def main():
     
     state["enhancements"] = state.get("enhancements", 0) + 1
     state["last_focus"] = focus
-    state["last_run"] = datetime.utcnow().isoformat()
+    state["last_run"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     save_state(state)
     
     log("=== Enhancement cycle complete ===")
