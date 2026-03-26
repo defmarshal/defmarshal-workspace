@@ -11509,6 +11509,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-ai-skills-gap-is-here_-says-ai-company_-and-po.py",
       "type": "app",
       "title": "The AI skills gap is here, says AI company, and power users are pulling ahead"
+    },
+    {
+      "id": "cadf8933-d685-4266-aeec-79384eb4642c",
+      "type": "seed",
+      "title": "Google unveils TurboQuant, a new AI memory compression algorithm \u2014\u00a0and yes, the internet is calling it &#8216;Pied Piper&#8217;"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-google-unveils-turboquant,-a-new-ai-memory-compression-algorithm-\u2014\u00a0and-yes,-the-internet-is-calling-it-&#8216;pied-piper.md",
+      "type": "output",
+      "title": "Google unveils TurboQuant, a new AI memory compression algorithm \u2014\u00a0and yes, the internet is calling it &#8216;Pied Piper&#8217;"
+    },
+    {
+      "id": "0ed5911a-b700-42cd-9d28-87b387d10639",
+      "type": "seed",
+      "title": "Convicted spyware chief hints that Greece&#8217;s government was behind dozens of phone hacks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-convicted-spyware-chief-hints-that-greece&#8217;s-government-was-behind-dozens-o.md",
+      "type": "content",
+      "title": "Convicted spyware chief hints that Greece&#8217;s government was behind dozens of phone hacks"
+    },
+    {
+      "id": "47ab2a09-30ba-4e4f-a101-92160d143e72",
+      "type": "seed",
+      "title": "Who\u2019s driving Waymo\u2019s self-driving cars? Sometimes, the police."
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/who_s-driving-waymo_s-self-driving-cars_-sometimes.py",
+      "type": "app",
+      "title": "Who\u2019s driving Waymo\u2019s self-driving cars? Sometimes, the police."
     }
   ],
   "edges": [
@@ -14810,6 +14840,21 @@
     {
       "from": "088997de-c8ba-47c4-8b2b-8fae030c0eb5",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-ai-skills-gap-is-here_-says-ai-company_-and-po.py",
+      "type": "produced"
+    },
+    {
+      "from": "cadf8933-d685-4266-aeec-79384eb4642c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-google-unveils-turboquant,-a-new-ai-memory-compression-algorithm-\u2014\u00a0and-yes,-the-internet-is-calling-it-&#8216;pied-piper.md",
+      "type": "produced"
+    },
+    {
+      "from": "0ed5911a-b700-42cd-9d28-87b387d10639",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-convicted-spyware-chief-hints-that-greece&#8217;s-government-was-behind-dozens-o.md",
+      "type": "produced"
+    },
+    {
+      "from": "47ab2a09-30ba-4e4f-a101-92160d143e72",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/who_s-driving-waymo_s-self-driving-cars_-sometimes.py",
       "type": "produced"
     }
   ]
