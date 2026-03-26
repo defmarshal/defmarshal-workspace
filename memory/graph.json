@@ -11579,6 +11579,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/memory-bear-ai-memory-science-engine-for-multimoda.py",
       "type": "app",
       "title": "Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report"
+    },
+    {
+      "id": "4a044fbb-e730-4c11-87c6-cbb1ba8b6bbe",
+      "type": "seed",
+      "title": "Training a Large Language Model for Medical Coding Using Privacy-Preserving Synthetic Clinical Data"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-training-a-large-language-model-for-medical-coding-using-privacy-preserving-synthetic-clinical-data.md",
+      "type": "output",
+      "title": "Training a Large Language Model for Medical Coding Using Privacy-Preserving Synthetic Clinical Data"
     }
   ],
   "edges": [
@@ -14915,6 +14925,11 @@
     {
       "from": "30f6d540-7afb-44b5-8f01-f7e9d43ad640",
       "to": "/home/ubuntu/.openclaw/workspace/apps/memory-bear-ai-memory-science-engine-for-multimoda.py",
+      "type": "produced"
+    },
+    {
+      "from": "4a044fbb-e730-4c11-87c6-cbb1ba8b6bbe",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-training-a-large-language-model-for-medical-coding-using-privacy-preserving-synthetic-clinical-data.md",
       "type": "produced"
     }
   ]
