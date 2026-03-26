@@ -17,8 +17,10 @@ System status: Stable. Disk usage ~83%. All cron jobs running normally.
 
 **Research Monitoring** (research-agent): 🔄 Active monitoring mode
 - Comprehensive sweep completed 07:00-09:00 UTC
-- Generated 7 critical reports on MCP vuln, anime crisis, EU AI Act, NemoClaw transition
-- No new breaking developments as of 07:45 UTC
+- Generated 8 critical reports including 2 breaking updates:
+  - MCP vulnerability expansion (CVE-2026-26118 discovered)
+  - EU AI Act deadline extension proposal (Parliament committee vote 101-9)
+- Monitoring plenary vote (March 26) for final EU AI Act decision
 - Standing by for user requests or escalation triggers
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically.

@@ -12,10 +12,11 @@
 | Report | Date | Priority | Summary |
 |--------|------|----------|---------|
 | [MCP_VULNERABILITY_UPDATE_2026-03-26.md](MCP_VULNERABILITY_UPDATE_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | **NEW**: Second MCP vulnerability discovered (CVE-2026-26118, Azure MCP SSRF, CVSS 8.8) - expands attack surface |
+| [EU_AI_ACT_DEADLINE_EXTENSION_PROPOSAL_2026-03-26.md](EU_AI_ACT_DEADLINE_EXTENSION_PROPOSAL_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | **BREAKING**: EU Parliament voted to extend high-risk AI compliance from Aug 2026 to Dec 2027 (16-month extension) |
 | [CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-26.md](CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | Cross-domain synthesis: MCP vuln, anime crisis, EU AI Act, NemoClaw transition |
 | [CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md](CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | MCPJam Inspector RCE vulnerability - active exploitation, 40% unpatched |
 | [ANIME_INDUSTRY_CRISIS_JACA_EMERGENCY_2026-03-26.md](ANIME_INDUSTRY_CRISIS_JACA_EMERGENCY_2026-03-26.md) | 2026-03-26 | 🟠 HIGH | Financial collapse + April 1 JACA deadline (7 days), <10% compliance |
-| [BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md](BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md) | 2026-03-26 | 🟠 HIGH | EU AI Act August 2 deadline, only 8/27 EU states ready, 73% banks lack policies |
+| [BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md](BANKING_AI_COMPLIANCE_EU_ACT_5MONTHS_2026-03-26.md) | 2026-03-26 | 🟢 IN_PROGRESS | **NOTE**: Extension proposed - see `EU_AI_ACT_DEADLINE_EXTENSION_PROPOSAL_2026-03-26.md` for update |
 | [OPENCLAW_NEMOCLAW_TRANSITION_GUIDE_2026-03-26.md](OPENCLAW_NEMOCLAW_TRANSITION_GUIDE_2026-03-26.md) | 2026-03-26 | 🔴 CRITICAL | Migration from banned OpenClaw to secure NemoClaw (May 1 deadline) |
 
 ---

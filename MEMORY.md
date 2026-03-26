@@ -49,6 +49,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - Index updated: `research/INDEX.md`
   - Key finding: No new breaking developments today; existing crises (MCP vuln, anime collapse, NemoClaw transition) remain urgent with deadlines rapidly approaching (April 1, May 1, August 2).
   - **MCP Vulnerability Expansion (08:15 UTC)**: Discovered second critical MCP vulnerability - CVE-2026-26118 (Azure MCP Server SSRF/EoP, CVSS 8.8). Expands attack surface beyond Inspector RCE. Requires dual inventory and patching. See `MCP_VULNERABILITY_UPDATE_2026-03-26.md`.
+  - **BREAKING: EU AI Act Deadline Extension (08:45 UTC)**: European Parliament committee voted 101-9 to postpone high-risk AI compliance from August 2026 to December 2027 (+16 months). Plenary vote scheduled March 26 (today). If passed, transforms banking compliance from 5-month sprint to 21-month methodical program. See `EU_AI_ACT_DEADLINE_EXTENSION_PROPOSAL_2026-03-26.md`.
 - **Content Gardener Completion (2026-03-19):** Cron job finished successfully after processing 29 seeds from Mar 17–19 pool. Content output reached 779 files; all logs clean. Gardener pipeline stable under Nyepi throttling.
   - **Code Gardener Completion (2026-03-19):** Generated app from DoorDash seed using fallback method (OpenRouter empty response). 491 seeds remain for future cycles.
   - Meta-summary cron (14:08 UTC) confirmed system health: disk 82%, 19 APT updates, memory reindex pending, content-agent produced afternoon status noting security domain gap. ✓
