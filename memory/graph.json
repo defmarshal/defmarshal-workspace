@@ -11609,6 +11609,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
       "type": "output",
       "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "9f2e057b-60ef-4d36-a0dc-a9f68e03e757",
+      "type": "seed",
+      "title": "Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/dynamic-fusion-aware-graph-convolutional-neural-ne.py",
+      "type": "app",
+      "title": "Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations"
     }
   ],
   "edges": [
@@ -14960,6 +14970,11 @@
     {
       "from": "399ca3c2-bb4c-4c89-a137-5468c0d6a13b",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "produced"
+    },
+    {
+      "from": "9f2e057b-60ef-4d36-a0dc-a9f68e03e757",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/dynamic-fusion-aware-graph-convolutional-neural-ne.py",
       "type": "produced"
     }
   ]
