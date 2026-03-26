@@ -11639,6 +11639,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-session-risk-memory-(srm):-temporal-authorization-for-deterministic-pre-executio.md",
       "type": "content",
       "title": "Session Risk Memory (SRM): Temporal Authorization for Deterministic Pre-Execution Safety Gates"
+    },
+    {
+      "id": "17ad59af-df67-46a1-8284-da108e1ac13c",
+      "type": "seed",
+      "title": "STEM Agent: A Self-Adapting, Tool-Enabled, Extensible Architecture for Multi-Protocol AI Agent Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-stem-agent:-a-self-adapting,-tool-enabled,-extensible-architecture-for-multi-protocol-ai-agent-systems.md",
+      "type": "output",
+      "title": "STEM Agent: A Self-Adapting, Tool-Enabled, Extensible Architecture for Multi-Protocol AI Agent Systems"
+    },
+    {
+      "id": "02932eae-2b36-4540-a740-d10e8b73e715",
+      "type": "seed",
+      "title": "From Static Templates to Dynamic Runtime Graphs: A Survey of Workflow Optimization for LLM Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-from-static-templates-to-dynamic-runtime-graphs:-a-survey-of-workflow-optimization-for-llm-agents.md",
+      "type": "output",
+      "title": "From Static Templates to Dynamic Runtime Graphs: A Survey of Workflow Optimization for LLM Agents"
     }
   ],
   "edges": [
@@ -15005,6 +15025,16 @@
     {
       "from": "430156a1-cf35-41dd-89b6-011bddf83ed6",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-session-risk-memory-(srm):-temporal-authorization-for-deterministic-pre-executio.md",
+      "type": "produced"
+    },
+    {
+      "from": "17ad59af-df67-46a1-8284-da108e1ac13c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-stem-agent:-a-self-adapting,-tool-enabled,-extensible-architecture-for-multi-protocol-ai-agent-systems.md",
+      "type": "produced"
+    },
+    {
+      "from": "02932eae-2b36-4540-a740-d10e8b73e715",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-from-static-templates-to-dynamic-runtime-graphs:-a-survey-of-workflow-optimization-for-llm-agents.md",
       "type": "produced"
     }
   ]

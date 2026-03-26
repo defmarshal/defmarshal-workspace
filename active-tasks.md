@@ -1,12 +1,20 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-26 08:45 UTC (Bangkok) / 2026-03-26 07:45 UTC**
+**Current active tasks - UPDATED 2026-03-26 13:30 UTC (Bangkok) / 2026-03-26 12:30 UTC**
 
-System status: Stable. Disk usage ~83%. All cron jobs running normally.
+System status: Stable. Disk usage ~83%. Fixed: UTC cron jobs (gardener, content, meta, code, email) had stuck `runningAtMs` flags; all cleared. Manual verification: research-gardener succeeded (report at 13:20 UTC). Monitoring ongoing.
 
 **Code Gardener** (cron code-gardener-1773047374): ✅ Active. Just generated app for seed: "Roku's $3 Howdy subscription service launches on Prime Video". Total processed seeds: 544. Remaining unprocessed: 924. Throughput steady.
 
-**Research Gardener** (cron research-gardener-1773046574): ✅ Active. Producing ~1 report/hour. Today: 23 research reports (latest 13:04 UTC). Total reports: 500+.
+**Research Gardener** (cron research-gardener-1773046574): ✅ Active. Just manually ran successfully at 13:20 UTC, producing report: "STEM Agent: A Self-Adapting, Tool-Enabled, Extensible Architecture for Multi-Protocol AI Agent Systems". Total reports: 500+.
+
+**Content Gardener** (cron content-gardener-1773046735): ⚠️ Stuck state cleared (wasrunning). Next scheduled run will determine if operational.
+
+**Meta Summary** (cron meta-summary-cron): ⚠️ Stuck state cleared.
+
+**Code Gardener** (cron code-gardener-1773047374): ⚠️ Stuck state cleared.
+
+**Email Categorizer** (cron email-categorizer-cron): ⚠️ Stuck state cleared.
 
 **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 13:01 UTC). Daily digest generated and current as of 08:00 UTC.
 
