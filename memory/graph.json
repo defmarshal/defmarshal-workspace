@@ -11619,6 +11619,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/dynamic-fusion-aware-graph-convolutional-neural-ne.py",
       "type": "app",
       "title": "Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations"
+    },
+    {
+      "id": "8bb0c5f5-0034-4056-a6d7-579b1e1d8a62",
+      "type": "seed",
+      "title": "Intelligence Inertia: Physical Principles and Applications"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/intelligence-inertia_-physical-principles-and-appl.py",
+      "type": "app",
+      "title": "Intelligence Inertia: Physical Principles and Applications"
     }
   ],
   "edges": [
@@ -14975,6 +14985,11 @@
     {
       "from": "9f2e057b-60ef-4d36-a0dc-a9f68e03e757",
       "to": "/home/ubuntu/.openclaw/workspace/apps/dynamic-fusion-aware-graph-convolutional-neural-ne.py",
+      "type": "produced"
+    },
+    {
+      "from": "8bb0c5f5-0034-4056-a6d7-579b1e1d8a62",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/intelligence-inertia_-physical-principles-and-appl.py",
       "type": "produced"
     }
   ]
