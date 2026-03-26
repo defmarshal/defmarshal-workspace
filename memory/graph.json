@@ -11659,6 +11659,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-from-static-templates-to-dynamic-runtime-graphs:-a-survey-of-workflow-optimization-for-llm-agents.md",
       "type": "output",
       "title": "From Static Templates to Dynamic Runtime Graphs: A Survey of Workflow Optimization for LLM Agents"
+    },
+    {
+      "id": "b5492d32-d850-4f98-ae39-0c9c61a2ecca",
+      "type": "seed",
+      "title": "Computational Arbitrage in AI Model Markets"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-computational-arbitrage-in-ai-model-markets.md",
+      "type": "output",
+      "title": "Computational Arbitrage in AI Model Markets"
+    },
+    {
+      "id": "40d74720-85e1-4dc1-8d5a-533a889d0f1e",
+      "type": "seed",
+      "title": "Maximum Entropy Relaxation of Multi-Way Cardinality Constraints for Synthetic Population Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-maximum-entropy-relaxation-of-multi-way-cardinality-constraints-for-synthetic-po.md",
+      "type": "content",
+      "title": "Maximum Entropy Relaxation of Multi-Way Cardinality Constraints for Synthetic Population Generation"
+    },
+    {
+      "id": "5848fbcb-6dba-435c-91ee-b02a434dd302",
+      "type": "seed",
+      "title": "AI Mental Models: Learned Intuition and Deliberation in a Bounded Neural Architecture"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/ai-mental-models_-learned-intuition-and-deliberati.py",
+      "type": "app",
+      "title": "AI Mental Models: Learned Intuition and Deliberation in a Bounded Neural Architecture"
     }
   ],
   "edges": [
@@ -15035,6 +15065,21 @@
     {
       "from": "02932eae-2b36-4540-a740-d10e8b73e715",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-from-static-templates-to-dynamic-runtime-graphs:-a-survey-of-workflow-optimization-for-llm-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "b5492d32-d850-4f98-ae39-0c9c61a2ecca",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-computational-arbitrage-in-ai-model-markets.md",
+      "type": "produced"
+    },
+    {
+      "from": "40d74720-85e1-4dc1-8d5a-533a889d0f1e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-maximum-entropy-relaxation-of-multi-way-cardinality-constraints-for-synthetic-po.md",
+      "type": "produced"
+    },
+    {
+      "from": "5848fbcb-6dba-435c-91ee-b02a434dd302",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/ai-mental-models_-learned-intuition-and-deliberati.py",
       "type": "produced"
     }
   ]
