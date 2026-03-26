@@ -43,64 +43,34 @@ sys.exit(1)
 PYEOF
 }
 
-# ── Get last user message from a session JSONL ──
+# ── Get last user message from a session JSONL (optimized) ──
+# Reads only the last 100 lines and uses lexicographic timestamp comparison (ISO8601)
 get_last_user_message() {
   local session_file="$1"
-  python3 - "$session_file" <<'PYEOF'
-import json, sys, re
-fname = sys.argv[1]
-last_msg = None
-last_ts = None
-def iso_to_ts(s):
-    # Convert ISO 8601 to float timestamp; return 0 if invalid
+  tail -n 100 "$session_file" 2>/dev/null | python3 - <<'PYEOF'
+import json, sys
+candidates = []
+for line in sys.stdin:
+    line = line.strip()
+    if not line:
+        continue
     try:
-        # Handle both string and numeric timestamps
-        if isinstance(s, (int, float)):
-            return float(s)
-        if not s:
-            return 0.0
-        # Parse ISO string like "2026-03-15T14:41:19.877Z"
-        # Remove Z and split
-        s = s.replace('Z', '')
-        if 'T' in s:
-            date_part, time_part = s.split('T', 1)
-            y, m, d = date_part.split('-')
-            h, mi, sec = time_part.split(':', 2)
-            s_val = float(sec) if '.' not in sec else float(sec)
-            # Build timestamp (rough but consistent)
-            import datetime
-            dt = datetime.datetime(int(y), int(m), int(d), int(h), int(mi), int(sec.split('.')[0]), 
-                                  int(sec.split('.')[1].ljust(6, '0')[:6]) if '.' in sec else 0)
-            return dt.timestamp()
+        obj = json.loads(line)
     except:
-        return 0.0
-    return 0.0
-
-try:
-    with open(fname) as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                obj = json.loads(line)
-            except:
-                continue
-            if obj.get('type') == 'message' and obj.get('message', {}).get('role') == 'user':
-                raw_ts = obj.get('timestamp', 0)
-                ts = iso_to_ts(raw_ts)
-                if last_ts is None or ts > last_ts:
-                    last_ts = ts
-                    content = obj['message'].get('content', '')
-                    if isinstance(content, list):
-                        texts = [c['text'] for c in content if c.get('type') == 'text']
-                        content = ' '.join(texts)
-                    last_msg = (content or '').strip()
-                    last_ts_out = ts
-    if last_msg and last_ts:
-        print(json.dumps({'text': last_msg, 'ts': last_ts}))
-except Exception as e:
-    pass
+        continue
+    if obj.get('type') == 'message' and obj.get('message', {}).get('role') == 'user':
+        ts = obj.get('timestamp', '')
+        content = obj['message'].get('content', '')
+        if isinstance(content, list):
+            texts = [c['text'] for c in content if c.get('type') == 'text']
+            content = ' '.join(texts)
+        candidates.append((ts, (content or '').strip()))
+if not candidates:
+    print("")
+else:
+    # ISO8601 timestamps sort lexicographically
+    last_ts, last_msg = max(candidates, key=lambda x: x[0])
+    print(json.dumps({'text': last_msg, 'ts': last_ts}))
 PYEOF
 }
 
