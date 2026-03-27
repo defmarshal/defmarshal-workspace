@@ -11874,6 +11874,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-mastodon-is-making-its-decentralized-social-network-easier-to-use-with-its-lates.md",
       "type": "content",
       "title": "Mastodon is making its decentralized social network easier to use with its latest revamp"
+    },
+    {
+      "id": "82dd42c7-d05e-4f1d-a938-2be3b1c49ed4",
+      "type": "seed",
+      "title": "Netflix confirms it\u2019s raising prices again"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-netflix-confirms-it\u2019s-raising-prices-again.md",
+      "type": "content",
+      "title": "Netflix confirms it\u2019s raising prices again"
+    },
+    {
+      "id": "8fa1f56d-3a0b-4b42-9262-19765a6eeca6",
+      "type": "seed",
+      "title": "Apple made strides with iOS 26 security, but leaked hacking tools still leave millions exposed to spyware attacks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-apple-made-strides-with-ios-26-security,-but-leaked-hacking-tools-still-leave-millions-exposed-to-spyware-attacks.md",
+      "type": "output",
+      "title": "Apple made strides with iOS 26 security, but leaked hacking tools still leave millions exposed to spyware attacks"
+    },
+    {
+      "id": "712dd7f3-0607-4ff0-8aba-ea24f76b3bf7",
+      "type": "seed",
+      "title": "16 of the most interesting startups from YC W26 Demo Day"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/16-of-the-most-interesting-startups-from-yc-w26-de.py",
+      "type": "app",
+      "title": "16 of the most interesting startups from YC W26 Demo Day"
     }
   ],
   "edges": [
@@ -15365,6 +15395,21 @@
     {
       "from": "d3406d58-ee87-4491-bb74-14ebfe21f3c9",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-mastodon-is-making-its-decentralized-social-network-easier-to-use-with-its-lates.md",
+      "type": "produced"
+    },
+    {
+      "from": "82dd42c7-d05e-4f1d-a938-2be3b1c49ed4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-netflix-confirms-it\u2019s-raising-prices-again.md",
+      "type": "produced"
+    },
+    {
+      "from": "8fa1f56d-3a0b-4b42-9262-19765a6eeca6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-apple-made-strides-with-ios-26-security,-but-leaked-hacking-tools-still-leave-millions-exposed-to-spyware-attacks.md",
+      "type": "produced"
+    },
+    {
+      "from": "712dd7f3-0607-4ff0-8aba-ea24f76b3bf7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/16-of-the-most-interesting-startups-from-yc-w26-de.py",
       "type": "produced"
     }
   ]
