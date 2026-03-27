@@ -12004,6 +12004,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/session-risk-memory-_srm__-temporal-authorization-.py",
       "type": "app",
       "title": "Session Risk Memory (SRM): Temporal Authorization for Deterministic Pre-Execution Safety Gates"
+    },
+    {
+      "id": "bdf6cb91-4b73-400e-b870-a7aab2fadc95",
+      "type": "seed",
+      "title": "David Sacks is done as AI czar &#8212; here&#8217;s what he&#8217;s doing instead"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-david-sacks-is-done-as-ai-czar-&#8212;-here&#8217;s-what-he&#8217;s-doing-instead.md",
+      "type": "output",
+      "title": "David Sacks is done as AI czar &#8212; here&#8217;s what he&#8217;s doing instead"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-david-sacks-is-done-as-ai-czar-&#8212;-here&#8217;s-what-he&#8217;s-doing-instea.md",
+      "type": "content",
+      "title": "David Sacks is done as AI czar &#8212; here&#8217;s what he&#8217;s doing instead"
     }
   ],
   "edges": [
@@ -15560,6 +15575,16 @@
     {
       "from": "5cba8fde-b578-41bc-8f52-19cf7bc12f62",
       "to": "/home/ubuntu/.openclaw/workspace/apps/session-risk-memory-_srm__-temporal-authorization-.py",
+      "type": "produced"
+    },
+    {
+      "from": "bdf6cb91-4b73-400e-b870-a7aab2fadc95",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-david-sacks-is-done-as-ai-czar-&#8212;-here&#8217;s-what-he&#8217;s-doing-instead.md",
+      "type": "produced"
+    },
+    {
+      "from": "bdf6cb91-4b73-400e-b870-a7aab2fadc95",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-david-sacks-is-done-as-ai-czar-&#8212;-here&#8217;s-what-he&#8217;s-doing-instea.md",
       "type": "produced"
     }
   ]
