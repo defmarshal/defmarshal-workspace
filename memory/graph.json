@@ -11954,6 +11954,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/data-centers-get-ready-_-the-senate-wants-to-see-y.py",
       "type": "app",
       "title": "Data centers get ready \u2014 the Senate wants to see your power bills"
+    },
+    {
+      "id": "904c13ba-37b4-4c92-8ccc-69b7b504985a",
+      "type": "seed",
+      "title": "Defense startup Shield AI lands $12.7B valuation, up 140%, after US Air Force deal"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-defense-startup-shield-ai-lands-$12.7b-valuation,-up-140%,-after-us-air-force-de.md",
+      "type": "content",
+      "title": "Defense startup Shield AI lands $12.7B valuation, up 140%, after US Air Force deal"
+    },
+    {
+      "id": "e8e63609-fc06-4e74-8c13-6846de1f861f",
+      "type": "seed",
+      "title": "The Efficiency Attenuation Phenomenon: A Computational Challenge to the Language of Thought Hypothesis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-efficiency-attenuation-phenomenon_-a-computati.py",
+      "type": "app",
+      "title": "The Efficiency Attenuation Phenomenon: A Computational Challenge to the Language of Thought Hypothesis"
     }
   ],
   "edges": [
@@ -15485,6 +15505,16 @@
     {
       "from": "63c8e9ac-cba8-41b5-abdd-eef4fe9535af",
       "to": "/home/ubuntu/.openclaw/workspace/apps/data-centers-get-ready-_-the-senate-wants-to-see-y.py",
+      "type": "produced"
+    },
+    {
+      "from": "904c13ba-37b4-4c92-8ccc-69b7b504985a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-defense-startup-shield-ai-lands-$12.7b-valuation,-up-140%,-after-us-air-force-de.md",
+      "type": "produced"
+    },
+    {
+      "from": "e8e63609-fc06-4e74-8c13-6846de1f861f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-efficiency-attenuation-phenomenon_-a-computati.py",
       "type": "produced"
     }
   ]
