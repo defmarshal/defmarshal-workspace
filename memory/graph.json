@@ -11914,6 +11914,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-memory-bear-ai-memory-science-engine-for-multimodal-affective-intelligence:-a-technical-report.md",
       "type": "output",
       "title": "Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report"
+    },
+    {
+      "id": "89a3a7a9-545d-4c87-ba6c-90feecedeb4a",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "output",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "5d2ac27f-4ed9-497a-85a9-403f3a246f80",
+      "type": "seed",
+      "title": "Google Translate\u2019s real-time headphone translations feature expands to iOS and more countries"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-google-translate\u2019s-real-time-headphone-translations-feature-expands-to-ios-and-m.md",
+      "type": "content",
+      "title": "Google Translate\u2019s real-time headphone translations feature expands to iOS and more countries"
     }
   ],
   "edges": [
@@ -15425,6 +15445,16 @@
     {
       "from": "9f67f552-5e6f-43d9-bb27-4c816e03b194",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-memory-bear-ai-memory-science-engine-for-multimodal-affective-intelligence:-a-technical-report.md",
+      "type": "produced"
+    },
+    {
+      "from": "89a3a7a9-545d-4c87-ba6c-90feecedeb4a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "produced"
+    },
+    {
+      "from": "5d2ac27f-4ed9-497a-85a9-403f3a246f80",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-google-translate\u2019s-real-time-headphone-translations-feature-expands-to-ios-and-m.md",
       "type": "produced"
     }
   ]
