@@ -11904,6 +11904,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/16-of-the-most-interesting-startups-from-yc-w26-de.py",
       "type": "app",
       "title": "16 of the most interesting startups from YC W26 Demo Day"
+    },
+    {
+      "id": "9f67f552-5e6f-43d9-bb27-4c816e03b194",
+      "type": "seed",
+      "title": "Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-memory-bear-ai-memory-science-engine-for-multimodal-affective-intelligence:-a-technical-report.md",
+      "type": "output",
+      "title": "Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report"
     }
   ],
   "edges": [
@@ -15410,6 +15420,11 @@
     {
       "from": "712dd7f3-0607-4ff0-8aba-ea24f76b3bf7",
       "to": "/home/ubuntu/.openclaw/workspace/apps/16-of-the-most-interesting-startups-from-yc-w26-de.py",
+      "type": "produced"
+    },
+    {
+      "from": "9f67f552-5e6f-43d9-bb27-4c816e03b194",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-memory-bear-ai-memory-science-engine-for-multimodal-affective-intelligence:-a-technical-report.md",
       "type": "produced"
     }
   ]
