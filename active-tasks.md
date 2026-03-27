@@ -1,8 +1,10 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-26 13:30 UTC (Bangkok) / 2026-03-26 12:30 UTC**
+**Current active tasks - UPDATED 2026-03-27 15:31 UTC (Bangkok) / 2026-03-27 08:31 UTC**
 
-System status: Stable. Disk usage ~83%. Fixed: UTC cron jobs (gardener, content, meta, code, email) had stuck `runningAtMs` flags; all cleared. Manual verification: research-gardener succeeded (report at 13:20 UTC). Monitoring ongoing.
+System status: **Stable and healthy**. All cron jobs operational. Disk usage ~83%. Supervisor check passed (no alerts). All agents running within normal parameters.
+
+**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-27 15:31 UTC — no issues detected. All subsystems green.
 
 **Harvester** (cron harvest-1773046808): ✅ Completed. Generated daily-harvest-2026-03-27.md with 50 seeds and 9 outputs. Telegram notification sent successfully. All systems nominal.
 
