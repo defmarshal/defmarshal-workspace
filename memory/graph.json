@@ -11934,6 +11934,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-google-translate\u2019s-real-time-headphone-translations-feature-expands-to-ios-and-m.md",
       "type": "content",
       "title": "Google Translate\u2019s real-time headphone translations feature expands to iOS and more countries"
+    },
+    {
+      "id": "628d16fe-1bfc-4972-9428-48ff4b9d0a49",
+      "type": "seed",
+      "title": "OpenAI abandons yet another side quest: ChatGPT&#8217;s erotic mode"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-openai-abandons-yet-another-side-quest:-chatgpt&#8217;s-erotic-mode.md",
+      "type": "output",
+      "title": "OpenAI abandons yet another side quest: ChatGPT&#8217;s erotic mode"
     }
   ],
   "edges": [
@@ -15455,6 +15465,11 @@
     {
       "from": "5d2ac27f-4ed9-497a-85a9-403f3a246f80",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-google-translate\u2019s-real-time-headphone-translations-feature-expands-to-ios-and-m.md",
+      "type": "produced"
+    },
+    {
+      "from": "628d16fe-1bfc-4972-9428-48ff4b9d0a49",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-openai-abandons-yet-another-side-quest:-chatgpt&#8217;s-erotic-mode.md",
       "type": "produced"
     }
   ]
