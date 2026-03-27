@@ -12179,6 +12179,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/trust-as-monitoring_-evolutionary-dynamics-of-user.py",
       "type": "app",
       "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
+    },
+    {
+      "id": "a51a8c94-7aec-4dc8-abec-55a5795d2129",
+      "type": "seed",
+      "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
+      "type": "output",
+      "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
     }
   ],
   "edges": [
@@ -15825,6 +15835,11 @@
     {
       "from": "d30a32a7-b27d-4e6d-a813-0ffa85796e5f",
       "to": "/home/ubuntu/.openclaw/workspace/apps/trust-as-monitoring_-evolutionary-dynamics-of-user.py",
+      "type": "produced"
+    },
+    {
+      "from": "a51a8c94-7aec-4dc8-abec-55a5795d2129",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
       "type": "produced"
     }
   ]
