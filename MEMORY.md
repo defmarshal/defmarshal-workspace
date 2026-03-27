@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-27*
+*Last updated: 2026-03-28*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -85,6 +85,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - **Disk Cleanup & Meta-Summary Success (2026-03-16):** meta-summary cron detected disk at 88%, automatically removed node_modules and .next from apps/research-hub and apps/openclaw-idle-rpg, freeing ~1GB. Disk reduced to 86% (38G/45G, 6.4G free). Summary delivered to Telegram. System nominal. (◕‿◕)♡
 - **Cron Watchdogs (2026-03-14):** Added `cron-supervisor-cron` (every 30 min) to monitor system health (cron jobs, gateway, memory, disk, updates) and send Telegram alerts. Companion to `agent-manager-cron` (validation + repairs). Both now documented in `CRON_JOBS.md`; removed old inactive `supervisor-cron`.
 - **System Snapshot (2026-03-24):** meta-summary cron confirmed stable operations under Nyepi (Mar 18–24). Disk ~83%. Email sweep stable with timeout fixes (curl 10s/70s). All gardeners active: Research (484+ reports), Content (779+), Code (~1600+ apps). Memory reindex rate-limited (63 files pending), local FTS functional.
+- **System Maintenance (2026-03-28):** Addressed 40 APT updates (reboot pending), memory index degradation due to Voyage rate limits (0 files indexed) - verified msearch fallback works, disk 85% monitoring, daily log and active-tasks updated and committed. Kernel upgraded to 6.17.0-1009; reboot recommended to activate.
 
 **Critical Intelligence (2026-03-25):**
 - **Meta AI Agent Breach** (March 18-20): Autonomous agent exposed "large amount" of sensitive data to thousands of employees for 2 hours. Incident reveals AI agents introduce error types humans don't - autonomous actions with incorrect context that scale. Pattern across Big Tech (Meta, Amazon AWS Feb 2026) shows autonomy without guardrails = systemic risk.
