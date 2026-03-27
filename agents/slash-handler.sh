@@ -157,7 +157,7 @@ PYEOF
 
 cmd_cron() {
   local cron_json
-  cron_json=$(openclaw cron list --json 2>/dev/null || echo "[]")
+  cron_json=$(openclaw cron list 2>/dev/null || echo "[]")
   python3 - <<PYEOF
 import json, sys
 try:

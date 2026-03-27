@@ -11699,6 +11699,161 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/leveraging-computerized-adaptive-testing-for-cost-.py",
       "type": "app",
       "title": "Leveraging Computerized Adaptive Testing for Cost-effective Evaluation of Large Language Models in Medical Benchmarking"
+    },
+    {
+      "id": "d84597bc-db9d-45e9-b50f-0b1722d24c81",
+      "type": "seed",
+      "title": "Beyond Masks: Efficient, Flexible Diffusion Language Models via Deletion-Insertion Processes"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-beyond-masks:-efficient,-flexible-diffusion-language-models-via-deletion-inserti.md",
+      "type": "content",
+      "title": "Beyond Masks: Efficient, Flexible Diffusion Language Models via Deletion-Insertion Processes"
+    },
+    {
+      "id": "2fa62470-7179-4df8-b30c-6dc714a35e90",
+      "type": "seed",
+      "title": "Fast and Faithful: Real-Time Verification for Long-Document Retrieval-Augmented Generation Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/fast-and-faithful_-real-time-verification-for-long.py",
+      "type": "app",
+      "title": "Fast and Faithful: Real-Time Verification for Long-Document Retrieval-Augmented Generation Systems"
+    },
+    {
+      "id": "4df5d076-2d95-40ed-8772-aba8cbdba35c",
+      "type": "seed",
+      "title": "Internal Safety Collapse in Frontier Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-internal-safety-collapse-in-frontier-large-language-models.md",
+      "type": "content",
+      "title": "Internal Safety Collapse in Frontier Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-internal-safety-collapse-in-frontier-large-language-models.md",
+      "type": "output",
+      "title": "Internal Safety Collapse in Frontier Large Language Models"
+    },
+    {
+      "id": "a0a4808b-76a0-4ac2-b549-9857523a964e",
+      "type": "seed",
+      "title": "Visuospatial Perspective Taking in Multimodal Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/visuospatial-perspective-taking-in-multimodal-lang.py",
+      "type": "app",
+      "title": "Visuospatial Perspective Taking in Multimodal Language Models"
+    },
+    {
+      "id": "42f84051-dead-42bf-a501-708be7d2cd60",
+      "type": "seed",
+      "title": "DISCO: Document Intelligence Suite for COmparative Evaluation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-disco:-document-intelligence-suite-for-comparative-evaluation.md",
+      "type": "output",
+      "title": "DISCO: Document Intelligence Suite for COmparative Evaluation"
+    },
+    {
+      "id": "a0ce9f8a-abd5-4e1c-ba2d-eba2267e5a6c",
+      "type": "seed",
+      "title": "LLMORPH: Automated Metamorphic Testing of Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/llmorph_-automated-metamorphic-testing-of-large-la.py",
+      "type": "app",
+      "title": "LLMORPH: Automated Metamorphic Testing of Large Language Models"
+    },
+    {
+      "id": "70743fff-73bb-434e-911b-e29432caea97",
+      "type": "seed",
+      "title": "LLMLOOP: Improving LLM-Generated Code and Tests through Automated Iterative Feedback Loops"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-llmloop:-improving-llm-generated-code-and-tests-through-automated-iterative-feedback-loops.md",
+      "type": "output",
+      "title": "LLMLOOP: Improving LLM-Generated Code and Tests through Automated Iterative Feedback Loops"
+    },
+    {
+      "id": "fd2a67e5-c15d-4fa3-89d4-cec0d54bbd7c",
+      "type": "seed",
+      "title": "Detect--Repair--Verify for LLM-Generated Code: A Multi-Language, Multi-Granularity Empirical Study"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-detect--repair--verify-for-llm-generated-code:-a-multi-language,-multi-granulari.md",
+      "type": "content",
+      "title": "Detect--Repair--Verify for LLM-Generated Code: A Multi-Language, Multi-Granularity Empirical Study"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-detect--repair--verify-for-llm-generated-code:-a-multi-language,-multi-granularity-empirical-study.md",
+      "type": "output",
+      "title": "Detect--Repair--Verify for LLM-Generated Code: A Multi-Language, Multi-Granularity Empirical Study"
+    },
+    {
+      "id": "bb893645-bf3d-4f5f-83ff-363ce183c4dd",
+      "type": "seed",
+      "title": "PerturbationDrive: A Framework for Perturbation-Based Testing of ADAS"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/perturbationdrive_-a-framework-for-perturbation-ba.py",
+      "type": "app",
+      "title": "PerturbationDrive: A Framework for Perturbation-Based Testing of ADAS"
+    },
+    {
+      "id": "dc3ffb7a-40cf-4646-88e5-e209486d3b63",
+      "type": "seed",
+      "title": "Towards Leveraging LLMs to Generate Abstract Penetration Test Cases from Software Architecture"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/towards-leveraging-llms-to-generate-abstract-penet.py",
+      "type": "app",
+      "title": "Towards Leveraging LLMs to Generate Abstract Penetration Test Cases from Software Architecture"
+    },
+    {
+      "id": "f04ab153-751c-474a-b49d-9b8285fcaf34",
+      "type": "seed",
+      "title": "Empirical Characterization of Logging Smells in Machine Learning Code"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-empirical-characterization-of-logging-smells-in-machine-learning-code.md",
+      "type": "content",
+      "title": "Empirical Characterization of Logging Smells in Machine Learning Code"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/empirical-characterization-of-logging-smells-in-ma.py",
+      "type": "app",
+      "title": "Empirical Characterization of Logging Smells in Machine Learning Code"
+    },
+    {
+      "id": "b9c0aa26-6b71-48a1-ad4b-4afb19cd5652",
+      "type": "seed",
+      "title": "Willful Disobedience: Automatically Detecting Failures in Agentic Traces"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-willful-disobedience:-automatically-detecting-failures-in-agentic-traces.md",
+      "type": "output",
+      "title": "Willful Disobedience: Automatically Detecting Failures in Agentic Traces"
+    },
+    {
+      "id": "159fdb4f-15be-4cf9-8d65-ad4cc265f4d7",
+      "type": "seed",
+      "title": "Bridging the Interpretation Gap in Accessibility Testing: Empathetic and Legal-Aware Bug Report Generation via Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-bridging-the-interpretation-gap-in-accessibility-testing:-empathetic-and-legal-a.md",
+      "type": "content",
+      "title": "Bridging the Interpretation Gap in Accessibility Testing: Empathetic and Legal-Aware Bug Report Generation via Large Language Models"
+    },
+    {
+      "id": "d07949a5-1a99-45a9-990a-5164c4fe6b18",
+      "type": "seed",
+      "title": "Wikipedia cracks down on the use of AI in article writing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-wikipedia-cracks-down-on-the-use-of-ai-in-article-writing.md",
+      "type": "output",
+      "title": "Wikipedia cracks down on the use of AI in article writing"
     }
   ],
   "edges": [
@@ -15095,6 +15250,91 @@
     {
       "from": "f18e59ef-1312-4dcb-afab-f3aa41fceb8d",
       "to": "/home/ubuntu/.openclaw/workspace/apps/leveraging-computerized-adaptive-testing-for-cost-.py",
+      "type": "produced"
+    },
+    {
+      "from": "d84597bc-db9d-45e9-b50f-0b1722d24c81",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-beyond-masks:-efficient,-flexible-diffusion-language-models-via-deletion-inserti.md",
+      "type": "produced"
+    },
+    {
+      "from": "2fa62470-7179-4df8-b30c-6dc714a35e90",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/fast-and-faithful_-real-time-verification-for-long.py",
+      "type": "produced"
+    },
+    {
+      "from": "4df5d076-2d95-40ed-8772-aba8cbdba35c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-internal-safety-collapse-in-frontier-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "4df5d076-2d95-40ed-8772-aba8cbdba35c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-internal-safety-collapse-in-frontier-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "a0a4808b-76a0-4ac2-b549-9857523a964e",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/visuospatial-perspective-taking-in-multimodal-lang.py",
+      "type": "produced"
+    },
+    {
+      "from": "42f84051-dead-42bf-a501-708be7d2cd60",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-disco:-document-intelligence-suite-for-comparative-evaluation.md",
+      "type": "produced"
+    },
+    {
+      "from": "a0ce9f8a-abd5-4e1c-ba2d-eba2267e5a6c",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/llmorph_-automated-metamorphic-testing-of-large-la.py",
+      "type": "produced"
+    },
+    {
+      "from": "70743fff-73bb-434e-911b-e29432caea97",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-llmloop:-improving-llm-generated-code-and-tests-through-automated-iterative-feedback-loops.md",
+      "type": "produced"
+    },
+    {
+      "from": "fd2a67e5-c15d-4fa3-89d4-cec0d54bbd7c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-detect--repair--verify-for-llm-generated-code:-a-multi-language,-multi-granulari.md",
+      "type": "produced"
+    },
+    {
+      "from": "fd2a67e5-c15d-4fa3-89d4-cec0d54bbd7c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-detect--repair--verify-for-llm-generated-code:-a-multi-language,-multi-granularity-empirical-study.md",
+      "type": "produced"
+    },
+    {
+      "from": "bb893645-bf3d-4f5f-83ff-363ce183c4dd",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/perturbationdrive_-a-framework-for-perturbation-ba.py",
+      "type": "produced"
+    },
+    {
+      "from": "dc3ffb7a-40cf-4646-88e5-e209486d3b63",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/towards-leveraging-llms-to-generate-abstract-penet.py",
+      "type": "produced"
+    },
+    {
+      "from": "f04ab153-751c-474a-b49d-9b8285fcaf34",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-empirical-characterization-of-logging-smells-in-machine-learning-code.md",
+      "type": "produced"
+    },
+    {
+      "from": "f04ab153-751c-474a-b49d-9b8285fcaf34",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/empirical-characterization-of-logging-smells-in-ma.py",
+      "type": "produced"
+    },
+    {
+      "from": "b9c0aa26-6b71-48a1-ad4b-4afb19cd5652",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-26-willful-disobedience:-automatically-detecting-failures-in-agentic-traces.md",
+      "type": "produced"
+    },
+    {
+      "from": "159fdb4f-15be-4cf9-8d65-ad4cc265f4d7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-26-bridging-the-interpretation-gap-in-accessibility-testing:-empathetic-and-legal-a.md",
+      "type": "produced"
+    },
+    {
+      "from": "d07949a5-1a99-45a9-990a-5164c4fe6b18",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-wikipedia-cracks-down-on-the-use-of-ai-in-article-writing.md",
       "type": "produced"
     }
   ]

@@ -1,6 +1,6 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-26*
+*Last updated: 2026-03-27*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
@@ -39,6 +39,14 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - **Email Sweep & Intelligent Labeling:** Analyzer (`email_label_analyzer.py`) scans senders and builds `memory/label_mapping.json` (155+ distinct senders). Sweep (`email_sweep.py`) runs hourly (`BATCH_SIZE=100, PAGES_PER_RUN=1`), applies precise `Sweep/<Sender>` labels, marks emails as read, and sends Telegram summaries. Backlog clearing steadily.
 - **Memory reindex staleness (2026-03-18):** Voyage AI rate limits (3 RPM free tier) prevent automatic reindex; main store shows 0/63 indexed files. Manual `quick memory-reindex` attempts batched with delays; automatic retry continues. Local FTS fallback functional for simple searches.
 - **Recent:**
+- **Research Sweep & Critical Reports (2026-03-27):** Generated comprehensive cross-domain reports including:
+  - `CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-27.md` (full synthesis)
+  - `MCP_REMEDIATION_PLAYBOOK_2026-03-27.md` (actionable MCP vulnerability response)
+  - `AI_CODE_VULNERABILITY_MITIGATION_2026-03-27.md` (vibe coding crisis defense)
+  - `JACA_COMPLIANCE_CRASH_COURSE_2026-03-27.md` (72-hour emergency guide for anime studios)
+  - `CRITICAL_ALERT_CVE-2026-33017_2026-03-27.md` (Langflow RCE — BREAKING, exploited within 20h)
+  - Updated `research/INDEX.md` (154+ reports total)
+  - Key finding: **35 new AI-code CVEs in March 2026** (74 tracked, 400-700 estimated); MCP ecosystem only 2.5% safe; JACA deadline 5 days; EU AI Act extension pending; Langflow critical RCE requires immediate action.
 - **Research Sweep & Critical Reports (2026-03-26):** Conducted comprehensive cross-domain research sweep. Produced 5 critical reports:
   - `CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-26.md` (synthesis)
   - `CRITICAL_ALERT_CVE-2026-23744_2026-03-26.md` (MCP vulnerability details)

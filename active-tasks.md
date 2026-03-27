@@ -43,3 +43,10 @@ System status: Stable. Disk usage ~83%. Fixed: UTC cron jobs (gardener, content,
 - Next scheduled: Daily digest generation 07:00 UTC March 27
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically.
+
+**Cron Rate Limit Fix (2026-03-27 07:00 UTC)**
+- **Goal**: Resolve API rate limit errors for dev-agent-cron, content-agent-cron, research-agent-cron
+- **Action**: Staggered schedules: dev (min 0), content (min 20), research (min 40) Bangkok time
+- **Status**: Configuration updated. Next verification: after first successful run (today 08:00-08:40 Bangkok)
+- **Session**: mewmew main
+
