@@ -11944,6 +11944,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-openai-abandons-yet-another-side-quest:-chatgpt&#8217;s-erotic-mode.md",
       "type": "output",
       "title": "OpenAI abandons yet another side quest: ChatGPT&#8217;s erotic mode"
+    },
+    {
+      "id": "63c8e9ac-cba8-41b5-abdd-eef4fe9535af",
+      "type": "seed",
+      "title": "Data centers get ready \u2014 the Senate wants to see your power bills"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/data-centers-get-ready-_-the-senate-wants-to-see-y.py",
+      "type": "app",
+      "title": "Data centers get ready \u2014 the Senate wants to see your power bills"
     }
   ],
   "edges": [
@@ -15470,6 +15480,11 @@
     {
       "from": "628d16fe-1bfc-4972-9428-48ff4b9d0a49",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-openai-abandons-yet-another-side-quest:-chatgpt&#8217;s-erotic-mode.md",
+      "type": "produced"
+    },
+    {
+      "from": "63c8e9ac-cba8-41b5-abdd-eef4fe9535af",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/data-centers-get-ready-_-the-senate-wants-to-see-y.py",
       "type": "produced"
     }
   ]
