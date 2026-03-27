@@ -12139,6 +12139,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
       "type": "content",
       "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing"
+    },
+    {
+      "id": "f6971a77-7d0c-4ef9-9825-efa30ec5fd00",
+      "type": "seed",
+      "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-arc-agi-3:-a-new-challenge-for-frontier-agentic-intelligence.md",
+      "type": "content",
+      "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence"
+    },
+    {
+      "id": "fc8d969f-ee5a-4153-8636-daf894b421e2",
+      "type": "seed",
+      "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-when-is-collective-intelligence-a-lottery?-multi-agent-scaling-laws-for-memetic-drift-in-llms.md",
+      "type": "output",
+      "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs"
+    },
+    {
+      "id": "6d141607-8838-4994-98a0-2406d31da8ab",
+      "type": "seed",
+      "title": "AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/autosam_-an-agentic-framework-for-automating-input.py",
+      "type": "app",
+      "title": "AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation"
     }
   ],
   "edges": [
@@ -15765,6 +15795,21 @@
     {
       "from": "2dbd058b-b38e-4d86-a5f8-e30d440ad08f",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
+      "type": "produced"
+    },
+    {
+      "from": "f6971a77-7d0c-4ef9-9825-efa30ec5fd00",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-arc-agi-3:-a-new-challenge-for-frontier-agentic-intelligence.md",
+      "type": "produced"
+    },
+    {
+      "from": "fc8d969f-ee5a-4153-8636-daf894b421e2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-when-is-collective-intelligence-a-lottery?-multi-agent-scaling-laws-for-memetic-drift-in-llms.md",
+      "type": "produced"
+    },
+    {
+      "from": "6d141607-8838-4994-98a0-2406d31da8ab",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/autosam_-an-agentic-framework-for-automating-input.py",
       "type": "produced"
     }
   ]
