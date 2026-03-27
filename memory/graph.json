@@ -11974,6 +11974,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/the-efficiency-attenuation-phenomenon_-a-computati.py",
       "type": "app",
       "title": "The Efficiency Attenuation Phenomenon: A Computational Challenge to the Language of Thought Hypothesis"
+    },
+    {
+      "id": "b3356c53-211f-4666-8727-454a96990b55",
+      "type": "seed",
+      "title": "Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-dynamic-fusion-aware-graph-convolutional-neural-network-for-multimodal-emotion-recognition-in-conversations.md",
+      "type": "output",
+      "title": "Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations"
+    },
+    {
+      "id": "ddbdb38f-c7a5-4457-8623-1da4664ab585",
+      "type": "seed",
+      "title": "Intelligence Inertia: Physical Principles and Applications"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-intelligence-inertia:-physical-principles-and-applications.md",
+      "type": "content",
+      "title": "Intelligence Inertia: Physical Principles and Applications"
+    },
+    {
+      "id": "5cba8fde-b578-41bc-8f52-19cf7bc12f62",
+      "type": "seed",
+      "title": "Session Risk Memory (SRM): Temporal Authorization for Deterministic Pre-Execution Safety Gates"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/session-risk-memory-_srm__-temporal-authorization-.py",
+      "type": "app",
+      "title": "Session Risk Memory (SRM): Temporal Authorization for Deterministic Pre-Execution Safety Gates"
     }
   ],
   "edges": [
@@ -15515,6 +15545,21 @@
     {
       "from": "e8e63609-fc06-4e74-8c13-6846de1f861f",
       "to": "/home/ubuntu/.openclaw/workspace/apps/the-efficiency-attenuation-phenomenon_-a-computati.py",
+      "type": "produced"
+    },
+    {
+      "from": "b3356c53-211f-4666-8727-454a96990b55",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-dynamic-fusion-aware-graph-convolutional-neural-network-for-multimodal-emotion-recognition-in-conversations.md",
+      "type": "produced"
+    },
+    {
+      "from": "ddbdb38f-c7a5-4457-8623-1da4664ab585",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-intelligence-inertia:-physical-principles-and-applications.md",
+      "type": "produced"
+    },
+    {
+      "from": "5cba8fde-b578-41bc-8f52-19cf7bc12f62",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/session-risk-memory-_srm__-temporal-authorization-.py",
       "type": "produced"
     }
   ]
