@@ -12109,6 +12109,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-trust-as-monitoring:-evolutionary-dynamics-of-user-trust-and-ai-developer-behavi.md",
       "type": "content",
       "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
+    },
+    {
+      "id": "3aa30de4-93f7-492a-8834-eaa1eead7201",
+      "type": "seed",
+      "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
+      "type": "output",
+      "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
+    },
+    {
+      "id": "bb3e959e-7d91-4907-893c-e50d2b29f07a",
+      "type": "seed",
+      "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loop-for-engineering-design.md",
+      "type": "output",
+      "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design"
+    },
+    {
+      "id": "2dbd058b-b38e-4d86-a5f8-e30d440ad08f",
+      "type": "seed",
+      "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
+      "type": "content",
+      "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing"
     }
   ],
   "edges": [
@@ -15720,6 +15750,21 @@
     {
       "from": "0966dc92-16e4-46d0-bd77-c4668ac592b3",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-trust-as-monitoring:-evolutionary-dynamics-of-user-trust-and-ai-developer-behavi.md",
+      "type": "produced"
+    },
+    {
+      "from": "3aa30de4-93f7-492a-8834-eaa1eead7201",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
+      "type": "produced"
+    },
+    {
+      "from": "bb3e959e-7d91-4907-893c-e50d2b29f07a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loop-for-engineering-design.md",
+      "type": "produced"
+    },
+    {
+      "from": "2dbd058b-b38e-4d86-a5f8-e30d440ad08f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
       "type": "produced"
     }
   ]
