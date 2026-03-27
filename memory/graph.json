@@ -12089,6 +12089,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/when-is-collective-intelligence-a-lottery_-multi-a.py",
       "type": "app",
       "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs"
+    },
+    {
+      "id": "395318d2-944e-40d3-a46b-a5f4e9a46f3c",
+      "type": "seed",
+      "title": "AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-autosam:-an-agentic-framework-for-automating-input-file-generation-for-the-sam-code-with-multi-modal-retrieval-augmented.md",
+      "type": "output",
+      "title": "AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation"
+    },
+    {
+      "id": "0966dc92-16e4-46d0-bd77-c4668ac592b3",
+      "type": "seed",
+      "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-trust-as-monitoring:-evolutionary-dynamics-of-user-trust-and-ai-developer-behavi.md",
+      "type": "content",
+      "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
     }
   ],
   "edges": [
@@ -15690,6 +15710,16 @@
     {
       "from": "bc9018b8-d354-45ef-9dba-6ac32f3868f0",
       "to": "/home/ubuntu/.openclaw/workspace/apps/when-is-collective-intelligence-a-lottery_-multi-a.py",
+      "type": "produced"
+    },
+    {
+      "from": "395318d2-944e-40d3-a46b-a5f4e9a46f3c",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-autosam:-an-agentic-framework-for-automating-input-file-generation-for-the-sam-code-with-multi-modal-retrieval-augmented.md",
+      "type": "produced"
+    },
+    {
+      "from": "0966dc92-16e4-46d0-bd77-c4668ac592b3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-trust-as-monitoring:-evolutionary-dynamics-of-user-trust-and-ai-developer-behavi.md",
       "type": "produced"
     }
   ]
