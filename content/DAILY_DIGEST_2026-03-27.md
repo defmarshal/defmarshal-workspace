@@ -1,23 +1,23 @@
-# Daily Digest — March 27, 2026 (Updated 20:02 UTC)
+# Daily Digest — March 27, 2026 (Updated 21:04 UTC)
 
 ## 🗂️ Research Pipeline (March 27)
 
-**Total reports:** 10 (up from 7 earlier today)
+**Total reports:** 11 (up from 7 earlier today)
 
 **Domain coverage:**
-- AI: 7
+- AI: 8
 - Anime: 1
 - Tech: 1
 - Security: 1
 - Banking: 0 ❗
 
 **Latest top reports:**
-1. David Sacks is done as AI czar — here’s what he’s doing instead (AI)
-2. Dynamic fusion‑aware graph convolutional neural network for multimodal emotion recognition in conversations (AI)
-3. OpenAI abandons yet another side‑quest: ChatGPT’s erotic mode (AI)
+1. ARC‑AGI‑3: A new challenge for frontier agentic intelligence (AI)
+2. Anthropic wins injunction against Trump administration over Defense Department saga (AI)
+3. David Sacks is done as AI czar — here’s what he’s doing instead (AI)
 
 **Seed pool health (unprocessed):**
-- AI: ~664
+- AI: ~662
 - Tech: 29
 - Anime: 3
 - Security: ~18
@@ -36,7 +36,7 @@
 - Cron jobs: All OK
 - Disc usage: ~83%
 - Deprecations: None
-- Git: Clean (heartbeat‑state.json committed 20:00)
+- Git: Clean (bulk commit 21:00 including new AI report and generated app)
 
 ---
 
