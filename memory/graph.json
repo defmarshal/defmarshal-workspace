@@ -12189,6 +12189,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
       "type": "output",
       "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
+    },
+    {
+      "id": "5ae29105-b0bb-4f93-bf03-6bf6b52da1b9",
+      "type": "seed",
+      "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loop-for-engineering-design.md",
+      "type": "output",
+      "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design"
+    },
+    {
+      "id": "a1aac857-823e-4965-949c-2776a92957a7",
+      "type": "seed",
+      "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
+      "type": "content",
+      "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing"
+    },
+    {
+      "id": "d56f338c-cf61-490c-af12-34e6402c0ac0",
+      "type": "seed",
+      "title": "Resisting Humanization: Ethical Front-End Design Choices in AI for Sensitive Contexts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-resisting-humanization:-ethical-front-end-design-choices-in-ai-for-sensitive-contexts.md",
+      "type": "output",
+      "title": "Resisting Humanization: Ethical Front-End Design Choices in AI for Sensitive Contexts"
     }
   ],
   "edges": [
@@ -15840,6 +15870,21 @@
     {
       "from": "a51a8c94-7aec-4dc8-abec-55a5795d2129",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
+      "type": "produced"
+    },
+    {
+      "from": "5ae29105-b0bb-4f93-bf03-6bf6b52da1b9",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loop-for-engineering-design.md",
+      "type": "produced"
+    },
+    {
+      "from": "a1aac857-823e-4965-949c-2776a92957a7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
+      "type": "produced"
+    },
+    {
+      "from": "d56f338c-cf61-490c-af12-34e6402c0ac0",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-resisting-humanization:-ethical-front-end-design-choices-in-ai-for-sensitive-contexts.md",
       "type": "produced"
     }
   ]
