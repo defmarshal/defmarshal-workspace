@@ -1,7 +1,7 @@
 # Daily Harvest — 2026-03-27
 
-**Seeds gathered today:** 100
-**Outputs produced today:** 12
+**Seeds gathered today:** 150
+**Outputs produced today:** 19
 
 ## Seeds
 - Memory Bear AI Memory Science Engine for Multimodal Affective Intelligence: A Technical Report (source: rss:https://rss.arxiv.org/rss/cs.AI)
@@ -104,6 +104,56 @@
 - Google Translate’s real-time headphone translations feature expands to iOS and more countries (source: rss:https://techcrunch.com/feed/)
 - OpenAI abandons yet another side quest: ChatGPT&#8217;s erotic mode (source: rss:https://techcrunch.com/feed/)
 - Data centers get ready — the Senate wants to see your power bills (source: rss:https://techcrunch.com/feed/)
+- ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- Resisting Humanization: Ethical Front-End Design Choices in AI for Sensitive Contexts (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- SentinelAI: A Multi-Agent Framework for Structuring and Linking NG9-1-1 Emergency Incident Data (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- How Far Are Vision-Language Models from Constructing the Real World? A Benchmark for Physical Generative Reasoning (source: rss:https://rss.arxiv.org/rss/cs.AI)
+- When Consistency Becomes Bias: Interviewer Effects in Semi-Structured Clinical Interviews (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Demystifying When Pruning Works via Representation Hierarchies (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Fine-Tuning A Large Language Model for Systematic Review Screening (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Evaluating Fine-Tuned LLM Model For Medical Transcription With Small Low-Resource Languages Validated Dataset (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Enhancing Structured Meaning Representations with Aspect Classification (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Synthetic Rewriting as a Quality Multiplier: Evidence from Portuguese Continued Pretraining (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Prune as You Generate: Online Rollout Pruning for Faster and Better RLVR (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- LogSigma at SemEval-2026 Task 3: Uncertainty-Weighted Multitask Learning for Dimensional Aspect-Based Sentiment Analysis (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Estimating near-verbatim extraction risk in language models with decoding-constrained beam search (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- Toward domain-specific machine translation and quality estimation systems (source: rss:https://rss.arxiv.org/rss/cs.CL)
+- DyMRL: Dynamic Multispace Representation Learning for Multimodal Event Forecasting in Knowledge Graph (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- How unconstrained machine-learning models learn physical symmetries (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Experiential Reflective Learning for Self-Improving LLM Agents (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Learning Mesh-Free Discrete Differential Operators with Self-Supervised Graph Neural Networks (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Physics-Informed Neural Network Digital Twin for Dynamic Tray-Wise Modeling of Distillation Columns under Transient Operating Conditions (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Can LLMs Beat Classical Hyperparameter Optimization Algorithms? A Study on autoresearch (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Energy-Efficient Hierarchical Federated Anomaly Detection for the Internet of Underwater Things via Selective Cooperative Aggregation (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Amplified Patch-Level Differential Privacy for Free via Random Cropping (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Training LLMs for Multi-Step Tool Orchestration with Constrained Data Synthesis and Graduated Rewards (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Can an Actor-Critic Optimization Framework Improve Analog Design Optimization? (source: rss:https://rss.arxiv.org/rss/cs.LG)
+- Sketch2Simulation: Automating Flowsheet Generation via Multi Agent Large Language Models (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- TRAJEVAL: Decomposing Code Agent Trajectories for Fine-Grained Diagnosis (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- IndustriConnect: MCP Adapters and Mock-First Evaluation for AI-Assisted Industrial Operations (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- Automatization of building IT projects using composite consistency rules (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- Bridging the Gap Between Agility and Planning (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- From Untestable to Testable: Metamorphic Testing in the Age of LLMs (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- Learning From Developers: Towards Reliable Patch Validation at Scale for Linux (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- Data-Oriented Modeling for Spacecraft Design (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- Governance in Practice: How Open Source Projects Define and Document Roles (source: rss:https://rss.arxiv.org/rss/cs.SE)
+- David Sacks is done as AI czar &#8212; here&#8217;s what he&#8217;s doing instead (source: rss:https://techcrunch.com/feed/)
+- Anthropic wins injunction against Trump administration over Defense Department saga (source: rss:https://techcrunch.com/feed/)
+- You can now transfer your chats and personal information from other chatbots directly into Gemini (source: rss:https://techcrunch.com/feed/)
+- Wikipedia cracks down on the use of AI in article writing (source: rss:https://techcrunch.com/feed/)
+- Mastodon is making its decentralized social network easier to use with its latest revamp (source: rss:https://techcrunch.com/feed/)
+- Netflix confirms it’s raising prices again (source: rss:https://techcrunch.com/feed/)
+- 16 of the most interesting startups from YC W26 Demo Day (source: rss:https://techcrunch.com/feed/)
+- Google Translate’s real-time headphone translations feature expands to iOS and more countries (source: rss:https://techcrunch.com/feed/)
+- OpenAI abandons yet another side quest: ChatGPT&#8217;s erotic mode (source: rss:https://techcrunch.com/feed/)
+- Data centers get ready — the Senate wants to see your power bills (source: rss:https://techcrunch.com/feed/)
 
 ## Outputs
 - [Wikipedia cracks down on the use of AI in article writing](/home/ubuntu/.openclaw/workspace/research/2026-03-27-wikipedia-cracks-down-on-the-use-of-ai-in-article-writing.md)
@@ -118,6 +168,13 @@
 - [Defense startup Shield AI lands $12.7B valuation, up 140%, after US Air Force deal](/home/ubuntu/.openclaw/workspace/content/2026-03-27-defense-startup-shield-ai-lands-$12.7b-valuation,-up-140%,-after-us-air-force-de.md)
 - [Dynamic Fusion-Aware Graph Convolutional Neural Network for Multimodal Emotion Recognition in Conversations](/home/ubuntu/.openclaw/workspace/research/2026-03-27-dynamic-fusion-aware-graph-convolutional-neural-network-for-multimodal-emotion-recognition-in-conversations.md)
 - [Intelligence Inertia: Physical Principles and Applications](/home/ubuntu/.openclaw/workspace/content/2026-03-27-intelligence-inertia:-physical-principles-and-applications.md)
+- [David Sacks is done as AI czar &#8212; here&#8217;s what he&#8217;s doing instead](/home/ubuntu/.openclaw/workspace/research/2026-03-27-david-sacks-is-done-as-ai-czar-&#8212;-here&#8217;s-what-he&#8217;s-doing-instead.md)
+- [David Sacks is done as AI czar &#8212; here&#8217;s what he&#8217;s doing instead](/home/ubuntu/.openclaw/workspace/content/2026-03-27-david-sacks-is-done-as-ai-czar-&#8212;-here&#8217;s-what-he&#8217;s-doing-instea.md)
+- [Anthropic wins injunction against Trump administration over Defense Department saga](/home/ubuntu/.openclaw/workspace/research/2026-03-27-anthropic-wins-injunction-against-trump-administration-over-defense-department-saga.md)
+- [You can now transfer your chats and personal information from other chatbots directly into Gemini](/home/ubuntu/.openclaw/workspace/content/2026-03-27-you-can-now-transfer-your-chats-and-personal-information-from-other-chatbots-dir.md)
+- [Mastodon is making its decentralized social network easier to use with its latest revamp](/home/ubuntu/.openclaw/workspace/content/2026-03-27-mastodon-is-making-its-decentralized-social-network-easier-to-use-with-its-lates.md)
+- [Netflix confirms it’s raising prices again](/home/ubuntu/.openclaw/workspace/content/2026-03-27-netflix-confirms-it’s-raising-prices-again.md)
+- [ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence](/home/ubuntu/.openclaw/workspace/research/2026-03-27-arc-agi-3:-a-new-challenge-for-frontier-agentic-intelligence.md)
 
 ---
 *Auto‑generated by AI Garden Harvester*

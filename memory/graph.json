@@ -12069,6 +12069,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-netflix-confirms-it\u2019s-raising-prices-again.md",
       "type": "content",
       "title": "Netflix confirms it\u2019s raising prices again"
+    },
+    {
+      "id": "110f133d-9c02-49fd-81cb-f73c24bfd559",
+      "type": "seed",
+      "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-arc-agi-3:-a-new-challenge-for-frontier-agentic-intelligence.md",
+      "type": "output",
+      "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence"
+    },
+    {
+      "id": "bc9018b8-d354-45ef-9dba-6ac32f3868f0",
+      "type": "seed",
+      "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/when-is-collective-intelligence-a-lottery_-multi-a.py",
+      "type": "app",
+      "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs"
     }
   ],
   "edges": [
@@ -15660,6 +15680,16 @@
     {
       "from": "8df7d3af-9715-48da-a9c8-a76b787f85d1",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-netflix-confirms-it\u2019s-raising-prices-again.md",
+      "type": "produced"
+    },
+    {
+      "from": "110f133d-9c02-49fd-81cb-f73c24bfd559",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-arc-agi-3:-a-new-challenge-for-frontier-agentic-intelligence.md",
+      "type": "produced"
+    },
+    {
+      "from": "bc9018b8-d354-45ef-9dba-6ac32f3868f0",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/when-is-collective-intelligence-a-lottery_-multi-a.py",
       "type": "produced"
     }
   ]
