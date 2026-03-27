@@ -11854,6 +11854,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-wikipedia-cracks-down-on-the-use-of-ai-in-article-writing.md",
       "type": "output",
       "title": "Wikipedia cracks down on the use of AI in article writing"
+    },
+    {
+      "id": "c15091e1-395d-4c75-8ae0-a3319293f718",
+      "type": "seed",
+      "title": "You can now transfer your chats and personal information from other chatbots directly into Gemini"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-you-can-now-transfer-your-chats-and-personal-information-from-other-chatbots-dir.md",
+      "type": "content",
+      "title": "You can now transfer your chats and personal information from other chatbots directly into Gemini"
+    },
+    {
+      "id": "d3406d58-ee87-4491-bb74-14ebfe21f3c9",
+      "type": "seed",
+      "title": "Mastodon is making its decentralized social network easier to use with its latest revamp"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-mastodon-is-making-its-decentralized-social-network-easier-to-use-with-its-lates.md",
+      "type": "content",
+      "title": "Mastodon is making its decentralized social network easier to use with its latest revamp"
     }
   ],
   "edges": [
@@ -15335,6 +15355,16 @@
     {
       "from": "d07949a5-1a99-45a9-990a-5164c4fe6b18",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-wikipedia-cracks-down-on-the-use-of-ai-in-article-writing.md",
+      "type": "produced"
+    },
+    {
+      "from": "c15091e1-395d-4c75-8ae0-a3319293f718",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-you-can-now-transfer-your-chats-and-personal-information-from-other-chatbots-dir.md",
+      "type": "produced"
+    },
+    {
+      "from": "d3406d58-ee87-4491-bb74-14ebfe21f3c9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-27-mastodon-is-making-its-decentralized-social-network-easier-to-use-with-its-lates.md",
       "type": "produced"
     }
   ]
