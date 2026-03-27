@@ -11,7 +11,7 @@ The new profile layout is cleaner, more customizable, and feels instantly famili
 One of Mastodon's biggest hurdles has been getting new users oriented in the fediverse. The revamp introduces:
 - **Guided server selection** with clearer descriptions of each instance's focus
 - **Improved search** across your own server and federated content
-- ** smarter recommendations** for people and posts to follow based on your interests
+- **Smarter recommendations** for people and posts to follow based on your interests
 - **Better onboarding tutorials** that don't assume you know what "federated" means
 
 These changes dramatically reduce the "blank page" anxiety that has turned away countless newcomers.
@@ -37,8 +37,6 @@ Beyond visible changes, the revamp includes significant under-the-hood improveme
 
 These may not be flashy, but they're essential for making Mastodon genuinely inclusive.
 
----
-
 ## Why This Matters for the Decentralized Web
 
 Mastodon's growth has been impressive—millions of users, thousands of servers—but it has plateaued in many regions, unable to break out of its activist and tech-enthusiast niche. The redesign directly addresses the friction points that have kept mainstream users away: confusing terminology, sparse profiles, clunky search, and a general feeling of "roughness."
@@ -46,8 +44,6 @@ Mastodon's growth has been impressive—millions of users, thousands of servers�
 By making the user experience competitive with centralized platforms, Mastodon is betting that more people will choose decentralization not just on principle, but because it *feels* good to use. That's a critical shift. The fediverse can't survive as a hidden refuge for the privacy-conscious; it needs to become a default option for everyone.
 
 The challenge remains: can Mastodon execute this vision without alienating its existing community that values simplicity and anti-corporate ethos? The redesign walks a careful line—adding polish without adding surveillance capitalism. If it succeeds, it could prove that decentralized social media doesn't have to be a compromise.
-
----
 
 ## Conclusion
 
