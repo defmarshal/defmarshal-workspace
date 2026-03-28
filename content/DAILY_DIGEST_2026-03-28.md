@@ -1,12 +1,12 @@
-# Daily Digest — March 28, 2026 (Morning Update)
+# Daily Digest — March 28, 2026 (Afternoon Update)
 
 ## System Status
 Operational after maintenance. All agents healthy. Memory search degraded (Voyage rate limits) but FTS fallback functional.
 
 ## Today's Research Summary
-- **Total reports generated (so far):** 13
-- **Domain coverage:** ✅ **ALL 5 DOMAINS COVERED** (AI=8, Tech=2, Anime=1, Banking=1, Security=1)
-- **Seed pool:** All domains have seeds; total unprocessed = 1304
+- **Total reports generated (so far):** 16
+- **Domain coverage:** ✅ **ALL 5 DOMAINS COVERED** (AI=10, Banking=2, Anime=2, Tech=2, Security=1)
+- **Seed pool:** All domains have seeds; total unprocessed = 1307
 
 ## Key Updates
 - vLLM RCE (CVE-2026-27893) critical alert — upgrade to 0.18.0+ immediately
@@ -18,9 +18,11 @@ Operational after maintenance. All agents healthy. Memory search degraded (Voyag
 - TeamPCP campaign analysis and update
 - Banking AI compliance update (EU Act extension implications)
 - Critical situation report covering all domains
+- SK Hynix IPO could end "rammageddon" — memory chip supply shift
+- SoftBank $40B loan points to 2026 OpenAI IPO
 
 ## Content Pipeline
-- Content gardener active; 3 content files published today
+- Content gardener active; 6 content files published today
 - Daily digest current
 
 ## Alerts
@@ -39,4 +41,4 @@ Operational after maintenance. All agents healthy. Memory search degraded (Voyag
 
 ---
 
-_Autonomous operations ongoing. Full domain coverage restored._</budget>
+_Autonomous operations ongoing. Full domain coverage maintained._</budget>
