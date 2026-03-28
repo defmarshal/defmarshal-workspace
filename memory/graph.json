@@ -12404,6 +12404,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-aetherflux-reportedly-raising-series-b-at-$2-billion-valuation.md",
       "type": "content",
       "title": "Aetherflux reportedly raising Series B at $2 billion valuation"
+    },
+    {
+      "id": "41bf5c44-b5c7-4308-989b-977077a6e347",
+      "type": "seed",
+      "title": "Rivian gets another $1B from Volkswagen"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-rivian-gets-another-$1b-from-volkswagen.md",
+      "type": "output",
+      "title": "Rivian gets another $1B from Volkswagen"
+    },
+    {
+      "id": "0a52dc06-615f-4177-84e3-0eb47c802018",
+      "type": "seed",
+      "title": "Iranian hackers claim breach of FBI director Kash Patel&#8217;s personal email account"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-iranian-hackers-claim-breach-of-fbi-director-kash-patel&#8217;s-personal-email-account.md",
+      "type": "output",
+      "title": "Iranian hackers claim breach of FBI director Kash Patel&#8217;s personal email account"
+    },
+    {
+      "id": "72f9b984-8c36-4b00-a5cd-8257b724bd05",
+      "type": "seed",
+      "title": "Apple says no one using Lockdown Mode has been hacked with spyware"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/apple-says-no-one-using-lockdown-mode-has-been-hac.py",
+      "type": "app",
+      "title": "Apple says no one using Lockdown Mode has been hacked with spyware"
     }
   ],
   "edges": [
@@ -16170,6 +16200,21 @@
     {
       "from": "29c52c9b-f697-4207-82fa-06a7726a9b97",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-aetherflux-reportedly-raising-series-b-at-$2-billion-valuation.md",
+      "type": "produced"
+    },
+    {
+      "from": "41bf5c44-b5c7-4308-989b-977077a6e347",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-rivian-gets-another-$1b-from-volkswagen.md",
+      "type": "produced"
+    },
+    {
+      "from": "0a52dc06-615f-4177-84e3-0eb47c802018",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-iranian-hackers-claim-breach-of-fbi-director-kash-patel&#8217;s-personal-email-account.md",
+      "type": "produced"
+    },
+    {
+      "from": "72f9b984-8c36-4b00-a5cd-8257b724bd05",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/apple-says-no-one-using-lockdown-mode-has-been-hac.py",
       "type": "produced"
     }
   ]
