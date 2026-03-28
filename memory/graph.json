@@ -12219,6 +12219,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-resisting-humanization:-ethical-front-end-design-choices-in-ai-for-sensitive-contexts.md",
       "type": "output",
       "title": "Resisting Humanization: Ethical Front-End Design Choices in AI for Sensitive Contexts"
+    },
+    {
+      "id": "deca263b-998f-48b5-b5d6-2a4a8673a0f0",
+      "type": "seed",
+      "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/arc-agi-3_-a-new-challenge-for-frontier-agentic-in.py",
+      "type": "app",
+      "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence"
     }
   ],
   "edges": [
@@ -15885,6 +15895,11 @@
     {
       "from": "d56f338c-cf61-490c-af12-34e6402c0ac0",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-27-resisting-humanization:-ethical-front-end-design-choices-in-ai-for-sensitive-contexts.md",
+      "type": "produced"
+    },
+    {
+      "from": "deca263b-998f-48b5-b5d6-2a4a8673a0f0",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/arc-agi-3_-a-new-challenge-for-frontier-agentic-in.py",
       "type": "produced"
     }
   ]

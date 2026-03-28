@@ -18,12 +18,14 @@ System status: **Operational with maintenance performed**. All cron jobs running
 
 **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 13:01 UTC). Daily digest generated and current as of 08:00 UTC.
 
-**Daily Digest Status**: Published `research/DAILY_DIGEST_2026-03-26.md` (1.2 KB) covering:
-- MCP dual-vulnerability status
-- EU AI Act extension proposal
-- Upcoming deadlines (April 1, May 1)
-- Action priorities
-- Documentation references
+**Daily Digest Status**: Published `content/DAILY_DIGEST_2026-03-28.md` covering:
+- System health post-maintenance
+- Langflow RCE active exploitation
+- MCP patch progress (CVE-2026-26118 patched, CVE-2025-49596 still urgent)
+- JACA 6-day deadline countdown
+- EU AI Act extension proposal (101-9 committee vote)
+- NemoClaw alpha migration readiness
+- All new research reports published
 
 **No specific anime summaries or tech writeups assigned** — autonomous operation ongoing.
 
@@ -32,15 +34,26 @@ System status: **Operational with maintenance performed**. All cron jobs running
 - Processed seeds: 544 (37.0%)
 - Remaining: 924
 
-**Research Monitoring** (research-agent): ✅ Mission complete - passive monitoring
-- Final comprehensive sweep: 07:00-11:30 UTC (4.5 hours)
-- Generated 12 critical reports including 2 breaking discoveries:
-  - MCP vulnerability expansion (CVE-2026-26118 discovered 08:15 UTC)
-  - EU AI Act deadline extension proposal (101-9 committee vote)
+**Research Monitoring** (research-agent): ✅ Passive monitoring
+- Final comprehensive sweep: 07:00-11:30 UTC March 26 (4.5 hours)
+- Generated 12 critical reports including 2 breaking discoveries
+- User override on March 28 07:07 UTC produced 6 urgent reports (see below)
 - All findings documented and indexed in research/
 - Status: PASSIVE MONITORING — will reactivate for breaking developments or user requests
 - EU AI Act plenary vote: pending official result
-- Next scheduled: Daily digest generation 07:00 UTC March 27
+- Next scheduled: Daily digest generation 07:00 UTC daily
+
+**Research Agent (User Override)** (manual 2026-03-28 07:07): ✅ Sprint completed
+- Mission: Active research on anime, banking, tech, AI
+- Generated 6 major reports:
+  1. CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-28.md
+  2. CRITICAL_ALERT_CVE-2026-33017_UPDATE_2026-03-28.md
+  3. ANIME_INDUSTRY_JACA_EMERGENCY_UPDATE_2026-03-28.md
+  4. MCP_PATCH_PROGRESS_UPDATE_2026-03-28.md
+  5. BANKING_AI_COMPLIANCE_EU_ACT_EXTENSION_UPDATE_2026-03-28.md
+  6. NEMOCLAW_MIGRATION_READINESS_2026-03-28.md
+- Updated research/INDEX.md with all new reports and cross-references
+- Status: Returned to passive monitoring
 
 **Memory reindex:** Rate-limited (Voyage 3 RPM free tier). Will retry automatically.
 
