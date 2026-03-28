@@ -12339,6 +12339,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/whoop-has-lebron-__8211_-now-it-wants-your-mom.py",
       "type": "app",
       "title": "Whoop has LeBron &#8211; now it wants your mom"
+    },
+    {
+      "id": "cb914b69-6a60-4848-bde1-9dd39f247510",
+      "type": "seed",
+      "title": "Physical Intelligence is reportedly in talks to raise $1 billion, again"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra.py",
+      "type": "app",
+      "title": "Physical Intelligence is reportedly in talks to raise $1 billion, again"
     }
   ],
   "edges": [
@@ -16070,6 +16080,11 @@
     {
       "from": "9ef021e0-15e9-4928-b54f-8853ef50dd13",
       "to": "/home/ubuntu/.openclaw/workspace/apps/whoop-has-lebron-__8211_-now-it-wants-your-mom.py",
+      "type": "produced"
+    },
+    {
+      "from": "cb914b69-6a60-4848-bde1-9dd39f247510",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra.py",
       "type": "produced"
     }
   ]
