@@ -18,6 +18,12 @@
 
 ### 🚨 Critical Intelligence Updates
 
+#### 🆕 1a. vLLM RCE (CVE-2026-27893) — BREAKING (NEW)
+- High-severity RCE (CVSS 8.8) in vLLM inference engine
+- Affects versions 0.10.1–0.17.x; fixed in 0.18.0
+- Bypasses `--trust-remote-code=False` via hardcoded `trust_remote_code=True`
+- **Action:** Upgrade to vLLM 0.18.0+ immediately; inventory all deployments
+
 1. **Langflow RCE (CVE-2026-33017) Actively Exploited**
    - Exploitation within 20h of disclosure; CISA KEV catalog addition
    - 15-20% of internet-exposed instances compromised (~630-840 servers)
@@ -47,6 +53,7 @@
 
 | Report ID | Priority | Topic |
 |-----------|----------|-------|
+| CRITICAL_ALERT_VLLM_RCE_2026-03-28 | 🔴 CRITICAL | vLLM RCE vulnerability (CVE-2026-27893) — **NEW BREAKING** |
 | CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-28 | 🔴 CRITICAL | Cross-domain synthesis of all above |
 | CRITICAL_ALERT_CVE-2026-33017_UPDATE_2026-03-28 | 🔴 CRITICAL | Langflow exploitation details & response |
 | ANIME_INDUSTRY_JACA_EMERGENCY_UPDATE_2026-03-28 | 🔴 CRITICAL | Final 6-day compliance sprint guidance |
@@ -78,6 +85,7 @@
 ## ⚠️ Alerts & To-Dos
 
 ### Urgent (48-hour window)
+- **vLLM RCE (CVE-2026-27893):** Upgrade to 0.18.0+ immediately; inventory all deployments; isolate compromised systems
 - **Langflow patching:** All Langflow ≤1.8.1 must upgrade to 1.9.0.dev8+ immediately
 - **MCP inventory:** Find all MCP servers; apply patches (CVE-2026-26118); mitigate CVE-2025-49596
 - **JACA compliance:** Anime studios — submit self-assessment by March 31 (3 days!)

@@ -12229,6 +12229,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/arc-agi-3_-a-new-challenge-for-frontier-agentic-in.py",
       "type": "app",
       "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence"
+    },
+    {
+      "id": "9055f6ab-0d37-4720-b356-64489c445ebb",
+      "type": "seed",
+      "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-when-is-collective-intelligence-a-lottery?-multi-agent-scaling-laws-for-memetic-drift-in-llms.md",
+      "type": "output",
+      "title": "When Is Collective Intelligence a Lottery? Multi-Agent Scaling Laws for Memetic Drift in LLMs"
+    },
+    {
+      "id": "4390451c-5ffd-45d7-9340-f6fa1cbb3e37",
+      "type": "seed",
+      "title": "AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-autosam:-an-agentic-framework-for-automating-input-file-generation-for-the-sam-c.md",
+      "type": "content",
+      "title": "AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation"
     }
   ],
   "edges": [
@@ -15900,6 +15920,16 @@
     {
       "from": "deca263b-998f-48b5-b5d6-2a4a8673a0f0",
       "to": "/home/ubuntu/.openclaw/workspace/apps/arc-agi-3_-a-new-challenge-for-frontier-agentic-in.py",
+      "type": "produced"
+    },
+    {
+      "from": "9055f6ab-0d37-4720-b356-64489c445ebb",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-when-is-collective-intelligence-a-lottery?-multi-agent-scaling-laws-for-memetic-drift-in-llms.md",
+      "type": "produced"
+    },
+    {
+      "from": "4390451c-5ffd-45d7-9340-f6fa1cbb3e37",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-autosam:-an-agentic-framework-for-automating-input-file-generation-for-the-sam-c.md",
       "type": "produced"
     }
   ]
