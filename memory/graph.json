@@ -12284,6 +12284,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
       "type": "content",
       "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
+    },
+    {
+      "id": "161e9d6f-2401-40d3-b642-b06641fbeb63",
+      "type": "seed",
+      "title": "Why SoftBank\u2019s new $40B loan points to a 2026 OpenAI IPO"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-why-softbank\u2019s-new-$40b-loan-points-to-a-2026-openai-ipo.md",
+      "type": "output",
+      "title": "Why SoftBank\u2019s new $40B loan points to a 2026 OpenAI IPO"
+    },
+    {
+      "id": "4e9dfa16-1e66-4824-ae9a-cec9a9ede5a5",
+      "type": "seed",
+      "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loo.md",
+      "type": "content",
+      "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design"
     }
   ],
   "edges": [
@@ -15985,6 +16005,16 @@
     {
       "from": "38dda764-bbae-4873-aecb-839b5dae4d2e",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
+      "type": "produced"
+    },
+    {
+      "from": "161e9d6f-2401-40d3-b642-b06641fbeb63",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-why-softbank\u2019s-new-$40b-loan-points-to-a-2026-openai-ipo.md",
+      "type": "produced"
+    },
+    {
+      "from": "4e9dfa16-1e66-4824-ae9a-cec9a9ede5a5",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loo.md",
       "type": "produced"
     }
   ]
