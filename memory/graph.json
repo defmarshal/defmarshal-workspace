@@ -12494,6 +12494,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/fine-tuning-a-large-language-model-for-systematic-.py",
       "type": "app",
       "title": "Fine-Tuning A Large Language Model for Systematic Review Screening"
+    },
+    {
+      "id": "355933dc-8c94-4d77-a896-6dc60a79678e",
+      "type": "seed",
+      "title": "Elon Musk\u2019s last co-founder reportedly leaves xAI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-elon-musk\u2019s-last-co-founder-reportedly-leaves-xai.md",
+      "type": "output",
+      "title": "Elon Musk\u2019s last co-founder reportedly leaves xAI"
+    },
+    {
+      "id": "588faa2b-f63a-4071-96bb-e3508f9bb337",
+      "type": "seed",
+      "title": "These iPad apps will make you wish you had more free time"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/these-ipad-apps-will-make-you-wish-you-had-more-fr.py",
+      "type": "app",
+      "title": "These iPad apps will make you wish you had more free time"
+    },
+    {
+      "id": "8e68fb27-ca52-4e9a-813e-f2d50e746ba4",
+      "type": "seed",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-anthropic&#8217;s-claude-popularity-with-paying-consumers-is-skyrocketing.md",
+      "type": "output",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
     }
   ],
   "edges": [
@@ -16305,6 +16335,21 @@
     {
       "from": "bb3aae08-01ea-432b-96b9-b545903b5525",
       "to": "/home/ubuntu/.openclaw/workspace/apps/fine-tuning-a-large-language-model-for-systematic-.py",
+      "type": "produced"
+    },
+    {
+      "from": "355933dc-8c94-4d77-a896-6dc60a79678e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-elon-musk\u2019s-last-co-founder-reportedly-leaves-xai.md",
+      "type": "produced"
+    },
+    {
+      "from": "588faa2b-f63a-4071-96bb-e3508f9bb337",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/these-ipad-apps-will-make-you-wish-you-had-more-fr.py",
+      "type": "produced"
+    },
+    {
+      "from": "8e68fb27-ca52-4e9a-813e-f2d50e746ba4",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-anthropic&#8217;s-claude-popularity-with-paying-consumers-is-skyrocketing.md",
       "type": "produced"
     }
   ]

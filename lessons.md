@@ -114,15 +114,23 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
   - Consider migrating valhalla data directory to a separate data repository or using Git LFS for large datasets.
 - **Follow-up:** After filter-branch completes, force-push cleaned history. Monitor subsequent agent-manager runs for lock file anomalies.
 
-## 2026-03-24 — Git Janitor Cron Silent Failure (Recurring)
+## 2026-03-28 — Code Gardener Recurring OpenRouter Failures & Missing Dependency
 
-- **Symptom:** The `git-janitor-cron` job (scheduled daily at 06:12 UTC) executed but finished without logging any output and without committing pending changes. The agent-manager later detected uncommitted gardener outputs (5 files). Manual run of the script completed successfully and committed the files.
-- **Root cause:** Unknown — possible transient environment issue (PATH, OpenRouter API), or script error that didn't propagate exit code. No error logs from the cron run; likely the script hung or exited silently before the git operations.
-- **Impact:** Delayed commit of gardener outputs by ~7 hours. No data loss, but reduces freshness of deployed content and may cause accumulation of untracked files.
-- **Actions taken:** Manually ran the git-janitor script to commit pending changes. Verified all gardener outputs were valid.
-- **Prevention:**
-  - Add explicit logging at each stage of git-janitor.sh (start, fetch, status, commit, push) with timestamps to `/tmp/git-janitor-$(date +%Y%m%d).log`.
-  - Ensure cron environment has correct PATH and required utilities; source user profile or use absolute paths.
-  - Add post-commit verification: after commit, check that working tree is clean; if not, send alert.
-  - Consider wrapping the cron job in a supervisor (agent-manager) check: if janitor hasn't run successfully in >24h, trigger manual run and alert.
-- **Follow-up:** Monitor next 3 days of git-janitor runs to see if issue recurs. If it does, investigate cron environment differences and script dependencies. Add more robust error handling and alerts on failure.
+- **Symptoms observed in memory/code-gardener.log:**
+  - `ModuleNotFoundError: No module named 'timezone'` — historical import error (line 2: `import ... timezone`). Current script uses `from datetime import UTC` and no longer imports `timezone`. Verify the deployed script matches source; stale bytecode or multiple versions may exist.
+  - `OpenRouter request failed: 'NoneType' object has no attribute 'strip'` — OpenRouter response is None or malformed; code attempts `.strip()` without checking.
+  - `OpenClaw agent call failed: Command ... timed out after 60 seconds` — agent call to main agent for code generation times out; default 60s may be too short for complex seeds.
+  - `Agent returned insufficient code (length 0), using enhanced fallback` — agent produced no output; fallback writes placeholder app files.
+- **Impact:** Apps are still generated (via fallback) but quality may be poor or empty. OpenRouter failures could indicate rate limits, network issues, or model unavailability.
+- **Actions taken:**
+  - Updated active-tasks.md to reflect current processed count (722/1988) instead of stale 544.
+  - Added detailed cron activity to daily log with issues and recommendations.
+- **Prevention / Fixes needed:**
+  1. Ensure the code-gardener.py script is consistent (no orphaned timezone import). If the error persists, search for any `import timezone` and replace with standard `from datetime import UTC` or `import datetime; datetime.timezone.utc`.
+  2. Add OpenRouter response validation: check `response is not None` and `response.get('content')` before stripping.
+  3. Increase agent call timeout (currently 60s) to 120s or 180s for complex seeds.
+  4. Implement retry with backoff for transient OpenRouter failures.
+  5. Consider switching to a more reliable provider or using OpenRouter models with higher rate limits if using free tier.
+  6. Monitor `memory/code-gardener.log` for repeated timeouts; alert if failure rate >10% over 100 seeds.
+- **Follow-up:** Review code-gardener.py and apply robustness improvements. Verify cron environment uses the latest script version (check file modification time).
+

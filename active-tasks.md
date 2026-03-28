@@ -8,7 +8,7 @@ System status: **Operational with maintenance performed**. All cron jobs running
 
 **Harvester** (cron harvest-1773046808): ✅ Completed. Generated daily-harvest-2026-03-27.md with 50 seeds and 9 outputs. Telegram notification sent successfully. All systems nominal.
 
-**Code Gardener** (cron code-gardener-1773047374): ✅ Active. Just generated app for seed: "Roku's $3 Howdy subscription service launches on Prime Video". Total processed seeds: 544. Remaining unprocessed: 924. Throughput steady.
+**Code Gardener** (cron code-gardener-1773047374): ✅ Completed run at 2026-03-28 21:04 UTC. Processed seed: "Roku's $3 Howdy subscription service launches on Prime Video". Total processed seeds: ~550+ (tracked in memory/processed_seeds.jsonl). Remaining unprocessed: ~918. Throughput steady but encountering occasional OpenRouter timeouts and missing `timezone` module (needs fix).
 
 **Research Gardener** (cron research-gardener-1773046574): ✅ Active. Last cron run: 05:10 UTC, manually verified at 13:20 UTC. Generated 672+ reports; operating normally. Domain balancing fallback due to unknown seed domains. TAVILY_API_KEY missing (web search disabled).
 
