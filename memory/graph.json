@@ -12369,6 +12369,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/why-softbank_s-new-_40b-loan-points-to-a-2026-open.py",
       "type": "app",
       "title": "Why SoftBank\u2019s new $40B loan points to a 2026 OpenAI IPO"
+    },
+    {
+      "id": "c19dec2b-aa4c-4ae3-b59b-6022d752313e",
+      "type": "seed",
+      "title": "Waymo\u2019s skyrocketing ridership in one chart"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-waymo\u2019s-skyrocketing-ridership-in-one-chart.md",
+      "type": "content",
+      "title": "Waymo\u2019s skyrocketing ridership in one chart"
+    },
+    {
+      "id": "072e4861-a20c-46f3-af41-820594d9c217",
+      "type": "seed",
+      "title": "European Commission confirms cyberattack after hackers claim data breach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/european-commission-confirms-cyberattack-after-hac.py",
+      "type": "app",
+      "title": "European Commission confirms cyberattack after hackers claim data breach"
     }
   ],
   "edges": [
@@ -16115,6 +16135,16 @@
     {
       "from": "07a62db9-0318-4c6e-a665-60eacbda5105",
       "to": "/home/ubuntu/.openclaw/workspace/apps/why-softbank_s-new-_40b-loan-points-to-a-2026-open.py",
+      "type": "produced"
+    },
+    {
+      "from": "c19dec2b-aa4c-4ae3-b59b-6022d752313e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-waymo\u2019s-skyrocketing-ridership-in-one-chart.md",
+      "type": "produced"
+    },
+    {
+      "from": "072e4861-a20c-46f3-af41-820594d9c217",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/european-commission-confirms-cyberattack-after-hac.py",
       "type": "produced"
     }
   ]

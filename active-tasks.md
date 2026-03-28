@@ -10,13 +10,15 @@ System status: **Operational with maintenance performed**. All cron jobs running
 
 **Code Gardener** (cron code-gardener-1773047374): ✅ Active. Just generated app for seed: "Roku's $3 Howdy subscription service launches on Prime Video". Total processed seeds: 544. Remaining unprocessed: 924. Throughput steady.
 
-**Research Gardener** (cron research-gardener-1773046574): ✅ Active. Just manually ran successfully at 13:20 UTC, producing report: "STEM Agent: A Self-Adapting, Tool-Enabled, Extensible Architecture for Multi-Protocol AI Agent Systems". Total reports: 500+. Also executed successfully via cron at 05:10 UTC on 2026-03-27, processing one seed with domain balancing (missing: banking → selected recent). All systems nominal.
+**Research Gardener** (cron research-gardener-1773046574): ✅ Active. Last cron run: 05:10 UTC, manually verified at 13:20 UTC. Generated 672+ reports; operating normally. Domain balancing fallback due to unknown seed domains. TAVILY_API_KEY missing (web search disabled).
 
 
 
 
 
 **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 13:01 UTC). Daily digest generated and current as of 08:00 UTC.
+
+**Email Sweep** (cron email-categorizer-cron): 🔄 Running. Triggered at 10:22 UTC (17:22 Bangkok). Batch size: 100 emails, PAGES_PER_RUN=1. Uses Maton API to apply labels based on sender/domain. (Active but slower than usual; monitoring.)
 
 **Daily Digest Status**: Published `content/DAILY_DIGEST_2026-03-28.md` covering:
 - System health post-maintenance
