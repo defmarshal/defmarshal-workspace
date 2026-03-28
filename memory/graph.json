@@ -12304,6 +12304,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loo.md",
       "type": "content",
       "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design"
+    },
+    {
+      "id": "86433de4-4d83-4170-a951-6c7aec939a3a",
+      "type": "seed",
+      "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
+      "type": "content",
+      "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing"
     }
   ],
   "edges": [
@@ -16015,6 +16025,11 @@
     {
       "from": "4e9dfa16-1e66-4824-ae9a-cec9a9ede5a5",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-supervising-ralph-wiggum:-exploring-a-metacognitive-co-regulation-agentic-ai-loo.md",
+      "type": "produced"
+    },
+    {
+      "from": "86433de4-4d83-4170-a951-6c7aec939a3a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-relope:-kl-regularized-lora-probes-for-multimodal-llm-routing.md",
       "type": "produced"
     }
   ]
