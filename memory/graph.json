@@ -12349,6 +12349,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra.py",
       "type": "app",
       "title": "Physical Intelligence is reportedly in talks to raise $1 billion, again"
+    },
+    {
+      "id": "5a15f81a-fd2b-4fd3-9f25-24b86bd719bf",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "output",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
     }
   ],
   "edges": [
@@ -16085,6 +16095,11 @@
     {
       "from": "cb914b69-6a60-4848-bde1-9dd39f247510",
       "to": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra.py",
+      "type": "produced"
+    },
+    {
+      "from": "5a15f81a-fd2b-4fd3-9f25-24b86bd719bf",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
       "type": "produced"
     }
   ]
