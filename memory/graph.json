@@ -12389,6 +12389,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/european-commission-confirms-cyberattack-after-hac.py",
       "type": "app",
       "title": "European Commission confirms cyberattack after hackers claim data breach"
+    },
+    {
+      "id": "29c52c9b-f697-4207-82fa-06a7726a9b97",
+      "type": "seed",
+      "title": "Aetherflux reportedly raising Series B at $2 billion valuation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-aetherflux-reportedly-raising-series-b-at-$2-billion-valuation.md",
+      "type": "output",
+      "title": "Aetherflux reportedly raising Series B at $2 billion valuation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-aetherflux-reportedly-raising-series-b-at-$2-billion-valuation.md",
+      "type": "content",
+      "title": "Aetherflux reportedly raising Series B at $2 billion valuation"
     }
   ],
   "edges": [
@@ -16145,6 +16160,16 @@
     {
       "from": "072e4861-a20c-46f3-af41-820594d9c217",
       "to": "/home/ubuntu/.openclaw/workspace/apps/european-commission-confirms-cyberattack-after-hac.py",
+      "type": "produced"
+    },
+    {
+      "from": "29c52c9b-f697-4207-82fa-06a7726a9b97",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-aetherflux-reportedly-raising-series-b-at-$2-billion-valuation.md",
+      "type": "produced"
+    },
+    {
+      "from": "29c52c9b-f697-4207-82fa-06a7726a9b97",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-aetherflux-reportedly-raising-series-b-at-$2-billion-valuation.md",
       "type": "produced"
     }
   ]
