@@ -12434,6 +12434,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/apple-says-no-one-using-lockdown-mode-has-been-hac.py",
       "type": "app",
       "title": "Apple says no one using Lockdown Mode has been hacked with spyware"
+    },
+    {
+      "id": "baedc6b1-3360-4aa4-be7b-cc77a97b3318",
+      "type": "seed",
+      "title": "Resisting Humanization: Ethical Front-End Design Choices in AI for Sensitive Contexts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-resisting-humanization:-ethical-front-end-design-choices-in-ai-for-sensitive-con.md",
+      "type": "content",
+      "title": "Resisting Humanization: Ethical Front-End Design Choices in AI for Sensitive Contexts"
+    },
+    {
+      "id": "d57f9ecf-b647-4129-acfd-dc95450a959b",
+      "type": "seed",
+      "title": "SentinelAI: A Multi-Agent Framework for Structuring and Linking NG9-1-1 Emergency Incident Data"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/sentinelai_-a-multi-agent-framework-for-structurin.py",
+      "type": "app",
+      "title": "SentinelAI: A Multi-Agent Framework for Structuring and Linking NG9-1-1 Emergency Incident Data"
     }
   ],
   "edges": [
@@ -16215,6 +16235,16 @@
     {
       "from": "72f9b984-8c36-4b00-a5cd-8257b724bd05",
       "to": "/home/ubuntu/.openclaw/workspace/apps/apple-says-no-one-using-lockdown-mode-has-been-hac.py",
+      "type": "produced"
+    },
+    {
+      "from": "baedc6b1-3360-4aa4-be7b-cc77a97b3318",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-resisting-humanization:-ethical-front-end-design-choices-in-ai-for-sensitive-con.md",
+      "type": "produced"
+    },
+    {
+      "from": "d57f9ecf-b647-4129-acfd-dc95450a959b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/sentinelai_-a-multi-agent-framework-for-structurin.py",
       "type": "produced"
     }
   ]
