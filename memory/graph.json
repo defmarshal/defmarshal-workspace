@@ -12454,6 +12454,46 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/sentinelai_-a-multi-agent-framework-for-structurin.py",
       "type": "app",
       "title": "SentinelAI: A Multi-Agent Framework for Structuring and Linking NG9-1-1 Emergency Incident Data"
+    },
+    {
+      "id": "80a14cb5-d06c-457c-9772-b9057a9d08fa",
+      "type": "seed",
+      "title": "How Far Are Vision-Language Models from Constructing the Real World? A Benchmark for Physical Generative Reasoning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-how-far-are-vision-language-models-from-constructing-the-real-world?-a-benchmark-for-physical-generative-reasoning.md",
+      "type": "output",
+      "title": "How Far Are Vision-Language Models from Constructing the Real World? A Benchmark for Physical Generative Reasoning"
+    },
+    {
+      "id": "cca93028-c6cd-49a5-97a6-f28d12f9ad82",
+      "type": "seed",
+      "title": "When Consistency Becomes Bias: Interviewer Effects in Semi-Structured Clinical Interviews"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-when-consistency-becomes-bias:-interviewer-effects-in-semi-structured-clinical-interviews.md",
+      "type": "output",
+      "title": "When Consistency Becomes Bias: Interviewer Effects in Semi-Structured Clinical Interviews"
+    },
+    {
+      "id": "615841eb-38fa-4436-b53c-3bdfc0a1b0ed",
+      "type": "seed",
+      "title": "Demystifying When Pruning Works via Representation Hierarchies"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-demystifying-when-pruning-works-via-representation-hierarchies.md",
+      "type": "content",
+      "title": "Demystifying When Pruning Works via Representation Hierarchies"
+    },
+    {
+      "id": "bb3aae08-01ea-432b-96b9-b545903b5525",
+      "type": "seed",
+      "title": "Fine-Tuning A Large Language Model for Systematic Review Screening"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/fine-tuning-a-large-language-model-for-systematic-.py",
+      "type": "app",
+      "title": "Fine-Tuning A Large Language Model for Systematic Review Screening"
     }
   ],
   "edges": [
@@ -16245,6 +16285,26 @@
     {
       "from": "d57f9ecf-b647-4129-acfd-dc95450a959b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/sentinelai_-a-multi-agent-framework-for-structurin.py",
+      "type": "produced"
+    },
+    {
+      "from": "80a14cb5-d06c-457c-9772-b9057a9d08fa",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-how-far-are-vision-language-models-from-constructing-the-real-world?-a-benchmark-for-physical-generative-reasoning.md",
+      "type": "produced"
+    },
+    {
+      "from": "cca93028-c6cd-49a5-97a6-f28d12f9ad82",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-when-consistency-becomes-bias:-interviewer-effects-in-semi-structured-clinical-interviews.md",
+      "type": "produced"
+    },
+    {
+      "from": "615841eb-38fa-4436-b53c-3bdfc0a1b0ed",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-demystifying-when-pruning-works-via-representation-hierarchies.md",
+      "type": "produced"
+    },
+    {
+      "from": "bb3aae08-01ea-432b-96b9-b545903b5525",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/fine-tuning-a-large-language-model-for-systematic-.py",
       "type": "produced"
     }
   ]
