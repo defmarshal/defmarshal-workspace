@@ -12249,6 +12249,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-autosam:-an-agentic-framework-for-automating-input-file-generation-for-the-sam-c.md",
       "type": "content",
       "title": "AutoSAM: an Agentic Framework for Automating Input File Generation for the SAM Code with Multi-Modal Retrieval-Augmented Generation"
+    },
+    {
+      "id": "4a55cb81-132e-4a3f-b9c8-3fa7d2e3a904",
+      "type": "seed",
+      "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-trust-as-monitoring:-evolutionary-dynamics-of-user-trust-and-ai-developer-behavi.md",
+      "type": "content",
+      "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/trust-as-monitoring_-evolutionary-dynamics-of-user-1.py",
+      "type": "app",
+      "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
     }
   ],
   "edges": [
@@ -15930,6 +15945,16 @@
     {
       "from": "4390451c-5ffd-45d7-9340-f6fa1cbb3e37",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-autosam:-an-agentic-framework-for-automating-input-file-generation-for-the-sam-c.md",
+      "type": "produced"
+    },
+    {
+      "from": "4a55cb81-132e-4a3f-b9c8-3fa7d2e3a904",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-trust-as-monitoring:-evolutionary-dynamics-of-user-trust-and-ai-developer-behavi.md",
+      "type": "produced"
+    },
+    {
+      "from": "4a55cb81-132e-4a3f-b9c8-3fa7d2e3a904",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/trust-as-monitoring_-evolutionary-dynamics-of-user-1.py",
       "type": "produced"
     }
   ]
