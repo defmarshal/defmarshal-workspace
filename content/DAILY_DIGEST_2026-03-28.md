@@ -1,12 +1,12 @@
-# Daily Digest — March 28, 2026 (Evening Update)
+# Daily Digest — March 28, 2026 (Night Update)
 
 ## System Status
 Operational after maintenance. All agents healthy. Memory search degraded (Voyage rate limits) but FTS fallback functional.
 
 ## Today's Research Summary
-- **Total reports generated (so far):** 17
-- **Domain coverage:** ✅ **ALL 5 DOMAINS COVERED** (AI=11, Banking=2, Anime=2, Tech=2, Security=1)
-- **Seed pool:** All domains have seeds; total unprocessed = 1303 (banking temporarily 0, replenishing)
+- **Total reports generated (so far):** 19
+- **Domain coverage:** ✅ **ALL 5 DOMAINS COVERED** (AI=12, Banking=2, Anime=2, Tech=2, Security=1)
+- **Seed pool:** All domains have seeds; total unprocessed = 1300 (banking temporarily 0, replenishing)
 
 ## Key Updates
 - vLLM RCE (CVE-2026-27893) critical alert — upgrade to 0.18.0+ immediately
@@ -20,7 +20,10 @@ Operational after maintenance. All agents healthy. Memory search degraded (Voyag
 - Critical situation report covering all domains
 - SK Hynix IPO could end "rammageddon" — memory chip supply shift
 - SoftBank $40B loan points to 2026 OpenAI IPO
-- New research on trust-as-monitoring and formal semantics for agentic protocols
+- Trust-as-monitoring and formal semantics for agentic protocols
+- Apple Lockdown Mode hack demonstration
+- Iranian hackers claim breach of FBI director Kash Patel's personal email
+- Rivian secures another $1B from Volkswagen
 
 ## Content Pipeline
 - Content gardener active; 8 content files published today
