@@ -12264,6 +12264,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/trust-as-monitoring_-evolutionary-dynamics-of-user-1.py",
       "type": "app",
       "title": "Trust as Monitoring: Evolutionary Dynamics of User Trust and AI Developer Behaviour"
+    },
+    {
+      "id": "5d0e29d8-c54b-4f2f-bcdd-adf48e2eefac",
+      "type": "seed",
+      "title": "Amplified Patch-Level Differential Privacy for Free via Random Cropping"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-amplified-patch-level-differential-privacy-for-free-via-random-cropping.md",
+      "type": "output",
+      "title": "Amplified Patch-Level Differential Privacy for Free via Random Cropping"
+    },
+    {
+      "id": "38dda764-bbae-4873-aecb-839b5dae4d2e",
+      "type": "seed",
+      "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
+      "type": "content",
+      "title": "Formal Semantics for Agentic Tool Protocols: A Process Calculus Approach"
     }
   ],
   "edges": [
@@ -15955,6 +15975,16 @@
     {
       "from": "4a55cb81-132e-4a3f-b9c8-3fa7d2e3a904",
       "to": "/home/ubuntu/.openclaw/workspace/apps/trust-as-monitoring_-evolutionary-dynamics-of-user-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "5d0e29d8-c54b-4f2f-bcdd-adf48e2eefac",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-28-amplified-patch-level-differential-privacy-for-free-via-random-cropping.md",
+      "type": "produced"
+    },
+    {
+      "from": "38dda764-bbae-4873-aecb-839b5dae4d2e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-28-formal-semantics-for-agentic-tool-protocols:-a-process-calculus-approach.md",
       "type": "produced"
     }
   ]
