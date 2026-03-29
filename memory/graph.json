@@ -12754,6 +12754,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-elon-musk\u2019s-last-co-founder-reportedly-leaves-xai.md",
       "type": "content",
       "title": "Elon Musk\u2019s last co-founder reportedly leaves xAI"
+    },
+    {
+      "id": "d9abb80d-7a50-49f7-93fe-1f1f56386de8",
+      "type": "seed",
+      "title": "These iPad apps will make you wish you had more free time"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-these-ipad-apps-will-make-you-wish-you-had-more-free-time.md",
+      "type": "content",
+      "title": "These iPad apps will make you wish you had more free time"
+    },
+    {
+      "id": "be213d13-20a0-4845-8ecc-29a99b47a5d0",
+      "type": "seed",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic__8217_s-claude-popularity-with-paying-co-1.py",
+      "type": "app",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
     }
   ],
   "edges": [
@@ -16700,6 +16720,16 @@
     {
       "from": "2708b01f-0601-4aa3-927d-63d1988ad56d",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-elon-musk\u2019s-last-co-founder-reportedly-leaves-xai.md",
+      "type": "produced"
+    },
+    {
+      "from": "d9abb80d-7a50-49f7-93fe-1f1f56386de8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-these-ipad-apps-will-make-you-wish-you-had-more-free-time.md",
+      "type": "produced"
+    },
+    {
+      "from": "be213d13-20a0-4845-8ecc-29a99b47a5d0",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic__8217_s-claude-popularity-with-paying-co-1.py",
       "type": "produced"
     }
   ]
