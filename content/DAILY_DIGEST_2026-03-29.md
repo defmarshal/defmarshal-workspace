@@ -1,12 +1,12 @@
-# Daily Digest — March 29, 2026 (Mid‑Morning Update)
+# Daily Digest — March 29, 2026 (Noon Update)
 
 ## System Status
 All agents healthy and running. Memory search functional via FTS fallback. All cron jobs active with staggered schedules.
 
 ## Today's Research so Far
-- **Reports generated:** 3
-- **Domain coverage:** AI=2, Tech=1, Banking=1
-- **Missing domains:** Anime, Security (seeds available for all)
+- **Reports generated:** 4
+- **Domain coverage:** AI=3, Tech=1, Security=1, Banking=1
+- **Missing domains:** Anime (seeds available)
 
 ## Notable Ongoing Alerts
 - vLLM RCE (CVE-2026-27893) — upgrade to 0.18.0+ immediately
@@ -15,7 +15,7 @@ All agents healthy and running. Memory search functional via FTS fallback. All c
 - Anime industry JACA self‑assessment deadline: March 31 (2 days)
 - EU AI Act extension proposal pending plenary vote
 - NemoClaw migration planning for May 1 cloud ban
-- SoftBank $40B loan signals potential OpenAI IPO 2026 (research added)
+- SoftBank $40B loan signals potential OpenAI IPO 2026
 
 ## Upcoming Deadlines
 - **Mar 31:** JACA self‑assessment submission
