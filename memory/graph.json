@@ -12699,6 +12699,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-elon-musk\u2019s-last-co-founder-reportedly-leaves-xai.md",
       "type": "content",
       "title": "Elon Musk\u2019s last co-founder reportedly leaves xAI"
+    },
+    {
+      "id": "ec502c5d-9b5b-4bb1-869d-28e85ea3d579",
+      "type": "seed",
+      "title": "These iPad apps will make you wish you had more free time"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-these-ipad-apps-will-make-you-wish-you-had-more-free-time.md",
+      "type": "output",
+      "title": "These iPad apps will make you wish you had more free time"
+    },
+    {
+      "id": "964547d6-9c62-4420-8d9e-66b63804243a",
+      "type": "seed",
+      "title": "Bluesky leans into AI with Attie, an app for building custom feeds"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-bluesky-leans-into-ai-with-attie,-an-app-for-building-custom-feeds.md",
+      "type": "content",
+      "title": "Bluesky leans into AI with Attie, an app for building custom feeds"
     }
   ],
   "edges": [
@@ -16615,6 +16635,16 @@
     {
       "from": "299aecee-1547-433c-b8a2-801131951d85",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-elon-musk\u2019s-last-co-founder-reportedly-leaves-xai.md",
+      "type": "produced"
+    },
+    {
+      "from": "ec502c5d-9b5b-4bb1-869d-28e85ea3d579",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-these-ipad-apps-will-make-you-wish-you-had-more-free-time.md",
+      "type": "produced"
+    },
+    {
+      "from": "964547d6-9c62-4420-8d9e-66b63804243a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-bluesky-leans-into-ai-with-attie,-an-app-for-building-custom-feeds.md",
       "type": "produced"
     }
   ]
