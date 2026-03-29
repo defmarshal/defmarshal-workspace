@@ -12814,6 +12814,56 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/whoop__8217_s-fitness-band-is-cool_-can-it-stay-co.py",
       "type": "app",
       "title": "Whoop&#8217;s fitness band is cool. Can it stay cool as the company grows?"
+    },
+    {
+      "id": "c619b3ac-daba-4a73-8b13-1583ec16ee06",
+      "type": "seed",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-anthropic&#8217;s-claude-popularity-with-paying-consumers-is-skyrocketing.md",
+      "type": "output",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
+    },
+    {
+      "id": "3a24e394-fb36-41fb-bb91-b42dde1b5a97",
+      "type": "seed",
+      "title": "What will power the grid in 2035? The race is wide open"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-what-will-power-the-grid-in-2035?-the-race-is-wide-open.md",
+      "type": "content",
+      "title": "What will power the grid in 2035? The race is wide open"
+    },
+    {
+      "id": "3befb22a-3e38-4483-8899-702c1eb760ae",
+      "type": "seed",
+      "title": "Let\u2019s take a look at the retro tech making a comeback"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-let\u2019s-take-a-look-at-the-retro-tech-making-a-comeback.md",
+      "type": "content",
+      "title": "Let\u2019s take a look at the retro tech making a comeback"
+    },
+    {
+      "id": "4dcb8e36-6d73-4ac1-aa5d-5dc174b4fdff",
+      "type": "seed",
+      "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-2.py",
+      "type": "app",
+      "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
+    },
+    {
+      "id": "90731637-f753-43eb-abcc-d0c63918c7cb",
+      "type": "seed",
+      "title": "Whoop&#8217;s fitness band is cool. Can it stay cool as the company grows?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-whoop&#8217;s-fitness-band-is-cool.-can-it-stay-cool-as-the-company-grows?.md",
+      "type": "output",
+      "title": "Whoop&#8217;s fitness band is cool. Can it stay cool as the company grows?"
     }
   ],
   "edges": [
@@ -16790,6 +16840,31 @@
     {
       "from": "840086ac-8cc4-48a1-b326-ae8243f087ea",
       "to": "/home/ubuntu/.openclaw/workspace/apps/whoop__8217_s-fitness-band-is-cool_-can-it-stay-co.py",
+      "type": "produced"
+    },
+    {
+      "from": "c619b3ac-daba-4a73-8b13-1583ec16ee06",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-anthropic&#8217;s-claude-popularity-with-paying-consumers-is-skyrocketing.md",
+      "type": "produced"
+    },
+    {
+      "from": "3a24e394-fb36-41fb-bb91-b42dde1b5a97",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-what-will-power-the-grid-in-2035?-the-race-is-wide-open.md",
+      "type": "produced"
+    },
+    {
+      "from": "3befb22a-3e38-4483-8899-702c1eb760ae",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-let\u2019s-take-a-look-at-the-retro-tech-making-a-comeback.md",
+      "type": "produced"
+    },
+    {
+      "from": "4dcb8e36-6d73-4ac1-aa5d-5dc174b4fdff",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-2.py",
+      "type": "produced"
+    },
+    {
+      "from": "90731637-f753-43eb-abcc-d0c63918c7cb",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-whoop&#8217;s-fitness-band-is-cool.-can-it-stay-cool-as-the-company-grows?.md",
       "type": "produced"
     }
   ]
