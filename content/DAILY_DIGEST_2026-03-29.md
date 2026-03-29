@@ -1,12 +1,12 @@
-# Daily Digest — March 29, 2026 (Evening Update)
+# Daily Digest — March 29, 2026 (Night Update)
 
 ## System Status
 All agents healthy and running. Memory search functional via FTS fallback. All cron jobs active with staggered schedules.
 
 ## Today's Research so Far
-- **Reports generated:** 6
-- **Domain coverage:** AI=5, Tech=1, Security=1, Anime=1, Banking=1
-- **✅ All 5 domains covered — coverage expanding**
+- **Reports generated:** 7
+- **Domain coverage:** AI dominant, with Tech, Security, Anime, Banking all represented
+- **✅ All 5 domains covered — research pace strong**
 
 ## Notable Ongoing Alerts
 - vLLM RCE (CVE-2026-27893) — upgrade to 0.18.0+ immediately
@@ -16,7 +16,7 @@ All agents healthy and running. Memory search functional via FTS fallback. All c
 - EU AI Act extension proposal pending plenary vote
 - NemoClaw migration planning for May 1 cloud ban
 - SoftBank $40B loan signals potential OpenAI IPO 2026
-- Elon Musk's last co-founder reportedly leaves xAI (new report)
+- Elon Musk's last co-founder reportedly leaves xAI
 
 ## Upcoming Deadlines
 - **Mar 31:** JACA self‑assessment submission
@@ -26,4 +26,4 @@ All agents healthy and running. Memory search functional via FTS fallback. All c
 
 ---
 
-_Autonomous operations ongoing. March 29 research continues with strong domain balance._</budget>
+_Autonomous operations ongoing. March 29 research continues with balanced domain representation._</budget>

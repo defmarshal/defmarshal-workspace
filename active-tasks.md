@@ -18,7 +18,7 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 13:01 UTC). Daily digest generated and current as of 08:00 UTC.
 
-**Email Sweep** (cron email-categorizer-cron): ✅ Completed. Last run: 2026-03-28 19:11 UTC (batch: 1 page, processed with Maton API). State persisted for next cycle.
+**Email Sweep** (cron email-categorizer-cron): ✅ Completed. Last run: 2026-03-29 13:18 UTC / 19:18 Bangkok (batch: 1 page, 100 emails processed with Maton API). State persisted for next cycle.
 
 **Daily Digest Status**: Published `content/DAILY_DIGEST_2026-03-28.md` covering:
 - System health post-maintenance
