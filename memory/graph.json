@@ -12594,6 +12594,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/stanford-study-outlines-dangers-of-asking-ai-chatb.py",
       "type": "app",
       "title": "Stanford study outlines dangers of asking AI chatbots for personal advice"
+    },
+    {
+      "id": "81cc9357-a9c0-4f86-bcf8-efebabfee3f9",
+      "type": "seed",
+      "title": "Elon Musk\u2019s last co-founder reportedly leaves xAI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/elon-musk_s-last-co-founder-reportedly-leaves-xai.py",
+      "type": "app",
+      "title": "Elon Musk\u2019s last co-founder reportedly leaves xAI"
     }
   ],
   "edges": [
@@ -16455,6 +16465,11 @@
     {
       "from": "73a3906d-1879-4734-b036-5b20a317f40d",
       "to": "/home/ubuntu/.openclaw/workspace/apps/stanford-study-outlines-dangers-of-asking-ai-chatb.py",
+      "type": "produced"
+    },
+    {
+      "from": "81cc9357-a9c0-4f86-bcf8-efebabfee3f9",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/elon-musk_s-last-co-founder-reportedly-leaves-xai.py",
       "type": "produced"
     }
   ]
