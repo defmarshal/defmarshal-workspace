@@ -4,7 +4,7 @@
 
 System status: **Operational with maintenance performed**. All cron jobs running. Disk usage 85%. Memory index temporarily degraded (Voyage rate limits), but FTS fallback active. Supervisor check passed after maintenance actions. All agents within normal parameters.
 
-**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-28 04:30 Bangkok — alerts triggered (disk, updates, memory); addressed via automatic maintenance. All subsystems green.
+**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-29 12:15 Bangkok / 05:15 UTC — all checks OK (gateway healthy, disk 85%, no APT updates pending, all cron jobs green). Memory index still degraded (Voyage rate limits), but FTS fallback active. Pending: system reboot to activate new kernel (from March 28 updates).
 
 **Harvester** (cron harvest-1773046808): ✅ Completed. Generated daily-harvest-2026-03-27.md with 50 seeds and 9 outputs. Telegram notification sent successfully. All systems nominal.
 

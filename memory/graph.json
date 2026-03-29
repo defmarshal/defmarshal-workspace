@@ -12624,6 +12624,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-these-ipad-apps-will-make-you-wish-you-had-more-free-time.md",
       "type": "content",
       "title": "These iPad apps will make you wish you had more free time"
+    },
+    {
+      "id": "98c549e2-7e00-4353-b9e7-8c9991d2a045",
+      "type": "seed",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic__8217_s-claude-popularity-with-paying-co.py",
+      "type": "app",
+      "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
+    },
+    {
+      "id": "8431fc34-a5e9-46e6-affa-1c6003e90085",
+      "type": "seed",
+      "title": "European Commission confirms cyberattack after hackers claim data breach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-european-commission-confirms-cyberattack-after-hackers-claim-data-breach.md",
+      "type": "output",
+      "title": "European Commission confirms cyberattack after hackers claim data breach"
     }
   ],
   "edges": [
@@ -16500,6 +16520,16 @@
     {
       "from": "428af8f1-1473-43aa-87c2-c69dbf1d5b51",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-these-ipad-apps-will-make-you-wish-you-had-more-free-time.md",
+      "type": "produced"
+    },
+    {
+      "from": "98c549e2-7e00-4353-b9e7-8c9991d2a045",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic__8217_s-claude-popularity-with-paying-co.py",
+      "type": "produced"
+    },
+    {
+      "from": "8431fc34-a5e9-46e6-affa-1c6003e90085",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-european-commission-confirms-cyberattack-after-hackers-claim-data-breach.md",
       "type": "produced"
     }
   ]
