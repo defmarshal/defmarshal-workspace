@@ -12774,6 +12774,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic__8217_s-claude-popularity-with-paying-co-1.py",
       "type": "app",
       "title": "Anthropic&#8217;s Claude popularity with paying consumers is skyrocketing"
+    },
+    {
+      "id": "59c193b9-ddc2-4c6c-8bbc-31b64bae3f04",
+      "type": "seed",
+      "title": "What will power the grid in 2035? The race is wide open"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-what-will-power-the-grid-in-2035?-the-race-is-wide-open.md",
+      "type": "output",
+      "title": "What will power the grid in 2035? The race is wide open"
+    },
+    {
+      "id": "8c8d08a5-d106-418d-8aa7-b44f5ad9e0d0",
+      "type": "seed",
+      "title": "Let\u2019s take a look at the retro tech making a comeback"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-let\u2019s-take-a-look-at-the-retro-tech-making-a-comeback.md",
+      "type": "content",
+      "title": "Let\u2019s take a look at the retro tech making a comeback"
+    },
+    {
+      "id": "f784c7fb-6774-4698-90cf-50c2107f187c",
+      "type": "seed",
+      "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-1.py",
+      "type": "app",
+      "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
     }
   ],
   "edges": [
@@ -16730,6 +16760,21 @@
     {
       "from": "be213d13-20a0-4845-8ecc-29a99b47a5d0",
       "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic__8217_s-claude-popularity-with-paying-co-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "59c193b9-ddc2-4c6c-8bbc-31b64bae3f04",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-what-will-power-the-grid-in-2035?-the-race-is-wide-open.md",
+      "type": "produced"
+    },
+    {
+      "from": "8c8d08a5-d106-418d-8aa7-b44f5ad9e0d0",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-let\u2019s-take-a-look-at-the-retro-tech-making-a-comeback.md",
+      "type": "produced"
+    },
+    {
+      "from": "f784c7fb-6774-4698-90cf-50c2107f187c",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-1.py",
       "type": "produced"
     }
   ]
