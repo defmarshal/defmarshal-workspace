@@ -12664,6 +12664,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-mark-zuckerberg-texted-elon-musk-to-offer-help-with-doge.md",
       "type": "content",
       "title": "Mark Zuckerberg texted Elon Musk to offer help with DOGE"
+    },
+    {
+      "id": "43cca319-a728-4bfd-b284-42ede227aaa2",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "output",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "85b041df-fd1a-44a2-9ff3-70b187d3e327",
+      "type": "seed",
+      "title": "Stanford study outlines dangers of asking AI chatbots for personal advice"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-stanford-study-outlines-dangers-of-asking-ai-chatbots-for-personal-advice.md",
+      "type": "content",
+      "title": "Stanford study outlines dangers of asking AI chatbots for personal advice"
     }
   ],
   "edges": [
@@ -16560,6 +16580,16 @@
     {
       "from": "427d7326-1a3a-4e42-b180-044ab3f230b0",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-mark-zuckerberg-texted-elon-musk-to-offer-help-with-doge.md",
+      "type": "produced"
+    },
+    {
+      "from": "43cca319-a728-4bfd-b284-42ede227aaa2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "produced"
+    },
+    {
+      "from": "85b041df-fd1a-44a2-9ff3-70b187d3e327",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-29-stanford-study-outlines-dangers-of-asking-ai-chatbots-for-personal-advice.md",
       "type": "produced"
     }
   ]
