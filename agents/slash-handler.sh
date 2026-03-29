@@ -16,7 +16,11 @@
 set -euo pipefail
 
 WORKSPACE="${WORKSPACE:-/home/ubuntu/.openclaw/workspace}"
-SESSION_ID="bcc62cdd-c612-4f74-8f20-559e10b3dad6"
+# Default fallback session ID and target (keep in sync with actual Telegram direct session)
+FALLBACK_SESSION_ID="043c9475-f0b9-4185-a840-fa29ae87eb98"
+FALLBACK_TARGET="952170974"
+SESSION_ID="$FALLBACK_SESSION_ID"
+TARGET_CHAT_ID="$FALLBACK_TARGET"
 SESSIONS_JSON="$HOME/.openclaw/agents/main/sessions/sessions.json"
 SESSIONS_DIR="$HOME/.openclaw/agents/main/sessions"
 STATE_FILE="$WORKSPACE/memory/.slash-handler-state.json"
@@ -24,7 +28,8 @@ LOG="$WORKSPACE/memory/slash-handler.log"
 
 log() { echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] $*" >> "$LOG"; }
 
-# ── Resolve the actual session JSONL file for the Telegram direct session ──
+# ── Resolve the actual session JSONL file and target chat ID for Telegram direct ──
+# Prints two lines: sessionId, then target (chat ID extracted from session key)
 resolve_telegram_session() {
   python3 - <<'PYEOF'
 import json, os, sys
@@ -32,10 +37,13 @@ sessions_json = os.path.expanduser("~/.openclaw/agents/main/sessions/sessions.js
 try:
     with open(sessions_json) as f:
         sessions = json.load(f)
-    # Look for a Telegram direct session key
     for key, val in sessions.items():
         if 'telegram' in key.lower() and 'direct' in key.lower():
-            print(val.get('sessionId', ''))
+            session_id = val.get('sessionId', '')
+            # Extract target from key pattern: ...:direct:<target>
+            target = key.rsplit(':', 1)[-1] if ':' in key else ''
+            print(session_id)
+            print(target)
             sys.exit(0)
 except Exception as e:
     pass
@@ -202,14 +210,15 @@ EOF
 # ── Deliver a response to Telegram ──
 deliver() {
   local msg="$1"
-  # Truncate to safe length
+  # Truncate to safe length (Telegram limit ~4096, keep margin)
   if [ ${#msg} -gt 3800 ]; then
     msg="${msg:0:3800}…"
   fi
-  openclaw agent \
-    --session-id "$SESSION_ID" \
+  # Send directly via channel, no agent turn
+  openclaw message send \
+    --channel telegram \
+    --target "$TARGET_CHAT_ID" \
     --message "$msg" \
-    --deliver \
     2>>"$LOG" || true
 }
 
@@ -217,14 +226,24 @@ deliver() {
 main() {
   log "Slash handler running"
 
-  # Resolve session file
-  local session_id
-  session_id=$(resolve_telegram_session 2>/dev/null || echo "$SESSION_ID")
+  # Resolve session file and Telegram target chat ID
+  local resolved
+  resolved=$(resolve_telegram_session 2>/dev/null) || true
+  if [ -n "$resolved" ]; then
+    session_id=$(echo "$resolved" | sed -n '1p')
+    target_chat=$(echo "$resolved" | sed -n '2p')
+  else
+    session_id="$FALLBACK_SESSION_ID"
+    target_chat="$FALLBACK_TARGET"
+  fi
+  # Update globals used by deliver()
+  SESSION_ID="$session_id"
+  TARGET_CHAT_ID="$target_chat"
   local session_file="$SESSIONS_DIR/${session_id}.jsonl"
 
   if [ ! -f "$session_file" ]; then
-    # Try the hardcoded session ID as fallback
-    session_file="$SESSIONS_DIR/${SESSION_ID}.jsonl"
+    log "ERROR: session file not found: $session_file"
+    exit 0
   fi
 
   if [ ! -f "$session_file" ]; then
