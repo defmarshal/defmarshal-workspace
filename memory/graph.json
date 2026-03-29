@@ -12554,6 +12554,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv.py",
       "type": "app",
       "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
+    },
+    {
+      "id": "8fa54205-72dd-4681-815e-2d92d09701af",
+      "type": "seed",
+      "title": "Bluesky leans into AI with Attie, an app for building custom feeds"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-bluesky-leans-into-ai-with-attie,-an-app-for-building-custom-feeds.md",
+      "type": "output",
+      "title": "Bluesky leans into AI with Attie, an app for building custom feeds"
+    },
+    {
+      "id": "60c5d74c-2d4e-4d89-a512-e623d909fc67",
+      "type": "seed",
+      "title": "Let\u2019s take a look at the retro tech making a comeback"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-let\u2019s-take-a-look-at-the-retro-tech-making-a-comeback.md",
+      "type": "output",
+      "title": "Let\u2019s take a look at the retro tech making a comeback"
     }
   ],
   "edges": [
@@ -16395,6 +16415,16 @@
     {
       "from": "873f59f7-ad33-4ebd-bbbb-a5527cc779fb",
       "to": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv.py",
+      "type": "produced"
+    },
+    {
+      "from": "8fa54205-72dd-4681-815e-2d92d09701af",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-bluesky-leans-into-ai-with-attie,-an-app-for-building-custom-feeds.md",
+      "type": "produced"
+    },
+    {
+      "from": "60c5d74c-2d4e-4d89-a512-e623d909fc67",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-let\u2019s-take-a-look-at-the-retro-tech-making-a-comeback.md",
       "type": "produced"
     }
   ]
