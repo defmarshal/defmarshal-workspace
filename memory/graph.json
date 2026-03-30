@@ -12894,6 +12894,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-amplified-patch-level-differential-privacy-for-free-via-random-cropping.md",
       "type": "output",
       "title": "Amplified Patch-Level Differential Privacy for Free via Random Cropping"
+    },
+    {
+      "id": "098b3424-a5ec-4fc9-90ea-145a3a7e775b",
+      "type": "seed",
+      "title": "Whoop&#8217;s fitness band is cool. Can it stay cool as the company grows?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-whoop&#8217;s-fitness-band-is-cool.-can-it-stay-cool-as-the-company-grows?.md",
+      "type": "output",
+      "title": "Whoop&#8217;s fitness band is cool. Can it stay cool as the company grows?"
+    },
+    {
+      "id": "5d2dd614-e7d2-4dc8-86d0-e81f4f2b9be8",
+      "type": "seed",
+      "title": "Whoop has LeBron &#8211; now it wants your mom"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-whoop-has-lebron-&#8211;-now-it-wants-your-mom.md",
+      "type": "content",
+      "title": "Whoop has LeBron &#8211; now it wants your mom"
+    },
+    {
+      "id": "185969be-8f5e-41f5-9398-f5d48a17a270",
+      "type": "seed",
+      "title": "Physical Intelligence is reportedly in talks to raise $1 billion, again"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra-1.py",
+      "type": "app",
+      "title": "Physical Intelligence is reportedly in talks to raise $1 billion, again"
     }
   ],
   "edges": [
@@ -16910,6 +16940,21 @@
     {
       "from": "69c3bda0-fb5e-4a53-8f7d-559d9eb910dc",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-amplified-patch-level-differential-privacy-for-free-via-random-cropping.md",
+      "type": "produced"
+    },
+    {
+      "from": "098b3424-a5ec-4fc9-90ea-145a3a7e775b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-whoop&#8217;s-fitness-band-is-cool.-can-it-stay-cool-as-the-company-grows?.md",
+      "type": "produced"
+    },
+    {
+      "from": "5d2dd614-e7d2-4dc8-86d0-e81f4f2b9be8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-whoop-has-lebron-&#8211;-now-it-wants-your-mom.md",
+      "type": "produced"
+    },
+    {
+      "from": "185969be-8f5e-41f5-9398-f5d48a17a270",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra-1.py",
       "type": "produced"
     }
   ]
