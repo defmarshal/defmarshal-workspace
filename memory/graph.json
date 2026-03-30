@@ -13069,6 +13069,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-besafe-bench:-unveiling-behavioral-safety-risks-of-situated-agents-in-functional.md",
       "type": "content",
       "title": "BeSafe-Bench: Unveiling Behavioral Safety Risks of Situated Agents in Functional Environments"
+    },
+    {
+      "id": "cea0ba0a-0205-44b1-a6d2-8c4dc0c4c608",
+      "type": "seed",
+      "title": "AutoB2G: A Large Language Model-Driven Agentic Framework For Automated Building-Grid Co-Simulation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-autob2g:-a-large-language-model-driven-agentic-framework-for-automated-building-grid-co-simulation.md",
+      "type": "output",
+      "title": "AutoB2G: A Large Language Model-Driven Agentic Framework For Automated Building-Grid Co-Simulation"
     }
   ],
   "edges": [
@@ -17175,6 +17185,11 @@
     {
       "from": "71b270bd-1d5a-4949-b6e4-a89c1be5e39b",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-besafe-bench:-unveiling-behavioral-safety-risks-of-situated-agents-in-functional.md",
+      "type": "produced"
+    },
+    {
+      "from": "cea0ba0a-0205-44b1-a6d2-8c4dc0c4c608",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-autob2g:-a-large-language-model-driven-agentic-framework-for-automated-building-grid-co-simulation.md",
       "type": "produced"
     }
   ]
