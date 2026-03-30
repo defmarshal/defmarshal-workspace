@@ -12984,6 +12984,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-logsigma-at-semeval-2026-task-3:-uncertainty-weighted-multitask-learning-for-dimensional-aspect-based-sentiment-analysis.md",
       "type": "output",
       "title": "LogSigma at SemEval-2026 Task 3: Uncertainty-Weighted Multitask Learning for Dimensional Aspect-Based Sentiment Analysis"
+    },
+    {
+      "id": "afff5f2e-7ba2-4f74-9c28-023e7da472ee",
+      "type": "seed",
+      "title": "Estimating near-verbatim extraction risk in language models with decoding-constrained beam search"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-estimating-near-verbatim-extraction-risk-in-language-models-with-decoding-constr.md",
+      "type": "content",
+      "title": "Estimating near-verbatim extraction risk in language models with decoding-constrained beam search"
+    },
+    {
+      "id": "fdd6eb96-bc73-42b1-9642-d8d0e457464e",
+      "type": "seed",
+      "title": "Toward domain-specific machine translation and quality estimation systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/toward-domain-specific-machine-translation-and-qua.py",
+      "type": "app",
+      "title": "Toward domain-specific machine translation and quality estimation systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-estimating-near-verbatim-extraction-risk-in-language-models-with-decoding-constrained-beam-search.md",
+      "type": "output",
+      "title": "Estimating near-verbatim extraction risk in language models with decoding-constrained beam search"
     }
   ],
   "edges": [
@@ -17045,6 +17070,21 @@
     {
       "from": "34a727f9-4bcf-4d23-946f-e05d55e803f2",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-logsigma-at-semeval-2026-task-3:-uncertainty-weighted-multitask-learning-for-dimensional-aspect-based-sentiment-analysis.md",
+      "type": "produced"
+    },
+    {
+      "from": "afff5f2e-7ba2-4f74-9c28-023e7da472ee",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-estimating-near-verbatim-extraction-risk-in-language-models-with-decoding-constr.md",
+      "type": "produced"
+    },
+    {
+      "from": "fdd6eb96-bc73-42b1-9642-d8d0e457464e",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/toward-domain-specific-machine-translation-and-qua.py",
+      "type": "produced"
+    },
+    {
+      "from": "afff5f2e-7ba2-4f74-9c28-023e7da472ee",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-estimating-near-verbatim-extraction-risk-in-language-models-with-decoding-constrained-beam-search.md",
       "type": "produced"
     }
   ]
