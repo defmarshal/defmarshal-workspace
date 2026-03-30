@@ -4,7 +4,7 @@
 
 System status: **Fully operational**. All cron jobs running smoothly. Disk usage ~83-85%. Memory index temporarily degraded (Voyage rate limits), but FTS fallback active. Supervisor confirms all systems healthy. All agents within normal parameters.
 
-**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-30 01:30 Bangkok / 01:30 UTC — all checks OK (gateway healthy, disk ~84%, cron jobs green). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
+**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-30 12:37 Bangkok / 05:37 UTC — all checks OK (gateway healthy, disk ~84%, cron jobs green). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
 
 **Meta-Summary Cron** (meta-summary-cron): ✅ Healthy. Executed at 2026-03-30 01:02 UTC / 08:02 Bangkok; runtime 273s? (status: ok). Telegram summary sent successfully with system metrics.
 
