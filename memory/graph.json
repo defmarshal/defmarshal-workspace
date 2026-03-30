@@ -13039,6 +13039,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/experiential-reflective-learning-for-self-improvin.py",
       "type": "app",
       "title": "Experiential Reflective Learning for Self-Improving LLM Agents"
+    },
+    {
+      "id": "56876931-8058-4954-849d-69bf938f1e7f",
+      "type": "seed",
+      "title": "Learning Mesh-Free Discrete Differential Operators with Self-Supervised Graph Neural Networks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-learning-mesh-free-discrete-differential-operators-with-self-supervised-graph-ne.md",
+      "type": "content",
+      "title": "Learning Mesh-Free Discrete Differential Operators with Self-Supervised Graph Neural Networks"
+    },
+    {
+      "id": "0f6b95fc-051f-49ed-85ab-263d7edcdad7",
+      "type": "seed",
+      "title": "Physics-Informed Neural Network Digital Twin for Dynamic Tray-Wise Modeling of Distillation Columns under Transient Operating Conditions"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/physics-informed-neural-network-digital-twin-for-d.py",
+      "type": "app",
+      "title": "Physics-Informed Neural Network Digital Twin for Dynamic Tray-Wise Modeling of Distillation Columns under Transient Operating Conditions"
     }
   ],
   "edges": [
@@ -17130,6 +17150,16 @@
     {
       "from": "07129481-134d-4486-9012-462e3f5b2c75",
       "to": "/home/ubuntu/.openclaw/workspace/apps/experiential-reflective-learning-for-self-improvin.py",
+      "type": "produced"
+    },
+    {
+      "from": "56876931-8058-4954-849d-69bf938f1e7f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-learning-mesh-free-discrete-differential-operators-with-self-supervised-graph-ne.md",
+      "type": "produced"
+    },
+    {
+      "from": "0f6b95fc-051f-49ed-85ab-263d7edcdad7",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/physics-informed-neural-network-digital-twin-for-d.py",
       "type": "produced"
     }
   ]
