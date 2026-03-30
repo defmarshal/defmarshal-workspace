@@ -13009,6 +13009,36 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-estimating-near-verbatim-extraction-risk-in-language-models-with-decoding-constrained-beam-search.md",
       "type": "output",
       "title": "Estimating near-verbatim extraction risk in language models with decoding-constrained beam search"
+    },
+    {
+      "id": "9cb0e05e-9b51-4393-a83b-5534bc5041b8",
+      "type": "seed",
+      "title": "DyMRL: Dynamic Multispace Representation Learning for Multimodal Event Forecasting in Knowledge Graph"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-dymrl:-dynamic-multispace-representation-learning-for-multimodal-event-forecasting-in-knowledge-graph.md",
+      "type": "output",
+      "title": "DyMRL: Dynamic Multispace Representation Learning for Multimodal Event Forecasting in Knowledge Graph"
+    },
+    {
+      "id": "417a40db-d4cd-4918-9431-8bc29df0c327",
+      "type": "seed",
+      "title": "How unconstrained machine-learning models learn physical symmetries"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-how-unconstrained-machine-learning-models-learn-physical-symmetries.md",
+      "type": "content",
+      "title": "How unconstrained machine-learning models learn physical symmetries"
+    },
+    {
+      "id": "07129481-134d-4486-9012-462e3f5b2c75",
+      "type": "seed",
+      "title": "Experiential Reflective Learning for Self-Improving LLM Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/experiential-reflective-learning-for-self-improvin.py",
+      "type": "app",
+      "title": "Experiential Reflective Learning for Self-Improving LLM Agents"
     }
   ],
   "edges": [
@@ -17085,6 +17115,21 @@
     {
       "from": "afff5f2e-7ba2-4f74-9c28-023e7da472ee",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-estimating-near-verbatim-extraction-risk-in-language-models-with-decoding-constrained-beam-search.md",
+      "type": "produced"
+    },
+    {
+      "from": "9cb0e05e-9b51-4393-a83b-5534bc5041b8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-dymrl:-dynamic-multispace-representation-learning-for-multimodal-event-forecasting-in-knowledge-graph.md",
+      "type": "produced"
+    },
+    {
+      "from": "417a40db-d4cd-4918-9431-8bc29df0c327",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-how-unconstrained-machine-learning-models-learn-physical-symmetries.md",
+      "type": "produced"
+    },
+    {
+      "from": "07129481-134d-4486-9012-462e3f5b2c75",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/experiential-reflective-learning-for-self-improvin.py",
       "type": "produced"
     }
   ]
