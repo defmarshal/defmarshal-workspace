@@ -12924,6 +12924,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra-1.py",
       "type": "app",
       "title": "Physical Intelligence is reportedly in talks to raise $1 billion, again"
+    },
+    {
+      "id": "a13aeda4-9305-4682-aac6-8f2618754798",
+      "type": "seed",
+      "title": "Memory chip giant SK hynix could help end &#8216;RAMmageddon&#8217; with blockbuster US IPO"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-memory-chip-giant-sk-hynix-could-help-end-&#8216;rammageddon&#8217;-with-blockbu.md",
+      "type": "content",
+      "title": "Memory chip giant SK hynix could help end &#8216;RAMmageddon&#8217; with blockbuster US IPO"
     }
   ],
   "edges": [
@@ -16955,6 +16965,11 @@
     {
       "from": "185969be-8f5e-41f5-9398-f5d48a17a270",
       "to": "/home/ubuntu/.openclaw/workspace/apps/physical-intelligence-is-reportedly-in-talks-to-ra-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "a13aeda4-9305-4682-aac6-8f2618754798",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-memory-chip-giant-sk-hynix-could-help-end-&#8216;rammageddon&#8217;-with-blockbu.md",
       "type": "produced"
     }
   ]
