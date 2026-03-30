@@ -1,10 +1,12 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-29 19:45 Bangkok / 2026-03-29 12:45 UTC**
+**Current active tasks - UPDATED 2026-03-30 08:09 Bangkok / 2026-03-30 01:09 UTC**
 
-System status: **Fully operational**. All cron jobs running smoothly. Disk usage 84%. Memory index temporarily degraded (Voyage rate limits), but FTS fallback active. Supervisor confirms all systems healthy. All agents within normal parameters.
+System status: **Fully operational**. All cron jobs running smoothly. Disk usage ~83-85%. Memory index temporarily degraded (Voyage rate limits), but FTS fallback active. Supervisor confirms all systems healthy. All agents within normal parameters.
 
-**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-29 19:33 Bangkok / 12:33 UTC — all checks OK (gateway healthy, disk 84%, 0 APT updates pending, all cron jobs green). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
+**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-30 01:30 Bangkok / 01:30 UTC — all checks OK (gateway healthy, disk ~84%, cron jobs green). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
+
+**Meta-Summary Cron** (meta-summary-cron): ✅ Healthy. Executed at 2026-03-30 01:02 UTC / 08:02 Bangkok; runtime 273s? (status: ok). Telegram summary sent successfully with system metrics.
 
 **Harvester** (cron harvest-1773046808): ✅ Completed. Generated daily-harvest-2026-03-27.md with 50 seeds and 9 outputs. Telegram notification sent successfully. All systems nominal.
 
@@ -12,24 +14,25 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Research Gardener** (cron research-gardener-1773046574): ✅ Active. Last cron run: 05:10 UTC, manually verified at 13:20 UTC. Generated 672+ reports; operating normally. Domain balancing fallback due to unknown seed domains. TAVILY_API_KEY missing (web search disabled).
 
-
-
-
-
 **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 13:01 UTC). Daily digest generated and current as of 08:00 UTC.
 
 **Email Sweep** (cron email-categorizer-cron): ✅ Completed. Last run: 2026-03-29 13:18 UTC / 19:18 Bangkok (batch: 1 page, 100 emails processed with Maton API). State persisted for next cycle.
 
-**Daily Digest Status**: Published `content/DAILY_DIGEST_2026-03-28.md` covering:
-- System health post-maintenance
-- Langflow RCE active exploitation
-- MCP patch progress (CVE-2026-26118 patched, CVE-2025-49596 still urgent)
-- JACA 6-day deadline countdown
-- EU AI Act extension proposal (101-9 committee vote)
-- NemoClaw alpha migration readiness
-- All new research reports published
-
-**No specific anime summaries or tech writeups assigned** — autonomous operation ongoing.
+**Cron Status Summary (2026-03-30 01:09 UTC):**
+```
+research-gardener-cron    ok
+content-gardener-cron     ok
+meta-summary-cron         ok
+code-gardener-cron        ok
+email-categorizer-cron    ok
+telegram-slash-handler    ok
+agent-manager-cron        ok
+cron-supervisor-cron      ok
+dev-agent-cron            scheduled 02:00 Bangkok
+content-agent-cron        scheduled 02:00 Bangkok
+research-agent-cron       scheduled 02:00 Bangkok
+notifier-cron             scheduled 02:02 UTC
+```
 
 **Shared Seed Pool**:
 - Total seeds: 1468
