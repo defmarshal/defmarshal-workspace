@@ -12884,6 +12884,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-3.py",
       "type": "app",
       "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
+    },
+    {
+      "id": "69c3bda0-fb5e-4a53-8f7d-559d9eb910dc",
+      "type": "seed",
+      "title": "Amplified Patch-Level Differential Privacy for Free via Random Cropping"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-amplified-patch-level-differential-privacy-for-free-via-random-cropping.md",
+      "type": "output",
+      "title": "Amplified Patch-Level Differential Privacy for Free via Random Cropping"
     }
   ],
   "edges": [
@@ -16895,6 +16905,11 @@
     {
       "from": "6f06eddf-0559-4f57-ac32-76654b843b6b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-3.py",
+      "type": "produced"
+    },
+    {
+      "from": "69c3bda0-fb5e-4a53-8f7d-559d9eb910dc",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-amplified-patch-level-differential-privacy-for-free-via-random-cropping.md",
       "type": "produced"
     }
   ]
