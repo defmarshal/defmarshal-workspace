@@ -12964,6 +12964,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-synthetic-rewriting-as-a-quality-multiplier:-evidence-from-portuguese-continued-.md",
       "type": "content",
       "title": "Synthetic Rewriting as a Quality Multiplier: Evidence from Portuguese Continued Pretraining"
+    },
+    {
+      "id": "2e756c39-9295-4597-99ad-ced769da7261",
+      "type": "seed",
+      "title": "Prune as You Generate: Online Rollout Pruning for Faster and Better RLVR"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-prune-as-you-generate:-online-rollout-pruning-for-faster-and-better-rlvr.md",
+      "type": "content",
+      "title": "Prune as You Generate: Online Rollout Pruning for Faster and Better RLVR"
+    },
+    {
+      "id": "34a727f9-4bcf-4d23-946f-e05d55e803f2",
+      "type": "seed",
+      "title": "LogSigma at SemEval-2026 Task 3: Uncertainty-Weighted Multitask Learning for Dimensional Aspect-Based Sentiment Analysis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-logsigma-at-semeval-2026-task-3:-uncertainty-weighted-multitask-learning-for-dimensional-aspect-based-sentiment-analysis.md",
+      "type": "output",
+      "title": "LogSigma at SemEval-2026 Task 3: Uncertainty-Weighted Multitask Learning for Dimensional Aspect-Based Sentiment Analysis"
     }
   ],
   "edges": [
@@ -17015,6 +17035,16 @@
     {
       "from": "4769b09a-37e4-4ea7-ab90-9c7cbbf24786",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-synthetic-rewriting-as-a-quality-multiplier:-evidence-from-portuguese-continued-.md",
+      "type": "produced"
+    },
+    {
+      "from": "2e756c39-9295-4597-99ad-ced769da7261",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-prune-as-you-generate:-online-rollout-pruning-for-faster-and-better-rlvr.md",
+      "type": "produced"
+    },
+    {
+      "from": "34a727f9-4bcf-4d23-946f-e05d55e803f2",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-logsigma-at-semeval-2026-task-3:-uncertainty-weighted-multitask-learning-for-dimensional-aspect-based-sentiment-analysis.md",
       "type": "produced"
     }
   ]
