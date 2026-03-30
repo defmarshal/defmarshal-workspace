@@ -1,10 +1,10 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-03-30 08:09 Bangkok / 2026-03-30 01:09 UTC**
+**Current active tasks - UPDATED 2026-03-30 23:31 Bangkok / 2026-03-30 16:31 UTC**
 
-System status: **Fully operational**. All cron jobs running smoothly. Disk usage ~83-85%. Memory index temporarily degraded (Voyage rate limits), but FTS fallback active. Supervisor confirms all systems healthy. All agents within normal parameters.
+System status: **Fully operational**. All cron jobs running smoothly. Disk usage ~84%. Memory index temporarily degraded (Voyage rate limits), but FTS fallback active. Supervisor confirms all systems healthy. All agents within normal parameters.
 
-**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-30 12:37 Bangkok / 05:37 UTC — all checks OK (gateway healthy, disk ~84%, cron jobs green). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
+**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-30 16:08 UTC / 23:08 Bangkok — all checks OK (gateway healthy, disk 84%, cron jobs green, 12 updates pending, git: 3 changed + 2 untracked). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
 
 **Meta-Summary Cron** (meta-summary-cron): ✅ Healthy. Executed at 2026-03-30 01:02 UTC / 08:02 Bangkok; runtime 273s? (status: ok). Telegram summary sent successfully with system metrics.
 

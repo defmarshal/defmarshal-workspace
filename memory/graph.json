@@ -13114,6 +13114,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/aira_2_-overcoming-bottlenecks-in-ai-research-agen.py",
       "type": "app",
       "title": "AIRA_2: Overcoming Bottlenecks in AI Research Agents"
+    },
+    {
+      "id": "b2c27fb8-316a-4c3e-aadf-64e268d8e9f9",
+      "type": "seed",
+      "title": "CADSmith: Multi-Agent CAD Generation with Programmatic Geometric Validation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-cadsmith:-multi-agent-cad-generation-with-programmatic-geometric-validation.md",
+      "type": "content",
+      "title": "CADSmith: Multi-Agent CAD Generation with Programmatic Geometric Validation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-cadsmith:-multi-agent-cad-generation-with-programmatic-geometric-validation.md",
+      "type": "output",
+      "title": "CADSmith: Multi-Agent CAD Generation with Programmatic Geometric Validation"
+    },
+    {
+      "id": "1d8a0b96-cac5-48ca-98fe-f6951a05095b",
+      "type": "seed",
+      "title": "Stabilizing Rubric Integration Training via Decoupled Advantage Normalization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/stabilizing-rubric-integration-training-via-decoup.py",
+      "type": "app",
+      "title": "Stabilizing Rubric Integration Training via Decoupled Advantage Normalization"
     }
   ],
   "edges": [
@@ -17245,6 +17270,21 @@
     {
       "from": "ecd5fb89-1402-4f42-9129-39779621460f",
       "to": "/home/ubuntu/.openclaw/workspace/apps/aira_2_-overcoming-bottlenecks-in-ai-research-agen.py",
+      "type": "produced"
+    },
+    {
+      "from": "b2c27fb8-316a-4c3e-aadf-64e268d8e9f9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-cadsmith:-multi-agent-cad-generation-with-programmatic-geometric-validation.md",
+      "type": "produced"
+    },
+    {
+      "from": "b2c27fb8-316a-4c3e-aadf-64e268d8e9f9",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-cadsmith:-multi-agent-cad-generation-with-programmatic-geometric-validation.md",
+      "type": "produced"
+    },
+    {
+      "from": "1d8a0b96-cac5-48ca-98fe-f6951a05095b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/stabilizing-rubric-integration-training-via-decoup.py",
       "type": "produced"
     }
   ]
