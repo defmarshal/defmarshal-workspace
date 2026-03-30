@@ -13079,6 +13079,21 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-autob2g:-a-large-language-model-driven-agentic-framework-for-automated-building-grid-co-simulation.md",
       "type": "output",
       "title": "AutoB2G: A Large Language Model-Driven Agentic Framework For Automated Building-Grid Co-Simulation"
+    },
+    {
+      "id": "d2bfded0-252f-402e-8969-49bef61a2295",
+      "type": "seed",
+      "title": "Semi-Automated Knowledge Engineering and Process Mapping for Total Airport Management"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/semi-automated-knowledge-engineering-and-process-m.py",
+      "type": "app",
+      "title": "Semi-Automated Knowledge Engineering and Process Mapping for Total Airport Management"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-semi-automated-knowledge-engineering-and-process-mapping-for-total-airport-management.md",
+      "type": "output",
+      "title": "Semi-Automated Knowledge Engineering and Process Mapping for Total Airport Management"
     }
   ],
   "edges": [
@@ -17190,6 +17205,16 @@
     {
       "from": "cea0ba0a-0205-44b1-a6d2-8c4dc0c4c608",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-autob2g:-a-large-language-model-driven-agentic-framework-for-automated-building-grid-co-simulation.md",
+      "type": "produced"
+    },
+    {
+      "from": "d2bfded0-252f-402e-8969-49bef61a2295",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/semi-automated-knowledge-engineering-and-process-m.py",
+      "type": "produced"
+    },
+    {
+      "from": "d2bfded0-252f-402e-8969-49bef61a2295",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-semi-automated-knowledge-engineering-and-process-mapping-for-total-airport-management.md",
       "type": "produced"
     }
   ]
