@@ -13104,6 +13104,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-guide:-resolving-domain-bias-in-gui-agents-through-real-time-web-video-retrieval-and-plug-and-play-annotation.md",
       "type": "output",
       "title": "GUIDE: Resolving Domain Bias in GUI Agents through Real-Time Web Video Retrieval and Plug-and-Play Annotation"
+    },
+    {
+      "id": "ecd5fb89-1402-4f42-9129-39779621460f",
+      "type": "seed",
+      "title": "AIRA_2: Overcoming Bottlenecks in AI Research Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/aira_2_-overcoming-bottlenecks-in-ai-research-agen.py",
+      "type": "app",
+      "title": "AIRA_2: Overcoming Bottlenecks in AI Research Agents"
     }
   ],
   "edges": [
@@ -17230,6 +17240,11 @@
     {
       "from": "d724c1e6-f514-4a7d-8128-1513cc94904b",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-guide:-resolving-domain-bias-in-gui-agents-through-real-time-web-video-retrieval-and-plug-and-play-annotation.md",
+      "type": "produced"
+    },
+    {
+      "from": "ecd5fb89-1402-4f42-9129-39779621460f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/aira_2_-overcoming-bottlenecks-in-ai-research-agen.py",
       "type": "produced"
     }
   ]
