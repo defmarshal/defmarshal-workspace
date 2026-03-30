@@ -13094,6 +13094,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-semi-automated-knowledge-engineering-and-process-mapping-for-total-airport-management.md",
       "type": "output",
       "title": "Semi-Automated Knowledge Engineering and Process Mapping for Total Airport Management"
+    },
+    {
+      "id": "d724c1e6-f514-4a7d-8128-1513cc94904b",
+      "type": "seed",
+      "title": "GUIDE: Resolving Domain Bias in GUI Agents through Real-Time Web Video Retrieval and Plug-and-Play Annotation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-guide:-resolving-domain-bias-in-gui-agents-through-real-time-web-video-retrieval-and-plug-and-play-annotation.md",
+      "type": "output",
+      "title": "GUIDE: Resolving Domain Bias in GUI Agents through Real-Time Web Video Retrieval and Plug-and-Play Annotation"
     }
   ],
   "edges": [
@@ -17215,6 +17225,11 @@
     {
       "from": "d2bfded0-252f-402e-8969-49bef61a2295",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-semi-automated-knowledge-engineering-and-process-mapping-for-total-airport-management.md",
+      "type": "produced"
+    },
+    {
+      "from": "d724c1e6-f514-4a7d-8128-1513cc94904b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-guide:-resolving-domain-bias-in-gui-agents-through-real-time-web-video-retrieval-and-plug-and-play-annotation.md",
       "type": "produced"
     }
   ]
