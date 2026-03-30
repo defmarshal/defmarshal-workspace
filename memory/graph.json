@@ -12944,6 +12944,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-evaluating-fine-tuned-llm-model-for-medical-transcription-with-small-low-resourc.md",
       "type": "content",
       "title": "Evaluating Fine-Tuned LLM Model For Medical Transcription With Small Low-Resource Languages Validated Dataset"
+    },
+    {
+      "id": "d965a5d8-2ebb-49ee-9d3d-712c76c7aab0",
+      "type": "seed",
+      "title": "Enhancing Structured Meaning Representations with Aspect Classification"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-enhancing-structured-meaning-representations-with-aspect-classification.md",
+      "type": "output",
+      "title": "Enhancing Structured Meaning Representations with Aspect Classification"
+    },
+    {
+      "id": "4769b09a-37e4-4ea7-ab90-9c7cbbf24786",
+      "type": "seed",
+      "title": "Synthetic Rewriting as a Quality Multiplier: Evidence from Portuguese Continued Pretraining"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-synthetic-rewriting-as-a-quality-multiplier:-evidence-from-portuguese-continued-.md",
+      "type": "content",
+      "title": "Synthetic Rewriting as a Quality Multiplier: Evidence from Portuguese Continued Pretraining"
     }
   ],
   "edges": [
@@ -16985,6 +17005,16 @@
     {
       "from": "51fd13ca-9912-4408-b1ae-91ee282d8454",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-evaluating-fine-tuned-llm-model-for-medical-transcription-with-small-low-resourc.md",
+      "type": "produced"
+    },
+    {
+      "from": "d965a5d8-2ebb-49ee-9d3d-712c76c7aab0",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-enhancing-structured-meaning-representations-with-aspect-classification.md",
+      "type": "produced"
+    },
+    {
+      "from": "4769b09a-37e4-4ea7-ab90-9c7cbbf24786",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-synthetic-rewriting-as-a-quality-multiplier:-evidence-from-portuguese-continued-.md",
       "type": "produced"
     }
   ]
