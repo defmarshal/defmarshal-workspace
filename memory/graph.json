@@ -13139,6 +13139,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/stabilizing-rubric-integration-training-via-decoup.py",
       "type": "app",
       "title": "Stabilizing Rubric Integration Training via Decoupled Advantage Normalization"
+    },
+    {
+      "id": "4a3251c6-de45-4567-8b2e-1d22b37dc73e",
+      "type": "seed",
+      "title": "Consistency Amplifies: How Behavioral Variance Shapes Agent Accuracy"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-consistency-amplifies:-how-behavioral-variance-shapes-agent-accuracy.md",
+      "type": "output",
+      "title": "Consistency Amplifies: How Behavioral Variance Shapes Agent Accuracy"
     }
   ],
   "edges": [
@@ -17285,6 +17295,11 @@
     {
       "from": "1d8a0b96-cac5-48ca-98fe-f6951a05095b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/stabilizing-rubric-integration-training-via-decoup.py",
+      "type": "produced"
+    },
+    {
+      "from": "4a3251c6-de45-4567-8b2e-1d22b37dc73e",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-consistency-amplifies:-how-behavioral-variance-shapes-agent-accuracy.md",
       "type": "produced"
     }
   ]
