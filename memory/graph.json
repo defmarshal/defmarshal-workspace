@@ -12864,6 +12864,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-whoop&#8217;s-fitness-band-is-cool.-can-it-stay-cool-as-the-company-grows?.md",
       "type": "output",
       "title": "Whoop&#8217;s fitness band is cool. Can it stay cool as the company grows?"
+    },
+    {
+      "id": "700aeac3-aa44-448a-96df-b454b9686812",
+      "type": "seed",
+      "title": "What will power the grid in 2035? The race is wide open"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/what-will-power-the-grid-in-2035_-the-race-is-wide.py",
+      "type": "app",
+      "title": "What will power the grid in 2035? The race is wide open"
+    },
+    {
+      "id": "6f06eddf-0559-4f57-ac32-76654b843b6b",
+      "type": "seed",
+      "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-3.py",
+      "type": "app",
+      "title": "From Moon hotels to cattle herding: 8 startups investors chased at YC Demo Day"
     }
   ],
   "edges": [
@@ -16865,6 +16885,16 @@
     {
       "from": "90731637-f753-43eb-abcc-d0c63918c7cb",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-29-whoop&#8217;s-fitness-band-is-cool.-can-it-stay-cool-as-the-company-grows?.md",
+      "type": "produced"
+    },
+    {
+      "from": "700aeac3-aa44-448a-96df-b454b9686812",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/what-will-power-the-grid-in-2035_-the-race-is-wide.py",
+      "type": "produced"
+    },
+    {
+      "from": "6f06eddf-0559-4f57-ac32-76654b843b6b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/from-moon-hotels-to-cattle-herding_-8-startups-inv-3.py",
       "type": "produced"
     }
   ]
