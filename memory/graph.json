@@ -13059,6 +13059,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/physics-informed-neural-network-digital-twin-for-d.py",
       "type": "app",
       "title": "Physics-Informed Neural Network Digital Twin for Dynamic Tray-Wise Modeling of Distillation Columns under Transient Operating Conditions"
+    },
+    {
+      "id": "71b270bd-1d5a-4949-b6e4-a89c1be5e39b",
+      "type": "seed",
+      "title": "BeSafe-Bench: Unveiling Behavioral Safety Risks of Situated Agents in Functional Environments"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-besafe-bench:-unveiling-behavioral-safety-risks-of-situated-agents-in-functional.md",
+      "type": "content",
+      "title": "BeSafe-Bench: Unveiling Behavioral Safety Risks of Situated Agents in Functional Environments"
     }
   ],
   "edges": [
@@ -17160,6 +17170,11 @@
     {
       "from": "0f6b95fc-051f-49ed-85ab-263d7edcdad7",
       "to": "/home/ubuntu/.openclaw/workspace/apps/physics-informed-neural-network-digital-twin-for-d.py",
+      "type": "produced"
+    },
+    {
+      "from": "71b270bd-1d5a-4949-b6e4-a89c1be5e39b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-besafe-bench:-unveiling-behavioral-safety-risks-of-situated-agents-in-functional.md",
       "type": "produced"
     }
   ]
