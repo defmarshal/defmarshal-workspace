@@ -14,7 +14,7 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Research Gardener** (cron research-gardener-1773046574): ✅ Active. Last cron run: 05:10 UTC, manually verified at 13:20 UTC. Generated 672+ reports; operating normally. Domain balancing fallback due to unknown seed domains. TAVILY_API_KEY missing (web search disabled).
 
-**Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 13:01 UTC). Daily digest generated and current as of 08:00 UTC.
+**Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 16:02 UTC). Daily digest generated and current as of 16:02 UTC. Next hourly run just initiated.
 
 **Email Sweep** (cron email-categorizer-cron): ✅ Completed. Last run: 2026-03-29 13:18 UTC / 19:18 Bangkok (batch: 1 page, 100 emails processed with Maton API). State persisted for next cycle.
 
