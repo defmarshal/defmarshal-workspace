@@ -13949,6 +13949,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/neuro-symbolic-learning-for-predictive-process-mon.py",
       "type": "app",
       "title": "Neuro-Symbolic Learning for Predictive Process Monitoring via Two-Stage Logic Tensor Networks with Rule Pruning"
+    },
+    {
+      "id": "da33b0e3-9ac5-4cee-bbf4-7cfb66e4745f",
+      "type": "seed",
+      "title": "Compliance-Aware Predictive Process Monitoring: A Neuro-Symbolic Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/compliance-aware-predictive-process-monitoring_-a-.py",
+      "type": "app",
+      "title": "Compliance-Aware Predictive Process Monitoring: A Neuro-Symbolic Approach"
+    },
+    {
+      "id": "90cc2532-1b86-40f9-a830-3d7b6f0ca9a1",
+      "type": "seed",
+      "title": "Transparency as Architecture: Structural Compliance Gaps in EU AI Act Article 50 II"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-transparency-as-architecture:-structural-compliance-gaps-in-eu-ai-act-article-50-ii.md",
+      "type": "output",
+      "title": "Transparency as Architecture: Structural Compliance Gaps in EU AI Act Article 50 II"
     }
   ],
   "edges": [
@@ -18645,6 +18665,16 @@
     {
       "from": "9586ba77-f34e-4a5e-868a-df06d317f48b",
       "to": "/home/ubuntu/.openclaw/workspace/apps/neuro-symbolic-learning-for-predictive-process-mon.py",
+      "type": "produced"
+    },
+    {
+      "from": "da33b0e3-9ac5-4cee-bbf4-7cfb66e4745f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/compliance-aware-predictive-process-monitoring_-a-.py",
+      "type": "produced"
+    },
+    {
+      "from": "90cc2532-1b86-40f9-a830-3d7b6f0ca9a1",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-transparency-as-architecture:-structural-compliance-gaps-in-eu-ai-act-article-50-ii.md",
       "type": "produced"
     }
   ]
