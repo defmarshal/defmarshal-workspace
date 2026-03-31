@@ -4,7 +4,7 @@
 
 System status: **Fully operational**. All cron jobs running smoothly. Disk usage ~84%. Memory index temporarily degraded (Voyage rate limits), but FTS fallback active. Supervisor confirms all systems healthy. All agents within normal parameters.
 
-**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-30 16:08 UTC / 23:08 Bangkok — all checks OK (gateway healthy, disk 84%, cron jobs green, 12 updates pending, git: 3 changed + 2 untracked). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
+**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-31 13:10 UTC / 20:10 Bangkok — all checks OK (gateway healthy, disk 85%, cron jobs green, 4 updates pending, git: 4 changed). Memory index degraded but FTS fallback functional. Self-improvement-cron misconfiguration fixed today (payload.kind updated to agentTurn). Pending maintenance: none (kernel reboot optional).
 
 **Meta-Summary Cron** (meta-summary-cron): ✅ Healthy. Last executed: 2026-03-30 20:07 UTC / 2026-03-31 03:07 Bangkok (current). Telegram summary sent successfully with system metrics.
 
@@ -18,7 +18,7 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Email Sweep** (cron email-categorizer-cron): ✅ Completed. Last run: 2026-03-31 10:14 UTC / 17:14 Bangkok (batch: 1 page, ~100 emails processed). State persisted; next cycle scheduled via cron.
 
-**Cron Status Summary (2026-03-30 01:09 UTC):**
+**Cron Status Summary (2026-03-31 13:32 UTC):**
 ```
 research-gardener-cron    ok
 content-gardener-cron     ok
@@ -32,6 +32,7 @@ dev-agent-cron            scheduled 02:00 Bangkok
 content-agent-cron        scheduled 02:00 Bangkok
 research-agent-cron       scheduled 02:00 Bangkok
 notifier-cron             scheduled 02:02 UTC
+self-improvement-cron     FIXED (payload.kind corrected to agentTurn; next run 02:00 Bangkok)
 ```
 
 **Shared Seed Pool**:

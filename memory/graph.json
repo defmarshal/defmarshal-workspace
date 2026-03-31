@@ -13879,6 +13879,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/multiverse_-language-conditioned-multi-game-level-.py",
       "type": "app",
       "title": "Multiverse: Language-Conditioned Multi-Game Level Blending via Shared Representation"
+    },
+    {
+      "id": "0e54fe1e-098b-451b-8a1d-d5eb25748af7",
+      "type": "seed",
+      "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-eigendata:-a-self-evolving-multi-agent-platform-for-function-calling-data-synthe.md",
+      "type": "content",
+      "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    },
+    {
+      "id": "669d2b47-bc77-4f71-affd-bbdc6e0ee477",
+      "type": "seed",
+      "title": "Tool-Genesis: A Task-Driven Tool Creation Benchmark for Self-Evolving Language Agent"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
+      "type": "content",
+      "title": "Tool-Genesis: A Task-Driven Tool Creation Benchmark for Self-Evolving Language Agent"
+    },
+    {
+      "id": "c0ded22f-065f-4980-8536-b82fd209d871",
+      "type": "seed",
+      "title": "Concerning Uncertainty -- A Systematic Survey of Uncertainty-Aware XAI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/concerning-uncertainty----a-systematic-survey-of-u.py",
+      "type": "app",
+      "title": "Concerning Uncertainty -- A Systematic Survey of Uncertainty-Aware XAI"
+    },
+    {
+      "id": "796abeea-25f1-455a-b954-b72009fac4fe",
+      "type": "seed",
+      "title": "Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
+      "type": "content",
+      "title": "Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy"
+    },
+    {
+      "id": "82bfd1de-762b-429d-825b-b5466d1fc55a",
+      "type": "seed",
+      "title": "XAI for Coding Agent Failures: Transforming Raw Execution Traces into Actionable Insights"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-xai-for-coding-agent-failures:-transforming-raw-execution-traces-into-actionable.md",
+      "type": "content",
+      "title": "XAI for Coding Agent Failures: Transforming Raw Execution Traces into Actionable Insights"
+    },
+    {
+      "id": "89fa9569-6ade-4e8b-b6f6-729aa7e8ad47",
+      "type": "seed",
+      "title": "Balancing Latency and Accuracy of Code Completion via Local-Cloud Model Cascading"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
+      "type": "content",
+      "title": "Balancing Latency and Accuracy of Code Completion via Local-Cloud Model Cascading"
     }
   ],
   "edges": [
@@ -18540,6 +18600,36 @@
     {
       "from": "793e7052-7b2f-4671-89e9-80257667611f",
       "to": "/home/ubuntu/.openclaw/workspace/apps/multiverse_-language-conditioned-multi-game-level-.py",
+      "type": "produced"
+    },
+    {
+      "from": "0e54fe1e-098b-451b-8a1d-d5eb25748af7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-eigendata:-a-self-evolving-multi-agent-platform-for-function-calling-data-synthe.md",
+      "type": "produced"
+    },
+    {
+      "from": "669d2b47-bc77-4f71-affd-bbdc6e0ee477",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
+      "type": "produced"
+    },
+    {
+      "from": "c0ded22f-065f-4980-8536-b82fd209d871",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/concerning-uncertainty----a-systematic-survey-of-u.py",
+      "type": "produced"
+    },
+    {
+      "from": "796abeea-25f1-455a-b954-b72009fac4fe",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
+      "type": "produced"
+    },
+    {
+      "from": "82bfd1de-762b-429d-825b-b5466d1fc55a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-xai-for-coding-agent-failures:-transforming-raw-execution-traces-into-actionable.md",
+      "type": "produced"
+    },
+    {
+      "from": "89fa9569-6ade-4e8b-b6f6-729aa7e8ad47",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
       "type": "produced"
     }
   ]

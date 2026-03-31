@@ -172,7 +172,15 @@ Managed through the OpenClaw Gateway. These run in isolated sessions and announc
    - **Log**: `memory/evolver-agent.log`
    - **Description**: Runs the capability-evolver skill in review mode to analyze runtime history and propose self-improvements. Proposals are logged; no automatic application. Set `EVOLVE_STRATEGY=repair-only` by default for safety. Use `--review` to require human approval.
 
-27. **seed-gatherer-cron**
+27. **self-improvement-cron**
+   - **Schedule**: Daily at 02:00 Asia/Bangkok (`0 2 * * *`)
+   - **Payload**: agentTurn executing `./agents/self-improvement.sh >> memory/self-improvement.log 2>&1`
+   - **Log**: `memory/self-improvement/` (timestamped logs)
+   - **Description**: Analyzes recent research reports for optimization opportunities and applies low-risk, high-priority improvements automatically. Generates actionable recommendations via LLM, applies safe changes, and creates feeder files for medium/high risk items. Commits changes with `self-improvement:` prefix. Runs independently; no Telegram notifications.
+   - **Status**: Enabled (fixed 2026-03-31: payload kind changed from `script` to `agentTurn` to match isolated session requirement)
+   - **Last updated**: 2026-03-31 — corrected misconfiguration causing repeated "skipped" status.
+
+28. **seed-gatherer-cron**
    - **Schedule:** Every 6 hours (`0 */6 * * *`) in UTC (stagger 5m)
    - **Payload:** agentTurn executing `bash -c 'cd /home/ubuntu/.openclaw/workspace && python3 agents/seed-gatherer.py >> memory/seed-gatherer.log 2>&1'`
    - **Log:** `memory/seed-gatherer.log`
