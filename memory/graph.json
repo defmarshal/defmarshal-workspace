@@ -13969,6 +13969,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-transparency-as-architecture:-structural-compliance-gaps-in-eu-ai-act-article-50-ii.md",
       "type": "output",
       "title": "Transparency as Architecture: Structural Compliance Gaps in EU AI Act Article 50 II"
+    },
+    {
+      "id": "68536e7d-c2cb-4fd0-bb71-bf012721d923",
+      "type": "seed",
+      "title": "When Specifications Meet Reality: Uncovering API Inconsistencies in Ethereum Infrastructure"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-when-specifications-meet-reality:-uncovering-api-inconsistencies-in-ethereum-inf.md",
+      "type": "content",
+      "title": "When Specifications Meet Reality: Uncovering API Inconsistencies in Ethereum Infrastructure"
+    },
+    {
+      "id": "16058cdb-3f5a-4c45-8e0b-3dbd50b530eb",
+      "type": "seed",
+      "title": "Detecting Semantic Alignments between Textual Specifications and Domain Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-detecting-semantic-alignments-between-textual-specifications-and-domain-models.md",
+      "type": "content",
+      "title": "Detecting Semantic Alignments between Textual Specifications and Domain Models"
+    },
+    {
+      "id": "6e55dc5e-ab68-4e08-9321-e0474b986783",
+      "type": "seed",
+      "title": "FormalProofBench: Can Models Write Graduate Level Math Proofs That Are Formally Verified?"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-formalproofbench:-can-models-write-graduate-level-math-proofs-that-are-formally-verified?.md",
+      "type": "output",
+      "title": "FormalProofBench: Can Models Write Graduate Level Math Proofs That Are Formally Verified?"
+    },
+    {
+      "id": "82495b20-fb51-4c9c-ab9a-9ee51a926128",
+      "type": "seed",
+      "title": "Pre-AI Baseline: Developer IDE Satisfaction and Tool Autonomy in 2022"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
+      "type": "content",
+      "title": "Pre-AI Baseline: Developer IDE Satisfaction and Tool Autonomy in 2022"
+    },
+    {
+      "id": "7e9c57eb-d646-4678-80ae-e3c34434ea29",
+      "type": "seed",
+      "title": "Real-World Fault Detection for C-Extended Python Projects with Automated Unit Test Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-world-fault-detection-for-c-extended-python-projects-with-automated-unit-te.md",
+      "type": "content",
+      "title": "Real-World Fault Detection for C-Extended Python Projects with Automated Unit Test Generation"
+    },
+    {
+      "id": "2c08e8ff-ff7c-4bbc-8369-6d6df6cae17b",
+      "type": "seed",
+      "title": "Can Adjusting Hyperparameters Lead to Green Deep Learning: An Empirical Study on Correlations between Hyperparameters and Energy Consumption of Deep Learning Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-can-adjusting-hyperparameters-lead-to-green-deep-learning:-an-empirical-study-on.md",
+      "type": "content",
+      "title": "Can Adjusting Hyperparameters Lead to Green Deep Learning: An Empirical Study on Correlations between Hyperparameters and Energy Consumption of Deep Learning Models"
     }
   ],
   "edges": [
@@ -18675,6 +18735,36 @@
     {
       "from": "90cc2532-1b86-40f9-a830-3d7b6f0ca9a1",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-transparency-as-architecture:-structural-compliance-gaps-in-eu-ai-act-article-50-ii.md",
+      "type": "produced"
+    },
+    {
+      "from": "68536e7d-c2cb-4fd0-bb71-bf012721d923",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-when-specifications-meet-reality:-uncovering-api-inconsistencies-in-ethereum-inf.md",
+      "type": "produced"
+    },
+    {
+      "from": "16058cdb-3f5a-4c45-8e0b-3dbd50b530eb",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-detecting-semantic-alignments-between-textual-specifications-and-domain-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "6e55dc5e-ab68-4e08-9321-e0474b986783",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-formalproofbench:-can-models-write-graduate-level-math-proofs-that-are-formally-verified?.md",
+      "type": "produced"
+    },
+    {
+      "from": "82495b20-fb51-4c9c-ab9a-9ee51a926128",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
+      "type": "produced"
+    },
+    {
+      "from": "7e9c57eb-d646-4678-80ae-e3c34434ea29",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-world-fault-detection-for-c-extended-python-projects-with-automated-unit-te.md",
+      "type": "produced"
+    },
+    {
+      "from": "2c08e8ff-ff7c-4bbc-8369-6d6df6cae17b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-can-adjusting-hyperparameters-lead-to-green-deep-learning:-an-empirical-study-on.md",
       "type": "produced"
     }
   ]

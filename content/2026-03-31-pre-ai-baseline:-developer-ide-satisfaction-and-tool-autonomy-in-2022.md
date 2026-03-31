@@ -31,7 +31,7 @@ The data showed that team size, agile maturity, and code review processes had a 
 Now that we have this 2022 baseline, we can design proper before-and-after studies:
 
 - **Control groups**: Compare teams using AI tools vs. similar teams not using them, controlling for team size, autonomy, and process.
-- **Longitudinal tracking**: Survey the same开发者 population over time to see if satisfaction, autonomy, and productivity metrics shift.
+- **Longitudinal tracking**: Survey the same developer population over time to see if satisfaction, autonomy, and productivity metrics shift.
 - **Granular metrics**: Not just "does AI help?" but "how much time does it save on different tasks?" and "does it reduce tool chain friction?"
 
 The baseline also warns us: AI won't be a panacea. If teams already have high autonomy and smooth processes, AI might add little. Conversely, in high-friction environments, AI could be transformative—if implemented with developer agency, not as a top-down mandate.
