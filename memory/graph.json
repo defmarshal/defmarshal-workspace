@@ -13749,6 +13749,56 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/logicdiff_-logic-guided-denoising-improves-reasoni.py",
       "type": "app",
       "title": "LogicDiff: Logic-Guided Denoising Improves Reasoning in Masked Diffusion Language Models"
+    },
+    {
+      "id": "66646e69-91c9-46de-a15b-2fd298088003",
+      "type": "seed",
+      "title": "Traversal-as-Policy: Log-Distilled Gated Behavior Trees as Externalized, Verifiable Policies for Safe, Robust, and Efficient Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-traversal-as-policy:-log-distilled-gated-behavior-trees-as-externalized,-verifia.md",
+      "type": "content",
+      "title": "Traversal-as-Policy: Log-Distilled Gated Behavior Trees as Externalized, Verifiable Policies for Safe, Robust, and Efficient Agents"
+    },
+    {
+      "id": "1d5a9b3d-af25-44e3-b31a-b8acc544963c",
+      "type": "seed",
+      "title": "JAWS: Enhancing Long-term Rollout of Neural Operators via Spatially-Adaptive Jacobian Regularization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-jaws:-enhancing-long-term-rollout-of-neural-operators-via-spatially-adaptive-jac.md",
+      "type": "content",
+      "title": "JAWS: Enhancing Long-term Rollout of Neural Operators via Spatially-Adaptive Jacobian Regularization"
+    },
+    {
+      "id": "1e68bd91-f27f-424b-9968-6939c66d7ea6",
+      "type": "seed",
+      "title": "VDCook:DIY video data cook your MLLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-vdcook:diy-video-data-cook-your-mllms.md",
+      "type": "content",
+      "title": "VDCook:DIY video data cook your MLLMs"
+    },
+    {
+      "id": "99cbfbc5-7a66-4842-a2b9-46756afdd990",
+      "type": "seed",
+      "title": "IntSeqBERT: Learning Arithmetic Structure in OEIS via Modulo-Spectrum Embeddings"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-intseqbert:-learning-arithmetic-structure-in-oeis-via-modulo-spectrum-embeddings.md",
+      "type": "content",
+      "title": "IntSeqBERT: Learning Arithmetic Structure in OEIS via Modulo-Spectrum Embeddings"
+    },
+    {
+      "id": "8ef770e3-b7ac-4235-a09b-774515cb0d50",
+      "type": "seed",
+      "title": "Autocorrelation effects in a stochastic-process model for decision making via time series"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
+      "type": "content",
+      "title": "Autocorrelation effects in a stochastic-process model for decision making via time series"
     }
   ],
   "edges": [
@@ -18345,6 +18395,31 @@
     {
       "from": "e0796b64-5e52-4410-9a28-6b615fe2cdac",
       "to": "/home/ubuntu/.openclaw/workspace/apps/logicdiff_-logic-guided-denoising-improves-reasoni.py",
+      "type": "produced"
+    },
+    {
+      "from": "66646e69-91c9-46de-a15b-2fd298088003",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-traversal-as-policy:-log-distilled-gated-behavior-trees-as-externalized,-verifia.md",
+      "type": "produced"
+    },
+    {
+      "from": "1d5a9b3d-af25-44e3-b31a-b8acc544963c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-jaws:-enhancing-long-term-rollout-of-neural-operators-via-spatially-adaptive-jac.md",
+      "type": "produced"
+    },
+    {
+      "from": "1e68bd91-f27f-424b-9968-6939c66d7ea6",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-vdcook:diy-video-data-cook-your-mllms.md",
+      "type": "produced"
+    },
+    {
+      "from": "99cbfbc5-7a66-4842-a2b9-46756afdd990",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-intseqbert:-learning-arithmetic-structure-in-oeis-via-modulo-spectrum-embeddings.md",
+      "type": "produced"
+    },
+    {
+      "from": "8ef770e3-b7ac-4235-a09b-774515cb0d50",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
       "type": "produced"
     }
   ]
