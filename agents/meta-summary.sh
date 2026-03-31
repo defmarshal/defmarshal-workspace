@@ -23,6 +23,13 @@ declare -A HOLIDAYS=(
  ["2026-03-20"]="20 Mar: Lebaran Holiday"
  ["2026-03-21"]="21 Mar: Hari Raya Idul Fitri"
  ["2026-03-22"]="22 Mar: Hari Raya Idul Fitri"
+ ["2026-04-03"]="03 Apr: Wafat Yesus Kristus (Good Friday)"
+ ["2026-04-05"]="05 Apr: Hari Kebangkitan Yesus Kristus (Easter Sunday)"
+ ["2026-05-01"]="01 May: Hari Buruh Nasional (Labour Day)"
+ ["2026-05-14"]="14 May: Kenaikan Yesus Kristus (Ascension Day)"
+ ["2026-05-15"]="15 May: Kenaikan Yesus Kristus"
+ ["2026-05-27"]="27 May: Hari Raya Idul Adha 1447 Hijriah (Eid al-Adha)"
+ ["2026-05-28"]="28 May: Idul Adha 1447 Hijriah"
 )
 
 # Find nearest holiday
@@ -51,6 +58,13 @@ if [[ -n "$NEAREST_DATE" ]]; then
         "2026-03-20") NEAREST_CUTI_BERSAMA="20 Mar: Cuti bersama (Lebaran)" ;;
         "2026-03-21") NEAREST_CUTI_BERSAMA="21 Mar: Cuti bersama (Lebaran)" ;;
         "2026-03-22") NEAREST_CUTI_BERSAMA="22 Mar: Cuti bersama (Lebaran)" ;;
+        "2026-04-03") NEAREST_CUTI_BERSAMA="03 Apr: Cuti bersama (Good Friday)" ;;
+        "2026-04-05") NEAREST_CUTI_BERSAMA="05 Apr: Cuti bersama (Easter)" ;;
+        "2026-05-01") NEAREST_CUTI_BERSAMA="01 May: Cuti bersama (Labour Day)" ;;
+        "2026-05-14") NEAREST_CUTI_BERSAMA="14 May: Cuti bersama (Ascension)" ;;
+        "2026-05-15") NEAREST_CUTI_BERSAMA="15 May: Cuti bersama (Ascension)" ;;
+        "2026-05-27") NEAREST_CUTI_BERSAMA="27 May: Cuti bersama (Eid al-Adha)" ;;
+        "2026-05-28") NEAREST_CUTI_BERSAMA="28 May: Cuti bersama (Eid al-Adha)" ;;
       esac
       break
     fi

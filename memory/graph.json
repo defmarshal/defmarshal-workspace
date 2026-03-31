@@ -13479,6 +13479,61 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-latest-transformer-architectures-2025.md",
       "type": "content",
       "title": "Planner suggestion: latest transformer architectures 2025"
+    },
+    {
+      "id": "91c7e32f-298b-4d02-b569-e319d71b74a7",
+      "type": "seed",
+      "title": "Incorporating contextual information into KGWAS for interpretable GWAS discovery"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-incorporating-contextual-information-into-kgwas-for-interpretable-gwas-discovery.md",
+      "type": "output",
+      "title": "Incorporating contextual information into KGWAS for interpretable GWAS discovery"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-starlink-v2-launch-schedule.md",
+      "type": "content",
+      "title": "Planner suggestion: starlink v2 launch schedule"
+    },
+    {
+      "id": "a495926d-aa45-4542-956c-abdc6738af2b",
+      "type": "seed",
+      "title": "Planner suggestion: quantum error correction breakthroughs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-quantum-error-correction-breakthroughs.md",
+      "type": "content",
+      "title": "Planner suggestion: quantum error correction breakthroughs"
+    },
+    {
+      "id": "851d9a5b-51a2-4fbe-a276-066b471dce0d",
+      "type": "seed",
+      "title": "Planner suggestion: react server components vs traditional rendering"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-react-server-components-vs-traditional-rendering.md",
+      "type": "content",
+      "title": "Planner suggestion: react server components vs traditional rendering"
+    },
+    {
+      "id": "55abd4cf-4133-45cd-96f1-8cc900529bb8",
+      "type": "seed",
+      "title": "Planner suggestion: kubernetes autoscaling best practices 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-kubernetes-autoscaling-best-practices-2025.md",
+      "type": "content",
+      "title": "Planner suggestion: kubernetes autoscaling best practices 2025"
+    },
+    {
+      "id": "7fce3b79-e0ad-4fbf-a1f9-42abc545c009",
+      "type": "seed",
+      "title": "Planner suggestion: AI startup funding trends Q1 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-ai-startup-funding-trends-q1-2025.md",
+      "type": "content",
+      "title": "Planner suggestion: AI startup funding trends Q1 2025"
     }
   ],
   "edges": [
@@ -17920,6 +17975,36 @@
     {
       "from": "57ae418a-dc38-4020-a22d-a4ef43a16864",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-latest-transformer-architectures-2025.md",
+      "type": "produced"
+    },
+    {
+      "from": "91c7e32f-298b-4d02-b569-e319d71b74a7",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-incorporating-contextual-information-into-kgwas-for-interpretable-gwas-discovery.md",
+      "type": "produced"
+    },
+    {
+      "from": "4cad5d2d-a830-4b6f-a750-7d392519f91c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-starlink-v2-launch-schedule.md",
+      "type": "produced"
+    },
+    {
+      "from": "a495926d-aa45-4542-956c-abdc6738af2b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-quantum-error-correction-breakthroughs.md",
+      "type": "produced"
+    },
+    {
+      "from": "851d9a5b-51a2-4fbe-a276-066b471dce0d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-react-server-components-vs-traditional-rendering.md",
+      "type": "produced"
+    },
+    {
+      "from": "55abd4cf-4133-45cd-96f1-8cc900529bb8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-kubernetes-autoscaling-best-practices-2025.md",
+      "type": "produced"
+    },
+    {
+      "from": "7fce3b79-e0ad-4fbf-a1f9-42abc545c009",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-ai-startup-funding-trends-q1-2025.md",
       "type": "produced"
     }
   ]
