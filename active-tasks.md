@@ -12,7 +12,7 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Code Gardener** (cron code-gardener-1773047374): ✅ Completed. Last run: 2026-03-31 00:12 UTC / 07:12 Bangkok (current). Processed 833 seeds total, generated 249 apps. OpenRouter connectivity stable with fallback safeguards; all systems nominal.
 
-**Research Gardener** (cron research-gardener-1773046574): ✅ Completed cron run at 19:12 UTC. Processed seeds from 2026-03-09 to 2026-03-30, generating 16 reports today. Total archive now 672+ reports. Operating in fallback mode (TAVILY_API_KEY not set, domain balancing active). All systems nominal.
+**Research Gardener** (cron research-gardener-1773046574): ✅ Completed cron run at 16:23 UTC / 23:23 Bangkok (March 31). Generated 11 reports covering all 5 domains (AI, tech, banking, anime, security). Total processed seeds now 555+. Domain balancing active. All systems nominal.
 
 **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 16:02 UTC). Daily digest generated and current as of 16:02 UTC. Next hourly run just initiated.
 

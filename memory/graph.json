@@ -13679,6 +13679,76 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-the-fragility-of-moral-judgment-in-large-language-models.md",
       "type": "content",
       "title": "The Fragility Of Moral Judgment In Large Language Models"
+    },
+    {
+      "id": "6fcd66b8-b607-4f43-9b64-338e8d93b16b",
+      "type": "seed",
+      "title": "Do Multilingual VLMs Reason Equally? A Cross-Lingual Visual Reasoning Audit for Indian Languages"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-do-multilingual-vlms-reason-equally?-a-cross-lingual-visual-reasoning-audit-for-indian-languages.md",
+      "type": "output",
+      "title": "Do Multilingual VLMs Reason Equally? A Cross-Lingual Visual Reasoning Audit for Indian Languages"
+    },
+    {
+      "id": "3aebb340-f75c-4461-9ed3-8caabb923086",
+      "type": "seed",
+      "title": "FreeTxt-Vi: A Benchmarked Vietnamese-English Toolkit for Segmentation, Sentiment, and Summarisation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-freetxt-vi:-a-benchmarked-vietnamese-english-toolkit-for-segmentation,-sentiment.md",
+      "type": "content",
+      "title": "FreeTxt-Vi: A Benchmarked Vietnamese-English Toolkit for Segmentation, Sentiment, and Summarisation"
+    },
+    {
+      "id": "3e1c2b4f-5eed-4c7f-8daf-f87bcacb9453",
+      "type": "seed",
+      "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-towards-robust-retrieval-augmented-generation-based-on-knowledge-graph:-a-compar.md",
+      "type": "content",
+      "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis"
+    },
+    {
+      "id": "179d18bf-2f05-4337-abdc-18a4c29a55e3",
+      "type": "seed",
+      "title": "Cultural Perspectives and Expectations for Generative AI: A Global Survey Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
+      "type": "content",
+      "title": "Cultural Perspectives and Expectations for Generative AI: A Global Survey Approach"
+    },
+    {
+      "id": "2b7a456f-d3a9-4418-8461-01f4b986a695",
+      "type": "seed",
+      "title": "Structured Multidimensional Representation Learning for Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-structured-multidimensional-representation-learning-for-large-language-models.md",
+      "type": "content",
+      "title": "Structured Multidimensional Representation Learning for Large Language Models"
+    },
+    {
+      "id": "1530b92e-cc8c-4a1d-9b6e-92f3ca6046a2",
+      "type": "seed",
+      "title": "Let's Talk, Not Type: An Oral-First Multi-Agent Architecture for Guaran\\'i"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-let's-talk,-not-type:-an-oral-first-multi-agent-architecture-for-guaran\\'i.md",
+      "type": "content",
+      "title": "Let's Talk, Not Type: An Oral-First Multi-Agent Architecture for Guaran\\'i"
+    },
+    {
+      "id": "e0796b64-5e52-4410-9a28-6b615fe2cdac",
+      "type": "seed",
+      "title": "LogicDiff: Logic-Guided Denoising Improves Reasoning in Masked Diffusion Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/logicdiff_-logic-guided-denoising-improves-reasoni.py",
+      "type": "app",
+      "title": "LogicDiff: Logic-Guided Denoising Improves Reasoning in Masked Diffusion Language Models"
     }
   ],
   "edges": [
@@ -18240,6 +18310,41 @@
     {
       "from": "74590d40-78ee-4f6f-bcd9-38379d673b14",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-the-fragility-of-moral-judgment-in-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "6fcd66b8-b607-4f43-9b64-338e8d93b16b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-do-multilingual-vlms-reason-equally?-a-cross-lingual-visual-reasoning-audit-for-indian-languages.md",
+      "type": "produced"
+    },
+    {
+      "from": "3aebb340-f75c-4461-9ed3-8caabb923086",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-freetxt-vi:-a-benchmarked-vietnamese-english-toolkit-for-segmentation,-sentiment.md",
+      "type": "produced"
+    },
+    {
+      "from": "3e1c2b4f-5eed-4c7f-8daf-f87bcacb9453",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-towards-robust-retrieval-augmented-generation-based-on-knowledge-graph:-a-compar.md",
+      "type": "produced"
+    },
+    {
+      "from": "179d18bf-2f05-4337-abdc-18a4c29a55e3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
+      "type": "produced"
+    },
+    {
+      "from": "2b7a456f-d3a9-4418-8461-01f4b986a695",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-structured-multidimensional-representation-learning-for-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "1530b92e-cc8c-4a1d-9b6e-92f3ca6046a2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-let's-talk,-not-type:-an-oral-first-multi-agent-architecture-for-guaran\\'i.md",
+      "type": "produced"
+    },
+    {
+      "from": "e0796b64-5e52-4410-9a28-6b615fe2cdac",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/logicdiff_-logic-guided-denoising-improves-reasoni.py",
       "type": "produced"
     }
   ]
