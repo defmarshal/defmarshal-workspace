@@ -13454,6 +13454,31 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-techcrunch-mobility:-rivian&#8217;s-r2-gambit.md",
       "type": "content",
       "title": "TechCrunch Mobility: Rivian&#8217;s R2 gambit"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-a-roadmap-for-ai,-if-anyone-will-listen.md",
+      "type": "content",
+      "title": "A roadmap for AI, if anyone will listen"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-push-for-$40-smartphones-builds-momentum,-but-still-faces-cost-hurdles.md",
+      "type": "content",
+      "title": "Push for $40 smartphones builds momentum, but still faces cost hurdles"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-google-just-gave-sundar-pichai-a-$692m-pay-package.md",
+      "type": "content",
+      "title": "Google just gave Sundar Pichai a $692M pay package"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-actual-experts.md",
+      "type": "content",
+      "title": "Grammarly\u2019s \u2018expert review\u2019 is just missing the actual experts"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-latest-transformer-architectures-2025.md",
+      "type": "content",
+      "title": "Planner suggestion: latest transformer architectures 2025"
     }
   ],
   "edges": [
@@ -17870,6 +17895,31 @@
     {
       "from": "fc02e62c-0ca7-475a-82fe-640287f5c274",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-techcrunch-mobility:-rivian&#8217;s-r2-gambit.md",
+      "type": "produced"
+    },
+    {
+      "from": "48e7a3f6-4ad0-4d1c-953f-af746765f538",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-a-roadmap-for-ai,-if-anyone-will-listen.md",
+      "type": "produced"
+    },
+    {
+      "from": "ea59c41c-9437-4c3d-8e08-6f0c86797be3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-push-for-$40-smartphones-builds-momentum,-but-still-faces-cost-hurdles.md",
+      "type": "produced"
+    },
+    {
+      "from": "1a2af84f-07e1-4755-bab0-640db39e2437",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-google-just-gave-sundar-pichai-a-$692m-pay-package.md",
+      "type": "produced"
+    },
+    {
+      "from": "e8f23f5b-5004-47ab-9dc0-900037c17fca",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-grammarly\u2019s-\u2018expert-review\u2019-is-just-missing-the-actual-experts.md",
+      "type": "produced"
+    },
+    {
+      "from": "57ae418a-dc38-4020-a22d-a4ef43a16864",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-latest-transformer-architectures-2025.md",
       "type": "produced"
     }
   ]
