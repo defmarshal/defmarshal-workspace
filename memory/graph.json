@@ -13534,6 +13534,41 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-ai-startup-funding-trends-q1-2025.md",
       "type": "content",
       "title": "Planner suggestion: AI startup funding trends Q1 2025"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-robolayout:-differentiable-3d-scene-generation-for-embodied-agents.md",
+      "type": "content",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-time-ai-service-economy:-a-framework-for-agentic-computing-across-the-conti.md",
+      "type": "content",
+      "title": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-reasoning-models-struggle-to-control-their-chains-of-thought.md",
+      "type": "content",
+      "title": "Reasoning Models Struggle to Control their Chains of Thought"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "content",
+      "title": "Evolving Medical Imaging Agents via Experience-driven Self-skill Discovery"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-the-world-won't-stay-still:-programmable-evolution-for-agent-benchmarks.md",
+      "type": "content",
+      "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks"
+    },
+    {
+      "id": "89a6822d-d17a-4d66-8c2d-b0146bc58356",
+      "type": "seed",
+      "title": "GeoBlock: Inferring Block Granularity from Dependency Geometry in Diffusion Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/geoblock_-inferring-block-granularity-from-depende.py",
+      "type": "app",
+      "title": "GeoBlock: Inferring Block Granularity from Dependency Geometry in Diffusion Language Models"
     }
   ],
   "edges": [
@@ -18005,6 +18040,36 @@
     {
       "from": "7fce3b79-e0ad-4fbf-a1f9-42abc545c009",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-planner-suggestion:-ai-startup-funding-trends-q1-2025.md",
+      "type": "produced"
+    },
+    {
+      "from": "806182f7-fc4e-458d-a74a-92cd5e96dc9e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-robolayout:-differentiable-3d-scene-generation-for-embodied-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "f205ce4e-9933-4204-9834-d226f5a20596",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-time-ai-service-economy:-a-framework-for-agentic-computing-across-the-conti.md",
+      "type": "produced"
+    },
+    {
+      "from": "8ab6559e-97b5-43a5-a516-60c25a59be5c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-reasoning-models-struggle-to-control-their-chains-of-thought.md",
+      "type": "produced"
+    },
+    {
+      "from": "256d8df8-8388-42f7-bc21-e8e05a601112",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "produced"
+    },
+    {
+      "from": "bf981fb6-f365-4fef-a33b-7ce3e8881fcc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-the-world-won't-stay-still:-programmable-evolution-for-agent-benchmarks.md",
+      "type": "produced"
+    },
+    {
+      "from": "89a6822d-d17a-4d66-8c2d-b0146bc58356",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/geoblock_-inferring-block-granularity-from-depende.py",
       "type": "produced"
     }
   ]
