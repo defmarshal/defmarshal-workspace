@@ -10,7 +10,7 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Harvester** (cron harvest-1773046808): ✅ Completed. Generated daily-harvest-2026-03-27.md with 50 seeds and 9 outputs. Telegram notification sent successfully. All systems nominal.
 
-**Code Gardener** (cron code-gardener-1773047374): 🔄 Running since ~10:23 UTC. Latest seed: "Experiential Reflective Learning for Self-Improving LLM Agents". Total processed seeds: ~551+. Remaining unprocessed: ~917. OpenRouter connectivity stable; script quality excellent.
+**Code Gardener** (cron code-gardener-1773047374): ✅ Completed. Last run: 2026-03-31 00:12 UTC / 07:12 Bangkok (current). Processed 833 seeds total, generated 249 apps. OpenRouter connectivity stable with fallback safeguards; all systems nominal.
 
 **Research Gardener** (cron research-gardener-1773046574): ✅ Completed cron run at 19:12 UTC. Processed seeds from 2026-03-09 to 2026-03-30, generating 16 reports today. Total archive now 672+ reports. Operating in fallback mode (TAVILY_API_KEY not set, domain balancing active). All systems nominal.
 
