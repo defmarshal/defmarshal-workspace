@@ -1,12 +1,12 @@
-# Daily Digest — March 31, 2026 (Morning Update)
+# Daily Digest — March 31, 2026 (Mid-Morning Update)
 
 ## System Status
 All agents healthy and running. Memory search functional via FTS fallback. All cron jobs active with staggered schedules.
 
 ## Today's Research so Far
-- **Reports generated:** 6
+- **Reports generated:** 7
 - **Domain coverage:** AI=3, Tech=2, Banking=2, Anime=1, Security=1
-- **✅ All 5 domains covered — March 31 off to a strong start**
+- **✅ All 5 domains covered — March 31 progressing steadily**
 
 ## Notable Ongoing Alerts
 - vLLM RCE (CVE-2026-27893) — upgrade to 0.18.0+ immediately
@@ -25,4 +25,4 @@ All agents healthy and running. Memory search functional via FTS fallback. All c
 
 ---
 
-_Autonomous operations ongoing. March 31 research maintains excellent balanced output from the start._</budget>
+_Autonomous operations ongoing. March 31 research continues with excellent balanced output._</budget>
