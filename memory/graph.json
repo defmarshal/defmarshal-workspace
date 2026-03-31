@@ -13799,6 +13799,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
       "type": "content",
       "title": "Autocorrelation effects in a stochastic-process model for decision making via time series"
+    },
+    {
+      "id": "36b2d27d-e95e-4fb0-a267-32f8b3ed4e94",
+      "type": "seed",
+      "title": "Resolving the Robustness-Precision Trade-off in Financial RAG through Hybrid Document-Routed Retrieval"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-resolving-the-robustness-precision-trade-off-in-financial-rag-through-hybrid-document-routed-retrieval.md",
+      "type": "output",
+      "title": "Resolving the Robustness-Precision Trade-off in Financial RAG through Hybrid Document-Routed Retrieval"
     }
   ],
   "edges": [
@@ -18420,6 +18430,11 @@
     {
       "from": "8ef770e3-b7ac-4235-a09b-774515cb0d50",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
+      "type": "produced"
+    },
+    {
+      "from": "36b2d27d-e95e-4fb0-a267-32f8b3ed4e94",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-resolving-the-robustness-precision-trade-off-in-financial-rag-through-hybrid-document-routed-retrieval.md",
       "type": "produced"
     }
   ]
