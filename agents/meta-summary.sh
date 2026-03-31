@@ -73,10 +73,23 @@ fi
 [[ -z "$NEAREST_CUTI_BERSAMA" ]] && NEAREST_CUTI_BERSAMA="None in next 10 days"
 
 # Build message with line breaks
+TODAY=$(date -u +%Y-%m-%d)
+RESEARCH_COUNT=$(find research -name "${TODAY}*.md" 2>/dev/null | wc -l)
+CONTENT_COUNT=$(find content -name "${TODAY}*.md" 2>/dev/null | wc -l)
+APPS_COUNT=$(grep -c "Generated app:" memory/code-gardener.log 2>/dev/null || echo 0)
+SI_ACTIONS=0
+SI_LOG=$(ls memory/self-improvement/${TODAY}T*.log 2>/dev/null | head -1)
+if [ -n "$SI_LOG" ]; then
+  SI_ACTIONS=$(grep -c "Applying (low-risk):" "$SI_LOG" 2>/dev/null || echo 0)
+fi
+
 MSG="Meta Summary (hourly):
 Disk: ${DISK_PCT}%
 Running agents: ${AGENTS}
 Research reports today: ${REPORTS}
+Content files today: ${CONTENT_COUNT}
+Apps generated (24h): ${APPS_COUNT}
+Self-improvements applied: ${SI_ACTIONS}
 APT updates pending: ${UPDATES}
 Weather (Bogor): ${WEATHER}
 Next holiday: ${NEAREST_HOLIDAY}
