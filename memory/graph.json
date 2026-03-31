@@ -13809,6 +13809,76 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-resolving-the-robustness-precision-trade-off-in-financial-rag-through-hybrid-document-routed-retrieval.md",
       "type": "output",
       "title": "Resolving the Robustness-Precision Trade-off in Financial RAG through Hybrid Document-Routed Retrieval"
+    },
+    {
+      "id": "5265d42d-ab71-4230-968f-1142e00295f8",
+      "type": "seed",
+      "title": "Towards Efficient and Stable Ocean State Forecasting: A Continuous-Time Koopman Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-towards-efficient-and-stable-ocean-state-forecasting:-a-continuous-time-koopman-.md",
+      "type": "content",
+      "title": "Towards Efficient and Stable Ocean State Forecasting: A Continuous-Time Koopman Approach"
+    },
+    {
+      "id": "3b05bc2e-da7b-4dbb-a465-ede0d32f6455",
+      "type": "seed",
+      "title": "Bitboard version of Tetris AI"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-bitboard-version-of-tetris-ai.md",
+      "type": "output",
+      "title": "Bitboard version of Tetris AI"
+    },
+    {
+      "id": "b7a0a357-e4e2-4e81-bc90-94a5d0a7c448",
+      "type": "seed",
+      "title": "When AI Levels the Playing Field: Skill Homogenization, Asset Concentration, and Two Regimes of Inequality"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-when-ai-levels-the-playing-field:-skill-homogenization,-asset-concentration,-and.md",
+      "type": "content",
+      "title": "When AI Levels the Playing Field: Skill Homogenization, Asset Concentration, and Two Regimes of Inequality"
+    },
+    {
+      "id": "c3a044b4-4558-4716-b5f9-b780abbd2b96",
+      "type": "seed",
+      "title": "Aligning the True Semantics: Constrained Decoupling and Distribution Sampling for Cross-Modal Alignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
+      "type": "content",
+      "title": "Aligning the True Semantics: Constrained Decoupling and Distribution Sampling for Cross-Modal Alignment"
+    },
+    {
+      "id": "8fae859b-a84d-4550-bb6c-66b5de95392f",
+      "type": "seed",
+      "title": "FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-fusediff:-symmetry-preserving-joint-diffusion-for-dual-target-structure-based-dr.md",
+      "type": "content",
+      "title": "FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design"
+    },
+    {
+      "id": "f5272c54-b420-493c-96ac-f911ebee6e76",
+      "type": "seed",
+      "title": "Why Depth Matters in Parallelizable Sequence Models: A Lie Algebraic View"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-why-depth-matters-in-parallelizable-sequence-models:-a-lie-algebraic-view.md",
+      "type": "content",
+      "title": "Why Depth Matters in Parallelizable Sequence Models: A Lie Algebraic View"
+    },
+    {
+      "id": "793e7052-7b2f-4671-89e9-80257667611f",
+      "type": "seed",
+      "title": "Multiverse: Language-Conditioned Multi-Game Level Blending via Shared Representation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/multiverse_-language-conditioned-multi-game-level-.py",
+      "type": "app",
+      "title": "Multiverse: Language-Conditioned Multi-Game Level Blending via Shared Representation"
     }
   ],
   "edges": [
@@ -18435,6 +18505,41 @@
     {
       "from": "36b2d27d-e95e-4fb0-a267-32f8b3ed4e94",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-resolving-the-robustness-precision-trade-off-in-financial-rag-through-hybrid-document-routed-retrieval.md",
+      "type": "produced"
+    },
+    {
+      "from": "5265d42d-ab71-4230-968f-1142e00295f8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-towards-efficient-and-stable-ocean-state-forecasting:-a-continuous-time-koopman-.md",
+      "type": "produced"
+    },
+    {
+      "from": "3b05bc2e-da7b-4dbb-a465-ede0d32f6455",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-bitboard-version-of-tetris-ai.md",
+      "type": "produced"
+    },
+    {
+      "from": "b7a0a357-e4e2-4e81-bc90-94a5d0a7c448",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-when-ai-levels-the-playing-field:-skill-homogenization,-asset-concentration,-and.md",
+      "type": "produced"
+    },
+    {
+      "from": "c3a044b4-4558-4716-b5f9-b780abbd2b96",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "8fae859b-a84d-4550-bb6c-66b5de95392f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-fusediff:-symmetry-preserving-joint-diffusion-for-dual-target-structure-based-dr.md",
+      "type": "produced"
+    },
+    {
+      "from": "f5272c54-b420-493c-96ac-f911ebee6e76",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-why-depth-matters-in-parallelizable-sequence-models:-a-lie-algebraic-view.md",
+      "type": "produced"
+    },
+    {
+      "from": "793e7052-7b2f-4671-89e9-80257667611f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/multiverse_-language-conditioned-multi-game-level-.py",
       "type": "produced"
     }
   ]
