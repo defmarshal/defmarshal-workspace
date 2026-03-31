@@ -13149,6 +13149,221 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-consistency-amplifies:-how-behavioral-variance-shapes-agent-accuracy.md",
       "type": "output",
       "title": "Consistency Amplifies: How Behavioral Variance Shapes Agent Accuracy"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-robolayout:-differentiable-3d-scene-generation-for-embodied-agents.md",
+      "type": "content",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "content",
+      "title": "Evolving Medical Imaging Agents via Experience-driven Self-skill Discovery"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-robolayout:-differentiable-3d-scene-generation-for-embodied-agents.md",
+      "type": "content",
+      "title": "RoboLayout: Differentiable 3D Scene Generation for Embodied Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "content",
+      "title": "Evolving Medical Imaging Agents via Experience-driven Self-skill Discovery"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-the-world-won't-stay-still:-programmable-evolution-for-agent-benchmarks.md",
+      "type": "content",
+      "title": "The World Won't Stay Still: Programmable Evolution for Agent Benchmarks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-deepfact:-co-evolving-benchmarks-and-agents-for-deep-research-factuality.md",
+      "type": "content",
+      "title": "DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-an-interactive-multi-agent-system-for-evaluation-of-new-product-concepts.md",
+      "type": "content",
+      "title": "An Interactive Multi-Agent System for Evaluation of New Product Concepts"
+    },
+    {
+      "id": "47c247ff-b4e0-481d-8498-95e930773d86",
+      "type": "seed",
+      "title": "UCAgent: An End-to-End Agent for Block-Level Functional Verification"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/ucagent_-an-end-to-end-agent-for-block-level-funct.py",
+      "type": "app",
+      "title": "UCAgent: An End-to-End Agent for Block-Level Functional Verification"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
+      "type": "content",
+      "title": "Agentic LLM Planning via Step-Wise PDDL Simulation: An Empirical Characterisation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-aggregative-semantics-for-quantitative-bipolar-argumentation-frameworks.md",
+      "type": "content",
+      "title": "Aggregative Semantics for Quantitative Bipolar Argumentation Frameworks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-offline-materials-optimization-with-cliqueflowmer.md",
+      "type": "content",
+      "title": "Offline Materials Optimization with CliqueFlowmer"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-verify-as-you-go:-an-llm-powered-browser-extension-for-fake-news-detection.md",
+      "type": "content",
+      "title": "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-attention-meets-reachability:-structural-equivalence-and-efficiency-in-grammar-c.md",
+      "type": "content",
+      "title": "Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decoding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "content",
+      "title": "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-safer-reasoning-traces:-measuring-and-mitigating-chain-of-thought-leakage-in-llm.md",
+      "type": "content",
+      "title": "Safer Reasoning Traces: Measuring and Mitigating Chain-of-Thought Leakage in LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-the-fragility-of-moral-judgment-in-large-language-models.md",
+      "type": "content",
+      "title": "The Fragility Of Moral Judgment In Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-freetxt-vi:-a-benchmarked-vietnamese-english-toolkit-for-segmentation,-sentiment.md",
+      "type": "content",
+      "title": "FreeTxt-Vi: A Benchmarked Vietnamese-English Toolkit for Segmentation, Sentiment, and Summarisation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-towards-robust-retrieval-augmented-generation-based-on-knowledge-graph:-a-compar.md",
+      "type": "content",
+      "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
+      "type": "content",
+      "title": "Cultural Perspectives and Expectations for Generative AI: A Global Survey Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-structured-multidimensional-representation-learning-for-large-language-models.md",
+      "type": "content",
+      "title": "Structured Multidimensional Representation Learning for Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-let's-talk,-not-type:-an-oral-first-multi-agent-architecture-for-guaran\\'i.md",
+      "type": "content",
+      "title": "Let's Talk, Not Type: An Oral-First Multi-Agent Architecture for Guaran\\'i"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-traversal-as-policy:-log-distilled-gated-behavior-trees-as-externalized,-verifia.md",
+      "type": "content",
+      "title": "Traversal-as-Policy: Log-Distilled Gated Behavior Trees as Externalized, Verifiable Policies for Safe, Robust, and Efficient Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-jaws:-enhancing-long-term-rollout-of-neural-operators-via-spatially-adaptive-jac.md",
+      "type": "content",
+      "title": "JAWS: Enhancing Long-term Rollout of Neural Operators via Spatially-Adaptive Jacobian Regularization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-vdcook:diy-video-data-cook-your-mllms.md",
+      "type": "content",
+      "title": "VDCook:DIY video data cook your MLLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-intseqbert:-learning-arithmetic-structure-in-oeis-via-modulo-spectrum-embeddings.md",
+      "type": "content",
+      "title": "IntSeqBERT: Learning Arithmetic Structure in OEIS via Modulo-Spectrum Embeddings"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
+      "type": "content",
+      "title": "Autocorrelation effects in a stochastic-process model for decision making via time series"
+    },
+    {
+      "id": "c4ca82a6-e24f-4b31-8b91-072ae746a00d",
+      "type": "seed",
+      "title": "IncreRTL: Traceability-Guided Incremental RTL Generation under Requirement Evolution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-incrertl:-traceability-guided-incremental-rtl-generation-under-requirement-evolution.md",
+      "type": "output",
+      "title": "IncreRTL: Traceability-Guided Incremental RTL Generation under Requirement Evolution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-towards-efficient-and-stable-ocean-state-forecasting:-a-continuous-time-koopman-.md",
+      "type": "content",
+      "title": "Towards Efficient and Stable Ocean State Forecasting: A Continuous-Time Koopman Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-when-ai-levels-the-playing-field:-skill-homogenization,-asset-concentration,-and.md",
+      "type": "content",
+      "title": "When AI Levels the Playing Field: Skill Homogenization, Asset Concentration, and Two Regimes of Inequality"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
+      "type": "content",
+      "title": "Aligning the True Semantics: Constrained Decoupling and Distribution Sampling for Cross-Modal Alignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-fusediff:-symmetry-preserving-joint-diffusion-for-dual-target-structure-based-dr.md",
+      "type": "content",
+      "title": "FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-why-depth-matters-in-parallelizable-sequence-models:-a-lie-algebraic-view.md",
+      "type": "content",
+      "title": "Why Depth Matters in Parallelizable Sequence Models: A Lie Algebraic View"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-eigendata:-a-self-evolving-multi-agent-platform-for-function-calling-data-synthe.md",
+      "type": "content",
+      "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
+      "type": "content",
+      "title": "Tool-Genesis: A Task-Driven Tool Creation Benchmark for Self-Evolving Language Agent"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
+      "type": "content",
+      "title": "Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-xai-for-coding-agent-failures:-transforming-raw-execution-traces-into-actionable.md",
+      "type": "content",
+      "title": "XAI for Coding Agent Failures: Transforming Raw Execution Traces into Actionable Insights"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
+      "type": "content",
+      "title": "Balancing Latency and Accuracy of Code Completion via Local-Cloud Model Cascading"
+    },
+    {
+      "id": "2812422f-1860-445b-a600-51646bf12ec9",
+      "type": "seed",
+      "title": "ReCUBE: Evaluating Repository-Level Context Utilization in Code Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/recube_-evaluating-repository-level-context-utiliz.py",
+      "type": "app",
+      "title": "ReCUBE: Evaluating Repository-Level Context Utilization in Code Generation"
+    },
+    {
+      "id": "7c8438ba-230c-405f-9e30-09051dae3ab8",
+      "type": "seed",
+      "title": "A Large-scale Empirical Study on the Generalizability of Disclosed Java Library Vulnerability Exploits"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-a-large-scale-empirical-study-on-the-generalizability-of-disclosed-java-library-vulnerability-exploits.md",
+      "type": "output",
+      "title": "A Large-scale Empirical Study on the Generalizability of Disclosed Java Library Vulnerability Exploits"
     }
   ],
   "edges": [
@@ -17300,6 +17515,201 @@
     {
       "from": "4a3251c6-de45-4567-8b2e-1d22b37dc73e",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-consistency-amplifies:-how-behavioral-variance-shapes-agent-accuracy.md",
+      "type": "produced"
+    },
+    {
+      "from": "d24b66a1-d675-4928-b2df-68f8bfd6dbd2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-robolayout:-differentiable-3d-scene-generation-for-embodied-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "3cf313bf-9fa2-43ba-bac5-bcd0f64e0c2d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "produced"
+    },
+    {
+      "from": "d24b66a1-d675-4928-b2df-68f8bfd6dbd2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-robolayout:-differentiable-3d-scene-generation-for-embodied-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "3cf313bf-9fa2-43ba-bac5-bcd0f64e0c2d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-evolving-medical-imaging-agents-via-experience-driven-self-skill-discovery.md",
+      "type": "produced"
+    },
+    {
+      "from": "861e6313-325b-4a6b-b935-bf3ad443331a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-the-world-won't-stay-still:-programmable-evolution-for-agent-benchmarks.md",
+      "type": "produced"
+    },
+    {
+      "from": "28b19478-a35b-459f-8904-eaae9ed017d8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-deepfact:-co-evolving-benchmarks-and-agents-for-deep-research-factuality.md",
+      "type": "produced"
+    },
+    {
+      "from": "175429d8-5741-4db3-a9e8-56e6911dae9f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-an-interactive-multi-agent-system-for-evaluation-of-new-product-concepts.md",
+      "type": "produced"
+    },
+    {
+      "from": "47c247ff-b4e0-481d-8498-95e930773d86",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/ucagent_-an-end-to-end-agent-for-block-level-funct.py",
+      "type": "produced"
+    },
+    {
+      "from": "1bd89773-becb-4e79-a242-9fc37ad1ac32",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
+      "type": "produced"
+    },
+    {
+      "from": "56698ecc-ac1a-48e6-b957-29d541ffe24d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-aggregative-semantics-for-quantitative-bipolar-argumentation-frameworks.md",
+      "type": "produced"
+    },
+    {
+      "from": "97e9d3e1-d39c-41ba-8552-695a109f20f1",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-offline-materials-optimization-with-cliqueflowmer.md",
+      "type": "produced"
+    },
+    {
+      "from": "94dd3925-a121-4b09-8483-ed1eadd415ff",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-verify-as-you-go:-an-llm-powered-browser-extension-for-fake-news-detection.md",
+      "type": "produced"
+    },
+    {
+      "from": "b5660741-a7f4-475e-bd13-81e0b904c1c7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-attention-meets-reachability:-structural-equivalence-and-efficiency-in-grammar-c.md",
+      "type": "produced"
+    },
+    {
+      "from": "33f8ba4e-f807-404c-b53f-5434e7cdb881",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "produced"
+    },
+    {
+      "from": "4fba2b24-6ecf-453b-af81-9ab357e99cbb",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-safer-reasoning-traces:-measuring-and-mitigating-chain-of-thought-leakage-in-llm.md",
+      "type": "produced"
+    },
+    {
+      "from": "2a920d2a-4d93-4a82-9624-71f81f32d0a8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-the-fragility-of-moral-judgment-in-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "fb84df72-72b1-4691-b4d1-9df3ecacea01",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-freetxt-vi:-a-benchmarked-vietnamese-english-toolkit-for-segmentation,-sentiment.md",
+      "type": "produced"
+    },
+    {
+      "from": "1bb33041-1d33-4cd8-8867-4f1029981d5d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-towards-robust-retrieval-augmented-generation-based-on-knowledge-graph:-a-compar.md",
+      "type": "produced"
+    },
+    {
+      "from": "3f11b984-6c97-4600-959f-b6a9ba87b6cc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
+      "type": "produced"
+    },
+    {
+      "from": "fe1db3c8-42bd-45b1-b28e-47e6d7878258",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-structured-multidimensional-representation-learning-for-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "1528e780-35c5-43fa-863d-b8c0ffcaf023",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-let's-talk,-not-type:-an-oral-first-multi-agent-architecture-for-guaran\\'i.md",
+      "type": "produced"
+    },
+    {
+      "from": "c4ff3eb2-7db6-4ec3-9f13-0c997fde0c5d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-traversal-as-policy:-log-distilled-gated-behavior-trees-as-externalized,-verifia.md",
+      "type": "produced"
+    },
+    {
+      "from": "e3a7c97f-a5b0-45e9-a5f4-ca76ada96934",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-jaws:-enhancing-long-term-rollout-of-neural-operators-via-spatially-adaptive-jac.md",
+      "type": "produced"
+    },
+    {
+      "from": "647e2a9f-4e39-45d2-b766-d23f06ac2bb8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-vdcook:diy-video-data-cook-your-mllms.md",
+      "type": "produced"
+    },
+    {
+      "from": "b69a72a7-301c-4f38-95fe-75fae597b6a7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-intseqbert:-learning-arithmetic-structure-in-oeis-via-modulo-spectrum-embeddings.md",
+      "type": "produced"
+    },
+    {
+      "from": "f0916862-33f7-4436-a8fe-2f38c85ba289",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
+      "type": "produced"
+    },
+    {
+      "from": "c4ca82a6-e24f-4b31-8b91-072ae746a00d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-30-incrertl:-traceability-guided-incremental-rtl-generation-under-requirement-evolution.md",
+      "type": "produced"
+    },
+    {
+      "from": "d5bfeb07-ce74-404c-bc6a-be2a5a35381c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-towards-efficient-and-stable-ocean-state-forecasting:-a-continuous-time-koopman-.md",
+      "type": "produced"
+    },
+    {
+      "from": "f7869940-2596-42e7-8272-4886c0467c21",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-when-ai-levels-the-playing-field:-skill-homogenization,-asset-concentration,-and.md",
+      "type": "produced"
+    },
+    {
+      "from": "6bc7d0df-2ddc-4716-a195-969416257881",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "6c0dbbd9-8dca-4adb-bd39-0f24f3250e9e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-fusediff:-symmetry-preserving-joint-diffusion-for-dual-target-structure-based-dr.md",
+      "type": "produced"
+    },
+    {
+      "from": "ea6b1e4b-ffe5-46f8-83a8-e52a9a63d2a3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-why-depth-matters-in-parallelizable-sequence-models:-a-lie-algebraic-view.md",
+      "type": "produced"
+    },
+    {
+      "from": "02016207-a525-4c1a-a063-97db2522cbb6",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-eigendata:-a-self-evolving-multi-agent-platform-for-function-calling-data-synthe.md",
+      "type": "produced"
+    },
+    {
+      "from": "72cb1a57-b581-4a1b-bb67-1615263a944e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
+      "type": "produced"
+    },
+    {
+      "from": "73e69f7c-63d5-4286-a5e6-0ed8dc8eed85",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
+      "type": "produced"
+    },
+    {
+      "from": "26786292-74c7-447a-a70c-2e9aa5867e6d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-xai-for-coding-agent-failures:-transforming-raw-execution-traces-into-actionable.md",
+      "type": "produced"
+    },
+    {
+      "from": "4846d08b-444d-4e0d-a3cd-be22ae42eca5",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-30-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
+      "type": "produced"
+    },
+    {
+      "from": "2812422f-1860-445b-a600-51646bf12ec9",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/recube_-evaluating-repository-level-context-utiliz.py",
+      "type": "produced"
+    },
+    {
+      "from": "7c8438ba-230c-405f-9e30-09051dae3ab8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-a-large-scale-empirical-study-on-the-generalizability-of-disclosed-java-library-vulnerability-exploits.md",
       "type": "produced"
     }
   ]

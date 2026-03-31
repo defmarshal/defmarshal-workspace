@@ -9,6 +9,9 @@ CONTENT_DIR = Path('/home/ubuntu/.openclaw/workspace/content')
 GRAPH_FILE = Path('/home/ubuntu/.openclaw/workspace/memory/graph.json')
 OPENCLAWS = '/home/ubuntu/.npm-global/bin/openclaw'
 
+# Config
+BATCH_SIZE = int(os.getenv('CONTENT_GARDENER_BATCH', '5'))  # Process up to N seeds per run
+
 CONTENT_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg):
@@ -133,17 +136,30 @@ def main():
     seeds = load_seeds()
     processed = load_processed()
     unprocessed = [s for s in seeds if s['id'] not in processed]
+
     if not unprocessed:
         log("No new seeds for content gardening")
         return
-    # Pick most recent seed
-    unprocessed.sort(key=lambda s: s['ts'], reverse=True)
-    seed = unprocessed[0]
-    log(f"Growing content for seed: {seed['title']}")
-    output_path = generate_content(seed)
-    add_graph_edge(seed['id'], output_path, seed['title'])
-    mark_processed(seed['id'])
-    log(f"Content written to {output_path}")
+
+    # Sort by timestamp ascending (oldest first) to prevent starvation
+    unprocessed.sort(key=lambda s: s['ts'])
+
+    # Take a batch
+    batch = unprocessed[:BATCH_SIZE]
+    log(f"Processing batch of {len(batch)} seeds (oldest first). Backlog: {len(unprocessed)} unprocessed")
+
+    success_count = 0
+    for seed in batch:
+        try:
+            log(f"Growing content for seed: {seed['title']}")
+            output_path = generate_content(seed)
+            add_graph_edge(seed['id'], output_path, seed['title'])
+            mark_processed(seed['id'])
+            success_count += 1
+        except Exception as e:
+            log(f"Failed to process seed '{seed['title']}': {e}")
+
+    log(f"Batch complete: {success_count}/{len(batch)} succeeded. {len(unprocessed) - len(batch)} remaining")
 
 if __name__ == '__main__':
     main()

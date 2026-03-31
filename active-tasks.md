@@ -6,7 +6,7 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-03-30 16:08 UTC / 23:08 Bangkok — all checks OK (gateway healthy, disk 84%, cron jobs green, 12 updates pending, git: 3 changed + 2 untracked). Memory index degraded but FTS fallback functional. Pending maintenance: system reboot to activate new kernel (from March 28 updates).
 
-**Meta-Summary Cron** (meta-summary-cron): ✅ Healthy. Executed at 2026-03-30 01:02 UTC / 08:02 Bangkok; runtime 273s? (status: ok). Telegram summary sent successfully with system metrics.
+**Meta-Summary Cron** (meta-summary-cron): ✅ Healthy. Last executed: 2026-03-30 20:07 UTC / 2026-03-31 03:07 Bangkok (current). Telegram summary sent successfully with system metrics.
 
 **Harvester** (cron harvest-1773046808): ✅ Completed. Generated daily-harvest-2026-03-27.md with 50 seeds and 9 outputs. Telegram notification sent successfully. All systems nominal.
 
@@ -39,14 +39,7 @@ notifier-cron             scheduled 02:02 UTC
 - Processed seeds: 544 (37.0%)
 - Remaining: 924
 
-**Research Monitoring** (research-agent): ✅ Passive monitoring
-- Final comprehensive sweep: 07:00-11:30 UTC March 26 (4.5 hours)
-- Generated 12 critical reports including 2 breaking discoveries
-- User override on March 28 07:07 UTC produced 6 urgent reports (see below)
-- All findings documented and indexed in research/
-- Status: PASSIVE MONITORING — will reactivate for breaking developments or user requests
-- EU AI Act plenary vote: pending official result
-- Next scheduled: Daily digest generation 07:00 UTC daily
+**Research Monitoring** (research-agent): ✅ Active sweep completed. Generated 5 critical reports (JACA deadline, EU AI Act, MCP vulnerabilities, AI safety sycophancy, tech infrastructure). All findings indexed. **Status returned to PASSIVE MONITORING** — will reactivate for breaking developments or user requests.
 
 **Research Agent (User Override)** (manual 2026-03-28 07:07): ✅ Sprint completed
 - Mission: Active research on anime, banking, tech, AI
