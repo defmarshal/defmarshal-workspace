@@ -13569,6 +13569,116 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/geoblock_-inferring-block-granularity-from-depende.py",
       "type": "app",
       "title": "GeoBlock: Inferring Block Granularity from Dependency Geometry in Diffusion Language Models"
+    },
+    {
+      "id": "9c72af2e-6a18-4ee9-a61f-dd45447442c6",
+      "type": "seed",
+      "title": "AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-alpsbench:-an-llm-personalization-benchmark-for-real-dialogue-memorization-and-preference-alignment.md",
+      "type": "output",
+      "title": "AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-deepfact:-co-evolving-benchmarks-and-agents-for-deep-research-factuality.md",
+      "type": "content",
+      "title": "DeepFact: Co-Evolving Benchmarks and Agents for Deep Research Factuality"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-an-interactive-multi-agent-system-for-evaluation-of-new-product-concepts.md",
+      "type": "content",
+      "title": "An Interactive Multi-Agent System for Evaluation of New Product Concepts"
+    },
+    {
+      "id": "2f469903-ddd0-4d8b-b47c-3cf27cdf9902",
+      "type": "seed",
+      "title": "Agentic LLM Planning via Step-Wise PDDL Simulation: An Empirical Characterisation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
+      "type": "content",
+      "title": "Agentic LLM Planning via Step-Wise PDDL Simulation: An Empirical Characterisation"
+    },
+    {
+      "id": "1e9e5439-00ae-4ae0-b00f-a4e31a508c4b",
+      "type": "seed",
+      "title": "Aggregative Semantics for Quantitative Bipolar Argumentation Frameworks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-aggregative-semantics-for-quantitative-bipolar-argumentation-frameworks.md",
+      "type": "content",
+      "title": "Aggregative Semantics for Quantitative Bipolar Argumentation Frameworks"
+    },
+    {
+      "id": "8b16eac5-b2ea-4103-8bb6-8b29596702df",
+      "type": "seed",
+      "title": "Offline Materials Optimization with CliqueFlowmer"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-offline-materials-optimization-with-cliqueflowmer.md",
+      "type": "content",
+      "title": "Offline Materials Optimization with CliqueFlowmer"
+    },
+    {
+      "id": "7ac95425-122d-48c9-8a95-f605734568fe",
+      "type": "seed",
+      "title": "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-verify-as-you-go:-an-llm-powered-browser-extension-for-fake-news-detection.md",
+      "type": "content",
+      "title": "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection"
+    },
+    {
+      "id": "62256f9e-1282-4104-9f0c-69406348f4bc",
+      "type": "seed",
+      "title": "Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decoding"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-attention-meets-reachability:-structural-equivalence-and-efficiency-in-grammar-c.md",
+      "type": "content",
+      "title": "Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decoding"
+    },
+    {
+      "id": "89d6572d-25ef-4de5-9771-34b2d1172cc2",
+      "type": "seed",
+      "title": "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "content",
+      "title": "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
+    },
+    {
+      "id": "1da0b583-8b61-4ff8-872a-70d0ee698400",
+      "type": "seed",
+      "title": "Safer Reasoning Traces: Measuring and Mitigating Chain-of-Thought Leakage in LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-safer-reasoning-traces:-measuring-and-mitigating-chain-of-thought-leakage-in-llm.md",
+      "type": "content",
+      "title": "Safer Reasoning Traces: Measuring and Mitigating Chain-of-Thought Leakage in LLMs"
+    },
+    {
+      "id": "98cfe5c6-85eb-41ff-8c1e-4d6f261f241f",
+      "type": "seed",
+      "title": "The Cognitive Divergence: AI Context Windows, Human Attention Decline, and the Delegation Feedback Loop"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/the-cognitive-divergence_-ai-context-windows_-huma.py",
+      "type": "app",
+      "title": "The Cognitive Divergence: AI Context Windows, Human Attention Decline, and the Delegation Feedback Loop"
+    },
+    {
+      "id": "74590d40-78ee-4f6f-bcd9-38379d673b14",
+      "type": "seed",
+      "title": "The Fragility Of Moral Judgment In Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-the-fragility-of-moral-judgment-in-large-language-models.md",
+      "type": "content",
+      "title": "The Fragility Of Moral Judgment In Large Language Models"
     }
   ],
   "edges": [
@@ -18070,6 +18180,66 @@
     {
       "from": "89a6822d-d17a-4d66-8c2d-b0146bc58356",
       "to": "/home/ubuntu/.openclaw/workspace/apps/geoblock_-inferring-block-granularity-from-depende.py",
+      "type": "produced"
+    },
+    {
+      "from": "9c72af2e-6a18-4ee9-a61f-dd45447442c6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-alpsbench:-an-llm-personalization-benchmark-for-real-dialogue-memorization-and-preference-alignment.md",
+      "type": "produced"
+    },
+    {
+      "from": "2b1547dc-ded0-49ec-9364-1c0eb9c38a6d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-deepfact:-co-evolving-benchmarks-and-agents-for-deep-research-factuality.md",
+      "type": "produced"
+    },
+    {
+      "from": "2a6aaf71-8735-41fa-a994-32bb0515a7e5",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-an-interactive-multi-agent-system-for-evaluation-of-new-product-concepts.md",
+      "type": "produced"
+    },
+    {
+      "from": "2f469903-ddd0-4d8b-b47c-3cf27cdf9902",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
+      "type": "produced"
+    },
+    {
+      "from": "1e9e5439-00ae-4ae0-b00f-a4e31a508c4b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-aggregative-semantics-for-quantitative-bipolar-argumentation-frameworks.md",
+      "type": "produced"
+    },
+    {
+      "from": "8b16eac5-b2ea-4103-8bb6-8b29596702df",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-offline-materials-optimization-with-cliqueflowmer.md",
+      "type": "produced"
+    },
+    {
+      "from": "7ac95425-122d-48c9-8a95-f605734568fe",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-verify-as-you-go:-an-llm-powered-browser-extension-for-fake-news-detection.md",
+      "type": "produced"
+    },
+    {
+      "from": "62256f9e-1282-4104-9f0c-69406348f4bc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-attention-meets-reachability:-structural-equivalence-and-efficiency-in-grammar-c.md",
+      "type": "produced"
+    },
+    {
+      "from": "89d6572d-25ef-4de5-9771-34b2d1172cc2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "produced"
+    },
+    {
+      "from": "1da0b583-8b61-4ff8-872a-70d0ee698400",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-safer-reasoning-traces:-measuring-and-mitigating-chain-of-thought-leakage-in-llm.md",
+      "type": "produced"
+    },
+    {
+      "from": "98cfe5c6-85eb-41ff-8c1e-4d6f261f241f",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/the-cognitive-divergence_-ai-context-windows_-huma.py",
+      "type": "produced"
+    },
+    {
+      "from": "74590d40-78ee-4f6f-bcd9-38379d673b14",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-the-fragility-of-moral-judgment-in-large-language-models.md",
       "type": "produced"
     }
   ]
