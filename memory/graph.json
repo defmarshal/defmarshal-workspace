@@ -13409,6 +13409,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-pure-and-physics-guided-deep-learning-solutions-for-spatio-temporal-groundwater-level-prediction-at-arbitrary-locations.md",
       "type": "output",
       "title": "Pure and Physics-Guided Deep Learning Solutions for Spatio-Temporal Groundwater Level Prediction at Arbitrary Locations"
+    },
+    {
+      "id": "9b098993-1fb0-4209-bc09-582ba10d7594",
+      "type": "seed",
+      "title": "MAGNET: Autonomous Expert Model Generation via Decentralized Autoresearch and BitNet Training"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-magnet:-autonomous-expert-model-generation-via-decentralized-autoresearch-and-bitnet-training.md",
+      "type": "output",
+      "title": "MAGNET: Autonomous Expert Model Generation via Decentralized Autoresearch and BitNet Training"
     }
   ],
   "edges": [
@@ -17790,6 +17800,11 @@
     {
       "from": "7511e0a3-2240-4d0b-966f-ec66244fdfb2",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-pure-and-physics-guided-deep-learning-solutions-for-spatio-temporal-groundwater-level-prediction-at-arbitrary-locations.md",
+      "type": "produced"
+    },
+    {
+      "from": "9b098993-1fb0-4209-bc09-582ba10d7594",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-magnet:-autonomous-expert-model-generation-via-decentralized-autoresearch-and-bitnet-training.md",
       "type": "produced"
     }
   ]
