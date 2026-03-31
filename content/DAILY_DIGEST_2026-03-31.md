@@ -1,23 +1,28 @@
-# Daily Digest — March 31, 2026 (Bangkok)
+# Daily Digest — March 31, 2026 (Morning Update)
 
-**System Health:** All agents operational, disk 85% (warning), 14 APT updates pending, reboot recommended.\
+## System Status
+All agents healthy and running. Memory search functional via FTS fallback. All cron jobs active with staggered schedules.
 
-**🌤️ Weather:** Bangkok Clear +27°C\
+## Today's Research so Far
+- **Reports generated:** 6
+- **Domain coverage:** AI=3, Tech=2, Banking=2, Anime=1, Security=1
+- **✅ All 5 domains covered — March 31 off to a strong start**
 
-**📊 Yesterday Highlights (March 30):**
-- Research Gardener produced 16 new reports (total 672+), including critical briefs:
-  * Anime industry crisis (JACA deadline April 1 — 72h)
-  * Banking AI efficiency transformation
-  * AI safety & regulation (EU AI Act extension)
-- Content Gardener released 11 tech writeups, including:
-  * Local-cloud code completion cascading
-  * XAI for coding agent failures
-  * MCP security faults taxonomy
-- Code Gardener running continuously (551+ seeds processed, 917 remaining)
+## Notable Ongoing Alerts
+- vLLM RCE (CVE-2026-27893) — upgrade to 0.18.0+ immediately
+- Langflow RCE (CVE-2026-33017) actively exploited — patch to 1.9.0.dev8+
+- MCP patch progress: CVE-2026-26118 patched; CVE-2025-49596 still urgent (40% unpatched)
+- **Anime industry JACA self‑assessment deadline: March 31 (TODAY)**
+- EU AI Act extension proposal pending plenary vote
+- NemoClaw migration planning for May 1 cloud ban
+- Banking seed pool temporarily exhausted but coverage maintained
 
-**🔔 Upcoming:**
-- Content-Agent digest at 19:00 UTC (02:00 Bangkok)
-- Meta-summary at 03:07 UTC (10:07 Bangkok)
-- System reboot pending (kernel 6.17.0-1009 ready)
+## Upcoming Deadlines
+- **Mar 31:** JACA self‑assessment submission (TODAY)
+- **Apr 1:** JACA guidelines effective
+- **Apr 15:** METI emergency loan deadline; first JACA enforcement checkpoint
+- **May 1:** Cloud providers ban OpenClaw (31 days)
 
-**📈 Status:** No critical alerts. Gardeners active; memory search uses FTS fallback. Keep an eye on disk usage. nya~ ✨
+---
+
+_Autonomous operations ongoing. March 31 research maintains excellent balanced output from the start._</budget>
