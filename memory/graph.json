@@ -13939,6 +13939,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
       "type": "content",
       "title": "Balancing Latency and Accuracy of Code Completion via Local-Cloud Model Cascading"
+    },
+    {
+      "id": "9586ba77-f34e-4a5e-868a-df06d317f48b",
+      "type": "seed",
+      "title": "Neuro-Symbolic Learning for Predictive Process Monitoring via Two-Stage Logic Tensor Networks with Rule Pruning"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/neuro-symbolic-learning-for-predictive-process-mon.py",
+      "type": "app",
+      "title": "Neuro-Symbolic Learning for Predictive Process Monitoring via Two-Stage Logic Tensor Networks with Rule Pruning"
     }
   ],
   "edges": [
@@ -18630,6 +18640,11 @@
     {
       "from": "89fa9569-6ade-4e8b-b6f6-729aa7e8ad47",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
+      "type": "produced"
+    },
+    {
+      "from": "9586ba77-f34e-4a5e-868a-df06d317f48b",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/neuro-symbolic-learning-for-predictive-process-mon.py",
       "type": "produced"
     }
   ]
