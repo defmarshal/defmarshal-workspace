@@ -13364,6 +13364,41 @@
       "id": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-a-large-scale-empirical-study-on-the-generalizability-of-disclosed-java-library-vulnerability-exploits.md",
       "type": "output",
       "title": "A Large-scale Empirical Study on the Generalizability of Disclosed Java Library Vulnerability Exploits"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-when-specifications-meet-reality:-uncovering-api-inconsistencies-in-ethereum-inf.md",
+      "type": "content",
+      "title": "When Specifications Meet Reality: Uncovering API Inconsistencies in Ethereum Infrastructure"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-detecting-semantic-alignments-between-textual-specifications-and-domain-models.md",
+      "type": "content",
+      "title": "Detecting Semantic Alignments between Textual Specifications and Domain Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
+      "type": "content",
+      "title": "Pre-AI Baseline: Developer IDE Satisfaction and Tool Autonomy in 2022"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-world-fault-detection-for-c-extended-python-projects-with-automated-unit-te.md",
+      "type": "content",
+      "title": "Real-World Fault Detection for C-Extended Python Projects with Automated Unit Test Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-can-adjusting-hyperparameters-lead-to-green-deep-learning:-an-empirical-study-on.md",
+      "type": "content",
+      "title": "Can Adjusting Hyperparameters Lead to Green Deep Learning: An Empirical Study on Correlations between Hyperparameters and Energy Consumption of Deep Learning Models"
+    },
+    {
+      "id": "5bc20762-4b69-475b-ac22-32da3d5e53b2",
+      "type": "seed",
+      "title": "Empowering Epidemic Response: The Role of Reinforcement Learning in Infectious Disease Control"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/empowering-epidemic-response_-the-role-of-reinforc.py",
+      "type": "app",
+      "title": "Empowering Epidemic Response: The Role of Reinforcement Learning in Infectious Disease Control"
     }
   ],
   "edges": [
@@ -17710,6 +17745,36 @@
     {
       "from": "7c8438ba-230c-405f-9e30-09051dae3ab8",
       "to": "/home/ubuntu/.openclaw/workspace/research/2026-03-31-a-large-scale-empirical-study-on-the-generalizability-of-disclosed-java-library-vulnerability-exploits.md",
+      "type": "produced"
+    },
+    {
+      "from": "c73b0f3c-84c4-4518-a867-5c7df1fd7164",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-when-specifications-meet-reality:-uncovering-api-inconsistencies-in-ethereum-inf.md",
+      "type": "produced"
+    },
+    {
+      "from": "1642ce5e-7827-4ebc-a35c-88d7125171ee",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-detecting-semantic-alignments-between-textual-specifications-and-domain-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "6f03a1d2-48d6-436e-9e21-19026d1a058b",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
+      "type": "produced"
+    },
+    {
+      "from": "066cb5f0-6c98-4928-bd0c-4957d3e35af0",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-real-world-fault-detection-for-c-extended-python-projects-with-automated-unit-te.md",
+      "type": "produced"
+    },
+    {
+      "from": "c38ac37d-3674-4634-abb3-4e09bd246e86",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-03-31-can-adjusting-hyperparameters-lead-to-green-deep-learning:-an-empirical-study-on.md",
+      "type": "produced"
+    },
+    {
+      "from": "5bc20762-4b69-475b-ac22-32da3d5e53b2",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/empowering-epidemic-response_-the-role-of-reinforc.py",
       "type": "produced"
     }
   ]
