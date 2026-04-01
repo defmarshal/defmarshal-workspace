@@ -1,0 +1,61 @@
+# Axolotl config for TinyLlama 1.1B personality fine-tuning
+# Phase 1 of Ultimate Smart LLM project
+
+base_model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+model_type: llama
+
+# LoRA settings
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.1
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# Quantization (4-bit for CPU memory efficiency)
+load_in_4bit: true
+bnb_4bit_compute_dtype: float16
+bnb_4bit_quant_type: nf4
+bnb_4bit_use_double_quant: true
+
+# Dataset
+train_data:
+  - path: ./data/personality.jsonl
+    type: chatml
+    # ChatML format with system/user/assistant roles
+val_data: ./data/tests/benchmark.jsonl  # use benchmark for quick eval
+
+# Training hyperparameters
+micro_batch_size: 1  # CPU, small batch
+gradient_accumulation: 4  # effective batch size = 4
+num_epochs: 5
+learning_rate: 2e-4
+optimizer: adamw_torch
+warmup_steps: 100
+eval_steps: 50
+save_steps: 100
+weight_decay: 0.01
+
+# Output
+output_dir: ./models/mewmew-lora/personality-v1
+logging_steps: 10
+save_total_limit: 2
+
+# Additional
+gradient_checkpointing: false  # CPU, not needed
+sequence_len: 2048  # context window
+flash_attention: false  # not needed for CPU
+
+# Evaluation during training
+eval_strategy: steps
+per_device_eval_batch_size: 1
+
+# Misc
+fsdp: []  # not using FSDP on CPU
+deepspeed: null
+group_by_length: false
