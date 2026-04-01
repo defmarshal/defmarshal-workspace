@@ -141,3 +141,7 @@ garden-dashboard.pid
 
 # Temporary HTML files (route hotspot fixes)
 route-hotspots-mobile-fix*.html
+
+# Model files (large binaries, keep local only)
+models/
+**/models/
