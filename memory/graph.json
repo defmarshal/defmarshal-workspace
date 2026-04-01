@@ -14224,6 +14224,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
       "type": "content",
       "title": "Cultural Perspectives and Expectations for Generative AI: A Global Survey Approach"
+    },
+    {
+      "id": "ae598dd0-3388-4bd5-afdf-60fe7397e462",
+      "type": "seed",
+      "title": "Robotaxi companies refuse to say how often their AVs need remote help"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/robotaxi-companies-refuse-to-say-how-often-their-a.py",
+      "type": "app",
+      "title": "Robotaxi companies refuse to say how often their AVs need remote help"
     }
   ],
   "edges": [
@@ -19110,6 +19120,11 @@
     {
       "from": "ffe65e68-f702-46f9-be37-16ab5ff575de",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
+      "type": "produced"
+    },
+    {
+      "from": "ae598dd0-3388-4bd5-afdf-60fe7397e462",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/robotaxi-companies-refuse-to-say-how-often-their-a.py",
       "type": "produced"
     }
   ]
