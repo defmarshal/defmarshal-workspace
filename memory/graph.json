@@ -14234,6 +14234,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/robotaxi-companies-refuse-to-say-how-often-their-a.py",
       "type": "app",
       "title": "Robotaxi companies refuse to say how often their AVs need remote help"
+    },
+    {
+      "id": "fc9024d9-cff0-416f-90ad-166c77927002",
+      "type": "seed",
+      "title": "Structured Multidimensional Representation Learning for Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-structured-multidimensional-representation-learning-for-large-language-models.md",
+      "type": "content",
+      "title": "Structured Multidimensional Representation Learning for Large Language Models"
+    },
+    {
+      "id": "7ac5471e-9d41-42d5-8d12-0989cbe3ff8a",
+      "type": "seed",
+      "title": "A Large-scale Empirical Study on the Generalizability of Disclosed Java Library Vulnerability Exploits"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-a-large-scale-empirical-study-on-the-generalizability-of-disclosed-java-library-vulnerability-exploits.md",
+      "type": "output",
+      "title": "A Large-scale Empirical Study on the Generalizability of Disclosed Java Library Vulnerability Exploits"
+    },
+    {
+      "id": "673c401b-b942-4cf3-aa49-963326cb4ab9",
+      "type": "seed",
+      "title": "Let's Talk, Not Type: An Oral-First Multi-Agent Architecture for Guaran\\'i"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-let's-talk,-not-type:-an-oral-first-multi-agent-architecture-for-guaran\\'i.md",
+      "type": "content",
+      "title": "Let's Talk, Not Type: An Oral-First Multi-Agent Architecture for Guaran\\'i"
+    },
+    {
+      "id": "1ede374a-2f1f-45f5-b35a-1b31307997db",
+      "type": "seed",
+      "title": "Traversal-as-Policy: Log-Distilled Gated Behavior Trees as Externalized, Verifiable Policies for Safe, Robust, and Efficient Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-traversal-as-policy:-log-distilled-gated-behavior-trees-as-externalized,-verifia.md",
+      "type": "content",
+      "title": "Traversal-as-Policy: Log-Distilled Gated Behavior Trees as Externalized, Verifiable Policies for Safe, Robust, and Efficient Agents"
+    },
+    {
+      "id": "be7ea89b-da50-43d6-85f8-328c2d3df2d5",
+      "type": "seed",
+      "title": "JAWS: Enhancing Long-term Rollout of Neural Operators via Spatially-Adaptive Jacobian Regularization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-jaws:-enhancing-long-term-rollout-of-neural-operators-via-spatially-adaptive-jac.md",
+      "type": "content",
+      "title": "JAWS: Enhancing Long-term Rollout of Neural Operators via Spatially-Adaptive Jacobian Regularization"
+    },
+    {
+      "id": "93091b31-4b88-479c-aa4b-ebe97f1e646c",
+      "type": "seed",
+      "title": "VDCook:DIY video data cook your MLLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-vdcook:diy-video-data-cook-your-mllms.md",
+      "type": "content",
+      "title": "VDCook:DIY video data cook your MLLMs"
     }
   ],
   "edges": [
@@ -19125,6 +19185,36 @@
     {
       "from": "ae598dd0-3388-4bd5-afdf-60fe7397e462",
       "to": "/home/ubuntu/.openclaw/workspace/apps/robotaxi-companies-refuse-to-say-how-often-their-a.py",
+      "type": "produced"
+    },
+    {
+      "from": "fc9024d9-cff0-416f-90ad-166c77927002",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-structured-multidimensional-representation-learning-for-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "7ac5471e-9d41-42d5-8d12-0989cbe3ff8a",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-a-large-scale-empirical-study-on-the-generalizability-of-disclosed-java-library-vulnerability-exploits.md",
+      "type": "produced"
+    },
+    {
+      "from": "673c401b-b942-4cf3-aa49-963326cb4ab9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-let's-talk,-not-type:-an-oral-first-multi-agent-architecture-for-guaran\\'i.md",
+      "type": "produced"
+    },
+    {
+      "from": "1ede374a-2f1f-45f5-b35a-1b31307997db",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-traversal-as-policy:-log-distilled-gated-behavior-trees-as-externalized,-verifia.md",
+      "type": "produced"
+    },
+    {
+      "from": "be7ea89b-da50-43d6-85f8-328c2d3df2d5",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-jaws:-enhancing-long-term-rollout-of-neural-operators-via-spatially-adaptive-jac.md",
+      "type": "produced"
+    },
+    {
+      "from": "93091b31-4b88-479c-aa4b-ebe97f1e646c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-vdcook:diy-video-data-cook-your-mllms.md",
       "type": "produced"
     }
   ]
