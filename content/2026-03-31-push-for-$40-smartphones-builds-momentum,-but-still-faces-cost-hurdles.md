@@ -1,6 +1,6 @@
 # Push for $40 Smartphones Builds Momentum, but Still Faces Cost Hurdles
 
-Imagine a world where a smartphone costs less than a week’s groceries. That’s the vision of a bold new coalition— telecom giants, device makers, and NGOs— banding together to push the price of a basic smartphone down to **$40**. The goal? To connect up to **20 million people** in developing regions who have been left behind by the digital revolution. The idea is catching fire, but there’s a catch: component costs aren’t cooperating. Can the dream survive economic reality?
+Imagine a world where a smartphone costs less than a week’s groceries. That’s the vision of a bold new coalition—telecom giants, device makers, and NGOs—banding together to push the price of a basic smartphone down to **$40**. The goal? To connect up to **20 million people** in developing regions who have been left behind by the digital revolution. The idea is catching fire, but there’s a catch: component costs aren’t cooperating. Can the dream survive economic reality?
 
 ## The $40 Target: Ambitious but Necessary
 

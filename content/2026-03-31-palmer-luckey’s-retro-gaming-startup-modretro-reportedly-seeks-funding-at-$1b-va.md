@@ -1,6 +1,6 @@
-# Palmer Luckey’s Retro Gaming Startup ModRetro Reportedly Seeks Funding at $1B Valuation
+# Palmer Luckey's Retro Gaming Startup ModRetro Reportedly Seeks Funding at $1B Valuation
 
- Palmer Luckey, the controversial VR pioneer who co-founded Oculus before selling it to Facebook, is back in the hardware game—and this time he's betting on nostalgia. His latest venture, **ModRetro**, a company that makes modernized retro gaming handhelds, is reportedly raising a new funding round that could value the startup at a staggering **$1 billion**. That's a bold number for a company making spiritual successors to the Game Boy, but in a world where everything old is new again, Luckey might just have a shot at rewriting the rules of retro gaming.
+Palmer Luckey, the controversial VR pioneer who co-founded Oculus before selling it to Facebook, is back in the hardware game—and this time he's betting on nostalgia. His latest venture, **ModRetro**, a company that makes modernized retro gaming handhelds, is reportedly raising a new funding round that could value the startup at a staggering **$1 billion**. That's a bold number for a company making spiritual successors to the Game Boy, but in a world where everything old is new again, Luckey might just have a shot at rewriting the rules of retro gaming.
 
 ## The Chromatic: Modern Tech in a Classic Shell
 

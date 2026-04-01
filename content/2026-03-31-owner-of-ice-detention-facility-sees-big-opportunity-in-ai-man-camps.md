@@ -2,7 +2,7 @@
 
 In a twist that feels like a plot from a dystopian novel, the owner of a private ICE detention facility is betting big on the AI boom—by repurposing the controversial "man camp" model to house the thousands of workers building and operating AI data centers across remote America. As hyperscalers scramble for land and power in rural areas, they're turning to a familiar solution: modular, temporary housing originally designed for isolated resource extraction projects. And the entrepreneur behind some of the nation's most scrutinized detention centers sees a golden opportunity to supply it.
 
-## The "Man Camp" Evolution: Fromoil Fields to AI Hubs
+## The "Man Camp" Evolution: From Oil Fields to AI Hubs
 
 The term "man camp" (now often gender-neutralized) originated in the oil and gas industry—barracks-style housing for transient workers drilling in remote Bakken, Permian, and Alaska fields. These facilities prioritize efficiency over comfort: shared bathrooms, minimal amenities, strict rules. Now, AI data center developers are adopting the same model to house construction crews, technicians, and support staff in far-flung locations like West Texas, Nevada, and the Appalachian foothills, where power and water are plentiful but housing is not.
 

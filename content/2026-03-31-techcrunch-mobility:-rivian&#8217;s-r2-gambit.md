@@ -1,6 +1,6 @@
-# TechCrunch Mobility: Rivian’s R2 gambit
+# TechCrunch Mobility: Rivian's R2 gambit
 
-Welcome back to TechCrunch Mobility, your hub for all things “future of transportation.” Today we’re diving into Rivian’s bold pivot: the **R2** platform, a lower-cost, higher-volume electric vehicle strategy that could determine whether the company survives—or thrives. After years of struggling to scale its premium R1 trucks and SUVs, Rivian is betting its future on a more affordable, mass-market EV. But is this a stroke of genius or a desperate gamble?
+Welcome back to TechCrunch Mobility, your hub for all things "future of transportation." Today we’re diving into Rivian’s bold pivot: the **R2** platform, a lower-cost, higher-volume electric vehicle strategy that could determine whether the company survives—or thrives. After years of struggling to scale its premium R1 trucks and SUVs, Rivian is betting its future on a more affordable, mass-market EV. But is this a stroke of genius or a desperate gamble?
 
 ## What Is R2, Anyway?
 
