@@ -14514,6 +14514,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
       "type": "content",
       "title": "Pre-AI Baseline: Developer IDE Satisfaction and Tool Autonomy in 2022"
+    },
+    {
+      "id": "2151bfb6-3bb9-40e4-a921-f1483e0e49e8",
+      "type": "seed",
+      "title": "Learning to Select Visual In-Context Demonstrations"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-learning-to-select-visual-in-context-demonstrations.md",
+      "type": "output",
+      "title": "Learning to Select Visual In-Context Demonstrations"
+    },
+    {
+      "id": "4e21c691-cdd6-4271-a668-addf4f56c50e",
+      "type": "seed",
+      "title": "Real-World Fault Detection for C-Extended Python Projects with Automated Unit Test Generation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-real-world-fault-detection-for-c-extended-python-projects-with-automated-unit-te.md",
+      "type": "content",
+      "title": "Real-World Fault Detection for C-Extended Python Projects with Automated Unit Test Generation"
+    },
+    {
+      "id": "d1c68a46-f749-4ef1-bc9e-0f029068cea1",
+      "type": "seed",
+      "title": "Can Adjusting Hyperparameters Lead to Green Deep Learning: An Empirical Study on Correlations between Hyperparameters and Energy Consumption of Deep Learning Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-can-adjusting-hyperparameters-lead-to-green-deep-learning:-an-empirical-study-on.md",
+      "type": "content",
+      "title": "Can Adjusting Hyperparameters Lead to Green Deep Learning: An Empirical Study on Correlations between Hyperparameters and Energy Consumption of Deep Learning Models"
+    },
+    {
+      "id": "6566eb09-fca8-4831-a11e-9a2475427200",
+      "type": "seed",
+      "title": "Agentic Control Center for Data Product Optimization"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-agentic-control-center-for-data-product-optimization.md",
+      "type": "content",
+      "title": "Agentic Control Center for Data Product Optimization"
+    },
+    {
+      "id": "3fcfa71f-8df4-41a2-a3f2-345d7c0b7a1a",
+      "type": "seed",
+      "title": "Hybrid Self-evolving Structured Memory for GUI Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-hybrid-self-evolving-structured-memory-for-gui-agents.md",
+      "type": "content",
+      "title": "Hybrid Self-evolving Structured Memory for GUI Agents"
+    },
+    {
+      "id": "ecb9ec8d-aa5b-4c96-8f11-45b938158abc",
+      "type": "seed",
+      "title": "HEAL: Hindsight Entropy-Assisted Learning for Reasoning Distillation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-heal:-hindsight-entropy-assisted-learning-for-reasoning-distillation.md",
+      "type": "content",
+      "title": "HEAL: Hindsight Entropy-Assisted Learning for Reasoning Distillation"
     }
   ],
   "edges": [
@@ -19545,6 +19605,36 @@
     {
       "from": "6f2440fc-e2d6-4899-94a8-3a65b1eea470",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
+      "type": "produced"
+    },
+    {
+      "from": "2151bfb6-3bb9-40e4-a921-f1483e0e49e8",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-learning-to-select-visual-in-context-demonstrations.md",
+      "type": "produced"
+    },
+    {
+      "from": "4e21c691-cdd6-4271-a668-addf4f56c50e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-real-world-fault-detection-for-c-extended-python-projects-with-automated-unit-te.md",
+      "type": "produced"
+    },
+    {
+      "from": "d1c68a46-f749-4ef1-bc9e-0f029068cea1",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-can-adjusting-hyperparameters-lead-to-green-deep-learning:-an-empirical-study-on.md",
+      "type": "produced"
+    },
+    {
+      "from": "6566eb09-fca8-4831-a11e-9a2475427200",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-agentic-control-center-for-data-product-optimization.md",
+      "type": "produced"
+    },
+    {
+      "from": "3fcfa71f-8df4-41a2-a3f2-345d7c0b7a1a",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-hybrid-self-evolving-structured-memory-for-gui-agents.md",
+      "type": "produced"
+    },
+    {
+      "from": "ecb9ec8d-aa5b-4c96-8f11-45b938158abc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-heal:-hindsight-entropy-assisted-learning-for-reasoning-distillation.md",
       "type": "produced"
     }
   ]
