@@ -14134,6 +14134,41 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
       "type": "content",
       "title": "Agentic LLM Planning via Step-Wise PDDL Simulation: An Empirical Characterisation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-aggregative-semantics-for-quantitative-bipolar-argumentation-frameworks.md",
+      "type": "content",
+      "title": "Aggregative Semantics for Quantitative Bipolar Argumentation Frameworks"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-offline-materials-optimization-with-cliqueflowmer.md",
+      "type": "content",
+      "title": "Offline Materials Optimization with CliqueFlowmer"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-verify-as-you-go:-an-llm-powered-browser-extension-for-fake-news-detection.md",
+      "type": "content",
+      "title": "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-attention-meets-reachability:-structural-equivalence-and-efficiency-in-grammar-c.md",
+      "type": "content",
+      "title": "Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decoding"
+    },
+    {
+      "id": "05440c6d-50f0-4409-8e9f-04350c58551a",
+      "type": "seed",
+      "title": "Anthropic is having a month"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic-is-having-a-month.py",
+      "type": "app",
+      "title": "Anthropic is having a month"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "content",
+      "title": "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
     }
   ],
   "edges": [
@@ -18960,6 +18995,36 @@
     {
       "from": "ce9a458b-43aa-478c-aff4-cf339271447f",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-agentic-llm-planning-via-step-wise-pddl-simulation:-an-empirical-characterisatio.md",
+      "type": "produced"
+    },
+    {
+      "from": "7bc59aed-07c6-4c0a-9dc8-923f63fc4515",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-aggregative-semantics-for-quantitative-bipolar-argumentation-frameworks.md",
+      "type": "produced"
+    },
+    {
+      "from": "8967e649-4666-47ca-bf5f-46013aac68ec",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-offline-materials-optimization-with-cliqueflowmer.md",
+      "type": "produced"
+    },
+    {
+      "from": "d148766f-86c1-46da-bf39-0e1aea3166aa",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-verify-as-you-go:-an-llm-powered-browser-extension-for-fake-news-detection.md",
+      "type": "produced"
+    },
+    {
+      "from": "b6a09af5-5e7c-4beb-8884-a6f7085e5b80",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-attention-meets-reachability:-structural-equivalence-and-efficiency-in-grammar-c.md",
+      "type": "produced"
+    },
+    {
+      "from": "05440c6d-50f0-4409-8e9f-04350c58551a",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic-is-having-a-month.py",
+      "type": "produced"
+    },
+    {
+      "from": "500587ec-01da-4318-aa63-ba6845843256",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
       "type": "produced"
     }
   ]

@@ -22,15 +22,13 @@ import torch
 device = "cpu"
 print(f"Using device: {device}")
 
-# Load model with 4-bit to save RAM
+# Load model (full precision, CPU)
 pipe = pipeline(
     "text-generation",
     model=str(MODEL_DIR),
     tokenizer=str(MODEL_DIR),
     device_map="auto",  # will use CPU if no GPU
-    load_in_4bit=True,  # 4-bit quantization
-    torch_dtype=torch.float16,
-    model_kwargs={"use_cache": True}
+    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
 )
 
 # Test prompts
