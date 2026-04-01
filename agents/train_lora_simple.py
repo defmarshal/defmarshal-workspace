@@ -19,12 +19,11 @@ DATA_FILE = WORKSPACE / "data/personality.jsonl"
 OUTPUT_DIR = WORKSPACE / "models/mewmew-lora/personality-v1-simple"
 
 # Load model and tokenizer
-print("Loading model (4-bit)...")
+print("Loading model (full precision, CPU)...")
 model = AutoModelForCausalLM.from_pretrained(
     str(MODEL_DIR),
-    load_in_4bit=True,
     device_map="auto",  # will use CPU if no GPU
-    torch_dtype=torch.float16
+    torch_dtype=torch.float32
 )
 tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR))
 
@@ -90,9 +89,7 @@ training_args = TrainingArguments(
     save_total_limit=2,
     report_to="none",
     disable_tqdm=False,
-    # CPU-specific
-    no_cuda=True,  # force CPU
-    dataloader_num_workers=0,  # avoid multiprocessing issues
+    dataloader_num_workers=0,
 )
 
 trainer = Trainer(
