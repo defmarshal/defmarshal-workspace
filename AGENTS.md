@@ -304,10 +304,10 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 
 ---
 
-## 📋 Mewmew Session Tasks (2026-04-01)
+## 📋 Mewmew Session Tasks (2026-04-02)
 
-**Session started:** 2026-04-01 07:25 UTC+7  
-**Status:** Active  
+**Session started:** 2026-04-02 00:35 UTC+7  
+**Status:** Training Phase 1 (personality) — Retraining with expanded dataset  
 **Goal:** Build Ultimate Smart LLM (TinyLlama 1.1B fine-tuned via LoRA) using CPU-only local training
 
 ### Completed Tasks
@@ -317,7 +317,7 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 - ✅ Installed dependencies via venv (transformers, torch, bitsandbytes, peft, datasets, accelerate, sentencepiece)
 - ✅ Downloaded TinyLlama 1.1B Chat (full precision, 2.1GB)
 - ✅ Created dataset extraction script (`agents/extract_chat_history.py`)
-- ✅ Extracted ~50 chat pairs → `data/personality.jsonl`
+- ✅ Extracted ~50 chat pairs → `data/personality.jsonl` (INITIAL, too small)
 - ✅ Created benchmark suite (`data/tests/benchmark.jsonl`) — 50 tests across 4 categories
 - ✅ Set up ChromaDB RAG (`agents/setup_chroma.py`) — indexed 40 docs
 - ✅ Wrote training script (`agents/train_lora_simple.py`) with PEFT
@@ -326,6 +326,9 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 - ✅ Optimized LoRA config for CPU (r=8, 3 epochs, 4-bit)
 - ✅ Ran baseline inference test — speed ~30 tok/sec; personality missing keywords (as expected)
 - ✅ Committed all work to git
+- ✅ Trained initial model (27 examples) — completed 58 min, eval loss 0.5138, accuracy 73.8%
+- ✅ **Expanded dataset dramatically** — extracted 2,332 real conversations from all agent sessions (including deleted archives)
+- ✅ filtered cron/system noise for quality
 
 ### Current Status
 
@@ -333,18 +336,17 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 |-----------|-------|
 | Venv | ✅ Active (packages installed) |
 | Model | ✅ Downloaded (2.1GB) |
-| Baseline test | ✅ Done (baseline scores recorded) |
-| Disk free | ⚠️ 817MB (low, but training adapters are small @~40MB/checkpoint) |
-| Training | ⏳ Ready to start (Phase 1: personality) |
+| Dataset | ✅ Expanded to 2,332 examples (2.9 MB) |
+| Disk free | ⚠️ 20G free (56% used) — safe |
+| Training | ⏳ **Retraining now** (Phase 1: personality, larger dataset) |
 
 ### Next Steps
 
-1. Begin training with `./agents/train_cpu.sh` (3 epochs, LoRA r=8)
-2. Monitor disk space; if needed, clean old checkpoints after each epoch
-3. Evaluate fine-tuned model against benchmark
-4. If improvement satisfactory, deploy; else consider more data or epochs
-5. Continue to Phase 2 (tool use) after personality stable
+1. **Monitor training** — ~2–4 hours on CPU with larger dataset
+2. Evaluate fine-tuned model against benchmark
+3. If improvement satisfactory, deploy; else consider more data or epochs
+4. Continue to Phase 2 (tool use) after personality stable
 
 ---
 
-**Last updated:** 2026-04-01 08:05 UTC+7
+**Last updated:** 2026-04-02 00:35 UTC+7
