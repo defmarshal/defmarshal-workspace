@@ -14454,6 +14454,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
       "type": "content",
       "title": "Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy"
+    },
+    {
+      "id": "9c63f06e-e46d-4424-b92a-8d53421e89ae",
+      "type": "seed",
+      "title": "XAI for Coding Agent Failures: Transforming Raw Execution Traces into Actionable Insights"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-xai-for-coding-agent-failures:-transforming-raw-execution-traces-into-actionable.md",
+      "type": "content",
+      "title": "XAI for Coding Agent Failures: Transforming Raw Execution Traces into Actionable Insights"
+    },
+    {
+      "id": "257c0087-5a90-4094-be7e-46653ddeea00",
+      "type": "seed",
+      "title": "Boundary-aware Prototype-driven Adversarial Alignment for Cross-Corpus EEG Emotion Recognition"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/boundary-aware-prototype-driven-adversarial-alignm.py",
+      "type": "app",
+      "title": "Boundary-aware Prototype-driven Adversarial Alignment for Cross-Corpus EEG Emotion Recognition"
+    },
+    {
+      "id": "68f75ccd-8710-4939-9575-9ed8cc790041",
+      "type": "seed",
+      "title": "Balancing Latency and Accuracy of Code Completion via Local-Cloud Model Cascading"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
+      "type": "content",
+      "title": "Balancing Latency and Accuracy of Code Completion via Local-Cloud Model Cascading"
+    },
+    {
+      "id": "ca55d675-d5a1-45ff-bb84-8eefc2576fa2",
+      "type": "seed",
+      "title": "When Specifications Meet Reality: Uncovering API Inconsistencies in Ethereum Infrastructure"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-when-specifications-meet-reality:-uncovering-api-inconsistencies-in-ethereum-inf.md",
+      "type": "content",
+      "title": "When Specifications Meet Reality: Uncovering API Inconsistencies in Ethereum Infrastructure"
+    },
+    {
+      "id": "6774bb68-1431-4332-bdbc-b1a073080ce4",
+      "type": "seed",
+      "title": "Detecting Semantic Alignments between Textual Specifications and Domain Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-detecting-semantic-alignments-between-textual-specifications-and-domain-models.md",
+      "type": "content",
+      "title": "Detecting Semantic Alignments between Textual Specifications and Domain Models"
+    },
+    {
+      "id": "6f2440fc-e2d6-4899-94a8-3a65b1eea470",
+      "type": "seed",
+      "title": "Pre-AI Baseline: Developer IDE Satisfaction and Tool Autonomy in 2022"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
+      "type": "content",
+      "title": "Pre-AI Baseline: Developer IDE Satisfaction and Tool Autonomy in 2022"
     }
   ],
   "edges": [
@@ -19455,6 +19515,36 @@
     {
       "from": "44b04fcd-a183-4b3f-82d2-e75c3bc36a25",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
+      "type": "produced"
+    },
+    {
+      "from": "9c63f06e-e46d-4424-b92a-8d53421e89ae",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-xai-for-coding-agent-failures:-transforming-raw-execution-traces-into-actionable.md",
+      "type": "produced"
+    },
+    {
+      "from": "257c0087-5a90-4094-be7e-46653ddeea00",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/boundary-aware-prototype-driven-adversarial-alignm.py",
+      "type": "produced"
+    },
+    {
+      "from": "68f75ccd-8710-4939-9575-9ed8cc790041",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-cascadin.md",
+      "type": "produced"
+    },
+    {
+      "from": "ca55d675-d5a1-45ff-bb84-8eefc2576fa2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-when-specifications-meet-reality:-uncovering-api-inconsistencies-in-ethereum-inf.md",
+      "type": "produced"
+    },
+    {
+      "from": "6774bb68-1431-4332-bdbc-b1a073080ce4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-detecting-semantic-alignments-between-textual-specifications-and-domain-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "6f2440fc-e2d6-4899-94a8-3a65b1eea470",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-pre-ai-baseline:-developer-ide-satisfaction-and-tool-autonomy-in-2022.md",
       "type": "produced"
     }
   ]
