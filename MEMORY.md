@@ -1,20 +1,20 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-28*
+*Last updated: 2026-04-01*
 
 ## Personal
 def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Gemini for research
 
 ## Protocols
-- `protocols.md` – Delegation workflow (Qwen coding, Gemini research)
+- `protocols.md` - Delegation workflow (Qwen coding, Gemini research)
 
 ## Projects
-- MewChat / MewDash – Real-time chat UI with SSE, merged history
-- OpenClaw Idle RPG – Conceptual, not yet started
-- Anime Studio Tycoon – Dedicated sub-agent active (2026-03-04)
-- Research Hub – Deployed, operating under Nyepi throttling (Mar 18–24)
-- Torrent System – aria2 + 115 integration
-- System Health – Disk cleanup, heartbeat, log rotation, memory reindex (rate-limited)
+- MewChat / MewDash - Real-time chat UI with SSE, merged history
+- OpenClaw Idle RPG - Conceptual, not yet started
+- Anime Studio Tycoon - Dedicated sub-agent active (2026-03-04)
+- Research Hub - Deployed, operating under Nyepi throttling (Mar 18-24)
+- Torrent System - aria2 + 115 integration
+- System Health - Disk cleanup, heartbeat, log rotation, memory reindex (rate-limited)
 
 ## Links
 - `active-tasks.md` (current work)
@@ -32,20 +32,22 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - Gateway: port 18789; Memory: local FTS+ only (Voyage disabled due to 3 RPM limits); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
 - Always delegate: code → Qwen, research → Gemini. I handle design/integration.
 - **Cron health monitoring:** Three layers:
-  - `agent-manager-cron` (every 30 min) validates schedules against `CRON_JOBS.md` and auto‑commits corrections.
+  - `agent-manager-cron` (every 30 min) validates schedules against `CRON_JOBS.md` and auto-commits corrections.
   - `cron-supervisor-cron` (every 30 min, staggered) watches for failures, disk issues, gateway down, memory reindex needs; sends Telegram alerts.
   - `notifier-cron` (every 2h) escalates persistent failures and disk threshold warnings.
-- **Status‑holiday plugin:** Enabled; adds Nyepi (18–24 Mar 2026) to System Status broadcasts. throttles agent activity but monitoring remains active.
+- **Status-holiday plugin:** Enabled; adds Nyepi (18-24 Mar 2026) to System Status broadcasts. throttles agent activity but monitoring remains active.
 - **Email Sweep & Intelligent Labeling:** Analyzer (`email_label_analyzer.py`) scans senders and builds `memory/label_mapping.json` (155+ distinct senders). Sweep (`email_sweep.py`) runs hourly (`BATCH_SIZE=100, PAGES_PER_RUN=1`), applies precise `Sweep/<Sender>` labels, marks emails as read, and sends Telegram summaries. Backlog clearing steadily.
 - **Memory reindex staleness (2026-03-18):** Voyage AI rate limits (3 RPM free tier) prevent automatic reindex; main store shows 0/63 indexed files. Manual `quick memory-reindex` attempts batched with delays; automatic retry continues. Local FTS fallback functional for simple searches.
 - **Recent:**
+  - **April 1 Meta-Summary & JACA Deadline (2026-04-01):** meta-summary-cron executed reporting all nominal. **JACA compliance deadline TODAY** for Japanese anime studios under subsidy. No breaking changes; monitoring continues.
+  - **Harvester & Research Gardener (2026-03-31):** Harvester cron completed successfully, generating `daily-harvest-2026-03-31.md` with 50 seeds and 24 outputs; Telegram summary sent. Research gardener produced 11 reports covering all 5 domains. System stable.
   - **Harvester cron (2026-03-27):** Completed successfully, generating `daily-harvest-2026-03-27.md` with 50 seeds and 9 outputs; Telegram notification sent; stale `runningAtMs` flag cleared.
 - **Research Sweep & Critical Reports (2026-03-27):** Generated comprehensive cross-domain reports including:
   - `CRITICAL_SITUATION_REPORT_ALL_DOMAINS_2026-03-27.md` (full synthesis)
   - `MCP_REMEDIATION_PLAYBOOK_2026-03-27.md` (actionable MCP vulnerability response)
   - `AI_CODE_VULNERABILITY_MITIGATION_2026-03-27.md` (vibe coding crisis defense)
   - `JACA_COMPLIANCE_CRASH_COURSE_2026-03-27.md` (72-hour emergency guide for anime studios)
-  - `CRITICAL_ALERT_CVE-2026-33017_2026-03-27.md` (Langflow RCE — BREAKING, exploited within 20h)
+  - `CRITICAL_ALERT_CVE-2026-33017_2026-03-27.md` (Langflow RCE - BREAKING, exploited within 20h)
   - Updated `research/INDEX.md` (154+ reports total)
   - Key finding: **35 new AI-code CVEs in March 2026** (74 tracked, 400-700 estimated); MCP ecosystem only 2.5% safe; JACA deadline 5 days; EU AI Act extension pending; Langflow critical RCE requires immediate action.
 - **Research Sweep & Critical Reports (2026-03-26):** Conducted comprehensive cross-domain research sweep. Produced 5 critical reports:
@@ -59,7 +61,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - Key finding: No new breaking developments today; existing crises (MCP vuln, anime collapse, NemoClaw transition) remain urgent with deadlines rapidly approaching (April 1, May 1, August 2).
   - **MCP Vulnerability Expansion (08:15 UTC)**: Discovered second critical MCP vulnerability - CVE-2026-26118 (Azure MCP Server SSRF/EoP, CVSS 8.8). Expands attack surface beyond Inspector RCE. Requires dual inventory and patching. See `MCP_VULNERABILITY_UPDATE_2026-03-26.md`.
   - **BREAKING: EU AI Act Deadline Extension (08:45 UTC)**: European Parliament committee voted 101-9 to postpone high-risk AI compliance from August 2026 to December 2027 (+16 months). Plenary vote scheduled March 26 (today). If passed, transforms banking compliance from 5-month sprint to 21-month methodical program. See `EU_AI_ACT_DEADLINE_EXTENSION_PROPOSAL_2026-03-26.md`.
-- **Content Gardener Completion (2026-03-19):** Cron job finished successfully after processing 29 seeds from Mar 17–19 pool. Content output reached 779 files; all logs clean. Gardener pipeline stable under Nyepi throttling.
+- **Content Gardener Completion (2026-03-19):** Cron job finished successfully after processing 29 seeds from Mar 17-19 pool. Content output reached 779 files; all logs clean. Gardener pipeline stable under Nyepi throttling.
   - **Code Gardener Completion (2026-03-19):** Generated app from DoorDash seed using fallback method (OpenRouter empty response). 491 seeds remain for future cycles.
   - Meta-summary cron (14:08 UTC) confirmed system health: disk 82%, 19 APT updates, memory reindex pending, content-agent produced afternoon status noting security domain gap. ✓
   - Git janitor cleaned yesterday's agent outputs (9 files, 258 insertions) on 2026-03-18 00:30 UTC.
@@ -69,7 +71,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - **Agent-Manager Stale Lock & Large File Push Blocker (2026-03-13):** Cron-triggered agent-manager stalled, leaving stale lock; discovery: `valhalla-jabodetabek/data/jabodetabek.osm.pbf` (1.6GB) tracked in Git, causing push rejections (GitHub 100MB limit). Recovered by removing lock, manually committing today's agent outputs, adding file to `.gitignore`, rewriting history with `git filter-branch`, and force-pushing. Large file purged from all 2799+ commits; repository clean. Added prevention: pre-push hook plan, Git LFS audit. Follow-up: monitor agent-manager stability.
   - **Memory index outage (2026-03-06 04:08 UTC):** main store dropped to 0 indexed files, breaking research-agent. Reindexed manually; research pipeline restored, March 6 report generated and deployed. Index now 43/43.
   - **Missing downloads directory & index reset (2026-03-08 06:30 UTC):** `downloads/` directory vanished (likely removed by cleanup script after becoming empty). Memory index showed `0/45 files` (false negative corrected by `./quick memory-reindex`). Restored: downloads dir recreated, memory reindexed to 45/45 files (525 chunks). System returned to full health.
-  - **Disk usage spike & recovery (2026-03-05–07):** rose 66% → 81% over 2 days, triggering cleanup. Agent-manager (01:05 UTC) cleaned downloads (7.8G → 4.9G) and meta-summary confirms disk back to 66% by afternoon. System stable.
+  - **Disk usage spike & recovery (2026-03-05-07):** rose 66% → 81% over 2 days, triggering cleanup. Agent-manager (01:05 UTC) cleaned downloads (7.8G → 4.9G) and meta-summary confirms disk back to 66% by afternoon. System stable.
   - Agent-manager (19:00 UTC) validated all cron schedules; 8 essential cron jobs running. System stable.
   - Meta-agent cycles (2026-03-05 03:07 & 20:01 UTC) confirmed content-agent and research-agent running; system stable at 59% disk.
   - Meta-agent (2026-03-06 11:04 UTC) verified agents; content-agent completed, research-agent produced March 6 report.
@@ -84,7 +86,7 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
   - **Cron Delivery Recovery (2026-03-14):** Fixed `cron-supervisor-cron` delivery error (multiple channels) by setting explicit `channel: telegram`. Cleared stale `runningAtMs` on `notifier-cron`. All cron jobs now healthy and monitoring active.
   - **Disk Cleanup & Meta-Summary Success (2026-03-16):** meta-summary cron detected disk at 88%, automatically removed node_modules and .next from apps/research-hub and apps/openclaw-idle-rpg, freeing ~1GB. Disk reduced to 86% (38G/45G, 6.4G free). Summary delivered to Telegram. System nominal. (◕‿◕)♡
 - **Cron Watchdogs (2026-03-14):** Added `cron-supervisor-cron` (every 30 min) to monitor system health (cron jobs, gateway, memory, disk, updates) and send Telegram alerts. Companion to `agent-manager-cron` (validation + repairs). Both now documented in `CRON_JOBS.md`; removed old inactive `supervisor-cron`.
-- **System Snapshot (2026-03-24):** meta-summary cron confirmed stable operations under Nyepi (Mar 18–24). Disk ~83%. Email sweep stable with timeout fixes (curl 10s/70s). All gardeners active: Research (484+ reports), Content (779+), Code (~1600+ apps). Memory reindex rate-limited (63 files pending), local FTS functional.
+- **System Snapshot (2026-03-24):** meta-summary cron confirmed stable operations under Nyepi (Mar 18-24). Disk ~83%. Email sweep stable with timeout fixes (curl 10s/70s). All gardeners active: Research (484+ reports), Content (779+), Code (~1600+ apps). Memory reindex rate-limited (63 files pending), local FTS functional.
 - **System Maintenance (2026-03-28):** Addressed 40 APT updates (reboot pending), memory index degradation due to Voyage rate limits (0 files indexed) - verified msearch fallback works, disk 85% monitoring, daily log and active-tasks updated and committed. Kernel upgraded to 6.17.0-1009; reboot recommended to activate.
 
 **Critical Intelligence (2026-03-25):**
@@ -119,10 +121,10 @@ def, UTC+7, mewmew assistant; anime, tech; prefers delegation: Qwen for code, Ge
 - Human override must be tested quarterly, not just documented
 
 ## Projects status
-- Research Hub: deployed, Nyepi throttling active (Mar 18-24)
+- Research Hub: deployed
 - Anime Studio Tycoon: active sub-agent (2026-03-04)
 - OpenClaw Idle RPG: conceptual phase
-- System health: monitoring stable, disk 83%, memory reindex rate-limited
+- System health: monitoring stable, disk 85%, memory reindex rate-limited
 - AI security crisis: active monitoring, daily intelligence synthesis ongoing
 
 ## System status
