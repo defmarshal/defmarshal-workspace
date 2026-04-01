@@ -301,3 +301,50 @@ The goal: Be helpful without being annoying. Check in a few times a day and do u
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+---
+
+## 📋 Mewmew Session Tasks (2026-04-01)
+
+**Session started:** 2026-04-01 07:25 UTC+7  
+**Status:** Active  
+**Goal:** Build Ultimate Smart LLM (TinyLlama 1.1B fine-tuned via LoRA) using CPU-only local training
+
+### Completed Tasks
+
+- ✅ System spec analysis (ARM CPU, 23GB RAM, 7GB free → now 1.5GB after model)
+- ✅ Decided on CPU-only training (no Colab)
+- ✅ Installed dependencies via venv (transformers, torch, bitsandbytes, peft, datasets, accelerate, sentencepiece)
+- ✅ Downloaded TinyLlama 1.1B Chat (full precision, 2.1GB)
+- ✅ Created dataset extraction script (`agents/extract_chat_history.py`)
+- ✅ Extracted ~50 chat pairs → `data/personality.jsonl`
+- ✅ Created benchmark suite (`data/tests/benchmark.jsonl`) — 50 tests across 4 categories
+- ✅ Set up ChromaDB RAG (`agents/setup_chroma.py`) — indexed 40 docs
+- ✅ Wrote training script (`agents/train_lora_simple.py`) with PEFT
+- ✅ Wrote training launcher (`agents/train_cpu.sh`)
+- ✅ Created PROJECT_README.md with full instructions
+- ✅ Optimized LoRA config for CPU (r=8, 3 epochs, 4-bit)
+- ✅ Ran baseline inference test — speed ~30 tok/sec; personality missing keywords (as expected)
+- ✅ Committed all work to git
+
+### Current Status
+
+| Component | State |
+|-----------|-------|
+| Venv | ✅ Active (packages installed) |
+| Model | ✅ Downloaded (2.1GB) |
+| Baseline test | ✅ Done (baseline scores recorded) |
+| Disk free | ⚠️ 817MB (low, but training adapters are small @~40MB/checkpoint) |
+| Training | ⏳ Ready to start (Phase 1: personality) |
+
+### Next Steps
+
+1. Begin training with `./agents/train_cpu.sh` (3 epochs, LoRA r=8)
+2. Monitor disk space; if needed, clean old checkpoints after each epoch
+3. Evaluate fine-tuned model against benchmark
+4. If improvement satisfactory, deploy; else consider more data or epochs
+5. Continue to Phase 2 (tool use) after personality stable
+
+---
+
+**Last updated:** 2026-04-01 08:05 UTC+7
