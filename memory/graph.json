@@ -14574,6 +14574,56 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-heal:-hindsight-entropy-assisted-learning-for-reasoning-distillation.md",
       "type": "content",
       "title": "HEAL: Hindsight Entropy-Assisted Learning for Reasoning Distillation"
+    },
+    {
+      "id": "c830be89-c4b5-4c41-a11d-e5d7b70f8b35",
+      "type": "seed",
+      "title": "Beyond Scalars: Evaluating and Understanding LLM Reasoning via Geometric Progress and Stability"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-beyond-scalars:-evaluating-and-understanding-llm-reasoning-via-geometric-progres.md",
+      "type": "content",
+      "title": "Beyond Scalars: Evaluating and Understanding LLM Reasoning via Geometric Progress and Stability"
+    },
+    {
+      "id": "327253d1-8d9a-4b85-a2e8-4d7570203bb2",
+      "type": "seed",
+      "title": "Verbalizing LLM's Higher-order Uncertainty via Imprecise Probabilities"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-verbalizing-llm's-higher-order-uncertainty-via-imprecise-probabilities.md",
+      "type": "content",
+      "title": "Verbalizing LLM's Higher-order Uncertainty via Imprecise Probabilities"
+    },
+    {
+      "id": "576331e9-3795-451c-8587-fa130329cde2",
+      "type": "seed",
+      "title": "Resource-constrained Amazons chess decision framework integrating large language models and graph attention"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-resource-constrained-amazons-chess-decision-framework-integrating-large-language.md",
+      "type": "content",
+      "title": "Resource-constrained Amazons chess decision framework integrating large language models and graph attention"
+    },
+    {
+      "id": "7bc6671e-638f-49b4-a3b3-259c444dca2d",
+      "type": "seed",
+      "title": "IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-ih-challenge:-a-training-dataset-to-improve-instruction-hierarchy-on-frontier-ll.md",
+      "type": "content",
+      "title": "IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs"
+    },
+    {
+      "id": "bd50a4b9-000e-4882-82c3-0e09522bd483",
+      "type": "seed",
+      "title": "Adaptive RAN Slicing Control via Reward-Free Self-Finetuning Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-adaptive-ran-slicing-control-via-reward-free-self-finetuning-agents.md",
+      "type": "content",
+      "title": "Adaptive RAN Slicing Control via Reward-Free Self-Finetuning Agents"
     }
   ],
   "edges": [
@@ -19635,6 +19685,31 @@
     {
       "from": "ecb9ec8d-aa5b-4c96-8f11-45b938158abc",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-heal:-hindsight-entropy-assisted-learning-for-reasoning-distillation.md",
+      "type": "produced"
+    },
+    {
+      "from": "c830be89-c4b5-4c41-a11d-e5d7b70f8b35",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-beyond-scalars:-evaluating-and-understanding-llm-reasoning-via-geometric-progres.md",
+      "type": "produced"
+    },
+    {
+      "from": "327253d1-8d9a-4b85-a2e8-4d7570203bb2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-verbalizing-llm's-higher-order-uncertainty-via-imprecise-probabilities.md",
+      "type": "produced"
+    },
+    {
+      "from": "576331e9-3795-451c-8587-fa130329cde2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-resource-constrained-amazons-chess-decision-framework-integrating-large-language.md",
+      "type": "produced"
+    },
+    {
+      "from": "7bc6671e-638f-49b4-a3b3-259c444dca2d",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-ih-challenge:-a-training-dataset-to-improve-instruction-hierarchy-on-frontier-ll.md",
+      "type": "produced"
+    },
+    {
+      "from": "bd50a4b9-000e-4882-82c3-0e09522bd483",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-adaptive-ran-slicing-control-via-reward-free-self-finetuning-agents.md",
       "type": "produced"
     }
   ]

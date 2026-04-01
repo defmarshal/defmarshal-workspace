@@ -4,7 +4,7 @@
 
 System status: **Fully operational**. All cron jobs running smoothly. Disk usage ~56% (20G free). Gateway healthy. Memory index rate-limited but FTS fallback functional. All agents within normal parameters.
 
-**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-04-01 02:11 UTC / 09:11 Bangkok — all checks OK (gateway healthy, disk 56%, all cron jobs green with 0 errors, git clean). No alerts triggered.
+**Supervisor** (cron cron-supervisor-cron): ✅ Healthy. Last run: 2026-04-01 18:04 UTC / 01:04 Bangkok — all checks OK (gateway healthy, disk 47%, all cron jobs green with 0 errors, 4 pending updates low). No alerts triggered.
 
 **Meta-Summary Cron** (meta-summary-cron): ✅ Healthy. Last executed: 2026-04-01 00:01 UTC / 07:01 Bangkok. Telegram summary sent successfully with system metrics.
 
