@@ -145,3 +145,6 @@ route-hotspots-mobile-fix*.html
 # Model files (large binaries, keep local only)
 models/
 **/models/
+
+# Dataset (large, local only)
+data/personality.jsonl
