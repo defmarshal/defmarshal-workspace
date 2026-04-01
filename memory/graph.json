@@ -14294,6 +14294,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-vdcook:diy-video-data-cook-your-mllms.md",
       "type": "content",
       "title": "VDCook:DIY video data cook your MLLMs"
+    },
+    {
+      "id": "b1dde8fa-629c-46e6-8705-fdee30a3586d",
+      "type": "seed",
+      "title": "Practical Feasibility of Sustainable Software Engineering Tools and Techniques"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-practical-feasibility-of-sustainable-software-engineering-tools-and-techniques.md",
+      "type": "output",
+      "title": "Practical Feasibility of Sustainable Software Engineering Tools and Techniques"
+    },
+    {
+      "id": "24db3be6-e811-43eb-bf7b-7847747a5c01",
+      "type": "seed",
+      "title": "Mercor says it was hit by cyberattack tied to compromise of open-source LiteLLM project"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/mercor-says-it-was-hit-by-cyberattack-tied-to-comp.py",
+      "type": "app",
+      "title": "Mercor says it was hit by cyberattack tied to compromise of open-source LiteLLM project"
     }
   ],
   "edges": [
@@ -19215,6 +19235,16 @@
     {
       "from": "93091b31-4b88-479c-aa4b-ebe97f1e646c",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-vdcook:diy-video-data-cook-your-mllms.md",
+      "type": "produced"
+    },
+    {
+      "from": "b1dde8fa-629c-46e6-8705-fdee30a3586d",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-practical-feasibility-of-sustainable-software-engineering-tools-and-techniques.md",
+      "type": "produced"
+    },
+    {
+      "from": "24db3be6-e811-43eb-bf7b-7847747a5c01",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/mercor-says-it-was-hit-by-cyberattack-tied-to-comp.py",
       "type": "produced"
     }
   ]
