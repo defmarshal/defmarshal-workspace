@@ -14169,6 +14169,61 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
       "type": "content",
       "title": "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-safer-reasoning-traces:-measuring-and-mitigating-chain-of-thought-leakage-in-llm.md",
+      "type": "content",
+      "title": "Safer Reasoning Traces: Measuring and Mitigating Chain-of-Thought Leakage in LLMs"
+    },
+    {
+      "id": "7da50a09-6145-4e9f-9140-cf77acbcacfc",
+      "type": "seed",
+      "title": "The Fragility Of Moral Judgment In Large Language Models"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-the-fragility-of-moral-judgment-in-large-language-models.md",
+      "type": "content",
+      "title": "The Fragility Of Moral Judgment In Large Language Models"
+    },
+    {
+      "id": "b40184c3-4382-4d56-9c98-8a6c78977608",
+      "type": "seed",
+      "title": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-salesforce-announces-an-ai-heavy-makeover-for-slack,-with-30-new-features.md",
+      "type": "output",
+      "title": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features"
+    },
+    {
+      "id": "9608f06e-42de-40ed-b510-c304fd1596d7",
+      "type": "seed",
+      "title": "FreeTxt-Vi: A Benchmarked Vietnamese-English Toolkit for Segmentation, Sentiment, and Summarisation"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-freetxt-vi:-a-benchmarked-vietnamese-english-toolkit-for-segmentation,-sentiment.md",
+      "type": "content",
+      "title": "FreeTxt-Vi: A Benchmarked Vietnamese-English Toolkit for Segmentation, Sentiment, and Summarisation"
+    },
+    {
+      "id": "a7179b63-21d1-44ea-aec7-3d1e53a34272",
+      "type": "seed",
+      "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-towards-robust-retrieval-augmented-generation-based-on-knowledge-graph:-a-compar.md",
+      "type": "content",
+      "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis"
+    },
+    {
+      "id": "ffe65e68-f702-46f9-be37-16ab5ff575de",
+      "type": "seed",
+      "title": "Cultural Perspectives and Expectations for Generative AI: A Global Survey Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
+      "type": "content",
+      "title": "Cultural Perspectives and Expectations for Generative AI: A Global Survey Approach"
     }
   ],
   "edges": [
@@ -19025,6 +19080,36 @@
     {
       "from": "500587ec-01da-4318-aa63-ba6845843256",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-notai.ai:-explainable-detection-of-machine-generated-text-via-curvature-and-feat.md",
+      "type": "produced"
+    },
+    {
+      "from": "2f4c06c1-5483-4892-9e61-bb7cc32cb79f",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-safer-reasoning-traces:-measuring-and-mitigating-chain-of-thought-leakage-in-llm.md",
+      "type": "produced"
+    },
+    {
+      "from": "7da50a09-6145-4e9f-9140-cf77acbcacfc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-the-fragility-of-moral-judgment-in-large-language-models.md",
+      "type": "produced"
+    },
+    {
+      "from": "b40184c3-4382-4d56-9c98-8a6c78977608",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-salesforce-announces-an-ai-heavy-makeover-for-slack,-with-30-new-features.md",
+      "type": "produced"
+    },
+    {
+      "from": "9608f06e-42de-40ed-b510-c304fd1596d7",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-freetxt-vi:-a-benchmarked-vietnamese-english-toolkit-for-segmentation,-sentiment.md",
+      "type": "produced"
+    },
+    {
+      "from": "a7179b63-21d1-44ea-aec7-3d1e53a34272",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-towards-robust-retrieval-augmented-generation-based-on-knowledge-graph:-a-compar.md",
+      "type": "produced"
+    },
+    {
+      "from": "ffe65e68-f702-46f9-be37-16ab5ff575de",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-cultural-perspectives-and-expectations-for-generative-ai:-a-global-survey-approa.md",
       "type": "produced"
     }
   ]
