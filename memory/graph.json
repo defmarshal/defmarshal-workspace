@@ -14364,6 +14364,16 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
       "type": "content",
       "title": "Aligning the True Semantics: Constrained Decoupling and Distribution Sampling for Cross-Modal Alignment"
+    },
+    {
+      "id": "1926f5a2-39ac-4988-aab9-53ceb9d59bb5",
+      "type": "seed",
+      "title": "Toyota&#8217;s Woven Capital appoints new CIO and COO in push for finding the &#8216;future of mobility&#8217;"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/toyota__8217_s-woven-capital-appoints-new-cio-and-.py",
+      "type": "app",
+      "title": "Toyota&#8217;s Woven Capital appoints new CIO and COO in push for finding the &#8216;future of mobility&#8217;"
     }
   ],
   "edges": [
@@ -19320,6 +19330,11 @@
     {
       "from": "a3d983c8-5881-4ba4-b665-319120deccc2",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
+      "type": "produced"
+    },
+    {
+      "from": "1926f5a2-39ac-4988-aab9-53ceb9d59bb5",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/toyota__8217_s-woven-capital-appoints-new-cio-and-.py",
       "type": "produced"
     }
   ]
