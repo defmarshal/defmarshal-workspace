@@ -14374,6 +14374,26 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/toyota__8217_s-woven-capital-appoints-new-cio-and-.py",
       "type": "app",
       "title": "Toyota&#8217;s Woven Capital appoints new CIO and COO in push for finding the &#8216;future of mobility&#8217;"
+    },
+    {
+      "id": "50c61429-2da0-4a37-a97c-b267f23de4ff",
+      "type": "seed",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "output",
+      "title": "CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems"
+    },
+    {
+      "id": "9d4156f3-f30f-4446-b6d9-7ebeeb617633",
+      "type": "seed",
+      "title": "Anthropic is having a month"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic-is-having-a-month-1.py",
+      "type": "app",
+      "title": "Anthropic is having a month"
     }
   ],
   "edges": [
@@ -19335,6 +19355,16 @@
     {
       "from": "1926f5a2-39ac-4988-aab9-53ceb9d59bb5",
       "to": "/home/ubuntu/.openclaw/workspace/apps/toyota__8217_s-woven-capital-appoints-new-cio-and-.py",
+      "type": "produced"
+    },
+    {
+      "from": "50c61429-2da0-4a37-a97c-b267f23de4ff",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-04-01-cranimem:-cranial-inspired-gated-and-bounded-memory-for-agentic-systems.md",
+      "type": "produced"
+    },
+    {
+      "from": "9d4156f3-f30f-4446-b6d9-7ebeeb617633",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic-is-having-a-month-1.py",
       "type": "produced"
     }
   ]
