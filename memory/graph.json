@@ -14314,6 +14314,56 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/mercor-says-it-was-hit-by-cyberattack-tied-to-comp.py",
       "type": "app",
       "title": "Mercor says it was hit by cyberattack tied to compromise of open-source LiteLLM project"
+    },
+    {
+      "id": "a1c3987a-8713-489e-9321-3d54f04a1dc9",
+      "type": "seed",
+      "title": "IntSeqBERT: Learning Arithmetic Structure in OEIS via Modulo-Spectrum Embeddings"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-intseqbert:-learning-arithmetic-structure-in-oeis-via-modulo-spectrum-embeddings.md",
+      "type": "content",
+      "title": "IntSeqBERT: Learning Arithmetic Structure in OEIS via Modulo-Spectrum Embeddings"
+    },
+    {
+      "id": "f1071cb9-1bce-47dd-ae5f-f22f7e6f4462",
+      "type": "seed",
+      "title": "Autocorrelation effects in a stochastic-process model for decision making via time series"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
+      "type": "content",
+      "title": "Autocorrelation effects in a stochastic-process model for decision making via time series"
+    },
+    {
+      "id": "17e7784b-46fb-49f6-8ed1-97412abd1312",
+      "type": "seed",
+      "title": "Towards Efficient and Stable Ocean State Forecasting: A Continuous-Time Koopman Approach"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-towards-efficient-and-stable-ocean-state-forecasting:-a-continuous-time-koopman-.md",
+      "type": "content",
+      "title": "Towards Efficient and Stable Ocean State Forecasting: A Continuous-Time Koopman Approach"
+    },
+    {
+      "id": "e581dbcc-a4fc-4e7f-852d-e0a792767e52",
+      "type": "seed",
+      "title": "When AI Levels the Playing Field: Skill Homogenization, Asset Concentration, and Two Regimes of Inequality"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-when-ai-levels-the-playing-field:-skill-homogenization,-asset-concentration,-and.md",
+      "type": "content",
+      "title": "When AI Levels the Playing Field: Skill Homogenization, Asset Concentration, and Two Regimes of Inequality"
+    },
+    {
+      "id": "a3d983c8-5881-4ba4-b665-319120deccc2",
+      "type": "seed",
+      "title": "Aligning the True Semantics: Constrained Decoupling and Distribution Sampling for Cross-Modal Alignment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
+      "type": "content",
+      "title": "Aligning the True Semantics: Constrained Decoupling and Distribution Sampling for Cross-Modal Alignment"
     }
   ],
   "edges": [
@@ -19245,6 +19295,31 @@
     {
       "from": "24db3be6-e811-43eb-bf7b-7847747a5c01",
       "to": "/home/ubuntu/.openclaw/workspace/apps/mercor-says-it-was-hit-by-cyberattack-tied-to-comp.py",
+      "type": "produced"
+    },
+    {
+      "from": "a1c3987a-8713-489e-9321-3d54f04a1dc9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-intseqbert:-learning-arithmetic-structure-in-oeis-via-modulo-spectrum-embeddings.md",
+      "type": "produced"
+    },
+    {
+      "from": "f1071cb9-1bce-47dd-ae5f-f22f7e6f4462",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-autocorrelation-effects-in-a-stochastic-process-model-for-decision-making-via-ti.md",
+      "type": "produced"
+    },
+    {
+      "from": "17e7784b-46fb-49f6-8ed1-97412abd1312",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-towards-efficient-and-stable-ocean-state-forecasting:-a-continuous-time-koopman-.md",
+      "type": "produced"
+    },
+    {
+      "from": "e581dbcc-a4fc-4e7f-852d-e0a792767e52",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-when-ai-levels-the-playing-field:-skill-homogenization,-asset-concentration,-and.md",
+      "type": "produced"
+    },
+    {
+      "from": "a3d983c8-5881-4ba4-b665-319120deccc2",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-aligning-the-true-semantics:-constrained-decoupling-and-distribution-sampling-fo.md",
       "type": "produced"
     }
   ]
