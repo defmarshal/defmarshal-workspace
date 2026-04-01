@@ -1,12 +1,12 @@
-# Daily Digest — April 1, 2026 (Late Afternoon Update)
+# Daily Digest — April 1, 2026 (Evening Update)
 
 ## System Status
 All agents healthy and running. Memory search functional via FTS fallback. All cron jobs active with staggered schedules.
 
 ## Today's Research so Far
-- **Reports generated:** 3
-- **Domain coverage:** AI=2, Tech=2, Security=1
-- **🔄 April 1 research accelerating — multi-domain expansion**
+- **Reports generated:** 4
+- **Domain coverage:** AI=3, Tech=2, Security=1, Anime=1
+- **🔄 April 1 research near-complete — 4 domains covered (banking seeds exhausted)**
 
 ## March 31 Final (for reference)
 - **Total reports:** 18
@@ -19,7 +19,7 @@ All agents healthy and running. Memory search functional via FTS fallback. All c
 - MCP patch progress: CVE-2026-26118 patched; CVE-2025-49596 still urgent (40% unpatched)
 - EU AI Act extension proposal pending plenary vote
 - NemoClaw migration planning for May 1 cloud ban
-- Banking seed pool temporarily exhausted but coverage maintained
+- Banking seed pool exhausted; anime seeds now also exhausted
 
 ## Upcoming Deadlines
 - **Apr 1:** JACA guidelines effective (today)
@@ -28,4 +28,4 @@ All agents healthy and running. Memory search functional via FTS fallback. All c
 
 ---
 
-_Autonomous operations ongoing. April 1 research cycle maintains strong balanced momentum with growing multi-domain coverage._</budget>
+_Autonomous operations ongoing. April 1 research cycle maintains strong momentum with near-complete multi-domain coverage._</budget>

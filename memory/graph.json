@@ -14394,6 +14394,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/anthropic-is-having-a-month-1.py",
       "type": "app",
       "title": "Anthropic is having a month"
+    },
+    {
+      "id": "a2b9b7bd-f568-4905-9caf-8eade65724ac",
+      "type": "seed",
+      "title": "FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-fusediff:-symmetry-preserving-joint-diffusion-for-dual-target-structure-based-dr.md",
+      "type": "content",
+      "title": "FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design"
+    },
+    {
+      "id": "13ba5651-6759-462f-bf9f-1f14d60cfaab",
+      "type": "seed",
+      "title": "Why Depth Matters in Parallelizable Sequence Models: A Lie Algebraic View"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-why-depth-matters-in-parallelizable-sequence-models:-a-lie-algebraic-view.md",
+      "type": "content",
+      "title": "Why Depth Matters in Parallelizable Sequence Models: A Lie Algebraic View"
+    },
+    {
+      "id": "9b55d97f-c36e-4362-b210-6a0c1428c7b4",
+      "type": "seed",
+      "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-eigendata:-a-self-evolving-multi-agent-platform-for-function-calling-data-synthe.md",
+      "type": "content",
+      "title": "EigenData: A Self-Evolving Multi-Agent Platform for Function-Calling Data Synthesis, Auditing, and Repair"
+    },
+    {
+      "id": "d1802756-0576-416d-9aaa-60ead8b10d8e",
+      "type": "seed",
+      "title": "Mitigating Forgetting in Continual Learning with Selective Gradient Projection"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/mitigating-forgetting-in-continual-learning-with-s.py",
+      "type": "app",
+      "title": "Mitigating Forgetting in Continual Learning with Selective Gradient Projection"
+    },
+    {
+      "id": "2c9fbe67-c863-4691-9ba7-ce86ff9f0731",
+      "type": "seed",
+      "title": "Tool-Genesis: A Task-Driven Tool Creation Benchmark for Self-Evolving Language Agent"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
+      "type": "content",
+      "title": "Tool-Genesis: A Task-Driven Tool Creation Benchmark for Self-Evolving Language Agent"
+    },
+    {
+      "id": "44b04fcd-a183-4b3f-82d2-e75c3bc36a25",
+      "type": "seed",
+      "title": "Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
+      "type": "content",
+      "title": "Real Faults in Model Context Protocol (MCP) Software: a Comprehensive Taxonomy"
     }
   ],
   "edges": [
@@ -19365,6 +19425,36 @@
     {
       "from": "9d4156f3-f30f-4446-b6d9-7ebeeb617633",
       "to": "/home/ubuntu/.openclaw/workspace/apps/anthropic-is-having-a-month-1.py",
+      "type": "produced"
+    },
+    {
+      "from": "a2b9b7bd-f568-4905-9caf-8eade65724ac",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-fusediff:-symmetry-preserving-joint-diffusion-for-dual-target-structure-based-dr.md",
+      "type": "produced"
+    },
+    {
+      "from": "13ba5651-6759-462f-bf9f-1f14d60cfaab",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-why-depth-matters-in-parallelizable-sequence-models:-a-lie-algebraic-view.md",
+      "type": "produced"
+    },
+    {
+      "from": "9b55d97f-c36e-4362-b210-6a0c1428c7b4",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-eigendata:-a-self-evolving-multi-agent-platform-for-function-calling-data-synthe.md",
+      "type": "produced"
+    },
+    {
+      "from": "d1802756-0576-416d-9aaa-60ead8b10d8e",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/mitigating-forgetting-in-continual-learning-with-s.py",
+      "type": "produced"
+    },
+    {
+      "from": "2c9fbe67-c863-4691-9ba7-ce86ff9f0731",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-tool-genesis:-a-task-driven-tool-creation-benchmark-for-self-evolving-language-a.md",
+      "type": "produced"
+    },
+    {
+      "from": "44b04fcd-a183-4b3f-82d2-e75c3bc36a25",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-01-real-faults-in-model-context-protocol-(mcp)-software:-a-comprehensive-taxonomy.md",
       "type": "produced"
     }
   ]
