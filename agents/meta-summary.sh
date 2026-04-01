@@ -78,7 +78,7 @@ RESEARCH_COUNT=$(find research -name "${TODAY}*.md" 2>/dev/null | wc -l)
 CONTENT_COUNT=$(find content -name "${TODAY}*.md" 2>/dev/null | wc -l)
 APPS_COUNT=$(grep -c "Generated app:" memory/code-gardener.log 2>/dev/null || echo 0)
 SI_ACTIONS=0
-SI_LOG=$(ls memory/self-improvement/${TODAY}T*.log 2>/dev/null | head -1)
+SI_LOG=$(ls memory/self-improvement/${TODAY}T*.log 2>/dev/null | head -1 || true)
 if [ -n "$SI_LOG" ]; then
   SI_ACTIONS=$(grep -c "Applying (low-risk):" "$SI_LOG" 2>/dev/null || echo 0)
 fi

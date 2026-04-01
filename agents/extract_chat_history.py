@@ -22,21 +22,36 @@ def parse_conversation_lines(lines):
     """Extract user/assistant pairs from log lines."""
     conversations = []
     current = {"messages": []}
+    prev_role = None
+    
     for line in lines:
-        # Look for "[USER]" or "[ASSISTANT]" markers, or def's messages
-        if "defmarsh" in line or "Def M" in line:
-            # Assume this is user message
+        line = line.strip()
+        if not line:
+            continue
+            
+        # Check for user messages from def (Telegram)
+        if any(marker in line for marker in ["defmarsh", "Def M", "→"]):
             text = extract_message_text(line)
-            if text:
+            if text and len(text) > 2:
                 current["messages"].append({"role": "user", "content": text})
-        elif "mewmew" in line or "me:" in line.lower():
+                prev_role = "user"
+        # Check for assistant replies (mewmew)
+        elif any(marker in line.lower() for marker in ["mewmew", "me:", "assistant", "bot:"]):
             text = extract_message_text(line)
-            if text:
+            if text and len(text) > 2:
                 current["messages"].append({"role": "assistant", "content": text})
-                # If we have both user+assistant, consider it a pair
-                if len(current["messages"]) >= 2:
-                    conversations.append(current.copy())
+                prev_role = "assistant"
+                # If we have at least one user and one assistant, consider it a complete exchange
+                roles = [m["role"] for m in current["messages"]]
+                if "user" in roles and "assistant" in roles:
+                    # Take the last user+assistant as one conversation turn
+                    conversations.append({"messages": current["messages"][-2:]})
+                    # Reset for next exchange but keep some context? Let's reset to avoid overlap
                     current = {"messages": []}
+        else:
+            # Continuation of previous message? Skip for now
+            pass
+    
     return conversations
 
 def extract_message_text(line):
