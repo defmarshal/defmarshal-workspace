@@ -14884,6 +14884,76 @@
       "id": "/home/ubuntu/.openclaw/workspace/apps/working-paper_-towards-a-category-theoretic-compar.py",
       "type": "app",
       "title": "Working Paper: Towards a Category-theoretic Comparative Framework for Artificial General Intelligence"
+    },
+    {
+      "id": "ffa2a4f8-1877-47b8-b821-66f5ab7eb4e9",
+      "type": "seed",
+      "title": "Training Language Models via Neural Cellular Automata"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-training-language-models-via-neural-cellular-automata.md",
+      "type": "content",
+      "title": "Training Language Models via Neural Cellular Automata"
+    },
+    {
+      "id": "be9f4ef8-e465-4606-946b-bb439f65694e",
+      "type": "seed",
+      "title": "HTMuon: Improving Muon via Heavy-Tailed Spectral Correction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-htmuon:-improving-muon-via-heavy-tailed-spectral-correction.md",
+      "type": "content",
+      "title": "HTMuon: Improving Muon via Heavy-Tailed Spectral Correction"
+    },
+    {
+      "id": "2a50d44f-76dd-4556-b5ec-ced5704c117c",
+      "type": "seed",
+      "title": "One Model, Many Skills: Parameter-Efficient Fine-Tuning for Multitask Code Analysis"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-one-model,-many-skills:-parameter-efficient-fine-tuning-for-multitask-code-analy.md",
+      "type": "content",
+      "title": "One Model, Many Skills: Parameter-Efficient Fine-Tuning for Multitask Code Analysis"
+    },
+    {
+      "id": "c04e2bd2-41ca-4c33-a6a8-9f83b636add6",
+      "type": "seed",
+      "title": "Practical Feasibility of Sustainable Software Engineering Tools and Techniques"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-04-02-practical-feasibility-of-sustainable-software-engineering-tools-and-techniques.md",
+      "type": "output",
+      "title": "Practical Feasibility of Sustainable Software Engineering Tools and Techniques"
+    },
+    {
+      "id": "47ee8fa3-65f0-4ffc-90e4-def8ef78239e",
+      "type": "seed",
+      "title": "Towards Computational Social Dynamics of Semi-Autonomous AI Agents"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/apps/towards-computational-social-dynamics-of-semi-auto.py",
+      "type": "app",
+      "title": "Towards Computational Social Dynamics of Semi-Autonomous AI Agents"
+    },
+    {
+      "id": "24d3e387-6237-4f62-bf2d-9926688c20b8",
+      "type": "seed",
+      "title": "Safety Under Scaffolding: How Evaluation Conditions Shape Measured Safety"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-safety-under-scaffolding:-how-evaluation-conditions-shape-measured-safety.md",
+      "type": "content",
+      "title": "Safety Under Scaffolding: How Evaluation Conditions Shape Measured Safety"
+    },
+    {
+      "id": "879af42d-b80e-4c50-82ec-a6e4e7c316bc",
+      "type": "seed",
+      "title": "Toward Epistemic Stability: Engineering Consistent Procedures for Industrial LLM Hallucination Reduction"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-toward-epistemic-stability:-engineering-consistent-procedures-for-industrial-llm.md",
+      "type": "content",
+      "title": "Toward Epistemic Stability: Engineering Consistent Procedures for Industrial LLM Hallucination Reduction"
     }
   ],
   "edges": [
@@ -20100,6 +20170,41 @@
     {
       "from": "33f7e72c-6b2d-4be6-a44f-743ac71376df",
       "to": "/home/ubuntu/.openclaw/workspace/apps/working-paper_-towards-a-category-theoretic-compar.py",
+      "type": "produced"
+    },
+    {
+      "from": "ffa2a4f8-1877-47b8-b821-66f5ab7eb4e9",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-training-language-models-via-neural-cellular-automata.md",
+      "type": "produced"
+    },
+    {
+      "from": "be9f4ef8-e465-4606-946b-bb439f65694e",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-htmuon:-improving-muon-via-heavy-tailed-spectral-correction.md",
+      "type": "produced"
+    },
+    {
+      "from": "2a50d44f-76dd-4556-b5ec-ced5704c117c",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-one-model,-many-skills:-parameter-efficient-fine-tuning-for-multitask-code-analy.md",
+      "type": "produced"
+    },
+    {
+      "from": "c04e2bd2-41ca-4c33-a6a8-9f83b636add6",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-04-02-practical-feasibility-of-sustainable-software-engineering-tools-and-techniques.md",
+      "type": "produced"
+    },
+    {
+      "from": "47ee8fa3-65f0-4ffc-90e4-def8ef78239e",
+      "to": "/home/ubuntu/.openclaw/workspace/apps/towards-computational-social-dynamics-of-semi-auto.py",
+      "type": "produced"
+    },
+    {
+      "from": "24d3e387-6237-4f62-bf2d-9926688c20b8",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-safety-under-scaffolding:-how-evaluation-conditions-shape-measured-safety.md",
+      "type": "produced"
+    },
+    {
+      "from": "879af42d-b80e-4c50-82ec-a6e4e7c316bc",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-toward-epistemic-stability:-engineering-consistent-procedures-for-industrial-llm.md",
       "type": "produced"
     }
   ]
