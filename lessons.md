@@ -134,3 +134,19 @@ Recurring patterns, mistakes, and best practices. Load on demand via `memory_sea
   6. Monitor `memory/code-gardener.log` for repeated timeouts; alert if failure rate >10% over 100 seeds.
 - **Follow-up:** Review code-gardener.py and apply robustness improvements. Verify cron environment uses the latest script version (check file modification time).
 
+## 2026-04-02 — Email Sweep Cron Interruption
+
+- **Symptom:** Hourly `email-categorizer-cron` triggered at 20:06 UTC. The Python sweep was killed by SIGTERM after ~100 seconds, having labeled only ~40/100 emails. No completion summary was sent. State token unchanged.
+- **Root cause:** The cron job's isolated agent session was terminated prematurely by the cron infrastructure. The script itself has a 30-minute timeout configured, but the session cleanup appears to occur earlier due to gateway/cron behavior. Manual execution of the same command completes successfully in under 5 minutes. Not a script bug; likely a session lifecycle management issue in the OpenClaw cron runner when the job is considered "done" or after a watchdog timeout.
+- **Actions taken:**
+  - Manually restarted the sweep at 20:09 UTC in a fresh session.
+  - Completed processing: all 100 unread emails labeled, summary sent to Telegram. Top categories: academia-mail-com (11), Tokopedia (8), Quora/Quora-Digest (12 total). Runtime: ~4m48s.
+  - State token updated successfully.
+- **Impact:** One hourly run partially failed; manual recovery required. If unnoticed, some unread emails would remain unprocessed until next run.
+- **Prevention / Fixes needed:**
+  1. Investigate the cron job termination behavior: check gateway and cron daemon logs for why the session was killed. Consider if `staggerMs` or session isolation settings contribute.
+  2. Add watchdog to detect incomplete runs: compare `memory/email-categorizer.state` token against previous; if token unchanged after cron run, trigger a manual completion via a separate cron with a delay (e.g., `*/5 * * * *` check-and-retry).
+  3. Alternatively, modify the cron payload to run the script via a simple system cron entry (outside OpenClaw) that uses a shell wrapper with proper timeout (`timeout 1800 python3 ...`) and ensures the script is not prematurely orphaned.
+  4. Ensure script handles SIGTERM gracefully (trap and cleanup) so state is saved even if interrupted mid-run.
+- **Follow-up:** Monitor subsequent runs; if interruption recurs, escalate to investigate OpenClaw cron lifecycle management.
+

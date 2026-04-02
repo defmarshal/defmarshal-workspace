@@ -1,6 +1,6 @@
 # Active Tasks Registry
 
-**Current active tasks - UPDATED 2026-04-01 09:11 Bangkok / 2026-04-01 02:11 UTC**
+**Current active tasks - UPDATED 2026-04-02 07:20 Bangkok / 2026-04-02 00:20 UTC**
 
 System status: **Fully operational**. All cron jobs running smoothly. Disk usage ~56% (20G free). Gateway healthy. Memory index rate-limited but FTS fallback functional. All agents within normal parameters.
 
@@ -10,9 +10,9 @@ System status: **Fully operational**. All cron jobs running smoothly. Disk usage
 
 **Harvester** (cron harvest-1773046808): ✅ Completed. Started 2026-03-31 06:04 UTC. Generated daily-harvest-2026-03-31.md with 50 seeds and 24 outputs. Telegram summary sent.
 
-**Code Gardener** (cron code-gardener-1773047374): ✅ Completed. Last run: 2026-03-31 00:12 UTC / 07:12 Bangkok. Processed 833 seeds total, generated 249 apps. OpenRouter connectivity stable with fallback safeguards; all systems nominal.
+**Code Gardener** (cron code-gardener-1773047374): ✅ Just completed. Ran 2026-04-02 00:17 UTC / 07:17 Bangkok. Successfully processed seed "Towards a Category-theoretic Comparative Framework for Artificial General Intelligence" with **agent success** (no fallback). Generated 192-line app. Cumulative: 1000 seeds processed, 267 apps produced.
 
-**Research Gardener** (cron research-gardener-1773046574): 🚀 Running (started 2026-03-31 22:12 UTC / 2026-04-01 05:12 Bangkok). Process PID 2151272, now actively processing seeds. Domain balancing engaged!
+**Research Gardener** (cron research-gardener-1773046574): 🚀 Running (started 2026-04-01 19:04 UTC / 2026-04-02 02:04 Bangkok). Process PID 2550948, processing seeds with domain balancing engaged!
 
 **Content Gardener** (cron content-gardener-1773046735): ✅ Active. Producing ~1 report/hour. Today: 11 content reports (latest 16:02 UTC). Daily digest generated and current as of 16:02 UTC. Next hourly run just initiated.
 
@@ -36,9 +36,10 @@ self-improvement-cron     ok (next run 19:00 Bangkok)
 ```
 
 **Shared Seed Pool**:
-- Total seeds: 1468
-- Processed seeds: 544 (37.0%)
-- Remaining: 924
+- Total seeds: 2468
+- Processed seeds: 1000 (40.5%)
+- Remaining: 1468
+- Apps generated: 267
 
 **Research Monitoring** (research-agent): ✅ Passive monitoring active. No new urgent reports since March 28 sprint completion.
 
