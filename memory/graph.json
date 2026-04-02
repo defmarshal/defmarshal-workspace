@@ -14954,6 +14954,66 @@
       "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-toward-epistemic-stability:-engineering-consistent-procedures-for-industrial-llm.md",
       "type": "content",
       "title": "Toward Epistemic Stability: Engineering Consistent Procedures for Industrial LLM Hallucination Reduction"
+    },
+    {
+      "id": "35468ebf-ffdd-4247-917c-6f90f9ee6e8b",
+      "type": "seed",
+      "title": "Software Vulnerability Detection Using a Lightweight Graph Neural Network"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/research/2026-04-02-software-vulnerability-detection-using-a-lightweight-graph-neural-network.md",
+      "type": "output",
+      "title": "Software Vulnerability Detection Using a Lightweight Graph Neural Network"
+    },
+    {
+      "id": "463934d0-a473-478b-a7c8-602198154b81",
+      "type": "seed",
+      "title": "DUCTILE: Agentic LLM Orchestration of Engineering Analysis in Product Development Practice"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-ductile:-agentic-llm-orchestration-of-engineering-analysis-in-product-developmen.md",
+      "type": "content",
+      "title": "DUCTILE: Agentic LLM Orchestration of Engineering Analysis in Product Development Practice"
+    },
+    {
+      "id": "5e9d480a-eed3-43a5-ad97-490aec986f74",
+      "type": "seed",
+      "title": "MALTA: Maintenance-Aware Technical Lag, Estimation to Address Software Abandonment"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-malta:-maintenance-aware-technical-lag,-estimation-to-address-software-abandonme.md",
+      "type": "content",
+      "title": "MALTA: Maintenance-Aware Technical Lag, Estimation to Address Software Abandonment"
+    },
+    {
+      "id": "9868aafb-3e30-4e30-a238-d5cd8365f8a3",
+      "type": "seed",
+      "title": "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-specops:-a-fully-automated-ai-agent-testing-framework-in-real-world-gui-environm.md",
+      "type": "content",
+      "title": "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments"
+    },
+    {
+      "id": "d93372ef-8428-42d3-b8b7-629763fd0957",
+      "type": "seed",
+      "title": "From Verification to Herding: Exploiting Software's Sparsity of Influence"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-from-verification-to-herding:-exploiting-software's-sparsity-of-influence.md",
+      "type": "content",
+      "title": "From Verification to Herding: Exploiting Software's Sparsity of Influence"
+    },
+    {
+      "id": "d430c5e8-70d7-4315-904a-4844160fbd69",
+      "type": "seed",
+      "title": "FP-Predictor - False Positive Prediction for Static Analysis Reports"
+    },
+    {
+      "id": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-fp-predictor---false-positive-prediction-for-static-analysis-reports.md",
+      "type": "content",
+      "title": "FP-Predictor - False Positive Prediction for Static Analysis Reports"
     }
   ],
   "edges": [
@@ -20205,6 +20265,36 @@
     {
       "from": "879af42d-b80e-4c50-82ec-a6e4e7c316bc",
       "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-toward-epistemic-stability:-engineering-consistent-procedures-for-industrial-llm.md",
+      "type": "produced"
+    },
+    {
+      "from": "35468ebf-ffdd-4247-917c-6f90f9ee6e8b",
+      "to": "/home/ubuntu/.openclaw/workspace/research/2026-04-02-software-vulnerability-detection-using-a-lightweight-graph-neural-network.md",
+      "type": "produced"
+    },
+    {
+      "from": "463934d0-a473-478b-a7c8-602198154b81",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-ductile:-agentic-llm-orchestration-of-engineering-analysis-in-product-developmen.md",
+      "type": "produced"
+    },
+    {
+      "from": "5e9d480a-eed3-43a5-ad97-490aec986f74",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-malta:-maintenance-aware-technical-lag,-estimation-to-address-software-abandonme.md",
+      "type": "produced"
+    },
+    {
+      "from": "9868aafb-3e30-4e30-a238-d5cd8365f8a3",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-specops:-a-fully-automated-ai-agent-testing-framework-in-real-world-gui-environm.md",
+      "type": "produced"
+    },
+    {
+      "from": "d93372ef-8428-42d3-b8b7-629763fd0957",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-from-verification-to-herding:-exploiting-software's-sparsity-of-influence.md",
+      "type": "produced"
+    },
+    {
+      "from": "d430c5e8-70d7-4315-904a-4844160fbd69",
+      "to": "/home/ubuntu/.openclaw/workspace/content/2026-04-02-fp-predictor---false-positive-prediction-for-static-analysis-reports.md",
       "type": "produced"
     }
   ]
