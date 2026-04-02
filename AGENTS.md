@@ -337,8 +337,17 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 | Venv | ✅ Active (packages installed) |
 | Model | ✅ Downloaded (2.1GB) |
 | Dataset | ✅ Expanded to 2,332 examples (2.9 MB) |
-| Disk free | ⚠️ 20G free (56% used) — safe |
-| Training | ⏳ **Retraining now** (Phase 1: personality, larger dataset) |
+| Disk free | ✅ 17G free (62% used) — safe |
+| Training | 🔄 **Restarted** (crash due to missing modelcard template; env fixed) |
+| Monitoring | ✅ Cron job installed (every 15 min) |
+
+### Next Steps
+
+1. Monitor training restart — resuming from step 0 (previous progress lost)
+2. Continue training (expected ~2–4 days total)
+3. Evaluate fine-tuned model against benchmark
+4. If improvement satisfactory, deploy; else consider more data or epochs
+5. Continue to Phase 2 (tool use) after personality stable
 
 ### Next Steps
 
