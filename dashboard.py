@@ -8,6 +8,7 @@ import subprocess
 import json
 import os
 from datetime import datetime, timedelta
+from datetime import timezone
 from pathlib import Path
 
 # Config
@@ -30,7 +31,7 @@ def get_bangkok_time():
             return out
     except:
         pass
-    return datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
 def get_weather():
     out, err, rc = run_cmd("curl -s 'https://wttr.in/Bangkok?format=%C+%t'")

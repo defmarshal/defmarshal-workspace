@@ -9,6 +9,7 @@ import socketserver
 import json
 import subprocess
 from datetime import datetime, timedelta
+from datetime import timezone
 from pathlib import Path
 import threading
 import time
@@ -30,7 +31,7 @@ def get_bangkok_time():
             return out
     except:
         pass
-    return datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
 def get_weather():
     out, _, rc = run_cmd("curl -s 'https://wttr.in/Bangkok?format=%C+%t'")
@@ -175,7 +176,7 @@ def get_recent_memories(limit=3):
 
 def collect_status():
     return {
-        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
         "bangkok_time": get_bangkok_time(),
         "weather": get_weather(),
         "holiday": parse_holidays(),
