@@ -6,7 +6,7 @@ set -euo pipefail
 
 WORKSPACE="/home/ubuntu/.openclaw/workspace"
 KOKORO_HELPER="$WORKSPACE/scripts/kokoro-generate.py"
-KOKORO_VENV_PYTHON="$WORKSPACE/skills/kokoro-tts/venv/bin/python"
+KOKORO_VENV_PYTHON="$(which python3)"
 
 if [ $# -lt 1 ]; then
   echo "Usage: $0 <research-file.md>"
