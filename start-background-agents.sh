@@ -35,6 +35,7 @@ start_if_missing() {
 # start_if_missing "research-agent" "research-agent-loop.sh"
 # start_if_missing "torrent-bot" "agents/torrent-bot/loop.sh"  # Deprecated: CLI API changed; disabled 2026-02-19
 # cron-supervisor is now a cron-triggered agent (not a daemon loop).
+# start_if_missing "notifier-agent" "agents/notifier-agent.sh"  # Notifier is triggered via cron every 2 hours
 
 # Start meta-supervisor daemon if not running (continuous agent outcome auditor)
 if pgrep -f "meta-supervisor-daemon.sh" > /dev/null; then

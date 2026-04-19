@@ -146,10 +146,15 @@ LOGFILE="memory/git-janitor.log"
 mkdir -p memory
 
 log() {
-  echo "$(date -u +%Y-%m-%d\ %H:%M:%S) UTC - $*" >> "$LOGFILE"
+  echo "$(date -u +'%Y-%m-%d %H:%M:%S UTC') - $*" >> "$LOGFILE"
 }
 
 log "Git janitor starting"
+# Configure git if not already configured
+if ! git config user.email >/dev/null 2>&1; then
+  git config user.email "openclaw-bot@example.com"
+  git config user.name "OpenClaw Bot"
+fi
 # Stage safe untracked files (excluding node_modules, .git, etc.)
 git add -A 2>/dev/null || true
 # Auto-commit if there are changes
@@ -191,21 +196,21 @@ LOGFILE="memory/notifier-agent.log"
 mkdir -p memory
 
 log() {
-  echo "$(date -u +%Y-%m-%d\ %H:%M:%S) UTC - $*" >> "$LOGFILE"
+  echo "$(date -u +'%Y-%m-%d %H:%M:%S UTC') - $*" >> "$LOGFILE"
 }
 
 log "Notifier starting"
 # Check for issues and send alerts
 if openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "\(.name): \(.state.consecutiveErrors) errors"' | grep -q .; then
   FAILURES=$(openclaw cron list --json 2>/dev/null | sed -n '/^{/,$p' | jq -r '.jobs[] | select(.state.consecutiveErrors>2) | "- \(.name): \(.state.consecutiveErrors) errors"' | paste -sd '\n' -)
-  openclaw message send --channel telegram --to 952170974 --text "🚨 *OpenClaw Alert*\nCron job failures:\n$FAILURES" 2>/dev/null || true
+  openclaw message send --text "🚨 *OpenClaw Alert*\nCron job failures:\n$FAILURES" 2>/dev/null || true
 fi
 USAGE=$(df -h . | awk 'NR==2 {gsub(/%/,""); print $5}')
 if [ "$USAGE" -ge 85 ]; then
-  openclaw message send --channel telegram --to 952170974 --text "🚨 Disk usage critical: ${USAGE}%" 2>/dev/null || true
+  openclaw message send --text "🚨 Disk usage critical: ${USAGE}%" 2>/dev/null || true
 fi
 if ! openclaw gateway status &>/dev/null; then
-  openclaw message send --channel telegram --to 952170974 --text "🚨 OpenClaw gateway is down!" 2>/dev/null || true
+  openclaw message send --text "🚨 OpenClaw gateway is down!" 2>/dev/null || true
 fi
 log "Notifier completed"
 EOF

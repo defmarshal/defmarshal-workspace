@@ -184,3 +184,29 @@ Upstream: https://github.com/autogame-17/capability-evolver
 =======================================================
 ```
 
+## 2026-04-19 00:09:52 UTC — evolver-agent cycle (exit 0)
+
+```
+[Evolver] Warning: dotenv not found or failed to load .env
+Starting capability evolver...
+[Evolver] Agent has 12 active user sessions (max 10). Backing off 60000ms to avoid starving user conversations.
+
+=======================================================
+Capability evolver finished. If you use this project, consider starring the upstream repository.
+Upstream: https://github.com/autogame-17/capability-evolver
+=======================================================
+```
+
+## 2026-04-19 00:10:15 UTC — evolver-agent cycle (exit 0)
+
+```
+[Evolver] Warning: dotenv not found or failed to load .env
+Starting capability evolver...
+[Evolver] Agent has 12 active user sessions (max 10). Backing off 60000ms to avoid starving user conversations.
+
+=======================================================
+Capability evolver finished. If you use this project, consider starring the upstream repository.
+Upstream: https://github.com/autogame-17/capability-evolver
+=======================================================
+```
+
