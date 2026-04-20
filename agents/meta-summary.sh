@@ -33,7 +33,7 @@ MEM_TOTAL_MB=$(free -m | awk '/^Mem:/ {print $2}')
 # Gateway health
 if curl -sf http://localhost:18789/health >/dev/null 2>&1; then
   GW_STATUS="ok"
-  GW_VERSION=$(curl -s http://localhost:18789/version 2>/dev/null | head -1 || echo "unknown")
+  GW_VERSION=$(curl -s http://localhost:18789/version 2>/dev/null | head -1 | sed 's/<[^>]*>//g' | grep -o 'OpenClaw [0-9.]*' | head -1 || echo "unknown")
 else
   GW_STATUS="down"
   GW_VERSION="N/A"
@@ -43,7 +43,7 @@ fi
 GW_PORT=$(cat /home/ubuntu/.openclaw/workspace/memory/gateway-status.json 2>/dev/null | grep -o '"port":[0-9]*' | cut -d: -f2 || echo "18789")
 
 # Running agents count
-RUNNING_AGENTS=$(openclaw sessions list --activeMinutes 5 --json 2>/dev/null | jq -r '.sessions | length' || echo "0")
+RUNNING_AGENTS=$(openclaw sessions list --active 5 --json 2>/dev/null | jq -r '.sessions | length' || echo "0")
 
 # Research stats - count reports from today
 TODAY=$(date -u +%Y-%m-%d)
