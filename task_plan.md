@@ -1,71 +1,75 @@
-# Workspace Builder Task Plan - 2026-03-03 01:02 UTC
+# Workspace Builder Task Plan
 
-## Overview
-Strategic workspace analysis and improvement implementation focusing on cron system consolidation and dashboard data integrity.
+**Session:** workspace-builder (cron: 23dad379-21ad-4f7a-8c68-528f98203a33)
+**Triggered:** 2026-02-22 21:00 UTC (next run 23:00 UTC)
+**Goal:** Perform comprehensive hygiene, validation, and small improvements
 
-## Current State Assessment
-- **Health**: Green (disk 79%, stable)
-- **Active agents**: meta-supervisor running, various cron agents active
-- **Memory**: 33 lines (≤35 limit), reindex ~2.5d fresh
-- **Git**: Clean, all changes pushed to origin
-- **Key issues identified**:
-  1. Duplicate cron systems updating dashboard data
-  2. OpenClaw cron uses broken Python script (corrupts data)
-  3. System crontab uses superior shell script but undocumented
-  4. Data corruption risk due to conflicting updates
+## Current State Analysis
 
-## Strategic Tasks
+**Git status:** Clean (0 changed)
+**Health:** OK (Disk 66%, Gateway healthy, Memory clean, No updates)
+**Active tasks:** None running
+**Idea executor:** Idle (last idea rejected)
+**Cron jobs:** All green, no failures
+**Logs:** aria2.log 403MB (needs rotation)
+**Research Hub:** research/ and public/research/ both 25M (likely in sync)
+**Content index:** Unknown freshness (last cron: 2026-02-22 22:30 UTC? Actually 05:30 Bangkok = 22:30 UTC previous day; needs check)
+**Memory index:** Clean, 21/21 files indexed
 
-### Phase 1: Analysis & Planning
-- [x] Read current workspace context (SOUL.md, USER.md, recent memory)
-- [x] Identify key improvement opportunities (cron duplication, dashboard data)
-- [x] Create planning documents (task_plan.md, findings.md, progress.md)
-- [ ] Verify current constraint validation status
+## Identified Opportunities
 
-### Phase 2: Issue Resolution
-- [ ] **CRITICAL**: Fix dashboard data corruption issue
-  - [ ] Migrate superior shell script functionality to OpenClaw cron
-  - [ ] Remove duplicate system crontab entry
-  - [ ] Ensure data structure consistency (disk_history, agent fields)
-  - [ ] Test dashboard functionality after fix
-- [ ] Update CRON_JOBS.md to reflect changes
-- [ ] Verify all cron schedules are properly documented
+1. **Log rotation**: aria2.log exceeds 100MB threshold; rotate proactively
+2. **Content index refresh**: ensure new research reports are included if any appeared since last index update
+3. **Hygiene check**: run `./quick hygiene` to catch any subtle issues
+4. **Research sync verification**: confirm public/research/ matches research/ (inode counts, timestamps)
+5. **Cron schedule validation**: verify schedules match CRON_JOBS.md (even though auto-validation runs, we double-check)
+6. **Documentation currency**: check if MEMORY.md needs today's learnings distilled from daily log
+7. **Active tasks sanity**: ensure active-tasks.md is clean and <2KB
 
-### Phase 3: System Optimization
-- [ ] Review and optimize constraint validation script
-- [ ] Check for any other undocumented system crontab entries
-- [ ] Validate that all OpenClaw cron jobs are functional
-- [ ] Clean up any temporary files or logs
+## Plan Phases
 
-### Phase 4: Validation & Closure
-- [ ] Run comprehensive validation (health, constraints, git, etc.)
-- [ ] Test all quick commands affected by changes
-- [ ] Commit changes with appropriate build: prefix
-- [ ] Push to origin/master
-- [ ] Update active-tasks.md with verification notes
-- [ ] Perform CLOSE THE LOOP validation
+### Phase 1: Maintenance Actions
+- [ ] Rotate aria2.log using `./quick log-rotate` (or direct script)
+- [ ] Regenerate content index: `./quick content-index-update`
+- [ ] Run hygiene check: `./quick hygiene` and address any findings
+
+### Phase 2: Verification
+- [ ] Compare research/ vs apps/research-hub/public/research/ file counts and sizes
+- [ ] Validate cron schedules: `./quick cron-schedules` (should report all match)
+- [ ] Check memory status: `./quick memory-status` (should show clean)
+- [ ] Verify active-tasks.md size (<2KB) and format
+
+### Phase 3: Documentation
+- [ ] Review MEMORY.md: is last updated date current? Does it include key learnings from recent runs (e.g., today's workspace-builder success patterns)?
+- [ ] If needed, append a concise learning bullet with today's date
+
+### Phase 4: Close the Loop
+- [ ] Run `quick health` baseline post-maintenance
+- [ ] Verify git status (expect some changes from maintenance)
+- [ ] Stage, commit (with prefix 'build:' for hygiene, 'docs:' for MEMORY updates), push
+- [ ] Update active-tasks.md: add entry for this session, mark validated, include verification notes
+- [ ] Final health check
+
+## Error Handling
+
+- If log rotation fails: log error, continue; may need manual intervention
+- If content index fails: capture output, abort commit until resolved
+- If hygiene check finds serious issues: escalate, pause and ask user
+- If git push fails: check network/auth, retry once, else abort and log
+- If verification fails: do not commit; log to findings and notify
 
 ## Success Criteria
-- Dashboard data corruption eliminated
-- Single source of truth for dashboard updates
-- All cron jobs properly documented in OpenClaw system
-- Constraint validation passes (10/10)
-- No regressions in dashboard functionality
-- Git history clean with descriptive commits
 
-## Risk Mitigation
-- Backup current dashboard data before making changes
-- Test migration in dry-run mode first
-- Monitor dashboard functionality closely after changes
-- Ensure fallback mechanisms are in place
+- ✅ aria2.log rotated (old archived, new empty)
+- ✅ Content/INDEX.md updated with latest content
+- ✅ Hygiene check passes with no critical findings
+- ✅ Research sync verified (both directories in sync)
+- ✅ Cron schedules validated (all match CRON_JOBS.md)
+- ✅ Memory index clean
+- ✅ active-tasks.md <= 2KB
+- ✅ MEMORY.md updated if needed
+- ✅ Git working tree clean after commit and push
+- ✅ Session entry added to active-tasks.md with verification output
 
-## Timeline
-- Phase 1: Complete (current)
-- Phase 2: High priority (immediate attention needed)
-- Phase 3: Normal priority
-- Phase 4: Final validation
-
-## Notes
-- User has indicated preference for clean, centralized cron management
-- Previous workspace builder runs have established good validation patterns
-- Memory system is healthy and should capture this session
+---
+**Status:** In Progress (starting Phase 1)

@@ -1,19 +1,20 @@
 # Long-term Memory Index
 
-*Last updated: 2026-03-03*
+*Last updated: 2026-02-22*
 
 ## Personal
-def, UTC+7, mewmew assistant; anime, tech
+def, UTC+7, mewmew assistant; interests: anime, tech
 
 ## Projects
-Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, Research Hub, Torrent System
+Memory System, Workspace Health & Automation, Anime Companion, Torrent System, Idea pipeline, openclaw-idle-rpg, research-hub
 
 ## Links
-- `active-tasks.md` (current work)
-- `memory/YYYY-MM-DD.md` (daily logs)
-- `lessons.md` (patterns)
-- `TOOLS.md` (config)
-- `CRON_JOBS.md` (schedules)
+- `active-tasks.md` current work
+- `memory/YYYY-MM-DD.md` daily logs
+- `lessons.md` patterns
+- `projects.md` status
+- `TOOLS.md` config
+- `CRON_JOBS.md` schedules
 
 ## Resources
 - Voyage AI: https://dashboard.voyageai.com
@@ -21,19 +22,13 @@ Memory System, Workspace Health & Automation, Idea pipeline, openclaw-idle-rpg, 
 - GitHub: defmarshal/defmarshal-workspace
 
 ## Notes
-- Gateway: port 18789; Memory: local FTS+ only (Voyage disabled); systemd linger recommended: `sudo loginctl enable-linger ubuntu`
+- Memory: local FTS+ only (Voyage disabled)
+- Gateway: port 18789
+- systemd linger recommended: `sudo loginctl enable-linger ubuntu`
+
 ## Learnings (latest)
-- 2026-03-03: Fixed dashboard cron by switching OpenClaw `dashboard-data-updater` payload to `./scripts/generate-dashboard-data.sh`. This ensures correct data: `disk_history` (24-value sparkline) and agent status (`name`, `active`, `last_run`, `last_line`). The previous Python script produced empty fields and misaligned schema.
-- 2026-03-03: Meta-agent skill installation updated: changed from `openclaw skills install` (removed CLI) to `openclaw plugins install`. Detected weather skill request but weather functionality is provided by `quick weather` (wttr.in), not a plugin. Heuristic to avoid installing non-existent plugins needs refinement. Lesson: verify plugin availability before attempting install; align tool invocation with current CLI version.
-- 2026-03-02: Added observability: quick idea-health command monitors autonomous idea pipeline health (generator/executor status, pending ideas, error tail). Demonstrates incremental monitoring improvements for self-directed systems.
-- 2026-03-02: Dashboard data updater cron job was undocumented and had Python deprecation warnings. Fixed: added to CRON_JOBS.md; replaced datetime.utcnow() with timezone-aware datetime.now(UTC); verified script runs cleanly. Lesson: Regularly audit cron jobs against documentation; proactively fix deprecation warnings to avoid future breakage.
-- 2026-03-01: Workspace-builder closure integrity — ensure all generated outputs (planning docs, agent summaries, daily digest updates) are committed before marking validated; untracked files create audit gaps. Fixed: remediation commit added missing artifacts and corrected verification metrics. Lesson: verify `git status` allows only expected state file modifications (e.g., disk-history.json) before final close.
-- 2026-02-23: Idea generator overhaul (slug deduplication, substantive file creation via printf, reliable executor validation) and notifier agent fix (log function, OpenClaw JSON filtering); executor bug: replaced heredoc with printf.
-- 2026-02-24: Meta-agent cron duplication bug fixed: added JSON filtering (sed -n '/^{/,$p') before jq in all cron checks; corrected git-janitor-cron schedule from hourly (`15 * * * *`) to every 6 hours (`0 */6 * * *`) per CRON_JOBS.md; cleaned up duplicate cron entries, preventing uncontrolled accumulation. Plus: automated stale idea branch cleanup in git-janitor (merge-check, age threshold, safe arithmetic) with self-correction of merge-base logic. Additionally: workspace-builder applied 17 security updates and validated system health (disk 67%, gateway healthy, memory clean).
-- 2026-02-25: Workspace-builder refined maintenance patterns: phased APT updates override; active-tasks.md pruning to <2KB; systematic stale idea branch cleanup; push-pending-first pattern; implemented `quick validate-constraints` command for proactive enforcement. System health consistently green.
-- 2026-02-28: Enhanced constraints: added shebang validation for scripts/*.sh; automated archival of completed active-tasks entries to daily logs; refined dashboard data commit hygiene; all systems green.
-
-- 2026-02-22: Autonomous idea pipeline: generator (6h UTC) proposes, executor (2h UTC) implements; validation rejects placeholder commits (≥5 lines, substantive changes).
-
-- 2026-04-19: Time capsule unlocked - mewmew letter processed. YouTube digest functional but OAuth token needs refresh (401 on access). Dashboard and cron systems operational. Disk at 76% (11G free).
-- 2026-04-19: Updated MEMORY.md with time capsule findings and system state.
+- 2026-02-22: Polyglot TTS deployment combined offline Kokoro (English, ~200KB) with Edge TTS (Japanese, ~20KB), auto-detecting language; achieved 96.7% coverage (175/181 reports) and 10x size reduction for Japanese. Demonstrates hybrid TTS optimization.
+- 2026-02-22: Idea executor added pre-execution cleanliness check (git status --porcelain) to prevent commit contamination from uncommitted changes; cleaned stale branch; enforced daily digest commits.
+- 2026-02-21: meta-agent robustness (find vs ls), spawn debouncing, idea executor validation, capability-evolver first cycle
+- 2026-02-19: token optimization caps break output → gentle constraints
+- 2026-02-18: agent-manager auto-commit must detect untracked files; quick syntax fix; enforce task registry limits
