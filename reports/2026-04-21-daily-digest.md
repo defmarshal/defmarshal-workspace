@@ -10,7 +10,7 @@
 - dev: fix meta-summary report and validate agent state
 
 ## System Health
-Disk OK 78% | Updates: 2 | Git dirty (9 changed) | Memory: unavailable | Reindex: 3.0d ago | Gateway: healthy | Downloads: 0 files, 4.0K
+Disk OK 78% | Updates: 2 | Git dirty (1 changed) | Memory: unavailable | Reindex: 3.0d ago | Gateway: healthy | Downloads: 0 files, 4.0K
 
 ## Notes
-- Generated at Tue Apr 21 00:26:15 UTC 2026
+- Generated at Tue Apr 21 00:40:10 UTC 2026
