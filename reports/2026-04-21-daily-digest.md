@@ -15,7 +15,7 @@
 - dev: run dev-agent scan and validate agent state
 
 ## System Health
-Disk OK 78% | Updates: 2 | Git dirty (1 changed) | Memory: 0f/0c (clean) none FTS+ vec+ | Reindex: 3.2d ago | Gateway: healthy | Downloads: 0 files, 4.0K
+Disk OK 78% | Updates: 2 | Git dirty (2 changed) | Memory: unavailable | Reindex: 3.2d ago | Gateway: healthy | Downloads: 0 files, 4.0K
 
 ## Notes
-- Generated at Tue Apr 21 04:32:31 UTC 2026
+- Generated at Tue Apr 21 05:00:34 UTC 2026
