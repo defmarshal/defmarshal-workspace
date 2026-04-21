@@ -4,8 +4,10 @@
 - (none)
 
 ## Research Highlights
+- research/2026-04-21-daily-digest.md: Daily Research Digest - April 21, 2026
 - research/2026-04-21-detailed.md: Research Report - April 21, 2026
 - research/2026-04-21-research-advanced.md: Research Report - April 21, 2026 (Part 3)
+- research/2026-04-21-research-comprehensive.md: Research Report - April 21, 2026 (Part 4)
 - research/2026-04-21-research-summary.md: Research Report - April 21, 2026 (Part 2)
 
 ## Dev Commits (today)
@@ -15,7 +17,7 @@
 - dev: run dev-agent scan and validate agent state
 
 ## System Health
-Disk OK 78% | Updates: 2 | Git dirty (2 changed) | Memory: unavailable | Reindex: 3.2d ago | Gateway: healthy | Downloads: 0 files, 4.0K
+Disk OK 78% | Updates: 2 | Git dirty (1 changed) | Memory: 0f/0c (clean) none FTS+ vec+ | Reindex: 3.2d ago | Gateway: healthy | Downloads: 0 files, 4.0K
 
 ## Notes
-- Generated at Tue Apr 21 05:00:34 UTC 2026
+- Generated at Tue Apr 21 05:25:48 UTC 2026
