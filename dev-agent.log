@@ -1,4 +1,3 @@
 $(date -u "+%Y-%m-%d %H:%M:%S UTC") Starting dev-agent scan...
-2026-04-21 01:00:33 UTC Scan started
-2026-04-21 01:00:33 UTC JSON validation OK
-$(date -u "+%Y-%m-%d %H:%M:%S UTC") Dev-agent scan complete.
+2026-04-21 02:00:40 UTC Scan started
+2026-04-21 02:00:40 UTC heartbeat-state.json JSON validation OK
