@@ -9,12 +9,13 @@
 - research/2026-04-21-research-summary.md: Research Report - April 21, 2026 (Part 2)
 
 ## Dev Commits (today)
+- dev: fix CRLF line endings and update reports
 - dev: run dev-agent scan and validate agent state
 - dev: update dev-agent.log with scan results
 - dev: run dev-agent scan and validate agent state
 
 ## System Health
-Disk OK 78% | Updates: 2 | Git dirty (1 changed) | Memory: 0f/0c (clean) none FTS+ vec+ | Reindex: 3.1d ago | Gateway: healthy | Downloads: 0 files, 4.0K
+Disk OK 78% | Updates: 2 | Git dirty (2 changed) | Memory: 0f/0c (clean) none FTS+ vec+ | Reindex: 3.1d ago | Gateway: healthy | Downloads: 0 files, 4.0K
 
 ## Notes
-- Generated at Tue Apr 21 03:47:50 UTC 2026
+- Generated at Tue Apr 21 04:01:29 UTC 2026
