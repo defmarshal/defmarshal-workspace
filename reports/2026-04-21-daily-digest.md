@@ -4,7 +4,9 @@
 - (none)
 
 ## Research Highlights
-- (none)
+- research/2026-04-21-detailed.md: Research Report - April 21, 2026
+- research/2026-04-21-research-advanced.md: Research Report - April 21, 2026 (Part 3)
+- research/2026-04-21-research-summary.md: Research Report - April 21, 2026 (Part 2)
 
 ## Dev Commits (today)
 - dev: run dev-agent scan and validate agent state
@@ -12,7 +14,7 @@
 - dev: run dev-agent scan and validate agent state
 
 ## System Health
-Disk OK 78% | Updates: 2 | Git dirty (2 changed) | Memory: unavailable | Reindex: 3.1d ago | Gateway: healthy | Downloads: 0 files, 4.0K
+Disk OK 78% | Updates: 2 | Git dirty (1 changed) | Memory: unavailable | Reindex: 3.1d ago | Gateway: healthy | Downloads: 0 files, 4.0K
 
 ## Notes
-- Generated at Tue Apr 21 03:00:43 UTC 2026
+- Generated at Tue Apr 21 03:15:03 UTC 2026
